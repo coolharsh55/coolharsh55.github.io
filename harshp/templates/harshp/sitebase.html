@@ -1,0 +1,63 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load subdomainurls %}
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- TITLE -->
+	<title>{% block ETITLE %}{% endblock ETITLE %}</title>
+
+	{% block EHEAD %}{% endblock EHEAD %}
+	{% block FANALYTICS %}<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-36745382-2","auto"),ga("send","pageview");</script>{% endblock FANALYTICS %}
+
+	<!-- CSS -->
+	{% block FCSS %}
+		{% bootstrap_css %}
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link href="{% static 'css/cookiepolicy.jquery.css' %}" media="screen" rel="stylesheet" type="text/css" />
+		<link rel='stylesheet' type='text/css' href="{% static 'css/common.css' %}" />
+	{% endblock FCSS %}
+</head>
+
+<body>
+{% block FSITEMESSAGE %}{% endblock FSITEMESSAGE %}
+{% block EBODY %}{% endblock EBODY %}
+{% block FFOOTER %}
+<div id='footer'>
+<hr>
+<p>&copy; Harshvardhan Pandit</p>
+<!-- Social Button HTML -->
+<!-- Google Plus --><a href="https://plus.google.com/u/0/+HarshvardhanPandit" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- LinkedIn --><a href="https://www.linkedin.com/in/harshvardhanpandit" target="_blank" class="share-btn linkedin"><i class="fa fa-linkedin"></i></a>
+<!-- Facebook --><a href="http://www.facebook.com/coolharsh55" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Email --><a href="mailto:me@harshp.com?subject=Hi%20there..." target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+<br /><a href="{% url 'privacypolicy' %}"><small>privacy policy</small></a> | <a href='#'><small>about me</small></a> | <a href="{% url 'changelog' %}"><small>changelog</small></a>
+<br />
+</div>
+{% endblock FFOOTER %}
+{% block FJS %}
+	{% bootstrap_javascript %}
+{% endblock FJS %}
+{% block COOKIEPOLICY %}
+<script src="{% static 'js/cookiepolicy.jquery.js' %}"></script>
+<script>
+	(function($) {
+		url = "{% url 'privacypolicy' %}"
+		$('body').cookiepolicy({
+		    message: "I use cookies to track usage and build a better site | <a href='%cookie_policy_url%'> Know more...</a>"
+		    , cookie_policy_url: "{% url 'privacypolicy' %}"
+		    , extra_class: 'cookiepolicy-message-box'
+		    , close_button_text: 'Yokay!'
+		    , close_button_title: 'Close this message box'
+		    , cookie_name: 'harshp_cookie_policy_messagebox'
+		    , cookie_expire_days: 60
+		});
+	})(jQuery);
+</script>
+{% endblock COOKIEPOLICY %}
+</body>
+</html>

@@ -1,0 +1,96 @@
+todo.txt
+--------------------------------------------------
+
+blog
+----
+
+stories
+-------
+
+poems
+-----
+
+articles
+--------
+
+brainbank
+---------
+July 31, 2015
+- make demo title and post title non-unique and put the unique
+    constraint on demo+idea and post+idea
+- while retrieving demo and post objects, retrieve them also
+    by their association with idea
+    -> Demo.objects.get(slug=slugfield, idea=idea)
+- change name from brainwaves to brainbank in header
+- repo field for idea -> url
+- do not display demos if not availabe
+- change info/success/warning to some fixed color
+- display gist or description in index, with label and badges for 
+    no of posts and demos, and also display link to repo
+
+lifeX
+-----
+July 31, 2015
+- set start/end week as public functions so that they can be used 
+    in templates and by other views
+- `_start_week()` raise error if week.number is absent -> use try...
+- in `LifeXPost.onSave` tick `idea.experimented` to `True` 
+- count of if and how many times that idea has been tried
+- link to each week and post that used the idea
+- presentation class by itself
+
+friends
+-------
+July 31, 2015
+- friends models
+    + friend: id, name, birthdate, nickname, password
+    + birthday_gift: id, friendid, year, html, css, js, read
+    + message: id, from id, to id, title, content, read
+- urls
+    + index friend.harshp.com/friend+name
+    + birthday gift /birthday/year/
+    + messages /messages/
+    + message /messages/messageid
+- no tracking entry in robots.txt
+
+settings
+--------
+- allowed hosts = '.harshp.com'
+- presentation model OR app ?
+    + start as model in sitedata
+    + modular -> allow embedding headers and css from other models
+    + url redirection to harshp.com/presentation/
+- twine model or app?
+    + allow using twine in any app
+    + drop down css settings or template
+    + post -> blog, presentation, twine...
+
+templates
+---------
+- change colors of everything to something nicer
+- change font size in media queries -> it is too big
+- use font-awesome where possible
+- use hover and sweet alert
+
+
+sitedata
+--------
+- slug for tags
+- On book.save:
+    + get book quotes, reviews, and ratings from different book sites
+    + create celery task to load data from other websites
+    + if self.date_end is None then read=False
+- On movie.save:
+    + # TODO: get movie cast and info from IMDb or other sites
+    + # TODO: create celery task to load data from other sites
+- On tvshow.save:
+    + # TODO: get series info from IMDb or other sites
+    + # TODO: create celery task for loading info from other sites
+    + # TODO: if self.date_end is None then self.watched = False
+- on game.save:
+    + # TODO: load game info from some video game site
+    + # TODO: create celery task to load game info from other sites
+    + # TODO: if self.date_end is None then self.finished=False
+- photography and photoshoot models
+
+--------------------------------------------------

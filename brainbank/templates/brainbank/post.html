@@ -1,0 +1,33 @@
+{% extends 'brainbank/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}{{post.title}}{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/idea.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
+{% endblock CSS %}
+
+{% block HEADER %}{{post.idea.title}}{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=brainbank%20post%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{post.title}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent'>
+<div class='blog-title'><h1>{{post.title}}</h1><small><div class='blog-description'>{{post.published}}</div></small></div>
+{% if post.headerimage %}<!-- image -->
+<img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image"><br/>
+{% endif %}
+<div class="alert alert-info" role="alert" style='text-align=center;'>Part of '<a href="{% url 'brainbank:idea' 'brainbank' post.idea.slug %}" class="alert-link">{{post.idea.title}}</a>'</div>
+
+{{post.body|safe}}<!-- body -->
+</div>
+{% endblock CONTENT %}

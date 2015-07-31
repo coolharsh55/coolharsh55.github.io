@@ -1,0 +1,35 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load dictionary %}
+{% load subdomainurls %}
+
+{% block EHEAD %}
+	{% include 'meta.html' %}
+{% endblock EHEAD %}
+
+{% block ETITLE %}
+	{% block TITLE %}{% endblock TITLE %}
+{% endblock ETITLE %}
+
+{% block FCSS %}
+	{{ block.super }}
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	{% block CSS %}{% endblock CSS %}
+{% endblock FCSS %}
+
+{% block EBODY %}
+ <div class="page-header, blog-header">
+ <h1>{% block HEADER %}{% endblock HEADER %}{% block BRAINBANKHEAD %}</br><small>~ <a href="{% url 'brainbank:index' 'brainbank' %}">ideas</a> at <a href="{% url 'home' %}">harshp.com</a> ~</small>{% endblock BRAINBANKHEAD %}</h1>
+	</div>
+	<div class='container'>
+  <div>&nbsp;<div style='text-align:center;'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div><br /></div>
+  {% block CONTENT %}
+  {% endblock CONTENT %}
+	</div>
+{% endblock EBODY %}
+
+{% block FJS %}
+	{{ block.super }}
+  {% block JS %}
+  {% endblock JS %}
+{% endblock FJS %}

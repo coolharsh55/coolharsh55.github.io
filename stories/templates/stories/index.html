@@ -1,0 +1,20 @@
+{% extends 'stories/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}stories at harshp.com{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/storiesindex.css' %}" />
+{% endblock CSS %}
+
+{% block HEADER %}spinning yarns{% endblock HEADER %}
+
+{% block CONTENT %}
+<div class='container'><div class='list-group'><h4>
+{% for post in posts %}
+<a class='nodecorate list-group-item' style='background-color:#FFF6EF; color:#FEA56D; text-align:center;' href="{% url 'stories:post' 'stories' post.slug %}">{{post.title}}<br /><small>{{post|reltime}}</small></a>
+{% endfor %}
+</h4></div></div>
+{% endblock CONTENT %}

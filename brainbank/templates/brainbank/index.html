@@ -1,0 +1,47 @@
+{% extends 'brainbank/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}brainbank of ideas{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/brainbankindex.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Glegoo|Copse' rel='stylesheet' type='text/css'>
+{% endblock CSS %}
+
+{% block HEADER %}brainwaves {% endblock HEADER %}
+
+{% block CONTENT %}
+{% for idea in ideas %}
+{% if idea.brainbankdemo_set.count > 0 %}<!-- HAS DEMOS -->
+<div class="panel panel-danger">
+{% elif idea.brainbankpost_set.count > 0 %}<!-- HAS POSTS -->
+<div class="panel panel-warning">
+{% else %}<!-- STUB -->
+<div class="panel panel-info">
+{% endif %}
+<div class='panel-heading'><!-- title -->
+<h2>{{idea.title}}</h2>
+</div> <!-- panel-heading -->
+<div class='panel-body'>
+<ul><!-- base idea post -->
+<li><a href="{% url 'brainbank:idea' 'brainbank' idea.slug %}">Concept and Premise - <small>{{ idea.published }}</small></a></li>
+{% if idea.brainbankpost_set.count > 0 %}<!-- other posts -->
+{% for post in idea.brainbankpost_set.all %}
+<li><a href="{% url 'brainbank:post' 'brainbank' idea.slug post.slug %}">{{ post.title }} - <small>{{ post.published }}</small></a></li>
+{% endfor %}
+{% else %}<!-- POSTS NOT AVAILABLE -->
+<li><div class="alert alert-danger" role="alert">No Posts are currently available for this Idea.</div></li>
+{% endif %}
+
+{% if idea.brainbankdemo_set.count > 0 %}<!-- DEMO AVAILABLE -->
+{% for demo in idea.brainbankdemo_set.all %}
+<li><a href="{% url 'brainbank:demo' 'brainbank' idea.slug demo.slug %}">(demo) {{ demo.title }}</a></li>
+{% endfor %}
+{% else %}<!-- DEMO NOT AVAILABLE -->
+<div class="alert alert-danger" role="alert">Demo not currently available</div>
+{% endif %}
+</ul></div></div> <!-- panel -->
+{% endfor %}
+{% endblock CONTENT %}

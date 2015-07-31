@@ -1,0 +1,32 @@
+{% extends 'lifeX/base.html' %}
+
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}Week {{week.number}}{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
+{% endblock CSS %}
+
+{% block HEADER %}Week {{week.number}}{% endblock HEADER %}
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20week%20-%20{{week}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{week}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent'>
+<div class='blog-title'><h1>{{week}}</h1></div>
+<h3><br /><ul>
+{% for post in week.lifexpost_set.all %}
+<li><a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br /><small>idea: <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a><br />category: <a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">{{post.idea.category.name}}</a></small></li>
+{% endfor %}
+</ul></h3>
+</div>
+{% endblock CONTENT %}

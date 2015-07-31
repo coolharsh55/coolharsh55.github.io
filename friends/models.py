@@ -1,0 +1,2 @@
+"""models for friends
+"""

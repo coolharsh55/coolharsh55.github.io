@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}blog at harshp.com{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/blogindex.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Copse|Glegoo' rel='stylesheet' type='text/css'>
+{% endblock CSS %}
+
+{% block HEADER %}chattering tangents{% endblock HEADER %}
+
+{% block CONTENT %}
+<div class="list-group"><h4>
+{% for post in posts %}
+<a class='nodecorate list-group-item' style='background-color:#FFEFEF; color:#FD686D; text-align:center;' href="{% url 'blog:post' 'blog' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a>
+{% endfor %}
+</h4></div>
+{% endblock CONTENT %}

@@ -1,0 +1,48 @@
+{% extends 'brainbank/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}{{idea.title}}{% endblock TITLE %}
+
+{% block CSS %}
+<link rel='stylesheet' type='text/css' href="{% static 'css/idea.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
+{% endblock CSS %}
+
+{% block HEADER %}{{idea.title}}{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=brainbank%20idea%20-%20{{idea.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{idea.title}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent'>
+{% if idea.headerimage %}<!-- image -->
+<img src="{{idea.headerimage}}" class="img-responsive" alt="Responsive image"><br/>
+{% endif %}
+
+<ul class='list-group'>
+{% if idea.brainbankpost_set.count > 0 %}<!-- other posts -->
+{% for post in idea.brainbankpost_set.all %}
+<li class='list-group-item list-group-item-info'><a href="{% url 'brainbank:post' 'brainbank' idea.slug post.slug %}">{{ post.title }} - <small>{{ post.published }}</small></a></li>
+{% endfor %}
+{% else %}<!-- POSTS NOT AVAILABLE -->
+<li><div class="alert alert-danger" role="alert">No Posts are currently available for this Idea.</div></li>
+{% endif %}
+
+{% if idea.brainbankdemo_set.count > 0 %}<!-- DEMO AVAILABLE -->
+{% for demo in idea.brainbankdemo_set.all %}
+<li class='list-group-item list-group-item-danger'><a href="{% url 'brainbank:demo' 'brainbank' idea.slug demo.slug %}">(demo) {{ demo.title }}</a></li>
+{% endfor %}</div>
+{% else %}<!-- DEMO NOT AVAILABLE -->
+<li class='list-group-item list-group-item-danger'>Demo not currently available</li>
+{% endif %}
+</ul><br/>
+{{idea.body|safe}}<!-- body -->
+</div>
+{% endblock CONTENT %}

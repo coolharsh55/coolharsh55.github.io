@@ -1,0 +1,2 @@
+"""admin configuration for friends
+"""

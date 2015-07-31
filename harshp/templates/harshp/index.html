@@ -1,0 +1,220 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block ETITLE %}harshp.com{% endblock ETITLE %}
+
+{% block EHEAD %}{% include 'meta.html' %}{% endblock EHEAD %}
+
+{% block FCSS %}
+  {{ block.super }}
+  <link rel='stylesheet' type='text/css' href="{% static 'css/harshpindex.css' %}" />
+  <link id='theme_dark' rel='stylesheet' type='text/css' href="{% static 'css/index_dark.css' %}"/>
+	<link id='theme_light' rel='stylesheet' type='text/css' href="{% static 'css/index_light.css' %}"/>
+	<link href='http://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css'>
+{% endblock FCSS %}
+
+{% block EBODY %}
+	<div class="page-header, blog-header">
+		<h1 class='site'>harshp.com</h1><h2><small id='change_light' onclick='change_theme();'>light</small> | <small id='change_dark'>dark</small></h2>
+	</div>
+
+	<div class='container'><div class='content'><div id='accordion' class='panel-group'>
+	<!-- About ME -->
+	<!-- <div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-blog">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
+          <h1 class='Blog'>About ME</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+	<br />
+	<!-- blog -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-blog">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
+          <h1 class='Blog'>blog</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>read the blog</a>
+        {% for blog in blogs %}
+        	<a href="{% url 'blog:post' 'blog' blog.slug %}" class='list-group-item'><h4>{{blog.title}}<br/><small>{{blog.published}}</small></h4></a>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- stories -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-stories">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-stories" aria-expanded="false" aria-controls="collapse-stories">
+          <h1 class='Story'>stories</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-stories" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-stories">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'stories:index' 'stories' %}" class='list-group-item active'>read the stories</a>
+        {% for story in stories %}
+        	<a href="{% url 'stories:post' 'stories' story.slug %}" class='list-group-item'><h3>{{story.title}}<br /><small>{{story.published}}</small></h3></a>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- poems -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-poems">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-poems" aria-expanded="false" aria-controls="collapse-poems">
+          <h1 class='Poem'>poems</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-poems" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-poems">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'poems:index' 'poems' %}" class='list-group-item active'>read the poems</a>
+        {% for poem in poems %}
+        	<a href="{% url 'poems:post' 'poems' poem.slug %}" class='list-group-item'><h3>{{poem.title}}<br /><small>{{poem.published}}</small></h3></a>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- articles -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-articles">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-articles" aria-expanded="false" aria-controls="collapse-articles">
+          <h1 class='Article'>articles</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-articles" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-articles">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'articles:index' 'articles' %}" class='list-group-item active'>read the articles</a>
+        {% for article in articles %}
+        	<a href="{% url 'articles:post' 'articles' article.slug %}" class='list-group-item'><h3>{{article.title}}<br /><small>{{article.published}}</small></h3></a>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- brainbank -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-brainbank">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-brainbank" aria-expanded="false" aria-controls="collapse-brainbank">
+          <h1 class='Brainbank'>brainbank</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-brainbank" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-brainbank">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'brainbank:index' 'brainbank' %}" class='list-group-item active'>read all ideas in the brainbank</a>
+					<a href="{% url 'brainbank:idea' 'brainbank' brainbank_idea.slug %}" class='list-group-item'><h3>latest idea: {{brainbank_idea.title}}<br /><small>{{brainbank_idea.published}}</small></h3></a>
+					{% for post in brainbank_idea.brainbankpost_set.all %}
+					<a href="{% url 'brainbank:post' 'brainbank' brainbank_idea.slug post.slug %}" class='list-group-item'><h4>{{post.title}}<br /><small>{{post.published}}</small></h4></a>
+					{% endfor %}
+					{% for demo in brainbank_idea.brainbankdemo_set.all %}
+					<a href="{% url 'brainbank:demo' 'brainbank' brainbank_idea.slug demo.slug %}" class='list-group-item'><h4>demo - {{demo.title}}</h4></a>
+					{% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- lifeX -->
+	<div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-lifeX">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-lifeX" aria-expanded="false" aria-controls="collapse-lifeX">
+          <h1 class='LifeX'>lifeX</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-lifeX" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-lifeX">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'lifeX:index' 'lifeX' %}" class='list-group-item active'>see all life eXperiments</a>
+            <a href="{% url 'lifeX:lifeX_presentation_UCC2014' 'lifeX' %}" class='list-group-item '><h2>LifeX - A Presentation</h2></a>
+        	<a href="{% url 'lifeX:week' 'lifeX' lifeXweek.number %}" class='list-group-item'><h3>{{lifeXweek}}</h3></a>
+        	{% for post in lifeXweek.lifexpost_set.all %}
+  				<a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}" class='list-group-item'><h4>{{post.title}}<br /><small>Idea: ({{post.idea.category.name}}) {{post.idea.title}}</small></h4></a>
+  				{% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <!-- Books I'm reading -->
+  <!-- <div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-blog">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
+          <h1 class='Blog'>Books I'm Reading</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+	<!-- Movies/TV shows I'm watching -->
+  <!-- <div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-blog">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
+          <h1 class='Blog'>Movies/TV shows I'm watching</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+	</div></div></div>
+{% endblock EBODY %}
+
+{% block FJS %}
+  {{ block.super }}
+	<script type="text/javascript">
+		$('#change_dark').click(function(){
+			document.getElementById('theme_dark').disabled  = false;
+			document.getElementById('theme_light').disabled = true;
+		});
+		$('#change_light').click(function(){
+			document.getElementById('theme_dark').disabled  = true;
+			document.getElementById('theme_light').disabled = false;
+		});
+	</script>
+{% endblock FJS %}
