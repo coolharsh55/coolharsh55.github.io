@@ -7,6 +7,7 @@ env:
 install:
   - pip install -r requirements.txt
 before_script:
+  - mysql -e 'create database IF NOT EXISTS harshp_dot_com;'
   - python manage.py migrate
 script:
   - python manage.py test
