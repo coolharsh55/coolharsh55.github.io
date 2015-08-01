@@ -235,6 +235,10 @@ if MODE == 'prod':
 elif MODE == 'dev':
     from dev import *
     # print 'dev'
+elif MODE == 'travis':
+    from prod import *
+    DATABASES['default']['USER'] = 'travis'
+    DATABASES['default']['PASSWORD'] = ''
 else:
     from local import *
     # print 'local'

@@ -8,7 +8,7 @@ import ckeditor.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sitedata', '0001_initial'),
+        ('sitedata', '__first__'),
     ]
 
     operations = [
@@ -19,12 +19,14 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=250)),
                 ('body', ckeditor.fields.RichTextField()),
                 ('published', models.DateTimeField()),
-                ('modified', models.DateTimeField(auto_now=True)),
+                ('modified', models.DateTimeField()),
+                ('slug', models.SlugField(unique=True)),
                 ('headerimage', models.URLField(blank=True)),
                 ('tags', models.ManyToManyField(to='sitedata.Tag')),
             ],
             options={
-                'ordering': ('-published', 'title'),
+                'verbose_name': 'Blog post',
+                'verbose_name_plural': 'Blog posts',
             },
         ),
     ]

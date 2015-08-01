@@ -1,0 +1,22 @@
+language: python
+python:
+    - "2.7"
+services: mysql
+env:
+    - DJANGO=1.8.2 DJANGO_SETTINGS_MODULE="harshp.settings.settings"
+install:
+    - pip install -r requirements.txt
+before_script:
+    - mysql -e 'create database IF NOT EXISTS harshp_dot_com;'
+    - pip install coveralls
+    - python manage.py migrate
+script:
+    - coverage run --source=harshp manage.py test
+after_success:
+    - coveralls
+notifications:
+    slack: harshp:8NHozfKnZn2JpbnOElJjgisT
+    email:
+        - me@harshp.com
+    on_success: always
+    on_failure: always
