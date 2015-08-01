@@ -20,7 +20,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'harshp_dot_com',
-        'USER': 'harshp',
+        'USER': os.getenv('HARSHP_MYSQL_ID', 'harshp'),
         'PASSWORD': os.getenv('HARSHP_MYSQL_PASS', ''),
         'HOST': '127.0.0.1',
         'PORT': '3306',

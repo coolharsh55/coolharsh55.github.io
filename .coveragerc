@@ -1,0 +1,22 @@
+[run]
+branch = True
+source = harshp
+
+omit =
+    /*/migration*
+    /*/tests*
+    /*/admin
+    /*/suit
+    /*/reveal_js
+    /*/ckeditor
+    /*/settings
+    __*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+
+ignore_errors = True

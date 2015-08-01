@@ -8,23 +8,58 @@ import ckeditor.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sitedata', '0001_initial'),
+        ('sitedata', '__first__'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='BrainbankIdea',
+            name='BrainBankDemo',
             fields=[
-                ('post_id', models.AutoField(serialize=False, primary_key=True)),
+                ('id', models.AutoField(serialize=False, verbose_name=b'ID', primary_key=True)),
+                ('title', models.CharField(max_length=250)),
+                ('js', ckeditor.fields.RichTextField(verbose_name=b'javascript')),
+                ('css', ckeditor.fields.RichTextField(verbose_name=b'CSS')),
+                ('body', ckeditor.fields.RichTextField(verbose_name=b'content')),
+                ('slug', models.SlugField(unique=True)),
+            ],
+            options={
+                'verbose_name': 'BrainBank Idea Demo',
+                'verbose_name_plural': 'BrainBank Ideas Demos',
+            },
+        ),
+        migrations.CreateModel(
+            name='BrainBankIdea',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name=b'ID', primary_key=True)),
                 ('title', models.CharField(max_length=250)),
                 ('body', ckeditor.fields.RichTextField()),
-                ('published', models.DateTimeField()),
-                ('modified', models.DateTimeField()),
-                ('headerimage', models.URLField(blank=True)),
+                ('slug', models.SlugField()),
+                ('published', models.DateField()),
+            ],
+            options={
+                'verbose_name': 'BrainBank Idea',
+                'verbose_name_plural': 'BrainBank Ideas',
+            },
+        ),
+        migrations.CreateModel(
+            name='BrainBankPost',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name=b'ID', primary_key=True)),
+                ('title', models.CharField(max_length=250)),
+                ('body', ckeditor.fields.RichTextField()),
+                ('published', models.DateField()),
+                ('slug', models.SlugField(unique=True)),
+                ('idea', models.ForeignKey(to='brainbank.BrainBankIdea')),
                 ('tags', models.ManyToManyField(to='sitedata.Tag')),
             ],
             options={
-                'ordering': ('-published', 'title'),
+                'verbose_name': 'BrainBank Idea Post',
+                'verbose_name_plural': 'BrainBank Idea Posts',
             },
+        ),
+        migrations.AddField(
+            model_name='brainbankdemo',
+            name='idea',
+            field=models.ForeignKey(to='brainbank.BrainBankIdea'),
         ),
     ]
