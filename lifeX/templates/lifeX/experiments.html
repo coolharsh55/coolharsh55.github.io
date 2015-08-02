@@ -7,8 +7,6 @@
 {% block TITLE %}Life eXperiments{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}Life eXperiments{% endblock HEADER %}
@@ -22,25 +20,17 @@
 {% endblock SOCIALSHARE %}
 
 {% block CONTENT %}
-<div class='parent' style='text-align=center;'>
+<div class='parent centertext'><br>
 {% for week in weeks %}
-<div class="panel panel-info">
-  <div class="panel-heading" role="tab" id="heading-{{week.number}}">
-    <h4 class="panel-title">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{week.number}}" aria-expanded="false" aria-controls="collapse-{{week.number}}">
-        <h3 style="text-align: center">{{week}}</h3>
-      </a>
-    </h4>
+  <div class="panelheading" role="tab" id="heading-{{week.number}}">
+    <h2><a class="nodecorate collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{week.number}}" aria-expanded="false" aria-controls="collapse-{{week.number}}">{{week}}</a></h2>
   </div>
   <div id="collapse-{{week.number}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{week.number}}">
-    <div class="panel-body" style="text-align: center">
       {% for post in week.lifexpost_set.all %}
-      (idea) <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}} ({{post.idea.category.name}})</a><br />
-      (post) <a href="{% url 'lifeX:post' 'lifeX' week.number post.idea.slug %}">{{post.title}}</a><br /><br />
+      <h3> (idea) <a class='nodecorate' href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}} ({{post.idea.category.name}})</a></h3>
+      <h3> (post) <a class='nodecorate' href="{% url 'lifeX:post' 'lifeX' week.number post.idea.slug %}">{{post.title}}</a></h3><hr>
       {% endfor %}
     </div>
-  </div>
-</div>
 {% endfor %}
 </div>
 {% endblock CONTENT %}

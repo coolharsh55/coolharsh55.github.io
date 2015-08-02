@@ -13,16 +13,16 @@
 
 {% block FCSS %}
 	{{ block.super }}
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/poem.css' %}" />
 	{% block CSS %}{% endblock CSS %}
 {% endblock FCSS %}
 
 {% block EBODY %}
- <div class="page-header, blog-header">
- <h1>{% block HEADER %}{% endblock HEADER %}{% block POEMHEAD %}</br><small>~ <a href="{% url 'poems:index' 'poems' %}">poems</a> at <a href="{% url 'home' %}">harshp.com</a> ~</small>{% endblock POEMHEAD %}</h1>
-	</div>
-	<div class='container'>
-  <div>&nbsp;<div style='text-align:center;'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div><br /></div>
+ <div class="pageheader">
+ <h1><p id='pagetitle'>{% block HEADER %}{% endblock HEADER %}</p></h1>{% block POEMHEAD %}<h3><a href="{% url 'poems:index' 'poems' %}">poems</a> at <a href="{% url 'home' %}">harshp.com</a></h3>{% endblock POEMHEAD %}<hr>
+</div>
+<div class='container centertext'>
+<div id='socialshare'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div>
   {% block CONTENT %}
   {% endblock CONTENT %}
 	</div>

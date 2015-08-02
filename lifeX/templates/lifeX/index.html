@@ -8,7 +8,6 @@ life experiments @harshp.com
 {% endblock TITLE %}
 
 {% block CSS %}
-  <link rel='stylesheet' type='text/css' href="{% static 'css/lifeXindex.css' %}" />
 {% endblock CSS %}
 
 {% block HEADER %}
@@ -18,18 +17,12 @@ Life eXperiments
 {% block CONTENT %}
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <!-- What is Life Experiments? -->
-  <div class="panel panel-danger">
-    <div class="panel-heading" role="tab" id="heading-About">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-About" aria-expanded="false" aria-controls="collapse-About">
-          <h3 style="text-align: center">What are life experiments?</h3>
-        </a>
-      </h4>
+    <div class="panelheading centertext" role="tab" id="heading-About">
+        <a class="collapsed nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-About" aria-expanded="false" aria-controls="collapse-About"><h2>What are life experiments?</h2></a>
     </div>
     <div id="collapse-About" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-About">
-      <div class="panel-body">
-        Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it. Based on our observations, we infer something or come up with new results. This process is called as scientific deduction. Which is the way scientists are supposed to look at everything. Data are facts. Then by contrast, why can’t we live our life scientifically? Do what helps us achieve all that we dream of? Recognize where we fall short. Understand what makes us tick, and what doesn’t. All through running a few little experiments by yourself, which is the basis of life experiments.
-        <h4> Terminology: </h4>
+        Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it. Based on our observations, we infer something or come up with new results. This process is called as scientific deduction. Which is the way scientists are supposed to look at everything. Data are facts. Then by contrast, why can’t we live our life scientifically? Do what helps us achieve all that we dream of? Recognize where we fall short. Understand what makes us tick, and what doesn’t. All through running a few little experiments by yourself, which is the basis of life experiments.<br>
+        <strong>Terminology:</strong>
         <ul>
         <li><b>Idea</b> - Each experiment is based on an Idea such as cooking, trying a new productivity technique or simply tricks to wake up early.</li>
         <li><b>Category</b> - Ideas are grouped together into Categories.</li>
@@ -37,36 +30,30 @@ Life eXperiments
         <li><b>Experiment</b> - Trying out the Idea for a Week and noting its effects and results form the basis of the Experiment, and is recorded in a Post.</li>
         <li><b>Blog</b> - Thoughts and comments that are not part of an experiment. Allows me to write stuff related to Life Experiments.</li>
         </ul>
-      </div>
     </div>
-  </div>
+    <hr>
   <!-- Life Experiments - A Presentation -->
-  <div class="panel panel-warning">
-    <div class="panel-heading" role="tab" id="heading-Presentation">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-Presentation" aria-expanded="false" aria-controls="collapse-Presentation">
-          <h3 style="text-align: center">Life Experiments - A Presentation</h3>
-        </a>
-      </h4>
+    <div class="panelheading centertext" role="tab" id="heading-Presentation">
+        <a class="collapsed nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-Presentation" aria-expanded="false" aria-controls="collapse-Presentation"><h2>Life Experiments - A Presentation</h2></a>
     </div>
     <div id="collapse-Presentation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-Presentation">
-      <div class="panel-body">
         I gave a presentation on life experiments, which itself was a life experiment! I've tried to convey the idea and essence of what I believe has enriched my life. You can view the presentation online <a href="{% url 'lifeX:lifeX_presentation_UCC2014' 'lifeX' %}">here</a>.
-      </div>
     </div>
-  </div>
+    <hr>
   <!-- Links -->
-  <div class="panel panel-success">
-    <div class="panel-heading" role="tab" id="heading-Links">
-      <h4 class="panel-title"><a href="{% url 'lifeX:ideas' 'lifeX' %}"><h3 style="text-align: center">Ideas</a> | <a href="{% url 'lifeX:experiments' 'lifeX' %}">Experiments</a> | <a href="{% url 'lifeX:blog' 'lifeX' %}">Blog</h3></a></h4>
+    <div class="panelheading centertext" role="tab" id="heading-Links"><h2>
+      <a class='nodecorate' href="{% url 'lifeX:ideas' 'lifeX' %}">Ideas</a> | <a class='nodecorate' href="{% url 'lifeX:experiments' 'lifeX' %}">Experiments</a> | <a class='nodecorate' href="{% url 'lifeX:blog' 'lifeX' %}">Blog</a></h2>
     </div>
-  </div>
+    <hr>
+
 
   <!-- Latest Update -->
-  <div>
-  <h3><br /><small>Latest Experiments:<br /><a href="{% url 'lifeX:week' 'lifeX' latest_week.number %}">{{latest_week}}</a></small></h3><h4><small><ul>{% for post in latest_week.lifexpost_set.all %}
-  <li>Experiment: <a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br />Idea: <a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">({{post.idea.category.name}})</a> <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a></li>
-  </ul></li>{% endfor %}</ul></small></h4>
+  <div class='centertext'>
+  <h2>Latest Week of Experiments</h2>
+  <h3><a class='nodecorate' href="{% url 'lifeX:week' 'lifeX' latest_week.number %}">{{latest_week}}</a></h3>
+  <h4>{% for post in latest_week.lifexpost_set.all %}
+  Experiment: <a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br />Idea: <a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">({{post.idea.category.name}})</a> <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a>
+  {% endfor %}</h4>
   </div>
 </div>
 

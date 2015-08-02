@@ -16,6 +16,7 @@ AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_S3_SECURE_URLS = False       # use http instead of https
 AWS_QUERYSTRING_AUTH = False
+AWS_PRELOAD_METADATA = True
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_S3_HOST = 's3.eu-west-1.amazonaws.com'

@@ -19,6 +19,7 @@
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href="{% static 'css/cookiepolicy.jquery.css' %}" media="screen" rel="stylesheet" type="text/css" />
 		<link rel='stylesheet' type='text/css' href="{% static 'css/common.css' %}" />
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 	{% endblock FCSS %}
 </head>
 
@@ -26,17 +27,34 @@
 {% block FSITEMESSAGE %}{% endblock FSITEMESSAGE %}
 {% block EBODY %}{% endblock EBODY %}
 {% block FFOOTER %}
-<div id='footer'>
+<div id='footer' class='centertext'>
 <hr>
 <p>&copy; Harshvardhan Pandit</p>
+<small>harshp.com - the project</small>
+<div class="row">
+<div class="col-xs-4 col-sm-5 col-md-5 col-lg-5">
+</div>
+<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+<a target="blank" href="https://github.com/coolharsh55/harshp.com">
+    <img src="https://img.shields.io/badge/version-v1.6-green.svg">
+</a>
+    <br/>
+</div>
+<div class="col-xs-4 col-sm-5 col-md-5 col-lg-5">
+</div>
+</div>
+<div class='row'>
 <!-- Social Button HTML -->
 <!-- Google Plus --><a href="https://plus.google.com/u/0/+HarshvardhanPandit" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
 <!-- Twitter --><a href="http://twitter.com/coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
 <!-- LinkedIn --><a href="https://www.linkedin.com/in/harshvardhanpandit" target="_blank" class="share-btn linkedin"><i class="fa fa-linkedin"></i></a>
 <!-- Facebook --><a href="http://www.facebook.com/coolharsh55" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
 <!-- Email --><a href="mailto:me@harshp.com?subject=Hi%20there..." target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
-<br /><a href="{% url 'privacypolicy' %}"><small>privacy policy</small></a> | <a href='#'><small>about me</small></a> | <a href="{% url 'changelog' %}"><small>changelog</small></a>
-<br />
+</div>
+<div class="row">
+
+    <a href="{% url 'privacypolicy' %}"><small>privacy policy</small></a> | <a href='#'><small>about me</small></a> | <a href="{% url 'changelog' %}"><small>changelog</small></a>
+</div>
 </div>
 {% endblock FFOOTER %}
 {% block FJS %}
@@ -48,10 +66,10 @@
 	(function($) {
 		url = "{% url 'privacypolicy' %}"
 		$('body').cookiepolicy({
-		    message: "I use cookies to track usage and build a better site | <a href='%cookie_policy_url%'> Know more...</a>"
+		    message: "I use cookies to build a better site. | <a href='%cookie_policy_url%'> Know more...</a>"
 		    , cookie_policy_url: "{% url 'privacypolicy' %}"
 		    , extra_class: 'cookiepolicy-message-box'
-		    , close_button_text: 'Yokay!'
+		    , close_button_text: 'ok'
 		    , close_button_title: 'Close this message box'
 		    , cookie_name: 'harshp_cookie_policy_messagebox'
 		    , cookie_expire_days: 60

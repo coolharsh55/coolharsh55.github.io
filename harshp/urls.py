@@ -1,14 +1,26 @@
+"""root urls for harshp
+"""
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 import os
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # homepage and special sections
-    url(r'^$', 'harshp.views.home', name='home'),
-    url(r'^changelog/$', 'harshp.views.changelog', name='changelog'),
-    url(r'^privacypolicy/$', 'harshp.views.privacypolicy',
+    url(
+        r'^$',
+        'harshp.views.home',
+        name='home'
+    ),
+    url(
+        r'^changelog/$',
+        'harshp.views.changelog',
+        name='changelog'
+    ),
+    url(
+        r'^privacypolicy/$', 'harshp.views.privacypolicy',
         name='privacypolicy'),
 
     # apps
@@ -21,7 +33,15 @@ urlpatterns = patterns('',
     url(r'', include('friends.urls')),
 )
 
-if settings.DEBUG is False and settings.MODE=='local':   #if DEBUG is True it will be served automatically
-    urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-)
+# if DEBUG is True it will be served automatically
+if settings.DEBUG is False and settings.MODE == 'local':
+    urlpatterns += patterns(
+        '',
+        url(
+            r'^static/(?P<path>.*)$',
+            'django.views.static.serve',
+            {
+                'document_root': settings.STATIC_ROOT
+            }
+        ),
+    )

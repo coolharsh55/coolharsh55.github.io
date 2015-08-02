@@ -6,15 +6,14 @@
 {% block TITLE %}stories at harshp.com{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/storiesindex.css' %}" />
 {% endblock CSS %}
 
 {% block HEADER %}spinning yarns{% endblock HEADER %}
 
 {% block CONTENT %}
-<div class='container'><div class='list-group'><h4>
+<div class='container centertext'>
 {% for post in posts %}
-<a class='nodecorate list-group-item' style='background-color:#FFF6EF; color:#FEA56D; text-align:center;' href="{% url 'stories:post' 'stories' post.slug %}">{{post.title}}<br /><small>{{post|reltime}}</small></a>
+<a class='nodecorate' href="{% url 'stories:post' 'stories' post.slug %}">{{post.title}}<br /><small>{{post|reltime}}</small></a><hr>
 {% endfor %}
-</h4></div></div>
+</div>
 {% endblock CONTENT %}

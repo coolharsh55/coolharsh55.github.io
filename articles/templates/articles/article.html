@@ -6,8 +6,6 @@
 {% block TITLE %}{{post.title}}{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/article.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}{{post.title}}{% endblock HEADER %}
@@ -23,9 +21,10 @@
 {% block CONTENT %}
 <div class='parent'>
 {% if post.headerimage %}
+<br><br>
 <img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image">
 {% endif %}
-<small><div class='blog-description'>{{post.published}}<br />{% for tag in post.tags.all %}{{tag.tagname}} {% endfor %}</div></small>
+<div class='pagedescription centertext'><h4><small>{{post.published}}<br />{% for tag in post.tags.all %}{{tag.tagname}} {% endfor %}<</small></h4></div>
 </div>
 {{post.body|safe}}
 {% endblock CONTENT %}

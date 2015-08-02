@@ -1,3 +1,5 @@
+"""server WSGI
+"""
 import sys
 
 sys.path.append('/opt/bitnami/apps')

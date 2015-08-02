@@ -1,117 +1,62 @@
-/*
- * Font sizes
- */
-html { font-size: 62.5%; }
-body { font-size: 1.15em;}
-
-
-
-@media (max-width: 300px) {
-    html { font-size: 70%; }
-    h1 { font-size: 1em; }
-    h2 { font-style: 0.75em; }
-    h3 { font-size: 0.5em; }
-    h4 { font-size: 0.25em; }
-}
-
-@media (min-width: 500px) {
-    html { font-size: 80%; }
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.75em; }
-    h3 { font-size: 1.5em; }
-    h4 { font-size: 1.25em; }
-}
-
-@media (min-width: 700px) {
-    html { font-size: 120%; }
-    h1 { font-size: 3em; }
-    h2 { font-size: 2.25em; }
-    h3 { font-size: 2em; }
-    h4 { font-size: 1.5em; }
-}
+h1 { font-size: 150%; }
+h2 { font-size: 140%; }
+h3 { font-size: 130%; }
+h4 { font-size: 120%; }
+body { font-family: 'Josefin Slab', serif; font-size: 100%; }
+html { font-family: 'Josefin Slab', serif; font-size: 100%; }
 
 @media (min-width: 1200px) {
-    html { font-size: 200%; }
-    h1 { font-size: 4em; }
-    h2 { font-size: 3em; }
-    h3 { font-size: 2em; }
-    h4 { font-size: 1.5em; }
+    .container {
+        width: 970px;
+    }
 }
 
-/*
- * Override Bootstrap's default container.
- */
-
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
-
-/*
- * Blog name and description
- */
-
-.blog-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: center;
-  font-family: monospace;
+.pageheader {
+    text-align: center;
 }
 
 .nodecorate {
-	  text-decoration: none;
-	  color:inherit;
-	}
-
-.blog-title {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 20px;
-  font-weight: normal;
-  font-family: "Comic Sans MS";
+    text-decoration: none;
+    color:inherit;
 }
 
-.blog-description {
-	text-align: center;
-  font-size: 12px;
-  color: #999;
-  padding-bottom: 20px;
-  font-family: "Comic Sans MS";
+.pagetitle {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: normal;
 }
 
-/*
- * Blockquotes
- */
+.paegdescription {
+    text-align: center;
+    font-size: 12px;
+    color: #CCC;
+    padding-bottom: 20px;
+}
 
 blockquote {
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: "\201C""\201D""\2018""\2019";
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
 }
 blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
 }
 blockquote p {
-  display: inline;
-  font-family: monospace;
+    display: inline;
+    font-family: monospace;
 }
 
-/*
- * IMG
- */
 img {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
-
-/** Social Button CSS **/
 
 .share-btn {
     display: inline-block;
@@ -124,27 +69,24 @@ img {
     outline: none;
     text-align: center;
 }
-
 .share-btn:hover {
-  color: #eeeeee;
+    color: #eeeeee;
 }
-
 .share-btn:active {
-  position: relative;
-  top: 2px;
-  box-shadow: none;
-  color: #e2e2e2;
-  outline: none;
+    position: relative;
+    top: 2px;
+    box-shadow: none;
+    color: #e2e2e2;
+    outline: none;
 }
-
 .share-btn.twitter     { background: #55acee; }
 .share-btn.google-plus { background: #dd4b39; }
 .share-btn.facebook    { background: #3B5998; }
 .share-btn.linkedin    { background: #4875B4; }
 .share-btn.email       { background: #444444; }
 
-#footer {
-  text-align: center;
+.centertext {
+    text-align: center;
 }
 
 hr {

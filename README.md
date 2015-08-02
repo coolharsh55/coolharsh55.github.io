@@ -1,9 +1,16 @@
 # harshp.com
 
+[![GitHub issues](https://img.shields.io/badge/tag-v1.6-green.svg)]()
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
+
+
+
 [![Build Status](https://travis-ci.org/coolharsh55/harshp.com.svg?branch=master)](https://travis-ci.org/coolharsh55/harshp.com)
 [![Coverage Status](https://coveralls.io/repos/coolharsh55/harshp.com/badge.svg?branch=master&service=github)](https://coveralls.io/github/coolharsh55/harshp.com?branch=master)
 ![Codacy Badge](https://www.codacy.com/project/badge/e8a6dadab03a450bb0eac3dc08ce6996)
 ![Code Climate](https://codeclimate.com/github/coolharsh55/harshp.com/badges/gpa.svg)
+
+
 
 The *personal website* of **Harshvardhan Pandit** at
 [http://harshp.com](http://harshp.com/)

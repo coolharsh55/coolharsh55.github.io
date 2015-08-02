@@ -2,7 +2,13 @@ body {
     margin: 0;
     padding: 0;
     border: 1;
-    font-family: 'Glegoo', serif;
+    font-size: 2em;
+}
+
+@media (min-width: 1200px) {
+    body {
+        font-size: 200%;
+    }
 }
 
 .content {
@@ -23,31 +29,35 @@ a {
  }
 
 .Blog {
-    color: #FD686D;
+    color: #FF3300;
 }
 
 .Story {
-    color: #FD995B;
+    color: #FF6600;
 }
 
 .Poem {
-    color: #FFE86D;
+    color: #FFCC00;
 }
 
 .Article {
-    color: #91FF5B;
+    color: #33FF00;
 }
 
 .LifeX {
-    color: #5EC3FF;
+    color: #0033FF;
 }
 
 .Brainbank {
-    color: #B44EFF;
+    color: #FF00CC;
 }
 
-.blog-header {
-  margin-bottom: 50px;
-  margin-top: 50px;
+.pageheader {
+    font-size: 1em;
+    text-shadow: 1px 1px 1px white, 3px 3px 3px lightgray;
+}
+
+#footer {
+    font-size: 0.5em;
 }
 
