@@ -6,8 +6,6 @@
 {% block TITLE %}{{demo.title}}{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/idea.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 <style type='text/css'>
 {{demo.CSS}}
 </style>
@@ -29,11 +27,12 @@
 
 {% block CONTENT %}
 <div class='parent'>
-<div class='blog-title'><h1>{{demo.title}}</h1><small><div class='blog-description'>{{demo.published}}</div></small></div>
+<h1 class='pagetitle'>{{demo.title}}</h1><h3 class='pagedescription'>{{demo.published}}</h3>
 {% if demo.headerimage %}<!-- image -->
+<br><br>
 <img src="{{demo.headerimage}}" class="img-responsive" alt="Responsive image"><br/>
 {% endif %}
-<div class="alert alert-info" role="alert">Part of '<a href="{% url 'brainbank:idea' 'brainbank' demo.idea.slug %}" class="alert-link">{{demo.idea.title}}</a>'</div>
+<strong>Part of '<a class='nodecoraet' href="{% url 'brainbank:idea' 'brainbank' post.idea.slug %}" class="alert-link">{{post.idea.title}}</a>'<br><br></strong>
 
 {{demo.body|safe}}<!-- body -->
 </div>

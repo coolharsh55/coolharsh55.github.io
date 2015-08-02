@@ -7,8 +7,6 @@
 {% block TITLE %}{{idea.title}}{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}{{idea.title}}{% endblock HEADER %}
@@ -22,8 +20,8 @@
 {% endblock SOCIALSHARE %}
 
 {% block CONTENT %}
-<div class='parent'>
-<div class='blog-title'><h4><small>Category: <a href="{% url 'lifeX:category' 'lifeX' idea.category.slug %}">{{idea.category.name}}</a><br />
+<div class='parent centertext'>
+<div class='pagetitle'><h4><small>Category: <a href="{% url 'lifeX:category' 'lifeX' idea.category.slug %}">{{idea.category.name}}</a><br />
 {% if idea.experimented == True and idea.retry == True %}
 experimented, will try again
 {% elif idea.experimented == True and idea.retry == False %}
@@ -31,15 +29,13 @@ experimented, concluded
 {% elif idea.experimented == False %}
 not experimented yet
 {% endif %}
-</small></h4></div>
-<br />
+</small></h4></div></div>
 {{idea.body|safe}}
 <br />
+<div class='centertext'>
 <h2>Experimented on:</h2>
-<ol>
 {% for post in idea.lifexpost_set.all %}
-<li><a href="{% url 'lifeX:post' 'lifeX' post.week.number idea.slug %}"><h4>{{ post.title }}</h4></a><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}"><h4><small>{{post.week}}</small></h4></a></li>
+<a href="{% url 'lifeX:post' 'lifeX' post.week.number idea.slug %}"><h4>{{ post.title }}</h4></a><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}"><h4><small>{{post.week}}</small></h4></a>
 {% endfor %}
-</ol>
 </div>
 {% endblock CONTENT %}

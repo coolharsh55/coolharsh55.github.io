@@ -7,8 +7,6 @@
 {% block TITLE %}lifeX blog - {{blogpost.title}}{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}lifeX blog{% endblock HEADER %}
@@ -22,9 +20,8 @@
 {% endblock SOCIALSHARE %}
 
 {% block CONTENT %}
-<div class='parent'>
-<div class='blog-title'><h1>{{blogpost.title}}</h1><h4><small>{{blogpost.date}}</small></h4>
-</div>
+<div class='parent centertext'>
+<div class='pagetitle'><h1>{{blogpost.title}}</h1><h4 class='pagedescription'>{{blogpost.date}}</h4>
+</div></div>
 {{blogpost.body|safe}}
-</div>
 {% endblock CONTENT %}

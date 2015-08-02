@@ -6,14 +6,12 @@
 {% block TITLE %}poems at harshp.com{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/poemsindex.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Copse|Glegoo' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}runes{% endblock HEADER %}
 
 {% block CONTENT %}
-<div class='container'><div class='list-group'><h4>
+<div class='container centertext'>
 {% for post in posts %}
-<a class='nodecorate list-group-item' style='background-color:#FFFDEF; color:#FECE09; text-align:center;' href="{% url 'poems:post' 'poems' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a>
+<a class='nodecorate' href="{% url 'poems:post' 'poems' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a><hr>
 {% endfor %}{% endblock CONTENT %}

@@ -7,8 +7,6 @@
 {% block TITLE %}{{category.name}}{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}{{category.name}}{% endblock HEADER %}
@@ -22,8 +20,8 @@
 {% endblock SOCIALSHARE %}
 
 {% block CONTENT %}
-<div class='parent'>
-<h3>
+<div class='parent centertext'>
+<h2>
 {% for idea in category.lifexidea_set.all %}
 <a href="{% url 'lifeX:idea' 'lifeX' category.slug idea.slug %}">{{idea.title}}</a>: <small>{% if idea.experimented == True and idea.retry == True %}
 experimented, will try again

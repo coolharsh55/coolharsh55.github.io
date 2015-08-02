@@ -7,8 +7,6 @@
 {% block TITLE %}Life eXperiment Ideas{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/lifeX.css' %}" />
-<link href='http://fonts.googleapis.com/css?family=Glegoo|Droid+Sans|Copse' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}eXperiment Ideas{% endblock HEADER %}
@@ -22,20 +20,15 @@
 {% endblock SOCIALSHARE %}
 
 {% block CONTENT %}
-<div class='parent' style='text-align=center;'>
+<div class='parent centertext'>
+<br><br>
 {% for category in categories %}
-<div class="panel panel-info">
-  <div class="panel-heading" role="tab" id="heading-{{category.slug}}">
-    <h4 class="panel-title">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{category.slug}}" aria-expanded="false" aria-controls="collapse-{{category.slug}}">
-        <h3 style="text-align: center">{{category.name}}</h3>
-      </a>
-    </h4>
+  <div class="panelheading" role="tab" id="heading-{{category.slug}}">
+    <h2><a class="collapsed nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{category.slug}}" aria-expanded="false" aria-controls="collapse-{{category.slug}}">{{category.name}}</a></h2>
   </div>
   <div id="collapse-{{category.slug}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{category.slug}}">
-    <div class="panel-body" style="text-align: center">
       {% for idea in category.lifexidea_set.all %}
-      <a href="{% url 'lifeX:idea' 'lifeX' category.slug idea.slug %}"><h3 >{{idea.title}}<small>
+      <a class='nodecorate' href="{% url 'lifeX:idea' 'lifeX' category.slug idea.slug %}"><h3 >{{idea.title}}<small>
       	{% if idea.experimented == True and idea.retry == True %}
 				experimented, will try again
 				{% elif idea.experimented == True and idea.retry == False %}
@@ -44,9 +37,8 @@
 				not experimented yet
 				{% endif %}
         </small></h3></a>{% endfor %}
-    </div>
-  </div>
 </div>
+
 {% endfor %}
 </div>
 {% endblock CONTENT %}

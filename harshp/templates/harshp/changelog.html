@@ -7,21 +7,52 @@
 
 {% block FCSS %}
 {{ block.super }}
-<link href='http://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css'>
-<style type="text/css">
-body { font-size: 1em; background-color: #EEE;}
-</style>
 {% endblock FCSS %}
 
 {% block EBODY %}
-<div class="page-header, blog-header" style="background-color:#CCC;">
-<h3 class='site'>changelog</h3><h3><small>~ <a href="{% url 'home' %}">harshp.com</a> ~</small></h3>
+<div class="pageheader">
+<hr><h1>changelog</h1><h3><a href="{% url 'home' %}">harshp.com</a></h3>
 </div>
 
-<div class='container'><br/><div class="section" id="vv1-3-1-2015-07-21">
-<h1>vv1.3.1 (2015-07-21)</h1>
+<div class='container'><br/>
+
+<div class="section" id="v1-5-1-2015-08-01">
+<hr><h2>v1.5.1 (2015-08-01)</h2>
+<ul class="simple">
+<li>Minor: add badges to read. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+<div class="section" id="v1-5-2015-08-01">
+<hr><h2>v1.5 (2015-08-01)</h2>
+<ul class="simple">
+<li>Travis 005: notification settings. [Harshvardhan Pandit]</li>
+<li>Coveralls: ignore settings. [Harshvardhan Pandit]</li>
+<li>Coveralls configuration. [Harshvardhan Pandit]</li>
+<li>Codeclimate settings. [Harshvardhan Pandit]</li>
+<li>Removed static admin, ckeditor, suit, reveal_js files from git.
+[Harshvardhan Pandit]</li>
+<li>Travis 004: delete and recreate migrations to remove potential clash.
+[Harshvardhan Pandit]</li>
+<li>Travis 003: create database harshp_dot_com before migrate.
+[Harshvardhan Pandit]</li>
+<li>Travis 002: database setup user id=travis pass='' [Harshvardhan
+Pandit]</li>
+<li>Travis 001: configuration setup. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+<div class="section" id="v1-4-2015-07-31">
+<hr><h2>v1.4 (2015-07-31)</h2>
+<ul class="simple">
+<li>Initial commit. [Harshvardhan Pandit]</li>
+<li>Initial commit. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+
+
+<div class="section" id="v1-3-1-2015-07-21">
+<hr><h2 class='centertext'>v1.3.1 (2015-07-21)</h2>
 <div class="section" id="new">
-<h2>New</h2>
+<h3>New</h3>
 <ul>
 <li><p class="first">FRIENDS at harshp.com. [Harshvardhan Pandit]</p>
 <p>Created the module, app, added urls, views and initiated with a birthday
@@ -31,10 +62,10 @@ url on the app.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-3-2015-07-18">
-<h1>vv1.3 (2015-07-18)</h1>
+<div class="section" id="v1-3-2015-07-18">
+<hr><h2 class='centertext'>v1.3 (2015-07-18)</h2>
 <div class="section" id="id1">
-<h2>New</h2>
+<h3>New</h3>
 <ul>
 <li><p class="first">LifeX presentation powered by reveal.js. [Harshvardhan Pandit]</p>
 <p>LifeX Presentation (lifeX.harshp.com/presentation/UCC2014) uses the
@@ -43,7 +74,7 @@ reveal.js framework to provide a presentation on site.</p>
 </ul>
 </div>
 <div class="section" id="other">
-<h2>Other</h2>
+<h3>Other</h3>
 <ul class="simple">
 <li>Minor: lifeX presentation in index, social share in presentation.
 [Harshvardhan Pandit]</li>
@@ -53,10 +84,10 @@ reveal.js framework to provide a presentation on site.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-2-3-2015-07-15">
-<h1>vv1.2.3 (2015-07-15)</h1>
+<div class="section" id="v1-2-3-2015-07-15">
+<hr><h2 class='centertext'>v1.2.3 (2015-07-15)</h2>
 <div class="section" id="fix">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">Save() did not refer to self.pk. [Harshvardhan Pandit]</p>
 <p>The save() classmethods in brainbank and lifeX referred to arbitrary
@@ -66,10 +97,10 @@ evaluated to false always.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-2-2-2015-07-15">
-<h1>vv1.2.2 (2015-07-15)</h1>
+<div class="section" id="v1-2-2-2015-07-15">
+<hr><h2 class='centertext'>v1.2.2 (2015-07-15)</h2>
 <div class="section" id="id2">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">Codeship settings for testing builds. [Harshvardhan Pandit]</p>
 </li>
@@ -82,10 +113,10 @@ out the lines in migration.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-2-1-2015-07-11">
-<h1>vv1.2.1 (2015-07-11)</h1>
+<div class="section" id="v1-2-1-2015-07-11">
+<hr><h2 class='centertext'>v1.2.1 (2015-07-11)</h2>
 <div class="section" id="id3">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">Social share urls contained enclosing '&lt;&gt;' [Harshvardhan Pandit]</p>
 <p>The social share urls contained enclosing angular brackets, which caused
@@ -100,10 +131,10 @@ removing the block, and replacing it with the HEADER block.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-2-2015-07-11">
-<h1>vv1.2 (2015-07-11)</h1>
+<div class="section" id="v1-2-2015-07-11">
+<hr><h2 class='centertext'>v1.2 (2015-07-11)</h2>
 <div class="section" id="id4">
-<h2>New</h2>
+<h3>New</h3>
 <ul>
 <li><p class="first">Cookies/privacy policy sticky message. [I]</p>
 <p>The site now displays a sticky message at the top of the page informing
@@ -141,7 +172,7 @@ possible to override the filled sections to replace the functionality.</p>
 </ul>
 </div>
 <div class="section" id="changes">
-<h2>Changes</h2>
+<h3>Changes</h3>
 <ul>
 <li><p class="first">Meta description for homepage. [I]</p>
 <p>Added meta tags and descriptions to the homepage through the meta object
@@ -155,7 +186,7 @@ switching of css still works.</p>
 </ul>
 </div>
 <div class="section" id="id5">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">Set cache-control to 1 day for S3 uploaded files. [I]</p>
 <p>The cache-control or expiry was missing for all static files, which has
@@ -164,7 +195,7 @@ now been set to 1 day (86400 seconds).</p>
 </ul>
 </div>
 <div class="section" id="id6">
-<h2>Other</h2>
+<h3>Other</h3>
 <ul>
 <li><p class="first">Cosmetic: change privacy policy message. [Harshvardhan Pandit]</p>
 <p>The privacy policy message has been changed to 'I use cookies to track
@@ -173,10 +204,10 @@ usage and build a better site'</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-1-2015-07-10">
-<h1>vv1.1 (2015-07-10)</h1>
+<div class="section" id="v1-1-2015-07-10">
+<hr><h2 class='centertext'>v1.1 (2015-07-10)</h2>
 <div class="section" id="id7">
-<h2>New</h2>
+<h3>New</h3>
 <ul>
 <li><p class="first">Social share buttons for Facebook, Google+, Twitter, and Email.
 [Harshvardhan Pandit]</p>
@@ -221,7 +252,7 @@ merged commits hidden.</p>
 </ul>
 </div>
 <div class="section" id="id8">
-<h2>Changes</h2>
+<h3>Changes</h3>
 <ul>
 <li><p class="first">Remove redundant CSS static files from harshp base module.
 [Harshvardhan Pandit]</p>
@@ -232,7 +263,7 @@ mirrored on the S3 server and need to be deleted manually.</p>
 </ul>
 </div>
 <div class="section" id="id9">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">LifeX blog view accessed non-existant headerimage. [Harshvardhan
 Pandit]</p>
@@ -247,10 +278,10 @@ to access the poem fields in the meta tag code.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-0-2-2015-07-07">
-<h1>vv1.0.2 (2015-07-07)</h1>
+<div class="section" id="v1-0-2-2015-07-07">
+<hr><h2 class='centertext'>v1.0.2 (2015-07-07)</h2>
 <div class="section" id="id10">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">OnSave() in lifeX did not refer to self object. [Harshvardhan Pandit]</p>
 <p>The onSave() method in lifeX models did not refer to self objects which
@@ -259,10 +290,10 @@ caused errors when a new object was added.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-0-1-2015-07-07">
-<h1>vv1.0.1 (2015-07-07)</h1>
+<div class="section" id="v1-0-1-2015-07-07">
+<hr><h2 class='centertext'>v1.0.1 (2015-07-07)</h2>
 <div class="section" id="id11">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul>
 <li><p class="first">Brainbank url used wrong parameters in index.html. [Harshvardhan
 Pandit]</p>
@@ -274,17 +305,17 @@ from urls.py</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv1-0-2015-07-01">
-<h1>vv1.0 (2015-07-01)</h1>
+<div class="section" id="v1-0-2015-07-01">
+<hr><h2 class='centertext'>v1.0 (2015-07-01)</h2>
 <div class="section" id="id12">
-<h2>Fix</h2>
+<h3>Fix</h3>
 <ul class="simple">
 <li>Blog/base.html did not resolve {{site}} [Harshvardhan Pandit]</li>
 <li>Blog does not resolve url 'home' [Harshvardhan Pandit]</li>
 </ul>
 </div>
 <div class="section" id="id13">
-<h2>Other</h2>
+<h3>Other</h3>
 <ul>
 <li><p class="first">Bugfix: save() created duplicate slugs on existing objects.
 [Harshvardhan Pandit]</p>
@@ -514,8 +545,8 @@ Pandit]</p>
 </ul>
 </div>
 </div>
-<div class="section" id="vv0-0-1-2015-05-03">
-<h1>vv0.0.1 (2015-05-03)</h1>
+<div class="section" id="v0-0-1-2015-05-03">
+<hr><h2 class='centertext'>v0.0.1 (2015-05-03)</h2>
 <ul class="simple">
 <li>Settings: added local, dev, production changed layout of index.html,
 added fancy effects fixed issues: 1, 3, 5. [Harshvardhan Pandit]</li>

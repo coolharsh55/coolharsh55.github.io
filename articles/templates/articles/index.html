@@ -6,15 +6,15 @@
 {% block TITLE %}articles at harshp.com{% endblock TITLE %}
 
 {% block CSS %}
-<link rel='stylesheet' type='text/css' href="{% static 'css/articlesindex.css' %}" />
+
 <link href='http://fonts.googleapis.com/css?family=Copse|Glegoo' rel='stylesheet' type='text/css'>
 {% endblock CSS %}
 
 {% block HEADER %}artefacts{% endblock HEADER %}
 
 {% block CONTENT %}
-<div class='container'><div class='list-group'><h4>
+<div class='container centertext'>
 {% for post in posts %}
-<a class='nodecorate list-group-item' style='background-color:#F5FFEF; color:#4DFF07; text-align:center;' href="{% url 'articles:post' 'articles' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a>
-{% endfor %}</h4></div></div>
+<a class='nodecorate' href="{% url 'articles:post' 'articles' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a><hr>
+{% endfor %}</div>
 {% endblock CONTENT %}
