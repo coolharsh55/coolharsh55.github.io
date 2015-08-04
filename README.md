@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.png?label=ready&title=Ready)](https://waffle.io/coolharsh55/harshp.com)
 # harshp.com
 
 [![GitHub issues](https://img.shields.io/badge/tag-v1.6-green.svg)]()
