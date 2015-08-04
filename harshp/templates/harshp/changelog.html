@@ -7,6 +7,11 @@
 
 {% block FCSS %}
 {{ block.super }}
+<style type="text/css">
+    h2 {
+        text-align: center;
+    }
+</style>
 {% endblock FCSS %}
 
 {% block EBODY %}
@@ -16,8 +21,33 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v1-6-1-2015-08-01">
+<h2>v1.6.1 (2015-08-04)</h2>
+<div class="section" id="changes">
+<h3>Changes</h3>
+<ul>
+<li><p class="first">CodeClimate config js camelcase error. [Harshvardhan Pandit]</p>
+<p>Javascript -&gt; JavaScript
+close #1 pull request</p>
+</li>
+</ul>
+</div>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">#3 accordion does not expand on iPads. [Harshvardhan Pandit]</p>
+<p>changed &lt;div&gt; elements to &lt;a&gt; for app titles displayed on homepage.</p>
+<p>minor: gitchangelog now recognises github style fix messages</p>
+</li>
+<li><p class="first">Fix #2 brainbank demo url mismatch due to var post instead of demo.
+[Harshvardhan Pandit]</p>
+<p>changed var post to demo in title</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="v1-6-2015-08-02">
-<hr><h2>v1.6 (2015-08-02)</h2>
+<h2>v1.6 (2015-08-02)</h2>
 <div class="section" id="new">
 <h3>New</h3>
 <ul>
@@ -33,7 +63,7 @@ article placements. General code cleaning and minor refactoring.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="changes">
+<div class="section" id="id1">
 <h3>Changes</h3>
 <ul class="simple">
 <li>Devsettings.py and AWS preloading metadata for collectstatic.
@@ -41,7 +71,6 @@ article placements. General code cleaning and minor refactoring.</p>
 </ul>
 </div>
 </div>
-
 <div class="section" id="v1-5-1-2015-08-01">
 <hr><h2>v1.5.1 (2015-08-01)</h2>
 <ul class="simple">
