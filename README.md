@@ -2,6 +2,7 @@
 
 [![GitHub issues](https://img.shields.io/badge/tag-v1.6-green.svg)]()
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
+[![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
 
 
 
