@@ -58,4 +58,5 @@ def deploy():
     with cd(project_dir):
         run("sudo git checkout .")
         run("sudo git pull")
+        run("./manage.py migrate")
         run("sudo /opt/bitnami/ctlscript.sh restart apache")

@@ -21,6 +21,35 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v1-6-2-2015-08-05">
+<h2>v1.6.2 (2015-08-05)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #24 lifeX blog posts are not accessible. [Harshvardhan Pandit]</p>
+<p>LifeX Blog posts are now viewable on the blog index page (lifex.harshp.com/blog/) and are accessible on their own blog post page (lifex.harshp.com/blog/blogpost-slug/)</p>
+<p>Changed:
+- variable blogpost in response to post
+- changed template for blogpost
+- in template blog changed incorrect usage of variables blog and blogposts</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Closes #25 lifeX blog post should have headerimage. [Harshvardhan
+Pandit]</p>
+<p>LifeXBlog models now have an image url field called headerimage for displaying images at the top of the post.</p>
+<ul class="simple">
+<li>lifeX/models.py: added field headerimage(URL) to LifeXBlog</li>
+<li>lifeX/admin.py: added field headerimage to LifeXBlogAdmin formfields</li>
+</ul>
+<p>minor</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="v1-6-1-2015-08-01">
 <h2>v1.6.1 (2015-08-04)</h2>
 <div class="section" id="changes">
