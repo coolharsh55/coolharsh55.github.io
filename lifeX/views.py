@@ -376,7 +376,7 @@ def blogpost(request, blogpost):
         blogpost = LifeXBlog.objects.get(slug=blogpost)
         # contruct meta tags
         title = blogpost.title
-        description = 'A blog post at harshp.com'
+        description = 'A Life Experiments blog post at harshp.com'
         keywords = ['blog', 'lifeX', 'experiments', 'life', ]
         for tag in blogpost.tags.all():
             keywords.append(tag.tagname)
@@ -393,7 +393,7 @@ def blogpost(request, blogpost):
     return render_to_response(
         'lifeX/blogpost.html',
         {
-            'blogpost': blogpost,
+            'post': blogpost,
             'page_url': url,
             'meta': meta,
         }
