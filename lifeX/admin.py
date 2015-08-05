@@ -284,6 +284,7 @@ class LifeXBlogAdmin(admin.ModelAdmin):
                 'post_id',
                 'title',
                 'date',
+                'headerimage',
             )
         }),
         ('Contents', {

@@ -403,6 +403,7 @@ class LifeXBlog(models.Model):
         max_length=250,
     )
     body = RichTextField()
+    headerimage = models.URLField(max_length=200, blank=True)
     slug = models.SlugField(
         max_length=50,
         unique=True
