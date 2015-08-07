@@ -1,0 +1,23 @@
+{% extends 'sitedata/base.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block ETITLE %}{{ tag }} | harshp.com{% endblock ETITLE %}
+
+{% block HEADER %}{{ tag.tagname }}{% endblock HEADER %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+
+<h2>total occurences: <strong>{{ tag.count }}</strong></h2>
+
+{% for model, count, items in use_count %}
+<hr>
+<h2><strong>{{ model }}: {{ count }}</strong></h2>
+    {% for item in items.all %}
+    <h4>{{ item.slug }} - <small>{{ item.published }}</small></h4>
+    {% endfor %}
+{% endfor %}
+
+</div>
+{% endblock CONTENT %}

@@ -22,17 +22,21 @@ class TagAdmin(admin.ModelAdmin):
     """
     list_display = (
         'tagname',
+        'slug',
         'linked_objects',
     )
     ordering = (
         'tagname',
+        'slug',
         'tagid',
     )
     search_fields = (
         'tagname',
+        'slug',
     )
     readonly_fields = (
         'tagid',
+        'slug',
     )
     view_on_site = True
 

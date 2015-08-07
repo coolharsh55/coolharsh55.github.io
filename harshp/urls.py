@@ -20,8 +20,14 @@ urlpatterns = patterns(
         name='changelog'
     ),
     url(
-        r'^privacypolicy/$', 'harshp.views.privacypolicy',
-        name='privacypolicy'),
+        r'^privacypolicy/$',
+        'harshp.views.privacypolicy',
+        name='privacypolicy'
+    ),
+
+
+
+    url(r'^tags/', include('sitedata.urls')),
 
     # apps
     url(r'', include('blog.urls')),

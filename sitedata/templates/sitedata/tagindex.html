@@ -1,0 +1,52 @@
+{% extends 'sitedata/base.html' %}
+{% load staticfiles %}
+
+
+{% block ETITLE %}tags | harshp.com{% endblock ETITLE %}
+
+{% block HEADER %}tags{% endblock HEADER %}
+
+{% block CSS %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/jqcloud.css' %}">
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container'>
+<div id='tagcontainer' class='container' style="width: 80%; height:50%;">
+</div>
+<ul class="list-group">
+{% for tag in tags %}
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <li class="list-group-item ">
+        <span class="badge">{{ tag.count }}</span>
+        <a href="{% url 'sitedata:tagname' tag.slug %}">{{ tag.tagname }}</a>
+    </li>
+</div>
+{% endfor %}
+</ul>
+</div>
+{% endblock CONTENT %}
+
+{% block SITEMESSAGE %}{% endblock SITEMESSAGE %}
+{% block JS %}
+<script src="{% static 'js/jqcloud-1.0.4.min.js' %}"></script>
+<script type="text/javascript">
+      /*!
+       * Create an array of word objects, each representing a word in the cloud
+       */
+      var word_array = [
+        {% for tag in tags %}
+            {
+                text: "{{ tag.tagname }}",
+                weight: {{tag.count}},
+                link: "{% url 'sitedata:tagname' tag.slug %}",
+            },
+        {% endfor %}
+      ];
+
+      $(function() {
+        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+        $("#tagcontainer").jQCloud(word_array, delayed_mode=true, removeOverflowing=false);
+      });
+    </script>
+{% endblock JS %}

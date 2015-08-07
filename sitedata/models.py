@@ -16,7 +16,8 @@ class Tag(models.Model):
     """    Tag - meta for models
     """
     tagid = models.AutoField(primary_key=True)
-    tagname = models.CharField(max_length=150,)
+    tagname = models.CharField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150)
 
     def __str__(self):
         """string representation for tags

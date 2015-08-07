@@ -1,6 +1,7 @@
 {% extends 'stories/base.html' %}
 {% load dictionary %}
 {% load staticfiles %}
+{% load subdomainurls %}
 
 {% block TITLE %}{{post.title}}{% endblock TITLE %}
 
@@ -26,7 +27,7 @@
 <br><br>
 <img src="{{post.headerimage|safe}}" class="img-responsive" alt="Responsive image">
 {% endif %}
-<div class='pagedescription centertext'><h4><small>{{post.published}}<br />{% for tag in post.tags.all %}{{tag.tagname}} {% endfor %}</small><br /></h4></div>
+<div class='pagedescription centertext'><h4><small>{{post.published}}<br />{% for tag in post.tags.all %}<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>, {% endfor %}</small><br /></h4></div>
 {{post.body|safe}}
 </div></div>
 {% endblock CONTENT %}

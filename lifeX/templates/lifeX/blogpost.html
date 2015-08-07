@@ -28,7 +28,7 @@
 {% endif %}
 <div class='pagedescription centertext'><h4>{{post.date}}<br /><small>
 {% for tag in post.tags.all %}
-{{tag.tagname}}
+<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
 {% endfor %}</small></h4></div>
 </div>
 {{post.body|safe}}

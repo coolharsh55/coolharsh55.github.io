@@ -24,7 +24,11 @@
 <br><br>
 <img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image">
 {% endif %}
-<div class='pagedescription'><h4><small>{{post.published}}<br />{% for tag in post.tags.all %}{{tag.tagname}} {% endfor %}</small></h4></div>
+<div class='pagedescription'><h4><small>{{post.published}}<br />
+{% for tag in post.tags.all %}
+<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
+{% endfor %}
+</small></h4></div>
 </div>
 {{post.body|safe}}
 {% endblock CONTENT %}
