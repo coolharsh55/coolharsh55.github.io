@@ -11,6 +11,11 @@ from articles.models import Article
 from lifeX.models import LifeXWeek
 from brainbank.models import BrainBankIdea
 from sitedata.social_meta import create_meta
+from hobbies.models import Book
+from hobbies.models import Movie
+from hobbies.models import TVShow
+from hobbies.models import Game
+from django.db.models import Q
 
 
 def home(request):
@@ -34,6 +39,10 @@ def home(request):
         articles = Article.objects.order_by('-published')[:3]
         brainbank_idea = BrainBankIdea.objects.latest('published')
         lifexweek = LifeXWeek.objects.latest('number')
+        books = Book.objects.filter(date_end=None, finished=False)[:5]
+        movies = Movie.objects.order_by('-date_seen')[:5]
+        tvshows = TVShow.objects.order_by('-date_start')[:5]
+        games = Game.objects.order_by('-date_start')[:5]
         description = """
             The personal website of Harshvardhan Pandit (coolharsh55)"""
         keywords = ['harshp.com', 'blog', 'stories', 'poems', ]
@@ -48,7 +57,11 @@ def home(request):
             Poem.DoesNotExist,
             Article.DoesNotExist,
             LifeXWeek.DoesNotExist,
-            BrainBankIdea.DoesNotExist):
+            BrainBankIdea.DoesNotExist,
+            Book.DoesNotExist,
+            Movie.DoesNotExist,
+            TVShow.DoesNotExist,
+            Game.DoesNotExist):
         raise Http404('Error retrieving website data...')
     return render_to_response(
         'harshp/index.html',
@@ -59,6 +72,10 @@ def home(request):
             'articles': articles,
             'brainbank_idea': brainbank_idea,
             'lifeXweek': lifexweek,
+            'books': books,
+            'movies': movies,
+            'tvshows': tvshows,
+            'games': games,
             'meta': meta,
         }
     )

@@ -1,0 +1,29 @@
+{% extends 'hobbies/base.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+
+{% block ETITLE %}{{ hobbytype }} | harshp.com{% endblock ETITLE %}
+
+{% block HEADER %}{{ hobbytype }}{% endblock HEADER %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container'>
+<div class='row centertext'>
+{% for item, description in items %}
+<div class="item col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <a href="{% url 'hobbies:type_item' 'hobbies' hobbytype item.slug %}">{{ item.title }}</a><br>
+    <small>{{ description }}</small>
+    <hr>
+</div>
+{% endfor %}
+</ul>
+</div></div>
+{% endblock CONTENT %}
+
+{% block SITEMESSAGE %}{% endblock SITEMESSAGE %}
+{% block JS %}
+{% endblock JS %}

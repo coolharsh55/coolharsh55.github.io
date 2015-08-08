@@ -48,6 +48,7 @@ SUIT_CONFIG = {
         {'app': 'articles', 'label': 'Articles', 'icon': 'icon-tag'},
         {'app': 'brainbank', 'label': 'Brain Bank', 'icon': 'icon-qrcode'},
         {'app': 'lifex', 'label': 'Life X', 'icon': 'icon-road'},
+        {'app': 'hobbies', 'label': 'Hobbies', 'icon': 'icon-time'}
     ),
 
 }
@@ -80,6 +81,7 @@ STATICFILES_DIRS = (
     'lifeX/static/',
     'brainbank/static/',
     'friends/static/',
+    'hobbies/static/',
 )
 
 STATICFILES_FINDERS = (
@@ -119,6 +121,7 @@ SUBDOMAIN_URLCONFS = {
     'lifex': 'lifeX.urls',
     'poems': 'poems.urls',
     'stories': 'stories.urls',
+    'hobbies': 'hobbies.urls',
 }
 
 WSGI_APPLICATION = 'harshp.wsgi.application'
@@ -133,6 +136,7 @@ TEMPLATE_DIRS = (
     'lifeX/templates',
     'brainbank/templates',
     'friends/templates',
+    'hobbies/templates',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
@@ -156,6 +160,7 @@ INSTALLED_APPS = (
     # other apps
     'bootstrap3',
     'ckeditor',
+    'django_seed',
     'meta',
     'storages',
     'subdomains',
@@ -170,6 +175,7 @@ INSTALLED_APPS = (
     'lifeX',
     'brainbank',
     'friends',
+    'hobbies',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,0 +1,26 @@
+{% extends 'hobbies/base.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+
+{% block ETITLE %}{{ item.title }}{% endblock ETITLE %}
+
+{% block HEADER %}{{ hobbytype }}{% endblock HEADER %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+<h1>{{ item.title }}<small><br>{{ description }}</small><br></h1>
+<small>
+{% for tag in item.tags.all %}
+<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
+{% endfor %}
+<br><br>
+</div>
+{% endblock CONTENT %}
+
+{% block SITEMESSAGE %}{% endblock SITEMESSAGE %}
+{% block JS %}
+{% endblock JS %}

@@ -119,44 +119,31 @@
   				{% endfor %}
         </div>
       </div>
+    <hr>
 
+  <!-- Hobbies -->
 
-  <br />
-  <!-- Books I'm reading -->
-  <!-- <div class="panel panel-theme">
-    <div class="panel-heading" role="tab" id="heading-blog">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
-          <h1 class='Blog'>Books I'm Reading</h1>
-        </a>
-      </h4>
+    <a class="Hobbies nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-hobbies" aria-expanded="false" aria-controls="collapse-hobbies">hobbies</a>
+    <div id="collapse-hobbies" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-hobbies">
+    <div class="panel-body"><hr>
+        <a href="{% url 'hobbies:type_index' 'hobbies' 'books' %}"><strong class='Hobbies'>Books</strong></a> I'm Reading<br>
+        {% for book in books %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'books' book.slug %}">{{ book.title }}<br><p><small>Since: {{ book.date_start }}</small></p></a>
+        {% endfor %}<hr>
+        Recently watched <a href="{% url 'hobbies:type_index' 'hobbies' 'movies' %}"><strong class='Hobbies'>Movies</strong></a><br>
+        {% for movie in movies %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'movies' movie.slug %}">{{ movie.title }}<br><p><small>{{ movie.date_seen }}</small></p></a>
+        {% endfor %}<hr>
+        Recently watched <a href="{% url 'hobbies:type_index' 'hobbies' 'tvshows' %}"><strong class='Hobbies'>TV Shows</strong></a><br>
+        {% for tvshow in tvshows %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'tvshows' tvshow.slug %}">{{ tvshow.title }}<br><p>On: <small>{{ tvshow.date_start }}</small></p></a>
+        {% endfor %}<hr>
+        <a href="{% url 'hobbies:type_index' 'hobbies' 'games' %}"><strong class='Hobbies'>Games</strong></a> I'm playing<br>
+        {% for game in games %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'games' game.slug %}">{{ game.title }}<br><p><small>Since: {{ game.date_start }}</small></p></a>
+        {% endfor %}
     </div>
-    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
-      <div class="panel-body">
-        <div class="list-group">
-        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
-        </div>
-      </div>
     </div>
-  </div> -->
-	<!-- Movies/TV shows I'm watching -->
-  <!-- <div class="panel panel-theme">
-    <div class="panel-heading" role="tab" id="heading-blog">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
-          <h1 class='Blog'>Movies/TV shows I'm watching</h1>
-        </a>
-      </h4>
-    </div>
-    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
-      <div class="panel-body">
-        <div class="list-group">
-        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 
 	</div>
 {% endblock EBODY %}

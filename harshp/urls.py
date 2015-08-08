@@ -37,6 +37,7 @@ urlpatterns = patterns(
     url(r'', include('lifeX.urls')),
     url(r'', include('brainbank.urls')),
     url(r'', include('friends.urls')),
+    url(r'', include('hobbies.urls')),
 )
 
 # if DEBUG is True it will be served automatically
