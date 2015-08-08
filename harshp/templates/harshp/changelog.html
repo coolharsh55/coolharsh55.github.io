@@ -21,6 +21,34 @@
 
 <div class='container'><br/>
 
+<div class="section" id="future">
+<h2>v1.7 (2015-08-09)</h2>
+<ul>
+<li><p class="first">Favicon.ico for harshp.com. [Harshvardhan Pandit]</p>
+<p>Saves a favicon.ico and serves it via Apache</p>
+<p>Closes #16 add favicon</p>
+</li>
+<li><p class="first">Update privacy policy to use simpler explanations. [Harshvardhan
+Pandit]</p>
+<p>closes #20 simplify privacy policy</p>
+</li>
+<li><p class="first">Hobbies app with Book, Movie, TVShow, and Game. [Harshvardhan Pandit]</p>
+<p>Hobbies app contains Book, Movie, TVShow and Game. The urls, views, and templates are all generic and use meta properties to render the pages. Used django seed to populate the database with random values.</p>
+<p>closes #10 add books/movies/tvshows/games models
+resolves #32 refactor models from sitebase</p>
+</li>
+<li><p class="first">Tags as first class objects with index, tag cloud. [Harshvardhan
+Pandit]</p>
+<p>Tag objects now have their own index at /tags/ with a tag cloud displayed on the page using <cite>jqcloud</cite> wihch uses the tag use count as weight. Tags in all posts have been linked to their own individual page that shows all posts under the tag sectioned by apps.</p>
+<p>Fixed #37 articles had a stray bracket (&lt;) at the end of tags.</p>
+<p>Closes #9
+Closes #34</p>
+</li>
+<li><p class="first">Closes #26 fabric deploy does not migrate. [Harshvardhan Pandit]</p>
+<p>Fabfile.py deploy now migrates before restarting the server</p>
+</li>
+</ul>
+</div>
 <div class="section" id="v1-6-2-2015-08-05">
 <h2>v1.6.2 (2015-08-05)</h2>
 <div class="section" id="fix">

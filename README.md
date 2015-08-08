@@ -1,6 +1,6 @@
 # harshp.com
 
-[![GitHub issues](https://img.shields.io/badge/tag-v1.6.2-66FFCC.svg)]()
+[![GitHub issues](https://img.shields.io/badge/tag-v1.7-669900.svg)]()
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
 [![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
 
@@ -55,6 +55,11 @@ There is a (quite good in my opinion) presentation (based on a talk I gave) abou
 [http://friends.harshp.com/](http://friends.harshp.com/)
 
 Messages, thoughts, gifts, and surprises for my friends.
+
+### Hobbies
+[http://hobbies.harshp.com/](http://hobbies.harshp.com/)
+
+My hobbies such Books (Reading), Movies, TV Shows (Watching), Games (Playing) and details such as when I started, when I finished, whether I completed them.
 
 ## Development
 
