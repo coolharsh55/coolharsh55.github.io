@@ -60,6 +60,7 @@ class GenericAdmin(admin.ModelAdmin):
                 'date_end',
                 'finished',
                 'slug',
+                'headerimage',
             ),
         }),
         ('Tags', {
@@ -109,6 +110,7 @@ class MovieAdmin(admin.ModelAdmin):
                 'date_seen',
                 'finished',
                 'slug',
+                'headerimage',
             ),
         }),
         ('Tags', {

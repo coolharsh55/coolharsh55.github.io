@@ -27,6 +27,7 @@ class Book(models.Model):
         verbose_name='Completed', blank=True, null=True)
     finished = models.BooleanField(
         verbose_name='Finished?', default=False)
+    headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag',)
 
     def __str__(self):
@@ -92,6 +93,7 @@ class Movie(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     date_seen = models.DateField(verbose_name='Seen on')
     finished = models.BooleanField(verbose_name='Finished?', default=False,)
+    headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag')
 
     def __str__(self):
@@ -157,6 +159,7 @@ class TVShow(models.Model):
     date_start = models.DateField(verbose_name='Started',)
     date_end = models.DateField(verbose_name='Finished',)
     finished = models.BooleanField(default=False, verbose_name='Finished?',)
+    headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag',)
 
     def __str__(self):
@@ -224,6 +227,7 @@ class Game(models.Model):
     date_start = models.DateField(verbose_name='Started')
     date_end = models.DateField(verbose_name='Finished')
     finished = models.BooleanField(default=False, verbose_name='Finished?')
+    headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag')
 
     def __str__(self):
