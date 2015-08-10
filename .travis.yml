@@ -1,6 +1,7 @@
 language: python
 python:
     - "2.7"
+cache: pip
 services: mysql
 env:
     - DJANGO=1.8.2 DJANGO_SETTINGS_MODULE="harshp.settings.settings"
@@ -8,7 +9,6 @@ install:
     - pip install -r requirements.txt
 before_script:
     - mysql -e 'create database IF NOT EXISTS harshp_dot_com;'
-    - pip install coveralls
     - python manage.py migrate
 script:
     - coverage run --source=harshp manage.py test

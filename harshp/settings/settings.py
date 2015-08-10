@@ -160,7 +160,7 @@ INSTALLED_APPS = (
     # other apps
     'bootstrap3',
     'ckeditor',
-    'django_seed',
+    # 'django_seed',
     'meta',
     'storages',
     'subdomains',
