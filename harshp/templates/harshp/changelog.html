@@ -21,6 +21,29 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v1-7-1-2015-08-10">
+<h2>v1.7.1 (2015-08-10)</h2>
+<ul>
+<li><p class="first">Remove django seeds, travis pip cache. [Harshvardhan Pandit]</p>
+<p>Fixes #47 travis build fails</p>
+</li>
+<li><p class="first">Fabric installs dependencies in deployment. [Harshvardhan Pandit]</p>
+<p>fabric installs dependencies via pip in deployment before migrating and restarting server</p>
+<p>Resolves #46</p>
+</li>
+<li><p class="first">Generic admin for Hobbies books, tvshows, games. [Harshvardhan Pandit]</p>
+<p>Generic admin for common fields in models.</p>
+<p>Fixes #45 Game admin does not have fields</p>
+</li>
+<li><p class="first">Tag save method and unique slugnames. [Harshvardhan Pandit]</p>
+<p>save method for Tag that creates slugs from tagname</p>
+<p>Closes #40 save method for Tag
+Fixes #41 Tag slug should be unique</p>
+</li>
+<li><p class="first">Closes #31 redundant devsettings.py. [Harshvardhan Pandit]</p>
+</li>
+</ul>
+</div>
 <div class="section" id="future">
 <h2>v1.7 (2015-08-09)</h2>
 <ul>

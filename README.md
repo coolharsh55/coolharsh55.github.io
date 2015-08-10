@@ -1,17 +1,18 @@
 # harshp.com
 
-[![GitHub issues](https://img.shields.io/badge/tag-v1.7-669900.svg)]()
+![GitHub issues](https://img.shields.io/badge/tag-v1.7.1-66FF99.svg)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
-[![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
-
-
 
 [![Build Status](https://travis-ci.org/coolharsh55/harshp.com.svg?branch=master)](https://travis-ci.org/coolharsh55/harshp.com)
 [![Coverage Status](https://coveralls.io/repos/coolharsh55/harshp.com/badge.svg?branch=master&service=github)](https://coveralls.io/github/coolharsh55/harshp.com?branch=master)
 ![Codacy Badge](https://www.codacy.com/project/badge/e8a6dadab03a450bb0eac3dc08ce6996)
 ![Code Climate](https://codeclimate.com/github/coolharsh55/harshp.com/badges/gpa.svg)
 
+[![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
+[![Stories in Progress](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=in+progress&title=In+Progress)](http://waffle.io/coolharsh55/harshp.com)
 
+
+[![Development](http://graphs.waffle.io/coolharsh55/harshp.com/throughput.svg)](https://waffle.io/coolharsh55/harshp.com/metrics)
 
 The *personal website* of **Harshvardhan Pandit** at
 [http://harshp.com](http://harshp.com/)
