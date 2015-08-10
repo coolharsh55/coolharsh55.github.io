@@ -235,6 +235,8 @@ META_USE_SITES = True
 # ####################################################
 SECRET_KEY = os.environ.get('HARSHP_SECRET_KEY', '')
 MODE = os.environ.get('HARSHP_MODE', 'local')
+# MODE = 'dev'
+# DEBUG = True
 if MODE == 'prod':
     from prod import *
     # print 'production'
