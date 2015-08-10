@@ -37,7 +37,7 @@ def prepare_deployment():
     Raises:
         None
     """
-    local('python manage.py test --settings=harshp.settings.local')
+    local('python manage.py test')
 
 
 def deploy():
@@ -58,5 +58,6 @@ def deploy():
     with cd(project_dir):
         run("sudo git checkout .")
         run("sudo git pull")
+        run("sudo pip install -r requirements.txt")
         run("./manage.py migrate")
         run("sudo /opt/bitnami/ctlscript.sh restart apache")
