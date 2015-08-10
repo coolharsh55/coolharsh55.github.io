@@ -79,6 +79,8 @@ class Book(models.Model):
                 self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+        if self.date_start < self.date_end:
+            self.date_end = self.date_start
         return super(Book, self).save(*args, **kwargs)
 
 
@@ -211,6 +213,8 @@ class TVShow(models.Model):
                 self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+        if self.date_start < self.date_end:
+            self.date_end = self.date_start
         return super(TVShow, self).save(*args, **kwargs)
 
 
@@ -279,6 +283,8 @@ class Game(models.Model):
                 self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+        if self.date_start < self.date_end:
+            self.date_end = self.date_start
         return super(Game, self).save(*args, **kwargs)
 
 # class PhotoshootCategory(models.Model):
