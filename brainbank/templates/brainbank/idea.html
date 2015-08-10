@@ -26,6 +26,9 @@
 {% endif %}
 
 <br>
+{% if idea.repo %}
+<div class='centertext alert alert-info'><a href='{{ idea.repo }}'>view the <strong>{{ idea.title }}</strong> repository here</a></div>
+{% endif %}
 <strong>associated posts:</strong><br>
 {% if idea.brainbankpost_set.count > 0 %}<!-- other posts -->
 {% for post in idea.brainbankpost_set.all %}

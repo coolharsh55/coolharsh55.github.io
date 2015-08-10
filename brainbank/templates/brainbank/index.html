@@ -19,6 +19,9 @@
 <div class='panel-body'>
 <ul><!-- base idea post -->
 <li><a href="{% url 'brainbank:idea' 'brainbank' idea.slug %}">Concept and Premise - <small>{{ idea.published }}</small></a></li>
+{% if idea.repo %}
+<div class='alert alert-info'><a href='{{ idea.repo }}'>view the <strong>{{ idea.title }}</strong> repository here</a></div>
+{% endif %}
 {% if idea.brainbankpost_set.count > 0 %}<!-- other posts -->
 {% for post in idea.brainbankpost_set.all %}
 <li><a href="{% url 'brainbank:post' 'brainbank' idea.slug post.slug %}">{{ post.title }} - <small>{{ post.published }}</small></a></li>

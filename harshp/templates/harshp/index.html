@@ -95,6 +95,9 @@
       <div class="panel-body">
         	<a href="{% url 'brainbank:index' 'brainbank' %}" class='nodecorate'>read all ideas in the brainbank</a><hr>
 					<small>latest idea</small><br><a href="{% url 'brainbank:idea' 'brainbank' brainbank_idea.slug %}" class='nodecorate'>{{brainbank_idea.title}}<br /><small>{{brainbank_idea.published}}</small></a><hr>
+                    {% if brainbank_idea.repo %}
+                    <div class='label label-info'><a href='{{ brainbank_idea.repo }}'>view the <strong>{{ brainbank_idea.title }}</strong> repository </a></div>
+                    {% endif %}
 					{% for post in brainbank_idea.brainbankpost_set.all %}
 					<a href="{% url 'brainbank:post' 'brainbank' brainbank_idea.slug post.slug %}" class='nodecorate'>{{post.title}}<br /><small>{{post.published}}</small></a><hr>
 					{% endfor %}

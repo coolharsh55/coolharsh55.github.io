@@ -30,7 +30,9 @@
 <img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image"><br/>
 {% endif %}
 <strong>Part of '<a class='nodecoraet' href="{% url 'brainbank:idea' 'brainbank' post.idea.slug %}" class="alert-link">{{post.idea.title}}</a>'<br><br></strong>
-
+{% if post.idea.repo %}
+<div class='centertext alert alert-info'><a href='{{ post.idea.repo }}'>view the <strong>{{ post.idea.title }}</strong> repository here</a></div>
+{% endif %}
 {{post.body|safe}}<!-- body -->
 </div>
 {% endblock CONTENT %}

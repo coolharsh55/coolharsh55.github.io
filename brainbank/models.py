@@ -29,6 +29,7 @@ class BrainBankIdea(models.Model):
     slug = models.SlugField(
         max_length=50,
     )
+    repo = models.URLField(max_length=500, null=True, blank=True)
     published = models.DateField()
 
     def __str__(self):

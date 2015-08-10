@@ -25,12 +25,14 @@ class BrainBankIdeaAdmin(admin.ModelAdmin):
         'published',
         'posts',
         'demos',
+        'repo',
     )
     ordering = (
         '-published',
     )
     search_fields = (
         'title',
+        'repo',
     )
     date_hierarchy = 'published'
     readonly_fields = (
@@ -48,7 +50,8 @@ class BrainBankIdeaAdmin(admin.ModelAdmin):
                 'id',
                 'title',
                 'slug',
-                'published'
+                'published',
+                'repo',
             )
         }),
         ('Contents', {
