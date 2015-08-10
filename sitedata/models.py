@@ -4,6 +4,7 @@
 """
 
 from django.db import models
+from django.utils.text import slugify
 
 
 class Tag(models.Model):
@@ -12,7 +13,7 @@ class Tag(models.Model):
     """
     tagid = models.AutoField(primary_key=True)
     tagname = models.CharField(max_length=150, unique=True)
-    slug = models.SlugField(max_length=150)
+    slug = models.SlugField(max_length=150, unique=True)
 
     def __str__(self):
         """string representation for tags
@@ -33,6 +34,26 @@ class Tag(models.Model):
         """attributes for tag
         """
         ordering = ('tagname',)
+
+    def save(self, *args, **kwargs):
+        """save tags to database
+
+        check for duplicates, and update modified timestamps
+
+        Args:
+            self(Tag)
+            *args: arguments
+            **kwargs: parameters
+
+        Returns:
+            return from Tag.super()
+
+        Raises:
+            None
+        """
+        self.slug = slugify(self.tagname)
+
+        return super(Tag, self).save(*args, **kwargs)
 
 """
 # Future work
