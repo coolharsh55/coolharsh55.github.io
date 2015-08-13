@@ -8,6 +8,7 @@
 """
 
 from django.db import models
+from django.utils import timezone
 from ckeditor.fields import RichTextField
 from datetime import datetime, timedelta
 from django.utils.text import slugify
@@ -206,6 +207,7 @@ class LifeXIdea(models.Model):
         max_length=250,
     )
     body = RichTextField()
+    tags = models.ManyToManyField('sitedata.Tag', blank=True,)
     slug = models.SlugField(
         max_length=50,
         unique=True
@@ -329,7 +331,8 @@ class LifeXPost(models.Model):
         max_length=50,
         unique=True
     )
-    date = models.DateField()
+    published = models.DateField()
+    modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
     week = models.ForeignKey(LifeXWeek)
     idea = models.ForeignKey(LifeXIdea)
@@ -385,6 +388,7 @@ class LifeXPost(models.Model):
             else:
                 self.slug = slugify(
                     'W' + str(self.week.number) + '-' + self.title)[:50]
+        self.modified = timezone.now()
         return super(LifeXPost, self).save(*args, **kwargs)
 
 
@@ -408,8 +412,8 @@ class LifeXBlog(models.Model):
         max_length=50,
         unique=True
     )
-    date = models.DateField()
-    # TODO: set date to published and then to auto_now = True
+    published = models.DateField()
+    modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
 
     def __str__(self):
@@ -459,4 +463,5 @@ class LifeXBlog(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)[:50]
+        self.modified = timezone.now()
         return super(LifeXBlog, self).save(*args, **kwargs)

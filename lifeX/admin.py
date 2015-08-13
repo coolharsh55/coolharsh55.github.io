@@ -198,17 +198,17 @@ class LifeXPostAdmin(admin.ModelAdmin):
         'title',
         'week',
         'idea',
-        'date',
+        'published',
     )
     ordering = (
-        '-date',
+        '-published',
         '-week',
         '-post_id',
     )
     search_fields = (
         'title',
     )
-    date_hierarchy = 'date'
+    date_hierarchy = 'published'
     list_filter = (
         'tags',
         'week',
@@ -228,7 +228,7 @@ class LifeXPostAdmin(admin.ModelAdmin):
                 'title',
                 'week',
                 'idea',
-                'date',
+                'published',
             )
         }),
         ('Contents', {
@@ -261,16 +261,16 @@ class LifeXBlogAdmin(admin.ModelAdmin):
     list_display = (
         'post_id',
         'title',
-        'date',
+        'published',
     )
     ordering = (
-        '-date',
+        '-published',
         'title',
     )
     search_fields = (
         'title',
     )
-    date_hierarchy = 'date'
+    date_hierarchy = 'published'
     filter_horizontal = (
         'tags',
     )
@@ -283,7 +283,7 @@ class LifeXBlogAdmin(admin.ModelAdmin):
             'fields': (
                 'post_id',
                 'title',
-                'date',
+                'published',
                 'headerimage',
             )
         }),

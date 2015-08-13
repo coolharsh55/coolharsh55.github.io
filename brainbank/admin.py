@@ -61,6 +61,12 @@ class BrainBankIdeaAdmin(admin.ModelAdmin):
                 'body',
             )
         }),
+        ('Extras', {
+            'classes': ('collapse',),
+            'fields': (
+                'tags',
+            )
+        }),
     )
 
     def posts(self, obj):
@@ -217,6 +223,12 @@ class BrainBankDemoAdmin(admin.ModelAdmin):
             'classes': ('full-width',),
             'fields': (
                 'js',
+            )
+        }),
+        ('Extras', {
+            'classes': ('collapse',),
+            'fields': (
+                'tags',
             )
         }),
     )

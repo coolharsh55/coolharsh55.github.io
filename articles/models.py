@@ -38,6 +38,7 @@ class Article(models.Model):
 
     # additional stuff
     modified = models.DateTimeField(
+        blank=True,
         verbose_name='Last Modified',
     )
     tags = models.ManyToManyField(

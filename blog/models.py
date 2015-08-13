@@ -30,7 +30,7 @@ class BlogPost(models.Model):
     published = models.DateTimeField()
 
     # additional stuff
-    modified = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
     slug = models.SlugField(max_length=50, unique=True)
     headerimage = models.URLField(max_length=200, blank=True)

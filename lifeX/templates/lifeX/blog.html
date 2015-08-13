@@ -22,7 +22,7 @@
 {% block CONTENT %}
 <div class='parent centertext'><br>
 <h2>{% for blog in blogposts %}
-<a class='nodecorate' href="{% url 'lifeX:blogpost' 'lifeX' blog.slug %}">{{blog.title}} - {{blog.date}}</a>
+<a class='nodecorate' href="{% url 'lifeX:blogpost' 'lifeX' blog.slug %}">{{blog.title}} - {{ blog.published }}</a>
 {% endfor %}</h2>
 </div>
 {% endblock CONTENT %}

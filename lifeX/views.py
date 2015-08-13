@@ -331,7 +331,7 @@ def blog(request):
     """
     # TODO: pagination for blog posts
     try:
-        blogposts = LifeXBlog.objects.order_by('-date')
+        blogposts = LifeXBlog.objects.order_by('-published')
         # contruct meta tags
         title = 'LifeX Blog'
         description = 'LifeX blog at harshp.com'

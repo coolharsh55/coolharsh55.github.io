@@ -22,7 +22,7 @@
 {% block CONTENT %}
 <div class='parent centertext'>
 <div class='pagetitle'><h1>{{post.title}}</h1></div>
-<div class='pagedescription'><h4><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}">{{post.week}}</a><br /><a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">Idea: {{post.idea.title}}</a><br /><a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">Category: {{post.idea.category.name}}</a><br><br>
+<div class='pagedescription'><h4><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}">{{post.week}}</a><br /><a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">Idea: {{post.idea.title}}</a><br /><a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">Category: {{post.idea.category.name}}</a><br>published on {{ post.published }}<br>modified on {{ post.modified }}<br>
 {% for tag in post.tags.all %}
 <a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
 {% endfor %}

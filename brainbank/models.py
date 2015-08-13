@@ -6,6 +6,7 @@
 """
 
 from django.db import models
+from django.utils import timezone
 from ckeditor.fields import RichTextField
 from sitedata.models import Tag
 from django.utils.text import slugify
@@ -29,8 +30,13 @@ class BrainBankIdea(models.Model):
     slug = models.SlugField(
         max_length=50,
     )
+    tags = models.ManyToManyField(
+        'sitedata.Tag',
+        blank=True,
+    )
     repo = models.URLField(max_length=500, null=True, blank=True)
     published = models.DateField()
+    modified = models.DateTimeField(blank=True,)
 
     def __str__(self):
         """string representation of an idea
@@ -79,6 +85,7 @@ class BrainBankIdea(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title[:50])
+        self.modified = timezone.now()
         return super(BrainBankIdea, self).save(*args, **kwargs)
 
 
@@ -100,6 +107,7 @@ class BrainBankPost(models.Model):
     )
     body = RichTextField()
     published = models.DateField()
+    modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField(Tag)
     slug = models.SlugField(
         max_length=50,
@@ -142,6 +150,7 @@ class BrainBankPost(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)[:50]
+        self.modified = timezone.now()
         return super(BrainBankPost, self).save(*args, **kwargs)
 
 
@@ -173,7 +182,10 @@ class BrainBankDemo(models.Model):
         max_length=50,
         unique=True
     )
+    tag = models.ManyToManyField('sitedata.Tag', blank=True)
     idea = models.ForeignKey(BrainBankIdea)
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
 
     def __str__(self):
         """string representation fo BrainBankDemo
@@ -221,4 +233,5 @@ class BrainBankDemo(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.idea.title + '-' + self.title)[:50]
+        self.modified = timezone.now()
         return super(BrainBankDemo, self).save(*args, **kwargs)
