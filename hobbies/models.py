@@ -10,6 +10,7 @@
 
 from django.db import models
 from django.utils.text import slugify
+from subdomains.utils import reverse
 
 
 class Book(models.Model):
@@ -83,6 +84,13 @@ class Book(models.Model):
             self.date_end = self.date_start
         return super(Book, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='hobbies:type_item',
+            subdomain='hobbies',
+            kwargs={'hobbytype': 'books', 'hobbytitle': self.slug, })
+
 
 class Movie(models.Model):
 
@@ -145,6 +153,13 @@ class Movie(models.Model):
             else:
                 self.slug = slugify(self.title)
         return super(Movie, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='hobbies:type_item',
+            subdomain='hobbies',
+            kwargs={'hobbytype': 'movies', 'hobbytitle': self.slug, })
 
 
 class TVShow(models.Model):
@@ -217,6 +232,13 @@ class TVShow(models.Model):
             self.date_end = self.date_start
         return super(TVShow, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='hobbies:type_item',
+            subdomain='hobbies',
+            kwargs={'hobbytype': 'tvshows', 'hobbytitle': self.slug, })
+
 
 class Game(models.Model):
 
@@ -286,6 +308,13 @@ class Game(models.Model):
         if self.date_start < self.date_end:
             self.date_end = self.date_start
         return super(Game, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='hobbies:type_item',
+            subdomain='hobbies',
+            kwargs={'hobbytype': 'games', 'hobbytitle': self.slug, })
 
 # class PhotoshootCategory(models.Model):
 #     '''

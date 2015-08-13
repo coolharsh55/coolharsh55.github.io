@@ -10,6 +10,7 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 from sitedata.models import Tag
 from django.utils.text import slugify
+from subdomains.utils import reverse
 
 
 class BrainBankIdea(models.Model):
@@ -88,6 +89,13 @@ class BrainBankIdea(models.Model):
         self.modified = timezone.now()
         return super(BrainBankIdea, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='brainbank:idea',
+            subdomain='brainbank',
+            kwargs={'idea': self.slug, })
+
 
 class BrainBankPost(models.Model):
 
@@ -152,6 +160,13 @@ class BrainBankPost(models.Model):
                 self.slug = slugify(self.title)[:50]
         self.modified = timezone.now()
         return super(BrainBankPost, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='brainbank:post',
+            subdomain='brainbank',
+            kwargs={'idea': self.idea.slug, 'post': self.slug, })
 
 
 class BrainBankDemo(models.Model):
@@ -235,3 +250,10 @@ class BrainBankDemo(models.Model):
                 self.slug = slugify(self.idea.title + '-' + self.title)[:50]
         self.modified = timezone.now()
         return super(BrainBankDemo, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='brainbank:demo',
+            subdomain='brainbank',
+            kwargs={'idea': self.idea.slug, 'demo': self.slug, })

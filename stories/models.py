@@ -5,7 +5,7 @@
 
 from django.db import models
 from ckeditor.fields import RichTextField
-
+from subdomains.utils import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
@@ -56,3 +56,10 @@ class StoryPost(models.Model):
         self.modified = timezone.now()
 
         return super(StoryPost, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='stories:post',
+            subdomain='stories',
+            kwargs={'story': self.slug, })

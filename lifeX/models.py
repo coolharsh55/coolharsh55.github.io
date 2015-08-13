@@ -12,6 +12,7 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 from datetime import datetime, timedelta
 from django.utils.text import slugify
+from subdomains.utils import reverse
 
 
 def lifex_start_date():
@@ -124,6 +125,13 @@ class LifeXWeek(models.Model):
         verbose_name = 'LifeX Week'
         verbose_name_plural = 'LifeX Weeks'
 
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='lifeX:week',
+            subdomain='lifex',
+            kwargs={'week': self.number, })
+
 
 class LifeXCategory(models.Model):
 
@@ -189,6 +197,13 @@ class LifeXCategory(models.Model):
             else:
                 self.slug = slugify(self.name[:250])
         return super(LifeXCategory, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='lifeX:category',
+            subdomain='lifex',
+            kwargs={'category': self.slug, })
 
 
 class LifeXIdea(models.Model):
@@ -283,6 +298,13 @@ class LifeXIdea(models.Model):
         verbose_name = 'LifeX Idea'
         verbose_name_plural = 'LifeX Ideas'
         ordering = ['title', ]
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='lifeX:idea',
+            subdomain='lifex',
+            kwargs={'category': self.category.slug, 'idea': self.slug, })
 
 
 # TODO: reduce LifeX to empty class
@@ -391,6 +413,13 @@ class LifeXPost(models.Model):
         self.modified = timezone.now()
         return super(LifeXPost, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='lifeX:post',
+            subdomain='lifex',
+            kwargs={'week': self.week.number, 'idea': self.idea.slug, })
+
 
 class LifeXBlog(models.Model):
 
@@ -465,3 +494,10 @@ class LifeXBlog(models.Model):
                 self.slug = slugify(self.title)[:50]
         self.modified = timezone.now()
         return super(LifeXBlog, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='lifeX:blogpost',
+            subdomain='lifex',
+            kwargs={'blogpost': self.slug, })

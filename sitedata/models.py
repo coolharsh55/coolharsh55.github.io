@@ -5,6 +5,7 @@
 
 from django.db import models
 from django.utils.text import slugify
+from subdomains.utils import reverse
 
 
 class Tag(models.Model):
@@ -54,6 +55,13 @@ class Tag(models.Model):
         self.slug = slugify(self.tagname)
 
         return super(Tag, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        """return url for this object"""
+        return reverse(
+            viewname='sitedata:tagname',
+            subdomain='www',
+            kwargs={'tagname': self.slug, })
 
 """
 # Future work
