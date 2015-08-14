@@ -8,6 +8,7 @@
 
 """
 
+from django.utils import timezone
 from django.db import models
 from django.utils.text import slugify
 from subdomains.utils import reverse
@@ -23,6 +24,8 @@ class Book(models.Model):
     _id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200,)
     slug = models.SlugField(max_length=200, unique=True)
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
     date_start = models.DateField(verbose_name='Started')
     date_end = models.DateField(
         verbose_name='Completed', blank=True, null=True)
@@ -82,6 +85,7 @@ class Book(models.Model):
                 self.slug = slugify(self.title)
         if self.date_start < self.date_end:
             self.date_end = self.date_start
+        self.modified = timezone.now()
         return super(Book, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -102,6 +106,8 @@ class Movie(models.Model):
     title = models.CharField(max_length=200,)
     slug = models.SlugField(max_length=200, unique=True)
     date_seen = models.DateField(verbose_name='Seen on')
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(verbose_name='Finished?', default=False,)
     headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag')
@@ -152,6 +158,7 @@ class Movie(models.Model):
                 self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+        self.modified = timezone.now()
         return super(Movie, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -175,6 +182,8 @@ class TVShow(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     date_start = models.DateField(verbose_name='Started',)
     date_end = models.DateField(verbose_name='Finished',)
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(default=False, verbose_name='Finished?',)
     headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag',)
@@ -230,6 +239,7 @@ class TVShow(models.Model):
                 self.slug = slugify(self.title)
         if self.date_start < self.date_end:
             self.date_end = self.date_start
+        self.modified = timezone.now()
         return super(TVShow, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -252,6 +262,8 @@ class Game(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     date_start = models.DateField(verbose_name='Started')
     date_end = models.DateField(verbose_name='Finished')
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(default=False, verbose_name='Finished?')
     headerimage = models.URLField(max_length=500, blank=True, null=True)
     tags = models.ManyToManyField('sitedata.Tag')
@@ -307,6 +319,7 @@ class Game(models.Model):
                 self.slug = slugify(self.title)
         if self.date_start < self.date_end:
             self.date_end = self.date_start
+        self.modified = timezone.now()
         return super(Game, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

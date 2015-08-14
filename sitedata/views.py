@@ -1,6 +1,7 @@
 """views for sitedata
 """
 
+from itertools import chain
 from django.http import Http404
 from django.shortcuts import render_to_response
 from sitedata.models import Tag
@@ -10,8 +11,8 @@ from sitedata.models import Tag
 def tag_index(request):
     try:
         tags = Tag.objects.all()
-        for tag in tags:
-            tagcount(tag)
+        # for tag in tags:
+        #     tagcount(tag)
 
     except Exception as e:
         print e
@@ -26,27 +27,42 @@ def tag_index(request):
 def tag(request, tagname):
     try:
         tag = Tag.objects.get(slug=tagname)
-        use_count = tagcount(tag)
+        links = tagcount(tag)
     except Tag.DoesNotExist:
         return Http404('Tag does not exist')
     return render_to_response(
         'sitedata/tag.html',
         {
             'tag': tag,
-            'use_count': use_count,
+            'links': links,
         }
     )
+
+"""
+TAG LINKING TO POST
+t = tag
+ts = [getattr(t, s).all() for s in dir(t) if s.endswith('_set')]
+itertools.chain(*ts)
+"""
 
 
 def tagcount(tag, sort=True):
     """count of tag linked objects
     """
-    count = []
+    count = 0
+    xitems = []
+    items = []
     for x in Tag.__dict__:
         if x.endswith('_set'):
-            count.append((x[:-4], getattr(tag, x).count(), getattr(tag, x)))
-    if sort:
-        count.sort(key=lambda x: x[0])
-        count.sort(key=lambda x: x[1], reverse=True)
-    setattr(tag, 'count', sum([i[1] for i in count]))
-    return count
+            # count += getattr(tag, x).count()
+            xitems.append(getattr(tag, x))
+    for x in xitems:
+        print x
+        items.append(x.order_by('-published'))
+    print items
+    links = []
+    for item in items:
+        if item:
+            links.append((item, item[0].__class__.__name__))
+    # setattr(tag, 'count', count)
+    return links

@@ -236,6 +236,8 @@ class LifeXIdea(models.Model):
         verbose_name='retry?',
     )
     category = models.ForeignKey(LifeXCategory)
+    published = models.DateTimeField()
+    modified = models.DateTimeField(blank=True,)
 
     def __str__(self):
         """string representation of idea
@@ -289,6 +291,7 @@ class LifeXIdea(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+        self.modified = timezone.now()
         super(LifeXIdea, self).save(*args, **kwargs)
 
     class Meta:

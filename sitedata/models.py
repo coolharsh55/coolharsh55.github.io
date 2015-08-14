@@ -14,6 +14,7 @@ class Tag(models.Model):
     """
     tagid = models.AutoField(primary_key=True)
     tagname = models.CharField(max_length=150, unique=True)
+    count = models.IntegerField(default=0)
     slug = models.SlugField(max_length=150, unique=True)
 
     def __str__(self):
@@ -53,6 +54,10 @@ class Tag(models.Model):
             None
         """
         self.slug = slugify(self.tagname)
+        self.count = 0
+        for x in Tag.__dict__:
+            if x.endswith('_set'):
+                self.count += getattr(self, x).count()
 
         return super(Tag, self).save(*args, **kwargs)
 
