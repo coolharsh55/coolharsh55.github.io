@@ -21,43 +21,61 @@ from fabric.api import cd
 
 env.hosts = ['bitnami@harshp.com']
 env.key_filename = '~/.ssh/harshp.pem'
+project_dir = "/opt/bitnami/apps/django/django_projects/harshp.com/"
 
 
 def prepare_deployment():
     """Prepare for deployment
+    """
+    pass
 
-    Runs tests
 
-    Args:
-        None
-
-    Returns:
-        None
-
-    Raises:
-        None
+def l_test():
+    """local: run tests
     """
     local('python manage.py test')
 
 
-def deploy():
-    """Deploy to host
-
-    Discard any changes and pull in updated repo. Finally, restart Apache
-
-    Args:
-        None
-
-    Returns:
-        None
-
-    Raises:
-        None
+def l_migrate():
+    """local: make migrations and migrate
     """
-    project_dir = "/opt/bitnami/apps/django/django_projects/harshp.com/"
+    local('python manage.py makemigrations')
+    local('python manage.py migrate')
+
+
+def migrate():
+    """make migrations and migrate
+    """
+    with cd(project_dir):
+        run("./manage.py migrate")
+
+
+def restart():
+    """restart server
+    """
+    run("sudo /opt/bitnami/ctlscript.sh restart apache")
+
+
+def git_update():
+    """update git master repo
+    """
     with cd(project_dir):
         run("sudo git checkout .")
+        run("sudo git checkout master")
         run("sudo git pull")
+
+
+def install_dependencies():
+    """install dependencies via pip
+    """
+    with cd(project_dir):
         run("sudo pip install -r requirements.txt")
-        run("./manage.py migrate")
-        run("sudo /opt/bitnami/ctlscript.sh restart apache")
+
+
+def deploy():
+    """Deploy to host
+    """
+    install_dependencies()
+    git_update()
+    migrate()
+    restart()

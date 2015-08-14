@@ -21,6 +21,36 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v1-8-2015-08-14">
+<h2>v1.8 (2015-08-14)</h2>
+<ul class="simple">
+<li>Fixes #42 hobby end date should be on or before start date.
+[Harshvardhan Pandit]</li>
+</ul>
+<ul>
+<li><p class="first">Count field for tags, linked to posts. [Harshvardhan Pandit]</p>
+<p>Tags have a count field depicting how many objects they are linked to. Tags are linked to the posts that contain them, and the same is displayed on the tag page.
+Closes #53
+Closes #33</p>
+</li>
+<li><p class="first">Get_absolute_url for all models. [Harshvardhan Pandit]</p>
+<p>Implemented the get_absolute_url method in all methods using subdomains.utils.reverse for subdomains resolution.
+Closes #7</p>
+</li>
+<li><p class="first">Published/modified/tags fields in all models. [Harshvardhan Pandit]</p>
+<p>Added published/modified/tags fields to all models that have some form of content.
+Closes #35
+Closes #36</p>
+</li>
+<li><p class="first">Images for hobbies Hobby models now have a (header) image field Closes
+#44. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Repo for brain bank ideas BrainBank Idea now have a url field for
+linking repositories. Related views and interfaces now reflect this
+url field on pages. Closes #5. [Harshvardhan Pandit]</p>
+</li>
+</ul>
+</div>
 <div class="section" id="v1-7-1-2015-08-10">
 <h2>v1.7.1 (2015-08-10)</h2>
 <ul>
