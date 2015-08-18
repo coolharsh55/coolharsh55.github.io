@@ -291,6 +291,7 @@ class LifeXIdea(models.Model):
                 self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
             else:
                 self.slug = slugify(self.title)
+            self.published = timezone.now()
         self.modified = timezone.now()
         super(LifeXIdea, self).save(*args, **kwargs)
 
