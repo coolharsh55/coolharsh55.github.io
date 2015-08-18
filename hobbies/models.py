@@ -84,8 +84,9 @@ class Book(models.Model):
             else:
                 self.slug = slugify(self.title)
             self.published = timezone.now()
-        if self.date_start < self.date_end:
-            self.date_end = self.date_start
+        if self.date_end:
+            if self.date_start < self.date_end:
+                self.date_end = self.date_start
         self.modified = timezone.now()
         return super(Book, self).save(*args, **kwargs)
 
@@ -183,7 +184,8 @@ class TVShow(models.Model):
     title = models.CharField(max_length=200,)
     slug = models.SlugField(max_length=200, unique=True)
     date_start = models.DateField(verbose_name='Started',)
-    date_end = models.DateField(verbose_name='Finished',)
+    date_end = models.DateField(
+        verbose_name='Finished', blank=True, null=True)
     published = models.DateTimeField()
     modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(default=False, verbose_name='Finished?',)
@@ -240,8 +242,9 @@ class TVShow(models.Model):
             else:
                 self.slug = slugify(self.title)
             self.published = timezone.now()
-        if self.date_start < self.date_end:
-            self.date_end = self.date_start
+        if self.date_end:
+            if self.date_start < self.date_end:
+                self.date_end = self.date_start
         self.modified = timezone.now()
         return super(TVShow, self).save(*args, **kwargs)
 
@@ -264,7 +267,8 @@ class Game(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     date_start = models.DateField(verbose_name='Started')
-    date_end = models.DateField(verbose_name='Finished')
+    date_end = models.DateField(
+        verbose_name='Finished', blank=True, null=True)
     published = models.DateTimeField()
     modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(default=False, verbose_name='Finished?')
@@ -321,8 +325,9 @@ class Game(models.Model):
             else:
                 self.slug = slugify(self.title)
             self.published = timezone.now()
-        if self.date_start < self.date_end:
-            self.date_end = self.date_start
+        if self.date_end:
+            if self.date_start < self.date_end:
+                self.date_end = self.date_start
         self.modified = timezone.now()
         return super(Game, self).save(*args, **kwargs)
 
