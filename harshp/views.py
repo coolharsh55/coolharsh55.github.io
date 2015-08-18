@@ -9,6 +9,7 @@ from stories.models import StoryPost
 from poems.models import Poem
 from articles.models import Article
 from lifeX.models import LifeXWeek
+from lifeX.models import LifeXBlog
 from brainbank.models import BrainBankPost
 from sitedata.social_meta import create_meta
 from hobbies.models import Book
@@ -39,6 +40,7 @@ def home(request):
         articles = Article.objects.order_by('-published')[:3]
         brainbank_posts = BrainBankPost.objects.order_by('-published')[:3]
         lifexweek = LifeXWeek.objects.latest('number')
+        lifexposts = LifeXBlog.objects.order_by('-published')[:3]
         books = Book.objects.filter(date_end=None, finished=False)[:5]
         movies = Movie.objects.order_by('-date_seen')[:5]
         tvshows = TVShow.objects.order_by('-date_start')[:5]
@@ -57,6 +59,7 @@ def home(request):
             Poem.DoesNotExist,
             Article.DoesNotExist,
             LifeXWeek.DoesNotExist,
+            LifeXBlog.DoesNotExist,
             BrainBankPost.DoesNotExist,
             Book.DoesNotExist,
             Movie.DoesNotExist,
@@ -72,6 +75,7 @@ def home(request):
             'articles': articles,
             'brainbank_posts': brainbank_posts,
             'lifeXweek': lifexweek,
+            'lifeXposts': lifexposts,
             'books': books,
             'movies': movies,
             'tvshows': tvshows,

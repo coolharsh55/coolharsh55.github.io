@@ -108,12 +108,16 @@
     <a class="LifeX nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-lifeX" aria-expanded="false" aria-controls="collapse-lifeX">lifeX</a>
     <div id="collapse-lifeX" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-lifeX">
       <div class="panel-body">
-        	<a href="{% url 'lifeX:index' 'lifeX' %}" class='nodecorate'>see all life eXperiments</a><hr>
+        	<a href="{% url 'lifeX:index' 'lifeX' %}" class='nodecorate'>visit Life eXperiments</a><hr>
             <a href="{% url 'lifeX:lifeX_presentation_UCC2014' 'lifeX' %}" class='nodecorate '><strong>LifeX - A Presentation</strong></a><hr>
-        	<a href="{% url 'lifeX:week' 'lifeX' lifeXweek.number %}" class='nodecorate'>{{lifeXweek}}</a>
+        	<small>latest week of experiments</small><br><a href="{% url 'lifeX:week' 'lifeX' lifeXweek.number %}" class='nodecorate'><strong>{{lifeXweek}}</strong></a>
         	{% for post in lifeXweek.lifexpost_set.all %}
-  				<a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}" class='nodecorate'>{{post.title}}<br /><small>Idea: ({{post.idea.category.name}}) {{post.idea.title}}</small></a><br>
-  				{% endfor %}
+  				<br><a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}" class='nodecorate'>{{post.title}}<br /><small>Idea: ({{post.idea.category.name}}) {{post.idea.title}}</small></a><br>
+			{% endfor %}<hr>
+            <small>latest blog posts</small>
+            {% for post in lifeXposts %}
+                <br><a href="{% url 'lifeX:blogpost' 'lifeX' post.slug %}">{{ post.title }}</a><br><small>published on {{ post.published }}</small>
+            {% endfor %}
         </div>
       </div>
     <hr>
