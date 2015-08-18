@@ -9,13 +9,13 @@ from stories.models import StoryPost
 from poems.models import Poem
 from articles.models import Article
 from lifeX.models import LifeXWeek
-from brainbank.models import BrainBankIdea
+from brainbank.models import BrainBankPost
 from sitedata.social_meta import create_meta
 from hobbies.models import Book
 from hobbies.models import Movie
 from hobbies.models import TVShow
 from hobbies.models import Game
-from django.db.models import Q
+# from django.db.models import Q
 
 
 def home(request):
@@ -37,7 +37,7 @@ def home(request):
         stories = StoryPost.objects.order_by('-published')[:3]
         poems = Poem.objects.order_by('-published')[:3]
         articles = Article.objects.order_by('-published')[:3]
-        brainbank_idea = BrainBankIdea.objects.latest('published')
+        brainbank_posts = BrainBankPost.objects.order_by('-published')[:3]
         lifexweek = LifeXWeek.objects.latest('number')
         books = Book.objects.filter(date_end=None, finished=False)[:5]
         movies = Movie.objects.order_by('-date_seen')[:5]
@@ -57,7 +57,7 @@ def home(request):
             Poem.DoesNotExist,
             Article.DoesNotExist,
             LifeXWeek.DoesNotExist,
-            BrainBankIdea.DoesNotExist,
+            BrainBankPost.DoesNotExist,
             Book.DoesNotExist,
             Movie.DoesNotExist,
             TVShow.DoesNotExist,
@@ -70,7 +70,7 @@ def home(request):
             'stories': stories,
             'poems': poems,
             'articles': articles,
-            'brainbank_idea': brainbank_idea,
+            'brainbank_posts': brainbank_posts,
             'lifeXweek': lifexweek,
             'books': books,
             'movies': movies,

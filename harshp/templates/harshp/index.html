@@ -93,16 +93,10 @@
     <a class="Brainbank nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-brainbank" aria-expanded="false" aria-controls="collapse-brainbank">brainbank</a>
     <div id="collapse-brainbank" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-brainbank">
       <div class="panel-body">
-        	<a href="{% url 'brainbank:index' 'brainbank' %}" class='nodecorate'>read all ideas in the brainbank</a><hr>
-					<small>latest idea</small><br><a href="{% url 'brainbank:idea' 'brainbank' brainbank_idea.slug %}" class='nodecorate'>{{brainbank_idea.title}}<br /><small>{{brainbank_idea.published}}</small></a><hr>
-                    {% if brainbank_idea.repo %}
-                    <div class='label label-info'><a href='{{ brainbank_idea.repo }}'>view the <strong>{{ brainbank_idea.title }}</strong> repository </a></div>
-                    {% endif %}
-					{% for post in brainbank_idea.brainbankpost_set.all %}
-					<a href="{% url 'brainbank:post' 'brainbank' brainbank_idea.slug post.slug %}" class='nodecorate'>{{post.title}}<br /><small>{{post.published}}</small></a><hr>
-					{% endfor %}
-					{% for demo in brainbank_idea.brainbankdemo_set.all %}
-					<a href="{% url 'brainbank:demo' 'brainbank' brainbank_idea.slug demo.slug %}" class='nodecorate'><h4>demo - {{demo.title}}</h4></a><hr>
+        	<a href="{% url 'brainbank:index' 'brainbank' %}" class='nodecorate'>read all ideas in the brainbank</a>
+                    {% for post in brainbank_posts %}
+                    <hr><a href="{% url 'brainbank:post' 'brainbank' post.idea.slug post.slug %}"><strong>{{ post.title }}</strong></a><br>
+                    <small>published on: {{ post.published }}<br>part of <u><a href="{% url 'brainbank:idea' 'brainbank' post.idea.slug %}">{{ post.idea.title }}</a></u></small>
 					{% endfor %}
         </div>
       </div>
