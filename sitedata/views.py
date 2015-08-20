@@ -1,19 +1,21 @@
 """views for sitedata
 """
 
-from itertools import chain
 from django.http import Http404
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.shortcuts import render_to_response
+from sitedata.forms import FeedbackForm
 from sitedata.models import Tag
-# from sitedata.social_meta import create_meta
+from sitedata.models import Feedback
+from urllib2 import unquote
 
 
 def tag_index(request):
+    """index view for tags
+    """
     try:
         tags = Tag.objects.all()
-        # for tag in tags:
-        #     tagcount(tag)
-
     except Exception as e:
         print e
     return render_to_response(
@@ -25,6 +27,8 @@ def tag_index(request):
 
 
 def tag(request, tagname):
+    """view for tag
+    """
     try:
         tag = Tag.objects.get(slug=tagname)
         links = tagcount(tag)
@@ -38,23 +42,14 @@ def tag(request, tagname):
         }
     )
 
-"""
-TAG LINKING TO POST
-t = tag
-ts = [getattr(t, s).all() for s in dir(t) if s.endswith('_set')]
-itertools.chain(*ts)
-"""
-
 
 def tagcount(tag, sort=True):
     """count of tag linked objects
     """
-    count = 0
     xitems = []
     items = []
     for x in Tag.__dict__:
         if x.endswith('_set'):
-            # count += getattr(tag, x).count()
             xitems.append(getattr(tag, x))
     for x in xitems:
         print x
@@ -64,5 +59,58 @@ def tagcount(tag, sort=True):
     for item in items:
         if item:
             links.append((item, item[0].__class__.__name__))
-    # setattr(tag, 'count', count)
     return links
+
+
+def feedback_index(request):
+    """index view for feedback
+    """
+    try:
+        print 'feedback index'
+        feedbacks = Feedback.objects.order_by('-published')
+        return render_to_response(
+            'sitedata/feedback_index.html',
+            {
+                'feedbacks': feedbacks,
+            }
+        )
+    except Feedback.DoesNotExist:
+        pass
+
+
+def feedback(request, feedback_no):
+    """view for feedback
+    """
+    try:
+        feedback = Feedback.objects.get(id=feedback_no)
+    except Feedback.DoesNotExist:
+        raise Http404('Feedback does not exist!')
+    return render_to_response(
+        'sitedata/feedback.html',
+        {
+            'feedback': feedback,
+        }
+    )
+
+
+def feedback_add(request, url=None):
+    """add feedback
+    """
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sitedata:feedback_index')
+    else:
+        form = FeedbackForm()
+        if url is not None:
+            form.fields['linked_post'].initial = unquote(url)
+        feedback_id = Feedback.objects.order_by('-published')[0].id + 1
+        return render(
+            request,
+            'sitedata/feedback_add.html',
+            {
+                'feedback_id': feedback_id,
+                'form': form,
+            }
+        )

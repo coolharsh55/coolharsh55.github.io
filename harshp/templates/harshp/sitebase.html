@@ -1,6 +1,8 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 {% load subdomainurls %}
+{% load dictionary %}
+
 <html>
 <head>
 	<meta charset='utf-8'>
@@ -28,6 +30,14 @@
 {% block EBODY %}{% endblock EBODY %}
 {% block FFOOTER %}
 <div id='footer' class='centertext'>
+{% block FFEEDBACK %}
+<hr>
+<div class='container centertext'>
+<div class='alert alert-info'>
+<p>How about leaving some helpful feedback??? I'd really like to read any comments, reactions, thoughts, or rants you might have... And it's completely anonymous if you wish! </p>
+<a href="{% url 'sitedata:feedback_add' None url=page_url|encode_safe %}" style='color: #F00; border: 1px #000;'><strong>Just drop some lines here.</strong></a>
+</div></div>
+{% endblock FFEEDBACK %}
 <hr>
 <p>&copy; Harshvardhan Pandit</p>
 <small>harshp.com - the project</small>

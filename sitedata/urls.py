@@ -7,16 +7,37 @@ sitedataurlpatterns = patterns(
     '',
     # TAG INDEX
     url(
-        r'^$',
+        r'^tags/$',
         'sitedata.views.tag_index',
-        name='tag_index'
+        name='tag_index',
     ),
 
     # TAG
     url(
-        r'^(?P<tagname>[\w-]+)/$',
+        r'^tags/(?P<tagname>[\w-]+)/$',
         'sitedata.views.tag',
-        name='tagname'
+        name='tagname',
+    ),
+
+    # FEEDBACK INDEX
+    url(
+        r'^feedback/$',
+        'sitedata.views.feedback_index',
+        name='feedback_index',
+    ),
+
+    # FEEDBACK
+    url(
+        r'^feedback/(?P<feedback_no>[\d]+)/$',
+        'sitedata.views.feedback',
+        name='feedback',
+    ),
+
+    # ADD FEEDBACK
+    url(
+        r'^feedback/add_new/(?P<url>.*|)/$',
+        'sitedata.views.feedback_add',
+        name='feedback_add',
     ),
 )
 

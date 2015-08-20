@@ -6,6 +6,8 @@
 
 {% block HEADER %}{{ tag.tagname }}{% endblock HEADER %}
 
+{% block THEAD %}<a href="{% url 'sitedata:tag_index' %}">tags</a>{% endblock THEAD %}
+
 {% block CONTENT %}
 <div class='container centertext'>
 

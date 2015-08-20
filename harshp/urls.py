@@ -1,5 +1,7 @@
 """root urls for harshp
 """
+
+from adminurls import urlpatterns as adminurlspatterns
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 import os
@@ -25,9 +27,7 @@ urlpatterns = patterns(
         name='privacypolicy'
     ),
 
-
-
-    url(r'^tags/', include('sitedata.urls')),
+    url(r'', include('sitedata.urls')),
 
     # apps
     url(r'', include('blog.urls')),
@@ -39,6 +39,8 @@ urlpatterns = patterns(
     url(r'', include('friends.urls')),
     url(r'', include('hobbies.urls')),
 )
+
+urlpatterns += adminurlspatterns
 
 # if DEBUG is True it will be served automatically
 if settings.DEBUG is False and settings.MODE == 'local':

@@ -47,7 +47,7 @@ img {
 
 {% block EBODY %}
  <div class="pageheader">
- <h1><p id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</p></h1><h3><a href="{% url 'sitedata:tag_index' %}">tags</a> from <a href="{% url 'home' %}">harshp.com</a></h3></div>
+ <h1><p id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</p></h1><h3>{% block THEAD %}{%endblock THEAD %} for <a href="{% url 'home' %}">harshp.com</a></h3></div>
  <hr>
     <div class='container'>
   <div id='socialshare'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div>

@@ -3,6 +3,7 @@
 from django import template
 from django.contrib.sites.models import Site
 from django.utils import timezone
+from urllib2 import quote
 
 register = template.Library()
 
@@ -60,3 +61,10 @@ def classname(obj):
     """
     classname = obj.__class__.__name__
     return classname
+
+
+@register.filter
+def encode_safe(url):
+    """encode urls for safely passing as parameters
+    """
+    return quote(url)

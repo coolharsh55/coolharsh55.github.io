@@ -14,6 +14,10 @@ urlpatterns = patterns(
         include('ckeditor.urls')
     ),
     url(
+        r'^redactor/',
+        include('redactor.urls')
+    ),
+    url(
         r'^doc/',
         include('django.contrib.admindocs.urls')
     ),

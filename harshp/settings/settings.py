@@ -25,6 +25,9 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+REDACTOR_OPTIONS = {'lang': 'en'}
+REDACTOR_UPLOAD = '/media/'
 # ####### CKEDITOR END ############
 
 
@@ -164,6 +167,7 @@ INSTALLED_APPS = (
     'meta',
     'storages',
     'subdomains',
+    'redactor',
     'robots',
 
     # my apps

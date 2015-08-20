@@ -4,7 +4,8 @@
 
 from django.contrib import admin
 
-from .models import Tag
+from sitedata.models import Tag
+from sitedata.models import Feedback
 
 
 @admin.register(Tag)
@@ -60,3 +61,61 @@ class TagAdmin(admin.ModelAdmin):
             obj.book_set.count() + obj.movie_set.count() + \
             obj.tvshow_set.count() + obj.game_set.count()
         return linked_objects
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+
+    """Admin for Feedback
+    List: date, title, name, replied
+    Order: date
+    Search: title
+    """
+    list_display = (
+        'published',
+        'title',
+        'user_name',
+        'reply_date',
+    )
+    ordering = (
+        '-published',
+        '-reply_date',
+    )
+    search_fields = (
+        'title',
+    )
+    readonly_fields = (
+        'id',
+        'published',
+        'title',
+        'text',
+        'user_name',
+        'user_email',
+        'reply_date',
+    )
+    view_on_site = True
+    fieldsets = (
+        ('About', {
+            'fields': (
+                'id',
+                'published',
+                'title',
+                'user_name',
+                'user_email',
+            )
+        }),
+        ('Contents', {
+            'classes': ('full-width',),
+            'description': 'source can be selected',
+            'fields': (
+                'text',
+            )
+        }),
+        ('Reply', {
+            'classes': ('collapse',),
+            'fields': (
+                'reply_date',
+                'reply',
+            )
+        }),
+    )

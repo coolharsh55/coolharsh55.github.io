@@ -6,6 +6,8 @@
 
 {% block HEADER %}tags{% endblock HEADER %}
 
+{% block THEAD %}<a href="{% url 'sitedata:tag_index' %}">tags</a>{% endblock THEAD %}
+
 {% block CSS %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/jqcloud.css' %}">
 {% endblock CSS %}
