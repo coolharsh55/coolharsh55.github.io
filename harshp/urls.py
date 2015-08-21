@@ -27,6 +27,17 @@ urlpatterns = patterns(
         name='privacypolicy'
     ),
 
+    url(
+        r'^errors/fancy404/$',
+        'harshp.views.handler404',
+        name='fancy404'
+    ),
+    url(
+        r'^errors/fancy500/$',
+        'harshp.views.handler500',
+        name='fancy500'
+    ),
+
     url(r'', include('sitedata.urls')),
 
     # apps
@@ -41,6 +52,8 @@ urlpatterns = patterns(
 )
 
 urlpatterns += adminurlspatterns
+handler404 = 'harshp.views.handler404'
+handler500 = 'harshp.views.handler500'
 
 # if DEBUG is True it will be served automatically
 if settings.DEBUG is False and settings.MODE == 'local':

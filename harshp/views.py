@@ -103,3 +103,25 @@ def privacypolicy(request):
         None
     """
     return render_to_response('harshp/privacypolicy.html')
+
+
+def handler404(request):
+    """custom 404 page
+    """
+    msg404 = request.build_absolute_uri()
+    return render_to_response(
+        'harshp/404.html',
+        {
+            'msg404': msg404,
+        },
+        status=404,
+    )
+
+
+def handler500(request):
+    """custom 500 page
+    """
+    return render_to_response(
+        'harshp/500.html',
+        status=500,
+    )
