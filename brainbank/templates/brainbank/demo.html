@@ -31,7 +31,7 @@
 {% if demo.headerimage %}<!-- image -->
 <br>
 <img src="{{demo.headerimage}}" class="img-responsive" alt="Responsive image"><br/>
-{% endif %}<small>published on {{ demo. published }}<br>modified on {{ demo.modified }}<br>
+{% endif %}<small>published on {{ demo.published }}<br>modified on {{ demo.modified }}<br>
 <strong>Part of '<a class='nodecoraet' href="{% url 'brainbank:idea' 'brainbank' demo.idea.slug %}" class="alert-link">{{demo.idea.title}}</a>'<br><br></strong>
 
 {{demo.body|safe}}<!-- body -->

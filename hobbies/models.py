@@ -317,13 +317,7 @@ class Game(models.Model):
             None
         """
         if not self._id:
-            # check if slug is a duplicate
-            dup = Game.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
+            self.slug = slugify(self.title)
             self.published = timezone.now()
         if self.date_end:
             if self.date_start < self.date_end:

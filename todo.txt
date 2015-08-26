@@ -94,3 +94,162 @@ sitedata
 - photography and photoshoot models
 
 --------------------------------------------------
+
+find
+29 matches across 14 files
+--------------------------
+
+/Volumes/Data/CODE/harshp.com/source/todo.txt:
+   82      + if self.date_end is None then read=False
+   83  - On movie.save:
+   84:     + # TODO: get movie cast and info from IMDb or other sites
+   85:     + # TODO: create celery task to load data from other sites
+   86  - On tvshow.save:
+   87:     + # TODO: get series info from IMDb or other sites
+   88:     + # TODO: create celery task for loading info from other sites
+   89:     + # TODO: if self.date_end is None then self.watched = False
+   90  - on game.save:
+   91:     + # TODO: load game info from some video game site
+   92:     + # TODO: create celery task to load game info from other sites
+   93:     + # TODO: if self.date_end is None then self.finished=False
+   94  - photography and photoshoot models
+   95  
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/admin/js/jquery.js:
+ 3064           }
+ 3065  
+ 3066:          // TODO: Move to normal caching system
+ 3067           match[0] = done++;
+ 3068  
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/admin/js/admin/DateTimeShortcuts.js:
+  111              // since style's width is in em, it'd be tough to calculate
+  112              // px value of it. let's use an estimated px for now
+  113:             // TODO: IE returns wrong value for findPosX when in rtl mode
+  114              //       (it returns as it was left aligned), needs to be fixed.
+  115              clock_box.style.left = findPosX(clock_link) - 110 + 'px';
+  ...
+  235              // since style's width is in em, it'd be tough to calculate
+  236              // px value of it. let's use an estimated px for now
+  237:             // TODO: IE returns wrong value for findPosX when in rtl mode
+  238              //       (it returns as it was left aligned), needs to be fixed.
+  239              cal_box.style.left = findPosX(cal_link) - 180 + 'px';
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/ckeditor/galleriffic/js/jquery-1.3.2.js:
+ 1810           }
+ 1811  
+ 1812:          // TODO: Move to normal caching system
+ 1813           match[0] = done++;
+ 1814  
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/reveal_js/js/reveal.js:
+  559               slide.style.width = slideWidth + 'px';
+  560  
+  561:              // TODO Backgrounds need to be multiplied when the slide
+  562               // stretches over multiple pages
+  563               var background = slide.querySelector( '.slide-background' );
+  ...
+ 1506           var size = getComputedSlideSize();
+ 1507  
+ 1508:          var slidePadding = 20; // TODO Dig this out of DOM
+ 1509  
+ 1510           // Layout the contents of the slides
+ ....
+ 4116   function onOverviewSlideClicked( event ) {
+ 4117  
+ 4118:      // TODO There's a bug here where the event listeners are not
+ 4119       // removed after deactivating the overview.
+ 4120       if( eventsAreBound && isOverview() ) {
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/reveal_js/plugin/markdown/markdown.js:
+  384       },
+  385  
+  386:      // TODO: Do these belong in the API?
+  387       processSlides: processSlides,
+  388       convertSlides: convertSlides,
+
+/Volumes/Data/CODE/harshp.com/source/harshp/static/reveal_js/plugin/print-pdf/print-pdf.js:
+   20  };
+   21  
+   22: // TODO
+   23  // Something is wrong with these config values. An input
+   24  // paper width of 1920px actually results in a 756px wide
+
+/Volumes/Data/CODE/harshp.com/source/harshp/templates/harshp/index.html:
+   27        <div class="panel-body">
+   28          <div class="list-group">
+   29:          <a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
+   30          </div>
+   31        </div>
+
+/Volumes/Data/CODE/harshp.com/source/hobbies/tests.py:
+  450          """test duplicates for games
+  451          """
+  452:         # TODO: figure out a way to test for duplicates
+  453          # without raising errors in atomic blocks
+  454  
+  ...
+  600          response = self.client.get(url, HTTP_HOST=HTTP_HOST)
+  601          self.assertEqual(response.status_code, 200)
+  602:         # TODO: check objects returned
+  603  
+  604      def test_hobby_index_url(self):
+
+/Volumes/Data/CODE/harshp.com/source/htmlcov/jquery.hotkeys.js:
+   63           }
+   64  
+   65:          // TODO: Need to make sure this works consistently across platforms
+   66           if ( event.metaKey && !event.ctrlKey && special !== "meta" ) {
+   67               modif += "meta+";
+
+/Volumes/Data/CODE/harshp.com/source/htmlcov/lifeX_models.html:
+  859  <p id='t298' class='pln'><span class='strut'>&nbsp;</span></p>
+  860  <p id='t299' class='pln'><span class='strut'>&nbsp;</span></p>
+  861: <p id='t300' class='pln'><span class='com'># TODO: reduce LifeX to empty class</span><span class='strut'>&nbsp;</span></p>
+  862  <p id='t301' class='pln'><span class='com'># class LifeX(models.Model):</span><span class='strut'>&nbsp;</span></p>
+  863  <p id='t302' class='pln'><span class='com'>#&nbsp; &nbsp;&nbsp; # basic post</span><span class='strut'>&nbsp;</span></p>
+
+/Volumes/Data/CODE/harshp.com/source/htmlcov/lifeX_views.html:
+  725  <p id='t230' class='pln'><span class='str'>&nbsp; &nbsp; &nbsp; &nbsp; Http404: lifeX week does not exist</span><span class='strut'>&nbsp;</span></p>
+  726  <p id='t231' class='pln'><span class='str'>&nbsp; &nbsp; &quot;&quot;&quot;</span><span class='strut'>&nbsp;</span></p>
+  727: <p id='t232' class='pln'>&nbsp; &nbsp; <span class='com'># TODO: show if the idea is marked for retry</span><span class='strut'>&nbsp;</span></p>
+  728  <p id='t233' class='stm run hide_run'>&nbsp; &nbsp; <span class='key'>try</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+  729  <p id='t234' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>week</span> <span class='op'>=</span> <span class='nam'>LifeXWeek</span><span class='op'>.</span><span class='nam'>objects</span><span class='op'>.</span><span class='nam'>get</span><span class='op'>(</span><span class='nam'>number</span><span class='op'>=</span><span class='nam'>week</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+  ...
+  769  <p id='t274' class='pln'><span class='str'>&nbsp; &nbsp; &nbsp; &nbsp; Http404: lifeX week, post, or idea does not exist</span><span class='strut'>&nbsp;</span></p>
+  770  <p id='t275' class='pln'><span class='str'>&nbsp; &nbsp; &quot;&quot;&quot;</span><span class='strut'>&nbsp;</span></p>
+  771: <p id='t276' class='pln'>&nbsp; &nbsp; <span class='com'># TODO: show other ideas and posts in this week</span><span class='strut'>&nbsp;</span></p>
+  772  <p id='t277' class='stm run hide_run'>&nbsp; &nbsp; <span class='key'>try</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
+  773  <p id='t278' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>week</span> <span class='op'>=</span> <span class='nam'>LifeXWeek</span><span class='op'>.</span><span class='nam'>objects</span><span class='op'>.</span><span class='nam'>get</span><span class='op'>(</span><span class='nam'>number</span><span class='op'>=</span><span class='nam'>week</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+  ...
+  819  <p id='t324' class='pln'><span class='str'>&nbsp; &nbsp; &nbsp; &nbsp; Http404: lifeX blog does not exist</span><span class='strut'>&nbsp;</span></p>
+  820  <p id='t325' class='pln'><span class='str'>&nbsp; &nbsp; &quot;&quot;&quot;</span><span class='strut'>&nbsp;</span></p>
+  821: <p id='t326' class='pln'>&nbsp; &nbsp; <span class='com'># TODO: pagination for blog posts</span><span class='strut'>&nbsp;</span></p>
+  822  <p id='t327' class='stm run hide_run'>&nbsp; &nbsp; <span class='nam'>blogposts</span> <span class='op'>=</span> <span class='nam'>LifeXBlog</span><span class='op'>.</span><span class='nam'>objects</span><span class='op'>.</span><span class='nam'>order_by</span><span class='op'>(</span><span class='str'>&#39;-published&#39;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+  823  <p id='t328' class='pln'>&nbsp; &nbsp; <span class='com'># contruct meta tags</span><span class='strut'>&nbsp;</span></p>
+
+/Volumes/Data/CODE/harshp.com/source/lifeX/models.py:
+  298  
+  299  
+  300: # TODO: reduce LifeX to empty class
+  301  # class LifeX(models.Model):
+  302  #     # basic post
+
+/Volumes/Data/CODE/harshp.com/source/lifeX/views.py:
+  230          Http404: lifeX week does not exist
+  231      """
+  232:     # TODO: show if the idea is marked for retry
+  233      try:
+  234          week = LifeXWeek.objects.get(number=week)
+  ...
+  274          Http404: lifeX week, post, or idea does not exist
+  275      """
+  276:     # TODO: show other ideas and posts in this week
+  277      try:
+  278          week = LifeXWeek.objects.get(number=week)
+  ...
+  324          Http404: lifeX blog does not exist
+  325      """
+  326:     # TODO: pagination for blog posts
+  327      blogposts = LifeXBlog.objects.order_by('-published')
+  328      # contruct meta tags

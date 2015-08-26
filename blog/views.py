@@ -21,22 +21,17 @@ def index(request):
     Raises:
         Http404: blog post not found
     """
-    try:
-        blogposts = BlogPost.objects.order_by('-published').values()
-        title = 'blog at harshp.com'
-        description = 'a blog with my thoughts and reflections'
-        keywords = ['blog', 'harshp.com', 'coolharsh55', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url
-        )
-
-    except BlogPost.DoesNotExist:
-        raise Http404('Blog Post does not exist...')
-
+    blogposts = BlogPost.objects.order_by('-published').values()
+    title = 'blog at harshp.com'
+    description = 'a blog with my thoughts and reflections'
+    keywords = ['blog', 'harshp.com', 'coolharsh55', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url
+    )
     return render_to_response(
         'blog/index.html', {
             'posts': blogposts,
@@ -60,19 +55,17 @@ def blogpost(request, blogpost):
     """
     try:
         blogpost = BlogPost.objects.get(slug=blogpost)
-        # contruct meta tags
-        title = blogpost.title
-        description = 'A blog post at harshp.com'
-        keywords = ['blog', ]
-        for tag in blogpost.tags.all():
-            keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title, description, keywords, url, blogpost.headerimage)
-
     except BlogPost.DoesNotExist:
         raise Http404('Blog Post does not exist...')
-
+    # contruct meta tags
+    title = blogpost.title
+    description = 'A blog post at harshp.com'
+    keywords = ['blog', ]
+    for tag in blogpost.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title, description, keywords, url, blogpost.headerimage)
     return render_to_response(
         'blog/blogpost.html',
         {

@@ -188,14 +188,7 @@ class LifeXCategory(models.Model):
         """
         if not self.pk:
             # check if slug is a duplicate
-            dup = LifeXCategory.objects.filter(name=self.name)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.name[:249 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.name[:250])
+            self.slug = slugify(self.name[:250])
         return super(LifeXCategory, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -283,14 +276,7 @@ class LifeXIdea(models.Model):
             self.retry = False
         if not self.idea_id:
             # check if slug is a duplicate
-            dup = LifeXIdea.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
+            self.slug = slugify(self.title)
             self.published = timezone.now()
         self.modified = timezone.now()
         super(LifeXIdea, self).save(*args, **kwargs)

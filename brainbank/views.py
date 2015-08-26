@@ -24,20 +24,17 @@ def index(request):
     Raises:
         Http404: brainbank idea does not exist
     """
-    try:
-        ideas = BrainBankIdea.objects.order_by('-published').all()
-        title = 'brainbank at harshp.com'
-        description = 'a brainbank of my ideas'
-        keywords = ['idea', 'brainbank', 'harshp.com', 'coolharsh55', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url
-        )
-    except BrainBankIdea.DoesNotExist:
-        raise Http404('Error loading Brainbank...')
+    ideas = BrainBankIdea.objects.order_by('-published').all()
+    title = 'brainbank at harshp.com'
+    description = 'a brainbank of my ideas'
+    keywords = ['idea', 'brainbank', 'harshp.com', 'coolharsh55', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url
+    )
     return render_to_response(
         'brainbank/index.html',
         {
@@ -66,19 +63,19 @@ def brainbank_idea(request, idea):
     """
     try:
         idea = BrainBankIdea.objects.get(slug=idea)
-        # contruct meta tags
-        title = idea.title
-        description = 'A brainbank idea at harshp.com'
-        keywords = ['idea', 'brainbank', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
     except BrainBankIdea.DoesNotExist:
         raise Http404('Brainbank Idea does not exist...')
+    # contruct meta tags
+    title = idea.title
+    description = 'A brainbank idea at harshp.com'
+    keywords = ['idea', 'brainbank', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'brainbank/idea.html',
         {
@@ -108,21 +105,21 @@ def brainbank_demo(request, idea, demo):
     """
     try:
         demo = BrainBankDemo.objects.get(slug=demo)
-        # contruct meta tags
-        title = demo.title
-        description = 'A brainbank idea demo at harshp.com'
-        keywords = ['brainbank', 'idea', 'demo', ]
-        # for tag in demo.tags.all():
-        # 	keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
     except BrainBankDemo.DoesNotExist:
         raise Http404('Brainbank Idea Demo does not exist...')
+    # contruct meta tags
+    title = demo.title
+    description = 'A brainbank idea demo at harshp.com'
+    keywords = ['brainbank', 'idea', 'demo', ]
+    for tag in demo.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'brainbank/demo.html',
         {

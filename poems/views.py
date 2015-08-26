@@ -19,21 +19,17 @@ def index(request):
     Raises:
         Http404: poem not found
     """
-    try:
-        poemposts = Poem.objects.order_by('-published').values()
-        title = 'poems at harshp.com'
-        description = 'poems composed and dreamed up by me'
-        keywords = ['poem', 'harshp.com', 'coolharsh55', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url
-        )
-    except Poem.DoesNotExist:
-        raise Http404('Poem Post does not exist...')
-
+    poemposts = Poem.objects.order_by('-published').values()
+    title = 'poems at harshp.com'
+    description = 'poems composed and dreamed up by me'
+    keywords = ['poem', 'harshp.com', 'coolharsh55', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url
+    )
     return render_to_response(
         'poems/index.html',
         {
@@ -58,23 +54,22 @@ def poem(request, poem):
     """
     try:
         poempost = Poem.objects.get(slug=poem)
-        # contruct meta tags
-        title = poempost.title
-        description = 'A beautiful poem at harshp.com'
-        keywords = ['poem', ]
-        for tag in poempost.tags.all():
-            keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-            poempost.headerimage
-        )
     except Poem.DoesNotExist:
         raise Http404('Poem Post does not exist...')
-
+    # contruct meta tags
+    title = poempost.title
+    description = 'A beautiful poem at harshp.com'
+    keywords = ['poem', ]
+    for tag in poempost.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+        poempost.headerimage
+    )
     return render_to_response(
         'poems/poem.html',
         {

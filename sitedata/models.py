@@ -57,10 +57,11 @@ class Tag(models.Model):
             None
         """
         self.slug = slugify(self.tagname)
-        self.count = 0
-        for x in Tag.__dict__:
-            if x.endswith('_set'):
-                self.count += getattr(self, x).count()
+        if self.pk:
+            self.count = 0
+            for x in Tag.__dict__:
+                if x.endswith('_set'):
+                    self.count += getattr(self, x).count()
 
         return super(Tag, self).save(*args, **kwargs)
 
@@ -68,7 +69,7 @@ class Tag(models.Model):
         """return url for this object"""
         return reverse(
             viewname='sitedata:tagname',
-            subdomain='www',
+            subdomain=None,
             kwargs={'tagname': self.slug, })
 
 """
@@ -128,7 +129,6 @@ class Feedback(models.Model):
         """save feedback to database
         """
         self.published = timezone.now()
-        print self.reply_date, self.reply
         if self.reply_date is None:
             if self.reply != '' and self.reply is not None:
                 self.reply_date = timezone.now()
@@ -140,5 +140,5 @@ class Feedback(models.Model):
         """return url for this object"""
         return reverse(
             viewname='sitedata:feedback',
-            subdomain='www',
+            subdomain=None,
             kwargs={'feedback_no': self.id, })

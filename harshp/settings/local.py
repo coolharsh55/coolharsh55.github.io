@@ -1,3 +1,8 @@
+"""local dev config for harshp.com
+
+"""
+
+from .base.base import *
 import os
 
 DEBUG = True
@@ -14,8 +19,6 @@ else:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = ''
 
-SECRET_KEY = os.environ.get('HARSHP_SECRET_KEY', '')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -26,3 +29,13 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+import sys
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    # Covers regular testing and django-coverage
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DEBUG = False
+    TEST_RUNNER = 'django_slowtests.DiscoverSlowestTestsRunner'
+    NUM_SLOW_TESTS = 100
+    import logging
+    logging.disable(logging.CRITICAL)

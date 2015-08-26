@@ -28,21 +28,18 @@ def index(request):
     Raises:
         Http404: lifeX week does not exist
     """
-    try:
-        latest_week = LifeXWeek.objects.latest('number')
-        # contruct meta tags
-        title = 'Life Experiments'
-        description = 'life and experiments at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
-    except LifeXWeek.DoesNotExist:
-        raise Http404('Error loading LifeX module...')
+    latest_week = LifeXWeek.objects.latest('number')
+    # contruct meta tags
+    title = 'Life Experiments'
+    description = 'life and experiments at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/index.html',
         {
@@ -67,21 +64,18 @@ def ideas(request):
     Raises:
         Http404: idea does not exist
     """
-    try:
-        categories = LifeXCategory.objects.order_by('name')
-        # contruct meta tags
-        title = 'Life Experiment Ideas'
-        description = 'lifeX experiment ideas at harshp.com'
-        keywords = ['lifeX', 'experiments', 'idea', 'life', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
-    except LifeXCategory.DoesNotExist:
-        raise Http404('Error retrieving LifeX Ideas...')
+    categories = LifeXCategory.objects.order_by('name')
+    # contruct meta tags
+    title = 'Life Experiment Ideas'
+    description = 'lifeX experiment ideas at harshp.com'
+    keywords = ['lifeX', 'experiments', 'idea', 'life', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/ideas.html',
         {
@@ -110,19 +104,19 @@ def category(request, category):
     """
     try:
         category = LifeXCategory.objects.get(slug=category)
-        # contruct meta tags
-        title = category.name
-        description = 'A collection of lifeX ideas at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', 'idea', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
     except LifeXCategory.DoesNotExist:
         raise Http404('Life Experiment Idea Category does not exist...')
+    # contruct meta tags
+    title = category.name
+    description = 'A collection of lifeX ideas at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', 'idea', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/category.html',
         {
@@ -153,20 +147,23 @@ def idea(request, category, idea):
         Http404: lifeX idea does not exist
     """
     try:
-        idea = LifeXIdea.objects.get(slug=idea)
-        # contruct meta tags
-        title = idea.title
-        description = 'A lifeX idea at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', 'idea', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
+        category = LifeXCategory.objects.get(slug=category)
+        idea = LifeXIdea.objects.get(category=category, slug=idea)
     except LifeXIdea.DoesNotExist:
         raise Http404('Life Experiment Idea does not exist...')
+    except LifeXCategory.DoesNotExist:
+        raise Http404('Life Experiment Idea does not exist...')
+    # contruct meta tags
+    title = idea.title
+    description = 'A lifeX idea at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', 'idea', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/idea.html',
         {
@@ -193,21 +190,18 @@ def experiments(request):
     Raises:
         Http404: lifeX week does not exist
     """
-    try:
-        weeks = LifeXWeek.objects.order_by('-number')
-        # contruct meta tags
-        title = 'Life Experiment Weeks'
-        description = 'All the weeks of lifeX at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', 'idea', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
-    except LifeXWeek.DoesNotExist:
-        raise Http404('Error retrieving LifeX Experiments...')
+    weeks = LifeXWeek.objects.order_by('-number')
+    # contruct meta tags
+    title = 'Life Experiment Weeks'
+    description = 'All the weeks of lifeX at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', 'idea', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/experiments.html',
         {
@@ -238,19 +232,19 @@ def week(request, week):
     # TODO: show if the idea is marked for retry
     try:
         week = LifeXWeek.objects.get(number=week)
-        # contruct meta tags
-        title = str(week)
-        description = 'A lifeX week at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', 'idea', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
     except LifeXWeek.DoesNotExist:
         raise Http404('Life Experiment Week does not exist...')
+    # contruct meta tags
+    title = str(week)
+    description = 'A lifeX week at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', 'idea', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/week.html',
         {
@@ -284,25 +278,25 @@ def post(request, week, idea):
         week = LifeXWeek.objects.get(number=week)
         idea = LifeXIdea.objects.get(slug=idea)
         post = LifeXPost.objects.get(week=week, idea=idea)
-        # contruct meta tags
-        title = post.title
-        description = 'A lifeX post at harshp.com'
-        keywords = ['lifeX', 'experiments', 'life', 'post', ]
-        for tag in post.tags.all():
-            keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-        )
     except (
         LifeXPost.DoesNotExist,
         LifeXWeek.DoesNotExist,
         LifeXIdea.DoesNotExist,
     ):
         raise Http404('Life Experiment Post does not exist...')
+    # contruct meta tags
+    title = post.title
+    description = 'A lifeX post at harshp.com'
+    keywords = ['lifeX', 'experiments', 'life', 'post', ]
+    for tag in post.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+    )
     return render_to_response(
         'lifeX/post.html',
         {
@@ -330,22 +324,19 @@ def blog(request):
         Http404: lifeX blog does not exist
     """
     # TODO: pagination for blog posts
-    try:
-        blogposts = LifeXBlog.objects.order_by('-published')
-        # contruct meta tags
-        title = 'LifeX Blog'
-        description = 'LifeX blog at harshp.com'
-        keywords = ['blog', 'lifeX', 'experiments', 'life', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-            None
-        )
-    except LifeXBlog.DoesNotExist:
-        raise Http404('Error retrieving LifeX Blog...')
+    blogposts = LifeXBlog.objects.order_by('-published')
+    # contruct meta tags
+    title = 'LifeX Blog'
+    description = 'LifeX blog at harshp.com'
+    keywords = ['blog', 'lifeX', 'experiments', 'life', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+        None
+    )
     return render_to_response(
         'lifeX/blog.html',
         {
@@ -374,22 +365,22 @@ def blogpost(request, blogpost):
     """
     try:
         blogpost = LifeXBlog.objects.get(slug=blogpost)
-        # contruct meta tags
-        title = blogpost.title
-        description = 'A Life Experiments blog post at harshp.com'
-        keywords = ['blog', 'lifeX', 'experiments', 'life', ]
-        for tag in blogpost.tags.all():
-            keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-            blogpost.headerimage
-        )
     except LifeXBlog.DoesNotExist:
         raise Http404('Blog Post does not exist...')
+    # contruct meta tags
+    title = blogpost.title
+    description = 'A Life Experiments blog post at harshp.com'
+    keywords = ['blog', 'lifeX', 'experiments', 'life', ]
+    for tag in blogpost.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+        blogpost.headerimage
+    )
     return render_to_response(
         'lifeX/blogpost.html',
         {

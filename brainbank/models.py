@@ -197,7 +197,7 @@ class BrainBankDemo(models.Model):
         max_length=50,
         unique=True
     )
-    tag = models.ManyToManyField('sitedata.Tag', blank=True)
+    tags = models.ManyToManyField('sitedata.Tag', blank=True)
     idea = models.ForeignKey(BrainBankIdea)
     published = models.DateTimeField()
     modified = models.DateTimeField(blank=True,)
@@ -240,14 +240,13 @@ class BrainBankDemo(models.Model):
         """
         if not self.id:
             # check if slug is a duplicate
-            dup = BrainBankDemo.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
+            nos = BrainBankDemo.objects.filter(title=self.title).count()
+            if nos > 0:
+                reduct_len = 50 - len(str(nos + 1))
+                slugtitle = self.title[:reduct_len] + str(nos + 1)
             else:
-                self.slug = slugify(self.idea.title + '-' + self.title)[:50]
+                slugtitle = self.title[:50]
+            self.slug = slugify(slugtitle)
         self.modified = timezone.now()
         return super(BrainBankDemo, self).save(*args, **kwargs)
 

@@ -1,3 +1,9 @@
+"""production settings config for harshp.com
+
+"""
+
+from .base.base import *
+
 import os
 
 DEBUG = False

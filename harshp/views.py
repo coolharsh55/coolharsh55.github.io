@@ -1,7 +1,6 @@
 """views for harshp
 """
 
-from django.http import Http404
 from django.shortcuts import render_to_response
 
 from blog.models import BlogPost
@@ -33,39 +32,26 @@ def home(request):
     Raises:
         Http404: error retrieving posts
     """
-    try:
-        blogs = BlogPost.objects.order_by('-published')[:3]
-        stories = StoryPost.objects.order_by('-published')[:3]
-        poems = Poem.objects.order_by('-published')[:3]
-        articles = Article.objects.order_by('-published')[:3]
-        brainbank_posts = BrainBankPost.objects.order_by('-published')[:3]
-        lifexweek = LifeXWeek.objects.latest('number')
-        lifexposts = LifeXBlog.objects.order_by('-published')[:3]
-        books = Book.objects.filter(date_end=None, finished=False)[:5]
-        movies = Movie.objects.order_by('-date_seen')[:5]
-        tvshows = TVShow.objects.order_by('-date_start')[:5]
-        games = Game.objects.order_by('-date_start')[:5]
-        description = """
-            The personal website of Harshvardhan Pandit (coolharsh55)"""
-        keywords = ['harshp.com', 'blog', 'stories', 'poems', ]
-        meta = create_meta(
-            'harshp.com',
-            description,
-            keywords,
-            url=request.build_absolute_uri(),
-        )
-    except (BlogPost.DoesNotExist,
-            StoryPost.DoesNotExist,
-            Poem.DoesNotExist,
-            Article.DoesNotExist,
-            LifeXWeek.DoesNotExist,
-            LifeXBlog.DoesNotExist,
-            BrainBankPost.DoesNotExist,
-            Book.DoesNotExist,
-            Movie.DoesNotExist,
-            TVShow.DoesNotExist,
-            Game.DoesNotExist):
-        raise Http404('Error retrieving website data...')
+    blogs = BlogPost.objects.order_by('-published')[:3]
+    stories = StoryPost.objects.order_by('-published')[:3]
+    poems = Poem.objects.order_by('-published')[:3]
+    articles = Article.objects.order_by('-published')[:3]
+    brainbank_posts = BrainBankPost.objects.order_by('-published')[:3]
+    lifexweek = LifeXWeek.objects.latest('number')
+    lifexposts = LifeXBlog.objects.order_by('-published')[:3]
+    books = Book.objects.filter(date_end=None, finished=False)[:5]
+    movies = Movie.objects.order_by('-date_seen')[:5]
+    tvshows = TVShow.objects.order_by('-date_start')[:5]
+    games = Game.objects.order_by('-date_start')[:5]
+    description = """
+        The personal website of Harshvardhan Pandit (coolharsh55)"""
+    keywords = ['harshp.com', 'blog', 'stories', 'poems', ]
+    meta = create_meta(
+        'harshp.com',
+        description,
+        keywords,
+        url=request.build_absolute_uri(),
+    )
     return render_to_response(
         'harshp/index.html',
         {

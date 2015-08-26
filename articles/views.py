@@ -21,20 +21,17 @@ def index(request):
     Raises:
         Http404: article not found
     """
-    try:
-        articles = Article.objects.order_by('-published').values()
-        title = 'articles at harshp.com'
-        description = 'articles written by me'
-        keywords = ['article', 'harshp.com', 'coolharsh55', ]
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url
-        )
-    except Article.DoesNotExist:
-        raise Http404('Article does not exist...')
+    articles = Article.objects.order_by('-published').values()
+    title = 'articles at harshp.com'
+    description = 'articles written by me'
+    keywords = ['article', 'harshp.com', 'coolharsh55', ]
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url
+    )
     return render_to_response(
         'articles/index.html',
         {
@@ -60,22 +57,22 @@ def article(request, article):
     """
     try:
         article = Article.objects.get(slug=article)
-        # contruct meta tags
-        title = article.title
-        description = 'An article at harshp.com'
-        keywords = ['article', ]
-        for tag in article.tags.all():
-            keywords.append(tag.tagname)
-        url = request.build_absolute_uri()
-        meta = create_meta(
-            title,
-            description,
-            keywords,
-            url,
-            article.headerimage
-        )
     except Article.DoesNotExist:
         raise Http404('Article does not exist...')
+    # contruct meta tags
+    title = article.title
+    description = 'An article at harshp.com'
+    keywords = ['article', ]
+    for tag in article.tags.all():
+        keywords.append(tag.tagname)
+    url = request.build_absolute_uri()
+    meta = create_meta(
+        title,
+        description,
+        keywords,
+        url,
+        article.headerimage
+    )
     return render_to_response(
         'articles/article.html',
         {
