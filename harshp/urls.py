@@ -4,6 +4,7 @@
 from adminurls import urlpatterns as adminurlspatterns
 from django.conf.urls import patterns, include, url
 from django.conf import settings
+from .settings.local import STATIC_ROOT
 import os
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
@@ -63,7 +64,7 @@ if settings.DEBUG is False and settings.MODE == 'local':
             r'^static/(?P<path>.*)$',
             'django.views.static.serve',
             {
-                'document_root': settings.STATIC_ROOT
+                'document_root': STATIC_ROOT
             }
         ),
     )
