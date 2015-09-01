@@ -69,7 +69,7 @@ def install_dependencies():
     """install dependencies via pip
     """
     with cd(project_dir):
-        run("sudo pip install -r requirements.txt")
+        run("sudo pip install -r harshp/requirements/requirements_prod.txt")
 
 
 def deploy():
