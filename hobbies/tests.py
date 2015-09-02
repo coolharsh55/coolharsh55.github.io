@@ -37,8 +37,7 @@ class BookTest(TestCase):
         """
         self.client = None
         self.seeder = None
-        for book in Book.objects.all():
-            book.delete()
+        Book.objects.all().delete()
 
     def test_save(self):
         """test saving books
@@ -70,6 +69,15 @@ class BookTest(TestCase):
         self.assertEqual(book1.title, book2.title)
         self.assertEqual(book1.date_start, book2.date_start)
         self.assertNotEqual(book1.slug, book2.slug)
+
+    def test_date_end_before_date_start(self):
+        """test that date end can never be before date start
+        """
+        book = Book.objects.all()[0]
+        book.date_end = time_now()
+        book.date_start = time_now()
+        book.save()
+        self.assertEqual(book.date_start, book.date_end)
 
     def test_str(self):
         """test str representation of book
@@ -168,8 +176,7 @@ class MovieTest(TestCase):
         """
         self.client = None
         self.seeder = None
-        for movie in Movie.objects.all():
-            movie.delete()
+        Movie.objects.all().delete()
 
     def test_save(self):
         """test saving movies
@@ -296,8 +303,7 @@ class TVShowTest(TestCase):
         """
         self.client = None
         self.seeder = None
-        for tvshow in TVShow.objects.all():
-            tvshow.delete()
+        TVShow.objects.all().delete()
 
     def test_save(self):
         """test saving tvshows
@@ -314,6 +320,15 @@ class TVShowTest(TestCase):
         self.assertEqual(len(tvshow.tags.all()), 0)
         self.assertFalse(tvshow.finished)
         tvshow.save()
+
+    def test_date_end_before_date_start(self):
+        """test that date end can never be before date start
+        """
+        tvshow = TVShow.objects.all()[0]
+        tvshow.date_end = time_now()
+        tvshow.date_start = time_now()
+        tvshow.save()
+        self.assertEqual(tvshow.date_start, tvshow.date_end)
 
     def test_duplicates(self):
         """test duplicates for tvshows
@@ -427,8 +442,7 @@ class GameTest(TestCase):
         """
         self.client = None
         self.seeder = None
-        for game in Game.objects.all():
-            game.delete()
+        Game.objects.all().delete()
 
     def test_save(self):
         """test saving games
@@ -445,6 +459,15 @@ class GameTest(TestCase):
         self.assertEqual(len(game.tags.all()), 0)
         self.assertFalse(game.finished)
         game.save()
+
+    def test_date_end_before_date_start(self):
+        """test that date end can never be before date start
+        """
+        game = Game.objects.all()[0]
+        game.date_end = time_now()
+        game.date_start = time_now()
+        game.save()
+        self.assertEqual(game.date_start, game.date_end)
 
     def test_duplicates(self):
         """test duplicates for games
