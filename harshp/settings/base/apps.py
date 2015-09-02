@@ -41,4 +41,15 @@ HARSHP_APPS = (
     'hobbies',
 )
 
-INSTALLED_APPS = DJANGO_APPS + ADMIN_APPS + THIRD_PARTY_APPS + HARSHP_APPS
+FILER_APPS = (
+    # django-filer
+    'easy_thumbnails',
+    'filer',
+    'mptt',
+)
+
+INSTALLED_APPS = DJANGO_APPS + \
+    ADMIN_APPS + \
+    THIRD_PARTY_APPS + \
+    HARSHP_APPS + \
+    FILER_APPS

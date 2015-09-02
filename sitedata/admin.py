@@ -2,10 +2,12 @@
     Tag: TagAdmin
 """
 
+from django import forms
 from django.contrib import admin
 
 from sitedata.models import Tag
 from sitedata.models import Feedback
+from sitedata.models import FileUpload
 
 
 @admin.register(Tag)
@@ -119,3 +121,21 @@ class FeedbackAdmin(admin.ModelAdmin):
             )
         }),
     )
+
+
+class FileUploadForm(forms.ModelForm):
+
+    """form for file upload
+    """
+    class Meta:
+        model = FileUpload
+        exclude = ['pk', ]
+
+
+@admin.register(FileUpload)
+class FileUploadAdmin(admin.ModelAdmin):
+
+    """admin class for File Upload
+    """
+
+    form = FileUploadForm

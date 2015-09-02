@@ -21,6 +21,8 @@ from hobbies.models import Movie
 from hobbies.models import TVShow
 from hobbies.models import Game
 
+HTTP_HOST = 'www.example.com'
+
 
 class SiteViewTest(TestCase):
 
@@ -91,6 +93,22 @@ class HomepageTest(TestCase):
         self.seeder.add_entity(Game, 10)
         self.seeder.execute()
 
+    def tearDown(self):
+        """clean after tests
+        """
+        BlogPost.objects.all().delete()
+        Article.objects.all().delete()
+        Poem.objects.all().delete()
+        StoryPost.objects.all().delete()
+        BrainBankIdea.objects.all().delete()
+        BrainBankPost.objects.all().delete()
+        LifeXWeek.objects.all().delete()
+        LifeXBlog.objects.all().delete()
+        Book.objects.all().delete()
+        Movie.objects.all().delete()
+        TVShow.objects.all().delete()
+        Game.objects.all().delete()
+
     def test_url(self):
         """test homepage url
         """
@@ -105,5 +123,39 @@ class HomepageTest(TestCase):
         url = reverse(
             viewname='home',
             subdomain=None)
-        response = self.client.get(url)
+        response = self.client.get(url, HTTP_HOST=HTTP_HOST)
         self.assertEqual(response.status_code, 200)
+
+
+class ErrorPageTest(TestCase):
+
+    """tests for error pages and error handlers
+    """
+
+    def test_404_url(self):
+        """test 404 page
+        """
+        client = Client()
+        url = reverse(viewname='home')
+        url += 'randomstring/'
+        self.assertIsNotNone(url)
+        response = client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_404_fancy_view(self):
+        """test 404 fancy url and view
+        """
+        client = Client()
+        url = reverse(viewname='fancy404')
+        self.assertIsNotNone(url)
+        response = client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_500_fancy_url(self):
+        """test 500 fancy url and view
+        """
+        client = Client()
+        url = reverse(viewname='fancy500')
+        self.assertIsNotNone(url)
+        response = client.get(url)
+        self.assertEqual(response.status_code, 500)

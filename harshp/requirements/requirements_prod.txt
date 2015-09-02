@@ -7,7 +7,10 @@
 boto==2.38.0
 django-bootstrap3==6.2.2
 django-ckeditor==4.5.1
+django-filer==0.9.12
 django-meta==0.3.1
+django-mptt==0.7.4        # via django-filer
+django-polymorphic==0.7.1  # via django-filer
 django-robots==1.1
 django-storages==1.1.8
 django-subdomains==2.0.4
@@ -15,10 +18,12 @@ django-suit==0.2.14
 django-wysiwyg-redactor==0.4.9
 django==1.8.4
 docutils==0.12
+easy-thumbnails==2.2      # via django-filer
 mysql-python==1.2.5
 pillow==2.9.0
 pytz==2015.4
+unidecode==0.4.18         # via django-filer
 
 # The following packages are commented out because they are
 # considered to be unsafe in a requirements file:
-# setuptools==18.2          # via django-wysiwyg-redactor
+# setuptools==18.2          # via django-polymorphic, django-wysiwyg-redactor

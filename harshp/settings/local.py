@@ -12,12 +12,13 @@ ALLOWED_HOSTS = ['*', ]
 STATIC_URL = '/static/'
 if DEBUG:
     STATIC_ROOT = ''
+    MEDIA_ROOT = ''
 else:
     PROJECT_PATH = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
-    STATIC_ROOT = PROJECT_PATH + '/static/'
+    STATIC_ROOT = ''  # PROJECT_PATH + '/static/'
+    MEDIA_ROOT = PROJECT_PATH + '/media/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = ''
 
 DATABASES = {
     'default': {

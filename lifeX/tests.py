@@ -52,16 +52,11 @@ class LifeXWeekTest(TestCase):
     def tearDown(self):
         """clean up after tests
         """
-        for week in LifeXWeek.objects.all():
-            week.delete()
-        for category in LifeXCategory.objects.all():
-            category.delete()
-        for idea in LifeXIdea.objects.all():
-            idea.delete()
-        for post in LifeXPost.objects.all():
-            post.delete()
-        for blogpost in LifeXBlog.objects.all():
-            blogpost.delete()
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_save(self):
         """test saving weeks
@@ -196,16 +191,11 @@ class LifeXCategoryTest(TestCase):
     def tearDown(self):
         """clean up after tests
         """
-        for week in LifeXWeek.objects.all():
-            week.delete()
-        for category in LifeXCategory.objects.all():
-            category.delete()
-        for idea in LifeXIdea.objects.all():
-            idea.delete()
-        for post in LifeXPost.objects.all():
-            post.delete()
-        for blogpost in LifeXBlog.objects.all():
-            blogpost.delete()
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_save(self):
         """test saving categories
@@ -316,16 +306,11 @@ class LifeXIdeaTest(TestCase):
     def tearDown(self):
         """clean up after tests
         """
-        for week in LifeXWeek.objects.all():
-            week.delete()
-        for category in LifeXCategory.objects.all():
-            category.delete()
-        for idea in LifeXIdea.objects.all():
-            idea.delete()
-        for post in LifeXPost.objects.all():
-            post.delete()
-        for blogpost in LifeXBlog.objects.all():
-            blogpost.delete()
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_save(self):
         """test saving ideas
@@ -448,34 +433,29 @@ class LifeXPostTest(TestCase):
         self.seeder = Seed.seeder()
         self.seeder.add_entity(LifeXWeek, 10)
         self.seeder.add_entity(LifeXCategory, 10)
-        # self.seeder.execute()
-        # self.seeder = Seed.seeder()
         self.seeder.add_entity(LifeXIdea, 10)
         self.seeder.execute()
+        weeks = LifeXWeek.objects.all()
+        ideas = LifeXIdea.objects.all()
         for i in range(0, 10):
             post = LifeXPost()
             post.title = 'random title #%s' % i
             post.body = 'random body'
             post.published = time_now()
-            post.week = LifeXWeek.objects.all()[
-                randint(0, LifeXWeek.objects.all().count() - 1)]
-            post.idea = LifeXIdea.objects.all()[
-                randint(0, LifeXIdea.objects.all().count() - 1)]
+            post.week = weeks[
+                randint(0, len(weeks) - 1)]
+            post.idea = ideas[
+                randint(0, len(ideas) - 1)]
             post.save()
 
     def tearDown(self):
         """clean up after tests
         """
-        for week in LifeXWeek.objects.all():
-            week.delete()
-        for category in LifeXCategory.objects.all():
-            category.delete()
-        for idea in LifeXIdea.objects.all():
-            idea.delete()
-        for post in LifeXPost.objects.all():
-            post.delete()
-        for blogpost in LifeXBlog.objects.all():
-            blogpost.delete()
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_save(self):
         """test saving posts
@@ -483,10 +463,8 @@ class LifeXPostTest(TestCase):
         post = LifeXPost()
         post.name = 'somerandompostname'
         post.published = time_now()
-        post.idea = LifeXIdea.objects.all()[
-            randint(0, LifeXIdea.objects.all().count() - 1)]
-        post.week = LifeXWeek.objects.all()[
-            randint(0, LifeXWeek.objects.all().count() - 1)]
+        post.idea = LifeXIdea.objects.all()[0]
+        post.week = LifeXWeek.objects.all()[0]
         post.save()
         self.seeder.add_entity(Tag, 10)
         self.seeder.execute()
@@ -501,10 +479,8 @@ class LifeXPostTest(TestCase):
         post1 = LifeXPost()
         post1.name = 'somerandompostname'
         post1.published = time_now()
-        post1.idea = LifeXIdea.objects.all()[
-            randint(0, LifeXIdea.objects.all().count() - 1)]
-        post1.week = LifeXWeek.objects.all()[
-            randint(0, LifeXWeek.objects.all().count() - 1)]
+        post1.idea = LifeXIdea.objects.all()[0]
+        post1.week = LifeXWeek.objects.all()[0]
         post1.save()
         self.assertIsNotNone(post1.pk)
         self.assertIsNotNone(post1.slug)
@@ -652,6 +628,15 @@ class LifeXBlogTest(TestCase):
         self.seeder.execute()
         self.seeder.add_entity(LifeXBlog, 10)
         self.seeder.execute()
+
+    def tearDown(self):
+        """clean up after tests
+        """
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_save(self):
         """test saving blogs
@@ -810,16 +795,11 @@ class LifeXIndexTest(TestCase):
     def tearDown(self):
         """clean up after tests
         """
-        for week in LifeXWeek.objects.all():
-            week.delete()
-        for category in LifeXCategory.objects.all():
-            category.delete()
-        for idea in LifeXIdea.objects.all():
-            idea.delete()
-        for post in LifeXPost.objects.all():
-            post.delete()
-        for blogpost in LifeXBlog.objects.all():
-            blogpost.delete()
+        LifeXWeek.objects.all().delete()
+        LifeXCategory.objects.all().delete()
+        LifeXIdea.objects.all().delete()
+        LifeXPost.objects.all().delete()
+        LifeXBlog.objects.all().delete()
 
     def test_index_url(self):
         """test lifeX index url

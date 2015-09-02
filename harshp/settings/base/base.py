@@ -8,6 +8,7 @@ from admin import *
 from apps import *
 from bootstrap import *
 from editors import *
+from filer import *
 from logging import *
 from middleware import *
 from seo import *

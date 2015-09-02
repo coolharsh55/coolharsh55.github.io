@@ -5,8 +5,10 @@
 
 from django.db import models
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
 from django.utils import timezone
+
+from ckeditor.fields import RichTextField
+from filer.fields.file import FilerFileField
 from redactor.fields import RedactorField
 from subdomains.utils import reverse
 
@@ -142,3 +144,9 @@ class Feedback(models.Model):
             viewname='sitedata:feedback',
             subdomain=None,
             kwargs={'feedback_no': self.id, })
+
+
+class FileUpload(models.Model):
+
+    """file upload instance for admin"""
+    filefield = FilerFileField()

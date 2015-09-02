@@ -18,10 +18,17 @@ from fabric.api import local
 from fabric.api import run
 from fabric.api import env
 from fabric.api import cd
+from fabric.context_managers import settings
 
 env.hosts = ['bitnami@harshp.com']
 env.key_filename = '~/.ssh/harshp.pem'
 project_dir = "/opt/bitnami/apps/django/django_projects/harshp.com/"
+
+
+def test():
+    """testrun"""
+    print 'test'
+    local('./manage.py test harshp --keepdb')
 
 
 def prepare_deployment():
@@ -33,7 +40,25 @@ def prepare_deployment():
 def l_test():
     """local: run tests
     """
-    local('python manage.py test')
+    def run_stmt(module, db):
+        """construct the statement to be run"""
+        s = "coverage run -p --source={0} manage.py test {0} --{1}".format(
+            module, db)
+        print module
+        return s
+    with settings(warn_only=True):
+            # l_sync('test')
+        local(run_stmt('blog', "noinput"))
+        local(run_stmt('articles', 'keepdb'))
+        local(run_stmt('stories', 'keepdb'))
+        local(run_stmt('poems', 'keepdb'))
+        local(run_stmt('lifeX', 'keepdb'))
+        local(run_stmt('brainbank', 'keepdb'))
+        local(run_stmt('sitedata', 'keepdb'))
+        local(run_stmt('hobbies', 'keepdb'))
+        local(run_stmt('harshp', 'keepdb'))
+        local('coverage combine')
+        local('coverage html')
 
 
 def l_migrate():
@@ -41,6 +66,27 @@ def l_migrate():
     """
     local('python manage.py makemigrations')
     local('python manage.py migrate')
+
+
+def l_compile(mode='dev'):
+    """local: sync packages with requirements_dev.in
+    """
+    local('pip-compile harshp/requirements/requirements_%s.in' % mode)
+
+
+def l_sync(mode='dev'):
+    """local: sync packages with requirements_dev.in
+    """
+    l_compile(mode)
+    local('pip-sync harshp/requirements/requirements_%s.txt' % mode)
+
+
+def l_compile_all():
+    """local: sycn all packages with requirements_xxx.in
+    """
+    l_compile('dev')
+    l_compile('test')
+    l_compile('prod')
 
 
 def migrate():

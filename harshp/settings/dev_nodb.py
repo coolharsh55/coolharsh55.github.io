@@ -33,15 +33,14 @@ MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN + 'media/'
 MEDIA_ROOT = '/media/'
 
 # MySQL
-# DEV WITH SSH TUNNEL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'harshp_dot_com',
-        'USER': 'harshp',
-        'PASSWORD': os.environ.get('HARSHP_MYSQL_PASS', ''),
+        'USER': os.getenv('HARSHP_MYSQL_ID', 'harshp'),
+        'PASSWORD': os.getenv('HARSHP_MYSQL_PASS', ''),
         'HOST': '127.0.0.1',
-        'PORT': '33306',
+        'PORT': '3306',
     }
 }
 
