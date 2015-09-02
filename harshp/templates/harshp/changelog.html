@@ -21,6 +21,70 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v2-0-2015-09-02">
+<h2>v2.0 (2015-09-02)</h2>
+<div class="section" id="fix">
+<ul>
+<li><p class="first">Fixes #81 404/500 errors do not work in subdomains. [Harshvardhan
+Pandit]</p>
+<p>The subdomains have their own separate urls that do not get loaded if the subdomain is accessed directly, which is why the handlers for 404 and 500 are also not loaded. This is resolved by explicitly adding these handlers to the urls of every subdomain.</p>
+</li>
+<li><p class="first">Fixes #78 date_end gets reset to date_start. [Harshvardhan Pandit]</p>
+<p>Hobby models had a bug in save() whereby the condition to check if the starting date was after the ending date was checked the other way round. This caused the ending date to be reset to the starting date everytime the model was saved. Added tests to ensure that the save method works as expected.</p>
+</li>
+<li><p class="first">Fixes #82 feedback_add url does not work in prod. [Harshvardhan
+Pandit]</p>
+<p>The feedback_add url has an optional parameter for passing urls that can be blank. The misconfigured url regex required there to be two trailing slashes at the end, which caused the 404 error in prod. Fixed by omitting the trailing slash since the url itself contains a trailing slash when given.</p>
+</li>
+<li><p class="first">Fixes #80 fabfile.deploy incorrectr req file. [Harshvardhan Pandit]</p>
+<p>Fabfile deploy() uses the correct production requirements file at <cite>requirements/requirements_prod.txt</cite> instead of the old value.</p>
+</li>
+
+<li><p class="first">Django-filer as filebrowser, fabric sync scripts. [Harshvardhan
+Pandit]</p>
+<ol class="arabic simple">
+<li>Uses django-filer as the filebrowser through a dummy model called FileUpload in sitedata. The addition of this model has been disabled since there is no pk field in the admin form. The model contains a FileField used for file uploads.</li>
+<li>Fabric now has scripts for pip-tools compile and sync. Tests are now run individually for each module, and combined using coverage.</li>
+<li>Added dev_noaws and dev_nodb files for using dev settings without either aws or db (ssh tunnel).</li>
+<li>Updated tests for general bug-fixes and optimisations.</li>
+<li>The file testruns.txt contains (upto) 100 test runs with maximum time taken for execution. This is compiled from the individual tests run by coverage.</li>
+</ol>
+<p>Closes #6</p>
+</li>
+<li><p class="first">Custom 404 and 500 images. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Custom error pages for 404, 500. [Harshvardhan Pandit]</p>
+<p>Uses static images showing error code and message
+Closes #59 custom 404 page
+Closes #60 custom 500 page</p>
+</li>
+<li><p class="first">Added tests and various bugfixes. [Harshvardhan Pandit]</p>
+<p>Fixes #64 remove redundant exceptions in views
+Closes #65 add tests to every app, model and view
+Fixes #66 rename tag in BrainbankDemo to tags
+Fixes #67 remove unneccessary duplicate checks in save()
+Fixes #68 whitespace in demo published template tag
+Closes #69 delete context_processors file
+Closes #70 separate packages into different files
+Closes #71 use redactor WYSIWYG in feedback
+Fixes #72 update Tag count only after first save
+Fixes #73 subdomain for sitedata should be None
+Fixes #74 raise Http404 in tag instead of returning it
+Fixes #75 feedback url can be an empty string, not None
+Closes #76 separate settings file according to use
+Close #77 move requirements into harshp/requirements</p>
+</li>
+<li><p class="first">Anonymous Feedback, can be linked to any post. [Harshvardhan Pandit]</p>
+<p>Added Redactor WYSIWYG for feedback forms.
+Added Bootstrap validator by &#64;1000hz
+Added feedback message in site footer
+Added encode_safe tag for embedding urls in templates</p>
+<p>Changed sitedata urls to include models other than Tag</p>
+</li>
+</ul>
+</div>
+</div>
+
 <div class="section" id="v1-8.1-2015-08-18">
 <h2>v1.8.1 (2015-08-18)</h2>
 <ul class="simple">
