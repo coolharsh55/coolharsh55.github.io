@@ -99,7 +99,7 @@ def feedback_add(request, url=''):
         form = FeedbackForm()
         if len(url):
             form.fields['linked_post'].initial = unquote(url)
-        feedback_id = Feedback.objects.order_by('-published')[0].id + 1
+        feedback_id = Feedback.objects.all().count() + 1
         return render(
             request,
             'sitedata/feedback_add.html',
