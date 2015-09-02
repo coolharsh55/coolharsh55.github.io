@@ -35,7 +35,7 @@ sitedataurlpatterns = patterns(
 
     # ADD FEEDBACK
     url(
-        r'^feedback/add_new/(?P<url>.*)/$',
+        r'^feedback/add_new/(?P<url>.*)$',
         'sitedata.views.feedback_add',
         name='feedback_add',
     ),
