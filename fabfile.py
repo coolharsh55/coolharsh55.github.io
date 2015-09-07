@@ -106,9 +106,9 @@ def git_update():
     """update git master repo
     """
     with cd(project_dir):
-        run("sudo git checkout .")
-        run("sudo git checkout master")
-        run("sudo git pull")
+        run("git checkout .")
+        run("git checkout master")
+        run("git pull origin master")
 
 
 def install_dependencies():
