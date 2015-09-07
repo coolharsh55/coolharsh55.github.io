@@ -25,3 +25,5 @@ LOGGING = {
         },
     }
 }
+
+SERVER_EMAIL = 'djangoadmin@harshp.com'

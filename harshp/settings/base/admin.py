@@ -3,7 +3,7 @@
 """
 
 ADMINS = (
-    ('Harshvardhan Pandit', 'me@harshp.com'),
+    ('Harshvardhan Pandit', 'admin@harshp.com'),
 )
 
 MANAGERS = ADMINS
