@@ -7,7 +7,7 @@
 
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from redactor.fields import RedactorField
 from sitedata.models import Tag
 from django.utils.text import slugify
 from subdomains.utils import reverse
@@ -27,7 +27,7 @@ class BrainBankIdea(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    body = RichTextField()
+    body = RedactorField()
     slug = models.SlugField(
         max_length=50,
     )
@@ -113,7 +113,7 @@ class BrainBankPost(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    body = RichTextField()
+    body = RedactorField()
     published = models.DateField()
     modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField(Tag)
@@ -184,13 +184,13 @@ class BrainBankDemo(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    js = RichTextField(
+    js = RedactorField(
         verbose_name='javascript'
     )
-    css = RichTextField(
+    css = RedactorField(
         verbose_name='CSS'
     )
-    body = RichTextField(
+    body = RedactorField(
         verbose_name='content'
     )
     slug = models.SlugField(

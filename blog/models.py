@@ -2,9 +2,9 @@
 """
 
 from django.db import models
-from ckeditor.fields import RichTextField
 from django.utils import timezone
 from django.utils.text import slugify
+from redactor.fields import RedactorField
 from subdomains.utils import reverse
 
 
@@ -27,7 +27,7 @@ class BlogPost(models.Model):
     # basic post
     post_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=250,)
-    body = RichTextField()
+    body = RedactorField()
     published = models.DateTimeField()
 
     # additional stuff

@@ -37,15 +37,41 @@ def prepare_deployment():
     pass
 
 
+def sync_requirements(file_suffix):
+    """sync requirements
+    """
+    local("pip-sync harshp/requirements/requirements_%s.txt" % file_suffix)
+
+
+def update_requirements():
+    """use pip-tools to update requirements
+    """
+    def pip_compile(file_suffix):
+        """prepare statement to be run with the requirement file suffix
+        """
+        return ("pip-compile "
+                "harshp/requirements/requirements_%s.in > "
+                "harshp/requirements/requirements_%s.txt ") % (
+                    file_suffix, file_suffix)
+
+    local(pip_compile('dev'))
+    local(pip_compile('prod'))
+    local(pip_compile('test'))
+
+
 def l_test():
     """local: run tests
     """
     def run_stmt(module, db):
         """construct the statement to be run"""
-        s = "coverage run -p --source={0} manage.py test {0} --{1}".format(
-            module, db)
+        s = ("coverage run "
+             "-p --source={0} "
+             "manage.py test {0} --{1} "
+             "> testruns/{2}.txt").format(
+            module, db, module)
         print module
         return s
+
     with settings(warn_only=True):
             # l_sync('test')
         local(run_stmt('blog', "noinput"))

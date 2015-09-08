@@ -49,14 +49,14 @@ FILER_STORAGES = {
         'main': {
             'ENGINE': 'storages.backends.s3boto.S3BotoStorage',
             'OPTIONS': {
-                'location': MEDIA_ROOT,
+                'location': STATIC_ROOT,
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.by_date',
         },
         'thumbnails': {
             'ENGINE': 'storages.backends.s3boto.S3BotoStorage',
             'OPTIONS': {
-                'location': MEDIA_ROOT,
+                'location': STATIC_ROOT,
             },
         },
     },
@@ -64,3 +64,5 @@ FILER_STORAGES = {
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+REDACTOR_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'

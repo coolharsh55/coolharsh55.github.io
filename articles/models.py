@@ -4,7 +4,7 @@
 """
 
 from django.db import models
-from ckeditor.fields import RichTextField
+from redactor.fields import RedactorField
 from django.utils import timezone
 from django.utils.text import slugify
 from subdomains.utils import reverse
@@ -32,7 +32,7 @@ class Article(models.Model):
         max_length=250,
         verbose_name='Article Title'
     )
-    body = RichTextField()
+    body = RedactorField()
     published = models.DateTimeField(
         verbose_name='Published',
     )

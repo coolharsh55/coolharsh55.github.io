@@ -11,7 +11,21 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
-
-REDACTOR_OPTIONS = {'lang': 'en'}
-REDACTOR_UPLOAD = '/media/'
 # ####### CKEDITOR END ############
+
+
+# ####### REDACTOR START ############
+REDACTOR_OPTIONS = {
+    'lang': 'en',
+    'plugins': [
+        'filemanager',
+        'fontcolor',
+        'fontfamily',
+        'fontsize',
+        'fullscreen',
+        'imagemanager',
+        'table',
+    ]
+}
+REDACTOR_UPLOAD = '/media/'
+# ####### REDACTOR END ##############

@@ -10,10 +10,6 @@ urlpatterns = patterns(
     '',
     # admin
     url(
-        r'^ckeditor/',
-        include('ckeditor.urls')
-    ),
-    url(
         r'^redactor/',
         include('redactor.urls')
     ),

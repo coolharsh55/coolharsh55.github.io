@@ -9,7 +9,7 @@
 
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from redactor.fields import RedactorField
 from datetime import datetime, timedelta
 from django.utils.text import slugify
 from subdomains.utils import reverse
@@ -214,7 +214,7 @@ class LifeXIdea(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    body = RichTextField()
+    body = RedactorField()
     tags = models.ManyToManyField('sitedata.Tag', blank=True,)
     slug = models.SlugField(
         max_length=50,
@@ -302,7 +302,7 @@ class LifeXIdea(models.Model):
 #     # basic post
 #     post_id = models.AutoField(primary_key=True)
 #     title = models.CharField(max_length=250,)
-#     body = RichTextField()
+#     body = RedactorField()
 #     published = models.DateTimeField()
 
 #     # additional stuff
@@ -338,7 +338,7 @@ class LifeXPost(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    body = RichTextField()
+    body = RedactorField()
     slug = models.SlugField(
         max_length=50,
         unique=True
@@ -425,7 +425,7 @@ class LifeXBlog(models.Model):
     title = models.CharField(
         max_length=250,
     )
-    body = RichTextField()
+    body = RedactorField()
     headerimage = models.URLField(max_length=200, blank=True)
     slug = models.SlugField(
         max_length=50,

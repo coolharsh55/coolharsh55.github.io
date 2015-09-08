@@ -101,7 +101,9 @@ class Feedback(models.Model):
         max_length=250,
         help_text='A title is needed for the feedback you wish to give.')
     text = RedactorField(
-        help_text='Enter the text of the feedback here.')
+        help_text='Enter the text of the feedback here.',
+        allow_file_upload=False,
+        allow_image_upload=False, )
     published = models.DateTimeField()
     user_name = models.CharField(
         max_length=250, blank=True, verbose_name='Name', default='Anonymous',
