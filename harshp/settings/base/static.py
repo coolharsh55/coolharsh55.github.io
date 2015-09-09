@@ -21,6 +21,7 @@ STATICFILES_DIRS = (
     'brainbank/static/',
     'friends/static/',
     'hobbies/static/',
+    'devblog/static/',
 )
 
 STATICFILES_FINDERS = (
