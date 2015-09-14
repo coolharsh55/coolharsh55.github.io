@@ -8,6 +8,8 @@ from django.contrib import admin
 from sitedata.models import Tag
 from sitedata.models import Feedback
 from sitedata.models import FileUpload
+from sitedata.models import CSSLink
+from sitedata.models import JSLink
 
 
 @admin.register(Tag)
@@ -139,3 +141,37 @@ class FileUploadAdmin(admin.ModelAdmin):
     """
 
     form = FileUploadForm
+
+
+@admin.register(CSSLink)
+class CSSLinkAdmin(admin.ModelAdmin):
+
+    """admin class for css links
+    """
+
+    list_display = ('name', 'link', 'dependencies')
+    ordering = ('name', )
+    search_fields = ('name', 'link')
+    filter_horizontal = ('dependency',)
+
+    def dependencies(self, obj):
+        """count of dependencies
+        """
+        return obj.dependency.count()
+
+
+@admin.register(JSLink)
+class JSLinkAdmin(admin.ModelAdmin):
+
+    """admin class for css links
+    """
+
+    list_display = ('name', 'link', 'dependencies')
+    ordering = ('name', )
+    search_fields = ('name', 'link')
+    filter_horizontal = ('dependency',)
+
+    def dependencies(self, obj):
+        """count of dependencies
+        """
+        return obj.dependency.count()

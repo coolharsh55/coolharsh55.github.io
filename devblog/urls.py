@@ -2,22 +2,38 @@
 """
 
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+from harshp.settings.local import STATIC_ROOT
 
 devblogurlpatterns = patterns(
-    # index
+    # blog index
     '',
     url(
-        r'^$',
-        'devblog.views.index',
-        name='index',
+        r'^blog/$',
+        'devblog.views.blog_index',
+        name='blog_index',
     ),
 
     # blog post
     url(
-        r'^/(?P<blogpost>[\w\d-]+)/$',
-        'devblog.views.blogpost',
-        name='blogpost',
-    )
+        r'^blog/(?P<blog_post>[\w\d-]+)/$',
+        'devblog.views.blog_post',
+        name='blog_post',
+    ),
+
+    # series index
+    url(
+        r'^series/$',
+        'devblog.views.series_index',
+        name='series_index'
+    ),
+
+    # series page
+    url(
+        r'^series/(?P<series>[\2\d-]+)/$',
+        'devblog.views.series_page',
+        name='series_page',
+    ),
 
 )
 
@@ -28,3 +44,16 @@ urlpatterns = patterns(
     '',
     url(r'', include(devblogurlpatterns, namespace='devblog')),
 )
+
+# if DEBUG is True it will be served automatically
+if settings.DEBUG is False and settings.MODE == 'local':
+    urlpatterns += patterns(
+        '',
+        url(
+            r'^static/(?P<path>.*)$',
+            'django.views.static.serve',
+            {
+                'document_root': STATIC_ROOT
+            }
+        ),
+    )

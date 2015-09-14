@@ -1,0 +1,22 @@
+{% extends 'devblog/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}devblog at harshp.com{% endblock TITLE %}
+
+{% block CSS %}
+
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+{% for collection in series %}
+<a class='nodecorate' href="{% url 'dev:series' 'dev' collection.slug %}">{{collection.name}}</a>
+    {% for post in collection.posts.all %}
+        <a class='nodecorate' hred="{% url 'dev:blogpost' 'dev' post.slug %}">{{ post.title }} - <small>{{ post.published }}</small></a><br>
+    {% endfor %}
+    <hr>
+{% endfor %}
+</div>
+{% endblock CONTENT %}

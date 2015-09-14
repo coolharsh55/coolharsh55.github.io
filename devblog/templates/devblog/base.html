@@ -1,0 +1,62 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load dictionary %}
+{% load subdomainurls %}
+
+{% block EHEAD %}
+    {% include 'meta.html' %}
+{% endblock EHEAD %}
+
+{% block ETITLE %}
+    {% block TITLE %}{% endblock TITLE %}
+{% endblock ETITLE %}
+
+{% block FCSS %}
+    {{ block.super }}
+    {% block CSS %}{% endblock CSS %}
+    <style type="text/css">
+    .pageheader img {
+        text-align: center;
+        max-width: 50%;
+        height: auto;
+        max-height: auto\5;
+        width: auto\5; /* ie8 */
+    }
+    .imgbanner img{
+        display: block;
+        margin: auto;
+    }
+    .pageheader {
+        background-color: #99AAFF;
+        text-shadow: 1px 1px 1px black;
+    }
+    .pageheader h1 {
+        font-size: 2em;
+    }
+    html body {
+        font-family: 'Source Code Pro', ;
+    }
+    #socialshare {
+        text-align: center;
+    }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+{% endblock FCSS %}
+
+{% block EBODY %}
+ <div class='pageheader'>
+ <div class="imgbanner"><img src="{% static 'dev_banner.PNG' %}" /></div>
+ <h1 id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</h1><a href="{% url 'devblog:blog_index' 'dev' %}">dev</a> at <a href="{% url 'home' None %}">harshp.com</a><hr></div>
+ </div>
+    <div class='container'>
+  <div id='socialshare'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div>
+  {% block CONTENT %}
+  {% endblock CONTENT %}
+    </div>
+{% endblock EBODY %}
+
+{% block FJS %}
+  {{ block.super }}
+  {% block JS %}
+  {% endblock JS %}
+{% endblock FJS %}
