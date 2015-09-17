@@ -3,16 +3,17 @@
 {% load staticfiles %}
 {% load subdomainurls %}
 
-{% block TITLE %}devblog at harshp.com{% endblock TITLE %}
+{% block TITLE %}devblog index{% endblock TITLE %}
+
+{% block HEADER %}dev_blog{% endblock HEADER %}
 
 {% block CSS %}
-
 {% endblock CSS %}
 
 {% block CONTENT %}
 <div class='container centertext'>
 {% for post in posts %}
-<a class='nodecorate' href="{% url 'devblog:blog_post' 'dev' post.slug %}">{{post.title}}</a><hr>
+<a href="{{ post.get_absolute_url }}"><h2>({% if post.series != None %}{{ post.series.name }}{% else %}<small>blog</small>{% endif %}) {{post.title}} <small>- {{ post.published }}</small></h2></a>
 {% endfor %}
 </div>
 {% endblock CONTENT %}

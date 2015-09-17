@@ -5,16 +5,27 @@ from .models import DevBlogPost
 from .models import DevBlogSeries
 
 
-def index(request):
-    """index view for dev
+def home(request):
+    """homepage for dev
+
+    shows all blog posts and series
     """
-    return Http404('Not Implemented')
+    posts = DevBlogPost.objects.filter(draft=False, future=None).order_by('-published')
+    series = DevBlogSeries.objects.all()
+    return render(
+        request,
+        'devblog/homepage.html',
+        {
+            'posts': posts,
+            'series': series,
+        }
+    )
 
 
 def blog_index(request):
     """index view for dev blog
     """
-    posts = DevBlogPost.objects.all()
+    posts = DevBlogPost.objects.filter(draft=False, future=None)
     return render(
         request,
         'devblog/blog_index.html',
@@ -24,11 +35,17 @@ def blog_index(request):
     )
 
 
-def blog_post(request, blog_post):
+def blog_post(request, series, blog_post):
     """view for dev blog post
     """
     try:
-        post = DevBlogPost.objects.get(slug=blog_post)
+        if series == 'blog':
+            series = None
+        else:
+            series = DevBlogSeries.objects.get(slug=series)
+        post = DevBlogPost.objects.get(slug=blog_post, series=series)
+    except DevBlogSeries.DoesNotExist:
+        raise Http404('dev blog series does not exist')
     except DevBlogPost.DoesNotExist:
         raise Http404('dev blog does not exist')
     return render(
@@ -53,11 +70,13 @@ def series_index(request):
     )
 
 
-def series_page(request, series):
+def blog_series(request, series):
     """page for dev blog series
     """
     try:
         series = DevBlogSeries.objects.get(slug=series)
+        posts = series.devblogpost_set.all()
+        posts = sorted(posts, key=lambda obj: obj.published)
     except DevBlogSeries.DoesNotExist:
         raise Http404('dev blog does not exist')
     return render(
@@ -65,5 +84,6 @@ def series_page(request, series):
         'devblog/devseries.html',
         {
             'series': series,
+            'posts': posts,
         }
     )

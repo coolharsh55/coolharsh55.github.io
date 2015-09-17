@@ -11,12 +11,14 @@ class DevBlogPostAdmin(admin.ModelAdmin):
     """
     list_display = (
         'title',
+        'series',
         'published',
         'draft',
         'future',
     )
     ordering = (
         'published',
+        'series',
         'modified',
         'draft',
         'future',)
@@ -35,7 +37,7 @@ class DevBlogPostAdmin(admin.ModelAdmin):
             'fields': (
                 'post_id',
                 'title',
-                'slug',
+                'series',
                 'published',
                 'modified',
                 'draft',
@@ -67,7 +69,6 @@ class DevBlogSeriesAdmin(admin.ModelAdmin):
     ordering = (
         'name',
     )
-    filter_horizontal = ('posts', )
     prepopulated_fields = {
         'slug': ('name', )
     }
@@ -84,7 +85,9 @@ class DevBlogSeriesAdmin(admin.ModelAdmin):
                 'slug',
             ),
         }),
-        ('Posts', {
-            'fields': ('posts',),
+        ('Contents', {
+            'classes': ('full-width',),
+            'description': 'source can be selected',
+            'fields': ('description', )
         }),
     )

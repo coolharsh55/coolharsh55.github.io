@@ -9,6 +9,18 @@ from subdomains.utils import reverse
 # from sitedata.models import CSSLink
 from sitedata.models import JSLink
 
+# TODO: can posts be duplicates if series are different?
+# post 'title' in one series can be different than
+# post 'title' in another series
+# str should return title
+# display should contain series if present
+# like 'title (series)'
+# or (series) title
+#
+# TODO: first write tests for all classes and views and urls
+# TODO: then write views, complete views
+# TODO: then write templates
+
 
 class DevBlogPost(models.Model):
 
@@ -37,6 +49,8 @@ class DevBlogPost(models.Model):
     title = models.CharField(max_length=250,)
     body = RedactorField()
     published = models.DateTimeField()
+    series = models.ForeignKey(
+        'devblog.DevBlogSeries', blank=True, null=True)
 
     # additional stuff
     modified = models.DateTimeField(blank=True,)
@@ -85,10 +99,11 @@ class DevBlogPost(models.Model):
         Raises:
             None
         """
+        series_slug = 'blog' if self.series is None else self.series.slug
         return reverse(
             viewname='devblog:blog_post',
             subdomain='dev',
-            kwargs={'blog_post': self.slug, })
+            kwargs={'series': series_slug, 'blog_post': self.slug, })
 
     def save(self, *args, **kwargs):
         """save post
@@ -129,6 +144,19 @@ class DevBlogPost(models.Model):
             else:
                 self.slug = slugify(self.title)
         self.modified = timezone.now()
+
+        # check for duplicates
+        # duplicate post within same series is not allowed
+        post = DevBlogPost.objects.filter(
+            series=self.series,
+            title=self.title,
+        )
+        if len(post) == 1 and self.pk is not None:
+            # self is not a duplicate of itself
+            pass
+        elif len(post) > 0:
+            raise AssertionError('Duplicates are not allowed in series')
+
         super(DevBlogPost, self).save(*args, **kwargs)
 
 
@@ -142,7 +170,7 @@ class DevBlogSeries(models.Model):
 
     name = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=250, unique=True)
-    posts = models.ManyToManyField('devblog.DevBlogPost')
+    description = RedactorField()
 
     class Meta(object):
         verbose_name = 'dev blog series'
@@ -179,10 +207,6 @@ class DevBlogSeries(models.Model):
             ValueError:
                 series has no posts
         """
-        # check if series has at least one post
-        if self.posts.count() == 0:
-            raise ValueError("A series must have at least one post.")
-
         if not self.pk:
             self.slug = slugify(self.name)
 
@@ -192,6 +216,6 @@ class DevBlogSeries(models.Model):
         """url for dev blog series
         """
         return reverse(
-            viewname='dev:blog_series',
+            viewname='devblog:blog_series',
             subdomain='dev',
             kwargs={'series': self.slug, })

@@ -3,20 +3,29 @@
 {% load staticfiles %}
 {% load subdomainurls %}
 
-{% block TITLE %}devblog at harshp.com{% endblock TITLE %}
+{% block TITLE %}{{ series.name }}{% endblock TITLE %}
+
+{% block HEADER %}{{ series.name }}{% endblock HEADER %}
 
 {% block CSS %}
 
 {% endblock CSS %}
 
 {% block CONTENT %}
-<div class='container centertext'>
-{% for collection in series %}
-<a class='nodecorate' href="{% url 'dev:series' 'dev' collection.slug %}">{{collection.name}}</a>
-    {% for post in collection.posts.all %}
-        <a class='nodecorate' hred="{% url 'dev:blogpost' 'dev' post.slug %}">{{ post.title }} - <small>{{ post.published }}</small></a><br>
-    {% endfor %}
-    <hr>
-{% endfor %}
+<div class="panel panel-info">
+      <div class="panel-heading">
+            <h3 class="panel-title">posts in series:</h3>
+      </div>
+      <div class="panel-body">
+        <ol>
+        {% for post in posts %}
+            <li><a href="{{ post.get_absolute_url }}"><h4>{{ post.title }} - <small>{{ post.published }}</small></h4></a></li>
+        {% endfor %}
+        </ol>
+      </div>
+</div>
+<div>
+{{ series.description|safe }}
+</div>
 </div>
 {% endblock CONTENT %}

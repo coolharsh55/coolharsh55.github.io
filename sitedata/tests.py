@@ -4,6 +4,7 @@
 
 from django.core.urlresolvers import NoReverseMatch
 from django.db import IntegrityError
+from django.db import transaction
 from django.test import Client
 from django.test import TestCase
 from django.utils.timezone import now as time_now
@@ -26,6 +27,8 @@ from poems.models import Poem
 from stories.models import StoryPost
 
 from .forms import FeedbackForm
+from .models import CSSLink
+from .models import JSLink
 from .models import Feedback
 from .models import Tag
 from .social_meta import create_meta
@@ -502,3 +505,145 @@ class DictionaryTemplateTagTest(TestCase):
             published = time_now() - timeslot[1]
             reltime = dictionary.reltime({'published': published, })
             self.assertTrue(timeslot[0] in reltime)
+
+
+class CSSLinkTest(TestCase):
+
+    """tests for CSS Link
+    """
+
+    def setUp(self):
+        """set up tests
+        """
+        self.seeder = Seed.seeder()
+        self.seeder.add_entity(CSSLink, 10)
+        self.seeder.execute()
+
+    def tearDown(self):
+        """clean up after tests
+        """
+        CSSLink.objects.all().delete()
+
+    def test_save(self):
+        """test save method
+        """
+        css = CSSLink(
+            name='test css link',
+            link='https://example.com/',
+        )
+        css.save()
+        self.assertIsNotNone(css.pk)
+
+    def test_link(self):
+        """test only valid links are accepted
+        """
+        css = CSSLink.objects.all()[0]
+        css.link = 'abcde'
+        # TODO: test for error
+        css.save()
+
+    def test_str(self):
+        """test str method
+        """
+        css = CSSLink.objects.all()[0]
+        self.assertEqual(css.__str__(), css.name)
+
+    def test_duplicates(self):
+        """test duplicates are not allowed
+        """
+        css1 = CSSLink.objects.all()[0]
+        css2 = CSSLink(name=css1.name, link=css1.link)
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                css2.save()
+
+    def test_save_with_dependency(self):
+        """test save method with dependency
+        """
+        css = CSSLink.objects.all()[0]
+        dependency = CSSLink.objects.all()[1:]
+        for d in dependency:
+            css.dependency.add(d)
+        css.save()
+        self.assertListEqual(list(css.dependency.all()), list(dependency))
+
+    def test_cyclic_dependency(self):
+        """test for cycles in dependency
+        """
+        # d_set = dependencies
+        # for d in d_set:
+        #   for dependencies of d:
+        #       if dependency in d_set:
+        #           cyclic dependency exists
+        pass
+
+
+class JSLinkTest(TestCase):
+
+    """tests for js Link
+    """
+
+    def setUp(self):
+        """set up tests
+        """
+        self.seeder = Seed.seeder()
+        self.seeder.add_entity(JSLink, 10)
+        self.seeder.execute()
+
+    def tearDown(self):
+        """clean up after tests
+        """
+        JSLink.objects.all().delete()
+
+    def test_save(self):
+        """test save method
+        """
+        js = JSLink(
+            name='test js link',
+            link='https://example.com/',
+        )
+        js.save()
+        self.assertIsNotNone(js.pk)
+
+    def test_link(self):
+        """test only valid links are accepted
+        """
+        js = JSLink.objects.all()[0]
+        js.link = 'abcde'
+        # TODO: test for error
+        js.save()
+
+    def test_str(self):
+        """test str method
+        """
+        js = JSLink.objects.all()[0]
+        self.assertEqual(js.__str__(), js.name)
+
+    def test_duplicates(self):
+        """test duplicates are not allowed
+        """
+        js1 = JSLink.objects.all()[0]
+        js2 = JSLink(name=js1.name, link=js1.link)
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                js2.save()
+
+    def test_save_with_dependency(self):
+        """test save method with dependency
+        """
+        js = JSLink.objects.all()[0]
+        dependency = JSLink.objects.all()[1:]
+        for d in dependency:
+            js.dependency.add(d)
+        js.save()
+        self.assertListEqual(list(js.dependency.all()), list(dependency))
+
+    def test_cyclic_dependency(self):
+        """test for cycles in dependency
+        """
+        # d_set = dependencies
+        # for d in d_set:
+        #   for dependencies of d:
+        #       if dependency in d_set:
+        #           cyclic dependency exists
+        pass

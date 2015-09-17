@@ -6,33 +6,40 @@ from django.conf import settings
 from harshp.settings.local import STATIC_ROOT
 
 devblogurlpatterns = patterns(
-    # blog index
     '',
+    # dev home
+    url(
+        r'^$',
+        'devblog.views.home',
+        name='dev_home'
+    ),
+
+    # blog index
     url(
         r'^blog/$',
         'devblog.views.blog_index',
         name='blog_index',
     ),
 
-    # blog post
+    # all series index
     url(
-        r'^blog/(?P<blog_post>[\w\d-]+)/$',
-        'devblog.views.blog_post',
-        name='blog_post',
-    ),
-
-    # series index
-    url(
-        r'^series/$',
+        r'^blog/series/$',
         'devblog.views.series_index',
         name='series_index'
     ),
 
-    # series page
+    # specific series index
     url(
-        r'^series/(?P<series>[\2\d-]+)/$',
-        'devblog.views.series_page',
-        name='series_page',
+        r'^blog/series/(?P<series>[\w\d-]+)/$',
+        'devblog.views.blog_series',
+        name='blog_series'
+    ),
+
+    # series page, can contain 'blog' as series
+    url(
+        r'^blog/series/(?P<series>[\w\d-]+)/(?P<blog_post>[\w\d-]+)/$',
+        'devblog.views.blog_post',
+        name='blog_post',
     ),
 
 )

@@ -29,9 +29,12 @@
     .pageheader {
         background-color: #99AAFF;
         text-shadow: 1px 1px 1px black;
-    }
-    .pageheader h1 {
         font-size: 2em;
+    }
+    .pageheader a {
+        color: black;
+        text-shadow: 1px 1px 1px darkgray;
+        font-size: 1em;
     }
     html body {
         font-family: 'Source Code Pro', ;
@@ -45,8 +48,8 @@
 
 {% block EBODY %}
  <div class='pageheader'>
- <div class="imgbanner"><img src="{% static 'dev_banner.PNG' %}" /></div>
- <h1 id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</h1><a href="{% url 'devblog:blog_index' 'dev' %}">dev</a> at <a href="{% url 'home' None %}">harshp.com</a><hr></div>
+ <div class="imgbanner"><img src="{% static 'site_images/dev_banner.PNG' %}" /></div>
+ <h1 id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</h1>{% block SECTIONTITLE %}{% endblock SECTIONTITLE %}<a href="{% url 'devblog:dev_home' 'dev' %}"><code>dev</code></a> @ <a href="{% url 'home' None %}">harshp.com</a><hr></div>
  </div>
     <div class='container'>
   <div id='socialshare'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div>
