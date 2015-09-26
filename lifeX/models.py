@@ -401,6 +401,15 @@ class LifeXPost(models.Model):
                 self.slug = slugify(
                     'W' + str(self.week.number) + '-' + self.title)[:50]
         self.modified = timezone.now()
+        same_posts = LifeXPost.objects.filter(idea=self.idea, week=self.week)
+        if self.post_id:
+            valid_length = 1
+        else:
+            valid_length = 0
+        if len(same_posts) > valid_length:
+            raise AssertionError(
+                'post - %s for idea - %s in %s already exists' % (
+                    self.title, self.idea.title, self.week))
         return super(LifeXPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
