@@ -7,6 +7,8 @@
 [![Coverage Status](https://coveralls.io/repos/coolharsh55/harshp.com/badge.svg?branch=master&service=github)](https://coveralls.io/github/coolharsh55/harshp.com?branch=master)
 ![Codacy Badge](https://www.codacy.com/project/badge/e8a6dadab03a450bb0eac3dc08ce6996)
 ![Code Climate](https://codeclimate.com/github/coolharsh55/harshp.com/badges/gpa.svg)
+[![Requirements Status](https://requires.io/github/coolharsh55/harshp.com/requirements.svg?branch=master)](https://requires.io/github/coolharsh55/harshp.com/requirements/?branch=master)
+
 
 [![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
 [![Stories in Progress](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=in+progress&title=In+Progress)](http://waffle.io/coolharsh55/harshp.com)
@@ -61,6 +63,11 @@ Messages, thoughts, gifts, and surprises for my friends.
 [http://hobbies.harshp.com/](http://hobbies.harshp.com/)
 
 My hobbies such Books (Reading), Movies, TV Shows (Watching), Games (Playing) and details such as when I started, when I finished, whether I completed them.
+
+### Dev
+[http://dev.harshp.com/](http://dev.harshp.com/)
+
+A `dev` blog for posting and discussing development related technical issues. Contains code, deployment, and design related posts.
 
 ## Development
 
