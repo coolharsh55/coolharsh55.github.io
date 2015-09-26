@@ -7,7 +7,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
 
-from ckeditor.fields import RichTextField
 from filer.fields.file import FilerFileField
 from redactor.fields import RedactorField
 from subdomains.utils import reverse
@@ -118,7 +117,7 @@ class Feedback(models.Model):
         max_length=250, blank=True, null=True, verbose_name='Post URL',
         help_text='(optional) URL of the post/page you wish to give your '
         'feedback on. Leave it blank for a general feedback.')
-    reply = RichTextField(blank=True, null=True)
+    reply = RedactorField(blank=True, null=True)
     reply_date = models.DateTimeField(blank=True, null=True)
 
     class Meta:
