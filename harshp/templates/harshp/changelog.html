@@ -21,6 +21,34 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v2-1-1-2015-09-26">
+<h2>v2.1.1 (2015-09-26)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #84 lifeX post save accepts duplicates. [Harshvardhan Pandit]</p>
+<p>LifeXPost.save() accepted duplicates via same idea and week values. This resulted in the same idea being tried more than once in a single week, and resulted in an error in GET requests for that particular posts.
+This has been fixed by asserting that no other posts with the same idea and week exist before saving the current post.</p>
+</li>
+<li><p class="first">Fixes #86 tags cannot be selected in admin. [Harshvardhan Pandit]</p>
+<p>the tag horizontal filter was not initialized for some models which caused the tags to become unselectable in the admin for those models
+adding the <cite>filter_horizontal</cite> tag in admin fixed this</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Use redactor for feedback replies in admin. [Harshvardhan Pandit]</p>
+<p>use the redactor editor for feedback replies in admin rather than the ckeditor
+closes #90</p>
+</li>
+<li><p class="first">Closes #88 requires.io dependency check. [Harshvardhan Pandit]</p>
+<p>added badge to README.md for requires.io dependency notification</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="v2-1-2015-09-26">
 <h2>v2.1 (2015-09-26)</h2>
 <ul>
