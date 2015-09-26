@@ -152,3 +152,52 @@ class FileUpload(models.Model):
 
     """file upload instance for admin"""
     filefield = FilerFileField()
+
+
+class CSSLink(models.Model):
+
+    """extra or optional CSS files to be attached to site pages
+    can be any external or internal (static) link to a CSS file
+    checks whether the file is a valid CSS file (.css)
+    """
+
+    # TODO: create a set of all dependency file to be displayed
+    # then add them to a set (unique), but there can also be
+    # files in the set dependant on each other, and the files
+    # with no dependencies should come on top
+    # so something like:
+    # def attach_with_dependency:
+    #   for link in object.links:
+    #       if link.dependency.count() == 0:
+    #           set.add(link)
+    #       else:
+    #           for dependency in link.dependency.all():
+    #               attach_with dependency(dependency)
+
+    name = models.CharField(max_length=150, unique=True)
+    dependency = models.ManyToManyField('sitedata.CSSLink', blank=True)
+    link = models.URLField(unique=True)
+
+    def __str__(self):
+        """string repr is the link name
+        """
+        return self.name
+
+
+class JSLink(models.Model):
+
+    """extra or optional JS files to be attached to site pages
+    can be any external or internal (static) link to a CSS file
+    checks whether the file is a valid CSS file (.css)
+    """
+
+    # TODO: see dependency sets in CSSLink
+
+    name = models.CharField(max_length=150, unique=True)
+    dependency = models.ManyToManyField('sitedata.JSLink', blank=True)
+    link = models.URLField(unique=True)
+
+    def __str__(self):
+        """string repr is the link name
+        """
+        return self.name

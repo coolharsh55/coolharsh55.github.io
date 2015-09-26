@@ -39,6 +39,7 @@ HARSHP_APPS = (
     'brainbank',
     'friends',
     'hobbies',
+    'devblog',
 )
 
 FILER_APPS = (

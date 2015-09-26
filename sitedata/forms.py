@@ -2,7 +2,6 @@
 
 """
 
-from ckeditor.widgets import CKEditorWidget
 from django import forms
 
 from sitedata.models import Feedback
@@ -12,7 +11,6 @@ class FeedbackForm(forms.ModelForm):
 
     """Feedback Form displayed on site
     """
-    # body = forms.CharField(widget=CKEditorWidget())
 
     class Meta:
 

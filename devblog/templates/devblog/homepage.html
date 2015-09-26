@@ -1,0 +1,56 @@
+{% extends 'devblog/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}dev at harshp.com{% endblock TITLE %}
+
+{% block CSS %}
+<style type="text/css">
+    .post {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #CCFFFF;
+        box-shadow: 1px 1px lightgray;
+    }
+    .post a {
+        color: black;
+    }
+    .series {
+        margin-top: 5px;
+        margin-bottom: 1px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        background-color: #99FFCC;
+        box-shadow: 1px 1px lightgray;
+    }
+    .series a {
+        color: black;
+    }
+</style>
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+<h1 class='centertext'>latest updates</h1>
+<div class="row row-eq-height">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<a href="{% url 'devblog:blog_index' 'dev' %}"><h2><code>goto</code> blog index</h2></a>
+{% for post in posts %}
+    <div class='post'><a href="{{ post.get_absolute_url }}"><h4>({% if post.series != None %}{{ post.series.name }}{% else %}<small>blog</small>{% endif %}) {{ post.title }} - <small>{{ post.published }}</small></h4></a></div>
+{% endfor %}
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<a href="{% url 'devblog:series_index' 'dev' %}"><h2><code>goto</code> series index</h2></a>
+{% for s in series %}
+    <div class='series'><a href="{{ s.get_absolute_url }}"><h2><strong>{{ s.name }}</strong></h2></a>
+    <h4>{% for post in s.devblogpost_set.all %}
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>
+    {% endfor %}</h4></div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock CONTENT %}

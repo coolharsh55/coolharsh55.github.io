@@ -12,6 +12,7 @@
 <div class='container'>
 <form id='feedback-form' method="POST" class='post-form' action="{% url 'sitedata:feedback_add' None %}">{% csrf_token %}
 {% bootstrap_form_errors form %}
+    {% csrf_token %}
     {% for field in form %}
     {% bootstrap_field field %}<hr>
     {% endfor %}

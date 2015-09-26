@@ -18,12 +18,21 @@ CKEDITOR_CONFIGS = {
 REDACTOR_OPTIONS = {
     'lang': 'en',
     'plugins': [
+        'breadcrumb',
+        'code',
+        'contrast',
+        'counter',
+        'download',
         'filemanager',
         'fontcolor',
         'fontfamily',
         'fontsize',
         'fullscreen',
         'imagemanager',
+        'imagepx',
+        # 'norphan',
+        'replacer',
+        'syntax',
         'table',
     ]
 }

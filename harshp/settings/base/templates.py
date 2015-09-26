@@ -21,6 +21,7 @@ TEMPLATE_DIRS = (
     'brainbank/templates',
     'friends/templates',
     'hobbies/templates',
+    'devblog/templates',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (

@@ -26,10 +26,11 @@ script:
     - coverage run -p --source=brainbank manage.py test brainbank
     - coverage run -p --source=hobbies manage.py test hobbies
     - coverage run -p --source=sitedata manage.py test sitedata
+    - coverage run -p --source=devblog manage.py test devblog
     - coverage combine
 after_success:
     - coveralls
 notifications:
     slack: harshp:8NHozfKnZn2JpbnOElJjgisT
     email:
-        - me@harshp.com
+        - admin@harshp.com

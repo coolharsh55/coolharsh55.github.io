@@ -50,6 +50,7 @@ urlpatterns = patterns(
     url(r'', include('brainbank.urls')),
     url(r'', include('friends.urls')),
     url(r'', include('hobbies.urls')),
+    url(r'', include('devblog.urls')),
 )
 
 urlpatterns += adminurlspatterns
