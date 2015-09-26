@@ -21,6 +21,53 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v2-1-2015-09-26">
+<h2>v2.1 (2015-09-26)</h2>
+<ul>
+<li><p class="first">Adds series (removed M2M) as FK to blog. [Harshvardhan Pandit]</p>
+<p>Aadded series as FK to blog model instead of keeping posts as M2M in series model.</p>
+<p>Closes #87</p>
+</li>
+<li><p class="first">Devblog app with blog models. [Harshvardhan Pandit]</p>
+<p>devblog app that maps to the 'dev' subdomain, and contains models, views, and urls for blog post and blog series. Redactor plugins have also been added, configured globally.</p>
+</li>
+<li><p class="first">Add devblog app with dev subdomain. [Harshvardhan Pandit]</p>
+<p>The blog contains urls for index and blog post view, tests that assert these urls are in the correct namespace, and return 404 as of now.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="v2-0-1-2015-09-08">
+<h2>v2.0.1 (2015-09-08)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #82 feedback _add raises server error. [Harshvardhan Pandit]</p>
+<p>The cause of the error was a misconfigured query access, where the latest feedback was accessed by index. This caused an error as there are no feedbacks in database. The relevant query has been replaced by a generic count query.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Replaced ckeditor with redactor. [Harshvardhan Pandit]</p>
+<p>ckeditor has been replaced in favor of redactor (with plugins), all models have been updated to use the redactor field</p>
+<blockquote>
+<ul class="simple">
+<li>updated requirements</li>
+<li>save(s) test run timings in /testruns</li>
+<li>fabric for updating requirements</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">Remove sudo for git updates in fabric. [Harshvardhan Pandit]</p>
+<p>fabric's deploy no longer requires using sudo for using git commands on the server</p>
+</li>
+<li><p class="first">Sendgrid as host for admin emails. [Harshvardhan Pandit]</p>
+<p>Uses sendgrid as the email host for sending server and admin mails. Requires environmental variables SENDGRID_USER and SENDGRID_PASS.</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="v2-0-2015-09-02">
 <h2>v2.0 (2015-09-02)</h2>
 <div class="section" id="fix">
