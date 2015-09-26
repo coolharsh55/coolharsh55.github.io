@@ -38,6 +38,9 @@ class BrainBankIdeaAdmin(admin.ModelAdmin):
     readonly_fields = (
         'id',
     )
+    filter_horizontal = (
+        'tags',
+    )
     prepopulated_fields = {
         "slug": (
             "title",
@@ -195,6 +198,9 @@ class BrainBankDemoAdmin(admin.ModelAdmin):
     )
     readonly_fields = (
         'id',
+    )
+    filter_horizontal = (
+        'tags',
     )
     view_on_site = True
     fieldsets = (
