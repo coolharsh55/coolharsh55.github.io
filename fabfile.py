@@ -69,11 +69,10 @@ def l_test():
              "manage.py test {0} --{1} "
              "> testruns/{2}.txt").format(
             module, db, module)
-        print module
         return s
 
     with settings(warn_only=True):
-            # l_sync('test')
+        # l_sync('test')
         local(run_stmt('blog', "noinput"))
         local(run_stmt('articles', 'keepdb'))
         local(run_stmt('stories', 'keepdb'))
@@ -83,6 +82,7 @@ def l_test():
         local(run_stmt('sitedata', 'keepdb'))
         local(run_stmt('hobbies', 'keepdb'))
         local(run_stmt('harshp', 'keepdb'))
+        local(run_stmt('devblog', 'keepdb'))
         local('coverage combine')
         local('coverage html')
 

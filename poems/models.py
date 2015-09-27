@@ -5,8 +5,9 @@
 from django.db import models
 from redactor.fields import RedactorField
 from django.utils import timezone
-from django.utils.text import slugify
 from subdomains.utils import reverse
+
+from harshp.utils.duplicates import duplicate_slug
 
 
 class Poem(models.Model):
@@ -32,7 +33,7 @@ class Poem(models.Model):
     # additional stuff
     modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
-    slug = models.CharField(max_length=50, unique=True)
+    slug = models.CharField(max_length=250, unique=True)
     headerimage = models.URLField(max_length=200, blank=True)
 
     def __str__(self):
@@ -72,18 +73,9 @@ class Poem(models.Model):
         Raises:
             None
         """
-        dup = None
         if not self.post_id:
-            self.created = timezone.now()
-            dup = Poem.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title[:50])
-
+            self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
 
         return super(Poem, self).save(*args, **kwargs)

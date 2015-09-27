@@ -9,8 +9,10 @@ from django.db import models
 from django.utils import timezone
 from redactor.fields import RedactorField
 from sitedata.models import Tag
-from django.utils.text import slugify
 from subdomains.utils import reverse
+
+from harshp.utils.duplicates import duplicate_slug
+from harshp.utils.duplicates import duplicate_slug_vanilla
 
 
 class BrainBankIdea(models.Model):
@@ -29,7 +31,7 @@ class BrainBankIdea(models.Model):
     )
     body = RedactorField()
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
     )
     tags = models.ManyToManyField(
         'sitedata.Tag',
@@ -77,15 +79,9 @@ class BrainBankIdea(models.Model):
             None
         """
         if not self.id:
-            # check if slug is a duplicate
-            dup = BrainBankIdea.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title[:50])
+            self.published = timezone.now()
+            self.slug = duplicate_slug_vanilla(
+                self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(BrainBankIdea, self).save(*args, **kwargs)
 
@@ -118,7 +114,7 @@ class BrainBankPost(models.Model):
     modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField(Tag)
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
         unique=True
     )
     idea = models.ForeignKey(BrainBankIdea)
@@ -149,15 +145,9 @@ class BrainBankPost(models.Model):
         check if duplicate, and update modified timestamp
         """
         if not self.id:
-            # check if slug is a duplicate
-            dup = BrainBankPost.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)[:50]
+            self.published = timezone.now()
+            self.slug = duplicate_slug_vanilla(
+                self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(BrainBankPost, self).save(*args, **kwargs)
 
@@ -194,7 +184,7 @@ class BrainBankDemo(models.Model):
         verbose_name='content'
     )
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
         unique=True
     )
     tags = models.ManyToManyField('sitedata.Tag', blank=True)
@@ -239,14 +229,8 @@ class BrainBankDemo(models.Model):
             None
         """
         if not self.id:
-            # check if slug is a duplicate
-            nos = BrainBankDemo.objects.filter(title=self.title).count()
-            if nos > 0:
-                reduct_len = 50 - len(str(nos + 1))
-                slugtitle = self.title[:reduct_len] + str(nos + 1)
-            else:
-                slugtitle = self.title[:50]
-            self.slug = slugify(slugtitle)
+            self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(BrainBankDemo, self).save(*args, **kwargs)
 

@@ -190,6 +190,11 @@ class FeedbackTest(TestCase):
         self.seeder.add_entity(Feedback, 10)
         self.seeder.execute()
 
+    def tearDown(self):
+        """clean up after tests
+        """
+        Feedback.objects.all().delete()
+
     def test_feedback_index_view(self):
         """test feedback index view and objects returned
         """
@@ -372,6 +377,7 @@ class SocialMetaTest(TestCase):
     def setUp(self):
         """set up tests for meta tags
         """
+        pass
 
     def set_meta_tags(self):
         """simulate meta tags stored in settings

@@ -13,6 +13,8 @@ from django.db import models
 from django.utils.text import slugify
 from subdomains.utils import reverse
 
+from harshp.utils.duplicates import duplicate_slug
+
 
 class Book(models.Model):
 
@@ -74,16 +76,9 @@ class Book(models.Model):
         Raises:
             None
         """
-        self.slug = slugify(self.title)
         if not self._id:
-            # check if slug is a duplicate
-            dup = Book.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         if self.date_end:
             if self.date_start > self.date_end:
                 self.date_end = self.date_start
@@ -153,14 +148,8 @@ class Movie(models.Model):
             None
         """
         if not self._id:
-            # check if slug is a duplicate
-            dup = Movie.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(Movie, self).save(*args, **kwargs)
 
@@ -234,14 +223,8 @@ class TVShow(models.Model):
             None
         """
         if not self._id:
-            # check if slug is a duplicate
-            dup = TVShow.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         if self.date_end:
             if self.date_start > self.date_end:
                 self.date_end = self.date_start
