@@ -52,7 +52,7 @@ Life eXperiments
   <h2>Latest Week of Experiments</h2>
   <h3><a class='nodecorate' href="{% url 'lifeX:week' 'lifeX' latest_week.number %}">{{latest_week}}</a></h3>
   <h4>{% for post in latest_week.lifexpost_set.all %}
-  Experiment: <a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br />Idea: <a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">({{post.idea.category.name}})</a> <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a>
+  <a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br /><a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">({{post.idea.category.name}})</a> <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a><small><br><br></small>
   {% endfor %}</h4>
   </div>
 </div>

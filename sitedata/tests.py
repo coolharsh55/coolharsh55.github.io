@@ -531,75 +531,75 @@ class DictionaryTemplateTagTest(TestCase):
             self.assertTrue(timeslot[0] in reltime)
 
 
-class CSSLinkTest(TestCase):
+# class CSSLinkTest(TestCase):
 
-    """tests for CSS Link
-    """
+#     """tests for CSS Link
+#     """
 
-    def setUp(self):
-        """set up tests
-        """
-        self.seeder = Seed.seeder()
-        self.seeder.add_entity(CSSLink, 10)
-        self.seeder.execute()
+#     def setUp(self):
+#         """set up tests
+#         """
+#         self.seeder = Seed.seeder()
+#         self.seeder.add_entity(CSSLink, 10)
+#         self.seeder.execute()
 
-    def tearDown(self):
-        """clean up after tests
-        """
-        CSSLink.objects.all().delete()
+#     def tearDown(self):
+#         """clean up after tests
+#         """
+#         CSSLink.objects.all().delete()
 
-    def test_save(self):
-        """test save method
-        """
-        css = CSSLink(
-            name='test css link',
-            link='https://example.com/',
-        )
-        css.save()
-        self.assertIsNotNone(css.pk)
+#     def test_save(self):
+#         """test save method
+#         """
+#         css = CSSLink(
+#             name='test css link',
+#             link='https://example.com/',
+#         )
+#         css.save()
+#         self.assertIsNotNone(css.pk)
 
-    def test_link(self):
-        """test only valid links are accepted
-        """
-        css = CSSLink.objects.all()[0]
-        css.link = 'abcde'
-        # TODO: test for error
-        css.save()
+#     def test_link(self):
+#         """test only valid links are accepted
+#         """
+#         css = CSSLink.objects.all()[0]
+#         css.link = 'abcde'
+#         # TODO: test for error
+#         css.save()
 
-    def test_str(self):
-        """test str method
-        """
-        css = CSSLink.objects.all()[0]
-        self.assertEqual(css.__str__(), css.name)
+#     def test_str(self):
+#         """test str method
+#         """
+#         css = CSSLink.objects.all()[0]
+#         self.assertEqual(css.__str__(), css.name)
 
-    def test_duplicates(self):
-        """test duplicates are not allowed
-        """
-        css1 = CSSLink.objects.all()[0]
-        css2 = CSSLink(name=css1.name, link=css1.link)
-        with self.assertRaises(IntegrityError):
-            with transaction.atomic():
-                css2.save()
+#     def test_duplicates(self):
+#         """test duplicates are not allowed
+#         """
+#         css1 = CSSLink.objects.all()[0]
+#         css2 = CSSLink(name=css1.name, link=css1.link)
+#         with self.assertRaises(IntegrityError):
+#             with transaction.atomic():
+#                 css2.save()
 
-    def test_save_with_dependency(self):
-        """test save method with dependency
-        """
-        css = CSSLink.objects.all()[0]
-        dependency = CSSLink.objects.all()[1:]
-        for d in dependency:
-            css.dependency.add(d)
-        css.save()
-        self.assertListEqual(list(css.dependency.all()), list(dependency))
+#     def test_save_with_dependency(self):
+#         """test save method with dependency
+#         """
+#         css = CSSLink.objects.all()[0]
+#         dependency = CSSLink.objects.all()[1:]
+#         for d in dependency:
+#             css.dependency.add(d)
+#         css.save()
+#         self.assertListEqual(list(css.dependency.all()), list(dependency))
 
-    def test_cyclic_dependency(self):
-        """test for cycles in dependency
-        """
-        # d_set = dependencies
-        # for d in d_set:
-        #   for dependencies of d:
-        #       if dependency in d_set:
-        #           cyclic dependency exists
-        pass
+#     def test_cyclic_dependency(self):
+#         """test for cycles in dependency
+#         """
+#         # d_set = dependencies
+#         # for d in d_set:
+#         #   for dependencies of d:
+#         #       if dependency in d_set:
+#         #           cyclic dependency exists
+#         pass
 
 
 class JSLinkTest(TestCase):
