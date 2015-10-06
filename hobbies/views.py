@@ -31,6 +31,7 @@ _TYPE_PROPERTIES = {
         'Stopped Reading',  # msg stop
         'Finished Reading',  # msg end
         'Reading since',  # msg continuation
+        lambda i: None,
     ),
 
     'movie': (
@@ -41,6 +42,7 @@ _TYPE_PROPERTIES = {
         None,  # msg stop
         'Watched',  # msg end
         'Watched incomplete',  # msg continuation
+        lambda i: None,
     ),
 
     'tvshow': (
@@ -51,6 +53,7 @@ _TYPE_PROPERTIES = {
         'Stopped Watching',  # msg stop
         'Finished Watching',  # msg end
         'Watching since',  # msg continuation
+        lambda i: None,
     ),
 
     'game': (
@@ -59,10 +62,53 @@ _TYPE_PROPERTIES = {
         'date_end',  # date end
         'Started Playing',  # msg start
         'Stopped Playing',  # msg stop
-        'Finished Playing',  # msg end
+        'Completed',  # msg end
         'Playing since',  # msg continuation
+        lambda i: ' Still playing' if i.continuing else None,
     ),
 }
+
+
+def _hobby_description(obj):
+    """create a hobby description based on attributes
+
+    Args:
+        obj(object): hobby object
+
+    Returns:
+        str: description of the hobby object
+
+    Raises:
+        None
+    """
+    condition, date_start, date_end, msg_start, msg_stop, msg_end, \
+        msg_continuation, more_info = _TYPE_PROPERTIES[obj._meta.model_name]
+    # if I've finished with the hobby
+    if condition(obj) and date_end:
+        description = "%s: %s. %s: %s." % (
+            msg_start, getattr(obj, date_start),
+            msg_end, getattr(obj, date_end),
+        )
+    # if I've left the hobby incomplete
+    elif date_end and getattr(obj, date_end):
+        description = "%s: %s. %s: %s." % (
+            msg_start, getattr(obj, date_start),
+            msg_stop, getattr(obj, date_end),
+        )
+    # I'm still doing the hobby, or it's a continous one
+    else:
+        if condition(obj):
+            msg = msg_end
+        else:
+            msg = msg_continuation
+        description = "%s: %s." % (
+            msg, getattr(obj, date_start),
+        )
+    additional_info = more_info(obj)
+    if additional_info is not None:
+        description += additional_info
+
+    return description
 
 
 def _type_generator(objects):
@@ -82,34 +128,11 @@ def _type_generator(objects):
 
     assert hasattr(objects, '__iter__')
 
-    condition, date_start, date_end, msg_start, msg_stop, msg_end, \
-        msg_continuation = _TYPE_PROPERTIES[objects[0]._meta.model_name]
-
     items = []
-
     for obj in objects:
-        # if I've finished with the hobby
-        if condition(obj) and date_end:
-            description = "%s: %s. %s: %s." % (
-                msg_start, getattr(obj, date_start),
-                msg_end, getattr(obj, date_end),
-            )
-        # if I've left the hobby incomplete
-        elif date_end and getattr(obj, date_end):
-            description = "%s: %s. %s: %s." % (
-                msg_start, getattr(obj, date_start),
-                msg_stop, getattr(obj, date_end),
-            )
-        # I'm still doing the hobby, or it's a continous one
-        else:
-            if condition(obj):
-                msg = msg_end
-            else:
-                msg = msg_continuation
-            description = "%s: %s." % (
-                msg, getattr(obj, date_start),
-            )
+        description = _hobby_description(obj)
         items.append((obj, description))
+
     return items
 
 
@@ -187,9 +210,7 @@ def type_item(request, hobbytype, hobbytitle):
     for model in _MODELS.get_models():
         if ''.join((model._meta.model_name, 's')) == hobbytype:
             try:
-                item = _type_generator(
-                    objects=[model.objects.get(slug=hobbytitle)]
-                )[0]
+                item = model.objects.get(slug=hobbytitle)
             except model.DoesNotExist:
                 raise Http404("%s is not something I've tried" % hobbytitle)
     if item is None:
@@ -197,8 +218,8 @@ def type_item(request, hobbytype, hobbytitle):
     return render_to_response(
         'hobbies/type_item.html',
         {
-            'item': item[0],
-            'description': item[1],
+            'item': item,
+            'description': _hobby_description(item),
             'hobbytype': hobbytype,
         }
     )

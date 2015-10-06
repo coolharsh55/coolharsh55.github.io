@@ -12,7 +12,7 @@
 
 {% block CONTENT %}
 <div class='container centertext'>
-<h1>{{ item.title }}<small><br>{{ description }}</small><br></h1>
+<h1>{{ item }}<small><br>{{ description }}</small><br></h1>
 <small>{% for tag in item.tags.all %}<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>, {% endfor %}</small><br><br>
 {% if item.headerimage %}
 <img src="{{item.headerimage}}" class="img-responsive" alt="Responsive image">
