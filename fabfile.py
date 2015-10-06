@@ -78,7 +78,7 @@ def l_test():
         local(run_stmt('stories', 'keepdb'))
         local(run_stmt('poems', 'keepdb'))
         local(run_stmt('lifeX', 'keepdb'))
-        local(run_stmt('brainbank', 'noinput'))
+        local(run_stmt('brainbank', 'keepdb'))
         local(run_stmt('sitedata', 'keepdb'))
         local(run_stmt('hobbies', 'keepdb'))
         local(run_stmt('harshp', 'keepdb'))

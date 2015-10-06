@@ -182,15 +182,24 @@ class FeedbackTest(TestCase):
     """Tests for feedbacks on site
     """
 
-    def setUp(self):
+    def __init__(self, *args, **kwargs):
+        self.client = Client()
+        return super(FeedbackTest, self).__init__(*args, **kwargs)
+
+    # def setUp(self):
+    #     """set up client for connections
+    #     """
+    #     self.client = Client()
+
+    def setUpFeedbacks(self):
         """set up feedbacks in database for tests
         """
-        self.client = Client()
+        self.tearDownFeedbacks()
         self.seeder = Seed.seeder()
         self.seeder.add_entity(Feedback, 10)
         self.seeder.execute()
 
-    def tearDown(self):
+    def tearDownFeedbacks(self):
         """clean up after tests
         """
         Feedback.objects.all().delete()
@@ -198,6 +207,7 @@ class FeedbackTest(TestCase):
     def test_feedback_index_view(self):
         """test feedback index view and objects returned
         """
+        self.setUpFeedbacks()
         feedbacks = list(Feedback.objects.order_by('-published'))
         url = reverse(
             viewname='sitedata:feedback_index',
@@ -211,6 +221,7 @@ class FeedbackTest(TestCase):
     def test_feedback_view(self):
         """test feedback view and object returned
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         url = reverse(
@@ -226,6 +237,7 @@ class FeedbackTest(TestCase):
     def test_feedback_duplicate(self):
         """test duplicate feedbacks are allowed
         """
+        self.setUpFeedbacks()
         feedback1 = Feedback.objects.all()[0]
         feedback2 = Feedback()
         feedback2.title = feedback1.title
@@ -253,6 +265,7 @@ class FeedbackTest(TestCase):
     def test_feedback_url(self):
         """test feedback url is same as absolute url
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         url = reverse(
@@ -265,6 +278,7 @@ class FeedbackTest(TestCase):
     def test_feedback_form_add(self):
         """test adding feedback via form
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         fields = {}
@@ -276,6 +290,7 @@ class FeedbackTest(TestCase):
     def test_feedback_form_add_view(self):
         """test feedback form add view
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         fields = {}
@@ -326,6 +341,7 @@ class FeedbackTest(TestCase):
     def test_feedback_add_without_reply(self):
         """test add feedback without reply
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         fields = {}
@@ -340,6 +356,7 @@ class FeedbackTest(TestCase):
     def test_feedback_with_anonymous_user(self):
         """testadd feedback without user name
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         fields = {}
@@ -357,6 +374,7 @@ class FeedbackTest(TestCase):
     def test_feedback_reply(self):
         """test replying to saved feedback
         """
+        self.setUpFeedbacks()
         feedback = Feedback.objects.all()[0]
         self.assertIsNotNone(feedback)
         fields = {}
