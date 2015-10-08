@@ -27,6 +27,7 @@ SUIT_CONFIG = {
         {'app': 'poems', 'label': 'Poems', 'icon': 'icon-asterisk'},
         {'app': 'articles', 'label': 'Articles', 'icon': 'icon-tag'},
         {'app': 'brainbank', 'label': 'Brain Bank', 'icon': 'icon-qrcode'},
+        {'app': 'devblog', 'label': 'Dev', 'icon': 'icon-cog'},
         {'app': 'lifex', 'label': 'Life X', 'icon': 'icon-road'},
         {'app': 'hobbies', 'label': 'Hobbies', 'icon': 'icon-time'},
         {'app': 'sitedata', 'label': 'Site data', 'icon': 'icon-wrench'},

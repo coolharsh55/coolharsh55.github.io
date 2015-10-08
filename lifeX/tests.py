@@ -442,8 +442,7 @@ class LifeXPostTest(TestCase):
             post.title = 'random title #%s' % i
             post.body = 'random body'
             post.published = time_now()
-            post.week = weeks[
-                randint(0, len(weeks) - 1)]
+            post.week = weeks[i]
             post.idea = ideas[
                 randint(0, len(ideas) - 1)]
             post.save()
