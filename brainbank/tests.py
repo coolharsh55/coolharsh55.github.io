@@ -4,6 +4,7 @@
 
 from django.test import Client
 from django.test import TestCase
+from django.utils.timezone import now as time_now
 
 from django_seed import Seed
 from subdomains.utils import reverse
@@ -29,6 +30,11 @@ class BrainBankAIdeaTests(TestCase):
         self.seeder = Seed.seeder()
         self.seeder.add_entity(BrainBankIdea, 10)
         self.seeder.execute()
+
+    def tearDown(self):
+        """clean up after tests
+        """
+        BrainBankIdea.objects.all().delete()
 
     def test_idea_view(self):
         """test brainbank index view
@@ -67,9 +73,8 @@ class BrainBankAIdeaTests(TestCase):
         """
         idea1 = BrainBankIdea.objects.order_by('-published')[0]
         idea2 = BrainBankIdea()
-        idea2.__dict__.update(idea1.__dict__)
-        idea2.id = None
-        idea2.slug = None
+        idea2.title = idea1.title
+        idea2.published = time_now()
         idea2.save()
         self.assertIsNotNone(idea2.slug)
         self.assertNotEqual(idea1.slug, idea2.slug)
@@ -89,7 +94,7 @@ class BrainBankAIdeaTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
 
-class BrainBankBPostTests(TestCase):
+class BrainBankPostTests(TestCase):
 
     """tests for BrainBank Posts
     """
@@ -141,9 +146,11 @@ class BrainBankBPostTests(TestCase):
         """
         post1 = BrainBankPost.objects.order_by('-published')[0]
         post2 = BrainBankPost()
-        post2.__dict__.update(post1.__dict__)
-        post2.id = None
-        post2.slug = None
+        post2.title = post1.title
+        post2.body = post1.body
+        post2.published = time_now()
+        post2.slug = post1.slug
+        post2.idea = post1.idea
         post2.save()
         self.assertIsNotNone(post2.slug)
         self.assertNotEqual(post1.slug, post2.slug)

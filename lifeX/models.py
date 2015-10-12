@@ -14,23 +14,11 @@ from datetime import datetime, timedelta
 from django.utils.text import slugify
 from subdomains.utils import reverse
 
+from harshp.utils.duplicates import duplicate_slug
+from harshp.utils.duplicates import duplicate_slug_vanilla
 
-def lifex_start_date():
-    """lifeX start date
 
-    The date for when LifeX started. All weeks are calculated relative
-    to this date
-
-    Args:
-        None
-
-    Returns:
-        DateTime: 2014-03-24 (25 Mar'14)
-
-    Raises:
-        None
-    """
-    return datetime(2014, 03, 24)
+LIFEX_START_DATE = datetime(2014, 03, 24)
 
 
 class LifeXWeek(models.Model):
@@ -80,7 +68,7 @@ class LifeXWeek(models.Model):
             None
         """
         return LifeXWeek.str_week(
-            lifex_start_date() + timedelta(weeks=self.number - 1)
+            LIFEX_START_DATE + timedelta(weeks=self.number - 1)
         )
 
     def _end_week(self):
@@ -98,7 +86,7 @@ class LifeXWeek(models.Model):
             None
         """
         return LifeXWeek.str_week(
-            lifex_start_date() + timedelta(weeks=self.number, days=-1)
+            LIFEX_START_DATE + timedelta(weeks=self.number, days=-1)
         )
 
     @staticmethod
@@ -217,7 +205,7 @@ class LifeXIdea(models.Model):
     body = RedactorField()
     tags = models.ManyToManyField('sitedata.Tag', blank=True,)
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
         unique=True
     )
     experimented = models.BooleanField(
@@ -297,33 +285,6 @@ class LifeXIdea(models.Model):
             kwargs={'category': self.category.slug, 'idea': self.slug, })
 
 
-# TODO: reduce LifeX to empty class
-# class LifeX(models.Model):
-#     # basic post
-#     post_id = models.AutoField(primary_key=True)
-#     title = models.CharField(max_length=250,)
-#     body = RedactorField()
-#     published = models.DateTimeField()
-
-#     # additional stuff
-#     modified = models.DateTimeField()
-#     tags = models.ManyToManyField('sitedata.Tag')
-#     headerimage = models.URLField(max_length=200,blank=True)
-
-#     def __str__(self):
-#         return self.title
-
-#     class Meta:
-#         verbose_name = 'Life Experiment'
-#         verbose_name_plural = 'Life Experiments'
-
-#     def save(self, *args, **kwargs):
-#         ''' On save, update timestamps '''
-#         if not self.post_id:
-#             self.created = timezone.now()
-#         self.modified = timezone.now()
-#         return super(LifeX, self).save(*args, **kwargs)
-
 class LifeXPost(models.Model):
 
     """
@@ -340,7 +301,7 @@ class LifeXPost(models.Model):
     )
     body = RedactorField()
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
         unique=True
     )
     published = models.DateField()
@@ -389,27 +350,19 @@ class LifeXPost(models.Model):
             None
         """
         if not self.post_id:
-            # check if slug is a duplicate
-            dup = LifeXPost.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(
-                    'W' + self.title)[:49 - len(dup)] + '-' + nos
-            else:
-                self.slug = slugify(
-                    'W' + str(self.week.number) + '-' + self.title)[:50]
+            self.published = timezone.now()
+        self.slug = duplicate_slug(
+            self, self.__str__(), slug=self.slug)
+
         self.modified = timezone.now()
+
         same_posts = LifeXPost.objects.filter(idea=self.idea, week=self.week)
-        if self.post_id:
-            valid_length = 1
-        else:
-            valid_length = 0
+        valid_length = 1 if self.post_id else 0
         if len(same_posts) > valid_length:
             raise AssertionError(
                 'post - %s for idea - %s in %s already exists' % (
                     self.title, self.idea.title, self.week))
+
         return super(LifeXPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -437,7 +390,7 @@ class LifeXBlog(models.Model):
     body = RedactorField()
     headerimage = models.URLField(max_length=200, blank=True)
     slug = models.SlugField(
-        max_length=50,
+        max_length=250,
         unique=True
     )
     published = models.DateField()
@@ -482,15 +435,9 @@ class LifeXBlog(models.Model):
             None
         """
         if not self.post_id:
-            # check if slug is a duplicate
-            dup = LifeXBlog.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)[:50]
+            self.published = timezone.now()
+            self.slug = duplicate_slug_vanilla(
+                self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(LifeXBlog, self).save(*args, **kwargs)
 

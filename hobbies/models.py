@@ -13,6 +13,8 @@ from django.db import models
 from django.utils.text import slugify
 from subdomains.utils import reverse
 
+from harshp.utils.duplicates import duplicate_slug
+
 
 class Book(models.Model):
 
@@ -74,16 +76,9 @@ class Book(models.Model):
         Raises:
             None
         """
-        self.slug = slugify(self.title)
         if not self._id:
-            # check if slug is a duplicate
-            dup = Book.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         if self.date_end:
             if self.date_start > self.date_end:
                 self.date_end = self.date_start
@@ -153,14 +148,8 @@ class Movie(models.Model):
             None
         """
         if not self._id:
-            # check if slug is a duplicate
-            dup = Movie.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
         return super(Movie, self).save(*args, **kwargs)
 
@@ -179,9 +168,11 @@ class TVShow(models.Model):
     Date fields for when I started and finished watching
     A watched boolean field represents if I've completed the series
     A Latest Season/Episode notation, if available
+    Season, where a default of 0 means ALL seasons
     """
     _id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200,)
+    season = models.IntegerField(default=0)
     slug = models.SlugField(max_length=200, unique=True)
     date_start = models.DateField(verbose_name='Started',)
     date_end = models.DateField(
@@ -204,7 +195,10 @@ class TVShow(models.Model):
         Raises:
             None
         """
-        return self.title
+        string = self.title
+        if self.season > 0:
+            string += ' - ' + 'Season %d' % self.season
+        return string
 
     class Meta:
 
@@ -234,14 +228,8 @@ class TVShow(models.Model):
             None
         """
         if not self._id:
-            # check if slug is a duplicate
-            dup = TVShow.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:199 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title)
             self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         if self.date_end:
             if self.date_start > self.date_end:
                 self.date_end = self.date_start
@@ -269,6 +257,7 @@ class Game(models.Model):
     date_start = models.DateField(verbose_name='Started')
     date_end = models.DateField(
         verbose_name='Finished', blank=True, null=True)
+    continuing = models.BooleanField(default=False, verbose_name='Continuing?')
     published = models.DateTimeField()
     modified = models.DateTimeField(blank=True,)
     finished = models.BooleanField(default=False, verbose_name='Finished?')

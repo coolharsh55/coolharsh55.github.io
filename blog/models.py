@@ -3,9 +3,10 @@
 
 from django.db import models
 from django.utils import timezone
-from django.utils.text import slugify
 from redactor.fields import RedactorField
 from subdomains.utils import reverse
+
+from harshp.utils.duplicates import duplicate_slug
 
 
 class BlogPost(models.Model):
@@ -33,7 +34,7 @@ class BlogPost(models.Model):
     # additional stuff
     modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
-    slug = models.SlugField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=250, blank=True, unique=True)
     headerimage = models.URLField(max_length=200, blank=True)
 
     def __str__(self):
@@ -74,14 +75,8 @@ class BlogPost(models.Model):
             None
         """
         if not self.post_id:
-            self.created = timezone.now()
-            # check if slug is a duplicate
-            dup = BlogPost.objects.filter(title=self.title)
-            if len(dup) > 0:  # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))  # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title[:50])
+            self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
 
         return super(BlogPost, self).save(*args, **kwargs)

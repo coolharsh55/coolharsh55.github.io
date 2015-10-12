@@ -14,7 +14,7 @@ from subdomains.utils import reverse
 
 from sitedata.models import Tag
 
-from .models import lifex_start_date
+from .models import LIFEX_START_DATE
 from .models import LifeXBlog
 from .models import LifeXCategory
 from .models import LifeXIdea
@@ -33,7 +33,7 @@ class LifeXDatesTest(TestCase):
         """test start week for lifeX
         """
         start_date = datetime(2014, 03, 24)
-        self.assertEqual(start_date, lifex_start_date())
+        self.assertEqual(start_date, LIFEX_START_DATE)
 
 
 class LifeXWeekTest(TestCase):
@@ -81,7 +81,7 @@ class LifeXWeekTest(TestCase):
         week = LifeXWeek.objects.all()[
             randint(0, LifeXWeek.objects.count() - 1)
         ]
-        start_date = lifex_start_date() + timedelta(weeks=week.number - 1)
+        start_date = LIFEX_START_DATE + timedelta(weeks=week.number - 1)
         self.assertEqual(LifeXWeek.str_week(start_date), week._start_week())
 
     def test_end_of_week(self):
@@ -90,13 +90,13 @@ class LifeXWeekTest(TestCase):
         week = LifeXWeek.objects.all()[
             randint(0, LifeXWeek.objects.count() - 1)
         ]
-        end_date = lifex_start_date() + timedelta(weeks=week.number - 1)
+        end_date = LIFEX_START_DATE + timedelta(weeks=week.number - 1)
         self.assertEqual(LifeXWeek.str_week(end_date), week._start_week())
 
     def test_string_repr_of_week(self):
         """test string representation of week
         """
-        week_date = lifex_start_date() + timedelta(randint(0, 500))
+        week_date = LIFEX_START_DATE + timedelta(randint(0, 500))
         str_week = week_date.strftime('%d-%b-%Y')
         self.assertEqual(LifeXWeek.str_week(week_date), str_week)
 
@@ -442,8 +442,7 @@ class LifeXPostTest(TestCase):
             post.title = 'random title #%s' % i
             post.body = 'random body'
             post.published = time_now()
-            post.week = weeks[
-                randint(0, len(weeks) - 1)]
+            post.week = weeks[i]
             post.idea = ideas[
                 randint(0, len(ideas) - 1)]
             post.save()
@@ -477,7 +476,7 @@ class LifeXPostTest(TestCase):
         """test duplicate posts
         """
         post1 = LifeXPost()
-        post1.name = 'somerandompostname'
+        post1.title = 'somerandompostname'
         post1.published = time_now()
         post1.idea = LifeXIdea.objects.all()[0]
         post1.week = LifeXWeek.objects.all()[0]
@@ -485,15 +484,12 @@ class LifeXPostTest(TestCase):
         self.assertIsNotNone(post1.pk)
         self.assertIsNotNone(post1.slug)
         post2 = LifeXPost()
-        post2.name = post1.name
+        post2.title = post1.title
         post2.published = post1.published
         post2.idea = post1.idea
         post2.week = post1.week
-        post2.save()
-        self.assertIsNotNone(post2.pk)
-        self.assertIsNotNone(post2.slug)
-        self.assertEqual(post1.title, post2.title)
-        self.assertNotEqual(post1.slug, post2.slug)
+        with self.assertRaises(AssertionError):
+            post2.save()
 
     def test_str(self):
         """test post returns start and end dates in str
@@ -652,14 +648,13 @@ class LifeXBlogTest(TestCase):
         """test duplicate blogs
         """
         blog1 = LifeXBlog()
-        blog1.name = 'somerandomblogname'
+        blog1.title = 'somerandomblogname'
         blog1.published = time_now()
         blog1.save()
         self.assertIsNotNone(blog1.pk)
         self.assertIsNotNone(blog1.slug)
         blog2 = LifeXBlog()
-        blog2.name = blog1.name
-        blog2.published = blog1.published
+        blog2.title = blog1.title
         blog2.save()
         self.assertIsNotNone(blog2.pk)
         self.assertIsNotNone(blog2.slug)

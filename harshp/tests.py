@@ -2,6 +2,7 @@
 
 """
 
+from django.utils.timezone import now as time_now
 from django.test import Client
 from django.test import TestCase
 
@@ -20,6 +21,8 @@ from hobbies.models import Book
 from hobbies.models import Movie
 from hobbies.models import TVShow
 from hobbies.models import Game
+
+from harshp.utils import duplicates
 
 HTTP_HOST = 'www.example.com'
 
@@ -159,3 +162,145 @@ class ErrorPageTest(TestCase):
         self.assertIsNotNone(url)
         response = client.get(url)
         self.assertEqual(response.status_code, 500)
+
+
+class DuplicateUtilsTest(TestCase):
+
+    """tests for the duplicates utils
+    """
+
+    def setUp(self):
+        """setup tests
+        """
+        pass
+
+    def tearDown(self):
+        """clean up after tests
+        """
+        pass
+
+    def test_validate_object(self):
+        """test validate method asserts
+        objects are valid django model instances
+        """
+        with self.assertRaises(AssertionError):
+            duplicates._validate(None, "slugfield", title='')
+
+    def test_validate_slugfield(self):
+        """test validate method asserts
+        slugfield is a string
+        """
+        blog = BlogPost()
+        with self.assertRaises(AssertionError):
+            duplicates._validate(blog, None, title='')
+
+    def test_validate_returnval(self):
+        """test validate method returns the
+        correct slugfield max length
+        """
+        blog = BlogPost()
+        slugfield_length = blog._meta.get_field('slug').max_length
+        self.assertEqual(
+            slugfield_length, duplicates._validate(
+                blog, 'slugfield', title=''))
+
+    def test_validate_slugfield_length(self):
+        """test validate method asserts for a valid
+        slugfield max length
+        """
+        with self.assertRaises(AssertionError):
+            duplicates._validate(LifeXWeek(), 'slugfield', title='')
+
+    def test_validate_args_kwargs(self):
+        """test validate method accepts correct number
+        or args and kwargs
+        """
+        # no args / kwargs
+        with self.assertRaises(AssertionError):
+            duplicates._validate(BlogPost(), 'slugfield')
+
+    def test_query_duplicates_return_val(self):
+        """test query duplicates return value is
+        the correct length of duplicates
+        """
+        blog1 = BlogPost()
+        blog1.title = 'blog'
+        blog1.published = time_now()
+        blog1.save()
+
+        val = duplicates._query_duplicates(BlogPost, title=blog1.title)
+        self.assertEqual(val, 1)
+
+        blog1.delete()
+
+    def test_make_duplicate_slug(self):
+        """test make duplicate slug method for creating
+        duplicate slugs appended with an index
+        """
+        slug = 'slugfield'
+        newslug = duplicates._make_duplicate_slug(slug, len(slug), 2)
+        self.assertNotEqual(slug, newslug)
+        self.assertEqual(newslug[-1:], '2')
+
+    def test_duplicate_slug_vanilla(self):
+        """test vanilla method for duplicate slugs
+        """
+        blog1 = BlogPost()
+        blog1.title = 'blog'
+        blog1.published = time_now()
+        blog1.save()
+
+        blog2 = BlogPost()
+        blog2.title = blog1.title
+        blog2.published = time_now()
+
+        slug = duplicates.duplicate_slug_vanilla(
+            blog2, blog2.title, title=blog2.title)
+        self.assertNotEqual(slug, blog1.slug)
+        self.assertEqual(slug[-1:], '1')
+
+        blog1.delete()
+
+    def test_duplicate_slug(self):
+        """test method for duplicate slugs
+        """
+        blog1 = BlogPost()
+        blog1.title = 'blog'
+        blog1.published = time_now()
+        blog1.save()
+
+        blog2 = BlogPost()
+        blog2.title = blog1.title
+        blog2.published = time_now()
+
+        slug = duplicates.duplicate_slug(blog2, blog2.title, title=blog2.title)
+        self.assertNotEqual(slug, blog1.slug)
+        self.assertEqual(slug[-1:], '2')
+
+        blog1.delete()
+
+    def test_duplicate_slug_vanilla_nodups(self):
+        """test vanillla method for duplicate slugs
+        without any duplicates
+        should return the slug as is
+        """
+        blog1 = BlogPost()
+        blog1.title = 'blog'
+        blog1.published = time_now()
+
+        slug = duplicates.duplicate_slug_vanilla(
+            blog1, blog1.title, title=blog1.title)
+        self.assertEqual(slug, blog1.title)
+
+    def test_duplicate_slug_nodups(self):
+        """test method for duplicate slugs
+        without any duplicates
+        should return the slug as is
+        """
+        blog1 = BlogPost()
+        blog1.title = 'blog'
+        blog1.published = time_now()
+
+        slug = duplicates.duplicate_slug(
+            blog1, blog1.title, title=blog1.title)
+        self.assertEqual(slug, blog1.title)

@@ -242,6 +242,7 @@ class LifeXPostAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': (
                 'tags',
+                'slug',
             )
         }),
     )

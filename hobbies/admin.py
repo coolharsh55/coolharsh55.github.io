@@ -13,11 +13,9 @@ from hobbies.models import Game
 
 
 @admin.register(Book)
-@admin.register(TVShow)
-@admin.register(Game)
-class GenericAdmin(admin.ModelAdmin):
+class BookAdmin(admin.ModelAdmin):
 
-    """Admin for Generic Models
+    """Admin for Book Models
     List: title, finished, start date, end date
     Order: title, finished, start date, end date
     Search: title
@@ -59,6 +57,128 @@ class GenericAdmin(admin.ModelAdmin):
                 'date_start',
                 'date_end',
                 'finished',
+                'slug',
+                'headerimage',
+            ),
+        }),
+        ('Tags', {
+            'fields': (
+                'tags',
+            ),
+        }),
+    )
+
+
+@admin.register(TVShow)
+class TVAdmin(admin.ModelAdmin):
+
+    """Admin for TV Models
+    List: title, finished, start date, end date
+    Order: title, finished, start date, end date
+    Search: title
+    Filter: finished, start date, end date
+    Form: (ID is readonly) title, finished, start/end date, slug, tags
+    """
+    list_display = (
+        'title',
+        'season',
+        'date_start',
+        'date_end',
+        'finished',
+    )
+    ordering = (
+        '-date_start',
+        '-date_end',
+        'title',
+        'season',
+        'finished',
+    )
+    search_fields = (
+        'title',
+    )
+    list_filter = (
+        'date_start',
+        'date_end',
+        'finished',
+        'season',
+    )
+    readonly_fields = (
+        '_id',
+    )
+    filter_horizontal = (
+        'tags',
+    )
+    view_on_site = True
+    fieldsets = (
+        ('Details', {
+            'fields': (
+                'title',
+                'season',
+                '_id',
+                'date_start',
+                'date_end',
+                'finished',
+                'slug',
+                'headerimage',
+            ),
+        }),
+        ('Tags', {
+            'fields': (
+                'tags',
+            ),
+        }),
+    )
+
+
+@admin.register(Game)
+class GameAdmin(admin.ModelAdmin):
+
+    """Admin for Game Models
+    List: title, finished, start date, end date
+    Order: title, finished, start date, end date
+    Search: title
+    Filter: finished, start date, end date
+    Form: (ID is readonly) title, finished, start/end date, slug, tags
+    """
+    list_display = (
+        'title',
+        'date_start',
+        'date_end',
+        'finished',
+        'continuing',
+    )
+    ordering = (
+        '-date_start',
+        '-date_end',
+        'title',
+        'finished',
+        'continuing',
+    )
+    search_fields = (
+        'title',
+    )
+    list_filter = (
+        'date_start',
+        'date_end',
+        'finished',
+        'continuing',
+    )
+    readonly_fields = (
+        '_id',
+    )
+    filter_horizontal = (
+        'tags',
+    )
+    view_on_site = True
+    fieldsets = (
+        ('Details', {
+            'fields': (
+                'title',
+                '_id',
+                'date_start',
+                'date_end',
+                'finished',
+                'continuing',
                 'slug',
                 'headerimage',
             ),

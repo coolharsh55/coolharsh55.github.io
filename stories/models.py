@@ -7,7 +7,8 @@ from django.db import models
 from redactor.fields import RedactorField
 from subdomains.utils import reverse
 from django.utils import timezone
-from django.utils.text import slugify
+
+from harshp.utils.duplicates import duplicate_slug
 
 
 class StoryPost(models.Model):
@@ -23,7 +24,7 @@ class StoryPost(models.Model):
     # additional stuff
     modified = models.DateTimeField(blank=True,)
     tags = models.ManyToManyField('sitedata.Tag')
-    slug = models.CharField(max_length=50, unique=True)
+    slug = models.CharField(max_length=250, blank=True, unique=True)
     headerimage = models.URLField(max_length=200, blank=True)
 
     def __str__(self):
@@ -44,15 +45,8 @@ class StoryPost(models.Model):
         check for duplicates
         """
         if not self.post_id:
-            self.created = timezone.now()
-            dup = StoryPost.objects.filter(title=self.title)
-            if len(dup) > 0:
-                # objects with the same slug exist -> duplicate!
-                nos = str(len(dup))
-                # append number of duplicates as modifier
-                self.slug = slugify(self.title[:49 - len(dup)] + '-' + nos)
-            else:
-                self.slug = slugify(self.title[:50])
+            self.published = timezone.now()
+        self.slug = duplicate_slug(self, self.title, title=self.title)
         self.modified = timezone.now()
 
         return super(StoryPost, self).save(*args, **kwargs)
