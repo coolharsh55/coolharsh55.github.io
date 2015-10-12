@@ -1,6 +1,6 @@
 # harshp.com
 
-![GitHub issues](https://img.shields.io/badge/tag-v2.1.1-CC3399.svg)
+![GitHub issues](https://img.shields.io/badge/tag-v2.1.2-CC3399.svg)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
 
 [![Build Status](https://travis-ci.org/coolharsh55/harshp.com.svg?branch=master)](https://travis-ci.org/coolharsh55/harshp.com)

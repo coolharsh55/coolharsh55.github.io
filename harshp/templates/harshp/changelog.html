@@ -21,6 +21,36 @@
 
 <div class='container'><br/>
 
+<div class="section" id="v2-1-2-2015-10-12">
+<h2>v2.1.2 (2015-10-12)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #111 dev entry in admin sidebar. [Harshvardhan Pandit]</p>
+<p>added devblog entries to the admin sidebar with a cog icon</p>
+</li>
+<li><p class="first">Fixes #94 idea layout on lifeX homepage. [Harshvardhan Pandit]</p>
+<p>added a few linebreaks to prevent multiple ideas being printed on the same line</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Seperate feedback creation in sitedata tests. [Harshvardhan Pandit]</p>
+<p>The feedback creation code was causing a weird unique constraint error in places it shouldn't. Separating the object creation code fixes this issue.</p>
+<p>Also Closes #92 add testing as a requirement to fab deploy</p>
+</li>
+<li><p class="first">Fields for hobbies, updated slugfield lengths. [Harshvardhan Pandit]</p>
+<p>Closes #50 added season for TV Shows, finished but continuing option for Games</p>
+</li>
+<li><p class="first">Refactor duplicate in save to utils.duplicates. [Harshvardhan Pandit]</p>
+<p>the duplicate check and slug functionality in <cite>save</cite> methods has been refactored in to <cite>harshp.utils.duplicates</cite> exposing two methods - <cite>duplicate_slug</cite> and <cite>duplicate_slug_vanilla</cite>
+closes #91</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="v2-1-1-2015-09-26">
 <h2>v2.1.1 (2015-09-26)</h2>
 <div class="section" id="fix">
