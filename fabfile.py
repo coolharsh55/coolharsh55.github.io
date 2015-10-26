@@ -134,7 +134,7 @@ def git_update():
     with cd(project_dir):
         run("git checkout .")
         run("git checkout master")
-        run("git pull origin master")
+        run("git pull origin")
 
 
 def install_dependencies():
