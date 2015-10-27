@@ -103,7 +103,9 @@ class LifeXIdeaAdmin(admin.ModelAdmin):
         'category',
     )
     ordering = (
-        'idea_id',
+        # ordering by id lists these ideas in a non-alphabetical order
+        # in the lifeX post page of the admin
+        # 'idea_id',
         'title',
         'experimented',
         'retry',
