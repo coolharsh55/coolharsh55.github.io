@@ -2,6 +2,7 @@
 {% load dictionary %}
 {% load staticfiles %}
 {% load subdomainurls %}
+{% load markdown_deux_tags %}
 
 {% block TITLE %}{{ post.title }}{% endblock TITLE %}
 
@@ -28,7 +29,7 @@
 <a href="{% url 'sitedata:tagname' None tag.slug %}">{{ tag.tagname }}</a>,
 {% endfor %}</h3><br></div>
 </div>
-{{ post.body|safe }}
+{{ post.body|markdown }}
 </div>
 </div>
 {% endblock CONTENT %}
@@ -40,6 +41,7 @@
 {% endblock CSS %}
 
 {% block JS %}
+<script type="text/javascript">$('pre').addClass('prettyprint');</script>
 {% for js in post.js.all %}
 <script language="javascript" type="text/javascript" src="{{ js.link }}"></script>
 {% endfor %}
