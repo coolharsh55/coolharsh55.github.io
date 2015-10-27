@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ['*', ]
 
 STATIC_URL = '/static/'
 if DEBUG:
-    STATIC_ROOT = ''
+    STATIC_ROOT = 'static'
     MEDIA_ROOT = ''
 else:
     PROJECT_PATH = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))

@@ -21,7 +21,9 @@ ADMIN_APPS = (
 THIRD_PARTY_APPS = (
     'bootstrap3',
     'ckeditor',
+    'markdown_deux',
     'meta',
+    'pagedown',
     'storages',
     'subdomains',
     'redactor',
