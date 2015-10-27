@@ -5,39 +5,45 @@
 #    pip-compile requirements_dev.in
 #
 boto==2.38.0
-coverage==3.7.1
-coveralls==0.5
+click==5.1                # via pip-tools
+coverage==4.0.1
+coveralls==1.1
 django-bootstrap3==6.2.2
-django-ckeditor==5.0.1
+django-ckeditor==5.0.2
 django-fabric==2.1.0
 django-filer==0.9.12
+django-markdown-deux==1.0.5
 django-meta==0.3.1
 django-mptt==0.7.4        # via django-filer
-django-polymorphic==0.7.1  # via django-filer
+django-pagedown==0.1.0
+django-polymorphic==0.7.2  # via django-filer
 django-robots==1.1
-django-seed==0.1.3
+django-seed==0.1.4
 django-slowtests==0.3.0
 django-storages==1.1.8
 django-subdomains==2.0.4
-django-suit==0.2.14
+django-suit==0.2.15
 django-wysiwyg-redactor==0.4.9
-django==1.8.4
+django==1.8.5
 docopt==0.6.2             # via coveralls
 docutils==0.12
 easy-thumbnails==2.2      # via django-filer
 ecdsa==0.13               # via paramiko
 fabric==1.10.2
-fake-factory==0.5.2       # via django-seed
-gitchangelog==2.2.1
+fake-factory==0.5.3       # via django-seed
+first==2.0.1              # via pip-tools
+gitchangelog==2.3.0
+markdown2==2.3.0          # via django-markdown-deux
 mysql-python==1.2.5
-paramiko==1.15.2          # via fabric
-pillow==2.9.0
+paramiko==1.15.3          # via fabric
+pillow==3.0.0
+pip-tools==1.1.6
 pycrypto==2.6.1           # via paramiko
-pytz==2015.4
-pyyaml==3.11              # via coveralls
-requests==2.7.0           # via coveralls, django-fabric
+pytz==2015.7
+requests==2.8.1           # via coveralls, django-fabric
+six==1.10.0               # via pip-tools
 unidecode==0.4.18         # via django-filer
 
 # The following packages are commented out because they are
 # considered to be unsafe in a requirements file:
-# setuptools==18.3.1        # via django-polymorphic, django-wysiwyg-redactor
+# setuptools==18.4          # via django-polymorphic, django-wysiwyg-redactor
