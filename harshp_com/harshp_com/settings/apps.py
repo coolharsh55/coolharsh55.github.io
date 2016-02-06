@@ -12,4 +12,5 @@ INSTALLED_APPS = [
     # third-party apps and plugins
 
     # harshp_com apps
+    'sitebase',
 ]
