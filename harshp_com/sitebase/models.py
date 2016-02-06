@@ -1,5 +1,7 @@
 from django.db import models
 
+from utils.models import get_unique_slug
+
 
 class Tag(models.Model):
     """Tag for descriptive Posts.
@@ -15,7 +17,7 @@ class Tag(models.Model):
 
     name = models.CharField(max_length=128, db_index=True, unique=True)
     description = models.CharField(max_length=256, blank=True, null=True)
-    slug = models.SlugField(max_length=128, db_index=True, unique=True)
+    slug = models.SlugField(max_length=150, db_index=True, unique=True)
 
     class Meta:
 
@@ -25,6 +27,11 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __save__(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = get_unique_slug(Tag, self, 'name', name=self.name)
+        super(Tag, self).__save__(*args, **kwargs)
 
 
 class Author(models.Model):
@@ -48,6 +55,7 @@ class Author(models.Model):
     short_bio = models.CharField(max_length=256)
     long_bio = models.CharField(max_length=1024, blank=True, unique=True)
     profile_pic = models.URLField(max_length=256, blank=True, null=True)
+    slug = models.SlugField(max_length=150, unique=True)
 
     class Meta:
 
@@ -57,6 +65,11 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __save__(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = get_unique_slug(Author, self, 'name', name=self.name)
+        super(Author, self).__save__(*args, **kwargs)
 
 
 class Post(models.Model):
@@ -87,7 +100,7 @@ class Post(models.Model):
 
     short_description = models.CharField(max_length=150)
     tags = models.ManyToManyField(Tag)
-    slug = models.SlugField(max_length=128, unique=True, db_index=True)
+    slug = models.SlugField(max_length=150, unique=True, db_index=True)
 
     class Meta(object):
 
