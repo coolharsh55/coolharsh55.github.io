@@ -7,9 +7,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
 
     # third-party apps and plugins
+    # django-subdomains
+    'subdomains',
 
     # harshp_com apps
     'sitebase',
