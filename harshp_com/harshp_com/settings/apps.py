@@ -16,4 +16,5 @@ INSTALLED_APPS = [
 
     # harshp_com apps
     'sitebase',
+    'blog',
 ]

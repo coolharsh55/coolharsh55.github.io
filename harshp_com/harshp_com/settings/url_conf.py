@@ -14,7 +14,7 @@ SUBDOMAIN_URLCONFS = {
 
     # creative & writing
     # 'articles': 'articles.urls',
-    # 'blog': 'blog.urls',
+    'blog': 'blog.urls',
     # 'poems': 'poems.urls',
     # 'stories': 'stories.urls',
 
