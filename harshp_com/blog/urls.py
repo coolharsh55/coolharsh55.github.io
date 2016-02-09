@@ -6,6 +6,11 @@ from . import views
 
 blog_urlpatterns = [
     url(r'^$', views.test, name='test'),
+    url(r'^series/(?P<series>[\w-]+)/$', views.series, name='series'),
+    url(
+        r'^series/(?P<series>[\w-]+)/(?P<post>[\w-]+)/$',
+        views.series_post, name='post'),
+    url(r'^post/(?P<post>[\w-]+)/$', views.post, name='post'),
 ]
 
 urlpatterns = [
