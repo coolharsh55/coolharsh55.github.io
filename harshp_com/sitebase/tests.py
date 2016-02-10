@@ -33,6 +33,14 @@ class TagTests(TestCase):
     def test_unique_slug(self):
         self.populate(10)
 
+    def test_slug_immutable(self):
+        self.populate(1)
+        t = Tag.objects.all()[0]
+        slug = t.slug
+        t.name = 'mutable field'
+        t.save()
+        self.assertEqual(slug, t.slug)
+
     def test_str(self):
         self.populate(1)
         t = Tag.objects.all()[0]
@@ -73,6 +81,14 @@ class AuthorTests(TestCase):
 
     def test_unique_slug(self):
         self.populate(10)
+
+    def test_slug_immutable(self):
+        self.populate(1)
+        a = Author.objects.all()[0]
+        slug = a.slug
+        a.name = 'mutable field'
+        a.save()
+        self.assertEqual(slug, a.slug)
 
     def test_str(self):
         self.populate(1)
