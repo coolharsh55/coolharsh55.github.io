@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 from sitebase.models import Post
 
@@ -24,11 +25,11 @@ class BlogSeries(models.Model):
     def __str__(self):
         return self.title
 
-    def __save__(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(
                 BlogSeries, self, 'title', title=self.title)
-        super(BlogSeries, self).__save__(*args, **kwargs)
+        super(BlogSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog:series', args=[self.slug])
@@ -51,11 +52,12 @@ class BlogPost(Post):
         verbose_name = 'Blog Post'
         verbose_name_plural = 'Blog Posts'
 
-    def __save__(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
-        super(BlogPost, self).__save__(*args, **kwargs)
+        self.date_updated = timezone.now()
+        super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:
