@@ -1,5 +1,7 @@
 """Utils for Django Models"""
 
+from django.utils.text import slugify
+
 
 def get_unique_slug(model, obj, field, **kwargs):
     """Get unique slug for given object.
@@ -17,7 +19,7 @@ def get_unique_slug(model, obj, field, **kwargs):
         str: unique slug
     """
 
-    slug = getattr(obj, field)
+    slug = slugify(getattr(obj, field))
     count = model.objects.filter(**kwargs).count()
     if count > 0:
         slug = '{}-{}'.format(slug, count)
