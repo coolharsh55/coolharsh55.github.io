@@ -33,6 +33,21 @@ class TagTests(TestCase):
     def test_unique_slug(self):
         self.populate(10)
 
+    # TODO: test Tag duplicate names not allowed
+    # raises TransactionError:
+    # django.db.transaction.TransactionManagementError:
+    # An error occurred in the current transaction.
+    # You can't execute queries until the end of the 'atomic' block.
+    # line 22, in tearDown
+    # def test_duplicate_name(self):
+    #     self.populate(1)
+    #     t_db = Tag.objects.all()[0]
+    #     t = Tag(name=t_db.name)
+    #     with self.assertRaises(IntegrityError):
+    #         t.save()
+    #         t.delete()
+    #     Tag.objects.all().delete()
+
     def test_slug_immutable(self):
         self.populate(1)
         t = Tag.objects.all()[0]
@@ -89,6 +104,18 @@ class AuthorTests(TestCase):
         a.name = 'mutable field'
         a.save()
         self.assertEqual(slug, a.slug)
+
+    def test_duplicate_names(self):
+        self.populate(1)
+        a_db = Author.objects.all()[0]
+        a = Author(
+            name=a_db.name,
+            email='author@example.com',
+            short_bio='just another author')
+        try:
+            a.save()
+        except Exception as e:
+            self.fail('Failed: {}'.format(e))
 
     def test_str(self):
         self.populate(1)
