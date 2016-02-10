@@ -1,0 +1,25 @@
+[run]
+
+branch=true
+source=.
+
+omit =
+    /*/migration*
+    harshp_com/settings/*
+    harshp_com/multihost*
+    harshp_com/wsgi*
+    harshp_com/urls*
+    /*/admin.py
+    /*/__init__.py
+    /*/__*
+    manage.py
+    */apps.py
+    */urls.py
+    */tests.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
