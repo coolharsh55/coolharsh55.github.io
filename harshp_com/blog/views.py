@@ -6,7 +6,11 @@ from .models import BlogPost
 from .models import BlogSeries
 
 
-def test(request):
+def list(request):
+    return HttpResponse('OK')
+
+
+def series_list(request):
     return HttpResponse('OK')
 
 
