@@ -30,3 +30,5 @@ urlpatterns = [
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^admin/', admin.site.urls),
 ]
+
+admin.site.site_name = 'harshp_com'
