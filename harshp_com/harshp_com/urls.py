@@ -26,9 +26,7 @@ urlpatterns = [
     # apps
     url(r'', include('blog.urls')),
     # admin
-    url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    url(r'^admin/', admin.site.urls),
+    url(r'', include('harshp_com.adminurls')),
 ]
 
 admin.site.site_name = 'harshp_com'
