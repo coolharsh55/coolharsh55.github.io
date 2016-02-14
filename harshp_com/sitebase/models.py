@@ -18,7 +18,8 @@ class Tag(models.Model):
 
     name = models.CharField(max_length=128, db_index=True, unique=True)
     description = models.CharField(max_length=256, blank=True, null=True)
-    slug = models.SlugField(max_length=150, db_index=True, unique=True)
+    slug = models.SlugField(
+        max_length=150, db_index=True, unique=True, blank=True)
 
     class Meta:
 
@@ -59,7 +60,7 @@ class Author(models.Model):
     short_bio = models.CharField(max_length=256)
     long_bio = models.CharField(max_length=1024, blank=True, unique=True)
     profile_pic = models.URLField(max_length=256, blank=True, null=True)
-    slug = models.SlugField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     class Meta:
 
@@ -100,14 +101,16 @@ class Post(models.Model):
     title = models.CharField(max_length=128, db_index=True)
     authors = models.ManyToManyField(Author)
 
-    date_created = models.DateTimeField(auto_now=True)
+    date_created = models.DateTimeField()
     date_published = models.DateTimeField(blank=True, null=True, db_index=True)
-    date_updated = models.DateTimeField()
-    is_published = models.BooleanField(default=False, db_index=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    is_published = models.BooleanField(
+        default=False, db_index=True, verbose_name='published')
 
     short_description = models.CharField(max_length=150)
     tags = models.ManyToManyField(Tag)
-    slug = models.SlugField(max_length=150, unique=True, db_index=True)
+    slug = models.SlugField(
+        max_length=150, unique=True, db_index=True, blank=True)
 
     class Meta(object):
 

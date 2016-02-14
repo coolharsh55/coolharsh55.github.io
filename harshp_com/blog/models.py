@@ -14,7 +14,8 @@ class BlogSeries(models.Model):
 
     title = models.CharField(max_length=128, db_index=True)
     short_description = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=150, unique=True, db_index=True)
+    slug = models.SlugField(
+        max_length=150, unique=True, db_index=True, blank=True)
 
     class Meta(object):
 
