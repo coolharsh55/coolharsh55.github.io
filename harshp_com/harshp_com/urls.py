@@ -19,8 +19,14 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    # home
     url(r'^$', views.home, name='home'),
+    # sitebase
     url(r'', include('sitebase.urls')),
+    # apps
     url(r'', include('blog.urls')),
+    # admin
+    url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^admin/', admin.site.urls),
 ]
