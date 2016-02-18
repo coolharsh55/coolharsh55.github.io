@@ -10,7 +10,7 @@ SUBDOMAIN_URLCONFS = {
     'www': 'harshp_com.urls',
 
     # admin
-    # 'admin': 'harshp.adminurls',
+    'admin': 'harshp_com.adminurls',
 
     # creative & writing
     # 'articles': 'articles.urls',

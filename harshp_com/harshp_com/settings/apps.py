@@ -1,6 +1,10 @@
 """apps settings for harshp_com"""
 
 INSTALLED_APPS = [
+    # django-jet admin theme
+    'jet.dashboard',
+    'jet',
+
     # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
