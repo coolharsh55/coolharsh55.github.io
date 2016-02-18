@@ -1,0 +1,19 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block e_TITLE %}{% endblock e_TITLE %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    {% block f_CSS %}<link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">{% endblock f_CSS %}
+</head>
+<body>
+{% block e_BODY %}{% endblock e_BODY %}
+{% block f_JS %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="{% static 'semanticui/semantic.min.js' %}"></script>
+{% endblock f_JS %}</body>
+</html>
