@@ -7,7 +7,7 @@ from .models import BlogSeries
 
 
 def list(request):
-    return HttpResponse('OK')
+    return render(request, 'blog/homepage.html')
 
 
 def series_list(request):
