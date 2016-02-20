@@ -22,6 +22,10 @@ class BlogPostAdmin(PostAdmin):
             'classes': ('wide',),
             'fields': ['body_type', 'body'],
         }),
+        ('html', {
+            'classes': ('wide',),
+            'fields': ['body_text'],
+        }),
         ('meta', {
             'fields': ['headerimage', 'tags'],
         }),

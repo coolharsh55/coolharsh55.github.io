@@ -41,6 +41,7 @@ class BlogPost(Post):
 
     body_type = models.CharField(
         max_length=8, choices=EDITOR_TYPES, default='markdown')
+    body_text = models.TextField(blank=True)
     body = models.TextField()
     headerimage = models.URLField(max_length=256, blank=True, null=True)
     highlight = models.BooleanField(default=False)
@@ -58,6 +59,7 @@ class BlogPost(Post):
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
         self.date_updated = timezone.now()
+        self.body_text = self.body
         super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
