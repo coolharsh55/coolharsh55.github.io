@@ -1,12 +1,11 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-
-from sitebase.models import Post
+import markdown
 
 from sitebase.editors import EDITOR_TYPES
-
 from utils.models import get_unique_slug
+from sitebase.models import Post
 
 
 class BlogSeries(models.Model):
@@ -59,7 +58,11 @@ class BlogPost(Post):
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
         self.date_updated = timezone.now()
-        self.body_text = self.body
+        self.body_text = markdown.markdown(self.body, extensions=[
+            'markdown.extensions.abbr',
+            # 'markdown.extensions.codehilite',
+            'markdown.extensions.smarty',
+        ], output_format='html5')
         super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
