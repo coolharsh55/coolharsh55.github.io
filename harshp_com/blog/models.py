@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
+from subdomains.utils import reverse
 from django.utils import timezone
 import markdown
 
@@ -32,7 +33,7 @@ class BlogSeries(models.Model):
         super(BlogSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('blog:series', args=[self.slug])
+        return reverse('blog:series', args=[self.slug], subdomain='blog')
 
 
 class BlogPost(Post):
@@ -68,4 +69,4 @@ class BlogPost(Post):
     def get_absolute_url(self):
         if self.series:
             return reverse('blog:post', args=[self.series.slug, self.slug])
-        return reverse('blog:post', args=[self.slug])
+        return reverse('blog:post', args=[self.slug], subdomain='blog')

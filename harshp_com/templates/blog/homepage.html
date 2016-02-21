@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
+{% load subdomainurls %}
 
 {% block e_TITLE %}blog at harshp.com{% endblock e_TITLE %}
 
-{% block ff_HEADER_TITLE %}Blog{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="#"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% block ff_HEADER_TITLE %}Blog{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
 
 {% block e_BODY %}
 <div class="ui stackable grid container">
@@ -24,7 +25,7 @@
                                     </a>
                                     <h5 class="ui sub header">{{ post.date_published }}</h5>
                                     <p>{{ post.short_description }}<br>
-                                    {% for tag in post.tags.all %}<a href="#" class="ui tiny tag label">{{ tag.name }}</a>{% endfor %}</p>
+                                    {% for tag in post.tags.all %}<a href="{{ tag.get_absolute_url }}" class="ui mini tag label">{{ tag.name }}</a>{% endfor %}</p>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -50,7 +51,7 @@
                                     </a>
                                     <h5 class="ui sub header">{{ post.date_published }}</h5>
                                     <p>{{ post.short_description }}<br>
-                                    {% for tag in post.tags.all %}<a href="#" class="ui tiny tag label">{{ tag.name }}</a>{% endfor %}</p>
+                                    {% for tag in post.tags.all %}<a href="{{ tag.get_absolute_url }}" class="ui mini tag label">{{ tag.name }}</a>{% endfor %}</p>
                                 </div>
                                 {% endfor %}
                             </div>
