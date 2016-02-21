@@ -16,7 +16,9 @@ class BlogPostAdmin(PostAdmin):
                 'title', 'authors', 'series', 'short_description', 'slug'],
         }),
         ('publish', {
-            'fields': ['date_created', 'date_published', 'is_published'],
+            'fields': [
+                'date_created', 'date_published',
+                'is_published', 'highlight'],
         }),
         ('content', {
             'classes': ('wide',),
@@ -53,4 +55,4 @@ class BlogSeriesAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
     def blogs(self, obj):
-        return len(obj.blogpost__set)
+        return obj.blogpost_set.count()
