@@ -7,7 +7,25 @@ from .models import BlogSeries
 
 
 def list(request):
-    return render(request, 'blog/homepage.html')
+    posts_latest = BlogPost.objects.filter(is_published=True)\
+        .order_by('-date_published').select_related('series')
+    posts_featured = BlogPost.objects\
+        .filter(highlight=True, is_published=True)\
+        .order_by('-date_published').select_related('series')
+    posts_featured_count = BlogPost.objects\
+        .filter(highlight=True, is_published=True)\
+        .order_by('-date_published').select_related('series').count()
+    posts_count = BlogPost.objects.filter(is_published=True).count()
+    series = BlogSeries.objects.all()
+    series_count = BlogSeries.objects.all().count()
+    return render(request, 'blog/homepage.html', {
+        'posts_all': posts_latest,
+        'posts_count': posts_count,
+        'posts_featured': posts_featured[:10],
+        'posts_featured_count': posts_featured_count,
+        'posts_latest': posts_latest[:10],
+        'series_all': series[:10],
+        'series_count': series_count})
 
 
 def series_list(request):
