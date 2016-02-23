@@ -49,7 +49,11 @@
 <body>
 {% block f_HEADER %}<!-- HEADER -->
 <div class='segment'>
-    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">{% block ff_HEADER %}{% endblock ff_HEADER %}</h1>
+    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">{% block ff_HEADER %}
+    {% block ff_HEADER_ICON %}<img class="ui circular image" src="{% static 'img/avatar.jpg' %}">{% endblock ff_HEADER_ICON %}
+    {% block ff_HEADER_TITLE %}<div class="content">Harshvardhan Pandit</div>{% endblock ff_HEADER_TITLE %}
+    {% block ff_HEADER_SUBTITLE %}<div class="ui sub header">personal website & project</div>{% endblock ff_HEADER_SUBTITLE %}
+{% endblock ff_HEADER %}</h1>
 </div>
 <br>{% endblock f_HEADER %}
 {% block e_BODY %}{% endblock e_BODY %}
