@@ -1,9 +1,6 @@
 {% extends 'sitebase/base.html' %}
 {% load static from staticfiles %}
-
-{% block ee_CSS %}
-
-{% endblock ee_CSS %}
+{% load subdomainurls %}
 
 {% block e_BODY %}
 <!-- ABOUT ME -->
@@ -72,7 +69,7 @@
             <div class="ui cards">
                 <div class="card">
                     <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="teal font icon"></i>CreativeWriting</h2></a></div>
+                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="teal font icon"></i>Writing</h2></a></div>
                         <div class="meta"></div><!-- harshp.com/creative-writing/ -->
                         <div class="ui horizontal divider">thoughts & tangents</div>
                         <div class="description">
@@ -81,7 +78,7 @@
                                     <h3 class="ui header"><a href="#"><i class="newspaper icon"></i>Articles</a></h3><!-- articles.harshp.com -->
                                 </div>
                                 <div class="item">
-                                    <h3 class="ui header"><a href="#"><i class="paragraph icon"></i>Blog</a></h3><!-- blog.harshp.com -->
+                                    <h3 class="ui header"><a href="{% url 'blog:list' subdomain='blog' %}"><i class="paragraph icon"></i>Blog</a></h3><!-- blog.harshp.com -->
                                 </div>
                                 <div class="item">
                                     <h3 class="ui header"><a href="#"><i class="asterisk icon"></i>Poems</a></h3><!-- poems.harshp.com -->

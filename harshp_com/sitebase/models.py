@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from subdomains.utils import reverse
 
 from utils.models import get_unique_slug
 
@@ -36,7 +36,7 @@ class Tag(models.Model):
         super(Tag, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('sitebase:tags:get', args=[self.slug])
+        return reverse('sitebase:tags:get', args=[self.slug], subdomain=None)
 
 
 class Author(models.Model):
@@ -77,7 +77,8 @@ class Author(models.Model):
         super(Author, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('sitebase:authors:get', args=[self.slug])
+        return reverse(
+            'sitebase:authors:get', args=[self.slug], subdomain=None)
 
 
 class Post(models.Model):
