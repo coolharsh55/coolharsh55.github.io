@@ -7,7 +7,7 @@ from .apps import *
 from .auth import *
 from .basepath import *
 from .database import *
-DATABASES = DATABASE_SQLITE
+DATABASES = DATABASE_POSTGRES
 from .i18n import *
 from .logging import *
 from .middleware import *
