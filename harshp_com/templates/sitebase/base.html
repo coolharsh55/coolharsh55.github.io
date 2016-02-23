@@ -1,0 +1,105 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block e_TITLE %}harshp.com{% endblock e_TITLE %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    {% block f_CSS %}<link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
+    <style type="text/css">
+        .spacious-top {
+            margin-top: 25px;
+            padding-top: 25px;
+        }
+        .spacious-bottom {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+        }
+        /* Mobile */
+        @media only screen and (max-width: 767px) {
+            .mobile-hide{
+                display: none !important;
+            }
+        }
+
+        /* Tablet */
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .tablet-hide{
+                display: none !important;
+            }
+        }
+
+        /* Small Monitor */
+        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            .small-hide{
+                display: none !important;
+            }
+        }
+        /* Large Monitor */
+        @media only screen and (min-width: 1200px) {
+            .large-hide{
+                display: none !important;
+            }
+        }
+    </style>{% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
+</head>
+<body>
+{% block f_HEADER %}<!-- HEADER -->
+<div class='segment'>
+    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">{% block ff_HEADER %}{% endblock ff_HEADER %}</h1>
+</div>
+<br>{% endblock f_HEADER %}
+{% block e_BODY %}{% endblock e_BODY %}
+{% block f_FOOTER %}<!-- FOOTER -->
+<div id="footer" class='spacious-top spacious-bottom raised segment'>
+    <div class="ui horizontal divider"><i class="copyright icon"></i>harshvardhan (2016)</div>
+    <div class="ui center aligned container">
+        <div class="ui tiny horizontal divided list">
+            <div class="item">
+                <a href="#"><i class="small privacy icon"></i>Privacy Policy</a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="small child icon"></i>About Me</a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="small history icon"></i>Changelog</a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="small github icon"></i>Code</a></div>
+        </div>
+    </div>
+    <div class="ui horizontal divider"><i class="comments outline icon"></i> contact</div>
+    <div class="ui center aligned container">
+        <div class="ui green-icons tiny horizontal divided list">
+            <div class="item">
+                <a href="#"><i class="large red google plus icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large blue facebook icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large orange mail icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large pink call icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large green github icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large teal twitter icon"></i></a>
+            </div>
+            <div class="item">
+                <a href="#"><i class="large violet linkedin icon"></i></a>
+            </div>
+        </div>
+    </div>
+</div>{% endblock f_FOOTER %}
+{% block f_JS %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="{% static 'semanticui/semantic.min.js' %}"></script>
+{% endblock f_JS %}</body>
+</html>
