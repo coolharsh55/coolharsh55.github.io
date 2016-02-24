@@ -1,8 +1,23 @@
 """auth settings for harshp_com"""
 
-SECRET_KEY = 'y&v5_r#l09fj!q2s)o&j8fh2tx4$5ig8%uak%$mr^nx)54&ugh'
+import os
 
-ALLOWED_HOSTS = []
+MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
+
+# PRODUCTION
+if MODE == 'production':
+
+    SECRET_KEY = os.environ.get('HARSHP_COM_DJANGO_KEY', None)
+    ALLOWED_HOSTS = ['.harshp.com']
+
+# DEVELOPMENT
+elif MODE == 'dev':
+
+    SECRET_KEY = os.environ.get(
+        'HARSHP_COM_DJANGO_KEY',
+        'y&v5_r#l09fj!q2s)o&j8fh2tx4$5ig8%uak%$mr^nx)54&ugh')
+    ALLOWED_HOSTS = ['*']
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
