@@ -1,7 +1,22 @@
 from django.contrib import admin
+from django import forms
+
+from pagedown.widgets import AdminPagedownWidget
 
 from .models import DevBlogPost
 from .models import DevBlogSeries
+
+
+class DevBlogForm(forms.ModelForm):
+
+    """dev blog with pagedown editor"""
+
+    body = forms.CharField(widget=AdminPagedownWidget())
+
+    class Meta:
+
+        model = DevBlogPost
+        exclude = ['id', ]
 
 
 @admin.register(DevBlogPost)
@@ -9,6 +24,9 @@ class DevBlogPostAdmin(admin.ModelAdmin):
 
     """Admin for dev blog posts
     """
+
+    form = DevBlogForm
+
     list_display = (
         'title',
         'series',
@@ -32,30 +50,30 @@ class DevBlogPostAdmin(admin.ModelAdmin):
         'post_id',
     )
     view_on_site = True
-    fieldsets = (
-        ('Details', {
-            'fields': (
-                'post_id',
-                'title',
-                'series',
-                'published',
-                'modified',
-                'draft',
-                'future',
-                'headerimage',
-            ),
-        }),
-        ('Contents', {
-            'classes': ('full-width',),
-            'description': 'source can be selected',
-            'fields': ('body', )
-        }),
-        ('Extras', {
-            'classes': ('collapse',),
-            'fields': (
-                'tags', 'css', 'js',),
-        }),
-    )
+    # fieldsets = (
+    #     ('Details', {
+    #         'fields': (
+    #             'post_id',
+    #             'title',
+    #             'series',
+    #             'published',
+    #             'modified',
+    #             'draft',
+    #             'future',
+    #             'headerimage',
+    #         ),
+    #     }),
+    #     ('Contents', {
+    #         'classes': ('full-width',),
+    #         'description': 'source can be selected',
+    #         'fields': ('body', )
+    #     }),
+    #     ('Extras', {
+    #         'classes': ('collapse',),
+    #         'fields': (
+    #             'tags', 'css', 'js',),
+    #     }),
+    # )
 
 
 @admin.register(DevBlogSeries)
