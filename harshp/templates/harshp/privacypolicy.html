@@ -1,0 +1,32 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+{% load bootstrap3 %}
+
+{% block ETITLE %}privacy policy{% endblock ETITLE %}
+
+{% block FCSS %}
+{{ block.super }}
+{% endblock FCSS %}
+
+{% block EBODY %}
+<div class="pageheader">
+<h1>privacy policy</h1><h3><a href="{% url 'home' %}">harshp.com</a></h3>
+<p class='centertext'>This document was last updated on <strong>August 9, 2015</strong></p>
+</div>
+
+<div class='container'><br/>
+<h2>This <strong>Privacy Policy</strong> states what data my website collects, what it is used for, and who it is shared with. By site, I refer to <a href="{% url 'home' %}">harshp.com</a></h2>
+
+<p>I personally do not collect any form of information about the user on this site. Whatever information is stored is done via <strong>Google Analytics</strong> which uses a javascript query to send information about the page you just visited, where it was visited from, how much time you spent on the site, whether you are an unique visitor and other such details. Google's information policy details how they collect information. A good starting point is <a href="http://www.google.com/policies/privacy/#infocollect">here</a>. Use of Google Analytics (may) require use of cookies, hence the cookie message that I display to users at the top. Furthermore, dismissing the cookie message itself saves a cookie to track that you've disabled the cookie. No other information is stored in this particular cookie.</p>
+
+<p>This information is beneficial to me, as the developer and maintainer of this site, in many different ways. I can track how long each user stays, which posts and topics attract the most visitors, and how much traffic my site has seen in the last few days. All of these help me decide on tweaks, features, and changes to the site.</p>
+
+<p>Concerns of privacy are fully justified in each individual's capacity. If you feel that the tracking and usage information being sent to Google is a bit too much, you are free to prevent yourself from being tracked. To do so, you can use browser extensions, host blacklisting, and any other measures which you see fit. While I fully understand, and support your right to deciding how your information should be used, I request that you usage of the site not be held in this view. The usage information helps me understand how the site is being accessed, used, and browsed through various metrics. These help me think on how to further better the site.</p>
+
+<p>There are many things that I plan to do in the future that will require changing this privacy policy. There are features that I look forward to developing, such as allowing the users to change the look and feel of the website. I will be using cookies to save the user's preferences of themes, fonts, font-sizes and other things that personalize the use of this site. Beyond that, I do not plan on storing information such as user identification and information linking the user to other social media because I find saving these information redundant and not in good taste. It would be an invasion of privacy.</p>
+
+<p>If you have any concerns about your privacy, whether it be on this site, or others, feel free to get in touch.
+
+</div>
+{% endblock EBODY %}

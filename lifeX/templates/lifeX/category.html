@@ -1,0 +1,35 @@
+{% extends 'lifeX/base.html' %}
+
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}{{category.name}}{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}{{category.name}}{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20ideas%20-%20{{category.name}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{category.name}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent centertext'>
+<h2>
+{% for idea in category.lifexidea_set.all %}
+<a href="{% url 'lifeX:idea' 'lifeX' category.slug idea.slug %}">{{idea.title}}</a>: <small>{% if idea.experimented == True and idea.retry == True %}
+experimented, will try again
+{% elif idea.experimented == True and idea.retry == False %}
+experimented, concluded
+{% elif idea.experimented == False %}
+not experimented yet
+{% endif %}</small><br />
+{% endfor %}
+</div>
+{% endblock CONTENT %}

@@ -1,0 +1,60 @@
+{% extends 'lifeX/base.html' %}
+{% load staticfiles %}
+{% load dictionary %}
+{% load subdomainurls %}
+
+{% block TITLE %}
+life experiments @harshp.com
+{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}
+Life eXperiments
+{% endblock HEADER %}
+
+{% block CONTENT %}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <!-- What is Life Experiments? -->
+    <div class="panelheading centertext" role="tab" id="heading-About">
+        <a class="collapsed nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-About" aria-expanded="false" aria-controls="collapse-About"><h2>What are life experiments?</h2></a>
+    </div>
+    <div id="collapse-About" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-About">
+        Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it. Based on our observations, we infer something or come up with new results. This process is called as scientific deduction. Which is the way scientists are supposed to look at everything. Data are facts. Then by contrast, why can’t we live our life scientifically? Do what helps us achieve all that we dream of? Recognize where we fall short. Understand what makes us tick, and what doesn’t. All through running a few little experiments by yourself, which is the basis of life experiments.<br>
+        <strong>Terminology:</strong>
+        <ul>
+        <li><b>Idea</b> - Each experiment is based on an Idea such as cooking, trying a new productivity technique or simply tricks to wake up early.</li>
+        <li><b>Category</b> - Ideas are grouped together into Categories.</li>
+        <li><b>Week</b> - A Week (7 Days starting from Monday) of trying out experiments. Often, more than one idea is tried in a week.</li>
+        <li><b>Experiment</b> - Trying out the Idea for a Week and noting its effects and results form the basis of the Experiment, and is recorded in a Post.</li>
+        <li><b>Blog</b> - Thoughts and comments that are not part of an experiment. Allows me to write stuff related to Life Experiments.</li>
+        </ul>
+    </div>
+    <hr>
+  <!-- Life Experiments - A Presentation -->
+    <div class="panelheading centertext" role="tab" id="heading-Presentation">
+        <a class="collapsed nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-Presentation" aria-expanded="false" aria-controls="collapse-Presentation"><h2>Life Experiments - A Presentation</h2></a>
+    </div>
+    <div id="collapse-Presentation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-Presentation">
+        I gave a presentation on life experiments, which itself was a life experiment! I've tried to convey the idea and essence of what I believe has enriched my life. You can view the presentation online <a href="{% url 'lifeX:lifeX_presentation_UCC2014' 'lifeX' %}">here</a>.
+    </div>
+    <hr>
+  <!-- Links -->
+    <div class="panelheading centertext" role="tab" id="heading-Links"><h2>
+      <a class='nodecorate' href="{% url 'lifeX:ideas' 'lifeX' %}">Ideas</a> | <a class='nodecorate' href="{% url 'lifeX:experiments' 'lifeX' %}">Experiments</a> | <a class='nodecorate' href="{% url 'lifeX:blog' 'lifeX' %}">Blog</a></h2>
+    </div>
+    <hr>
+
+
+  <!-- Latest Update -->
+  <div class='centertext'>
+  <h2>Latest Week of Experiments</h2>
+  <h3><a class='nodecorate' href="{% url 'lifeX:week' 'lifeX' latest_week.number %}">{{latest_week}}</a></h3>
+  <h4>{% for post in latest_week.lifexpost_set.all %}
+  <a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}">{{post.title}}</a><br /><a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">({{post.idea.category.name}})</a> <a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}}</a><small><br><br></small>
+  {% endfor %}</h4>
+  </div>
+</div>
+
+{% endblock CONTENT %}

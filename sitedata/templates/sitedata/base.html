@@ -1,0 +1,63 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block EHEAD %}
+    {% include 'meta.html' %}
+{% endblock EHEAD %}
+
+{% block ETITLE %}
+    {% block TITLE %}{% endblock TITLE %}
+{% endblock ETITLE %}
+
+{% block FCSS %}
+{{ block.super }}
+<style type="text/css">
+body {
+    font-size: 125%;
+    background-color:#EEE;
+}
+
+.pageheader {
+    background-color: #EEE;
+    font-family: 'Josefin Slab', serif;
+    font-size: 200%;
+}
+
+#socialshare {
+    text-align: center;
+}
+
+#blogtitle {
+   text-shadow: 2px 2px black;
+}
+
+blockquote {
+    background: #CCC;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+</style>
+    {% block CSS %}{% endblock CSS %}
+{% endblock FCSS %}
+
+{% block EBODY %}
+ <div class="pageheader">
+ <h1><p id='blogtitle'>{% block HEADER %}{% endblock HEADER %}</p></h1><h3>{% block THEAD %}{%endblock THEAD %} for <a href="{% url 'home' %}">harshp.com</a></h3></div>
+ <hr>
+    <div class='container'>
+  <div id='socialshare'>{% block SOCIALSHARE %}{% endblock SOCIALSHARE %}</div>
+  {% block CONTENT %}
+  {% endblock CONTENT %}
+    </div>
+{% endblock EBODY %}
+
+{% block FJS %}
+    {{ block.super }}
+  {% block JS %}
+  {% endblock JS %}
+{% endblock FJS %}

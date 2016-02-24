@@ -1,0 +1,36 @@
+language: python
+python:
+    - "2.7"
+cache:
+    directories:
+        - $HOME/.pip-cache/
+services: mysql
+env:
+    - DJANGO=1.8.2 DJANGO_SETTINGS_MODULE="harshp.settings.settings"
+install:
+    - pip install django --download-cache $HOME/.pip-cache/
+    - pip install -r harshp/requirements/requirements_test.txt --download-cache $HOME/.pip-cache/
+    - pip install git+https://github.com/Brobin/django-seed
+before_script:
+    - mysql -e "SET GLOBAL wait_timeout = 36000;"
+    - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
+    - mysql -e 'create database IF NOT EXISTS harshp_dot_com;'
+    - python manage.py migrate
+script:
+    - coverage run -p --source=harshp manage.py test harshp
+    - coverage run -p --source=blog manage.py test blog
+    - coverage run -p --source=poems manage.py test poems
+    - coverage run -p --source=stories manage.py test stories
+    - coverage run -p --source=articles manage.py test articles
+    - coverage run -p --source=lifeX manage.py test lifeX
+    - coverage run -p --source=brainbank manage.py test brainbank
+    - coverage run -p --source=hobbies manage.py test hobbies
+    - coverage run -p --source=sitedata manage.py test sitedata
+    - coverage run -p --source=devblog manage.py test devblog
+    - coverage combine
+after_success:
+    - coveralls
+notifications:
+    slack: harshp:8NHozfKnZn2JpbnOElJjgisT
+    email:
+        - admin@harshp.com

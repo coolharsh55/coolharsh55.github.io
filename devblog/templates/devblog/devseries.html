@@ -1,0 +1,31 @@
+{% extends 'devblog/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}{{ series.name }}{% endblock TITLE %}
+
+{% block HEADER %}{{ series.name }}{% endblock HEADER %}
+
+{% block CSS %}
+
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class="panel panel-info">
+      <div class="panel-heading">
+            <h3 class="panel-title">posts in series:</h3>
+      </div>
+      <div class="panel-body">
+        <ol>
+        {% for post in posts %}
+            <li><a href="{{ post.get_absolute_url }}"><h4>{{ post.title }} - <small>{{ post.published }}</small></h4></a></li>
+        {% endfor %}
+        </ol>
+      </div>
+</div>
+<div>
+{{ series.description|safe }}
+</div>
+</div>
+{% endblock CONTENT %}

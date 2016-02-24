@@ -1,0 +1,28 @@
+{% extends 'lifeX/base.html' %}
+
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}Life Experiments Blog{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}LifeX Blog{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20blog%20-%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject=lifeX blog&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent centertext'><br>
+<h2>{% for blog in blogposts %}
+<a class='nodecorate' href="{% url 'lifeX:blogpost' 'lifeX' blog.slug %}">{{blog.title}} - {{ blog.published }}</a>
+{% endfor %}</h2>
+</div>
+{% endblock CONTENT %}

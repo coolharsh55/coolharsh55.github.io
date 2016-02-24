@@ -1,0 +1,25 @@
+{% extends 'sitedata/base.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block ETITLE %}{{ tag }} | harshp.com{% endblock ETITLE %}
+
+{% block HEADER %}{{ tag.tagname }}{% endblock HEADER %}
+
+{% block THEAD %}<a href="{% url 'sitedata:tag_index' %}">tags</a>{% endblock THEAD %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+
+<h2>total occurences: <strong>{{ tag.count }}</strong></h2>
+
+{% for link, type in links %}
+<hr>
+<h3>{{ type }}s</h3>
+{% for item in link %}
+<p><a href="{{ item.get_absolute_url }}">{{ item.title }} <small>{{ item.published }}</small></a></p>
+{% endfor %}
+{% endfor %}
+
+</div>
+{% endblock CONTENT %}

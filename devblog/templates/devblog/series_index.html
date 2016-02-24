@@ -1,0 +1,22 @@
+{% extends 'devblog/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}devblog series{% endblock TITLE %}
+
+{% block HEADER %}dev_series{% endblock HEADER %}
+
+{% block CSS %}
+
+{% endblock CSS %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+{% for s in series %}
+<a class='nodecorate' href="{% url 'devblog:blog_series' 'dev' s.slug %}"><h2>{{ s.name }}</h2></a>
+{% endfor %}
+</div>
+{% endblock CONTENT %}
+
+

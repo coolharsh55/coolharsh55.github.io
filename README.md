@@ -1,64 +1,78 @@
-# harshp.com v3
+# harshp.com
+
+![GitHub issues](https://img.shields.io/badge/tag-v2.1.2-CC3399.svg)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/coolharsh55/harshp.com/blob/master/LICENSE)
+
+[![Build Status](https://travis-ci.org/coolharsh55/harshp.com.svg?branch=master)](https://travis-ci.org/coolharsh55/harshp.com)
+[![Coverage Status](https://coveralls.io/repos/coolharsh55/harshp.com/badge.svg?branch=master&service=github)](https://coveralls.io/github/coolharsh55/harshp.com?branch=master)
+![Codacy Badge](https://www.codacy.com/project/badge/e8a6dadab03a450bb0eac3dc08ce6996)
+![Code Climate](https://codeclimate.com/github/coolharsh55/harshp.com/badges/gpa.svg)
+[![Requirements Status](https://requires.io/github/coolharsh55/harshp.com/requirements.svg?branch=master)](https://requires.io/github/coolharsh55/harshp.com/requirements/?branch=master)
+
+
+[![Stories in Ready](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=ready&title=Ready)](http://waffle.io/coolharsh55/harshp.com)
+[![Stories in Progress](https://badge.waffle.io/coolharsh55/harshp.com.svg?label=in+progress&title=In+Progress)](http://waffle.io/coolharsh55/harshp.com)
+
+
+[![Development](http://graphs.waffle.io/coolharsh55/harshp.com/throughput.svg)](https://waffle.io/coolharsh55/harshp.com/metrics)
 
 The *personal website* of **Harshvardhan Pandit** at
-[https://www.harshp.com](https://www.harshp.com/)
+[http://harshp.com](http://harshp.com/)
 
-> If you're evaluating me or want to know more about me as a developer, I have a page describing myself [here](https://me.harshp.com/dev/profile)
+## Contents
+### Blog
+[http://blog.harsho.com/](http://blog.harshp.com/)
 
-## Sections and Subdomains
+Personal blog containing my thoughts, reactions, musings, and abstract tangents running around.
 
-### Creative & Writing
+### Stories
+[http://stories.harshp.com/](http://stories.harshp.com/)
 
- - [**blog**](https://blog.harshp.com/) - Personal blog containing my thoughts, reactions, musings, and abstract tangents running around.
- - [**stories**](https://stories.harshp.com/) - Short stories that I write. Inspired and derived from various day-dreams, inspirations, and thoughtful encounters.
- - [**poems**](https://poems.harshp.com/) - Poetry as means of expressions. Sometimes I just feel the need to sing, and to write, and to tell. What comes out is poetry.
- - [**articles**](https://articles.harshp.com/) - Thoughts and opinions about non-personal things such as politics, technology, love, friends, and everyday life.
+Short stories that I write. Inspired and derived from various day-dreams, inspirations, and thoughtful encounters.
 
-### Personal
+### Poems
+[http://poems.harshp.com/](http://poems.harshp.com/)
 
- - [**journal**](https://journal.harshp.com/) - Personal/Private/Public journal containing entries related to my daily life.
- - [**lifeX**](https://lifeX.harshp.com/) - Life Experiments are something I do to make living exciting. I experiment with certain like the sleeping pattern, diets, calling people, time management, technologies to learn and a lot more. It's a great way to do and try things that I would otherwise have made excuses for citing lack of time. Know more about Life Experiments through a (quite good in my opinion) [presentation](http://lifex.harshp.com/presentation/UCC2014) based on a talk I gave on the topic.
-  - [**friends**](http://friends.harshp.com) - the place for my friends where I keep my messages and gifts for them.
- - [**hobbies**](https://hobbies.harshp.com/) - My hobbies are Books (Reading), Movies, TV Shows (Watching), Games (Playing), Photography. I keep a log of them with details such as duration, whether I completed it, how much did I like it, whether I recommend it, making lists, etc.
+Poetry as means of expressions. Sometimes I just feel the need to sing, and to write, and to tell. What comes out is poetry.
 
-### Research / Dev / CompSci
+### Articles
+[http://articles.harshp.com/](http://articles.harshp.com/)
 
- - [**dev**](https://dev.harshp.com/) - A `dev` blog for posting and discussing development related technical issues. Contains code, deployment, and design related posts.
- - [**brainbank**](https://brainbank.harshp.com/) - A repository to store all the ideas and projects that I find interesting to think about. Some of them remain as ideas, others graduate into pieces of code with functionality and then eventually into projects.
- - [**research**](https://research.harshp.com/) - My research related articles, publications, thesis, thoughts, and ideas.
+Some words about things I want to share and to tell.
 
-### About me
- 
- - [**about me**](https://me.harshp.com) - A personalised _About Me_ section with details ranging from personal hobbies to professional resumes.
+### Brainbank
+[http://brainbank.harshp.com/](http://brainbank.harshp.com/)
 
-## Development Stack
+Ideas and projects that I find interesting to think about. Some of them remain as ideas, others graduate into pieces of code. Currently, the following have some form of demonstration -
 
-### Server-side stack
+- [HDD-indexer](http://brainbank.harshp.com/hdd-indexer/) hosted at [Github](https://github.com/coolharsh55/hdd-indexer/)
 
- - hosting: Google Cloud Compute
- - server/reverse-proxy: nginx
- - server/application: unicorn
- - web framework: django/python3
- - database: PostgreSQL
- - cache: redis
- 
-### Client-side stack
+### LifeX
+[http://lifex.harshp.com/](http://lifex.harshp.com/)
 
- - semantic ui
- - jquery
- - highcharts
+Life Experiments are something I do to make living exciting. I experiment with certain things every week, like when to wake up, what to do, certain productivity techniques, social communications, hobbies, and a lot more. It's exciting, and fun.
 
-### APIs & Services
+There is a (quite good in my opinion) presentation (based on a talk I gave) about life experiments at [lifex.harshp.com](http://lifex.harshp.com/presentation/UCC2014)
 
- - None as of now
+### Friends
+[http://friends.harshp.com/](http://friends.harshp.com/)
 
-## v1 & v2
- 
- > _v1 & v2 - available in legacy branch_
- 
-### what has changed
+Messages, thoughts, gifts, and surprises for my friends.
 
- - complete rewrite of code
- - porting from python2.7 to python3
- - change in functionality, models, database, structure
- - introduction of automation and services / scripts
+### Hobbies
+[http://hobbies.harshp.com/](http://hobbies.harshp.com/)
+
+My hobbies such Books (Reading), Movies, TV Shows (Watching), Games (Playing) and details such as when I started, when I finished, whether I completed them.
+
+### Dev
+[http://dev.harshp.com/](http://dev.harshp.com/)
+
+A `dev` blog for posting and discussing development related technical issues. Contains code, deployment, and design related posts.
+
+## Development
+
+### Framework
+Django website based on python2.7
+
+### Dependencies
+Check requirements.txt

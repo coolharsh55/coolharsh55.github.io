@@ -1,0 +1,34 @@
+{% extends 'poems/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}{{post.title}}{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}{{post.title}}{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=poem%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{post.title}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent'>
+{% if post.headerimage %}
+<br>
+<img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image">
+{% endif %}
+<div class='pagedescription'><h4><small>published on {{post.published}}<br />modified on {{ post.modified }}<br>
+{% for tag in post.tags.all %}
+<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
+{% endfor %}
+</small></h4></div>
+</div>
+{{post.body|safe}}
+{% endblock CONTENT %}

@@ -1,0 +1,102 @@
+h1 { font-size: 150%; }
+h2 { font-size: 140%; }
+h3 { font-size: 130%; }
+h4 { font-size: 120%; }
+body { font-family: 'Josefin Slab', serif; font-size: 100%; }
+html { font-family: 'Josefin Slab', serif; font-size: 100%; }
+
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+
+.pageheader {
+    text-align: center;
+}
+
+.nodecorate {
+    text-decoration: none;
+    color:inherit;
+}
+
+.pagetitle {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.paegdescription {
+    text-align: center;
+    font-size: 12px;
+    color: #CCC;
+    padding-bottom: 20px;
+}
+
+blockquote {
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+    font-family: monospace;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.share-btn {
+    display: inline-block;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 0.5em;
+    width: 2em;
+    height: 2em;
+    box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+    outline: none;
+    text-align: center;
+}
+.share-btn:hover {
+    color: #eeeeee;
+}
+.share-btn:active {
+    position: relative;
+    top: 2px;
+    box-shadow: none;
+    color: #e2e2e2;
+    outline: none;
+}
+.share-btn.twitter     { background: #55acee; }
+.share-btn.google-plus { background: #dd4b39; }
+.share-btn.facebook    { background: #3B5998; }
+.share-btn.linkedin    { background: #4875B4; }
+.share-btn.email       { background: #444444; }
+
+.centertext {
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,hsla(0,0%,0%,0)), color-stop(50%,hsla(0,0%,0%,.75)), color-stop(100%,hsla(0,0%,0%,0)));
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:    -moz-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:     -ms-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:      -o-linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+    background:         linear-gradient(left, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,.75) 50%, hsla(0,0%,0%,0) 100%);
+}

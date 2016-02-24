@@ -1,0 +1,31 @@
+[run]
+branch = True
+source = harshp
+
+omit =
+    /*/migration*
+    /*/tests*
+    harshp/settings/*
+    settings.py
+    harshp/multihost*
+    harshp/wsgi*
+    harshp/urls*
+    /*/admin.py
+    /*/suit
+    /*/reveal_js
+    /*/ckeditor
+    /*/settings
+    /*/__init__.py
+    /*/__*
+    /*/fabfile.py
+    /manage.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if settings.DEBUG is False and settings.MODE == 'local':
+
+ignore_errors = True

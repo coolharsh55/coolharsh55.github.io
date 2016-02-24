@@ -1,0 +1,918 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+{% load bootstrap3 %}
+
+{% block ETITLE %}changelog{% endblock ETITLE %}
+
+{% block FCSS %}
+{{ block.super }}
+<style type="text/css">
+    h2 {
+        text-align: center;
+    }
+</style>
+{% endblock FCSS %}
+
+{% block EBODY %}
+<div class="pageheader">
+<hr><h1>changelog</h1><h3><a href="{% url 'home' %}">harshp.com</a></h3>
+</div>
+
+<div class='container'><br/>
+
+<div class="section" id="v2-1-2-2015-10-12">
+<h2>v2.1.2 (2015-10-12)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #111 dev entry in admin sidebar. [Harshvardhan Pandit]</p>
+<p>added devblog entries to the admin sidebar with a cog icon</p>
+</li>
+<li><p class="first">Fixes #94 idea layout on lifeX homepage. [Harshvardhan Pandit]</p>
+<p>added a few linebreaks to prevent multiple ideas being printed on the same line</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Seperate feedback creation in sitedata tests. [Harshvardhan Pandit]</p>
+<p>The feedback creation code was causing a weird unique constraint error in places it shouldn't. Separating the object creation code fixes this issue.</p>
+<p>Also Closes #92 add testing as a requirement to fab deploy</p>
+</li>
+<li><p class="first">Fields for hobbies, updated slugfield lengths. [Harshvardhan Pandit]</p>
+<p>Closes #50 added season for TV Shows, finished but continuing option for Games</p>
+</li>
+<li><p class="first">Refactor duplicate in save to utils.duplicates. [Harshvardhan Pandit]</p>
+<p>the duplicate check and slug functionality in <cite>save</cite> methods has been refactored in to <cite>harshp.utils.duplicates</cite> exposing two methods - <cite>duplicate_slug</cite> and <cite>duplicate_slug_vanilla</cite>
+closes #91</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-1-1-2015-09-26">
+<h2>v2.1.1 (2015-09-26)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #84 lifeX post save accepts duplicates. [Harshvardhan Pandit]</p>
+<p>LifeXPost.save() accepted duplicates via same idea and week values. This resulted in the same idea being tried more than once in a single week, and resulted in an error in GET requests for that particular posts.
+This has been fixed by asserting that no other posts with the same idea and week exist before saving the current post.</p>
+</li>
+<li><p class="first">Fixes #86 tags cannot be selected in admin. [Harshvardhan Pandit]</p>
+<p>the tag horizontal filter was not initialized for some models which caused the tags to become unselectable in the admin for those models
+adding the <cite>filter_horizontal</cite> tag in admin fixed this</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Use redactor for feedback replies in admin. [Harshvardhan Pandit]</p>
+<p>use the redactor editor for feedback replies in admin rather than the ckeditor
+closes #90</p>
+</li>
+<li><p class="first">Closes #88 requires.io dependency check. [Harshvardhan Pandit]</p>
+<p>added badge to README.md for requires.io dependency notification</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-1-2015-09-26">
+<h2>v2.1 (2015-09-26)</h2>
+<ul>
+<li><p class="first">Adds series (removed M2M) as FK to blog. [Harshvardhan Pandit]</p>
+<p>Aadded series as FK to blog model instead of keeping posts as M2M in series model.</p>
+<p>Closes #87</p>
+</li>
+<li><p class="first">Devblog app with blog models. [Harshvardhan Pandit]</p>
+<p>devblog app that maps to the 'dev' subdomain, and contains models, views, and urls for blog post and blog series. Redactor plugins have also been added, configured globally.</p>
+</li>
+<li><p class="first">Add devblog app with dev subdomain. [Harshvardhan Pandit]</p>
+<p>The blog contains urls for index and blog post view, tests that assert these urls are in the correct namespace, and return 404 as of now.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="v2-0-1-2015-09-08">
+<h2>v2.0.1 (2015-09-08)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #82 feedback _add raises server error. [Harshvardhan Pandit]</p>
+<p>The cause of the error was a misconfigured query access, where the latest feedback was accessed by index. This caused an error as there are no feedbacks in database. The relevant query has been replaced by a generic count query.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Replaced ckeditor with redactor. [Harshvardhan Pandit]</p>
+<p>ckeditor has been replaced in favor of redactor (with plugins), all models have been updated to use the redactor field</p>
+<blockquote>
+<ul class="simple">
+<li>updated requirements</li>
+<li>save(s) test run timings in /testruns</li>
+<li>fabric for updating requirements</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">Remove sudo for git updates in fabric. [Harshvardhan Pandit]</p>
+<p>fabric's deploy no longer requires using sudo for using git commands on the server</p>
+</li>
+<li><p class="first">Sendgrid as host for admin emails. [Harshvardhan Pandit]</p>
+<p>Uses sendgrid as the email host for sending server and admin mails. Requires environmental variables SENDGRID_USER and SENDGRID_PASS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v2-0-2015-09-02">
+<h2>v2.0 (2015-09-02)</h2>
+<div class="section" id="fix">
+<ul>
+<li><p class="first">Fixes #81 404/500 errors do not work in subdomains. [Harshvardhan
+Pandit]</p>
+<p>The subdomains have their own separate urls that do not get loaded if the subdomain is accessed directly, which is why the handlers for 404 and 500 are also not loaded. This is resolved by explicitly adding these handlers to the urls of every subdomain.</p>
+</li>
+<li><p class="first">Fixes #78 date_end gets reset to date_start. [Harshvardhan Pandit]</p>
+<p>Hobby models had a bug in save() whereby the condition to check if the starting date was after the ending date was checked the other way round. This caused the ending date to be reset to the starting date everytime the model was saved. Added tests to ensure that the save method works as expected.</p>
+</li>
+<li><p class="first">Fixes #82 feedback_add url does not work in prod. [Harshvardhan
+Pandit]</p>
+<p>The feedback_add url has an optional parameter for passing urls that can be blank. The misconfigured url regex required there to be two trailing slashes at the end, which caused the 404 error in prod. Fixed by omitting the trailing slash since the url itself contains a trailing slash when given.</p>
+</li>
+<li><p class="first">Fixes #80 fabfile.deploy incorrectr req file. [Harshvardhan Pandit]</p>
+<p>Fabfile deploy() uses the correct production requirements file at <cite>requirements/requirements_prod.txt</cite> instead of the old value.</p>
+</li>
+
+<li><p class="first">Django-filer as filebrowser, fabric sync scripts. [Harshvardhan
+Pandit]</p>
+<ol class="arabic simple">
+<li>Uses django-filer as the filebrowser through a dummy model called FileUpload in sitedata. The addition of this model has been disabled since there is no pk field in the admin form. The model contains a FileField used for file uploads.</li>
+<li>Fabric now has scripts for pip-tools compile and sync. Tests are now run individually for each module, and combined using coverage.</li>
+<li>Added dev_noaws and dev_nodb files for using dev settings without either aws or db (ssh tunnel).</li>
+<li>Updated tests for general bug-fixes and optimisations.</li>
+<li>The file testruns.txt contains (upto) 100 test runs with maximum time taken for execution. This is compiled from the individual tests run by coverage.</li>
+</ol>
+<p>Closes #6</p>
+</li>
+<li><p class="first">Custom 404 and 500 images. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Custom error pages for 404, 500. [Harshvardhan Pandit]</p>
+<p>Uses static images showing error code and message
+Closes #59 custom 404 page
+Closes #60 custom 500 page</p>
+</li>
+<li><p class="first">Added tests and various bugfixes. [Harshvardhan Pandit]</p>
+<p>Fixes #64 remove redundant exceptions in views
+Closes #65 add tests to every app, model and view
+Fixes #66 rename tag in BrainbankDemo to tags
+Fixes #67 remove unneccessary duplicate checks in save()
+Fixes #68 whitespace in demo published template tag
+Closes #69 delete context_processors file
+Closes #70 separate packages into different files
+Closes #71 use redactor WYSIWYG in feedback
+Fixes #72 update Tag count only after first save
+Fixes #73 subdomain for sitedata should be None
+Fixes #74 raise Http404 in tag instead of returning it
+Fixes #75 feedback url can be an empty string, not None
+Closes #76 separate settings file according to use
+Close #77 move requirements into harshp/requirements</p>
+</li>
+<li><p class="first">Anonymous Feedback, can be linked to any post. [Harshvardhan Pandit]</p>
+<p>Added Redactor WYSIWYG for feedback forms.
+Added Bootstrap validator by &#64;1000hz
+Added feedback message in site footer
+Added encode_safe tag for embedding urls in templates</p>
+<p>Changed sitedata urls to include models other than Tag</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="section" id="v1-8.1-2015-08-18">
+<h2>v1.8.1 (2015-08-18)</h2>
+<ul class="simple">
+<li><p class="first">Fixes #54 set published when saving Hobbies. [Harshvardhan Pandit]</p>
+<p>Hobbies now have their published model set if the object is being saved for the first time. LifeXIdea also sets its published model when saved the first time.</p>
+</li>
+<li><p class="first">LifeX Blog posts on homepage. [Harshvardhan Pandit]</p>
+<p>Shows the latest 3 lifeX blog posts on homepage.
+Closes #27</p>
+</li>
+<li><p class="first">Latest brainbank posts on homepage. [Harshvardhan Pandit]</p>
+<p>Shows the latest BrainBank posts on the homepage instead of the latest idea only.
+Closes #61</p>
+</li>
+</ul>
+</div>
+
+<div class="section" id="v1-8-2015-08-14">
+<h2>v1.8 (2015-08-14)</h2>
+<ul class="simple">
+<li>Fixes #42 hobby end date should be on or before start date.
+[Harshvardhan Pandit]</li>
+</ul>
+<ul>
+<li><p class="first">Count field for tags, linked to posts. [Harshvardhan Pandit]</p>
+<p>Tags have a count field depicting how many objects they are linked to. Tags are linked to the posts that contain them, and the same is displayed on the tag page.
+Closes #53
+Closes #33</p>
+</li>
+<li><p class="first">Get_absolute_url for all models. [Harshvardhan Pandit]</p>
+<p>Implemented the get_absolute_url method in all methods using subdomains.utils.reverse for subdomains resolution.
+Closes #7</p>
+</li>
+<li><p class="first">Published/modified/tags fields in all models. [Harshvardhan Pandit]</p>
+<p>Added published/modified/tags fields to all models that have some form of content.
+Closes #35
+Closes #36</p>
+</li>
+<li><p class="first">Images for hobbies Hobby models now have a (header) image field Closes
+#44. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Repo for brain bank ideas BrainBank Idea now have a url field for
+linking repositories. Related views and interfaces now reflect this
+url field on pages. Closes #5. [Harshvardhan Pandit]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="v1-7-1-2015-08-10">
+<h2>v1.7.1 (2015-08-10)</h2>
+<ul>
+<li><p class="first">Remove django seeds, travis pip cache. [Harshvardhan Pandit]</p>
+<p>Fixes #47 travis build fails</p>
+</li>
+<li><p class="first">Fabric installs dependencies in deployment. [Harshvardhan Pandit]</p>
+<p>fabric installs dependencies via pip in deployment before migrating and restarting server</p>
+<p>Resolves #46</p>
+</li>
+<li><p class="first">Generic admin for Hobbies books, tvshows, games. [Harshvardhan Pandit]</p>
+<p>Generic admin for common fields in models.</p>
+<p>Fixes #45 Game admin does not have fields</p>
+</li>
+<li><p class="first">Tag save method and unique slugnames. [Harshvardhan Pandit]</p>
+<p>save method for Tag that creates slugs from tagname</p>
+<p>Closes #40 save method for Tag
+Fixes #41 Tag slug should be unique</p>
+</li>
+<li><p class="first">Closes #31 redundant devsettings.py. [Harshvardhan Pandit]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="future">
+<h2>v1.7 (2015-08-09)</h2>
+<ul>
+<li><p class="first">Favicon.ico for harshp.com. [Harshvardhan Pandit]</p>
+<p>Saves a favicon.ico and serves it via Apache</p>
+<p>Closes #16 add favicon</p>
+</li>
+<li><p class="first">Update privacy policy to use simpler explanations. [Harshvardhan
+Pandit]</p>
+<p>closes #20 simplify privacy policy</p>
+</li>
+<li><p class="first">Hobbies app with Book, Movie, TVShow, and Game. [Harshvardhan Pandit]</p>
+<p>Hobbies app contains Book, Movie, TVShow and Game. The urls, views, and templates are all generic and use meta properties to render the pages. Used django seed to populate the database with random values.</p>
+<p>closes #10 add books/movies/tvshows/games models
+resolves #32 refactor models from sitebase</p>
+</li>
+<li><p class="first">Tags as first class objects with index, tag cloud. [Harshvardhan
+Pandit]</p>
+<p>Tag objects now have their own index at /tags/ with a tag cloud displayed on the page using <cite>jqcloud</cite> wihch uses the tag use count as weight. Tags in all posts have been linked to their own individual page that shows all posts under the tag sectioned by apps.</p>
+<p>Fixed #37 articles had a stray bracket (&lt;) at the end of tags.</p>
+<p>Closes #9
+Closes #34</p>
+</li>
+<li><p class="first">Closes #26 fabric deploy does not migrate. [Harshvardhan Pandit]</p>
+<p>Fabfile.py deploy now migrates before restarting the server</p>
+</li>
+</ul>
+</div>
+<div class="section" id="v1-6-2-2015-08-05">
+<h2>v1.6.2 (2015-08-05)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Fixes #24 lifeX blog posts are not accessible. [Harshvardhan Pandit]</p>
+<p>LifeX Blog posts are now viewable on the blog index page (lifex.harshp.com/blog/) and are accessible on their own blog post page (lifex.harshp.com/blog/blogpost-slug/)</p>
+<p>Changed:
+- variable blogpost in response to post
+- changed template for blogpost
+- in template blog changed incorrect usage of variables blog and blogposts</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Closes #25 lifeX blog post should have headerimage. [Harshvardhan
+Pandit]</p>
+<p>LifeXBlog models now have an image url field called headerimage for displaying images at the top of the post.</p>
+<ul class="simple">
+<li>lifeX/models.py: added field headerimage(URL) to LifeXBlog</li>
+<li>lifeX/admin.py: added field headerimage to LifeXBlogAdmin formfields</li>
+</ul>
+<p>minor</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-6-1-2015-08-01">
+<h2>v1.6.1 (2015-08-04)</h2>
+<div class="section" id="changes">
+<h3>Changes</h3>
+<ul>
+<li><p class="first">CodeClimate config js camelcase error. [Harshvardhan Pandit]</p>
+<p>Javascript -&gt; JavaScript
+close #1 pull request</p>
+</li>
+</ul>
+</div>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">#3 accordion does not expand on iPads. [Harshvardhan Pandit]</p>
+<p>changed &lt;div&gt; elements to &lt;a&gt; for app titles displayed on homepage.</p>
+<p>minor: gitchangelog now recognises github style fix messages</p>
+</li>
+<li><p class="first">Fix #2 brainbank demo url mismatch due to var post instead of demo.
+[Harshvardhan Pandit]</p>
+<p>changed var post to demo in title</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-6-2015-08-02">
+<h2>v1.6 (2015-08-02)</h2>
+<div class="section" id="new">
+<h3>New</h3>
+<ul>
+<li><p class="first">Clean, minimalist look powered by simple-css &amp; font 'Josephin Slab'
+[Harshvardhan Pandit]</p>
+<p>The site no longer uses individual color shades for apps. It uses
+color (#EEE) for the background, and uniform styling across the website.
+The font Josefin Slab is used in all text, with the font size ramped
+up from 125% at the start. Bootstrap elements have been refactored to
+remove any styling to make them feel uniform on the page. Mobile page
+optimizations have been done in respect to page and font size, and
+article placements. General code cleaning and minor refactoring.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Changes</h3>
+<ul class="simple">
+<li>Devsettings.py and AWS preloading metadata for collectstatic.
+[Harshvardhan Pandit]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-5-1-2015-08-01">
+<hr><h2>v1.5.1 (2015-08-01)</h2>
+<ul class="simple">
+<li>Minor: add badges to read. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+<div class="section" id="v1-5-2015-08-01">
+<hr><h2>v1.5 (2015-08-01)</h2>
+<ul class="simple">
+<li>Travis 005: notification settings. [Harshvardhan Pandit]</li>
+<li>Coveralls: ignore settings. [Harshvardhan Pandit]</li>
+<li>Coveralls configuration. [Harshvardhan Pandit]</li>
+<li>Codeclimate settings. [Harshvardhan Pandit]</li>
+<li>Removed static admin, ckeditor, suit, reveal_js files from git.
+[Harshvardhan Pandit]</li>
+<li>Travis 004: delete and recreate migrations to remove potential clash.
+[Harshvardhan Pandit]</li>
+<li>Travis 003: create database harshp_dot_com before migrate.
+[Harshvardhan Pandit]</li>
+<li>Travis 002: database setup user id=travis pass='' [Harshvardhan
+Pandit]</li>
+<li>Travis 001: configuration setup. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+<div class="section" id="v1-4-2015-07-31">
+<hr><h2>v1.4 (2015-07-31)</h2>
+<ul class="simple">
+<li>Initial commit. [Harshvardhan Pandit]</li>
+<li>Initial commit. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+
+
+<div class="section" id="v1-3-1-2015-07-21">
+<hr><h2 class='centertext'>v1.3.1 (2015-07-21)</h2>
+<div class="section" id="new">
+<h3>New</h3>
+<ul>
+<li><p class="first">FRIENDS at harshp.com. [Harshvardhan Pandit]</p>
+<p>Created the module, app, added urls, views and initiated with a birthday
+message. There are no users or modules active currently, just a direct
+url on the app.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-3-2015-07-18">
+<hr><h2 class='centertext'>v1.3 (2015-07-18)</h2>
+<div class="section" id="id1">
+<h3>New</h3>
+<ul>
+<li><p class="first">LifeX presentation powered by reveal.js. [Harshvardhan Pandit]</p>
+<p>LifeX Presentation (lifeX.harshp.com/presentation/UCC2014) uses the
+reveal.js framework to provide a presentation on site.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other</h3>
+<ul class="simple">
+<li>Minor: lifeX presentation in index, social share in presentation.
+[Harshvardhan Pandit]</li>
+<li>Test: Codeship test. [Harshvardhan Pandit]</li>
+<li>Test: Codeship test. [Harshvardhan Pandit]</li>
+<li>Test: Codeship test. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-3-2015-07-15">
+<hr><h2 class='centertext'>v1.2.3 (2015-07-15)</h2>
+<div class="section" id="fix">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Save() did not refer to self.pk. [Harshvardhan Pandit]</p>
+<p>The save() classmethods in brainbank and lifeX referred to arbitrary
+variables (pk) instead of self.pk, due to which the condition if not pk
+evaluated to false always.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-2-2015-07-15">
+<hr><h2 class='centertext'>v1.2.2 (2015-07-15)</h2>
+<div class="section" id="id2">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Codeship settings for testing builds. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Brainbank_idea.slug unqiue=True caused Codeship to break builds.
+[Harshvardhan Pandit]</p>
+<p>The migration for unique=True in brainbank_idea.slug caused an invalid
+key contraint error (exists) in codeship builds. Fixed by commenting
+out the lines in migration.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-1-2015-07-11">
+<hr><h2 class='centertext'>v1.2.1 (2015-07-11)</h2>
+<div class="section" id="id3">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Social share urls contained enclosing '&lt;&gt;' [Harshvardhan Pandit]</p>
+<p>The social share urls contained enclosing angular brackets, which caused
+some urls to show up with additional characters when sharing. This caused
+a 404 error on the link due to the additional characters in url.</p>
+</li>
+<li><p class="first">Blog index link to homepage would not resolve. [Harshvardhan Pandit]</p>
+<p>The link to harshp.com was redundant on the blog index page due to an
+overrided block (BLOGHEAD) in the index.html. This has been fixed by
+removing the block, and replacing it with the HEADER block.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-2-2015-07-11">
+<hr><h2 class='centertext'>v1.2 (2015-07-11)</h2>
+<div class="section" id="id4">
+<h3>New</h3>
+<ul>
+<li><p class="first">Cookies/privacy policy sticky message. [I]</p>
+<p>The site now displays a sticky message at the top of the page informing
+users that cookies are being used for tracking and analysis. It contains
+a link to the privacy policy. The expiry time for the cookies is set at
+60 days.</p>
+</li>
+<li><p class="first">Google-Analytics tracking code. [I]</p>
+<p>Added GA code to the sitebase head containing the js script and UID.</p>
+</li>
+<li><p class="first">Changelog and privacy policy in site footer. [I]</p>
+<p>The site footer now contains links to changelog and privacy policy.</p>
+</li>
+<li><p class="first">Privacy policy as a webpage. [I]</p>
+<p>The Privacy Policy is a template page that shows a standard privacy
+policy generated from an online provider.</p>
+</li>
+<li><p class="first">Changelog as a webpage. [Harshvardhan Pandit]</p>
+<p>The git changelog is exported as ReST and converted into HTML using
+docutils. It is then integrated into the django template. The changelog
+has a url of harshp.com/changelog</p>
+</li>
+<li><p class="first">Footer with name, links, privacy policy and changelog. [Harshvardhan
+Pandit]</p>
+<p>A footer div in sitebase.html containing the name, and social links for
+g+, fb, twitter, linkedin, and email. Stubs for privacy policy, about me,
+and changelog are at the bottom.</p>
+</li>
+<li><p class="first">Common site template for all apps. [Harshvardhan Pandit]</p>
+<p>All the apps and pages now share a common template 'sitebase.html' that
+houses all the HTML, CSS, and JS sections. The filled sections are
+prefixed with 'F' and those that are empty are prefixed with 'E'. It is
+possible to override the filled sections to replace the functionality.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="changes">
+<h3>Changes</h3>
+<ul>
+<li><p class="first">Meta description for homepage. [I]</p>
+<p>Added meta tags and descriptions to the homepage through the meta object
+in views.py and the meta tag in template.</p>
+</li>
+<li><p class="first">Light and dark homepage styles without inline disable. [I]</p>
+<p>The light and dark css files are placed one below the other so that
+one css file does not need to be disabled explicitly. The dynamic
+switching of css still works.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Set cache-control to 1 day for S3 uploaded files. [I]</p>
+<p>The cache-control or expiry was missing for all static files, which has
+now been set to 1 day (86400 seconds).</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Cosmetic: change privacy policy message. [Harshvardhan Pandit]</p>
+<p>The privacy policy message has been changed to 'I use cookies to track
+usage and build a better site'</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-1-2015-07-10">
+<hr><h2 class='centertext'>v1.1 (2015-07-10)</h2>
+<div class="section" id="id7">
+<h3>New</h3>
+<ul>
+<li><p class="first">Social share buttons for Facebook, Google+, Twitter, and Email.
+[Harshvardhan Pandit]</p>
+<p>Each post (not index) contains these four buttons placed under the
+header div. Each button is a rounded div with icons by font-awesome.
+The CSS is stored in the common.css file.</p>
+<ul class="simple">
+<li>Each shared link is a &lt;a href&gt; with the url of the post inside.</li>
+<li>The URL of the post is passed from the view as post_url parameter.</li>
+<li>The view calculates the URL through the build_absolute_uri method.</li>
+<li>The font-awesome CSS file is added to each base.html</li>
+<li>The social buttons are placed under a SOCIALSHARE block</li>
+<li>Only the Twitter and Email links have dynamic text.</li>
+</ul>
+</li>
+<li><p class="first">Meta tags for OpenGraph, Twitter, and Google+ via django-meta.
+[Harshvardhan Pandit]</p>
+<p>Adds meta tags for Facebook (OpenGraph), Twitter(Cards and Users), and
+Google+(Schema.org). The base template in all apps has the meta.html
+which looks for a meta dict containing the meta tags. The meta tags are
+constructed using the create_meta function in sitedata's social_meta.</p>
+<ul class="simple">
+<li>the view calls the create_meta method with title, description,</li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 189)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>keywords, url, and a image if present
+- the url is calculated using the requests' get_absolute_url method
+- the create_meta method contains the commain meta tags and adds the
+passed parameters to a dict
+- the returned meta dict is passed as a parameter to the template
+- blog's index view uses the render_to_response now
+- settings file contains django-meta settings under SOCIAL META TAGS</p>
+</li>
+<li><p class="first">Use gitchangelog to create ChangeLog. [Harshvardhan Pandit]</p>
+<p>gitchangelog uses the configuration file .gitchangelog to create a
+ChangeLog from the version tag numbers. The configuration file has
+merged commits hidden.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Changes</h3>
+<ul>
+<li><p class="first">Remove redundant CSS static files from harshp base module.
+[Harshvardhan Pandit]</p>
+<p>The harshp base module contained redundant static files (most likely due
+to a local static collect) that were deleted. These files are also
+mirrored on the S3 server and need to be deleted manually.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">LifeX blog view accessed non-existant headerimage. [Harshvardhan
+Pandit]</p>
+<p>The lifeX view for blog accessed the non-existent parameter for
+headerimage while calculating meta. Fixed by passing None instead.</p>
+</li>
+<li><p class="first">Poem meta tags used incorrect var name in view.py. [Harshvardhan
+Pandit]</p>
+<p>The Poem views.py used an incorrect var name (poem) instead of poempost
+to access the poem fields in the meta tag code.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-0-2-2015-07-07">
+<hr><h2 class='centertext'>v1.0.2 (2015-07-07)</h2>
+<div class="section" id="id10">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">OnSave() in lifeX did not refer to self object. [Harshvardhan Pandit]</p>
+<p>The onSave() method in lifeX models did not refer to self objects which
+caused errors when a new object was added.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-0-1-2015-07-07">
+<hr><h2 class='centertext'>v1.0.1 (2015-07-07)</h2>
+<div class="section" id="id11">
+<h3>Fix</h3>
+<ul>
+<li><p class="first">Brainbank url used wrong parameters in index.html. [Harshvardhan
+Pandit]</p>
+<p>The Brainbank section in the homepage (index.html) used the old url
+parameters of using the idea/post/demo id instead of the newer slug.
+This resulted in the url error since the id urls have been deprecated
+from urls.py</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v1-0-2015-07-01">
+<hr><h2 class='centertext'>v1.0 (2015-07-01)</h2>
+<div class="section" id="id12">
+<h3>Fix</h3>
+<ul class="simple">
+<li>Blog/base.html did not resolve {{site}} [Harshvardhan Pandit]</li>
+<li>Blog does not resolve url 'home' [Harshvardhan Pandit]</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Other</h3>
+<ul>
+<li><p class="first">Bugfix: save() created duplicate slugs on existing objects.
+[Harshvardhan Pandit]</p>
+<p>The save() method worked only the first time an object was saved. Calling
+the save() method subsiquent times overwrote the slugs with duplicate
+keys and broke the unique contraints. This has been fixed by first
+checking whether the object has not been saved and only then assigning
+unique slug fields.</p>
+<ul class="simple">
+<li>migration for ordering in lifeXIdea</li>
+<li>update for requirements.txt</li>
+</ul>
+</li>
+<li><p class="first">Detect slugfield duplicate and append object number to slugfield.
+[Harshvardhan Pandit]</p>
+<p>The object save method identifies existing objects with the same slug
+field and appends the object number to the slug field to make it unique.
+Also contains a few bug fixes and modifications to other views.</p>
+<ul class="simple">
+<li>modified save() in all models containing a slugfield to append number</li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 286)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>obtained by len(query for objects with same slug as this object)
+- suit admin icons changed
+- bugfix: 'lifeX' templates were incorrectly accessed using 'LifeX'
+- view: added posts and weeks for idea experimented in lifeX
+- bugfix: changed category url to correctly use slug instead of name
+- migrations for slugfield: substituted blank with unique</p>
+</li>
+<li><p class="first">Issue: production settings do not load env variables. [Harshvardhan
+Pandit]</p>
+<p>Inserted passkey strings in production settings file. Dev settings
+now allow all hosts to be used (hosts = <a href="#id14"><span class="problematic" id="id15">*</span></a>)</p>
+<div class="system-message" id="id14">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 296); <em><a href="#id15">backlink</a></em></p>
+<p>Inline emphasis start-string without end-string.</p>
+</div>
+</li>
+<li><p class="first">Delete LifeX legacy class. [Harshvardhan Pandit]</p>
+<p>The LifeX.LifeX class is commented out and removed from MySQL</p>
+</li>
+<li><p class="first">Book, Movie, TVShow, Game models for site. [Harshvardhan Pandit]</p>
+<p>Created Book, Movie, TVShow, Game models and admin interfaces. The
+models have options for read/watched/finished(playing) and dates for
+starting and ending.</p>
+</li>
+<li><p class="first">Move settings to env. [Harshvardhan Pandit]</p>
+<p>Moved the settings from local, dev, and production settings file. WSGI
+file loads the DJANGO_SETTINGS_MODULE from env.</p>
+</li>
+<li><p class="first">Index updated with new models, displays recent posts. [Harshvardhan
+Pandit]</p>
+<p>Index shows panels for all modules, along with links to the index and
+a few recent posts. Light/Dark theme updated for panels.</p>
+</li>
+<li><p class="first">Import brainbank models. [Harshvardhan Pandit]</p>
+<p>Import the changed brainbank models where each idea is broken into (idea, posts, demo).</p>
+</li>
+<li><p class="first">Static page with theme options. [Harshvardhan Pandit]</p>
+<p>The earlier dynamic page has been changed in favor of a static
+page with multicolor layouts and a light/dark theme option.</p>
+<ul class="simple">
+<li>light theme is in index_light.css</li>
+<li>dark theme is in index_dark.css</li>
+</ul>
+</li>
+<li><p class="first">Changed header from xx adjective to adjective (at harshp.com)
+[Harshvardhan Pandit]</p>
+<p>Changed headers and index formats to display list of posts. Changed
+post headers to display title instead of module name.</p>
+</li>
+<li><p class="first">Changed header in base, changed slug, added documentation.
+[Harshvardhan Pandit]</p>
+<p>Changed the header text to reflect brain bank and idea titles. Changed
+the slug from char field to slug field. Added documentation to files.</p>
+</li>
+<li><p class="first">Create slug fields of length 50. [Harshvardhan Pandit]</p>
+<p>Created slug fields for Blog, Stories, Poems, Articles and Brainbank.
+The max_length is 50, and the field can be left blank.
+The admin shows the slug-field as a pre-populated text box.</p>
+<ul class="simple">
+<li>manually add slugs to existing entries</li>
+<li>todo: set field as unique</li>
+<li>todo: set blank=False</li>
+</ul>
+</li>
+<li><p class="first">BrainBank Ideas, Posts, Demos: models, templates. [Harshvardhan
+Pandit]</p>
+<p>Create separate models and templates for Ideas, Posts and
+Demos. Change the site index and brainbank index. Each post
+and demo is associated with one Idea.</p>
+<ul class="simple">
+<li>BrainBank index shows each Idea along with its Posts and</li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 362)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>Demos with links.
+- Each Demo has a separate field for extra CSS and JS fields
+- Views corresponding to Idea,Post,Demo added
+- Site index page has been altered to temporarily work with
+the changed models.
+- Urls for Idea require idea=idea_id
+- Urls for Post require idea=idea_id, post=post_id
+- Urls for Demo require idea=idea_id, demo=demo_id</p>
+</li>
+<li><p class="first">Views, Templates, Urls for LifeX Models. [Harshvardhan Pandit]</p>
+<p>Created urls and views for Category, Idea, Week, Post, and Blog.
+Documented all files, created templates for each view and url.</p>
+<ul class="simple">
+<li>templates, urls, views: index, ideas, category, idea, experiments,</li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 377)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</div>
+<p>week, post, blogpost
+- category slug</p>
+</li>
+<li><p class="first">Add slugs to lifeX. [Harshvardhan Pandit]</p>
+<ul class="simple">
+<li>Add slug fields to LifeX models</li>
+<li>Add urls (commented) to LifeX for Category, Week, Idea, Post, and Blog</li>
+<li>Change views to new terms used</li>
+<li>Change (danger) red panel for ideas to (warning) orange</li>
+</ul>
+</li>
+<li><p class="first">Slugs for LifeX. [Harshvardhan Pandit]</p>
+<p>SlugField for LifeX Week, Idea, Post, and Blog.</p>
+</li>
+<li><p class="first">LifeX Idea,Category,Week,Post,Blog models. [Harshvardhan Pandit]</p>
+<p>Created the LifeX Idea, Category, Week, Post models that
+constitute the LifeX structure. LifeX Blog is a separate
+model that is used to posting thoughts and ideas.</p>
+<p>-LifeX Week
+Week (numbered) starting from 08/03/2014. Each week is counted
+as a timedelta from this date.</p>
+<p>-LifeX Category
+Categories are use to group together related ideas.</p>
+<p>-LifeX Idea
+An Idea is the fundamental reason for the experiment. The Idea
+decides what is to be tested. Each idea belongs to one category
+and contains an indication of whether it has been experimented,
+and whether it should be retried.</p>
+<p>-LifeX Post
+A Post is an notary of an idea tried in one particular week.
+A Post is linked to a particular week, and an particular idea.</p>
+<p>-LifeX Blog
+A Blog post about the life experiments.</p>
+</li>
+<li><p class="first">Admin subdomain. [Harshvardhan Pandit]</p>
+<p>Uses 'admin.harshp.com' as the url for accessign the admin section.</p>
+<ul class="simple">
+<li>adminurls.py contains the admin urls</li>
+<li>base.py contains a new entry 'admin' pointed to adminurls</li>
+<li>urls.py cleaned of old admin urls</li>
+</ul>
+</li>
+<li><p class="first">Update, fix story header, local debug. [Harshvardhan Pandit]</p>
+<ul class="simple">
+<li>update pip packages</li>
+<li>fix story header bug where the header was repeated in the body and in the template, and caused a reverse index error</li>
+<li>local debugging is enabled</li>
+</ul>
+</li>
+<li><p class="first">Gitignore: <a href="#id16"><span class="problematic" id="id17">*</span></a>.orig. [Harshvardhan Pandit]</p>
+<div class="system-message" id="id16">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">&lt;string&gt;</tt>, line 431); <em><a href="#id17">backlink</a></em></p>
+<p>Inline emphasis start-string without end-string.</p>
+</div>
+</li>
+<li><p class="first">Static serve while DEBUG=FALSE on local machine. [Harshvardhan Pandit]</p>
+<p>The static files are now served as under production settings
+while testing with DEBUG=FALSE on local machine. Added a MODE
+setting in the settings file describing which setting is active.</p>
+</li>
+<li><p class="first">Django-robots to generate robots.txt via admin interface.
+[Harshvardhan Pandit]</p>
+<p>To add rules and urls to the robots.txt, use the admin interface
+and select the robots app, or go to admin/robots to use the app.
+The app needs an initial migration to create the tables.</p>
+</li>
+<li><p class="first">Configured vhosts, uses subdomains. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Django admin handled with Suit. [Harshvardhan Pandit]</p>
+<p>Modified the models.py and admin.py to reflect admin options such as
+list_display, fields, search, filter, etc. The theming is done by django-suit.</p>
+<ul class="simple">
+<li>some formatting changes in urls.py</li>
+<li>added django-suit options to settings base.py</li>
+<li>removed static folder from static dirs</li>
+<li>created and applied migrations</li>
+</ul>
+</li>
+<li><p class="first">Wsgi hotfix. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Create base templates for all apps. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Changed poem.html: poems index link pointed to blog index.
+[Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Wsgi hotfix. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Wsgi hotfix. [Harshvardhan Pandit]</p>
+<p>wsgi.py: system paths and WSGIhandler
+base.py: plaintext secret key
+production.py: allowed hosts include domain harshp.com</p>
+</li>
+<li><p class="first">Server not accepting MySQL password issue, and env variables in
+wsgi.py issue fixed temporarily. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Base release deployed to server. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Fixed css and index styling. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Hotfix: fixed namespace, and S3 connection issues. [Harshvardhan
+Pandit]</p>
+</li>
+<li><p class="first">Settings configuration. [Harshvardhan Pandit]</p>
+</li>
+<li><p class="first">Added gitignore. [Harshvardhan Pandit]</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-0-1-2015-05-03">
+<hr><h2 class='centertext'>v0.0.1 (2015-05-03)</h2>
+<ul class="simple">
+<li>Settings: added local, dev, production changed layout of index.html,
+added fancy effects fixed issues: 1, 3, 5. [Harshvardhan Pandit]</li>
+<li>Removed all pyc files from code. [Harshvardhan Pandit]</li>
+<li>Added models to all apps, and configured index and post view page base
+index also works, displays a list of ALL post. [Harshvardhan Pandit]</li>
+<li>Integration with S3 added bucket with name harshp-media ! may need
+changes in the static and media folder structure. [Harshvardhan
+Pandit]</li>
+<li>Separate files in all apps, some may need to be updated since they are
+copied working image upload with ckeditor changed media path in
+settings and views and urls. [Harshvardhan Pandit]</li>
+</ul>
+</div>
+
+
+</div>
+{% endblock EBODY %}

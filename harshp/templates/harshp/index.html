@@ -1,0 +1,154 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block ETITLE %}harshp.com{% endblock ETITLE %}
+
+{% block EHEAD %}{% include 'meta.html' %}{% endblock EHEAD %}
+
+{% block FCSS %}
+    {{ block.super }}
+    <link rel='stylesheet' type='text/css' href="{% static 'css/harshpindex.css' %}" />
+{% endblock FCSS %}
+
+{% block EBODY %}
+	<div class='pageheader'><h1>harshp.com</h1><h2><small>the personal website and project by <strong>Harshvardhan Pandit</strong></small></h2><hr></div>
+	<div class='container'><div class='content'><div class='panel-group' id='accordion'>
+	<!-- About ME -->
+	<!-- <div class="panel panel-theme">
+    <div class="panel-heading" role="tab" id="heading-blog">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">
+          <h1 class='Blog'>About ME</h1>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        <div class="list-group">
+        	<a href="{% url 'blog:index' 'blog' %}" class='list-group-item active'>TODO</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+	<br />
+	<!-- blog -->
+    <a class='Blog nodecorate' data-toggle="collapse" href="#collapse-blog" aria-expanded="false" aria-controls="collapse-blog">blog</a>
+    <div id="collapse-blog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-blog">
+      <div class="panel-body">
+        	<a href="{% url 'blog:index' 'blog' %}" class='nodecorate'>read all the blog posts</a>
+        {% for blog in blogs %}
+        	<hr><a href="{% url 'blog:post' 'blog' blog.slug %}" class='nodecorate'>{{blog.title}}<br/><small>{{blog.published}}</small></a>
+        {% endfor %}
+        </div>
+      </div>
+
+    <hr>
+
+  <!-- stories -->
+
+    <a class="Story nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-stories" aria-expanded="false" aria-controls="collapse-stories">stories</a>
+    <div id="collapse-stories" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-stories">
+      <div class="panel-body">
+        	<a href="{% url 'stories:index' 'stories' %}" class='nodecorate'>read all the stories</a>
+        {% for story in stories %}
+        	<hr><a href="{% url 'stories:post' 'stories' story.slug %}" class='nodecorate'>{{story.title}}<br /><small>{{story.published}}</small></a>
+        {% endfor %}
+        </div>
+      </div>
+
+    <hr>
+
+  <!-- poems -->
+
+
+    <a class="Poem nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-poems" aria-expanded="false" aria-controls="collapse-poems">poems</a>
+    <div id="collapse-poems" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-poems">
+      <div class="panel-body">
+        	<a href="{% url 'poems:index' 'poems' %}" class='nodecorate'>read all the poems</a>
+        {% for poem in poems %}
+        	<hr><a href="{% url 'poems:post' 'poems' poem.slug %}" class='nodecorate'>{{poem.title}}<br /><small>{{poem.published}}</small></a>
+        {% endfor %}
+        </div>
+      </div>
+
+    <hr>
+
+  <!-- articles -->
+
+    <a class="Article nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-articles" aria-expanded="false" aria-controls="collapse-articles">articles</a>
+    <div id="collapse-articles" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-articles">
+      <div class="panel-body">
+        	<a href="{% url 'articles:index' 'articles' %}" class='nodecorate'>read all the articles</a>
+        {% for article in articles %}
+        	<hr><a href="{% url 'articles:post' 'articles' article.slug %}" class='nodecorate'>{{article.title}}<br /><small>{{article.published}}</small></a>
+        {% endfor %}
+        </div>
+      </div>
+
+    <hr>
+
+  <!-- brainbank -->
+
+    <a class="Brainbank nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-brainbank" aria-expanded="false" aria-controls="collapse-brainbank">brainbank</a>
+    <div id="collapse-brainbank" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-brainbank">
+      <div class="panel-body">
+        	<a href="{% url 'brainbank:index' 'brainbank' %}" class='nodecorate'>read all ideas in the brainbank</a>
+                    {% for post in brainbank_posts %}
+                    <hr><a href="{% url 'brainbank:post' 'brainbank' post.idea.slug post.slug %}"><strong>{{ post.title }}</strong></a><br>
+                    <small>published on: {{ post.published }}<br>part of <u><a href="{% url 'brainbank:idea' 'brainbank' post.idea.slug %}">{{ post.idea.title }}</a></u></small>
+					{% endfor %}
+        </div>
+      </div>
+
+    <hr>
+
+  <!-- lifeX -->
+
+    <a class="LifeX nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-lifeX" aria-expanded="false" aria-controls="collapse-lifeX">lifeX</a>
+    <div id="collapse-lifeX" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-lifeX">
+      <div class="panel-body">
+        	<a href="{% url 'lifeX:index' 'lifeX' %}" class='nodecorate'>visit Life eXperiments</a><hr>
+            <a href="{% url 'lifeX:lifeX_presentation_UCC2014' 'lifeX' %}" class='nodecorate '><strong>LifeX - A Presentation</strong></a><hr>
+        	<small>latest week of experiments</small><br><a href="{% url 'lifeX:week' 'lifeX' lifeXweek.number %}" class='nodecorate'><strong>{{lifeXweek}}</strong></a>
+        	{% for post in lifeXweek.lifexpost_set.all %}
+  				<br><a href="{% url 'lifeX:post' 'lifeX' post.week.number post.idea.slug %}" class='nodecorate'>{{post.title}}<br /><small>Idea: ({{post.idea.category.name}}) {{post.idea.title}}</small></a><br>
+			{% endfor %}<hr>
+            <small>latest blog posts</small>
+            {% for post in lifeXposts %}
+                <br><a href="{% url 'lifeX:blogpost' 'lifeX' post.slug %}">{{ post.title }}</a><br><small>published on {{ post.published }}</small>
+            {% endfor %}
+        </div>
+      </div>
+    <hr>
+
+  <!-- Hobbies -->
+
+    <a class="Hobbies nodecorate" data-toggle="collapse" data-parent="#accordion" href="#collapse-hobbies" aria-expanded="false" aria-controls="collapse-hobbies">hobbies</a>
+    <div id="collapse-hobbies" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-hobbies">
+    <div class="panel-body"><hr>
+        <a href="{% url 'hobbies:type_index' 'hobbies' 'books' %}"><strong class='Hobbies'>Books</strong></a> I'm Reading<br>
+        {% for book in books %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'books' book.slug %}">{{ book.title }}<br><p><small>Since: {{ book.date_start }}</small></p></a>
+        {% endfor %}<hr>
+        Recently watched <a href="{% url 'hobbies:type_index' 'hobbies' 'movies' %}"><strong class='Hobbies'>Movies</strong></a><br>
+        {% for movie in movies %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'movies' movie.slug %}">{{ movie.title }}<br><p><small>{{ movie.date_seen }}</small></p></a>
+        {% endfor %}<hr>
+        Recently watched <a href="{% url 'hobbies:type_index' 'hobbies' 'tvshows' %}"><strong class='Hobbies'>TV Shows</strong></a><br>
+        {% for tvshow in tvshows %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'tvshows' tvshow.slug %}">{{ tvshow.title }}<br><p>On: <small>{{ tvshow.date_start }}</small></p></a>
+        {% endfor %}<hr>
+        <a href="{% url 'hobbies:type_index' 'hobbies' 'games' %}"><strong class='Hobbies'>Games</strong></a> I'm playing<br>
+        {% for game in games %}
+        <a href="{% url 'hobbies:type_item' 'hobbies' 'games' game.slug %}">{{ game.title }}<br><p><small>Since: {{ game.date_start }}</small></p></a>
+        {% endfor %}
+    </div>
+    </div>
+
+	</div>
+{% endblock EBODY %}
+
+{% block FJS %}
+  {{ block.super }}
+{% endblock FJS %}

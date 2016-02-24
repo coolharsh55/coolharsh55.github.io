@@ -1,0 +1,29 @@
+{% extends 'sitedata/base.html' %}
+{% load staticfiles %}
+{% load subdomainurls %}
+{% load markdown_deux_tags %}
+
+{% block ETITLE %}feedback - {{ feedback.title }}{% endblock ETITLE %}
+
+{% block HEADER %}feedback #{{ feedback.id }}{% endblock HEADER %}
+
+{% block THEAD %}<a href="{% url 'sitedata:feedback_index' %}">feedback</a>{% endblock THEAD %}
+
+{% block CONTENT %}
+<div class='container'>
+<div class=centertext>
+<h3>{{ feedback.title }}<br>
+<small>written on {{ feedback.published }}</small><br>
+{% if feedback.linked_post %}
+<a href="{{ feedback.linked_post }}">linked post</a>
+{% endif %}</h3>
+</div>
+{{ feedback.text|markdown }}
+
+{% if feedback.reply_date %}
+<hr><h3>
+<small>replied on {{ feedback.reply_date }}</small></h3>
+{{ feedback.reply|safe }}
+{% endif %}
+</div>
+{% endblock CONTENT %}

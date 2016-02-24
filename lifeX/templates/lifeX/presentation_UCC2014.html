@@ -1,0 +1,411 @@
+{% extends 'harshp/sitebase.html' %}
+{% load staticfiles %}
+{% load dictionary %}
+{% load subdomainurls %}
+
+{% block EHEAD %}{% include 'meta.html' %}{% endblock EHEAD %}
+
+{% block ETITLE %}LifeX - A Presentation{% endblock ETITLE %}
+
+{% block FCSS %}
+
+<link rel="stylesheet" href="{% static 'reveal_js/css/reveal.css' %}">
+<link rel="stylesheet" href="{% static 'reveal_js/css/theme/white.css' %}" id="theme">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+{% endblock FCSS %}
+
+{% block EBODY %}
+<div class='reveal'>
+<div class='slides'>
+
+<section data-background="#EEE">
+    <h1>Life eXperiments</h1>
+    <h3>A Presentation</h3>
+    <p>created by <a href="{% url 'home' %}">harshvardhan</a></p>
+    <p><small>powered by <a href="https://github.com/hakimel/reveal.js">reveal.js</a></small></p>
+    <br />
+    <div style="color: #333;">
+    <!-- Social Button HTML -->
+    <!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+    <!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+    <!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20post%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+    <!-- Email --><a href="mailto:?subject=Life%20Experiments%20-%20A%20Presentation&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+    </div>
+    <br />
+    <p><small>go back to <a href="{% url 'lifeX:index' 'lifeX' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></small></p>
+</section>
+
+<section data-background="#111">
+<h1>keyboard shortcuts</h1>
+<p>SPACE/right - next slide</p>
+<p>left - previous slide</p>
+<p>f - fullscreen mode</p>
+<p>ESC/o - overview mode</p>
+</section>
+
+<section data-background="#FF0">
+    <h1>3 THINGS</h1>
+    <h3>30 SECONDS</h3>
+    <p>Think of THREE things you want to do, but haven't.</p>
+    <p><small>Something from your childhood, or college, or something you’ve been thinking of doing for a while, but haven’t, maybe because you had forgotten all about it, or you didn’t get time.</small></p>
+</section>
+
+<section data-background="{% static 'lpe/img/reaction.gif' %}">
+<h3>Ok! So when you noticed the word </h3>
+<h1>“Experiments”</h1>
+<h3>you probably thought of this...</h3>
+</section>
+
+<section data-background="#006600">
+<p><small>by definition...</small></p>
+<h1>EXPERIMENT</h1>
+<p><small>is...</small></p>
+<h3>Something done to test an assumption or to show the effects of a process</h3>
+</section>
+
+<section data-background="#33FF99">
+<p>so Life Experiments mean</p>
+<h3>change my routine</h3>
+<p>AND</p>
+<h3>observing the difference it makes in life</h3>
+</section>
+
+<section data-background="#FF6600">
+<h1>WHY EXPERIMENT?</h1>
+<h3>WHY INTRODUCE CHANGE?</h3>
+</section>
+
+<section data-background="{% static 'lpe/img/work.gif' %}">
+<h1>MOST OF OUR LIVES ARE SPENT LIKE THIS</h1>
+</section>
+
+<section data-background="#FFCC33">
+<p><small>while the image was an exaggeration...</small></p>
+<h1>in reality</h1>
+<h3>we do the same things</h3>
+<h3>again and again, over and over</h3>
+<p>and at some point, we get bored with the routine.</p>
+<p><small>When at work, we want a break, we want to do something different, we want to enjoy.</small></p>
+</section>
+
+<section data-background="{% static 'lpe/img/coffee.gif' %}">
+<h1>ESCAPE</h1>
+<h3>just try and get through the day</h3>
+</section>
+
+<section data-background="#CC6633">
+<h1>WEEKEND</h1>
+<h3>hobbies</h3>
+<h3>hang out with friends</h3>
+<h3>catch up on sleep</h3>
+<p>That’s basically our idea of having a good time.</p>
+</section>
+
+<section data-background="{% static 'lpe/img/monday.gif' %}">
+<h1>next monday</h1>
+<h3>the cycle starts again</h3>
+</section>
+
+<section data-background="#999966">
+<h1>deadlines</h1>
+<h3>stuck halfway to hell</h3>
+</section>
+
+<section data-background="#FFFF00">
+<h3>3 things you wanted to do...</h3>
+<h1>when?</h1>
+</section>
+
+<section data-background="#99FF00">
+<h1>why?</h1>
+<h3 class='fragment'>Time?</h3>
+<h3 class='fragment'>Resources?</h3>
+<h3 class='fragment'>Willingness?</h3>
+<h3 class='fragment'>Forgetfulness?</h3>
+</section>
+
+<section data-background="#FFFF00">
+<h3 class='fragment'>New year resolutions</h3>
+<h3 class='fragment'>Birthday resolutions</h3>
+<h3 class='fragment'>I’m gonna study</h3>
+<h3 class='fragment'>I’m gonna do great things</h3>
+<h1 class='fragment'>we try to change</h1>
+<p><small class='fragment'>As time passes, we somehow manage to not achieve these. We lose track, or we give up. </small></p>
+</section>
+
+<section data-background="{% static 'lpe/img/clock.gif' %}">
+</section>
+
+<section data-background="#66CC99">
+<h1>time</h1>
+<h3>the one thing that stops us from doing things</h3>
+</section>
+
+<section data-background="#33CC99">
+<h1>the problem is duration</h1>
+<p>The long time span of months or years makes it easy to lose track of what we’re supposed to be doing.</p>
+</section>
+
+<section data-background="#00FFFF">
+<h1>weekly</h1>
+<h3>the best time to review things</h3>
+</section>
+
+<section data-background="#66FFFF">
+<h1>7days easy-peasy</h1>
+<p><table>
+<thead><tr><th>Day</th><th>Do</th></tr></thead>
+<tbody>
+<tr><th>SUN</th><th><small class='fragment'>Decide</small></th></tr>
+<tr><th>MOON</th><th><small class='fragment'>Start</small></th></tr>
+<tr><th>MARS</th><th><small class='fragment'>Do</small></th></tr>
+<tr><th>MERCURY</th><th><small class='fragment'>Follow</small></th></tr>
+<tr><th>JUPITER</th><th><small class='fragment'>Don't Forget</small></th></tr>
+<tr><th>VENUS</th><th><small class='fragment'>Almost there</small></th></tr>
+<tr><th>SATURN</th><th><small class='fragment'>You've done it!</small></th></tr>
+</tbody></table></p>
+</section>
+
+<section data-background="#003399">
+<h1>one life experiment per week for a year</h1>
+</section>
+
+<section data-background="#3333CC">
+<h3>52 things in 52 weeks</h3>
+<h1>GOSH!!!</h1>
+<p>Think of the THREE things you couldn't do since new year</p>
+</section>
+
+<section data-background="#6666CC">
+<h1>FAILED?</h1>
+<h3>TRY AGAIN SOME OTHER WEEK</h3>
+<p>The point is, you started.</p>
+<p><small>You can always do different things in the coming weeks and come back to this one later</small></p>
+</section>
+
+<section data-background="{% static 'lpe/img/yay.gif' %}">
+<h3>but when you complete</h3>
+<h1>success</h1>
+<p>instant happiness</p>
+</section>
+
+<section data-background="#660099">
+<h1>what things should I do?</h1>
+<h3>to each his own</h3>
+<p>everyone wants different things</p>
+</section>
+
+<section data-background="{% static 'lpe/img/sleep.gif' %}">
+<h1>be silly</h1>
+</section>
+
+<section data-background="#CC0099">
+<h3>be as silly as you want</h3>
+<p>experiments don't have to be super-serious</p>
+<p>it doesn’t matter what they are</p>
+<p>do it also for the fun!!!</p>
+</section>
+
+<section data-background="{% static 'lpe/img/music.gif' %}">
+<h1>learn music</h1>
+</section>
+
+<section data-background="#990066">
+<h3>unleash the inner rock star</h3>
+<p>Well, if you experiment with it,</p>
+<p>you can decide at the end of the week whether you like it or not.</p>
+</section>
+
+<section data-background="{% static 'lpe/img/video.gif' %}">
+<h1>movie making</h1>
+</section>
+
+<section data-background="#CC0099">
+<h3>Get Creative</h3>
+<p>Maybe just an animated short!</p>
+<p>Or maybe just photography?</p>
+</section>
+
+<section data-background="#FF0000">
+<p>Instead of sitting there, thinking whether you should do it,
+<h1>try it</h1>
+<p>If you don’t like it by the end of the week</p>
+<p>experiment with something else. </p>
+</section>
+
+<section data-background="{% static 'lpe/img/books.gif' %}">
+<h1>read</h1>
+</section>
+
+<section data-background="#CC33CC">
+<h3>Books. Novels. Magazines.</h3>
+<p>Read interviews, articles, things that interest you</p>
+<p>Information about something you really wanted to know</p>
+</section>
+
+<section data-background="#FF0000">
+<h3>At least start doing it!</h3>
+<p>If you don’t like it, change to something else.</p>
+<p>try out new recipes, new food, new cuisines, new ways to excite your taste buds. </p>
+</section>
+
+<section data-background="#663366">
+<h1>be careful!</h1>
+<h3>some experiments can be hazardous</h3>
+</section>
+
+<section data-background="{% static 'lpe/img/cooking.gif' %}">
+<h1>cooking</h1>
+</section>
+
+<section data-background="#330066">
+<h3>so many things to do</h3>
+<p>each one of us will find something different</p>
+</section>
+
+<section data-background="#990066">
+<h1>my experiments</h1>
+<h3>some things I've tried</h3>
+</section>
+
+<section data-background="{% static 'lpe/img/cleaning.gif' %}">
+<h3>cleaning my room</h3>
+</section>
+
+<section data-background="#660033">
+<h3>bad example!!!</h3>
+<h1>let's move ahead</h1>
+</section>
+
+
+<section data-background="#990033">
+<h3>my own website</h3>
+<h1>plan, design, execute</h1>
+<h3>all in a week...</h3>
+</section>
+
+<section data-background="{% static 'lpe/img/website.gif' %}">
+</section>
+
+<section data-background="#CC0033">
+<h3><a href="{% url 'home' %}">harshp.com</a></h3>
+<h1>you're on it!</h1>
+<h3> ^_^ </h3>
+</section>
+
+<section data-background="#FF3366">
+<p>Once I finished it, I felt happy.</p>
+<h3>Super happy</h3>
+<p>And completing one thing just motivated me to do so much more.</p>
+<p>Sometimes I failed, sometimes I succeeded.</p>
+<p>Sometimes I liked the experiment, sometimes I didn’t.</p>
+<p>But I felt excitement doing something new every week. </p>
+</section>
+
+<section data-background="{% static 'lpe/img/wordcloud.gif' %}">
+</section>
+
+<section data-background="#FFCC66">
+<h1>every sunday</h1>
+<p>I find that there are so many things I want to do</p>
+<p>It’s strange that I hadn’t thought about them before</p>
+</section>
+
+<section data-background="#CC9933">
+<h1>subconscious checklist</h1>
+<p>We forget things that we want to do but somewhere in our minds, in the part of our subconscious, it’s stored as an entry with not done written next to it.</p>
+</section>
+
+<section data-background="#FF9900">
+<h1>what's next?</h1>
+<p>Now that I have done all this, I’m just open to do more stuff</p>
+<p>I don’t find anything boring, Everything is exciting.</p>
+</section>
+
+
+<section data-background="#FF6600">
+<h1>experiment on experiments</h1>
+<h3>My work, doing research, involves doing experiments, and I began doing experiments on experiments. </h3>
+</section>
+
+<section data-background="{% static 'lpe/img/writing.gif' %}">
+<h3>research is lots of writing</h3>
+</section>
+
+<section data-background="#CCCC00">
+<h3>papers, articles, notes, emails, thesis</h3>
+<p>I just did different things, like if I had to write, which I think is the toughest part of the research, I went to the library. Or I only wrote in the mornings. Or I only wrote when I had coffee.</p>
+</section>
+
+<section data-background="{% static 'lpe/img/writing2.gif' %}">
+<h3>no idea what to write</h3>
+</section>
+
+<section data-background="#999900">
+<h3>the major problem academics face</h3>
+<h1>what to write?</h1>
+<p>That’s the major problem we face. Where to start, what to put on the paper. The thing is, by doing the same thing so many different times, I actually got to know when I write the best.</p>
+</section>
+
+<section data-background="{% static 'lpe/img/writing3.gif' %}">
+<h3>before</h3>
+</section>
+
+<section data-background="{% static 'lpe/img/ok.gif' %}">
+<h3>after</h3>
+</section>
+
+<section data-background="#CC3333">
+<h1>experiment</h1>
+<h3>do something different every week</h3>
+</section>
+
+<section data-background="#993333">
+<h3>at first, it may feel...</h3>
+<h1>silly, simple or even stupid</h1>
+<p>but once you start doing things, changing your routine, making it more fun, it just all adds up to make you happy.</p>
+</section>
+
+<section data-background="#CC0000">
+<h1>stay hungry, stay foolish</h1>
+<h3>hungry enough to want more</h3>
+<h3>foolish enough to do it</h3>
+</section>
+
+<section data-transition='zoom' data-background-transition="zoom" data-background="#CC3333">
+<h1>applause?</h1>
+</section>
+
+<section data-transition='zoom' data-background-transition="zoom" data-background="{% static 'lpe/img/applause.gif' %}">
+<h3>go back to <a href="{% url 'lifeX:index' 'lifeX' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></h3>
+<div style="color: #333;">
+    <!-- Social Button HTML -->
+    <!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+    <!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+    <!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20post%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+    <!-- Email --><a href="mailto:?subject=Life%20Experiments%20-%20A%20Presentation&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+</div>
+</section>
+
+
+</div>
+</div>
+{% endblock EBODY %}
+
+{% block FJS %}
+{{ block.super }}
+<script src="{% static 'reveal_js/lib/js/head.min.js' %}"></script>
+<script src="{% static 'reveal_js/js/reveal.js' %}"></script>
+<script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+    });
+</script>
+{% endblock FJS %}
+
+{% block FFOOTER %}{% endblock FFOOTER %}
+{% block COOKIEPOLICY %}{% endblock COOKIEPOLICY %}

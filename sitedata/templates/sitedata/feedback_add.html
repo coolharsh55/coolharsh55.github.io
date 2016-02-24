@@ -1,0 +1,38 @@
+{% extends 'sitedata/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block ETITLE %}new feedback | harshp.com{% endblock ETITLE %}
+
+{% block HEADER %}feedback #{{ feedback_id }}{% endblock HEADER %}
+
+{% block CSS %}
+{{ form.media }}
+{% endblock CSS %}
+
+{% block THEAD %}<a href="{% url 'sitedata:feedback_index' %}">feedback</a>{% endblock THEAD %}
+
+{% block CONTENT %}
+<div class='container'>
+<form id='feedback-form' method="POST" class='post-form' action="{% url 'sitedata:feedback_add' None %}">{% csrf_token %}
+{% bootstrap_form_errors form %}
+    {% for field in form %}
+        {% bootstrap_field field %}<hr>
+    {% endfor %}
+
+    <div class='centertext'><button type="submit" class="btn btn-success">submit</button></div>
+</form>
+</div>
+{% endblock CONTENT %}
+
+{% block JS %}
+<script type="text/javascript" src="{% static 'js/validator.min.js' %}"></script>
+<script type="text/javascript">
+    $('#feedback-form').validator(
+        delay=0,
+        html=false
+    );
+</script>
+{% endblock JS %}
+
+{% block FFEEDBACK %}{% endblock FFEEDBACK %}

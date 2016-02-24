@@ -1,0 +1,282 @@
+{% extends 'harshp/sitebase.html' %}
+
+{% block ETITLE %}Happy Birthday (2015) Supriya!!!{% endblock ETITLE %}
+
+{% block EHEAD %}
+<meta name="author" content="Harshvardhan Pandit">
+{% endblock EHEAD %}
+
+{% block FCSS %}
+    <style type="text/css">
+
+    body {
+        background:
+        linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, #ECEDDC 25%, transparent 25%),
+        linear-gradient(45deg, #ECEDDC 25%, transparent 25%);
+        background-size: 100px 100px;
+        background-color: #330066;
+        color: #111;
+        font-family:"Lucida handwriting", "Snell Roundhand", "Helvetica Neue",Arial,Helvetica,sans-serif;
+        font-size: 16px;
+    }
+
+    .amp {
+        font-family:Garamond,Baskerville,Georgia,serif !important;
+        font-style:italic;
+        font-weight:normal;
+        border: none;
+    }
+
+    a.polaroid {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        color: #111;
+        padding: 10px 10px 20px 10px;
+        width: 150px;
+        border: 1px solid #0066FF;
+        background-color: white;
+        z-index: 2;
+        font-size: 0.7em;
+        -webkit-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        -moz-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        -webkit-transition: all 0.5s ease-in;
+    }
+    a.polaroid:hover,
+    a.polaroid:focus,
+    a.polaroid:active {
+        z-index: 999;
+        border-color: #FF99CC;
+        -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        -moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+        -webkit-transform: rotate(0deg) scale(1.05);
+        -moz-transform: rotate(0deg) scale(1.05);
+        transform: rotate(0deg) scale(1.05);
+    }
+    .polaroid img {
+        margin: 0 0 15px;
+        width: 150px;
+        height: 150px;
+    }
+
+    a img {
+        border: none;
+        display: block;
+    }
+
+    .photo-album {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        max-width: 70em;
+        height: 450px;
+        margin-top: 5em;
+        min-width: 800px;
+        max-width: 900px;
+    }
+    .photo-album .polaroid {
+        position: absolute;
+    }
+    .photo-album h1 {
+        position: absolute;
+        z-index: 5;
+        top: 150px;
+        text-align: center;
+        width: 100%;
+        line-height: 1.9;
+    }
+    .photo-album h1 span {
+        background-color: #330066;
+        font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+        padding: 0.4em 0.8em 0.3em 0.8em;
+        color: #EEE;
+        -webkit-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        -moz-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+        border: 1px solid #6A6A6A;
+    }
+    .photo-album .small {
+        width: 75px;
+        padding: 6px 6px 12px 6px;
+        font-size: 0.6em;
+    }
+    .photo-album .small img {
+        width: 75px;
+        height: 75px;
+    }
+    .photo-album .medium {
+        width: 200px;
+        padding: 13px 13px 26px 13px;
+        font-size: 0.8em;
+    }
+    .photo-album .medium img {
+        width: 200px;
+        height: 200px;
+    }
+    .photo-album .large {
+        width: 300px;
+        padding: 20px 20px 30px 20px;
+        font-size: 1em;
+    }
+    .photo-album .large img {
+        width: 300px;
+        height: 300px;
+    }
+    .photo-album .img1 {
+        bottom: 10px;
+        right: 365px;
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+    .photo-album .img2 {
+        top: 50px;
+        right: 20px;
+        -webkit-transform: rotate(-4deg);
+        -moz-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+    }
+    .photo-album .img3 {
+        left: 400px;
+        top: 0;
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    .photo-album .img4 {
+        top: 10px;
+        left: 495px;
+        -webkit-transform: rotate(-20deg);
+        -moz-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+    .photo-album .img5 {
+        bottom: 0;
+        right: 0;
+        -webkit-transform: rotate(1deg);
+        -moz-transform: rotate(1deg);
+        transform: rotate(1deg);
+    }
+    .photo-album .img6 {
+        bottom: 10px;
+        right: 156px;
+        -webkit-transform: rotate(6deg);
+        -moz-transform: rotate(6deg);
+        transform: rotate(6deg);
+    }
+    .photo-album .img7 {
+        bottom:0;
+        left:400px;
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+    .photo-album .img8 {
+        bottom: -20px;
+        left: 700px;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+    }
+    .photo-album .img9 {
+        bottom: 0;
+        left: 0;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+    }
+    .photo-album .img10 {
+        top: 0;
+        left: 20px;
+        -webkit-transform: rotate(8deg);
+        -moz-transform: rotate(8deg);
+        transform: rotate(8deg);
+    }
+    .photo-album .img11 {
+        top: 0;
+        right: 0;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+    }
+    .photo-album .img12 {
+        top: 0;
+        left: 680px;
+        -webkit-transform: rotate(18deg);
+        -moz-transform: rotate(18deg);
+        transform: rotate(18deg);
+    }
+    .photo-album .img13 {
+        bottom: -20px;
+        right: 630px;
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+    .photo-album .img14 {
+        top: 90px;
+        left: 430px;
+        -webkit-transform: rotate(15deg);
+        -moz-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+    .photo-album .img15 {
+        left:176px;
+        top:20px;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+    }
+
+    a:hover,
+    a:focus {
+        z-index: 5;
+    }
+
+
+
+
+    </style>
+{% endblock FCSS %}
+
+{% block EBODY %}
+    <div class="photo-album">
+
+        <h1><span class='amp'>Happy Birthday Supriya</span> <br /><span class='amp'> keep smiling</span></h1>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup_mumbai.jpg" class="large polaroid img1"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup_mumbai.jpg" height="5419" width="3603" alt="">The Classic Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-mayur.jpg" class="medium polaroid img4"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-mayur.jpg" alt="">The Family-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-ramoji.jpg" class="polaroid img5"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-ramoji.jpg" alt="">The Filmy-style Smile</a>
+
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-dress.jpg" class="polaroid img6"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-dress.jpg" alt="">The Shopping-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-mirror.jpg" class="polaroid img7"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-mirror.jpg" alt="">The Modelling-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-stairs.jpg" class="small polaroid img8"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-stairs.jpg" alt="">The Pose-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-street.jpg" class="medium polaroid img9"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-street.jpg" alt="">The Street Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-nariman.jpg" class="polaroid img10"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-nariman.jpg" alt="">The Birthday Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup_school.jpg" class="polaroid img11"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup_school.jpg" alt="">The School-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-fly.jpg" class="small polaroid img12"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-fly.jpg" alt="">The Crazy Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-closeup.jpg" class="small polaroid img13"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-closeup.jpg" alt="">The College-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-trip.jpg" class="small polaroid img14"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-trip.jpg" height="1280" width="720" alt="">The Trip-wali Smile</a>
+
+        <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-trip.jpg" class="polaroid img15"><img src="https://s3-eu-west-1.amazonaws.com/harshp-media/friends/birthdays/supriya.chavan/2015/sup-potrait.jpg" height="640" width="640" alt="">Test</a>
+
+    </div>
+{% endblock EBODY %}
+
+{% block COOKIEPOLICY %}{% endblock COOKIEPOLICY %}
+{% block FFOOTER %}{% endblock FFOOTER %}

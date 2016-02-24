@@ -1,0 +1,36 @@
+{% extends 'lifeX/base.html' %}
+
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}Life eXperiments{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}Life eXperiments{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20experiments%20-%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject=lifeX%20experiments&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent centertext'><br>
+{% for week in weeks %}
+  <div class="panelheading" role="tab" id="heading-{{week.number}}">
+    <h2><a class="nodecorate collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{week.number}}" aria-expanded="false" aria-controls="collapse-{{week.number}}">{{week}}</a></h2>
+  </div>
+  <div id="collapse-{{week.number}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{week.number}}">
+      {% for post in week.lifexpost_set.all %}
+      <h3> (idea) <a class='nodecorate' href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">{{post.idea.title}} ({{post.idea.category.name}})</a></h3>
+      <h3> (post) <a class='nodecorate' href="{% url 'lifeX:post' 'lifeX' week.number post.idea.slug %}">{{post.title}}</a></h3><hr>
+      {% endfor %}
+    </div>
+{% endfor %}
+</div>
+{% endblock CONTENT %}

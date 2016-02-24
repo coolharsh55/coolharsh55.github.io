@@ -1,0 +1,17 @@
+{% extends 'poems/base.html' %}
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}poems at harshp.com{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}runes{% endblock HEADER %}
+
+{% block CONTENT %}
+<div class='container centertext'>
+{% for post in posts %}
+<a class='nodecorate' href="{% url 'poems:post' 'poems' post.slug %}">{{post|getval:'title'}}<br /><small>{{post|reltime}}</small></a><hr>
+{% endfor %}{% endblock CONTENT %}

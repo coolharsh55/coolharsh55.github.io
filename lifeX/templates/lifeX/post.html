@@ -1,0 +1,39 @@
+{% extends 'lifeX/base.html' %}
+
+{% load dictionary %}
+{% load staticfiles %}
+{% load subdomainurls %}
+
+{% block TITLE %}W{{post.week.number}} - {{post.idea.title}}{% endblock TITLE %}
+
+{% block CSS %}
+{% endblock CSS %}
+
+{% block HEADER %}W{{post.week.number}} - {{post.idea.title}}{% endblock HEADER %}
+
+{% block SOCIALSHARE %}
+<!-- Social Button HTML -->
+<!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
+<!-- Google Plus --><a href="https://plus.google.com/share?url={{page_url}}" target="_blank" class="share-btn google-plus"><i class="fa fa-google-plus"></i></a>
+<!-- Twitter --><a href="http://twitter.com/share?url={{page_url}}&text=lifeX%20post%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="fa fa-twitter"></i></a>
+<!-- Email --><a href="mailto:?subject={{post.title}}&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
+{% endblock SOCIALSHARE %}
+
+{% block CONTENT %}
+<div class='parent centertext'>
+<div class='pagetitle'><h1>{{post.title}}</h1></div>
+<div class='pagedescription'><h4><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}">{{post.week}}</a><br /><a href="{% url 'lifeX:idea' 'lifeX' post.idea.category.slug post.idea.slug %}">Idea: {{post.idea.title}}</a><br /><a href="{% url 'lifeX:category' 'lifeX' post.idea.category.slug %}">Category: {{post.idea.category.name}}</a><br>published on {{ post.published }}<br>modified on {{ post.modified }}<br>
+{% for tag in post.tags.all %}
+<a href="{% url 'sitedata:tagname' 'www' tag.slug %}">{{ tag.tagname }}</a>,
+{% endfor %}
+<br></small></h4></div>
+</div>
+{% if post.headerimage %}
+<br>
+<img src="{{post.headerimage}}" class="img-responsive" alt="Responsive image">
+{% endif %}
+{{post.body|safe}}
+<div class='centertext'>
+<h2><small><a href="{% url 'lifeX:week' 'lifeX' post.week.number %}">more experiments in Week {{post.week.number}}</a></small></h2>
+</div>
+{% endblock CONTENT %}
