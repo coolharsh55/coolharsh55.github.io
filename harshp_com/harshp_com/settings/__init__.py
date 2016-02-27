@@ -1,13 +1,11 @@
 """settings module for harshp_com"""
 
-DEBUG = True
-
 from .admin import *
 from .apps import *
 from .auth import *
 from .basepath import *
 from .database import *
-DATABASES = DATABASE_SQLITE
+from .debug import *
 from .i18n import *
 from .logging import *
 from .middleware import *

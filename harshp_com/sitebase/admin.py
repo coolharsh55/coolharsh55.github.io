@@ -19,3 +19,32 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
     ordering = ['name']
     search_fields = ['name', 'description']
+
+
+class PostAdmin(admin.ModelAdmin):
+    """admin for Post"""
+
+    date_hierarchy = 'date_published'
+    filter_horizontal = ['tags']
+    empty_value_display = 'N/A'
+    fieldsets = [
+        ('info', {
+            'fields': ['title', 'authors', 'short_description', 'slug'],
+        }),
+        ('publish', {
+            'fields': ['date_created', 'date_published', 'is_published'],
+        }),
+        ('meta', {
+            'fields': ['tags'],
+        }),
+    ]
+    list_display = [
+        'title', 'date_published', 'date_updated', 'is_published']
+    list_display_editable = ['is_published']
+    list_filter = ['is_published', 'authors', 'tags']
+    list_display_links = ['title', 'date_published', 'date_updated']
+    ordering = [
+        'title', 'date_published', 'date_updated', 'is_published']
+    prepopulated_fields = {'slug': ('title',)}
+    radio_fields = {'body_type': admin.VERTICAL}
+    search_fields = ['title', 'short_description']

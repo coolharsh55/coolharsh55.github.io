@@ -1,12 +1,12 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
+from subdomains.utils import reverse
 from django.utils import timezone
-
-from sitebase.models import Post
+import markdown
 
 from sitebase.editors import EDITOR_TYPES
-
 from utils.models import get_unique_slug
+from sitebase.models import Post
 
 
 class BlogSeries(models.Model):
@@ -14,7 +14,8 @@ class BlogSeries(models.Model):
 
     title = models.CharField(max_length=128, db_index=True)
     short_description = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=150, unique=True, db_index=True)
+    slug = models.SlugField(
+        max_length=150, unique=True, db_index=True, blank=True)
 
     class Meta(object):
 
@@ -32,7 +33,7 @@ class BlogSeries(models.Model):
         super(BlogSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('blog:series', args=[self.slug])
+        return reverse('blog:series', args=[self.slug], subdomain='blog')
 
 
 class BlogPost(Post):
@@ -40,6 +41,7 @@ class BlogPost(Post):
 
     body_type = models.CharField(
         max_length=8, choices=EDITOR_TYPES, default='markdown')
+    body_text = models.TextField(blank=True)
     body = models.TextField()
     headerimage = models.URLField(max_length=256, blank=True, null=True)
     highlight = models.BooleanField(default=False)
@@ -57,9 +59,14 @@ class BlogPost(Post):
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
         self.date_updated = timezone.now()
+        self.body_text = markdown.markdown(self.body, extensions=[
+            'markdown.extensions.abbr',
+            # 'markdown.extensions.codehilite',
+            'markdown.extensions.smarty',
+        ], output_format='html5')
         super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:
             return reverse('blog:post', args=[self.series.slug, self.slug])
-        return reverse('blog:post', args=[self.slug])
+        return reverse('blog:post', args=[self.slug], subdomain='blog')
