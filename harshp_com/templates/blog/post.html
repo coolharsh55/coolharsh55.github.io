@@ -24,7 +24,9 @@
     </div>
     {% if post.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ post.series.name }}</h2>{% endif %}
     <div class="ui horizontal divider">#</div>
+    <img class="ui big centered fluid image" src="{{ post.headerimage }}"><br>
     <div id='content' class="ui left aligned container">
+    <h1 class="ui header">{{ post.title }}</h1>
     {{ post.body_text|safe }}
     </div>
 </div>
