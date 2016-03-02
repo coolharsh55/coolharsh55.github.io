@@ -1,0 +1,79 @@
+{% extends 'me/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}Me - Harshvardhan{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}Me{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+
+{% block e_BODY %}
+<div class="ui container">
+    <div class="ui center aligned container">
+        <h1 class="ui header">Hi, I'm Harsh!</h1>
+        <h3 class="ui  header">A PhD Comp-Sci researcher with ADAPT at Trinity, Dublin</h3>
+        <hr>
+        <div class="ui big horizontal divided list">
+            <p>Are you looking for a profile of me?</p>
+            <div class="item"><a href="#">Developer</a></div><!-- me.harshp.com/profiles/developer -->
+            <div class="item"><a href="https://github.com/coolharsh55/">Github</a></div><!-- me.harshp.com/profiles/github -->
+            <div class="item"><a href="#">Resume</a></div><!-- me.harshp.com/profiles/resume -->
+            <div class="item"><a href="#">Researcher</a></div><!-- me.harshp.com/profiles/researcher -->
+        </div>
+        <hr>
+        <div class="ui big horizontal divided list">
+            <p>Otherwise, here's a list of topics on this page - </p>
+            <div class="item"><a href="#hobbies">hobbies</a></div>
+            <div class="item"><a href="#education">education</a></div>
+            <div class="item"><a href="#technology">technology</a></div>
+            <div class="item"><a href="#philosophy">philosophy</a></div>
+        </div>
+        <hr><br>
+    </div>
+    <div class="ui horizontal divider">me</div>
+    <div class="ui center aligned container">
+        <p>Well, the name actually is <b>Harshvardhan Jitendra Pandit</b>, but since that is quite a handful, I also accept <b>Harsh</b>. So far, I'm about 26 years young (not old!), still full of enthusiasm and energy, and still pondering over the meaning of life (it's not 42). I'm quite selective of the things I do, and by doing, I mean so in all possible ways - whether it be eating, sleeping, thinking, reading, or even speaking. It all comes down to whether I have a choice in that matter - and I feel, that yes I do, in fact, we all do! So in a gist, I'm being more responsible for me :)</p>
+        <p>It is rather simple to write short stories and poems and research articles than to write about oneself. That is because I have absolutely no clue about when I stop talking you about me. If you could keep engaged and interested in a conversation (which is a very difficult task in itself), I might even tell you my life story!!!</p>
+    </div>
+    <br>
+    <div id="hobbies" class="ui horizontal divider">hobbies</div>
+    <div class="ui center aligned container">
+        <p>I like <b>creative writing</b> - things like <b>articles</b>, <b>poetry</b>, and <b>short stories</b> are something I really enjoy writing because they are extension of expressing my thoughts, ideas, and sometimes feelings. I specifically emphasized the word <i>creative</i> because it involves a very peculiar creativity or creative activity. Every article, poem, or story that I write gets me thinking, building, and evaluating in an endless loop. I enjoy this process.</p>
+        <h3 class="ui sub header">Article</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">Poetry</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">Short Stories</h3>
+        <p>qwerty</p>
+        <br>
+        <p>The other things I like to do are watching <b>movies</b>, <b>tv shows</b>, reading <b>books</b>, playing <b>video games</b>, and <b>novice photography</b>. Apart from photography, the other four are <i>passive</i> hobbies, because they are non-creative since I'm consuming them rather than creating.</p>
+        <h3 class="ui sub header">Movies</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">TV Shows</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">Video Games</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">Books</h3>
+        <p>qwerty</p>
+        <h3 class="ui sub header">Photography</h3>
+        <p>qwerty</p>
+    </div>
+    <br>
+    <div id="education" class="ui horizontal divider">education</div>
+    <div class="ui center aligned container">
+        <h3 class="ui sub header">PhD</h3>
+        <p></p>
+        <h3 class="ui sub header">MSc by Research</h3>
+        <p></p>
+        <h3 class="ui sub header">B.E.</h3>
+        <p></p>
+        <h3 class="ui sub header">Schooling</h3>
+        <p></p>
+    </div>
+    <br>
+    <div id="technology" class="ui horizontal divider">technology</div>
+    </div>
+    <br>
+    <div id="philosophy" class="ui horizontal divider">philosophy</div>
+    </div>
+    <br>
+</div>
+{% endblock e_BODY %}

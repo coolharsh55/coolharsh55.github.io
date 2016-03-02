@@ -5,7 +5,7 @@ from django.conf.urls import include, url
 from . import views
 
 me_urlspatterns = [
-
+    url(r'^$', views.homepage, name='home'),
 ]
 
 urlpatterns = [
