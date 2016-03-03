@@ -27,7 +27,11 @@ INSTALLED_APPS = [
 
 MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
 
-if MODE == 'production':
-    pass
+if MODE == 'production' or MODE == 'test_prod':
+    INSTALLED_APPS.extend([
+        # django-storages
+        'storages',
+    ])
+
 elif MODE == 'dev':
-    pass
+    INSTALLED_APPS.extend([])
