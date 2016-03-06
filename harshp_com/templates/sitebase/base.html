@@ -105,5 +105,10 @@
 {% block f_JS %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="{% static 'semanticui/semantic.min.js' %}"></script>
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"I use cookies, and I know it!","dismiss":"Yeah, ok.","learnMore":"You should too...","link":"https://harshp.com/privacypolicy","theme":"dark-top"};
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+<!-- End Cookie Consent plugin -->
 {% endblock f_JS %}</body>
 </html>
