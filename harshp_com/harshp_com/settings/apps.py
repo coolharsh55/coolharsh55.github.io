@@ -21,9 +21,10 @@ INSTALLED_APPS = [
     'subdomains',
 
     # harshp_com apps
-    'sitebase',
+    'articles',
     'blog',
     'me',
+    'sitebase',
     'stories',
 ]
 
