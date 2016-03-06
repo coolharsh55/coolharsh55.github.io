@@ -4,3 +4,7 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'sitebase/homepage.html')
+
+
+def stub(request):
+    return render(request, 'sitebase/stub.html')

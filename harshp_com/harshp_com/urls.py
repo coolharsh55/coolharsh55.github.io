@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     # admin
     url(r'', include('harshp_com.adminurls')),
+    # stub
+    url(r'^stub/$', views.stub, name='stub'),
 ]
 
 admin.site.site_name = 'harshp_com'
