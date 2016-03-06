@@ -30,5 +30,5 @@ SUBDOMAIN_URLCONFS = {
     # 'research': 'research.urls',
 
     # about me
-    # 'me': 'me.urls',
+    'me': 'me.urls',
 }

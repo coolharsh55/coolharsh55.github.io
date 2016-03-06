@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'', include('sitebase.urls')),
     # apps
     url(r'', include('blog.urls')),
+    url(r'', include('me.urls')),
     # admin
     url(r'', include('harshp_com.adminurls')),
     # stub
