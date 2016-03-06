@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'sitebase',
     'blog',
     'me',
+    'stories',
 ]
 
 MODE = os.environ.get('HARSHP_COM_MODE', 'dev')

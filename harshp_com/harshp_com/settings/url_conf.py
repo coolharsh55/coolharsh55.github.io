@@ -16,7 +16,7 @@ SUBDOMAIN_URLCONFS = {
     # 'articles': 'articles.urls',
     'blog': 'blog.urls',
     # 'poems': 'poems.urls',
-    # 'stories': 'stories.urls',
+    'stories': 'stories.urls',
 
     # personal
     # 'friends': 'friends.urls',
