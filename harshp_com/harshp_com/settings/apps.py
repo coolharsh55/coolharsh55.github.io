@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'lifeX',
     'me',
     'poems',
+    'research',
     'sitebase',
     'stories',
 ]

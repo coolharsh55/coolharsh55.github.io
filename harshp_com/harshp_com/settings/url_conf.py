@@ -27,7 +27,7 @@ SUBDOMAIN_URLCONFS = {
     # research / dev / compsci
     'brainbank': 'brainbank.urls',
     'dev': 'dev.urls',
-    # 'research': 'research.urls',
+    'research': 'research.urls',
 
     # about me
     'me': 'me.urls',
