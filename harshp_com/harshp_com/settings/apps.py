@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     # harshp_com apps
     'articles',
     'blog',
+    'friends',
     'me',
     'poems',
     'sitebase',

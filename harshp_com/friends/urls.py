@@ -1,0 +1,13 @@
+"""urls config for blog at harshp_com"""
+
+from django.conf.urls import include, url
+
+from . import views
+
+friends_urlpatterns = [
+    url(r'^$', views.home, name='home'),
+]
+
+urlpatterns = [
+    url(r'', include(friends_urlpatterns, namespace='friends')),
+]
