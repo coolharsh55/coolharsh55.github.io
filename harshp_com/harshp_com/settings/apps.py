@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'articles',
     'blog',
     'me',
+    'poems',
     'sitebase',
     'stories',
 ]
