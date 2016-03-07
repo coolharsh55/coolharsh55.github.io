@@ -22,7 +22,7 @@ SUBDOMAIN_URLCONFS = {
     'friends': 'friends.urls',
     'hobbies': 'hobbies.urls',
     'journal': 'journal.urls',
-    # 'lifeX': 'lifeX.urls',
+    'lifex': 'lifeX.urls',
 
     # research / dev / compsci
     # 'brainbank': 'brainbank.urls',
