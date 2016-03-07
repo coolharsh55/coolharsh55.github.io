@@ -1,0 +1,18 @@
+{% extends 'sitebase/base.html' %}
+{% load subdomainurls %}
+
+{% block ff_HEADER %}
+    {% block ff_HEADER_ICON %}
+    <div class="ui horizontal divided list">
+        <div class="item">
+            <i class="blue book icon"></i>
+            <i class="blue game icon"></i>
+            <i class="blue film icon"></i>
+            <i class="blue music icon"></i>
+            <i class="blue desktop icon"></i>
+        </div>
+    </div><br>
+    {% endblock ff_HEADER_ICON %}
+    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
+    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'hobbies:home' subdomain='home' %}"><u>blog.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% endblock ff_HEADER %}
