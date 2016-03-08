@@ -70,3 +70,10 @@ class BlogPost(Post):
         if self.series:
             return reverse('blog:post', args=[self.series.slug, self.slug])
         return reverse('blog:post', args=[self.slug], subdomain='blog')
+
+    def get_seo_meta(self):
+        """get meta properties for this object"""
+        meta = super(BlogPost, self).get_seo_meta()
+        if self.headerimage:
+            meta['image'] = self.headerimage
+        return meta

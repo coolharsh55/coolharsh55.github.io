@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from utils.meta_generator import create_meta
+
 from .models import BlogPost
 from .models import BlogSeries
 
@@ -18,7 +20,14 @@ def list(request):
     posts_count = BlogPost.objects.filter(is_published=True).count()
     series = BlogSeries.objects.all()
     series_count = BlogSeries.objects.all().count()
+    meta = create_meta(
+        title='blog.harshp.com',
+        description='blog for harshp.com',
+        keywords=['blog', 'harshp.com', 'coolharsh55'],
+        url=request.build_absolute_uri(),
+    )
     return render(request, 'blog/homepage.html', {
+        'meta': meta,
         'posts_all': posts_latest,
         'posts_count': posts_count,
         'posts_featured': posts_featured[:10],
@@ -52,4 +61,6 @@ def post(request, post):
     """return requested Blog Post"""
 
     post = get_object_or_404(BlogPost, series=None, slug=post)
-    return render(request, 'blog/post.html', {'post': post})
+    return render(request, 'blog/post.html', {
+        'meta': post.get_seo_meta(),
+        'post': post})
