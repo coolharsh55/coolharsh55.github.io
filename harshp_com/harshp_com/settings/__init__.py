@@ -9,6 +9,7 @@ from .debug import *
 from .i18n import *
 from .logging import *
 from .middleware import *
+from .seo import *
 from .static_media import *
 from .templates import *
 from .url_conf import *

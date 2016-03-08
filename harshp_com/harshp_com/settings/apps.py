@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party apps and plugins
+    # social metadata
+    'meta',
     # django-subdomains
     'subdomains',
 

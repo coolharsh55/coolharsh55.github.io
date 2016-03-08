@@ -1,0 +1,16 @@
+"""SEO settings and configurations for harshp_com"""
+
+# SOCIAL META TAGS
+# django-meta
+
+META_SITE_PROTOCOL = 'https'
+# META_SITE_DOMAIN = 'harshp.com'
+# META_SITE_TYPE = ''
+META_SITE_NAME = 'harshp.com'
+META_INCLUDE_KEYWORDS = []
+META_DEFAULT_KEYWORDS = []
+# META_IMAGE_URL = ''
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_GOOGLEPLUS_PROPERTIES = True
+META_USE_SITES = True
