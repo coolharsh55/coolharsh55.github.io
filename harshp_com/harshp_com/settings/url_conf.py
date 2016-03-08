@@ -4,6 +4,8 @@ ROOT_URLCONF = 'harshp_com.urls'
 
 SITE_ID = 86
 
+FILER_CANONICAL_URL = 'public/'
+
 SUBDOMAIN_URLCONFS = {
     # base
     None: 'harshp_com.urls',

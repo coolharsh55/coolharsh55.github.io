@@ -17,6 +17,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party apps and plugins
+    # filer - file browser
+    'easy_thumbnails',
+    'filer',
+    'mptt',
     # social metadata
     'meta',
     # django-robots: robots.txt

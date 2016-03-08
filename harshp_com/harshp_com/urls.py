@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'', include('stories.urls')),
     # admin
     url(r'', include('harshp_com.adminurls')),
+    # filer
+    url(r'^filer/', include('filer.urls')),
     # robots.txt
     url(r'^robots\.txt', include('robots.urls')),
     # stub
