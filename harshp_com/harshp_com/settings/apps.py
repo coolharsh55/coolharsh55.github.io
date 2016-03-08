@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     # third-party apps and plugins
     # social metadata
     'meta',
+    # django-robots: robots.txt
+    'robots',
     # django-subdomains
     'subdomains',
 
