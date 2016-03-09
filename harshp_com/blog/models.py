@@ -59,11 +59,14 @@ class BlogPost(Post):
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
         self.date_updated = timezone.now()
-        self.body_text = markdown.markdown(self.body, extensions=[
-            'markdown.extensions.abbr',
-            # 'markdown.extensions.codehilite',
-            'markdown.extensions.smarty',
-        ], output_format='html5')
+        if self.body_type == 'markdown':
+            self.body_text = markdown.markdown(self.body, extensions=[
+                'markdown.extensions.abbr',
+                # 'markdown.extensions.codehilite',
+                'markdown.extensions.smarty',
+            ], output_format='html5')
+        else:
+            self.body_text = self.body
         super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
