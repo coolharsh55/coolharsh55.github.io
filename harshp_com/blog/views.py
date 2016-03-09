@@ -30,10 +30,10 @@ def list(request):
         'meta': meta,
         'posts_all': posts_latest,
         'posts_count': posts_count,
-        'posts_featured': posts_featured[:10],
+        'posts_featured': posts_featured[:5],
         'posts_featured_count': posts_featured_count,
-        'posts_latest': posts_latest[:10],
-        'series_all': series[:10],
+        'posts_latest': posts_latest[:5],
+        'series_all': series[:5],
         'series_count': series_count})
 
 
