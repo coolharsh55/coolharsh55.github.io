@@ -6,3 +6,38 @@
     {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
     {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'blog:list' subdomain='blog' %}"><u>blog.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
 {% endblock ff_HEADER %}
+
+{% block e_BODY %}
+    {% block f_SOCIAL %}
+    <div id="social-buttons">
+        <!-- Social Button HTML -->
+        <!-- Facebook -->
+        <div class="ui labeled button" tabindex="0">
+            <div id='social-share-menu' class="ui large yellow button">
+                <a href="http://www.facebook.com/sharer/sharer.php?u={{post.get_absolute_url}}" target="_blank" class="share-btn facebook"><i class="large blue facebook icon"></i></a>|
+                <!-- Google Plus -->
+                <a href="https://plus.google.com/share?url={{post.get_absolute_url}}" target="_blank" class="share-btn google-plus"><i class="large red google plus icon"></i></a>|
+                <!-- Twitter -->
+                <a href="http://twitter.com/share?url={{post.get_absolute_url}}&text=blog%20post%20-%20{{post.title}}%20at%20harshp.com&via=coolharsh55" target="_blank" class="share-btn twitter"><i class="large teal twitter icon"></i></a>|
+                <!-- Email -->
+                <a href="mailto:?subject={{post.title}}&body={{post.get_absolute_url}}" target="_blank" class="share-btn email"><i class="large orange mail icon"></i></a>
+            </div>
+        </div>
+        <div id='social-share-button' class="ui pink small label">
+            <i class="share icon"></i><small>share</small>
+        </div>
+    </div>
+    {% endblock f_SOCIAL %}
+    {% block ee_BODY %}{% endblock ee_BODY %}
+{% endblock e_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#social-share-button").click(function() {
+        $('#social-share-menu').toggle();
+    });
+});
+</script>
+{% endblock f_JS %}

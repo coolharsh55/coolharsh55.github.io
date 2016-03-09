@@ -11,7 +11,7 @@ if MODE == 'production':
     ALLOWED_HOSTS = ['.harshp.com']
 
 # DEVELOPMENT
-elif MODE == 'dev':
+elif MODE == 'dev' or MODE == 'test_prod':
 
     SECRET_KEY = os.environ.get(
         'HARSHP_COM_DJANGO_KEY',

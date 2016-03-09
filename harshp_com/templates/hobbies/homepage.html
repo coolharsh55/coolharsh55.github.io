@@ -1,0 +1,14 @@
+{% extends 'hobbies/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}hobbies at harshp.com{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}hobbies{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+
+{% block e_BODY %}
+<div class="ui stackable grid container">
+    <div class="ui center aligned container">
+        <h2 class="ui header">In progress... refresh in a few days!</h2>
+    </div>
+</div>
+{% endblock e_BODY %}

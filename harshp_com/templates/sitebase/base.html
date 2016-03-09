@@ -9,51 +9,21 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     {% block f_CSS %}<link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
-    <style type="text/css">
-        .spacious-top {
-            margin-top: 25px;
-            padding-top: 25px;
-        }
-        .spacious-bottom {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-        }
-        /* Mobile */
-        @media only screen and (max-width: 767px) {
-            .mobile-hide{
-                display: none !important;
-            }
-        }
-
-        /* Tablet */
-        @media only screen and (min-width: 768px) and (max-width: 991px) {
-            .tablet-hide{
-                display: none !important;
-            }
-        }
-
-        /* Small Monitor */
-        @media only screen and (min-width: 992px) and (max-width: 1199px) {
-            .small-hide{
-                display: none !important;
-            }
-        }
-        /* Large Monitor */
-        @media only screen and (min-width: 1200px) {
-            .large-hide{
-                display: none !important;
-            }
-        }
-    </style>{% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sitebase.css' %}">
+    {% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
+    {% include 'meta.html' %}
+    {% block f_ANALYTICS %}<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-36745382-2","auto"),ga("send","pageview");</script>{% endblock f_ANALYTICS %}
 </head>
 <body>
 {% block f_HEADER %}<!-- HEADER -->
 <div class='segment'>
-    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">{% block ff_HEADER %}
-    {% block ff_HEADER_ICON %}<img class="ui circular image" src="{% static 'img/avatar.jpg' %}">{% endblock ff_HEADER_ICON %}
-    {% block ff_HEADER_TITLE %}<div class="content">Harshvardhan Pandit</div>{% endblock ff_HEADER_TITLE %}
-    {% block ff_HEADER_SUBTITLE %}<div class="ui sub header">personal website & project</div>{% endblock ff_HEADER_SUBTITLE %}
-{% endblock ff_HEADER %}</h1>
+    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">
+        {% block ff_HEADER %}
+        {% block ff_HEADER_ICON %}<img class="ui circular image" src="{% static 'img/avatar.jpg' %}">{% endblock ff_HEADER_ICON %}
+        {% block ff_HEADER_TITLE %}<div class="content">Harshvardhan Pandit</div>{% endblock ff_HEADER_TITLE %}
+        {% block ff_HEADER_SUBTITLE %}<div class="ui sub header">personal website & project</div>{% endblock ff_HEADER_SUBTITLE %}
+        {% endblock ff_HEADER %}
+    </h1>
 </div>
 <br>{% endblock f_HEADER %}
 {% block e_BODY %}{% endblock e_BODY %}
@@ -105,5 +75,10 @@
 {% block f_JS %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="{% static 'semanticui/semantic.min.js' %}"></script>
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"I use cookies, and I know it!","dismiss":"Yeah, ok.","learnMore":"You should too...","link":"https://harshp.com/privacypolicy","theme":"dark-top"};
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+<!-- End Cookie Consent plugin -->
 {% endblock f_JS %}</body>
 </html>

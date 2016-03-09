@@ -25,8 +25,16 @@ urlpatterns = [
     url(r'', include('sitebase.urls')),
     # apps
     url(r'', include('blog.urls')),
+    url(r'', include('me.urls')),
+    url(r'', include('stories.urls')),
     # admin
     url(r'', include('harshp_com.adminurls')),
+    # filer
+    url(r'^filer/', include('filer.urls')),
+    # robots.txt
+    url(r'^robots\.txt', include('robots.urls')),
+    # stub
+    url(r'^stub/$', views.stub, name='stub'),
 ]
 
 admin.site.site_name = 'harshp_com'

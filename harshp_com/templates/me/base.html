@@ -1,0 +1,9 @@
+{% extends 'sitebase/base.html' %}
+{% load static from staticfiles %}
+{% load subdomainurls %}
+
+{% block ff_HEADER %}
+    {% block ff_HEADER_ICON %}<img class="ui circular image" src="{% static 'img/avatar.jpg' %}"><br>{% endblock ff_HEADER_ICON %}
+    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
+    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'me:home' subdomain='me' %}"><u>me.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% endblock ff_HEADER %}

@@ -1,0 +1,8 @@
+{% extends 'sitebase/base.html' %}
+{% load subdomainurls %}
+
+{% block ff_HEADER %}
+    {% block ff_HEADER_ICON %}<i class="blue idea icon"></i>{% endblock ff_HEADER_ICON %}
+    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
+    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'brainbank:list' subdomain='brainbank' %}"><u>blog.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% endblock ff_HEADER %}

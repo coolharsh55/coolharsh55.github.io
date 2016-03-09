@@ -59,14 +59,24 @@ class BlogPost(Post):
             self.slug = get_unique_slug(
                 BlogPost, self, 'title', title=self.title)
         self.date_updated = timezone.now()
-        self.body_text = markdown.markdown(self.body, extensions=[
-            'markdown.extensions.abbr',
-            # 'markdown.extensions.codehilite',
-            'markdown.extensions.smarty',
-        ], output_format='html5')
+        if self.body_type == 'markdown':
+            self.body_text = markdown.markdown(self.body, extensions=[
+                'markdown.extensions.abbr',
+                # 'markdown.extensions.codehilite',
+                'markdown.extensions.smarty',
+            ], output_format='html5')
+        else:
+            self.body_text = self.body
         super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:
             return reverse('blog:post', args=[self.series.slug, self.slug])
         return reverse('blog:post', args=[self.slug], subdomain='blog')
+
+    def get_seo_meta(self):
+        """get meta properties for this object"""
+        meta = super(BlogPost, self).get_seo_meta()
+        if self.headerimage:
+            meta['image'] = self.headerimage
+        return meta

@@ -1,6 +1,8 @@
 from django.db import models
 from subdomains.utils import reverse
 
+from utils.meta_generator import create_meta
+
 from utils.models import get_unique_slug
 
 
@@ -123,3 +125,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_seo_meta(self):
+        """get meta properties for this object"""
+        meta = create_meta(
+            title=self.title,
+            description=self.short_description,
+            keywords=[tag.name for tag in self.tags.all()],
+            url=self.get_absolute_url(),
+        )
+        return meta

@@ -24,5 +24,8 @@ MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
 if MODE == 'production':
     DATABASES['default']['PASSWORD'] = os.environ.get(
         'HARSHP_COM_POSTGRES_PASSWORD', None)
+elif MODE == 'test_prod':
+    # TODO: establish production database over ssh
+    pass
 elif MODE == 'dev':
     DATABASES['default']['PASSWORD'] = 'harshp_com'

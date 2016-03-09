@@ -17,17 +17,40 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party apps and plugins
+    # filer - file browser
+    'easy_thumbnails',
+    'filer',
+    'mptt',
+    # social metadata
+    'meta',
+    # django-robots: robots.txt
+    'robots',
     # django-subdomains
     'subdomains',
 
     # harshp_com apps
-    'sitebase',
+    'articles',
     'blog',
+    'brainbank',
+    'dev',
+    'friends',
+    'hobbies',
+    'journal',
+    'lifeX',
+    'me',
+    'poems',
+    'research',
+    'sitebase',
+    'stories',
 ]
 
 MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
 
-if MODE == 'production':
-    pass
+if MODE == 'production' or MODE == 'test_prod':
+    INSTALLED_APPS.extend([
+        # django-storages
+        'storages',
+    ])
+
 elif MODE == 'dev':
-    pass
+    INSTALLED_APPS.extend([])
