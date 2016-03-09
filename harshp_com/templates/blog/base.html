@@ -7,27 +7,6 @@
     {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'blog:list' subdomain='blog' %}"><u>blog.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
 {% endblock ff_HEADER %}
 
-{% block f_CSS %}
-{{ block.super }}
-<style type="text/css">
-    #social-buttons {
-        position: fixed;
-        top: 100px;
-        right: 0px;
-        width: 260px;
-        height: 200px;
-        z-index: 99;
-    }
-    #social-share-menu {
-        display: none;
-    }
-    #social-share-button {
-        position: fixed;
-        top: 100px;
-        right: 0px;
-    }
-</style>
-{% endblock f_CSS %}
 {% block e_BODY %}
     {% block f_SOCIAL %}
     <div id="social-buttons">
