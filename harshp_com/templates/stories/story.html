@@ -1,0 +1,33 @@
+{% extends 'stories/base.html' %}
+
+{% block e_TITLE %}{{ story.title }}{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}{{ story.title }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class="ui center aligned container">
+    <h3><i>{{ story.short_description }}</i></h3>
+    <div class="ui horizontal divided list">
+        <div class="item">
+            published on: <b>{{ story.date_published }}</b>
+        </div>
+        <div class="item">
+            <p>last updated on: <b>{{ story.date_updated }}</b></p>
+        </div>
+    </div><br>
+    <div class="ui horizontal divided list">
+        {% for tag in story.tags.all %}
+        <div class="item">
+            <a href="#" class="ui tiny tag label">{{ tag.name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% if story.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ story.series.name }}</h2>{% endif %}
+    <div class="ui horizontal divider">#</div>
+    {% if story.headerimage %}<img class="ui big centered fluid image" src="{{ story.headerimage }}"><br>{% endif %}
+    <div id='content' class="ui left aligned container">
+    <h1 class="ui header">{{ story.title }}</h1>
+    {{ story.body_text|safe }}
+    </div>
+</div>
+{% endblock e_BODY %}
