@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+{% block e_TITLE %}Blog Series{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}Blog Series{% endblock ff_HEADER_TITLE %}
+
+{% block ee_BODY %}
+<br>
+<div class="ui stackable grid container">
+    <div class="ui feed">
+        {% for s, p in series %}
+            <h3 class="ui header"><i class="green cubes icon"></i> {{ s.title }}</h3>
+            {% for post in p %}
+            <div class="event">
+                <div class="label">
+                    {% if post.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
+                </div>
+                <div class="content">
+                    <div class="summary">
+                        <a class="user" href="{{ post.get_absolute_url }}">
+                          {{ post.title }}
+                        </a>
+                        <div class="date">
+                          {{ post.date_published }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="ui horizontal divider">-</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock ee_BODY %}
