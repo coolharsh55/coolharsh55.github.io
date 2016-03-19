@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'articles/base.html' %}
 
 {% block e_TITLE %}{{ post.title }}{% endblock e_TITLE %}
 
@@ -24,7 +24,7 @@
     </div>
     {% if post.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ post.series.name }}</h2>{% endif %}
     <div class="ui horizontal divider">#</div>
-    <img class="ui big centered fluid image" src="{{ post.headerimage }}"><br>
+    {% if post.headerimage %}<img class="ui big centered fluid image" src="{{ post.headerimage }}"><br>{% endif %}
     <div id='content' class="ui left aligned container">
     <h1 class="ui header">{{ post.title }}</h1>
     {{ post.body_text|safe }}
