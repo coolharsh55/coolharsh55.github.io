@@ -9,9 +9,9 @@ stories_urlpatterns = [
     url(r'^series/$', views.series_list, name='series-list'),
     url(r'^series/(?P<series>[\w-]+)/$', views.series, name='series'),
     url(
-        r'^series/(?P<series>[\w-]+)/(?P<post>[\w-]+)/$',
-        views.series_post, name='post'),
-    url(r'^post/(?P<post>[\w-]+)/$', views.post, name='post'),
+        r'^series/(?P<series>[\w-]+)/(?P<story>[\w-]+)/$',
+        views.series_story, name='story'),
+    url(r'^story/(?P<slug>[\w-]+)/$', views.story, name='story'),
 ]
 
 urlpatterns = [

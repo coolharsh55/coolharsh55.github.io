@@ -7,8 +7,110 @@
 
 {% block e_BODY %}
 <div class="ui stackable grid container">
-    <div class="ui center aligned container">
-        <h2 class="ui header">In progress... refresh in a few days!</h2>
+    <div class="ui three column row spacious-top">
+        <!-- LATEST STORIES -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Stories</h2></a></div><!-- stories.harshp.com/latest/ -->
+                        <div class="meta"></div>
+                        <div class="ui horizontal divider"><a href="#">{{ stories_count }} stories</a></div>
+                        <div class="description">
+                            <div class="ui list">
+                                {% for story in stories_latest %}
+                                <div class="item">
+                                    <a href="{{ story.get_absolute_url }}">
+                                        <h4 class="ui blue header">{{ story.title }}{% if stories.series != None %} - {{ story.series.title }}{% endif %}</h4>
+                                    </a>
+                                    <h5 class="ui sub header">{{ story.date_published }}</h5>
+                                    <p>{{ story.short_description }}<br></p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FEATURED POSTS -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
+                        <div class="meta"></div>
+                        <div class="ui horizontal divider"><a href="#">{{ stories_featured_count }} stories</a></div>
+                        <div class="description">
+                            <div class="ui list">
+                                {% for story in stories_featured %}
+                                <div class="item">
+                                    <a href="{{ story.get_absolute_url }}">
+                                        <h4 class="ui blue header">{{ story.title }}{% if stories.series != None %} - {{ story.series.title }}{% endif %}</h4>
+                                    </a>
+                                    <h5 class="ui sub header">{{ story.date_published }}</h5>
+                                    <p>{{ story.short_description }}<br></p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="teal cubes icon"></i>Series</h2></a></div><!-- blog.harshp.com/latest/ -->
+                        <div class="meta"></div>
+                        <div class="ui horizontal divider"><a href="#">{{ series_count }} series</a></div>
+                        <div class="description">
+                            <div class="ui list">
+                                {% for series in series_all %}
+                                <div class="item">
+                                    <a href="{{ series.get_absolute_url }}">
+                                        <h3 class="ui blue header">{{ series.title }}</h3>
+                                    </a>
+                                    <h5 class="ui sub header">{{ series.blogstory_set.count }} stories</h5>
+                                    <p>{{ series.short_description }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui blue spacious-top horizontal divider">Feed</div>
+<div class="ui stackable grid container">
+    <div class="ui feed">
+        {% for story in stories_all %}
+        <div class="event">
+            <div class="label">
+                {% if story.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
+            </div>
+            <div class="content">
+                <div class="summary">
+                    <a class="user" href="{{ story.get_absolute_url }}">
+                      {{ story.title }}
+                    </a>
+                    <div class="date">
+                      {{ story.date_published }}
+                    </div>
+                </div>
+                <div class="meta">
+                    {% if story.series %}<a href="#"><h3><i class="green cubes icon"></i> {{ story.series.title }}</h3></a>{% endif %}
+                    {{ story.short_description }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock e_BODY %}
