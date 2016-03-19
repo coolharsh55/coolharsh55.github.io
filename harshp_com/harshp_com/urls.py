@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'', include('articles.urls')),
     url(r'', include('blog.urls')),
     url(r'', include('me.urls')),
+    url(r'', include('poems.urls')),
     url(r'', include('stories.urls')),
     # admin
     url(r'', include('harshp_com.adminurls')),

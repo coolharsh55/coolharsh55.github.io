@@ -1,5 +1,4 @@
 from django.db import models
-# from django.core.urlresolvers import reverse
 from subdomains.utils import reverse
 from django.utils import timezone
 import markdown
@@ -71,7 +70,9 @@ class BlogPost(Post):
 
     def get_absolute_url(self):
         if self.series:
-            return reverse('blog:post', args=[self.series.slug, self.slug])
+            return reverse(
+                'blog:post',
+                args=[self.series.slug, self.slug], subdomain='blog')
         return reverse('blog:post', args=[self.slug], subdomain='blog')
 
     def get_seo_meta(self):
