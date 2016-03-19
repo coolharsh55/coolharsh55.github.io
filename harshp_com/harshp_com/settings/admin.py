@@ -38,10 +38,10 @@ JET_DEFAULT_THEME = 'light-blue'
 COMPACT_MENU = False
 
 # apps to show in the sidebar
-JET_SIDE_MENU_CUSTOM_APPS = [
-    ('blog', ['__all__']),
-    ('sitebase', ['__all__']),
-]
+# JET_SIDE_MENU_CUSTOM_APPS = [
+#     ('blog', ['__all__']),
+#     ('sitebase', ['__all__']),
+# ]
 
 # custom dashboard
 # JET_INDEX_DASHBOARD = 'jet.dashboard.DefaultIndexDashboard'
