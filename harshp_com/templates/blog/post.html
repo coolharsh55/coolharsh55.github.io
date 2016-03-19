@@ -29,7 +29,7 @@
     {% endif %}
     <div id='content' class="ui left aligned article container">
     <h1 class="ui header">{{ post.title }}</h1>
-    {{ post.body_text|safe }}
+    <div class="clean-article">{{ post.body_text|safe }}</div>
     </div>
 </div>
 {% endblock ee_BODY %}

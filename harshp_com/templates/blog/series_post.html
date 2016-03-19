@@ -30,7 +30,7 @@
     {% endif %}
     <div id='content' class="ui left aligned article container">
     <h1 class="ui header">{{ post.title }}</h1>
-    {{ post.body_text|safe }}
+    <div class="clean-article">{{ post.body_text|safe }}</div>
     </div>
     <div class="ui horizontal divider">X</div>
     <a href="{{ series.get_absolute_url }}"><p>read more in this series - <i class="green cubes icon"></i> {{ series.title }}</p></a>

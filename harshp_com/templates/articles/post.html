@@ -27,7 +27,7 @@
     {% if post.headerimage %}<img class="ui big centered fluid image" src="{{ post.headerimage }}"><br>{% endif %}
     <div id='content' class="ui left aligned container">
     <h1 class="ui header">{{ post.title }}</h1>
-    {{ post.body_text|safe }}
+    <div class="clean-article">{{ post.body_text|safe }}</div>
     </div>
 </div>
 {% endblock e_BODY %}
