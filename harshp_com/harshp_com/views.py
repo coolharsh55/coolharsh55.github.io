@@ -64,3 +64,7 @@ def home(request):
 
 def stub(request):
     return render(request, 'sitebase/stub.html')
+
+
+def privacy_policy(request):
+    return render(request, 'sitebase/privacypolicy.html')

@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^robots\.txt', include('robots.urls')),
     # stub
     url(r'^stub/$', views.stub, name='stub'),
+    url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
 
     # sitebase
     url(r'', include('sitebase.urls')),
