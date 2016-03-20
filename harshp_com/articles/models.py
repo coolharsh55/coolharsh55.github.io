@@ -33,7 +33,8 @@ class ArticleSeries(models.Model):
         super(ArticleSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('articles:series', args=[self.slug], subdomain='blog')
+        return reverse(
+            'articles:series', args=[self.slug], subdomain='articles')
 
 
 class Article(Post):
@@ -73,9 +74,9 @@ class Article(Post):
         if self.series:
             return reverse(
                 'articles:article',
-                args=[self.series.slug, self.slug], subdomain='article')
+                args=[self.series.slug, self.slug], subdomain='articles')
         return reverse(
-            'articles:article', args=[self.slug], subdomain='article')
+            'articles:article', args=[self.slug], subdomain='articles')
 
     def get_seo_meta(self):
         """get meta properties for this object"""
