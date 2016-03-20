@@ -19,24 +19,30 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+
     # home
     url(r'^$', views.home, name='home'),
-    # sitebase
-    url(r'', include('sitebase.urls')),
-    # apps
-    url(r'', include('articles.urls')),
-    url(r'', include('blog.urls')),
-    url(r'', include('me.urls')),
-    url(r'', include('poems.urls')),
-    url(r'', include('stories.urls')),
+
     # admin
     url(r'', include('harshp_com.adminurls')),
+
     # filer
     url(r'^filer/', include('filer.urls')),
     # robots.txt
     url(r'^robots\.txt', include('robots.urls')),
     # stub
     url(r'^stub/$', views.stub, name='stub'),
+
+    # sitebase
+    url(r'', include('sitebase.urls')),
+
+    # apps
+    url(r'', include('articles.urls')),
+    url(r'', include('blog.urls')),
+    url(r'', include('me.urls')),
+    url(r'', include('poems.urls')),
+    url(r'', include('stories.urls')),
+
 ]
 
 admin.site.site_name = 'harshp_com'
