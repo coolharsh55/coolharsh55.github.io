@@ -9,5 +9,6 @@ brainbank_urlpatterns = [
 ]
 
 urlpatterns = [
+    url(r'', include('harshp_com.urls_commons')),
     url(r'', include(brainbank_urlpatterns, namespace='brainbank')),
 ]

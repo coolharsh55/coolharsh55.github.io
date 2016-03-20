@@ -40,7 +40,14 @@
                         <div class="ui horizontal divider">L-I-F-O</div>
                         <div class="description">
                             <div class="ui list">
-
+                                {% for model, post in latest_posts %}
+                                <div class='item'>
+                                    <a href="{{ post.get_absolute_url }}">
+                                        {{ post.title }}
+                                    </a><br>
+                                    <small>{{ model }} - {{ post.date_published }}</small>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -57,7 +64,14 @@
                         <div class="ui horizontal divider">awesome</div>
                         <div class="description">
                             <div class="ui list">
-
+                                {% for model, post in featured_posts %}
+                                <div class='item'>
+                                    <a href="{{ post.get_absolute_url }}">
+                                        {{ post.title }}
+                                    </a><br>
+                                    <small>{{ model }} - {{ post.date_published }}</small>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
