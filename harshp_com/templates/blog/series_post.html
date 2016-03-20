@@ -4,7 +4,7 @@
 
 {% block ff_HEADER_TITLE %}{{ post.title }}{% endblock ff_HEADER_TITLE %}
 
-{% block e_BODY %}
+{% block ee_BODY %}
 <div class="ui center aligned container">
     <h3><i>{{ post.short_description }}</i></h3>
     <div class="ui horizontal divided list">
@@ -22,12 +22,17 @@
         </div>
         {% endfor %}
     </div>
-    {% if post.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ post.series.name }}</h2>{% endif %}
+    <br><br>
+    <a href="{{ series.get_absolute_url }}"><h2 class="ui header"><i class="green cubes icon"></i> {{ series.title }}</h2></a>
     <div class="ui horizontal divider">#</div>
+    {% if post.headerimage %}
     <img class="ui big centered fluid image" src="{{ post.headerimage }}"><br>
-    <div id='content' class="ui left aligned container">
+    {% endif %}
+    <div id='content' class="ui left aligned article container">
     <h1 class="ui header">{{ post.title }}</h1>
-    {{ post.body_text|safe }}
+    <div class="clean-article">{{ post.body_text|safe }}</div>
     </div>
+    <div class="ui horizontal divider">X</div>
+    <a href="{{ series.get_absolute_url }}"><p>read more in this series - <i class="green cubes icon"></i> {{ series.title }}</p></a>
 </div>
-{% endblock e_BODY %}
+{% endblock ee_BODY %}

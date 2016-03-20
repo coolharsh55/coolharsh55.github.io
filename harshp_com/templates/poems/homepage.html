@@ -7,8 +7,84 @@
 
 {% block e_BODY %}
 <div class="ui stackable grid container">
-    <div class="ui center aligned container">
-        <h2 class="ui header">In progress... refresh in a few days!</h2>
+    <div class="ui two column row spacious-top">
+        <!-- LATEST POEMS -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Poems</h2></a></div><!-- poems.harshp.com/latest/ -->
+                        <div class="meta"></div>
+                        <div class="ui horizontal divider"><a href="#">{{ poems_count }} poems</a></div>
+                        <div class="description">
+                            <div class="ui list">
+                                {% for poem in poems_latest %}
+                                <div class="item">
+                                    <a href="{{ poem.get_absolute_url }}">
+                                        <h4 class="ui blue header">{{ poem.title }}</h4>
+                                    </a>
+                                    <h5 class="ui sub header">{{ poem.date_published }}</h5>
+                                    <p>{{ poem.short_description }}<br></p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider"><a href="#feed">see all</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FEATURED POSTS -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Poems</h2></a></div><!-- poems.harshp.com/latest/ -->
+                        <div class="meta"></div>
+                        <div class="ui horizontal divider"><a href="#">{{ poems_featured_count }} poems</a></div>
+                        <div class="description">
+                            <div class="ui list">
+                                {% for poem in poems_featured %}
+                                <div class="item">
+                                    <a href="{{ poem.get_absolute_url }}">
+                                        <h4 class="ui blue header">{{ poem.title }}</h4>
+                                    </a>
+                                    <h5 class="ui sub header">{{ poem.date_published }}</h5>
+                                    <p>{{ poem.short_description }}<br></p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='feed' class="ui blue spacious-top horizontal divider">Feed</div>
+<div class="ui stackable grid container">
+    <div class="ui feed">
+        {% for poem in poems_all %}
+        <div class="event">
+            <div class="label">
+                {% if poem.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
+            </div>
+            <div class="content">
+                <div class="summary">
+                    <a class="user" href="{{ poem.get_absolute_url }}">
+                      {{ poem.title }}
+                    </a>
+                    <div class="date">
+                      {{ poem.date_published }}
+                    </div>
+                </div>
+                <div class="meta">
+                    {{ poem.short_description }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock e_BODY %}

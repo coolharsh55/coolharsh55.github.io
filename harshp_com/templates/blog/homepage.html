@@ -15,7 +15,7 @@
                     <div class="content">
                         <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
                         <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ posts_count }} posts</a></div>
+                        <div class="ui horizontal divider"><a href="#feed">{{ posts_count }} posts</a></div>
                         <div class="description">
                             <div class="ui list">
                                 {% for post in posts_latest %}
@@ -24,12 +24,13 @@
                                         <h4 class="ui blue header">{{ post.title }}{% if posts.series != None %} - {{ post.series.title }}{% endif %}</h4>
                                     </a>
                                     <h5 class="ui sub header">{{ post.date_published }}</h5>
-                                    <p>{{ post.short_description }}<br></p>
+                                    <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}
+                                    {{ post.short_description }}<br></p>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                        <div class="ui horizontal divider"><a href="#feed">see all</a></div>
                     </div>
                 </div>
             </div>
@@ -39,9 +40,9 @@
             <div class="ui cards">
                 <div class="card">
                     <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
+                        <div class="header"><a href="{% url 'blog:featured' 'blog' %}"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
                         <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ posts_featured_count }} posts</a></div>
+                        <div class="ui horizontal divider"><a href="{% url 'blog:featured' 'blog'">{{ posts_featured_count }} posts</a></div>
                         <div class="description">
                             <div class="ui list">
                                 {% for post in posts_featured %}
@@ -50,12 +51,13 @@
                                         <h4 class="ui blue header">{{ post.title }}{% if posts.series != None %} - {{ post.series.title }}{% endif %}</h4>
                                     </a>
                                     <h5 class="ui sub header">{{ post.date_published }}</h5>
-                                    <p>{{ post.short_description }}<br></p>
+                                    <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}
+                                    {{ post.short_description }}<br></p>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                        <div class="ui horizontal divider"><a href="{% url 'blog:featured' 'blog' %}">see all</a></div>
                     </div>
                 </div>
             </div>
@@ -64,9 +66,9 @@
             <div class="ui cards">
                 <div class="card">
                     <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="teal cubes icon"></i>Series</h2></a></div><!-- blog.harshp.com/latest/ -->
+                        <div class="header"><a href="{% url 'blog:series-list' 'blog' %}"><h2 class="ui blue header"><i class="teal cubes icon"></i>Series</h2></a></div><!-- blog.harshp.com/latest/ -->
                         <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ series_count }} series</a></div>
+                        <div class="ui horizontal divider"><a href="{% url 'blog:series-list' 'blog' %}">{{ series_count }} series</a></div>
                         <div class="description">
                             <div class="ui list">
                                 {% for series in series_all %}
@@ -80,7 +82,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
+                        <div class="ui horizontal divider"><a href="{% url 'blog:series-list' 'blog' %}">see all</a></div>
                     </div>
                 </div>
             </div>
@@ -105,8 +107,7 @@
                     </div>
                 </div>
                 <div class="meta">
-                    {% if post.series %}<a href="#"><h3><i class="green cubes icon"></i> {{ post.series.title }}</h3></a>{% endif %}
-                    {{ post.short_description }}
+                   <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}{{ post.short_description }}<br></p>
                 </div>
             </div>
         </div>

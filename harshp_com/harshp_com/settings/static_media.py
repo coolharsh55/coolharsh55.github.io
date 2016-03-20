@@ -24,8 +24,7 @@ if MODE == 'production' or MODE == 'test_prod':
     AWS_ACCESS_KEY_ID = os.environ.get('HARSHP_COM_AWS_ACCESS_KEY')
     AWS_SECRET_ACCESS_KEY = os.environ.get('HARSHP_COM_AWS_SECRET_KEY')
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_QUERYSTRING_AUTH = False
-    AWS_S3_SECURE_URLS = False
+    AWS_S3_SECURE_URLS = True
     AWS_QUERYSTRING_AUTH = False
     AWS_HEADERS = {
         'Cache-Control': 'max-age=86400',

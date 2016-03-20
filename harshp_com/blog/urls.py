@@ -6,6 +6,7 @@ from . import views
 
 blog_urlpatterns = [
     url(r'^$', views.list, name='list'),
+    url(r'^featured/$', views.featured, name='featured'),
     url(r'^series/$', views.series_list, name='series-list'),
     url(r'^series/(?P<series>[\w-]+)/$', views.series, name='series'),
     url(

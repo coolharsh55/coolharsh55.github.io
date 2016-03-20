@@ -1,28 +1,38 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from utils.meta_generator import create_meta
+
+from .models import Poem
 
 
 def list(request):
-    return render(request, 'poems/homepage.html')
+    poems_latest = Poem.objects.filter(is_published=True)\
+        .order_by('-date_published')
+    poems_featured = Poem.objects.filter(highlight=True, is_published=True)\
+        .order_by('-date_published')
+    poems_count = Poem.objects.filter(is_published=True).count()
+    poems_featured_count = Poem.objects\
+        .filter(highlight=True, is_published=True)\
+        .count()
+    meta = create_meta(
+        title='poems.harshp.com',
+        description='poems for harshp.com',
+        keywords=['blog', 'poem', 'poetry', 'harshp.com', 'coolharsh55'],
+        url=request.build_absolute_uri(),
+    )
+    return render(request, 'poems/homepage.html', {
+        'meta': meta,
+        'poems_all': poems_latest,
+        'poems_count': poems_count,
+        'poems_featured': poems_featured,
+        'poems_featured_count': poems_featured_count,
+        'poems_latest': poems_latest[:5],
+    })
 
 
-def series_list(request):
-    return HttpResponse('OK')
+def poem(request, slug):
+    """return requested Poem"""
 
-
-def series(request, series):
-    """return requested Blog Series"""
-
-    return HttpResponse('OK')
-
-
-def series_post(request, series, post):
-    """return requested Blog Post for Blog Series"""
-
-    return HttpResponse('OK')
-
-
-def post(request, post):
-    """return requested Blog Post"""
-
-    return HttpResponse('OK')
+    poem_post = get_object_or_404(Poem, slug=slug)
+    return render(request, 'poems/poem.html', {'poem': poem_post})
