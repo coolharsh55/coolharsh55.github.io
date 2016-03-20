@@ -19,9 +19,9 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-
-    # home
+    # commons
     url(r'^$', views.home, name='home'),
+    url(r'', include('harshp_com.urls_commons')),
 
     # admin
     url(r'', include('harshp_com.adminurls')),
@@ -30,9 +30,6 @@ urlpatterns = [
     url(r'^filer/', include('filer.urls')),
     # robots.txt
     url(r'^robots\.txt', include('robots.urls')),
-    # stub
-    url(r'^stub/$', views.stub, name='stub'),
-    url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
 
     # sitebase
     url(r'', include('sitebase.urls')),

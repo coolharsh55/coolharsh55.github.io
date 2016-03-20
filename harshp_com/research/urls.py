@@ -9,5 +9,6 @@ research_urlpatterns = [
 ]
 
 urlpatterns = [
+    url(r'', include('harshp_com.urls_commons')),
     url(r'', include(research_urlpatterns, namespace='research')),
 ]
