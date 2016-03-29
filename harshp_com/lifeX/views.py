@@ -83,4 +83,4 @@ def blogpost(request, slug):
 
 def presentation_ucc2014(request):
     """lifeX presentation given at UCC in 2014"""
-    return render(request, 'lifeX/presentation_ucc2014.html')
+    return render(request, 'lifeX/presentation_UCC2014.html')
