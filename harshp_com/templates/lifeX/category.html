@@ -1,0 +1,50 @@
+{% extends 'lifeX/base.html' %}
+
+{% block e_TITLE %}{{ category.name }} - LifeX Ideas{% endblock e_TITLE %}
+{% block ff_HEADER_TITLE %}{{ category.name }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class='ui center aligned container'>
+        {% for idea in category.ideas.all %}
+        <div class='ui very relaxed text container segment'>
+            <a href="{{ idea.get_absolute_url }}">
+            <h2 class='ui teal header'>{{ idea.title }}</h2></a>
+            <div class='ui horizontal divider'>status</div>
+            {% if idea.tried %}
+                <i class='large green checkmark box icon'></i>
+                {% if idea.retry %}
+                    <i class='large pink repeat icon'></i>
+                    liked it, want to try again
+                {% else %}
+                    <i class='large red remove circle outline icon'></i>
+                    tried it, won't / don't need to try again
+                {% endif %}
+
+                <div class='ui horizontal divider'>experimented</div>
+                <div class='ui relaxed divided list'>
+                    {% for experiment in idea.experiments.all %}
+                    <div class='item'>
+                        <a href="{{ experiment.week.get_absolute_url }}"><i class="orange calendar icon"></i> Week #{{ experiment.week.number }}: {{ experiment.week.date_start }} - {{ experiment.week.date_end }}</a><br>
+                        <a href="{{ experiment.get_absolute_url }}">{{ experiment.title }}</a><br>
+                        <div class="ui star rating" data-rating="{{ experiment.rating }}"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+            <i class='large violet circle thin icon'></i>
+            haven't experimented yet
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock e_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.ui.rating').rating({
+        maxRating: 5,
+    });
+    $('.ui.rating').rating('disable');
+</script>
+{% endblock f_JS %}
