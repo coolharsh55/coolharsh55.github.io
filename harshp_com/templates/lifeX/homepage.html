@@ -6,9 +6,94 @@
 {% block ff_HEADER_TITLE %}lifeXperiments{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
 
 {% block e_BODY %}
+<div class="ui center aligned container segment">
+    <h2 class="ui header">Life Experiments
+        <div class="ui sub header">experiment, evaluate, enumerate</div></h2>
+    <p>Most of us unknowlingly live the same life over and over again. We do the same things repeatedly - choosing to not change or try new things out of the fear of unknown or simply because we've grown accustomed to something. We keep saying and thinking - maybe one day I'll try this - but never end up doing. And then we justify it by saying we never had time - or that we can't do it because it doesn't fit in to our current lives. This list of things we wish want to do but don't grows long over our lives like a hanging dead weight on our conscience.</p>
+    <p>This realization led to me develop <b>Life Experiments</b> where I try something new or something I've always thought or wondered about for a week - and see how that goes. The idea can be anything - time management, food, sleep patterns, social interactions, work, study, reading. And I end up having fun doing it and being happy in the long run.</p>
+</div>
 <div class="ui stackable grid container">
-    <div class="ui center aligned container">
-        <h2 class="ui header">In progress... refresh in a few days!</h2>
+    <div class="ui three column row spacious-top">
+        <!-- LINKS -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><h2 class="ui blue header"><i class="blue bookmark icon"></i>Links</h2></div>
+                        <div class="meta"></div>
+                        <div class="ui relaxed divided list">
+                            <div class="item">
+                                <i class="large pink middle aligned info icon"></i>
+                                <div class="content">
+                                    <a href="{% url 'lifeX:about' subdomain='lifex' %}"><h4>What is LifeX?</h4></a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large orange middle aligned idea icon"></i>
+                                <div class="content">
+                                    <a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><h4>Ideas</h4></a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large green middle aligned lab icon"></i>
+                                <div class="content">
+                                    <a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><h4>Experiments</h4></a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large teal middle aligned newspaper icon"></i>
+                                <div class="content">
+                                    <a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><h4>Blog</h4></a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large brown middle aligned pie chart icon"></i>
+                                <div class="content">
+                                    <a href="{% url 'lifeX:presentation:UCC2014' subdomain='lifex' %}"><h4>Presentation</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- CURRENT WEEK -->
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="{{ latest_week.get_absolute_url }}"><h2 class="ui blue header"><i class="orange calendar icon"></i>Last Update</h2></a></div>
+                        <div class="meta">
+                            {{ latest_week.date_start }} - {{ latest_week.date_end }}
+                        </div>
+                        <div class="ui divided relaxed medium list">
+                            {% for exp in latest_week.experiments.all %}
+                            <div class="item">
+                                <div class="header"><a href="{{ exp.get_absolute_url}}"><i class="green lab icon"></i>{{ exp.title }}</a></div>
+                                <a href="{{ exp.idea.category.get_absolute_url}}"><i class="orange idea icon"></i>({{ exp.idea.category.name }})</a> <a href="{{ exp.idea.get_absolute_url}}">{{ exp.idea.title }}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><h2 class="ui blue header"><i class="teal cubes icon"></i>Blog</h2></a></div>
+                        <div class="meta"></div>
+                        <div class="ui divided list">
+                        {% for post in blogposts %}
+                            <div class="ui item">
+                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small> {{ post.date_published }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock e_BODY %}
