@@ -8,8 +8,8 @@ from .models import LifeXBlog
 
 def home(request):
     latest_week = LifeXWeek.objects.order_by('number').first()
-    print(latest_week.experiments.all())
-    blogposts = LifeXBlog.objects.order_by('-date_published')[:5]
+    blogposts = LifeXBlog.objects\
+        .filter(is_published=True).order_by('-date_published')[:5]
     return render(
         request, 'lifeX/homepage.html',
         {'latest_week': latest_week, 'blogposts': blogposts})
@@ -69,17 +69,18 @@ def experiment(request, number, slug):
 
 def blog_list(request):
     """lifeX blog"""
-    posts = LifeXBlog.objects.order_by('date_published')
+    posts = LifeXBlog.objects\
+        .filter(is_published=True).order_by('date_published')
 
     return render(request, 'lifeX/blog_list.html', {'posts': posts})
 
 
 def blogpost(request, slug):
     """lifeX blog post"""
-    post = get_object_or_404(LifeXBlog, slug=slug)
+    post = get_object_or_404(LifeXBlog, slug=slug, is_published=True)
     return render(request, 'lifeX/blog_post.html', {'post': post})
 
 
 def presentation_ucc2014(request):
     """lifeX presentation given at UCC in 2014"""
-    return render(request, 'lifeX/presentation_ucc2014.html')
+    return render(request, 'lifeX/presentation_UCC2014.html')
