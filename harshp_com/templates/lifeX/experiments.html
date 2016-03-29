@@ -1,0 +1,33 @@
+{% extends 'lifeX/base.html' %}
+
+{% block e_TITLE %}LifeX Experiments{% endblock e_TITLE %}
+{% block ff_HEADER_TITLE %}LifeX Ideas{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class='ui container'>
+{% for week in weeks %}
+    <div class='ui relaxed text container segment'>
+        <a href="{{ week.get_absolute_url }}"><h3 class='ui brown header'>Week {{ week.number }}<br><small><i class='orange calendar icon'></i>{{ week.date_start }} - {{ week.date_end }}</small></h3></a>
+        <div class='ui divided list'>
+        {% for experiment in week.experiments.all %}
+            <div class='item'>
+                <a href="{{ experiment.get_absolute_url }}"><h3 class='ui blue header'><i class='green lab icon'></i>{{ experiment.title }}</h3></a>
+                <div class='right floated content'><div class="ui star rating" data-rating="{{ experiment.rating }}"></div></div>
+                <div class='meta'><i class='olive idea icon'></i><a href="{{ experiment.idea.category.get_absolute_url }}">({{ experiment.idea.category.name }})</a> - <a href="{{ experiment.idea.get_absolute_url }}">{{ experiment.idea.title }}</a></div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock e_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.ui.rating').rating({
+        maxRating: 5,
+    });
+    $('.ui.rating').rating('disable');
+</script>
+{% endblock f_JS %}

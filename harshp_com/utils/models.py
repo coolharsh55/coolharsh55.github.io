@@ -20,7 +20,7 @@ def get_unique_slug(model, obj, field, **kwargs):
     """
 
     slug = slugify(getattr(obj, field))
-    count = model.objects.filter(**kwargs).count()
+    count = model.objects.filter(slug=slug).count()
     if count > 0:
         slug = '{}-{}'.format(slug, count)
     return slug

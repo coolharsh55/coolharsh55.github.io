@@ -1,0 +1,42 @@
+{% extends 'lifeX/base.html' %}
+
+{% block e_TITLE %}{{ experiment.title }}{% endblock e_TITLE %}
+{% block ff_HEADER_TITLE %}{{ experiment.title }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class='ui container'>
+    <div class='ui center aligned very relaxed text container segment'>
+        <i class='big orange calendar icon'></i>
+        <a href="{{ experiment.week.get_absolute_url }}"><h3 class='ui teal header'>Week {{ experiment.week.number }}</h3></a>
+        <a href="{{ experiment.week.get_absolute_url }}"><h5 class='ui teal header'>{{ experiment.week.date_start }} - {{ experiment.week.date_end }}</h5></a>
+        <br>
+        <i class='big pink idea icon'></i>
+        <a href="{{ experiment.idea.get_absolute_url }}"><h3 class='ui teal header'>{{ experiment.idea.title }}</h3></a>
+        <a href="{{ experiment.idea.category.get_absolute_url }}"><h5 class='ui teal sub header'>{{ experiment.idea.category.name }}</h5></a>
+        <br><div class="ui star rating" data-rating="{{ rating }}"></div>
+    </div>
+
+    <div class='ui center aligned text container segment'>
+    {% if experiment.outcome %}
+        <h4 class='ui header'>premise</h4>
+    {% endif %}
+        {{ experiment.premise_body|safe }}
+    </div>
+    {% if experiment.outcome %}
+    <div class='ui center aligned text container segment'>
+        <h4 class='ui header'>outcome</h4>
+        {{ experiment.outcome_body|safe }}
+    </div>
+    {% endif %}
+</div>
+{% endblock e_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.ui.rating').rating({
+        maxRating: 5,
+    });
+    $('.ui.rating').rating('disable');
+</script>
+{% endblock f_JS %}

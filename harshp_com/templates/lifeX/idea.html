@@ -1,0 +1,60 @@
+{% extends 'lifeX/base.html' %}
+
+{% block e_TITLE %}{{ idea.title }} - LifeX Idea{% endblock e_TITLE %}
+{% block ff_HEADER_TITLE %}{{ idea.title }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class='ui container'>
+    <div class='ui center aligned very relaxed text container segment'>
+        <a href="{{ idea.category.get_absolute_url }}"><h3 class='ui teal header'>{{ idea.category.name }}</h3></a>
+        <p>{{ idea.short_description|safe }}</p>
+        <div class='ui horizontal divider'>description</div>
+            {{ idea.body_text|safe }}
+        <div class='ui horizontal divider'>status</div>
+        {% if idea.tried %}
+            <i class='big green checkmark box icon'></i>
+            {% if idea.retry %}
+                <i class='big pink repeat icon'></i>
+                liked it, want to try again
+            {% else %}
+                <i class='big red remove circle outline icon'></i>
+                tried it, won't / don't need to try again
+            {% endif %}
+        {% else %}
+            <i class='big violet circle thin icon'></i>
+            haven't experimented yet
+        {% endif %}
+    </div>
+    <div class='ui text container segment'>
+        <h4 class="ui center aligned header">Experimented on</h4>
+        <div class="ui feed">
+            {% for experiment in idea.experiments.all %}
+                <div class='event'>
+                    <div class='label'>
+                        <i class="orange calendar icon"></i>
+                    </div>
+                    <div class='content'>
+                        <div class='summary'>
+                            <a href="{{ experiment.week.get_absolute_url }}">Week #{{ experiment.week.number }}: {{ experiment.week.date_start }} - {{ experiment.week.date_end }}</a>
+                        </div>
+                        <div class='meta'>
+                            <div class="ui star rating" data-rating="{{ experiment.rating }}"></div>
+                            <a href="{{ experiment.get_absolute_url }}">{{ experiment.title }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock e_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.ui.rating').rating({
+        maxRating: 5,
+    });
+    $('.ui.rating').rating('disable');
+</script>
+{% endblock f_JS %}
