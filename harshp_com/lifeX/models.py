@@ -4,6 +4,7 @@ from django.utils import timezone
 import markdown
 
 from sitebase.editors import EDITOR_TYPES
+from sitebase.markdown_extensions import ext_all
 from utils.models import get_unique_slug
 from utils.lifeX import week_dates
 from sitebase import ratings
@@ -103,11 +104,8 @@ class LifeXIdea(models.Model):
             self.slug = get_unique_slug(
                 LifeXIdea, self, 'title', title=self.title)
         if self.body_type == 'markdown':
-            self.body_text = markdown.markdown(self.description, extensions=[
-                'markdown.extensions.abbr',
-                # 'markdown.extensions.codehilite',
-                'markdown.extensions.smarty',
-            ], output_format='html5')
+            self.body_text = markdown.markdown(
+                self.description, extensions=ext_all, output_format='html5')
         else:
             self.body_text = self.description
         return super(LifeXIdea, self).save(*args, **kwargs)
@@ -150,11 +148,8 @@ class LifeXExperiment(Post):
                 LifeXExperiment, self, 'title', title=self.title)
         self.date_updated = timezone.now()
         if self.body_type == 'markdown':
-            self.premise_body = markdown.markdown(self.premise, extensions=[
-                'markdown.extensions.abbr',
-                # 'markdown.extensions.codehilite',
-                'markdown.extensions.smarty',
-            ], output_format='html5')
+            self.premise_body = markdown.markdown(
+                self.premise, extensions=ext_all, output_format='html5')
             self.outcome_body = markdown.markdown(self.outcome, extensions=[
                 'markdown.extensions.abbr',
                 # 'markdown.extensions.codehilite',
@@ -190,11 +185,8 @@ class LifeXBlog(Post):
                 LifeXBlog, self, 'title', title=self.title)
         self.date_updated = timezone.now()
         if self.body_type == 'markdown':
-            self.body_text = markdown.markdown(self.body, extensions=[
-                'markdown.extensions.abbr',
-                # 'markdown.extensions.codehilite',
-                'markdown.extensions.smarty',
-            ], output_format='html5')
+            self.body_text = markdown.markdown(
+                self.body, extensions=ext_all, output_format='html5')
         else:
             self.body_text = self.body
         return super(LifeXBlog, self).save(*args, **kwargs)
