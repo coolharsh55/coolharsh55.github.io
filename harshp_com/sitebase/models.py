@@ -35,7 +35,7 @@ class Tag(models.Model):
     def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(Tag, self, 'name', name=self.name)
-        super(Tag, self).save(*args, **kwargs)
+        return super(Tag, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('sitebase:tags:get', args=[self.slug], subdomain=None)
@@ -77,7 +77,7 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(Author, self, 'name', name=self.name)
-        super(Author, self).save(*args, **kwargs)
+        return super(Author, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(

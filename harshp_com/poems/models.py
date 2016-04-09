@@ -36,7 +36,7 @@ class Poem(Post):
             ], output_format='html5')
         else:
             self.body_text = self.body
-        super(Poem, self).save(*args, **kwargs)
+        return super(Poem, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('poems:poem', args=[self.slug], subdomain='poems')

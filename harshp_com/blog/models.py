@@ -29,7 +29,7 @@ class BlogSeries(models.Model):
         if self.pk is None:
             self.slug = get_unique_slug(
                 BlogSeries, self, 'title', title=self.title)
-        super(BlogSeries, self).save(*args, **kwargs)
+        return super(BlogSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog:series', args=[self.slug], subdomain='blog')
@@ -66,7 +66,7 @@ class BlogPost(Post):
             ], output_format='html5')
         else:
             self.body_text = self.body
-        super(BlogPost, self).save(*args, **kwargs)
+        return super(BlogPost, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:

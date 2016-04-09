@@ -30,7 +30,7 @@ class ArticleSeries(models.Model):
         if self.pk is None:
             self.slug = get_unique_slug(
                 ArticleSeries, self, 'title', title=self.title)
-        super(ArticleSeries, self).save(*args, **kwargs)
+        return super(ArticleSeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(
@@ -68,7 +68,7 @@ class Article(Post):
             ], output_format='html5')
         else:
             self.body_text = self.body
-        super(Article, self).save(*args, **kwargs)
+        return super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:
