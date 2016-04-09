@@ -1,0 +1,41 @@
+{% extends 'brainbank/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}BrainBank Ideas{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}ideas{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'brainbank:list' subdomain='brainbank' %}"><u>brainbank.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+
+{% block e_BODY %}
+<div class='ui container'>
+<div class='ui grid'>
+    <br>
+    {% for idea, posts, no_posts, no_highlited, no_deliverable in ideas %}
+    <div class='ui very relaxed text container segment'>
+        <div class='content'>
+            <div class='header'><a href="{{ idea.get_absolute_url }}"><h2 class='ui blue header'>{{ idea.title }}</h2></a></div>
+        </div>
+        <div class='meta'><i class='brown paragraph icon'></i>{{ no_posts }} posts <i class='yellow star icon'></i>{{ no_highlited }} highlighted <i class='purple cube icon'></i>{{ no_deliverable }} deliverables</div>
+        <div class='ui feed'>
+        {% for post in posts %}
+            <div class='event'>
+                 {% if post.deliverable %}
+                    {% if post.highlight %}
+                <i class="yellow star icon"></i>
+                    {% endif %}
+                <i class="purple cube icon"></i>
+                {% else %}
+                    {% if post.highlight %}
+                <i class="yellow star icon"></i>
+                    {% else %}
+                <i class="blue paragraph icon"></i>
+                    {% endif %}
+                {% endif %}
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>- {{ post.date_published }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock e_BODY %}
