@@ -43,7 +43,7 @@ class BlogPost(Post):
     body_text = models.TextField(blank=True)
     body = models.TextField()
     headerimage = models.URLField(max_length=256, blank=True, null=True)
-    highlight = models.BooleanField(default=False)
+    highlight = models.BooleanField(default=False, db_index=True)
     series = models.ForeignKey(
         BlogSeries,
         blank=True, null=True, default=None, db_index=True)

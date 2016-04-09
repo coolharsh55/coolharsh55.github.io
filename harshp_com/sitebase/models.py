@@ -62,7 +62,8 @@ class Author(models.Model):
     short_bio = models.CharField(max_length=256)
     long_bio = models.CharField(max_length=1024, blank=True, unique=True)
     profile_pic = models.URLField(max_length=256, blank=True, null=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(
+        max_length=150, db_index=True, unique=True, blank=True)
 
     class Meta:
 

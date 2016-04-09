@@ -79,8 +79,8 @@ class LifeXIdea(models.Model):
     tags = models.ManyToManyField(Tag)
     slug = models.SlugField(
         max_length=150, unique=True, db_index=True)
-    tried = models.BooleanField(default=False)
-    retry = models.BooleanField(default=False)
+    tried = models.BooleanField(default=False, db_index=True)
+    retry = models.BooleanField(default=False, db_index=True)
 
     def __str__(self):
         strrep = '{idea} ({category})'.format(
@@ -128,7 +128,7 @@ class LifeXExperiment(Post):
         LifeXIdea, related_name='experiments', db_index=True)
     rating = models.IntegerField(
         choices=ratings.scale_5to1,
-        default=ratings.scale_5to1_lowest.score)
+        default=ratings.scale_5to1_lowest.score, db_index=True)
     body_type = models.CharField(
         max_length=8, choices=EDITOR_TYPES, default='markdown')
     premise = models.TextField()
