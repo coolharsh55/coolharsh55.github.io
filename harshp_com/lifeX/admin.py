@@ -4,6 +4,7 @@ from sitebase.admin import PostAdmin
 
 from .models import LifeXWeek, LifeXExperiment
 from .models import LifeXCategory, LifeXIdea
+from .models import LifeXGoal
 from .models import LifeXBlog
 
 
@@ -87,6 +88,20 @@ class LifeXIdeaAdmin(admin.ModelAdmin):
 
     def experiments(self, obj):
         return obj.experiments.count()
+
+
+@admin.register(LifeXGoal)
+class LifeXGoalAdmin(admin.ModelAdmin):
+    """admin for LifeX Goals"""
+
+    list_display = ('title', 'parent', 'children')
+    list_display_links = ('title', 'parent', 'children')
+    list_filter = ('parent',)
+    ordering = ('title',)
+    search_fields = ('title', 'short_description')
+
+    def children(self, obj):
+        return obj.lifexgoal_set.all().count()
 
 
 @admin.register(LifeXBlog)

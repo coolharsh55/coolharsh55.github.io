@@ -23,6 +23,12 @@ experiments_urlpatterns = [
         views.experiment, name='experiment'),
 ]
 
+goals_urlpatterns = [
+    # goals
+    url(r'^$', views.goals, name='list'),
+    url(r'^json/$', views.goals_json, name='json'),
+]
+
 blog_urlpatterns = [
     # blog
     url(r'^$', views.blog_list, name='list'),
@@ -44,6 +50,7 @@ lifeX_urlpatterns = [
     url(
         r'experiments/',
         include(experiments_urlpatterns, namespace='experiments')),
+    url(r'goals/', include(goals_urlpatterns, namespace='goals')),
     url(r'blog/', include(blog_urlpatterns, namespace='blog')),
     url(
         r'presentation/',
