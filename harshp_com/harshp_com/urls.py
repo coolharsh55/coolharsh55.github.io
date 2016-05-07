@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'', include('articles.urls')),
     url(r'', include('blog.urls')),
     url(r'', include('brainbank.urls')),
+    url(r'', include('journal.urls')),
     url(r'', include('lifeX.urls')),
     url(r'', include('me.urls')),
     url(r'', include('poems.urls')),
