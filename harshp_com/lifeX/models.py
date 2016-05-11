@@ -166,6 +166,30 @@ class LifeXExperiment(Post):
             args=[self.week.number, self.slug], subdomain='lifex')
 
 
+class LifeXGoal(models.Model):
+    """LifeX Goal - what I want to do  in life"""
+
+    title = models.CharField(max_length=128)
+    parent = models.ForeignKey('self', blank=True, null=True, db_index=True)
+    short_description = models.CharField(max_length=150)
+    slug = models.SlugField(
+        max_length=150, unique=True, blank=True, db_index=True)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'LifeX Goal'
+        verbose_name_plural = 'LifeX Goals'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = get_unique_slug(
+                LifeXGoal, self, 'title', title=self.title)
+        return super(LifeXGoal, self).save(*args, **kwargs)
+
+
 class LifeXBlog(Post):
     """A blog post for lifeX on harshp_com"""
 
