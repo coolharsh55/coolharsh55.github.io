@@ -1,0 +1,29 @@
+{% extends 'journal/base.html' %}
+{% block e_TITLE %}{{ section.name }}{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}{{ section.name }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class="ui center aligned container">
+    <h1>{{ section.name }}</h1>
+    <h3>{{ entries.count }} entries</h3>
+    <br /><br />
+</div>
+<div class='ui relaxed divided container'>
+    <div class="ui list">
+    {% for entry in entries.all %}
+        <div class="item">
+        {% if entry.private %}
+            {% if user.is_authenticated %}
+            <a href="{{ entry.get_absolute_url }}">{{ entry.title }} - {{ entry.date_published }}</a>
+            {% else %}
+            private entry - {{ entry.date_published }}
+            {% endif %}
+        {% else %}
+            <a href="{{ entry.get_absolute_url }}">{{ entry.title }} - {{ entry.date_published }}</a>
+        {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock e_BODY %}

@@ -1,0 +1,29 @@
+{% extends 'journal/base.html' %}
+{% load subdomainurls %}
+
+{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+
+{% block ee_BODY %}
+<div class='ui stackable grid container'>
+    <div class='ui container'>
+        <!-- sections -->
+        <div class='ui horizontal divider'><a href="{% url 'journal:sections:list' subdomain='journal' %}">Sections</a></div>
+        <div class="ui horizontal list">
+        {% for section in sections %}
+            <a class='item' href="{{ section.get_absolute_url }}">{{ section.name }}</a>
+        {% endfor %}
+        </div>
+        <!-- feed -->
+        <div class='ui horizontal divider'>entries</div>
+        <div class='ui list'>
+        {% for entry, visible in entries %}
+            {% if visible %}
+            <a class='item' href="{{ entry.get_absolute_url }}">{% if entry.section %}({{entry.section.name}}) - {% endif %}#{{ entry.id }} {{ entry.title }}</a>
+            {% else %}
+            <a class='item'>private entry</a>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock ee_BODY %}
