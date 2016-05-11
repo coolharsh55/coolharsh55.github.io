@@ -5,7 +5,7 @@
 
 {% block f_JS %}
 {{ block.super }}
-<script type="text/javascript" src="https://mbostock.github.io/d3/d3.js"></script>
+<script src='https://d3js.org/d3.v2.js'></script>
 <script type="text/javascript" src="https://mbostock.github.io/d3/talk/20111018/d3/d3.layout.js"></script>
 <script type="text/javascript">
 
@@ -19,7 +19,9 @@
     .append("svg:g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-    d3.json("{% url 'lifeX:goals:json' subdomain='lifex' %}", function(json) {
+    var json_url = "{% url 'lifeX:goals:json' subdomain='lifex' %}";
+    json_url = json_url.replace(/^http:\/\//i, 'https://');
+    d3.json(json_url, function(json) {
       root = json;
       root.x0 = h / 2;
       root.y0 = 0;
