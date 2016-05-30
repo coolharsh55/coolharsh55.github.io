@@ -10,7 +10,7 @@ from .models import LifeXBlog
 
 
 def home(request):
-    latest_week = LifeXWeek.objects.order_by('number').first()
+    latest_week = LifeXWeek.objects.order_by('-number').first()
     blogposts = LifeXBlog.objects\
         .filter(is_published=True).order_by('-date_published')[:5]
     return render(
