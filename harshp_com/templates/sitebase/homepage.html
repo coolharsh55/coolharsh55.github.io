@@ -137,11 +137,20 @@
                         <div class="header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><h2 class="ui blue header"><i class="pink lab icon"></i>LifeX</h2></a></div><!-- lifeX.harshp.com -->
                         <div class="meta"></div>
                         <div class="description">
-                            <div class="ui horizontal divider"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="marker icon"></i>latest week</a></div><!-- lifeX.harshp.com/latest/week/ -->
+                            <div class="ui horizontal divider"><a href="{{ latest_week.get_absolute_url }}"><i class="marker icon"></i>latest week</a></div><!-- lifeX.harshp.com/latest/week/ -->
+                            <div class="meta">
+                            {{ latest_week.date_start }} - {{ latest_week.date_end }}
+                            </div>
                             <div class="ui list">
                             </div>
                             <div class="ui horizontal divider"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><small><i class="puzzle icon"></i>experiments</small></a></div><!-- lifeX.harshp.com/latest/week/experiments/ -->
                             <div class="ui list">
+                            {% for exp in latest_week.experiments.all %}
+                            <div class="item">
+                                <div class="header"><a href="{{ exp.get_absolute_url}}"><i class="green lab icon"></i>{{ exp.title }}</a></div>
+                                <a href="{{ exp.idea.category.get_absolute_url}}"><i class="orange idea icon"></i>({{ exp.idea.category.name }})</a> <a href="{{ exp.idea.get_absolute_url}}">{{ exp.idea.title }}</a>
+                            </div>
+                            {% endfor %}
                             </div>
                             <div class="ui horizontal divider">Links</div>
                             <div class="ui list">
@@ -149,13 +158,16 @@
                                     <h4 class="ui sub header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></h4><!-- lifeX.harshp.com/intro/ -->
                                 </div>
                                 <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="history outline icon"></i>Previous Weeks</a></h4><!-- lifeX/harshp.com/weeks/ -->
+                                    <h4 class="ui sub header"><a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><i class="idea outline icon"></i>Ideas</a></h4><!-- lifeX/harshp.com/weeks/ -->
                                 </div>
                                 <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="lab outline icon"></i>All Experiments</a></h4><!-- lifeX.harshp.com/experiments/ -->
+                                    <h4 class="ui sub header"><a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><i class="lab outline icon"></i>Experiments</a></h4><!-- lifeX.harshp.com/experiments/ -->
                                 </div>
                                 <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="clipboard outline icon"></i>LifeX Blog</a></h4><!-- lifeX.harshp.com/blog/ -->
+                                    <h4 class="ui sub header"><a href="{% url 'lifeX:goals:list' subdomain='lifex' %}"><i class="bullseye outline icon"></i>Goals</a></h4><!-- lifeX.harshp.com/goals/ -->
+                                </div>
+                                <div class="item">
+                                    <h4 class="ui sub header"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><i class="clipboard outline icon"></i>Blog</a></h4><!-- lifeX.harshp.com/blog/ -->
                                 </div>
                             </div>
                         </div>
