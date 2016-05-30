@@ -84,6 +84,7 @@ class LifeXIdeaAdmin(admin.ModelAdmin):
         })
     ]
     ordering = ('title', 'category', 'tried', 'retry')
+    prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
 
     def experiments(self, obj):
