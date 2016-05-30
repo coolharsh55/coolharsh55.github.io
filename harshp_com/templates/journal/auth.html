@@ -66,7 +66,7 @@
         <div>
         <h1 id='header'>journal</h1>
         <a href="{% url 'journal:entries:list' subdomain='journal' %}"><h3 id='subheader'><u>read entries</u></h3></a>
-        <form method="POST" action="{% url 'journal:auth' subdomain='journal' %}" >
+        <form method="POST">
         {% csrf_token %}
         <input type="password" id="password" name="password" />
         <input type="submit" id="submit_btn" style="position: absolute; left: -999px" />
