@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django import forms
 
 from sitebase.admin import PostAdmin
 
@@ -6,6 +7,21 @@ from .models import LifeXWeek, LifeXExperiment
 from .models import LifeXCategory, LifeXIdea
 from .models import LifeXGoal
 from .models import LifeXBlog
+
+
+def latest_lifex_week_number():
+    return LifeXWeek.objects.count() + 1
+
+
+class LifeXWeekForm(forms.ModelForm):
+
+    week_number = forms.CharField(
+        initial=latest_lifex_week_number,
+        disabled=True)
+
+    class Meta:
+        model = LifeXWeek
+        fields = '__all__'
 
 
 @admin.register(LifeXWeek)
@@ -16,8 +32,13 @@ class LifeXWeekAdmin(admin.ModelAdmin):
     list_display_links = ('number', 'date_start', 'date_end')
     ordering = ('-number',)
 
+    form = LifeXWeekForm
+
     def no_experiments(self, obj):
         return obj.experiments.count()
+
+    def week_number(self, obj):
+        return 1
 
 
 @admin.register(LifeXExperiment)
