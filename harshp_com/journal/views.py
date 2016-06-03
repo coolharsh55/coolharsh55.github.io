@@ -99,7 +99,7 @@ def section(request, slug):
         if not request.user.is_authenticated():
             return redirect('journal:auth')
     entries = section.entries\
-        .filter(published=True).order_by('-date_published')
+        .filter(is_published=True).order_by('-date_published')
     return render(
         request, 'journal/section.html',
         {'entries': entries, 'section': section})
