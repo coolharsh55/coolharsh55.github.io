@@ -4,6 +4,7 @@ from django.utils import timezone
 import markdown
 
 from sitebase.editors import EDITOR_TYPES
+from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
 from sitebase.models import Post
 
@@ -29,7 +30,7 @@ class StorySeries(models.Model):
         if self.pk is None:
             self.slug = get_unique_slug(
                 StorySeries, self, 'title', title=self.title)
-        super(StorySeries, self).save(*args, **kwargs)
+        return super(StorySeries, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('stories:series', args=[self.slug], subdomain='stories')
@@ -43,7 +44,7 @@ class Story(Post):
     body_text = models.TextField(blank=True)
     body = models.TextField()
     headerimage = models.URLField(max_length=256, blank=True, null=True)
-    highlight = models.BooleanField(default=False)
+    highlight = models.BooleanField(default=False, db_index=True)
     series = models.ForeignKey(
         StorySeries,
         blank=True, null=True, default=None, db_index=True)
@@ -59,14 +60,11 @@ class Story(Post):
                 Story, self, 'title', title=self.title)
         self.date_updated = timezone.now()
         if self.body_type == 'markdown':
-            self.body_text = markdown.markdown(self.body, extensions=[
-                'markdown.extensions.abbr',
-                # 'markdown.extensions.codehilite',
-                'markdown.extensions.smarty',
-            ], output_format='html5')
+            self.body_text = markdown.markdown(
+                self.body, extensions=ext_formatting, output_format='html5')
         else:
             self.body_text = self.body
-        super(Story, self).save(*args, **kwargs)
+        return super(Story, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         if self.series:

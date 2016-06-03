@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load subdomainurls %}
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -33,7 +34,7 @@
     <div class="ui center aligned container">
         <div class="ui tiny horizontal divided list">
             <div class="item">
-                <a href="{% url 'privacy-policy' %}"><i class="small privacy icon"></i>Privacy Policy</a>
+                <a href="{% url 'privacy-policy' subdomain=None %}"><i class="small privacy icon"></i>Privacy Policy</a>
             </div>
             <div class="item">
                 <a href="#"><i class="small child icon"></i>About Me</a>

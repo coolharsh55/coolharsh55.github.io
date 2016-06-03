@@ -5,6 +5,7 @@ from utils.meta_generator import create_meta
 
 from articles.models import Article
 from blog.models import BlogPost
+from lifeX.models import LifeXWeek
 from poems.models import Poem
 from stories.models import Story
 
@@ -53,11 +54,14 @@ def home(request):
             key=lambda p: p.date_published)[:5]
     ]
 
+    latest_week = latest_week = LifeXWeek.objects.order_by('-number').first()
+
     return render(
         request, 'sitebase/homepage.html',
         {
             'meta': meta,
             'latest_posts': latest_posts,
+            'latest_week': latest_week,
             'featured_posts': featured_posts,
         })
 

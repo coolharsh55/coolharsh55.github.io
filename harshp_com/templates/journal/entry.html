@@ -1,0 +1,33 @@
+{% extends 'journal/base.html' %}
+
+{% block e_TITLE %}{{ entry.title }}{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}{{ entry.title }}{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class="ui center aligned container">
+    <h3><i>{{ entry.short_description }}</i></h3>
+    <div class="ui horizontal divided list">
+        <div class="item">
+            published on: <b>{{ entry.date_published }}</b>
+        </div>
+        <div class="item">
+            <p>last updated on: <b>{{ entry.date_updated }}</b></p>
+        </div>
+    </div><br>
+    <div class="ui horizontal divided list">
+        {% for tag in entry.journal_tags.all %}
+        <div class="item">
+            <a href="#" class="ui tiny tag label">{{ tag.name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% if entry.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ entry.series.name }}</h2>{% endif %}
+    <div class="ui horizontal divider">#</div>
+    <img class="ui big centered fluid image" src="{{ entry.headerimage }}"><br>
+    <div id='content' class="ui left aligned container">
+    <h1 class="ui header">{{ entry.title }}</h1>
+    {{ entry.body_text|safe }}
+    </div>
+</div>
+{% endblock e_BODY %}

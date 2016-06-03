@@ -1,0 +1,20 @@
+{% extends 'journal/base.html' %}
+{% block e_TITLE %}journal tags{% endblock e_TITLE %}
+
+{% block ff_HEADER_TITLE %}journal tags{% endblock ff_HEADER_TITLE %}
+
+{% block e_BODY %}
+<div class="ui center aligned container">
+    <h1>journal tags</h1>
+    <br /><br />
+</div>
+<div class='ui container'>
+    <div class="ui relaxed divided list">
+    {% for tag, entry_count in tags %}
+        <div class="item">
+            <a href="{{ tag.get_absolute_url }}">{{ tag.name }} - {{ entry_count }} entries</a>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock e_BODY %}

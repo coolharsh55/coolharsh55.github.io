@@ -35,7 +35,7 @@ class Tag(models.Model):
     def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(Tag, self, 'name', name=self.name)
-        super(Tag, self).save(*args, **kwargs)
+        return super(Tag, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('sitebase:tags:get', args=[self.slug], subdomain=None)
@@ -62,7 +62,8 @@ class Author(models.Model):
     short_bio = models.CharField(max_length=256)
     long_bio = models.CharField(max_length=1024, blank=True, unique=True)
     profile_pic = models.URLField(max_length=256, blank=True, null=True)
-    slug = models.SlugField(max_length=150, unique=True, blank=True)
+    slug = models.SlugField(
+        max_length=150, db_index=True, unique=True, blank=True)
 
     class Meta:
 
@@ -76,7 +77,7 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         if self.pk is None:
             self.slug = get_unique_slug(Author, self, 'name', name=self.name)
-        super(Author, self).save(*args, **kwargs)
+        return super(Author, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(

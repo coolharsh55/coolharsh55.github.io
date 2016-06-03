@@ -10,6 +10,15 @@ if MODE == 'production':
     SECRET_KEY = os.environ.get('HARSHP_COM_DJANGO_KEY', None)
     ALLOWED_HOSTS = ['.harshp.com']
 
+    # CSRF
+    CSRF_COOKIE_SECURE = True
+
+    # SESSION
+    SESSION_COOKIE_AGE = 18000  # 5 HOURS
+    SESSION_COOKIE_SECURE = True
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
 # DEVELOPMENT
 elif MODE == 'dev' or MODE == 'test_prod':
 
