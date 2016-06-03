@@ -14,6 +14,7 @@
     position: fixed;
     bottom: 10px;
     left: 10px;
+    font-style: italic;
 }
 </style>
 {% endblock f_CSS %}
@@ -21,7 +22,7 @@
 {% block e_BODY %}
 <div id='visibility' class='ui'>
     {% if user.is_authenticated %}
-        <p class='ui red header'><i class="red unhide icon"></i>private</p>
+        <p class='ui red header'><a href="{% url 'journal:logout' %}"><i class="red unhide icon"></i></a>private</p>
     {% else %}
         <p class='ui teal header'><i class="teal hide icon"></i>public</p>
     {% endif %}
