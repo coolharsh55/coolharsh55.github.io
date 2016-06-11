@@ -18,7 +18,7 @@ The *personal website* of **Harshvardhan Pandit** at
 
  - [**journal**](https://journal.harshp.com/) - Personal/Private/Public journal containing entries related to my daily life.
  - [**lifeX**](https://lifeX.harshp.com/) - Life Experiments are something I do to make living exciting. I experiment with certain like the sleeping pattern, diets, calling people, time management, technologies to learn and a lot more. It's a great way to do and try things that I would otherwise have made excuses for citing lack of time. Know more about Life Experiments through a (quite good in my opinion) [presentation](http://lifex.harshp.com/presentation/UCC2014) based on a talk I gave on the topic.
-  - [**friends**](http://friends.harshp.com) - the place for my friends where I keep my messages and gifts for them.
+ - [**friends**](http://friends.harshp.com) - the place for my friends where I keep my messages and gifts for them.
  - [**hobbies**](https://hobbies.harshp.com/) - My hobbies are Books (Reading), Movies, TV Shows (Watching), Games (Playing), Photography. I keep a log of them with details such as duration, whether I completed it, how much did I like it, whether I recommend it, making lists, etc.
 
 ### Research / Dev / CompSci
@@ -35,9 +35,9 @@ The *personal website* of **Harshvardhan Pandit** at
 
 ### Server-side stack
 
- - hosting: Google Cloud Compute
+ - hosting: AWS EC2
  - server/reverse-proxy: nginx
- - server/application: unicorn
+ - server/application: gunicorn
  - web framework: django/python3
  - database: PostgreSQL
  - cache: redis
@@ -46,7 +46,7 @@ The *personal website* of **Harshvardhan Pandit** at
 
  - semantic ui
  - jquery
- - highcharts
+ - highcharts (lifeX goals)
 
 ### APIs & Services
 
