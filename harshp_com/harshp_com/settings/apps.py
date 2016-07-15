@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'blog',
     'brainbank',
     'dev',
+    'finance',
     'friends',
     'hobbies',
     'journal',
