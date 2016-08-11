@@ -1,0 +1,133 @@
+{% extends 'finance/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}finance{% endblock e_TITLE %}
+{% block ff_HEADER_TITLE %}Finance{% endblock ff_HEADER_TITLE %}
+
+{% block ee_BODY %}
+<div class="ui raised segment container">
+    <table class="ui red celled padded table">
+        <thead>
+            <tr><th class="selectable" colspan="3"><a href="{% url 'finance:accounts' subdomain='finance' %}"><h3>Accounts</h3></a></th></tr>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for account in accounts %}
+            <tr>
+                <td class="selectable"><a href="{{ account.get_absolute_url }}"><u>{{ account.name }}</u></a></td>
+                <td>{{ account.get_account_type_display }}</td>
+                <td>{{ account.amount }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui raised segment container">
+    <table class="ui green celled padded table">
+        <thead>
+            <tr><th class="selectable" colspan="6"><a href="{% url 'finance:budgets' subdomain='finance' %}"><h3>Budgets</h3></a></th></tr>
+            <tr>
+                <th>name</th>
+                <th>period</th>
+                <th>start</th>
+                <th>end</th>
+                <th>amount</th>
+                <th>remaining</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for budget in budgets %}
+            <tr>
+                <td class="selectable"><a href="{{ budget.get_absolute_url }}"><u>{{ budget.name }}</u></a></td>
+                <td>{{ budget.get_period_display }}</td>
+                <td>{{ budget.date_start }}</td>
+                <td>{{ budget.date_end }}</td>
+                <td>{{ budget.amount }}</td>
+                <td>{{ budget.amount_remaining }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui raised segment container">
+    <h2>monthly spending</h2>
+    <canvas id='chart'></canvas>
+</div>
+<div class="ui raised segment container">
+    <table class="ui blue celled padded table">
+        <thead>
+            <tr><th class="selectable" colspan="6"><a href="{% url 'finance:transactions' subdomain='finance' %}"><h3>Transactions</h3></a></th></tr>
+            <tr>
+                <th>type</th>
+                <th>account</th>
+                <th>date</th>
+                <th>amount</th>
+                <th>category</th>
+                <th>note</th>
+        </thead>
+        <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                <td class="selectable"><a href="{{ transaction.get_absolute_url }}">{{ transaction.get_transaction_type_display }}</a></td>
+                <td class="selectable"><a href="{{ transaction.account.get_absolute_url }}">{{ transaction.account }}</a></td>
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td class="selectable"><a href="{{ transaction.category.get_absolute_url }}">{{ transaction.category }}</a></td>
+                <td>{{ transaction.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui raised segment container">
+    <table class="ui purple celled padded table">
+        <thead>
+            <tr><th class="selectable" colspan="5"><a href="{% url 'finance:transfers' subdomain='finance' %}"><h3>Transfers</h3></a></th></tr>
+            <tr>
+                <th>from</th>
+                <th>to</th>
+                <th>date</th>
+                <th>amount</th>
+                <th>note</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transfer in transfers %}
+            <tr>
+                <td class="selectable"><a href="{{ transfer.account_from.get_absolute_url }}">{{ transfer.account_from }}</a></td>
+                <td class="selectable"><a href="{{ transfer.account_to.get_absolute_url }}">{{ transfer.account_to }}</a></td>
+                <td>{{ transfer.date }}</td>
+                <td>{{ transfer.amount }}</td>
+                <td>{{ transfer.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock ee_BODY %}
+
+{% block f_JS %}
+{{ block.super }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.min.js"></script>
+<script type="text/javascript">
+var chart = new Chart(document.getElementById("chart"), {
+    type: 'bar',
+    data: {
+        labels: {{ data_labels|safe }},
+        datasets: [{
+            label: "spending",
+            data: {{ data|safe }},
+            backgroundColor: "darkgray",
+            borderColor: "black",
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+</script>
+{% endblock f_JS %}

@@ -1,6 +1,7 @@
 """database settings for harshp_com"""
 
 import os
+import sys
 
 from .basepath import BASE_DIR
 
@@ -29,3 +30,7 @@ elif MODE == 'test_prod':
     pass
 elif MODE == 'dev':
     DATABASES['default']['PASSWORD'] = 'harshp_com'
+
+# test settings
+if sys.argv[1] == "test":
+    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}

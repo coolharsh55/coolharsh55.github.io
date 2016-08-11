@@ -1,0 +1,14 @@
+{% extends 'sitebase/base.html' %}
+{% load subdomainurls %}
+
+{% block ff_HEADER %}
+    {% block ff_HEADER_ICON %}<i class="blue money icon"></i>{% endblock ff_HEADER_ICON %}
+    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
+    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% endblock ff_HEADER %}
+
+{% block e_BODY %}
+    <div class="ui container">
+    {% block ee_BODY %}{% endblock ee_BODY %}
+    </div>
+{% endblock e_BODY %}
