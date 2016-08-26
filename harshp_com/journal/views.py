@@ -59,7 +59,7 @@ def entries(request):
         entries = []
         for entry in JournalEntry.objects.order_by(
                 '-date_published').select_related('section'):
-            if entry.private or entry.section.private:
+            if entry.private or (entry.section and entry.section.private):
                 entries.append((entry, False))
             else:
                 entries.append((entry, True))
@@ -77,7 +77,7 @@ def entries(request):
 def entry(request, entry_id):
     """Display journal entry"""
     entry = get_object_or_404(JournalEntry, id=entry_id)
-    if entry.private or entry.section.private:
+    if entry.private or (entry.section and entry.section.private):
         if not request.user.is_authenticated():
             return redirect('journal:auth')
 
