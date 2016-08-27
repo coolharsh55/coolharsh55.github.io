@@ -5,8 +5,8 @@
 {% block ff_HEADER_TITLE %}Finance{% endblock ff_HEADER_TITLE %}
 
 {% block ee_BODY %}
-<div class="ui raised segment container">
-    <table class="ui red celled padded table">
+<div class="ui raised red segment container">
+    <table class="ui celled padded table">
         <thead>
             <tr><th class="selectable" colspan="3"><a href="{% url 'finance:accounts' subdomain='finance' %}"><h3>Accounts</h3></a></th></tr>
             <tr>
@@ -26,8 +26,8 @@
         </tbody>
     </table>
 </div>
-<div class="ui raised segment container">
-    <table class="ui green celled padded table">
+<div class="ui raised green segment container">
+    <table class="ui celled padded table">
         <thead>
             <tr><th class="selectable" colspan="6"><a href="{% url 'finance:budgets' subdomain='finance' %}"><h3>Budgets</h3></a></th></tr>
             <tr>
@@ -53,12 +53,21 @@
         </tbody>
     </table>
 </div>
-<div class="ui raised segment container">
-    <h2>monthly spending</h2>
-    <canvas id='chart'></canvas>
+<div class="ui raised orange segment container">
+    <table class="ui celled padded table">
+        <thead>
+            <tr><th class="selectable" colspan="2"><a href="{% url 'finance:transactions' subdomain='finance' %}"><h3>Monthly Expenditure</h3></a></th></tr>
+            <tr><th class="selectable" colspan="2"><canvas id='chart' width='100vw' height='50vh'></canvas></th></tr>
+            <tr>
+                <th>category</th>
+                <th>amoutn spent</th>
+        </thead>
+        <tbody id='table-monthly-expenditure'>
+        </tbody>
+    </table>
 </div>
-<div class="ui raised segment container">
-    <table class="ui blue celled padded table">
+<div class="ui raised blue segment container">
+    <table class="ui celled padded table">
         <thead>
             <tr><th class="selectable" colspan="6"><a href="{% url 'finance:transactions' subdomain='finance' %}"><h3>Transactions</h3></a></th></tr>
             <tr>
@@ -83,8 +92,8 @@
         </tbody>
     </table>
 </div>
-<div class="ui raised segment container">
-    <table class="ui purple celled padded table">
+<div class="ui raised purple segment container">
+    <table class="ui celled padded table">
         <thead>
             <tr><th class="selectable" colspan="5"><a href="{% url 'finance:transfers' subdomain='finance' %}"><h3>Transfers</h3></a></th></tr>
             <tr>
@@ -112,22 +121,32 @@
 
 {% block f_JS %}
 {{ block.super }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
 <script type="text/javascript">
-var chart = new Chart(document.getElementById("chart"), {
-    type: 'bar',
-    data: {
-        labels: {{ data_labels|safe }},
-        datasets: [{
-            label: "spending",
-            data: {{ data|safe }},
-            backgroundColor: "darkgray",
-            borderColor: "black",
-            borderWidth: 1
-        }]
-    },
-    options: {
-    }
+var ctx = document.getElementById("chart");
+var monthly_data = {{ monthly_data|safe }};
+var data = [];
+var labels = [];
+var colors = [];
+monthly_data.forEach(function(row) {
+    labels.push(row[0])
+    data.push(row[1]);
+    colors.push(row[2]);
+    var tr = $('<tr>');
+    tr.append($('<td>', { text: row[0] }));
+    tr.append($('<td>', { text: row[1] }));
+    $('#table-monthly-expenditure').append(tr);
+});
+var chart_data = {
+    labels: labels,
+    datasets: [{
+        data: data,
+        backgroundColor: colors
+    }]
+};
+var myPieChart = new Chart(ctx,{
+    type: 'pie',
+    data: chart_data,
 });
 </script>
 {% endblock f_JS %}

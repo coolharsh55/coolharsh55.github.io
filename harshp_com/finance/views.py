@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from subdomains.utils import reverse
 from django.utils import timezone
+import random
 
 from .models import FinanceAccount
 # from .models import TransactionCategory
@@ -58,20 +59,32 @@ def home(request):
         filter(date__lte=today.replace(
             day=calendar.monthrange(today.year, today.month)[1])).\
         filter(date__gte=today.replace(day=1)).\
-        order_by('date')
+        filter(transaction_type=Transaction.EXPENSE).\
+        order_by('-date')
     monthly_data = {}
     for transaction in monthly_transactions:
-        if transaction.category not in monthly_data:
+        if transaction.category.name not in monthly_data:
             monthly_data[transaction.category.name] = 0
         monthly_data[transaction.category.name] += transaction.amount
+
+    def random_8bit():
+        return random.randint(100, 200)
+
+    monthly_data = [
+        [category, amount,
+            '#%02X%02X%02X' % (random_8bit(), random_8bit(), random_8bit())]
+        for category, amount in monthly_data.items()]
+    monthly_data.sort(key=lambda x: x[1], reverse=True)
+    monthly_data = [
+        [category, '%.2f' % amount, color]
+        for category, amount, color in monthly_data]
 
     return render(request, 'finance/homepage.html', {
         'accounts': accounts,
         'budgets': budgets,
         'transactions': transactions,
         'transfers': transfers,
-        'data': list(monthly_data.values()),
-        'data_labels': list(monthly_data.keys())
+        'monthly_data': monthly_data
     })
 
 
