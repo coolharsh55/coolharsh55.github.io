@@ -1,5 +1,8 @@
+import calendar
 from django.contrib import admin
 from django.contrib import messages
+from functools import reduce
+from django.utils import timezone
 
 from .models import FinanceAccount
 from .models import TransactionCategory
@@ -8,18 +11,6 @@ from .models import Transaction
 from .models import Budget
 from .models import PlannedTransaction
 from .models import TransferTransaction
-
-
-def calculate_expenditure(modeladmin, request, queryset):
-    """calculate total expenditure (income - expense)"""
-    total = 0
-    for q in queryset:
-        if q.transaction_type == Transaction.INCOME:
-            total += q.amount
-        elif q.transaction_type == Transaction.EXPENSE:
-            total -= q.amount
-    messages.add_message(
-        request, messages.INFO, 'Total expenditure was {}'.format(total))
 
 
 @admin.register(FinanceAccount)
@@ -45,10 +36,54 @@ class FinanceAccountAdmin(admin.ModelAdmin):
 class TransactionCategoryAdmin(admin.ModelAdmin):
     """admin for Transaction Category"""
 
+    @staticmethod
+    def _calculate_total_expenditure(category):
+        transactions = [
+            t.amount for t in
+            category.transactions.filter(transaction_type=Transaction.EXPENSE)]
+        if transactions:
+            return reduce(lambda x, y: x + y, transactions)
+        else:
+            return 0.00
+
+    @staticmethod
+    def _calculate_monthly_expenditure(category):
+        today = timezone.now().date()
+        transactions = [
+            t.amount for t in
+            category.transactions.filter(date__lte=today.replace(
+                day=calendar.monthrange(today.year, today.month)[1])).
+            filter(date__gte=today.replace(day=1)).
+            filter(transaction_type=Transaction.EXPENSE)]
+        if transactions:
+            return reduce(lambda x, y: x + y, transactions)
+        else:
+            return 0.00
+
+    @staticmethod
+    def calculate_expenditure(modeladmin, request, queryset):
+        total = 0.0
+        monthly = 0.0
+        for q in queryset:
+            total += TransactionCategoryAdmin._calculate_total_expenditure(q)
+            monthly += \
+                TransactionCategoryAdmin._calculate_monthly_expenditure(q)
+        messages.add_message(
+            request, messages.INFO,
+            '''Total expenditure was {}.
+            Monthly expenditure was {}.'''.format(total, monthly))
+
+    def expenditure_total(self, category):
+        return '{0:.2f}'.format(self._calculate_total_expenditure(category))
+
+    def expenditure_monthly(self, category):
+        return '{0:.2f}'.format(self._calculate_monthly_expenditure(category))
+
+    actions = ['calculate_expenditure']
     # date_hierarchy = ''
     fields = ('name', 'slug')
     # filter_horizontal = ()
-    list_display = ('name',)
+    list_display = ('name', 'expenditure_total', 'expenditure_monthly')
     # list_display_editable = ()
     list_display_links = ('name',)
     # list_filter = ()
@@ -83,7 +118,19 @@ class TransactionTagAdmin(admin.ModelAdmin):
 class TransactionAdmin(admin.ModelAdmin):
     """admin for Transaction"""
 
-    actions = [calculate_expenditure]
+    @staticmethod
+    def calculate_expenditure(modeladmin, request, queryset):
+        """calculate total expenditure (income - expense)"""
+        total = 0
+        for q in queryset:
+            if q.transaction_type == Transaction.INCOME:
+                total += q.amount
+            elif q.transaction_type == Transaction.EXPENSE:
+                total -= q.amount
+        messages.add_message(
+            request, messages.INFO, 'Total expenditure was {}'.format(total))
+
+    actions = ['calculate_expenditure']
     date_hierarchy = 'date'
     fields = (
         'transaction_type', 'account', 'date', 'amount',
