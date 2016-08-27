@@ -163,12 +163,13 @@ class Transaction(models.Model):
                 self.account.amount += self.amount
             self.account.save()
             # transact amount from budget
-            budgets = Budget.objects.filter(
-                date_start__lte=timezone.now().date(),
-                date_end__gte=timezone.now().date())
-            for budget in budgets:
-                budget.amount_remaining -= self.amount
-                budget.save()
+            if self.transaction_type == Transaction.EXPENSE:
+                budgets = Budget.objects.filter(
+                    date_start__lte=timezone.now().date(),
+                    date_end__gte=timezone.now().date())
+                for budget in budgets:
+                    budget.amount_remaining -= self.amount
+                    budget.save()
         else:
             # check if amount has changed and update it
             this = Transaction.objects.get(pk=self.pk)
@@ -183,13 +184,14 @@ class Transaction(models.Model):
                     self.account.amount += self.amount
                 self.account.save()
                 # transact amount from budget
-                budgets = Budget.objects.filter(
-                    date_start__lte=timezone.now().date(),
-                    date_end__gte=timezone.now().date())
-                for budget in budgets:
-                    budget.amount_remaining += this.amount
-                    budget.amount_remaining -= self.amount
-                    budget.save()
+                if self.transaction_type == Transaction.EXPENSE:
+                    budgets = Budget.objects.filter(
+                        date_start__lte=timezone.now().date(),
+                        date_end__gte=timezone.now().date())
+                    for budget in budgets:
+                        budget.amount_remaining += this.amount
+                        budget.amount_remaining -= self.amount
+                        budget.save()
         return super(Transaction, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
