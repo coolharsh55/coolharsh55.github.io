@@ -255,15 +255,15 @@ class Budget(models.Model):
         elif self.period == Budget.DAY:
             self.date_end = self.date_start + relativedelta(days=1)
         elif self.period == Budget.WEEK:
-            self.date_end = self.date_start + relativedelta(weeks=1)
+            self.date_end = self.date_start + relativedelta(weeks=1, days=-1)
         elif self.period == Budget.MONTH:
-            self.date_end = self.date_start + relativedelta(months=1)
+            self.date_end = self.date_start + relativedelta(months=1, days=-1)
         elif self.period == Budget.QUARTER:
-            self.date_end = self.date_start + relativedelta(months=3)
+            self.date_end = self.date_start + relativedelta(months=3, days=-1)
         elif self.period == Budget.SEMI_ANNUAL:
-            self.date_end = self.date_start + relativedelta(months=6)
+            self.date_end = self.date_start + relativedelta(months=6, days=-1)
         elif self.period == Budget.ANNUAL:
-            self.date_end = self.date_start + relativedelta(years=1)
+            self.date_end = self.date_start + relativedelta(years=1, days=-1)
         return super(Budget, self).save(*args, **kwargs)
 
 
