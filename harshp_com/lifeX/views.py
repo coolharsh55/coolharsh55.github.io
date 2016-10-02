@@ -1,5 +1,4 @@
 from collections import namedtuple
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 
@@ -9,13 +8,42 @@ from .models import LifeXGoal
 from .models import LifeXBlog
 
 
+def _goals_data():
+    # Depth-first crawl over lifeX goals
+
+    # each node in stack contains a goal and its json
+    Node = namedtuple('Node', ['goal', 'json'])
+    # get the root node - it has no parent
+    root = LifeXGoal.objects.get(parent=None)
+    # build it's json
+    goal_json = {'name': root.title, 'children': []}
+    # initialize the stack with the root node
+    goal_stack = [Node(root, goal_json)]
+
+    # keep going until stack has items
+    while len(goal_stack) > 0:
+        # pop node from stack
+        node = goal_stack.pop()
+        # if node has children, process them
+        if node.goal.lifexgoal_set.all().count() > 0:
+            for goal in node.goal.lifexgoal_set.all():
+                # create new json dict to hold this goal
+                json_dict = {'name': goal.title, 'children': []}
+                # add children to node's json
+                node.json['children'].append(json_dict)
+                goal_stack.append(Node(goal, json_dict))
+
+    return goal_json
+
+
 def home(request):
     latest_week = LifeXWeek.objects.order_by('-number').first()
     blogposts = LifeXBlog.objects\
         .filter(is_published=True).order_by('-date_published')[:5]
     return render(
-        request, 'lifeX/homepage.html',
-        {'latest_week': latest_week, 'blogposts': blogposts})
+        request, 'lifeX/homepage.html', {
+            'latest_week': latest_week,
+            'blogposts': blogposts, 'goals': _goals_data()})
 
 
 def about_lifex(request):
@@ -72,38 +100,7 @@ def experiment(request, number, slug):
 
 def goals(request):
     """lifeX goals"""
-    return render(request, 'lifeX/goals.html')
-
-
-def goals_json(request):
-    """lifeX goals"""
-    # Depth-first crawl over lifeX goals
-
-    # each node in stack contains a goal and its json
-    Node = namedtuple('Node', ['goal', 'json'])
-    # (pseudo)prefetch all goals
-    goals = LifeXGoal.objects.all()
-    # get the root node - it has no parent
-    root = LifeXGoal.objects.get(parent=None)
-    # build it's json
-    goal_json = {'name': root.title, 'children': []}
-    # initialize the stack with the root node
-    goal_stack = [Node(root, goal_json)]
-
-    # keep going until stack has items
-    while len(goal_stack) > 0:
-        # pop node from stack
-        node = goal_stack.pop()
-        # if node has children, process them
-        if node.goal.lifexgoal_set.all().count() > 0:
-            for goal in node.goal.lifexgoal_set.all():
-                # create new json dict to hold this goal
-                json_dict = {'name': goal.title, 'children': []}
-                # add children to node's json
-                node.json['children'].append(json_dict)
-                goal_stack.append(Node(goal, json_dict))
-
-    return JsonResponse(goal_json)
+    return render(request, 'lifeX/goals.html', {'goals': _goals_data()})
 
 
 def blog_list(request):
