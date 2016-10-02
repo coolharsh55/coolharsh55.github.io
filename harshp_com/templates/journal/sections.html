@@ -1,28 +1,14 @@
 {% extends 'journal/base.html' %}
 {% block e_TITLE %}journal sections{% endblock e_TITLE %}
+{% block e_HEADER_TITLE %}sections{% endblock e_HEADER_TITLE %}
 
-{% block ff_HEADER_TITLE %}sections{% endblock ff_HEADER_TITLE %}
-
-{% block e_BODY %}
-<div class="ui center aligned container">
-    <h1>journal sections</h1>
-    <br /><br />
+{% block ee_BODY %}
+<h1 class="f1 near-black">Sections</h1>
+{% for section, entry_count in sections %}
+<div class="pv1">
+    {% if section.private %}{% if user.is_authenticated %}
+    <a class="link ph2" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a><span class="ph2 silver">{{ entry_count }} entries</span>{% endif %}
+    {% else %}<a class="link ph2" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a><span class="ph2 silver">{{ entry_count }} entries</span>{% endif %}
 </div>
-<div class='ui container'>
-    <div class="ui relaxed divided list">
-    {% for section, entry_count in sections %}
-        <div class="item">
-        {% if section.private %}
-            {% if user.is_authenticated %}
-            <a href="{{ section.get_absolute_url }}">{{ section.name }} - {{ entry_count }} entries</a>
-            {% else %}
-            private section - {{ entry_count }} entries
-            {% endif %}
-        {% else %}
-            <a href="{{ section.get_absolute_url }}">{{ section.name }} - {{ entry_count }} entries</a>
-        {% endif %}
-        </div>
-    {% endfor %}
-    </div>
-</div>
-{% endblock e_BODY %}
+{% endfor %}
+{% endblock ee_BODY %}

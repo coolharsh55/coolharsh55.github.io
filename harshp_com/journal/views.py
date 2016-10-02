@@ -60,7 +60,8 @@ def entries(request):
         for entry in JournalEntry.objects.order_by(
                 '-date_published').select_related('section'):
             if entry.private or (entry.section and entry.section.private):
-                entries.append((entry, False))
+                # entries.append((entry, False))
+                pass
             else:
                 entries.append((entry, True))
 
@@ -68,10 +69,10 @@ def entries(request):
     if not private:
         sections = sections.filter(private=False)
     sections = sections.order_by('name')
-
     return render(
-        request, 'journal/entries.html',
-        {'entries': entries, 'sections': sections})
+        request, 'journal/entries.html', {
+            'entries': entries,
+            'private_sessions': len(sections) > 0, 'sections': sections})
 
 
 def entry(request, entry_id):

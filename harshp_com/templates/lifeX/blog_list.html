@@ -1,18 +1,11 @@
 {% extends 'lifeX/base.html' %}
-
 {% block e_TITLE %}LifeX Blog{% endblock e_TITLE %}
-{% block ff_HEADER_TITLE %}LifeX Blog{% endblock ff_HEADER_TITLE %}
-
+{% block e_HEADER_TITLE %}LifeX Blog{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class='ui container'>
-    <div class='ui grid'>
-    {% for post in posts %}
-            <div class='ui very relaxed text container segment'>
-                <a href="{{ post.get_absolute_url }}"><h3 class='ui teal header'>{{ post.title }}</h3></a>
-                <div class='meta'>{{ post.date_published }}</div>
-                <p><small>{{ post.short_description }}</small></p>
-            </div>
-    {% endfor %}
-    </div>
+{% for post in posts %}
+<div class="pa2">
+    <a href="{{ post.get_absolute_url }}"><span class="blue">{{ post.title }}</span></a><span class="ph2 gray">{{ post.date_published }}</span>
+    <p class="ph2 near-black">{{ post.short_description }}</p>
 </div>
+{% endfor %}
 {% endblock e_BODY %}

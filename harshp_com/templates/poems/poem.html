@@ -1,33 +1,24 @@
 {% extends 'poems/base.html' %}
-
 {% block e_TITLE %}{{ poem.title }}{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}{{ poem.title }}{% endblock ff_HEADER_TITLE %}
+{% block e_HEADER_TITLE %}{{ poem.title }}{% endblock e_HEADER_TITLE %}
 
 {% block e_BODY %}
-<div class="ui center aligned container">
-    <h3><i>{{ poem.short_description }}</i></h3>
-    <div class="ui horizontal divided list">
-        <div class="item">
-            published on: <b>{{ poem.date_published }}</b>
-        </div>
-        <div class="item">
-            <p>last updated on: <b>{{ poem.date_updated }}</b></p>
-        </div>
-    </div><br>
-    <div class="ui horizontal divided list">
-        {% for tag in poem.tags.all %}
-        <div class="item">
-            <a href="#" class="ui tiny tag label">{{ tag.name }}</a>
-        </div>
-        {% endfor %}
+<article class="athelas center tc">
+    <h1 class="f1 dark-gray">{{ poem.title }}</h1>
+    <div class="f3 dark-gray mb3">{{ poem.short_description }}</div>
+    <div class="f5 dark-gray">
+        <p>published on: <span class="f4">{{ poem.date_published }}</span></p>
+        <p>last updated on: <span class="f4">{{ poem.date_updated }}</span></p>
     </div>
-    {% if poem.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ poem.series.name }}</h2>{% endif %}
-    <div class="ui horizontal divider">#</div>
-    {% if poem.headerimage %}<img class="ui big centered fluid image" src="{{ poem.headerimage }}"><br>{% endif %}
-    <div id='content' class="ui center aligned container">
-    <h1 class="ui header">{{ poem.title }}</h1>
-    <div class="clean-article">{{ poem.body_text|safe }}</div>
-    </div>
-</div>
+    <div class="dark-gray f4 pa3 pb3">tags:
+    {% for tag in poem.tags.all %}
+        <a class="link dark-gray ph2 ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
+    {% endfor %}
+    </div class="pa3 pt3">
+
+        {% if poem.headerimage %}<div class="mw-8 pa3"><img src="{{ poem.headerimage }}"></div>{% endif %}
+        <div class="f5 f3-ns lh-copy ph2">
+            <div>{{ poem.body_text|safe }}</div>
+        </div>
+</article>
 {% endblock e_BODY %}

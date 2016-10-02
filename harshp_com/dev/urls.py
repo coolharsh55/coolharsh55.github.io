@@ -17,3 +17,5 @@ dev_urlpatterns = [
 urlpatterns = [
     url(r'', include(dev_urlpatterns, namespace='dev')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

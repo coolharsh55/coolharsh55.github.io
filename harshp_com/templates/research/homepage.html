@@ -1,14 +1,41 @@
 {% extends 'research/base.html' %}
 {% load subdomainurls %}
-
 {% block e_TITLE %}research at harshp.com{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}Research{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% block e_HEADER_TITLE %}Research{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 silver">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 
 {% block e_BODY %}
-<div class="ui stackable grid container">
-    <div class="ui center aligned container">
-        <h2 class="ui header">In progress... refresh in a few days!</h2>
-    </div>
+<div class="f3 pa3">
+    <p class="f2 near-black">Peer-reviewed Publications</p>
+    <p class="f4">Recent Publications</p>
+    <p class="f5">Pandit, H.J. and O’Riordan, A. (2016) <b>‘A model for contextual data sharing in smartphone applications’</b>, International Journal of Pervasive Computing and Communications, 12(3), pp. 310–331. doi: 10.1108/ijpcc-06-2016-0030.<br/>
+    <a class="ph2 link" href="http://www.emeraldinsight.com/doi/full/10.1108/IJPCC-06-2016-0030"><span class="f6 blue">link to published paper</span></a>
+    <a class="ph2 link" href="#"><span class="f6 green">link to online version</span></a></p>
+    <p class="f5">Pandit, H., Hamed, R.G., Lawless, S. and Lewis, D. <b>“The Use of Open Data to Improve the Repeatability of Adaptivity and Personalisation Experiment”</b>. In the proceedings of the 1st EvalUMAP workshop - Towards comparative evaluation in user modeling, adaptation and personalization, held in conjunction with the 24th Conference on User Modeling, Adaptation and Personalization, UMAP 2016.<br/>
+    <a class="ph2 link" href="http://ceur-ws.org/Vol-1618/EvalUMAP_paper_5.pdf"><span class="f6 blue">link to published paper</span></a>
+    <a class="ph2 link" href="#"><span class="f6 green">link to online version</span></a></p>
+    <a class="link f5" href="{% url 'research:publications' subdomain='research' %}"><span class="blue">See all publications</span></a> <span class="f6 gray">link</span> <br/>
+    <hr/>
 </div>
+<div class="pa3">
+    <p class="f2 near-black">Academic Research</p>
+    <a class="link f3" href="{% url 'research:phd:home' subdomain='research' %}"><span class="blue">PhD in Computer Science</span></a>
+    <p class="silver">ADAPT, Trinity College Dublin, Dublin, Ireland<br/>2016 - 2020 (expected)</p>
+    <p class="f5 dark-gray lh-copy">To develop an appropriate design for a privacy reasoning service (primarily within the browser) that can consume open data usage declarations for service providers, and context-aware privacy setting from the user in order to advise users on the compatibility or risk associated with use of specific service features. It advise users on the release of personal service interaction data and contextual meta-data e.g. collected from device GPS, motion sensors, speech recognition and video processing, to requesting service providers, based on the outcome of semi-automated privacy-aware decisions (in collaboration with other researchers. This may also be extended to open processing platforms in a user’s home areas network, where different privacy preferences, sensed context and service usage from multiple users must be considered. The performance envelope for different degrees of reasoning for advice generation will be assessed.</p>
+</div>
+<div class="pa3">
+    <a class="link f3" href="{% url 'research:msc:home' subdomain='research' %}"><span class="blue">MSc. in Computer Science by Research</span></a>
+    <p class="silver">University College Cork, Cork, Ireland<br/>graduated: 2015</p>
+    <p class="f5 dark-gray lh-copy">This research investigated how smartphone apps can perform contextual data sharing with an emphasis on practical integration into the existing platforms and app models. The identification of information and its associated context is necessary to create context definitions that allow different apps to identify the context of the shared data. An approach to model the Context Definitions using computer science concepts such as object-oriented data structures provides flexibility. A context datastore is defined to store and share contextual information between apps, which creates an independence between apps for acquiring information and provides compatibility with the existing security models on various platforms. The model allows apps to retrieve contextual data in a simple and efficient manner without interacting directly with the other apps. </p>
+</div>
+<div class="pa3">
+    <a class="link f3" href="{% url 'research:b-engg:home' subdomain='research' %}"><span class="blue">Bachelor of Engineering in Computers</span></a>
+    <p class="silver">Pune University, Pune, India<br/>graduated: 2013</p>
+    <p class="f4 near-black">KWEST: A Semantically Tagged Virtual Filesystem<br/><span class="f5 gray">final-year group project with
+    <a class="link" href="https://www.linkedin.com/in/aseem-gogte-9391b880"><span class="blue">Aseem Gogte</span></a>,
+    <a class="link" href="https://in.linkedin.com/in/rohit-sharma-a9490681"><span class="blue">Rohit Sharma</span></a>,
+    <a class="link" href="https://www.linkedin.com/in/sahil-gupta"><span class="blue">Sahil Gupta</span></a></span></p>
+    <p class="f5 dark-gray lh-copy">The limitation of data representation in traditional file systems is that data representation is bound only in a single way of hierarchically organising files. A semantic file system provides addressing and querying based on the content rather than storage location. Semantic tagging is a new way to organise files by using tags in place of directories. In traditional file systems, symbolic links become non-existent when file paths are changed. Assigning multiple tags to each file ensures that the file is linked to several virtual directories based on its content. By providing semantic access to information, users can organise files in a more intuitive way. In this way, the same file can be accessed through more than one virtual directory. The metadata and linkages for tagging are stored in a relational database which is invisible to the user. This allows efficient searching based on context rather than keywords. The classification of files into various ontologies can be done by the user manually or through automated rules. For certain files types, tags can be suggested by analysing the contents of files. The system would be modular in design to allow customisation while retaining a flexible and stable structure.</p>
+</div>
+
 {% endblock e_BODY %}

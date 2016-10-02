@@ -26,7 +26,6 @@ experiments_urlpatterns = [
 goals_urlpatterns = [
     # goals
     url(r'^$', views.goals, name='list'),
-    url(r'^json/$', views.goals_json, name='json'),
 ]
 
 blog_urlpatterns = [
@@ -61,3 +60,5 @@ urlpatterns = [
     url(r'', include('harshp_com.urls_commons')),
     url(r'', include(lifeX_urlpatterns, namespace='lifeX')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

@@ -1,85 +1,60 @@
-{% load static from staticfiles %}
-{% load subdomainurls %}
-<!DOCTYPE html>
+{% load static from staticfiles %}{% load subdomainurls %}<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block e_TITLE %}harshp.com{% endblock e_TITLE %}</title>
-    <meta name="description" content="">
+    <meta name="description" content="{% block e_META_DESCRIPTION %}{% endblock e_META_DESCRIPTION %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    {% block f_CSS %}<link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/sitebase.css' %}">
+    {% block f_CSS %}<link rel="stylesheet" href="https://unpkg.com/tachyons@4.5.1/css/tachyons.min.css"/>
+    <style type="text/css">
+    @media print {
+        .no-print, .no-print * {
+            display: none !important;
+        }
+    }
+    @media screen {
+        .only-print, .only-print * {
+            display: none !important;
+        }
+    }
+    </style>
     {% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
     {% include 'meta.html' %}
+    {% block f_lib_JS %}<script type="text/javascript" src="{% static 'js/cookie_consent.min.js' %}"></script>{% block lib_JS %}{% endblock lib_JS %}{% endblock f_lib_JS %}
     {% block f_ANALYTICS %}<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-36745382-2","auto"),ga("send","pageview");</script>{% endblock f_ANALYTICS %}
 </head>
 <body>
-{% block f_HEADER %}<!-- HEADER -->
-<div class='segment'>
-    <h1 class="ui blue center aligned icon dividing block top attached header spacious-bottom">
-        {% block ff_HEADER %}
-        {% block ff_HEADER_ICON %}<img class="ui circular image" src="{% static 'img/avatar.jpg' %}">{% endblock ff_HEADER_ICON %}
-        {% block ff_HEADER_TITLE %}<div class="content">Harshvardhan Pandit</div>{% endblock ff_HEADER_TITLE %}
-        {% block ff_HEADER_SUBTITLE %}<div class="ui sub header">personal website & project</div>{% endblock ff_HEADER_SUBTITLE %}
-        {% endblock ff_HEADER %}
-    </h1>
-</div>
-<br>{% endblock f_HEADER %}
-{% block e_BODY %}{% endblock e_BODY %}
-{% block f_FOOTER %}<!-- FOOTER -->
-<div id="footer" class='spacious-top spacious-bottom raised segment'>
-    <div class="ui horizontal divider"><i class="copyright icon"></i>harshvardhan (2016)</div>
-    <div class="ui center aligned container">
-        <div class="ui tiny horizontal divided list">
-            <div class="item">
-                <a href="{% url 'privacy-policy' subdomain=None %}"><i class="small privacy icon"></i>Privacy Policy</a>
-            </div>
-            <div class="item">
-                <a href="{% url 'me:home' subdomain='me' %}"><i class="small child icon"></i>About Me</a>
-            </div>
-            <div class="item">
-                <a href="https://github.com/coolharsh55/harshp.com/commits/master"><i class="small history icon"></i>Changelog</a>
-            </div>
-            <div class="item">
-                <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Code</a></div>
-        </div>
+<div class="no-print">{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns ba-ns bw3-ns b--dark-blue dark-blue mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}{% endblock e_HEADER_TITLE %}</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     </div>
-    <div class="ui horizontal divider"><i class="comments outline icon"></i> contact</div>
-    <div class="ui center aligned container">
-        <div class="ui green-icons tiny horizontal divided list">
-            <div class="item">
-                <a href="https://plus.google.com/u/0/+HarshvardhanPandit" target="_blank"><i class="large red google plus icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="https://www.facebook.com/coolharsh55" target="_blank"><i class="large blue facebook icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="mailto:me@harshp.com" target="_top"><i class="large orange mail icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="tel:353-89-433-5741"><i class="large pink call icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="https://github.com/coolharsh55/" target="_blank"><i class="large green github icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="https://twitter.com/coolharsh55" target="_blank"><i class="large teal twitter icon"></i></a>
-            </div>
-            <div class="item">
-                <a href="https://www.linkedin.com/in/harshvardhanpandit" target="_blank"><i class="large violet linkedin icon"></i></a>
-            </div>
+</div>{% endblock f_HEADER %}</div>
+{% block f_BODY %}<div class="w-100 dt georgia"><div class="mw8 pa3 center">
+{% block e_BODY %}{% endblock e_BODY %}
+</div></div>{% endblock f_BODY %}
+{% block f_FOOTER %}<!-- FOOTER -->
+<div id='footer' class="no-print w-100 pv3 mw8 center georgia">
+    <hr/>
+    <div class="ph3 pv3 ph5-m ph6-l mid-gray">
+        <small class="f6 db tc">© 2016 <b class="ttu">Harshvardhan Pandit</b></small>
+        <div class="tc mt3">
+            <a href="{% url 'privacy-policy' subdomain=None %}"><i class="small privacy icon"></i>Privacy Policy</a> |
+            <a href="{% url 'me:home' subdomain='me' %}"><i class="small child icon"></i>About Me</a> |
+            <a href="https://github.com/coolharsh55/harshp.com/commits/master"><i class="small history icon"></i>Changelog</a> |
+            <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Source Code</a>
+        </div>
+        <div class="tc mt3">
+            <a class="red ma1" href="https://plus.google.com/u/0/+HarshvardhanPandit" target="_blank">google+</a> |
+            <a class="blue ma1" href="https://www.facebook.com/coolharsh55" target="_blank">facebook</a> |
+            <a class="orange ma1" href="mailto:me@harshp.com" target="_top">email</a> |
+            <a class="pink ma1" href="tel:353-89-433-5741">mobile</a> |
+            <a class="green ma1" href="https://github.com/coolharsh55/" target="_blank">github</a> |
+            <a class="dark-blue ma1" href="https://twitter.com/coolharsh55" target="_blank">twitter</a> |
+            <a class="purple ma1" href="https://www.linkedin.com/in/harshvardhanpandit" target="_blank">linkedIn</a>
         </div>
     </div>
 </div>{% endblock f_FOOTER %}
-{% block f_JS %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="{% static 'semanticui/semantic.min.js' %}"></script>
-<script type="text/javascript">
-    window.cookieconsent_options = {"message":"I use cookies, and I know it!","dismiss":"Yeah, ok.","learnMore":"You should too...","link":"https://harshp.com/privacypolicy","theme":"dark-top"};
-</script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-<!-- End Cookie Consent plugin -->
-{% endblock f_JS %}</body>
+{% block e_JS %}{% endblock e_JS %}</body>
 </html>

@@ -1,257 +1,158 @@
-{% extends 'sitebase/base.html' %}
-{% load static from staticfiles %}
-{% load subdomainurls %}
-
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}{% load subdomainurls %}
+{% block e_TITLE %}homepage | harshp.com{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}harshp.com - the personal website and project of Harshvardhan Pandit{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}<img src="{% static 'img/avatar.jpg' %}" class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar"><br/>Harshvardhan Pandit{% endblock e_HEADER_TITLE %}
+{% block f_HEADER_SUBTITLE %}personal website & project{% endblock f_HEADER_SUBTITLE %}
+{% block e_HEADER_DESCRIPTION %}<p class="fw1 f5 mt0 mb3">I'm Harshvardhan Pandit, a Ph.D. CompSci researcher at Trinity, Dublin; and I'm researching about how users can be better advised about their privacy on a contextual basis. You can read more about me talking about me <a href="{% url 'me:home' subdomain='me' %}"><span class="fw1 bg-washed-red dark-red">here</span></a>.</p>
+<div class="tc mt3"><a href="https://github.com/coolharsh55/">Github</a> | <a href="{% url 'stub' %}">Research</a> | <a href="{% url 'stub' %}">Resume</a> | <a href="{% url 'stub' %}">Developer</a></div>{% endblock e_HEADER_DESCRIPTION %}
 {% block e_BODY %}
-<!-- ABOUT ME -->
-<div class="ui center aligned stackable grid container">
-    <div class="ui two column row spacious-top ">
-        <div class="column">
-            <h2 class="ui blue center aligned header">About Me</h2>
-            <p>I'm Harshvardhan Pandit, a Ph.D. CompSci researcher at Trinity, Dublin; and I'm researching about how users can be better advised about their privacy on a contextual basis.</p>
-            <p>You can read more about me talking about me <a href="{% url 'me:home' subdomain='me' %}">here</a>.</p>
-            </div>
-            <div class="ui vertical divider">&</div>
-            <div class="column">
-            <h2 class="ui blue center aligned header">Profiles</h2>
-            <p>Use these links if you want to know something specific about me. They contain a brief description of myself in a specific role.</p>
-            <div class="ui big horizontal divided list">
-                <div class="item"><a href="{% url 'stub' %}">Developer</a></div><!-- me.harshp.com/profiles/developer -->
-                <div class="item"><a href="https://github.com/coolharsh55/">Github</a></div><!-- me.harshp.com/profiles/github -->
-                <div class="item"><a href="{% url 'stub' %}">Resume</a></div><!-- me.harshp.com/profiles/resume -->
-                <div class="item"><a href="{% url 'stub' %}">Researcher</a></div><!-- me.harshp.com/profiles/researcher -->
-            </div>
+<div class="fl w-100 pa2">
+    <div id='latest' class="fl w-25-ns pa2 grow db">
+        <h2 class="fw2 f-title lh-title washed-blue bg-hot-pink tc">latest</h2>
+        {% for model, post in latest_posts %}
+        <div class='pv1'>
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a><br>
+            <small>{{ model }} - {{ post.date_published }}</small>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div id='featured' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title washed-yellow bg-purple tc">featured</h2>
+        {% for model, post in featured_posts %}
+        <div class='pv1'>
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a><br>
+            <small>{{ model }} - {{ post.date_published }}</small>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id='popular' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title washed-red bg-dark-red tc">popular</h2>
+        {% for model, post in featured_posts %}
+        <div class='pv1'>
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a><br>
+            <small>{{ model }} - {{ post.date_published }}</small>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id='research' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title washed-yellow bg-dark-gray tc">research</h2>
+        <div class="light-red pb2 tc">work in progress</div>
+        <div class="pv1"><a href="{% url 'research:home' subdomain='research' %}">Research Homepage</a></div>
+        <div class="pv1"><a href="{% url 'research:publications' subdomain='research' %}">Publications</a></div>
+        <div class="pv1">
+            <a href="{% url 'research:phd:home' subdomain='research' %}">Personal, Context-aware Service for Privacy Adviser</a>
+            <span class="f6 fw1"><br/>
+            <span class="silver">Ph.D in Computer Science, ADAPT, Trinity College Dublin, Ireland</span><br/>
+            <span class="mid-gray">Privacy reasoning for semantic complex event processing for the Open Web Platform</span></span>
+        </div>
+        <div class="pv1">
+            <a href="{% url 'research:msc:home' subdomain='research' %}">Contextual Data Model for Smartphone Applications</a>
+            <span class="f6 fw1"><br/>
+            <span class="silver">MSc. in Computer Science by Research, University College Dublin, Ireland</span><br/>
+            <span class="mid-gray">A contextual middleware for apps to store and use context to create Siri and Google Now like smart features</span></span>
+        </div>
+        <div class="pv1">
+            <a href="{% url 'research:b-engg:home' subdomain='research' %}">KWEST - A Semantically Tagged Virtual Filesystem</a>
+            <span class="f6 fw1"><br/>
+            <span class="silver">Bachelor of Engg. in Computers, Pune University, India</span><br/>
+            <span class="mid-gray">Use apriori for grouping related files into music playlists or work folders</span></span>
         </div>
     </div>
 </div>
 
-<!-- CONTENT -->
-<div class="ui horizontal divider">contents</div>
-<div class="ui stackable grid container">
-    <!-- ROW 1 -->
-    <div class="ui four column row spacious-top">
-        <!-- LATEST POSTS  -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'stub' %}"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Posts</h2></a></div><!-- harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider">L-I-F-O</div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for model, post in latest_posts %}
-                                <div class='item'>
-                                    <a href="{{ post.get_absolute_url }}">
-                                        {{ post.title }}
-                                    </a><br>
-                                    <small>{{ model }} - {{ post.date_published }}</small>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="fl w-100 pa2">
+    <div id='creative-writing' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title light-gray bg-dark-green tc">creative writing</h2>
+        <div class="pv1"><a href="{% url 'articles:list' subdomain='articles' %}">Articles</a><span class="f7 fw1"><br/><small>humor, rants, reactions, informatives</small></span></div>
+        <div class="pv1"><a href="{% url 'blog:list' subdomain='blog' %}">Blog</a><span class="f7 fw1"><br/><small>my thoughts and reactions</small></span></div>
+        <div class="pv1"><a href="{% url 'poems:list' subdomain='poems' %}">Poems</a><span class="f7 fw1"><br/><small>rustic runes to rhyming tunes</small></span></div>
+        <div class="pv1"><a href="{% url 'stories:list' subdomain='stories' %}">Stories</a><span class="f7 fw1"><br/><small>exploring the narrative of parables and the human element</small></span></div>
+    </div>
+
+    <div id='lifeX' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title washed-green bg-dark-blue tc">lifeX</h2>
+        <div class="light-red tc pb2">being renovated</div>
+        <div class="pv1"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><i class="idea outline icon"></i>Ideas</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><i class="lab outline icon"></i>Experiments</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:goals:list' subdomain='lifex' %}"><i class="bullseye outline icon"></i>Goals</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><i class="clipboard outline icon"></i>Blog</a></div>
+        <span class="f7 fw1"><br/><small>life experiments are all things I do or try out, for fun, or to lead a better life</small></span>
+    </div>
+
+    <div id='hobbies' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title lightest-blue bg-dark-green tc">hobbies</h2>
+        <div class="light-red pb2 tc">work in progress</div>
+        <div class="pv1"><a href="{% url 'stub' %}">Reading</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Playing Games</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Watching Movies</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Watching TV Shows</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Listening Music</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Photography</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Origami</a></div>
+        <div><span class="f7 fw1"><br/><small>I'm pretty sure I have loads more hobbies. I keep finding new interesting things to do every now and then.</small></span></div>
+    </div>
+
+    <div class="fl w-25-ns">
+        <div id='brainbank' class="fl w-100-ns pa2 grow db ">
+            <h2 class="fw2 f-title lh-title dark-blue bg-yellow tc">brainbank</h2>
+            <div class="light-red tc">work in progress</div>
+            <p>R&D ideas <br/>
+            <span class="f7 fw1"><br/><small>where I store all ideas that sometimes become concrete projects, but mostly are experiments.</small></span></p>
         </div>
-        <!-- FEATURED POSTS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'stub' %}"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- harshp.com/featured/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider">awesome</div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for model, post in featured_posts %}
-                                <div class='item'>
-                                    <a href="{{ post.get_absolute_url }}">
-                                        {{ post.title }}
-                                    </a><br>
-                                    <small>{{ model }} - {{ post.date_published }}</small>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Creative Writing -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'stub' %}"><h2 class="ui blue header"><i class="teal font icon"></i>Writing</h2></a></div>
-                        <div class="meta"></div><!-- harshp.com/creative-writing/ -->
-                        <div class="ui horizontal divider">creative</div>
-                        <div class="description">
-                            <div class="ui list">
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'articles:list' subdomain='articles' %}"><i class="newspaper icon"></i>Articles</a></h3><!-- articles.harshp.com -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'blog:list' subdomain='blog' %}"><i class="paragraph icon"></i>Blog</a></h3><!-- blog.harshp.com -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'poems:list' subdomain='poems' %}"><i class="asterisk icon"></i>Poems</a></h3><!-- poems.harshp.com -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'stories:list' subdomain='stories' %}"><i class="quote right icon"></i>Stories</a></h3><!-- stories.harshp.com -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- BrainBank -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'brainbank:list' subdomain='brainbank' %}"><h2 class="ui blue header"><i class="orange idea icon"></i>BrainBank</h2></a></div><!-- brainbank.harshp.com -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider">R&D ideas</div>
-                        <div class="description">
-                            <div class="ui list">
-                                <div class="item">
-                                    <h4 class="ui sub header"><i class="calendar outline icon"></i>latest post</h4>
-                                    <h4 class="ui sub header"><i class="info icon"></i>idea</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id='dev' class="fl w-100-ns pa2 grow db ">
+            <h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2>
+            <div class="light-red pb2 tc">work in progress</div>
+            <p>development blog, project, ideas, and documentation</p>
         </div>
     </div>
-    <!-- ROW 2 -->
-    <div class="ui four column row spacious-top">
-        <!-- LifeX -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><h2 class="ui blue header"><i class="pink lab icon"></i>LifeX</h2></a></div><!-- lifeX.harshp.com -->
-                        <div class="meta"></div>
-                        <div class="description">
-                            <div class="ui horizontal divider"><a href="{{ latest_week.get_absolute_url }}"><i class="marker icon"></i>latest week</a></div><!-- lifeX.harshp.com/latest/week/ -->
-                            <div class="meta">
-                            {{ latest_week.date_start }} - {{ latest_week.date_end }}
-                            </div>
-                            <div class="ui list">
-                            </div>
-                            <div class="ui horizontal divider"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><small><i class="puzzle icon"></i>experiments</small></a></div><!-- lifeX.harshp.com/latest/week/experiments/ -->
-                            <div class="ui list">
-                            {% for exp in latest_week.experiments.all %}
-                            <div class="item">
-                                <div class="header"><a href="{{ exp.get_absolute_url}}"><i class="green lab icon"></i>{{ exp.title }}</a></div>
-                                <a href="{{ exp.idea.category.get_absolute_url}}"><i class="orange idea icon"></i>({{ exp.idea.category.name }})</a> <a href="{{ exp.idea.get_absolute_url}}">{{ exp.idea.title }}</a>
-                            </div>
-                            {% endfor %}
-                            </div>
-                            <div class="ui horizontal divider">Links</div>
-                            <div class="ui list">
-                                <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></h4><!-- lifeX.harshp.com/intro/ -->
-                                </div>
-                                <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><i class="idea outline icon"></i>Ideas</a></h4><!-- lifeX/harshp.com/weeks/ -->
-                                </div>
-                                <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><i class="lab outline icon"></i>Experiments</a></h4><!-- lifeX.harshp.com/experiments/ -->
-                                </div>
-                                <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:goals:list' subdomain='lifex' %}"><i class="bullseye outline icon"></i>Goals</a></h4><!-- lifeX.harshp.com/goals/ -->
-                                </div>
-                                <div class="item">
-                                    <h4 class="ui sub header"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><i class="clipboard outline icon"></i>Blog</a></h4><!-- lifeX.harshp.com/blog/ -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- DEV -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'stub' %}"><h2 class="ui blue header"><i class="violet code icon"></i>/dev</h2></a></div><!-- dev.harshp.com -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider">developer</div>
-                        <div class="description">
-                            <div class="ui list">
+</div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- RESEARCH -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'research:home' subdomain='research' %}"><h2 class="ui blue header"><i class="brown student icon"></i>Research</h2></a></div><!-- research.harshp.com -->
-                        <div class="meta"></div>
-                        <h3 div class="ui header"><a href="#">Ph.D. CompSci</a></h3><!-- research.harshp.com/phd/ -->
-                        <div class="description">
-                            <div class="ui list">
+<div class="fl w-100 pa2">
+    <div id='finance' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title washed-blue bg-blue tc">finance</h2>
+        <div class="light-red pb2 tc">private</div>
+        <div class="pv1"><a href="{% url 'finance:home' subdomain='finance' %}">dashboard</a></div>
+        <div class="pv1"><a href="https://admin.harshp.com/finance/financeaccount/">accounts</a></div>
+        <div class="pv1"><a href="https://admin.harshp.com/finance/budget/">budgets</a></div>
+        <div class="pv1"><a href="https://admin.harshp.com/finance/transaction/">transactions</a></div>
+        <div class="pt1"><a href="https://admin.harshp.com/finance/transfertransaction/">transfers</a></div>
+        <span class="f7 fw1"><br/><small>a way to track expenses and see what's eating all my money</small></span>
+    </div>
 
-                            </div>
-                        </div>
-                        <h3 div class="ui header"><a href="#">M.Sc. CompSci by Research</a></h3><!-- research.harshp.com/msc/ -->
-                        <div class="description">
-                            <div class="ui list">
+    <div id='journal' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title blue bg-light-yellow tc">journal</h2>
+        <div class="light-red pb2 tc">has private sections</div>
+        <div class="pv1"><a href="{% url 'journal:auth' subdomain='journal' %}">login</a></div>
+        <div class="pv1"><a href="{% url 'journal:entries:list' subdomain='journal' %}">entries</a></div>
+        <div class="pt1"><a href="{% url 'journal:sections:list' subdomain='journal' %}">sections</a></div>
+        <span class="f7 fw1"><br/><small>just an online journal, has public and private sections</small></span>
+    </div>
 
-                            </div>
-                        </div>
-                        <h3 div class="ui header"><a href="#">B.Engg. Comp</a></h3><!-- research.harshp.com/bengg/ -->
-                        <div class="description">
-                            <div class="ui list">
+    <div id='meta' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title lh-title light-yellow bg-light-purple tc">meta</h2>
+        <div class="light-red pb2 tc">work in progress</div>
+        <div class="pv1"><a href="{% url 'stub' %}">search</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">suggestions</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">discover</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">feedback</a></div>
+        <div class="pt1"><a href="{% url 'stub' %}">random</a></div>
+        <span class="f7 fw1"><br/><small>interactions with the site and additional functionality</small></span>
+    </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- HOBBIES -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><h2 class="ui blue header"><i class="olive paint brush icon"></i>Hobbies</h2></a></div><!-- hobbies.harshp.com -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><i class="red heart icon"></i> to do</div>
-                        <div class="description">
-                            <div class="ui list">
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><i class="book icon"></i> Read Books</a></h3><!-- hobbies.harshp.com/books/ -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><i class="game icon"></i> Play Games</a></h3><!-- hobbies.harshp.com/games/ -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><i class="film icon"></i> Watch Movies</a></h3><!-- hobbies.harshp.com/movies/ -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><i class="music icon"></i> Listen Music</a></h3><!-- hobbies.harshp.com/music/ -->
-                                </div>
-                                <div class="item">
-                                    <h3 class="ui header"><a href="{% url 'hobbies:home' subdomain='hobbies' %}"><i class="desktop icon"></i> Watch TV Shows</a></h3><!-- hobbies.harshp.com/tvshows/ -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id='help' class="fl w-25-ns pa2 grow db ">
+        <h2 class="fw2 f-title ba b--dark-blue lh-title dark-blue bg-washed-blue tc">how can I help you?</h2>
+        <span class="f7 fw1 moon-silver"><br/><small>I am a jack of all trades, and the master of none; If you need help with something in an area that I'd have/had/will have an interest in, just contact me. I'm always glad to help or just discuss pretty much anything.</small></span>
     </div>
 </div>
 {% endblock e_BODY %}

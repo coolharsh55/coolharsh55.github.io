@@ -1,29 +1,20 @@
 {% extends 'journal/base.html' %}
 {% load subdomainurls %}
 
-{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% block e_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock e_HEADER_SUBTITLE %}
 
 {% block ee_BODY %}
-<div class='ui stackable grid container'>
-    <div class='ui container'>
-        <!-- sections -->
-        <div class='ui horizontal divider'><a href="{% url 'journal:sections:list' subdomain='journal' %}">Sections</a></div>
-        <div class="ui horizontal list">
-        {% for section in sections %}
-            <a class='item' href="{{ section.get_absolute_url }}">{{ section.name }}</a>
-        {% endfor %}
-        </div>
-        <!-- feed -->
-        <div class='ui horizontal divider'>entries</div>
-        <div class='ui list'>
-        {% for entry, visible in entries %}
-            {% if visible %}
-            <a class='item' href="{{ entry.get_absolute_url }}">{% if entry.section %}({{entry.section.name}}) - {% endif %}#{{ entry.id }} {{ entry.title }}</a>
-            {% else %}
-            <a class='item'>private entry</a>
-            {% endif %}
-        {% endfor %}
-        </div>
-    </div>
+<a class="link" href="{% url 'journal:sections:list' subdomain='journal' %}"><span class="f2 near-black">Sections</span></a>
+<div class="pa2">
+    {% if private_sessions %}{% for section in sections %}
+    <a class="ph2 link" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a>{% endfor %}
+    {% else %}<p class="mw-8 center light-red">no public sections available</p>{% endif %}
 </div>
+<p class="f2 near-black">Entries</p>
+{% for entry, visible in entries %}
+<div class="pa2"><a class="link" href="{{ entry.get_absolute_url }}">
+    <span class="dark-gray ph2"><small>entry#{{ entry.id }}</small></span>
+    <span class="blue ph2">{{ entry.title }}</span>
+    {% if entry.section %}<span class="ph2 green">({{entry.section.name}})</span>{% endif %}</a><span class="dark-gray f6">{{ entry.date_published }}</span></div>
+{% endfor %}
 {% endblock ee_BODY %}

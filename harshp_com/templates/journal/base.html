@@ -1,30 +1,25 @@
-{% extends 'sitebase/base.html' %}
-{% load subdomainurls %}
-
-{% block ff_HEADER %}
-    {% block ff_HEADER_ICON %}<i class="grey write icon"></i>{% endblock ff_HEADER_ICON %}
-    {% block ff_HEADER_TITLE %}journal{% endblock ff_HEADER_TITLE %}
-    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'journal:entries:list' subdomain='journal' %}"><u>journal.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-{% endblock ff_HEADER %}
-
-{% block f_CSS %}
-{{ block.super }}
-<style type="text/css">
+{% extends 'sitebase/base.html' %}{% load subdomainurls %}
+{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns bb ba-ns bw3 bw3-ns b--near-black near-black mb5 baskerville">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}journal{% endblock e_HEADER_TITLE %}</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'journal:entries:list' subdomain='journal' %}"><span class="f3 fw1 ph2 dark-gray">journal</span></a>@<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 dark-gray">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+</div>{% endblock f_HEADER %}
+{% block ee_CSS %}<style type="text/css">
 #visibility {
     position: fixed;
     bottom: 10px;
     left: 10px;
     font-style: italic;
 }
-</style>
-{% endblock f_CSS %}
-
+</style>{% endblock ee_CSS %}
 {% block e_BODY %}
 <div id='visibility' class='ui'>
     {% if user.is_authenticated %}
-        <p class='ui red header'><a href="{% url 'journal:logout' %}"><i class="red unhide icon"></i></a>private</p>
+        <p class="pa2"><a class="link" href="{% url 'journal:logout' %}"><span class="light-red">private</span></p>
     {% else %}
-        <p class='ui teal header'><i class="teal hide icon"></i>public</p>
+        <p class='pa3 blue'>public</p>
     {% endif %}
 </div>
 {% block ee_BODY %}{% endblock ee_BODY %}

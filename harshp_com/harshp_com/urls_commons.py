@@ -7,3 +7,5 @@ urlpatterns = [
     url(r'^stub/$', views.stub, name='stub'),
     url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
 ]
+
+handler404 = 'harshp_com.views.handler404'

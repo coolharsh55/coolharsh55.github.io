@@ -1,105 +1,202 @@
-{% extends 'lifeX/base.html' %}
-{% load subdomainurls %}
-
+{% extends 'lifeX/base.html' %}{% load subdomainurls %}{% load static from staticfiles %}
 {% block e_TITLE %}lifeX at harshp.com{% endblock e_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 hot-pink">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
+{% block lib_JS %}<script src="//d3js.org/d3.v3.min.js"></script>{% endblock lib_JS %}
+{% block ee_CSS %}
+<style type="text/css">
+rect {
+  fill: none;
+  pointer-events: all;
+}
 
-{% block ff_HEADER_TITLE %}lifeXperiments{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+pre {
+  font-size: 0.75rem;
+}
 
+line {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  cursor: pointer;
+  fill: #FC28AF;
+  stroke: #FC28AF;
+  stroke-width: 2px;
+}
+
+.node text {
+  padding-left: 20px;
+  padding-bottom: 100px;
+}
+
+path.link {
+  fill: none;
+  stroke: lightgray;
+  stroke-width: 1.5px;
+}
+</style>
+{% endblock ee_CSS %}
 {% block e_BODY %}
-<div class="ui center aligned container segment">
-    <h2 class="ui header">Life Experiments
-        <div class="ui sub header">experiment, evaluate, enumerate</div></h2>
+<article>
+<h1 class="f1 f-title hot-pink">Life Experiments</h1>
+<p class="f2 f-subtitle silver"><small>experiment, evaluate, enumerate</small></p>
+<div class="mw7 center ba pa3 b--gray silver fw1 tc">
+    <p class="f3">I've stopped following this pattern for life experiments, and am thinking and evaluating coming up with something better. Stay tuned!</p>
+</div>
+<div class="mw8 mw5-ns center tc mt3 pa3">
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:ideas:list' subdomain='lifex' %}">ideas for experiments</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:experiments:list' subdomain='lifex' %}">experiment records</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:blog:list' subdomain='lifex' %}">lifeX blog</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:presentation:UCC2014' subdomain='lifex' %}">lifeX presentation</a></div>
+</div>
+<div class="pt3">
+    <p>Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it.</p>
     <p>Most of us unknowlingly live the same life over and over again. We do the same things repeatedly - choosing to not change or try new things out of the fear of unknown or simply because we've grown accustomed to something. We keep saying and thinking - maybe one day I'll try this - but never end up doing. And then we justify it by saying we never had time - or that we can't do it because it doesn't fit in to our current lives. This list of things we wish want to do but don't grows long over our lives like a hanging dead weight on our conscience.</p>
-    <p>This realization led to me develop <b>Life Experiments</b> where I try something new or something I've always thought or wondered about for a week - and see how that goes. The idea can be anything - time management, food, sleep patterns, social interactions, work, study, reading. And I end up having fun doing it and being happy in the long run.</p>
+    <p>Based on our observations, we infer something or come up with new results. This process is called as scientific deduction. Which is the way scientists are supposed to look at everything. Data are facts. Then by contrast, why can’t we live our life scientifically? Do what helps us achieve all that we dream of? Recognize where we fall short. Understand what makes us tick, and what doesn’t. All through running a few little experiments by yourself, which is the basis of life experiments.</p>
+    <p>This realization led to me develop <span class="f4 b">Life Experiments</span> where I try something new or something I've always thought or wondered about for a week - and see how that goes. The idea can be anything - time management, food, sleep patterns, social interactions, work, study, reading. And I end up having fun doing it and being happy in the long run.</p>
 </div>
-<div class="ui stackable grid container">
-    <div class="ui three column row spacious-top">
-        <!-- LINKS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><h2 class="ui blue header"><i class="blue bookmark icon"></i>Links</h2></div>
-                        <div class="meta"></div>
-                        <div class="ui relaxed divided list">
-                            <div class="item">
-                                <i class="large pink middle aligned info icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:about' subdomain='lifex' %}"><h4>What is LifeX?</h4></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large orange middle aligned idea icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><h4>Ideas</h4></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large green middle aligned lab icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><h4>Experiments</h4></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large purple middle aligned bullseye icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:goals:list' subdomain='lifex' %}"><h4>Goals</h4></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large teal middle aligned newspaper icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><h4>Blog</h4></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large brown middle aligned pie chart icon"></i>
-                                <div class="content">
-                                    <a href="{% url 'lifeX:presentation:UCC2014' subdomain='lifex' %}"><h4>Presentation</h4></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CURRENT WEEK -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{{ latest_week.get_absolute_url }}"><h2 class="ui blue header"><i class="orange calendar icon"></i>Last Update</h2></a></div>
-                        <div class="meta">
-                            {{ latest_week.date_start }} - {{ latest_week.date_end }}
-                        </div>
-                        <div class="ui divided relaxed medium list">
-                            {% for exp in latest_week.experiments.all %}
-                            <div class="item">
-                                <div class="header"><a href="{{ exp.get_absolute_url}}"><i class="green lab icon"></i>{{ exp.title }}</a></div>
-                                <a href="{{ exp.idea.category.get_absolute_url}}"><i class="orange idea icon"></i>({{ exp.idea.category.name }})</a> <a href="{{ exp.idea.get_absolute_url}}">{{ exp.idea.title }}</a>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><h2 class="ui blue header"><i class="teal cubes icon"></i>Blog</h2></a></div>
-                        <div class="meta"></div>
-                        <div class="ui divided list">
-                        {% for post in blogposts %}
-                            <div class="ui item">
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small> {{ post.date_published }}</small>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="w-8 cetner ba b--light-pink mt3 pa3">
+    <p class="f3 f-title tc pa3"><a class="hot-pink" href="{% url 'lifeX:goals:list' %}">my life goals</a></p>
+    <div id="graph"></div>
 </div>
+</article>
 {% endblock e_BODY %}
+{% block e_JS %}
+<script>
+var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+h = Math.min(h, 500);
+var depth = Math.max(w/10, 25);
+w -= 100;
+// source http://bl.ocks.org/mbostock/4339083
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+    width = w - margin.right - margin.left,
+    height = h - margin.top - margin.bottom;
+
+var i = 0,
+    duration = 0,
+    root;
+
+var tree = d3.layout.tree()
+    .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("#graph").append("svg")
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var goals = {{ goals|safe }}
+
+// d3.select(self.frameElement).style("height", "800px");
+
+var update = function(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * depth; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+      .on("click", click);
+
+  nodeEnter.append("circle")
+      .attr("r", 1e-6)
+      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+      .text(function(d) { return d.name; })
+      .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+      .attr("r", 4.5)
+      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+      .remove();
+
+  nodeExit.select("circle")
+      .attr("r", 1e-6);
+
+  nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      });
+
+  // Transition links to their new position.
+  link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+var click = function (d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  update(d);
+}
+
+root = goals;
+root.x0 = height/2;
+root.y0 = 0;
+
+update(root);
+</script>
+{% endblock e_JS %}

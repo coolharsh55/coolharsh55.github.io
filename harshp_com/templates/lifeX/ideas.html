@@ -1,46 +1,21 @@
 {% extends 'lifeX/base.html' %}
-
 {% block e_TITLE %}LifeX Ideas{% endblock e_TITLE %}
-{% block ff_HEADER_TITLE %}LifeX Ideas{% endblock ff_HEADER_TITLE %}
-
+{% block e_HEADER_TITLE %}LifeX Ideas{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class='ui container'>
-    <div class='ui styled fluid accordion'>
-        {% for category, ideas in categories %}
-            <div class='title'>
-                <h3 class='ui teal header'><i class='chevron right icon'></i> {{ category.name }}</h3>
-            </div>
-            <div class='content'>
-                <a href="{{ category.get_absolute_url }}"><h5 class='sub header'>open category page</h5></a>
-                <div class='ui transition hidden medium list'>
-                    <div class='ui segment'>
-                    {% for idea in ideas %}
-                        <div class="item">
-                            <a href="{{ idea.get_absolute_url }}">
-                            {% if idea.tried %}
-                                <i class='large green checkmark box icon'></i>
-                                {% if idea.retry %}
-                                    <i class='large pink repeat icon'></i>
-                                {% else %}
-                                    <i class='large red remove circle outline icon'></i>
-                                {% endif %}
-                            {% else %}
-                                <i class='large violet circle thin icon'></i>
-                            {% endif %}
-                            {{ idea.title }}</a>
-                        </div>
-                    {% endfor %}
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+{% for category, ideas in categories %}
+<div class="mw8-ns center pa3">
+    <a class="f4 hot-pink" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+    {% for idea in ideas %}
+    <div class="pv1">
+        <a href="{{ idea.get_absolute_url }}">
+            {% if idea.tried %}<span class="green">✓</span>
+                {% if idea.retry %}<span class="orange">⟲</span>
+                {% else %}<span class="red">⟲</span>{% endif %}
+            {% else %}<span class="light-blue">📅</span>{% endif %}
+            <span class="f4">{{ idea.title }}</span>
+        </a>
     </div>
+    {% endfor %}
 </div>
+{% endfor %}
 {% endblock e_BODY %}
-
-{% block f_JS %}
-{{ block.super }}
-<script type="text/javascript">
-    $('.ui.accordion').accordion();
-</script>
-{% endblock f_JS %}

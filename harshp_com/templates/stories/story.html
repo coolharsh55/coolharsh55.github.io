@@ -1,33 +1,24 @@
 {% extends 'stories/base.html' %}
-
 {% block e_TITLE %}{{ story.title }}{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}{{ story.title }}{% endblock ff_HEADER_TITLE %}
+{% block e_HEADER_TITLE %}{{ story.title }}{% endblock e_HEADER_TITLE %}
 
 {% block e_BODY %}
-<div class="ui center aligned container">
-    <h3><i>{{ story.short_description }}</i></h3>
-    <div class="ui horizontal divided list">
-        <div class="item">
-            published on: <b>{{ story.date_published }}</b>
-        </div>
-        <div class="item">
-            <p>last updated on: <b>{{ story.date_updated }}</b></p>
-        </div>
-    </div><br>
-    <div class="ui horizontal divided list">
-        {% for tag in story.tags.all %}
-        <div class="item">
-            <a href="#" class="ui tiny tag label">{{ tag.name }}</a>
-        </div>
-        {% endfor %}
+<article class="athelas">
+    <h1 class="f1 near-black">{{ story.title }}</h1>
+    <div class="f3 dark-gray mb3">{{ story.short_description }}</div>
+    <div class="f5 silver">
+        <p>published on: <span class="f4">{{ story.date_published }}</span></p>
+        <p>last updated on: <span class="f4">{{ story.date_updated }}</span></p>
     </div>
-    {% if story.series %}<h2 class="ui header"><i class="green cubes icon"></i> {{ story.series.name }}</h2>{% endif %}
-    <div class="ui horizontal divider">#</div>
-    {% if story.headerimage %}<img class="ui big centered fluid image" src="{{ story.headerimage }}"><br>{% endif %}
-    <div id='content' class="ui left aligned container">
-    <h1 class="ui header">{{ story.title }}</h1>
-    <div class="clean-article">{{ story.body_text|safe }}</div>
-    </div>
-</div>
+    <div class="silver f4 pa3 pb3">tags:
+    {% for tag in story.tags.all %}
+        <a class="link silver ph2 ba b--dark-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
+    {% endfor %}
+    </div class="pa3 pt3">
+
+        {% if story.headerimage %}<div class="mw-8 pa3"><img src="{{ story.headerimage }}"></div>{% endif %}
+        <div class="lh-copy">
+            <div>{{ story.body_text|safe }}</div>
+        </div>
+</article>
 {% endblock e_BODY %}

@@ -48,3 +48,4 @@ urlpatterns = [
 ]
 
 admin.site.site_name = 'harshp_com'
+handler404 = views.handler404

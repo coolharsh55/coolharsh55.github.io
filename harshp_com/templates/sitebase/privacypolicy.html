@@ -1,27 +1,19 @@
-{% extends 'sitebase/base.html' %}
-{% load static from staticfiles %}
-{% load subdomainurls %}
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}{% load subdomainurls %}
 
-{% block e_TITLE %}privacy policy - harshp.com {% endblock e_TITLE %}
-
-{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% block e_TITLE %}privacy policy | harshp.com {% endblock e_TITLE %}
+{% block e_HEADER_TITLE %}privacy policy{% endblock e_HEADER_TITLE %}
 
 {% block e_BODY %}
-<div class="ui stackable container">
-    <h1 class="ui center aligned header">Privacy Policy</h1>
-    <h3 class="ui center aligned sub header">This privacy policy describes the purpose of this website, the nature of data collected, its intended purpose and (if any) third party vendors used for various purposes.</h3>
-
-    <div class="ui horizontal divider">purpose</div>
+<div class="center pa3">
+    <h1 class="f1 navy">Privacy Policy</h1>
+    <div class="ba b-silver pa3 center">This privacy policy describes the purpose of this website, the nature of data collected, its intended purpose and (if any) third party vendors used for various purposes.</div>
+    <p class="f4">purpose</p>
     <p>This website is intended to be used and viewed as the personal website of HARSHVARDHAN J. PANDIT explicitly, and is not affiliated with any other person, organisation, or entity. The sole purpose of this website is to act as a front or medium to share the views, articles, artifacts, and any other personal material as chosen or selected by the owner.</p>
-
-    <div class="ui horizontal divider">data collected</div>
+    <p class="f4">data collected</p>
     <p>No data is collected except for authentication, tracking, analysis, or behaviour that helps understand user behaviour on the website and which will be helpful to better the design and interface of this site.</p>
-
-    <div class="ui horizontal divider">data used</div>
+    <p class="f4">data used</p>
     <p>No explicit data is collected. Where data is collected for tracking and behaviour, no personal information is available (to the owner) that may identify the user explicitly.</p>
-
-    <div class="ui horizontal divider">third party</div>
+    <p class="f4">external services</p>
     <p>This site uses Google Analytics to track visitor behvaiour on the website. It DOES NOT use any other form of data collection to identify user's personal information or does not track/influence the user's behaviours on other sites. Please note that Google Analytics has it's own tracking and behvaior preferences that users must be aware of.</p>
-
 </div>
 {% endblock e_BODY %}

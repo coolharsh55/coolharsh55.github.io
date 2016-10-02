@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import RequestContext
 from itertools import chain
 
 from utils.meta_generator import create_meta
@@ -34,24 +35,24 @@ def home(request):
         (post.__class__.__name__, post) for post in
         sorted(
             chain(
-                _get_latest(Article)[:5],
-                _get_latest(BlogPost)[:5],
-                _get_latest(Poem)[:5],
-                _get_latest(Story)[:5]),
+                _get_latest(Article)[:10],
+                _get_latest(BlogPost)[:10],
+                _get_latest(Poem)[:10],
+                _get_latest(Story)[:10]),
             reverse=True,
-            key=lambda p: p.date_published)[:5]
+            key=lambda p: p.date_published)[:10]
     ]
 
     featured_posts = [
         (post.__class__.__name__, post) for post in
         sorted(
             chain(
-                _get_featured(Article)[:5],
-                _get_featured(BlogPost)[:5],
-                _get_featured(Poem)[:5],
-                _get_featured(Story)[:5]),
+                _get_featured(Article)[:10],
+                _get_featured(BlogPost)[:10],
+                _get_featured(Poem)[:10],
+                _get_featured(Story)[:10]),
             reverse=True,
-            key=lambda p: p.date_published)[:5]
+            key=lambda p: p.date_published)[:10]
     ]
 
     latest_week = latest_week = LifeXWeek.objects.order_by('-number').first()
@@ -72,3 +73,11 @@ def stub(request):
 
 def privacy_policy(request):
     return render(request, 'sitebase/privacypolicy.html')
+
+
+def handler404(request):
+    response = render(
+        request, 'sitebase/404.html', {},
+        context_instance=RequestContext(request))
+    response.status_code = 404
+    return response

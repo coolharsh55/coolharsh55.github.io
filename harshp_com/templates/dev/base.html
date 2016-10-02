@@ -1,8 +1,8 @@
-{% extends 'sitebase/base.html' %}
-{% load subdomainurls %}
-
-{% block ff_HEADER %}
-    {% block ff_HEADER_ICON %}<i class="blue code icon"></i>{% endblock ff_HEADER_ICON %}
-    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
-    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'dev:list' subdomain='dev' %}"><u>dev.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-{% endblock ff_HEADER %}
+{% extends 'sitebase/base.html' %}{% load subdomainurls %}
+{% block f_HEADER %}<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="fw6 f3 f2-ns lh-title">{% block e_HEADER_TITLE %}/dev{% endblock e_HEADER_TITLE %}</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 ph2">harshp.com</span></a><a href="{% url 'dev:list' subdomain='dev' %}"><span class="f3 fw1 ph2">/dev</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+</div>{% endblock f_HEADER %}

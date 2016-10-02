@@ -1,14 +1,11 @@
-{% extends 'dev/base.html' %}
-{% load subdomainurls %}
-
-{% block e_TITLE %}dev at harshp.com{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}dev{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-
+{% extends 'dev/base.html' %}{% load subdomainurls %}
+{% block e_TITLE %}dev blog at harshp.com{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}dev blog at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}/dev{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block e_BODY %}
-<div class="ui stackable grid container">
-    <div class="ui center aligned container">
-        <h2 class="ui header">In progress... refresh in a few days!</h2>
-    </div>
+<div class="fl w-100 ph2">
+    <p class="f3 tc near-black">just my developer blog</p>
+    <p class="f5 tc light-red">stay tuned</p>
 </div>
 {% endblock e_BODY %}

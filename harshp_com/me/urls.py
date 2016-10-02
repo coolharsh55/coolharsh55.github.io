@@ -12,3 +12,5 @@ urlpatterns = [
     url(r'', include('harshp_com.urls_commons')),
     url(r'', include(me_urlspatterns, namespace='me')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

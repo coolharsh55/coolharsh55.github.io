@@ -1,116 +1,59 @@
-{% extends 'stories/base.html' %}
-{% load subdomainurls %}
-
+{% extends 'stories/base.html' %}{% load subdomainurls %}
 {% block e_TITLE %}stories at harshp.com{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}Stories{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-
+{% block e_META_DESCRIPTION %}stories at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}Stories{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block e_BODY %}
-<div class="ui stackable grid container">
-    <div class="ui three column row spacious-top">
-        <!-- LATEST STORIES -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Stories</h2></a></div><!-- stories.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ stories_count }} stories</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for story in stories_latest %}
-                                <div class="item">
-                                    <a href="{{ story.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ story.title }}{% if stories.series != None %} - {{ story.series.title }}{% endif %}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ story.date_published }}</h5>
-                                    <p>{{ story.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
-                    </div>
-                </div>
-            </div>
+<div class="fl w-100 pa2">
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-near-black gold tc">latest</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-gray">{{ stories_count }} stories</small> |
+            <a href="#feed"><small class="fw1 f4 dark-gray">see all</small></a>
         </div>
-        <!-- FEATURED POSTS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ stories_featured_count }} stories</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for story in stories_featured %}
-                                <div class="item">
-                                    <a href="{{ story.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ story.title }}{% if stories.series != None %} - {{ story.series.title }}{% endif %}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ story.date_published }}</h5>
-                                    <p>{{ story.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="teal cubes icon"></i>Series</h2></a></div><!-- blog.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ series_count }} series</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for series in series_all %}
-                                <div class="item">
-                                    <a href="{{ series.get_absolute_url }}">
-                                        <h3 class="ui blue header">{{ series.title }}</h3>
-                                    </a>
-                                    <h5 class="ui sub header">{{ series.blogstory_set.count }} stories</h5>
-                                    <p>{{ series.short_description }}</p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="ui blue spacious-top horizontal divider">Feed</div>
-<div class="ui stackable grid container">
-    <div class="ui feed">
-        {% for story in stories_all %}
-        <div class="event">
-            <div class="label">
-                {% if story.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
-            </div>
-            <div class="content">
-                <div class="summary">
-                    <a class="user" href="{{ story.get_absolute_url }}">
-                      {{ story.title }}
-                    </a>
-                    <div class="date">
-                      {{ story.date_published }}
-                    </div>
-                </div>
-                <div class="meta">
-                    {% if story.series %}<a href="#"><h3><i class="green cubes icon"></i> {{ story.series.title }}</h3></a>{% endif %}
-                    {{ story.short_description }}
-                </div>
-            </div>
+        {% for story in stories_latest %}
+        <div class="pv1">
+            <a class="link navy" href="{{ story.get_absolute_url }}">{{ story.title }}</a>{% if stories.series != None %}<br/><small class="f5 dark-gray fw2">{{ story.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 dark-gray">{{ story.date_published }}</small>
+            <br/><small class="f6 fw1 silver">{{ story.short_description }}</small>
         </div>
         {% endfor %}
     </div>
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-near-black gold tc">featured</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-gray">{{ stories_featured_count }} stories</small> |
+            <a href="#featured-stories"><small class="fw1 f4 dark-gray">see all</small></a>
+        </div>
+        {% for story in stories_featured %}
+        <div class="pv1">
+            <a class="link navy" href="{{ story.get_absolute_url }}">{{ story.title }}</a>{% if stories.series != None %}<br/><small class="f5 dark-gray fw2">{{ story.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 dark-gray">{{ story.date_published }}</small>
+            <br/><small class="f6 fw1 silver">{{ story.short_description }}</small>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-near-black gold tc">series</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-gray">{{ series_count }} series</small> |
+            <a href="#series"><small class="fw1 f4 dark-gray">see all</small></a>
+        </div>
+        {% for series in series_all %}
+        <div class="pv1">
+            <a class="link navy" href="{{ series.get_absolute_url }}">{{ series.title }}</a>
+            <br/><small class="f5 dark-gray fw2">{{ series.blogstory_set.count }} stories</small>
+            <br/><small class="f6 fw1 silver">{{ series.short_description }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div id='feed' class="fl w-100 pa2 center tc">
+    <h2 class="f2 f-title bg-near-black gold tc">feed</h2>
+    {% for story in stories_all %}
+    <div class="pv1">
+        {% if story.highlight %}<span class="fw2 light-red pr2"><small>featured</small></span>{% endif %}<a class="link navy" href="{{ story.get_absolute_url }}">{{ story.title }}</a>{% if story.series %}<a class="link dark-near-black pl2 f5 fw2" href="{{ story.series.get_absolute_url }}">{{ story.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 dark-gray">{{ story.date_published }}<br/><small>{{ story.short_description }}</small></span>
+    </div>
+    {% endfor %}
 </div>
 {% endblock e_BODY %}

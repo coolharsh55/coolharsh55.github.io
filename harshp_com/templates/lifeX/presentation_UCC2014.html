@@ -1,13 +1,11 @@
-{% extends 'sitebase/base.html' %}
-{% load staticfiles %}
-{% load subdomainurls %}
-
-{% block f_CSS %}
-<link rel="stylesheet" href="{% static 'reveal_js/css/reveal.css' %}">
-<link rel="stylesheet" href="{% static 'reveal_js/css/theme/white.css' %}" id="theme">
-{% endblock f_CSS %}
-
-{% block e_BODY %}
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}{% load subdomainurls %}
+{% block f_CSS %}<link rel="stylesheet" href="{% static 'reveal_js/css/reveal.css' %}">
+<link rel="stylesheet" href="{% static 'reveal_js/css/theme/white.css' %}" id="theme">{% endblock f_CSS %}
+{% block lib_JS %}<script src="{% static 'reveal_js/lib/js/head.min.js' %}"></script>
+<script src="{% static 'reveal_js/js/reveal.js' %}"></script>{% endblock lib_JS %}
+{% block f_HEADER %}{% endblock f_HEADER %}
+{% block f_FOOTER %}{% endblock f_FOOTER %}
+{% block f_BODY %}
 <div class='reveal'>
 <div class='slides'>
 
@@ -380,15 +378,10 @@
 </div>
 </section>
 
-
 </div>
 </div>
-{% endblock e_BODY %}
-
-{% block f_JS %}
-
-<script src="{% static 'reveal_js/lib/js/head.min.js' %}"></script>
-<script src="{% static 'reveal_js/js/reveal.js' %}"></script>
+{% endblock f_BODY %}
+{% block e_JS %}
 <script>
     Reveal.initialize({
         controls: true,
@@ -398,8 +391,4 @@
         transition: 'slide', // none/fade/slide/convex/concave/zoom
     });
 </script>
-{% endblock f_JS %}
-
-{% block f_HEADER %}{% endblock f_HEADER %}
-{% block FFOOTER %}{% endblock FFOOTER %}
-{% block COOKIEPOLICY %}{% endblock COOKIEPOLICY %}
+{% endblock e_JS %}

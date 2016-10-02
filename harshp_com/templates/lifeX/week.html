@@ -1,34 +1,16 @@
 {% extends 'lifeX/base.html' %}
-
 {% block e_TITLE %}Week {{ week.number }}{% endblock e_TITLE %}
-{% block ff_HEADER_TITLE %}Week {{ week.number }}{% endblock ff_HEADER_TITLE %}
-
+{% block e_HEADER_TITLE %}Week {{ week.number }}{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class='ui container'>
-    <div class='ui center aligned text container segment'>
-        <i class='big orange calendar icon'></i>
-        <h2 class='ui header'>Week {{ week.number }}</h2>
-        <div class='meta'>{{ week.date_start }} - {{ week.date_end }}</div>
+<h2 class='f2 hot-pink'>Week {{ week.number }}<span class='f5'> in life experiments</span></h2>
+<p class='f5 silver'>{{ week.date_start }} - {{ week.date_end }}</p>
+<div class="pv3">
+{% for experiment in week.experiments.all %}
+    <div class="pa2">
+        <a href="{{ experiment.get_absolute_url }}"><span class='f3 blue'>{{ experiment.title }}</span></a>
+        <div class="ui star rating" data-rating="{{ rating }}"></div>
+        <div class="f4">idea: <a href="{{ experiment.idea.get_absolute_url }}"><span class='pr2 green'>{{ experiment.idea.title }}</span></a> category: <a href="{{ experiment.idea.category.get_absolute_url }}"><span class='green'>{{ experiment.idea.category.name }}</span></a></div>
     </div>
-
-    {% for experiment in week.experiments.all %}
-    <div class='ui center aligned text container segment'>
-        <i class='big green lab icon'></i>
-        <a href="{{ experiment.get_absolute_url }}"><h3 class='ui teal header'>{{ experiment.title }}</h3></a>
-        <div class="ui star rating" data-rating="{{ rating }}"></div><br><br>
-        <a href="{{ experiment.idea.get_absolute_url }}"><h4 class='ui olive header'>{{ experiment.idea.title }}</h4></a>
-        <a href="{{ experiment.idea.category.get_absolute_url }}"><h5 class='ui olive sub header'>{{ experiment.idea.category.name }}</h5></a>
-    </div>
-    {% endfor %}
+{% endfor %}
 </div>
 {% endblock e_BODY %}
-
-{% block f_JS %}
-{{ block.super }}
-<script type="text/javascript">
-    $('.ui.rating').rating({
-        maxRating: 5,
-    });
-    $('.ui.rating').rating('disable');
-</script>
-{% endblock f_JS %}

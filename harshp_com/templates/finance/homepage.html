@@ -2,140 +2,141 @@
 {% load subdomainurls %}
 
 {% block e_TITLE %}finance{% endblock e_TITLE %}
-{% block ff_HEADER_TITLE %}Finance{% endblock ff_HEADER_TITLE %}
-
-{% block ee_BODY %}
-<div class="ui raised red segment container">
-    <table class="ui celled padded table">
+{% block e_HEADER_TITLE %}Finance{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' subdomain=None %}"><span class="f3 fw1 ph2 dark-red">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
+{% block lib_JS %}<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>{% endblock lib_JS %}
+{% block e_BODY %}
+<div class="pv3">
+    <h2 class="f2 dark-red">accounts</h2>
+    <table class="w-100 pa2 ba b--dark-red tc">
         <thead>
-            <tr><th class="selectable" colspan="3"><a href="{% url 'finance:accounts' subdomain='finance' %}"><h3>Accounts</h3></a></th></tr>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>amount</th>
+                <th class="pv2 ph3">Name</th>
+                <th class="pv2 ph3">Type</th>
+                <th class="pv2 ph3">amount</th>
             </tr>
         </thead>
         <tbody>
         {% for account in accounts %}
-            <tr>
-                <td class="selectable"><a href="{{ account.get_absolute_url }}"><u>{{ account.name }}</u></a></td>
-                <td>{{ account.get_account_type_display }}</td>
-                <td>{{ account.amount }}</td>
+            <tr class="striped--light-gray">
+                <td class="pv2 ph3"><a href="{{ account.get_absolute_url }}"><u>{{ account.name }}</u></a></td>
+                <td class="pv2 ph3">{{ account.get_account_type_display }}</td>
+                <td class="pv2 ph3">{{ account.amount }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="ui raised green segment container">
-    <table class="ui celled padded table">
+<div class="pv3">
+    <h2 class="f2 dark-red">budgets</h2>
+    <table class="w-100 pa2 ba b--dark-red tc">
         <thead>
-            <tr><th class="selectable" colspan="6"><a href="{% url 'finance:budgets' subdomain='finance' %}"><h3>Budgets</h3></a></th></tr>
             <tr>
-                <th>name</th>
-                <th>period</th>
-                <th>start</th>
-                <th>end</th>
-                <th>amount</th>
-                <th>remaining</th>
+                <th class="pv2 ph3">name</th>
+                <th class="pv2 ph3">period</th>
+                <th class="pv2 ph3">start</th>
+                <th class="pv2 ph3">end</th>
+                <th class="pv2 ph3">amount</th>
+                <th class="pv2 ph3">remaining</th>
             </tr>
         </thead>
         <tbody>
         {% for budget in budgets %}
-            <tr>
-                <td class="selectable"><a href="{{ budget.get_absolute_url }}"><u>{{ budget.name }}</u></a></td>
-                <td>{{ budget.get_period_display }}</td>
-                <td>{{ budget.date_start }}</td>
-                <td>{{ budget.date_end }}</td>
-                <td>{{ budget.amount }}</td>
-                <td>{{ budget.amount_remaining }}</td>
+            <tr class="striped--light-gray">
+                <td class="pv2 ph3"><a href="{{ budget.get_absolute_url }}"><u>{{ budget.name }}</u></a></td>
+                <td class="pv2 ph3">{{ budget.get_period_display }}</td>
+                <td class="pv2 ph3">{{ budget.date_start }}</td>
+                <td class="pv2 ph3">{{ budget.date_end }}</td>
+                <td class="pv2 ph3">{{ budget.amount }}</td>
+                <td class="pv2 ph3">{{ budget.amount_remaining }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="ui raised orange segment container">
-    <table class="ui celled padded table">
-        <thead>
-            <tr><th class="selectable" colspan="2"><a href="{% url 'finance:transactions' subdomain='finance' %}"><h3>Monthly Expenditure</h3></a></th></tr>
-            <tr><th class="selectable" colspan="2"><canvas id='chart' width='100vw' height='50vh'></canvas></th></tr>
-            <tr>
-                <th>category</th>
-                <th>amoutn spent</th>
-        </thead>
-        <tbody id='table-monthly-expenditure'>
-        </tbody>
-    </table>
+<div class="pv3">
+    <h2 class="f2 dark-red">monthly expenditure</h2>
+    <div class="ba b--dark-red">
+        <canvas id='chart' width='100vw' height='50vh'></canvas>
+        <table class="w-100 pt3 tc">
+            <thead>
+                <tr class="striped--dark-red">
+                    <th class="pv2 ph3">category</th>
+                    <th class="pv2 ph3">amount spent</th>
+                </tr>
+            </thead>
+            <tbody id='table-monthly-expenditure'>
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="ui raised blue segment container">
-    <table class="ui celled padded table">
+<div class="pv3">
+    <h2 class="f2 dark-red">Transactions</h2>
+    <table class="w-100 pa2 ba b--dark-red tc">
         <thead>
-            <tr><th class="selectable" colspan="6"><a href="{% url 'finance:transactions' subdomain='finance' %}"><h3>Transactions</h3></a></th></tr>
-            <tr>
-                <th>type</th>
-                <th>account</th>
-                <th>date</th>
-                <th>amount</th>
-                <th>category</th>
-                <th>note</th>
+            <tr class="striped--light-gray">
+                <th class="pv2 ph3">type</th>
+                <th class="pv2 ph3">account</th>
+                <th class="pv2 ph3">date</th>
+                <th class="pv2 ph3">amount</th>
+                <th class="pv2 ph3">category</th>
+                <th class="pv2 ph3">note</th>
         </thead>
         <tbody>
         {% for transaction in transactions %}
-            <tr>
-                <td class="selectable"><a href="{{ transaction.get_absolute_url }}">{{ transaction.get_transaction_type_display }}</a></td>
-                <td class="selectable"><a href="{{ transaction.account.get_absolute_url }}">{{ transaction.account }}</a></td>
-                <td>{{ transaction.date }}</td>
-                <td>{{ transaction.amount }}</td>
-                <td class="selectable"><a href="{{ transaction.category.get_absolute_url }}">{{ transaction.category }}</a></td>
-                <td>{{ transaction.note }}</td>
+            <tr class="striped--light-gray">
+                <td  class="pv2 ph3"><a href="{{ transaction.get_absolute_url }}">{{ transaction.get_transaction_type_display }}</a></td>
+                <td  class="pv2 ph3"><a href="{{ transaction.account.get_absolute_url }}">{{ transaction.account }}</a></td>
+                <td class="pv2 ph3">{{ transaction.date }}</td>
+                <td class="pv2 ph3">{{ transaction.amount }}</td>
+                <td  class="pv2 ph3"><a href="{{ transaction.category.get_absolute_url }}">{{ transaction.category }}</a></td>
+                <td class="pv2 ph3">{{ transaction.note }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
-<div class="ui raised purple segment container">
-    <table class="ui celled padded table">
+<div class="pv3">
+    <h2 class="f2 dark-red">Transfers</h2>
+    <table class="w-100 pa2 ba b--dark-red tc">
         <thead>
-            <tr><th class="selectable" colspan="5"><a href="{% url 'finance:transfers' subdomain='finance' %}"><h3>Transfers</h3></a></th></tr>
-            <tr>
-                <th>from</th>
-                <th>to</th>
-                <th>date</th>
-                <th>amount</th>
-                <th>note</th>
+            <tr class="striped--light-gray">
+                <th class="pv2 ph3">from</th>
+                <th class="pv2 ph3">to</th>
+                <th class="pv2 ph3">date</th>
+                <th class="pv2 ph3">amount</th>
+                <th class="pv2 ph3">note</th>
             </tr>
         </thead>
         <tbody>
         {% for transfer in transfers %}
-            <tr>
-                <td class="selectable"><a href="{{ transfer.account_from.get_absolute_url }}">{{ transfer.account_from }}</a></td>
-                <td class="selectable"><a href="{{ transfer.account_to.get_absolute_url }}">{{ transfer.account_to }}</a></td>
-                <td>{{ transfer.date }}</td>
-                <td>{{ transfer.amount }}</td>
-                <td>{{ transfer.note }}</td>
+            <tr class="striped--light-gray">
+                <td class="pv2 ph3"><a href="{{ transfer.account_from.get_absolute_url }}">{{ transfer.account_from }}</a></td>
+                <td class="pv2 ph3"><a href="{{ transfer.account_to.get_absolute_url }}">{{ transfer.account_to }}</a></td>
+                <td class="pv2 ph3">{{ transfer.date }}</td>
+                <td class="pv2 ph3">{{ transfer.amount }}</td>
+                <td class="pv2 ph3">{{ transfer.note }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
-{% endblock ee_BODY %}
+{% endblock e_BODY %}
 
-{% block f_JS %}
-{{ block.super }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+{% block e_JS %}
 <script type="text/javascript">
 var ctx = document.getElementById("chart");
 var monthly_data = {{ monthly_data|safe }};
+console.log(monthly_data);
 var data = [];
 var labels = [];
 var colors = [];
+var table = document.getElementById('table-monthly-expenditure');
 monthly_data.forEach(function(row) {
     labels.push(row[0])
     data.push(row[1]);
     colors.push(row[2]);
-    var tr = $('<tr>');
-    tr.append($('<td>', { text: row[0] }));
-    tr.append($('<td>', { text: row[1] }));
-    $('#table-monthly-expenditure').append(tr);
+    table.innerHTML += "<tr class=\"striped--light-gray\"><td class=\"pv2 ph3\">" + row[0] + "</td><td class=\"pv2 ph3\">" + row[1] + "</td></tr>";
 });
 var chart_data = {
     labels: labels,
@@ -149,4 +150,4 @@ var myPieChart = new Chart(ctx,{
     data: chart_data,
 });
 </script>
-{% endblock f_JS %}
+{% endblock e_JS %}

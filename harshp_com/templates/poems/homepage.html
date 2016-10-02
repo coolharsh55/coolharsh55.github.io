@@ -1,90 +1,45 @@
-{% extends 'poems/base.html' %}
-{% load subdomainurls %}
-
+{% extends 'poems/base.html' %}{% load subdomainurls %}
 {% block e_TITLE %}poems at harshp.com{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}poems{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-
+{% block e_META_DESCRIPTION %}blog at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}Poems{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-purple">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block e_BODY %}
-<div class="ui stackable grid container">
-    <div class="ui two column row spacious-top">
-        <!-- LATEST POEMS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Poems</h2></a></div><!-- poems.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ poems_count }} poems</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for poem in poems_latest %}
-                                <div class="item">
-                                    <a href="{{ poem.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ poem.title }}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ poem.date_published }}</h5>
-                                    <p>{{ poem.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#feed">see all</a></div>
-                    </div>
-                </div>
-            </div>
+<div class="fl w-100 pa2 center tc">
+    <div class="fl w-50-ns db pa3">
+        <h2 class="f2 bg-dark-gray light-silver tc">latest</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 silver">{{ poems_count }} poems</small> |
+            <a href="#feed"><small class="fw1 f4 silver">see all</small></a>
         </div>
-        <!-- FEATURED POSTS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Poems</h2></a></div><!-- poems.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#">{{ poems_featured_count }} poems</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for poem in poems_featured %}
-                                <div class="item">
-                                    <a href="{{ poem.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ poem.title }}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ poem.date_published }}</h5>
-                                    <p>{{ poem.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#">see all</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id='feed' class="ui blue spacious-top horizontal divider">Feed</div>
-<div class="ui stackable grid container">
-    <div class="ui feed">
-        {% for poem in poems_all %}
-        <div class="event">
-            <div class="label">
-                {% if poem.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
-            </div>
-            <div class="content">
-                <div class="summary">
-                    <a class="user" href="{{ poem.get_absolute_url }}">
-                      {{ poem.title }}
-                    </a>
-                    <div class="date">
-                      {{ poem.date_published }}
-                    </div>
-                </div>
-                <div class="meta">
-                    {{ poem.short_description }}
-                </div>
-            </div>
+        {% for poem in poems_latest %}
+        <div class="pv1">
+            <a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poems.series != None %}<br/><small class="f5 silver fw2">{{ poem.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 silver">{{ poem.date_published }}</small>
+            <br/><small class="f6 fw1 gray">{{ poem.short_description }}</small>
         </div>
         {% endfor %}
     </div>
+    <div class="fl w-50-ns db pa3">
+        <h2 class="f2 bg-dark-gray light-silver tc">featured</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 silver">{{ poems_featured_count }} poems</small> |
+            <a href="#featured-poems"><small class="fw1 f4 silver">see all</small></a>
+        </div>
+        {% for poem in poems_featured %}
+        <div class="pv1">
+            <a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poems.series != None %}<br/><small class="f5 silver fw2">{{ poem.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 silver">{{ poem.date_published }}</small>
+            <br/><small class="f6 fw1 gray">{{ poem.short_description }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div id='feed' class="fl w-100 pa2 center tc">
+    <h2 class="f2 f-title bg-dark-gray light-silver tc">feed</h2>
+    {% for poem in poems_all %}
+    <div class="pv1">
+        {% if poem.highlight %}<span class="fw2 light-red pr2"><small>featured</small></span>{% endif %}<a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poem.series %}<a class="link dark-gray pl2 f5 fw2" href" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
+    </div>
+    {% endfor %}
 </div>
 {% endblock e_BODY %}

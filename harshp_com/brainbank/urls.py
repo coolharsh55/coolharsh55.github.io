@@ -23,3 +23,5 @@ urlpatterns = [
     url(r'', include('harshp_com.urls_commons')),
     url(r'', include(brainbank_urlpatterns, namespace='brainbank')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

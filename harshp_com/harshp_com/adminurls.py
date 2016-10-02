@@ -8,3 +8,5 @@ urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

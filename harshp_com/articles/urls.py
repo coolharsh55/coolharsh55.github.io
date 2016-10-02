@@ -18,3 +18,5 @@ urlpatterns = [
     url(r'', include('harshp_com.urls_commons')),
     url(r'', include(articles_urlpatterns, namespace='articles')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

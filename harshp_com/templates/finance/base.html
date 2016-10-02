@@ -1,14 +1,8 @@
-{% extends 'sitebase/base.html' %}
-{% load subdomainurls %}
-
-{% block ff_HEADER %}
-    {% block ff_HEADER_ICON %}<i class="blue money icon"></i>{% endblock ff_HEADER_ICON %}
-    {% block ff_HEADER_TITLE %}{% endblock ff_HEADER_TITLE %}
-    {% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-{% endblock ff_HEADER %}
-
-{% block e_BODY %}
-    <div class="ui container">
-    {% block ee_BODY %}{% endblock ee_BODY %}
+{% extends 'sitebase/base.html' %}{% load subdomainurls %}
+{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns bb ba-ns bw3 bw3-ns b--dark-red dark-red mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}Articles{% endblock e_HEADER_TITLE %}</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'finance:home' subdomain='finance' %}"><span class="f3 fw1 ph2 dark-red">finance</span></a>@<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 dark-red">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     </div>
-{% endblock e_BODY %}
+</div>{% endblock f_HEADER %}

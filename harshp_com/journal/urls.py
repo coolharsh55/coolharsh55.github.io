@@ -33,3 +33,5 @@ urlpatterns = [
     url(r'', include('harshp_com.urls_commons')),
     url(r'', include(journal_urlpatterns, namespace='journal')),
 ]
+
+handler404 = 'harshp_com.views.handler404'

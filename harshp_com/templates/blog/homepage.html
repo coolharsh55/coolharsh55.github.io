@@ -1,117 +1,59 @@
-{% extends 'blog/base.html' %}
-{% load subdomainurls %}
-
+{% extends 'blog/base.html' %}{% load subdomainurls %}
 {% block e_TITLE %}blog at harshp.com{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}Blog{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
-
+{% block e_META_DESCRIPTION %}blog at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}Blog{% endblock e_HEADER_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block e_BODY %}
-<div class="ui stackable grid container">
-    <div class="ui three column row spacious-top">
-        <!-- LATEST POSTS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="#feed"><h2 class="ui blue header"><i class="red calendar icon"></i>Latest Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="#feed">{{ posts_count }} posts</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for post in posts_latest %}
-                                <div class="item">
-                                    <a href="{{ post.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ post.title }}{% if posts.series != None %} - {{ post.series.title }}{% endif %}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ post.date_published }}</h5>
-                                    <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}
-                                    {{ post.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="#feed">see all</a></div>
-                    </div>
-                </div>
-            </div>
+<div class="fl w-100 pa2">
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-navy washed-blue tc">latest</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-blue">{{ posts_count }} posts</small> |
+            <a href="#feed"><small class="fw1 f4 dark-blue">see all</small></a>
         </div>
-        <!-- FEATURED POSTS -->
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'blog:featured' 'blog' %}"><h2 class="ui blue header"><i class="yellow star icon"></i>Featured Posts</h2></a></div><!-- blog.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="{% url 'blog:featured' 'blog'">{{ posts_featured_count }} posts</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for post in posts_featured %}
-                                <div class="item">
-                                    <a href="{{ post.get_absolute_url }}">
-                                        <h4 class="ui blue header">{{ post.title }}{% if posts.series != None %} - {{ post.series.title }}{% endif %}</h4>
-                                    </a>
-                                    <h5 class="ui sub header">{{ post.date_published }}</h5>
-                                    <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}
-                                    {{ post.short_description }}<br></p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="{% url 'blog:featured' 'blog' %}">see all</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header"><a href="{% url 'blog:series-list' 'blog' %}"><h2 class="ui blue header"><i class="teal cubes icon"></i>Series</h2></a></div><!-- blog.harshp.com/latest/ -->
-                        <div class="meta"></div>
-                        <div class="ui horizontal divider"><a href="{% url 'blog:series-list' 'blog' %}">{{ series_count }} series</a></div>
-                        <div class="description">
-                            <div class="ui list">
-                                {% for series in series_all %}
-                                <div class="item">
-                                    <a href="{{ series.get_absolute_url }}">
-                                        <h3 class="ui blue header">{{ series.title }}</h3>
-                                    </a>
-                                    <h5 class="ui sub header">{{ series.blogpost_set.count }} posts</h5>
-                                    <p>{{ series.short_description }}</p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="ui horizontal divider"><a href="{% url 'blog:series-list' 'blog' %}">see all</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="ui blue spacious-top horizontal divider">Feed</div>
-<div class="ui stackable grid container">
-    <div class="ui feed">
-        {% for post in posts_all %}
-        <div class="event">
-            <div class="label">
-                {% if post.highlight %}<i class="yellow star icon"></i>{% else %}<i class="blue paragraph icon"></i>{% endif %}
-            </div>
-            <div class="content">
-                <div class="summary">
-                    <a class="user" href="{{ post.get_absolute_url }}">
-                      {{ post.title }}
-                    </a>
-                    <div class="date">
-                      {{ post.date_published }}
-                    </div>
-                </div>
-                <div class="meta">
-                   <p>{% if post.series %}<b><i class="green cubes icon"></i> {{ post.series.title }}</b> - {% endif %}{{ post.short_description }}<br></p>
-                </div>
-            </div>
+        {% for post in posts_latest %}
+        <div class="pv1">
+            <a class="link navy" href="{{ post.get_absolute_url }}">{{ post.title }}</a>{% if posts.series != None %}<br/><small class="f5 dark-blue fw2">{{ post.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 dark-blue">{{ post.date_published }}</small>
+            <br/><small class="f6 fw1 blue">{{ post.short_description }}</small>
         </div>
         {% endfor %}
     </div>
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-navy washed-blue tc">featured</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-blue">{{ posts_featured_count }} posts</small> |
+            <a href="#featured-posts"><small class="fw1 f4 dark-blue">see all</small></a>
+        </div>
+        {% for post in posts_featured %}
+        <div class="pv1">
+            <a class="link navy" href="{{ post.get_absolute_url }}">{{ post.title }}</a>{% if posts.series != None %}<br/><small class="f5 dark-blue fw2">{{ post.series.title }}</small>{% endif %}
+            <br/><small class="f6 fw1 dark-blue">{{ post.date_published }}</small>
+            <br/><small class="f6 fw1 blue">{{ post.short_description }}</small>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="fl w-third-ns db pa3">
+        <h2 class="f2 bg-navy washed-blue tc">series</h2>
+        <div class="tc pb3 mh2">
+            <small class="fw1 f4 dark-blue">{{ series_count }} series</small> |
+            <a href="#series"><small class="fw1 f4 dark-blue">see all</small></a>
+        </div>
+        {% for series in series_all %}
+        <div class="pv1">
+            <a class="link navy" href="{{ series.get_absolute_url }}">{{ series.title }}</a>
+            <br/><small class="f5 dark-blue fw2">{{ series.blogpost_set.count }} posts</small>
+            <br/><small class="f6 fw1 blue">{{ series.short_description }}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div id='feed' class="fl w-100 pa2 center tc">
+    <h2 class="f2 f-title bg-navy washed-blue tc">feed</h2>
+    {% for post in posts_all %}
+    <div class="pv1">
+        {% if post.highlight %}<span class="fw2 light-red pr2"><small>featured</small></span>{% endif %}<a class="link navy" href="{{ post.get_absolute_url }}">{{ post.title }}</a>{% if post.series %}<a class="link navy pl2 f5 fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 dark-blue">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+    </div>
+    {% endfor %}
 </div>
 {% endblock e_BODY %}
