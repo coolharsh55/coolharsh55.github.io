@@ -1,0 +1,197 @@
+{% extends 'finance/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}{{ title }}{% endblock e_TITLE %}
+{% block e_HEADER_TITLE %}Monthly Spendings for {{ title }}{% endblock e_HEADER_TITLE %}
+{% block lib_JS %}<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>{% endblock lib_JS %}
+{% block e_BODY %}
+<h1 class="only-print f1 navy">Monthly Spendings for {{ title }}</h1>
+<div class="pv3">
+    <h2 class="f2 navy">Expenditure Summary</h2>
+    <table class='w-100 pa2 ba b--navy tc'>
+        <thead>
+            <tr class='striped--near-white'>
+                <th class="pv2 ph3">Type</th>
+                <th class="pv2 ph3">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="striped--near-white">
+                <td class="pv2 ph3">Income</td>
+                <td class="pv2 ph3">{{ income }}</td>
+            </tr>
+            <tr class="striped--near-white">
+                <td class="pv2 ph3">Total Expense</td>
+                <td class="pv2 ph3">{{ total_expenditure }}</td>
+            </tr>
+            <tr class="striped--near-white">
+                <td class="pv2 ph3">Net Expense</td>
+                <td class="pv2 ph3">{{ net_expenditure }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="pv3">
+    <h2 class="f2 navy">Expenditure Breakdown by Category</h2>
+    <div class="ba b--navy">
+        <canvas id='category-chart' width='100vw' height='50vh'></canvas>
+        <table class="w-100 pt3 tc">
+            <thead>
+                <tr class="striped--navy">
+                    <th class="pv2 ph3">category</th>
+                    <th class="pv2 ph3">amount spent</th>
+                </tr>
+            </thead>
+            <tbody id='table-category-expenditure'>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pv3">
+    <h2 class="f2 navy">Expenditure Breakdown by Tags</h2>
+    <div class="ba b--navy">
+        <canvas id='tags-chart' width='100vw' height='50vh'></canvas>
+        <table class="w-100 pt3 tc">
+            <thead>
+                <tr class="striped--navy">
+                    <th class="pv2 ph3">category</th>
+                    <th class="pv2 ph3">amount spent</th>
+                </tr>
+            </thead>
+            <tbody id='table-tags-expenditure'>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pv3">
+    <h2 class="f2 navy">Expenditure Breakdown by Day</h2>
+    <div class="ba b--navy">
+        <canvas id='day-chart' width='100vw' height='50vh'></canvas>
+        <table class="w-100 pt3 tc">
+            <thead>
+                <tr class="striped--navy">
+                    <th class="pv2 ph3">category</th>
+                    <th class="pv2 ph3">amount spent</th>
+                </tr>
+            </thead>
+            <tbody id='table-day-expenditure'>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pa3">
+    <h2 class="f2 navy">Transactions</h2>
+    <table class="w-100 pa2 ba b--navy tc">
+        <thead>
+            <tr class="striped--near-white">
+                <th class="pv2 ph3">type</th>
+                <th class="pv2 ph3">account</th>
+                <th class="pv2 ph3">date</th>
+                <th class="pv2 ph3">amount</th>
+                <th class="pv2 ph3">category</th>
+                <th class="pv2 ph3">note</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transaction in transactions %}
+            <tr class="striped--near-white">
+                <td  class="pv2 ph3"><a href="{{ transaction.get_absolute_url }}">{{ transaction.get_transaction_type_display }}</a></td>
+                <td  class="pv2 ph3"><a href="{{ transaction.account.get_absolute_url }}">{{ transaction.account }}</a></td>
+                <td class="pv2 ph3">{{ transaction.date }}</td>
+                <td class="pv2 ph3">{{ transaction.amount }}</td>
+                <td  class="pv2 ph3"><a href="{{ transaction.category.get_absolute_url }}">{{ transaction.category }}</a></td>
+                <td class="pv2 ph3">{{ transaction.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="pv3">
+    <h2 class="f2 navy">Transfers</h2>
+    <table class="w-100 pa2 ba b--navy tc">
+        <thead>
+            <tr class="striped--near-white">
+                <th class="pv2 ph3">from</th>
+                <th class="pv2 ph3">to</th>
+                <th class="pv2 ph3">date</th>
+                <th class="pv2 ph3">amount</th>
+                <th class="pv2 ph3">note</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transfer in transfers %}
+            <tr class="striped--near-white">
+                <td class="pv2 ph3"><a href="{{ transfer.account_from.get_absolute_url }}">{{ transfer.account_from }}</a></td>
+                <td class="pv2 ph3"><a href="{{ transfer.account_to.get_absolute_url }}">{{ transfer.account_to }}</a></td>
+                <td class="pv2 ph3">{{ transfer.date }}</td>
+                <td class="pv2 ph3">{{ transfer.amount }}</td>
+                <td class="pv2 ph3">{{ transfer.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock e_BODY %}
+
+{% block e_JS %}
+<script type="text/javascript">
+var c_ctx = document.getElementById("category-chart");
+var category_data = {{ category_data|safe }};
+// console.log(category_data);
+var c_data = [];
+var c_labels = [];
+var c_colors = [];
+var c_table = document.getElementById('table-category-expenditure');
+category_data.forEach(function(row) {
+    c_labels.push(row[0])
+    c_data.push(row[1]);
+    c_colors.push(row[2]);
+    c_table.innerHTML += "<tr class=\"striped--near-white\"><td class=\"pv2 ph3\">" + row[0] + "</td><td class=\"pv2 ph3\">" + row[1] + "</td></tr>";
+});
+var c_chart_data = {
+    labels: c_labels,
+    datasets: [{
+        data: c_data,
+        backgroundColor: c_colors
+    }]
+};
+var categoryPieChart = new Chart(c_ctx,{
+    type: 'pie',
+    data: c_chart_data,
+});
+
+var t_ctx = document.getElementById("tags-chart")
+var tag_data = {{ tag_data|safe }};
+// console.log(tag_data);
+var t_data = [];
+var t_labels = [];
+var t_colors = [];
+var t_table = document.getElementById('table-tags-expenditure');
+tag_data.forEach(function(row) {
+    t_labels.push(row[0])
+    t_data.push(row[1]);
+    t_colors.push(row[2]);
+    t_table.innerHTML += "<tr class=\"striped--near-white\"><td class=\"pv2 ph3\">" + row[0] + "</td><td class=\"pv2 ph3\">" + row[1] + "</td></tr>";
+});
+var t_chart_data = {
+    labels: t_labels,
+    datasets: [{
+        data: t_data,
+        backgroundColor: t_colors
+    }]
+};
+var tagPieChart = new Chart(t_ctx,{
+    type: 'pie',
+    data: t_chart_data,
+});
+
+var d_ctx = document.getElementById("day-chart")
+var day_data = {{ day_data|safe }};
+// console.log(day_data);
+var d_table = document.getElementById('table-day-expenditure');
+var tagPieChart = new Chart(d_ctx,{
+    type: 'line',
+    data: day_data,
+});
+</script>
+{% endblock e_JS %}

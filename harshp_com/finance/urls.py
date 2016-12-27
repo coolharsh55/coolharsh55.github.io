@@ -11,6 +11,13 @@ finance_urlspatterns = [
     # accounts
     url(r'^accounts/$', views.accounts, name='accounts'),
     url(r'^accounts/(?P<slug>[\w-]+)/$', views.account, name='account'),
+    # spending by month
+    url(
+        r'^monthly-spendings/$',
+        views.monthly_spendings_list, name='monthly-spendings-list'),
+    url(
+        r'^monthly-spendings/(?P<year>\d{4})/(?P<month>\d{1,2})/$',
+        views.monthly_spendings, name='monthly-spendings'),
     # categories
     url(r'^categories/$', views.categories, name='categories'),
     url(r'^categories/(?P<slug>[\w-]+)/$', views.category, name='category'),

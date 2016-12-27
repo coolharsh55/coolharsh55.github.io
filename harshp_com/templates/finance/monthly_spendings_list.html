@@ -1,0 +1,33 @@
+{% extends 'finance/base.html' %}
+{% load subdomainurls %}
+
+{% block e_TITLE %}finance{% endblock e_TITLE %}
+{% block e_HEADER_TITLE %}Monthly Spending Lists{% endblock e_HEADER_TITLE %}
+{% block lib_JS %}<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>{% endblock lib_JS %}
+{% block e_BODY %}
+<div class="mw9 center tc mt0 pa0 pb4 bb">
+{% for month, url in months %}
+    <div class="f3 link bg-animate black-80 hover-bg-light-blue dib pa2"><a class="navy" href="{{ url }}">{{ month }}</a></div>
+{% endfor %}
+</div>
+<div class="">
+    <h2 class="f2 navy">Money line</h2>
+    <div class="ba b--navy">
+        <canvas id='money-line-chart' width='100vw' height='50vh'></canvas>
+    </div>
+</div>
+{% endblock e_BODY %}
+{% block e_JS %}
+<script type="text/javascript">
+var money_line_chart_canvas = document.getElementById('money-line-chart');
+// console.log(money_line_data);
+var money_line_chart_data = {
+    labels: {{ labels | safe }},
+    datasets: {{ datasets | safe }}
+};
+var money_line_chart = new Chart(money_line_chart_canvas, {
+    type: 'line',
+    data: money_line_chart_data
+});
+</script>
+{% endblock e_JS %}

@@ -1,8 +1,13 @@
 {% extends 'sitebase/base.html' %}{% load subdomainurls %}
-{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns bb ba-ns bw3 bw3-ns b--dark-red dark-red mb5 georgia">
-    <div class="ph1 ph2-mph6-ns">
-      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}Articles{% endblock e_HEADER_TITLE %}</h1>
-      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'finance:home' subdomain='finance' %}"><span class="f3 fw1 ph2 dark-red">finance</span></a>@<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 dark-red">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
-      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
-    </div>
+{% block f_HEADER %}<div class="center tc br2 pv3 ph6-ns bb bw3 bw3-ns b--navy navy mb5 georgia">
+<div class="ph1 ph2-m ph6-ns">
+    <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb0">{% block e_HEADER_TITLE %}Finance{% endblock e_HEADER_TITLE %}</h1>
+
+    <div class="fw1 f5 ">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    <nav class="tc mw7 center">
+        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="/">Home</a>
+        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'finance:monthly-spendings-list' subdomain='finance' %}">Monthly Spendings</a>
+        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'home' subdomain=None %}">Main Site</a>
+    </nav>
+</div>
 </div>{% endblock f_HEADER %}
