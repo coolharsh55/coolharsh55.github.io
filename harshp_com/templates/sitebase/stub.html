@@ -1,7 +1,14 @@
 {% extends 'sitebase/base.html' %}{% load static from staticfiles %}{% load subdomainurls %}
 {% block e_TITLE %}stub | harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}This page is a stub - a placeholder for unimplemented and unavailable pages on the website.{% endblock e_META_DESCRIPTION %}
-{% block e_HEADER_TITLE %}stub{% endblock e_HEADER_TITLE %}
-{% block e_BODY %}
-<p class="f3 fw1">This page is a stub. This means that the linked / topic / section you clicked is under construction, and has not yet been completed.</p>
-<p>If it is a previously published article that you're looking for, you can contact me to get the article.</p>{% endblock e_BODY %}
+{% block f_HEADER %}
+<div class="center mw8-ns tc br2 pv3 ph6-ns ba-ns bw3-ns b--dark-blue dark-blue mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">STUB</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+    <p class="f3 fw1">This page is a stub. This means that the linked / topic / section you clicked is under construction, and has not yet been completed.</p>
+    <p>If it is a previously published article that you're looking for, you can contact me to get the article.</p>
+</div>
+{% endblock f_HEADER %}

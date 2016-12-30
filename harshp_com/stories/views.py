@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from utils.meta_generator import create_meta
 
@@ -30,7 +29,8 @@ def list(request):
         'meta': meta,
         'stories_all': stories_latest,
         'stories_count': stories_count,
-        'stories_featured': stories_featured[:5],
+        'stories_featured': stories_featured,
+        'stories_featured_recent': stories_featured[:5],
         'stories_featured_count': stories_featured_count,
         'stories_latest': stories_latest[:5],
         'series_all': series[:5],
@@ -38,7 +38,11 @@ def list(request):
 
 
 def series_list(request):
-    return HttpResponse('OK')
+    series = [
+        (s, s.story_set.order_by('date_published'))
+        for s in StorySeries.objects.order_by('title')]
+
+    return render(request, 'stories/series_list.html', {'series': series})
 
 
 def series(request, series):

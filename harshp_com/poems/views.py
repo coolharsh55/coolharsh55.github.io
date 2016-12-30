@@ -25,7 +25,8 @@ def list(request):
         'meta': meta,
         'poems_all': poems_latest,
         'poems_count': poems_count,
-        'poems_featured': poems_featured[:5],
+        'poems_featured': poems_featured,
+        'poems_featured_recent': poems_featured[:5],
         'poems_featured_count': poems_featured_count,
         'poems_latest': poems_latest[:5],
     })

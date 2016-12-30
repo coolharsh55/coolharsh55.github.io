@@ -1,44 +1,58 @@
 {% extends 'poems/base.html' %}{% load subdomainurls %}
 {% block e_TITLE %}poems at harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}blog at harshp.com{% endblock e_META_DESCRIPTION %}
-{% block e_HEADER_TITLE %}Poems{% endblock e_HEADER_TITLE %}
-{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-purple">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
+{% block f_HEADER %}
+<div class="baskerville center tc br2 pv3 ph6-ns bb bw1 bw3-ns b--dark-blue georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0 dark-blue">Poems</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'home' subdomain=None %}"><span class="f3 fw1 ph2 dark-pink">harshp.com</span></a></h2>
+    </div>
+</div>
+{% endblock f_HEADER %}
 {% block e_BODY %}
-<div class="fl w-100 pa2 center tc">
-    <div class="fl w-50-ns db pa3">
-        <h2 class="f2 bg-dark-gray light-silver tc">latest</h2>
+<div class="baskerville fl w-100 pa2 bb bw1 bw1-ns b--dark-blue mb3">
+    <div class="fl w-50-ns db pa3 ">
+        <h2 class="avenir fw1 f2 dark-blue tc">recent</h2>
         <div class="tc pb3 mh2">
-            <small class="fw1 f4 silver">{{ poems_count }} poems</small> |
-            <a href="#feed"><small class="fw1 f4 silver">see all</small></a>
+            <small class="fw1 f4 dark-blue">{{ poems_count }} poems</small> |
+            <a href="#feed"><small class="fw1 f4 dark-blue">see all</small></a>
         </div>
         {% for poem in poems_latest %}
         <div class="pv1">
-            <a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poems.series != None %}<br/><small class="f5 silver fw2">{{ poem.series.title }}</small>{% endif %}
-            <br/><small class="f6 fw1 silver">{{ poem.date_published }}</small>
-            <br/><small class="f6 fw1 gray">{{ poem.short_description }}</small>
+            <a class="f3 link dark-red lh-title avenir" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poem.series %}<br/><span class="f4 dark-blue fw2">{{ poem.series }}</span>{% endif %}
+            <br/><small class="f5 fw1 dark-blue">{{ poem.date_published }}</small>
+            <br/><small class="f5 fw1 blue">{{ poem.short_description }}</small>
         </div>
         {% endfor %}
     </div>
     <div class="fl w-50-ns db pa3">
-        <h2 class="f2 bg-dark-gray light-silver tc">featured</h2>
+        <h2 class="avenir fw1 f2 dark-blue tc">featured</h2>
         <div class="tc pb3 mh2">
-            <small class="fw1 f4 silver">{{ poems_featured_count }} poems</small> |
-            <a href="#featured-poems"><small class="fw1 f4 silver">see all</small></a>
+            <small class="fw1 f4 dark-blue">{{ poems_featured_count }} poems</small> |
+            <a href="#featured"><small class="fw1 f4 dark-blue">see all</small></a>
         </div>
-        {% for poem in poems_featured %}
+        {% for poem in poems_featured_recent %}
         <div class="pv1">
-            <a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poems.series != None %}<br/><small class="f5 silver fw2">{{ poem.series.title }}</small>{% endif %}
-            <br/><small class="f6 fw1 silver">{{ poem.date_published }}</small>
-            <br/><small class="f6 fw1 gray">{{ poem.short_description }}</small>
+            <a class="f3 link dark-red lh-title avenir" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poem.series != None %}<br/><small class="f4 dark-blue fw2">{{ poem.series.title }}</small>{% endif %}
+            <br/><small class="f5 fw1 dark-blue">{{ poem.date_published }}</small>
+            <br/><small class="f5 fw1 blue">{{ poem.short_description }}</small>
         </div>
         {% endfor %}
     </div>
 </div>
+<div id='featured' class="fl w-100 pa2 center tc bb bw1 bw1-ns b--dark-blue mb3">
+    <h2 class="f2 fw1 lh-title dark-blue tc avenir">featured</h2>
+    {% for poem in poems_featured %}
+    <div class="pv2">
+        {% if poem.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a><br/>{% if poem.series %}<a class="link dark-green pl2 f5 fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
+    </div>
+    {% endfor %}
+</div>
 <div id='feed' class="fl w-100 pa2 center tc">
-    <h2 class="f2 f-title bg-dark-gray light-silver tc">feed</h2>
+    <h2 class="f2 fw1 lh-title dark-blue tc avenir">feed</h2>
     {% for poem in poems_all %}
-    <div class="pv1">
-        {% if poem.highlight %}<span class="fw2 light-red pr2"><small>featured</small></span>{% endif %}<a class="link dark-gray" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>{% if poem.series %}<a class="link dark-gray pl2 f5 fw2" href" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
+    <div class="pv2">
+        {% if poem.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a><br/>{% if poem.series %}<a class="link dark-green pl2 f5 fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
     </div>
     {% endfor %}
 </div>

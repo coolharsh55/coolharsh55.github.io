@@ -1,24 +1,29 @@
 {% extends 'blog/base.html' %}
+{% load subdomainurls %}
 {% block e_TITLE %}{{ post.title }}{% endblock e_TITLE %}
-{% block e_HEADER_TITLE %}{{ post.title }}{% endblock e_HEADER_TITLE %}
-
 {% block e_BODY %}
-<article class="athelas">
-    <h1 class="f1 navy">{{ post.title }}</h1>
-    <div class="f3 navy mb3">{{ post.short_description }}</div>
-    <div class="f5 navy">
-        <p>published on: <span class="f4">{{ post.date_published }}</span></p>
-        <p>last updated on: <span class="f4">{{ post.date_updated }}</span></p>
-    </div>
-    <div class="navy f4 pa3 pb3">tags:
-    {% for tag in post.tags.all %}
-        <a class="link navy ph2 ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
-    {% endfor %}
-    </div class="pa3 pt3">
-
-        {% if post.headerimage %}<div class="mw-8 pa3"><img src="{{ post.headerimage }}"></div>{% endif %}
-        <div class="f5 lh-copy ph2">
-            <div>{{ post.body_text|safe }}</div>
+<article class="baskerville pb5">
+    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
+        <h1 class="f3 f-subheadline-l measure lh-title fw1 mt0 dark-red">{{ post.title }}</h1>
+        <nav class="">
+          <div class="tc pb3">
+            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'blog:list' subdomain='blog' %}" title="Blog Home">Blog Home</a>
+            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'home' subdomain=None %}" title="Main Site">Main Site</a>
+          </div>
+        </nav>
+        <div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
+        <time class="f5 f4-l db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
+        <div class="navy pt2 pb4 f5">tags:
+            {% for tag in post.tags.all %}
+                <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
+            {% endfor %}
         </div>
+        {% if post.headerimage %}
+            <img class="w-100 dib measure f3 mb2" src="{{ post.headerimage }}"/>
+        {% endif %}
+    </header>
+    <div class="measure db center f4 f3-ns lh-copy">
+    {{ post.body_text | safe }}
+    </div>
 </article>
 {% endblock e_BODY %}

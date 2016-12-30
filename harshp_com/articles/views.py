@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from utils.meta_generator import create_meta
 
@@ -30,7 +29,8 @@ def list(request):
         'meta': meta,
         'posts_all': posts_latest,
         'posts_count': posts_count,
-        'posts_featured': posts_featured[:5],
+        'posts_featured': posts_featured,
+        'posts_featured_recent': posts_featured[:5],
         'posts_featured_count': posts_featured_count,
         'posts_latest': posts_latest[:5],
         'series_all': series[:5],
@@ -38,14 +38,22 @@ def list(request):
 
 
 def series_list(request):
-    return HttpResponse('OK')
+    series = [
+        (s, s.articles_set.order_by('date_published'))
+        for s in ArticleSeries.objects.order_by('title')]
+
+    return render(request, 'article/series_list.html', {'series': series})
 
 
 def series(request, series_slug):
     """return requested Blog Series"""
 
     series = get_object_or_404(ArticleSeries, slug=series_slug)
-    return render(request, 'articles/series.html', {'series': series})
+    return render(
+        request, 'articles/series.html', {
+            'series': series,
+            'posts': series.article_set.order_by('-date_published')
+        })
 
 
 def series_post(request, series_slug, slug):

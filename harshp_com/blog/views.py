@@ -29,7 +29,8 @@ def list(request):
         'meta': meta,
         'posts_all': posts_latest,
         'posts_count': posts_count,
-        'posts_featured': posts_featured[:5],
+        'posts_featured': posts_featured,
+        'posts_featured_recent': posts_featured[:5],
         'posts_featured_count': posts_featured_count,
         'posts_latest': posts_latest[:5],
         'series_all': series[:5],
@@ -62,7 +63,7 @@ def series(request, series):
         request, 'blog/series.html',
         {
             'series': series,
-            'posts': series.blogpost_set.order_by('date_published')
+            'posts': series.blogpost_set.order_by('-date_published')
         })
 
 

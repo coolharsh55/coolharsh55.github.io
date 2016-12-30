@@ -1,93 +1,100 @@
 {% extends 'me/base.html' %}{% load subdomainurls %}{% load subdomainurls %}
 {% block e_TITLE %}About Me | Harshvardhan{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}about me - personal information and introduction to Harshvardhan Pandit, that is myself, and my website - harshp.com{% endblock e_META_DESCRIPTION %}
-{% block e_HEADER_TITLE %}About Me{% endblock e_HEADER_TITLE %}
-
-{% block e_BODY %}
-<h2 class="f2 dark-green">Hi, I'm Harsh!</h2>
-<p class="f3 fw1">A PhD Comp-Sci researcher with ADAPT at Trinity, Dublin</p>
-<div class="pv3 ph2 ph5-ns ba bw1 b--silver">
-    <p class="f4-ns silver">Are you looking for a profile of me?</p>
-    <div class="mt3 mh2">
-        <a class="link silver" href="https://github.com/coolharsh55/">Github</a> |
-        <a class="link silver" href="#">Research</a> |
-        <a class="link silver" href="#">Resume</a> |
-        <a class="link silver" href="#">Developer</a>
+{% block f_HEADER %}
+<div class="baskerville center tc br2 pv3 ph6-ns bb bw1 bw3-ns b--near-black near-black georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">Hi, I'm Harsh!</h1>
+      <div class="fw2 f6 lh-title mt0 mb3"><a href="{% url 'home' subdomain=None %}"><span class="f3 fw1 ph2 light-red">Main Site</span></a></div>
     </div>
 </div>
-<p class="f4">Otherwise, here's a list of topics on this page - </p>
-<ul class="list">
-    <li><a href="#me">me</a></li>
-    <li><a href="#hobbies">hobbies</a>
+{% endblock f_HEADER %}
+
+{% block e_BODY %}
+<article class="baskerville near-black">
+    <div class="w-80-ns center f4 lh-copy">
+        <p class="f4">Are you looking for a profile of me?</p>
+        <div class="mt3 mh2">
+            <a class="link dark-gray" href="https://github.com/coolharsh55/">Github</a> |
+            <a class="link dark-gray" href="#">Research</a> |
+            <a class="link dark-gray" href="#">Resume</a> |
+            <a class="link dark-gray" href="#">Developer</a>
+        </div>
+        <p class="f4">Otherwise, here's a list of topics on this page - </p>
         <ul class="list">
-            <li><a href="#creative-writing">creative writing</a>
+            <li><a href="#me">me</a></li>
+            <li><a href="#hobbies">hobbies</a>
                 <ul class="list">
-                    <li><a href="#articles">articles</a></li>
-                    <li><a href="#poetry">poetry</a></li>
-                    <li><a href="#short-stories">short stories</a></li>
+                    <li><a href="#creative-writing">creative writing</a>
+                        <ul class="list">
+                            <li><a href="#articles">articles</a></li>
+                            <li><a href="#poetry">poetry</a></li>
+                            <li><a href="#short-stories">short stories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#movies">movies</a></li>
+                    <li><a href="#tvshows">tv shows</a></li>
+                    <li><a href="#video-games">video games</a></li>
+                    <li><a href="#books">reading books</a></li>
+                    <li><a href="#photography">photography</a></li>
                 </ul>
             </li>
-            <li><a href="#movies">movies</a></li>
-            <li><a href="#tvshows">tv shows</a></li>
-            <li><a href="#video-games">video games</a></li>
-            <li><a href="#books">reading books</a></li>
-            <li><a href="#photography">photography</a></li>
+            <li><a href="#education">education</a>
+                <ul class="list">
+                    <li><a href="#phd">Ph.D. in Computer Science</a></li>
+                    <li><a href="#msc">MSc. in Computer Science by Research</a></li>
+                    <li><a href="#bengg">Bachelor of Engg. in Computers</a></li>
+                </ul>
+            </li>
+            <li><a href="#technology">technology</a></li>
+            <li><a href="#philosophy">philosophy</a></li>
         </ul>
-    </li>
-    <li><a href="#education">education</a>
-        <ul class="list">
-            <li><a href="#phd">Ph.D. in Computer Science</a></li>
-            <li><a href="#msc">MSc. in Computer Science by Research</a></li>
-            <li><a href="#bengg">Bachelor of Engg. in Computers</a></li>
-        </ul>
-    </li>
-    <li><a href="#technology">technology</a></li>
-    <li><a href="#philosophy">philosophy</a></li>
-</ul>
 
-<div id="me" class="pt3">
-    <h3 class="f3">me</h3>
-    <p>Well, the name actually is <b>Harshvardhan Jitendra Pandit</b>, but since that is quite a handful, I also accept <b>Harsh</b>. So far, I'm about 26 years young (not old!), still full of enthusiasm and energy, and still pondering over the meaning of life (it's not 42). I'm quite selective of the things I do, and by doing, I mean so in all possible ways - whether it be eating, sleeping, thinking, reading, or even speaking. It all comes down to whether I have a choice in that matter - and I feel, that yes I do, in fact, we all do! So in a gist, I'm being more responsible for me :)</p>
-    <p>It is rather simple to write short stories and poems and research articles than to write about oneself. That is because I have absolutely no clue about when I should stop talking about myself. If you could keep me engaged and interested in a conversation (which is a very difficult task in itself), I might even tell you my life story!!! Though I agree that this all seems a bit silly (that's pretty much a description for me), I usually am careful about what I say. But I still end up talking a lot - I'm someone who speaks with an open mind but a closed heart!</p>
-</div>
-<div id="hobbies" class="pv3">
-    <h3 class="f3">hobbies</h3>
-    <h4 id="creative-writing" class="f4">creative writing</h4>
-    <p>I like <b>creative writing</b> - things like <b>articles</b>, <b>poetry</b>, and <b>short stories</b> are something I really enjoy writing because they are extension of expressing my thoughts, ideas, and sometimes feelings. I specifically emphasized the word <i>creative</i> because it involves a very peculiar creativity or creative activity. Every article, poem, or story that I write gets me thinking, building, and evaluating in an endless loop. I enjoy this process. The other things I like to do are watching <b>movies</b>, <b>tv shows</b>, reading <b>books</b>, playing <b>video games</b>, and <b>novice photography</b>. Apart from photography, the other four are <i>passive</i> hobbies, because they are non-creative since I'm consuming them rather than creating.</p>
-    <h5 id="articles" class="f5">articles</h5>
-    <p>Articles are an expression of opinion spiced with facts, but more geared towards being useful to others. Unlike a blog post, reading them is more about gaining knowledge or perspective rather than knowing what I are for lunch (seriously, what did I eat for lunch??). To that end, articles I write range from productivity techniques, to critiques of various things I find, and sometimes even humorous parodies of ununsual subjects such as government conspiracies and going shopping in a mall (not much difference between the two, I tell you).</p>
-    <h5 id="poetry" class="f5">poetry</h5>
-    <p>Poetry is a play of words. It is an art in itself, because I believe that a good poem is like a good painting - it manages to convey ideas clearly while leaving the person with unsaid thoughts and feelings that come from within. I enjoy writing poetry when the whim strikes me.</p>
-    <p>When I first started writing poetry, I was a teenager. The first poems I wrote were full of the angry, rebellious feelings typical of a teenager. With age came perspective and a change in the way I saw poetry - it became more nuanced, more colorful, more varied. Now I write poems to express a feeling, or an idea, or a concept. It has become a form of playful expression that I enjoy occasionally.</p>
-    <h5 id="short-stories" class="f5">short stories</h5>
-    <p>I sometimes feel like I’m reading someone else’s words when I’m just reading my own stories. Strangely, I immensely enjoy reading my own works! I dream of one day publishing them, even though it may be for free, but that would be one tick more on my bucket list. It’s the same with poetry as well. Sometimes I’m just poetic, and the words keep flowing out. Sometimes it’s difficult to string two words together. I hope I have enough good ones to be able to publish them one day.</p>
-    <p>I mostly love to write <b>parables</b>, something along the line of Aesop’s fables, but with human elements. I am yet to reach a stage where I can say I have written a good parable, but I’m reaching there. One story at a time. Sometimes, I write romanticism into the stories since it is so mainstream. I also dabble into other genres, like <i>horror, sci-fi, parody</i> and <i>humor</i>.</p>
-    <h4 id="movies" class="f4">movies</h4>
-    <p>Who doesn’t like a good movie? Everyone does, but the taste for what makes a good movie differs with each person. I have a simple test for a good movie, which I describe as – “<i>only the cream at the top</i>", which in simpler term means - <i>it shouldn't stink</i>. Which means, I feel tortured if I see a not so good movie. I usually look out for good movies based on – <i>direction, acting, editing, cinematography, story, characters, loopholes,</i> and <i>sound</i>. I can bear with the technology, and costumes, and locations being <i>old, mediocre</i>, or even <i>abstract</i>. I dwell more on whether the movie stimulates my mind. I do not like the notion of watching a movie just to pass some time, since it is akin to <i>wasting</i> time.</p>
-    <p>Over the years, I have watched a large number of movies, good movies, which has given rise to a favorite directors list that I’m always excited about. I also like short films – they show great potential and creativity, and are also more easier to produce, thereby allowing more people to make them.</p>
-    <h4 id="tvshows" class="f4">tv shows writing</h4>
-    <p><b>Game of Thrones, Breaking Bad, Neon Genesis Evagelion, House of Cards.</b> TV shows are a great way to tell a story - they are longer than movies, hence have more depth, and are so much more adept at conveying a story line that it makes for great viewing. I'm partial when it comes to TV shows - even more so than movies. A movie may last a few hours, whereas a tv show lasts days. Hence, it requires more thought and selection. I'm also fond of anime, so those are some really stimulating and interesting viewings I have. I usually go for tv shows that are exceptional in terms of styling, story, or recommendation coming from someone I know has good taste.</p>
-    <h4 id="video-games" class="f4">video games</h4>
-    <p>Playing video games is a classic form of entertainment - from <b>pacman, mario</b>, and <b>doom</b> to <b>crysis, call of duty,</b> and <b>borderlands</b>; I enjoy games across a wide range of genres, platforms, and narratives. Usually, it is something that I can play for a few hours without much investment into the game - so fps makes a really good choice. I also enjoy playing indie games, they are amazingly creative and always push the boundaries of art and storytelling while giving a different experience.</p>
-    <h4 id="books" class="f4">books</h4>
-    <p>I’m an avid reader, I’ve always been. Where I prefered exiting thrillers and science fiction books earlier, I’ve recently started reading biographies and non-fiction involving exciting changes in the modern world, particularly in the technical field. My favorite books are <b>The Fountainhead, Atlas Shrugged</b> and <b>The Mahabharata</b>. They helped me shape my mind and thoughts to face the world of today, and helped me keep the desire to keep doing good work without being bound to empty criticism. These works also allowed me to realize what I am, and what I am not.</p>
-    <p>I read a lot of science fiction over the years. In school, I relished <b>Jules Verne</b> and <b>H. G. Wells</b> - classics that piqued my reading. Growing up, I read the more bizarre ones such as <b>Neuromancer</b>, the matrix-esque book that shaped much of cyber-thrillers in years to come. Over time I’ve come to love and read a lot of <b>Michael Crighton</b>. On the same note, I am a huge fan of <b>Stephen King</b> - He writes stories that suck the readers in and don’t let go until the book has been finished. I also read a lot of <b>John Grisham and Sidney Sheldon</b> when I was in school. As with the phenomenon that took over the world, I too love <b>Harry Potter</b> - It is the most wonderful story I’ve ever read, heard or seen.</p>
-    <h4 id="photography" class="f4">photography</h4>
-    <p>I have a <b>Nikon D3200</b> with a <b>35mm f/1.8</b> prime lens. That’s my go-to setup for photographing. I try to find time amidst all the other things I do - and I term myself as a novice photographer - someone who knows the basics of photography, and is still learning. My aim is to not pursue it at a professional level, but be good enough that I’m happy to keep it as a hobby.</p>
+        <div id="me" class="">
+            <h3 class="f1">me</h3>
+            <p>Well, the name actually is <b>Harshvardhan Jitendra Pandit</b>, but since that is quite a handful, I also accept <b>Harsh</b>. So far, I'm about 26 years young (not old!), still full of enthusiasm and energy, and still pondering over the meaning of life (it's not 42). I'm quite selective of the things I do, and by doing, I mean so in all possible ways - whether it be eating, sleeping, thinking, reading, or even speaking. It all comes down to whether I have a choice in that matter - and I feel, that yes I do, in fact, we all do! So in a gist, I'm being more responsible for me :)</p>
+            <p>It is rather simple to write short stories and poems and research articles than to write about oneself. That is because I have absolutely no clue about when I should stop talking about myself. If you could keep me engaged and interested in a conversation (which is a very difficult task in itself), I might even tell you my life story!!! Though I agree that this all seems a bit silly (that's pretty much a description for me), I usually am careful about what I say. But I still end up talking a lot - I'm someone who speaks with an open mind but a closed heart!</p>
+        </div>
+        <div id="hobbies" class="pv3">
+            <h3 class="f1">hobbies</h3>
+            <h4 id="creative-writing" class="f2">creative writing</h4>
+            <p>I like <b>creative writing</b> - things like <b>articles</b>, <b>poetry</b>, and <b>short stories</b> are something I really enjoy writing because they are extension of expressing my thoughts, ideas, and sometimes feelings. I specifically emphasized the word <i>creative</i> because it involves a very peculiar creativity or creative activity. Every article, poem, or story that I write gets me thinking, building, and evaluating in an endless loop. I enjoy this process. The other things I like to do are watching <b>movies</b>, <b>tv shows</b>, reading <b>books</b>, playing <b>video games</b>, and <b>novice photography</b>. Apart from photography, the other four are <i>passive</i> hobbies, because they are non-creative since I'm consuming them rather than creating.</p>
+            <h5 id="articles" class="f3">articles</h5>
+            <p>Articles are an expression of opinion spiced with facts, but more geared towards being useful to others. Unlike a blog post, reading them is more about gaining knowledge or perspective rather than knowing what I are for lunch (seriously, what did I eat for lunch??). To that end, articles I write range from productivity techniques, to critiques of various things I find, and sometimes even humorous parodies of ununsual subjects such as government conspiracies and going shopping in a mall (not much difference between the two, I tell you).</p>
+            <h5 id="poetry" class="f3">poetry</h5>
+            <p>Poetry is a play of words. It is an art in itself, because I believe that a good poem is like a good painting - it manages to convey ideas clearly while leaving the person with unsaid thoughts and feelings that come from within. I enjoy writing poetry when the whim strikes me.</p>
+            <p>When I first started writing poetry, I was a teenager. The first poems I wrote were full of the angry, rebellious feelings typical of a teenager. With age came perspective and a change in the way I saw poetry - it became more nuanced, more colorful, more varied. Now I write poems to express a feeling, or an idea, or a concept. It has become a form of playful expression that I enjoy occasionally.</p>
+            <h5 id="short-stories" class="f3">short stories</h5>
+            <p>I sometimes feel like I’m reading someone else’s words when I’m just reading my own stories. Strangely, I immensely enjoy reading my own works! I dream of one day publishing them, even though it may be for free, but that would be one tick more on my bucket list. It’s the same with poetry as well. Sometimes I’m just poetic, and the words keep flowing out. Sometimes it’s difficult to string two words together. I hope I have enough good ones to be able to publish them one day.</p>
+            <p>I mostly love to write <b>parables</b>, something along the line of Aesop’s fables, but with human elements. I am yet to reach a stage where I can say I have written a good parable, but I’m reaching there. One story at a time. Sometimes, I write romanticism into the stories since it is so mainstream. I also dabble into other genres, like <i>horror, sci-fi, parody</i> and <i>humor</i>.</p>
+            <h4 id="movies" class="f2">movies</h4>
+            <p>Who doesn’t like a good movie? Everyone does, but the taste for what makes a good movie differs with each person. I have a simple test for a good movie, which I describe as – “<i>only the cream at the top</i>", which in simpler term means - <i>it shouldn't stink</i>. Which means, I feel tortured if I see a not so good movie. I usually look out for good movies based on – <i>direction, acting, editing, cinematography, story, characters, loopholes,</i> and <i>sound</i>. I can bear with the technology, and costumes, and locations being <i>old, mediocre</i>, or even <i>abstract</i>. I dwell more on whether the movie stimulates my mind. I do not like the notion of watching a movie just to pass some time, since it is akin to <i>wasting</i> time.</p>
+            <p>Over the years, I have watched a large number of movies, good movies, which has given rise to a favorite directors list that I’m always excited about. I also like short films – they show great potential and creativity, and are also more easier to produce, thereby allowing more people to make them.</p>
+            <h4 id="tvshows" class="f2">tv shows writing</h4>
+            <p><b>Game of Thrones, Breaking Bad, Neon Genesis Evagelion, House of Cards.</b> TV shows are a great way to tell a story - they are longer than movies, hence have more depth, and are so much more adept at conveying a story line that it makes for great viewing. I'm partial when it comes to TV shows - even more so than movies. A movie may last a few hours, whereas a tv show lasts days. Hence, it requires more thought and selection. I'm also fond of anime, so those are some really stimulating and interesting viewings I have. I usually go for tv shows that are exceptional in terms of styling, story, or recommendation coming from someone I know has good taste.</p>
+            <h4 id="video-games" class="f2">video games</h4>
+            <p>Playing video games is a classic form of entertainment - from <b>pacman, mario</b>, and <b>doom</b> to <b>crysis, call of duty,</b> and <b>borderlands</b>; I enjoy games across a wide range of genres, platforms, and narratives. Usually, it is something that I can play for a few hours without much investment into the game - so fps makes a really good choice. I also enjoy playing indie games, they are amazingly creative and always push the boundaries of art and storytelling while giving a different experience.</p>
+            <h4 id="books" class="f2">books</h4>
+            <p>I’m an avid reader, I’ve always been. Where I prefered exiting thrillers and science fiction books earlier, I’ve recently started reading biographies and non-fiction involving exciting changes in the modern world, particularly in the technical field. My favorite books are <b>The Fountainhead, Atlas Shrugged</b> and <b>The Mahabharata</b>. They helped me shape my mind and thoughts to face the world of today, and helped me keep the desire to keep doing good work without being bound to empty criticism. These works also allowed me to realize what I am, and what I am not.</p>
+            <p>I read a lot of science fiction over the years. In school, I relished <b>Jules Verne</b> and <b>H. G. Wells</b> - classics that piqued my reading. Growing up, I read the more bizarre ones such as <b>Neuromancer</b>, the matrix-esque book that shaped much of cyber-thrillers in years to come. Over time I’ve come to love and read a lot of <b>Michael Crighton</b>. On the same note, I am a huge fan of <b>Stephen King</b> - He writes stories that suck the readers in and don’t let go until the book has been finished. I also read a lot of <b>John Grisham and Sidney Sheldon</b> when I was in school. As with the phenomenon that took over the world, I too love <b>Harry Potter</b> - It is the most wonderful story I’ve ever read, heard or seen.</p>
+            <h4 id="photography" class="f2">photography</h4>
+            <p>I have a <b>Nikon D3200</b> with a <b>35mm f/1.8</b> prime lens. That’s my go-to setup for photographing. I try to find time amidst all the other things I do - and I term myself as a novice photographer - someone who knows the basics of photography, and is still learning. My aim is to not pursue it at a professional level, but be good enough that I’m happy to keep it as a hobby.</p>
 
-<div id="education" class="pv3">
-    <h3 class="f3">education</h3>
-    <h4 id="phd" class="f4">Ph.D. in Computer Science</h4>
-    <p>I am pursuing my <b>Ph.D.</b> with the <b>ADAPT</b> research group at <b>Trinity, Dublin</b>. My research aims to investigate the role and approaches of privacy and ethics concerns associated with handling data and ways to convey it to the user. I started the first year of my PhD in 2016 and would hopefully graduate in 2020.</p>
-    <h4 id="msc" class="f4">MSc. in Computer Science by Research</h4>
-    <p>I pursued <b>Masters in Computer Science by Research</b> looking into how data within smartphone apps can be used to form contextual smart services. I started in Jan 2014 and graduated in 2015 with <b>University College Cork, Ireland</b>. </p>
-    <h4 id="bengg" class="f4">Bachelor of Engineering in Computers</h4>
-    <p>I did my undergraduate degree at the <b>University of Pune</b> as a <b>Bachelor in Engineering, Computers</b> from 2009 to 2013. </p>
-</div>
-<div id="technology" class="pv3">
-    <h3 class="f3">technology</h3>
-    <p>I'm an <i>avant garde</i> developer who likes to experiment and turn ideas into tangible things I can see and interact with. My current interests and fascinations include <b>python, django, lisp (CL), and haskell.</b>
-    </p>
-</div>
-<div id="philosophy" class="pv3"></div>
+        <div id="education" class="pv3">
+            <h3 class="f2">education</h3>
+            <h4 id="phd" class="f3">Ph.D. in Computer Science</h4>
+            <p>I am pursuing my <b>Ph.D.</b> with the <b>ADAPT</b> research group at <b>Trinity, Dublin</b>. My research aims to investigate the role and approaches of privacy and ethics concerns associated with handling data and ways to convey it to the user. I started the first year of my PhD in 2016 and would hopefully graduate in 2020.</p>
+            <h4 id="msc" class="f3">MSc. in Computer Science by Research</h4>
+            <p>I pursued <b>Masters in Computer Science by Research</b> looking into how data within smartphone apps can be used to form contextual smart services. I started in Jan 2014 and graduated in 2015 with <b>University College Cork, Ireland</b>. </p>
+            <h4 id="bengg" class="f3">Bachelor of Engineering in Computers</h4>
+            <p>I did my undergraduate degree at the <b>University of Pune</b> as a <b>Bachelor in Engineering, Computers</b> from 2009 to 2013. </p>
+        </div>
+        <div id="technology" class="pv3">
+            <h3 class="f2">technology</h3>
+            <p>I'm an <i>avant garde</i> developer who likes to experiment and turn ideas into tangible things I can see and interact with. My current interests and fascinations include <b>python, django, lisp (CL), and haskell.</b>
+            </p>
+        </div>
+        <div id="philosophy" class="pv3"></div>
+    </div>
+</article>
 {% endblock e_BODY %}
