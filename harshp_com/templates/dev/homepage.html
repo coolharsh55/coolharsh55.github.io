@@ -5,7 +5,38 @@
 {% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block e_BODY %}
 <div class="fl w-100 ph2">
-    <p class="f3 tc near-black">just my developer blog</p>
-    <p class="f5 tc light-red">stay tuned</p>
+    <div id="latest" class="fl w-33-ns pa2 db">
+        <h2 class="fw2 dark-green tc">recent</h2>
+        {% for post in latest_posts %}
+        <div class="pv1">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="highlights" class="fl w-33-ns pa2 db">
+        <h2 class="fw2 dark-green tc">highlights</h2>
+        {% for post in highlights %}
+        <div class="pv1">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="section-types" class="fl w-33-ns pa2 db">
+        <h2 class="fw2 dark-green tc">links</h2>
+        <a class="f4 db link tc" href="{% url 'dev:guides_tutorials:index">Guides &amp; tutorials</a>
+        <a class="f4 db link tc" href="{% url 'dev:resources:index">Resources</a>
+        <a class="f4 db link tc" href="{% url 'dev:discussions:index">Discussions</a>
+        <a class="f4 db link tc" href="{% url 'dev:mystack:index">My Stack</a>
+        <a class="f4 db link tc" href="{% url 'dev:projects:index">Projects</a>
+    </div>
+</div>
+
+<div id="#feed" class="fl w-80-ns pv2 center">
+    <h2 class="f2 fw1 lh-title dark-blue tc avenir">feed</h2>
+    {% for post in all_posts %}
+    <div class="pv2">
+        {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2 f5 fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+    </div>
+    {% endfor %}
 </div>
 {% endblock e_BODY %}
