@@ -50,7 +50,9 @@ class DevSection(models.Model):
         return super(DevSection, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('dev:section', args=[self.slug], subdomain='dev')
+        return reverse(
+            'dev:{section_type}:section'.format(section_type=self.section_type), 
+            args=[self.slug], subdomain='dev')
 
 
 class DevPost(Post):
@@ -83,7 +85,7 @@ class DevPost(Post):
 
     def get_absolute_url(self):
         return reverse(
-            'dev:post',
+            'dev:{section_type}:post'.format(section_type=self.section.section_type),
             args=[self.section.slug, self.slug], subdomain='dev')
 
     def get_seo_meta(self):

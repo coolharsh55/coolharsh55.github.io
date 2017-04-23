@@ -12,7 +12,7 @@ from .views import base
 
 guides_tutorials_urlpatterns =[
      # guides and tutorials
-    url(r'', guides_tutorials.index, name='index'),
+    url(r'^$', guides_tutorials.index, name='index'),
     url(
         r'^(?P<section>[\w-]+)/$', 
         guides_tutorials.dev_section, name='section'),
@@ -23,7 +23,7 @@ guides_tutorials_urlpatterns =[
 
 resources_urlpatterns =[
      # resources
-    url(r'', resources.index, name='index'),
+    url(r'^$', resources.index, name='index'),
     url(
         r'^(?P<section>[\w-]+)/$', 
         resources.dev_section, name='section'),
@@ -34,7 +34,7 @@ resources_urlpatterns =[
 
 discussions_urlpatterns =[
      # discussions
-    url(r'', discussions.index, name='index'),
+    url(r'^$', discussions.index, name='index'),
     url(
         r'^(?P<section>[\w-]+)/$', 
         discussions.dev_section, name='section'),
@@ -45,7 +45,7 @@ discussions_urlpatterns =[
 
 mystack_urlpatterns =[
      # my stack
-    url(r'', mystack.index, name='index'),
+    url(r'^$', mystack.index, name='index'),
     url(
         r'^(?P<section>[\w-]+)/$', 
         mystack.dev_section, name='section'),
@@ -56,7 +56,7 @@ mystack_urlpatterns =[
 
 projects_urlpatterns =[
      # projects
-    url(r'', projects.index, name='index'),
+    url(r'^$', projects.index, name='index'),
     url(
         r'^(?P<section>[\w-]+)/$', 
         projects.dev_section, name='section'),
@@ -70,19 +70,19 @@ dev_urlpatterns = [
     url(r'^$', base.index, name='index'),
     url(
         r'^guides_tutorials/', include(guides_tutorials_urlpatterns, 
-        namespace='guides_tutorials')),
+        namespace='guide')),
     url(
         r'^resources/', include(resources_urlpatterns, 
-        namespace='resources')),
+        namespace='res')),
     url(
         r'^discussions/', include(discussions_urlpatterns, 
-        namespace='discussions')),
+        namespace='discuss')),
     url(
         r'^mystack/', include(mystack_urlpatterns, 
         namespace='mystack')),
     url(
-        r'^projects/', include(projects, 
-        namespace='projects')),
+        r'^projects/', include(projects_urlpatterns, 
+        namespace='project')),
 ]
 
 urlpatterns = [

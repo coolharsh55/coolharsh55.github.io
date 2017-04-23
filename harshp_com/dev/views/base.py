@@ -23,6 +23,10 @@ def index(request):
     projects = DevSection.objects\
         .filter(section_type=DevSection.PROJECT)\
         .order_by('title')
+    all_posts = DevPost.objects\
+        .filter(is_published=True)\
+        .order_by('-date_published')\
+        .select_related('section')
     latest_posts = DevPost.objects\
         .filter(is_published=True)\
         .order_by('-date_published')[:10]
@@ -32,4 +36,5 @@ def index(request):
         'discussions': discussions,
         'mystack': mystack,
         'projects': projects,
+        'all_posts': all_posts,
         'latest_posts': latest_posts})

@@ -9,6 +9,7 @@ from blog.models import BlogPost
 from lifeX.models import LifeXWeek
 from poems.models import Poem
 from stories.models import Story
+from dev.models import DevPost
 
 
 def _get_latest(model):
@@ -38,7 +39,9 @@ def home(request):
                 _get_latest(Article)[:10],
                 _get_latest(BlogPost)[:10],
                 _get_latest(Poem)[:10],
-                _get_latest(Story)[:10]),
+                _get_latest(Story)[:10],
+                _get_latest(DevPost)[:10],
+                ),
             reverse=True,
             key=lambda p: p.date_published)[:10]
     ]

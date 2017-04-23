@@ -102,9 +102,13 @@
     </div>
 
     <div id='dev' class="fl w-25-ns pa2 grow db ">
-            <h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2>
-            <div class="light-red pb2 tc">work in progress</div>
+            <a href="{% url 'dev:index' subdomain='dev' %}"><h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2></a>
             <p>development blog, project, ideas, and documentation</p>
+            <div class="pv1"><a href="{% url 'dev:guide:index' subdomain='dev' %}">guides &amp; tutorials</a></div>
+            <div class="pv1"><a href="{% url 'dev:res:index' subdomain='dev' %}">resources</a></div>
+            <div class="pv1"><a href="{% url 'dev:discuss:index' subdomain='dev' %}">discussions</a></div>
+            <div class="pv1"><a href="{% url 'dev:mystack:index' subdomain='dev' %}">my stack</a></div>
+            <div class="pv1"><a href="{% url 'dev:project:index' subdomain='dev' %}">projects</a></div>
     </div>
 
     <div id='journal' class="fl w-25-ns pa2 grow db ">

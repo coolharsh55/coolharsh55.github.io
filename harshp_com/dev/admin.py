@@ -1,5 +1,5 @@
+from django.db import models
 from django.contrib import admin
-
 from sitebase.admin import PostAdmin
 
 from .models import DevSection
