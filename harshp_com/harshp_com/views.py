@@ -4,7 +4,6 @@ from itertools import chain
 
 from utils.meta_generator import create_meta
 
-from articles.models import Article
 from blog.models import BlogPost
 from lifeX.models import LifeXWeek
 from poems.models import Poem

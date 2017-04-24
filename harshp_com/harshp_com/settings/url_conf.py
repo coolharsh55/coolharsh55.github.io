@@ -15,7 +15,6 @@ SUBDOMAIN_URLCONFS = {
     'admin': 'harshp_com.adminurls',
 
     # creative & writing
-    'articles': 'articles.urls',
     'blog': 'blog.urls',
     'poems': 'poems.urls',
     'stories': 'stories.urls',

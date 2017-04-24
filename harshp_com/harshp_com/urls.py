@@ -35,7 +35,6 @@ urlpatterns = [
     url(r'', include('sitebase.urls')),
 
     # apps
-    url(r'', include('articles.urls')),
     url(r'', include('blog.urls')),
     url(r'', include('brainbank.urls')),
     url(r'', include('finance.urls')),

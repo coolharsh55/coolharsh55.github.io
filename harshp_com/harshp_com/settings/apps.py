@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'subdomains',
 
     # harshp_com apps
-    'articles',
     'blog',
     'brainbank',
     'dev',
