@@ -20,8 +20,7 @@
     </style>
     {% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
     {% include 'meta.html' %}
-    {% block f_lib_JS %}<script type="text/javascript" src="{% static 'js/cookie_consent.min.js' %}"></script>{% block lib_JS %}{% endblock lib_JS %}{% endblock f_lib_JS %}
-    {% block f_ANALYTICS %}<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-36745382-2","auto"),ga("send","pageview");</script>{% endblock f_ANALYTICS %}
+    {% block f_lib_JS %}{% block lib_JS %}{% endblock lib_JS %}{% endblock f_lib_JS %}
 </head>
 <body>
 <div class="no-print">{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns ba-ns bw3-ns b--dark-blue dark-blue mb5 georgia">
