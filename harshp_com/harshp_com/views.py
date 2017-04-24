@@ -36,7 +36,6 @@ def home(request):
         (post.__class__.__name__, post) for post in
         sorted(
             chain(
-                _get_latest(Article)[:10],
                 _get_latest(BlogPost)[:10],
                 _get_latest(Poem)[:10],
                 _get_latest(Story)[:10],
@@ -50,7 +49,6 @@ def home(request):
         (post.__class__.__name__, post) for post in
         sorted(
             chain(
-                _get_featured(Article)[:10],
                 _get_featured(BlogPost)[:10],
                 _get_featured(Poem)[:10],
                 _get_featured(Story)[:10]),
