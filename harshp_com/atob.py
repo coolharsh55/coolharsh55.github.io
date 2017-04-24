@@ -33,7 +33,7 @@ for a in articles:
 		if a.series is not None:
 			bs = BlogSeries.objects.get(slug=a.series.slug)
 			bp.series = bs
-		bp.body_text = a.body_text
+		bp.body = a.body
 		bp.headerimage = a.headerimage
 		bp.highlight = a.highlight
 		bp.save()
