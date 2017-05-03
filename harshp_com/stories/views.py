@@ -45,26 +45,29 @@ def series_list(request):
     return render(request, 'stories/series_list.html', {'series': series})
 
 
-def series(request, series):
+def series(request, slug):
     """return requested Story Series"""
 
-    series = get_object_or_404(StorySeries, slug=series)
-    return render(request, 'stories/series.html', {'series': series})
+    series_obj = get_object_or_404(StorySeries, slug=slug)
+    return render(request, 'stories/series.html', {
+        'series': series_obj,
+        'stories': series_obj.story_set.order_by('-date_published')
+        })
 
 
-def series_story(request, series, story):
+def series_story(request, slug_series, slug_story):
     """return requested Story Story for Story Series"""
 
-    series = get_object_or_404(StorySeries, slug=series)
-    story = get_object_or_404(Story, series=series, slug=story)
+    series_obj = get_object_or_404(StorySeries, slug=slug_series)
+    story_obj = get_object_or_404(Story, series=series_obj, slug=slug_story)
     return render(request, 'stories/series_story.html', {
-        'series': series, 'story': story})
+        'series': series_obj, 'story': story_obj})
 
 
 def story(request, slug):
     """return requested Story Story"""
 
-    story = get_object_or_404(Story, series=None, slug=slug)
+    story_obj = get_object_or_404(Story, series=None, slug=slug)
     return render(request, 'stories/story.html', {
-        'meta': story.get_seo_meta(),
-        'story': story})
+        'meta': story_obj.get_seo_meta(),
+        'story': story_obj})

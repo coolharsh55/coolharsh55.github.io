@@ -55,4 +55,4 @@ class StorySeriesAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
     def blogs(self, obj):
-        return obj.blogpost_set.count()
+        return obj.story_set.count()

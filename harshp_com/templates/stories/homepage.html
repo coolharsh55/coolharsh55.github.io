@@ -60,7 +60,7 @@
     <h2 class="f2 fw1 lh-title dark-blue tc avenir">feed</h2>
     {% for post in stories_all %}
     <div class="pv2">
-        {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2 f5 fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+        {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2 db f5 fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
     </div>
     {% endfor %}
 </div>
