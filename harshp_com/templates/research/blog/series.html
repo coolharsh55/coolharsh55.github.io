@@ -1,0 +1,11 @@
+{% extends 'research/blog/base.html' %}
+{% load subdomainurls %}
+{% block e_TITLE %}{{ series.title }}{% endblock e_TITLE %}
+{% blog fe_HEADER %}{{ series.title }}{% endblock fe_HEADER %}
+{% block ee_BODY %}
+{% for post in posts %}
+<div class="pv2">
+    {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/><span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+</div>
+{% endfor %}
+{% endblock ee_BODY %}
