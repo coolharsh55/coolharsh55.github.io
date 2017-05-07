@@ -1,15 +1,7 @@
 {% extends 'research/base.html' %}
 {% load subdomainurls %}
 {% block e_TITLE %}research at harshp.com{% endblock e_TITLE %}
-{% block f_HEADER %}
-<div class="baskerville center tc br2 pv3 ph6-ns bb bw1 bw3-ns b--near-black near-black georgia">
-    <div class="ph1 ph2-mph6-ns">
-      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">Research</h1>
-      <h3 class='avenir f4 fw3 lh-title mt0 mb3'>Harshvardhan J. Pandit</h3>
-      <div class="fw2 f6 lh-title mt0 mb3"><a href="{% url 'home' subdomain=None %}"><span class="f3 fw1 ph2 light-red">Main Site</span></a></div>
-    </div>
-</div>
-{% endblock f_HEADER %}
+{% block fe_HEADER %}Research{% endblock fe_HEADER %}
 
 {% block e_BODY %}
 <article class="baskerville near-black">
