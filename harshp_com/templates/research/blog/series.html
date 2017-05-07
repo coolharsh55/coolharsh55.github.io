@@ -1,11 +1,17 @@
-{% extends 'research/blog/base.html' %}
-{% load subdomainurls %}
+{% extends 'research/blog/base.html' %}{% load subdomainurls %}
 {% block e_TITLE %}{{ series.title }}{% endblock e_TITLE %}
-{% blog fe_HEADER %}{{ series.title }}{% endblock fe_HEADER %}
-{% block ee_BODY %}
-{% for post in posts %}
-<div class="pv2">
-    {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/><span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+{% block e_META_DESCRIPTION %}{{ series.short_description }}{% endblock e_META_DESCRIPTION %}
+{% block fe_HEADER %}{{ series.title }}{% endblock fe_HEADER %}
+{% block e_BODY %}
+<div id='feed' class="fl w-100 pa2 center tc">
+    <h2 class="f2 fw1 lh-title near-black tc avenir">{{ series.short_description }}</h2>
+    {% for post in posts %}
+    <div class="pv2">
+        {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}
+        <a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>
+        <a class="link dark-green pl2 f5 fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a><br/>
+        <span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
-{% endblock ee_BODY %}
+{% endblock e_BODY %}

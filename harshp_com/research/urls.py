@@ -21,9 +21,9 @@ blog_urlpatterns = [
     url(r'^$', views.blog_home, name='home'),
     # url(r'^featured/$', views.blog_featured, name='featured'),
     # url(r'^series/$', views.blog_series_list, name='series-list'),
-    url(r'^series/(?P<series>[\w-]+)/$', views.blog_series, name='series'),
+    url(r'^(?P<series>[\w-]+)/$', views.blog_series, name='series'),
     url(
-        r'^series/(?P<series>[\w-]+)/(?P<post>[\w-]+)/$',
+        r'^(?P<series>[\w-]+)/(?P<post>[\w-]+)/$',
         views.blog_post, name='post'),
 ]
 
