@@ -1,11 +1,11 @@
-{% extends 'me/base.html' %}{% load subdomainurls %}{% load subdomainurls %}
+{% extends 'me/base.html' %}
 {% block e_TITLE %}About Me | Harshvardhan{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}about me - personal information and introduction to Harshvardhan Pandit, that is myself, and my website - harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_HEADER %}
 <div class="baskerville center tc br2 pv3 ph6-ns bb bw1 bw3-ns b--near-black near-black georgia">
     <div class="ph1 ph2-mph6-ns">
       <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">Hi, I'm Harsh!</h1>
-      <div class="fw2 f6 lh-title mt0 mb3"><a href="{% url 'home' subdomain=None %}"><span class="f3 fw1 ph2 light-red">Main Site</span></a></div>
+      <div class="fw2 f6 lh-title mt0 mb3"><a href="{% url 'home' %}"><span class="f3 fw1 ph2 light-red">Main Site</span></a></div>
     </div>
 </div>
 {% endblock f_HEADER %}

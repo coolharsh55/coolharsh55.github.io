@@ -65,7 +65,7 @@
         <!-- Add your site or application content here -->
         <div>
         <h1 id='header'>finance</h1>
-        <a href="{% url 'home' subdomain=None %}"><h3 id='subheader'><u>harshp.com</u></h3></a>
+        <a href="{% url 'home' %}"><h3 id='subheader'><u>harshp.com</u></h3></a>
         <form method="POST">
         {% csrf_token %}
         <input type="password" id="password" name="password" />

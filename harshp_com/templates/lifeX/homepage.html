@@ -1,6 +1,6 @@
 {% extends 'lifeX/base.html' %}{% load static from staticfiles %}
 {% block e_TITLE %}lifeX at harshp.com{% endblock e_TITLE %}
-{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 ph2 hot-pink">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 ph2 hot-pink">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block lib_JS %}<script src="//d3js.org/d3.v3.min.js"></script>{% endblock lib_JS %}
 {% block ee_CSS %}
 <style type="text/css">
@@ -45,10 +45,10 @@ path.link {
     <p class="f3">I've stopped following this pattern for life experiments, and am thinking and evaluating coming up with something better. Stay tuned!</p>
 </div>
 <div class="mw8 mw5-ns center tc mt3 pa3">
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:ideas:list' subdomain='lifex' %}">ideas for experiments</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:experiments:list' subdomain='lifex' %}">experiment records</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:blog:list' subdomain='lifex' %}">lifeX blog</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:presentation:UCC2014' subdomain='lifex' %}">lifeX presentation</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:ideas:list' %}">ideas for experiments</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:experiments:list' %}">experiment records</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:blog:list' %}">lifeX blog</a></div>
+    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:presentation:UCC2014' %}">lifeX presentation</a></div>
 </div>
 <div class="pt3">
     <p>Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it.</p>

@@ -1,10 +1,10 @@
 {% extends 'journal/base.html' %}
-{% load subdomainurls %}
 
-{% block e_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' subdomain=None %}"><u>harshp.com</u></a>{% endblock e_HEADER_SUBTITLE %}
+
+{% block e_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' %}"><u>harshp.com</u></a>{% endblock e_HEADER_SUBTITLE %}
 
 {% block ee_BODY %}
-<a class="link" href="{% url 'journal:sections:list' subdomain='journal' %}"><span class="f2 near-black">Sections</span></a>
+<a class="link" href="{% url 'journal:sections:list' %}"><span class="f2 near-black">Sections</span></a>
 <div class="pa2">
     {% if private_sessions %}{% for section in sections %}
     <a class="ph2 link" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a>{% endfor %}

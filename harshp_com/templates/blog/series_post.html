@@ -8,8 +8,8 @@
         <div class="f2-l avenir center tc mb2"><a class="link dark-blue" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a></div>
         <nav class="">
           <div class="tc pb3">
-            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'blog:list' subdomain='blog' %}" title="Blog Home">Blog Home</a>
-            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'home' subdomain=None %}" title="Main Site">Main Site</a>
+            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
+            <a class="link dim light-blue f6 f5-ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
           </div>
         </nav>
         <div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>

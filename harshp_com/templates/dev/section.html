@@ -10,7 +10,7 @@
         <h1 class="f1 measure lh-title fw1 mt0 mb0 pb0 dark-red tc">{{ section.title }}</h1>
         <nav class="">
           <div class="tc pb3">
-            <a class="blue f4 dib ph1" href="{% url 'home' subdomain=None %}" title="home">harshp.com</a>/<a class="blue f4 dib ph1" href="{% url 'dev:index' subdomain='dev' %}" title="Dev">dev</a>/<a class="blue f4 dib ph1" href="{{ section_type_url }}" title="{{ section_type }}">{{ section_type }}</a>
+            <a class="blue f4 dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="blue f4 dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>/<a class="blue f4 dib ph1" href="{{ section_type_url }}" title="{{ section_type }}">{{ section_type }}</a>
           </div>
         </nav>
     </header>

@@ -1,9 +1,9 @@
 {% extends 'brainbank/base.html' %}
-{% load subdomainurls %}
+
 
 {% block e_TITLE %}BrainBank Ideas{% endblock e_TITLE %}
 
-{% block ff_HEADER_TITLE %}ideas{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'brainbank:list' subdomain='brainbank' %}"><u>brainbank.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
+{% block ff_HEADER_TITLE %}ideas{% endblock ff_HEADER_TITLE %}{% block ff_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'brainbank:list' %}"><u>brainbank.harshp.com</u></a>{% endblock ff_HEADER_SUBTITLE %}
 
 {% block e_BODY %}
 <div class='ui container'>

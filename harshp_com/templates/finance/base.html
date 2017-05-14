@@ -6,8 +6,8 @@
     <div class="fw1 f5 ">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     <nav class="tc mw7 center">
         <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="/">Home</a>
-        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'finance:monthly-spendings-list' subdomain='finance' %}">Monthly Spendings</a>
-        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'home' subdomain=None %}">Main Site</a>
+        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'finance:monthly-spendings-list' %}">Monthly Spendings</a>
+        <a class="f6 link bg-animate black-80 hover-bg-blue dib ph2" href="{% url 'home' %}">Main Site</a>
     </nav>
 </div>
 </div>{% endblock f_HEADER %}

@@ -15,7 +15,7 @@ stories_urlpatterns = [
 ]
 
 urlpatterns = [
-    url(r'^/stories/', include(stories_urlpatterns, namespace='stories')),
+    url(r'', include(stories_urlpatterns, namespace='stories')),
 ]
 
 handler404 = 'harshp_com.views.handler404'

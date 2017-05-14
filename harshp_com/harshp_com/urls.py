@@ -36,14 +36,14 @@ urlpatterns = [
 
     # apps
     url(r'^blog/', include('blog.urls')),
-    url(r'', include('dev.urls')),
-    url(r'', include('finance.urls')),
-    url(r'', include('journal.urls')),
-    url(r'', include('lifeX.urls')),
-    url(r'', include('me.urls')),
-    url(r'', include('poems.urls')),
-    url(r'', include('research.urls')),
-    url(r'', include('stories.urls')),
+    url(r'^dev/', include('dev.urls')),
+    url(r'^finance/', include('finance.urls')),
+    url(r'^journal/', include('journal.urls')),
+    url(r'^lifeX/', include('lifeX.urls')),
+    url(r'^me/', include('me.urls')),
+    url(r'^poems/', include('poems.urls')),
+    url(r'^research/', include('research.urls')),
+    url(r'^stories/', include('stories.urls')),
 
 ]
 

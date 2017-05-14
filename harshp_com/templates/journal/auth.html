@@ -1,11 +1,11 @@
-{% extends 'sitebase/base.html' %}{% load staticfiles %}{% load subdomainurls %}
+{% extends 'sitebase/base.html' %}{% load staticfiles %}
 {% block f_HEADER %}{% endblock f_HEADER %}
 {% block f_FOOTER %}{% endblock f_FOOTER %}
 {% block f_BODY %}
 <div class="vh-100 w-100 dt tc bg-near-black cover">
     <div class="dtc v-mid">
         <h1 id='header' class="f1 f-headline gold baskerville">journal</h1>
-        <a class="link" href="{% url 'journal:entries:list' subdomain='journal' %}"><span class="f3 pa2 light-yellow">read entries</span></a>
+        <a class="link" href="{% url 'journal:entries:list' %}"><span class="f3 pa2 light-yellow">read entries</span></a>
         <form class="mt3 measure center" method="POST">
         {% csrf_token %}
         <input class="input-reset button-reset bg-dark-gray" type="password" id="password" name="password" />

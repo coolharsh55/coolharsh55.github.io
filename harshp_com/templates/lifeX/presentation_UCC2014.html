@@ -12,7 +12,7 @@
 <section data-background="#EEE">
     <h1>Life eXperiments</h1>
     <h3>A Presentation</h3>
-    <p>created by <a href="{% url 'home' subdomain=None %}">harshvardhan</a></p>
+    <p>created by <a href="{% url 'home' %}">harshvardhan</a></p>
     <p><small>powered by <a href="https://github.com/hakimel/reveal.js">reveal.js</a></small></p>
     <br />
     <div style="color: #333;">
@@ -23,7 +23,7 @@
     <!-- Email --><a href="mailto:?subject=Life%20Experiments%20-%20A%20Presentation&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
     </div>
     <br />
-    <p><small>go back to <a href="{% url 'lifeX:home' 'lifex' %}">lifeX</a> or <a href="{% url 'home' subdomain=None %}">harshp.com</a></small></p>
+    <p><small>go back to <a href="{% url 'lifeX:home' 'lifex' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></small></p>
 </section>
 
 <section data-background="#111">
@@ -279,7 +279,7 @@
 </section>
 
 <section data-background="#CC0033">
-<h3><a href="{% url 'home' subdomain=None %}">harshp.com</a></h3>
+<h3><a href="{% url 'home' %}">harshp.com</a></h3>
 <h1>you're on it!</h1>
 <h3> ^_^ </h3>
 </section>
@@ -368,7 +368,7 @@
 </section>
 
 <section data-transition='zoom' data-background-transition="zoom" data-background="{% static 'lpe/img/applause.gif' %}">
-<h3>go back to <a href="{% url 'lifeX:home' 'lifeX' %}">lifeX</a> or <a href="{% url 'home' subdomain=None %}">harshp.com</a></h3>
+<h3>go back to <a href="{% url 'lifeX:home' 'lifeX' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></h3>
 <div style="color: #333;">
     <!-- Social Button HTML -->
     <!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>
