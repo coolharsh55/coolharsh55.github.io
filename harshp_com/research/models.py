@@ -1,8 +1,8 @@
 from django.db import models
-from subdomains.utils import reverse
+
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
@@ -34,7 +34,7 @@ class ResearchBlogSeries(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-        	'research:blog:series', args=[self.slug], subdomain='research')
+        	'research:blog:series', args=[self.slug])
 
 
 class ResearchBlogPost(Post):
@@ -68,7 +68,7 @@ class ResearchBlogPost(Post):
     def get_absolute_url(self):
         return reverse(
             'research:blog:post',
-            args=[self.series.slug, self.slug], subdomain='research')
+            args=[self.series.slug, self.slug])
 
     def get_seo_meta(self):
         """get meta properties for this object"""

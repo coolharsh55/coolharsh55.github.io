@@ -3,7 +3,6 @@ import calendar
 from dateutil.relativedelta import relativedelta
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from subdomains.utils import reverse
 from django.utils import timezone
 import random
 
@@ -42,7 +41,7 @@ def logout_user(request):
     # log the user out IF they are logged in
     if request.user.is_authenticated():
         logout(request)
-    return redirect(reverse('home', subdomain=None))
+    return # redirect(reverse('home', subdomain=None))
 
 
 def home(request):

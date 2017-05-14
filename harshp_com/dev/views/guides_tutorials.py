@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from subdomains.utils import reverse
 
 from utils.meta_generator import create_meta
 
@@ -37,7 +36,7 @@ def index(request):
     return render(request, 'dev/guides_tutorials/index.html', {
         'meta': meta,
         'section_type_title': 'guides & tutorials',
-        'section_type_url': reverse('dev:guide:index', subdomain='dev'),
+        # 'section_type_url': reverse('dev:guide:index', subdomain='dev'),
         'data': data})
 
 
@@ -49,7 +48,7 @@ def dev_section(request, section):
         'section': section,
         'posts': section.devpost_set.order_by('-date_published'),
         'section_type': 'guides & tutorials',
-        'section_type_url': reverse('dev:guide:index', subdomain='dev'),
+        # 'section_type_url': reverse('dev:guide:index', subdomain='dev'),
         })
 
 
@@ -64,6 +63,6 @@ def dev_post(request, section, post):
     return render(request, 'dev/guides_tutorials/post.html', {
         'meta': post.get_seo_meta(),
         'section_type': 'guides & tutorials',
-        'section_type_url': reverse('dev:guide:index', subdomain='dev'),
+        # 'section_type_url': reverse('dev:guide:index', subdomain='dev'),
         'post': post,
         'section': section})

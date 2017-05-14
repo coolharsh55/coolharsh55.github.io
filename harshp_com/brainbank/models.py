@@ -1,8 +1,7 @@
 from django.db import models
-from subdomains.utils import reverse
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_all
 from utils.models import get_unique_slug
@@ -43,7 +42,7 @@ class BrainbankIdea(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'brainbank:idea', args=[self.slug], subdomain='brainbank')
+            'brainbank:idea', args=[self.slug])
 
 
 class BrainbankPost(Post):
@@ -78,7 +77,7 @@ class BrainbankPost(Post):
     def get_absolute_url(self):
         return reverse(
             'brainbank:post',
-            args=[self.idea.slug, self.slug], subdomain='brainbank')
+            args=[self.idea.slug, self.slug])
 
     def get_seo_meta(self):
         """get meta properties for this object"""

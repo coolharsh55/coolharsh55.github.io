@@ -1,8 +1,8 @@
 from django.db import models
-from subdomains.utils import reverse
+
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_all
 from utils.models import get_unique_slug
@@ -37,7 +37,7 @@ class LifeXWeek(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'lifeX:experiments:week', args=[self.number], subdomain='lifex')
+            'lifeX:experiments:week', args=[self.number])
 
 
 class LifeXCategory(models.Model):
@@ -63,7 +63,7 @@ class LifeXCategory(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'lifeX:ideas:category', args=[self.slug], subdomain='lifex')
+            'lifeX:ideas:category', args=[self.slug])
 
 
 class LifeXIdea(models.Model):
@@ -113,7 +113,7 @@ class LifeXIdea(models.Model):
     def get_absolute_url(self):
         return reverse(
             'lifeX:ideas:idea',
-            args=[self.category.slug, self.slug], subdomain='lifex')
+            args=[self.category.slug, self.slug])
 
 
 class LifeXExperiment(Post):
@@ -163,7 +163,7 @@ class LifeXExperiment(Post):
     def get_absolute_url(self):
         return reverse(
             'lifeX:experiments:experiment',
-            args=[self.week.number, self.slug], subdomain='lifex')
+            args=[self.week.number, self.slug])
 
 
 class LifeXGoal(models.Model):
@@ -216,4 +216,4 @@ class LifeXBlog(Post):
         return super(LifeXBlog, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('lifeX:blog:post', args=[self.slug], subdomain='lifex')
+        return reverse('lifeX:blog:post', args=[self.slug])

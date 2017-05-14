@@ -1,8 +1,7 @@
 from django.db import models
 from dateutil.relativedelta import relativedelta
-from subdomains.utils import reverse
 from django.utils import timezone
-
+from django.core.urlresolvers import reverse
 from utils.models import get_unique_slug
 
 
@@ -45,7 +44,7 @@ class FinanceAccount(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'finance:account', args=[self.slug], subdomain='finance')
+            'finance:account', args=[self.slug])
 
 
 class TransactionCategory(models.Model):
@@ -76,7 +75,7 @@ class TransactionCategory(models.Model):
     def get_absolute_url(self):
         return reverse(
             'finance:category',
-            args=[self.slug], subdomain='finance')
+            args=[self.slug])
 
 
 class TransactionTag(models.Model):
@@ -105,7 +104,7 @@ class TransactionTag(models.Model):
     def get_absolute_url(self):
         return reverse(
             'finance:transaction_tag',
-            args=[self.slug], subdomain='finance')
+            args=[self.slug])
 
 
 class Transaction(models.Model):
@@ -197,7 +196,7 @@ class Transaction(models.Model):
     def get_absolute_url(self):
         return reverse(
             'finance:transaction',
-            args=[self.id], subdomain='finance')
+            args=[self.id])
 
 
 class Budget(models.Model):
@@ -325,7 +324,7 @@ class PlannedTransaction(models.Model):
     def get_absolute_url(self):
         return reverse(
             'finance:planned_transaction',
-            args=[self.id], subdomain='finance')
+            args=[self.id])
 
     def mark_complete(self):
         """mark the planned transaction as complete"""

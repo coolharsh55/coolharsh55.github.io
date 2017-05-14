@@ -21,8 +21,6 @@ INSTALLED_APPS = [
     'meta',
     # django-robots: robots.txt
     'robots',
-    # django-subdomains
-    'subdomains',
 
     # harshp_com apps
     'blog',

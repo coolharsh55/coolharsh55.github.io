@@ -16,8 +16,6 @@ blog_urlpatterns = [
 ]
 
 urlpatterns = [
-    # commons
-    url(r'', include('harshp_com.urls_commons')),
     url(r'', include(blog_urlpatterns, namespace='blog')),
 ]
 

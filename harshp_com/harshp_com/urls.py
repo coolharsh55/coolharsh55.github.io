@@ -19,13 +19,15 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    # commons
+    # base
     url(r'^$', views.home, name='home'),
-    url(r'', include('harshp_com.urls_commons')),
-
+    # stub
+    url(r'^stub/$', views.stub, name='stub'),
+    url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
     # admin
-    url(r'', include('harshp_com.adminurls')),
-
+    url(r'^manage/', admin.site.urls),
+    url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     # robots.txt
     url(r'^robots\.txt', include('robots.urls')),
 
@@ -33,13 +35,14 @@ urlpatterns = [
     url(r'', include('sitebase.urls')),
 
     # apps
-    url(r'', include('blog.urls')),
-    url(r'', include('brainbank.urls')),
+    url(r'^blog/', include('blog.urls')),
+    url(r'', include('dev.urls')),
     url(r'', include('finance.urls')),
     url(r'', include('journal.urls')),
     url(r'', include('lifeX.urls')),
     url(r'', include('me.urls')),
     url(r'', include('poems.urls')),
+    url(r'', include('research.urls')),
     url(r'', include('stories.urls')),
 
 ]

@@ -9,7 +9,6 @@ me_urlspatterns = [
 ]
 
 urlpatterns = [
-    url(r'', include('harshp_com.urls_commons')),
     url(r'', include(me_urlspatterns, namespace='me')),
 ]
 

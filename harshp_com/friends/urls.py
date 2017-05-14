@@ -9,7 +9,6 @@ friends_urlpatterns = [
 ]
 
 urlpatterns = [
-    url(r'', include('harshp_com.urls_commons')),
     url(r'', include(friends_urlpatterns, namespace='friends')),
 ]
 

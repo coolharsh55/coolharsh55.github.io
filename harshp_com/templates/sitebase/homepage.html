@@ -1,10 +1,10 @@
-{% extends 'sitebase/base.html' %}{% load static from staticfiles %}{% load subdomainurls %}
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}
 {% block e_TITLE %}homepage | harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}harshp.com - the personal website and project of Harshvardhan Pandit{% endblock e_META_DESCRIPTION %}
 {% block e_HEADER_TITLE %}<img src="{% static 'img/avatar.jpg' %}" class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar"><br/>Harshvardhan Pandit{% endblock e_HEADER_TITLE %}
 {% block f_HEADER_SUBTITLE %}personal website & project{% endblock f_HEADER_SUBTITLE %}
-{% block e_HEADER_DESCRIPTION %}<p class="fw1 f5 mt0 mb3">I write stories, compose poems, read books, watch movies, program and code, research, and just live. You can read more about me talking about me <a class="fw1 link dark-red" href="{% url 'me:home' subdomain='me' %}">here</a>.</p>
-<div class="tc mt3"><a href="https://github.com/coolharsh55/">Github</a> | <a href="{% url 'research:home' subdomain='research' %}">Research</a> | <a href="{% url 'stub' %}">Resume</a> | <a href="{% url 'stub' %}">Developer</a></div>{% endblock e_HEADER_DESCRIPTION %}
+{% block e_HEADER_DESCRIPTION %}<p class="fw1 f5 mt0 mb3">I write stories, compose poems, read books, watch movies, program and code, research, and just live. You can read more about me talking about me <a class="fw1 link dark-red" href="{% url 'me:home' %}">here</a>.</p>
+<div class="tc mt3"><a href="https://github.com/coolharsh55/">Github</a> | <a href="{% url 'research:home' %}">Research</a> | <a href="{% url 'stub' %}">Resume</a> | <a href="{% url 'stub' %}">Developer</a></div>{% endblock e_HEADER_DESCRIPTION %}
 {% block e_BODY %}
 <div class="fl w-100 pa2">
     <div id='latest' class="fl w-25-ns pa2 grow db">
@@ -35,9 +35,9 @@
     <div class='w-25-ns db fl'>
     <div id='creative-writing' class="pa2 grow">
         <h2 class="fw2 f-title lh-title light-gray bg-dark-green tc">creative writing</h2>
-        <div class="pv1"><a href="{% url 'blog:list' subdomain='blog' %}">Blog</a><span class="f7 fw1"><br/><small> thoughts, rants, opinions, humor, reviews, reactions, and life</small></span></div>
-        <div class="pv1"><a href="{% url 'poems:list' subdomain='poems' %}">Poems</a><span class="f7 fw1"><br/><small>rustic runes to rhyming tunes</small></span></div>
-        <div class="pv1"><a href="{% url 'stories:list' subdomain='stories' %}">Stories</a><span class="f7 fw1"><br/><small>narratives, parables, discovering the human element</small></span></div>
+        <div class="pv1"><a href="{% url 'blog:list' %}">Blog</a><span class="f7 fw1"><br/><small> thoughts, rants, opinions, humor, reviews, reactions, and life</small></span></div>
+        <div class="pv1"><a href="{% url 'poems:list' %}">Poems</a><span class="f7 fw1"><br/><small>rustic runes to rhyming tunes</small></span></div>
+        <div class="pv1"><a href="{% url 'stories:list' %}">Stories</a><span class="f7 fw1"><br/><small>narratives, parables, discovering the human element</small></span></div>
     </div>
 
     <div id='hobbies' class="pa2 grow">
@@ -57,8 +57,8 @@
     <div id='research' class="fl w-25-ns pa2 grow db ">
         <h2 class="fw2 f-title lh-title washed-yellow bg-dark-gray tc">research</h2>
         <div class="light-red pb2 tc">work in progress</div>
-        <div class="pv1"><a href="{% url 'research:home' subdomain='research' %}">Research Homepage</a></div>
-        <div class="pv1"><a href="{% url 'research:publications' subdomain='research' %}">Publications</a></div>
+        <div class="pv1"><a href="{% url 'research:home' %}">Research Homepage</a></div>
+        <div class="pv1"><a href="{% url 'research:publications' %}">Publications</a></div>
         <div class="pv1">
             <a href="{% url 'stub' %}">Personal, Context-aware Service for Privacy Adviser</a>
             <span class="f6 fw1"><br/>
@@ -85,11 +85,11 @@
     <div id='lifeX' class="fl w-25-ns pa2 grow db ">
         <h2 class="fw2 f-title lh-title washed-green bg-dark-blue tc">lifeX</h2>
         <div class="light-red tc pb2">being renovated</div>
-        <div class="pv1"><a href="{% url 'lifeX:home' subdomain='lifex' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:ideas:list' subdomain='lifex' %}"><i class="idea outline icon"></i>Ideas</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:experiments:list' subdomain='lifex' %}"><i class="lab outline icon"></i>Experiments</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:goals:list' subdomain='lifex' %}"><i class="bullseye outline icon"></i>Goals</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:blog:list' subdomain='lifex' %}"><i class="clipboard outline icon"></i>Blog</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:home' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:ideas:list' %}"><i class="idea outline icon"></i>Ideas</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:experiments:list' %}"><i class="lab outline icon"></i>Experiments</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:goals:list' %}"><i class="bullseye outline icon"></i>Goals</a></div>
+        <div class="pv1"><a href="{% url 'lifeX:blog:list' %}"><i class="clipboard outline icon"></i>Blog</a></div>
         <span class="f7 fw1"><br/><small>life experiments are all things I do or try out, for fun, or to lead a better life</small></span>
     </div>
 
@@ -101,20 +101,20 @@
     </div>
 
     <div id='dev' class="fl w-25-ns pa2 grow db ">
-            <a href="{% url 'dev:index' subdomain='dev' %}"><h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2></a>
+            <a href="{% url 'dev:index' %}"><h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2></a>
             <p>development blog, project, ideas, and documentation</p>
-            <div class="pv1"><a href="{% url 'dev:guide:index' subdomain='dev' %}">guides &amp; tutorials</a></div>
-            <div class="pv1"><a href="{% url 'dev:res:index' subdomain='dev' %}">resources</a></div>
-            <div class="pv1"><a href="{% url 'dev:discuss:index' subdomain='dev' %}">discussions</a></div>
-            <div class="pv1"><a href="{% url 'dev:mystack:index' subdomain='dev' %}">my stack</a></div>
-            <div class="pv1"><a href="{% url 'dev:project:index' subdomain='dev' %}">projects</a></div>
+            <div class="pv1"><a href="{% url 'dev:guide:index' %}">guides &amp; tutorials</a></div>
+            <div class="pv1"><a href="{% url 'dev:res:index' %}">resources</a></div>
+            <div class="pv1"><a href="{% url 'dev:discuss:index' %}">discussions</a></div>
+            <div class="pv1"><a href="{% url 'dev:mystack:index' %}">my stack</a></div>
+            <div class="pv1"><a href="{% url 'dev:project:index' %}">projects</a></div>
     </div>
 
     <div id='journal' class="fl w-25-ns pa2 grow db ">
         <h2 class="fw2 f-title lh-title blue bg-light-yellow tc">journal</h2>
-        <div class="pv1"><a href="{% url 'journal:auth' subdomain='journal' %}">login</a></div>
-        <div class="pv1"><a href="{% url 'journal:entries:list' subdomain='journal' %}">entries</a></div>
-        <div class="pt1"><a href="{% url 'journal:sections:list' subdomain='journal' %}">sections</a></div>
+        <div class="pv1"><a href="{% url 'journal:auth' %}">login</a></div>
+        <div class="pv1"><a href="{% url 'journal:entries:list' %}">entries</a></div>
+        <div class="pt1"><a href="{% url 'journal:sections:list' %}">sections</a></div>
         <span class="f7 fw1"><br/><small>just an online journal, has public and private sections</small></span>
     </div>
 </div>
@@ -124,7 +124,7 @@
     <div id='finance' class="fl w-25-ns pa2 grow db ">
         <h2 class="fw2 f-title lh-title washed-blue bg-blue tc">finance</h2>
         <div class="light-red pb2 tc">private</div>
-        <div class="pv1"><a href="{% url 'finance:home' subdomain='finance' %}">dashboard</a></div>
+        <div class="pv1"><a href="{% url 'finance:home' %}">dashboard</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/financeaccount/">accounts</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/budget/">budgets</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/transaction/">transactions</a></div>

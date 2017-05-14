@@ -1,8 +1,7 @@
 from django.db import models
-from subdomains.utils import reverse
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
@@ -52,7 +51,7 @@ class DevSection(models.Model):
     def get_absolute_url(self):
         return reverse(
             'dev:{section_type}:section'.format(section_type=self.section_type), 
-            args=[self.slug], subdomain='dev')
+            args=[self.slug])
 
 
 class DevPost(Post):
@@ -86,7 +85,7 @@ class DevPost(Post):
     def get_absolute_url(self):
         return reverse(
             'dev:{section_type}:post'.format(section_type=self.section.section_type),
-            args=[self.section.slug, self.slug], subdomain='dev')
+            args=[self.section.slug, self.slug])
 
     def get_seo_meta(self):
         """get meta properties for this object"""

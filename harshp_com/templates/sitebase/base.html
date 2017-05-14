@@ -1,4 +1,4 @@
-{% load static from staticfiles %}{% load subdomainurls %}<!DOCTYPE html>
+{% load static from staticfiles %}<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
 <div class="no-print">{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns ba-ns bw3-ns b--dark-blue dark-blue mb5 georgia">
     <div class="ph1 ph2-mph6-ns">
       <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}{% endblock e_HEADER_TITLE %}</h1>
-      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' None %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
       <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     </div>
 </div>{% endblock f_HEADER %}</div>
@@ -39,8 +39,8 @@
     <div class="ph3 pv3 ph5-m ph6-l mid-gray">
         <small class="f6 db tc">© 2016 <b class="ttu">Harshvardhan Pandit</b></small>
         <div class="tc mt3">
-            <a href="{% url 'privacy-policy' subdomain=None %}"><i class="small privacy icon"></i>Privacy Policy</a> |
-            <a href="{% url 'me:home' subdomain='me' %}"><i class="small child icon"></i>About Me</a> |
+            <a href="{% url 'privacy-policy' %}"><i class="small privacy icon"></i>Privacy Policy</a> |
+            <a href="{% url 'me:home' %}"><i class="small child icon"></i>About Me</a> |
             <a href="https://github.com/coolharsh55/harshp.com/commits/master"><i class="small history icon"></i>Changelog</a> |
             <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Source Code</a>
         </div>

@@ -1,8 +1,7 @@
 from django.db import models
-from subdomains.utils import reverse
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
@@ -38,7 +37,7 @@ class JournalTag(models.Model):
     def get_absolute_url(self):
         return reverse(
             'journal:tags:get',
-            args=[self.slug], subdomain='journal')
+            args=[self.slug])
 
 
 class JournalSection(models.Model):
@@ -69,7 +68,7 @@ class JournalSection(models.Model):
     def get_absolute_url(self):
         return reverse(
             'journal:sections:get',
-            args=[self.slug], subdomain='journal')
+            args=[self.slug])
 
 
 class JournalEntry(Post):
@@ -110,4 +109,4 @@ class JournalEntry(Post):
     def get_absolute_url(self):
         return reverse(
             'journal:entries:get',
-            args=[self.id], subdomain='journal')
+            args=[self.id])

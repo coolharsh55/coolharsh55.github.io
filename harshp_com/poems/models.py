@@ -1,8 +1,8 @@
 from django.db import models
-from subdomains.utils import reverse
+
 from django.utils import timezone
 import markdown
-
+from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
 from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
@@ -37,7 +37,7 @@ class Poem(Post):
         return super(Poem, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('poems:poem', args=[self.slug], subdomain='poems')
+        return reverse('poems:poem', args=[self.slug])
 
     def get_seo_meta(self):
         """get meta properties for this object"""
