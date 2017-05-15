@@ -37,8 +37,8 @@ def blog_home(request):
     posts = ResearchBlogPost.objects.order_by('-date_published')
     print(posts)
     return render(request, 'research/blog/homepage.html', {
-        'series': [series[0] for _ in range(10)],
-        'posts': [posts[0] for _ in range(20)]
+        'series': series,
+        'posts': posts
         })
 
 

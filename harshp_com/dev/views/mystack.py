@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-
+from django.urls import reverse
 from utils.meta_generator import create_meta
 
 from dev.models import DevSection
@@ -36,7 +36,7 @@ def index(request):
     return render(request, 'dev/mystack/index.html', {
         'meta': meta,
         'section_type_title': 'my stack',
-        # 'section_type_url': reverse('dev:mystack:index', subdomain='dev'),
+        'section_type_url': reverse('dev:mystack:index'),
         'data': data})
 
 
@@ -48,7 +48,7 @@ def dev_section(request, section):
         'section': section,
         'posts': section.devpost_set.order_by('-date_published'),
         'section_type': 'my stack',
-        # 'section_type_url': reverse('dev:mystack:index', subdomain='dev'),
+        'section_type_url': reverse('dev:mystack:index'),
         })
 
 
@@ -63,6 +63,6 @@ def dev_post(request, section, post):
     return render(request, 'dev/mystack/post.html', {
         'meta': post.get_seo_meta(),
         'section_type': 'my stack',
-        # 'section_type_url': reverse('dev:mystack:index', subdomain='dev'),
+        'section_type_url': reverse('dev:mystack:index'),
         'post': post,
         'section': section})

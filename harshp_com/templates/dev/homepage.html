@@ -2,15 +2,15 @@
 {% block e_TITLE %}dev blog at harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}dev blog at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block e_BODY %}
-<div class="fl w-100 ph2 pb2">
-    <div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
+<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
     <div class="ph1 ph2-mph6-ns">
       <h1 class="fw6 f3 f2-ns lh-title">/dev</h1>
       <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'home' %}"><span class="f3 fw1 ph2">harshp.com</span></a><a href="{% url 'dev:index' %}"><span class="f3 fw1 ph2">/dev</span></a></h2>
       <div class="fw1 f5 mt0 mb3"></div>
     </div>
-    </div>
-    <div id="latest" class="fl w-33-ns pa2 db">
+</div>
+<div class="fl w-100 ph2 pb2 db tc">
+    <div id="latest" class="fl w-33-ns pa2 db tc">
         <h2 class="fw2 dark-green tc">recent</h2>
         {% for post in latest_posts %}
         <div class="pv1">
@@ -18,7 +18,7 @@
         </div>
         {% endfor %}
     </div>
-    <div id="highlights" class="fl w-33-ns pa2 db">
+    <div id="highlights" class="fl w-33-ns pa2 db tc">
         <h2 class="fw2 dark-green tc">highlights</h2>
         {% for post in highlights %}
         <div class="pv1">
@@ -26,7 +26,7 @@
         </div>
         {% endfor %}
     </div>
-    <div id="section-types" class="fl w-33-ns pa2 db">
+    <div id="section-types" class="fl w-33-ns pa2 db tc">
         <h2 class="fw2 dark-green tc">links</h2>
         <a class="f4 db link tc" href="{% url 'dev:guide:index' %}">Guides &amp; tutorials</a>
         <a class="f4 db link tc" href="{% url 'dev:res:index' %}">Resources</a>
@@ -34,9 +34,7 @@
         <a class="f4 db link tc" href="{% url 'dev:mystack:index' %}">My Stack</a>
         <a class="f4 db link tc" href="{% url 'dev:project:index' %}">Projects</a>
     </div>
-</div>
-
-<div id="#feed" class="fl mt2 pt2 w-80-ns center">
+    <div class="w-80-ns pv3 center">
     <h2 class="f2 fw1 lh-title dark-blue center avenir">feed</h2>
     {% for post in all_posts %}
     <div class="pv2">
@@ -50,5 +48,7 @@
         <span class="f5 fw2 pl2 dark-gray">{{ post.short_description }}</span>
     </div>
     {% endfor %}
+    </div>
 </div>
+
 {% endblock e_BODY %}
