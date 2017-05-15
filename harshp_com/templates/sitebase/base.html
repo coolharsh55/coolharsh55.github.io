@@ -23,35 +23,28 @@
     {% block f_lib_JS %}{% block lib_JS %}{% endblock lib_JS %}{% endblock f_lib_JS %}
 </head>
 <body>
-<div class="no-print">{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns ba-ns bw3-ns b--dark-blue dark-blue mb5 georgia">
+<div class="no-print">{% block f_HEADER %}<div class="center mw8-ns tc ph6-ns near-black mb2 georgia">
     <div class="ph1 ph2-mph6-ns">
       <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}{% endblock e_HEADER_TITLE %}</h1>
       <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
       <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     </div>
 </div>{% endblock f_HEADER %}</div>
-{% block f_BODY %}<div class="w-100 dt georgia"><div class="mw8 pa3 center">
+{% block f_BODY %}<div class="mw8 pv3 center">
 {% block e_BODY %}{% endblock e_BODY %}
-</div></div>{% endblock f_BODY %}
+</div>{% endblock f_BODY %}
 {% block f_FOOTER %}<!-- FOOTER -->
 <div id='footer' class="no-print w-100 pv3 mw8 center georgia">
     <hr/>
     <div class="ph3 pv3 ph5-m ph6-l mid-gray">
-        <small class="f6 db tc">© 2016 <b class="ttu">Harshvardhan Pandit</b></small>
+        <small class="f6 db tc">© 2017 <b class="ttu">Harshvardhan Pandit</b></small>
         <div class="tc mt3">
-            <a href="{% url 'privacy-policy' %}"><i class="small privacy icon"></i>Privacy Policy</a> |
-            <a href="{% url 'me:home' %}"><i class="small child icon"></i>About Me</a> |
-            <a href="https://github.com/coolharsh55/harshp.com/commits/master"><i class="small history icon"></i>Changelog</a> |
-            <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Source Code</a>
+            <a href="{% url 'me:home' %}">About Me</a> |
+            <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Project Source Code</a>|
+            <a href="{% url 'contact' %}">Contact Me</a> |
         </div>
         <div class="tc mt3">
-            <a class="red ma1" href="https://plus.google.com/u/0/+HarshvardhanPandit" target="_blank">google+</a> |
-            <a class="blue ma1" href="https://www.facebook.com/coolharsh55" target="_blank">facebook</a> |
-            <a class="orange ma1" href="mailto:me@harshp.com" target="_top">email</a> |
-            <a class="pink ma1" href="tel:353-89-433-5741">mobile</a> |
-            <a class="green ma1" href="https://github.com/coolharsh55/" target="_blank">github</a> |
-            <a class="dark-blue ma1" href="https://twitter.com/coolharsh55" target="_blank">twitter</a> |
-            <a class="purple ma1" href="https://www.linkedin.com/in/harshvardhanpandit" target="_blank">linkedIn</a>
+            <p>I do not collect any personal data from YOU. My server might log your IP address as part of serving the request. However, I do not use it in any form except debugging certain requests and performance issues. There is no visitor tracking. There are no cookies. If you come across any stuff I should be aware of, please contact me. Cheers.</p>
         </div>
     </div>
 </div>{% endblock f_FOOTER %}

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.utils import timezone
 import random
-
+from django.core.urlresolvers import reverse
 from .models import FinanceAccount
 # from .models import TransactionCategory
 # from .models import TransactionTag

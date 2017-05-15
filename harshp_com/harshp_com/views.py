@@ -71,6 +71,10 @@ def stub(request):
     return render(request, 'sitebase/stub.html')
 
 
+def contact(request):
+    return render(request, 'sitebase/contact.html')
+
+
 def privacy_policy(request):
     return render(request, 'sitebase/privacypolicy.html')
 

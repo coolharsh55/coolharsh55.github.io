@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     # stub
     url(r'^stub/$', views.stub, name='stub'),
-    url(r'^privacy-policy/$', views.privacy_policy, name='privacy-policy'),
+    url(r'^contact/$', views.contact, name='contact'),
     # admin
     url(r'^manage/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
@@ -35,11 +35,11 @@ urlpatterns = [
     url(r'', include('sitebase.urls')),
 
     # apps
+    url(r'^blog/lifeX/', include('lifeX.urls')),
     url(r'^blog/', include('blog.urls')),
     url(r'^dev/', include('dev.urls')),
-    url(r'^finance/', include('finance.urls')),
-    url(r'^journal/', include('journal.urls')),
-    url(r'^lifeX/', include('lifeX.urls')),
+    url(r'^personal/finance/', include('finance.urls')),
+    url(r'^personal/journal/', include('journal.urls')),
     url(r'^me/', include('me.urls')),
     url(r'^poems/', include('poems.urls')),
     url(r'^research/', include('research.urls')),

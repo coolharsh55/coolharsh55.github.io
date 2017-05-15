@@ -1,151 +1,96 @@
 {% extends 'sitebase/base.html' %}{% load static from staticfiles %}
 {% block e_TITLE %}homepage | harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}harshp.com - the personal website and project of Harshvardhan Pandit{% endblock e_META_DESCRIPTION %}
-{% block e_HEADER_TITLE %}<img src="{% static 'img/avatar.jpg' %}" class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar"><br/>Harshvardhan Pandit{% endblock e_HEADER_TITLE %}
-{% block f_HEADER_SUBTITLE %}personal website & project{% endblock f_HEADER_SUBTITLE %}
-{% block e_HEADER_DESCRIPTION %}<p class="fw1 f5 mt0 mb3">I write stories, compose poems, read books, watch movies, program and code, research, and just live. You can read more about me talking about me <a class="fw1 link dark-red" href="{% url 'me:home' %}">here</a>.</p>
+{% block e_HEADER_TITLE %}Harshvardhan Pandit{% endblock e_HEADER_TITLE %}
+{% block f_HEADER_SUBTITLE %}{% endblock f_HEADER_SUBTITLE %}
+{% block e_HEADER_DESCRIPTION %}<p class="fw1 f5 mt0 mb3 w-50-ns center">I write stories, compose poems, read books, watch movies, program and code, research, and just live. You can read more about me talking about me <a class="fw1 link dark-red" href="{% url 'me:home' %}">here</a>.</p>
 <div class="tc mt3"><a href="https://github.com/coolharsh55/">Github</a> | <a href="{% url 'research:home' %}">Research</a> | <a href="{% url 'stub' %}">Resume</a> | <a href="{% url 'stub' %}">Developer</a></div>{% endblock e_HEADER_DESCRIPTION %}
 {% block e_BODY %}
-<div class="fl w-100 pa2">
-    <div id='latest' class="fl w-25-ns pa2 grow db">
+<div class="fl w-100 bt bw3 b--near-black">
+</div>
+<div class="fl w-100 db pa2">
+    <div id='latest' class="fl w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title washed-blue bg-hot-pink tc">recent</h2>
         {% for model, post in latest_posts %}
         <div class='pv1'>
             <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
-            </a><br>
-            <small>{{ model }} - {{ post.date_published }}</small>
+            </a>
         </div>
         {% endfor %}
     </div>
 
-
-    <div id='featured' class="fl w-25-ns pa2 grow db ">
+    <div id='featured' class="fl w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title washed-yellow bg-purple tc">featured</h2>
         {% for model, post in featured_posts %}
         <div class='pv1'>
             <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
-            </a><br>
-            <small>{{ model }} - {{ post.date_published }}</small>
+            </a>
         </div>
         {% endfor %}
     </div>
 
-    <div class='w-25-ns db fl'>
-    <div id='creative-writing' class="pa2 grow">
-        <h2 class="fw2 f-title lh-title light-gray bg-dark-green tc">creative writing</h2>
-        <div class="pv1"><a href="{% url 'blog:list' %}">Blog</a><span class="f7 fw1"><br/><small> thoughts, rants, opinions, humor, reviews, reactions, and life</small></span></div>
-        <div class="pv1"><a href="{% url 'poems:list' %}">Poems</a><span class="f7 fw1"><br/><small>rustic runes to rhyming tunes</small></span></div>
-        <div class="pv1"><a href="{% url 'stories:list' %}">Stories</a><span class="f7 fw1"><br/><small>narratives, parables, discovering the human element</small></span></div>
+    <div id='hobbies' class='fl w-100 w-25-ns pa2 db tc'>
+        <h2 class="fw2 f-title lh-title light-gray bg-orange tc">hobbies</h2>
+        <div class="pv1"><a href="{% url 'blog:list' %}">Writing Blog</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'poems:list' %}">Composing Poems</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stories:list' %}">Creating Stories</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Reading Books</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Playing Video Games</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Watching Movies</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Listening Music</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Photography</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stub' %}">Origami</a></div class="pv1">
     </div>
 
-    <div id='hobbies' class="pa2 grow">
-        <h2 class="fw2 f-title lh-title lightest-blue bg-dark-green tc">hobbies</h2>
-        <div class="light-red pb2 tc">work in progress</div>
-        <div class="pv1"><a href="{% url 'stub' %}">Reading</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Playing Games</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Watching Movies</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Watching TV Shows</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Listening Music</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Photography</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">Origami</a></div>
-        <div><span class="f7 fw1"><small>I keep finding new interesting things to do every now and then.</small></span></div>
-    </div>
-    </div>
-
-    <div id='research' class="fl w-25-ns pa2 grow db ">
-        <h2 class="fw2 f-title lh-title washed-yellow bg-dark-gray tc">research</h2>
-        <div class="light-red pb2 tc">work in progress</div>
+    <div id='research' class="fl w-25-ns pa2 db tc">
+        <h2 class="fw2 f-title lh-title washed-yellow bg-navy tc">research</h2>
         <div class="pv1"><a href="{% url 'research:home' %}">Research Homepage</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">Research Blog</a></div>
         <div class="pv1"><a href="{% url 'research:publications' %}">Publications</a></div>
-        <div class="pv1">
+        <div class="pv2">
             <a href="{% url 'stub' %}">Personal, Context-aware Service for Privacy Adviser</a>
             <span class="f6 fw1"><br/>
             <span class="silver">Ph.D in Computer Science, ADAPT, Trinity College Dublin, Ireland</span><br/>
             <span class="mid-gray">Privacy reasoning for semantic complex event processing for the Open Web Platform</span></span>
         </div>
-        <div class="pv1">
-            <a href="{% url 'stub' %}">Contextual Data Model for Smartphone Applications</a>
-            <span class="f6 fw1"><br/>
-            <span class="silver">MSc. in Computer Science by Research, University College Dublin, Ireland</span><br/>
-            <span class="mid-gray">A contextual middleware for apps to store and use context to create Siri and Google Now like smart features</span></span>
-        </div>
-        <div class="pv1">
-            <a href="{% url 'stub' %}">KWEST - A Semantically Tagged Virtual Filesystem</a>
-            <span class="f6 fw1"><br/>
-            <span class="silver">Bachelor of Engg. in Computers, Pune University, India</span><br/>
-            <span class="mid-gray">Use apriori for grouping related files into music playlists or work folders</span></span>
-        </div>
     </div>
 </div>
 
 <div class="fl w-100 pa2">
 
-    <div id='lifeX' class="fl w-25-ns pa2 grow db ">
-        <h2 class="fw2 f-title lh-title washed-green bg-dark-blue tc">lifeX</h2>
-        <div class="light-red tc pb2">being renovated</div>
-        <div class="pv1"><a href="{% url 'lifeX:home' %}"><i class="file powerpoint outline icon"></i>What is Life Experiments?</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:ideas:list' %}"><i class="idea outline icon"></i>Ideas</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:experiments:list' %}"><i class="lab outline icon"></i>Experiments</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:goals:list' %}"><i class="bullseye outline icon"></i>Goals</a></div>
-        <div class="pv1"><a href="{% url 'lifeX:blog:list' %}"><i class="clipboard outline icon"></i>Blog</a></div>
-        <span class="f7 fw1"><br/><small>life experiments are all things I do or try out, for fun, or to lead a better life</small></span>
+    <div id='dev' class="fl w-100 w-25-ns pa2 db tc">
+        <h2 class="fw2 f-title lh-title light-green bg-dark-green tc">dev</h2>
+        <div class="pv1"><a href="{% url 'dev:index' %}">devpage</a></div>
+        <div class="pv1"><a href="{% url 'dev:guide:index' %}">guides &amp; tutorials</a></div>
+        <div class="pv1"><a href="{% url 'dev:res:index' %}">resources</a></div>
+        <div class="pv1"><a href="{% url 'dev:discuss:index' %}">discussions</a></div>
+        <div class="pv1"><a href="{% url 'dev:mystack:index' %}">my stack</a></div>
+        <div class="pv1"><a href="{% url 'dev:project:index' %}">projects</a></div>
     </div>
 
-    <div id='brainbank' class="fl w-25-ns pa2 grow db ">
-            <h2 class="fw2 f-title lh-title dark-blue bg-yellow tc">brainbank</h2>
-            <div class="light-red tc">work in progress</div>
-            <p>R&D ideas <br/>
-            <span class="f7 fw1"><br/><small>where I store all ideas that sometimes become concrete projects, but mostly are experiments.</small></span></p>
-    </div>
-
-    <div id='dev' class="fl w-25-ns pa2 grow db ">
-            <a href="{% url 'dev:index' %}"><h2 class="fw2 f-title lh-title light-green bg-near-black tc">dev</h2></a>
-            <p>development blog, project, ideas, and documentation</p>
-            <div class="pv1"><a href="{% url 'dev:guide:index' %}">guides &amp; tutorials</a></div>
-            <div class="pv1"><a href="{% url 'dev:res:index' %}">resources</a></div>
-            <div class="pv1"><a href="{% url 'dev:discuss:index' %}">discussions</a></div>
-            <div class="pv1"><a href="{% url 'dev:mystack:index' %}">my stack</a></div>
-            <div class="pv1"><a href="{% url 'dev:project:index' %}">projects</a></div>
-    </div>
-
-    <div id='journal' class="fl w-25-ns pa2 grow db ">
-        <h2 class="fw2 f-title lh-title blue bg-light-yellow tc">journal</h2>
-        <div class="pv1"><a href="{% url 'journal:auth' %}">login</a></div>
-        <div class="pv1"><a href="{% url 'journal:entries:list' %}">entries</a></div>
-        <div class="pt1"><a href="{% url 'journal:sections:list' %}">sections</a></div>
-        <span class="f7 fw1"><br/><small>just an online journal, has public and private sections</small></span>
-    </div>
-</div>
-
-<div class="fl w-100 pa2">
-
-    <div id='finance' class="fl w-25-ns pa2 grow db ">
+    <div id='finance' class="fl w-100 w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title washed-blue bg-blue tc">finance</h2>
-        <div class="light-red pb2 tc">private</div>
         <div class="pv1"><a href="{% url 'finance:home' %}">dashboard</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/financeaccount/">accounts</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/budget/">budgets</a></div>
         <div class="pv1"><a href="https://admin.harshp.com/finance/transaction/">transactions</a></div>
         <div class="pt1"><a href="https://admin.harshp.com/finance/transfertransaction/">transfers</a></div>
-        <span class="f7 fw1"><br/><small>a way to track expenses and see what's eating all my money</small></span>
     </div>
 
-    <div id='meta' class="fl w-25-ns pa2 grow db ">
+    <div id='meta' class="fl w-100 w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title light-yellow bg-light-purple tc">meta</h2>
-        <div class="light-red pb2 tc">work in progress</div>
-        <div class="pv1"><a href="{% url 'stub' %}">search</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">suggestions</a></div>
         <div class="pv1"><a href="{% url 'stub' %}">discover</a></div>
         <div class="pv1"><a href="{% url 'stub' %}">feedback</a></div>
         <div class="pt1"><a href="{% url 'stub' %}">random</a></div>
-        <span class="f7 fw1"><br/><small>interactions with the site and additional functionality</small></span>
+        <div class="pv1"><a href="{% url 'stub' %}">search</a></div>
+        <div class="pv1"><a href="{% url 'stub' %}">suggestions</a></div>
     </div>
 
-    <div id='help' class="fl w-25-ns pa2 grow db ">
-        <h2 class="fw2 f-title ba b--dark-blue lh-title dark-blue bg-washed-blue tc">how can I help you?</h2>
-        <span class="f7 fw1 moon-silver"><br/><small>I am a jack of all trades, and the master of none; If you need help with something in an area that I'd have/had/will have an interest in, just contact me. I'm always glad to help or just discuss pretty much anything.</small></span>
+    <div id='help' class="fl w-25-ns pa2 db tc">
+        <h2 class="fw2 f-title ba b--dark-blue lh-title dark-blue bg-gold tc">how can I help you?</h2>
+        <span class="f7 fw1 moon-silver"><small>I am a jack of all trades, and the master of none; If you need help with something in an area that I'd have/had/will have an interest in, just contact me. I'm always glad to help or just discuss pretty much anything.</small></span>
     </div>
 </div>
 {% endblock e_BODY %}

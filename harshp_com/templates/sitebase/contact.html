@@ -1,0 +1,20 @@
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}
+{% block e_TITLE %}contact | harshp.com{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}Contact information for harshp.com{% endblock e_META_DESCRIPTION %}
+{% block f_HEADER %}
+<div class="center mw8-ns tc br2 pv3 ph6-ns dark-green mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">CONTACT</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+    <p class="f3 fw1 w-50-ns center">If you so wish to contact me, please adhere to this simple courtesy of choosing the right medium.</p>
+    <p>If it is <b>academic</b>, please contact me at  <u>harshvardhan dot pandit at adaptcentre dot ie</u> or <u>pandith at tcd dot ie</u>.</p>
+    <p>If it is <b>personal</b>, use <u>me at harshp dot com</u> or <u>coolharsh55 at gmail dot com</u>.</p>
+    <p>If we have met before, talked to a certain length about any one topic, you CAN use <b>Facebook</b> to message me.</p>
+    <p>If you are denizen of the internet, and love short to-the-point messages, use <b>Twitter</b> at <u>coolharsh55</u>.</p>
+    <p>If you are looking for my developer profile, at <b>Github</b>, it can be found <a href="https://github.com/coolharsh55/"><u>here</u></a>.</p>
+    <p>If you are looking for my resume, at <b>LinkedIn</b>, it can be found <a href="https://www.linkedin.com/in/harshvardhanpandit/"><u>here</u></a>.</p>
+</div>
+{% endblock f_HEADER %}
+{% block f_FOOTER %}{% endblock f_FOOTER %}
