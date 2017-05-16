@@ -45,7 +45,12 @@ urlpatterns = [
     url(r'^research/', include('research.urls')),
     url(r'^stories/', include('stories.urls')),
 
+    # custom
+    url(r'^errors/404', views.handler404),
+    url(r'^errors/500', views.handler500),
 ]
 
 admin.site.site_name = 'harshp_com'
 handler404 = views.handler404
+handler500 = views.handler500
+
