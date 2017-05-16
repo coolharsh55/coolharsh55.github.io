@@ -73,10 +73,10 @@
     <div id='finance' class="fl w-100 w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title washed-blue bg-blue tc">finance</h2>
         <div class="pv1"><a href="{% url 'finance:home' %}">dashboard</a></div>
-        <div class="pv1"><a href="https://admin.harshp.com/finance/financeaccount/">accounts</a></div>
-        <div class="pv1"><a href="https://admin.harshp.com/finance/budget/">budgets</a></div>
-        <div class="pv1"><a href="https://admin.harshp.com/finance/transaction/">transactions</a></div>
-        <div class="pt1"><a href="https://admin.harshp.com/finance/transfertransaction/">transfers</a></div>
+        <div class="pv1"><a href="/personal/finance/monthly-spendings/">monthly spendings</a></div>
+        <div class="pv1"><a href="/personal/finance/monthly-spendings/{{current_financial_month}}/">current month</a></div>
+        <div class="pv1"><a href="/manage/finance/financeaccount/">accounts</a></div>
+        <div class="pv1"><a href="/manage/finance/transaction/">transactions</a></div>
     </div>
 
     <div id='meta' class="fl w-100 w-25-ns pa2 db tc">

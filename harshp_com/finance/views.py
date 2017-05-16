@@ -41,7 +41,7 @@ def logout_user(request):
     # log the user out IF they are logged in
     if request.user.is_authenticated():
         logout(request)
-    return # redirect(reverse('home', subdomain=None))
+    return redirect(reverse('home', subdomain=None))
 
 
 def home(request):

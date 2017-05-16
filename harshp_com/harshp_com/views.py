@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import RequestContext
 from itertools import chain
-
+from datetime import datetime
 from utils.meta_generator import create_meta
 
 from blog.models import BlogPost
@@ -56,6 +56,7 @@ def home(request):
     ]
 
     latest_week = latest_week = LifeXWeek.objects.order_by('-number').first()
+    now = datetime.now()
 
     return render(
         request, 'sitebase/homepage.html',
@@ -64,6 +65,7 @@ def home(request):
             'latest_posts': latest_posts,
             'latest_week': latest_week,
             'featured_posts': featured_posts,
+            'current_financial_month': '{}/{}'.format(now.year, now.month)
         })
 
 
