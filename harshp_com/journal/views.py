@@ -47,28 +47,14 @@ def tag(request, slug):
 
 def entries(request):
     """Display index of all entries"""
-    private = False
-    if request.user.is_authenticated():
-        private = True
-    if private:
-        entries = [
-            (entry, True)
-            for entry in
-            JournalEntry.objects.order_by('-date_published')]
-    else:
-        entries = []
-        for entry in JournalEntry.objects.order_by(
-                '-date_published').select_related('section'):
-            if entry.private or (entry.section and entry.section.private):
-                # entries.append((entry, False))
-                pass
-            else:
-                entries.append((entry, True))
+    if not request.user.is_authenticated():
+        return redirect('journal:auth')
+    entries = [
+        (entry, True)
+        for entry in
+        JournalEntry.objects.order_by('-date_published')]
 
-    sections = JournalSection.objects
-    if not private:
-        sections = sections.filter(private=False)
-    sections = sections.order_by('name')
+    sections = JournalSection.objects.order_by('name')
     return render(
         request, 'journal/entries.html', {
             'entries': entries,
@@ -77,16 +63,17 @@ def entries(request):
 
 def entry(request, entry_id):
     """Display journal entry"""
+    if not request.user.is_authenticated():
+        return redirect('journal:auth')
     entry = get_object_or_404(JournalEntry, id=entry_id)
-    if entry.private or (entry.section and entry.section.private):
-        if not request.user.is_authenticated():
-            return redirect('journal:auth')
 
     return render(request, 'journal/entry.html', {'entry': entry})
 
 
 def sections(request):
     """Sections in the journal"""
+    if not request.user.is_authenticated():
+        return redirect('journal:auth')
     sections = []
     for section in JournalSection.objects.order_by('name').all():
         sections.append((section, section.entries.count()))
@@ -95,10 +82,9 @@ def sections(request):
 
 def section(request, slug):
     """Section in the journal"""
+    if not request.user.is_authenticated():
+        return redirect('journal:auth')
     section = get_object_or_404(JournalSection, slug=slug)
-    if section.private:
-        if not request.user.is_authenticated():
-            return redirect('journal:auth')
     entries = section.entries\
         .filter(is_published=True).order_by('-date_published')
     return render(

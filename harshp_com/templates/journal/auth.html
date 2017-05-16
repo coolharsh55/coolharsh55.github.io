@@ -2,13 +2,13 @@
 {% block f_HEADER %}{% endblock f_HEADER %}
 {% block f_FOOTER %}{% endblock f_FOOTER %}
 {% block f_BODY %}
-<div class="vh-100 w-100 dt tc bg-near-black cover">
+<div class="vh-100 w-100 dt tc">
     <div class="dtc v-mid">
-        <h1 id='header' class="f1 f-headline gold baskerville">journal</h1>
-        <a class="link" href="{% url 'journal:entries:list' %}"><span class="f3 pa2 light-yellow">read entries</span></a>
+        <h1 id='header' class="f1 f-headline">journal</h1>
+        <p class="fw3 i w-25-ns center tc">random words about random things that happen randomly in life; swear there aren't ANY dark secrets in here, seriously, I mean common... why would I hide them, right.... I mean, right!?</p>
         <form class="mt3 measure center" method="POST">
         {% csrf_token %}
-        <input class="input-reset button-reset bg-dark-gray" type="password" id="password" name="password" />
+        <input class="input-reset bn" type="password" id="password" name="password" />
         <input type="submit" id="submit_btn" style="position: absolute; left: -999px" />
         </form>
     </div>

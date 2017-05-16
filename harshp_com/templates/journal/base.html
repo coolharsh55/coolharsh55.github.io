@@ -16,11 +16,7 @@
 </style>{% endblock ee_CSS %}
 {% block e_BODY %}
 <div id='visibility' class='ui'>
-    {% if user.is_authenticated %}
-        <p class="pa2"><a class="link" href="{% url 'journal:logout' %}"><span class="light-red">private</span></p>
-    {% else %}
-        <p class='pa3 blue'>public</p>
-    {% endif %}
+        <p class="pa2"><a class="link" href="{% url 'journal:logout' %}"><span class="light-red">logout</span></p>
 </div>
 {% block ee_BODY %}{% endblock ee_BODY %}
 {% endblock e_BODY %}

@@ -1,83 +1,16 @@
-{% load staticfiles %}
-
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>finance</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" type="text/css" href="{% static 'semanticui/semantic.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/sitebase.css' %}">
-        <style type="text/css">
-        body {
-            background: white;
-            border: 20px black solid;
-        }
-        div {
-            height: 80px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -80px;
-            margin-left: -100px;
-            text-align: center;
-        }
-        #header {
-            height: 40px;
-        }
-        #subheader {
-            text-align: center;
-            width: 200px;
-            height: 40px;
-            color: darkgray;
-            margin: 0 auto;
-            font-size: 1.5em;
-        }
-        input:focus {
-            outline: none;
-        }
-        #password {
-            text-align: center;
-            width: 200px;
-            height: 40px;
-            color: black;
-            margin: 0 auto;
-            border: 0px;
-            border-bottom: 2px black solid;
-            font-size: 1.5em;
-        }
-        </style>
-        {% include 'meta.html' %}
-    {% block f_ANALYTICS %}<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-36745382-2","auto"),ga("send","pageview");</script>{% endblock f_ANALYTICS %}
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <div>
-        <h1 id='header'>finance</h1>
-        <a href="{% url 'home' %}"><h3 id='subheader'><u>harshp.com</u></h3></a>
+{%extends 'sitebase/base.html' %}{% load staticfiles %}
+{% block f_HEADER %}{% endblock f_HEADER %}
+{% block f_FOOTER %}{% endblock f_FOOTER %}
+{% block f_BODY %}
+<body class="vh-100 dt w-100">
+    <div class="dtc v-mid tc">
+        <h1 id='header' class='f1 f-headline'>finance</h1>
+        <p class="fw3 i w-25-ns center tc">manage personal finanaces, track bank accounts, money in wallet, cash out of ATMs, bus fares, rent money, where I spend all that money I don't have...</p>
         <form method="POST">
         {% csrf_token %}
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" name="password" class="bn"/>
         <input type="submit" id="submit_btn" style="position: absolute; left: -999px" />
         </form>
-        </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="{% static 'semanticui/semantic.min.js' %}"></script>
-<script type="text/javascript">
-    window.cookieconsent_options = {"message":"I use cookies, and I know it!","dismiss":"Yeah, ok.","learnMore":"You should too...","link":"https://harshp.com/privacypolicy","theme":"dark-top"};
-</script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-<!-- End Cookie Consent plugin -->
-    </body>
-</html>
+    </div>
+</body>
+{% endblock f_BODY %}
