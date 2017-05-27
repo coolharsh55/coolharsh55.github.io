@@ -3,7 +3,7 @@ from django.utils import timezone
 import markdown
 from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
-from sitebase.markdown_extensions import ext_all_without_newline
+from sitebase.markdown_extensions import ext_formatting
 from utils.models import get_unique_slug
 from sitebase.models import Post
 
@@ -77,7 +77,7 @@ class DevPost(Post):
         self.date_updated = timezone.now()
         if self.body_type == 'markdown':
             self.body_text = markdown.markdown(
-                self.body, extensions=ext_all_without_newline, 
+                self.body, extensions=ext_formatting, 
                 output_format='html5')
         else:
             self.body_text = self.body

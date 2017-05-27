@@ -4,7 +4,7 @@ from django.utils import timezone
 import markdown
 from django.core.urlresolvers import reverse
 from sitebase.editors import EDITOR_TYPES
-from sitebase.markdown_extensions import ext_formatting
+from sitebase.markdown_extensions import ext_all_with_newline
 from utils.models import get_unique_slug
 from sitebase.models import Post
 

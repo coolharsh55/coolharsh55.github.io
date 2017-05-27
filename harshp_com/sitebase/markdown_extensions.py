@@ -12,11 +12,11 @@ LISTS = 'markdown.extensions.sane_lists'
 SMARTYPANTS = 'markdown.extensions.smarty'
 TOC = 'markdown.extensions.toc'
 
-ext_formatting = [ABBREVIATION, FOOTNOTES, NEWLINE, LISTS, TOC]
+ext_formatting = [ABBREVIATION, FOOTNOTES, LISTS, TOC]
 ext_code = [FENCED_CODE, CODEHILITE]
 ext_all = [
-    ABBREVIATION, FOOTNOTES, NEWLINE, LISTS, TOC,
-    FENCED_CODE, CODEHILITE]
-ext_all_without_newline = [
     ABBREVIATION, FOOTNOTES, LISTS, TOC,
+    FENCED_CODE, CODEHILITE]
+ext_all_with_newline = [
+    ABBREVIATION, FOOTNOTES, LISTS, TOC, NEWLINE,
     FENCED_CODE, CODEHILITE]
