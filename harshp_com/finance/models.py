@@ -1,6 +1,7 @@
 from django.db import models
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
+from django.db.models.signals import m2m_changed
 from django.core.urlresolvers import reverse
 from utils.models import get_unique_slug
 
@@ -266,6 +267,25 @@ class Transaction(models.Model):
         return reverse(
             'finance:transaction',
             args=[self.id])
+
+
+def manage_excluded_budgets(
+        sender, instance, action, reverse, pk_set, **kwargs):
+    print(sender, instance, action, reverse, pk_set)
+    if action is 'post_add' and reverse is False:
+        for pk in pk_set:
+            budget = Budget.objects.get(pk=pk)
+            budget.amount_remaining += instance.amount
+            budget.save()
+    elif action is 'post_remove' and reverse is False:
+        for pk in pk_set:
+            budget = Budget.objects.get(pk=pk)
+            budget.amount_remaining -= instance.amount
+            budget.save()
+
+
+m2m_changed.connect(
+        manage_excluded_budgets, sender=Transaction.exclude_budgets.through)
 
 
 class PlannedTransaction(models.Model):
