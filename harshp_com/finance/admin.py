@@ -134,7 +134,7 @@ class TransactionAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     fields = (
         'transaction_type', 'account', 'date', 'amount',
-        'category', 'tags', 'note')
+        'category', 'tags', 'exclude_budgets', 'note')
     filter_horizontal = ('tags',)
     list_display = (
         'transaction_type', 'account', 'date', 'amount', 'category')

@@ -47,6 +47,73 @@ class FinanceAccount(models.Model):
             'finance:account', args=[self.slug])
 
 
+class Budget(models.Model):
+    """Budget (Finance)
+
+    A budget is an allocation of funds from one or more accounts over a
+    period of time that restricts the usage of expenditure."""
+
+    ONCE = 0
+    DAY = 1
+    WEEK = 2
+    MONTH = 3
+    QUARTER = 4
+    SEMI_ANNUAL = 5
+    ANNUAL = 6
+
+    BUDGET_PERIODS = (
+        (DAY, 'Daily'), (WEEK, 'Weekly'), (MONTH, 'Monthly'),
+        (QUARTER, 'Quarterly'), (SEMI_ANNUAL, 'Semi-Annually'),
+        (ANNUAL, 'Annually'))
+
+    name = models.CharField(max_length=256)
+    amount = models.FloatField()
+    amount_remaining = models.FloatField(blank=True)
+    period = models.PositiveSmallIntegerField(
+        default=MONTH, choices=BUDGET_PERIODS, db_index=True)
+    # TODO: Budget types for considering only expenses or all transactions
+    # type: absolute - only considers expenses
+    # type: relative - considers incomes and expense
+    date_start = models.DateField(db_index=True)
+    date_end = models.DateField(blank=True, db_index=True)
+
+    class Meta(object):
+        ordering = ['-date_start', 'date_end']
+        verbose_name = 'Budget'
+        verbose_name_plural = 'Budgets'
+
+    def __str__(self):
+        return '{}: {} of {}'.format(
+            self.name, self.amount_remaining, self.amount)
+
+    def save(self, *args, **kwargs):
+        if self.amount <= 0:
+            raise ValueError('Budget value should be positive')
+        # NOTE: Keeping the budget start date check
+        # in case I come back and say this is needed
+        # if self.date_start > timezone.now().date():
+        #     raise ValueError('Budget start date cannot be in the future')
+        if self.pk is None:
+            if self.amount_remaining is None:
+                self.amount_remaining = self.amount
+        if self.period == Budget.ONCE:
+            if self.date_end is None:
+                raise ValueError('Budget needs an ending date')
+        elif self.period == Budget.DAY:
+            self.date_end = self.date_start + relativedelta(days=1)
+        elif self.period == Budget.WEEK:
+            self.date_end = self.date_start + relativedelta(weeks=1, days=-1)
+        elif self.period == Budget.MONTH:
+            self.date_end = self.date_start + relativedelta(months=1, days=-1)
+        elif self.period == Budget.QUARTER:
+            self.date_end = self.date_start + relativedelta(months=3, days=-1)
+        elif self.period == Budget.SEMI_ANNUAL:
+            self.date_end = self.date_start + relativedelta(months=6, days=-1)
+        elif self.period == Budget.ANNUAL:
+            self.date_end = self.date_start + relativedelta(years=1, days=-1)
+        return super(Budget, self).save(*args, **kwargs)
+
+
 class TransactionCategory(models.Model):
     """Transaction Category (Finance)
 
@@ -130,6 +197,8 @@ class Transaction(models.Model):
     category = models.ForeignKey(
         TransactionCategory, related_name='transactions')
     tags = models.ManyToManyField(TransactionTag, related_name='transactions')
+    exclude_budgets = models.ManyToManyField(
+        Budget, blank=True, related_name='exclude_budgets')
     note = models.TextField()
 
     class Meta(object):
@@ -158,17 +227,15 @@ class Transaction(models.Model):
             # transact amount from account
             if self.transaction_type == Transaction.EXPENSE:
                 self.account.amount -= self.amount
-            elif self.transaction_type == Transaction.INCOME:
-                self.account.amount += self.amount
-            self.account.save()
-            # transact amount from budget
-            if self.transaction_type == Transaction.EXPENSE:
                 budgets = Budget.objects.filter(
                     date_start__lte=timezone.now().date(),
                     date_end__gte=timezone.now().date())
                 for budget in budgets:
                     budget.amount_remaining -= self.amount
                     budget.save()
+            elif self.transaction_type == Transaction.INCOME:
+                self.account.amount += self.amount
+            self.account.save()
         else:
             # check if amount has changed and update it
             this = Transaction.objects.get(pk=self.pk)
@@ -184,86 +251,21 @@ class Transaction(models.Model):
                 self.account.save()
                 # transact amount from budget
                 if self.transaction_type == Transaction.EXPENSE:
+                    excluded_budgets = list(self.exclude_budgets.all())
                     budgets = Budget.objects.filter(
                         date_start__lte=timezone.now().date(),
                         date_end__gte=timezone.now().date())
+                    budgets = [b for b in budgets if b not in excluded_budgets]
                     for budget in budgets:
                         budget.amount_remaining += this.amount
                         budget.amount_remaining -= self.amount
                         budget.save()
-        return super(Transaction, self).save(*args, **kwargs)
+        return super(Transaction, self).save(*args, **kwargs) 
 
     def get_absolute_url(self):
         return reverse(
             'finance:transaction',
             args=[self.id])
-
-
-class Budget(models.Model):
-    """Budget (Finance)
-
-    A budget is an allocation of funds from one or more accounts over a
-    period of time that restricts the usage of expenditure."""
-
-    ONCE = 0
-    DAY = 1
-    WEEK = 2
-    MONTH = 3
-    QUARTER = 4
-    SEMI_ANNUAL = 5
-    ANNUAL = 6
-
-    BUDGET_PERIODS = (
-        (DAY, 'Daily'), (WEEK, 'Weekly'), (MONTH, 'Monthly'),
-        (QUARTER, 'Quarterly'), (SEMI_ANNUAL, 'Semi-Annually'),
-        (ANNUAL, 'Annually'))
-
-    name = models.CharField(max_length=256)
-    amount = models.FloatField()
-    amount_remaining = models.FloatField(blank=True)
-    period = models.PositiveSmallIntegerField(
-        default=MONTH, choices=BUDGET_PERIODS, db_index=True)
-    # TODO: Budget types for considering only expenses or all transactions
-    # type: absolute - only considers expenses
-    # type: relative - considers incomes and expense
-    date_start = models.DateField(db_index=True)
-    date_end = models.DateField(blank=True, db_index=True)
-
-    class Meta(object):
-        ordering = ['-date_start', 'date_end']
-        verbose_name = 'Budget'
-        verbose_name_plural = 'Budgets'
-
-    def __str__(self):
-        return '{}: {} of {}'.format(
-            self.name, self.amount_remaining, self.amount)
-
-    def save(self, *args, **kwargs):
-        if self.amount <= 0:
-            raise ValueError('Budget value should be positive')
-        # NOTE: Keeping the budget start date check
-        # in case I come back and say this is needed
-        # if self.date_start > timezone.now().date():
-        #     raise ValueError('Budget start date cannot be in the future')
-        if self.pk is None:
-            if self.amount_remaining is None:
-                self.amount_remaining = self.amount
-        if self.period == Budget.ONCE:
-            if self.date_end is None:
-                raise ValueError('Budget needs an ending date')
-        elif self.period == Budget.DAY:
-            self.date_end = self.date_start + relativedelta(days=1)
-        elif self.period == Budget.WEEK:
-            self.date_end = self.date_start + relativedelta(weeks=1, days=-1)
-        elif self.period == Budget.MONTH:
-            self.date_end = self.date_start + relativedelta(months=1, days=-1)
-        elif self.period == Budget.QUARTER:
-            self.date_end = self.date_start + relativedelta(months=3, days=-1)
-        elif self.period == Budget.SEMI_ANNUAL:
-            self.date_end = self.date_start + relativedelta(months=6, days=-1)
-        elif self.period == Budget.ANNUAL:
-            self.date_end = self.date_start + relativedelta(years=1, days=-1)
-        return super(Budget, self).save(*args, **kwargs)
 
 
 class PlannedTransaction(models.Model):
