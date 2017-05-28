@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^stub/$', views.stub, name='stub'),
     url(r'^contact/$', views.contact, name='contact'),
     # admin
+    url(r'^manage/jobs/', include('django_rq.urls')),
     url(r'^manage/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),

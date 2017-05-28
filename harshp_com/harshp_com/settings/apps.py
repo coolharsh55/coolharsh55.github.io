@@ -21,6 +21,9 @@ INSTALLED_APPS = [
     'meta',
     # django-robots: robots.txt
     'robots',
+    # job queue
+    'django_rq',
+    'django_rq_jobs',
 
     # harshp_com apps
     'blog',

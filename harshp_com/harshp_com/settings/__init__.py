@@ -7,6 +7,7 @@ from .basepath import *
 from .database import *
 from .debug import *
 from .i18n import *
+from .job_queue import *
 from .logging import *
 from .middleware import *
 from .seo import *
