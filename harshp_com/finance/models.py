@@ -398,3 +398,21 @@ class TransferTransaction(models.Model):
             self.account_from.save()
             self.account_to.save()
         return super(TransferTransaction, self).save(*args, **kwargs)
+
+
+class LoanCredit(models.Model):
+    """Loans and Credits
+
+    Positive value indiciates credit (income) and negative values indicate
+    loan (expense)."""
+
+    name = models.CharField(max_length=256)
+    amount = models.FloatField(default=0.0)
+
+    class Meta(object):
+        ordering = ['name']
+        verbose_name = 'Loans & Credits'
+        verbose_name_plural = 'Loans & Credits'
+
+    def __str__(self):
+        return '{}: {}'.format(self.name, self.amount)
