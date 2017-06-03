@@ -9,4 +9,6 @@ RQ_QUEUES = {
     }
 }
 
-RQ_JOBS_MODULE = tuple()
+RQ_JOBS_MODULE = (
+    'finance.jobs',
+    )
