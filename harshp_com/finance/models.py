@@ -198,8 +198,6 @@ class Transaction(models.Model):
     category = models.ForeignKey(
         TransactionCategory, related_name='transactions')
     tags = models.ManyToManyField(TransactionTag, related_name='transactions')
-    exclude_budgets = models.ManyToManyField(
-        Budget, blank=True, related_name='exclude_budgets')
     note = models.TextField()
 
     class Meta(object):
@@ -252,11 +250,9 @@ class Transaction(models.Model):
                 self.account.save()
                 # transact amount from budget
                 if self.transaction_type == Transaction.EXPENSE:
-                    excluded_budgets = list(self.exclude_budgets.all())
                     budgets = Budget.objects.filter(
                         date_start__lte=timezone.now().date(),
                         date_end__gte=timezone.now().date())
-                    budgets = [b for b in budgets if b not in excluded_budgets]
                     for budget in budgets:
                         budget.amount_remaining += this.amount
                         budget.amount_remaining -= self.amount
@@ -267,25 +263,6 @@ class Transaction(models.Model):
         return reverse(
             'finance:transaction',
             args=[self.id])
-
-
-def manage_excluded_budgets(
-        sender, instance, action, reverse, pk_set, **kwargs):
-    print(sender, instance, action, reverse, pk_set)
-    if action is 'post_add' and reverse is False:
-        for pk in pk_set:
-            budget = Budget.objects.get(pk=pk)
-            budget.amount_remaining += instance.amount
-            budget.save()
-    elif action is 'post_remove' and reverse is False:
-        for pk in pk_set:
-            budget = Budget.objects.get(pk=pk)
-            budget.amount_remaining -= instance.amount
-            budget.save()
-
-
-m2m_changed.connect(
-        manage_excluded_budgets, sender=Transaction.exclude_budgets.through)
 
 
 class PlannedTransaction(models.Model):
@@ -419,20 +396,3 @@ class TransferTransaction(models.Model):
             self.account_to.save()
         return super(TransferTransaction, self).save(*args, **kwargs)
 
-
-class LoanCredit(models.Model):
-    """Loans and Credits
-
-    Positive value indiciates credit (income) and negative values indicate
-    loan (expense)."""
-
-    name = models.CharField(max_length=256)
-    amount = models.FloatField(default=0.0)
-
-    class Meta(object):
-        ordering = ['name']
-        verbose_name = 'Loans & Credits'
-        verbose_name_plural = 'Loans & Credits'
-
-    def __str__(self):
-        return '{}: {}'.format(self.name, self.amount)

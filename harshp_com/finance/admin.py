@@ -11,7 +11,6 @@ from .models import Transaction
 from .models import Budget
 from .models import PlannedTransaction
 from .models import TransferTransaction
-from .models import LoanCredit
 
 
 @admin.register(FinanceAccount)
@@ -135,7 +134,7 @@ class TransactionAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     fields = (
         'transaction_type', 'account', 'date', 'amount',
-        'category', 'tags', 'exclude_budgets', 'note')
+        'category', 'tags', 'note')
     filter_horizontal = ('tags',)
     list_display = (
         'transaction_type', 'account', 'date', 'amount', 'category')
@@ -213,16 +212,3 @@ class TransferTransactionAdmin(admin.ModelAdmin):
     # radio_fields = {'choice': admin.HORIZONTAL}
     # readonly_fields = ()
     search_fields = ('note',)
-
-
-@admin.register(LoanCredit)
-class LoanCreditAdmin(admin.ModelAdmin):
-    """admin for Loans & Credits"""
-
-    fields = ('name', 'amount')
-    list_display = ('name', 'amount', 'loan_or_credit')
-    
-    def loan_or_credit(self, obj):
-        if obj.amount >= 0:
-            return 'credit'
-        return 'loan'
