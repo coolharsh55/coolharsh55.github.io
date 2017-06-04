@@ -54,14 +54,13 @@ class BrainbankPost(Post):
     body = models.TextField()
     headerimage = models.URLField(max_length=256, blank=True, null=True)
     highlight = models.BooleanField(default=False, db_index=True)
-    deliverable = models.BooleanField(default=False, db_index=True)
     idea = models.ForeignKey(
         BrainbankIdea, related_name='posts', db_index=True)
 
     class Meta(object):
 
-        verbose_name = 'BrainBank Idea Post'
-        verbose_name_plural = 'BrainBank Idea Posts'
+        verbose_name = 'BrainBank Post'
+        verbose_name_plural = 'BrainBank Posts'
 
     def save(self, *args, **kwargs):
         if self.pk is None:

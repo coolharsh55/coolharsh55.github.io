@@ -1,36 +1,23 @@
 {% extends 'brainbank/base.html' %}
 
-
 {% block e_TITLE %}{{ idea.title }}{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}{{ idea.title }}{% endblock ff_HEADER_TITLE %}
-
 {% block e_BODY %}
-<div class='ui container'>
-    <div class='ui very relaxed text container segment'>
-        <div class='ui center aligned container'>
-            <div class='meta spacious-bottom'><i class='brown paragraph icon'></i>{{ no_posts }} posts <i class='yellow star icon'></i>{{ no_highlited }} highlighted <i class='purple cube icon'></i>{{ no_deliverable }} deliverables</div>
-        </div>
-        {{ idea.body_text | safe }}
-        <div class='ui feed spacious-top'>
+<article class="baskerville pb5">
+    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
+        <h1 class="f3 f-subheadline-l measure lh-title fw1 mt0 dark-red">{{ idea.title }}</h1>
+        <nav class="">
+          <div class="tc pb3">
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:list' %}" title="BrainBank">BrainBank</a>
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
+          </div>
+        </nav>
+    </header>
+    <div id='posts' class="fl w-100 pa2 center tc mb3">
         {% for post in posts %}
-            <div class='event'>
-                 {% if post.deliverable %}
-                    {% if post.highlight %}
-                <i class="yellow star icon"></i>
-                    {% endif %}
-                <i class="purple cube icon"></i>
-                {% else %}
-                    {% if post.highlight %}
-                <i class="yellow star icon"></i>
-                    {% else %}
-                <i class="blue paragraph icon"></i>
-                    {% endif %}
-                {% endif %}
-                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>- {{ post.date_published }}
-            </div>
-        {% endfor %}
+        <div class="pv2">
+            {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>{% endif %}<a class="link dark-red f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/><span class="f6 fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
         </div>
+        {% endfor %}
     </div>
-</div>
+</article>
 {% endblock e_BODY %}

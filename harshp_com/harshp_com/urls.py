@@ -38,6 +38,7 @@ urlpatterns = [
     # apps
     url(r'^blog/lifeX/', include('lifeX.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^brainbank/', include('brainbank.urls')),
     url(r'^dev/', include('dev.urls')),
     url(r'^personal/finance/', include('finance.urls')),
     url(r'^personal/journal/', include('journal.urls')),

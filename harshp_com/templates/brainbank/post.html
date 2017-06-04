@@ -1,33 +1,30 @@
 {% extends 'brainbank/base.html' %}
 
 {% block e_TITLE %}{{ post.title }}{% endblock e_TITLE %}
-
-{% block ff_HEADER_TITLE %}{{ post.title }}{% endblock ff_HEADER_TITLE %}
-
 {% block e_BODY %}
-<div class="ui container">
-    <div class="ui very relaxed container segment">
-        <div class="ui center aligned container">
-            <a href="{{ idea.get_absolute_url }}"><h2 class="ui blue header"><i class="orange idea icon"></i>{{ idea.title }}</h2></a>
-            <div class='meta'><i class='brown paragraph icon'></i>{{ no_posts }} posts <i class='yellow star icon'></i>{{ no_highlited }} highlighted <i class='purple cube icon'></i>{{ no_deliverable }} deliverables</div>
-            <p><i>{{ post.short_description }}</i></p>
-            <p>published: {{ post.date_published }}</p>
-            <p>updated: {{ post.date_updated }}</p>
-            {% if post.deliverable %}
-            <i class="purple cube icon"></i> deliverable
-            {% endif %}
-            {% if post.highlight %}
-            <i class="yellow star icon"></i> highlighted
-            {% endif %}
-            <br>
-            <div class="ui horizontal divided list">
+<article class="baskerville pb5">
+    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
+        <h1 class="f3 f-subheadline-l measure lh-title fw1 mt0 dark-red">{{ post.title }}</h1>
+        <nav class="">
+          <div class="tc pb3">
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:list' %}" title="BrainBank">BrainBank</a>
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:idea' post.idea %}" :title="{{ post.idea.title }}">{{ post.idea.title }}</a>
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
+          </div>
+        </nav>
+        <div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
+        <time class="f5 f4-l db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
+        <div class="navy pt2 pb4 f5">tags:
             {% for tag in post.tags.all %}
-                <div class="item"><a href="#" class="ui tiny tag label">{{ tag.name }}</a></div>
+                <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
             {% endfor %}
-            </div>
         </div>
-        <br>
-        {{ post.body_text | safe }}
+        {% if post.headerimage %}
+            <img class="w-100 dib measure f3 mb2" src="{{ post.headerimage }}"/>
+        {% endif %}
+    </header>
+    <div class="measure db center f4 f3-ns lh-copy">
+    {{ post.body_text | safe }}
     </div>
-</div>
+</article>
 {% endblock e_BODY %}

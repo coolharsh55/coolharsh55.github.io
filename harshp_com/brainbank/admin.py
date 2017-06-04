@@ -12,7 +12,7 @@ class BrainbankIdeaAdmin(admin.ModelAdmin):
     empty_value_display = 'None'
     fieldsets = [
         ('info', {
-            'fields': ['title', 'short_description', 'repo', 'slug']
+            'fields': ['title', 'short_description', 'slug']
         }),
         ('body', {
             'fields': ['body_type', 'body']
@@ -21,8 +21,8 @@ class BrainbankIdeaAdmin(admin.ModelAdmin):
             'fields': ['body_text']
         }),
     ]
-    list_display = ['title', 'repo', 'posts', 'deliverables']
-    list_display_links = ['title', 'repo', 'deliverables']
+    list_display = ['title']
+    list_display_links = ['title']
     ordering = ['title']
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'short_description')
@@ -46,7 +46,7 @@ class BrainbankPostAdmin(PostAdmin):
         ('publish', {
             'fields': [
                 'date_created', 'date_published',
-                'is_published', 'highlight', 'deliverable'],
+                'is_published', 'highlight'],
         }),
         ('content', {
             'classes': ('wide',),
@@ -67,10 +67,9 @@ class BrainbankPostAdmin(PostAdmin):
     list_display_links = (
         'title', 'idea', 'date_published', 'date_updated')
     list_filter = [
-        'is_published', 'authors', 'tags', 'idea',
-        'highlight', 'deliverable']
+        'is_published', 'authors', 'tags', 'idea', 'highlight']
     ordering = (
         'title', 'idea',
         'date_published', 'date_updated',
-        'highlight', 'is_published', 'deliverable')
+        'highlight', 'is_published')
     search_fields = ['title', 'short_description', 'series__short_description']
