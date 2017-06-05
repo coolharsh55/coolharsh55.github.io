@@ -316,7 +316,7 @@ class PlannedTransaction(models.Model):
     def save(self, *args, **kwargs):
         if self.amount <= 0:
             raise ValueError('Transaction amount should be a positive value')
-        if self.date <= timezone.now().date():
+        if self.date < timezone.now().date():
             raise ValueError('Past transactions cannot be planned.')
         return super(PlannedTransaction, self).save(*args, **kwargs)
 
@@ -343,6 +343,7 @@ class PlannedTransaction(models.Model):
         # set next planned transaction date
         if self.repeat == PlannedTransaction.ONCE:
             self.delete()
+            return
         elif self.repeat == PlannedTransaction.DAY:
             self.date = self.date + relativedelta(days=1)
         elif self.repeat == PlannedTransaction.WEEK:
@@ -355,6 +356,7 @@ class PlannedTransaction(models.Model):
             self.date = self.date + relativedelta(months=6)
         elif self.repeat == PlannedTransaction.ANNUAL:
             self.date = self.date + relativedelta(years=1)
+        self.save()
 
 
 class TransferTransaction(models.Model):

@@ -175,6 +175,7 @@ class BudgetAdmin(admin.ModelAdmin):
 class PlannedTransactionAdmin(admin.ModelAdmin):
     """admin for Planned Transaction"""
 
+    actions = ['complete_transaction']
     date_hierarchy = 'date'
     fields = (
         'transaction_type', 'account', 'date', 'amount', 'repeat',
@@ -193,6 +194,14 @@ class PlannedTransactionAdmin(admin.ModelAdmin):
         'repeat': admin.HORIZONTAL}
     # readonly_fields = ()
     search_fields = ('account__name', 'category__name', 'note')
+
+    @staticmethod
+    def complete_transaction(modeladmin, request, queryset):
+        '''mark planned transaction complete'''
+        for q in queryset:
+            q.mark_complete()
+        messages.add_message(
+            request, messages.INFO, 'Planned transactions marked complete')
 
 
 @admin.register(TransferTransaction)
