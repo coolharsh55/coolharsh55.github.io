@@ -40,8 +40,8 @@ class ResearchBlogPostAdmin(PostAdmin):
         'title', 'series', 'date_published', 'date_updated')
     list_filter = ['is_published', 'authors', 'tags', 'series']
     ordering = (
+        '-date_updated', '-date_published',
         'title', 'series',
-        'date_published', 'date_updated',
         'highlight', 'is_published')
     search_fields = ['title', 'short_description', 'series__short_description']
 

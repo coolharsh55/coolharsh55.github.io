@@ -39,7 +39,7 @@ class PoemAdmin(PostAdmin):
         'title', 'date_published', 'date_updated')
     list_filter = ['is_published', 'authors', 'tags']
     ordering = (
+        '-date_updated', '-date_published',
         'title',
-        'date_published', 'date_updated',
         'highlight', 'is_published')
     search_fields = ['title', 'short_description', 'series__short_description']

@@ -51,7 +51,7 @@ class DevPostAdmin(PostAdmin):
         'title', 'section', 'date_published', 'date_updated')
     list_filter = ['is_published', 'authors', 'tags', 'section']
     ordering = (
+        '-date_updated', '-date_published',
         'title', 'section',
-        'date_published', 'date_updated',
         'highlight', 'is_published')
     search_fields = ['title', 'short_description']

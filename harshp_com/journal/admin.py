@@ -28,7 +28,7 @@ class JournalEntryAdmin(PostAdmin):
     list_display_links = [
         'title', 'section', 'date_published', 'date_updated',
         'is_published', 'private']
-    ordering = ['title', '-date_published']
+    ordering = ['-date_published', 'title']
     search_fields = ['title', 'short_description']
 
     fieldsets = [

@@ -69,7 +69,7 @@ class BrainbankPostAdmin(PostAdmin):
     list_filter = [
         'is_published', 'authors', 'tags', 'idea', 'highlight']
     ordering = (
+        '-date_updated', '-date_published',
         'title', 'idea',
-        'date_published', 'date_updated',
         'highlight', 'is_published')
     search_fields = ['title', 'short_description', 'series__short_description']
