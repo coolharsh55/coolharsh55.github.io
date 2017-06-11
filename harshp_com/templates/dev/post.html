@@ -16,7 +16,7 @@
         </nav>
         <div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
         <time class="f5 f4-l db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
-        <div class="navy pt2 pb4 f5">tags:
+        <div class="navy pt2 pb4 f5">
             {% for tag in post.tags.all %}
                 <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
             {% endfor %}

@@ -15,7 +15,7 @@
         </nav>
         <div class="f4 baskerville dark-gray center tc mb2">{{ poem.short_description }}</div>
         <time class="f5 f4-l db fw1 gray baskerville">poemed: {{ poem.date_published }} | updated: {{ poem.date_updated }}</time>
-        <div class="navy pt2 pb4 f5">tags:
+        <div class="navy pt2 pb4 f5">
             {% for tag in poem.tags.all %}
                 <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
             {% endfor %}
