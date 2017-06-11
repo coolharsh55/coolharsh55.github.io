@@ -35,13 +35,13 @@ JET_DEFAULT_THEME = 'light-blue'
 
 # whether to use compact (one-level) menu
 # will show all apps in single column
-COMPACT_MENU = False
+JET_SIDE_MENU_COMPACT = True
 
 # apps to show in the sidebar
-# JET_SIDE_MENU_CUSTOM_APPS = [
-#     ('blog', ['__all__']),
-#     ('sitebase', ['__all__']),
-# ]
+#JET_SIDE_MENU_CUSTOM_APPS = [
+#    ('blog', ['__all__']),
+#    ('sitebase', ['__all__']),
+#]
 
 # custom dashboard
 # JET_INDEX_DASHBOARD = 'jet.dashboard.DefaultIndexDashboard'
