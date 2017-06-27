@@ -22,4 +22,9 @@ def movie_list(request, slug):
     return render(request, 'hobbies/movielist.html', {
         'list': movie_list,
         'movies': movies
-        })
+    })
+
+
+def watchlist(request):
+    movies = Movie.objects.filter(seen=False).order_by('title')
+    return render(request, 'hobbies/watchlist.html', {'movies': movies})

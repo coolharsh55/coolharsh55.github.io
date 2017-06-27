@@ -6,7 +6,8 @@ from . import views
 
 movie_urlpatterns = [
     url(r'^$', views.movie_homepage, name='index'),
-    url(r'^lists/(?P<slug>[\w-]+)/$', views.movie_list, name='list')
+    url(r'^lists/(?P<slug>[\w-]+)/$', views.movie_list, name='list'),
+    url(r'^watchlist/$', views.watchlist, name='watchlist'),
 ]
 
 hobbies_urlpatterns = [

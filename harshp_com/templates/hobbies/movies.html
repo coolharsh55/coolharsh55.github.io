@@ -12,6 +12,7 @@
 <div class='ph2 pb2 db'>
     <div id='lists' class='mw8-ns pa2 db'>
         <ul class='list'>
+        <p class='f6 b pv2'><a href={% url 'hobbies:movies:watchlist' %}>Watchlist</a></p>
         {% for list in lists %}
         <li class='item'><a href={% url 'hobbies:movies:list' list.slug %}>{{ list }}</a></li>
         {% endfor %}
