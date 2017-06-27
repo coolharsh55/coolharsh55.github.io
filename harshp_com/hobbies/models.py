@@ -23,7 +23,6 @@ class Movie(models.Model):
         for word in unwanted:
             if self.title.startswith(word):
                 self.title = self.title[len(word):] + ', ' + word
-                print(self.title)
                 break
         return super().save(*args, **kwargs)
 
