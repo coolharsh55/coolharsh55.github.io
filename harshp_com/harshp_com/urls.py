@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^brainbank/', include('brainbank.urls')),
     url(r'^dev/', include('dev.urls')),
+    url(r'^hobbies/', include('hobbies.urls')),
     url(r'^personal/finance/', include('finance.urls')),
     url(r'^personal/journal/', include('journal.urls')),
     url(r'^me/', include('me.urls')),

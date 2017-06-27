@@ -1,0 +1,28 @@
+{% extends 'hobbies/base.html' %}
+{% block e_TITLE %}{{ list.title }}{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}movie list {{ list.title }{% endblock e_META_DESCRIPTION %}
+{% block e_BODY %}
+<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
+    <div class="ph1 ph2-mph6-ns">
+        <h1 class="fw6 f3 f2-ns lh-title">{{ list.title }}</h1>
+        <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'hobbies:movies:index' %}">movies</a>  <a href="{% url 'home' %}">harshp.com</a></h2>
+      <div class="fw1 f5 mt0 mb3"></div>
+    </div>
+</div>
+<div class='ph2 pb2 db'>
+    <div id='movies' class='pa2 pv2'>
+        <p class='f7 near-black pa2'>legend: <span class='green'>&#x2713; seen</span> <span class='red'>&#x2605; favourite</span></p>
+        <ul class='list ph3 pv2'>
+        {% for movie in movies %}
+            <li class='mb2 mr2 f6 b db pa2 mid-gray'>
+                {% if movie.seen %}
+                    <span class='f7 green'>&#x2713;</span>
+                {% endif %}
+                {{ movie }}
+                {% if movie.liked %}<span class='f7 red'>&#x2605;</span>{% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock e_BODY %}

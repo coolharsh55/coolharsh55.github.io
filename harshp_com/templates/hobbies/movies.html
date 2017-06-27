@@ -1,0 +1,35 @@
+{% extends 'hobbies/base.html' %}
+{% block e_TITLE %}movie{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}movies, my hobby at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_BODY %}
+<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="fw6 f3 f2-ns lh-title">movies</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'home' %}"><span class="f3 fw1 ph2">harshp.com</span></a></h2>
+      <div class="fw1 f5 mt0 mb3"></div>
+    </div>
+</div>
+<div class='ph2 pb2 db'>
+    <div id='lists' class='mw8-ns pa2 db'>
+        <ul class='list'>
+        {% for list in lists %}
+        <li class='item'><a href={% url 'hobbies:movies:list' list.slug %}>{{ list }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id='movies' class='pa2 pv4'>
+        <p class='f7 near-black pa2 pl4'>legend: <span class='green'>&#x2713; seen</span> <span class='red'>&#x2605; favourite</span></p>
+        <ul class='list'>
+        {% for movie in movies %}
+            <li class='dib-ns mb2 mr2 f6 b ba db pa2 mid-gray'>
+                {% if movie.seen %}
+                    <span class='f7 green'>&#x2713;</span>
+                {% endif %}
+                {{ movie }}
+                {% if movie.liked %}<span class='f7 red'>&#x2605;</span>{% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock e_BODY %}
