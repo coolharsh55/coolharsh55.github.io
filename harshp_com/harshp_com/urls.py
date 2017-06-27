@@ -27,8 +27,8 @@ urlpatterns = [
     # admin
     url(r'^manage/jobs/', include('django_rq.urls')),
     url(r'^manage/', admin.site.urls),
-    url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    # url(r'^jet/', include('jet.urls', 'jet')),
+    # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     # robots.txt
     url(r'^robots\.txt', include('robots.urls')),
 

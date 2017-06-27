@@ -4,8 +4,8 @@ import os
 
 INSTALLED_APPS = [
     # django-jet admin theme
-    'jet.dashboard',
-    'jet',
+    # 'jet.dashboard',
+    # 'jet',
 
     # default django apps
     'django.contrib.admin',
