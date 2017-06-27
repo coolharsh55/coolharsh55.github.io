@@ -3,6 +3,7 @@ from django.contrib import admin
 from sitebase.admin import PostAdmin
 
 from .models import JournalTag, JournalEntry, JournalSection
+from .models import Chain, ChainRecord
 
 
 @admin.register(JournalTag)
@@ -64,3 +65,16 @@ class JournalSectionAdmin(admin.ModelAdmin):
 
     def entries(self, obj):
         return obj.entries.count()
+
+
+@admin.register(Chain)
+class ChainAdmin(admin.ModelAdmin):
+    list_display = ['title', 'total', 'current_length', 'max_length', 'public']
+    list_filter = ['public']
+    search_fields = ['title', 'message']
+
+
+@admin.register(ChainRecord)
+class ChainRecordAdmin(admin.ModelAdmin):
+    list_display = ['date', 'action', 'chain']
+    list_filter = ['date', 'action', 'chain']
