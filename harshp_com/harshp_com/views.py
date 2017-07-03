@@ -9,6 +9,7 @@ from lifeX.models import LifeXWeek
 from poems.models import Poem
 from stories.models import Story
 from dev.models import DevPost
+from research.models import ResearchBlogPost
 
 
 def _get_latest(model):
@@ -39,6 +40,7 @@ def home(request):
                 _get_latest(Poem)[:10],
                 _get_latest(Story)[:10],
                 _get_latest(DevPost)[:10],
+                _get_latest(ResearchBlogPost)[:10],
                 ),
             reverse=True,
             key=lambda p: p.date_published)[:10]
@@ -50,7 +52,10 @@ def home(request):
             chain(
                 _get_featured(BlogPost)[:10],
                 _get_featured(Poem)[:10],
-                _get_featured(Story)[:10]),
+                _get_featured(Story)[:10],
+                _get_featured(DevPost)[:10],
+                _get_featured(ResearchBlogPost)[:10],
+                ),
             reverse=True,
             key=lambda p: p.date_published)[:10]
     ]
