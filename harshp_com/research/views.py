@@ -34,8 +34,8 @@ def b_engg_home(request):
 
 def blog_home(request):
     series = ResearchBlogSeries.objects.order_by('title')
-    posts = ResearchBlogPost.objects.order_by('-date_published')
-    print(posts)
+    posts = ResearchBlogPost.objects\
+            .filter(is_published=True).order_by('-date_published')
     return render(request, 'research/blog/homepage.html', {
         'series': series,
         'posts': posts
