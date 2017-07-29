@@ -1,0 +1,10 @@
+{% extends 'sitebase/base.html' %}
+{% block e_TITLE %}Feedback #{{feedback.pk}}{% endblock e_TITLE %}
+{% block e_HEADER_TITLE %}Feedback #{{feedback.pk}}{% endblock e_HEADER_TITLE %}
+{% block e_BODY %}
+<div class="w-80 center">
+    <p class="fw2">{{ feedback.timestamp }}</p>
+    <p class="fw2">about: <a href="{{ feedback.url }}">link</a></p>
+    <p>{{ feedback.text }}</p>
+</div>
+{% endblock e_BODY %}

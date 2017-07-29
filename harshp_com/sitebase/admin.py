@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Author
 from .models import Tag
+from .models import Feedback
 
 
 @admin.register(Author)
@@ -48,3 +49,12 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     radio_fields = {'body_type': admin.VERTICAL}
     search_fields = ['title', 'short_description']
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    '''Admin for Feedbacks'''
+    date_hierarchy = 'timestamp'
+    list_display = ['pk', 'timestamp', 'url']
+    list_display_links = ['pk', 'timestamp', 'url']
+    search_fields = ['category', 'title', 'user', 'text']

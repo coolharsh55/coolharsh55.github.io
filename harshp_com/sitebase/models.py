@@ -136,3 +136,31 @@ class Post(models.Model):
             url=self.get_absolute_url(),
         )
         return meta
+
+
+class Feedback(models.Model):
+    '''Represents a feedback on a page
+    A Feedback should have:
+        - text of the feedback
+        - timestamp for when it was given
+        - an anonymous field for specifying name / contact details
+        - a URL field for the page
+        - a category field based on the page
+        - a title field for the page
+    '''
+    url = models.URLField(blank=True, null=True)
+    timestamp = models.DateField(auto_now_add=True, blank=True, db_index=True)
+    text = models.TextField()
+    user = models.TextField()
+    category = models.CharField(
+            max_length=150, db_index=True, blank=True, null=True)
+    title = models.CharField(
+            max_length=250, db_index=True, blank=True, null=True)
+
+    class Meta(object):
+        verbose_name = 'Feedback'
+        verbose_name_plural = 'Feedbacks'
+        ordering = ['-pk']
+
+    def __str__(self):
+        return '({date}) {url}'.format(date=self.timestamp, url=self.url)

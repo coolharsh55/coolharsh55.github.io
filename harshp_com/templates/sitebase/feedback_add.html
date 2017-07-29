@@ -1,0 +1,25 @@
+{% extends 'sitebase/base.html' %}
+{% block e_TITLE %}Add Feedbacks{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}add feedback for pages at harshp.com{% endblock e_META_DESCRIPTION %}
+{% block e_HEADER_TITLE %}New Feedback{% endblock e_HEADER_TITLE %}
+{% block e_BODY %}
+<div class="w-80-ns center mt3 pa3">
+<form class="measure center" action="{% url 'feedback:add' None %}" method="POST">
+	{% csrf_token %}
+	<input type="hidden" name="url" readonly value="{{ url }}">
+	<input type="hidden" name="category" readonly value="{{ category }}">
+	<input type="hidden" name="title" readonly value="{{ title }}">
+	<fieldset id="fieldtext" class="ba b--transparent ph0 mh0">
+		<legend class="f4 fw6 ph0 mh0">What do you want to say?</legend>
+		<textarea class="pa2 ba b--black w-100" style="height:200px;" name="text"  id="text"></textarea>
+	</fieldset>
+	<fieldset id="fielduser" class="ba b--transparent ph0 mh0">
+		<legend class="f4 fw6 ph0 mh0">You can (optionally) provide your name and how I can contact you</legend>
+		<textarea class="pa2 ba b--black w-100" name="user"  id="user"></textarea>
+	</fieldset>
+	<div class="tc">
+		<input class="b ph3 pv2 ba b--black bg-transparent grow pointer f4" type="submit" value="Submit Feedback">
+	</div>
+</form>
+</div>
+{% endblock e_BODY %}

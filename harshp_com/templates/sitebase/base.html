@@ -32,10 +32,15 @@
 </div>{% endblock f_HEADER %}</div>
 {% block f_BODY %}<div class="mw8 pv3 center">
 {% block e_BODY %}{% endblock e_BODY %}
-</div>{% endblock f_BODY %}
+</div>
+{% endblock f_BODY %}
 {% block f_FOOTER %}<!-- FOOTER -->
 <div id='footer' class="no-print w-100 pv3 mw8 center georgia">
     <hr/>
+    <div class="mw6-ns center pa3 f5 fw3 baskerville tc">
+    I'd really appreciate any opinions, thoughts, reactions, or feedback that
+    you may have. The link is <a href="{% url 'feedback:add' request.path  %}">here</a>.
+    </div>
     <div class="ph3 pv3 ph5-m ph6-l mid-gray">
         <small class="f6 db tc">© 2017 <b class="ttu">Harshvardhan Pandit</b></small>
         <div class="tc mt3">
