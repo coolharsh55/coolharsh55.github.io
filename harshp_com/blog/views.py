@@ -33,7 +33,7 @@ def list(request):
         'posts_featured_recent': posts_featured[:5],
         'posts_featured_count': posts_featured_count,
         'posts_latest': posts_latest[:5],
-        'series_all': series[:5],
+        'series_all': series,
         'series_count': series_count})
 
 
