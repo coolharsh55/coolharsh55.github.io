@@ -1,0 +1,69 @@
+{% extends 'dev/base.html' %}
+{% block e_TITLE %}GNIB & VISA Appointments{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}GNIB & VISA Appointments{% endblock e_META_DESCRIPTION %}
+
+{% block e_BODY %}
+<article class="baskerville pt2 pb5">
+    <header class="avenir tc ph3 ph4-ns bb">
+        <h1 class="f1 measure lh-title fw1 mt0 mb0 pb0 dark-red tc">GNIB & VISA Appointments</h1>
+        <p class="fw1 fw6 red w-80-ns center">Shows available timings for Burgh Quay office. Updated every 15mins. This is not an official app and therefore must not be used as such. Project blog 
+        <a href="https://harshp.com/dev/projects/gnib-appointments/">here</a></p>
+        <nav class="">
+          <div class="tc pb3">
+            <a class="blue f4 dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="blue f4 dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>
+          </div>
+        </nav>
+    </header>
+    <div class="fl w-100 db pa2 mb2 center">
+        <h2 class="f4 tc fw2 dark-blue">GNIB Appointments</h2>
+            <div class="fl w-100 w-33-ns center pa db tc">
+                <h3 class="f5 tc fw3 dark-blue">Study</h3>
+                {% for appointment in GNIB_Study %}
+                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                {% empty %}
+                <p class="f6 tc fw4 red">No appointments</p>
+                {% endfor %}
+            </div>
+            <div class="fl w-100 w-33-ns pa db tc">
+                <h3 class="f5 tc fw3 dark-blue">Work</h3>
+                {% for appointment in GNIB_Work %}
+                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                {% empty %}
+                <p class="f6 tc fw4 red">No appointments</p>
+                {% endfor %}
+            </div>
+            <div class="fl w-100 w-33-ns pa db tc">
+                <h3 class="f5 tc fw3 dark-blue">Other</h3>
+                {% for appointment in GNIB_Other %}
+                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                {% empty %}
+                {% endfor %}
+            </div>
+    </div>
+    <div class="fl w-100 db pa2 mb4">
+        <h2 class="f4 tc fw2 dark-blue">VISA Appointments</h2>
+            <div class="fl w-100 w-50-ns pa db tc">
+                <h3 class="f5 tc fw3 dark-blue">Individual</h3>
+                {% for date, appointments in VISA_Individual %}
+                <h4 class="f6 tc fw4 dark-blue">{{ date }}</h4>
+                {% for appointment in appointments %}
+                <a class="link db pa blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
+                {% endfor %}
+                {% empty %}
+                <p class="f6 tc fw4 red">No appointments</p>
+                {% endfor %}
+            </div>
+            <div class="fl w-100 w-50-ns pa db tc">
+                <h3 class="f5 tc fw3 dark-blue">Family</h3>
+                {% for date, appointments in VISA_Family %}
+                <h4 class="f6 tc fw4 dark-blue">{{ date }}</h4>
+                {% for appointment in appointments %}
+                <a class="link db pa blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
+                {% endfor %}
+                {% empty %}
+                <p class="f6 tc fw4 red">No appointments</p>
+                {% endfor %}
+            </div>
+    </div>
+</article>
+{% endblock e_BODY %}
