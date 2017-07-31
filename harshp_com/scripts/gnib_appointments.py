@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # author: Harshvardhan Pandit
 # email: me@harshp.com
@@ -35,7 +35,7 @@ headers = {
 
 # Add cipher for request
 # Looked up using curl --verbose
-requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':DES-CBC3-SHA'
+# requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':DES-CBC3-SHA'
 # disable SSL warning
 requests.packages.urllib3.disable_warnings(
     requests.packages.urllib3.exceptions.InsecureRequestWarning)
