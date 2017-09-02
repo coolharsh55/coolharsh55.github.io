@@ -121,15 +121,14 @@ def monthly_spendings_list(request):
         month = months[month]
         month['net'] = month['income'] - month['expense']
         months_list.append((date.format('MMM YY'), reverse(
-            'finance:monthly-spendings', args=(date.year, date.month))))
-    months_list.sort(key=lambda x: x[1], reverse=True)
-
+            'finance:monthly-spendings', args=(date.year, date.month)),
+            date))
+    months_list.sort(key=lambda x: x[2], reverse=True)
     labels = [l[1] for l in sorted(labels, key=lambda d: d[0])]
     months = [months[key] for key in sorted(months.keys())]
     expenses = [m['expense'] for m in months]
     income = [m['income'] for m in months]
     net_expenses = [m['net'] for m in months]
-
 
     datasets = [
         {

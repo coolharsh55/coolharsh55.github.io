@@ -6,7 +6,7 @@
 {% block lib_JS %}<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>{% endblock lib_JS %}
 {% block e_BODY %}
 <div class="mw9 center tc mt0 pa0 pb4 bb">
-{% for month, url in months %}
+{% for month, url, _ in months %}
     <div class="f3 link bg-animate black-80 hover-bg-light-blue dib pa2"><a class="navy" href="{{ url }}">{{ month }}</a></div>
 {% endfor %}
 </div>
