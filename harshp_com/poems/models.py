@@ -31,7 +31,8 @@ class Poem(Post):
         self.date_updated = timezone.now()
         if self.body_type == 'markdown':
             self.body_text = markdown.markdown(
-                self.body, extensions=ext_formatting, output_format='html5')
+                self.body, extensions=ext_all_with_newline,
+                output_format='html5')
         else:
             self.body_text = self.body
         return super(Poem, self).save(*args, **kwargs)
