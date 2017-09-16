@@ -28,3 +28,31 @@ def movie_list(request, slug):
 def watchlist(request):
     movies = Movie.objects.filter(seen=False).order_by('title')
     return render(request, 'hobbies/watchlist.html', {'movies': movies})
+
+
+def books_homepage(request):
+    return render(request, 'hobbies/books.html')
+
+
+def videogame_homepage(request):
+    return render(request, 'hobbies/videogames.html')
+
+
+def music_homepage(request):
+    return render(request, 'hobbies/music.html')
+
+
+def photography_homepage(request):
+    return render(request, 'hobbies/photography.html')
+
+
+def origami_homepage(request):
+    return render(request, 'hobbies/origami.html')
+
+
+def teacoffee_homepage(request):
+    return render(request, 'hobbies/teacoffee.html')
+
+
+def polymathy_homepage(request):
+    return render(request, 'hobbies/polymathy.html')

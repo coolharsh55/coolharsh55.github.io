@@ -23,6 +23,10 @@ feedback_urlpatterns = [
 sitebase_urlpatterns = [
     url(r'', include(tag_urlpatterns, namespace='tags')),
     url(r'', include(author_urlpatterns, namespace='authors')),
+    url(r'^discover/$', views.discover, name='discover'),
+    url(r'^random/$', views.random, name='random'),
+    url(r'^search/$', views.search, name='search'),
+    url(r'^linkfarm/$', views.linkfarm, name='linkfarm'),
 ]
 
 urlpatterns = [

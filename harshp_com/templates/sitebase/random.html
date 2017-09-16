@@ -1,0 +1,15 @@
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}
+{% block e_TITLE %}random | harshp.com{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}random content suggestions{% endblock e_META_DESCRIPTION %}
+{% block f_HEADER %}
+<div class="center mw8-ns tc br2 pv3 ph6-ns dark-red mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l measure lh-title fw1 mt0 mb0">//random</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 light-red">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+    <p class="f3 fw1">When complete, this will allow you to navigate to random parts of the website. Well, pseudo-random  at best.</p>
+    <p>Hold tight!</p>
+</div>
+{% endblock f_HEADER %}
+{% block f_FOOTER %}{% endblock f_FOOTER %}

@@ -1,15 +1,28 @@
 {% extends 'hobbies/base.html' %}
 {% block e_TITLE %}movie{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}movies, my hobby at harshp.com{% endblock e_META_DESCRIPTION %}
-{% block e_BODY %}
-<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
-    <div class="ph1 ph2-mph6-ns">
-      <h1 class="fw6 f3 f2-ns lh-title">movies</h1>
-      <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'home' %}"><span class="f3 fw1 ph2">harshp.com</span></a></h2>
-      <div class="fw1 f5 mt0 mb3"></div>
+{% block f_BODY %}
+<article class="helvetica pb5">
+  <header class="vh-100 bg-light-pink dt w-100">
+    <div 
+      style="background:url(https://s3-eu-west-1.amazonaws.com/harshp-media/hobbies/drivein.jpg) no-repeat center right;background-size: cover;
+		height:auto;"
+      class="dtc v-mid cover ph3 ph4-m ph5-l">
+      <h1 class="f2 f-subheadline-l measure lh-title fw9 black">movies</h1>
+      <h2 class="f6 fw6 near-black">see art in motion</h2>
     </div>
-</div>
-<div class='ph2 pb2 db'>
+  </header>
+<!-- <div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code"> -->
+<!--     <div class="ph1 ph2-mph6-ns"> -->
+<!--       <h1 class="fw6 f3 f2-ns lh-title">movies</h1> -->
+<!--       <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'home' %}"><span class="f3 fw1 ph2">harshp.com</span></a></h2> -->
+<!--       <div class="fw1 f5 mt0 mb3"></div> -->
+<!--     </div> -->
+<!-- </div> -->
+  <div class="mw8 center mt4">
+      <p>Someone once described films as poetry in motion, or they may have been talking about something else, but that's the quote that's stuck in my head. I <i>love</i> movies, films, cinema, call it what you want. These days, I relish a good film, but I've been exhausted of repetitive stories and patterns to the point that they feel like an insult to the intellect. Carefully selecting films to watch keeps me appreciative of the art.</p>
+  </div>
+<div class='mw8 center ph2 pb2 db'>
     <div id='lists' class='mw8-ns pa2 db'>
         <ul class='list'>
         <p class='f6 b pv2'><a href={% url 'hobbies:movies:watchlist' %}>Watchlist</a></p>
@@ -33,4 +46,5 @@
         </ul>
     </div>
 </div>
-{% endblock e_BODY %}
+</article>
+{% endblock f_BODY %}

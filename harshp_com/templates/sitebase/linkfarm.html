@@ -1,0 +1,14 @@
+{% extends 'sitebase/base.html' %}{% load static from staticfiles %}
+{% block e_TITLE %}link-farm | harshp.com{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}collection of links on the web{% endblock e_META_DESCRIPTION %}
+{% block f_HEADER %}
+<div class="center mw8-ns tc br2 pv3 ph6-ns mb5 georgia">
+    <div class="ph1 ph2-mph6-ns">
+      <h1 class="avenir f3 f-subheadline-l navy measure lh-title fw1 mt0 mb0 i">link-farm</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block f_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 blue">harshp.com</span></a>{% endblock f_HEADER_SUBTITLE %}</h2>
+      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
+    </div>
+    <p class="f5 fw1">A collection of links on the web. These are articles, website, notes, and random points of interest I would usually stuff into a bookmarks folder.</p>
+</div>
+{% endblock f_HEADER %}
+{% block f_FOOTER %}{% endblock f_FOOTER %}

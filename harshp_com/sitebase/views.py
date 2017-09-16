@@ -58,3 +58,19 @@ def feedback_view(request, pk):
     feedback = get_object_or_404(Feedback, pk=pk)
     return render(
         request, 'sitebase/feedback_view.html', {'feedback': feedback})
+
+
+def discover(request):
+    return render(request, 'sitebase/discover.html')
+
+
+def random(request):
+    return render(request, 'sitebase/random.html')
+
+
+def search(request):
+    return render(request, 'sitebase/search.html')
+
+
+def linkfarm(request):
+    return render(request, 'sitebase/linkfarm.html')

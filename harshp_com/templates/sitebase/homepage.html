@@ -33,29 +33,28 @@
 
     <div id='hobbies' class='fl w-100 w-25-ns pa2 db tc'>
         <h2 class="fw2 f-title lh-title light-gray bg-orange tc">hobbies</h2>
-        <div class="pv1"><a href="{% url 'blog:list' %}">Writing Blog</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'poems:list' %}">Composing Poems</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stories:list' %}">Creating Stories</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stub' %}">Reading Books</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stub' %}">Playing Video Games</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'hobbies:movies:index' %}">Watching Movies</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stub' %}">Listening Music</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stub' %}">Photography</a></div class="pv1">
-        <div class="pv1"><a href="{% url 'stub' %}">Origami</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'blog:list' %}">blog</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'poems:list' %}">poems</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'stories:list' %}">stories</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:books:index' %}">books</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:videogames:index' %}">video-games</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:movies:index' %}">movies</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:music:index' %}">music</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:photography:index' %}">photography</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:origami:index' %}">origami</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:teacoffee:index' %}">tea/coffee</a></div class="pv1">
+        <div class="pv1"><a href="{% url 'hobbies:polymathy:index' %}">polymathy</a></div class="pv1">
     </div>
 
     <div id='research' class="fl w-25-ns pa2 db tc">
-        <h2 class="fw2 f-title lh-title washed-yellow bg-navy tc">research</h2>
-        <div class="pv1"><a href="{% url 'research:home' %}">Research Homepage</a></div>
-        <div class="pv1"><a href="{% url 'research:blog:home' %}">Research Blog</a></div>
-        <div class="pv1"><a href="{% url 'research:publications' %}">Publications</a></div>
+        <h2 class="fw2 f-title lh-title washed-yellow bg-navy tc">academia</h2>
+        <div class="pv1"><a href="{% url 'research:home' %}">research</a></div>
+        <div class="pv1"><a href="{% url 'research:blog:home' %}">research blog</a></div>
+        <div class="pv1"><a href="{% url 'research:publications' %}">publications</a></div>
         <div class="pv2">
-            <a href="{% url 'stub' %}">Personal, Context-aware Service for Privacy Adviser</a>
+            <a href="{% url 'stub' %}">GDPR, Provenance Lifecycles, & Semantic Web</a>
             <span class="f6"><br/>
-                <span>Ph.D Researcher</span></br>
-                <span>CompSci, ADAPT Centre</span></br>
-                <span>Trinity College Dublin</span><br/>
-            <span class="near-black">Privacy reasoning for semantic complex event processing for the Open Web Platform</span></span>
+            <span class="near-black">GDPR is going to change things up, and compliance is going to be a major change. Maintaining provenance records to demonstrate compliance using semantic web ontologies is something I'm researching about.</span></span>
         </div>
     </div>
 </div>
@@ -84,11 +83,12 @@
 
     <div id='meta' class="fl w-100 w-25-ns pa2 db tc">
         <h2 class="fw2 f-title lh-title light-yellow bg-light-purple tc">meta</h2>
-        <div class="pv1"><a href="{% url 'stub' %}">discover</a></div>
+        <div class="pv1"><a href="{% url 'sitebase:discover' %}">discover</a></div>
         <div class="pv1"><a href="{% url 'feedback:list' %}">feedback</a></div>
-        <div class="pt1"><a href="{% url 'stub' %}">random</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">search</a></div>
-        <div class="pv1"><a href="{% url 'stub' %}">suggestions</a></div>
+        <div class="pt1"><a href="{% url 'sitebase:random' %}">random</a></div>
+        <div class="pv1"><a href="{% url 'sitebase:search' %}">search</a></div>
+        <div class="pv1"><a href="{% url 'journal:auth' %}">journal</a></div>
+        <div class="pv1"><a href="{% url 'sitebase:linkfarm' %}">link-farm</a></div>
     </div>
 
     <div id='help' class="fl w-25-ns pa2 db tc">
