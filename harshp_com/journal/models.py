@@ -112,75 +112,75 @@ class JournalEntry(Post):
             args=[self.id])
 
 
-class Chain(models.Model):
-    '''represents a chain in don't break the chain'''
+# class Chain(models.Model):
+#     '''represents a chain in don't break the chain'''
 
-    title = models.CharField(max_length=256)
-    message = models.CharField(max_length=256)
-    public = models.BooleanField(default=False)
-    started_on = models.DateField()
-    total = models.PositiveSmallIntegerField(default=0)
-    current_length = models.PositiveSmallIntegerField(default=0)
-    max_length = models.PositiveSmallIntegerField(default=0)
+#     title = models.CharField(max_length=256)
+#     message = models.CharField(max_length=256)
+#     public = models.BooleanField(default=False)
+#     started_on = models.DateField()
+#     total = models.PositiveSmallIntegerField(default=0)
+#     current_length = models.PositiveSmallIntegerField(default=0)
+#     max_length = models.PositiveSmallIntegerField(default=0)
 
-    class Meta(object):
-        ordering = ['title']
-        verbose_name = 'Chain'
-        verbose_name_plural = 'Chains'
+#     class Meta(object):
+#         ordering = ['title']
+#         verbose_name = 'Chain'
+#         verbose_name_plural = 'Chains'
 
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
     
-    def save(self, *args, **kwargs):
-        # if the current chain length is greater than the maximum length,
-        # update the maximum length
-        if self.current_length > self.max_length:
-            self.max_length = self.current_length
-        return super(Chain, self).save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         # if the current chain length is greater than the maximum length,
+#         # update the maximum length
+#         if self.current_length > self.max_length:
+#             self.max_length = self.current_length
+#         return super(Chain, self).save(*args, **kwargs)
 
     
-class ChainRecord(models.Model):
-    '''represents a record in don't break the chain'''
+# class ChainRecord(models.Model):
+#     '''represents a record in don't break the chain'''
 
-    date = models.DateField(db_index=True)
-    action = models.BooleanField(db_index=True, default=False)
-    chain = models.ForeignKey(Chain, related_name='records', db_index=True)
+#     date = models.DateField(db_index=True)
+#     action = models.BooleanField(db_index=True, default=False)
+#     chain = models.ForeignKey(Chain, related_name='records', db_index=True)
 
-    class Meta(object):
-        ordering = ['-date']
-        verbose_name = 'Chain Record'
-        verbose_name_plural = 'Chain Records'
-        unique_together = ('date', 'chain')
+#     class Meta(object):
+#         ordering = ['-date']
+#         verbose_name = 'Chain Record'
+#         verbose_name_plural = 'Chain Records'
+#         unique_together = ('date', 'chain')
 
-    def __str__(self):
-        return '{action}-{date}-{chain}'.format(
-                action=self.action,
-                date=self.date,
-                chain=self.chain.title)
+#     def __str__(self):
+#         return '{action}-{date}-{chain}'.format(
+#                 action=self.action,
+#                 date=self.date,
+#                 chain=self.chain.title)
 
-    def save(self, *args, **kwargs):
-        # if the action is true, then increment the chain records
-        if self.pk:
-            # if this is not a new object, get its previous iteration
-            previous_iteration = ChainRecord.objects.get(
-                    date=self.date, chain=self.chain)
-            # check whether there are any differences in the action
-            if self.action != previous_iteration.action:
-                # if the current action is true, then the previous was false
-                if self.action:
-                    # increment the chain length
-                    self.chain.current_length += 1
-                # otherwise the current action is false, previous true
-                else:
-                    # decrement the chain length
-                    self.chain.current_length -= 1
-        else:
-            # this is a new object, therefore, only increment the chain
-            # length when the current action is true
-            if self.action:
-                self.chain.current_length += 1
-            # increment the chain total length
-            self.chain.total += 1
-        # finally, save the chain
-        self.chain.save()
-        return super(ChainRecord, self).save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         # if the action is true, then increment the chain records
+#         if self.pk:
+#             # if this is not a new object, get its previous iteration
+#             previous_iteration = ChainRecord.objects.get(
+#                     date=self.date, chain=self.chain)
+#             # check whether there are any differences in the action
+#             if self.action != previous_iteration.action:
+#                 # if the current action is true, then the previous was false
+#                 if self.action:
+#                     # increment the chain length
+#                     self.chain.current_length += 1
+#                 # otherwise the current action is false, previous true
+#                 else:
+#                     # decrement the chain length
+#                     self.chain.current_length -= 1
+#         else:
+#             # this is a new object, therefore, only increment the chain
+#             # length when the current action is true
+#             if self.action:
+#                 self.chain.current_length += 1
+#             # increment the chain total length
+#             self.chain.total += 1
+#         # finally, save the chain
+#         self.chain.save()
+#         return super(ChainRecord, self).save(*args, **kwargs)
