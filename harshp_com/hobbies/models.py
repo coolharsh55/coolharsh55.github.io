@@ -1,11 +1,12 @@
 from django.db import models
+from utils.speech_corrections import move_articles_to_end
 
 
 class Movie(models.Model):
     '''A Movie, a Film'''
     title = models.CharField(max_length=256, db_index=True)
-    seen = models.BooleanField(default=False)
-    liked = models.BooleanField(default=True)
+    seen = models.BooleanField(default=False, db_index=True)
+    liked = models.BooleanField(default=True, db_index=True)
 
     class Meta(object):
         ordering = ['title']
@@ -16,15 +17,8 @@ class Movie(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        # change the case of title to Title case
-        self.title = self.title.title()
-        # remove redundant words at start
-        unwanted = ['The ', 'A ', 'An ']
-        for word in unwanted:
-            if self.title.startswith(word):
-                self.title = self.title[len(word):] + ', ' + word
-                break
-        return super().save(*args, **kwargs)
+        self.title = move_articles_to_end(self.title)
+        return super(Movie, self).save(*args, **kwargs)
 
 
 class MovieList(models.Model):
@@ -41,3 +35,52 @@ class MovieList(models.Model):
     def __str__(self):
         return self.title
 
+
+class Book(models.Model):
+    '''A book, a novel'''
+    title = models.CharField(max_length=256, db_index=True)
+    read = models.BooleanField(default=False, db_index=True)
+    liked = models.BooleanField(default=False, db_index=True)
+
+    class Meta(object):
+        ordering = ['title']
+        verbose_name = 'Book'
+        verbose_name_plural = 'Books'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.title = move_articles_to_end(self.title)
+        return super(Book, self).save(*args, **kwargs)
+
+
+class BookList(models.Model):
+    '''A list of books'''
+    title = models.CharField(max_length=256, db_index=True)
+    slug = models.SlugField(max_length=256, db_index=True)
+    books = models.ManyToManyField(Book, related_name='lists')
+
+    class Meta(object):
+        ordering = ['title']
+        verbose_name = 'Book List'
+        verbose_name_plural = 'Book Lists'
+
+    def __str__(self):
+        return self.title
+
+
+class BookAnnotation(models.Model):
+    '''Annotation from a Book. Probably parsed from Kindle.'''
+    content = models.TextField()
+    book = models.ForeignKey(
+            Book, on_delete=models.CASCADE,
+            related_name='annotations')
+
+    class Meta(object):
+        ordering = ['pk']
+        verbose_name = 'Book Annotation'
+        verbose_name_plural = 'Book Annotations'
+
+    def __str__(self):
+        return '{} - {}'.format(self.content, self.book.title)
