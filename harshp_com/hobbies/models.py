@@ -1,5 +1,6 @@
 from django.db import models
 from utils.speech_corrections import move_articles_to_end
+from utils.models import get_unique_slug
 
 
 class Movie(models.Model):
@@ -25,8 +26,10 @@ class MovieList(models.Model):
     '''A list of movies'''
     title = models.CharField(max_length=256, db_index=True)
     slug = models.SlugField(max_length=256, db_index=True)
-    movies = models.ManyToManyField(Movie, related_name='lists')
-    
+    slug = models.SlugField(
+        max_length=150, unique=True, db_index=True, blank=True)
+    movies = models.ManyToManyField(Movie, related_name='lists', blank=True)
+
     class Meta(object):
         ordering = ['title']
         verbose_name = 'Movie List'
@@ -34,6 +37,12 @@ class MovieList(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = get_unique_slug(
+                MovieList, self, 'title', title=self.title)
+        return super(MovieList, self).save(*args, **kwargs)
 
 
 class Book(models.Model):
@@ -58,8 +67,9 @@ class Book(models.Model):
 class BookList(models.Model):
     '''A list of books'''
     title = models.CharField(max_length=256, db_index=True)
-    slug = models.SlugField(max_length=256, db_index=True)
-    books = models.ManyToManyField(Book, related_name='lists')
+    slug = models.SlugField(
+        max_length=150, unique=True, db_index=True, blank=True)
+    books = models.ManyToManyField(Book, related_name='lists', blank=True)
 
     class Meta(object):
         ordering = ['title']
@@ -68,6 +78,12 @@ class BookList(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.slug = get_unique_slug(
+                BookList, self, 'title', title=self.title)
+        return super(BookList, self).save(*args, **kwargs)
 
 
 class BookAnnotation(models.Model):
