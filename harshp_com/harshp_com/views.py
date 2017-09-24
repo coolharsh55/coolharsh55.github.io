@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import RequestContext
 from itertools import chain
+import random
 from datetime import datetime
 from utils.meta_generator import create_meta
 
@@ -10,6 +11,7 @@ from poems.models import Poem
 from stories.models import Story
 from dev.models import DevPost
 from research.models import ResearchBlogPost
+from hobbies.models import BookAnnotation
 
 
 def _get_latest(model, string, nos):
@@ -54,19 +56,22 @@ def home(request):
                 _get_featured(ResearchBlogPost, 'research', 10),
                 ),
             reverse=True,
-            key=lambda p: p[1].date_published)[:10]
+            key=lambda p: p[1].date_published)[:10]\
 
-    latest_week = latest_week = LifeXWeek.objects.order_by('-number').first()
     now = datetime.now()
+
+    annotation_count = BookAnnotation.objects.count()
+    random_annotation = BookAnnotation.objects.all()[
+            random.randint(0, annotation_count)]
 
     return render(
         request, 'sitebase/homepage.html',
         {
             'meta': meta,
             'latest_posts': latest_posts,
-            'latest_week': latest_week,
             'featured_posts': featured_posts,
-            'current_financial_month': '{}/{}'.format(now.year, now.month)
+            'current_financial_month': '{}/{}'.format(now.year, now.month),
+            'annotation': random_annotation,
         })
 
 

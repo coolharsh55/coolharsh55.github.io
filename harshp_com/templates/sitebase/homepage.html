@@ -7,6 +7,12 @@
 <div class="tc mt3"><a href="https://github.com/coolharsh55/">Github</a> | <a href="{% url 'research:home' %}">Research</a> | <a href="{% url 'stub' %}">Resume</a> | <a href="{% url 'stub' %}">Developer</a></div>{% endblock e_HEADER_DESCRIPTION %}
 {% block e_BODY %}
 <div class="fl w-100 bt bw3 b--near-black">
+    <div class="pa4">
+      <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--dark-green">
+          <p class="lh-copy measure mt0 i">{{ annotation.content }}</p>
+          <cite class="f6 ttu tracked fs-normal">-{{ annotation.book.title }}</cite>
+      </blockquote>
+    </div>
 </div>
 <div class="fl w-100 db pa2">
     <div id='latest' class="fl w-25-ns pa2 db tc">
