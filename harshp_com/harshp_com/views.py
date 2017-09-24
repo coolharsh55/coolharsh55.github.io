@@ -12,16 +12,18 @@ from dev.models import DevPost
 from research.models import ResearchBlogPost
 
 
-def _get_latest(model):
-    return model.objects\
+def _get_latest(model, string, nos):
+    items = model.objects\
         .filter(is_published=True)\
-        .order_by('-date_published')
+        .order_by('-date_published')[:nos]
+    return [(string, item) for item in items]
 
 
-def _get_featured(model):
-    return model.objects\
+def _get_featured(model, string, nos):
+    items = model.objects\
         .filter(is_published=True, highlight=True)\
         .order_by('-date_published')
+    return [(string, item) for item in items]
 
 
 def home(request):
@@ -32,33 +34,27 @@ def home(request):
         url=request.build_absolute_uri(),
     )
 
-    latest_posts = [
-        (post.__class__.__name__, post) for post in
-        sorted(
+    latest_posts = sorted(
             chain(
-                _get_latest(BlogPost)[:10],
-                _get_latest(Poem)[:10],
-                _get_latest(Story)[:10],
-                _get_latest(DevPost)[:10],
-                _get_latest(ResearchBlogPost)[:10],
+                _get_latest(BlogPost, 'blog', 10),
+                _get_latest(Poem, 'poem', 10),
+                _get_latest(Story, 'story', 10),
+                _get_latest(DevPost, 'dev', 10),
+                _get_latest(ResearchBlogPost, 'research', 10),
                 ),
             reverse=True,
-            key=lambda p: p.date_published)[:10]
-    ]
+            key=lambda p: p[1].date_published)[:10]
 
-    featured_posts = [
-        (post.__class__.__name__, post) for post in
-        sorted(
+    featured_posts = sorted(
             chain(
-                _get_featured(BlogPost)[:10],
-                _get_featured(Poem)[:10],
-                _get_featured(Story)[:10],
-                _get_featured(DevPost)[:10],
-                _get_featured(ResearchBlogPost)[:10],
+                _get_featured(BlogPost, 'blog', 10),
+                _get_featured(Poem, 'poem', 10),
+                _get_featured(Story, 'story', 10),
+                _get_featured(DevPost, 'dev', 10),
+                _get_featured(ResearchBlogPost, 'research', 10),
                 ),
             reverse=True,
-            key=lambda p: p.date_published)[:10]
-    ]
+            key=lambda p: p[1].date_published)[:10]
 
     latest_week = latest_week = LifeXWeek.objects.order_by('-number').first()
     now = datetime.now()
