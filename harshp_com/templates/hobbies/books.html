@@ -3,17 +3,57 @@
 {% block e_META_DESCRIPTION %}books, my hobby at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_BODY %} 
 <article class="helvetica pb5">
-  <header class="vh-100 bg-light-pink dt w-100">
-    <div 
-      style="background:url(https://s3-eu-west-1.amazonaws.com/harshp-media/hobbies/books.jpg) no-repeat center right;background-size: cover;
-		height:auto;"
-      class="dtc v-mid cover ph3 ph4-m ph5-l">
-      <h1 class="f2 f-subheadline-l measure lh-title fw9 white">books</h1>
-      <h2 class="f6 fw6 near-white">let's go on an adventure...</h2>
+    <header class="vh-100 bg-light-pink dt w-100">
+        <div 
+            style="background:url(https://s3-eu-west-1.amazonaws.com/harshp-media/hobbies/books.jpg) no-repeat center right;background-size: cover;
+            height:auto;"
+            class="dtc v-mid cover ph3 ph4-m ph5-l">
+            <h1 class="f2 f-subheadline-l measure lh-title fw9 white">books</h1>
+            <h2 class="f6 fw6 near-white">let's go on an adventure...</h2>
+        </div>
+    </header>
+    <div class="mw8 center mt4 ph2">
+        <p>I've been fond of reading ever since I can remember the shapes of letters. You know those little books kids get to learn the alphabet? The ones that show <i>A</i> is for <i>Apple</i> with a big red picture of an apple next to it? I was never happy with it. I wanted more. When the librarian at the school or the naval quarters where we lived told me I couldn't have a big novel because I was too small, I was pissed. I wanted to read what I wanted to, and I wanted to read everything.</p>
+        <div class="pa1">
+            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--dark-green">
+                <p class="lh-copy measure mt0 i">{{ annotation.content }}</p>
+                <cite class="f6 ttu tracked fs-normal">-{{ annotation.book.title }}</cite>
+            </blockquote>
+        </div>
+        <div>
+            <h2 class='f2 near-black'>Now Reading</h2>
+            <ul class='list'>
+                {% for book in reading %}
+                <li class='b db pa2 near-black'>{{ book.title }}</li>
+                {% endfor %}
+            </ul>
+            <a class='f3' href='{% url 'hobbies:books:readlist' %}'>view books I want to read</a>
+        </div>
+        <div>
+            <h2 class='f2 near-black'>Book Lists</h2>
+            <ul class='list'>
+                {% for booklist in lists %}
+                <li class='item'><a href={% url 'hobbies:book:list' list.slug %}>{{ list }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2 class="f2 near-black">I've read -</h2>
+            <div id='books'>
+                <p class='f7 near-black pa2 pl4'>legend: <span class='green'>&#x2713; read</span> <span class='red'>&#x2605; favourite</span></p>
+                <ul class='list'>
+                    {% for book in books %}
+                    <li class='dib-ns mb2 mr2 f6 b ba db pa2 mid-gray'>
+                        {% if book.read %}
+                        <span class='f7 green'>&#x2713;</span>
+                        {% endif %}
+                        {{ book }}
+                        {% if book.liked %}<span class='f7 red'>&#x2605;</span>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-  </header>
-  <div class="mw8 center mt4">
-      <p>I've been fond of reading ever since I can remember the shapes of letters. You know those little books kids get to learn the alphabet? The ones that show <i>A</i> is for <i>Apple</i> with a big red picture of an apple next to it? I was never happy with it. I wanted more. When the librarian at the school or the naval quarters where we lived told me I couldn't have a big novel because I was too small, I was pissed. I wanted to read what I wanted to, and I wanted to read everything.</p>
-  </div>
 </article>
 {% endblock f_BODY %}

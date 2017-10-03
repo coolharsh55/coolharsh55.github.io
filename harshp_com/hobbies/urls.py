@@ -12,30 +12,44 @@ movie_urlpatterns = [
 
 books_urlpatterns = [
     url(r'^$', views.books_homepage, name='index'),
+    url(r'^lists/(?P<slug>[\w-]+)/$', views.book_list, name='list'),
+    url(r'^readlist/$', views.readlist, name='readlist'),
 ]
 
 videogame_urlpatterns = [
     url(r'^$', views.videogame_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.videogame_list, name='list'),
+    # url(r'^gamelist/$', views.gamelist, name='gamelist'),
 ]
 
 music_urlpatterns = [
     url(r'^$', views.music_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.music_list, name='list'),
+    # url(r'^playlist/$', views.playlist, name='playlist'),
 ]
 
 photography_urlpatterns = [
     url(r'^$', views.photography_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.photography_list, name='list'),
+    # url(r'^photoshootlist/$', views.watchlist, name='watchlist'),
 ]
 
 origami_urlpatterns = [
     url(r'^$', views.origami_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.origami_list, name='list'),
+    # url(r'^craftlist/$', views.craftlist, name='craftlist'),
 ]
 
 teacoffee_urlpatterns = [
     url(r'^$', views.teacoffee_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.teacoffee_list, name='list'),
+    # url(r'^drinklist/$', views.drinklist, name='drinklist'),
 ]
 
 polymathy_urlpatterns = [
     url(r'^$', views.polymathy_homepage, name='index'),
+    # url(r'^lists/(?P<slug>[\w-]+)/$', views.polymathy_list, name='list'),
+    # url(r'^learnlist/$', views.learnlist, name='learnlist'),
 ]
 
 hobbies_urlpatterns = [

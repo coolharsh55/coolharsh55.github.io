@@ -1,0 +1,23 @@
+{% extends 'hobbies/base.html' %}
+{% block e_TITLE %}Reading Watch List{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}books to read{% endblock e_META_DESCRIPTION %}
+{% block e_BODY %}
+<div class="center mw8-ns tc br2 mb3 ph6-ns bb bw3 bw3-ns b--near-black near-black code">
+    <div class="ph1 ph2-mph6-ns">
+        <h1 class="fw6 f3 f2-ns lh-title">Reading List</h1>
+        <h2 class="fw2 f4 lh-title mt0 mb3"><a href="{% url 'hobbies:books:index' %}">books</a>  <a href="{% url 'home' %}">harshp.com</a></h2>
+      <div class="fw1 f5 mt0 mb3"></div>
+    </div>
+</div>
+<div class='ph2 pb2 db'>
+    <div id='books' class='pa2 pv2'>
+        <ul class='list ph3 pv2'>
+        {% for book in books %}
+            <li class='mb2 mr2 f6 b db pa2 mid-gray'>
+                {{ book }}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock e_BODY %}

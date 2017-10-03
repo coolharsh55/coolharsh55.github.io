@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+import random
 
 from .models import Movie, MovieList
+from .models import Book, BookList, BookAnnotation
 
 
 def home(request):
@@ -25,13 +27,38 @@ def movie_list(request, slug):
     })
 
 
+def book_list(request, slug):
+    book_list = get_object_or_404(BookList, slug=slug)
+    books = book_list.books.order_by('title').all()
+    return render(request, 'hobbies/booklist.html', {
+        'list': book_list,
+        'books': books
+    })
+
+
 def watchlist(request):
     movies = Movie.objects.filter(seen=False).order_by('title')
     return render(request, 'hobbies/watchlist.html', {'movies': movies})
 
 
+def readlist(request):
+    movies = Book.objects.filter(read=False).order_by('title')
+    return render(request, 'hobbies/readlist.html', {'movies': movies})
+
+
 def books_homepage(request):
-    return render(request, 'hobbies/books.html')
+    books = Book.objects.filter(read=True).order_by('title')
+    reading = BookList.objects.get(title='Now Reading').books.order_by('title')
+    lists = BookList.objects.exclude(title='Now Reading').order_by('title')
+    annotation_count = BookAnnotation.objects.count()
+    random_annotation = BookAnnotation.objects.all()[
+            random.randint(0, annotation_count)]
+    return render(request, 'hobbies/books.html', {
+        'annotation': random_annotation,
+        'reading': reading,
+        'books': books,
+        'lists': lists,
+        })
 
 
 def videogame_homepage(request):
