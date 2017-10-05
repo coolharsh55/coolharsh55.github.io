@@ -17,7 +17,6 @@ class MovieListAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     filter_horizontal = ('movies',)
 
-
     def no_movies(self, movielist):
         return movielist.movies.count()
 
@@ -28,13 +27,21 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ('read', 'liked')
     search_fields = ('title',)
 
+    @staticmethod
+    def mark_favourite(modeladmin, request, queryset):
+        '''marks selected books as favourites'''
+        for q in queryset:
+            q.liked = True
+            q.save()
+
+    actions = ['mark_favourite']
+
 
 @admin.register(BookList)
 class BookListAdmin(admin.ModelAdmin):
     list_display = ('title', 'no_books')
     search_fields = ('title',)
     filter_horizontal = ('books',)
-
 
     def no_books(self, booklist):
         return booklist.books.count()
