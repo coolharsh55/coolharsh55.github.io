@@ -13,7 +13,6 @@ movie_urlpatterns = [
 books_urlpatterns = [
     url(r'^$', views.books_homepage, name='index'),
     url(r'^lists/(?P<slug>[\w-]+)/$', views.book_list, name='list'),
-    url(r'^readlist/$', views.readlist, name='readlist'),
 ]
 
 videogame_urlpatterns = [

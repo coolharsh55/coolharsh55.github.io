@@ -32,7 +32,7 @@ def book_list(request, slug):
     books = book_list.books.order_by('title').all()
     return render(request, 'hobbies/booklist.html', {
         'list': book_list,
-        'books': books
+        'books': books,
     })
 
 
@@ -41,15 +41,11 @@ def watchlist(request):
     return render(request, 'hobbies/watchlist.html', {'movies': movies})
 
 
-def readlist(request):
-    movies = Book.objects.filter(read=False).order_by('title')
-    return render(request, 'hobbies/readlist.html', {'movies': movies})
-
-
 def books_homepage(request):
     books = Book.objects.filter(read=True).order_by('title')
     reading = BookList.objects.get(title='Now Reading').books.order_by('title')
     lists = BookList.objects.exclude(title='Now Reading').order_by('title')
+    readlist = Book.objects.filter(read=False).order_by('title')
     annotation_count = BookAnnotation.objects.count()
     random_annotation = BookAnnotation.objects.all()[
             random.randint(0, annotation_count)]
@@ -58,6 +54,7 @@ def books_homepage(request):
         'reading': reading,
         'books': books,
         'lists': lists,
+        'readlist': readlist,
         })
 
 
