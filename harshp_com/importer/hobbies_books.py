@@ -11,7 +11,7 @@ from utils.speech_corrections import move_articles_to_end
 
 class Record(object):
 
-    def __init__(self, title, read='X', liked='N'):
+    def __init__(self, title, read='N', liked='N'):
         self.title = move_articles_to_end(title)
         self.read = True if read == 'Y' else False
         self.liked = True if liked == 'Y' else False
