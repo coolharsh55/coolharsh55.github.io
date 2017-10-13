@@ -151,6 +151,7 @@ class Feedback(models.Model):
     url = models.URLField(blank=True, null=True)
     timestamp = models.DateField(auto_now_add=True, blank=True, db_index=True)
     text = models.TextField()
+    feedback = models.TextField(blank=True)
     user = models.TextField()
     category = models.CharField(
             max_length=150, db_index=True, blank=True, null=True)
