@@ -165,3 +165,8 @@ class Feedback(models.Model):
 
     def __str__(self):
         return '({date}) {url}'.format(date=self.timestamp, url=self.url)
+
+    def save(self, *args, **kwargs):
+        if self.user == '':
+            self.user = 'Anonymous'
+        return super(Feedback, self).save(*args, **kwargs)

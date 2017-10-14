@@ -6,5 +6,7 @@
     <p class="fw2">{{ feedback.timestamp }}</p>
     <p class="fw2">about: <a href="{{ feedback.url }}">link</a></p>
     <p>{{ feedback.text }}</p>
+    <p><b>reply:</b></p>
+    {% if feedback.feedback %}<div class="feedback">{{ feedback.feedback|safe }}</div>{% endif %}
 </div>
 {% endblock e_BODY %}

@@ -13,8 +13,8 @@
 		<th class="fw6 tl pa3 bg-lightest-blue">Date</th>
         <th class="fw6 tl pa3 bg-lightest-blue">Category</th>
         <th class="fw6 tl pa3 bg-lightest-blue">Type</th>
-		<th class="fw6 tl pa3 bg-lightest-blue">Page</th>
-        <th class="fw6 tl pa3 bg-lightest-blue">Link</th>
+		<th class="fw6 tl pa3 bg-lightest-blue">About</th>
+        <th class="fw6 tl pa3 bg-lightest-blue">View</th>
 		</tr>
 	</thead>
 	<tbody class="lh-copy">
@@ -24,8 +24,8 @@
 		<td class="pa3">{{ feedback.timestamp }}</td>
 		<td class="pa3">{{ feedback.category }}</td>
 		<td class="pa3">{{ feedback.title }}</td>
-        <td class="pa3"><a href="{{ feedback.url }}">go to page</a></td>
-        <td class="pa3"><a href="{% url 'feedback:view' feedback.pk %}">view feedback</a></td>
+        <td class="pa3"><a href="{{ feedback.url }}">link</a></td>
+        <td class="pa3"><a href="{% url 'feedback:view' feedback.pk %}">link</a></td>
 	</tr>
 	{% endfor %}
 	</tbody>
