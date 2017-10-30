@@ -167,6 +167,6 @@ class Feedback(models.Model):
         return '({date}) {url}'.format(date=self.timestamp, url=self.url)
 
     def save(self, *args, **kwargs):
-        if self.user == '':
+        if not self.user or len(self.user.strip()) == 0:
             self.user = 'Anonymous'
         return super(Feedback, self).save(*args, **kwargs)
