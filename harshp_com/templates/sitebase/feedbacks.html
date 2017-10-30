@@ -3,29 +3,29 @@
 {% block e_META_DESCRIPTION %}feedbacks for pages at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block e_HEADER_TITLE %}Feedbacks{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class="w-80 center">
-<div class="pa4">
+<div class="w-80-ns center">
+<div class="pv4">
 <div class="overflow-auto">
-	<table class="f6 w-100 mw8 center" cellspacing="0">
+	<table class="f6 w-100 mw8-ns center" cellspacing="0">
 	<thead>
 		<tr class="stripe-dark">
-		<th class="fw6 tl pa3 bg-lightest-blue">ID</th>
-		<th class="fw6 tl pa3 bg-lightest-blue">Date</th>
-        <th class="fw6 tl pa3 bg-lightest-blue">Category</th>
-        <th class="fw6 tl pa3 bg-lightest-blue">Type</th>
-		<th class="fw6 tl pa3 bg-lightest-blue">About</th>
-        <th class="fw6 tl pa3 bg-lightest-blue">View</th>
+		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">ID</th>
+		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Date</th>
+        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Category</th>
+        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Type</th>
+		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">About</th>
+        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">View</th>
 		</tr>
 	</thead>
 	<tbody class="lh-copy">
 	{% for feedback in feedbacks %}
 	<tr class="stripe-dark">
-		<td class="pa3">{{ feedback.pk }}</td>
-		<td class="pa3">{{ feedback.timestamp }}</td>
-		<td class="pa3">{{ feedback.category }}</td>
-		<td class="pa3">{{ feedback.title }}</td>
-        <td class="pa3"><a href="{{ feedback.url }}">link</a></td>
-        <td class="pa3"><a href="{% url 'feedback:view' feedback.pk %}">link</a></td>
+		<td class="pa1 pa3-ns">{{ feedback.pk }}</td>
+		<td class="pa1 pa3-ns">{{ feedback.timestamp }}</td>
+		<td class="pa1 pa3-ns">{{ feedback.category }}</td>
+		<td class="pa1 pa3-ns">{{ feedback.title }}</td>
+        <td class="pa1 pa3-ns"><a href="{{ feedback.url }}">link</a></td>
+        <td class="pa1 pa3-ns"><a href="{% url 'feedback:view' feedback.pk %}">link</a></td>
 	</tr>
 	{% endfor %}
 	</tbody>
