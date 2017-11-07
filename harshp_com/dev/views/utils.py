@@ -9,6 +9,6 @@ def gnib_appointments(request):
         'GNIB_Study': appointments['study'],
         'GNIB_Work': appointments['work'],
         'GNIB_Other': appointments['other'],
-        'VISA_Individual': appointments['individual'].items(),
-        'VISA_Family': appointments['family'].items(),
+        'VISA_Individual': appointments['individual'],
+        'VISA_Family': appointments['family'],
         })

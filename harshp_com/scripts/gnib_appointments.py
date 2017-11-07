@@ -162,12 +162,31 @@ def get_visa_appointments(appointment_type):
 
 
 def get_all_appointments():
+    study = get_gnib_appointments('Study')
+    if study is None:
+        study = []
+    work = get_gnib_appointments('Work')
+    if work is None:
+        work = []
+    other = get_gnib_appointments('Other')
+    if other is None:
+        other = []
+    individual = get_visa_appointments('I')
+    if individual is None:
+        individual = []
+    else:
+        individual = list(individual.items())
+    family = get_visa_appointments('F')
+    if family is None:
+        family = []
+    else:
+        family = list(family.items())
     return {
-        'study': get_gnib_appointments('Study'),
-        'work': get_gnib_appointments('Work'),
-        'other': get_gnib_appointments('Other'),
-        'individual': get_visa_appointments('I'),
-        'family': get_visa_appointments('F')
+        'study': study,
+        'work': work,
+        'other': other,
+        'individual': individual,
+        'family': family
     }
 
 
