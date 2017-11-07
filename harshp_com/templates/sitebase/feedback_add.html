@@ -3,7 +3,12 @@
 {% block e_META_DESCRIPTION %}add feedback for pages at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block e_HEADER_TITLE %}New Feedback{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class="w-80-ns center mt3 pa3">
+<div class="w-80-ns center mt3 ph3">
+    <div class="f7 pb2 tc">
+        <p>{{ title }}</p>
+        <p>{{ category }}</p>
+        <p><a href="{{ url }}">link</a></p>
+    </div>
 <form class="measure center" action="{% url 'feedback:add' None %}" method="POST">
 	{% csrf_token %}
 	<input type="hidden" name="url" readonly value="{{ url }}">

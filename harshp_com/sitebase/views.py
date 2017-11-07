@@ -42,7 +42,7 @@ def feedback_add(request, url):
         return redirect(url)
     url_data = resolve(url)
     category = '-'.join(url_data.namespaces)
-    title = url_data.url_name
+    title = request.GET.get("title", url_data.url_name)
     return render(
         request, 'sitebase/feedback_add.html', {
             'url': full_url, 'category': category, 'title': title})
