@@ -12,9 +12,9 @@
 		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">ID</th>
 		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Date</th>
         <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Category</th>
-        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Type</th>
-		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">About</th>
+        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Title</th>
         <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">View</th>
+        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Reply</th>
 		</tr>
 	</thead>
 	<tbody class="lh-copy">
@@ -23,9 +23,9 @@
 		<td class="pa1 pa3-ns">{{ feedback.pk }}</td>
 		<td class="pa1 pa3-ns">{{ feedback.timestamp }}</td>
 		<td class="pa1 pa3-ns">{{ feedback.category }}</td>
-		<td class="pa1 pa3-ns">{{ feedback.title }}</td>
-        <td class="pa1 pa3-ns"><a href="{{ feedback.url }}">link</a></td>
-        <td class="pa1 pa3-ns"><a href="{% url 'feedback:view' feedback.pk %}">link</a></td>
+        <td class="pa1 pa3-ns"><a href="{{ feedback.url }}">{{ feedback.title }}</a></td>
+        <td class="pa1 pa3-ns"><a href="{% url 'feedback:view' feedback.pk %}">view</a></td>
+        <td class="pa1 pa3-ns">{% if feedback.feedback %}&#x2714;{% else %}&#x2717;{% endif %}</td>
 	</tr>
 	{% endfor %}
 	</tbody>
