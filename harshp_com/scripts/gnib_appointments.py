@@ -15,6 +15,7 @@
 # This will create a JSON listing of all jobs in /tmp/gnib_appointments.json
 
 # It assumes the request module is installed
+from datetime import datetime
 import requests
 import json
 
@@ -192,5 +193,6 @@ def get_all_appointments():
 
 if __name__ == '__main__':
     appointments = get_all_appointments()
+    appointments['timestamp'] = datetime.now().strftime('%H:%M')
     with open('/tmp/gnib_appointments.json', 'w') as fd:
         json.dump(appointments, fd)
