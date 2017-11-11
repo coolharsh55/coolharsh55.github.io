@@ -6,7 +6,7 @@
 {% block e_BODY %}
 {% for week in weeks %}
 <div class="pa3">
-    <a class="link" href="{{ week.get_absolute_url }}"><span class='f3 hot-pink'>Week {{ week.number }} <small>{{ week.date_start }} - {{ week.date_end }}</small></span></a>
+    <a class="link" href="{{ week.get_absolute_url }}"><span class='f3 '>Week {{ week.number }} <small>{{ week.date_start }} - {{ week.date_end }}</small></span></a>
     {% for experiment in week.experiments.all %}
         <div class="ph2 pv1">
             <a class="link" href="{{ experiment.get_absolute_url }}"><span class="f4 blue">{{ experiment.title }}</span></a>

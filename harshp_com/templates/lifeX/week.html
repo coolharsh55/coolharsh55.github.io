@@ -2,7 +2,7 @@
 {% block e_TITLE %}Week {{ week.number }}{% endblock e_TITLE %}
 {% block e_HEADER_TITLE %}Week {{ week.number }}{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<h2 class='f2 hot-pink'>Week {{ week.number }}<span class='f5'> in life experiments</span></h2>
+<h2 class='f2 '>Week {{ week.number }}<span class='f5'> in life experiments</span></h2>
 <p class='f5 silver'>{{ week.date_start }} - {{ week.date_end }}</p>
 <div class="pv3">
 {% for experiment in week.experiments.all %}

@@ -4,7 +4,7 @@
 {% block e_BODY %}
 {% for category, ideas in categories %}
 <div class="mw8-ns center pa3">
-    <a class="f4 hot-pink" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+    <a class="f4 " href="{{ category.get_absolute_url }}">{{ category.name }}</a>
     {% for idea in ideas %}
     <div class="pv1">
         <a href="{{ idea.get_absolute_url }}">

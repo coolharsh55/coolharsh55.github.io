@@ -1,7 +1,7 @@
 {% extends 'sitebase/base.html' %}{% load static from staticfiles %}
 {% block f_CSS %}<link rel="stylesheet" href="{% static 'reveal_js/css/reveal.css' %}">
 <link rel="stylesheet" href="{% static 'reveal_js/css/theme/white.css' %}" id="theme">{% endblock f_CSS %}
-{% block lib_JS %}<script src="{% static 'reveal_js/lib/js/head.min.js' %}"></script>
+{% block lib_JS %}
 <script src="{% static 'reveal_js/js/reveal.js' %}"></script>{% endblock lib_JS %}
 {% block f_HEADER %}{% endblock f_HEADER %}
 {% block f_FOOTER %}{% endblock f_FOOTER %}
@@ -23,7 +23,7 @@
     <!-- Email --><a href="mailto:?subject=Life%20Experiments%20-%20A%20Presentation&body={{page_url}}" target="_blank" class="share-btn email"><i class="fa fa-envelope"></i></a>
     </div>
     <br />
-    <p><small>go back to <a href="{% url 'lifeX:home' 'lifex' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></small></p>
+    <p><small>go back to <a href="{% url 'lifeX:home' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></small></p>
 </section>
 
 <section data-background="#111">
@@ -41,7 +41,7 @@
     <p><small>Something from your childhood, or college, or something you’ve been thinking of doing for a while, but haven’t, maybe because you had forgotten all about it, or you didn’t get time.</small></p>
 </section>
 
-<section data-background="{% static 'lpe/img/reaction.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/reaction.gif">
 <h3>Ok! So when you noticed the word </h3>
 <h1>“Experiments”</h1>
 <h3>you probably thought of this...</h3>
@@ -66,7 +66,7 @@
 <h3>WHY INTRODUCE CHANGE?</h3>
 </section>
 
-<section data-background="{% static 'lpe/img/work.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/work.gif">
 <h1>MOST OF OUR LIVES ARE SPENT LIKE THIS</h1>
 </section>
 
@@ -79,7 +79,7 @@
 <p><small>When at work, we want a break, we want to do something different, we want to enjoy.</small></p>
 </section>
 
-<section data-background="{% static 'lpe/img/coffee.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/coffee.gif">
 <h1>ESCAPE</h1>
 <h3>just try and get through the day</h3>
 </section>
@@ -92,7 +92,7 @@
 <p>That’s basically our idea of having a good time.</p>
 </section>
 
-<section data-background="{% static 'lpe/img/monday.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/monday.gif">
 <h1>next monday</h1>
 <h3>the cycle starts again</h3>
 </section>
@@ -124,7 +124,7 @@
 <p><small class='fragment'>As time passes, we somehow manage to not achieve these. We lose track, or we give up. </small></p>
 </section>
 
-<section data-background="{% static 'lpe/img/clock.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/clock.gif">
 </section>
 
 <section data-background="#66CC99">
@@ -174,7 +174,7 @@
 <p><small>You can always do different things in the coming weeks and come back to this one later</small></p>
 </section>
 
-<section data-background="{% static 'lpe/img/yay.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/yay.gif">
 <h3>but when you complete</h3>
 <h1>success</h1>
 <p>instant happiness</p>
@@ -186,7 +186,7 @@
 <p>everyone wants different things</p>
 </section>
 
-<section data-background="{% static 'lpe/img/sleep.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/sleep.gif">
 <h1>be silly</h1>
 </section>
 
@@ -197,7 +197,7 @@
 <p>do it also for the fun!!!</p>
 </section>
 
-<section data-background="{% static 'lpe/img/music.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/music.gif">
 <h1>learn music</h1>
 </section>
 
@@ -207,7 +207,7 @@
 <p>you can decide at the end of the week whether you like it or not.</p>
 </section>
 
-<section data-background="{% static 'lpe/img/video.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/video.gif">
 <h1>movie making</h1>
 </section>
 
@@ -224,7 +224,7 @@
 <p>experiment with something else. </p>
 </section>
 
-<section data-background="{% static 'lpe/img/books.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/books.gif">
 <h1>read</h1>
 </section>
 
@@ -245,7 +245,7 @@
 <h3>some experiments can be hazardous</h3>
 </section>
 
-<section data-background="{% static 'lpe/img/cooking.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/cooking.gif">
 <h1>cooking</h1>
 </section>
 
@@ -259,7 +259,7 @@
 <h3>some things I've tried</h3>
 </section>
 
-<section data-background="{% static 'lpe/img/cleaning.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/cleaning.gif">
 <h3>cleaning my room</h3>
 </section>
 
@@ -275,7 +275,7 @@
 <h3>all in a week...</h3>
 </section>
 
-<section data-background="{% static 'lpe/img/website.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/website.gif">
 </section>
 
 <section data-background="#CC0033">
@@ -293,7 +293,7 @@
 <p>But I felt excitement doing something new every week. </p>
 </section>
 
-<section data-background="{% static 'lpe/img/wordcloud.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/wordcloud.gif">
 </section>
 
 <section data-background="#FFCC66">
@@ -319,7 +319,7 @@
 <h3>My work, doing research, involves doing experiments, and I began doing experiments on experiments. </h3>
 </section>
 
-<section data-background="{% static 'lpe/img/writing.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/writing.gif">
 <h3>research is lots of writing</h3>
 </section>
 
@@ -328,7 +328,7 @@
 <p>I just did different things, like if I had to write, which I think is the toughest part of the research, I went to the library. Or I only wrote in the mornings. Or I only wrote when I had coffee.</p>
 </section>
 
-<section data-background="{% static 'lpe/img/writing2.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/writing2.gif">
 <h3>no idea what to write</h3>
 </section>
 
@@ -338,11 +338,11 @@
 <p>That’s the major problem we face. Where to start, what to put on the paper. The thing is, by doing the same thing so many different times, I actually got to know when I write the best.</p>
 </section>
 
-<section data-background="{% static 'lpe/img/writing3.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/writing3.gif">
 <h3>before</h3>
 </section>
 
-<section data-background="{% static 'lpe/img/ok.gif' %}">
+<section data-background="https://harshp-media.s3.amazonaws.com/lpe/ok.gif">
 <h3>after</h3>
 </section>
 
@@ -367,8 +367,8 @@
 <h1>applause?</h1>
 </section>
 
-<section data-transition='zoom' data-background-transition="zoom" data-background="{% static 'lpe/img/applause.gif' %}">
-<h3>go back to <a href="{% url 'lifeX:home' 'lifeX' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></h3>
+<section data-transition='zoom' data-background-transition="zoom" data-background="https://harshp-media.s3.amazonaws.com/lpe/applause.gif">
+<h3>go back to <a href="{% url 'lifeX:home' %}">lifeX</a> or <a href="{% url 'home' %}">harshp.com</a></h3>
 <div style="color: #333;">
     <!-- Social Button HTML -->
     <!-- Facebook --><a href="http://www.facebook.com/sharer/sharer.php?u={{page_url}}" target="_blank" class="share-btn facebook"><i class="fa fa-facebook"></i></a>

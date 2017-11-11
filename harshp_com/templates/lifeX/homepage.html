@@ -1,6 +1,6 @@
 {% extends 'lifeX/base.html' %}{% load static from staticfiles %}
-{% block e_TITLE %}lifeX at harshp.com{% endblock e_TITLE %}
-{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 ph2 hot-pink">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
+{% block e_TITLE %}lifeX archive at harshp.com{% endblock e_TITLE %}
+{% block e_HEADER_SUBTITLE %}<a href="{% url 'home' %}"><span class="f3 fw1 ph2">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}
 {% block lib_JS %}<script src="//d3js.org/d3.v3.min.js"></script>{% endblock lib_JS %}
 {% block ee_CSS %}
 <style type="text/css">
@@ -39,16 +39,13 @@ path.link {
 {% endblock ee_CSS %}
 {% block e_BODY %}
 <article>
-<h1 class="f1 f-title hot-pink">Life Experiments</h1>
-<p class="f2 f-subtitle silver"><small>experiment, evaluate, enumerate</small></p>
-<div class="mw7 center ba pa3 b--gray silver fw1 tc">
-    <p class="f3">I've stopped following this pattern for life experiments, and am thinking and evaluating coming up with something better. Stay tuned!</p>
+<div class="mw7 center ba pa3 b--gray near-black tc">
+    <p class="">I've stopped following this pattern for life experiments, and instead will be doing blog posts with bigger and better evaluated idea.</p>
 </div>
-<div class="mw8 mw5-ns center tc mt3 pa3">
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:ideas:list' %}">ideas for experiments</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:experiments:list' %}">experiment records</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:blog:list' %}">lifeX blog</a></div>
-    <div class="pv1"><a class="f4 hot-pink" href="{% url 'lifeX:presentation:UCC2014' %}">lifeX presentation</a></div>
+<div class="tc mt3 pa3">
+    <div class="pv1"><a class="f4 " href="{% url 'lifeX:ideas:list' %}">ideas for experiments</a></div>
+    <div class="pv1"><a class="f4 " href="{% url 'lifeX:experiments:list' %}">weekly experiments</a></div>
+    <div class="pv1"><a class="f4 " href="{% url 'lifeX:presentation:UCC2014' %}">lifeX presentation</a></div>
 </div>
 <div class="pt3">
     <p>Everyday we wake up, follow a routine, do all the same things over and over again. We don’t really think what we’re doing with every minute of our lives. We don’t think about change. Which is not that great if you really think about it.</p>
@@ -56,8 +53,8 @@ path.link {
     <p>Based on our observations, we infer something or come up with new results. This process is called as scientific deduction. Which is the way scientists are supposed to look at everything. Data are facts. Then by contrast, why can’t we live our life scientifically? Do what helps us achieve all that we dream of? Recognize where we fall short. Understand what makes us tick, and what doesn’t. All through running a few little experiments by yourself, which is the basis of life experiments.</p>
     <p>This realization led to me develop <span class="f4 b">Life Experiments</span> where I try something new or something I've always thought or wondered about for a week - and see how that goes. The idea can be anything - time management, food, sleep patterns, social interactions, work, study, reading. And I end up having fun doing it and being happy in the long run.</p>
 </div>
-<div class="w-8 cetner ba b--light-pink mt3 pa3">
-    <p class="f3 f-title tc pa3"><a class="hot-pink" href="{% url 'lifeX:goals:list' %}">my life goals</a></p>
+<div class="w-8 cetner ba mt3 pa3">
+    <p class="f3 f-title tc pa3"><a class="" href="{% url 'lifeX:goals:list' %}">my life goals</a></p>
     <div id="graph"></div>
 </div>
 </article>

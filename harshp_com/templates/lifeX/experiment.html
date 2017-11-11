@@ -4,8 +4,8 @@
 
 {% block e_BODY %}
 <article>
-<h1 class="f1 hot-pink">{{ experiment.title }}</h1>
-<a class="link" href="{{ experiment.week.get_absolute_url }}"><span class='f2 pink'>Week {{ experiment.week.number }} - <small>{{ experiment.week.date_start }} - {{ experiment.week.date_end }}</small></span></a>
+<h1 class="f1 ">{{ experiment.title }}</h1>
+<a class="link" href="{{ experiment.week.get_absolute_url }}"><span class='f2'>Week {{ experiment.week.number }} - <small>{{ experiment.week.date_start }} - {{ experiment.week.date_end }}</small></span></a>
 <div class="f4">idea: <a href="{{ experiment.idea.get_absolute_url }}"><span class='pr2 green'>{{ experiment.idea.title }}</span></a> category: <a href="{{ experiment.idea.category.get_absolute_url }}"><span class='green'>{{ experiment.idea.category.name }}</span></a></div>
 <div class="ui star rating" data-rating="{{ rating }}"></div>
 {% if experiment.outcome %}

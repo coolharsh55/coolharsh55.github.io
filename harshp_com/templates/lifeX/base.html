@@ -1,8 +1,7 @@
 {% extends 'sitebase/base.html' %}
-{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns bb ba-ns bg-near-white bw3 bw3-ns b--light-silver silver mb5 georgia">
-    <div class="ph1 ph2-mph6-ns">
-      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}life experiments{% endblock e_HEADER_TITLE %}</h1>
-      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'lifeX:home' %}"><span class="f3 fw1 ph2 hot-pink">lifeX</span></a>@<a href="{% url 'home' %}"><span class="f3 fw1 ph2 hot-pink">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
+{% block f_HEADER %}<div class="center mw8-ns tc">
+      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}life experiments archive{% endblock e_HEADER_TITLE %}</h1>
+      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'lifeX:home' %}"><span class="f3 fw1 ph2">lifeX archive</span></a>@<a href="{% url 'home' %}"><span class="f3 fw1 ph2 ">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
       <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
     </div>
 </div>{% endblock f_HEADER %}

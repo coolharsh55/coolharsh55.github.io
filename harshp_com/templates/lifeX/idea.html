@@ -3,17 +3,17 @@
 {% block e_HEADER_TITLE %}{{ idea.title }}{% endblock e_HEADER_TITLE %}
 
 {% block e_BODY %}
-<h1 class="f1 hot-pink">{{ idea.title }}</h1>
-<a class="link" href="{{ idea.category.get_absolute_url }}"><span class="f4 pink">category: {{ idea.category.name }}</span></a>
+<h1 class="f1 ">{{ idea.title }}</h1>
+<a class="link" href="{{ idea.category.get_absolute_url }}"><span class="f4">category: {{ idea.category.name }}</span></a>
 <p class="f4 near-black">{{ idea.short_description|safe }}</p>
-<span class="ba b--silver pa2 f4 bg-light-pink">{% if idea.tried %}
+<span class="ba b--silver pa2 f4">{% if idea.tried %}
     <span class="near-black"><small>
     {% if idea.retry %}liked it, want to try again{% else %}tried it, won't / don't need to try again{% endif %}</small></span>
     {% else %}<span class="light-red"><small>haven't experimented yet</small></span>{% endif %}
 </span>
 <div class="lh-copy pv2">{{ idea.body_text|safe }}</div>
 <div class="pv3">
-    <p class="f4 pink">This idea was experiment on</p>
+    <p class="f4">This idea was experiment on</p>
     {% for experiment in idea.experiments.all %}
     <div class="pv1">
         <a href="{{ experiment.week.get_absolute_url }}"><span class="f5 blue">Week #{{ experiment.week.number }}: {{ experiment.week.date_start }} - {{ experiment.week.date_end }}</span></a> - <a href="{{ experiment.get_absolute_url }}"><span class="f5 green">{{ experiment.title }}</span></a>
