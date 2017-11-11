@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from utils.pagecommons import pagecommon
 from utils.meta_generator import create_meta
-from sitebase.feedbacks import attach_feedbacks
 
 from .models import Story
 from .models import StorySeries
@@ -78,7 +77,6 @@ def story(request, slug):
     template_objects = {
         'meta': story_obj.get_seo_meta(),
         'story': story_obj,
-        'feedbacks': attach_feedbacks(request),
         }
     pagecommon(request, template_objects)
     return render(request, 'stories/story.html', template_objects)
