@@ -50,7 +50,7 @@ def feedback_add(request, url):
 
 def feedbacks(request):
     feedbacks = Feedback.objects.order_by('-pk').all()
-    template_objects = {'feedbacks': feedbacks}
+    template_objects = {'all_feedbacks': feedbacks}
     pagecommon(request, template_objects)
     return render(
         request, 'sitebase/feedbacks.html', template_objects)
