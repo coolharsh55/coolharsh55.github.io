@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-
+from utils.pagecommons import pagecommon
 from utils.meta_generator import create_meta
+from sitebase.feedbacks import attach_feedbacks
 
 from .models import Story
 from .models import StorySeries
@@ -25,7 +26,7 @@ def list(request):
         keywords=['stories', 'harshp.com', 'coolharsh55'],
         url=request.build_absolute_uri(),
     )
-    return render(request, 'stories/homepage.html', {
+    template_objects = {
         'meta': meta,
         'stories_all': stories_latest,
         'stories_count': stories_count,
@@ -34,25 +35,30 @@ def list(request):
         'stories_featured_count': stories_featured_count,
         'stories_latest': stories_latest[:5],
         'series_all': series[:5],
-        'series_count': series_count})
+        'series_count': series_count}
+    pagecommon(request, template_objects)
+    return render(request, 'stories/homepage.html', template_objects)
 
 
 def series_list(request):
     series = [
         (s, s.story_set.order_by('date_published'))
         for s in StorySeries.objects.order_by('title')]
-
-    return render(request, 'stories/series_list.html', {'series': series})
+    template_objects = {'series': series}
+    pagecommon(request, template_objects)
+    return render(request, 'stories/series_list.html', template_objects)
 
 
 def series(request, slug):
     """return requested Story Series"""
 
     series_obj = get_object_or_404(StorySeries, slug=slug)
-    return render(request, 'stories/series.html', {
+    template_objects = {
         'series': series_obj,
         'stories': series_obj.story_set.order_by('-date_published')
-        })
+        }
+    pagecommon(request, template_objects)
+    return render(request, 'stories/series.html', template_objects)
 
 
 def series_story(request, slug_series, slug_story):
@@ -60,14 +66,19 @@ def series_story(request, slug_series, slug_story):
 
     series_obj = get_object_or_404(StorySeries, slug=slug_series)
     story_obj = get_object_or_404(Story, series=series_obj, slug=slug_story)
-    return render(request, 'stories/series_story.html', {
-        'series': series_obj, 'story': story_obj})
+    template_objects = {
+        'series': series_obj, 'story': story_obj}
+    pagecommon(request, template_objects)
+    return render(request, 'stories/series_story.html', template_objects)
 
 
 def story(request, slug):
     """return requested Story Story"""
-
     story_obj = get_object_or_404(Story, series=None, slug=slug)
-    return render(request, 'stories/story.html', {
+    template_objects = {
         'meta': story_obj.get_seo_meta(),
-        'story': story_obj})
+        'story': story_obj,
+        'feedbacks': attach_feedbacks(request),
+        }
+    pagecommon(request, template_objects)
+    return render(request, 'stories/story.html', template_objects)

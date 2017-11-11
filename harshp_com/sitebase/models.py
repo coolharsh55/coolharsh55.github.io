@@ -166,6 +166,9 @@ class Feedback(models.Model):
     def __str__(self):
         return '({date}) {url}'.format(date=self.timestamp, url=self.url)
 
+    def get_absolute_url(self):
+        return reverse('feedback:view', args=[self.id])
+
     def save(self, *args, **kwargs):
         if not self.user or len(self.user.strip()) == 0:
             self.user = 'Anonymous'

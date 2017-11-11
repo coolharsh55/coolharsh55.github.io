@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 
 from utils.meta_generator import create_meta
+from utils.pagecommons import pagecommon
 
 from .models import BlogPost
 from .models import BlogSeries
@@ -25,7 +26,7 @@ def list(request):
         keywords=['blog', 'harshp.com', 'coolharsh55'],
         url=request.build_absolute_uri(),
     )
-    return render(request, 'blog/homepage.html', {
+    template_objects = {
         'meta': meta,
         'posts_all': posts_latest,
         'posts_count': posts_count,
@@ -34,15 +35,21 @@ def list(request):
         'posts_featured_count': posts_featured_count,
         'posts_latest': posts_latest[:5],
         'series_all': series,
-        'series_count': series_count})
+        'series_count': series_count
+    }
+    pagecommon(request, template_objects)
+    return render(request, 'blog/homepage.html', template_objects)
 
 
 def featured(request):
     """return series list"""
 
     posts = BlogPost.objects.filter(highlight=True).select_related('series')
-
-    return render(request, 'blog/featured.html', {'posts': posts})
+    template_objects = {
+        'posts': posts
+    }
+    pagecommon(request, template_objects)
+    return render(request, 'blog/featured.html', template_objects)
 
 
 def series_list(request):
@@ -51,20 +58,22 @@ def series_list(request):
     series = [
         (s, s.blogpost_set.order_by('date_published'))
         for s in BlogSeries.objects.order_by('title')]
-
-    return render(request, 'blog/series_list.html', {'series': series})
+    template_objects = {'series': series}
+    pagecommon(request, template_objects)
+    return render(request, 'blog/series_list.html', template_objects)
 
 
 def series(request, series):
     """return requested Blog Series"""
 
     series = get_object_or_404(BlogSeries, slug=series)
-    return render(
-        request, 'blog/series.html',
-        {
+    template_objects = {
             'series': series,
             'posts': series.blogpost_set.order_by('-date_published')
-        })
+        }
+    pagecommon(request, template_objects)
+    return render(
+        request, 'blog/series.html', template_objects)
 
 
 def series_post(request, series, post):
@@ -72,14 +81,17 @@ def series_post(request, series, post):
 
     series = get_object_or_404(BlogSeries, slug=series)
     post = get_object_or_404(BlogPost, series=series, slug=post)
-    return render(request, 'blog/series_post.html', {
-        'series': series, 'post': post})
+    template_objects = {'series': series, 'post': post}
+    pagecommon(request, template_objects)
+    return render(request, 'blog/series_post.html', template_objects)
 
 
 def post(request, post):
     """return requested Blog Post"""
 
     post = get_object_or_404(BlogPost, series=None, slug=post)
-    return render(request, 'blog/post.html', {
+    template_objects = {
         'meta': post.get_seo_meta(),
-        'post': post})
+        'post': post}
+    pagecommon(request, template_objects)
+    return render(request, 'blog/post.html', template_objects)

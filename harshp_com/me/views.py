@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from utils.pagecommons import pagecommon
 
 
 def homepage(request):
-    return render(request, 'me/homepage.html')
+    template_objects = {}
+    pagecommon(template_objects)
+    return render(request, 'me/homepage.html', template_objects)

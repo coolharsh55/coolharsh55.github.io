@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 
+from utils.pagecommons import pagecommon
 from utils.meta_generator import create_meta
 
 from .models import Poem
@@ -21,7 +22,7 @@ def list(request):
         keywords=['blog', 'poem', 'poetry', 'harshp.com', 'coolharsh55'],
         url=request.build_absolute_uri(),
     )
-    return render(request, 'poems/homepage.html', {
+    template_objects = {
         'meta': meta,
         'poems_all': poems_latest,
         'poems_count': poems_count,
@@ -29,11 +30,14 @@ def list(request):
         'poems_featured_recent': poems_featured[:5],
         'poems_featured_count': poems_featured_count,
         'poems_latest': poems_latest[:5],
-    })
+    }
+    pagecommon(template_objects)
+    return render(request, 'poems/homepage.html', template_objects)
 
 
 def poem(request, slug):
     """return requested Poem"""
-
     poem_post = get_object_or_404(Poem, slug=slug)
-    return render(request, 'poems/poem.html', {'poem': poem_post})
+    template_objects = {'poem': poem_post}
+    pagecommon(template_objects)
+    return render(request, 'poems/poem.html', template_objects)

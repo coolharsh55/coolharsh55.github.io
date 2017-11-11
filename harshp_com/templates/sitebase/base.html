@@ -35,20 +35,35 @@
 </div>
 {% endblock f_BODY %}
 {% block f_FOOTER %}<!-- FOOTER -->
-<div id='footer' class="no-print w-100 pv3 mw8 bt bw1 center georgia dt">
+<div id='footer' class="no-print w-100 mt2 mw8 bw1 center georgia dt">
     <form id="feedback-form" action="{% url 'feedback:add' request.path  %}" class="">
         <input id="input-title" type="hidden" name="title" value="">
-        <div class="mw6-ns center pa3 f5 fw3 baskerville tc">
-            I'd really appreciate any opinions, thoughts, reactions, or feedback that you may have. The link is 
-            <a href="javascript:{}" onclick="document.getElementById('feedback-form').submit();">here</a>
+        <div class="mw6-ns center ph2 f5 fw3 baskerville tc">
+            <a class="pa2 mt2 ba dt code b red" href="javascript:{}" onclick="document.getElementById('feedback-form').submit();">
+                I'd really appreciate any opinions, thoughts, reactions, or feedback that you may have.
+            </a>
         </div>
     </form>
+    <div id="feedbacks" class="no-print w-80-ns pv3 bb bw1 center georgia dt f6">
+    {% for feedback in feedbacks %}
+        <div class="w-80-ns center pa1 mv2 ba bw1 b--silver">
+            <p><span class="i silver pr2">#{{ feedback.pk }} {{ feedback.timestamp }}</span>{{ feedback.text }}</p>
+            {% if feedback.feedback %}<div class="feedback"><p><span class="silver pr2">reply:</span>{{ feedback.feedback|safe }}</p></div>{% endif %}
+        </div>
+    {% endfor %}
+    </div>
     <div class="ph3 pv3 ph5-m ph6-l mid-gray">
         <small class="f6 db tc">© 2017 <b class="ttu">Harshvardhan Pandit</b></small>
         <div class="tc mt3">
             <a href="{% url 'me:home' %}">About Me</a> |
             <a href="https://github.com/coolharsh55/harshp.com/"><i class="small github icon"></i>Project Source Code</a>|
             <a href="{% url 'contact' %}">Contact Me</a> |
+        </div>
+        <div id='help' class="w-80-ns pa2 db center tc f6">
+            <span class="near-black i tc">how can I help you?</span>
+            <span class="fw1 dark-gray">I am a jack of all trades, and the master of none;
+            If you need help with something in an area that I'd have/had/will have an interest in, 
+            just contact me. I'm always glad to help or just discuss pretty much anything.</span>
         </div>
         <div class="tc mt3">
             <p>I do not collect any personal data from YOU. My server might log your IP address as part of serving the request. However, I do not use it in any form except debugging certain requests and performance issues. There is no visitor tracking. There are no cookies. If you come across any stuff I should be aware of, please contact me. Cheers.</p>

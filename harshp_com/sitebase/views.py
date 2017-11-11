@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.core.urlresolvers import resolve
-
+from utils.pagecommons import pagecommon
 from .models import Feedback
 
 
@@ -50,27 +50,39 @@ def feedback_add(request, url):
 
 def feedbacks(request):
     feedbacks = Feedback.objects.order_by('-pk').all()
+    template_objects = {'feedbacks': feedbacks}
+    pagecommon(request, template_objects)
     return render(
-        request, 'sitebase/feedbacks.html', {'feedbacks': feedbacks})
+        request, 'sitebase/feedbacks.html', template_objects)
 
 
 def feedback_view(request, pk):
     feedback = get_object_or_404(Feedback, pk=pk)
+    template_objects = {'feedback': feedback}
+    pagecommon(request, template_objects)
     return render(
-        request, 'sitebase/feedback_view.html', {'feedback': feedback})
+        request, 'sitebase/feedback_view.html', template_objects)
 
 
 def discover(request):
-    return render(request, 'sitebase/discover.html')
+    template_objects = {}
+    pagecommon(request, template_objects)
+    return render(request, 'sitebase/discover.html', template_objects)
 
 
 def random(request):
-    return render(request, 'sitebase/random.html')
+    template_objects = {}
+    pagecommon(request, template_objects)
+    return render(request, 'sitebase/random.html', template_objects)
 
 
 def search(request):
-    return render(request, 'sitebase/search.html')
+    template_objects = {}
+    pagecommon(request, template_objects)
+    return render(request, 'sitebase/search.html', template_objects)
 
 
 def linkfarm(request):
-    return render(request, 'sitebase/linkfarm.html')
+    template_objects = {}
+    pagecommon(request, template_objects)
+    return render(request, 'sitebase/linkfarm.html', template_objects)
