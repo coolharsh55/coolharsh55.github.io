@@ -12,6 +12,7 @@
           </div>
         </nav>
     </header>
+    <p>{{ idea.body_text|safe }}</p>
     <div id='posts' class="fl w-100 pa2 center tc mb3">
         {% for post in posts %}
         <div class="pv2">

@@ -38,7 +38,7 @@ urlpatterns = [
     # apps
     url(r'^blog/lifeX/archive/', include('lifeX.urls')),
     url(r'^blog/', include('blog.urls')),
-    url(r'^brainbank/', include('brainbank.urls')),
+    url(r'^dev/brainbank/', include('brainbank.urls')),
     url(r'^dev/', include('dev.urls')),
     url(r'^hobbies/', include('hobbies.urls')),
     url(r'^personal/finance/', include('finance.urls')),

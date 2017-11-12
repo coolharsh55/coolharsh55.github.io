@@ -8,7 +8,7 @@
         <nav class="">
           <div class="tc pb3">
             <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:list' %}" title="BrainBank">BrainBank</a>
-            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:idea' post.idea %}" :title="{{ post.idea.title }}">{{ post.idea.title }}</a>
+            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'brainbank:idea' post.idea.slug %}" :title="{{ post.idea.title }}">{{ post.idea.title }}</a>
             <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
           </div>
         </nav>
