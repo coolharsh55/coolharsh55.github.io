@@ -4,25 +4,25 @@
 {% block e_BODY %}
 <article class="baskerville pb5">
     <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="f3 f-subheadline-l measure lh-title fw1 mt0 dark-red">{{ story.title }}</h1>
+        <h1 class="fw1 mt0 dark-red">{{ story.title }}</h1>
         <nav class="">
           <div class="tc pb3">
-            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'stories:list' %}" title="Stories Home">Stories Home</a>
-            <a class="link dim dark-blue f6 f5-ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
+            <a class="link dim dark-blue  -ns dib mr3" href="{% url 'stories:list' %}" title="Stories Home">Stories Home</a>
+            <a class="link dim dark-blue  -ns dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
           </div>
         </nav>
-        <div class="f4 baskerville dark-gray center tc mb2">{{ story.short_description }}</div>
-        <time class="f5 f4-l db fw1 gray baskerville">storyed: {{ story.date_published }} | updated: {{ story.date_updated }}</time>
-        <div class="navy pt2 pb4 f5">
+        <div class=" baskerville dark-gray center tc mb2">{{ story.short_description }}</div>
+        <time class=" -l db fw1 gray baskerville">storyed: {{ story.date_published }} | updated: {{ story.date_updated }}</time>
+        <div class="navy pt2 pb4 ">
             {% for tag in story.tags.all %}
                 <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
             {% endfor %}
         </div>
         {% if story.headerimage %}
-            <img class="w-100 dib measure f3 mb2" src="{{ story.headerimage }}"/>
+            <img class="w-100 dib measure  mb2" src="{{ story.headerimage }}"/>
         {% endif %}
     </header>
-    <div class="measure db center f4 f3-ns lh-copy">
+    <div class="measure db center  -ns lh-copy">
     {{ story.body_text | safe }}
     </div>
 </article>

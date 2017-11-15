@@ -31,7 +31,7 @@ def list(request):
         'poems_featured_count': poems_featured_count,
         'poems_latest': poems_latest[:5],
     }
-    pagecommon(template_objects)
+    pagecommon(request, template_objects)
     return render(request, 'poems/homepage.html', template_objects)
 
 
@@ -39,5 +39,5 @@ def poem(request, slug):
     """return requested Poem"""
     poem_post = get_object_or_404(Poem, slug=slug)
     template_objects = {'poem': poem_post}
-    pagecommon(template_objects)
+    pagecommon(request, template_objects)
     return render(request, 'poems/poem.html', template_objects)
