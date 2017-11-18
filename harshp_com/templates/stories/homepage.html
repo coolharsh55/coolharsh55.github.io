@@ -1,42 +1,45 @@
-{% extends 'stories/base.html' %}
+{% extends 'blog/base.html' %}
 {% block e_TITLE %}stories at harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}stories at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_HEADER %}
-  <header class="vh-100 bg-light-pink dt w-100">
-    <div 
-      style="background:url(https://s3-eu-west-1.amazonaws.com/harshp-media/hobbies/storypages.jpg) no-repeat center right;background-size: cover;
-		height:auto;"
-      class="dtc v-mid cover ph3 ph4-m ph5-l">
-      <h1 class=" f-subheadline-l measure lh-title fw9 b i near-black">my stories</h1>
-      <a class="link" href="/"><span class="near-black u ">go back to harshp.com</span></a>
-    </div>
-  </header>
+<div class="tc">
+  <h1 class="blue">my stories</h1>
+  <a class="link" href="/"><span class="blue u">go back to harshp.com</span></a>
+</div>
 {% endblock f_HEADER %}
 {% block e_BODY %}
 <div class="db tc mt2 center">
-    <a href="#feed" class="link u dark-blue">recent stories</a> | <a href="#featured" class="link u dark-blue">featured stories</a>
+    <a href="#feed" class="link u dark-blue">recent posts</a> | <a href="#featublue" class="link u dark-blue">featured posts</a>
 </div>
 <div id='series' class="fl w-100 pa2 bb bw1 bw1-ns b--dark-blue mb3">
-    <h2 class=" dark-blue tc lh-title avenir fw1">series</h2>
-    <ul class="list pa3 tc center">
+    <h2 class=" dark-blue tc lh-title avenir ">series</h2>
+    <ul class="list pa3 center tc">
         {% for series in series_all %}
-        <li class="dib mr2"><a href="{{ series.get_absolute_url }}" class=" fw2 -ns b db pa2 link dim dark-green">{{ series.title }}</a></li>
+        <li class="dib-ns"><a href="{{ series.get_absolute_url }}" class="dib pa2 ma1 ba b--dark-green link dark-green">{{ series.title }}</a></li>
         {% endfor %}
     </ul>
 </div>
-<div id='featured' class="fl w-100 pa2 center tc bb bw1 bw1-ns b--dark-blue mb3">
-    <h2 class=" fw1 lh-title dark-blue tc avenir">featured</h2>
+<div id='featublue' class="fl w-100 pa2 center tc bb bw1 bw1-ns b--dark-blue mb3">
+    <h2 class="  lh-title dark-blue tc avenir">featured</h2>
     {% for post in stories_featured %}
     <div class="pv2">
-        {% if post.highlight %}<span class="fw1  light-red pr2">featured</span>{% endif %}<a class="link dark-red " href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2  fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class=" fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+        <a class="link dark-blue f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2  " href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}
+        <span class="db  pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
     </div>
     {% endfor %}
 </div>
 <div id='feed' class="fl w-100 pa2 center tc">
-    <h2 class=" fw1 lh-title dark-blue tc avenir">feed</h2>
+    <h2 class="  lh-title dark-blue tc avenir">feed</h2>
     {% for post in stories_all %}
     <div class="pv2">
-        {% if post.highlight %}<span class="fw1  light-red pr2">featured</span>{% endif %}<a class="link dark-red " href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/>{% if post.series %}<a class="link dark-green pl2 db  fw2" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}<span class=" fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+        <a class="link dark-blue db" href="{{ post.get_absolute_url }}">
+            {% if post.highlight %}
+                <span class="light-blue pr2 f6">&starf;</span>{{ post.title }} <span class="light-blue pr2 f6">&starf;</span>
+            {% else %}
+                {{ post.title }}            
+            {% endif %}</a>
+        {% if post.series %}<a class="link dark-green pl2 db" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a>{% endif %}
+        <span class="  pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
     </div>
     {% endfor %}
 </div>

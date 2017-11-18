@@ -2,7 +2,7 @@
 {% block e_TITLE %}poems at harshp.com{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}blog at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_HEADER %}
-  <header class="vh-100 bg-light-pink dt w-100">
+  <header class="vh-100 bg-washed-blue dt w-100">
     <div 
       style="background:url(https://s3-eu-west-1.amazonaws.com/harshp-media/hobbies/poetry.jpg) no-repeat center right;background-size: cover;
 		height:auto;"
@@ -20,7 +20,7 @@
     <h2 class="fw1 lh-title dark-blue tc avenir">featured</h2>
     {% for poem in poems_featured %}
     <div class="db pb2">
-        {% if poem.highlight %}<span class="fw1 db light-red">featured</span>{% endif %}<a class="link dark-red " href="{{ poem.get_absolute_url }}">{{ poem.title }}</a><br/>{% if poem.series %}<a class="link dark-green pl2  fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class=" fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
+        <a class="link dark-blue " href="{{ poem.get_absolute_url }}">{{ poem.title }}</a><br/>{% if poem.series %}<a class="link dark-green pl2  fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class=" fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
     </div>
     {% endfor %}
 </div>
@@ -28,7 +28,14 @@
     <h2 class=" fw1 lh-title dark-blue tc avenir">feed</h2>
     {% for poem in poems_all %}
     <div class="db pb2">
-        {% if poem.highlight %}<span class="fw1 db light-red">featured</span>{% endif %}<a class="link dark-red " href="{{ poem.get_absolute_url }}">{{ poem.title }}</a><br/>{% if poem.series %}<a class="link dark-green pl2  fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>{% endif %}<span class=" fw1 pl2 silver">{{ poem.date_published }}<br/><small>{{ poem.short_description }}</small></span>
+        <a class="link dark-blue db" href="{{ poem.get_absolute_url }}">
+            {% if poem.highlight %}
+                <span class="fw1 light-blue">&starf;</span> {{ poem.title }} <span class="fw1 light-blue">&starf;</span>
+            {% else %}
+                {{ poem.title }}
+            {% endif %}<a/>
+        {% if poem.series %}<a class="link dark-green pl2  fw2" href="{{ poem.series.get_absolute_url }}">{{ poem.series.title }}</a>
+        {% endif %}<span class=" fw1 pl2 silver f6">{{ poem.date_published }}<br/>{{ poem.short_description }}</span>
     </div>
     {% endfor %}
 </div>

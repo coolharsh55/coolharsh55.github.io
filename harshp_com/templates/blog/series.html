@@ -4,7 +4,7 @@
 {% block e_BODY %}
 <article class="baskerville pb5">
     <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="fw1 mt0 dark-red">{{ series.title }}</h1>
+        <h1 class="fw1 mt0 dark-blue">{{ series.title }}</h1>
         <nav class="">
           <div class="tc pb3">
             <a class="link dim dark-blue dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
@@ -12,10 +12,15 @@
           </div>
         </nav>
     </header>
-    <div id='featured' class="fl w-100 pa2 center tc mb3">
+    <div id='featublue' class="fl w-100 pa2 center tc mb3">
         {% for post in posts %}
         <div class="pv2">
-            {% if post.highlight %}<span class="fw1 light-red pr2">featured</span>{% endif %}<a class="link dark-red" href="{{ post.get_absolute_url }}">{{ post.title }}</a><br/><span class="fw1 pl2 silver">{{ post.date_published }}<br/><small>{{ post.short_description }}</small></span>
+            <a class="link dark-blue db" href="{{ post.get_absolute_url }}">{% if post.highlight %}
+                <span class="fw1 light-blue pr2">&starf;</span>{{ post.title }} <span class="fw1 light-blue pr2">&starf;</span>
+            {% else %}
+                {{ post.title }}
+                {% endif %}</a>
+            <span class="fw1 pl2 silver f6">{{ post.date_published }}<br/>{{ post.short_description }}</span>
         </div>
         {% endfor %}
     </div>

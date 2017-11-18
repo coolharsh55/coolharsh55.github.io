@@ -7,25 +7,25 @@
 {% block e_BODY %}
 <article class="baskerville pt2 pb5">
     <header class="avenir tc ph3 ph4-ns">
-        <h1 class="f1 measure lh-title fw1 mt0 mb0 pb0 dark-red tc">{{ post.title }}</h1>
-        <div class="f2 avenir center mb1 tc"><a class="link dark-blue" href="{{ post.section.get_absolute_url }}">{{ post.section.title }}</a></div>
+        <h1 class=" measure lh-title fw1 mt0 mb0 pb0 dark-red tc">{{ post.title }}</h1>
+        <div class=" avenir center mb1 tc"><a class="link dark-blue" href="{{ post.section.get_absolute_url }}">{{ post.section.title }}</a></div>
         <nav class="">
           <div class="tc pb3">
-            <a class="blue f4 dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="blue f4 dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>/<a class="blue f4 dib ph1" href="{{ section_type_url }}" title="{{ section_type }}">{{ section_type }}</a>
+            <a class="blue  dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="blue  dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>/<a class="blue  dib ph1" href="{{ section_type_url }}" title="{{ section_type }}">{{ section_type }}</a>
           </div>
         </nav>
-        <div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
-        <time class="f5 f4-l db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
-        <div class="navy pt2 pb4 f5">
+        <div class=" baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
+        <time class=" -l db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
+        <div class="navy pt2 pb4 ">
             {% for tag in post.tags.all %}
                 <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
             {% endfor %}
         </div>
         {% if post.headerimage %}
-            <img class="w-100 dib measure f3 mb2" src="{{ post.headerimage }}"/>
+            <img class="w-100 dib measure  mb2" src="{{ post.headerimage }}"/>
         {% endif %}
     </header>
-    <div class="measure db center f4 f3-ns lh-copy">
+    <div class="measure db center  -ns lh-copy">
     {{ post.body_text | safe }}
     </div>
 </article>

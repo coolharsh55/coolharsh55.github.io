@@ -41,13 +41,11 @@
     {% for post in all_posts %}
     <div class="pv2">
         {% if post.highlight %}<span class="fw1 f6 light-red pr2">featured</span>
-        {% endif %}<a class="link dark-blue f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        <br/>
-        <a class="link dark-green pl2 f5 fw2" href="{{ post.section.get_absolute_url }}">{{ post.section.title }}</a>
-        <br/>
-        <span class="f6 fw1 pl2 silver">{{ post.date_published }}</span> 
-        <br/>
-        <span class="f5 fw2 pl2 dark-gray">{{ post.short_description }}</span>
+        {% endif %}<a class="link db dark-blue f4" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <a class="link db dark-green pl2 f5 fw2" href="{{ post.section.get_absolute_url }}">{{ post.section.title }}</a>
+        <span class="f6 fw1 silver ">{{ post.section.section_type }}</span>
+        <span class="f6 fw1 pl2 silver ">{{ post.date_published }}</span> 
+        <span class="f5 fw2 pl2 dark-gray db">{{ post.short_description }}</span>
     </div>
     {% endfor %}
     </div>

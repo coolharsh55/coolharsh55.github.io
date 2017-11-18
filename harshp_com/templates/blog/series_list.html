@@ -5,7 +5,7 @@
 {% block e_BODY %}
 <article class="baskerville pb5">
     <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="fw1 mt0 dark-red">Blog Series</h1>
+        <h1 class="fw1 mt0 dark-blue">Blog Series</h1>
         <nav class="">
           <div class="tc pb3">
             <a class="link dim dark-blue dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
@@ -18,7 +18,12 @@
         <a class='fw1 link dark-green' href="{{ s.get_absolute_url }}">{{ s.title }}</a>
         {% for post in p %}
         <div class='pv2'>
-            <a class='fw2 link dark-blue' href="{{ post.get_absolute_url }}">{% if post.highlight %}<span class="fw1 light-red pr2">featured</span>{% endif %}{{ post.title }}</a>
+            <a class='fw2 link dark-blue' href="{{ post.get_absolute_url }}">
+                {% if post.highlight %}
+                    <span class="fw1 light-blue pr2">&starf;</span>{{ post.title }} <span class="fw1 light-blue pr2">&starf;</span>
+                {% else %}
+                    {{ post.title }}
+                {% endif %}</a>
             <br/>
             <small class='fw1 dark-gray'>{{ post.date_published }}</small>
         </div>
