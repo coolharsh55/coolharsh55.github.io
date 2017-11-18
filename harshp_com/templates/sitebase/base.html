@@ -35,20 +35,21 @@
 </div>
 {% endblock f_BODY %}
 {% block f_FOOTER %}<!-- FOOTER -->
-<div id='footer' class="no-print w-100 mt2 mw8 bw1 center georgia dt">
+<div id='footer' class="no-print w-100 mt2 mw8 bw1 bt b--silver center georgia dt">
     <form id="feedback-form" action="{% url 'feedback:add' request.path  %}" class="">
         <input id="input-title" type="hidden" name="title" value="">
         <div class="mw6-ns center ph2 f5 fw3 baskerville tc">
-            <a class="pa2 mt2 ba dt code b red" href="javascript:{}" onclick="document.getElementById('feedback-form').submit();">
+            <a class="pa2 mt2 dt code b washed-blue bg-navy" href="javascript:{}" onclick="document.getElementById('feedback-form').submit();">
                 I'd really appreciate any opinions, thoughts, reactions, or feedback that you may have.
             </a>
         </div>
     </form>
     <div id="feedbacks" class="no-print w-80-ns pv3 bb bw1 center georgia dt f6">
+    {% if  feedbacks %}<span class="b near-black db tc">feedbacks:</span>{% endif %}
     {% for feedback in feedbacks %}
-        <div class="w-80-ns center pa1 mv2 ba bw1 b--silver">
-            <p><span class="i silver pr2">#{{ feedback.pk }} {{ feedback.timestamp }}</span>{{ feedback.text }}</p>
-            {% if feedback.feedback %}<div class="feedback"><p><span class="silver pr2">reply:</span>{{ feedback.feedback|safe }}</p></div>{% endif %}
+        <div class="w-80-ns center pa1 mv2 bb b--silver">
+            <span class="navy db i"><span class="silver f6">#{{ feedback.pk }} on {{ feedback.timestamp }}</span> "{{ feedback.text }}"</span></span>
+            {% if feedback.feedback %}<span class="dark-green tr pv1 db">{{ feedback.feedback|safe }}</span>{% endif %}
         </div>
     {% endfor %}
     </div>
