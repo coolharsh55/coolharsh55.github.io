@@ -5,67 +5,71 @@
 {% block e_BODY %}
 <article class="baskerville pt2 pb5">
     <header class="avenir tc ph3 ph4-ns bb">
-        <h1 class="f1 measure lh-title fw1 mt0 mb0 pb0 dark-red tc">GNIB & VISA Appointments</h1>
-        <p class="fw1 fw6 red w-80-ns center">Shows available timings for Burgh Quay office. Updated every 15mins. This is not an official app and therefore must not be used as such. Project blog 
+        <h1 class=" measure lh-title fw1 mt0 mb0 pb0 dark-navy tc">GNIB & VISA Appointments</h1>
+        <p class="fw1 fw6 navy w-80-ns center">Shows available timings for Burgh Quay office. Updated every 15mins. This is not an official app and therefore must not be used as such. Project blog 
         <a href="https://harshp.com/dev/projects/gnib-appointments/">here</a></p>
         <nav class="">
           <div class="tc pb3">
-            <a class="blue f4 dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="blue f4 dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>
+            <a class="dark-blue  dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="dark-blue  dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>
           </div>
         </nav>
     </header>
-    <div class="fl w-100 w-100 pa db tc pv2 blue">
+    <div class="fl w-100 w-100 pa db tc pv2 dark-blue">
         <p>Last updated: <b>{{ timestamp }}</b></p>
-        <p>Please fill <a href="https://goo.gl/forms/Us4rXeOUUmJN3gKR2"><span class="dark-red">this survey</span></a> to indicate your interest in a mobile app</p>
+        <p>Please fill <a href="https://goo.gl/forms/Us4rXeOUUmJN3gKR2"><span class="dark-navy">this survey</span></a> to indicate your interest in a mobile app</p>
+        <p>Some apps I've found on Google Play Store:
+        <a href="https://play.google.com/store/apps/details?id=tech.rapp.ireland.gnib">app</a>,
+        <a href="https://play.google.com/store/apps/details?id=com.gnibirelandnotifications.app">app</a>,
+        <a href="https://play.google.com/store/apps/details?id=com.ionicframework.irelandusefull753629">app</a></p>
     </div>
     <div class="fl w-100 db pa2 mb2 center">
-        <h2 class="f4 tc fw2 dark-blue">GNIB Appointments</h2>
+        <h2 class=" tc fw2 dark-blue">GNIB Appointments</h2>
             <div class="fl w-100 w-33-ns center pa db tc">
-                <h3 class="f5 tc fw3 dark-blue">Study</h3>
+                <h3 class=" tc fw3 dark-blue">Study</h3>
                 {% for appointment in GNIB_Study %}
-                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                <a class="link db pa dark-blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
                 {% empty %}
-                <p class="f6 tc fw4 red">No appointments</p>
+                <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}
             </div>
             <div class="fl w-100 w-33-ns pa db tc">
-                <h3 class="f5 tc fw3 dark-blue">Work</h3>
+                <h3 class=" tc fw3 dark-blue">Work</h3>
                 {% for appointment in GNIB_Work %}
-                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                <a class="link db pa dark-blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
                 {% empty %}
-                <p class="f6 tc fw4 red">No appointments</p>
+                <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}
             </div>
             <div class="fl w-100 w-33-ns pa db tc">
-                <h3 class="f5 tc fw3 dark-blue">Other</h3>
+                <h3 class=" tc fw3 dark-blue">Other</h3>
                 {% for appointment in GNIB_Other %}
-                <a class="link db pa blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
+                <a class="link db pa dark-blue underline-hover" href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm">{{ appointment }}</a>
                 {% empty %}
                 {% endfor %}
             </div>
     </div>
     <div class="fl w-100 db pa2 mb4">
-        <h2 class="f4 tc fw2 dark-blue">VISA Appointments</h2>
+        <h2 class=" tc fw2 dark-blue">VISA Appointments</h2>
             <div class="fl w-100 w-50-ns pa db tc">
-                <h3 class="f5 tc fw3 dark-blue">Individual</h3>
+                <h3 class=" tc fw3 dark-blue">Individual</h3>
                 {% for date, appointments in VISA_Individual %}
-                <h4 class="f6 tc fw4 dark-blue">{{ date }}</h4>
+                <h4 class=" tc fw4 dark-blue">{{ date }}</h4>
                 {% for appointment in appointments %}
-                <a class="link db pa blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
+                <a class="link db pa dark-blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
                 {% endfor %}
                 {% empty %}
-                <p class="f6 tc fw4 red">No appointments</p>
+                <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}
             </div>
             <div class="fl w-100 w-50-ns pa db tc">
-                <h3 class="f5 tc fw3 dark-blue">Family</h3>
+                <h3 class=" tc fw3 dark-blue">Family</h3>
                 {% for date, appointments in VISA_Family %}
-                <h4 class="f6 tc fw4 dark-blue">{{ date }}</h4>
+                <h4 class=" tc fw4 dark-blue">{{ date }}</h4>
                 {% for appointment in appointments %}
-                <a class="link db pa blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
+                <a class="link db pa dark-blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
                 {% endfor %}
                 {% empty %}
-                <p class="f6 tc fw4 red">No appointments</p>
+                <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}
             </div>
     </div>
