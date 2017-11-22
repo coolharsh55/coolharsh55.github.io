@@ -4,5 +4,5 @@ from utils.pagecommons import pagecommon
 
 def homepage(request):
     template_objects = {}
-    pagecommon(template_objects)
+    pagecommon(request, template_objects)
     return render(request, 'me/homepage.html', template_objects)
