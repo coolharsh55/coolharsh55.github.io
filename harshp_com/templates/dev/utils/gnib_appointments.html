@@ -6,8 +6,8 @@
 <article class="baskerville pt2 pb5">
     <header class="avenir tc ph3 ph4-ns bb">
         <h1 class=" measure lh-title fw1 mt0 mb0 pb0 dark-navy tc">GNIB & VISA Appointments</h1>
-        <p class="fw1 fw6 navy w-80-ns center">Shows available timings for Burgh Quay office. Updated every 15mins. This is not an official app and therefore must not be used as such. Project blog 
-        <a href="https://harshp.com/dev/projects/gnib-appointments/">here</a></p>
+        <p class="fw1 fw6 navy w-80-ns center"><span class="dark-red">This is not an official app.</span>
+        <a href="https://harshp.com/dev/projects/gnib-appointments/">Project Blog</a></p>
         <nav class="">
           <div class="tc pb3">
             <a class="dark-blue  dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="dark-blue  dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>
@@ -16,14 +16,14 @@
     </header>
     <div class="fl w-100 w-100 pa db tc pv2 dark-blue">
         <p>Last updated: <b>{{ last_update }}</b></p>
-        <p>Please fill <a href="https://goo.gl/forms/Us4rXeOUUmJN3gKR2"><span class="dark-navy">this survey</span></a> to indicate your interest in a mobile app</p>
-        <p>Some apps I've found on Google Play Store:
+        <div class="f6 fw1">Please fill <a href="https://goo.gl/forms/Us4rXeOUUmJN3gKR2"><span class="dark-navy">this survey</span></a> to indicate your interest in a mobile app.
+        Existing apps on Google Play Store:
         <a href="https://play.google.com/store/apps/details?id=tech.rapp.ireland.gnib">app</a>,
         <a href="https://play.google.com/store/apps/details?id=com.gnibirelandnotifications.app">app</a>,
-        <a href="https://play.google.com/store/apps/details?id=com.ionicframework.irelandusefull753629">app</a></p>
+        <a href="https://play.google.com/store/apps/details?id=com.ionicframework.irelandusefull753629">app</a></div>
     </div>
-    <div class="fl w-100 db pa2 mb2 center">
-        <h2 class=" tc fw2 dark-blue">GNIB Appointments</h2>
+    <div class="fl w-100 db ph2 mt2 mb2 ba center">
+        <h2 class=" tc fw2 pb1 bb dark-blue">GNIB Appointments</h2>
             <div class="fl w-100 w-33-ns center pa db tc">
                 <h3 class=" tc fw3 dark-blue">Study</h3>
                 <h4 class=" tc fw3 dark-blue">New</h4>
@@ -70,9 +70,9 @@
                 {% endfor %}
             </div>
     </div>
-    <div class="fl w-100 db pa2 mb4">
-        <h2 class=" tc fw2 dark-blue">VISA Appointments</h2>
-            <div class="fl w-100 w-50-ns pa db tc">
+    <div class="fl w-100 db ph2 ba mb4">
+        <h2 class=" tc fw2 pb1 bb dark-blue">VISA Appointments</h2>
+            <div class="fl w-100 w-50-ns db tc">
                 <h3 class=" tc fw3 dark-blue">Individual</h3>
                 {% for date, appointments in visa_I %}
                 <h4 class=" tc fw4 dark-blue">{{ date }}</h4>
