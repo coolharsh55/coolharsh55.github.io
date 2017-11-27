@@ -66,35 +66,78 @@ def add_visa_appointment_to_database(category, timestamp):
         appointment.save()
 
 
+def gnib_mark_booked_appointments(booked, category, category_type):
+    for appointment in booked:
+        if category == 'Study':
+            category = GNIBAppointment.CATEGORY_STUDY
+        elif category == 'Work':
+            category = GNIBAppointment.CATEGORY_WORK
+        elif category == 'Other':
+            category = GNIBAppointment.CATEGORY_OTHER
+        if category_type == 'New':
+            category_type = GNIBAppointment.CATEGORY_TYPE_NEW
+        elif category_type == 'Renewal':
+            category_type = \
+                GNIBAppointment.CATEGORY_TYPE_RENEWAL
+        # convert string to datetime using arrow
+        appointment = arrow.get(
+            appointment, 'DD MMMM YYYY - HH:mm').datetime
+        # check if appointment exists
+        try:
+            existing_appointment = GNIBAppointment.objects.get(
+                category=category,
+                category_type=category_type,
+                timestamp=appointment)
+            existing_appointment.booked = timezone.now()
+            existing_appointment.save()
+        except GNIBAppointment.DoesNotExist:
+            pass
+
+
+def visa_mark_booked_appointments(booked, category):
+    for appointment in booked:
+        if category == 'I':
+            category = VisaAppointment.CATEGORY_INDIVIDUAL
+        elif category == 'F':
+            category = VisaAppointment.CATEGORY_FAMILY
+        # convert string to datetime using arrow
+        appointment = arrow.get(
+            appointment, 'DD/MM/YYYY - HH:mm').datetime
+        # check if appointment exists
+        try:
+            existing_appointment = VisaAppointment.objects.get(
+                category=category,
+                timestamp=appointment)
+            existing_appointment.booked = timezone.now()
+            existing_appointment.save()
+        except VisaAppointment.DoesNotExist:
+            pass
+
+
 def set_appointments_in_redis(key, appointments):
-    # booked = []
-    # added = []
-    # others = []
-    # values = []
+    booked = []
+    added = []
+    others = []
 
-    # previous = kvstore.get(key)
-    # if previous is None:
-    #     others = [(appointment, 'NEW') for appointment in appointments]
-    #     kvstore.set(key, json.dumps(values))
-    #     return
-    # # at this point, we have previous values
-    # # and we compare, if any of the appointments are new or missing
-    # previous = json.loads(previous)
-    # previous_appointments = [item[0] for item in previous]
+    previous = kvstore.get(key)
+    if previous is None:
+        kvstore.set(key, json.dumps(appointments))
+        return
+    # at this point, we have previous values
+    # and we compare, if any of the appointments are new or missing
+    previous = json.loads(previous)
 
-    # for item in appointments:
-    #     if item in previous_appointments:
-    #         others.append(item)
-    #         values.append((item, 'NIL'))
-    #     else:
-    #         added.append(item)
-    #         values.append((item, 'ADD'))
-    # for item in previous_appointments:
-    #     if item not in others:
-    #         booked.append(item)
-    #         values.append((item, 'REM'))
-    values = appointments
-    kvstore.set(key, json.dumps(values))
+    for item in appointments:
+        if item in previous:
+            others.append(item)
+        else:
+            added.append(item)
+    for item in previous:
+        if item not in others:
+            booked.append(item)
+
+    kvstore.set(key, json.dumps(appointments))
+    return added, booked
 
 
 def get_tasks():
@@ -103,14 +146,16 @@ def get_tasks():
         results = get_gnib_appointments(category, category_type)['data']
         for result in results:
             add_gnib_appointment_to_database(category, category_type, result)
-        set_appointments_in_redis(
+        added, booked = set_appointments_in_redis(
             'gnib_' + category + '_' + category_type, results)
+        gnib_mark_booked_appointments(booked, category, category_type)
 
     async def visa_task(category):
         results = get_visa_appointments(category)['data']
         for result in results:
             add_visa_appointment_to_database(category, result)
-        set_appointments_in_redis('visa_' + category, results)
+        added, booked = set_appointments_in_redis('visa_' + category, results)
+        visa_mark_booked_appointments(booked, category)
 
     return [
         gnib_task('Study', 'New'),
