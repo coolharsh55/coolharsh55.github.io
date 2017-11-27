@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Q
 
 from .models import Author
 from .models import Tag
@@ -54,7 +55,24 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     '''Admin for Feedbacks'''
+    class FeedbackReplyFilter(admin.SimpleListFilter):
+        title = 'replied'
+        parameter_name = 'feedback'
+
+        def lookups(self, request, model_admin):
+            return (
+                ('yes', 'Yes'),
+                ('no', 'No'),
+            )
+
+        def queryset(self, request, queryset):
+            if self.value() == 'yes':
+                return queryset.exclude(feedback='')
+            if self.value() == 'no':
+                return queryset.filter(Q(feedback__exact=''))
+
     date_hierarchy = 'timestamp'
     list_display = ['pk', 'timestamp', 'url']
     list_display_links = ['pk', 'timestamp', 'url']
+    list_filter = [FeedbackReplyFilter]
     search_fields = ['category', 'title', 'user', 'text']
