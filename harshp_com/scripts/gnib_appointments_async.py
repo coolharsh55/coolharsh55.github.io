@@ -19,6 +19,8 @@ from datetime import datetime
 import requests
 import json
 
+import asyncio
+
 # headers to send
 # They don't really matter, except for the CORS bits
 headers = {
@@ -42,43 +44,52 @@ requests.packages.urllib3.disable_warnings(
     requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 
-def get_gnib_appointments(appointment_type):
+def get_gnib_appointments(appointment_type, renewal_type):
+    default_response = {
+        'type': 'GNIB',
+        'category': appointment_type,
+        'category_type': renewal_type,
+        'data': [],
+    }
     params = (
         ('openpage', ''),  # BLANK
         ('dt', ''),  # PARSED, but is always blank
         ('cat', appointment_type),  # Category
         ('sbcat', 'All'),  # Sub-Category
-        ('typ', 'Renewal'),  # Type
+        ('typ', renewal_type),  # Type
     )
     # make the request
     # verify=False --> disable SSL verification
-    response = requests.get(
-        'https://burghquayregistrationoffice.inis.gov.ie/'
-        + 'Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)',
-        headers=headers, params=params, verify=False)
+    try:
+        response = requests.get(
+            'https://burghquayregistrationoffice.inis.gov.ie/'
+            + 'Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)',
+            headers=headers, params=params, verify=False)
+    except Exception as E:
+        return default_response
 
     # check if we have a good response
     if response.status_code != 200:
-        return
+        return default_response
 
     # sanity checks
     data = response.json()
     # error key is set
     if data.get('error', None) is not None:
-        return
+        return default_response
 
     # If there are no appointments, then the empty key is set
     if data.get('empty', None) is not None:
-        return
+        return default_response
 
     # There are appointments, and are in the key 'slots'
     data = data.get('slots', None)
     if data is None:
-        return
+        return default_response
 
     # This should not happen, but a good idea to check it anyway
     if len(data) == 0:
-        return
+        return default_response
 
     # print appointments
     # Format is:
@@ -86,10 +97,18 @@ def get_gnib_appointments(appointment_type):
     #   'id': 'str',
     #   'time': 'str'
     # }
-    return [appointment['time'] for appointment in data]
+    default_response['data'] = [appointment['time'] for appointment in data]
+    return default_response
 
 
 def get_visa_appointments(appointment_type):
+    default_response = {
+        'type': 'Visa',
+        'category': appointment_type,
+        'category_type': None,
+        'data': [],
+    }
+
     # Parameters from the js script at
     # https://reentryvisa.inis.gov.ie
     # /website/INISOA/IOA.nsf/AppForm.js
@@ -100,33 +119,36 @@ def get_visa_appointments(appointment_type):
 
     # make the request
     # verify=False --> disable SSL verification
-    response = requests.get(
-        'https://reentryvisa.inis.gov.ie'
-        + '/website/INISOA/IOA.nsf/(getDTAvail)',
-        headers=headers, params=params, verify=False)
+    try:
+        response = requests.get(
+            'https://reentryvisa.inis.gov.ie'
+            + '/website/INISOA/IOA.nsf/(getDTAvail)',
+            headers=headers, params=params, verify=False)
+    except Exception as E:
+        return default_response
 
     # check if we have a good response
     if response.status_code != 200:
-        return
+        return default_response
 
     # sanity checks
     data = response.json()
     # error key is set
     if data.get('error', None) is not None:
-        return
+        return default_response
 
     # If there are no appointments, then the empty key is set
     if data.get('empty', None) is not None:
-        return
+        return default_response
 
     # There are appointments, and are in the key 'dates'
     data = data.get('dates', None)
     if data is None:
-        return
+        return default_response
 
     # This should not happen, but a good idea to check it anyway
     if len(data) == 0:
-        return
+        return default_response
 
     # print appointments
     # Format is:
@@ -159,42 +181,54 @@ def get_visa_appointments(appointment_type):
             continue
         data = data['slots']
         visa_appointments[date] = [appointment['time'] for appointment in data]
-    return visa_appointments
+    default_response['data'] = list(visa_appointments.items())
+    return default_response
 
 
-def get_all_appointments():
-    study = get_gnib_appointments('Study')
-    if study is None:
-        study = []
-    work = get_gnib_appointments('Work')
-    if work is None:
-        work = []
-    other = get_gnib_appointments('Other')
-    if other is None:
-        other = []
-    individual = get_visa_appointments('I')
-    if individual is None:
-        individual = []
-    else:
-        individual = list(individual.items())
-    family = get_visa_appointments('F')
-    if family is None:
-        family = []
-    else:
-        family = list(family.items())
-    return {
-        'study': study,
-        'work': work,
-        'other': other,
-        'individual': individual,
-        'family': family
-    }
+def get_tasks():
+    return [
+        get_gnib_appointments('Study', 'New'),
+        get_gnib_appointments('Study', 'Renewal'),
+        get_gnib_appointments('Work', 'New'),
+        get_gnib_appointments('Work', 'Renewal'),
+        get_gnib_appointments('Other', 'New'),
+        get_gnib_appointments('Other', 'Renewal'),
+        get_visa_appointments('I'),
+        get_visa_appointments('F'),
+    ]
+
+
+async def get_all_appointments(callback=None):
+    phases = get_tasks()
+    completed, pending = await asyncio.wait(phases, timeout=2)
+    # DEBUG
+    # print('{} completed and {} pending'.format(
+    #     len(completed), len(pending),
+    # ))
+    results = [task.result() for task in completed]
+    if callback:
+        callback(results)
+    return results
+
+
+def gather_appointments(callback=None):
+    def default_callback(results):
+        import pprint
+        pprint.pprint(results)
+    if callback is None:
+        callback = default_callback
+
+    event_loop = asyncio.get_event_loop()
+    try:
+        event_loop.run_until_complete(get_all_appointments(callback))
+    finally:
+        event_loop.close()
+
+
+def add_appointments_to_database(results):
+    for result in results:
+        print(result)
 
 
 if __name__ == '__main__':
-    appointments = get_all_appointments()
-    import pprint
-    pprint.pprint(appointments)
-    # appointments['timestamp'] = datetime.now().strftime('%H:%M')
-    # with open('/tmp/gnib_appointments.json', 'w') as fd:
-    #     json.dump(appointments, fd)
+    gather_appointments(add_appointments_to_database)

@@ -9,9 +9,9 @@ from .models import Budget
 def renew_budgets():
     '''renew budgets that expire (today)
     Meant to be run daily'''
+    today = timezone.now().date()
     budgets = Budget.objects.filter(
         date_end=today - relativedelta(days=1))
-    today = timezone.now().date()
     for budget in budgets:
         new_budget = Budget()
         new_budget.name = budget.name

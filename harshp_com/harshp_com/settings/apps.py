@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     # django-robots: robots.txt
     'robots',
     # job queue
+    'django_cron',
     'django_rq',
     'django_rq_jobs',
 
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'research',
     'sitebase',
     'stories',
+
+    # other dev apps
+    'apps',
 ]
 
 MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
