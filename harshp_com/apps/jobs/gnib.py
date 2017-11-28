@@ -14,6 +14,21 @@ kvstore = redis.StrictRedis(
     host='localhost', port=6379, db=0, decode_responses=True)
 
 
+def _sanity_in_kvstore():
+    def check(string):
+        item = kvstore.get(string)
+        if item is None:
+            kvstore.set(string, json.dumps([]))
+
+    gnib_categories = ['Study', 'Work', 'Other']
+    gnib_types = ['New', 'Renewal']
+    from itertool import product
+    for item in product(gnib_categories, gnib_types):
+        check('gnib_' + '_'.join(item))
+    check('visa_F')
+    check('visa_I')
+
+
 def add_gnib_appointment_to_database(category, category_type, timestamp):
     appointment = GNIBAppointment()
     if category == 'Study':
@@ -29,7 +44,7 @@ def add_gnib_appointment_to_database(category, category_type, timestamp):
             GNIBAppointment.CATEGORY_TYPE_RENEWAL
     # convert string to datetime using arrow
     appointment.timestamp = arrow.get(
-        timestamp, 'DD MMMM YYYY - HH:mm').datetime
+        timestamp, 'D MMMM YYYY - HH:mm').datetime
     # check if appointment exists
     try:
         existing_appointment = GNIBAppointment.objects.get(
@@ -122,7 +137,7 @@ def set_appointments_in_redis(key, appointments):
     previous = kvstore.get(key)
     if previous is None:
         kvstore.set(key, json.dumps(appointments))
-        return
+        return added, booked
     # at this point, we have previous values
     # and we compare, if any of the appointments are new or missing
     previous = json.loads(previous)
@@ -149,6 +164,7 @@ def get_tasks():
         added, booked = set_appointments_in_redis(
             'gnib_' + category + '_' + category_type, results)
         gnib_mark_booked_appointments(booked, category, category_type)
+        return True
 
     async def visa_task(category):
         results = get_visa_appointments(category)['data']
@@ -156,6 +172,7 @@ def get_tasks():
             add_visa_appointment_to_database(category, result)
         added, booked = set_appointments_in_redis('visa_' + category, results)
         visa_mark_booked_appointments(booked, category)
+        return True
 
     return [
         gnib_task('Study', 'New'),
@@ -180,6 +197,7 @@ def check_gnib_appointments():
     '''retrieve gnib appointments and store them
     Stores GNIB appointments, Visa appointments, and the raw JSON response
     Stores the current appointments in Redis under gnib_appointments_current'''
+    # _sanity_in_kvstore()
     event_loop = asyncio.get_event_loop()
     try:
         event_loop.run_until_complete(run_job())
@@ -201,4 +219,4 @@ class GnibAppointmentJob(CronJobBase):
 
 
 if __name__ == '__main__':
-    pass
+    check_gnib_appointments()
