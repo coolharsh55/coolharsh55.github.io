@@ -70,22 +70,21 @@ class VisaAppointment(AppointmentSlot):
         verbose_name_plural = 'Visa Appointments'
 
 
-# class APIResponse(models.Model):
-#     '''Stores raw JSON response from GNIB API'''
-#     CATEGORIES = (*GNIBAppointment.CATEGORIES, *VisaAppointment.CATEGORIES)
-#     CATEGORY_TYPES = (*GNIBAppointment.CATEGORY_TYPES, 'None')
-#     category = models.CharField(
-#             max_length=8, db_index=True, choices=CATEGORIES)
-#     category_type = models.CharField(
-#         max_length=8, db_index=True, choices=CATEGORY_TYPES)
-#     added_on = models.DateTimeField(auto_now_add=True)
-#     json = JSONField()
+class APIResponse(models.Model):
+    '''Stores raw JSON response from GNIB API'''
+    # CATEGORIES = (*GNIBAppointment.CATEGORIES, *VisaAppointment.CATEGORIES)
+    # CATEGORY_TYPES = (*GNIBAppointment.CATEGORY_TYPES, 'None')
+    # category = models.CharField(
+    #         max_length=8, db_index=True, choices=CATEGORIES)
+    # category_type = models.CharField(
+    #     max_length=8, db_index=True, choices=CATEGORY_TYPES)
+    added_on = models.DateTimeField(auto_now_add=True)
+    json = JSONField()
 
-#     class Meta(object):
-#         ordering = ('-added_on',)
-#         verbose_name = 'API Response'
-#         verbose_name_plural = 'API Responses'
+    class Meta(object):
+        ordering = ('-added_on',)
+        verbose_name = 'API Response'
+        verbose_name_plural = 'API Responses'
 
-#     def __str__(self):
-#         return '{}-{} added:{}'.format(
-#             self.category, self.category_type, self.added_on)
+    def __str__(self):
+        return self.added_on

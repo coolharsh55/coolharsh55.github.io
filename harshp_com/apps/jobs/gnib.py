@@ -5,7 +5,7 @@ import json
 import logging
 import redis
 from django.utils import timezone
-from apps.models.gnib import GNIBAppointment, VisaAppointment
+from apps.models.gnib import GNIBAppointment, VisaAppointment, APIResponse
 from scripts.gnib_appointments_async import get_gnib_appointments
 from scripts.gnib_appointments_async import get_visa_appointments
 from django_cron import CronJobBase, Schedule
@@ -203,6 +203,20 @@ async def run_job():
     phases = get_tasks()
     completed, pending = await asyncio.wait(phases, timeout=2)
     kvstore.set('gnib_last_run', timezone.now().strftime('%H:%M'))
+    gnib_appointments = {
+        'timestamp': timezone.now().strftime('%H:%M'),
+        'gnib_Study_New': json.loads(kvstore.get('gnib_Study_New')),
+        'gnib_Study_Renewal': json.loads(kvstore.get('gnib_Study_Renewal')),
+        'gnib_Work_New': json.loads(kvstore.get('gnib_Work_New')),
+        'gnib_Work_Renewal': json.loads(kvstore.get('gnib_Work_Renewal')),
+        'gnib_Other_New': json.loads(kvstore.get('gnib_Other_New')),
+        'gnib_Other_Renewal': json.loads(kvstore.get('gnib_Other_Renewal')),
+        'visa_I': json.loads(kvstore.get('visa_I')),
+        'visa_F': json.loads(kvstore.get('visa_F')),
+        'last_update': kvstore.get('gnib_last_run'),
+    }
+    response = APIResponse(json=json.dumps(gnib_appointments))
+    response.save()
     return
 
 
