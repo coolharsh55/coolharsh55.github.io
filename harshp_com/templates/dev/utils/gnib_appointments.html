@@ -22,7 +22,7 @@
         <a href="https://play.google.com/store/apps/details?id=com.gnibirelandnotifications.app">app</a>,
         <a href="https://play.google.com/store/apps/details?id=com.ionicframework.irelandusefull753629">app</a></div>
     </div>
-    <div class="fl w-100 db ph2 mt2 mb2 ba center">
+    <div class="fl w-100 db ph2 pb2 mt2 mb2 ba center">
         <h2 class=" tc fw2 pb1 bb dark-blue">GNIB Appointments</h2>
             <div class="fl w-100 w-33-ns center pa db tc">
                 <h3 class=" tc fw3 dark-blue">Study</h3>
@@ -70,26 +70,20 @@
                 {% endfor %}
             </div>
     </div>
-    <div class="fl w-100 db ph2 ba mb4">
+    <div class="fl w-100 db ph2 pb2 ba mb4">
         <h2 class=" tc fw2 pb1 bb dark-blue">VISA Appointments</h2>
             <div class="fl w-100 w-50-ns db tc">
                 <h3 class=" tc fw3 dark-blue">Individual</h3>
-                {% for date, appointments in visa_I %}
-                <h4 class=" tc fw4 dark-blue">{{ date }}</h4>
-                {% for appointment in appointments %}
+                {% for appointment in visa_I %}
                 <a class="link db pa dark-blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
-                {% endfor %}
                 {% empty %}
                 <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}
             </div>
             <div class="fl w-100 w-50-ns pa db tc">
                 <h3 class=" tc fw3 dark-blue">Family</h3>
-                {% for date, appointments in visa_F %}
-                <h4 class=" tc fw4 dark-blue">{{ date }}</h4>
-                {% for appointment in appointments %}
+                {% for appointment in visa_F %}
                 <a class="link db pa dark-blue underline-hover" href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>
-                {% endfor %}
                 {% empty %}
                 <p class=" tc fw4 navy">No appointments</p>
                 {% endfor %}

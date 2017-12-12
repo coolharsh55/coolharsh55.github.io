@@ -2,12 +2,22 @@ import arrow
 import asyncio
 import concurrent
 import json
+import logging
 import redis
 from django.utils import timezone
 from apps.models.gnib import GNIBAppointment, VisaAppointment
 from scripts.gnib_appointments_async import get_gnib_appointments
 from scripts.gnib_appointments_async import get_visa_appointments
 from django_cron import CronJobBase, Schedule
+
+logging.basicConfig(
+    filename='gnib.log',
+    filemode='a',
+    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+    datefmt='%H:%M:%S',
+    level=logging.INFO)
+
+logger = logging.getLogger('app.jobs.gnib')
 
 
 kvstore = redis.StrictRedis(
@@ -22,7 +32,7 @@ def _sanity_in_kvstore():
 
     gnib_categories = ['Study', 'Work', 'Other']
     gnib_types = ['New', 'Renewal']
-    from itertool import product
+    from itertools import product
     for item in product(gnib_categories, gnib_types):
         check('gnib_' + '_'.join(item))
     check('visa_F')
@@ -65,14 +75,12 @@ def add_visa_appointment_to_database(category, timestamp):
     elif category == 'F':
         appointment.category = VisaAppointment.CATEGORY_FAMILY
     # convert string to datetime using arrow
-    # FIXME: the date format used by visa appointments is different
     appointment.timestamp = arrow.get(
-        timestamp, 'DD/MM/YYYY - HH:mm').datetime
+        timestamp, 'DD/MM/YYYY hh:mm A').datetime
     # check if appointment exists
     try:
         existing_appointment = VisaAppointment.objects.get(
             category=appointment.category,
-            category_type=appointment.category_type,
             timestamp=appointment.timestamp)
         if existing_appointment.booked:
             existing_appointment.booked = None
@@ -130,13 +138,14 @@ def visa_mark_booked_appointments(booked, category):
 
 
 def set_appointments_in_redis(key, appointments):
+    kvstore.set(key, json.dumps(appointments))
     booked = []
     added = []
     others = []
 
     previous = kvstore.get(key)
     if previous is None:
-        kvstore.set(key, json.dumps(appointments))
+        added = appointments
         return added, booked
     # at this point, we have previous values
     # and we compare, if any of the appointments are new or missing
@@ -151,26 +160,30 @@ def set_appointments_in_redis(key, appointments):
         if item not in others:
             booked.append(item)
 
-    kvstore.set(key, json.dumps(appointments))
     return added, booked
 
 
 def get_tasks():
     '''create tasks for asyncio'''
     async def gnib_task(category, category_type):
-        results = get_gnib_appointments(category, category_type)['data']
-        for result in results:
+        results = await get_gnib_appointments(category, category_type)
+        logger.info('GNIB appointments {} {} - {}'.format(
+            category, category_type, results['data']))
+        for result in results['data']:
             add_gnib_appointment_to_database(category, category_type, result)
         added, booked = set_appointments_in_redis(
-            'gnib_' + category + '_' + category_type, results)
+            'gnib_' + category + '_' + category_type, results['data'])
         gnib_mark_booked_appointments(booked, category, category_type)
         return True
 
     async def visa_task(category):
-        results = get_visa_appointments(category)['data']
-        for result in results:
+        results = await get_visa_appointments(category)
+        logger.info('VISA appointments {} - {}'.format(
+            category, results['data']))
+        for result in results['data']:
             add_visa_appointment_to_database(category, result)
-        added, booked = set_appointments_in_redis('visa_' + category, results)
+        added, booked = set_appointments_in_redis(
+            'visa_' + category, results['data'])
         visa_mark_booked_appointments(booked, category)
         return True
 
@@ -197,7 +210,7 @@ def check_gnib_appointments():
     '''retrieve gnib appointments and store them
     Stores GNIB appointments, Visa appointments, and the raw JSON response
     Stores the current appointments in Redis under gnib_appointments_current'''
-    # _sanity_in_kvstore()
+    _sanity_in_kvstore()
     event_loop = asyncio.get_event_loop()
     try:
         event_loop.run_until_complete(run_job())

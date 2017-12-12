@@ -15,11 +15,19 @@
 # This will create a JSON listing of all jobs in /tmp/gnib_appointments.json
 
 # It assumes the request module is installed
-from datetime import datetime
-import requests
-import json
-
 import asyncio
+from itertools import chain
+import logging
+import requests
+
+logging.basicConfig(
+    filename='gnib.log',
+    filemode='a',
+    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+    datefmt='%H:%M:%S',
+    level=logging.INFO)
+
+logger = logging.getLogger('app.jobs.gnib')
 
 # headers to send
 # They don't really matter, except for the CORS bits
@@ -44,7 +52,7 @@ requests.packages.urllib3.disable_warnings(
     requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 
-def get_gnib_appointments(appointment_type, renewal_type):
+async def get_gnib_appointments(appointment_type, renewal_type):
     default_response = {
         'type': 'GNIB',
         'category': appointment_type,
@@ -66,29 +74,41 @@ def get_gnib_appointments(appointment_type, renewal_type):
             + 'Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)',
             headers=headers, params=params, verify=False)
     except Exception as E:
+        logger.error('Error in fetching GNIB appointment {} {} - {}'.format(
+            appointment_type, renewal_type, E))
         return default_response
 
     # check if we have a good response
     if response.status_code != 200:
+        logger.error('Response not 200 GNIB appointment {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # sanity checks
     data = response.json()
     # error key is set
     if data.get('error', None) is not None:
+        logger.error('Error GNIB appointment {} {} - {}'.format(
+            appointment_type, renewal_type, data['error']))
         return default_response
 
     # If there are no appointments, then the empty key is set
     if data.get('empty', None) is not None:
+        logger.info('GNIB appointment empty {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # There are appointments, and are in the key 'slots'
     data = data.get('slots', None)
     if data is None:
+        logger.info('GNIB appointment empty {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # This should not happen, but a good idea to check it anyway
-    if len(data) == 0:
+    if not data:
+        logger.info('GNIB appointment empty {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # print appointments
@@ -101,7 +121,7 @@ def get_gnib_appointments(appointment_type, renewal_type):
     return default_response
 
 
-def get_visa_appointments(appointment_type):
+async def get_visa_appointments(appointment_type):
     default_response = {
         'type': 'Visa',
         'category': appointment_type,
@@ -125,36 +145,48 @@ def get_visa_appointments(appointment_type):
             + '/website/INISOA/IOA.nsf/(getDTAvail)',
             headers=headers, params=params, verify=False)
     except Exception as E:
+        logger.error('Error in fetching VISA appointment {} {} - {}'.format(
+            appointment_type, renewal_type, E))
         return default_response
 
     # check if we have a good response
     if response.status_code != 200:
+        logger.error('Response not 200 VISA appointment {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # sanity checks
     data = response.json()
     # error key is set
     if data.get('error', None) is not None:
+        logger.error('Error VISA appointment {} {} - {}'.format(
+            appointment_type, renewal_type, data['error']))
         return default_response
 
     # If there are no appointments, then the empty key is set
     if data.get('empty', None) is not None:
+        logger.info('Data empty VISA appointment {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # There are appointments, and are in the key 'dates'
     data = data.get('dates', None)
     if data is None:
+        logger.info('Data empty VISA appointment {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # This should not happen, but a good idea to check it anyway
-    if len(data) == 0:
+    if not data:
+        logger.info('Data empty VISA appointment {} {}'.format(
+            appointment_type, renewal_type))
         return default_response
 
     # print appointments
     # Format is:
     # {'dates': ['DD-MM-YYYY', ...]}
     url = 'https://reentryvisa.inis.gov.ie/website/inisoa/ioa.nsf/(getapps4dt)'
-    visa_appointments = {}
+    visa_appointments = []
     for date in data:
         params = (
             ('openagent', ''),  # BLANK
@@ -180,8 +212,9 @@ def get_visa_appointments(appointment_type):
             # this is an error, but lets move along
             continue
         data = data['slots']
-        visa_appointments[date] = [appointment['time'] for appointment in data]
-    default_response['data'] = list(visa_appointments.items())
+        data = [appointment['time'] for appointment in data]
+        visa_appointments = chain(visa_appointments, data)
+    default_response['data'] = list(visa_appointments)
     return default_response
 
 
@@ -225,10 +258,5 @@ def gather_appointments(callback=None):
         event_loop.close()
 
 
-def add_appointments_to_database(results):
-    for result in results:
-        print(result)
-
-
 if __name__ == '__main__':
-    gather_appointments(add_appointments_to_database)
+    gather_appointments()
