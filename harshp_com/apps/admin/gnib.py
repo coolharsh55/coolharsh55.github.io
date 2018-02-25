@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from apps.models.gnib import GNIBAppointment
 from apps.models.gnib import VisaAppointment
+from apps.models.gnib import APIResponse
 
 
 @admin.register(GNIBAppointment)
@@ -17,3 +18,9 @@ class VisaAppointmentAdmin(admin.ModelAdmin):
     list_display = ['timestamp', 'added_on', 'booked', 'category']
     list_filter = ['category']
     date_hierarchy = 'timestamp'
+
+
+@admin.register(APIResponse)
+class APIResponseAdmin(admin.ModelAdmin):
+    list_display = ['added_on', 'json']
+    date_hierarchy = 'added_on'

@@ -3,6 +3,7 @@
 import os
 
 MODE = os.environ.get('HARSHP_COM_MODE', 'dev')
+TELEGRAM_API_KEY = os.environ.get('TELEGRAM_API_KEY', None)
 
 # PRODUCTION
 if MODE == 'production':

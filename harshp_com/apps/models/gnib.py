@@ -87,4 +87,4 @@ class APIResponse(models.Model):
         verbose_name_plural = 'API Responses'
 
     def __str__(self):
-        return self.added_on
+        return self.json

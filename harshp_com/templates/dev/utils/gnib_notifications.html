@@ -1,0 +1,89 @@
+{% extends 'dev/base.html' %}
+{% block e_TITLE %}GNIB & VISA Notifications{% endblock e_TITLE %}
+{% block e_META_DESCRIPTION %}GNIB & VISA Notifications{% endblock e_META_DESCRIPTION %}
+
+{% block e_BODY %}
+<article class="baskerville pt2 pb5">
+    <header class="avenir tc ph3 ph4-ns bb">
+        <h1 class=" measure lh-title fw1 mt0 mb0 pb0 dark-navy tc">GNIB & VISA Notifications</h1>
+        <p class="fw1 fw6 navy w-80-ns center"><span class="dark-red">This is not an official app.</span>
+        <a href="https://harshp.com/dev/projects/gnib-appointments/">Project Blog</a></p>
+        <nav class="">
+          <div class="tc pb3">
+            <a class="dark-blue  dib ph1" href="{% url 'home' %}" title="home">harshp.com</a>/<a class="dark-blue  dib ph1" href="{% url 'dev:index' %}" title="Dev">dev</a>
+          </div>
+        </nav>
+    </header>
+    <div class="fl w-100 w-100 pa db pv2 dark-blue">
+        <div class="tc center b f4 red ba b--red">
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+        </div>
+        <form class="pa2" action="" method="post">{% csrf_token %}
+       		<fieldset id="gnib" class="bn">
+				<legend class="fw7 mb2">GNIB appointment type</legend>
+				<div class="flex items-center mb2">
+                {% for id, label in gnib_types %}
+                    <input name="gnib-type" class="mh2" type="radio" id="{{id}}" value="{{id}}">
+                    <label for="{{id}}" class="lh-copy">{{ label }}</label>
+                {% endfor %}
+                    <input name="gnib-type" class="mh2" type="radio" id="gnib-type-none" value="None" checked="checked">
+                    <label for="gnib-type-none" class="lh-copy">None</label>
+				</div> 
+            </fieldset>
+            <fieldset id="gnib-date" class="bn">
+                 <label for="gnib-start-date">Start from : </label><input name="gnib-start-date" id="gnib-start-date" type="date" value=""/> 
+                 <label for="gnib-end-date">End on: (leave empty for indefinite) </label><input name="gnib-end-date" id="gnib-end-date" type="date" value=""/> 
+            </fieldset>
+       		<fieldset id="visa" class="bn pa2 mt2">
+				<legend class="fw7 mb2">VISA appointment type</legend>
+				<div class="flex items-center mb2">
+                {% for id, label in visa_types %}
+                    <input name="visa-type" class="mh2" type="radio" id="{{id}}" value="{{id}}">
+                    <label for="{{id}}" class="lh-copy">{{ label }}</label>
+                {% endfor %}
+                    <input name="visa-type" class="mh2" type="radio" id="visa-type-none" value="None" checked="checked">
+                    <label for="visa-type-none" class="lh-copy">None</label>
+				</div> 
+            </fieldset>
+            <fieldset id="visa-date" class="bn">
+                 <label for="visa-start-date">Start from : </label><input name="visa-start-date" id="visa-start-date" type="date" value=""/> 
+                 <label for="visa-end-date">End on: (leave empty for indefinite) </label><input name="visa-end-date" id="visa-end-date" type="date" value=""/> 
+            </fieldset>
+            <input class="b ph3 pv2 mt2 input-reset dark-blue ba b--dark-blue bg-transparent grow pointer f6 dib" type="submit" value="Save Preferences">
+        </form>
+    </div>
+    <div class="fl w-100 db ph2 pb2 mt2 mb2 ba center">
+    </div>
+</article>
+{% endblock e_BODY %}
+
+{% block e_JS %}
+<script type="text/javascript">
+    var gnib_set = "{{gnib_set}}";
+    var visa_set = "{{visa_set}}";
+    window.onload = function() {
+        // set radio buttons for appointment types
+        if (gnib_set == "None") {
+            document.getElementById("gnib-type-none").checked = true;
+        } else {
+            document.getElementById(gnib_set).checked = true;
+        }
+        if (visa_set == "None") {
+            document.getElementById("visa-type-none").checked = true;
+        } else {
+            document.getElementById(visa_set).checked = true;
+        }
+        // set dates
+        document.getElementById('gnib-start-date').value = "{{gnib_date_start}}";
+        document.getElementById('gnib-end-date').value = "{{gnib_date_end}}";
+        document.getElementById('visa-start-date').value = "{{visa_date_start}}";
+        document.getElementById('visa-end-date').value = "{{visa_date_end}}";
+    };
+</script>
+{% endblock e_JS %}

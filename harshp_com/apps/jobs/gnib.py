@@ -9,15 +9,9 @@ from apps.models.gnib import GNIBAppointment, VisaAppointment, APIResponse
 from scripts.gnib_appointments_async import get_gnib_appointments
 from scripts.gnib_appointments_async import get_visa_appointments
 from django_cron import CronJobBase, Schedule
+from apps.jobs.gnib_telegram_notifications import job as notify
 
-logging.basicConfig(
-    filename='gnib.log',
-    filemode='a',
-    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-    datefmt='%H:%M:%S',
-    level=logging.INFO)
-
-logger = logging.getLogger('app.jobs.gnib')
+logger = logging.getLogger('gnib')
 
 
 kvstore = redis.StrictRedis(
@@ -35,6 +29,7 @@ def _sanity_in_kvstore():
     from itertools import product
     for item in product(gnib_categories, gnib_types):
         check('gnib_' + '_'.join(item))
+        check('gnib_' + '_'.join(item) + '_added')
     check('visa_F')
     check('visa_I')
 
@@ -138,7 +133,6 @@ def visa_mark_booked_appointments(booked, category):
 
 
 def set_appointments_in_redis(key, appointments):
-    kvstore.set(key, json.dumps(appointments))
     booked = []
     added = []
     others = []
@@ -146,20 +140,22 @@ def set_appointments_in_redis(key, appointments):
     previous = kvstore.get(key)
     if previous is None:
         added = appointments
-        return added, booked
-    # at this point, we have previous values
-    # and we compare, if any of the appointments are new or missing
-    previous = json.loads(previous)
+    else:
+        # at this point, we have previous values
+        # and we compare, if any of the appointments are new or missing
+        previous = json.loads(previous)
 
-    for item in appointments:
-        if item in previous:
-            others.append(item)
-        else:
-            added.append(item)
-    for item in previous:
-        if item not in others:
-            booked.append(item)
+        for item in appointments:
+            if item in previous:
+                others.append(item)
+            else:
+                added.append(item)
+        for item in previous:
+            if item not in others:
+                booked.append(item)
 
+    kvstore.set(key, json.dumps(appointments))
+    kvstore.set(key + '_added', json.dumps(added))
     return added, booked
 
 
@@ -217,6 +213,8 @@ async def run_job():
     }
     response = APIResponse(json=json.dumps(gnib_appointments))
     response.save()
+    await notify()
+    logger.info('sent notifications')
     return
 
 

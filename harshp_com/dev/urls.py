@@ -67,8 +67,11 @@ projects_urlpatterns = [
 ]
 
 utils_urlpatterns = [
+    # GNIB tools
     url(r'gnib-appointments/$',
         utils.gnib_appointments, name='gnib-appointments'),
+    url(r'gnib-appointments/customise/(?P<chat_id>[0-9]+)/$',
+        utils.gnib_notifications, name='gnib-notifications'),
 ]
 
 dev_urlpatterns = [
