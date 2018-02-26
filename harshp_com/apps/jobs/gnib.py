@@ -156,6 +156,7 @@ def set_appointments_in_redis(key, appointments):
 
     kvstore.set(key, json.dumps(appointments))
     kvstore.set(key + '_added', json.dumps(added))
+    logger.debug(f'{key} added appointments {added}')
     return added, booked
 
 

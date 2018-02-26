@@ -20,7 +20,7 @@ def retrieve_users_for_gnib_appointments(aptype, available):
     selected_users = []
     for user in users:
         if user.gnib_filter_date_start is None:
-            selected_users.append(user.chat_id, available)
+            selected_users.append((user.chat_id, available))
         else:
             dates_to_send = []
             for date in datified:
@@ -29,7 +29,7 @@ def retrieve_users_for_gnib_appointments(aptype, available):
                             user.gnib_filter_date_end <= date:
                         dates_to_send.append(date)
             if dates_to_send:
-                selected_users(user.chat_id, dates_to_send)
+                selected_users.append((user.chat_id, dates_to_send))
     logger.info(f'found {len(selected_users)} users for gnib type {aptype}')
     return selected_users
 
@@ -42,7 +42,7 @@ def retrieve_users_for_visa_appointments(aptype, available):
     selected_users = []
     for user in users:
         if user.visa_filter_date_start is None:
-            selected_users.append(user.chat_id, available)
+            selected_users.append((user.chat_id, available))
         else:
             dates_to_send = []
             for date, msg in datified:
@@ -51,7 +51,7 @@ def retrieve_users_for_visa_appointments(aptype, available):
                             user.visa_filter_date_end <= date:
                         dates_to_send.append(msg)
             if dates_to_send:
-                selected_users(user.chat_id, dates_to_send)
+                selected_users.append((user.chat_id, dates_to_send))
     logger.info(f'found {len(selected_users)} users for visa type {aptype}')
     return selected_users
 
@@ -86,6 +86,7 @@ async def job():
         TelegramUser.GNIB_OTHER_RENEWAL: json.loads(
             kvstore.get('gnib_Other_Renewal_added')),
     }
+    logger.debug(f'gnib appointments: {gnib_appointments}')
     visa_appointments = {
         TelegramUser.VISA_INDIVIDUAL: json.loads(
             kvstore.get('visa_I_added')),
@@ -97,9 +98,15 @@ async def job():
     # retrieve users that want notifications for this appointment type
     for type, available in gnib_appointments.items():
         if available:
+            logger.debug(f'handling notifications for {type}, {available}')
             users = retrieve_users_for_gnib_appointments(type, available)
-            await send_notification_to_users(users, type, last_update)
+            logger.debug(f'available users for {type}: {users}')
+            try:
+                await send_notification_to_users(users, type, last_update)
+            except Exception as E:
+                logger.error(E, exc_info=True)
     for type, available in visa_appointments.items():
         if available:
             users = retrieve_users_for_visa_appointments(type, available)
+            logger.debug(f'available users for {type}: {users}')
             await send_notification_to_users(users, type, last_update)
