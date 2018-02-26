@@ -44,6 +44,7 @@ def gnib_notifications(request, chat_id):
 
         gnib_type = request.POST['gnib-type']
         visa_type = request.POST['visa-type']
+        print(visa_type)
 
         gnib_start_date = request.POST['gnib-start-date']
         if gnib_start_date:
@@ -95,7 +96,7 @@ def gnib_notifications(request, chat_id):
             user.appointment_gnib = gnib_type
             user.gnib_filter_date_start = gnib_start_date
             user.gnib_filter_date_end = gnib_end_date
-            user.appointment_visa = visa_type,
+            user.appointment_visa = visa_type
             user.visa_filter_date_start = visa_start_date
             user.visa_filter_date_end = visa_end_date
             user.save()
