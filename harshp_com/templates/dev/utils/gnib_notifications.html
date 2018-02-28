@@ -31,7 +31,7 @@
         <form class="pa2" action="" method="post">{% csrf_token %}
        		<fieldset id="gnib" class="bn">
 				<legend class="fw7 mb2">GNIB appointment type</legend>
-				<div class="flex items-center mb2">
+				<div class="items-center mb2">
                 {% for id, label in gnib_types %}
                     <input name="gnib-type" class="mh2" type="radio" id="{{id}}" value="{{id}}">
                     <label for="{{id}}" class="lh-copy">{{ label }}</label>
@@ -46,7 +46,7 @@
             </fieldset>
        		<fieldset id="visa" class="bn pa2 mt2">
 				<legend class="fw7 mb2">VISA appointment type</legend>
-				<div class="flex items-center mb2">
+				<div class="items-center mb2">
                 {% for id, label in visa_types %}
                     <input name="visa-type" class="mh2" type="radio" id="{{id}}" value="{{id}}">
                     <label for="{{id}}" class="lh-copy">{{ label }}</label>
