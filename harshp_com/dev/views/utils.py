@@ -30,13 +30,13 @@ def gnib_appointments(request):
 
 
 def gnib_notifications(request, chat_id):
+
+    def _datestring(date):
+        if date is not None:
+            return date.strftime('%Y-%m-%d')
+        return ''
+
     user = get_object_or_404(TelegramUser, chat_id=chat_id)
-    gnib_type = user.appointment_gnib
-    gnib_start_date = user.gnib_filter_date_start
-    gnib_end_date = user.gnib_filter_date_end
-    visa_type = user.appointment_visa
-    visa_start_date = user.visa_filter_date_start
-    visa_end_date = user.visa_filter_date_end
     error_flag = False
 
     if request.method == 'POST':
@@ -44,7 +44,6 @@ def gnib_notifications(request, chat_id):
 
         gnib_type = request.POST['gnib-type']
         visa_type = request.POST['visa-type']
-        print(visa_type)
 
         gnib_start_date = request.POST['gnib-start-date']
         if gnib_start_date:
@@ -103,14 +102,23 @@ def gnib_notifications(request, chat_id):
             messages.success(request, "Your preferences have been saved")
     else:
         pass
-    return render(
-        request, 'dev/utils/gnib_notifications.html', {
+
+    gnib_type = user.appointment_gnib
+    gnib_start_date = _datestring(user.gnib_filter_date_start)
+    gnib_end_date = _datestring(user.gnib_filter_date_end)
+    visa_type = user.appointment_visa
+    visa_start_date = _datestring(user.visa_filter_date_start)
+    visa_end_date = _datestring(user.visa_filter_date_end)
+    items = {
             'gnib_types': TelegramUser.GNIB_APPOINTMENT_TYPES,
             'visa_types': TelegramUser.VISA_APPOINTMENT_TYPES,
-            'gnib_set': user.appointment_gnib,
-            'visa_set': user.appointment_visa,
-            'gnib_date_start': user.gnib_filter_date_start,
-            'gnib_date_end': user.gnib_filter_date_end,
-            'visa_date_start': user.visa_filter_date_start,
-            'visa_date_end': user.visa_filter_date_end,
-            })
+            'gnib_set': gnib_type,
+            'visa_set': visa_type,
+            'gnib_date_start': gnib_start_date,
+            'gnib_date_end': gnib_end_date,
+            'visa_date_start': visa_start_date,
+            'visa_date_end': visa_end_date,
+            }
+
+    return render(
+        request, 'dev/utils/gnib_notifications.html', items)
