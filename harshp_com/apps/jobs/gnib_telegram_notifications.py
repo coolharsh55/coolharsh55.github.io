@@ -56,7 +56,7 @@ def retrieve_users_for_visa_appointments(aptype, available):
     return selected_users
 
 
-async def send_notification_to_users(users, aptype, last_update):
+async def send_notification_to_users(users, category, aptype, last_update):
     '''send notification to users via Telegram'''
     async def _send_notification(bot, chat_id, text):
         bot.send_message(chat_id=chat_id, text=text)
@@ -64,8 +64,8 @@ async def send_notification_to_users(users, aptype, last_update):
 
     telegrambot = telegram.Bot(token=TELEGRAM_API_KEY)
     for user, appointments in users:
-        message = 'Appointments for {}: {}. Last updated at {}'.format(
-            TelegramUser.resolve_type(aptype),
+        message = 'New appointments for {} {}: {}. Last updated at {}'.format(
+            category, TelegramUser.resolve_type(aptype),
             ', '.join(appointments), last_update)
         await _send_notification(telegrambot, user, message)
 
@@ -102,11 +102,11 @@ async def job():
             users = retrieve_users_for_gnib_appointments(type, available)
             logger.debug(f'available users for {type}: {users}')
             try:
-                await send_notification_to_users(users, type, last_update)
+                await send_notification_to_users(users, 'gnib', type, last_update)
             except Exception as E:
                 logger.error(E, exc_info=True)
     for type, available in visa_appointments.items():
         if available:
             users = retrieve_users_for_visa_appointments(type, available)
             logger.debug(f'available users for {type}: {users}')
-            await send_notification_to_users(users, type, last_update)
+            await send_notification_to_users(users, 'visa', type, last_update)
