@@ -12,9 +12,9 @@ else
 fi
 
 # Clear existing database
-psql -U postgres -c "drop database if exists harshp_com;"
-psql -U postgres -c "create database \"harshp_com\";"
-psql -U postgres -c "grant all privileges on database \"harshp_com\" to harshp_db_admin;"
+sudo -u postgres psql -U postgres -c "drop database if exists harshp_com;"
+sudo -u postgres psql -U postgres -c "create database \"harshp_com\";"
+sudo -u postgres psql -U postgres -c "grant all privileges on database \"harshp_com\" to harshp_db_admin;"
 sudo -u postgres pg_restore -U harshp_db_admin -d harshp_com -v \
     /tmp/harshp_com_db_backup.sql
 rm /tmp/harshp_com_db_backup.sql
