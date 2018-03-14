@@ -23,8 +23,8 @@ class MovieListAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'read', 'liked')
-    list_filter = ('read', 'liked')
+    list_display = ('title', 'read', 'liked', 'fiction')
+    list_filter = ('read', 'liked', 'fiction')
     search_fields = ('title',)
 
     @staticmethod
@@ -34,7 +34,21 @@ class BookAdmin(admin.ModelAdmin):
             q.liked = True
             q.save()
 
-    actions = ['mark_favourite']
+    @staticmethod
+    def mark_fiction(modeladmin, request, queryset):
+        '''marks selected book as fiction'''
+        for q in queryset:
+            q.fiction = True
+            q.save()
+
+    @staticmethod
+    def mark_nonfiction(modeladmin, request, queryset):
+        '''marks selected book as nonfiction'''
+        for q in queryset:
+            q.fiction = False
+            q.save()
+
+    actions = ['mark_favourite', 'mark_fiction', 'mark_nonfiction']
 
 
 @admin.register(BookList)

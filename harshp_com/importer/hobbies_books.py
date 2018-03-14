@@ -11,10 +11,11 @@ from utils.speech_corrections import move_articles_to_end
 
 class Record(object):
 
-    def __init__(self, title, read='N', liked='N'):
+    def __init__(self, title, read='N', liked='N', fiction='Y'):
         self.title = move_articles_to_end(title)
         self.read = True if read == 'Y' else False
         self.liked = True if liked == 'Y' else False
+        self.fiction = True if fiction == 'Y' else False
 
     def __str__(self):
         return self.title
@@ -25,7 +26,8 @@ class Record(object):
         except IndexError:
             book = Book(title=self.title)
             print('book does not exist', book)
-        book.read, book.liked = self.read, self.liked
+        book.read, book.liked, book.fiction =\
+            self.read, self.liked, self.fiction
         print(book.title)
         book.save()
         return book
@@ -48,7 +50,7 @@ def add_now_reading(filepath):
     except BookList.DoesNotExist:
         reading_list = BookList(title='Now Reading')
     reading_list.books.clear()
-    
+
     assert os.path.isfile(filepath)
 
     with open(filepath, 'r') as f:

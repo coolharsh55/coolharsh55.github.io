@@ -50,6 +50,7 @@ class Book(models.Model):
     title = models.CharField(max_length=256, db_index=True)
     read = models.BooleanField(default=False, db_index=True)
     liked = models.BooleanField(default=False, db_index=True)
+    fiction = models.BooleanField(default=True, db_index=True)
 
     class Meta(object):
         ordering = ['title']
