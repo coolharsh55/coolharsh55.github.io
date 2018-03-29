@@ -199,7 +199,7 @@ def get_tasks():
 async def run_job():
     phases = get_tasks()
     completed, pending = await asyncio.wait(phases, timeout=2)
-    kvstore.set('gnib_last_run', timezone.now().strftime('%H:%M'))
+    kvstore.set('gnib_last_run', timezone.localtime().strftime('%H:%M'))
     gnib_appointments = {
         'timestamp': timezone.now().strftime('%H:%M'),
         'gnib_Study_New': json.loads(kvstore.get('gnib_Study_New')),
