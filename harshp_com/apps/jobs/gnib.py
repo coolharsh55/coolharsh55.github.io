@@ -99,7 +99,7 @@ def gnib_mark_booked_appointments(booked, category, category_type):
                 GNIBAppointment.CATEGORY_TYPE_RENEWAL
         # convert string to datetime using arrow
         appointment = arrow.get(
-            appointment, 'DD MMMM YYYY - HH:mm').datetime
+            appointment, 'D MMMM YYYY - HH:mm').datetime
         # check if appointment exists
         try:
             existing_appointment = GNIBAppointment.objects.get(
