@@ -74,7 +74,7 @@ LOGGING = {
             'handlers': ['gnib'],
         },
         '': {
-            'handlers': ['console', 'production_file', 'debug_file'],
+            'handlers': ['console', 'debug_file'],
             'level': "DEBUG",
         },
     }
