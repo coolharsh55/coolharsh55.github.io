@@ -50,15 +50,9 @@ class ResearchBlogPostAdmin(PostAdmin):
 class ResearchBlogSeriesAdmin(admin.ModelAdmin):
     """admin for Blog Series"""
 
-    list_display = ('title', 'blogs', 'last_published', 'last_updated')
+    list_display = ('title', 'blogs', )
     ordering = ('title',)
     search_fields = ('title',)
 
     def blogs(self, obj):
         return obj.researchblogpost_set.count()
-
-    def last_published(self, obj):
-        return obj.researchblogpost_set.order_by('-date_published').first().date_published
-
-    def last_updated(self, obj):
-        return obj.researchblogpost_set.order_by('-date_updated').first().date_updated
