@@ -238,7 +238,7 @@ class GnibAppointmentJob(CronJobBase):
     '''gnib appointment check'''
     TICK = 1  # run every X mins
     schedule = Schedule(run_every_mins=TICK)
-    code = 'apps.gnib.check_gnib_appointments'
+    code = 'apps.jobs.gnib.check_gnib_appointments'
 
     def do(self):
         check_gnib_appointments()

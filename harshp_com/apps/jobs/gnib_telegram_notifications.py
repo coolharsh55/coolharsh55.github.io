@@ -4,7 +4,7 @@ import logging
 import redis
 import telegram
 from apps.models.gnib_telegram_bot import TelegramUser
-from harshp_com.settings.auth import TELEGRAM_API_KEY
+from harshp_com.settings.auth import TELEGRAM_API_NOTIF_KEY
 
 
 logger = logging.getLogger('gnib')
@@ -62,7 +62,7 @@ async def send_notification_to_users(users, category, aptype, last_update):
         bot.send_message(chat_id=chat_id, text=text)
         logger.info(f'send message to {chat_id} - {text}')
 
-    telegrambot = telegram.Bot(token=TELEGRAM_API_KEY)
+    telegrambot = telegram.Bot(token=TELEGRAM_API_NOTIF_KEY)
     for user, appointments in users:
         message = 'New appointments for {} {}: {}. Last updated at {}'.format(
             category, TelegramUser.resolve_type(aptype),
