@@ -45,7 +45,7 @@
             <h2 class='near-black'>Book Lists</h2>
             <ul class='list'>
                 {% for booklist in lists %}
-                <li class='item'><a href={% url 'hobbies:book:list' list.slug %}>{{ list }}</a></li>
+                <li class='item'><a href={% url 'hobbies:books:list' list.slug %}>{{ list }}</a></li>
                 {% endfor %}
             </ul>
         </div>
