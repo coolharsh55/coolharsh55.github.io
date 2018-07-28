@@ -8,17 +8,8 @@ from .models import StorySeries
 
 
 def list(request):
-    stories_latest = Story.objects.filter(is_published=True)\
+    stories_all = Story.objects.filter(is_published=True)\
         .order_by('-date_published').select_related('series')
-    stories_featured = Story.objects\
-        .filter(highlight=True, is_published=True)\
-        .order_by('-date_published').select_related('series')
-    stories_featured_count = Story.objects\
-        .filter(highlight=True, is_published=True)\
-        .order_by('-date_published').select_related('series').count()
-    stories_count = Story.objects.filter(is_published=True).count()
-    series = StorySeries.objects.all()
-    series_count = StorySeries.objects.all().count()
     meta = create_meta(
         title='stories.harshp.com',
         description='stories at harshp.com',
@@ -27,14 +18,8 @@ def list(request):
     )
     template_objects = {
         'meta': meta,
-        'stories_all': stories_latest,
-        'stories_count': stories_count,
-        'stories_featured': stories_featured,
-        'stories_featured_recent': stories_featured[:5],
-        'stories_featured_count': stories_featured_count,
-        'stories_latest': stories_latest[:5],
-        'series_all': series[:5],
-        'series_count': series_count}
+        'stories': stories_all,
+    }
     pagecommon(request, template_objects)
     return render(request, 'stories/homepage.html', template_objects)
 

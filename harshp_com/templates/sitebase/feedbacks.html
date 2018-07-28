@@ -3,34 +3,12 @@
 {% block e_META_DESCRIPTION %}feedbacks for pages at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block e_HEADER_TITLE %}Feedbacks{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class="w-80-ns center">
-<div class="pv4">
-<div class="overflow-auto">
-	<table class="f6 w-100 mw8-ns center" cellspacing="0">
-	<thead>
-		<tr class="stripe-dark">
-		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">ID</th>
-		<th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Date</th>
-        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Category</th>
-        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Title</th>
-        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">View</th>
-        <th class="fw6 tl pa1 pa3-ns bg-lightest-blue">Reply</th>
-		</tr>
-	</thead>
-	<tbody class="lh-copy">
-	{% for feedback in all_feedbacks %}
-	<tr class="stripe-dark">
-		<td class="pa1 pa3-ns">{{ feedback.pk }}</td>
-		<td class="pa1 pa3-ns">{{ feedback.timestamp }}</td>
-		<td class="pa1 pa3-ns">{{ feedback.category }}</td>
-        <td class="pa1 pa3-ns"><a href="{{ feedback.url }}">{{ feedback.title }}</a></td>
-        <td class="pa1 pa3-ns"><a href="{% url 'feedback:view' feedback.pk %}">view</a></td>
-        <td class="pa1 pa3-ns">{% if feedback.feedback %}&#x2714;{% else %}&#x2717;{% endif %}</td>
-	</tr>
-	{% endfor %}
-	</tbody>
-	</table>
-</div>
-</div>
-</div>
+<h1>feedbacks</h1>
+<p>navigate: <a href="/">homepage</a></p>
+{% for feedback in all_feedbacks %}
+	<p><b>#{{ feedback.pk }}</b> {{ feedback.timestamp }}<br/>
+    about: <a href="{{ feedback.url }}">{{ feedback.title }} ({{ feedback.category }})</a><br/>
+	<i>"{{ feedback.text }}"</i>
+	{% if feedback.feedback %}<br/><u>reply:</u> {{ feedback.feedback|safe }}{% endif %}<br/>
+{% endfor %}
 {% endblock e_BODY %}

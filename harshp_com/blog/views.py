@@ -44,7 +44,8 @@ def list(request):
 def featured(request):
     """return series list"""
 
-    posts = BlogPost.objects.filter(highlight=True).select_related('series')
+    posts = BlogPost.objects.filter(highlight=True)\
+        .order_by('-date_published').select_related('series')
     template_objects = {
         'posts': posts
     }

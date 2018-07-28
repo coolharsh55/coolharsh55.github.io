@@ -3,10 +3,7 @@
 {% block e_HEADER_TITLE %}sections{% endblock e_HEADER_TITLE %}
 
 {% block ee_BODY %}
-<h1 class="f1 near-black">Sections</h1>
 {% for section, entry_count in sections %}
-<div class="pv1">
-    <a class="link ph2" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a><span class="ph2 silver">{{ entry_count }} entries</span>
-</div>
+<a href="{{ section.get_absolute_url }}">{{ section.name }}</a> {{ entry_count }} entries<br/>
 {% endfor %}
 {% endblock ee_BODY %}

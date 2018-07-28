@@ -1,11 +1,4 @@
 {% extends 'sitebase/base.html' %}
-{% block f_HEADER %}<div class="center mw8-ns tc br2 pv3 ph6-ns bb ba-ns bw3 bw3-ns b--near-black near-black mb5 baskerville">
-    <div class="ph1 ph2-mph6-ns">
-      <h1 class="fw6 f3 f2-ns pv3 lh-title mt0 mb3">{% block e_HEADER_TITLE %}journal{% endblock e_HEADER_TITLE %}</h1>
-      <h2 class="fw2 f4 lh-title mt0 mb3">{% block e_HEADER_SUBTITLE %}<a href="{% url 'journal:entries:list' %}"><span class="f3 fw1 ph2 dark-gray">journal</span></a>@<a href="{% url 'home' %}"><span class="f3 fw1 ph2 dark-gray">harshp.com</span></a>{% endblock e_HEADER_SUBTITLE %}</h2>
-      <div class="fw1 f5 mt0 mb3">{% block e_HEADER_DESCRIPTION %}{% endblock e_HEADER_DESCRIPTION %}</div>
-    </div>
-</div>{% endblock f_HEADER %}
 {% block ee_CSS %}<style type="text/css">
 #visibility {
     position: fixed;
@@ -15,8 +8,12 @@
 }
 </style>{% endblock ee_CSS %}
 {% block e_BODY %}
+{% block f_HEADER %}
+<h1>{% block e_HEADER_TITLE %}journal{% endblock e_HEADER_TITLE %}</h1>
+<p><u>navigate:</u> <a href="{% url 'journal:entries:list' %}">journal</a>; <a href="{% url 'home' %}">main site</a>
+{% endblock f_HEADER %}
 <div id='visibility' class='ui'>
-        <p class="pa2"><a class="link" href="{% url 'journal:logout' %}"><span class="light-red">logout</span></p>
+        <p class="pa2"><a class="link" href="{% url 'journal:logout' %}"><span class="light-red">logout</span></a></p>
 </div>
 {% block ee_BODY %}{% endblock ee_BODY %}
 {% endblock e_BODY %}

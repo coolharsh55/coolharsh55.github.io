@@ -21,6 +21,9 @@ from . import views
 urlpatterns = [
     # base
     url(r'^$', views.home, name='home'),
+    # feeds
+    url(r'recent/$', views.recent, name='recent'),
+    url(r'featured/$', views.featured, name='featured'),
     # stub
     url(r'^stub/$', views.stub, name='stub'),
     url(r'^contact/$', views.contact, name='contact'),

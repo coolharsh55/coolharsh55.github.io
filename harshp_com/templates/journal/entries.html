@@ -1,20 +1,10 @@
 {% extends 'journal/base.html' %}
-
-
-{% block e_HEADER_SUBTITLE %}<a class="ui sub header" href="{% url 'home' %}"><u>harshp.com</u></a>{% endblock e_HEADER_SUBTITLE %}
-
 {% block ee_BODY %}
-<a class="link" href="{% url 'journal:sections:list' %}"><span class="f2 near-black">Sections</span></a>
-<div class="pa2">
-    {% if private_sessions %}{% for section in sections %}
-    <a class="ph2 link" href="{{ section.get_absolute_url }}"><span class="green">{{ section.name }}</span></a>{% endfor %}
-    {% else %}<p class="mw-8 center light-red">no public sections available</p>{% endif %}
-</div>
-<p class="f2 near-black">Entries</p>
+<p><a href="{% url 'journal:sections:list' %}"><b>Sections</b></a></p>
+{% if private_sessions %}{% for section in sections %}
+	<a href="{{ section.get_absolute_url }}">{{ section.name }}</a>; {% endfor %}{% else %}<u>no public sections available</u>{% endif %}
+<h2>Entries</h2>
 {% for entry, visible in entries %}
-<div class="pa2"><a class="link" href="{{ entry.get_absolute_url }}">
-    <span class="dark-gray ph2"><small>entry#{{ entry.id }}</small></span>
-    <span class="blue ph2">{{ entry.title }}</span>
-    {% if entry.section %}<span class="ph2 green">({{entry.section.name}})</span>{% endif %}</a><span class="dark-gray f6">{{ entry.date_published }}</span></div>
+<p><small>entry#{{ entry.id }}</small> <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a> {% if entry.section %}({{entry.section.name}}){% endif %} <small>{{ entry.date_published }}</small></p>
 {% endfor %}
 {% endblock ee_BODY %}

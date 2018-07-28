@@ -2,28 +2,13 @@
 
 {% block e_TITLE %}{{ post.title }}{% endblock e_TITLE %}
 {% block e_BODY %}
-<article class="baskerville pb5">
-    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="fw1 mt0 dark-red">{{ post.title }}</h1>
-        <nav class="">
-          <div class="tc pb3">
-            <a class="link dim dark-blue dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
-            <a class="link dim dark-blue dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
-          </div>
-        </nav>
-        <div class="dark-gray center tc mb2">{{ post.short_description }}</div>
-        <time class="db fw1 gray baskerville">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
-        <div class="navy pt2 pb4 f5">
-            {% for tag in post.tags.all %}
-                <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
-            {% endfor %}
-        </div>
-        {% if post.headerimage %}
-            <img class="w-70-ns dib mb2" src="{{ post.headerimage }}"/>
-        {% endif %}
-    </header>
-    <div class="measure db center f4-ns lh-copy">
-    {{ post.body_text | safe }}
-    </div>
-</article>
+<h1>{{ post.title }}</h1>
+<p>
+    {{ post.short_description }}<br/>
+    <time><u>posted:</u> {{ post.date_published }} | <u>updated:</u> {{ post.date_updated }}</time><br/>
+    <u>navigate:</u> <a href="{% url 'blog:list' %}" title="Blog Home">blogs</a> | <a href="{% url 'home' %}" title="Main Site">main site</a><br/>
+    <u>tags:</u> {% for tag in post.tags.all %}{{ tag.name }}; {% endfor %}
+</p>
+{% if post.headerimage %}<img src="{{ post.headerimage }}"/>{% endif %}
+{{ post.body_text | safe }}
 {% endblock e_BODY %}

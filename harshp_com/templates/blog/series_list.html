@@ -3,32 +3,22 @@
 {% block e_TITLE %}Blog Series{% endblock e_TITLE %}
 {% block f_HEADER_TITLE %}Blog Series{% endblock f_HEADER_TITLE %}
 {% block e_BODY %}
-<article class="baskerville pb5">
-    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="fw1 mt0 dark-blue">Blog Series</h1>
-        <nav class="">
-          <div class="tc pb3">
-            <a class="link dim dark-blue dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
-            <a class="link dim dark-blue dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
-          </div>
-        </nav>
-    </header>
-    {% for s, p in series %}
-    <div class='center tc pa3'>
-        <a class='fw1 link dark-green' href="{{ s.get_absolute_url }}">{{ s.title }}</a>
-        {% for post in p %}
-        <div class='pv2'>
-            <a class='fw2 link dark-blue' href="{{ post.get_absolute_url }}">
-                {% if post.highlight %}
-                    <span class="fw1 light-blue pr2">&starf;</span>{{ post.title }} <span class="fw1 light-blue pr2">&starf;</span>
-                {% else %}
-                    {{ post.title }}
-                {% endif %}</a>
-            <br/>
-            <small class='fw1 dark-gray'>{{ post.date_published }}</small>
-        </div>
-        {% endfor %}
-    </div>
+<h1>blog posts by series</h1>
+<p>
+    <u>navigate:</u> <a href="{% url 'blog:list' %}" title="Blog Home">blogs</a> | <a href="{% url 'home' %}" title="Main Site">main site</a><br/>
+</p>
+
+series: {% for s, _ in series %} <a href="#series-{{s.pk}}"><u>{{s.title}}</u></a>; {% endfor %}
+
+<br/>
+{% for s, p in series %}
+<a id="series-{{ s.pk }}" href="{{ s.get_absolute_url }}"><h2>{{ s.title }}</h2></a>
+    {% for post in p %}
+<p><a href="{{ post.get_absolute_url }}">{% if post.highlight %}<b>{{post.title}}</b>{% else %}{{post.title}}{% endif %}</a><br/>
+    {{ post.short_description }}<br/>
+    <time><u>posted:</u> {{ post.date_published }}</time><br/>
+    <u>tags:</u> {% for tag in post.tags.all %}{{ tag.name }}; {% endfor %}</p>
     {% endfor %}
-</article>
+</div>
+{% endfor %}
 {% endblock e_BODY %}

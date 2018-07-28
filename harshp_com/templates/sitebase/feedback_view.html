@@ -2,10 +2,11 @@
 {% block e_TITLE %}Feedback #{{feedback.pk}}{% endblock e_TITLE %}
 {% block e_HEADER_TITLE %}Feedback #{{feedback.pk}}{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class="w-80 center">
-    <p class="fw2">{{ feedback.timestamp }}</p>
-    <p class="fw2">about: <a href="{{ feedback.url }}">link</a></p>
-    <p>{{ feedback.text }}</p>
-    {% if feedback.feedback %}<div class="feedback"><p><b>reply:</b></p>{{ feedback.feedback|safe }}</div>{% endif %}
-</div>
+<h1>feedback #{{feedback.pk}}</h1>
+<p>navigate: <a href="/">homepage</a></p>
+<p>{{ feedback.timestamp }}<br/>
+about: <a href="{{ feedback.url }}">{{ feedback.title }} ({{ feedback.category }})</a><br/>
+<i>"{{ feedback.text }}"</i>
+{% if feedback.feedback %}<br/><u>reply:</u> {{ feedback.feedback|safe }}{% endif %}
+</p>
 {% endblock e_BODY %}

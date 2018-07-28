@@ -2,11 +2,10 @@
 {% block e_TITLE %}{{ entry.title }}{% endblock e_TITLE %}
 {% block e_HEADER_TITLE %}{{ entry.title }}{% endblock e_HEADER_TITLE %}
 {% block ee_BODY %}
-<article class="athelas">
-<h1 class="f1 near-black">{{ entry.title }}</h1>
-{% if entry.section %}<a class="link" href="{{ entry.section.get_absolute_url }}"><span class="f3 silver">{{entry.section.name}}</span></a>{% endif %}
-<p class="f6 silver">published on: {{ entry.date_published }}; last updated on: {{ entry.date_updated }}</p>
-<p class="f4 near-black">{{ entry.short_description }}</p>
-{% for tag in entry.journal_tags.all %}<a class="link ph2" href="#"><span class="f6 ba ph2 silver">{{ tag.name }}</span></a>{% endfor %}
-<div class="pa2 lh-copy">{{ entry.body_text|safe }}</div>
+<p>{% if entry.section %}<u>section:</u>  <a href="{{ entry.section.get_absolute_url }}">{{entry.section.name}}</a><br/>{% endif %}
+<u>published on:</u> {{ entry.date_published }}<br/>
+<u>last updated on:</u> {{ entry.date_updated }}<br/>
+<u>tags:</u> {% for tag in entry.journal_tags.all %}{{ tag.name }}; {% endfor %}</p>
+<p>{{ entry.short_description }}</p>
+{{ entry.body_text|safe }}
 {% endblock ee_BODY %}

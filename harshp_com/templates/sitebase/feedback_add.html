@@ -3,28 +3,23 @@
 {% block e_META_DESCRIPTION %}add feedback for pages at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block e_HEADER_TITLE %}New Feedback{% endblock e_HEADER_TITLE %}
 {% block e_BODY %}
-<div class="w-80-ns center mt3 ph3">
-    <div class="f7 pb2 tc">
-        <p>{{ title }}</p>
-        <p>{{ category }}</p>
-        <p><a href="{{ url }}">link</a></p>
-    </div>
+<h1>add feedback</h1>
+<p>navigate: <a href="/">homepage</a></p>
+<p><b>feedback for: <a href="{{ url }}">{{ title }} ({{ category }})</a></p>
+<p><a href="{% url 'feedback:list' %}">see all feedbacks</a></p>
 <form class="measure center" action="{% url 'feedback:add' None %}" method="POST">
 	{% csrf_token %}
 	<input type="hidden" name="url" readonly value="{{ url }}">
 	<input type="hidden" name="category" readonly value="{{ category }}">
 	<input type="hidden" name="title" readonly value="{{ title }}">
-	<fieldset id="fieldtext" class="ba b--transparent ph0 mh0">
-		<legend class="f4 fw6 ph0 mh0">What do you want to say?</legend>
-		<textarea class="pa2 ba b--black w-100" style="height:200px;" name="text"  id="text"></textarea>
+	<fieldset id="fieldtext">
+		<legend>feedback</legend>
+		<textarea style="height:200px;" name="text" id="text"></textarea>
 	</fieldset>
-	<fieldset id="fielduser" class="ba b--transparent ph0 mh0">
-		<legend class="f4 fw6 ph0 mh0">You can (optionally) provide your name and how I can contact you</legend>
-		<textarea class="pa2 ba b--black w-100" name="user"  id="user"></textarea>
+	<fieldset id="fielduser">
+		<legend>(optional) contact info</legend>
+		<textarea name="user"  id="user"></textarea>
 	</fieldset>
-	<div class="tc">
-		<input class="b ph3 pv2 ba b--black bg-transparent grow pointer f4" type="submit" value="Submit Feedback">
-	</div>
+    <input type="submit" value="Submit Feedback" style="font-weight: bold; text-decoration: underline; background: #CCC;">
 </form>
-</div>
 {% endblock e_BODY %}

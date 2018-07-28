@@ -1,30 +1,28 @@
 {% extends 'research/base.html' %}
 
 {% block e_TITLE %}research at harshp.com{% endblock e_TITLE %}
-{% block fe_HEADER %}Research{% endblock fe_HEADER %}
 
 {% block e_BODY %}
-<article class="baskerville near-black">
-    <div class="db center w-80-ns ph2">
-        <div class="">
-            <h2 class="fw2">Bio</h2>
-            <div class="lh-copy">
-                Currently a Ph.D researcher with 
-                <a class="dark-red" href="http://adaptcentre.ie/">ADAPT</a> 
-                research center at 
-                <a class="dark-red" href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a>
-                of <a class="dark-red" href="http://www.tcd.ie/">Trinity College Dublin.</a> 
-                Started in April 2016 and expected to graduate by April 2020.
-                My research is on how GDPR obligations can be proven based on provenance
-                information, specifically using semantic web technologies.
-                My PhD work is available at <a class="link" href="https://openscience.adaptcentre.ie/">OpenScience - ADAPT</a>.<br/>
-                Publications: <a class="link avenir underline" href="{% url 'research:publications' %}">my website</a>,
-                <a class="link" href="https://scholar.google.com/citations?user=tugki3kAAAAJ&hl=en&oi=ao">Google Scholar</a>, 
-                <a class="link" href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>.<br/>
-                I also keep a <a href="{% url 'research:blog:home' %}"><span class="u">research blog</span></a>.
-            </div>
-        <div class="">
-            <h2 class="fw2">Selected Publications</h2>
+<h1>Research</h1>
+<p><u>navigate:</u> <a href="{% url 'research:home' %}">Research Home</a>; 
+    <a href="{% url 'research:blog:home' %}">Research Blog</a>; 
+    <a href="{% url 'research:publications' %}">Publications</a>; 
+    <a href="{% url 'home' %}">Main Site</a></p>
+<p><u>about me: </u>
+    Currently a Ph.D researcher with 
+    <a class="dark-red" href="http://adaptcentre.ie/">ADAPT</a> 
+    research center at 
+    <a class="dark-red" href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a>
+    of <a class="dark-red" href="http://www.tcd.ie/">Trinity College Dublin.</a> 
+    Started in April 2016 and expected to graduate by April 2020.
+    My research is on how GDPR obligations can be proven based on provenance
+    information, specifically using semantic web technologies.
+    My PhD work is available at <a class="link" href="https://openscience.adaptcentre.ie/">OpenScience - ADAPT</a>.<br/>
+    Publications: <a class="link avenir underline" href="{% url 'research:publications' %}">my website</a>,
+    <a class="link" href="https://scholar.google.com/citations?user=tugki3kAAAAJ&hl=en&oi=ao">Google Scholar</a>, 
+    <a class="link" href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>.<br/>
+    I also keep a <a href="{% url 'research:blog:home' %}"><span class="u">research blog</span></a>.</p>
+<h2>Selected Publications</h2>
     <li>
         <b>Queryable Provenance Metadata For GDPR Compliance</b><br/>
         <i>Conference paper (to-appear)</i><br/>

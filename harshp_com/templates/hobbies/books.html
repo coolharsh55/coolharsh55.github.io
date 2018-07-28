@@ -2,63 +2,30 @@
 {% block e_TITLE %}books{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}books, my hobby at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_BODY %} 
-<article class="helvetica pb5">
-    <header class="dt w-100">
-        <div>
-            <h1 class="tc">books</h1>
-            <p class="tc"><a class="blue tc dib ph1" href="{% url 'home' %}" title="home">harshp.com</a></p>
-        </div>
-    </header>
-    <div class="mw8 center mt4 ph2">
-        <div class="pa1">
-            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--dark-green">
-                <p class="lh-copy measure mt0 i">{{ annotation.content }}</p>
-                <cite class="f6 ttu tracked fs-normal">-{{ annotation.book.title }}</cite>
-            </blockquote>
-        </div>
-        <p class='f7 near-black'><span class="f3 ph2">legend: </span>
-            <span class='dib-ns mb2 mr2 f6 b db pa2 bb bw2'>liked</span>
-            <span class='dib-ns mb2 mr2 f6 b db pa2 dark-green'>non-fiction</span>
-            <span class='dib-ns mb2 mr2 f6 b db pa2 dark-blue'>fiction</span>
-        </p>
-        <div>
-            <h2 class='near-black'>Now Reading</h2>
-            <ul class='list'>
-                {% for book in reading %}
-                <li class='b db pa2 {% if book.liked %}ba bw2{% endif %} {% if book.fiction %}dark-blue{% else %}dark-green{% endif %}'>{{ book.title }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div>
-            <h2 class="near-black">Reading List</h2>
-            <div id='books'>
-                <ul class='list'>
-                    {% for book in readlist %}
-                    <li class='dib-ns mb2 mr2 f6 b db pa2 mid-gray'>
-                        {{ book }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <div>
-            <h2 class='near-black'>Book Lists</h2>
-            <ul class='list'>
-                {% for list in lists %}
-                <li class='item'><a href={% url 'hobbies:books:list' list.slug %}>{{ list }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div>
-            <h2 class="near-black">I've read -</h2>
-            <div id='books'>
-                <ul class='list'>
-                    {% for book in books %}
-                        <li class='b pa2 ma2 dib-ns pa2 {% if book.liked %}bb {% endif %} {% if book.fiction %}dark-blue{% else %}dark-green{% endif %}'>{{ book.title }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
-</article>
+<h1>books</h1>
+<p><u>navigate:</u> <a href="{% url 'home' %}">harshp.com</a></p>
+<blockquote>
+    <p>{{ annotation.content }}</p>
+    <cite>-{{ annotation.book.title }}</cite>
+</blockquote>
+<p><u>legend:</u> (&#x2665;) liked; (&#x25c9;) fiction; (&#x25c6;) non-fiction</p>
+<h2>Now Reading</h2>
+<ul>{% for book in reading %}
+    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+{% endfor %}</ul>
+<h2>Reading List</h2>
+<ul>{% for book in readlist %}
+    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+{% endfor %}</ul>
+<h2>Book lists</h2>
+<ul>{% for list in lists %}
+    <li><a href={% url 'hobbies:book:list' list.slug %}>{{ list }}</a>
+        <ul>{% for book in list %}
+            <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+        {% endfor %}</ul></li>
+{% endfor %}</ul>
+<h2>Books I have read</h2>
+<ul>{% for book in books %}
+    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+{% endfor %}</ul>
 {% endblock f_BODY %}

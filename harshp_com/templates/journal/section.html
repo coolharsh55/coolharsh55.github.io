@@ -2,23 +2,8 @@
 {% block e_TITLE %}{{ section.name }}{% endblock e_TITLE %}
 {% block e_HEADER_TITLE %}{{ section.name }}{% endblock e_HEADER_TITLE %}
 {% block ee_BODY %}
-<h1 class="f1 near-black">{{ section.name }}</h1>
-<p class="f4 dark-gray">{{ entries.count }} entries</p>
+<p>{{ entries.count }} entries</p>
 {% for entry in entries.all %}
-    <div class="pa2">
-    {% if entry.private %}{% if user.is_authenticated %}
-    <a class="link" href="{{ entry.get_absolute_url }}">
-    <span class="dark-gray ph2"><small>entry#{{ entry.id }}</small></span>
-    <span class="blue ph2">{{ entry.title }}</span>
-    <span class="dark-gray f6">{{ entry.date_published }}</span></a>{% endif %}
-    {% else %}
-    <a class="link" href="{{ entry.get_absolute_url }}">
-    <span class="dark-gray ph2"><small>entry#{{ entry.id }}</small></span>
-    <span class="blue ph2">{{ entry.title }}</span>
-    {% if entry.section %}<span class="ph2 green">section: {{entry.section.name}}</span>{% endif %}</a><span class="dark-gray f6">{{ entry.date_published }}</span>
-        {% endif %}
-        </div>
-    {% endfor %}
-    </div>
-</div>
+<p><small>entry#{{ entry.id }}</small> <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a> <small>{{ entry.date_published }}</small></p>
+{% endfor %}
 {% endblock ee_BODY %}

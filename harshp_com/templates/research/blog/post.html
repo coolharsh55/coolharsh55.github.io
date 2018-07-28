@@ -1,23 +1,15 @@
 {% extends 'research/blog/base.html' %}
 
 {% block e_TITLE %}{{ post.title }}{% endblock e_TITLE %}
-{% block fe_HEADER %}{{ post.title }}{% endblock fe_HEADER %}
 {% block e_BODY %}
-<article class="baskerville pb5">
-<h1 class="f1 fw1 only-print tc">{{ post.title }}</h1>
-<div class="f2-l avenir center tc mb2"><a class="link dark-green" href="{{ post.series.get_absolute_url }}">{{ post.series.title }}</a></div>
-<div class="f4 baskerville dark-gray center tc mb2">{{ post.short_description }}</div>
-<time class="f5 f4-l db fw1 gray baskerville tc">posted: {{ post.date_published }} | updated: {{ post.date_updated }}</time>
-<div class="navy pt2 pb4 f5 tc">
-    {% for tag in post.tags.all %}
-        <a class="link dark-blue pa1 dib ba b--moon-gray fw1" href="#" class="ui tiny tag label">{{ tag.name }}</a>
-    {% endfor %}
-</div>
-{% if post.headerimage %}
-    <img class="w-100 dib measure f3 mb2" src="{{ post.headerimage }}"/>
-{% endif %}
-<div class="measure db center f4 f3-ns lh-copy">
+<h1>{{ post.title }}</h1>
+<p>
+    <u>series:</u> <a href="{% url 'research:blog:series' post.series.slug %}">{{ post.series.title }}</a><br/>
+    {{ post.short_description }}<br/>
+    <time><u>posted:</u> {{ post.date_published }} | <u>updated:</u> {{ post.date_updated }}</time><br/>
+    <u>navigate:</u> <a href="{% url 'research:blog:home' %}" title="Blog Home">blog</a>; <a href="{% url 'research:home' %}">research</a>; <a href="{% url 'home' %}" title="Main Site">main site</a><br/>
+    <u>tags:</u> {% for tag in post.tags.all %}{{ tag.name }}; {% endfor %}
+</p>
+{% if post.headerimage %}<img src="{{ post.headerimage }}"/>{% endif %}
 {{ post.body_text | safe }}
-</div>
-</article>
 {% endblock e_BODY %}

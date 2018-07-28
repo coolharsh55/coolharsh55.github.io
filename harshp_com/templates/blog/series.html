@@ -2,27 +2,14 @@
 
 {% block e_TITLE %}{{ series.title }}{% endblock e_TITLE %}
 {% block e_BODY %}
-<article class="baskerville pb5">
-    <header class="avenir tc ph3 ph4-ns pt4 pt5-ns">
-        <h1 class="fw1 mt0 dark-blue">{{ series.title }}</h1>
-        <nav class="">
-          <div class="tc pb3">
-            <a class="link dim dark-blue dib mr3" href="{% url 'blog:list' %}" title="Blog Home">Blog Home</a>
-            <a class="link dim dark-blue dib mr3" href="{% url 'home' %}" title="Main Site">Main Site</a>
-          </div>
-        </nav>
-    </header>
-    <div id='featublue' class="fl w-100 pa2 center tc mb3">
-        {% for post in posts %}
-        <div class="pv2">
-            <a class="link dark-blue db" href="{{ post.get_absolute_url }}">{% if post.highlight %}
-                <span class="fw1 light-blue pr2">&starf;</span>{{ post.title }} <span class="fw1 light-blue pr2">&starf;</span>
-            {% else %}
-                {{ post.title }}
-                {% endif %}</a>
-            <span class="fw1 pl2 silver f6">{{ post.date_published }}<br/>{{ post.short_description }}</span>
-        </div>
-        {% endfor %}
-    </div>
-</article>
+<h1>{{ series.title }}</h1>
+<p>
+    <u>navigate:</u> <a href="{% url 'blog:list' %}" title="Blog Home">blogs</a> | <a href="{% url 'home' %}" title="Main Site">main site</a><br/>
+</p>
+{% for post in posts %}
+<p><a href="{{ post.get_absolute_url }}">{% if post.highlight %}<b>{{post.title}}</b>{% else %}{{post.title}}{% endif %}</a><br/>
+    {{ post.short_description }}<br/>
+    <time><u>posted:</u> {{ post.date_published }}</time><br/>
+    <u>tags:</u> {% for tag in post.tags.all %}{{ tag.name }}; {% endfor %}</p>
+{% endfor %}
 {% endblock e_BODY %}
