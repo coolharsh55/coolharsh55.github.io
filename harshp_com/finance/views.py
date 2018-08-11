@@ -136,27 +136,27 @@ def monthly_spendings_list(request):
             'backgroundColor': 'rgba(250,50,50,0.1)',
             'pointBackgroundColor': 'rgba(250,50,50,0.4)',
             'pointHoverRaduis': 30,
-            'data': expenses,
+            'data': expenses[2:],
         },
         {
             'label': 'Income',
             'backgroundColor': 'rgba(50,250,50,0.1)',
             'pointBackgroundColor': 'rgba(50,250,50,0.4)',
             'pointHoverRaduis': 30,
-            'data': income,
+            'data': income[2:],
         },
         {
-            'label': 'Net Expense',
+            'label': 'Net Income',
             'backgroundColor': 'rgba(50,50,250,0.1)',
             'pointBackgroundColor': 'rgba(50,50,250,0.4)',
             'pointHoverRaduis': 30,
-            'data': net_expenses,
+            'data': net_expenses[2:],
         },
     ]
 
     return render(request, 'finance/monthly_spendings_list.html', {
         'months': months_list,
-        'labels': labels,
+        'labels': labels[2:],
         'datasets': datasets
     })
 
