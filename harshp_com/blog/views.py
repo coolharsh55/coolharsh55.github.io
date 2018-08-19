@@ -57,7 +57,8 @@ def series_list(request):
     """return series list"""
 
     series = [
-        (s, s.blogpost_set.order_by('date_published'))
+        (s, s.blogpost_set.filter(is_published=True)
+            .order_by('-date_published'))
         for s in BlogSeries.objects.order_by('title')]
     template_objects = {'series': series}
     pagecommon(request, template_objects)
