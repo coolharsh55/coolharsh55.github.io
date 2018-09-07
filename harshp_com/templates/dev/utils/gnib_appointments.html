@@ -4,7 +4,7 @@
 <!-- { % block f_CSS %}<link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css"/>{ % endblock f_CSS %} -->
 {% block e_BODY %}
 <h1>GNIB & VISA Appointments</h1>
-<p>This is not an official app.</p>
+<p style="color: red;">Not an official app. Does not automatically book appointments. Only shows timings available.</p>
 <p><u>navigate:</u> <a href="https://harshp.com/dev/projects/gnib-appointments/">Project Blog</a>; <a href="{% url 'home' %}" title="Main Site">main site</a></p></p>
 <div class="fl w-100 w-100 pa db tc pv2 dark-blue">
 <p>Last updated: {{ last_update }}</p>
@@ -33,4 +33,12 @@
 {% for appointment in visa_I %}<a href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>; {% empty %}<u>No appointments</u>{% endfor %}
 <br/><b>Family</b>:
 {% for appointment in visa_F %}<a href="https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm">{{ appointment }}</a>; {% empty %}<u>No appointments</u>{% endfor %}</p>
+
+<p><a href="https://www.irishtimes.com/news/social-affairs/internet-bots-used-to-block-immigrants-from-making-visa-appointments-1.3620957">Article in Irish Times about bots automatically booking appointments</a>.
+<br/>To clarify, this utility does not:
+<br/>(a) book appointments online
+<br/>(b) cause issues for the official server
+<br/>(c) deny people oppurtunities to book apppointments
+<br/>It is similar to viewing the timetable for trains. You still have to go to the official website to book appointments.
+</p>
 {% endblock e_BODY %}
