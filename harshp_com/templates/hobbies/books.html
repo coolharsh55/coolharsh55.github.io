@@ -2,30 +2,45 @@
 {% block e_TITLE %}books{% endblock e_TITLE %}
 {% block e_META_DESCRIPTION %}books, my hobby at harshp.com{% endblock e_META_DESCRIPTION %}
 {% block f_BODY %} 
+<style>
+ul {
+    list-style-type: none;
+}
+.liked {
+    color: #990000;
+    font-size: 0.5em;
+    vertical-align: super;
+    padding-left: 5px;
+}
+.fiction {
+    color: #559955;
+}
+.non-fiction {
+    color: #555599;
+}
+</style>
 <h1>books</h1>
 <p><u>navigate:</u> <a href="{% url 'home' %}">harshp.com</a></p>
+<p><u>on this page:</u> <a href="#now-reading">Reading</a>; <a href="#to-read">Next Read</a>; <a href="#reading-lists">Lists</a>; <a href="#all">All</a></p>
 <blockquote>
     <p>{{ annotation.content }}</p>
     <cite>-{{ annotation.book.title }}</cite>
 </blockquote>
-<p><u>legend:</u> (&#x2665;) liked; (&#x25c9;) fiction; (&#x25c6;) non-fiction</p>
-<h2>Now Reading</h2>
+<p><u>legend:</u> <span class="fiction">&#x25c9;</span> Fiction | <span class="non-fiction">&#x25c6;</span> Non-Fiction | <span class="liked">&#x2665; liked</span></p>
+<h2 id="now-reading">Reading Now</h2>
 <ul>{% for book in reading %}
-    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+    <li>{% if book.fiction %}<span class="fiction">&#x25c9;</span>{% else %}<span class="non-fiction">&#x25c6;</span>{% endif %} {{ book.title }}</li>
 {% endfor %}</ul>
-<h2>Reading List</h2>
+<h2 id="to-read">Reading Next</h2>
 <ul>{% for book in readlist %}
-    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+    <li>{% if book.fiction %}<span class="fiction">&#x25c9;</span>{% else %}<span class="non-fiction">&#x25c6;</span>{% endif %} {{ book.title }}</li>
 {% endfor %}</ul>
-<h2>Book lists</h2>
+<h2>Reading lists</h2>
 <ul>{% for list in lists %}
-    <li><a href={% url 'hobbies:books:list' list.slug %}>{{ list }}</a>
-        <ul>{% for book in list.books.all %}
-            <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
-        {% endfor %}</ul></li>
+    <li><a href={% url 'hobbies:books:list' list.slug %}>{{ list }}</a></li>
 {% endfor %}</ul>
-<h2>Books I have read</h2>
+<h2>Read Books</h2>
 <ul>{% for book in books %}
-    <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
+    <li>{% if book.fiction %}<span class="fiction">&#x25c9;</span>{% else %}<span class="non-fiction">&#x25c6;</span>{% endif %} {{ book.title }}<span class="liked">&#x2665;</span></li>
 {% endfor %}</ul>
 {% endblock f_BODY %}
