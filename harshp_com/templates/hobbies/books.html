@@ -19,8 +19,8 @@
 {% endfor %}</ul>
 <h2>Book lists</h2>
 <ul>{% for list in lists %}
-    <li><a href={% url 'hobbies:book:list' list.slug %}>{{ list }}</a>
-        <ul>{% for book in list %}
+    <li><a href={% url 'hobbies:books:list' list.slug %}>{{ list }}</a>
+        <ul>{% for book in list.books.all %}
             <li>{% if book.liked %}(&#x2665;){% endif %}{% if book.fiction %}(&#x25c9;){% else %}(&#x25c6;){% endif %} {{ book.title }}</li>
         {% endfor %}</ul></li>
 {% endfor %}</ul>

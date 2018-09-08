@@ -52,7 +52,8 @@ def watchlist(request):
 def books_homepage(request):
     books = Book.objects.filter(read=True).order_by('title')
     reading = BookList.objects.get(title='Now Reading').books.order_by('title')
-    lists = BookList.objects.exclude(title='Now Reading').order_by('title')
+    lists = BookList.objects\
+        .exclude(title='Now Reading').order_by('title')
     readlist = Book.objects.filter(read=False).order_by('title')
     annotation_count = BookAnnotation.objects.count()
     random_annotation = BookAnnotation.objects.all()[
