@@ -48,7 +48,23 @@ class BookAdmin(admin.ModelAdmin):
             q.fiction = False
             q.save()
 
-    actions = ['mark_favourite', 'mark_fiction', 'mark_nonfiction']
+    @staticmethod
+    def mark_read(modeladmin, request, queryset):
+        '''marks selected book as read'''
+        for q in queryset:
+            q.read = True
+            q.save()
+
+    @staticmethod
+    def mark_read_liked(modeladmin, request, queryset):
+        '''marks selected book as read and favourite'''
+        for q in queryset:
+            q.read = q.liked = True
+            q.save()
+
+    actions = [
+        'mark_favourite', 'mark_fiction', 'mark_nonfiction',
+        'mark_read', 'mark_read_liked']
 
 
 @admin.register(BookList)
