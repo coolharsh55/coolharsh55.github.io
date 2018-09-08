@@ -57,12 +57,24 @@ def books_homepage(request):
     annotation_count = BookAnnotation.objects.count()
     random_annotation = BookAnnotation.objects.all()[
             random.randint(0, annotation_count)]
+    total_read = len(books)
+    total_read_fiction = len(books.filter(fiction=True))
+    total_read_nonfiction = total_read - total_read_fiction
+    total_toread = len(readlist)
+    total_toread_fiction = len(readlist.filter(fiction=True))
+    total_toread_nonfiction = total_toread - total_toread_fiction
     template_objects = {
         'annotation': random_annotation,
         'reading': reading,
         'books': books,
         'lists': lists,
         'readlist': readlist,
+        'total_read': total_read,
+        'total_read_fiction': total_read_fiction,
+        'total_read_nonfiction': total_read_nonfiction,
+        'total_toread': total_toread,
+        'total_toread_fiction': total_toread_fiction,
+        'total_toread_nonfiction': total_toread_nonfiction,
         }
     pagecommon(request, template_objects)
     return render(request, 'hobbies/books.html', template_objects)

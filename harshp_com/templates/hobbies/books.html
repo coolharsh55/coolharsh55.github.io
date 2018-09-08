@@ -43,4 +43,9 @@ ul {
 <ul>{% for book in books %}
     <li>{% if book.fiction %}<span class="fiction">&#x25c9;</span>{% else %}<span class="non-fiction">&#x25c6;</span>{% endif %} {{ book.title }}<span class="liked">&#x2665;</span></li>
 {% endfor %}</ul>
+<blockquote>
+    <b>stats</b><br/>
+    books read: {{ total_read }} (fiction: {{ total_read_fiction }}, non-fiction {{ total_read_nonfiction }})<br/>
+    to read: {{ total_toread }} (fiction: {{ total_toread_fiction }}, non-fiction {{ total_toread_nonfiction }})
+</blockquote>
 {% endblock f_BODY %}
