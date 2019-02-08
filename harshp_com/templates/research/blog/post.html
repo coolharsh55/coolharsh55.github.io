@@ -4,10 +4,12 @@
 {% block e_BODY %}
 <h1>{{ post.title }}</h1>
 <p>
+    > <a href="{% url 'home' %}" title="Main Site">main site</a> > <a href="{% url 'research:home' %}">research</a> > <a href="{% url 'research:blog:home' %}" title="Blog Home">blog</a>
+</p>
+<p>
     <u>series:</u> <a href="{% url 'research:blog:series' post.series.slug %}">{{ post.series.title }}</a><br/>
-    {{ post.short_description }}<br/>
     <time><u>posted:</u> {{ post.date_published }} | <u>updated:</u> {{ post.date_updated }}</time><br/>
-    <u>navigate:</u> <a href="{% url 'research:blog:home' %}" title="Blog Home">blog</a>; <a href="{% url 'research:home' %}">research</a>; <a href="{% url 'home' %}" title="Main Site">main site</a><br/>
+    <u>description:</u> {{ post.short_description }}<br/>
     <u>tags:</u> {% for tag in post.tags.all %}{{ tag.name }}; {% endfor %}
 </p>
 {% if post.headerimage %}<img src="{{ post.headerimage }}"/>{% endif %}
