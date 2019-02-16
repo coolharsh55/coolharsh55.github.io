@@ -83,7 +83,13 @@ def series_post(request, series, post):
 
     series = get_object_or_404(BlogSeries, slug=series)
     post = get_object_or_404(BlogPost, series=series, slug=post)
-    template_objects = {'series': series, 'post': post}
+    meta = create_meta(
+        title=post.title,
+        description=post.description,
+        keywords=post.tags,
+        url=request.post.url
+    )
+    template_objects = {'series': series, 'post': post, 'meta': meta}
     pagecommon(request, template_objects)
     return render(request, 'blog/series_post.html', template_objects)
 
