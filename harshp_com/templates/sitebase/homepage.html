@@ -3,18 +3,15 @@
 {% block e_META_DESCRIPTION %}harshp.com - the personal website and project of Harshvardhan Pandit{% endblock e_META_DESCRIPTION %}
 {% block e_BODY %}
 <h1>harshp.com</h1>
-<p><u>navigate:</u> <a href="{% url 'blog:list' %}">blog</a>; <a href="{% url 'me:home' %}">about me</a>; <a href="{% url 'stub' %}">resume</a>; <a href="https://github.com/coolharsh55/">github</a>; <a href="{% url 'research:home' %}">research</a></p>
-<p><u>this page:</u> 
-    <a href="#recent">recent</a>; 
-    <a href="#featured">featured</a>; 
-    <a href="#research">research</a>;
-    <a href="#dev">dev</a>;
-    <a href="#hobbies">hobbies</a>;
-    <a href="#meta">meta</a>;
-    <a href="#personal">personal</a>;
+<p><a href="{% url 'me:home' %}">about me</a>; <a href="{% url 'blog:list' %}">my blog</a>;  <a href="{% url 'stub' %}">my resume</a>; <a href="https://github.com/coolharsh55/">on github</a>; <a href="{% url 'research:home' %}">my research</a>
+    <br/>
+    posts - <a href="#recent">recent</a>, <a href="#featured">featured</a>; 
+    <a href="#dev">dev stuff</a>;
+    <a href="#hobbies">my hobbies</a>;
+    <a href="#meta">meta content</a>;
 </p>
 
-    <h2 id="recent">recent</h2>
+<h2 id="recent">recent</h2>
 {% for model, post in latest_posts %}
 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small>({{model}}) {{post.date_published}}</small><br/>
 {% endfor %}
@@ -25,8 +22,8 @@
 {% endfor %}
 
 <h2 id="research">research</h2>
-<span>PhD research topic: expressing and evaluating <a target="_blank" href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a> obligations over provenance metadata</span><br/>
-<span>go to: <a href="{% url 'research:home' %}">research section</a>; <a href="{% url 'research:blog:home' %}">research blog</a>; <a class="db link" href="{% url 'research:publications' %}">publications</a></span>
+<span>MY PhD research concerns expressing and evaluating information required for <a target="_blank" href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a> compliance using provenance metadata</span><br/>
+<span><a href="{% url 'research:home' %}">more about research</a>; <a href="{% url 'research:blog:home' %}">my research blog</a>; <a class="db link" href="{% url 'research:publications' %}">my publications</a></span>
 
 <a id="dev" href="{% url 'dev:index' %}"><h2>/dev</h2></a>
 <span><u>articles:</u> 
@@ -53,14 +50,4 @@
 <span><u>interact:</u> 
 <a href="{% url 'feedback:list' %}">feedback</a>; 
 <a href="{% url 'sitebase:search' %}">search</a>; </span><br/>
-
-<h2 id="personal">personal</h2>
-<span><em>requires authorisation</em></span><br/>
-<a href="{% url 'journal:auth' %}">journal</a>; <br/>
-<span><u>finance:</u> 
-<a href="{% url 'finance:home' %}">dashboard</a>; 
-<a href="/personal/finance/monthly-spendings/">monthly</a>; 
-<a href="/personal/finance/monthly-spendings/{{current_financial_month}}/">current month</a>; 
-<a href="/manage/finance/financeaccount/">accounts</a>; 
-<a href="/manage/finance/transaction/">transactions</a>; 
 {% endblock e_BODY %}
