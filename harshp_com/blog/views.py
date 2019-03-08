@@ -85,7 +85,7 @@ def series_post(request, series, post):
     post = get_object_or_404(BlogPost, series=series, slug=post)
     meta = create_meta(
         title=post.title,
-        description=post.description,
+        description=post.short_description,
         keywords=post.tags,
         url=request.post.url
     )
