@@ -87,7 +87,7 @@ def series_post(request, series, post):
         title=post.title,
         description=post.short_description,
         keywords=post.tags,
-        url=request.post.url
+        url=request.build_absolute_uri(),
     )
     template_objects = {'series': series, 'post': post, 'meta': meta}
     pagecommon(request, template_objects)
