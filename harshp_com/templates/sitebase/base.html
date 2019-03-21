@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
     <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print"> 
     <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_pearl-lusta.min.css">
     <style>
 hr.stylish {
     border-top: 1px solid #8c8b8b;
@@ -29,223 +31,13 @@ hr.stylish:after {
     font-size: 18px;
 }
     </style>
-    <style>
-/* Sakura.css v1.0.0
- * ================
- * Minimal css theme.
- * Project: https://github.com/oxalorg/sakura
- */
-
-/* Body */
-
-html {
-    font-size: 75%;
-    font-family: 'Quattrocento', serif;
-}
-
-body {
-    font-size: 1.8rem;
-    line-height: 1.618;
-    max-width: 38em;
-    margin: auto;
-    color: #242425;
-    background-color: #EEEFEA;
-    padding: 13px;
-}
-
-    @media (max-width: 684px) {
-        body {
-            font-size: 1.8rem * 0.85;
-        }
-    }
-
-    @media (max-width: 382px) {
-        body {
-            font-size: 1.8rem * 0.75;
-        }
-    }
-
-    @mixin word-wrap() {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        -ms-word-break: break-all;
-        word-break: break-word;
-        -ms-hyphens: auto;
-        -moz-hyphens: auto;
-        -webkit-hyphens: auto;
-        hyphens: auto;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        line-height: 1.1;
-        font-family: $font-family-sans-serif;
-        font-weight: 700;
-        @include word-wrap;
-    }
-
-    h1 { font-size: 2.35em }
-    h2 { font-size: 2.00em }
-    h3 { font-size: 1.75em }
-    h4 { font-size: 1.5em }
-    h5 { font-size: 1.25em }
-    h6 { font-size: 1em }
-
-    small, sub, sup {
-        font-size: 75%;
-    }
-
-    hr {
-        border-color: #3F44B0;
-    }
-
-    a {
-        text-decoration: none;
-        color: #3F44B0;
-
-            &:hover {
-                color: #B03F43;
-                border-bottom: 2px solid #242425;
-            }
-
-    }
-
-    a:visited {
-        text-decoration: none;
-        color:  #B0723F;
-
-            &:hover {
-                color: #B03F43;
-                border-bottom: 2px solid #242425;
-            }   
-    }
-
-    ul {
-        padding-left: 1.4em;
-    }
-
-    li {
-        margin-bottom: 0.4em;
-    }
-
-    blockquote {
-        font-style: italic;
-        margin-left: 1.5em;
-        padding-left: 1em;
-        border-left: 3px solid #3F44B0;
-    }
-
-    img {
-        max-width: 100%;
-    }
-
-    /* Pre and Code */
-
-    pre {
-        background-color: #E9EAE4;
-        display: block;
-        padding: 1em;
-        overflow-x: auto;
-    }
-
-    code {
-        font-size: 0.9em;
-        padding: 0 0.5em;
-        background-color: #E9EAE4;
-        white-space: pre-wrap;
-    }
-
-    pre > code {
-        padding: 0;
-        background-color: transparent;
-        white-space: pre;
-    }
-
-    /* Tables */
-
-    table {
-        text-align: justify;
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    td, th {
-        padding: 0.5em;
-        border-bottom: 1px solid #E9EAE4;
-    }
-
-    /* Buttons, forms and input */
-
-    input, textarea {
-        border: 1px solid #242425;
-
-            &:focus {
-                border: 1px solid #3F44B0;
-            }
-    }
-
-    textarea {
-        width: 100%;
-    }
-
-    .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
-        display: inline-block;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        white-space: nowrap;
-
-        background-color: #3F44B0;
-        color: #dddfd4;
-        border-radius: 1px;
-        border: 1px solid #3F44B0;
-        cursor: pointer;
-        box-sizing: border-box;
-
-            &[disabled] {
-                cursor: default;
-                opacity: .5;
-            }
-
-            &:focus, &:hover {
-                background-color: #B03F43;
-                border-color: #B03F43;
-                color: #dddfd4;
-                outline: 0;
-            }
-    }
-
-    textarea, select, input[type] {
-        color: #242425;
-        padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
-        margin-bottom: 10px;
-        background-color: #E9EAE4;
-        border: 1px solid #E9EAE4;
-        border-radius: 4px;
-        box-shadow: none;
-        box-sizing: border-box;
-
-            &:focus {
-                border: 1px solid #3F44B0;
-                outline: 0;
-            }
-    }
-
-    input[type="checkbox"]:focus {
-        outline: 1px dotted #3F44B0;
-    }
-
-    label, legend, fieldset {
-        display: block;
-        margin-bottom: .5rem;
-        font-weight: 600; 
-    }
-    </style>
     {% block ee_CSS %}{% endblock ee_CSS %}{% endblock f_CSS %}
     {% include 'meta.html' %}
     {% block f_lib_JS %}{% block lib_JS %}{% endblock lib_JS %}{% endblock f_lib_JS %}
 </head>
 <body>
-    {% block f_BODY %}<div class="container">{% block e_BODY %}{% endblock e_BODY %}</div>
+    {% block f_BODY %}<main>
+    {% block e_BODY %}{% endblock e_BODY %}
     <hr class="stylish" />
     {% block f_FOOTER %}<!-- FOOTER -->
     <div id='footer' class="container">
@@ -283,6 +75,6 @@ body {
     </script>
     {% endblock f_FOOTER %}
     {% block e_JS %}{% endblock e_JS %}
-    {% endblock f_BODY %}
+    </main>{% endblock f_BODY %}
 </body>
 </html>
