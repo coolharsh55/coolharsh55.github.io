@@ -18,7 +18,7 @@ def _load(filename):
 
 
 def _load_tags():
-    with open('Tag-2019-05-28.json', 'r') as fd:
+    with open('legacy_data/Tag-2019-05-28.json', 'r') as fd:
         data = json.load(fd)
     tags = {}
     for tag in data:
@@ -33,7 +33,7 @@ def _generate(datadump, name):
     index = []
     for blog in data:
         blog['tags'] = [tags[tag] for tag in blog['tags'].split(',')]
-        with open(f'./docs/{name}/{blog["slug"]}.html', 'w') as fd:
+        with open(f'../{name}/{blog["slug"]}.html', 'w') as fd:
             fd.write(template.render(
                 title=blog['title'],
                 description=blog['short_description'],
@@ -52,7 +52,7 @@ def _generate(datadump, name):
             ))
     index.sort(key=lambda x: x[1], reverse=True)
     template = ENV.get_template(f'index_{name}')
-    with open(f'./docs/{name}/index.html', 'w') as fd:
+    with open(f'../{name}/index.html', 'w') as fd:
         fd.write(template.render(blogs=index))
 
 
@@ -105,7 +105,7 @@ def _generate_docs():
         directory = root.split('/')[-1]
         # replace content path with docs path
         # create directory if it does not exist
-        directorypath = 'docs' + root.replace('content', '', 1)
+        directorypath = '..' + root.replace('content', '', 1)
         if not os.path.exists(directorypath):
             os.makedirs(directorypath)
         index = []
@@ -129,7 +129,7 @@ def _generate_docs():
                 data['description'],
                 directory,
                 ))
-            docspath = 'docs' + path.replace('content', '', 1)
+            docspath = '..' + path.replace('content', '', 1)
             if extension == ".html":
                 template = ENV.get_template(f'template_{directory}')
                 with open(docspath, 'w') as fd:
@@ -138,11 +138,11 @@ def _generate_docs():
             # e.g. markdown (md), text (txt)
         index.sort(key=lambda x: x[1], reverse=True)
         template = ENV.get_template(f'index_{directory}')
-        with open(f'./{directorypath}/index.html', 'w') as fd:
+        with open(f'{directorypath}/index.html', 'w') as fd:
             fd.write(template.render(blogs=index))
     INDEX.sort(key=lambda x: x[1], reverse=True)
     template = ENV.get_template('template_homepage')
-    with open('./docs/index.html', 'w') as fd:
+    with open('../index.html', 'w') as fd:
         fd.write(template.render(latest=INDEX[0], posts=INDEX[:10]))
     # template = ENV.get_template('template_all')
     # with open('./docs/all.html', 'w') as fd:
