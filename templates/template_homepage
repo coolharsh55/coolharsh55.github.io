@@ -1,0 +1,20 @@
+{% extends 'template_base' %}
+{% block pagetitle %}harshp.com{% endblock pagetitle %}
+{% block title_body %}harshp.com{% endblock title_body %}
+{% block nav %}
+<a href="/me/">about me</a>; <a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a> <a href="/dev/">dev</a>;
+    <a href="/hobbies/">hobbies</a>; <a href="https://github.com/coolharsh55/">github</a>; 
+{% endblock nav %}
+{% block desc %}{% endblock desc %}
+{% block content %}
+<h2>recent posts</h2>
+<small><a href="/all">see all</a></small>
+    <dl>
+    {% for post in posts %}
+        <dt><a href="{{post[3]}}">{{post[0]}}</a></dt>
+        <dd><a href="/{{post[5]}}"><small>{{post[5]}}</small></a><br/>
+            <small>{{post[1]}}</small><br/>
+            {{post[4]}}</dd>
+    {% endfor %}
+    </dl>
+{% endblock content %}

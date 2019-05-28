@@ -1,0 +1,64 @@
+title: Primer on Semantic Web Ontologies
+published: 2017-08-18 17:51:39
+modified: 2017-08-18 19:25:32
+tags: ontologiesOWLRDFRDFSsemantic web
+description: A short description for RDF,RDFS, and OWL and their serialisation formats
+headerimage: 
+===
+<h2 id="introduction">Introduction</h2>
+<p>The basic ontology for recording anything (and everything)
+is <a href="https://www.w3.org/RDF/">RDF</a>, which is just a way of expressing
+knowledge in the form of <em>triples</em> or <em>(subject, object, predicate)</em> form.
+<a href="https://www.w3.org/TR/rdf-schema/">RDFS</a> and <a href="https://www.w3.org/OWL/">OWL</a>
+which build a relationship-constraint model on top of RDF.
+To summarise, <code>RDF</code> allows expressing knowledge, pure and simple; <code>RDFS</code>
+and <code>OWL</code> add additional relationships such as hierarchy, inheritance,
+and restrictions (or in the case of <code>OWL</code>, axioms) that enrich the knowledge
+through the use of 'structure'. This is not a guide to learn about
+semantic web ontologies, but if you're looking for that sort of a resource,
+you may as well start with a <a href="https://stackoverflow.com/questions/1740341/what-is-the-difference-between-rdf-and-owl">StackOverflow answer</a>
+and then move on to <a href="https://en.wikipedia.org/wiki/Web_Ontology_Language">Wikipedia - OWL</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>RDF is used to represent knowledge, but not its validity or <em>truth</em>. So,
+statements like <code>&lt;harsh&gt; &lt;is&gt; &lt;awesome&gt;</code> are perfectly valid RDF, but there
+is no way to check their 'validity' or 'correctness'. To express some
+constraints over the use of resources, one uses RDFS and OWL to structure
+how the knowledge may be represented. The ontologies also additionally
+allow inheritance and axioms, which can help create new knowledge through
+inference and reasoning. For example,</p>
+<pre class="codehilite"><code>&lt;class:Man&gt; &lt;rdf:type&gt; &lt;subclass:Human&gt;
+&lt;class:Woman&gt; &lt;rdf:type&gt; &lt;subclass:Human&gt;
+&lt;property:isMother&gt;
+    &lt;rdf:type&gt; &lt;owl:Property&gt;
+    &lt;rdf:domain&gt; &lt;class:Woman&gt;
+    &lt;rdf:range&gt; &lt;class:Human&gt;
+&lt;property:isSon&gt;
+    &lt;rdf:type&gt; &lt;owl:Property&gt;
+    &lt;rdf:domain&gt; &lt;class:Man&gt;
+    &lt;rdf:range&gt; &lt;class:Human&gt;
+
+&lt;node:Harsh&gt; &lt;rdf:type&gt; &lt;class:Man&gt;
+    &lt;property:isSon&gt; &lt;node:HarshMom&gt;
+&lt;node:HarshMom&gt; &lt;property:isMother&gt; &lt;node:Harsh&gt;</code></pre>
+
+
+<p>defines classes <code>Man</code> and <code>Woman</code> as subclasses of <code>Human</code>, with the
+properties <code>isMother</code> and <code>isSon</code> with domains and ranges. It then
+defines that <code>Harsh</code> is a <code>Man</code>, and is the son of <code>HarshMom</code>. At this point,
+the only inference possible is that <code>HarshMom</code> is of type <code>Human</code>. The next
+sentence specifies that <code>HarshMom</code> is the mother of <code>Harsh</code>, and therefore,
+it is possible to infer that <code>HarshMom</code> is a <code>Woman</code>. Although this is a simple
+example, it amply shows how the structuring of knowledge can be shaped
+using relationships. Simpler constraints help represent complex knowledge.</p>
+<h2 id="formats">Formats</h2>
+<p>RDFS and OWL are serialised down into RDF, so they are essentially represented as
+RDF in most cases. There are possibilities of having OWL only formats, which do
+not cater to RDF, but OWL, as an ontology is based on RDF.</p>
+<ul>
+<li><strong>RDF/XML:</strong> This is (sort-of) the default format for serialising RDF. Files usually end in <code>.rdf</code> though <code>.xml</code> extension would also be valid, but is not recommended. The content-type is <code>text/rdf+xml</code>.</li>
+<li><strong>Turtle:</strong> This is the easiest format to read and write in, and is quite concise. It's extenion is <code>.ttl</code> and the content-type is <code>text/turtle</code>.</li>
+<li><strong>N-Triples:</strong> This is a similar format to Turtle, though is arguably less concise. The extension is <code>.nt</code> and the content-type is <code>application/n_triples</code>.</li>
+<li><strong>Notation 3:</strong> Another concise format, it's extension is <code>.n3</code> and the content-type is <code>text/n3</code>.</li>
+<li><strong>JSON-LD:</strong> To make the propogation of RDF easier on the web, the JSON-LD format was developed. It uses a notation based on the JSON format with annotations catering to RDF keywords. It's extension is <code>.jsonld</code> and content-type is <code>application/ld+json</code>.</li>
+<li><strong>RDFa:</strong> This is a way to embed RDF information in HTML tags, while still allowing traditional page markup to be used and displayed. This is, in theory, the best of both worlds as the resulting document is presentable for human as well as machine consumption.</li>
+</ul>

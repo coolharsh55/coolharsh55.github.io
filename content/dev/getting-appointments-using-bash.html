@@ -1,0 +1,133 @@
+title: Getting appointments using bash
+published: 2017-05-19 17:58:00
+modified: 2017-05-20 17:26:56
+tags: bashGNIBpythonscript
+description: Retrieving GNIB appointments using a bash scripr
+headerimage: 
+===
+<blockquote>
+<p><strong>recap:</strong> In the previous post, I managed to get the available appointments
+by pasting a bit of javascript that used GET to retrieve the available 
+appointments through the browser console.</p>
+<p><strong>source</strong>: hosted on Github <a href="https://github.com/coolharsh55/GNIBappointments/">here</a></p>
+<p><strong>webapp</strong>: hosted on Heroku <a href="https://gnibappt.herokuapp.com/">here</a>
+shows available timings for GNIB and Visa appointments</p>
+</blockquote>
+<p>In this post, I describe further efforts that led to a <code>bash / python</code>
+script that pulled the appointments. The advantages of a script is that
+it can be automated and run anywhere. So there are possibilities such as
+running the script on a server every <em>30 mins</em> and then sending an email
+or some form of notification when a new appointment becomes available.</p>
+<p>The script should not be too complicated and must be as simple as possible
+to run. Ideally something like this (actual output):</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;./query_gnib_appointments.py
+4 July 2017 - 10:00
+21 July 2017 - 08:00</code></pre>
+
+
+<h2 id="script">script</h2>
+<p>Bash is the defacto language scripts are written in (usually) and these days
+so is python. I also happen to have taken a <em>liking</em> to python, which is why
+I tend to use it for pretty much <em>everything</em>. </p>
+<h2 id="making-the-request">making the request</h2>
+<p>That being said, bash uses <code>curl</code> which is an utility to make web requests.
+The URL from the previous post was 
+<code>https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)</code>.
+Suffixing it with the required GET parameters, we get
+<code>http://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage=&amp;dt=&amp;cat=Study&amp;sbcat=All&amp;typ=Renewal</code>.
+For brevity, I'm going to use just <code>URL</code> instead of the large wad of characters.</p>
+<h3 id="ssl-verification">SSL verification</h3>
+<p>Using the redirect/location flag <code>-L</code>, the output produced was:</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;curl -L &quot;URL&quot;
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a &quot;bundle&quot;
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.</code></pre>
+
+
+<p>I'm not much knowledgeable about how SSL works at this level, so I
+just digged through the manpage to find the <code>-k</code> flag which disables
+SSL protection. Additionally, I used the <code>-s</code> flag to suppress progress
+bars from polluting the output. Using it yielded the response required:</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;curl -L -k &quot;URL&quot;
+{&quot;slots&quot;:[{&quot;time&quot;:&quot;21 July 2017 - 08:00&quot;, &quot;id&quot;:&quot;5D2DE14F0B06EFF8802581250031862F&quot;}]}</code></pre>
+
+
+<h2 id="parsing-json">Parsing JSON</h2>
+<p>If you can get away with manually eyeballing the response to get available
+appointment times, great. But I need <em>precisely</em> just the appointment timings.
+Which meant that I needed some way to parse that JSON response. So many tools,
+and all of the pre-installed languages, all have JSON handling libraries. Take your pick. I found a good variety on 
+<a href="http://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools">stackoverflow</a>.</p>
+<h3 id="jq">jq</h3>
+<p>Working in shell scripts, <a href="https://stedolan.github.io/jq/">jq</a> is a great tool
+for working with JSON. It can be used as simply as:</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;curl -L -k &quot;URL&quot; | jq &quot;.slots | .[] | .time&quot;
+&quot;21 July 2017 - 08:00&quot;</code></pre>
+
+
+<p><code>jq</code> uses syntax for selecting elements from JSON. The <code>.slots</code> instructs
+it to extract the value at that particular key. <code>|</code> (pipe) works as a filter
+and passes the data extracted from one part onto the next. <code>.[]</code> is an array
+operator, it acts as a <code>for ... each</code> on the array elements. <code>.time</code> then
+extracts the value for the appointment and prints it out.</p>
+<h3 id="grep">grep</h3>
+<p>Using pattern matching, it is possible to only print out those lines
+that contain the word "time".</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;curl -L -k &quot;URL&quot; | grep -Po '&quot;time&quot;:.*?[^\\]&quot;,'
+&quot;time&quot;:&quot;21 July 2017 - 08:00&quot;,</code></pre>
+
+
+<h3 id="python">python</h3>
+<p>After those two, it seems a bit silly to use python, but that's what I did
+anyway. In python, it is possible to execute a script inline using the
+<code>-c</code> command. The full script to parse out this particular JSON is:</p>
+<pre class="codehilite"><code class="language-python">import sys
+import json
+data = json.load(sys.stdin)
+if data.get(&quot;error&quot;, None) is not None:
+    raise Exception(&quot;ERROR: %s&quot; % data[&quot;error&quot;])
+# If there are no appointments, then the empty key is set
+if data.get(&quot;empty&quot;, None) is not None:
+    print(&quot;No appointments available&quot;)
+    sys.exit(0)
+# There are appointments, and are in the key &quot;slots&quot;
+data = data.get(&quot;slots&quot;, None)
+if data is None:
+    raise Exception(&quot;Data is NULL&quot;)
+# This should not happen, but a good idea to check it anyway
+if len(data) == 0:
+    print(&quot;No appointments available&quot;)
+    sys.exit(0)
+# print appointments
+# Format is:
+# {
+#   &quot;id&quot;: &quot;str&quot;,
+#   &quot;time&quot;: &quot;str&quot;
+# }
+for appointment in data:
+    print(appointment[&quot;time&quot;])</code></pre>
+
+
+<p>To use this, just put everything between triple-quotes <code>'''</code> as this
+constitutes a multiline comment/statement in python.</p>
+<pre class="codehilite"><code class="language-bash">$harsh@XNMPRO:scripts &gt;curl -L -k &quot;URL&quot; | python '''
+# program goes here
+'''</code></pre>
+
+
+<h2 id="future-work">Future work</h2>
+<ul>
+<li>Python script to do everything from request to parsing</li>
+<li>Chrome extension of some sorts</li>
+<li>Put the script up on a website for easier access to appointments</li>
+</ul>

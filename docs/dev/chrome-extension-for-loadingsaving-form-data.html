@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Chrome extension for loading/saving form data</title>
+    <meta name="description" content="Using a chrome extension to automatically populate GNIB forms"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Chrome extension for loading/saving form data">
+    <meta itemprop="description" content="Using a chrome extension to automatically populate GNIB forms">
+    <meta itemprop="image" content="//s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_swal.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Chrome extension for loading/saving form data">
+    <meta name="twitter:description" content="Using a chrome extension to automatically populate GNIB forms">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta name="twitter:image" content="//s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_swal.png"> 
+    <!-- Facebook -->
+    <meta property="og:title" content="Chrome extension for loading/saving form data"/>
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="//s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_swal.png"/>
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Using a chrome extension to automatically populate GNIB forms"/>
+    <meta property="article:published_time" content="2017-05-20 17:15:00" />
+    <meta property="article:modified_time" content="2017-05-20 17:40:22" />
+    <meta property="article:tag" content="ChromeChrome extensionGNIB" />
+    
+</head>
+<body>
+    <article>
+        <h1>Chrome extension for loading/saving form data</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-05-20 17:15:00, updated: 2017-05-20 17:40:22<br/>
+            <span>ChromeChrome extensionGNIB;</span> <br/>
+        Using a chrome extension to automatically populate GNIB forms</small></p>
+        <img src="//s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_swal.png" alt="image for Chrome extension for loading/saving form data"/>
+        <section>
+            <blockquote>
+<p><strong>recap:</strong> In the previous posts, I describe retrieving GNIB and Visa 
+appointments by manually querying
+the API endpoints that the website uses. In this process, I describe the use of 
+<code>bash/python</code> scripts
+and a Heroku webapp to display appointments.</p>
+<p><strong>source</strong>: hosted on Github <a href="https://github.com/coolharsh55/GNIBappointments/">here</a></p>
+<p><strong>webapp</strong>: hosted on Heroku <a href="https://gnibappt.herokuapp.com/">here</a>
+shows available timings for GNIB and Visa appointments</p>
+</blockquote>
+<p>In this post, I describe the workings of a Chrome extension that retrieves GNIB 
+and Visa appointments
+when the user is present on those pages. The extension also provides a handy 
+toolbar that is rendered
+on those pages to save and re-populate form data. This helps in filling out the 
+form quickly once an 
+appointment is available.</p>
+<h2 id="extension-goals">Extension goals</h2>
+<ul>
+<li>Visible icon in the browser extension bar</li>
+<li>Checks appointments every 30mins or so in the background</li>
+<li>Notifies when a new appointment is available</li>
+<li>Allows quickly navigating to booking page</li>
+<li>Fills the form with information previously saved</li>
+<li>Works on both GNIB and Visa appointments</li>
+</ul>
+<h3 id="achievable-goals">Achievable goals</h3>
+<p>Out of the listed goals above, few are quite easy (comparitively).
+The icon can be made visible in the extension bar with not much effort.
+Similarly, the background checks are simple using javascript's
+<code>setInterval</code> function. Similarly, notifications can be made using alert
+boxes or changing icon on the extension bar. And so on and so forth.</p>
+<p>However, one of the kickers in all this was the presence of CORS policy.
+Which means that I cannot make requests to the API endpoint outside of the
+GNIB and Visa websites. So no more background queries against those two.
+So for now, the extension does everything <em>except</em> background checks and
+notifications.</p>
+<h2 id="chrome-extension-structure">Chrome Extension structure</h2>
+<p>The chrome extension documentation can be found with a 
+<a href="https://developer.chrome.com/extensions/getstarted">tutorial</a> that helps
+get things started pretty quickly. </p>
+<h3 id="manifest">manifest</h3>
+<p>The file <code>manifest.json</code> describes the metadata properties of the 
+extension and is a JSON document that contains a prefixed set of keys. </p>
+<h4 id="icon">icon</h4>
+<p>The icon of the extension is a <code>128x128</code> png file. Some free ones can be
+obtained <a href="http://www.flaticon.com/">here</a>. </p>
+<h4 id="popup">popup</h4>
+<p><img alt="" src="https://s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_popup.png"></p>
+<p>This is the file that is executed when the extension is clicked on. It is a 
+simple HTML file that can contain arbitrary javascript to perform tasks.
+For our purposes, we add two links for the GNIB and Visa appointment
+pages.</p>
+<h4 id="content-scripts">content scripts</h4>
+<p>This section describes javascript files that get executed based on the 
+content or URL of the webpage. It allows matching/filtering websites
+based on URL, and then specifying which files get executed.</p>
+<pre class="codehilite"><code class="language-json">&quot;content_scripts&quot;: [
+    {
+        &quot;matches&quot;: [&quot;https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm&quot;],
+        &quot;js&quot;: [&quot;jquery.min.js&quot;,  &quot;sweetalert2.min.js&quot;, &quot;gnib_appointments.js&quot;, &quot;gnib_interface.js&quot;],
+        &quot;css&quot;: [&quot;interface.css&quot;, &quot;sweetalert2.min.css&quot;]
+    },
+    {
+        &quot;matches&quot;: [&quot;https://reentryvisa.inis.gov.ie/website/INISOA/IOA.nsf/AppointmentSelection?OpenForm&quot;],
+        &quot;js&quot;: [&quot;jquery.min.js&quot;,  &quot;sweetalert2.min.js&quot;, &quot;visa_appointments.js&quot;, &quot;visa_interface.js&quot;],
+        &quot;css&quot;: [&quot;interface.css&quot;, &quot;sweetalert2.min.css&quot;]
+    }
+  ]</code></pre>
+
+
+<p>Out of these, <code>jquery</code> and <code>sweetalert2</code> are external libraries which I copied because
+external requests may not work, or could slow everything down. 
+<a href="https://jquery.com/"><code>jquery</code></a> allows access to DOM elements and a quick way to perform interactions. <a href="https://limonte.github.io/sweetalert2/"><code>sweetalert2</code></a> is an utility to create
+fancy popup boxes used to notify and for interactions.
+The <code>*_appointments.js</code> are responsible for pulling the appointments, and the
+<code>*_interface.js</code> are responsible for interacting with the interface.</p>
+<h2 id="adding-an-interface-bar-on-page">Adding an interface bar on page</h2>
+<p><img alt="extension interface" src="https://s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_interface.png"></p>
+<p>The extension adds a bar that sits on top and offers buttons for:</p>
+<ul>
+<li>checking appointments</li>
+<li>loading saved form data</li>
+<li>saving form data</li>
+</ul>
+<p>The bar is a simple <code>div</code> attached to the page using jQuery on page ready.
+It is fixed at the top so that the user can browse the page with the bar available
+as a sort of an interface.</p>
+<pre class="codehilite"><code class="language-javascript">var div = $(
+    '&lt;div id=&quot;interface-sticky-header&quot;&gt;'
+    // ... buttons
+    +'&lt;/div&gt;')
+    .appendTo('body');</code></pre>
+
+
+<h3 id="checking-appointments">Checking appointments</h3>
+<p>This is the same bit of code as covered in previous posts. 
+Using jQuery's <code>$(document).ready</code> function, we call the <code>check_appointments</code> function
+which will load the appointments and show available timings.</p>
+<h3 id="loading-and-saving-data">Loading and Saving data</h3>
+<p>Chrome offers a way for extensions to store and sync data using the browser APIS.
+This is done via <code>chrome.storage.sync.*</code> methods <code>get</code> and <code>set</code>. Instead of saving
+and retrieving individual key-values, we use a single <em>data packet</em> in the form of a
+dictionary variable.</p>
+<pre class="codehilite"><code class="language-javascript">// GNIB form fields
+var category = $('#Category').val();
+var subcategory = $('#SubCategory').val();
+var gnib = $('#ConfirmGNIB').val();
+var gnib_no = $('#GNIBNo').val();
+var gnib_expiry = $('#GNIBExDT').val();
+var user_declaration = $('#UsrDeclaration').val();
+var given_name = $('#GivenName').val();
+var surname = $('#SurName').val();
+var dob = $('#DOB').val();
+var nationality = $('#Nationality').val();
+var email = $('#Email').val();
+var email_confirm = $('#EmailConfirm').val();
+var family_application = $('#FamAppYN').val();
+var passport = $('#PPNoYN').val();
+var passport_no = $('#PPNo').val();
+
+chrome.storage.sync.set({
+    data: {
+        &quot;category&quot;: category,
+        &quot;subcategory&quot;: subcategory,
+        &quot;gnib&quot;: gnib,
+        &quot;gnib_no&quot;: gnib_no,
+        &quot;gnib_expiry&quot;: gnib_expiry,
+        &quot;user_declaration&quot;: user_declaration,
+        &quot;given_name&quot;: given_name,
+        &quot;surname&quot;: surname,
+        &quot;dob&quot;: dob,
+        &quot;nationality&quot;: nationality,
+        &quot;email&quot;: email,
+        &quot;email_confirm&quot;: email_confirm,
+        &quot;family_application&quot;: family_application,
+        &quot;passport&quot;: passport,
+        &quot;passport_no&quot;: passport_no
+    }
+});</code></pre>
+
+
+<p>A good side effect of this is that the common fields between GNIB and Visa forms
+such as name and passport no are saved with the same identifier. This means that
+if you have filled a GNIB form before and saved that data, the common fields can be
+populated in the Visa form with it.</p>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

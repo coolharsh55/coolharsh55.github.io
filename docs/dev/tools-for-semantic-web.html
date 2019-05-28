@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Tools for Semantic Web</title>
+    <meta name="description" content="A (WIP) list of tools and utilities for working with Semantic Web"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Tools for Semantic Web">
+    <meta itemprop="description" content="A (WIP) list of tools and utilities for working with Semantic Web">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Tools for Semantic Web">
+    <meta name="twitter:description" content="A (WIP) list of tools and utilities for working with Semantic Web">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Tools for Semantic Web"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="A (WIP) list of tools and utilities for working with Semantic Web"/>
+    <meta property="article:published_time" content="2017-08-18 19:20:03" />
+    <meta property="article:modified_time" content="2017-09-02 19:13:11" />
+    <meta property="article:tag" content="dokie.liinferencejavalistingontologiesOWLprotegepythonRDFrdflibreasoningsemantic webtools" />
+    
+</head>
+<body>
+    <article>
+        <h1>Tools for Semantic Web</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-08-18 19:20:03, updated: 2017-09-02 19:13:11<br/>
+            <span>dokie.liinferencejavalistingontologiesOWLprotegepythonRDFrdflibreasoningsemantic webtools;</span> <br/>
+        A (WIP) list of tools and utilities for working with Semantic Web</small></p>
+        
+        <section>
+            <h2 id="validators">Validators</h2>
+<h3 id="rdf">RDF</h3>
+<ul>
+<li><a href="https://www.w3.org/RDF/Validator/">W3 RDF Validator</a> - requires RDF to be in XML form</li>
+<li><a href="https://www.w3.org/2012/pyRdfa/Validator.html">W3 RDFa Validator</a></li>
+<li><a href="http://rdf.greggkellogg.net/distiller">RDF Distiller</a> - a ruby gem that validates RDF from URI. Also available as a <code>GET</code> interface.</li>
+<li><a href="http://ttl.summerofcode.be/">TTL Validator</a> - A turtle RDF validator project</li>
+<li><a href="http://iot.ee.surrey.ac.uk/SSNValidation/">SSN Ontology Validation Service</a> - allows uploading file or loading from URI. Also shows a tag cloud based on the graph.</li>
+<li><a href="https://www.w3.org/2015/03/ShExValidata/">W3 ShEx Validata</a> - validates RDF expressed against <a href="http://www.w3.org/2013/ShEx/Primer">ShEx (Shape Expressions)</a>
+constraints</li>
+</ul>
+<h3 id="owl">OWL</h3>
+<ul>
+<li><a href="http://mowl-power.cs.man.ac.uk:8080/validator/">Machester OWL Validator</a></li>
+</ul>
+<h2 id="converters">Converters</h2>
+<ul>
+<li><a href="https://www.w3.org/wiki/ConverterToRdf">W3 - Converters to RDF</a> - a (comprehensive) list of tools that convert <em>to</em> RDF.</li>
+<li><a href="http://www.easyrdf.org/converter">EasyRDF</a> - allows conversion from and to a lot of formats. Can load from URI or text entered on page.</li>
+<li><a href="https://rdf-translator.appspot.com/">RDF Translator</a></li>
+<li><a href="http://any23.org/">Apache Any23</a> - convert anything to triples.</li>
+<li><a href="http://www.ebusiness-unibw.org/tools/rdf2rdfa/">RDF2RDFa</a> - converts rdf/xml and turtle/n3 to RDFa snippets.</li>
+</ul>
+<h2 id="triple-stores">Triple Stores</h2>
+<p><a href="https://en.wikipedia.org/wiki/List_of_subject-predicate-object_databases">Wikipedia page</a>
+listing and comparing different triple-stores.</p>
+<ul>
+<li><a href="https://jena.apache.org/index.html">Jena Fuseki + TDB</a> - The <em>easiest</em> option to get it up and running if the work is local, doesn't need to <em>scale</em> and is mostly <em>development</em> oriented. The page also has some good tutorials on SPARQL and use of triple store.</li>
+<li><a href="https://virtuoso.openlinksw.com/">Openlink Virtuoso</a> - A fast and responsive triple-store that comes ready-for-production out of the box. Setup is easy on servers, though documentation is sparse. Is the triple-store used for serving DBPedia's SPARQL queries.</li>
+<li><a href="https://franz.com/agraph/allegrograph/">AllegroGraph</a></li>
+<li><a href="http://www.marklogic.com/">MarkLogic</a></li>
+<li><a href="https://ontotext.com/products/graphdb/">ontotext GraphDB</a></li>
+<li><a href="http://parliament.semwebcentral.org/">Parliament</a></li>
+<li><a href="https://github.com/RDFLib/rdflib">RDFLib</a> - python library with (separate) backends for persistence of graphs</li>
+<li><a href="http://librdf.org/">Redland librdf</a> - a series of libraries that also contain RDF storage module</li>
+<li><a href="http://www.stardog.com/">Stardog</a></li>
+</ul>
+<h2 id="tools-utils-and-libraries">Tools, Utils, and Libraries</h2>
+<p>There are times when RDF and their ontological ilk may need to be in code,
+for various purposes, and need interoperability with a programming language.</p>
+<h3 id="protege"><a href="http://protege.stanford.edu/">Protege</a></h3>
+<p>This is the tool <em>everyone and their supervisors</em> use to model OWL ontologies. It is quite adept at handling, though the UI/UX may feel clunkk, the features are <em>large</em> and will be quite ample to get by with. The documentation and introduction videos/pages help with getting it up and running, but don't do a good job of explaining how to progress from there. But it's hand down the best tool for the job. There's even a (light) web version.</p>
+<h3 id="exposing-triples-over-the-web">Exposing triples over the web</h3>
+<ul>
+<li><a href="http://wifo5-03.informatik.uni-mannheim.de/pubby/">Pubby</a> - a simple tool that exposes data using SPARQL <code>DESCRIBE</code> queries. Very simple to setup. Good way to expose datasets, but limited in scope as only one graph as such can be exposed with one instance.</li>
+</ul>
+<h3 id="python">Python</h3>
+<ul>
+<li><a href="https://github.com/RDFLib/rdflib">rdflib</a> is a python library for working with RDF graphs and offers a <em>pythonic</em> way to do things. It supports a large array of formats, though 
+<a href="https://github.com/RDFLib/rdflib-jsonld">serialising to json-ld requires another library</a>.
+Persistence is possible through various backends (and additional ones available as plugins).
+SPARQL queries are also possible with the library, and small utilities like
+navigating the graph, namespaces, or datatypes are handles well.</li>
+<li><a href="http://librdf.org/">Redland librdf</a> - has a few RDF libraries, though haven't encountered anyone using them</li>
+<li><a href="https://github.com/cosminbasca/surfrdf">SuRF</a> - An ORM for expressing RDF nodes using Python classes</li>
+<li><a href="https://github.com/josd/eye">EYE - Euler Yet another proof Engine</a> - performs
+semi-backward reasnoning and is interoperable with Cwm</li>
+<li><a href="https://www.w3.org/2000/10/swap/doc/cwm">Cwm</a> - forward-chaining reasoner for querying, checking, transforming, and filtering</li>
+<li><a href="https://github.com/rob-metalinkage/django-rdf-io">django-rdf-io</a> - syncing Django models with a triple-store</li>
+</ul>
+<h3 id="java">Java</h3>
+<ul>
+<li><a href="https://jena.apache.org/">Apache Jena</a> - I <em>presume</em> that this is the most <em>popular</em> library for dealing with RDF
+since most academics tend to use this (or Protege) for most of their needs.<ul>
+<li><em>ARQ</em> - a SPARQL engine</li>
+<li><em>Fuseki</em> - a SPARQL endpoint</li>
+<li><em>TDB</em> - persistence through triple-store</li>
+<li>Models for OWL</li>
+<li>Inference through reasoners</li>
+</ul>
+</li>
+</ul>
+<h3 id="dokieli"><a href="https://dokie.li/">dokie.li</a></h3>
+<p>A tool to help create 'RDFa pages', often required in (good) publications,
+which uses <a href="https://www.w3.org/TR/annotation-model/">Web Annotations Data Model</a>
+to provide comments, reviews, and feedbacks over articles in self-hosted format.</p>
+<h2 id="documentation">Documentation</h2>
+<h3 id="lode">LODE</h3>
+<p><a href="http://www.essepuntato.it/lode">LODE</a> is a service that creates a HTML documentation page for an OWL ontology. It has reasoners, import+closure, and the ability to select a particular language from the ontology.</p>
+<h3 id="widoco">Widoco</h3>
+<p><a href="https://dgarijo.github.io/Widoco/">Widoco</a> is a Java tool, available as a JAR file, that uses LODE internally to generate the documentation of the ontology. It provides several additional features such as embedding a WebVOWL representation in the page, providing ToC and Introduction/Overview sections, etc.</p>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

@@ -1,0 +1,51 @@
+title: Choosing the right framework
+published: 2015-07-01 15:13:00
+modified: 2017-11-12 16:23:21
+tags: movies
+description: choosing the right framework for implementation
+headerimage: 
+===
+<p>The main aim of the <strong>HDD-Indexer</strong> is to provide an easy to use, yet
+powerful and complete abstraction to the data on the disk. The main
+point to focus on here is that this is an external disk. It can and
+probably will be used on different systems. Therefore, the first
+requirement of whatever technology we use is that it should
+be <strong>cross-platform</strong>.</p>
+<p>The first thing that comes up when someone says <em>cross-platform</em> is
+java, and for a good reason. Java has matured a great deal, and has
+developed into a stable language that works great across any scale. But
+it isn't the most easy to develop with. That honor goes to languages
+like python and ruby, that have a huge community of frameworks and
+libraries that are just ready to deploy. </p>
+<p>Along with the language, another major aspect is the GUI. The terminal
+is great, but to really have a visual usability of the data, we need a
+GUI. While there are quite a lot of frameworks and libraries that aid in
+making GUI apps, the best bet is to use something that every user has
+installed on their system - their browser. The browser provides the
+ideal environment, because it is readily available and is pretty much
+consistent across platforms. The variations are in individual standards
+and procedures adopted by the different browsers, which is quite
+acceptable.</p>
+<p>Deploying to a browser requires either statically compiled pages (html
+files) or a local web server. Static compiled pages are great, except
+that they cannot change, or interact with the data outside of the
+programmed links. A local web server is much more powerful, because it
+can accept requests, respond to them, and make changes (to the data on
+disk) as required. Python readily comes up with a nifty web server
+(SimpleHTTPServer) that works great for local deployment of files. But
+there are other powerful options that save development efforts and make
+deployment easier.</p>
+<p>Web frameworks such as Django, Flask, and Pyramid allow creation of web
+apps while saving a great deal of developer time. Django especially has
+become a lot popular due to its large number of features, while Flash
+offers a lightweight, barebones and quick method of deploying something.
+I'm going to choose <strong>Django</strong> simply because I want to finish and
+iterate as quickly as possible. Using a local web server also (kind of)
+implies a local database. There's no better choice than <strong>SQLite</strong>
+(although there are a lot many NoSQL options coming up) to store the
+data on disk. At most, it should take up a few MBs worth of space. </p>
+<p>Deploying brings up issues of dependencies. What if python is not
+installed? Or the libraries are not installed? And so on. To address
+such issues, it would be better to use a portable version of python on
+disk, and then download the dependencies as statically stored
+libraries.</p>

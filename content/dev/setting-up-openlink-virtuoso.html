@@ -1,0 +1,114 @@
+title: Setting up Openlink Virtuoso
+published: 2017-08-23 16:11:30
+modified: 2017-08-23 16:21:02
+tags: NginxontologiesOpenlink Virtuosotoolstriple-store
+description: Setting up Virtuoso as a triple-store and serving with Nginx
+headerimage: 
+===
+<p><a href="https://virtuoso.openlinksw.com/linked-data/">Openlink Virtuoso</a> is a powerful
+triple-store (and also a traditional RDBMS) with many different features. Setting
+up virtuoso is easy as packages are available in most distributions. Virtuoso has
+a bizzare collection of documentation which is scattered, unorganised, and sometimes
+missing. Depite this, it is a solid tool which is easy to set up and use, and comes
+configured ready for production use.</p>
+<h2 id="installation">Installation</h2>
+<p>The package <code>virtuoso-opensource</code> is available on Debian based systems, and can be
+installed with -</p>
+<pre class="codehilite"><code class="language-bash">sudo apt-get install virtuoso-opensource</code></pre>
+
+
+<p>which will install virtuoso and set it up as a system service with the name</p>
+<pre class="codehilite"><code>virtuoso-opensource-X.x</code></pre>
+
+
+<p>with <code>X.x</code> being version numbers, which for me were <code>6.1</code>.
+The service can be managed as:</p>
+<pre class="codehilite"><code class="language-bash"># start, stop, restart, status
+sudo service virtuoso-opensource-X.x start
+sudo service virtuoso-opensource-X.x stop
+sudo service virtuoso-opensource-X.x restart
+sudo service virtuoso-opensource-X.x status</code></pre>
+
+
+<p>During installation, virtuoso will ask to set a password for two users -
+<code>DBA</code> and <code>DAV</code> which are like <code>admins</code> for the web interface and management actions.
+It is essential to remember the password as this is required to make changes to
+virtuoso and also to add other users.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The config file is located at -</p>
+<pre class="codehilite"><code>/etc/virtuoso-opensource-X.x/virtuoso.ini</code></pre>
+
+
+<p>and contains settings for storage location and server settings. Virtuoso has the option
+of serving the management interface over a SSL certificate (located in the <em>Parameters</em>
+section) which is commented out by default. The configuration for the Web interface is
+in the <code>HTTPServer</code> section.</p>
+<p><code>ServerPort</code> refers to the port the virtuoso interface runs at, which is <code>8890</code> by default,
+which can be changed through this option. A description of the various options is
+available at <a href="http://docs.openlinksw.com/virtuoso/dbadm/">link</a>.</p>
+<h2 id="conductor">Conductor</h2>
+<p>The virtuoso web interface is called conductor, and offers management capabilities
+for all its features. It is served by default at <code>/conductor</code> URL prefixed
+by wherever virtuoso is being served.</p>
+<h3 id="linked-data">Linked Data</h3>
+<p>The <em>linked data</em> section in <em>Conductor</em> offers a <em>SPARQL</em> endpoint, query interface,
+and management capabilities for graphs and datasets. The default tab for <em>SPARQL</em>
+is a query interface which queries the (<em>default</em>) graph specified and displays
+the results in the page itself. <em>Graphs</em> shows all available graphs in the triple store,
+and virtuoso comes with a lot of RDF data and some graphs by default, which one can
+assume are required for its configurations and data settings. The <em>Namespaces</em> tab
+shows the stored namespaces for RDF graphs, and one can add custom namespaces here.
+<em>Quad Store Upload</em> provides a simple way to upload a RDF file as a dataset or import
+it from a URL. It requires the <em>named graph IRI</em> under which the dataset is stored in the
+triple store. There is no <em>default</em> graph, therefore the namespace <em>has</em> to be provided.</p>
+<h2 id="isql">iSQL</h2>
+<p>Virtuoso provides a utility called <em>Interactive SQL</em> or <em>iSQL</em> which is accessed
+using <code>isql-vt</code> or can be symlinked from <code>/usr/bin/isql-vt</code>. This utility provides
+SQL-like access to the datasets which can be used to perform SPARQL queries or
+upload data into the triple store.</p>
+<h2 id="sparql-endpoint">SPARQL Endpoint</h2>
+<p>By default, <code>/sparql</code> is the <em>SPARQL</em> endpoint provided by virtuoso, and requires no
+access control to set up or access. So once you have used <em>Conductor</em> or <em>iSQL</em> to upload
+the dataset, the <em>SPARQL</em> endpoint is ready to serve the data for the given graph IRI.
+The only thing to configure is to serve datasets under a given IRI.</p>
+<h2 id="exposing-virtuoso-interfaces-using-nginx">Exposing Virtuoso interfaces using Nginx</h2>
+<p>By default, Virtuoso runs at <code>localhost:8890</code>, which Nginx can be configured with a
+proxy to pass traffic to the server. However, for some reason, Nginx cannot pass
+in a reverse proxy, or map URL to the localhost as required. A <em>hack</em> around this
+is to configure all the locations virtuoso requires as URL accesses, and proxy pass
+them to the Virtuoso server. A list of them is-</p>
+<pre class="codehilite"><code class="language-bash">/virtuoso
+/conductor
+/about
+/category
+/class
+/data
+/describe
+/delta.vsp
+/fct
+/issparql
+/ontology
+/page
+/property
+/rdfdesc
+/resource
+/services
+/snorql
+/sparql-auth
+/sparql
+/statics
+/void
+/wikicompany</code></pre>
+
+
+<p>If a particular service is to be restricted or not provided, then simply remove
+its URL from the Nginx configurations. An example of a proxy configuration for
+a URL is -</p>
+<pre class="codehilite"><code class="language-nginx">location /sparql {
+    proxy_set_header X-Real-IP $remote_addr ;
+    proxy_set_header X-Forwarded-For $remote_addr ;
+    proxy_set_header Host $host ;
+    proxy_set_header X-NginX-Proxy true;
+    rewrite ^/virtuoso/?(.*) /$1 break;
+    proxy_pass http://localhost:8890/;
+    proxy_redirect off;</code></pre>

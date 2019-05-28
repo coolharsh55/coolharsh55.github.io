@@ -1,0 +1,42 @@
+title: Implementation approaches
+published: 2014-06-08 14:34:50
+modified: 2017-11-12 15:53:33
+tags: news
+description: Different approaches to implement a topic-based news aggregator
+headerimage: 
+===
+<p>In <strong>computer science</strong>, an <strong>Implementation</strong> is a realization of
+a technical specification or algorithm as a program, software component,
+or other computer system through computer
+programming anddeployment.<a href="\%22http://en.wikipedia.org/wiki/Implementation#Computer_science\%22">Wikipedia</a></p>
+<p>The main aspect of the aggregator is its content curation. Which
+essentially means we have to sort all the feeds into topics/categories
+based on what they are about. We have two fields of interest in an RSS
+Field – one is <strong>title</strong> and the other is <strong>description. </strong>Using these,
+it is possible to analyze the feed and take a good guess what it is
+about.</p>
+<p>Another approach we can take is to analyze the consecutive words in a
+feed title, and compare them with other feed titles. Common words such
+as verbs, adjectives etc. will need to be filtered out. An example of
+this could be the recent <strong>Google I/O</strong> where many feed titles contained
+the word thereby allowing the algorithm to correctly categorize them.
+This would be the work of a tokenizer and an iterative loop comparing
+the result with every other title.</p>
+<p>Another way would to be create a <em>Set </em>of recognized categories as we go
+along, and search the title for these words. If the title contains words
+occurring in existing categories, the the feed is categorized under it.
+If not, then the feed words are used to identify a new category. The
+rank of a category can be formed as we move through the feed. After the
+feeds have been categorized, a single loop to re-evaluate the category
+is necessary to weed out any errors in categorizing. If a feed has been
+categorized as something else inspire of it containing words belonging
+to a better ranked category, this will correct it.</p>
+<p>A further scalable approach is to store the feeds in a database on the
+server, and then to query the tables to identify the relationships. The
+words extracted from the feeds would be stored in tables, and each row
+would be joined with the corresponding rows containing those words. The
+results of which would then be entered into a new category. Doing such
+operations at the server scale allows providing these curated feeds to
+all subscribing users. However, the preference and storage for each user
+will still have to be on device. Only the performance intensive
+operations will be performed at the server.</p>

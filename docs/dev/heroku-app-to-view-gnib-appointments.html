@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Heroku app to view GNIB appointments</title>
+    <meta name="description" content="Using a free heroku app to easily view GNIB appointments"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Heroku app to view GNIB appointments">
+    <meta itemprop="description" content="Using a free heroku app to easily view GNIB appointments">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Heroku app to view GNIB appointments">
+    <meta name="twitter:description" content="Using a free heroku app to easily view GNIB appointments">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Heroku app to view GNIB appointments"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Using a free heroku app to easily view GNIB appointments"/>
+    <meta property="article:published_time" content="2017-05-20 13:33:00" />
+    <meta property="article:modified_time" content="2017-05-20 17:27:13" />
+    <meta property="article:tag" content="bottle.pyGNIBherokupython" />
+    
+</head>
+<body>
+    <article>
+        <h1>Heroku app to view GNIB appointments</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-05-20 13:33:00, updated: 2017-05-20 17:27:13<br/>
+            <span>bottle.pyGNIBherokupython;</span> <br/>
+        Using a free heroku app to easily view GNIB appointments</small></p>
+        
+        <section>
+            <blockquote>
+<p><strong>recap:</strong> In the previous posts, I described retrieving GNIB appointments
+through an endpoint using javascript in the browser console, a bash script,
+and a python script.</p>
+<p><strong>source</strong>: hosted on Github <a href="https://github.com/coolharsh55/GNIBappointments/">here</a></p>
+<p><strong>webapp</strong>: hosted on Heroku <a href="https://gnibappt.herokuapp.com/">here</a>
+shows available timings for GNIB and Visa appointments</p>
+</blockquote>
+<p>The good thing about a script is that they can be run pretty much anywhere,
+such as a dedicated web-server, or the phone (through some tedious efforts),
+a raspberry pi, or through free services like <a href="https://heroku.com">heroku</a>.</p>
+<p>In this post, I describe setting up the appointment script on a heroku instance.
+The appointments are refreshed every 30mins (a resonable time), and can be
+viewed at any time using <a href="https://gnibappt.herokuapp.com/">this</a> website.</p>
+<h2 id="heroku">Heroku</h2>
+<p>Heroku is a PaaS service, which means that it takes care of everything
+and lets you focus only on the web browser part of it. It provides 50 free instances
+for apps, which can be accessed using the address <em>https://app-name.herokuapp.com</em>.
+Oh, and free HTTPS! Heroku provides app support for a large variety of languages,
+which (on the date of this post) include Node.js, Ruby, Python, Java, PHP, Go, Scala, and Clojure.
+There is support for more languages, which can be checked through official documentation.</p>
+<h3 id="deployment">Deployment</h3>
+<p>Publishing apps on heroku requires an account, which is free to sign up. The free tier gives
+access to 1000 free hours of compute time which can be used in as many instances as you want,
+though I think the number is limited to 50. Each app/instance or as heroku terms it - dyno - is
+automatically suspended after 30 mins of inactivity. That means that it starts (and is a little slow)
+after 30 mins of no-one using the app. Each dyno has access to 512MB of RAM (generous!) and
+can perform operations on a single CPU (thread/worker).</p>
+<p>Deployment can be made by using the heroku toolbelt which are a set of utilities that help with
+version control and pulling logs from the app instance. Or the app can be connected to a git
+repository online such as Github so that commits are automatically deployed to the app.</p>
+<h3 id="procfile">Procfile</h3>
+<p>A <code>Procfile</code> specifies the command and parameters for heroku to use when running the instance.
+The procfile should be situated in the base directory of the app. For a simple, single dyno, free app,
+the procfile specifies the command <code>web: command --arguments</code> as a way to specify that the dyno
+is of type <code>web</code> (as opposed to <code>worker</code>) and starting it will run <code>command</code> with the specified
+arguments.</p>
+<h2 id="requirements">requirements</h2>
+<p>Heroku supports third-party libraries which (in the case of <em>python</em>) can be specified using
+<code>requirements.txt</code>. Any library in this file will be installed before starting the app.</p>
+<h3 id="bottle">Bottle</h3>
+<p><a href="https://bottlepy.org/docs/dev/">Bottle</a> is a small, minimal python web framework that provides routing
+and templates and is very easy to run. Bottle is a single file library/module. Since the requirements
+of the GNIB project are simple, the project contains just one file - <code>app.py</code>. It uses much of the same
+code as specified in the last post to perform the actual requests. </p>
+<h3 id="gunicorn">Gunicorn</h3>
+<p><a href="http://gunicorn.org/">Gunicorn</a> is a python WSGI HTTP server, which in plain-speak means that it
+handles requests and lets bottle do the routing and actual work of generating page responses.
+The following snippet runs gunicorn with bottle.</p>
+<pre class="codehilite"><code class="language-python"> run(
+    debug=True,
+    server='gunicorn', host='0.0.0.0', port=int(env.get(&quot;PORT&quot;, 5000)))</code></pre>
+
+
+<h2 id="checking-appointments-every-30-minutes">Checking appointments every 30 minutes</h2>
+<p>Since our free app contains only a <code>web</code> worker without any background processes, we use a simple
+<code>if-then-else</code> conditional to check if it has been more than <em>30 mins</em> since we last checked appointments.</p>
+<pre class="codehilite"><code class="language-python">from datetime import datetime
+last_checked = None
+
+def check():
+    if last_checked is None:
+        get_appointments()
+        last_checked = now
+    else:
+        now = datetime.now()
+        diff = now - last_checked
+        if diff.days &gt; 0 or diff.seconds &gt; 1800:
+            get_appointments()
+            last_checked = now</code></pre>
+
+
+<h2 id="future-work">Future Work</h2>
+<ul>
+<li>Retrieve Visa appointments</li>
+<li>Chrome extension</li>
+</ul>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

@@ -1,0 +1,100 @@
+title: Setting up Pubby
+published: 2017-08-23 16:57:39
+modified: 2017-08-23 17:07:14
+tags: ontologiesPubbysemantic webtools
+description: Using pubby to expose resources in a dataset
+headerimage: 
+===
+<p><a href="http://wifo5-03.informatik.uni-mannheim.de/pubby/">Pubby</a> is a nifty little tool
+that is great for exposing RDF datasets accessed through SPARQL endpoints 
+as browsable HTML pages. What this allows is to create a populated web-page for
+resources available in SPARQL endpoints. Pubby uses <code>DESCRIBE</code> queries to populate
+the HTML page. To see it in action, visit [OPMW](http://opmw.org] example pages with
+the <a href="http://www.opmw.org/export/page/resource/WorkflowTemplate/SIMILARWORDS">Similar Words</a>
+example showing all RDF links in HTML.</p>
+<h2 id="installation">Installation</h2>
+<p>Pubby can be downloaded from the <a href="http://wifo5-03.informatik.uni-mannheim.de/pubby/download/">download page</a>
+or the source can be accessed through the <a href="https://github.com/cygri/pubby">Github project</a>.
+Usually, the latest version is advocated to be used, but in this case, I found an
+unresolved issue with showing RDF prefixes in the generated documents. There was
+a proposed solution on <a href="https://stackoverflow.com/questions/25869241/pubby-displays-question-marks-instead-of-the-actual-namespaces">StackOverflow</a> with two answers that
+propose <a href="https://stackoverflow.com/a/25869703">adding prefixes to the config file</a> and
+<a href="https://stackoverflow.com/a/27406059">setting the prefixes as URI</a> both of which
+<em>did not work</em> in my case. Therefore, downgraded from version 0.3.3 to version
+0.3.2. And important change in these two versions is that pubby changed the configuration
+file format from N3 to Turtle. However, they both still look fairly similar, so there
+is not much of a change in terms of reading and configuration.</p>
+<p>To get pubby, use <code>curl</code> and unzip the contents like -</p>
+<pre class="codehilite"><code class="language-bash"># wget -O pubby.zip http://wifo5-03.informatik.uni-mannheim.de/pubby/download/pubby-0.3.3.zip
+curl -o pubby.zip http://wifo5-03.informatik.uni-mannheim.de/pubby/download/pubby-0.3.3.zip
+# use unzip or jar -xf
+jar -xf pubby.zip</code></pre>
+
+
+<h2 id="serving-with-jetty">Serving with Jetty</h2>
+<p>Pubby can be served using Tomcat or Jetty, or any other mechanism of serving web containers.
+It does not come with a <code>WAR</code> file, but contains a <code>WEB-INF</code> folder which is
+ready to served. If pubby is to be served as the <em>root</em> which means it is
+directly accessible from wherever jetty is running, such as <code>localhost:8080</code>,
+then the <code>webapps</code> folder must contain the pubby contents as <code>root</code> (folder name).
+Otherwise, jetty can be configured to run pubby as a servelet at the desired url.</p>
+<p>Jetty is available for download as a package, in which case, it is installed
+as a service, or one can download the portable application and set it up.
+In this case, jetty can be setup as a service using the file
+<code>/etc/systemd/system/pubby.service</code> as -</p>
+<pre class="codehilite"><code>[Unit]
+Description=Pubby server using Jetty
+After=network.target
+
+[Service]
+User=&lt; user &gt;
+Group=&lt; dev &gt;
+WorkingDirectory=&lt; folder containing jetty &gt;
+ExecStart=/usr/bin/java -jar start.jar
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+
+
+<h3 id="serving-using-nginx">Serving using Nginx</h3>
+<p>Once jetty is running the pubby servelet, Nginx can be configured to serve this using
+a proxy service as -</p>
+<pre class="codehilite"><code class="language-nginx">location /&lt;DESIRED URL/ {
+    proxy_set_header X-Real-IP $remote_addr ;
+    proxy_set_header X-Forwarded-For $remote_addr ;
+    proxy_set_header Host $host ;
+    proxy_set_header X-NginX-Proxy true;
+    rewrite ^/&lt;DESIRED NAMESPACE SET IN PUBBY CONFIG&gt;/?(.*) /$1 break;
+    proxy_pass http://&lt;JETTY ADDRESS&gt;/;
+    proxy_redirect off;
+}</code></pre>
+
+
+<h2 id="configuration">Configuration</h2>
+<p>The pubby config file is located in the <code>WEB-INF</code> folder and is named either
+<code>config.n3</code> for N3 or <code>config.ttl</code> for Turtle, depending on the version of
+pubby being used.</p>
+<h3 id="prefixes">Prefixes</h3>
+<p>The starting prefixes define the prefix seen in the HTML page output,
+along with those used on the page.</p>
+<h3 id="server-configuration-section">Server configuration section</h3>
+<p>This is the section marked as an instance of <code>conf:Configuration</code>.</p>
+<ul>
+<li><em>projectName</em> - this is the name of project displayed on the page</li>
+<li><em>projectHomepage</em> - this is the URI for the project homepage</li>
+<li><em>usePrefixesFrom</em> - this defines the location where the prefixes are loaded
+from, a value of <code>&lt;&gt;</code> indicates the config file, or this can contain a URI from
+which the prefixes will be loaded</li>
+<li><em>indexResource</em> - this is the URI of the resource that will be displayed
+when the 'homepage' of pubby is displayed; or to put it in another way, this is
+the resource that will be displayed on the landing page</li>
+</ul>
+<h3 id="dataset-configuration-section">Dataset configuration section</h3>
+<p>This is an section in the <em>Server configuration</em> section, defined as annotations
+of <code>conf:dataset</code> property.</p>
+<ul>
+<li><em>sparqlEndpoint</em> - this is the <em>SPARQL</em> endpoint URL from which resources will
+be loaded</li>
+<li><em>datasetBase</em> - this is the common URI prefix, similar to the <code>@prefix</code> used in
+SPARQL queries</li>
+</ul>

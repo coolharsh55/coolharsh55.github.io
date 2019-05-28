@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Are the EU's Ethics Guidelines too generic?</title>
+    <meta name="description" content="The ethics guidelines are generic enough to be applied to anything"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Are the EU's Ethics Guidelines too generic?">
+    <meta itemprop="description" content="The ethics guidelines are generic enough to be applied to anything">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Are the EU's Ethics Guidelines too generic?">
+    <meta name="twitter:description" content="The ethics guidelines are generic enough to be applied to anything">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Are the EU's Ethics Guidelines too generic?"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="The ethics guidelines are generic enough to be applied to anything"/>
+    <meta property="article:published_time" content="2019-04-08 12:45:44" />
+    <meta property="article:modified_time" content="2019-04-08 12:44:22" />
+    <meta property="article:tag" content="reaction" />
+    
+</head>
+<body>
+    <article>
+        <h1>Are the EU's Ethics Guidelines too generic?</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/blog">blog</a></nav>
+        <p id="desc"><small>published: 2019-04-08 12:45:44, updated: 2019-04-08 12:44:22<br/>
+            <span>reaction;</span> <br/>
+        The ethics guidelines are generic enough to be applied to anything</small></p>
+        
+        <section>
+            <style>
+.term-AI {
+    background: #DDF;
+    padding: 2px;
+}
+</style>
+        <div id="content">
+        <p>These are the <a href="https://ec.europa.eu/digital-single-market/en/news/ethics-guidelines-trustworthy-ai">Ethics guidelines for trustworthy AI</a> published by the European Commision. I found these guidelines to be very abstract, and thought of an exercise where we find other applicable terms that still work when we replace 'AI' with them.</p>
+        <p><button id="replace" onclick="replaceTerm();">replace AI with</button>: <input id="term"></input> <a href="#content" onclick="replaceTerm('AI');">revert</a> <br/>
+            <b>Suggestions</b>: <a href="#content" onclick="replaceTerm('Technology');">technology</a>, <a href="#content" onclick="replaceTerm('Governance');">governance</a>,</p>
+	        <p>Trustworthy <span class="term-AI">AI</span> should respect all applicable laws and regulations, as well as a series of requirements; specific assessment lists aim to help verify the application of each of the key requirements:</p>
+	        <ul id="guidelines">
+	            <li>Human agency and oversight: <span class="term-AI">AI</span> systems should enable equitable societies by supporting human agency and fundamental rights, and not decrease, limit or misguide human autonomy.</li>
+	            <li>Robustness and safety: Trustworthy <span class="term-AI">AI</span> requires algorithms to be secure, reliable and robust enough to deal with errors or inconsistencies during all life cycle phases of <span class="term-AI">AI</span> systems.</li>
+	            <li>Privacy and data governance: Citizens should have full control over their own data, while data concerning them will not be used to harm or discriminate against them.</li>
+	            <li>Transparency: The traceability of <span class="term-AI">AI</span> systems should be ensured.</li>
+	            <li>Diversity, non-discrimination and fairness: <span class="term-AI">AI</span> systems should consider the whole range of human abilities, skills and requirements, and ensure accessibility.</li>
+	            <li>Societal and environmental well-being: <span class="term-AI">AI</span> systems should be used to enhance positive social change and enhance sustainability and ecological responsibility.</li>
+	            <li>Accountability: Mechanisms should be put in place to ensure responsibility and accountability for <span class="term-AI">AI</span> systems and their outcomes.</li>
+	        </ul>
+	    </div>
+        <script type="text/javascript">
+            var replaceTerm = function(term) {
+                if (term == undefined || term == null || term.length == 0) {
+                    term = document.getElementById('term').value; 
+                    if (term == undefined || term == null || term.length == 0) {
+                        return;
+                    }
+                }
+                var spans = document.getElementsByClassName('term-AI');
+                for(var i=0; i<spans.length; i++) {
+                    var item = spans[i];
+                    item.innerHTML = term;
+                }
+            };
+        </script>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

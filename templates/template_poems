@@ -1,0 +1,8 @@
+{% extends 'template_base' %}
+{% block pageCSS %}{{ super () }}
+<style type="text/css">
+    section {
+        text-align: center;
+    }
+</style>{% endblock pageCSS %}
+{% block navtype %}<a href="/poems">poems</a>{% endblock navtype %}

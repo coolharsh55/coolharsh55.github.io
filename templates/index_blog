@@ -1,0 +1,14 @@
+{% extends 'template_base' %}
+{% block pagetitle %}blog -> harshp.com{% endblock pagetitle %}
+{% block title_body %}blog{% endblock title_body %}
+{% block nav %}<nav><a href="/">harshp.com</a></nav>{% endblock nav %}
+{% block desc %}{% endblock desc %}
+{% block content %}<section>
+            <dl>
+            {% for blog in blogs %}
+                <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+                <dd><small>{{blog[1]}}</small><br/>
+                    {{blog[4]}}</dd>
+            {% endfor %}
+            </dl>
+        </section>{% endblock content %}

@@ -1,0 +1,163 @@
+title: Setting up notifications via Telegram
+published: 2018-02-28 00:08:47
+modified: 2018-03-03 23:35:55
+tags: djangoGNIBjobsnotificationsqueueredissystem modelTelegram
+description: Automating notification of new appointments through the Telegram app
+headerimage: 
+===
+<p>This post details how the <a href="https://harshp.com/dev/utils/gnib-appointments/">GNIB/VISA appointment utility</a> was developed to display appointments on the website as well as how this was extended to create a <a href="https://harshp.com/dev/projects/gnib-appointments/appointment-notifications-using-telegram-app/">Telegram bot</a> to get notifications on all platforms. This can be roughly partitioned into three parts - efficient retrieval of appointments data, storing them into the database, building the bot for notifications</p>
+<h2 id="retrieving-notifications-using-async">Retrieving notifications using <code>async</code></h2>
+<blockquote>
+<p>This describes the approach to the code in <a href="https://github.com/coolharsh55/harshp.com/blob/dev/harshp_com/scripts/gnib_appointments_async.py">gnib_appointments_async.py</a></p>
+</blockquote>
+<p>Getting the <code>json</code> response and the appointment dates is pretty easy based on the scripts, however, to do this efficiently requires some thought. Since there are a lot of requests here, executing them in parallel is the best way to go about it. Threads are one way, but they are expensive to manage and run. Since python now features asynchronous co-routines, these are the best candidates for the task. The basic idea is, by declaring the part as a co-routine, it will be run with other co-routines in a time efficient manner. The system will intermittently check if the responses have returned results, and if not, will execute other code in the interim. This allows many tasks that are waiting to be run in parallel. Based on this, our basic model is:</p>
+<pre class="codehilite"><code class="language-python">async def task(url):
+    download(url)
+
+async def download_urls():
+    urls = [ ... ]
+    completed, pending = await asyncio.wait(
+        [task(url) for url in urls])
+    results = [task.result() for task in completed]
+    return results
+
+event_loop = asyncio.get_event_loop()
+event_loop.run_until_complete(download_urls())
+event_loop.close()</code></pre>
+
+
+<p>This gets an event loop which is like a thread that keeps tracks of co-routines and their results and will download all urls in asynchronous fashion, which makes them appear as if they are executing in parallel. That's one way of doing this. Another is to wait on the actual download instead of the function where the download is happening. This is done as:</p>
+<pre class="codehilite"><code class="language-python">async def fetch(url, params):
+    async with ClientSession() as session:
+        async with session.get(url, params) as response:
+            data = await response.text()
+            return data</code></pre>
+
+
+<p>The important bit is to breakdown the task into components that can be run in parallel and then to call them as separate functions. In the case here, if all urls to be downloaded were within one function, then it cannot be run in parallel as each url will be wait to be downloaded as the previous one hasn't been completed. Instead, if these are called in separate statements as part of a function, then they can be run as separate function calls in parallel, or in this case as <code>async-await</code> calls.</p>
+<h2 id="database-models">Database models</h2>
+<p>To persist the appointments, some form of storage is required. In earlier iterations, I simply saved them in memory, or wrote them to a file. However, for per-minute appointments, it isn't feasible, and some form of a database system is better. I already use PostgreSQL for my website, and Redis for a job queue. So I used both in this case for the purposes of storing appointments.</p>
+<p>The first time the appointments are retrieved, they are stored in Redis (key-value) so that other jobs and processes can immediately see the result. This allows the website to display the latest updates while other jobs are processed in the background. Storing stuff in redis is pretty simple, you simply set the value of a key, and that is it. To make things easier, the data is stored and retrieved as <code>JSON</code>. Retrieving it is simple as well.</p>
+<pre class="codehilite"><code class="language-python"> gnib_appointments = {
+        'gnib_Study_New': json.loads(kvstore.get('gnib_Study_New')),
+        'gnib_Study_Renewal': json.loads(kvstore.get('gnib_Study_Renewal')),
+        'gnib_Work_New': json.loads(kvstore.get('gnib_Work_New')),
+        'gnib_Work_Renewal': json.loads(kvstore.get('gnib_Work_Renewal')),
+        'gnib_Other_New': json.loads(kvstore.get('gnib_Other_New')),
+        'gnib_Other_Renewal': json.loads(kvstore.get('gnib_Other_Renewal')),
+        'visa_I': json.loads(kvstore.get('visa_I')),
+        'visa_F': json.loads(kvstore.get('visa_F')),
+        'last_update': kvstore.get('gnib_last_run'),
+}</code></pre>
+
+
+<p>For longer persistence, the appointments are stored to the PostgreSQL database as instance of the <code>GNIBAppointment</code> and <code>VisaAppointment</code> classes.</p>
+<pre class="codehilite"><code class="language-python">class GNIBAppointment(AppointmentSlot):
+    '''GNIB Appointment'''
+    CATEGORY_STUDY = 'Study'
+    CATEGORY_WORK = 'Work'
+    CATEGORY_OTHER = 'Other'
+    CATEGORIES = (
+        (CATEGORY_STUDY, 'GNIB Study Appointment'),
+        (CATEGORY_WORK, 'GNIB Work Appointment'),
+        (CATEGORY_OTHER, 'GNIB Other Appointment'),
+    )
+    CATEGORY_TYPE_NEW = 'New'
+    CATEGORY_TYPE_RENEWAL = 'Renewal'
+    CATEGORY_TYPES = (
+        (CATEGORY_TYPE_NEW, 'GNIB New Appointment'),
+        (CATEGORY_TYPE_RENEWAL, 'GNIB Renewal Appointment'),
+    )
+
+    category = models.CharField(
+        max_length=8, db_index=True, choices=CATEGORIES)
+    category_type = models.CharField(
+        max_length=8, db_index=True, choices=CATEGORY_TYPES)
+
+class VisaAppointment(AppointmentSlot):
+    '''Visa Appointment'''
+    CATEGORY_INDIVIDUAL = 'I'
+    CATEGORY_FAMILY = 'F'
+    CATEGORIES = (
+        (CATEGORY_INDIVIDUAL, 'Visa Individual Appointment'),
+        (CATEGORY_FAMILY, 'Visa Family Appointment'),
+    )
+
+    category = models.CharField(
+        max_length=8, db_index=True, choices=CATEGORIES)</code></pre>
+
+
+<p>To keep the responses, all appointment data retrieved from the servers is stored in to the database as well.</p>
+<pre class="codehilite"><code class="language-python">class APIResponse(models.Model):
+    '''Stores raw JSON response from GNIB API'''
+    added_on = models.DateTimeField(auto_now_add=True)
+    json = JSONField()</code></pre>
+
+
+<h2 id="telegram-bot">Telegram Bot</h2>
+<blockquote>
+<p>This describes code in <a href="https://github.com/coolharsh55/harshp.com/blob/dev/harshp_com/apps/jobs/gnib_telegram_bot.py">gnib_telegram_bot.py</a></p>
+</blockquote>
+<p>Telegram makes it super simple to build bots. You get an API key and then you interact with your bot by passing the key as part of your request. Then you register your message handlers, and keep checking for messages every once in a while. I used the <a href="https://python-telegram-bot.org/"><code>python telegram bot</code></a> library to interact with Telegram. Their documentation was easy to pick up on, and the bot itself is straightforward to start with. Additionally, it features a job queue so I can add jobs as well.</p>
+<pre class="codehilite"><code class="language-python">updater = Updater(token=TELEGRAM_API_KEY)
+dispatcher = updater.dispatcher
+dispatcher.add_handler(CommandHandler('start', start, pass_job_queue=True))
+updater.start_polling()
+updater.idle()</code></pre>
+
+
+<p>Telegram makes it so that bots can only respond to conversations that have already been started by someone. To store the data, I persist a chat in a database model along with notification preferences such as date filters for GNIB and Visa appointments.</p>
+<blockquote>
+<p>This describes code for <a href="https://github.com/coolharsh55/harshp.com/blob/dev/harshp_com/apps/models/gnib_telegram_bot.py">database models</a></p>
+</blockquote>
+<pre class="codehilite"><code class="language-python">class TelegramUser(models.Model):
+    '''Telegram User
+    This is the user that interacts with the bot.
+    '''
+    chat_id = models.CharField(max_length=64, db_index=True, primary_key=True)
+    appointment_gnib = models.CharField(
+        max_length=64, db_index=True, choices=GNIB_APPOINTMENT_TYPES,
+        blank=True, null=True)
+    gnib_filter_date_start = models.DateField(blank=True, null=True)
+    gnib_filter_date_end = models.DateField(blank=True, null=True)
+    appointment_visa = models.CharField(
+        max_length=64, db_index=True, choices=VISA_APPOINTMENT_TYPES,
+        blank=True, null=True)
+    visa_filter_date_start = models.DateField(blank=True, null=True)
+    visa_filter_date_end = models.DateField(blank=True, null=True)</code></pre>
+
+
+<p>To actually send the notifications, after each retrieval, it's a simple database call;</p>
+<blockquote>
+<p>Code in <a href="https://github.com/coolharsh55/harshp.com/blob/dev/harshp_com/apps/jobs/gnib_telegram_notifications.py">gnib_telegram_notifications.py</a></p>
+</blockquote>
+<pre class="codehilite"><code class="language-python">async def job():
+    # retrieve added appointment for every type from database
+    gnib_appointments = {
+        ...
+    }
+    visa_appointments = {
+        ...
+    }
+    last_update = kvstore.get('gnib_last_run')
+
+    # retrieve users that want notifications for this appointment type
+    for type, available in gnib_appointments.items():
+        if available:
+            users = retrieve_users_for_gnib_appointments(type, available)
+            try:
+                await send_notification_to_users(users, 'gnib', type, last_update)
+            except Exception as E:
+                logger.error(E, exc_info=True)
+    for type, available in visa_appointments.items():
+        if available:
+            users = retrieve_users_for_visa_appointments(type, available)
+            await send_notification_to_users(users, 'visa', type, last_update)</code></pre>
+
+
+<p>To set this up as a process, I use <code>supervisor</code> and start this as a separate worker process with django's management commands.</p>
+<pre class="codehilite"><code class="language-python"># ./manage.py  gnib_telegram_bot
+from apps.jobs.gnib_telegram_bot import run
+class Command(BaseCommand):
+    def handle(self, *args, **kwargs):
+         run()</code></pre>

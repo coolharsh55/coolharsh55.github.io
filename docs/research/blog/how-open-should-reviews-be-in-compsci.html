@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>How open should reviews be in CompSci?</title>
+    <meta name="description" content="A short collection of different review styles and their pros and cons"/>
+    <!-- Google -->
+    <meta itemprop="name" content="How open should reviews be in CompSci?">
+    <meta itemprop="description" content="A short collection of different review styles and their pros and cons">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="A short collection of different review styles and their pros and cons"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="How open should reviews be in CompSci?">
+    <meta name="twitter:description" content="A short collection of different review styles and their pros and cons">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="How open should reviews be in CompSci?"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="A short collection of different review styles and their pros and cons"/>
+    <meta property="article:published_time" content="2019-03-17 16:37:08" />
+    <meta property="article:modified_time" content="2019-03-17 16:36:16" />
+    <meta property="article:tag" content="2" /><meta property="article:tag" content="1" /><meta property="article:tag" content="1" /><meta property="article:tag" content="," /><meta property="article:tag" content="2" /><meta property="article:tag" content="2" /><meta property="article:tag" content="9" /><meta property="article:tag" content="," /><meta property="article:tag" content="2" /><meta property="article:tag" content="2" /><meta property="article:tag" content="8" />
+    
+</head>
+<body>
+    <article>
+        <h1>How open should reviews be in CompSci?</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/research/">research</a> > <a href="/research/blog">blog</a></nav>
+        <p id="desc"><small>published: 2019-03-17 16:37:08, updated: 2019-03-17 16:36:16<br/>
+            <span>2 ;</span><span>1 ;</span><span>1 ;</span><span>, ;</span><span>2 ;</span><span>2 ;</span><span>9 ;</span><span>, ;</span><span>2 ;</span><span>2 ;</span><span>8 ;</span><br/>
+        A short collection of different review styles and their pros and cons</small></p>
+        
+        <section>
+            <blockquote>
+<p>This post is a reaction for  <a href="https://twitter.com/iswc_conf/status/1105768648189378562">ISWC2019's decision to use double-blind for their research track</a></p>
+<p>This post will be updated as I'm corrected, criticised, made aware of more content. You can help.</p>
+</blockquote>
+<h2 id="blind-process">blind process</h2>
+<h3 id="double-blind">double-blind</h3>
+<h4 id="pros">pros</h4>
+<ul>
+<li>Since no identifies are involved, there are less chances of a bias due to known authors or institutions (in theory).</li>
+<li>Reviewers can review work by people they have previously worked with (provided they cannot discern identity from the work itself).</li>
+<li>Since reviewers identities are not known, authors cannot hold grudges or bias (or favouritism) against specific individuals based on their reviewing. e.g. Gender-bias or Racial-bias </li>
+<li>If rebuttal is used, the authors can be more critical of the review without worrying about personal repurcussions</li>
+</ul>
+<h4 id="cons">cons</h4>
+<ul>
+<li>Is it possible to truly hide my identity if my work is in a sufficiently niche area? e.g. I work on GDPR and Semantic Web</li>
+<li>Is it possible to effectively hide that I have authored the past work re-used in the paper? e.g. If I use A, B, and C (references) all authored by one person, will it not be evident that I must be one of those authors?</li>
+<li>For resources such as source code, I have to create a non-identifying copy for the paper. e.g. I usually put my name and email in files I author (in the header section), or put the URL for the repository such as Github, or put names in comments regarding more information or Issues or TODOs. If I supply this code with the paper, I have to find and scrub such references.</li>
+<li>For information hosted on institution infrastructure, I have to find alternative means of hosting. e.g. If I have documentation and manuals associated with my work on my research group's website, I have to find and segregate relevant sections, and host them elsewhere where they cannot be used to identify me.</li>
+<li>For demos and executables hosted on institution infrastructure, I have to find alternative means of hosting. e.g. If a particular service runs on university VMs, which is part of a demo presented in the paper, then I have arrange alternative non-identifiable hosting solutions (such as AWS) to host the demo. Additionally, I have to scrub any identifying information from the demos such as names, contact, university, funding.</li>
+<li>Iterational updates are difficult to anonymise e.g. presenting v2 of some work is unlikely to be authored by someone not involved in the previous work</li>
+</ul>
+<h3 id="single-blind">single-blind</h3>
+<h4 id="pros_1">pros</h4>
+<ul>
+<li>Authors don't know who the reviewers are, so cannot hold bias or grudge against them</li>
+<li>Anonymisation of author identity is not required, which requires less changes or work for the authors to prepare their work for presentations. e.g. software code can have identifying information</li>
+<li>Reviewers can be critical of the work without worrying about personal repurcusions. e.g. Grudge against a reviewer because they did not accept the paper</li>
+<li>Reviewers can look up previous work by the author which can assist in evaluating current work</li>
+</ul>
+<h4 id="cons_1">cons</h4>
+<ul>
+<li>Reviewers know who the authors are, so can be biased or influenced. e.g. one of the authors is a well-known or popular persona in the field, and so adds an 'invisible pressure' to automatically accept their work. Can also be specified as "identity validates work".</li>
+</ul>
+<h3 id="open-no-blind">open (no-blind)</h3>
+<h4 id="pros_2">pros</h4>
+<ul>
+<li>Reviews are transparent which can encourage more quality in terms of the review itself e.g. being specific and not vague in referencing issues, or being more civil in language</li>
+</ul>
+<h4 id="cons_2">cons</h4>
+<ul>
+<li>Reviewers may not feel comfortable being more critical of the work because their identities will be known</li>
+<li>Reviewers may not feel comfortable being more critical of authors well-known or popular in their fields</li>
+<li>Authors may hold a grudge or bias against reviewers e.g. based on gender or race</li>
+</ul>
+<h2 id="other-concerns">other concerns</h2>
+<h3 id="published-reviews">published reviews</h3>
+<h4 id="pros_3">pros</h4>
+<ul>
+<li>Reviews can be assessed by all parties, including non-authors, which motivates more quality in reviews.</li>
+<li>Corrections can be found and made in the future.</li>
+</ul>
+<h4 id="cons_3">cons</h4>
+<ul>
+<li>Authors and Reviewers may not feel comfortable sharing more critical reviews.</li>
+</ul>
+<h3 id="licensed-reviews">licensed reviews</h3>
+<h4 id="pros_4">pros</h4>
+<ul>
+<li>Others can reuse or adapt existing reviews in other reviews e.g. re-using someone critical argument's of an approach in an review</li>
+</ul>
+<h4 id="cons_4">cons</h4>
+<ul>
+<li>Authors and reviewers may not be aware of the best license suited for reviews e.g. CC-by-ND may prevent some re-use of reviews</li>
+</ul>
+<h3 id="forum-style-reviews">forum-style reviews</h3>
+<p>One or more reviewers discuss in a forum-style about the work, and collaboratively or individually submit reviews.</p>
+<h4 id="pros_5">pros</h4>
+<ul>
+<li>Discussion between reviewers can lead to better reviews in terms of clarifications and justifications</li>
+</ul>
+<h4 id="cons_5">cons</h4>
+<ul>
+<li>Reviewers may not be comfortable discussing their opinions with others, especially if identities are known</li>
+</ul>
+<h3 id="linked-reviews">linked reviews</h3>
+<p>Reviews are associated with specific versions of a manuscript, and corrections to the manuscript address which issues in reviews have been address i.e. reviews evolve as the manuscript evolves.</p>
+<h4 id="pros_6">pros</h4>
+<ul>
+<li>Reviews are always relevant to the specific version of the manuscript</li>
+<li>Progress of work can be assessed more systematically</li>
+</ul>
+<h4 id="cons_6">cons</h4>
+<ul>
+<li>Results in more work for the authors and reviewers, or editors in terms of maintaining information</li>
+</ul>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </footer>
+    </article>
+</body>
+</html>

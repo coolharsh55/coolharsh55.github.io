@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>populating train schedule</title>
+    <meta name="description" content="Populating the train schedule and directions"/>
+    <!-- Google -->
+    <meta itemprop="name" content="populating train schedule">
+    <meta itemprop="description" content="Populating the train schedule and directions">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="populating train schedule">
+    <meta name="twitter:description" content="Populating the train schedule and directions">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="populating train schedule"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Populating the train schedule and directions"/>
+    <meta property="article:published_time" content="2015-09-17 14:58:12" />
+    <meta property="article:modified_time" content="2017-11-12 16:08:49" />
+    <meta property="article:tag" content="trains" />
+    
+</head>
+<body>
+    <article>
+        <h1>populating train schedule</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2015-09-17 14:58:12, updated: 2017-11-12 16:08:49<br/>
+            <span>trains;</span> <br/>
+        Populating the train schedule and directions</small></p>
+        
+        <section>
+            <p>Once the <strong>Station</strong> list has been fed into the database, along with the
+associated properties (next and previous), the <strong>Trains</strong> can be added to the database as
+well. The <strong>Timing</strong> objects
+for each station can be created automatically once a train has been
+added. The concept of up/down as
+directions amongst trains is a trivial, but useful one.</p>
+<p>While adding the train, it's
+timing, train_no, initial station and destination will be the inputs.
+The ID will be assigned automatically by the system since we have no
+need to set it explicitly.</p>
+<pre class="codehilite"><code>post_save for Train:
+  if train.initial_station.id &gt; train.destination.id:
+  # direction is UP lonavala to pune
+    add_up_train(train)
+  else:
+  # direction is DOWN: pune to lonavala
+    add_down_train(train)
+
+  add_up_train:
+    station_list = [
+      stations where 
+      id&lt;=train.initial_station.id 
+      and id&gt;=train.destination ]
+    ( order in descending order )
+    time = train.time 
+    # start time
+    for station in station_list:
+      timing.train = train
+      timing.station = station
+      timing.time = time
+     time = time + station.time_to_next
+
+  add_down_train:
+    station_list = [ 
+      stations where id&lt;=train.destination
+      and id&gt;=train.initial_station ]
+      ( order in ascending order )
+      time = train.time # start time
+      for station in station_list:
+        timing = Timing()
+        timing.train = train
+        timing.station = station
+        timing.time = time
+        timing.save()
+        time = time + station.time_to_prev</code></pre>
+
+
+<p>This will populate the train
+timings based on the train (up/down). It can be further refactored using
+abstraction for getting the station list and calculating the time
+between stops. For example, lambdas can be used and passed to a generic
+add_train function:</p>
+<pre class="codehilite"><code>add_train(train):
+  if train.initial_station.id &gt; train.destination.id:
+  # UP
+    top = train.initial_station.id
+    bottom = train.destination.id
+    ordering = descending
+    stop = lambda station: station.time_to_next
+  else:
+  # DOWN
+    top = train.destination.id
+    bottom = train.initial_station.id
+    ordering = ascending
+    stop = lambda station: station.time_to_prev
+    station_list = [
+      stations where id&lt;=top
+      and id&gt;=bottom ]
+      ( order by ordering )
+    time = train.time
+    for station in station_list:
+        timing.train = train
+        timing.station = station
+        timing.time = time
+        timing.save()
+        time = time + stop(station)</code></pre>
+
+
+<p>This results in roughly the same
+code, but saves duplication where unnecessary. If the train is being
+<strong>modified</strong>, then instead of modifying all the timings, it is easier to
+delete them all and repopulate the timing table with the new
+entries.</p>
+<pre class="codehilite"><code>add_train(train):
+  if train in [ 
+    select train in timings ]
+  ( group by train )
+  # train already has timings, so let's remove them first
+  delete all timings
+    where train=train
+  # ... rest of the code remains the same</code></pre>
+        </section>
+        <footer>
+            <p><a href="/me/">About Me</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

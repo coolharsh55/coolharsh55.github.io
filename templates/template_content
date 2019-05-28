@@ -1,0 +1,8 @@
+title: {{ title }}
+published: {{ published }}
+modified: {{ modified }}
+tags: {% for tag in tags %}{{ tag }}{% endfor %}
+description: {{ description }}
+headerimage: {{ headerimage }}
+===
+{{ content }}
