@@ -2,13 +2,17 @@
 {% block pagetitle %}harshp.com{% endblock pagetitle %}
 {% block title_body %}harshp.com{% endblock title_body %}
 {% block nav %}
-<a href="/me/">about me</a>; <a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a> <a href="/dev/">dev</a>;
-    <a href="/hobbies/">hobbies</a>; <a href="https://github.com/coolharsh55/">github</a>; 
+<nav><a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a> <a href="/dev/">dev</a>; <a href="/hobbies/">hobbies</a>; <a href="https://github.com/coolharsh55/">github</a></nav>
 {% endblock nav %}
 {% block desc %}{% endblock desc %}
 {% block content %}
-<h2>recent posts</h2>
-<small><a href="/all">see all</a></small>
+<section>
+    <p>Hi there, my name is <em>Harshvardhan Jitendra Pandit</em>, but I usually accept <em>Harsh</em> which is much easier to pronounce and to remember. <i>harsh</i> in sanskrit means joy, so the name is not as rude as it sounds. I'm currently doing my PhD (Computer Science) in Trinity College Dublin, Ireland on the topic of assessing provenance-based legal obligations, with a specific focus on GDPR. Most of my time is spent doing this.</p>
+    <p>Apart from this, I have several hobbies which I try to indulge in on a regular basis. These include reading books, watching movies, listening to music, playing video games, amateur photography, origami, and thinking on a variety of things.</p>
+</section>
+<section>
+    <h2>recent posts</h2>
+    <small><a href="/all">see all</a></small>
     <dl>
     {% for post in posts %}
         <dt><a href="{{post[3]}}">{{post[0]}}</a></dt>
@@ -17,4 +21,5 @@
             {{post[4]}}</dd>
     {% endfor %}
     </dl>
+</section>
 {% endblock content %}
