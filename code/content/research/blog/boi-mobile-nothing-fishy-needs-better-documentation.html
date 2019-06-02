@@ -1,0 +1,110 @@
+title: BOI Mobile - nothing fishy; needs better documentation
+published: 2017-07-05 23:24:06
+modified: 2017-07-30 21:05:34
+tags: bankingprivacyPrivacy Guardsecurity
+description: A mobile banking app that is under-documented, but not suspicious
+headerimage: 
+===
+<p>Mobile Banking allows us to easily access our accounts and make payments and transfers from the comfort of the palm. <a href="https://www.bankofireland.com/">Bank of Ireland</a> is one of the major banks in Ireland, and they have a mobile app called <a href="https://play.google.com/store/apps/details?id=com.bankofireland.mobilebanking&amp;hl=en">BOI Mobile</a> as a counterpart for their digital banking service called <a href="https://www.365online.com/">365 online</a>. As with any activity involving personal data and financial actions, one must be extremely careful and cautious on the side of suspicion. To that end, this post examines the permissions and data used by the BOI Mobile app on Android with a keener eye.</p>
+<p>While the app itself offers no explanation, and is little more than a mobile version of the website, the terms and conditions clearly mention with a larger emphasis on the data collected, and how it is not stored, or is made anonymous. In light of the upcoming GDPR, these terms and conditions also mention the use of <em>consent</em> multiple times, which enforces user choice and rights. However, none of these explain the permissions the app requires, or why it needs them in the specified manner, nor how it uses the data entered.</p>
+<p>On Android, the app requires/uses the following permissions, and are followed by explanations with the following convention:</p>
+<ul>
+<li>
+<p><em>What?</em> - explains what data this refers to</p>
+</li>
+<li>
+<p><em>Why?</em> - speculative reasoning as to why the app needs the data and how it is used</p>
+</li>
+<li>
+<p><em>no access</em> - explains what changes are apparent when the data is denied to the app</p>
+</li>
+</ul>
+<p><strong>Contacts</strong></p>
+<ul>
+<li><em>What?</em> <ul>
+<li>These are all contacts as stored in your phone book or accounts registered on the device</li>
+</ul>
+</li>
+<li><em>Why?</em><ul>
+<li>The app reads contacts to send money via transfer</li>
+<li>This is explained in the terms and conditions as well</li>
+<li>It is not clear whether contacts are sent to the BOI server or if the transfers happen locally</li>
+<li>It is also not clear whether BOI collects <em>all</em> contacts or only the ones specified by the user</li>
+</ul>
+</li>
+<li><em>no access</em><ul>
+<li>The app can not read contacts, and this prevents it from populating the transfer fields, which prevents you from sending money to contacts within the phonebook</li>
+</ul>
+</li>
+</ul>
+<p><strong>Location</strong>   </p>
+<ul>
+<li><em>What?</em> <ul>
+<li>location with varying granularity based on whether it is gathered using the GPS or network-based</li>
+<li>can access additional location data to make a better guess to your location</li>
+</ul>
+</li>
+<li><em>Why?</em><ul>
+<li>used to find ATMs near your location</li>
+</ul>
+</li>
+<li><em>no access</em><ul>
+<li>The only times the app uses the location is when you open the ATM panel</li>
+<li>If location is denied, it asks for location explicitly, after which it will fail to get ATMs</li>
+</ul>
+</li>
+</ul>
+<p><strong>Photos/Media/Files</strong>   </p>
+<ul>
+<li><em>What?</em><ul>
+<li>read/modify/delete from storage</li>
+</ul>
+</li>
+<li><em>Why?</em><ul>
+<li>No reason was found, though this may be used to store statements and other documentation generated during transactions</li>
+<li>However, there is no mention of this 'feature' on the app's description page</li>
+</ul>
+</li>
+<li><em>no access</em><ul>
+<li>Since no features seem to be using this permission, and none of the services have failed so far, I'm guessing that nothing changes in terms of functionality except the failing of whatever document the app tries to save</li>
+</ul>
+</li>
+</ul>
+<p><strong>Internet and Other Connectivity options</strong></p>
+<ul>
+<li><em>What?</em> <ul>
+<li>View network connections / Wi-Fi connections</li>
+<li>Receive data from internet</li>
+<li>Pair with Bluetooth devices / Access Bluetooth settings</li>
+<li>Detect network settings</li>
+</ul>
+</li>
+<li><em>Why?</em><ul>
+<li>A lot of apps use such network connectivity settings to pinpoint location and also to notify the user in case of loss of connectivity</li>
+<li>As a banking app, maintaining connectivity is important in view of security</li>
+</ul>
+</li>
+<li><em>no access</em><ul>
+<li>The device <strong>needs</strong> an internet connection to work as intended</li>
+<li>The additional Bluetooth settings do not seem to hamper any of the features</li>
+</ul>
+</li>
+</ul>
+<p><strong>Other</strong></p>
+<ul>
+<li><em>What?</em><ul>
+<li>Prevent device from sleeping; keep it awake</li>
+<li>Run the app in the background</li>
+</ul>
+</li>
+<li><em>Why?</em><ul>
+<li>There is no reason why the app should do this</li>
+<li>This could be part of a banking app's security feature where a device is remotely wiped in case of security breach; but if that were the case, then there should be some sort of notification to the user when they install the app</li>
+</ul>
+</li>
+<li><em>no access</em><ul>
+<li>Nothing happens, the app opens and works fine</li>
+</ul>
+</li>
+</ul>
+<p>As a banking app, BOI Mobile asks for a lot of permissions that are exactly clear in terms of usage. Their terms and conditions mention their approach to data - which is to maintain user privacy. This is good, the BOI Mobile app poses no dangers in terms of privacy, but I'm more concerned in terms of security as it stores and maintains the user's account details. The app automatically logs out whenever it is closed or another app is opened over it. Apart from the permissions mentioned by the app, it also has the capability to read SMS and call logs, something that is never <em>actually</em> used by the app when running. It may be used to contact BOI and for verification through security codes, but this is mere speculation. Overall, BOI Mobile seems to work fairly well, does not seem suspicious, but needs a lot of clarification in terms of telling users what the app is doing on their devices. This is important especially for the background activity aspect.</p>

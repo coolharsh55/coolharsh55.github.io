@@ -2,7 +2,7 @@
 {% block pagetitle %}harshp.com{% endblock pagetitle %}
 {% block title_body %}harshp.com{% endblock title_body %}
 {% block nav %}
-<nav><a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a> <a href="/dev/">dev</a>; <a href="/hobbies/">hobbies</a>; <a href="https://github.com/coolharsh55/">github</a></nav>
+<nav><a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a>; <a href="/dev/">dev</a>; <a href="/hobbies/">hobbies</a>; <a href="https://github.com/coolharsh55/">github</a></nav>
 {% endblock nav %}
 {% block desc %}{% endblock desc %}
 {% block content %}
@@ -16,7 +16,7 @@
     <dl>
     {% for post in posts %}
         <dt><a href="{{post[3]}}">{{post[0]}}</a></dt>
-        <dd><a href="/{{post[5]}}"><small>{{post[5]}}</small></a><br/>
+        <dd><a href="/{{post[6]}}"><small>{{post[5]}}</small></a><br/>
             <small>{{post[1]}}</small><br/>
             {{post[4]}}</dd>
     {% endfor %}
