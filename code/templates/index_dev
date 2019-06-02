@@ -1,14 +1,33 @@
 {% extends 'template_base' %}
 {% block pagetitle %}dev -> harshp.com{% endblock pagetitle %}
 {% block title_body %}dev{% endblock title_body %}
-{% block nav %}<nav><a href="/">harshp.com</a></nav>{% endblock nav %}
+{% block nav %}<nav><a href="/">harshp.com</a>{% if not sections %} > <a href="/dev">dev</a>{% endif %}</nav>{% endblock nav %}
 {% block desc %}{% endblock desc %}
-{% block content %}<section>
-            <dl>
-            {% for blog in blogs %}
-                <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
-                <dd><small>{{blog[1]}}</small><br/>
-                    {{blog[4]}}</dd>
-            {% endfor %}
-            </dl>
-        </section>{% endblock content %}
+{% block content %}
+	{% if sections %}<section>
+	<p><dl><dt>Sections</dt>
+	<dd>{% for section, _, path in sections %}
+		<a href="{{path}}"><small>{{ section }}</small></a><br/>
+	{% endfor %}</dd></dl>
+	</section>
+	{% for section, posts, path in sections %}
+	<section>
+		<a href="{{path}}"><h2>{{section}}</h2></a>
+		<dl>
+        {% for blog in posts %}
+            <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+            <dd><small>{{blog[1]}}</small><br/>
+                {{blog[4]}}</dd>
+        {% endfor %}
+        </dl>
+	</section>{% endfor %}{% else %}
+	<section>
+        <dl>
+        {% for blog in blogs %}
+            <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+            <dd><small>{{blog[1]}}</small><br/>
+                {{blog[4]}}</dd>
+        {% endfor %}
+        </dl>
+    </section>{% endif %}
+{% endblock content %}

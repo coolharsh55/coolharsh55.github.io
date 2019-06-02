@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>previous project - kindle annotations</title>
+    <meta name="description" content="The previous project of parsing kindle annotations"/>
+    <!-- Google -->
+    <meta itemprop="name" content="previous project - kindle annotations">
+    <meta itemprop="description" content="The previous project of parsing kindle annotations">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="previous project - kindle annotations">
+    <meta name="twitter:description" content="The previous project of parsing kindle annotations">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="previous project - kindle annotations"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="The previous project of parsing kindle annotations"/>
+    <meta property="article:published_time" content="2017-05-26 14:28:00" />
+    <meta property="article:modified_time" content="2017-05-26 15:09:05" />
+    <meta property="article:tag" content="kindlepythonregex" />
+    
+</head>
+<body>
+    <article>
+        <h1>previous project - kindle annotations</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-05-26 14:28:00, updated: 2017-05-26 15:09:05<br/>
+            <span>kindlepythonregex;</span> <br/>
+        The previous project of parsing kindle annotations</small></p>
+        
+        <section>
+            <h2 id="background">Background</h2>
+<p>I own a <a href="https://en.wikipedia.org/wiki/Amazon_Kindle#Kindle_4">Kindle 4</a>
+which mother gifted me 5-6 years back. Since then, I've read hundreds of
+books on it and saved thousands of annotations. I've lost all these
+annotations twice. One was when I accidentally emptied my entire Kindle,
+and the second time was when I did the same again. Since then, I've
+come to realise that the annotations are stored in a single file called
+<code>clippings.txt</code> located in <code>Documents</code>. The format of this file changes
+with each iteration of the Kindle, and sometimes with certain updates.</p>
+<p>This was the time I was under the influence of <em>regex</em>. Not to sound
+idiotic, but I liked the <em>power</em> of its <em>expressions</em>, and as is the
+case, with a hammer in my hand, everything looked like a nail. So I
+engineered a way to parse each individual annotation out of the file
+by using regex. The project was in <code>python</code> and the only module used
+was <code>re</code>. I engineered the solution using some mangled version of a 
+state machine that iterated over each line, and depending on what it
+had parsed before, executed some action.</p>
+<h2 id="format-of-clippings">Format of clippings</h2>
+<p>A typical annotation on the Kindle4 looks something like this -</p>
+<pre class="codehilite"><code>==========
+The Fountainhead (Ayn Rand)
+- Highlight Loc. 13169  | Added on Saturday, 26 July 14 21:37:48 GMT+01:00
+
+I could die for you. But I couldn’t and wouldn’t live for you.”
+==========</code></pre>
+
+
+<p>All sections (or annotations) are seperated by a line populated with
+only the character <code>=</code>. This means that whenever the parser encounters 
+a line with <code>=</code> in it, it assumes that this is the start of the annotation.
+This is followed by the title of the book with the name of the author 
+enclosed in brackets. After that comes the type of annotation, which can
+be a <em>highlight</em> or a <em>bookmark</em>, with the location of that annotation in
+the book and the date it was added on separated by <code>|</code>. This is followed
+by a blank line and then the text of the annotation.</p>
+<h2 id="state-machine">State machine</h2>
+<p>The start state checks whether the line starts with a <code>=</code> character. If it 
+does, it signals the start of the annotation. After that, it needs to check
+whether the annotation is a <em>highlight</em>, which can be done by checking whether
+the line starts with <code>- Highlight</code>. If it does, skip the blank line and gobble
+the text of the annotation.</p>
+<pre class="codehilite"><code class="language-python">{
+    'check_breakpoint': lambda x: x.startswith('='),
+    'check_is_highlight': lambda x: x.startswith('- Highlight'),
+    'book_info_regex': &quot;^([a-zA-Z']+\s*[a-zA-Z\._';\:,\s\d]*)\((.*)\)$&quot;,
+    'highlight_regex': '^(.*)$',
+}</code></pre>
+
+
+<p>My naive previous self did not understand that the entire annotation could
+have been extracted using a single regex expression. 
+Nevertheless, the code can be found at 
+<a href="https://github.com/coolharsh55/kindle-annotations">Github</a>.</p>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>handling special cases</title>
+    <meta name="description" content="handling some of the special cases  in the train schedule"/>
+    <!-- Google -->
+    <meta itemprop="name" content="handling special cases">
+    <meta itemprop="description" content="handling some of the special cases  in the train schedule">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="handling special cases">
+    <meta name="twitter:description" content="handling some of the special cases  in the train schedule">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="handling special cases"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="handling some of the special cases  in the train schedule"/>
+    <meta property="article:published_time" content="2015-09-17 14:59:23" />
+    <meta property="article:modified_time" content="2017-11-12 16:14:35" />
+    <meta property="article:tag" content="trains" />
+    
+</head>
+<body>
+    <article>
+        <h1>handling special cases</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2015-09-17 14:59:23, updated: 2017-11-12 16:14:35<br/>
+            <span>trains;</span> <br/>
+        handling some of the special cases  in the train schedule</small></p>
+        
+        <section>
+            <p>So far, I've assumed that the data being stored (timings) is static. But
+in reality, trains often run under special circumstances. Where I stay,
+I often see cases like:</p>
+<ul>
+<li>Train A does not stop at X station</li>
+<li>Train B has its timing changed to ### until DD/MM/YY</li>
+<li>Train C will only run until station M until DD/MM/YY</li>
+<li><span></span>and so on...</li>
+</ul>
+<p>There cannot be a generic solution that can solve all such cases in one
+place. So let me take each one and see how to solve it. If patterns
+emerge, awesome! If not, I have to look into how to solve such cases in
+the easiest way possible.</p>
+<p>If train A does not stop at a particular station, it's timing value for
+that station can be set to NULL, which is a special notation meaning <em>no
+value</em>. When creating the timings for a train, this particular condition
+should be checked, and the value set to NULL where applicable.</p>
+<pre class="codehilite"><code>add_train(train):
+  no_stop_stations = 
+    select station from special_cases
+  where 
+    train=train and condition=no_stop
+  # ... rest of the code
+  for station in station_list:
+    if station in no_stop_stations:
+      timing.time = NULL</code></pre>
+
+
+<p>When the train's timings have changed temporarily, the old timings can
+be saved and the new ones applied.</p>
+<pre class="codehilite"><code>change_time_temporary(
+  train, new_time, until_date):
+  # save the old timing to a temporary record
+  save_to_temp(train.train_no, train.timing)
+  # delete all timings for this train
+  delete timings where train=train
+  # save new timings
+  train.timings = new_timeadd_train(train)</code></pre>
+
+
+<p>The temporary record can be a file, or a separate table reserved for
+such instances. Any form of persistence where the old train timings can
+be saved and later restored can work. Restoring is pretty much the same
+as saving, where the old values are retrieved, the record is deleted
+from the temp table. The timings are deleted for this particular train,
+and then added again with the old values.</p>
+<p>For cases, where a train will run only until a particular station until
+DD/MM/YY (it won't run till its assigned destination), the case is
+similar, where instead of saving timing to a temp table, we save the
+original destination.</p>
+<pre class="codehilite"><code>change_destination_temporary(
+  train, new_destination, until_date):
+  # save the old destination to a temporary record
+  save_to_temp(train.train_no, train.destination)
+  # delete all timings and add the train again
+  delete all timings where train=train
+  # save train with new destination
+  train.destination = new_destination
+  # get stations based on this new destination
+  add_train(train)</code></pre>
+
+
+<p>The real problem here would be applying these cases to the data model.
+One way is to hard code such instances into the code itself. Another way
+is to expose a set of API parameters which would allow building queries
+for such special cases. This requires significant work, but allows a
+large variety in the special cases that can be handled.</p>
+<p>A set of choices can be provided to build the queries, such as selecting
+a <em>train_no</em> in the first column and one of these in the second:</p>
+<ul>
+<li>DOES NOT STOP -&gt; next field would be a station selector</li>
+<li>TIMING CHANGED -&gt; next field would be a time field</li>
+<li>RUNS UNTIL -&gt; next field would be a station selector</li>
+</ul>
+<p>It is possible to store both the station id and time values in a single
+field in cases where the time field values are stored as integers
+(seconds since epoch, for e.g.). If not, they can be stored as binary
+objects, or <em>blobs</em>, and cast to the correct type when required. A
+fourth column, called <em>ORIGINAL_VALUE</em><span
+class="\"redactor-invisible-space\""> can also be added to the table to
+store the original values. This keeps all associated values in one
+place, and does not require temporary tables.</span></p>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

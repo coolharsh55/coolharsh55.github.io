@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Reverse engineering an easy way to check GNIB appointments</title>
+    <meta name="description" content="Using reverse engineering to easily pull appointments from the GNIB website"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Reverse engineering an easy way to check GNIB appointments">
+    <meta itemprop="description" content="Using reverse engineering to easily pull appointments from the GNIB website">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Reverse engineering an easy way to check GNIB appointments">
+    <meta name="twitter:description" content="Using reverse engineering to easily pull appointments from the GNIB website">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Reverse engineering an easy way to check GNIB appointments"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Using reverse engineering to easily pull appointments from the GNIB website"/>
+    <meta property="article:published_time" content="2017-05-19 17:09:00" />
+    <meta property="article:modified_time" content="2017-05-20 17:27:32" />
+    <meta property="article:tag" content="GNIBjavascriptreverse engineer" />
+    
+</head>
+<body>
+    <article>
+        <h1>Reverse engineering an easy way to check GNIB appointments</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-05-19 17:09:00, updated: 2017-05-20 17:27:32<br/>
+            <span>GNIBjavascriptreverse engineer;</span> <br/>
+        Using reverse engineering to easily pull appointments from the GNIB website</small></p>
+        
+        <section>
+            <blockquote>
+<p><strong>source</strong>: hosted on Github <a href="https://github.com/coolharsh55/GNIBappointments/">here</a></p>
+<p><strong>webapp</strong>: hosted on Heroku <a href="https://gnibappt.herokuapp.com/">here</a>
+shows available timings for GNIB and Visa appointments</p>
+</blockquote>
+<p>As per the the <a href="http://www.inis.gov.ie/en/INIS/Pages/registration">Irish Law</a>
+I must register myself with the local Police (or Garda). They issue a GNIB
+card, which is proof that I am registered with them and am permitted to
+remain in Ireland. For this, I need to take an appointment online through
+their <a href="https://burghquayregistrationoffice.inis.gov.ie/">website</a>. Seems like
+a little extra effort but then that much was enough to make me stop working
+on what I was supposed to be doing and instead look into how I can <em>save time</em>
+on these appointment bookings.</p>
+<p>The caveat with this approach is that now everyone books online, and somehow
+there almost <em>never</em> are any free appointments available. To just check whether
+there are any appointments available (in a future date), I need to full a form
+with 15 fields, which itself takes 5 minutes, 
+only to see a <em>"no appointments available"</em> message at the end. Frustrating.</p>
+<p>Through this post, I aim to document my efforts into reverse engineering
+GNIB appointment website and protocols to easily get available appointments.
+It resulted in a bit of javascript code that when pasted into the browser
+console, prints the available appointments.
+This is intended to be a first of many posts detailing my efforts to make 
+this a side-project and a tool that can be helpful for others.</p>
+<h2 id="digging-through-javascript-form-onclick">Digging through javascript - Form <code>onClick</code></h2>
+<p>The first rule of automation is to familiar oneself with what is being automated.
+So I set out to inspect what happens when I fill the form and hit the get 
+appointments button. This involved digging through the javascript the site
+runs and following variables and AJAX requests around. Thankfully, Chrome makes
+this really easy using <code>right click -&gt; inspect</code>.</p>
+<p>The button (id <code>btLook4App</code>) has an <code>onclick</code> value of <code>allowLook4App()</code>
+defined in 
+<a href="https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppForm.js">Appform.js</a>.
+The function calls another function called <code>get4DateAvailability()</code> which
+is where the appointments are retrieved using an AJAX request.
+The url for this request is constructed dynamically using the statement
+<code>"/" + stPath + "/(getApps4DTAvailability)?openpage"</code> where 
+<code>stPath</code> is <code>"Website/AMSREG/AMSRegWeb.nsf"</code>. One thing to note here is 
+the addition of <code>openpage</code> at the end of the URL - it is meant to be an
+empty GET parameter. Looking at the other parameters of the AJAX request,
+one can figure out that it only sends information about </p>
+<ol>
+<li>Category</li>
+</ol>
+<p>Yup, that's all the information it sends from those 15 fields that were filled.
+The whole requirement of needing the entire form to be filled and validated
+before sending requests is a <em>sham</em> (and a shame). </p>
+<h2 id="get-request">GET request</h2>
+<p>The GET parameters can be summarised as:</p>
+<pre class="codehilite"><code class="language-json">{
+    &quot;cat&quot;: &quot;value of element #Category&quot;,
+    &quot;sbcat&quot;: &quot;All&quot;,
+    &quot;typ: &quot;Renewal&quot;,
+    &quot;openpage&quot;: &quot;&quot;
+}</code></pre>
+
+
+<p>The kicker here is that the URL handling this GET request has (sanely) been
+configured to implement <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>
+which means that I cannot just query it from any other website.
+So I opened the browser console and tried to see if my AJAX request worked
+by basically copying a minimal version of the original. It needs a variable
+called <code>dataThis</code> which is based on Category and a static string.</p>
+<pre class="codehilite"><code class="language-js">var dataThis = &quot;&amp;cat=Study&amp;sbcat=All&amp;typ=Renewal&quot;;
+$.ajax( {
+    type : &quot;GET&quot;,
+    url :   &quot;/&quot; + stPath + &quot;/(getApps4DTAvailability)?openpage&quot;,
+    data : dataThis,
+    success : function(data) {
+        console.log(data);
+    }
+});</code></pre>
+
+
+<p>which yields the JSON response of <code>Object {slots: "[]"}</code> which is NOTHING. </p>
+<h2 id="ajax-request-and-response">AJAX request and response</h2>
+<p>So I knew I was on a wrong track. Further diggging through requests gave the new
+URL of <code>"/" + stPath + "/(getAppsNear)?openpage"</code> in function <code>getEarliestApps()</code>
+which is part of a hidden button that gets activated/shown only after the 
+form is complete and validated. Querying this new URL using the following function yielded in the given response.</p>
+<pre class="codehilite"><code class="language-js">var dataThis = &quot;&amp;cat=Study&amp;sbcat=All&amp;typ=Renewal&quot;;
+$.ajax( {
+    type : &quot;GET&quot;,
+    url :   &quot;/&quot; + stPath + &quot;/(getAppsNear)?openpage&quot;,
+    data : dataThis,
+    success : function(data) {
+        console.log(data);
+    }
+});</code></pre>
+
+
+<pre class="codehilite"><code class="language-json">{
+    &quot;slots&quot;: [
+        {
+            &quot;id&quot;: &quot;0A03221D91CF90848025811400317D02&quot;,
+            &quot;time&quot;: &quot;4 July 2017 - 10:00&quot;
+        },
+        {
+            &quot;id&quot;: &quot;3B7F286B73A976F08025812500318633&quot;,
+            &quot;time&quot;: &quot;21 July 2017 - 08:00&quot;
+        }
+    ]
+}</code></pre>
+
+
+<p>On a successful query, the response sends over available times in a list 
+under the key <code>slots</code> comprised of <code>id</code> and <code>time</code>, both of which are
+strings. For my purpose, it was enough to extract the <code>time</code> values as
+available appointments. Studying <code>getEarliestApps()</code> shows the conditions
+and ways to detect other possible conditions.</p>
+<ul>
+<li>If there is a field called <code>data.error</code> then the request has an error</li>
+<li>If there is a field called <code>data.empty</code> then there are no appointments currently available</li>
+<li>Just to be sure, I also check length of <code>data.slots</code> as it can be an empty list</li>
+</ul>
+<h2 id="a-quick-way-to-get-appointments">A quick way to get appointments</h2>
+<p>This gave me a way to quickly check available appointments by opening the website and executing the AJAX request with the <code>success</code> function printing out the
+available appointment times. Any error on the console means there was an
+error with the request or there are no appointments available currently.</p>
+<pre class="codehilite"><code class="language-js">var dataThis = &quot;&amp;cat=Study&amp;sbcat=All&amp;typ=Renewal&quot;;
+$.ajax( {
+    type : &quot;GET&quot;,
+    url :   &quot;/&quot; + stPath + &quot;/(getAppsNear)?openpage&quot;,
+    data : dataThis,
+    success : function(data) {
+        for(appointment of data.slots) {
+            console.log(appointment.time);
+        }
+    }
+});</code></pre>
+
+
+<h2 id="future-plans">Future plans</h2>
+<ul>
+<li>Turn this into a <strong>script</strong> that I can run anywhere (terminal/server) so that it
+can be automated (<code>cron</code>)</li>
+<li>Create a <strong>chrome extension</strong> that does the AJAX request automatically periodically
+and then notifies using an icon the available appointments</li>
+</ul>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

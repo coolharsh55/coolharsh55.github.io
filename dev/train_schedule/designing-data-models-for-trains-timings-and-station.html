@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>designing data models for trains, timings, and station</title>
+    <meta name="description" content="A model for updating train timetables"/>
+    <!-- Google -->
+    <meta itemprop="name" content="designing data models for trains, timings, and station">
+    <meta itemprop="description" content="A model for updating train timetables">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="designing data models for trains, timings, and station">
+    <meta name="twitter:description" content="A model for updating train timetables">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="designing data models for trains, timings, and station"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="A model for updating train timetables"/>
+    <meta property="article:published_time" content="2015-09-17 14:43:53" />
+    <meta property="article:modified_time" content="2017-11-12 16:00:09" />
+    <meta property="article:tag" content="trains" />
+    
+</head>
+<body>
+    <article>
+        <h1>designing data models for trains, timings, and station</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2015-09-17 14:43:53, updated: 2017-11-12 16:00:09<br/>
+            <span>trains;</span> <br/>
+        A model for updating train timetables</small></p>
+        
+        <section>
+            <h3 id="train-stations">Train Stations</h3>
+<p>The train stations are setup as follows:</p>
+<ol>
+<li><span style="\&quot;font-family:" monospace;\"="">Pune</span></li>
+<li><span style="\&quot;font-family:"
+    monospace;\"="">Shivajinagar</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Khadki</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Dapodi</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Kasarwadi</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Pimpri</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Chinchwad</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Akurdi</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Dehuroad</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Begdewadi</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Ghorawadi</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Talegaon</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Vadgaon</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Kanhe</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Kamshet</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Malavali</span></li>
+<li><span style="\&quot;font-family:" monospace;\"="">Lonavala</span></li>
+</ol>
+<p>Each station has an id number (the same as the index in above list) that
+is used as its unique identifier. Storing and retrieving data in a
+database is easier with <em>primary keys</em>, which are like the unique
+identifiers for each record. If the user doesn't supply one, the
+database creates one automatically. In this case, explicitly setting the
+ID is beneficial as it allows nifty queries such as
+<code>select stations where id&lt;=15;</code> would give all stations from Pune to
+Kamshet.</p>
+<p>Each station has three properties:</p>
+<ol>
+<li><span style="\&quot;font-family:" monospace;\"="">Name</span></li>
+<li>Time taken to reach this station from the previous one: <span
+    style="\&quot;font-family:" monospace;\"="">time_from_prev</span></li>
+<li>Time taken to reach the next station from this one: <span
+    style="\&quot;font-family:" monospace;\"="">time_to_next</span></li>
+</ol>
+<p>Based on these timings (next and previous) we can calculate the train
+timing once we know three things:</p>
+<ol>
+<li>Where does it start from? (<strong>initial station</strong>)</li>
+<li>Where does it go to? (<strong>destination</strong>)</li>
+<li>When does it leave the initial station? (<strong>timing</strong>)</li>
+</ol>
+<h2 id="train">Train</h2>
+<p>A train has five properties:</p>
+<ol>
+<li>train_id: a unique <span style="\&quot;font-family:"
+    monospace;\"="">integer</span> used to identify the train, like the
+    <span style="\&quot;font-family:" monospace;\"="">station_id</span></li>
+<li>train_no: each train has a number used to identify the train (given
+    by the Railways Department)</li>
+<li>initial station: <span style="\&quot;font-family:"
+    monospace;\"="">station_start </span></li>
+<li>destination: <span style="\&quot;font-family:"
+    monospace;\"="">station_end</span></li>
+<li>timing for leaving the initial station: <span
+    style="\&quot;font-family:" monospace;\"="">timing</span></li>
+</ol>
+<p>The two stations, initial and destination refer to the <strong>Train
+Station</strong>, whereas the <em>timing</em> is a Time object.</p>
+<h2 id="storing-train-runs">Storing train runs</h2>
+<p>Each train run consists of the train leaving the initial station at the
+specified time towards its destination. We can calculate the scheduled
+stops at all stations based on the station's next and previous timing
+properties. For eg. A train leaves Pune (station = 1) at exactly 12pm
+(noon) for Lonavala (station = 17). Then we can have:</p>
+<pre class="codehilite"><code>station_list = [
+  stations where id &gt;= Pune.id 
+  and id &lt;= Lonavala.id ]
+  ( order by id )
+  train = 12:00
+  time_to_next = 0
+  for station in station_list:
+    time = time + time_to_next
+    train stops at &lt;station&gt; at &lt;time&gt;
+    time_to_next = station.time_to_next</code></pre>
+
+
+<p>This generates the train's time runs from Pune to Lonavala. Using this
+approach to generate the timings <em>every time</em> a request comes in is not
+efficient. Instead, we can use this to calculate the timings for a train
+when it is added, and save it to database. So we have a separate table
+for <strong>Timings</strong> that contains:
+ * timings: Time Field
+ * train: reference to Train
+ * station: reference to Station</p>
+<p>This approach makes sense, since we can get the following frequently
+required things very easily:</p>
+<ul>
+<li>get timings for train A: <code>select timings where train = A</code></li>
+<li>get all trains for station B: <code>select timings where station = B</code></li>
+<li>get all trains for station B going towards C:
+    <code>select timings where station = B and train in [ trains going up (pune) or down (lonavala) ]</code></li>
+</ul>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

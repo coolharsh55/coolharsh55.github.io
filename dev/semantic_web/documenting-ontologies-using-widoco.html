@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Documenting ontologies using Widoco</title>
+    <meta name="description" content="Widoco is a nifty utility to document OWL2 vocabularies"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Documenting ontologies using Widoco">
+    <meta itemprop="description" content="Widoco is a nifty utility to document OWL2 vocabularies">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Documenting ontologies using Widoco">
+    <meta name="twitter:description" content="Widoco is a nifty utility to document OWL2 vocabularies">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Documenting ontologies using Widoco"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Widoco is a nifty utility to document OWL2 vocabularies"/>
+    <meta property="article:published_time" content="2017-09-02 17:32:14" />
+    <meta property="article:modified_time" content="2017-09-02 17:43:28" />
+    <meta property="article:tag" content="documentationontologiesOWLtools" />
+    
+</head>
+<body>
+    <article>
+        <h1>Documenting ontologies using Widoco</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-09-02 17:32:14, updated: 2017-09-02 17:43:28<br/>
+            <span>documentationontologiesOWLtools;</span> <br/>
+        Widoco is a nifty utility to document OWL2 vocabularies</small></p>
+        
+        <section>
+            <p><a href="https://dgarijo.github.io/Widoco/">Widoco</a> is a Java tool that generates HTML documentation for OWL2 vocabularies. It uses <a href="http://www.essepuntato.it/lode">LODE</a> as its backend for generating the documentation and provides several additional features on top of it such as an embedding of the WebVOWL visualization as well as sections pertaining to description of the ontology such as Introduction, Overview, and Description.</p>
+<h2 id="installation">Installation</h2>
+<p>Widoco is available as a JAR file, which contains all the dependencies, and requires Java 1.8. Running the JAR file is simple as -</p>
+<pre class="codehilite"><code class="language-bash">java -jar widoco.jar</code></pre>
+
+
+<p>though there are several configuration options on the documentation page. Widoco can run an interactive wizard for selecting the various ontology properties, or be run as a shell utility.</p>
+<h2 id="annotations">Annotations</h2>
+<p>Widoco uses annotations found in the OWL2 ontology based on a series of <a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html">guidelines</a> published on its site. Once the ontology has been annotated with these properties, Widoco reflects them in the generated documentation. These are -</p>
+<pre class="codehilite"><code>dct:title
+dct:creator
+dct:created
+dct:modified
+vann:preferredNamespaceURI
+vann:preferredNamespacePrefix
+owl:versionInfo
+owl:versionIRI
+dct:description
+rdfs:comment
+dct:license
+dct:abstract</code></pre>
+
+
+<p>A description of these terms and how they are used within the ontology, and by Widoco, is available on the Widoco site (see above guidelines link).</p>
+<h2 id="configurations">Configurations</h2>
+<p>Widoco can be run via the command line using the configuration options, or as a wizard. The options can be saved in a config file with the default path of <code>config/config.properties</code>.
+See an example <a href="https://github.com/dgarijo/Widoco/blob/master/src/main/resources/config/config.properties">config file</a> from the Widoco test folder.</p>
+<h3 id="first-run">First run</h3>
+<p>When running Widoco for the first time, the following configuration options should be set (not necessary, but as an example) -</p>
+<pre class="codehilite"><code class="language-bash">java -jar widoco.jar \
+    -ontFile $PATH_TO_ONTOLOGY_FILE
+    # OR 
+    -ontURI $URL_TO_ONTOLOGY
+    -outFolder $PATH_TO_DOCUMENTATION
+    -confFile $PATH_CONFIG
+    -includeImportedOntologies
+    -webVowl
+    -licensius
+    -rewriteAll</code></pre>
+
+
+<p>Also consider adding the <code>-oops</code> flag to get an evaluation of the ontology using the <a href="http://oops.linkeddata.es/index.jsp">OOPS</a> service that checks for common errors and malpractices in ontologies.</p>
+<p>In the first run, Widoco will generate the documentation in the specified output folder. This documentation contains distinct HTML files with the following folder structure -</p>
+<pre class="codehilite"><code class="language-bash">.
+├── docs # -- THIS WAS THE OUTPUT DOCUMENTATION FOLDER --
+│   ├── 406.html  # for HTTP406 errors
+│   ├── index-en.html  # ontology documentation index page
+│   ├── ontology.nt  # NT representation of the ontology
+│   ├── ontology.ttl  # Turtle representation of the ontology
+│   ├── ontology.xml  # RDF/XML representation of the ontology
+│   ├── provenance  # provenance of the ontology
+│   ├── readme.md  # auto-generated Widoco file
+│   ├── resources
+│   ├── sections  # These are the various sections in the documentation page
+│   │   ├── abstract-en.html
+│   │   ├── crossref-en.html
+│   │   ├── description-en.html
+│   │   ├── introduction-en.html
+│   │   ├── overview-en.html
+│   │   └── references-en.html
+│   └── webvowl
+7 directories, 30 files</code></pre>
+
+
+<p>You can see what the default documentation page looks like by opening the <code>index-en.html</code> document in a browser. Be aware of the browser issues and limitations as discussed on the Widoco page. As of the date this page was written, there is an issue with Chrome regarding opening files without a special flag that allows such files to be directly loaded by the page itself.</p>
+<p>The <em>sections</em> folder contains placeholder documents for the various sections. Now you can go ahead and edit the <em>sections</em> such as Abstract, Introduction, etc. (which are HTML, btw), and Widoco will persist these sections (which means not overwrite them) the next time the ontology is updated (and Widoco is run over it again).</p>
+<h2 id="subsequent-runs">Subsequent runs</h2>
+<p>On subsequent runs, Widoco (the smart tool that it is), can be configured to update only the changes in the ontology, preserving the underlying documentations (in essence, the <em>sections</em> folder). This is done via the <code>-crossRef</code> option, used in place of the <code>-rewriteAll</code> option which replaces all sections with placeholders.</p>
+<pre class="codehilite"><code class="language-bash">java -jar widoco.jar \
+    -ontFile $PATH_TO_ONTOLOGY_FILE
+    # OR 
+    -ontURI $URL_TO_ONTOLOGY
+    -outFolder $PATH_TO_DOCUMENTATION
+    -confFile $PATH_CONFIG
+    -includeImportedOntologies
+    -webVowl
+    -licensius
+    -crossRef</code></pre>
+
+
+<p>As the documentation says,</p>
+<blockquote>
+<p>The <code>-crossRef</code> option will ONLY generate the overview and cross reference sections. The index document will NOT be generated. The htaccess, provenance page, etc., will not be generated unless requested by other flags. This flag in intended to be used only after a first version of the documentation exists.</p>
+</blockquote>
+<p>Along with updating the ontology documentation, Widoco can also be set to use the provenance trace to automatically link subsequent versions to the previous ones via the config file.</p>
+<h2 id="my-config-file">My config file</h2>
+<p>My config file, shared here for example , goes something like -</p>
+<pre class="codehilite"><code class="language-bash">abstract=The abstract for my ontology
+ontologyTitle=The title for my ontology
+ontologyPrefix=myonto
+ontologyNamespaceURI=http://example.com
+ontologyName=The GDPR Provenance ontology
+thisVersionURI=http://example.com/version1.1
+latestVersionURI=http://example.com
+previousVersionURI=http://example.com/version1.0
+dateOfRelease=2017-08-01
+ontologyRevisionNumber=1.1
+licenseURI=http://purl.org/NET/rdflicense/cc-by4.0
+licenseName=Creative Commons CC-BY
+licenseIconURL=null
+citeAs=
+DOI=
+status=Ontology Specification Draft
+backwardsCompatibleWith=
+publisher=
+publisherURI=
+publisherInstitution=
+publisherInstitutionURI=
+authors=Harshvardhan J. Pandit
+authorsURI=http://purl.org/adaptcentre/people/harshvardhan_pandit
+authorsInstitution=ADAPT Centre, Trinity College Dublin
+authorsInstitutionURI=https://adaptcentre.ie
+contributors=
+contributorsURI=
+contributorsInstitution=
+contributorsInstitutionURI=
+importedOntologyNames=
+importedOntologyURIs=
+extendedOntologyNames=
+extendedOntologyURIs=
+RDFXMLSerialization=ontology.xml
+TurtleSerialization=ontology.ttl
+N3Serialization=ontology.nt</code></pre>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

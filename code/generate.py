@@ -9,7 +9,7 @@ ENV = Environment(
     loader=FileSystemLoader('templates'))
 INDEX = []
 logging.basicConfig(
-    level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def _load(filename):
@@ -107,13 +107,13 @@ def generate_docs(
         if not files:
             logging.debug(f'skipped: found no files in {root}')
             continue
+
         directorypath = root.replace('content', '..', 1)
         logging.debug(f'directorypath is {directorypath}')
         if not os.path.exists(directorypath):
             logging.debug(f'created directory {directorypath}')
             os.makedirs(directorypath)
         index = []
-        # render templates
         for f in files:
             filename, extension = os.path.splitext(f)
             path = os.path.join(root, f)
@@ -149,67 +149,84 @@ def generate_docs(
         logging.info(f'generated {name} index')
 
 
-def _generate_sectioned_docs(path):
-    if os.path.isfile(path + '/metadata'):
-        with open('metadata', 'r') as fd:
-            section = fd.read().split(':')[-1].strip()
-    else:
-        section = 'general'
-    index = []
-    for root, _, files in os.walk(path):
-        for f in files:
-            filename, extension = os.path.splitext(f)
-            path = os.path.join(root, f)
-            data = _read_content(path)
-            index.append((
-                data['title'],
-                data['published'],
-                data['modified'],
-                filename,
-                data['description'],
-                section,
-                path,
-            ))
-            INDEX.append((
-                data['title'],
-                data['published'],
-                data['modified'],
-                f'{contentpath}/{filename}',
-                data['description'],
-                name,
-                contentpath,
-            ))
-            docspath = '..' + path.replace('content', '', 1)
-            if extension == ".html":
-                template = ENV.get_template(template_content)
-                with open(docspath, 'w') as fd:
-                    fd.write(template.render(data))
-            logging.debug(f'generated file {docspath}')
-            # TODO: more format generators
-            # e.g. markdown (md), text (txt)
-        index.sort(key=lambda x: x[1], reverse=True)
-        return index
+def generate_sectioned_docs(
+        name, contentpath, template_content, template_index):
 
-generate_sectioned_docs(
-        name: str, contentpath: str,
-        template_content: str, template_index: str):
+    def _generate_sectioned_docs(path):
+        if os.path.isfile(path + '/metadata'):
+            with open(path + '/metadata', 'r') as fd:
+                section = fd.read().split(':')[-1].strip()
+        else:
+            section = 'general'
+        logging.debug(f'generating section-docs for {path}')
+        index = []
+        for root, _, files in os.walk(path):
+            directorypath = root.replace('content', '..', 1)
+            if not os.path.exists(directorypath):
+                logging.debug(f'created directory {directorypath}')
+                os.makedirs(directorypath)
+            for f in files:
+                filename, extension = os.path.splitext(f)
+                if filename == 'metadata':
+                    continue
+                path = os.path.join(root, f)
+                logging.debug(f'reading {path}')
+                data = _read_content(path)
+                logging.debug(f'reading {path}')
+                index.append((
+                    data['title'],
+                    data['published'],
+                    data['modified'],
+                    filename,
+                    data['description'],
+                    section,
+                ))
+                INDEX.append((
+                    data['title'],
+                    data['published'],
+                    data['modified'],
+                    f'{path}/{filename}',
+                    data['description'],
+                    name,
+                    contentpath,
+                ))
+                docspath = '..' + path.replace('content', '', 1)
+                if extension == ".html":
+                    template = ENV.get_template(template_content)
+                    with open(docspath, 'w') as fd:
+                        fd.write(template.render(data))
+                logging.debug(f'generated file {docspath}')
+                # TODO: more format generators
+                # e.g. markdown (md), text (txt)
+            break
+
+        index.sort(key=lambda x: x[1], reverse=True)
+        return index, section
+
     logging.debug(f'generating docs for {name}')
     dev_index = []
-    for root, _, files in os.walk('content/' + contentpath):
-        if not files:
+    for root, directories, files in os.walk('content/' + contentpath):
+        if not files and not directories:
             logging.debug(f'skipped: found no files in {root}')
             continue
-        directorypath = root.replace('content', '..', 1)
-        logging.debug(f'directorypath is {directorypath}')
-        if not os.path.exists(directorypath):
-            logging.debug(f'created directory {directorypath}')
-            os.makedirs(directorypath)
-        general_index = []
 
+        general_index, _ = _generate_sectioned_docs(root)
+        dev_index.append(('General', general_index, '.'))
+        for directory in directories:
+            directorypath = os.path.join(root, directory)
+            index, section = _generate_sectioned_docs(directorypath)
+            dev_index.append((section, index, directory))
+            directorypath = os.path.join(directorypath, 'index.html')
+            directorypath = directorypath.replace('content', '..')
+            with open(directorypath, 'w') as fd:
+                template = ENV.get_template(template_index)
+                fd.write(template.render(blogs=index))
+        break
+
+    dev_index.sort(key=lambda x: x[1][1][1], reverse=True)
+    with open('../' + contentpath + '/index.html', 'w') as fd:
         template = ENV.get_template(template_index)
-        with open(f'{directorypath}/index.html', 'w') as fd:
-            fd.write(template.render(blogs=index))
-        logging.info(f'generated {name} index')
+        fd.write(template.render(sections=dev_index))
 
 
 def generate_index():
@@ -218,9 +235,9 @@ def generate_index():
     with open('../index.html', 'w') as fd:
         fd.write(template.render(latest=INDEX[0], posts=INDEX[:10]))
     logging.info('generated homepage index')
-    # template = ENV.get_template('template_all')
-    # with open('./docs/all.html', 'w') as fd:
-    #     fd.write(template.render(posts=INDEX[:10]))
+    template = ENV.get_template('index_all')
+    with open('../all.html', 'w') as fd:
+        fd.write(template.render(posts=INDEX))
 
 
 if __name__ == '__main__':
@@ -240,11 +257,11 @@ if __name__ == '__main__':
     #     'legacy_data/ResearchBlogPost-2019-05-27.json', 'research/blog')
 
     # generate statis documents for serving
-    # generate_docs('Blog', 'blog', 'template_blog', 'index_blog')
-    # generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
-    # generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
-    # generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
-    # generate_docs(
-    #     'Research Blog', 'research/blog',
-    #     'template_research_blog', 'index_research_blog')
-    # generate_index()
+    generate_docs('Blog', 'blog', 'template_blog', 'index_blog')
+    generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
+    generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
+    generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
+    generate_docs(
+        'Research Blog', 'research/blog',
+        'template_research_blog', 'index_research_blog')
+    generate_index()

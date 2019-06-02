@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Getting appointments using python</title>
+    <meta name="description" content="Retrieving GNIB appointments using python"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Getting appointments using python">
+    <meta itemprop="description" content="Retrieving GNIB appointments using python">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Getting appointments using python">
+    <meta name="twitter:description" content="Retrieving GNIB appointments using python">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Getting appointments using python"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Retrieving GNIB appointments using python"/>
+    <meta property="article:published_time" content="2017-05-19 18:57:00" />
+    <meta property="article:modified_time" content="2017-05-20 17:27:08" />
+    <meta property="article:tag" content="GNIBpythonscript" />
+    
+</head>
+<body>
+    <article>
+        <h1>Getting appointments using python</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-05-19 18:57:00, updated: 2017-05-20 17:27:08<br/>
+            <span>GNIBpythonscript;</span> <br/>
+        Retrieving GNIB appointments using python</small></p>
+        
+        <section>
+            <blockquote>
+<p><strong>recap:</strong> In the previous posts, I managed to get the available appointments
+using <code>javascript</code> in the browser and through a <code>bash</code> script.</p>
+<p><strong>source</strong>: hosted on Github <a href="https://github.com/coolharsh55/GNIBappointments/">here</a></p>
+<p><strong>webapp</strong>: hosted on Heroku <a href="https://gnibappt.herokuapp.com/">here</a>
+shows available timings for GNIB and Visa appointments</p>
+</blockquote>
+<p>Following up with a <code>python</code> based script that uses the 
+<a href="python-requests.org">requests</a> library for the GET request and then
+parses the response to print available appointment times.</p>
+<h2 id="requests">requests</h2>
+<p><code>requests</code> is a great library, which should be used more often by everyone,
+and one of the default installations on any system. The only reason it is 
+not in the standard library is because there is no real need for it to be.
+Besides, by being outside the standard collection, it can iterate at a 
+different pace. It makes requests really simple to read and make.</p>
+<p>Specifying parameters becomes easy as they are delcared as a collection.</p>
+<pre class="codehilite"><code class="language-python">params = (
+    ('openpage', ''),  # BLANK
+    ('dt', ''),  # PARSED, but is always blank
+    ('cat', 'Study'),  # Category
+    ('sbcat', 'All'),  # Sub-Category
+    ('typ', 'Renewal'),  # Type
+)</code></pre>
+
+
+<p>Similarly, headers are a <code>dict</code> which allows us to specify the <code>key: value</code> pairs
+to be sent as headers.</p>
+<pre class="codehilite"><code class="language-python">headers = {
+    'User-agent': 'script/python',
+    'Accept': '*/*',  # CORS
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Origin': 'null',  # CORS
+    'Connection': 'keep-alive',
+}</code></pre>
+
+
+<p>Making the request is calling the URL with the parameters and headers passed to it.</p>
+<pre class="codehilite"><code class="language-python">response = requests.get(
+    'https://burghquayregistrationoffice.inis.gov.ie/'
+    + 'Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)',
+    headers=headers, params=params)</code></pre>
+
+
+<h2 id="dealing-with-sslhttps">Dealing with SSL/HTTPS</h2>
+<p>As the SSL/HTTPS is an issue with the GNIB endpoints, I've stumbled upon
+the following solution. The requests library doesn't contain the particular
+cipher (or how the encryption is encoded). The particular cipher in use
+can be gleamed by studying the output of <code>curl --verbose</code> and then finding the 
+corresponding entry in <a href="https://testssl.sh/openssl-rfc.mapping.html">this</a>
+table. For this particular case, it happened to be <code>DES-CBC3-SHA</code>.</p>
+<pre class="codehilite"><code class="language-python"># Looked up using curl --verbose
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':DES-CBC3-SHA'
+# disable SSL warning
+requests.packages.urllib3.disable_warnings(
+    requests.packages.urllib3.exceptions.InsecureRequestWarning)</code></pre>
+
+
+<h2 id="response">response</h2>
+<p>The response status code tells us whether the request was sucessfull or not.
+For this, check the value of <code>response.status_code</code>, which should be <code>2xx</code>.</p>
+<h2 id="parsing-json">Parsing JSON</h2>
+<p>This part is pretty much simple as covered in the previous post.
+Some additional checks for error conditions out of the way,
+the appointments can be printed from the response.</p>
+<pre class="codehilite"><code class="language-python"># sanity checks
+data = response.json()
+# error key is set
+if data.get('error', None) is not None:
+    raise Exception('ERROR: %s' % data['error'])
+
+# If there are no appointments, then the empty key is set
+if data.get('empty', None) is not None:
+    print('No appointments available')
+    sys.exit(0)
+
+# There are appointments, and are in the key 'slots'
+data = data.get('slots', None)
+if data is None:
+    raise Exception('Data is NULL')
+
+# This should not happen, but a good idea to check it anyway
+if len(data) == 0:
+    print('No appointments available')
+    sys.exit(0)
+
+# print appointments
+# Format is:
+# {
+#   'id': 'str',
+#   'time': 'str'
+# }
+for appointment in data:
+    print(appointment['time'])</code></pre>
+
+
+<h2 id="future-work">Future Work</h2>
+<ul>
+<li>Online website that runs the script frequently and allows checking appointment
+timings online</li>
+<li>Chrome extension that shows appointments</li>
+</ul>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>

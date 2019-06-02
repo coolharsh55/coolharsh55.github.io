@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, img, #desc {
+            text-align: center;
+        }
+    </style>
+    
+    <!-- metadata -->
+    <title>Setting up Openlink Virtuoso</title>
+    <meta name="description" content="Setting up Virtuoso as a triple-store and serving with Nginx"/>
+    <!-- Google -->
+    <meta itemprop="name" content="Setting up Openlink Virtuoso">
+    <meta itemprop="description" content="Setting up Virtuoso as a triple-store and serving with Nginx">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="Setting up Openlink Virtuoso">
+    <meta name="twitter:description" content="Setting up Virtuoso as a triple-store and serving with Nginx">
+    <meta name="twitter:creator" content="@coolharsh55">
+    
+    <!-- Facebook -->
+    <meta property="og:title" content="Setting up Openlink Virtuoso"/>
+    <meta property="og:type" content="article" />
+    
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="Setting up Virtuoso as a triple-store and serving with Nginx"/>
+    <meta property="article:published_time" content="2017-08-23 16:11:30" />
+    <meta property="article:modified_time" content="2017-08-23 16:21:02" />
+    <meta property="article:tag" content="NginxontologiesOpenlink Virtuosotoolstriple-store" />
+    
+</head>
+<body>
+    <article>
+        <h1>Setting up Openlink Virtuoso</h1>
+        <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
+        <p id="desc"><small>published: 2017-08-23 16:11:30, updated: 2017-08-23 16:21:02<br/>
+            <span>NginxontologiesOpenlink Virtuosotoolstriple-store;</span> <br/>
+        Setting up Virtuoso as a triple-store and serving with Nginx</small></p>
+        
+        <section>
+            <p><a href="https://virtuoso.openlinksw.com/linked-data/">Openlink Virtuoso</a> is a powerful
+triple-store (and also a traditional RDBMS) with many different features. Setting
+up virtuoso is easy as packages are available in most distributions. Virtuoso has
+a bizzare collection of documentation which is scattered, unorganised, and sometimes
+missing. Depite this, it is a solid tool which is easy to set up and use, and comes
+configured ready for production use.</p>
+<h2 id="installation">Installation</h2>
+<p>The package <code>virtuoso-opensource</code> is available on Debian based systems, and can be
+installed with -</p>
+<pre class="codehilite"><code class="language-bash">sudo apt-get install virtuoso-opensource</code></pre>
+
+
+<p>which will install virtuoso and set it up as a system service with the name</p>
+<pre class="codehilite"><code>virtuoso-opensource-X.x</code></pre>
+
+
+<p>with <code>X.x</code> being version numbers, which for me were <code>6.1</code>.
+The service can be managed as:</p>
+<pre class="codehilite"><code class="language-bash"># start, stop, restart, status
+sudo service virtuoso-opensource-X.x start
+sudo service virtuoso-opensource-X.x stop
+sudo service virtuoso-opensource-X.x restart
+sudo service virtuoso-opensource-X.x status</code></pre>
+
+
+<p>During installation, virtuoso will ask to set a password for two users -
+<code>DBA</code> and <code>DAV</code> which are like <code>admins</code> for the web interface and management actions.
+It is essential to remember the password as this is required to make changes to
+virtuoso and also to add other users.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The config file is located at -</p>
+<pre class="codehilite"><code>/etc/virtuoso-opensource-X.x/virtuoso.ini</code></pre>
+
+
+<p>and contains settings for storage location and server settings. Virtuoso has the option
+of serving the management interface over a SSL certificate (located in the <em>Parameters</em>
+section) which is commented out by default. The configuration for the Web interface is
+in the <code>HTTPServer</code> section.</p>
+<p><code>ServerPort</code> refers to the port the virtuoso interface runs at, which is <code>8890</code> by default,
+which can be changed through this option. A description of the various options is
+available at <a href="http://docs.openlinksw.com/virtuoso/dbadm/">link</a>.</p>
+<h2 id="conductor">Conductor</h2>
+<p>The virtuoso web interface is called conductor, and offers management capabilities
+for all its features. It is served by default at <code>/conductor</code> URL prefixed
+by wherever virtuoso is being served.</p>
+<h3 id="linked-data">Linked Data</h3>
+<p>The <em>linked data</em> section in <em>Conductor</em> offers a <em>SPARQL</em> endpoint, query interface,
+and management capabilities for graphs and datasets. The default tab for <em>SPARQL</em>
+is a query interface which queries the (<em>default</em>) graph specified and displays
+the results in the page itself. <em>Graphs</em> shows all available graphs in the triple store,
+and virtuoso comes with a lot of RDF data and some graphs by default, which one can
+assume are required for its configurations and data settings. The <em>Namespaces</em> tab
+shows the stored namespaces for RDF graphs, and one can add custom namespaces here.
+<em>Quad Store Upload</em> provides a simple way to upload a RDF file as a dataset or import
+it from a URL. It requires the <em>named graph IRI</em> under which the dataset is stored in the
+triple store. There is no <em>default</em> graph, therefore the namespace <em>has</em> to be provided.</p>
+<h2 id="isql">iSQL</h2>
+<p>Virtuoso provides a utility called <em>Interactive SQL</em> or <em>iSQL</em> which is accessed
+using <code>isql-vt</code> or can be symlinked from <code>/usr/bin/isql-vt</code>. This utility provides
+SQL-like access to the datasets which can be used to perform SPARQL queries or
+upload data into the triple store.</p>
+<h2 id="sparql-endpoint">SPARQL Endpoint</h2>
+<p>By default, <code>/sparql</code> is the <em>SPARQL</em> endpoint provided by virtuoso, and requires no
+access control to set up or access. So once you have used <em>Conductor</em> or <em>iSQL</em> to upload
+the dataset, the <em>SPARQL</em> endpoint is ready to serve the data for the given graph IRI.
+The only thing to configure is to serve datasets under a given IRI.</p>
+<h2 id="exposing-virtuoso-interfaces-using-nginx">Exposing Virtuoso interfaces using Nginx</h2>
+<p>By default, Virtuoso runs at <code>localhost:8890</code>, which Nginx can be configured with a
+proxy to pass traffic to the server. However, for some reason, Nginx cannot pass
+in a reverse proxy, or map URL to the localhost as required. A <em>hack</em> around this
+is to configure all the locations virtuoso requires as URL accesses, and proxy pass
+them to the Virtuoso server. A list of them is-</p>
+<pre class="codehilite"><code class="language-bash">/virtuoso
+/conductor
+/about
+/category
+/class
+/data
+/describe
+/delta.vsp
+/fct
+/issparql
+/ontology
+/page
+/property
+/rdfdesc
+/resource
+/services
+/snorql
+/sparql-auth
+/sparql
+/statics
+/void
+/wikicompany</code></pre>
+
+
+<p>If a particular service is to be restricted or not provided, then simply remove
+its URL from the Nginx configurations. An example of a proxy configuration for
+a URL is -</p>
+<pre class="codehilite"><code class="language-nginx">location /sparql {
+    proxy_set_header X-Real-IP $remote_addr ;
+    proxy_set_header X-Forwarded-For $remote_addr ;
+    proxy_set_header Host $host ;
+    proxy_set_header X-NginX-Proxy true;
+    rewrite ^/virtuoso/?(.*) /$1 break;
+    proxy_pass http://localhost:8890/;
+    proxy_redirect off;</code></pre>
+        </section>
+        <footer>
+            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+        </footer>
+    </article>
+</body>
+</html>
