@@ -27,6 +27,64 @@
             text-align: center;
         }
     </style>
+        <style type="text/css">
+        html, body {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 2px;
+        }
+        footer {
+            text-align: center;
+            margin: auto;
+            display: block;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+        }
+        h1, nav, #desc {
+            text-align: center;
+        }
+        .Button {
+            -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+            box-shadow:inset 0px 1px 0px 0px #ffffff;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+            background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+            background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+            background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+            background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+            background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+            background-color:#ffffff;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #dcdcdc;
+            display:inline-block;
+            cursor:pointer;
+            color:#666666;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 10px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffffff;
+        }
+        .Button:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+            background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+            background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+            background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+            background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+            background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+            background-color:#f6f6f6;
+        }
+        .Button:active {
+            position:relative;
+            top:1px;
+        }
+
+    </style>    
     <!-- metadata -->
     <title>research -> harshp.com</title>
     <meta name="description" content="{{ description }}"/>
@@ -75,32 +133,38 @@
             <dl>
                 <dt>Selected Publications</dt>
                 <dd><b>GConsent - A Consent Ontology based on the GDPR</b><br/>
-                    <i>Conference Paper</i>
-                    <u>Harshvardhan J. Pandit</u>, Christophe Debruyne, Declan O'Sullivan, Dave Lewis.
-                    <i>16th European Semantic Web Conference (ESWC), Porotoz, Slovenia. 2019.</i>
-                    <a href="http://openscience.adaptcentre.ie/ontologies/gconsent/main.html">HTML</a>;
-                    <a href="https://doi.org/10.1007/978-3-030-21348-0_18">proceedings</a>; 
-                    <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2019_conference_GConsent_a_consent_ontology_based_on_the_GDPR.pdf">preprint PDF</a>;</dd>
-                <dd><b>An Exploration of Data Interoperability for GDPR</b>
+                    <i>Conference Paper</i></br/>
+                    <u>Harshvardhan J. Pandit</u>, Christophe Debruyne, Declan O'Sullivan, Dave Lewis.<br/>
+                    <i>16th European Semantic Web Conference (ESWC), Porotoz, Slovenia. 2019.</i><br/>
+                    <a class="Button" href="https://doi.org/10.1007/978-3-030-21348-0_18">proceedings</a>
+                    <a class="Button" href="http://openscience.adaptcentre.ie/ontologies/gconsent/main.html">HTML (OA)</a>
+                    <a class="Button" href="https://doi.org/10.5281/zenodo.3246430">zenodo (OA)</a>
+                    <a class="Button" href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2019_conference_GConsent_a_consent_ontology_based_on_the_GDPR.pdf">archive</a>
+                    <a class="Button" href="https://www.slideshare.net/HarshvardhanPandit1/gconsent-a-consent-ontology-based-on-the-gdpr">slides</a>
+                </dd>
+                <dd><b>An Exploration of Data Interoperability for GDPR</b><br/>
                     <i>Journal Paper</i></br>
-                    <u>Harshvardhan J. Pandit</u>, Christophe Debruyne, Declan O'Sullivan, Dave Lewis
-                    <i>International Journal of Standardisation Research</i>
-                    <a href="https://www.igi-global.com/article/an-exploration-of-data-interoperability-for-gdpr/218518">proceedings</a>;
-                    <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_journal_an_exploration_of_the_data_interoperability_model_for_GDPR.pdf">preprint PDF</a>;</dd>
-                <dd><b>Queryable Provenance Metadata For GDPR Compliance</b>
-                    <i>Conference paper</i>
-                    <u>Harshvardhan J. Pandit</u>, Declan O'Sullivan, Dave Lewis.
-                    <i>SEMANTiCS 2018 – 14th International Conference on Semantic Systems, Vienna, Austria. 2018</i>
-                    <a href="https://www.sciencedirect.com/science/article/pii/S1877050918316314">proceedings</a>;
-                    <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_conference_queryable_provenance_metadata_for_GDPR_compliance.pdf">preprint PDF</a>;
-                    <a href="https://www.slideshare.net/HarshvardhanPandit1/queryable-provenance-metadata-for-gdpr-compliance">slides</a></dd>
-                <dd><b>GDPRtEXT - GDPR as a Linked Data Resource</b>
-                    <i>Conference paper</i>
-                    <u>Harshvardhan J. Pandit</u>, Kaniz Fatema, Declan O'Sullivan, Dave Lewis.
-                    <i>15th European Semantic Web Conference (ESWC), Resource Track. Crete, Heraklion, Greece. 2018</i>
-                    <a href="https://doi.org/10.1007/978-3-319-93417-4_31">proceedings PDF</a>; 
-                    <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_conference_GDPRtEXT_GDPR_as_a_linked_data_resource.pdf">alternate PDF</a>;
-                    <a href="https://www.slideshare.net/HarshvardhanPandit1/gdprtext-gdpr-as-a-linked-data-resource">slides</a>s</dd>
+                    <u>Harshvardhan J. Pandit</u>, Christophe Debruyne, Declan O'Sullivan, Dave Lewis<br/>
+                    <i>International Journal of Standardisation Research (IJSR) Vol 16 Issue 1</i><br/>
+                    <a class="Button" href="https://www.igi-global.com/article/an-exploration-of-data-interoperability-for-gdpr/218518">proceedings</a>
+                    <a class="Button" href="https://doi.org/10.5281/zenodo.3246452">zenodo (OA)</a>
+                    <a class="Button" href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_journal_an_exploration_of_the_data_interoperability_model_for_GDPR.pdf">archive</a></dd>
+                <dd><b>Queryable Provenance Metadata For GDPR Compliance</b><br/>
+                    <i>Conference paper</i><br/>
+                    <u>Harshvardhan J. Pandit</u>, Declan O'Sullivan, Dave Lewis.<br/>
+                    <i>SEMANTiCS 2018 – 14th International Conference on Semantic Systems, Vienna, Austria. 2018</i><br/>
+                    <a class="Button" href="https://www.sciencedirect.com/science/article/pii/S1877050918316314">proceedings (OA)</a>
+                    <a class="Button" href="https://doi.org/10.5281/zenodo.3246494">zenodo (OA)</a>
+                    <a class="Button" href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_conference_queryable_provenance_metadata_for_GDPR_compliance.pdf">archive</a>
+                    <a class="Button" href="https://www.slideshare.net/HarshvardhanPandit1/queryable-provenance-metadata-for-gdpr-compliance">slides</a></dd>
+                <dd><b>GDPRtEXT - GDPR as a Linked Data Resource</b><br/>
+                    <i>Conference paper</i><br/>
+                    <u>Harshvardhan J. Pandit</u>, Kaniz Fatema, Declan O'Sullivan, Dave Lewis.<br/>
+                    <i>15th European Semantic Web Conference (ESWC), Resource Track. Crete, Heraklion, Greece. 2018</i><br/>
+                    <a class="Button" href="https://doi.org/10.1007/978-3-319-93417-4_31">proceedings</a> 
+                    <a class="Button" href="https://doi.org/10.5281/zenodo.3246410">zenodo (OA)</a>
+                    <a class="Button" href="https://s3-eu-west-1.amazonaws.com/harshp-media/research/publications/2018_conference_GDPRtEXT_GDPR_as_a_linked_data_resource.pdf">archive</a>
+                    <a class="Button" href="https://www.slideshare.net/HarshvardhanPandit1/gdprtext-gdpr-as-a-linked-data-resource">slides</a></dd>
             </dl>
         </section>
         <section id="activities">
@@ -124,6 +188,8 @@
                     <a href="https://iswc2018.semanticweb.org/">17th International Semantic Web Conference (ISWC 2018) - Poster & Demo Track</a><br/>
                     <a href="http://2017.kesw.ru/">International Conference on Knowledge Engineering and Semantic Web (KESW 2017) (sub-reviewer)</a><br/>
                 </dd>
+                <dt>Competitions</dt>
+                <dd>Team <a href="https://lexparency.org">Lexparency</a> - Secured 1st Prize in Challenge 2 at <a href="https://publications.europa.eu/en/web/eudatathon/2018-home">EU Datathon 2018</a></dd>
             </dl>
         </section>
         <section id="teaching">
