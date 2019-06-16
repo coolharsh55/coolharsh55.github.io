@@ -209,6 +209,27 @@ def generate_sectioned_docs(
         fd.write(template.render(sections=dev_index, root=contentpath))
 
 
+def generate_unindexed_docs(name: str, contentpath: str):
+    '''Generate docs with no index.
+    The content may supply the index itself or it can have no index.
+    '''
+    for file in os.listdir('content/' + contentpath):
+        path = os.path.join('content/' + contentpath, file)
+        if os.path.isdir(path):
+            continue
+        filename, extension = os.path.splitext(file)
+        with open(path, 'r') as fd:
+            data = fd.read()
+        docspath = '..' + path.replace('content', '', 1)
+        # render file according to file format
+        if extension == ".html":
+            with open(docspath, 'w') as fd:
+                fd.write(data)
+        logging.debug(f'generated file {docspath}')
+        # TODO: more format generators
+        # e.g. markdown (md), text (txt)
+
+
 def generate_index():
     # Generate index page i.e. homepage
     INDEX.sort(key=lambda x: x[1], reverse=True)
@@ -228,6 +249,7 @@ if __name__ == '__main__':
     generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
     generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
     generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
+    generate_unindexed_docs('Research', 'research')
     generate_docs(
         'Research Blog', 'research/blog',
         'template_research_blog', 'index_research_blog')
