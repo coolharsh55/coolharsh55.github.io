@@ -6,7 +6,7 @@
 {% block content %}<section>
             <dl>
             {% for blog in blogs %}
-                <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+                <dt><a href="/{{section}}/{{blog[3]}}">{{blog[0]}}</a></dt>
                 <dd><small>{{blog[1]}}</small><br/>
                     {{blog[4]}}</dd>
             {% endfor %}

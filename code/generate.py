@@ -1,81 +1,37 @@
 #!/usr/bin/env python3
 
-import json
+'''Generate static documents for serving.
+Content is stored in ./code/content folder.
+Explicitly state the folder to be considered as content.
+The script will then generate the corresponding html in the root.
+'''
+
 from jinja2 import Environment, FileSystemLoader
 import logging
 import os
 
+# tell jinja2 where to find templates
 ENV = Environment(
     loader=FileSystemLoader('templates'))
-INDEX = []
+# global variables
+INDEX = []  # index of ALL documents
+# logging configuration for debugging to console
 logging.basicConfig(
     level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def _load(filename):
-    with open(filename, 'r') as fd:
-        data = json.load(fd)
-    return data
-
-
-def _load_tags():
-    with open('legacy_data/Tag-2019-05-28.json', 'r') as fd:
-        data = json.load(fd)
-    tags = {}
-    for tag in data:
-        tags[str(tag['id'])] = tag['name']
-    return tags
-
-
-def _generate(datadump, name):
-    data = _load(datadump)
-    tags = _load_tags()
-    template = ENV.get_template(f'template_{name}')
-    index = []
-    for blog in data:
-        blog['tags'] = [tags[tag] for tag in blog['tags'].split(',')]
-        with open(f'../{name}/{blog["slug"]}.html', 'w') as fd:
-            fd.write(template.render(
-                title=blog['title'],
-                description=blog['short_description'],
-                published=blog['date_published'],
-                modified=blog['date_updated'],
-                tags=blog['tags'],
-                content=blog['body_text'],
-                headerimage=blog['headerimage']
-            ))
-        index.append((
-            blog['title'],
-            blog['date_published'],
-            blog['date_updated'],
-            blog['slug'],
-            blog['short_description'],
-        ))
-    index.sort(key=lambda x: x[1], reverse=True)
-    template = ENV.get_template(f'index_{name}')
-    with open(f'../{name}/index.html', 'w') as fd:
-        fd.write(template.render(blogs=index))
-
-
-def _export_content(datadump, name):
-    data = _load(datadump)
-    tags = _load_tags()
-    template = ENV.get_template(f'template_content')
-    for blog in data:
-        blog['tags'] = [tags[tag] for tag in blog['tags'].split(',')]
-        with open(f'./content/{name}/{blog["slug"]}.html', 'w') as fd:
-            fd.write(template.render(
-                title=blog['title'],
-                description=blog['short_description'],
-                published=blog['date_published'],
-                modified=blog['date_updated'],
-                tags=blog['tags'],
-                content=blog['body_text'],
-                headerimage=blog['headerimage']
-            ))
-
-
 def _read_content(path):
+    '''Read and interpret data from a content file.
+    Returns data as dictionary.
+    The fileformat is:
+    title: Title
+    published: 20XX-XX-XX
+    modified: 20XX-XX-XX
+    tags: X,Y,Z
+    description: lorem ipsum
+    headerimage: https://example.com
+    ===
+    content'''
     with open(path, 'r') as fd:
         title = fd.readline().split(':')[-1].strip()
         published = fd.readline().split(': ')[-1].strip()
@@ -102,22 +58,31 @@ def _read_content(path):
 def generate_docs(
         name: str, contentpath: str,
         template_content: str, template_index: str):
+    '''Generate content document.
+    name: name of the section e.g. blog, poems
+    contentpath: path of the content folder
+    template_content: template for content
+    template_index: template for content index
+    '''
     logging.debug(f'generating docs for {name}')
     for root, _, files in os.walk('content/' + contentpath):
         if not files:
             logging.debug(f'skipped: found no files in {root}')
             continue
-
+        # replace path from content to root as files are served from root
         directorypath = root.replace('content', '..', 1)
         logging.debug(f'directorypath is {directorypath}')
+        # generate directories in serving folder if necessary
         if not os.path.exists(directorypath):
             logging.debug(f'created directory {directorypath}')
             os.makedirs(directorypath)
+        # iterate files, read content, add them to index
         index = []
         for f in files:
             filename, extension = os.path.splitext(f)
             path = os.path.join(root, f)
             data = _read_content(path)
+            # this is the local content index
             index.append((
                 data['title'],
                 data['published'],
@@ -125,6 +90,7 @@ def generate_docs(
                 filename,
                 data['description'],
             ))
+            # this is the global index (site-level)
             INDEX.append((
                 data['title'],
                 data['published'],
@@ -135,6 +101,7 @@ def generate_docs(
                 contentpath,
             ))
             docspath = '..' + path.replace('content', '', 1)
+            # render file according to file format
             if extension == ".html":
                 template = ENV.get_template(template_content)
                 with open(docspath, 'w') as fd:
@@ -142,23 +109,32 @@ def generate_docs(
             logging.debug(f'generated file {docspath}')
             # TODO: more format generators
             # e.g. markdown (md), text (txt)
+        # sort by date published
         index.sort(key=lambda x: x[1], reverse=True)
+        # render document
         template = ENV.get_template(template_index)
         with open(f'{directorypath}/index.html', 'w') as fd:
-            fd.write(template.render(blogs=index))
+            fd.write(template.render(blogs=index, section=contentpath))
         logging.info(f'generated {name} index')
 
 
 def generate_sectioned_docs(
         name, contentpath, template_content, template_index):
-
+    '''Generate documents for a particular section.
+    Can be a folder within another folder e.g. research/blog.'''
     def _generate_sectioned_docs(path):
+        '''Generate documents for specified section.'''
+        # The metadata file indicates info for that section, e.g. name
         if os.path.isfile(path + '/metadata'):
             with open(path + '/metadata', 'r') as fd:
                 section = fd.read().split(':')[-1].strip()
         else:
             section = 'general'
         logging.debug(f'generating section-docs for {path}')
+        # generate docs - same as generate_docs
+        # TODO: Refactor document generation between sections
+        # create another function to actually generate the documents
+        # and call it from these two functions for generating docs
         index = []
         for root, _, files in os.walk(path):
             directorypath = root.replace('content', '..', 1)
@@ -180,6 +156,7 @@ def generate_sectioned_docs(
                     filename,
                     data['description'],
                     section,
+                    path
                 ))
                 INDEX.append((
                     data['title'],
@@ -202,7 +179,9 @@ def generate_sectioned_docs(
 
         index.sort(key=lambda x: x[1], reverse=True)
         return index, section
-
+    # generate the index
+    # This is different from the usual index as sectioned indexes have
+    # their posts grouped by the section
     logging.debug(f'generating docs for {name}')
     dev_index = []
     for root, directories, files in os.walk('content/' + contentpath):
@@ -222,41 +201,29 @@ def generate_sectioned_docs(
                 template = ENV.get_template(template_index)
                 fd.write(template.render(blogs=index))
         break
-
+    # Sort the sections by date_published of their posts
+    # So the section with the latest post is at the top
     dev_index.sort(key=lambda x: x[1][1][1], reverse=True)
     with open('../' + contentpath + '/index.html', 'w') as fd:
         template = ENV.get_template(template_index)
-        fd.write(template.render(sections=dev_index))
+        fd.write(template.render(sections=dev_index, root=contentpath))
 
 
 def generate_index():
+    # Generate index page i.e. homepage
     INDEX.sort(key=lambda x: x[1], reverse=True)
     template = ENV.get_template('template_homepage')
     with open('../index.html', 'w') as fd:
         fd.write(template.render(latest=INDEX[0], posts=INDEX[:10]))
     logging.info('generated homepage index')
+    # By default, the index page only contains a few recent posts
+    # The index_all contains an index of all posts
     template = ENV.get_template('index_all')
     with open('../all.html', 'w') as fd:
         fd.write(template.render(posts=INDEX))
 
 
 if __name__ == '__main__':
-    # extract data from dump
-    # _generate('BlogPost-2019-05-27.json', 'blog')
-    # _generate('Poem-2019-05-27.json', 'poems')
-    # _generate('Story-2019-05-27.json', 'stories')
-    # _generate('DevPost-2019-05-27.json', 'dev')
-    # _generate('ResearchBlogPost-2019-05-27.json', 'research')
-
-    # generate content files
-    # _export_content('BlogPost-2019-05-27.json', 'blog')
-    # _export_content('Poem-2019-05-27.json', 'poems')
-    # _export_content('Story-2019-05-27.json', 'stories')
-    # _export_content('DevPost-2019-05-27.json', 'dev')
-    # _export_content(
-    #     'legacy_data/ResearchBlogPost-2019-05-27.json', 'research/blog')
-
-    # generate statis documents for serving
     generate_docs('Blog', 'blog', 'template_blog', 'index_blog')
     generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
     generate_docs('Stories', 'stories', 'template_stories', 'index_stories')

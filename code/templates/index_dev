@@ -7,15 +7,15 @@
 	{% if sections %}<section>
 	<p><dl><dt>Sections</dt>
 	<dd>{% for section, _, path in sections %}
-		<a href="{{path}}"><small>{{ section }}</small></a><br/>
+		<a href="/{{root}}/{{path}}"><small>{{ section }}</small></a><br/>
 	{% endfor %}</dd></dl>
 	</section>
 	{% for section, posts, path in sections %}
 	<section>
-		<a href="{{path}}"><h2>{{section}}</h2></a>
+		<a href="/{{root}}/{% if path != '.' %}{{path}}{% endif %}"><h2>{{section}}</h2></a>
 		<dl>
         {% for blog in posts %}
-            <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+            <dt><a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{blog[3]}}">{{blog[0]}}</a></dt>
             <dd><small>{{blog[1]}}</small><br/>
                 {{blog[4]}}</dd>
         {% endfor %}
@@ -24,7 +24,7 @@
 	<section>
         <dl>
         {% for blog in blogs %}
-            <dt><a href="{{blog[3]}}">{{blog[0]}}</a></dt>
+            <dt><a href="/{{root}}/{{blog[3]}}">{{blog[0]}}</a></dt>
             <dd><small>{{blog[1]}}</small><br/>
                 {{blog[4]}}</dd>
         {% endfor %}
