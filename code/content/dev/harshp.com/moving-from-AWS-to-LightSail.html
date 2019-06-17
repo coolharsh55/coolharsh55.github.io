@@ -1,0 +1,49 @@
+title: Moving from AWS EC2 to Lightsail
+published: 2019-06-17 13:18
+modified: 2019-06-17 13:44
+tags: website, harshp.com, hosting
+description: A short post describing moving the website to Lightsail
+headerimage: 
+===
+<section>
+    <p>My website was previously hosted on a t2.micro <a href="https://aws.amazon.com/ec2/">AWS EC2</a>
+        instance, which was good enough to host the website and do other basic
+        things like run an API or a database, or even some background jobs.
+        At the start, the instance was free to run because I had a lot of free
+        credits - obtained from events, competitions, and general promotions
+        run by Amazon. In addition, the first year was free as well because of
+        the <a href="https://aws.amazon.com/free/">free tier</a>. Over time, the
+        bills went from nothing to ~7&euro;, which was not worth paying for
+        just hosting a few pages and a small server. I had to look for alternatives.</p>
+    <p>I evaluated <a href="https://cloud.google.com/">Google Cloud</a> as an
+        alternative, and the main aspect I liked was the cheaper prices and the
+        fact that I could open a SSH connection to the VM directly from the
+        browser. This meant, I could work from anywhere in the world as long
+        as I had access to a browser. The AWS also features a SSH-based browser
+        client, but it works only when Java is installed in the browser. However,
+        recently, Google has increased their price, so that it is no longer
+        as cheap to run a simple instace when compared to AWS. They do offer
+        a <a href="https://cloud.google.com/free/">free tier</a>, which includes
+        a VM instance - but it has to be located in selected locations in USA.
+        This was a deal-breaker as I want my server to be based in the EU -
+        after all, my research is entirely based on European privacy laws.</p>
+    <p>So while debating whether I should <a href="https://pages.github.com/">Github Pages</a>
+        or <a href="https://www.netlify.com/">Netlify</a> to provide a simple
+        static hosting, I came across <a href="https://aws.amazon.com/lightsail/">AWS Lightsail</a>,
+        which is a simple hosting service (backend still based on EC2) but aimed
+        at less tech-savvy users. The interface is simplified, and there isn't
+        much to manage and do. More importantly, it is much cheaper - the starting
+        price is only ~4&euro; and they include a SSH-client in the browser.
+        So I started an instance to test it out.</p>
+    <p>It took me only about ~2 hours to get my server up and running on the
+        new VM. Key management was easy as I was provided with a SSH-key
+        immediately on creating the server. Assigning a static IP was also
+        easy - and it took only about ~10mins before I had changed the DNS to
+        point to the new site and I could ssh in.</p>
+    <p>So far, everything has worked smoothly - the browser ssh client is
+        great. In fact, this post has been written entirely using that. The
+        only concern is whether the billing will be easy and transparent as
+        the rest of the things in Lightsail. Similar offerings are provided
+        by <a href="https://www.heroku.com/">Heroku</a> and
+        <a href="https://www.digitalocean.com/products/droplets/">Digital Ocean</a>.</p>
+</section>

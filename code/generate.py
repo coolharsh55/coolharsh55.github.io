@@ -203,7 +203,7 @@ def generate_sectioned_docs(
         break
     # Sort the sections by date_published of their posts
     # So the section with the latest post is at the top
-    dev_index.sort(key=lambda x: x[1][1][1], reverse=True)
+    dev_index.sort(key=lambda x: x[1][0][2], reverse=True)
     with open('../' + contentpath + '/index.html', 'w') as fd:
         template = ENV.get_template(template_index)
         fd.write(template.render(sections=dev_index, root=contentpath))
