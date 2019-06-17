@@ -148,7 +148,6 @@ def generate_sectioned_docs(
                 path = os.path.join(root, f)
                 logging.debug(f'reading {path}')
                 data = _read_content(path)
-                logging.debug(f'reading {path}')
                 index.append((
                     data['title'],
                     data['published'],
@@ -162,7 +161,7 @@ def generate_sectioned_docs(
                     data['title'],
                     data['published'],
                     data['modified'],
-                    f'{path}/{filename}',
+                    f'{directorypath.replace("../","")}/{filename}',
                     data['description'],
                     name,
                     contentpath,
