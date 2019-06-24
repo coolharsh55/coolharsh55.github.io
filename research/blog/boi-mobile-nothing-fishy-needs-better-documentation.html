@@ -27,6 +27,22 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        #description {
+            margin-bottom: 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        blockquote {
+              font: 14px/22px normal helvetica, sans-serif;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              margin-left: 25px;
+              padding-left: 5px;
+              border-left: 3px solid #ccc;
+        }
     </style>
     
     <!-- metadata -->
@@ -60,8 +76,8 @@
         <nav><a href="/">harshp.com</a> > <a href="/research/">research</a> > <a href="/research/blog">blog</a></nav>
         <p id="desc"><small>published: 2017-07-05 23:24:06, updated: 2017-07-30 21:05:34<br/>
             <span>bankingprivacyPrivacy Guardsecurity;</span> <br/>
-        A mobile banking app that is under-documented, but not suspicious</small></p>
-        
+        A mobile banking app that is under-documented, but not suspicious<div id="description"></small></p>
+        </div>
         <section>
             <p>Mobile Banking allows us to easily access our accounts and make payments and transfers from the comfort of the palm. <a href="https://www.bankofireland.com/">Bank of Ireland</a> is one of the major banks in Ireland, and they have a mobile app called <a href="https://play.google.com/store/apps/details?id=com.bankofireland.mobilebanking&amp;hl=en">BOI Mobile</a> as a counterpart for their digital banking service called <a href="https://www.365online.com/">365 online</a>. As with any activity involving personal data and financial actions, one must be extremely careful and cautious on the side of suspicion. To that end, this post examines the permissions and data used by the BOI Mobile app on Android with a keener eye.</p>
 <p>While the app itself offers no explanation, and is little more than a mobile version of the website, the terms and conditions clearly mention with a larger emphasis on the data collected, and how it is not stored, or is made anonymous. In light of the upcoming GDPR, these terms and conditions also mention the use of <em>consent</em> multiple times, which enforces user choice and rights. However, none of these explain the permissions the app requires, or why it needs them in the specified manner, nor how it uses the data entered.</p>

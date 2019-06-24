@@ -27,6 +27,22 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        #description {
+            margin-bottom: 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        blockquote {
+              font: 14px/22px normal helvetica, sans-serif;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              margin-left: 25px;
+              padding-left: 5px;
+              border-left: 3px solid #ccc;
+        }
     </style>
     
     <!-- metadata -->
@@ -51,7 +67,7 @@
     <meta property="og:description" content="Why I'm glad I learnt the basics"/>
     <meta property="article:published_time" content="2014-07-05 13:00:00" />
     <meta property="article:modified_time" content="2017-05-03 20:09:38" />
-    <meta property="article:tag" content="blog" />
+    <meta property="article:tag" content="blog" /><meta property="article:tag" content="personal" />
     
 </head>
 <body>
@@ -59,30 +75,22 @@
         <h1>Why I'm glad I learnt the basics</h1>
         <nav><a href="/">harshp.com</a> > <a href="/blog">blog</a></nav>
         <p id="desc"><small>published: 2014-07-05 13:00:00, updated: 2017-05-03 20:09:38<br/>
-            <span>blog;</span> <br/>
-        Why I'm glad I learnt the basics</small></p>
-        
+            <span>blog;</span> <span>personal;</span> <br/>
+        Why I'm glad I learnt the basics<div id="description"></small></p>
+        </div>
         <section>
             <p>Today, I was diving into threads, processes, messengers and databases. And at times, I was glad that I studied C, and Operating systems, and the other basics. It helped me a ton of times, as I tried to optimize the operations and shave off a few more milliseconds.</p>
 
-<p>&nbsp;</p>
-
 <p>I&rsquo;m sure a lot more people understand metaphors and examples when they are done about&nbsp;cars. And so I&rsquo;ll try to form one for this as well.<br />
 Imagine you are the driver of a car which makes frequent journeys between places. It&rsquo;s all a part of your business. One day, you&rsquo;re driving the car, and for some reason it breaks down. Or, it has some problem &ndash; maybe the engine isn&rsquo;t working properly, the engine check light is on, or the mileage isn&rsquo;t great. The next step you do is to call in a mechanic to look at the car. The mechanic knows the internals of every part, how it works and why it isn&rsquo;t working in this case. He fixes whatever is not working, and you get back your car.Compare this with a person who knows something about cars &ndash; how they work, what causes them to break down, or what &lsquo;maintenance&rsquo; is about. This person will do all kinds of things, with gears, breaks, fuel, oil, etc. to keep the car in a good condition. That&rsquo;s why you have some cars from decades ago working in very good conditions. They&rsquo;re maintained well. And it&rsquo;s only possible because someone somewhere knows their basics. The same analogy is applicable in programming.</p>
-
-<p>&nbsp;</p>
 
 <p>One can only do things up to a certain level before you fail to understand the underlying mechanisms a.k.a. the basics.Programming in Java and Python is intuitively easier, because they offer a very high-level abstraction in terms of what is happening behind the scenes. On the contrary, every C function has to be carefully safeguarded against performance, and safety considerations. Sure, it&rsquo;s more work, but it also teaches one to be aware of what the function are doing rather than what they are returning. Programming for Android, its somewhat back to basics. Because I now have to think about performance, and considerations, and side-effects.</p>
 
 <p>If I call a particular function or library, is it doing to hamper my performance. Every millisecond saved is a huge consideration. That&rsquo;s why, games and other performance applications are still written in C++, which is still ultimately C. The basics part teaches you think in terms of the machine, rather than just a code line. It teaches you to analyze every possible side effect, because at the end, you have to choose the one which gives the best performance.Writing an application, all the GUI parts, and all the services that download the files, do all the nifty tasks are all ok.</p>
 
-<p>&nbsp;</p>
-
 <p>There&rsquo;s not much to think about but how your application ties in to everything. But when one is designing a library or a framework which every app is supposed to query, it becomes critical that the results are shared back in the smallest amount of time. This is where knowing the basics helped me a lot. I know that certain operations are faster than others, even though the results returned are the same. I&rsquo;ve tried to save the references and reuse them, just so the system wouldn&rsquo;t have to garbage collect them, wasting my time. The loops have been optimized for least iterations possible. Sure, the compiler might do that anyways, but I can&rsquo;t rely on that.</p>
 
 <p>All these nifty little tricks are from the days, when C was the primary language of coding. We learned to handle pointers with caution. But a world of programmers screamed in glee when Java didn&rsquo;t sport them. But that doesn&rsquo;t mean that the world is free of troubles. We now have references, which although much simpler and easier to use than pointers, are also much more sly. I have to be careful to know whether the reference I&rsquo;m holding is the same one held by the other side. If not, then I&rsquo;m going to run into errors at RunTime.</p>
-
-<p>&nbsp;</p>
 
 <p>A lot of the things are what is called &ldquo;programming common-sense&rdquo;. One doesn&rsquo;t have to specifically learn C, or Operating Systems in college to know them. But like I said right at the start, they&rsquo;re the basics. And knowing them is going to be very, very helpful to do things.</p>
         </section>

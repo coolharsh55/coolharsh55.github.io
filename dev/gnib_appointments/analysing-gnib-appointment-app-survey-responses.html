@@ -27,6 +27,22 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        #description {
+            margin-bottom: 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        blockquote {
+              font: 14px/22px normal helvetica, sans-serif;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              margin-left: 25px;
+              padding-left: 5px;
+              border-left: 3px solid #ccc;
+        }
     </style>
     
     <!-- metadata -->
@@ -60,8 +76,8 @@
         <nav><a href="/">harshp.com</a> > <a href="/dev">dev</a></nav>
         <p id="desc"><small>published: 2018-02-27 00:00:00, updated: 2018-03-01 11:08:18<br/>
             <span>appsGNIB;</span> <br/>
-        Gathering requirements and making decisions based on the survey of 59 participants</small></p>
-        
+        Gathering requirements and making decisions based on the survey of 59 participants<div id="description"></small></p>
+        </div>
         <section>
             <p>I posted a link on the GNIB appointment utility for a survey on an app for appointments. The survey ran from 7th November until 28th February and inquired about things like what features the app should have, the system people used, and what would be a fair price. This post presents an analysis of the survey results. The survey itself is available as a <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/GNIB_appointment_app_survey.pdf">PDF file</a>. The survey results can be found <a href="https://s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/GNIB_appointment_app_survey_responses.csv">here</a>. In total, the survey generated 59 responses.</p>
 <h2 id="phoneos">Phone/OS</h2>
