@@ -27,6 +27,22 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        #description {
+            margin-bottom: 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        blockquote {
+              font: 14px/22px normal helvetica, sans-serif;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              margin-left: 25px;
+              padding-left: 5px;
+              border-left: 3px solid #ccc;
+        }
     </style>{% endblock pageCSS %}{% endblock CSS %}
     {% block meta %}
     <!-- metadata -->
@@ -60,8 +76,8 @@
         {% block nav %}<nav><a href="/">harshp.com</a> > {% block navtype %}<a href="/content">content</a>{% endblock navtype %}</nav>{% endblock nav %}
         {% block desc %}<p id="desc"><small>published: {{ published }}, updated: {{ modified }}<br/>
             {% for tag in tags %}<span>{{ tag }};</span> {% endfor %}<br/>
-        {{ description }}</small></p>
-        {% if headerimage %}<img src="{{ headerimage }}" alt="image for {{title}}"/>{% endif %}{% endblock desc %}
+        {{ description }}<div id="description"></small></p>
+        {% if headerimage %}<img src="{{ headerimage }}" alt="image for {{title}}"/>{% endif %}</div>{% endblock desc %}
         {% block content %}<section>
             {{ content }}
         </section>{% endblock content %}

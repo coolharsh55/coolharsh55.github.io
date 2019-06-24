@@ -198,14 +198,15 @@ def generate_sectioned_docs(
             directorypath = directorypath.replace('content', '..')
             with open(directorypath, 'w') as fd:
                 template = ENV.get_template(template_index)
-                fd.write(template.render(blogs=index))
+                fd.write(template.render(blogs=index,title=section))
         break
     # Sort the sections by date_published of their posts
     # So the section with the latest post is at the top
     dev_index.sort(key=lambda x: x[1][0][2], reverse=True)
     with open('../' + contentpath + '/index.html', 'w') as fd:
         template = ENV.get_template(template_index)
-        fd.write(template.render(sections=dev_index, root=contentpath))
+        fd.write(template.render(
+            sections=dev_index, root=contentpath, title=name))
 
 
 def generate_unindexed_docs(name: str, contentpath: str):
