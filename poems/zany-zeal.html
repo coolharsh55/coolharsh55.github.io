@@ -8,11 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
     <style type="text/css">
         html, body {
-            max-width: 1200px;
+            max-width: 900px;
             margin: auto;
             padding-left: 2px;
             padding-right: 2px;
@@ -23,6 +25,7 @@
             display: block;
             border-top: 1px solid #333;
             margin-top: 10px;
+            margin-bottom: 10px;
         }
         h1, nav, img, #desc {
             text-align: center;
@@ -42,6 +45,9 @@
               margin-left: 25px;
               padding-left: 5px;
               border-left: 3px solid #ccc;
+        }
+        .article-timestamp {
+            color: #999;
         }
     </style>
 <style type="text/css">
@@ -107,10 +113,21 @@ And that&rsquo;ll be the end<br/>
 The end of Zany Zeal</p>
 </section>
         <footer>
-            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
-            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+            <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p class="no-print"><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
         </footer>
     </article>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        console.log('ready');
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('ready x2');
+            var items = document.getElementsByClassName('article-timestamp');
+            for(var item of items) {
+                item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();
+            }
+        }, false);
+    </script>
 </body>
 </html>

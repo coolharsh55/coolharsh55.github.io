@@ -11,14 +11,13 @@
     <p>Apart from this, I have several hobbies which I try to indulge in on a regular basis. These include reading books, watching movies, listening to music, playing video games, amateur photography, origami, and thinking on a variety of things.</p>
 </section>
 <section>
-    <h2>recent posts</h2>
-    <small><a href="/all">see all</a></small>
+    <h2>recent posts <a href="/all"><sup>see all</sup></a></h2>
     <dl>
     {% for post in posts %}
         <dt><a href="/{{post[3]}}">{{post[0]}}</a></dt>
-        <dd><a href="/{{post[6]}}"><small>{{post[5]}}</small></a><br/>
-            <small>{{post[1]}}</small><br/>
-            {{post[4]}}</dd>
+        <dd><a href="/{{post[6]}}"><small>{{post[5]}}</small></a> 
+            <small class="article-timestamp">{{post[1]}}</small> 
+            <small>{{post[4]}}</small></dd>
     {% endfor %}
     </dl>
 </section>

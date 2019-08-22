@@ -8,11 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
     <style type="text/css">
         html, body {
-            max-width: 1200px;
+            max-width: 900px;
             margin: auto;
             padding-left: 2px;
             padding-right: 2px;
@@ -23,6 +25,7 @@
             display: block;
             border-top: 1px solid #333;
             margin-top: 10px;
+            margin-bottom: 10px;
         }
         h1, nav, img, #desc {
             text-align: center;
@@ -42,6 +45,9 @@
               margin-left: 25px;
               padding-left: 5px;
               border-left: 3px solid #ccc;
+        }
+        .article-timestamp {
+            color: #999;
         }
     </style>
     
@@ -83,68 +89,78 @@
     <p>Apart from this, I have several hobbies which I try to indulge in on a regular basis. These include reading books, watching movies, listening to music, playing video games, amateur photography, origami, and thinking on a variety of things.</p>
 </section>
 <section>
-    <h2>recent posts</h2>
-    <small><a href="/all">see all</a></small>
+    <h2>recent posts <a href="/all"><sup>see all</sup></a></h2>
     <dl>
     
         <dt><a href="/dev/harshp.com/moving-from-AWS-to-LightSail">Moving from AWS EC2 to Lightsail</a></dt>
-        <dd><a href="/dev"><small>dev</small></a><br/>
-            <small>2019-06-17 13:18</small><br/>
-            A short post describing moving the website to Lightsail</dd>
+        <dd><a href="/dev"><small>dev</small></a> 
+            <small class="article-timestamp">2019-06-17 13:18</small> 
+            <small>A short post describing moving the website to Lightsail</small></dd>
     
         <dt><a href="/poems/random-20190601">random #190601</a></dt>
-        <dd><a href="/poems"><small>Poems</small></a><br/>
-            <small>2019-06-01 18:00:00</small><br/>
-            listening to my inner self</dd>
+        <dd><a href="/poems"><small>Poems</small></a> 
+            <small class="article-timestamp">2019-06-01 18:00:00</small> 
+            <small>listening to my inner self</small></dd>
     
         <dt><a href="/poems/goodbye-claire">Goodbye, Claire</a></dt>
-        <dd><a href="/poems"><small>Poems</small></a><br/>
-            <small>2019-05-27 00:23:48</small><br/>
-            saying goodbye</dd>
+        <dd><a href="/poems"><small>Poems</small></a> 
+            <small class="article-timestamp">2019-05-27 00:23:48</small> 
+            <small>saying goodbye</small></dd>
     
         <dt><a href="/poems/seamus">Séamus</a></dt>
-        <dd><a href="/poems"><small>Poems</small></a><br/>
-            <small>2019-05-25 15:04:18</small><br/>
-            A short poem remembering Shay</dd>
+        <dd><a href="/poems"><small>Poems</small></a> 
+            <small class="article-timestamp">2019-05-25 15:04:18</small> 
+            <small>A short poem remembering Shay</small></dd>
     
         <dt><a href="/blog/are-the-eus-ethics-guidelines-too-generic">Are the EU's Ethics Guidelines too generic?</a></dt>
-        <dd><a href="/blog"><small>Blog</small></a><br/>
-            <small>2019-04-08 12:45:44</small><br/>
-            The ethics guidelines are generic enough to be applied to anything</dd>
+        <dd><a href="/blog"><small>Blog</small></a> 
+            <small class="article-timestamp">2019-04-08 12:45:44</small> 
+            <small>The ethics guidelines are generic enough to be applied to anything</small></dd>
     
         <dt><a href="/research/blog/how-open-should-reviews-be-in-compsci">How open should reviews be in CompSci?</a></dt>
-        <dd><a href="/research/blog"><small>Research Blog</small></a><br/>
-            <small>2019-03-17 16:37:08</small><br/>
-            A short collection of different review styles and their pros and cons</dd>
+        <dd><a href="/research/blog"><small>Research Blog</small></a> 
+            <small class="article-timestamp">2019-03-17 16:37:08</small> 
+            <small>A short collection of different review styles and their pros and cons</small></dd>
     
         <dt><a href="/blog/why-i-wont-eat-the-chemically-toxic-meat-in-india">Why I won't eat the chemically toxic meat in India</a></dt>
-        <dd><a href="/blog"><small>Blog</small></a><br/>
-            <small>2019-02-05 20:31:09</small><br/>
-            The rampant use of anti-biotics has resulted in chickens being pumped full of toxic chemicals</dd>
+        <dd><a href="/blog"><small>Blog</small></a> 
+            <small class="article-timestamp">2019-02-05 20:31:09</small> 
+            <small>The rampant use of anti-biotics has resulted in chickens being pumped full of toxic chemicals</small></dd>
     
         <dt><a href="/blog/year-in-review-2018">Year in Review - 2018</a></dt>
-        <dd><a href="/blog"><small>Blog</small></a><br/>
-            <small>2019-01-12 18:49:49</small><br/>
-            A summary of what happened in 2018</dd>
+        <dd><a href="/blog"><small>Blog</small></a> 
+            <small class="article-timestamp">2019-01-12 18:49:49</small> 
+            <small>A summary of what happened in 2018</small></dd>
     
         <dt><a href="/blog/the-subtle-art-of-not-giving-a-f">The Subtle Art of Not Giving a F***</a></dt>
-        <dd><a href="/blog"><small>Blog</small></a><br/>
-            <small>2018-11-09 20:13:11</small><br/>
-            Book notes, thoughts, and reactions</dd>
+        <dd><a href="/blog"><small>Blog</small></a> 
+            <small class="article-timestamp">2018-11-09 20:13:11</small> 
+            <small>Book notes, thoughts, and reactions</small></dd>
     
         <dt><a href="/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen">How to speak so that people want to listen</a></dt>
-        <dd><a href="/research/blog"><small>Research Blog</small></a><br/>
-            <small>2018-08-06 17:57:34</small><br/>
-            Gist of a very handy TED talk for speaking</dd>
+        <dd><a href="/research/blog"><small>Research Blog</small></a> 
+            <small class="article-timestamp">2018-08-06 17:57:34</small> 
+            <small>Gist of a very handy TED talk for speaking</small></dd>
     
     </dl>
 </section>
 
         <footer>
-            <p><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
-            <p><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /> This work is licensed under Creative Commons Attribution-NonCommercial 4.0 International</a>.
+            <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
+            <p class="no-print"><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
+            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
         </footer>
     </article>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        console.log('ready');
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('ready x2');
+            var items = document.getElementsByClassName('article-timestamp');
+            for(var item of items) {
+                item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();
+            }
+        }, false);
+    </script>
 </body>
 </html>
