@@ -78,6 +78,7 @@ def generate_docs(
             os.makedirs(directorypath)
         # iterate files, read content, add them to index
         index = []
+        files = sorted(files, key=lambda x: x.lower())
         for f in files:
             filename, extension = os.path.splitext(f)
             path = os.path.join(root, f)
