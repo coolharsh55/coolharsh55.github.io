@@ -92,6 +92,11 @@
     <h2>recent posts <a href="/all"><sup>see all</sup></a></h2>
     <dl>
     
+        <dt><a href="/research/blog/student-project-ideas">Student Project Ideas</a></dt>
+        <dd><a href="/research/blog"><small>Research Blog</small></a> 
+            <small class="article-timestamp">2019-10-06 18:30</small> 
+            <small>Ideas for student to implement as projects</small></dd>
+    
         <dt><a href="/blog/invisible-women">Invisible Women</a></dt>
         <dd><a href="/blog"><small>Blog</small></a> 
             <small class="article-timestamp">2019-09-16 21:28:40</small> 
@@ -137,11 +142,6 @@
             <small class="article-timestamp">2019-02-05 20:31:09</small> 
             <small>The rampant use of anti-biotics has resulted in chickens being pumped full of toxic chemicals</small></dd>
     
-        <dt><a href="/blog/year-in-review-2018">Year in Review - 2018</a></dt>
-        <dd><a href="/blog"><small>Blog</small></a> 
-            <small class="article-timestamp">2019-01-12 18:49:49</small> 
-            <small>A summary of what happened in 2018</small></dd>
-    
     </dl>
 </section>
 
@@ -153,9 +153,7 @@
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        console.log('ready');
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('ready x2');
             var items = document.getElementsByClassName('article-timestamp');
             for(var item of items) {
                 item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();

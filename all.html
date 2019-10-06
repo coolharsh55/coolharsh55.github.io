@@ -87,6 +87,11 @@
 <section>
     <dl>
     
+        <dt><a href="/research/blog/student-project-ideas">Student Project Ideas</a></dt>
+        <dd><a href="/research/blog"><small>Research Blog</small></a><br/>
+            <small>2019-10-06 18:30</small><br/>
+            Ideas for student to implement as projects</dd>
+    
         <dt><a href="/blog/invisible-women">Invisible Women</a></dt>
         <dd><a href="/blog"><small>Blog</small></a><br/>
             <small>2019-09-16 21:28:40</small><br/>
@@ -1373,9 +1378,7 @@
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        console.log('ready');
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('ready x2');
             var items = document.getElementsByClassName('article-timestamp');
             for(var item of items) {
                 item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();

@@ -378,9 +378,7 @@
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        console.log('ready');
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('ready x2');
             var items = document.getElementsByClassName('article-timestamp');
             for(var item of items) {
                 item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();

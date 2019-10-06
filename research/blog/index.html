@@ -84,6 +84,10 @@
         <section>
             <dl>
             
+                <dt><a href="/research/blog/student-project-ideas">Student Project Ideas</a></dt>
+                <dd><small>2019-10-06 18:30</small><br/>
+                    Ideas for student to implement as projects</dd>
+            
                 <dt><a href="/research/blog/semantics-2019">SEMANTiCS 2019</a></dt>
                 <dd><small>2019-09-10 20:42</small><br/>
                     SEMANTiCS 2019 conference in Karlsruhe, Germany</dd>
@@ -126,9 +130,7 @@
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        console.log('ready');
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('ready x2');
             var items = document.getElementsByClassName('article-timestamp');
             for(var item of items) {
                 item.innerHTML = moment(item.innerHTML, "YYYY-MM-DD HH:mm:ss").fromNow();
