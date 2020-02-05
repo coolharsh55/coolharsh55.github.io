@@ -35,11 +35,17 @@
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
+    
     <style type="text/css">
+        html * {
+            font-family: Arial, helvetica, sans-serif;
+        }
         html, body {
-            max-width: 900px;
+            font-size: 14pt;
+            color: #333333;
+            background-color: #f9f9f9;
+            line-height: 1.5;
+            max-width: 34em;
             margin: auto;
             padding-left: 2px;
             padding-right: 2px;
@@ -55,6 +61,9 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        img {
+            max-width: 100%;
+        }
         #description {
             margin-bottom: 10px;
         }
@@ -63,27 +72,70 @@
             height: 1px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+        a {
+            text-decoration: none;
+            color: #338618;
+        }
+        a:hover {
+            color: #5e5e5e;
+            border-bottom: 2px solid #4a4a4a; 
+        }
         blockquote {
               font: 14px/22px normal helvetica, sans-serif;
               margin-top: 10px;
               margin-bottom: 10px;
               margin-left: 25px;
               padding-left: 5px;
-              border-left: 3px solid #ccc;
+              border-left: 3px solid #338618;;
         }
+        /* Pre and Code */
+        pre {
+          background-color: #C7E3BE;
+          display: block;
+          padding: 1em;
+          overflow-x: auto;
+        }
+
+        code {
+          font-size: 0.9em;
+          padding: 0 0.5em;
+          background-color: #C7E3BE;
+          white-space: pre-wrap;
+        }
+
+        pre > code {
+          padding: 0;
+          background-color: transparent;
+          white-space: pre;
+        }
+
+        /* Tables */
+        table {
+          text-align: justify;
+          width: 100%;
+          border-collapse: collapse;    
+        }
+
+        td, th {
+          padding: 0.5em;
+          border-bottom: 1px solid #C7E3BE;
+        }
+
         .article-timestamp {
             color: #999;
         }
+
+
     </style>
 </head>
 <body>
     <article>
         <h1>I'm a Ghost in the Shell fan, and I do not give my consent to this</h1>
         <nav><a href="/">harshp.com</a> > <a href="/blog">blog</a></nav>
-        <p id="desc"><small>published: 2017-04-08 14:13:00, updated: 2017-04-24 22:24:55<br/>
+        <span id="#div"><p><small>published: 2017-04-08 14:13:00, updated: 2017-04-24 22:24:55<br/>
             <span>blog;</span> <span>movies;</span> <span>rant;</span> <br/>
-        The hollywood film manages to turn something awesome and iconic into blithering garbage that still looks stunning<div id="description"></small></p>
-        <img src="//i.ytimg.com/vi/0oQsVUkVay4/maxresdefault.jpg" alt="image for I'm a Ghost in the Shell fan, and I do not give my consent to this"/></div>
+        The hollywood film manages to turn something awesome and iconic into blithering garbage that still looks stunning</small></p>
+        <img src="//i.ytimg.com/vi/0oQsVUkVay4/maxresdefault.jpg" alt="image for I'm a Ghost in the Shell fan, and I do not give my consent to this"/></span>
         <section>
             <p>I'll be clear right at the start, this is more rant than review. If you've watched even an inkling of the iconic Ghost in the Shell anime film, the reaction to the Hollywood film (2017) is "utter shit". To take something so iconic and then to reduce it to this commercial bile is itself the definition of how things are turned into crap in the interest of commercialisation. The film manages to capture the environment and setting of the anime in great detail, and it all looks visually stunning, but falls flat on its spineless back when it comes to the story and the dialogue, both of which seem watered down bastardised versions of the original. </p>
 <p>The film should be made into a case study of how commercial films (lets not pretend this is anything else) mucks about and dilutes a perfectly good drink in order to make it gulpable by everyone. In this case, the original manga and anime focused on the aspect of AI, consciousness, and the way we as a society cannot handle these complex situations without questioning our own identity. The film meanwhile, is more of a, "hey, this looks cool, is famous, lets adapt the name and setting and we'll make it a bit silly". They got the opening scenes pretty much down to fine details, which feels great, and is thought to set the tone for the rest of the movie. But it just doesn't deliver.<br>
@@ -98,7 +150,7 @@
         <footer>
             <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
             <p class="no-print"><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
-            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
         </footer>
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>

@@ -35,11 +35,17 @@
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
+    
     <style type="text/css">
+        html * {
+            font-family: Arial, helvetica, sans-serif;
+        }
         html, body {
-            max-width: 900px;
+            font-size: 14pt;
+            color: #333333;
+            background-color: #f9f9f9;
+            line-height: 1.5;
+            max-width: 34em;
             margin: auto;
             padding-left: 2px;
             padding-right: 2px;
@@ -55,6 +61,9 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        img {
+            max-width: 100%;
+        }
         #description {
             margin-bottom: 10px;
         }
@@ -63,27 +72,70 @@
             height: 1px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+        a {
+            text-decoration: none;
+            color: #338618;
+        }
+        a:hover {
+            color: #5e5e5e;
+            border-bottom: 2px solid #4a4a4a; 
+        }
         blockquote {
               font: 14px/22px normal helvetica, sans-serif;
               margin-top: 10px;
               margin-bottom: 10px;
               margin-left: 25px;
               padding-left: 5px;
-              border-left: 3px solid #ccc;
+              border-left: 3px solid #338618;;
         }
+        /* Pre and Code */
+        pre {
+          background-color: #C7E3BE;
+          display: block;
+          padding: 1em;
+          overflow-x: auto;
+        }
+
+        code {
+          font-size: 0.9em;
+          padding: 0 0.5em;
+          background-color: #C7E3BE;
+          white-space: pre-wrap;
+        }
+
+        pre > code {
+          padding: 0;
+          background-color: transparent;
+          white-space: pre;
+        }
+
+        /* Tables */
+        table {
+          text-align: justify;
+          width: 100%;
+          border-collapse: collapse;    
+        }
+
+        td, th {
+          padding: 0.5em;
+          border-bottom: 1px solid #C7E3BE;
+        }
+
         .article-timestamp {
             color: #999;
         }
+
+
     </style>
 </head>
 <body>
     <article>
         <h1>What Indian TV soaps taught me</h1>
         <nav><a href="/">harshp.com</a> > <a href="/blog">blog</a></nav>
-        <p id="desc"><small>published: 2014-06-02 17:00:00, updated: 2017-05-03 20:01:10<br/>
+        <span id="#div"><p><small>published: 2014-06-02 17:00:00, updated: 2017-05-03 20:01:10<br/>
             <span>article;</span> <span>humor;</span> <br/>
-        What Indian TV soaps taught me<div id="description"></small></p>
-        </div>
+        What Indian TV soaps taught me</small></p>
+        </span>
         <section>
             <blockquote>
 <p>I detest TV soaps and hate the way they give rise to such perspectives</p>
@@ -138,7 +190,7 @@
         <footer>
             <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
             <p class="no-print"><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
-            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
         </footer>
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>

@@ -9,12 +9,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css"> -->
     <style type="text/css">
+        html * {
+            font-family: Arial, helvetica, sans-serif;
+        }
         html, body {
-            max-width: 1200px;
+            font-size: 14pt;
+            color: #333333;
+            background-color: #f9f9f9;
+            line-height: 1.5;
+            max-width: 34em;
             margin: auto;
             padding-left: 2px;
+            padding-right: 2px;
         }
         footer {
             text-align: center;
@@ -22,26 +30,73 @@
             display: block;
             border-top: 1px solid #333;
             margin-top: 10px;
+            margin-bottom: 10px;
         }
-        h1, nav, #desc {
+        h1, nav, img, #desc {
             text-align: center;
         }
-    </style>
-        <style type="text/css">
-        html, body {
-            max-width: 1200px;
-            margin: auto;
-            padding-left: 2px;
+        img {
+            max-width: 100%;
         }
-        footer {
-            text-align: center;
-            margin: auto;
-            display: block;
-            border-top: 1px solid #333;
-            margin-top: 10px;
+        #description {
+            margin-bottom: 10px;
         }
-        h1, nav, #desc {
-            text-align: center;
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        a {
+            text-decoration: none;
+            color: #338618;
+        }
+        a:hover {
+            color: #5e5e5e;
+            border-bottom: 2px solid #4a4a4a; 
+        }
+        blockquote {
+              font: 14px/22px normal helvetica, sans-serif;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              margin-left: 25px;
+              padding-left: 5px;
+              border-left: 3px solid #338618;;
+        }
+        /* Pre and Code */
+        pre {
+          background-color: #C7E3BE;
+          display: block;
+          padding: 1em;
+          overflow-x: auto;
+        }
+
+        code {
+          font-size: 0.9em;
+          padding: 0 0.5em;
+          background-color: #C7E3BE;
+          white-space: pre-wrap;
+        }
+
+        pre > code {
+          padding: 0;
+          background-color: transparent;
+          white-space: pre;
+        }
+
+        /* Tables */
+        table {
+          text-align: justify;
+          width: 100%;
+          border-collapse: collapse;    
+        }
+
+        td, th {
+          padding: 0.5em;
+          border-bottom: 1px solid #C7E3BE;
+        }
+
+        .article-timestamp {
+            color: #999;
         }
         .Button {
             color: #444;
@@ -73,7 +128,7 @@
     <article>
         <h1>research</h1>
         <nav><a href="/">harshp.com</a></nav>
-        <nav><a href="#me">about me</a>; <a href="/research/publications">publications</a>; <a href="#activities">activities</a>; <a href="#teaching">teaching</a></nav>
+        <nav><a href="/research/blog">research blog</a>; <a href="/research/publications">publications</a>; <a href="#activities">activities</a>; <a href="#teaching">teaching</a></nav>
         <section id="me">
             <h2>About Me</h2>
             <p><b>Ph.D researcher</b> at <a href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a> of <a href="http://www.tcd.ie/">Trinity College Dublin</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT research center</a>.</p>

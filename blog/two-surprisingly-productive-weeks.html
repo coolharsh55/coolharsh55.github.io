@@ -35,11 +35,17 @@
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
+    
     <style type="text/css">
+        html * {
+            font-family: Arial, helvetica, sans-serif;
+        }
         html, body {
-            max-width: 900px;
+            font-size: 14pt;
+            color: #333333;
+            background-color: #f9f9f9;
+            line-height: 1.5;
+            max-width: 34em;
             margin: auto;
             padding-left: 2px;
             padding-right: 2px;
@@ -55,6 +61,9 @@
         h1, nav, img, #desc {
             text-align: center;
         }
+        img {
+            max-width: 100%;
+        }
         #description {
             margin-bottom: 10px;
         }
@@ -63,27 +72,70 @@
             height: 1px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+        a {
+            text-decoration: none;
+            color: #338618;
+        }
+        a:hover {
+            color: #5e5e5e;
+            border-bottom: 2px solid #4a4a4a; 
+        }
         blockquote {
               font: 14px/22px normal helvetica, sans-serif;
               margin-top: 10px;
               margin-bottom: 10px;
               margin-left: 25px;
               padding-left: 5px;
-              border-left: 3px solid #ccc;
+              border-left: 3px solid #338618;;
         }
+        /* Pre and Code */
+        pre {
+          background-color: #C7E3BE;
+          display: block;
+          padding: 1em;
+          overflow-x: auto;
+        }
+
+        code {
+          font-size: 0.9em;
+          padding: 0 0.5em;
+          background-color: #C7E3BE;
+          white-space: pre-wrap;
+        }
+
+        pre > code {
+          padding: 0;
+          background-color: transparent;
+          white-space: pre;
+        }
+
+        /* Tables */
+        table {
+          text-align: justify;
+          width: 100%;
+          border-collapse: collapse;    
+        }
+
+        td, th {
+          padding: 0.5em;
+          border-bottom: 1px solid #C7E3BE;
+        }
+
         .article-timestamp {
             color: #999;
         }
+
+
     </style>
 </head>
 <body>
     <article>
         <h1>Two surprisingly productive weeks</h1>
         <nav><a href="/">harshp.com</a> > <a href="/blog">blog</a></nav>
-        <p id="desc"><small>published: 2017-08-01 10:26:02, updated: 2017-08-01 10:34:27<br/>
+        <span id="#div"><p><small>published: 2017-08-01 10:26:02, updated: 2017-08-01 10:34:27<br/>
             <span>blog;</span> <span>personal;</span> <span>productivity;</span> <br/>
-        After spending two productive weeks, I sat down to think why I could get things done<div id="description"></small></p>
-        </div>
+        After spending two productive weeks, I sat down to think why I could get things done</small></p>
+        </span>
         <section>
             <p>The past two weeks I’ve spent were surprisingly very productive. And by productive, I don’t mean that I just got a lot of work done, although even that. But by productive, I mean I worked and accomplished a lot without feeling burnt out, and without feeling like I’m living 48 hours in a day. It wasn’t like I was scooped up in a cage like a chicken waiting until the next egg happened to fall out. I had a routine, I didn’t waste much time, I played games, I watched stuff on Netflix, I went out, I watched films, and at the end of everything, I finished a few projects and successfully submitted a paper. And even after all of this, I still wasn’t tired, thinking I need a break, or that now I’m going to take it slow. Quite the opposite in fact. I found it odd and weird to stop and slow down. It felt like I have this energy and not using it was doing something wasteful. I wondered, quite a few times, why I’m productive, but then decided not to pursue it right in the middle of deadlines. But now that I’m free, I thought I’d give this a thought and write down what I found.</p>
 <p>The first things I did was try to form a measure of whether I actually productive or just thinking that I had been productive. Thankfully, this was easy to reason about. Did I work all day long? No. Did I feel too tired to stand up and dance at the end of the day? No. Did I finish what I set out to do, in broader terms? Yes. Did I achieve something out of this? Yes. Was it accomplished to my taste, or was it wasteful and half baked? It was well done. So, yes, I had been productive. So far so good. Now to what I actually did all day. My routine started as I leisurely woke up. There was no fixed time, though the alarm combined with the sunlight coming through the window meant that I woke up anytime from 6am to 9am. If I felt like I hadn’t had enough sleep, or if it was too early, I would laze about or have another few hours. At no point did I have excess sleep, or overslept. But I also never underslept, and that was important to stay active throughout the day.</p>
@@ -98,7 +150,7 @@
         <footer>
             <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
             <p class="no-print"><u>privacy policy:</u> no data collection, no cookies, no tracking (except server logs IP)</p>
-            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
         </footer>
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
