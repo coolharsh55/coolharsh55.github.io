@@ -210,7 +210,7 @@ def generate_sectioned_docs(
             sections=dev_index, root=contentpath, title=name))
 
 
-def generate_unindexed_docs(name: str, contentpath: str):
+def generate_unindexed_docs(name: str, contentpath: str, template: str = None):
     '''Generate docs with no index.
     The content may supply the index itself or it can have no index.
     '''
@@ -218,14 +218,21 @@ def generate_unindexed_docs(name: str, contentpath: str):
         path = os.path.join('content/' + contentpath, file)
         if os.path.isdir(path):
             continue
+        logging.debug(f'working on unindexed file {path}')
         filename, extension = os.path.splitext(file)
         with open(path, 'r') as fd:
             data = fd.read()
         docspath = '..' + path.replace('content', '', 1)
+        # read metadata
+        data = _read_content(path)
         # render file according to file format
         if extension == ".html":
             with open(docspath, 'w') as fd:
-                fd.write(data)
+                if template:
+                    template = ENV.get_template(template)
+                    fd.write(template.render(data))
+                else:
+                    fd.write(data['content'])
         logging.debug(f'generated file {docspath}')
         # TODO: more format generators
         # e.g. markdown (md), text (txt)
@@ -250,7 +257,7 @@ if __name__ == '__main__':
     generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
     generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
     generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
-    generate_unindexed_docs('Research', 'research')
+    generate_unindexed_docs('Research', 'research', 'template_research')
     generate_docs(
         'Research Blog', 'research/blog',
         'template_research_blog', 'index_research_blog')
