@@ -50,7 +50,7 @@
             <span>djangoGNIBjobsnotificationsqueueredissystem modelTelegram;</span> </small>
         </p>
         
-        <section>
+        
             <p>This post details how the <a href="https://harshp.com/dev/utils/gnib-appointments/">GNIB/VISA appointment utility</a> was developed to display appointments on the website as well as how this was extended to create a <a href="https://harshp.com/dev/projects/gnib-appointments/appointment-notifications-using-telegram-app/">Telegram bot</a> to get notifications on all platforms. This can be roughly partitioned into three parts - efficient retrieval of appointments data, storing them into the database, building the bot for notifications</p>
 <h2 id="retrieving-notifications-using-async">Retrieving notifications using <code>async</code></h2>
 <blockquote>
@@ -207,7 +207,7 @@ from apps.jobs.gnib_telegram_bot import run
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
          run()</code></pre>
-        </section>
+        
         <footer>
             <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact/">Contact Me</a></p>
             <p class="no-print"><small><u>privacy policy:</u> no data collection, no cookies, no trackers; server logs IP for requests</small></p>
