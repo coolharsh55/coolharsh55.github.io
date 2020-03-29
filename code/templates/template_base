@@ -39,7 +39,7 @@
     {% block pageCSS %}{% endblock pageCSS %}{% endblock CSS %}
 </head>
 <body>
-    <article>
+    <article><div>
         <h1>{% block title_body %}{{ title }}{% endblock title_body %}</h1>
         {% block nav %}<nav class="center">
             <a href="/">harshp.com</a> > {% block navtype %}<a href="/content">content</a>{% endblock navtype %}
@@ -53,12 +53,12 @@
         {% block content %}
             {{ content }}
         {% endblock content %}
-        <footer>{% block footer %}
-            <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a></p>
-            <p class="no-print"><small><u>privacy policy:</u> no data collection, no cookies, no trackers; server logs IP for requests</small></p>
-            <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><small>content published under CC-by-4.0 unless noted otherwise <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></small></a>
-        {% endblock footer %}</footer>
-    </article>
+    </div></article>
+    <footer>{% block footer %}
+        <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a></p>
+        <p class="no-print"><small><u>privacy policy:</u> no data collection, no cookies, no trackers; server logs IP for requests</small></p>
+        <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><small>content published under CC-by-4.0 unless noted otherwise <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></small></a>
+    {% endblock footer %}</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
