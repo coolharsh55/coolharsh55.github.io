@@ -44,10 +44,10 @@
         {% block nav %}<nav class="center">
             <a href="/">harshp.com</a> > {% block navtype %}<a href="/content">content</a>{% endblock navtype %}
         </nav>{% endblock nav %}
-        {% block desc %}<p class="center">
+        {% block desc %}<p id="desc" class="center">
             {{ description }}<br/>
-            <small>published: <span class="article-timestamp">{{ published }}</span>{% if published != modified %}, updated: <span class="article-timestamp">{{ modified }}</span>{% endif %}<br/>
-            {% for tag in tags %}<span>{{ tag }};</span> {% endfor %}</small>
+            <small>&#8986; <span class="article-timestamp">{{ published }}</span>{% if published != modified %}, updated: <span class="article-timestamp">{{ modified }}</span>{% endif %}<br/>
+            &#127991; {% for tag in tags %}<span>{{ tag }};</span> {% endfor %}</small>
         </p>
         {% if headerimage %}<img src="{{ headerimage }}" alt="image for {{title}}"/>{% endif %}{% endblock desc %}
         {% block content %}
