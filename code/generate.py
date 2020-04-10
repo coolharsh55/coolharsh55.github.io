@@ -17,7 +17,7 @@ ENV = Environment(
 INDEX = []  # index of ALL documents
 # logging configuration for debugging to console
 logging.basicConfig(
-    level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 
 
 def _read_content(path):
@@ -188,18 +188,21 @@ def generate_sectioned_docs(
         if not files and not directories:
             logging.debug(f'skipped: found no files in {root}')
             continue
-
-        general_index, _ = _generate_sectioned_docs(root)
-        dev_index.append(('General', general_index, '.'))
+        if files:
+            general_index, _ = _generate_sectioned_docs(root)
+            dev_index.append(('General', general_index, '.'))
         for directory in directories:
             directorypath = os.path.join(root, directory)
             index, section = _generate_sectioned_docs(directorypath)
             dev_index.append((section, index, directory))
             directorypath = os.path.join(directorypath, 'index.html')
             directorypath = directorypath.replace('content', '..')
+            logging.debug(f'post -> {index[0]}')
             with open(directorypath, 'w') as fd:
                 template = ENV.get_template(template_index)
-                fd.write(template.render(blogs=index,title=section))
+                fd.write(template.render(
+                    blogs=index, root=contentpath, 
+                    path=directory, title=section))
         break
     # Sort the sections by date_published of their posts
     # So the section with the latest post is at the top
@@ -253,9 +256,9 @@ def generate_index():
 
 
 if __name__ == '__main__':
-    generate_docs('Blog', 'blog', 'template_blog', 'index_blog')
     generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
     generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
+    generate_sectioned_docs('Blog', 'blog', 'template_blog', 'index_blog')
     generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
     generate_unindexed_docs('Research', 'research', 'template_research')
     generate_docs(

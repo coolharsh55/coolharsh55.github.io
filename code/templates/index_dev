@@ -10,19 +10,19 @@
 	</section>
 	{% for section, posts, path in sections %}
 	<section>
-		<a href="/{{root}}/{% if path != '.' %}{{path}}{% endif %}"><h2>{{section}}</h2></a>
-		<dl>
-        {% for blog in posts %}
-            <dt><a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{blog[3]}}">{{blog[0]}}</a></dt>
-            <dd><small>{{blog[1]}}</small><br/>
-                {{blog[4]}}</dd>
+		<h2>{{section}}</h2>
+        {% for title, published, modified, filepath, description, sectionname, fullpath in posts %}
+        <div class="block">
+            <a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{filepath}}">{{title}}</a><br/>
+            <small class="article-timestamp">{{published}}</small> 
+            <small>{{description}}</small>
+        </div>
         {% endfor %}
-        </dl>
 	</section>{% endfor %}{% else %}
 	<section>
         <dl>
         {% for blog in blogs %}
-            <dt><a href="/{{root}}/{{blog[3]}}">{{blog[0]}}</a></dt>
+            <dt><a href="/{{root}}/{{path}}/{{blog[3]}}">{{blog[0]}}</a></dt>
             <dd><small>{{blog[1]}}</small><br/>
                 {{blog[4]}}</dd>
         {% endfor %}
