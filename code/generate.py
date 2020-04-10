@@ -243,7 +243,7 @@ def generate_index():
     INDEX.sort(key=lambda x: x[1], reverse=True)
     template = ENV.get_template('template_homepage')
     with open('../index.html', 'w') as fd:
-        fd.write(template.render(latest=INDEX[0], posts=INDEX[:10]))
+        fd.write(template.render(posts=INDEX))
     logging.info('generated homepage index')
     # By default, the index page only contains a few recent posts
     # The index_all contains an index of all posts

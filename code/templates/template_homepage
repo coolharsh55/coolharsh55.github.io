@@ -6,19 +6,18 @@
 {% endblock nav %}
 {% block desc %}{% endblock desc %}
 {% block content %}
-<section>
-    <p>Hi there, my name is <em>Harshvardhan Jitendra Pandit</em>, but I usually accept <em>Harsh</em> which is much easier to pronounce and to remember. <i>harsh</i> in sanskrit means joy, so the name is not as rude as it sounds. I'm currently doing my PhD (Computer Science) in Trinity College Dublin, Ireland on the topic of assessing provenance-based legal obligations, with a specific focus on GDPR. Most of my time is spent doing this.</p>
-    <p>Apart from this, I have several hobbies which I try to indulge in on a regular basis. These include reading books, watching movies, listening to music, playing video games, amateur photography, origami, and thinking on a variety of things.</p>
+<section class="center">
+    <p>Hi there, my name is <em>Harshvardhan Jitendra Pandit</em>, but I usually accept <em>Harsh</em> which is much easier to pronounce and remember, and means joy in sanskrit. I am a <a href="/research">PhD researcher</a> at Trinity College Dublin (Ireland) working on GDPR, Provenance, Consent, and Semantic Web. This website is a collection of my blog, research articles, and hobbies.</p>
 </section>
-<section>
-    <h2>recent posts <a href="/all"><sup>see all</sup></a></h2>
-    <dl>
+<section class="center">
+    <h2>posts</h2>
     {% for post in posts %}
-        <dt><a href="/{{post[3]}}">{{post[0]}}</a></dt>
-        <dd><a href="/{{post[6]}}"><small>{{post[5]}}</small></a> 
+    <div class="block">
+        <a href="/{{post[3]}}"><u>{{post[0]}}</u></a><br/>
+        <a href="/{{post[6]}}"><small>{{post[5]}}</small></a> 
             <small class="article-timestamp">{{post[1]}}</small> 
-            <small>{{post[4]}}</small></dd>
+            <small>{{post[4]}}</small>
+    </div>
     {% endfor %}
-    </dl>
 </section>
 {% endblock content %}
