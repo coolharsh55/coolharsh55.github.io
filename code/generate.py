@@ -261,6 +261,7 @@ if __name__ == '__main__':
     generate_sectioned_docs('Blog', 'blog', 'template_blog', 'index_blog')
     generate_sectioned_docs('dev', 'dev', 'template_dev', 'index_dev')
     generate_unindexed_docs('Research', 'research', 'template_research')
+    generate_unindexed_docs('PhD Thesis', 'research/phd-thesis', 'template_research')
     generate_docs(
         'Research Blog', 'research/blog',
         'template_research_blog', 'index_research_blog')
