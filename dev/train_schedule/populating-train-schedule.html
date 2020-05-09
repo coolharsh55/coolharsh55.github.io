@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>populating train schedule</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>populating train schedule</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            Populating the train schedule and directions<br/>
-            <small>&#8986; <span class="article-timestamp">2015-09-17 14:58:12</span>, updated: <span class="article-timestamp">2017-11-12 16:08:49</span><br/>
-            &#127991; <span>trains;</span> </small>
+            <span itemprop='description'>Populating the train schedule and directions</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2015-09-17 14:58:12</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-11-12 16:08:49</span><br/>
+            &#127991; <span itemprop='keywords'><span>trains;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p>Once the <strong>Station</strong> list has been fed into the database, along with the
 associated properties (next and previous), the <strong>Trains</strong> can be added to the database as
 well. The <strong>Timing</strong> objects
@@ -142,7 +146,7 @@ entries.</p>
   delete all timings
     where train=train
   # ... rest of the code remains the same</code></pre>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

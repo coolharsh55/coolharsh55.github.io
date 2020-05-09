@@ -45,15 +45,19 @@
 </style>
 </head>
 <body>
-    <article><div>
-        <h1>first flight</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>first flight</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/poems">poems</a>
         </nav>
         <p id="desc" class="center">
-            flying paper planes<br/>
-            <small>&#8986; <span class="article-timestamp">2015-03-25 18:00:00</span>, updated: <span class="article-timestamp">2016-03-20 13:27:02</span><br/>
-            &#127991; <span>poem;</span> <span>story;</span> </small>
+            <span itemprop='description'>flying paper planes</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2015-03-25 18:00:00</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2016-03-20 13:27:02</span><br/>
+            &#127991; <span itemprop='keywords'><span>poem;</span> <span>story;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         <img src="//harshp-media.s3-eu-west-1.amazonaws.com/poems/firstflight.jpg" alt="image for first flight"/>
         <section>

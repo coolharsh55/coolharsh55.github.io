@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>checking if time difference between stations are the same</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>checking if time difference between stations are the same</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            checking if the time differences between each train run and station is the same<br/>
-            <small>&#8986; <span class="article-timestamp">2015-09-17 15:05:46</span>, updated: <span class="article-timestamp">2017-11-12 16:17:37</span><br/>
-            &#127991; <span>trains;</span> </small>
+            <span itemprop='description'>checking if the time differences between each train run and station is the same</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2015-09-17 15:05:46</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-11-12 16:17:37</span><br/>
+            &#127991; <span itemprop='keywords'><span>trains;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p>When creating a system that automatically populates the timings for each station, it is vital to know whether timings remain constant for all the trains that run on that route. What I'm talking about is: does the time taken to get from station A to station B remain the same for all trains going from A to B ?</p>
 <p><br></p>
 <p>To check this, I scraped the time table from <a href=\"http://www.punediary.com/html/upside_local.html\" target=\"_blank\">punediary.com</a> using a tool called <code>scrapy</code>. The following is the output of the script that parses the scraped data, cleans it, and calculates the time difference for every station along with the average.</p>
@@ -2119,7 +2123,7 @@
     </tr>
   </tbody>
 </table>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

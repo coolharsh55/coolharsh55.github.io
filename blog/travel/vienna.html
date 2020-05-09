@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Vienna</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Vienna</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/blog">blog</a>
         </nav>
         <p id="desc" class="center">
-            A wonderful city with great culture and food.<br/>
-            <small>&#8986; <span class="article-timestamp">2017-10-30 11:29:41</span>, updated: <span class="article-timestamp">2017-10-30 12:28:44</span><br/>
-            &#127991; <span>blog;</span> <span>travel;</span> <span>conference;</span> <span>academia;</span> </small>
+            <span itemprop='description'>A wonderful city with great culture and food.</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-10-30 11:29:41</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-10-30 12:28:44</span><br/>
+            &#127991; <span itemprop='keywords'><span>blog;</span> <span>travel;</span> <span>conference;</span> <span>academia;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         <img src="//s3-eu-west-1.amazonaws.com/harshp-media/blog/travels/vienna-bratislava/vienna_museums_6.jpg" alt="image for Vienna"/>
-        
+        <div itemprop='articleBody'>
             <p>The <a href="https://iswc2017.semanticweb.org/">International Semantic Web Conference (ISWC)</a> took me to Vienna, where I had to present a paper in the workshop on <a href="http://privon.semanticweb.org/">Privacy Online (PrivOn)</a>. The (few) perks of academia provided me with transport, accommodation, and food costs while the conference was on, which is 21st to 25th October. I was there a day earlier, 20th being Friday, and left early morning the week after, on 27th Friday for Bratislava (see <a href="https://harshp.com/blog/series/places/bratislava/">here</a> for the blog post for Bratislava). In total, there were 7 of us (from the same research group - ADAPT, from Trinity College Dublin), including my Supervisor / PI / Guide.</p>
 <p><a href="https://en.wikipedia.org/wiki/Vienna">Vienna</a> is a city with a distinct culture due to being part and capital of the <a href="https://en.wikipedia.org/wiki/Austria-Hungary">Austro-Hungarian empire</a> until World War I. It has a lot of significance in terms of culture due to the presence of several distinct artists in the areas of painting and music. It is also the city where Sigmund Freud resided. All of these have had significant impact on the city by forming part of its identity.</p>
 <blockquote>
@@ -171,7 +175,7 @@
 <li>Food!</li>
 <li>I could want to be a postdoc at WU</li>
 </ul>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

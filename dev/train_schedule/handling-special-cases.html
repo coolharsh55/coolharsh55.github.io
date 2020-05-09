@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>handling special cases</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>handling special cases</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            handling some of the special cases  in the train schedule<br/>
-            <small>&#8986; <span class="article-timestamp">2015-09-17 14:59:23</span>, updated: <span class="article-timestamp">2017-11-12 16:14:35</span><br/>
-            &#127991; <span>trains;</span> </small>
+            <span itemprop='description'>handling some of the special cases  in the train schedule</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2015-09-17 14:59:23</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-11-12 16:14:35</span><br/>
+            &#127991; <span itemprop='keywords'><span>trains;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p>So far, I've assumed that the data being stored (timings) is static. But
 in reality, trains often run under special circumstances. Where I stay,
 I often see cases like:</p>
@@ -133,7 +137,7 @@ fourth column, called <em>ORIGINAL_VALUE</em><span
 class="\"redactor-invisible-space\""> can also be added to the table to
 store the original values. This keeps all associated values in one
 place, and does not require temporary tables.</span></p>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

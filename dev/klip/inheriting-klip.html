@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Inheriting klip</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Inheriting klip</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            Inheriting the klip project, cleaning it up, and documenting it<br/>
-            <small>&#8986; <span class="article-timestamp">2017-05-26 15:03:00</span>, updated: <span class="article-timestamp">2017-05-29 16:47:43</span><br/>
-            &#127991; <span>kindleprojectpython;</span> </small>
+            <span itemprop='description'>Inheriting the klip project, cleaning it up, and documenting it</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-05-26 15:03:00</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-05-29 16:47:43</span><br/>
+            &#127991; <span itemprop='keywords'><span>kindleprojectpython;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <blockquote>
 <p>Project Source: <a href="https://github.com/coolharsh55/klip">klip - Github</a></p>
 </blockquote>
@@ -139,7 +143,7 @@ the helper functions which use regex to extract relevant bits and then return it
 <li>turn the annotation parser into a <code>kindle.js</code> library that can be run in browsers</li>
 <li>use the above script in heroku webapp for online clipping parsing</li>
 </ul>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

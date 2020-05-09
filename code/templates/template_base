@@ -39,20 +39,24 @@
     {% block pageCSS %}{% endblock pageCSS %}{% endblock CSS %}
 </head>
 <body>
-    <article><div>
-        <h1>{% block title_body %}{{ title }}{% endblock title_body %}</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>{% block title_body %}{{ title }}{% endblock title_body %}</h1>
         {% block nav %}<nav class="center">
             <a href="/">harshp.com</a> > {% block navtype %}<a href="/content">content</a>{% endblock navtype %}
         </nav>{% endblock nav %}
         {% block desc %}<p id="desc" class="center">
-            {{ description }}<br/>
-            <small>&#8986; <span class="article-timestamp">{{ published }}</span>{% if published != modified %}, updated: <span class="article-timestamp">{{ modified }}</span>{% endif %}<br/>
-            &#127991; {% for tag in tags %}<span>{{ tag }};</span> {% endfor %}</small>
+            <span itemprop='description'>{{ description }}</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>{{ published }}</span>{% if published != modified %}, updated: <span class="article-timestamp" itemprop='dateModified'>{{ modified }}</span>{% endif %}<br/>
+            &#127991; <span itemprop='keywords'>{% for tag in tags %}<span>{{ tag }};</span> {% endfor %}</span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         {% if headerimage %}<img src="{{ headerimage }}" alt="image for {{title}}"/>{% endif %}{% endblock desc %}
-        {% block content %}
+        {% block content %}<div itemprop='articleBody'>
             {{ content }}
-        {% endblock content %}
+        </div>{% endblock content %}
     </div></article>
     <footer>{% block footer %}
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

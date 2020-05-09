@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Documenting ontologies using Widoco</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Documenting ontologies using Widoco</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            Widoco is a nifty utility to document OWL2 vocabularies<br/>
-            <small>&#8986; <span class="article-timestamp">2017-09-02 17:32:14</span>, updated: <span class="article-timestamp">2017-09-02 17:43:28</span><br/>
-            &#127991; <span>documentationontologiesOWLtools;</span> </small>
+            <span itemprop='description'>Widoco is a nifty utility to document OWL2 vocabularies</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-09-02 17:32:14</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-09-02 17:43:28</span><br/>
+            &#127991; <span itemprop='keywords'><span>documentationontologiesOWLtools;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p><a href="https://dgarijo.github.io/Widoco/">Widoco</a> is a Java tool that generates HTML documentation for OWL2 vocabularies. It uses <a href="http://www.essepuntato.it/lode">LODE</a> as its backend for generating the documentation and provides several additional features on top of it such as an embedding of the WebVOWL visualization as well as sections pertaining to description of the ontology such as Introduction, Overview, and Description.</p>
 <h2 id="installation">Installation</h2>
 <p>Widoco is available as a JAR file, which contains all the dependencies, and requires Java 1.8. Running the JAR file is simple as -</p>
@@ -174,7 +178,7 @@ extendedOntologyURIs=
 RDFXMLSerialization=ontology.xml
 TurtleSerialization=ontology.ttl
 N3Serialization=ontology.nt</code></pre>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

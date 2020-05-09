@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Chrome extension for loading/saving form data</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Chrome extension for loading/saving form data</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            Using a chrome extension to automatically populate GNIB forms<br/>
-            <small>&#8986; <span class="article-timestamp">2017-05-20 17:15:00</span>, updated: <span class="article-timestamp">2017-05-20 17:40:22</span><br/>
-            &#127991; <span>ChromeChrome extensionGNIB;</span> </small>
+            <span itemprop='description'>Using a chrome extension to automatically populate GNIB forms</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-05-20 17:15:00</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-05-20 17:40:22</span><br/>
+            &#127991; <span itemprop='keywords'><span>ChromeChrome extensionGNIB;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         <img src="//s3-eu-west-1.amazonaws.com/harshp-media/dev/gnib_appointments/gnib_chrome_extension_swal.png" alt="image for Chrome extension for loading/saving form data"/>
-        
+        <div itemprop='articleBody'>
             <blockquote>
 <p><strong>recap:</strong> In the previous posts, I describe retrieving GNIB and Visa 
 appointments by manually querying
@@ -197,7 +201,7 @@ chrome.storage.sync.set({
 such as name and passport no are saved with the same identifier. This means that
 if you have filled a GNIB form before and saved that data, the common fields can be
 populated in the Visa form with it.</p>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Privacy Guard</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Privacy Guard</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/research/">research</a> > <a href="/research/blog">blog</a>
         </nav>
         <p id="desc" class="center">
-            An app study using Privacy Guard on Android<br/>
-            <small>&#8986; <span class="article-timestamp">2017-07-03 20:08:37</span>, updated: <span class="article-timestamp">2017-07-03 20:44:46</span><br/>
-            &#127991; <span>AndroidappsPrivacy Guardresearchstudy;</span> </small>
+            <span itemprop='description'>An app study using Privacy Guard on Android</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-07-03 20:08:37</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-07-03 20:44:46</span><br/>
+            &#127991; <span itemprop='keywords'><span>AndroidappsPrivacy Guardresearchstudy;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p>We all have smartphones, and we all have several apps on them that we use regularly. From the good old dialer to make phone calls to fancy apps that add filters to photos and videos. But do we realise how much data these apps use and what they do with them? In most cases, we do not even realise how bad this problem this, partially because apps are really sly about it, but mostly because we don't really care. For a simple example, a flashlight app [1] sucked up data it had no business using, and users were left none the wiser. The recent study by HPE [2] shows that this is a continuing problem even today.</p>
 <p>In response, Apple's iOS and Google's Android, which share almost the entirety of the smartphone marketshare between them, have come up with several methods to tackle this problem. One of them is granular permission where the user has increased control over what resources are requested by an app. For example, instead of an app requesting a one-time permission to use the camera during install, the platform will show a message when the app <em>actually</em> requests to use the camera while running. The problem with such granular permissions is that they become a nuisance when they are being constantly deployed. No one wants to constantly answer whether the app should use the camera each time, and so they most often than not, click on <em>allow always</em>. While this model works at a basic level, there are a lot more things the apps use other than things such as camera and contacts. An app can run in the background, can use location while it is running, can read your call log, your SMS, see what apps are installed on your system, and so on and so forth.</p>
 <p>With an increased sensitivity towards privacy, I recently flashed my OnePlus 3T with an open source ROM (<a href="http://www.resurrectionremix.com/">Resurrection Remix OS</a> based on <a href="https://lineageos.org/">LineageOS</a>) that has several benefits over stock Android (and OxygenOS, which is OnePlus custom Android ROM). Important amongst them is <strong>Privacy Guard</strong>, which allows control over resources used by an app <em>transparent from the app</em>. This means that if I configure the privacy guard to not provide location info to an app, this is done without letting the app know that it has been restricted in some form. To the app, it sees as the location request having failed, and no location data being sent to it. Some apps are bold enough to quit or stall at that point, and explicitly ask the user for some piece of data in lieu of providing a certain service. </p>
@@ -65,7 +69,7 @@
 </ul>
 <p>[1] <a href="https://www.wired.com/2014/10/iphone-apps/">https://www.wired.com/2014/10/iphone-apps/</a></p>
 <p>[2] <a href="https://saas.hpe.com/sites/default/files/resources/files/Mobile%20Report%20ver%2010.2.pdf">https://saas.hpe.com/sites/default/files/resources/files/Mobile%20Report%20ver%2010.2.pdf</a></p>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

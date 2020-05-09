@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>BOI Mobile - nothing fishy; needs better documentation</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>BOI Mobile - nothing fishy; needs better documentation</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/research/">research</a> > <a href="/research/blog">blog</a>
         </nav>
         <p id="desc" class="center">
-            A mobile banking app that is under-documented, but not suspicious<br/>
-            <small>&#8986; <span class="article-timestamp">2017-07-05 23:24:06</span>, updated: <span class="article-timestamp">2017-07-30 21:05:34</span><br/>
-            &#127991; <span>bankingprivacyPrivacy Guardsecurity;</span> </small>
+            <span itemprop='description'>A mobile banking app that is under-documented, but not suspicious</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-07-05 23:24:06</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-07-30 21:05:34</span><br/>
+            &#127991; <span itemprop='keywords'><span>bankingprivacyPrivacy Guardsecurity;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p>Mobile Banking allows us to easily access our accounts and make payments and transfers from the comfort of the palm. <a href="https://www.bankofireland.com/">Bank of Ireland</a> is one of the major banks in Ireland, and they have a mobile app called <a href="https://play.google.com/store/apps/details?id=com.bankofireland.mobilebanking&amp;hl=en">BOI Mobile</a> as a counterpart for their digital banking service called <a href="https://www.365online.com/">365 online</a>. As with any activity involving personal data and financial actions, one must be extremely careful and cautious on the side of suspicion. To that end, this post examines the permissions and data used by the BOI Mobile app on Android with a keener eye.</p>
 <p>While the app itself offers no explanation, and is little more than a mobile version of the website, the terms and conditions clearly mention with a larger emphasis on the data collected, and how it is not stored, or is made anonymous. In light of the upcoming GDPR, these terms and conditions also mention the use of <em>consent</em> multiple times, which enforces user choice and rights. However, none of these explain the permissions the app requires, or why it needs them in the specified manner, nor how it uses the data entered.</p>
 <p>On Android, the app requires/uses the following permissions, and are followed by explanations with the following convention:</p>
@@ -154,7 +158,7 @@
 </li>
 </ul>
 <p>As a banking app, BOI Mobile asks for a lot of permissions that are exactly clear in terms of usage. Their terms and conditions mention their approach to data - which is to maintain user privacy. This is good, the BOI Mobile app poses no dangers in terms of privacy, but I'm more concerned in terms of security as it stores and maintains the user's account details. The app automatically logs out whenever it is closed or another app is opened over it. Apart from the permissions mentioned by the app, it also has the capability to read SMS and call logs, something that is never <em>actually</em> used by the app when running. It may be used to contact BOI and for verification through security codes, but this is mere speculation. Overall, BOI Mobile seems to work fairly well, does not seem suspicious, but needs a lot of clarification in terms of telling users what the app is doing on their devices. This is important especially for the background activity aspect.</p>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>

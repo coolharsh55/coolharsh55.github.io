@@ -39,18 +39,22 @@
     
 </head>
 <body>
-    <article><div>
-        <h1>Setting up Fuseki</h1>
+    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
+        <h1 itemprop='name'>Setting up Fuseki</h1>
         <nav class="center">
             <a href="/">harshp.com</a> > <a href="/dev">dev</a>
         </nav>
         <p id="desc" class="center">
-            Getting Apache Fuseki up and running with minimal configuration<br/>
-            <small>&#8986; <span class="article-timestamp">2017-08-23 15:27:46</span>, updated: <span class="article-timestamp">2017-08-23 16:21:24</span><br/>
-            &#127991; <span>Apache Jenafusekisemantic webtools;</span> </small>
+            <span itemprop='description'>Getting Apache Fuseki up and running with minimal configuration</span><br/>
+            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2017-08-23 15:27:46</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-08-23 16:21:24</span><br/>
+            &#127991; <span itemprop='keywords'><span>Apache Jenafusekisemantic webtools;</span> </span></small>
+            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+                <meta content='https://harshp.com/i/me' itemprop='url' />
+                <meta content='Harshvardhan J. Pandit' itemprop='name' />
+            </span>
         </p>
         
-        
+        <div itemprop='articleBody'>
             <p><a href="https://jena.apache.org/">Apache Jena</a> is an amazing (Java) framework for working
 with semantic web ontologies. <a href="https://jena.apache.org/documentation/fuseki2/index.html">Fuseki</a> is a SPARQL end-point which is super-easy to set up and use, and <a href="https://jena.apache.org/documentation/tdb/index.html">TDB</a> is the native triple-store that is already configured into Fuseki and just needs to be enabled.
 If the purpose of setting up a SPARQL end-point or triple-store is mostly <em>dev</em> and doesn't need to be <em>production</em> grade, Fuseki+TDB is the best way to experiment.</p>
@@ -149,7 +153,7 @@ WantedBy=multi-user.target</code></pre>
 Instead, <a href="http://shiro.apache.org/">Apache Shiro</a> is used to provide a limited amount
 of security. Shiro allows for setting username/password for access to the fuseki server
 instance running, so that without the credentials, one cannot access the datasets.</p>
-        
+        </div>
     </div></article>
     <footer>
         <p class="no-print"><a href="/sitemap">Sitemap</a> | <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a><br/>
