@@ -1,0 +1,15 @@
+{% extends 'template_base' %}
+{% block pagetitle %}DPVCG{% endblock pagetitle %}
+{% block title_body %}DPVCG{% endblock title_body %}
+{% block nav %}<nav><a href="/">harshp.com</a> > <a href="/research/">research</a> > <a href="/research/projects/">projects</a></nav>{% endblock nav %}
+{% block desc %}{% endblock desc %}
+{% block content %}
+        <p>The <a href="https://www.w3.org/community/dpvcg/">W3C Data Privacy Vocabularies and Controls Community Group (DPVCG)</a> works on the mission to develop a taxonomy of privacy terms, which include in particular terms from the new European General Data Protection Regulation (GDPR), such as a taxonomy of personal data as well as a classification of purposes (i.e., purposes for data collection), and events of disclosures, consent, and processing such personal data.</p>
+        <section>
+            <dl>{% for title, timestamp, _, url, description in blogs %}
+                    <dt><a href="/{{section}}/{{url}}"><u>{{title}}</u></a></dt>
+                    <dd><small class="article-timestamp">{{timestamp}}</small>
+                    <small>{{description}}</small>
+                    </dd>
+            {% endfor %}</dl>
+        </section>{% endblock content %}

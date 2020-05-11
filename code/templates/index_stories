@@ -4,11 +4,10 @@
 {% block nav %}<nav><a href="/">harshp.com</a></nav>{% endblock nav %}
 {% block desc %}{% endblock desc %}
 {% block content %}<section>
-            <dl>
-            {% for blog in blogs %}
-                <dt><a href="/{{section}}/{{blog[3]}}">{{blog[0]}}</a></dt>
-                <dd><small>{{blog[1]}}</small><br/>
-                    {{blog[4]}}</dd>
-            {% endfor %}
-            </dl>
+            <dl>{% for title, timestamp, _, url, description in blogs %}
+                    <dt><a href="/{{url}}"><u>{{title}}</u></a></dt>
+                    <dd><small class="article-timestamp">{{timestamp}}</small>
+                    <small>{{description}}</small>
+                    </dd>
+            {% endfor %}</dl>
         </section>{% endblock content %}

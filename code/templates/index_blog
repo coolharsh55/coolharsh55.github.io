@@ -3,7 +3,7 @@
 {% block desc %}{% endblock desc %}
 {% block content %}
     {% if sections %}<section>
-    <p><dl><dt>Sections</dt>
+    <dl><dt>Sections</dt>
     <dd>{% for section, _, path in sections %}
         <a href="/{{root}}/{{path}}"><small>{{ section }}</small></a><br/>
     {% endfor %}</dd></dl>
@@ -11,21 +11,18 @@
     {% for section, posts, path in sections %}
     <section>
         <h2>{{section}}</h2>
-        {% for title, published, modified, filepath, description, sectionname, fullpath in posts %}
-        <div class="block">
-            <a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{filepath}}">{{title}}</a><br/>
-            <small class="article-timestamp">{{published}}</small> 
-            <small>{{description}}</small>
-        </div>
-        {% endfor %}
+        <dl>{% for title, published, modified, filepath, description, sectionname, fullpath in posts %}
+            <dt><a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{filepath}}">{{title}}</a></dt>
+            <dd><small class="article-timestamp">{{published}}</small> 
+            <small>{{description}}</small></dd>
+        {% endfor %}</dl>
     </section>{% endfor %}{% else %}
     <section>
-        <dl>
-        {% for blog in blogs %}
-            <dt><a href="/{{root}}/{{path}}/{{blog[3]}}">{{blog[0]}}</a></dt>
-            <dd><small>{{blog[1]}}</small><br/>
-                {{blog[4]}}</dd>
-        {% endfor %}
-        </dl>
+        <dl>{% for title, timestamp, _, url, description, section, url_section in blogs %}
+            <dt><a href="/{{url}}"><u>{{title}}</u></a></dt>
+            <dd><small class="article-timestamp">{{timestamp}}</small>
+            <small>{{description}}</small>
+            </dd>
+        {% endfor %}</dl>
     </section>{% endif %}
 {% endblock content %}

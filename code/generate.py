@@ -248,14 +248,10 @@ def generate_index():
     with open('../index.html', 'w') as fd:
         fd.write(template.render(posts=INDEX))
     logging.info('generated homepage index')
-    # By default, the index page only contains a few recent posts
-    # The index_all contains an index of all posts
-    template = ENV.get_template('index_all')
-    with open('../all.html', 'w') as fd:
-        fd.write(template.render(posts=INDEX))
 
 
 if __name__ == '__main__':
+    # generate docs: Name, location, template
     generate_docs('Poems', 'poems', 'template_poems', 'index_poems')
     generate_docs('Stories', 'stories', 'template_stories', 'index_stories')
     generate_sectioned_docs('Blog', 'blog', 'template_blog', 'index_blog')
@@ -265,4 +261,10 @@ if __name__ == '__main__':
     generate_docs(
         'Research Blog', 'research/blog',
         'template_research_blog', 'index_research_blog')
+    generate_unindexed_docs('Research Projects', 'research/projects', 'template_research_projects')
+    generate_unindexed_docs('DPVCG', 'research/projects/dpvcg', 'template_research_dpvcg')
+    generate_unindexed_docs('Consent Receipt', 'research/projects/consent-receipt', 'template_research_consent_receipt')
+    generate_unindexed_docs('GDPR Compliance', 'research/projects/gdpr-compliance', 'template_research_gdpr_compliance')
+    generate_unindexed_docs('Personal Data', 'research/projects/personal-data', 'template_research_personal_data')
+    generate_unindexed_docs('Privacy Policy', 'research/projects/privacy-policy', 'template_research_privacy_policy')
     generate_index()
