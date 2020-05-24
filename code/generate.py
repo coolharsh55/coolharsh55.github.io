@@ -6,7 +6,7 @@ Explicitly state the folder to be considered as content.
 The script will then generate the corresponding html in the root.
 '''
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, Template
 import logging
 import os
 
@@ -251,6 +251,14 @@ def generate_index():
         fd.write(template.render(posts=INDEX))
     logging.info('generated homepage index')
 
+def generate_single_file(filepath, template):
+    # Generate single files based on templates
+    logging.debug(f'generating single file {filepath}')
+    template = ENV.get_template(template)
+    with open(f'../{filepath}', 'w') as fd:
+            fd.write(template.render())
+    logging.debug(f'generated file {filepath}')
+
 
 if __name__ == '__main__':
     # generate docs: Name, location, template
@@ -270,3 +278,4 @@ if __name__ == '__main__':
     # generate_unindexed_docs('Personal Data', 'research/projects/personal-data', 'template_research_personal_data')
     generate_unindexed_docs('Privacy Policy', 'research/projects/privacy-policy', 'template_research_privacy_policy')
     generate_index()
+    generate_single_file('contact.html', 'template_contact')
