@@ -1,12 +1,12 @@
 {% extends 'template_base' %}
 {% block pageCSS %}{{ super () }}
 <style type="text/css">
-    body {
+    article {
         text-align: center;
         margin: auto;
     }
 </style>{% endblock pageCSS %}
-{% block navtype %}<a href="/poems">poems</a>{% endblock navtype %}
+{% block navtype %}<a class="current" href="/poems">poems</a>{% endblock navtype %}
 {% block content %}<section>
 {{ content }}
 </section>{% endblock content %}

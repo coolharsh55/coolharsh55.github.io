@@ -1,5 +1,5 @@
-{% extends 'template_base' %}
-{% block nav %}<nav><a href="/">harshp.com</a> -> <a href="/research">research</a> -> <a href="/research#projects">projects</a> -> <a href="/research/projects/dpvcg/">dpvcg</a></nav>{% endblock nav %}
+{% extends 'template_research' %}
+{% block navtype %}<a href="/research">research</a> | <a href="/research/blog">research blog</a> | <a href="/research/publications">publications</a> | <span class="current"><a href="/research#projects">projects</a> > <a href="/research/projects/dpvcg/">dpvcg</a></span>{% endblock navtype %}
 {% block desc %}{% endblock desc %}
 {% block JS %}
 {{super()}}

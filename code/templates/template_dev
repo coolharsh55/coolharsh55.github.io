@@ -1,2 +1,2 @@
 {% extends 'template_base' %}
-{% block navtype %}<a href="/dev">dev</a>{% if section %} > <a href="/{{ section_path }}">{{ section }}</a>{% endif %}{% endblock navtype %}
+{% block navtype %}<span class="current"><a href="/dev">dev</a>{% if section %} > <a href="/{{ sectionpath }}">{{ section }}</a>{% endif %}</span>{% endblock navtype %}

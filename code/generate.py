@@ -171,7 +171,9 @@ def generate_sectioned_docs(
                 if extension == ".html":
                     template = ENV.get_template(template_content)
                     with open(docspath, 'w') as fd:
-                        fd.write(template.render(data))
+                        fd.write(template.render(
+                            data, section=section, 
+                            sectionpath=f'{directorypath.replace("../","")}'))
                 logging.debug(f'generated file {docspath}')
                 # TODO: more format generators
                 # e.g. markdown (md), text (txt)
@@ -265,6 +267,6 @@ if __name__ == '__main__':
     generate_unindexed_docs('DPVCG', 'research/projects/dpvcg', 'template_research_dpvcg')
     generate_unindexed_docs('Consent Receipt', 'research/projects/consent-receipt', 'template_research_consent_receipt')
     generate_unindexed_docs('GDPR Compliance', 'research/projects/gdpr-compliance', 'template_research_gdpr_compliance')
-    generate_unindexed_docs('Personal Data', 'research/projects/personal-data', 'template_research_personal_data')
+    # generate_unindexed_docs('Personal Data', 'research/projects/personal-data', 'template_research_personal_data')
     generate_unindexed_docs('Privacy Policy', 'research/projects/privacy-policy', 'template_research_privacy_policy')
     generate_index()

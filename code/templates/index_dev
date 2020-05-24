@@ -1,5 +1,4 @@
-{% extends 'template_base' %}
-{% block nav %}<nav><a href="/">harshp.com</a>{% if not sections %} > <a href="/dev">dev</a>{% endif %}</nav>{% endblock nav %}
+{% extends 'template_dev' %}
 {% block desc %}{% endblock desc %}
 {% block content %}
     {% if sections %}<section>

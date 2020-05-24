@@ -1,14 +1,21 @@
 {% extends 'template_base' %}
 {% block pagetitle %}harshp.com{% endblock pagetitle %}
-{% block title_body %}harshp.com{% endblock title_body %}
-{% block nav %}
-<nav><a href="/blog/">blog</a>; <a href="/poems/">poems</a>; <a href="/stories/">stories</a>; <a href="/research/">research</a>; <a href="/dev/">dev</a>; <a href="https://github.com/coolharsh55/">github</a></nav>
-{% endblock nav %}
+{% block title_h1 %}{% endblock title_h1 %}
+{% block navtype %}
+<a href="/blog/">blog</a> |
+<a href="/hobbies/">hobbies</a> |
+<a href="/research/">research</a> |
+<a href="/dev/">dev</a> |
+<a href="https://github.com/coolharsh55/">github</a>{% endblock navtype %}
 {% block desc %}{% endblock desc %}
 {% block content %}
 <section>
-    <p><small><b>about me:</b> My name is <em>Harsh</em> and I am a <a href="/research">Research Assistant</a> at Trinity College Dublin (Ireland). This website is a motly collection of my blog posts, research activities, and records of hobbies.</small></p>
+    <p>
+        <span style="background-color: #4717F6; color: #EFEFEF; font-weight: bold; padding: 3px;">about me</span>
+        <small>I'm a Research Assistant at <a href="">Trinity College Dublin</a> and live in Dublin, Ireland working in the areas of GDPR compliance, semantic web, and privacy. This website is a motly collection of my <a href="/blog/">blog posts</a>, <a href="/research/">research activities</a>, and <a href="/hobbies/">hobbies</a>.</small>
+    </p>
 </section>
+<hr/>
 <section>
     <dl>
     {% for title, timestamp, _, url, description, section, url_section in posts %}
