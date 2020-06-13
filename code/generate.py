@@ -174,7 +174,8 @@ def generate_sectioned_docs(
                         fd.write(template.render(
                             data, section=section, 
                             sectionpath=f'{directorypath.replace("../","")}'))
-                logging.debug(f'generated file {docspath}')
+                logging.debug(
+                    f'generated {docspath} ; template: {template_content}')
                 # TODO: more format generators
                 # e.g. markdown (md), text (txt)
             break
@@ -205,6 +206,8 @@ def generate_sectioned_docs(
                 fd.write(template.render(
                     blogs=index, root=contentpath, 
                     path=directory, title=section))
+                logging.debug(
+                    f'index: {directorypath} ; template: {template_index}')
         break
     # Sort the sections by date_published of their posts
     # So the section with the latest post is at the top

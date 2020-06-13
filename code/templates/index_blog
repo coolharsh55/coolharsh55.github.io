@@ -18,7 +18,7 @@
     </section>{% endfor %}{% else %}
     <section>
         <dl>{% for title, timestamp, _, url, description, section, url_section in blogs %}
-            <dt><a href="/{{url}}"><u>{{title}}</u></a></dt>
+            <dt><a href="/{{root}}/{% if path != '.' %}{{path}}/{% endif %}{{url}}"><u>{{title}}</u></a></dt>
             <dd><small class="article-timestamp">{{timestamp}}</small>
             <small>{{description}}</small>
             </dd>
