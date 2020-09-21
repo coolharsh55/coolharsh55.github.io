@@ -38,9 +38,12 @@ def _read_content(path):
         modified = fd.readline().split(': ')[-1].strip()
         tags = [
             tag.strip()
-            for tag in fd.readline().split(':')[-1].split(',')]
+            for tag in fd.readline().split(':')[-1].split(',')
+            if len(tag.strip()) > 0]
         description = fd.readline().split(':')[-1].strip()
         headerimage = fd.readline().split(':')[-1].strip()
+        if len(headerimage) == 0:
+            headerimage = None
         separator = fd.readline().strip()
         assert separator == '==='
         content = fd.read()

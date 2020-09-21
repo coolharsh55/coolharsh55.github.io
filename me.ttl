@@ -1,0 +1,25 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+
+<https://harshp.com/me> a schema:Person ;
+    schema:name "Harshvardhan J. Pandit" ;
+    schema:address "Dublin, Ireland" ;
+    schema:affiliation <https://www.tcd.ie/> ;
+    schema:alumniOf <http://www.unipune.ac.in/>, <https://www.ucc.ie/>,  <https://www.tcd.ie/> ;
+    schema:email "me@harshp.com" ;
+    schema:givenName "Harshvardhan" ;
+    schema:familyName "Pandit" ;
+    schema:gender schema:Male ;
+    schema:hasOccupation "Researcher" ;
+    schema:honorificPrefix "Dr" ;
+    schema:honorificSuffix "PhD" ;
+    schema:jobTitle "Research Fellow" ;
+    schema:knowsLanguage [ a schema:Language ; schema:name "English" ], [ a schema:Language ; schema:name "Hindi" ], [ a schema:Language ; schema:name "Marathi" ] ;
+    schema:nationality [ a schema:Country ; schema:name "India" ] ;
+    schema:worksFor <https://www.tcd.ie/> ;
+    schema:url "https://harshp.com/me"^^xsd:anyURI .

@@ -1,10 +1,3 @@
-title: checking if time difference between stations are the same
-published: 2015-09-17 15:05:46
-modified: 2017-11-12 16:17:37
-tags: trains
-description: checking if the time differences between each train run and station is the same
-headerimage: 
-===
 <p>When creating a system that automatically populates the timings for each station, it is vital to know whether timings remain constant for all the trains that run on that route. What I'm talking about is: does the time taken to get from station A to station B remain the same for all trains going from A to B ?</p>
 <p><br></p>
 <p>To check this, I scraped the time table from <a href=\"http://www.punediary.com/html/upside_local.html\" target=\"_blank\">punediary.com</a> using a tool called <code>scrapy</code>. The following is the output of the script that parses the scraped data, cleans it, and calculates the time difference for every station along with the average.</p>

@@ -8,54 +8,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    <!-- metadata -->
     <title>checking if time difference between stations are the same</title>
-    <meta name="description" content="checking if the time differences between each train run and station is the same"/>
-    <!-- Google -->
+    <meta name="description" content=""/>
     <meta itemprop="name" content="checking if time difference between stations are the same">
     <meta itemprop="description" content="checking if the time differences between each train run and station is the same">
-    
-    <!-- Twitter -->
+    <meta itemprop="datePublished" content="item.schema_datePublished">
+    <meta itemprop="keywords" content="trains,python,script,automation,">
+    <meta itemprop="author" content="https://harshp.com/me">
+    <meta itemprop="identifier" content="https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same">
     <meta name="twitter:card" value="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="checking if time difference between stations are the same">
     <meta name="twitter:description" content="checking if the time differences between each train run and station is the same">
     <meta name="twitter:creator" content="@coolharsh55">
-    
-    <!-- Facebook -->
     <meta property="og:title" content="checking if time difference between stations are the same"/>
     <meta property="og:type" content="article" />
-    
     <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content="checking if the time differences between each train run and station is the same"/>
+    <meta property="og:description" content=""/>
     <meta property="article:published_time" content="2015-09-17 15:05:46" />
-    <meta property="article:modified_time" content="2017-11-12 16:17:37" />
     <meta property="article:tag" content="trains" />
-    
-    
+    <meta property="article:tag" content="python" />
+    <meta property="article:tag" content="script" />
+    <meta property="article:tag" content="automation" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
-    
 </head>
 <body>
     <nav>
-        <a href="/">harshp.com</a> | <span class="current"><a href="/dev">dev</a> > <a href="/dev/train_schedule">Pune-Lonavala Train Schedule App</a></span> | <a href="/contact">contact me</a> | <a href="/me">about me</a>
-    </nav>
-    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
-        <h1 itemprop='name'>checking if time difference between stations are the same</h1>
-        <p id="desc" class="center">
+        <a href="/">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav>
+    <article>
+        <h1>checking if time difference between stations are the same</h1>
+        <section id="description">
             <span itemprop='description'>checking if the time differences between each train run and station is the same</span><br/>
-            <small>&#8986; <span class="article-timestamp" itemprop='datePublished'>2015-09-17 15:05:46</span>, updated: <span class="article-timestamp" itemprop='dateModified'>2017-11-12 16:17:37</span><br/>
-            &#127991; <span itemprop='keywords'><span>trains;</span> </span></small>
-            <span id='author-info' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
-                <meta content='https://harshp.com/i/me' itemprop='url' />
-                <meta content='Harshvardhan J. Pandit' itemprop='name' />
-            </span>
-        </p>
-        
-        <div itemprop='articleBody'>
-            <p>When creating a system that automatically populates the timings for each station, it is vital to know whether timings remain constant for all the trains that run on that route. What I'm talking about is: does the time taken to get from station A to station B remain the same for all trains going from A to B ?</p>
+            published: <span class="timestamp">2015-09-17 15:05:46</span>
+                <small>(updated: <span class="timestamp">2017-11-12 16:17:37</span>)</small>
+            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/train_schedule">Pune-Lonavala Train Schedule App</a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tag/automation">automation</a>
+            <a class="tag" href="https://harshp.com/tag/python">python</a>
+            <a class="tag" href="https://harshp.com/tag/script">script</a>
+            <a class="tag" href="https://harshp.com/tag/trains">trains</a>
+        </section>
+        <section id="content">
+        <p>When creating a system that automatically populates the timings for each station, it is vital to know whether timings remain constant for all the trains that run on that route. What I'm talking about is: does the time taken to get from station A to station B remain the same for all trains going from A to B ?</p>
 <p><br></p>
 <p>To check this, I scraped the time table from <a href=\"http://www.punediary.com/html/upside_local.html\" target=\"_blank\">punediary.com</a> using a tool called <code>scrapy</code>. The following is the output of the script that parses the scraped data, cleans it, and calculates the time difference for every station along with the average.</p>
 <p><br></p>
@@ -2123,14 +2121,12 @@
     </tr>
   </tbody>
 </table>
-        </div>
-    </div></article>
-    <footer>
-        <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a> | privacy policy: no data collection | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a> unless noted otherwise
-    </footer>
-    
+        </section>
+    </article>
+    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
+</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
-    
 </body>
 </html>

@@ -1,0 +1,186 @@
+<blockquote>
+<p><a href="https://s3-eu-west-1.amazonaws.com/harshp-media/dev/fullstack.png">link to (full) image</a></p>
+</blockquote>
+<p>There is often the case about starting something where one wishes that
+they had received some kind of advice or information about the topic.
+Kind of an overview of what was what, and how everything fit together.
+The '<em>big picture</em>'. This post is something similar on building a website.
+Over time, I have realised that there are a lot of components that are not
+necessarily related, but are part of the big picture. Without following
+any particular tutorial, I just wanted to get an idea of what was what
+before actually starting anything. This post hopes to serve that itch
+by providing some brief explanations of how things stand. Hopefully,
+this is helpful.</p>
+<p>Full-stack means two components - server (backend) and client (frontend). 
+The backend server is responsible for handling requests, 
+which means deciding how the URL typed into the bar is handled 
+and the correct page is sent back to the browser.
+The frontend is responsible for taking the content and displaying it in the browser.
+These are oversimplifications as the backend and frontend do a lot of other work as well.</p>
+<h2 id="domain">Domain</h2>
+<p>The domain is the website, to put it concisely. 
+It is the part of the website that the browser goes looking for, and once it
+has found it, asks it for specific pages.
+TO get a domain name, you can turn to any registrar, 
+though I am partial to <a href="https://www.gandi.net/">gandi.net</a> as I have an account
+with them and have found them to be competitively priced with excellent support.
+With a domain name, you can set up subdomains such that <em>alpha.website.com </em>
+is handled by one server while <em>beta.website.com</em> is handled by another.</p>
+<h3 id="httpsssl">HTTPS/SSL</h3>
+<p>This is the part where the domain name begins with <code>https://</code> instead of <code>http</code>.
+The extra 's' at the end signifies secure, and informs that traffic to and from the 
+website is encrypted. In this day and age, there is NO reason to NOT use HTTPS.
+<a href="https://letsencrypt.org/">LetsEncrypt</a> offers <strong>FREE</strong> SSL certificates, and they
+are a breeze to set up and renew. USE THEM. You may want to investigate this area
+a little more if you are doing payments, shopping, or anything that requires extra
+security on your website. But if it is just a simple website, then definitely
+go and get that HTTPS in there. Again, it's free, so the only excuse you have
+is that you are lazy.</p>
+<h2 id="backend">Backend</h2>
+<h3 id="choosing-the-infrastructure">Choosing the infrastructure</h3>
+<p>There are two options depending on how much you want out of it
+and how much work you are willing to put. If you don't need the hassle of 
+managing a server, you can choose <strong>PaaS (Platform as a Service)</strong> which
+means that someone else handles all the work of running a service for you.
+Or if you are comfortable handling your own server (which is a linux machine)
+then you opt for <strong>IaaS (Infrastructure as a Service)</strong> where the company provides
+all the components and you combine them as you want.
+Think of it like PaaS being like a pre-made car that you can use as long as you
+know driving and IaaS being like given the engine, chassis, wheels, and other
+components where you have to engineer a car to your needs and then use it.</p>
+<h4 id="paas">PaaS</h4>
+<p>The top two PaaS offerings are <a href="https://aws.amazon.com/de/elasticbeanstalk/">Elastic Beanstalk</a> and
+<a href="https://cloud.google.com/appengine/">Google App Engine</a>.
+Of these, Google App Engine is much more documented and has better pricing options.
+The nice thing about PaaS is that you only have to focus on how your pages are 
+being generated (more on that later), whereas with IaaS you have to worry about
+things like how the database is stored and configured, how much RAM you are using,
+how the web server is being utilised - so a lot of low level details. There is also
+<a href="https://www.heroku.com/">heroku</a> which offers free instances with a caveat on
+how much time they can be used for (in a day).</p>
+<h4 id="iaas">IaaS</h4>
+<p>In IaaS, you get a virtual machine (server) which is mostly a linux box
+configured up to act as a processor with some specified RAM. 
+I've been running my website (this one, yes) for more than a year now on AWS or 
+<a href="https://aws.amazon.com/">Amazon Web Services</a> or more specifically <strong>EC2</strong>. 
+Recently, I had a go at porting it to <a href="https://cloud.google.com/">Google Cloud</a> or <strong>Google Compute Engine</strong>.
+With these, I can select a pre-configured VM (1 vCPU) and RAM (0.5GB) and the
+provider will provision these for me.
+Apart from these, there are also <a href="https://www.digitalocean.com/">DigitalOcean</a>
+and <a href="https://amazonlightsail.com/">Amazon Lightsail</a> which offer IaaS in
+pre-configured setups which cannot be changed (or mixed and matched).</p>
+<h4 id="setting-up-the-domain">Setting up the domain</h4>
+<p>When these instances are provisioned or provided, they are given an internal IP
+address which makes them accessible from <em>within</em> the provider's network. 
+This internal IP can <em>change</em> which makes it non-ideal for web stuff because
+the website needs a fixed address.
+To get these working with our domain, we need a <em>static</em> IP address, which
+means that it won't change. In some providers, this <em>can</em> cost extra,
+but most of them provide one free of charge with a IaaS instance.</p>
+<h3 id="web-server">Web Server</h3>
+<p>Once you have an IaaS instance, you need to configure how the page requests
+are handled, what are valid URLs and so on. For this a web server such as 
+<a href="https://httpd.apache.org/">Apache</a> or <a href="https://nginx.org/en/">Nginx</a> 
+(pronounced engineX) come in handy. These sit in 
+as the first recipient of requests that come in to the server. Traditionally,
+Apache rules the roost of web servers. However, I use Nginx as it is easy to
+configure and set up.</p>
+<p>You can have multiple 'apps' for different URLs. For example,
+you can configure <em>website.com/blog</em> to be handled by a different app than
+<em>website.com/project</em>. The interaction between the web server and a 
+web framework happens through a <em>port</em> or a <em>socket</em>. Generally,
+it is preferably to have sockets as they can be configured to have better
+security in terms of access.</p>
+<h3 id="web-framework">Web Framework</h3>
+<p>A web framework is a collection of utilities (or software, take your pick of a fancy term)
+which handles the page request <em>after</em> the web server has decided that the URL request
+is valid. This is where your <em>favourite</em> programming language comes in. 
+There exist web frameworks for pretty much all languages, even C.
+I use <a href="https://www.djangoproject.com/">Django</a>, 
+which is a <a href="https://www.python.org/">python</a> web framework. I also use other
+python-based frameworks such as <a href="http://flask.pocoo.org/">flask</a> and 
+<a href="https://bottlepy.org/docs/dev/">bottle</a>. </p>
+<p>The web framework is the place where you get control of the actual request
+and how to handle it. Things such as storing and retrieving requests from a database,
+or whether to return a 404 or text content. Some web frameworks are <em>heavy</em> or <em>featureful</em>
+in a way similar to how IaaS and PaaS compare. Some are bare bones and require you
+to add/mix components. 
+Or there is a third <em>simpler</em> option of using a static HTML file generator that
+will generate all the files once (so no random component) and then you serve
+it using any method from IaaS or PaaS.
+One good static HTML generator is <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+<p>Start with the programming language. What's your favourite programming language?
+Is it java? Or perhaps ruby? Or python? Or c#? Whichever it is, that will decide
+what web framework you are using. If you're in this for a learning experience,
+go for a minimal framework. Read around. See what people say. Most often,
+people will comment (appreciatively) about how they find a minimal framework
+better because they can add just the features they want. For e.g. Django
+comes with database ORM built in, which makes database handling a breeze.
+Flask, by comparison, does not come with any ORM. But if I wanted to, I could
+add one using <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>. If you want to get up and running as quickly as
+possible, look for what 'beginners' should use - that's usually the most
+easy and quick to set up web framework.</p>
+<h3 id="database">Database</h3>
+<h4 id="the-craze-for-nosql">The craze for NoSQL</h4>
+<p>You <strong>don't </strong> need NoSQL. Let me repeat that again. YOU DON'T NEED NoSQL. 
+Unless you really do, of course. It is more of a hyped term that has caught
+on and people want to be on the gravy train. The thing with NoSQL is that 
+it is good for really niche cases which 99% websites don't need. So stick
+with a general RDBMS, and they're well oiled with web frameworks and
+web servers and services, so you can work with them out of the box.</p>
+<h4 id="okay-which-database">Okay, which database?</h4>
+<p><a href="https://www.postgresql.org/">PostgreSQL</a>, of course. It is open, free, and fully compliant.
+If for some reason, you feel the need for <em>MySQL</em>, please instead
+opt to use <a href="https://mariadb.org/">MariaDB</a>, an open fork that is better IMHO.</p>
+<h2 id="frontend">Frontend</h2>
+<p>Now comes the part where the website is displayed in a browser. 
+The frontend is essentially how you decide the website is displayed.
+My philosophy is always to use something only when it is <strong>really</strong> needed.
+So my first opinion would be to not decide on using <em>react</em> or <em>angular</em>
+just because everyone seems to be using it.</p>
+<p>Think of the basics. <code>HTML + CSS + JS</code>. HTML by itself means 
+<a href="https://www.w3.org/TR/html5/">HTML5</a> now.
+Beyond that, you don't need anything. The others, however, need better
+considerations.</p>
+<h3 id="css-frameworks">CSS Frameworks</h3>
+<p>There's a repeating pattern here, of things that work great 'out-of-the-box',
+but are 'big' and 'clunky'. In CSS, you have heavyweight frameworks such as 
+<a href="http://getbootstrap.com/">Bootstrap</a>, <a href="http://foundation.zurb.com/">Foundation</a>, 
+and <a href="https://semantic-ui.com/">Semantic UI</a> which have enjoyed years of popularity
+and use. Apart from these, there are lightweight frameworks such as 
+<a href="http://bulma.io/">Bulma</a>, <a href="https://purecss.io/">Pure</a>, 
+<a href="http://getskeleton.com/">Skeleton</a>, 
+<a href="http://tachyons.io/">Tachyons</a>, and so many others that work well at a
+minimalist level. Personally, I use Tachyons, which is a fancy way to write
+inline CSS. It works for my preferences, which is to enable writing CSS
+when I write blog posts. 
+There are other better posts describing how to select CSS frameworks, so I
+shall not presume about adding any wisdom to them.</p>
+<h3 id="js-frameworks">JS Frameworks</h3>
+<p>The <strong>hot</strong> area of current trendy conversations. 
+It used to be <a href="https://jquery.com/">JQuery</a> just a few years back. Now there are so many 
+options that it becomes confusing just how to differentiate their
+aims and applications from each other.</p>
+<p>There is a good website, 
+<a href="http://youmightnotneedjquery.com/">you might not need jquery</a> that explains in
+quite an unusual way how JavaScript by itself is a powerful language
+and can do what you want concisely, or other smaller libraries
+that offer just the right feature-set so that you don't have to use
+jquery, which is 'heavy'. BTW, using plain javascript is now called
+<a href="http://vanilla-js.com/">VanillaJS</a> because pure javascript just
+<em>had</em> to jump on the fancy naming bandwaggon (that's a gag/parody/satire).</p>
+<p>Frameworks such as <a href="https://facebook.github.io/react/">React</a> 
+and <a href="https://angularjs.org/">Angular</a> solve a problem, so if you don't
+have that problem, don't create another one by using them.
+That being said, they are great to use. Another interesting
+framework is <a href="https://vuejs.org/">Vue.js</a> which is lighter than React and Angular, and
+offers similar features.</p>
+<p>If all you want is a decent looking website / blog, then plain javascript
+and a simpler CSS framework should suffice. At most, you can go for
+jquery (or the other minimal libraries that do the work you need).
+If you have complex needs such as dynamic views, and shopping carts,
+and analytics, and dashboards; then it is a good idea to familiarise
+yourself with what the other frameworks do before taking the plunge.</p>
+<blockquote>
+<p><em>Footnote: This is not meant to be an exhaustive guide or tutorial. I wrote this down more as a documentation of what goes around whenever someone starts this discussion about full stack tools.</em></p>
+</blockquote>

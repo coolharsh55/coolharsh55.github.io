@@ -1,0 +1,21 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/dev">dev</a>{% endblock navtype %}
+
+{% block desc %}{% endblock desc %}
+{% block content %}
+<section>
+    <ol class='list-index'>
+    {% for item, date in posts %}
+        <li><a class='link-title' href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
+            <small class="timestamp">{{ item.schema_datePublished }}</small>&nbsp;
+            <small>{% for tag in item.hpcom_tag %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
+            {% if item.schema_subjectOf %}
+            <br/><small>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></small>
+            {% endif %}
+            <small>{{ item.schema_description }}</small>
+        </li>
+    {% endfor %}
+    </ol>
+
+</section>
+{% endblock content %}

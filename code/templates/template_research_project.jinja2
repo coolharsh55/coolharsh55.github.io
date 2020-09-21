@@ -1,0 +1,45 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/research">research</a>{% endblock navtype %}
+{% block desc %}
+<p id="desc" class="center">
+    <a href="{{ item.schema_url }}">{{ item.schema_description }}</a> <br/>
+    &#8986; project duration: {{ item.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %} <br/>
+    my role(s):
+    {% if item.schema_member is sequence %}
+        {% for role in item.schema_member %}
+            {{ role.schema_roleName }} ({{ role.schema_startDate }} - {% if role.schema_endDate %}{{ role.schema_endDate }}{% else %}ongoing{% endif %}),
+        {% endfor %}
+    {% else %}
+        {% set role = item.schema_member %}
+        {{ role.schema_roleName }} ({{ role.schema_startDate }} - {% if role.schema_endDate %}{{ role.schema_endDate }}{% else %}ongoing{% endif %})
+    {% endif %}
+</p>
+{% endblock desc %}
+{% block content %}
+{{ contents|safe }}
+{# <h2>funding acknowledgements</h2>
+<p>This work has received funding from:
+    <ul>
+    {% if item.schema_sponsor %}
+        {% if item.schema_sponsor is sequence %}
+        {% for funding in item.schema_sponsor %}
+        <li>{{ funding.schema_name }} ({{ funding.schema_startDate}} - {{ funding.schema_endDate }}) funded by {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }}</li>
+        {% endfor %}
+        {% else %}
+        {% set funding = item.schema_sponsor %}
+        <li>{{ funding.schema_name }} ({{ funding.schema_startDate}} - {{ funding.schema_endDate }}) funded by {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }}</li>
+        {% endif %}
+    {% endif %}
+    {% if item.schema_funding %}
+        {% if item.schema_funding is sequence %}
+        {% for funding in item.schema_funding %}
+        <li>{{ funding.schema_name }} ({{ funding.schema_startDate}} - {{ funding.schema_endDate }}) funded by {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }}</li>
+        {% endfor %}
+        {% else %}
+        {% set funding = item.schema_funding %}
+        <li>{{ funding.schema_name }} ({{ funding.schema_startDate}} - {{ funding.schema_endDate }}) funded by {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }}</li>
+        {% endif %}
+    {% endif %}
+    </ul>
+</p> #}
+{% endblock content %}

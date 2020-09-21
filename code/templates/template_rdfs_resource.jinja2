@@ -1,0 +1,36 @@
+{% extends 'template_base.jinja2' %}
+{% block desc %}<section id="description"><a href="{{item.iri}}">{{ item.iri }}</a></section>{% endblock desc %}
+{% block content %}
+<h2>properties</h2>
+    <ul>
+        {% for prop, obj in item.metadata.items() | sort(attribute='0') %}
+            {% set prop = prefix_this(prop) %}
+            {% if prop not in RDF_DESC_PROP %}
+            <li>{{prop}}: 
+                {% if obj is sequence and obj is not string %}
+                    {% for obj_item in obj %}
+                    {% if prop.startswith('date')%}
+                    <span class='timestamp'>{{obj_item}}</span>
+                    {% else %}
+                    {{ obj_item | html_view | safe }}, 
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% if prop.startswith('date')%}
+                    <span class='timestamp'>{{obj}}</span>
+                    {% else %}
+                    {{ obj | html_view | safe }}, 
+                    {% endif %}
+                {% endif %}
+                    </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+<h2>pages linked to here</h2>
+    <ul>
+        {% for subj, prop in outgoing %}
+        <li><a href="{{subj}}">{{ subj }}</a> <small>as {{ prefix_this(prop) }}</small></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

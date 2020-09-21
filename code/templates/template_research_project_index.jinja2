@@ -1,0 +1,48 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/research">research</a>{% endblock navtype %}
+{% block desc %}
+{% endblock desc %}
+{% block content %}
+{% for itemlist in projects %}{% for item in itemlist %}
+<section class='content-block'>
+<h2>{{ item }}</h2>
+<p>
+    <small>&#8986; project duration: {{ item.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %}</small> <br/>
+    {{ item.schema_description }}
+</p>
+<p>
+{% if item.schema_member is sequence %}
+    {% for role in item.schema_member %}
+    {{ role.schema_roleName }} ({{ role.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %})<br/>
+    {% endfor %}
+{% else %}
+    {% set role = item.schema_member %}
+    {{ role.schema_roleName }} ({{ role.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %})<br/>
+{% endif %}
+<a href="{{ item.iri }}">Read more...</a>
+</p>
+<p>
+{% if item.schema_sponsor %}
+    {% if item.schema_sponsor is sequence %}
+    {% for funding in item.schema_sponsor %}
+    Sponsored by <a href="{{funding.schema_url}}">{{ funding.schema_name }}</a> ({{ funding.schema_startDate}} to {{ funding.schema_endDate }}) funded under Grant#{{ funding.schema_identifier }} by <a href="{{funding.schema_url}}">{{ funding.schema_funder.schema_name }}</a>.<br/>
+    {% endfor %}
+    {% else %}
+    {% set funding = item.schema_sponsor %}
+    Sponsored by <a href="{{funding.schema_url}}">{{ funding.schema_name }}</a> ({{ funding.schema_startDate}} to {{ funding.schema_endDate }}) funded under Grant#{{ funding.schema_identifier }} by <a href="{{funding.schema_url}}">{{ funding.schema_funder.schema_name }}</a>.<br/>
+    {% endif %}
+{% endif %}
+{% if item.schema_funding %}
+    {% if item.schema_funding is sequence %}
+    {% for funding in item.schema_funding %}
+    Funded under Grant#{{ funding.schema_identifier }} <a href="{{funding.schema_funder.schema_url}}">{{ funding.schema_funder.schema_name }}</a> ({{ item.schema_startDate}} - {{ item.schema_endDate }})  which is funded by <a href={{funding.schema_funder.schema_funder.schema_url}}">{{ funding.schema_funder.schema_funder.schema_name }}</a>.<br/>
+    {% endfor %}
+    {% else %}
+    {% set funding = item.schema_funding %}
+    Funded under Grant#{{ funding.schema_identifier }} <a href="{{funding.schema_funder.schema_url}}">{{ funding.schema_funder.schema_name }}</a> ({{ item.schema_startDate}} - {{ item.schema_endDate }})  which is funded by <a href="{{funding.schema_funder.schema_funder.schema_url}}">{{ funding.schema_funder.schema_funder.schema_name }}</a>.
+    {% endif %}
+{% endif %}
+</p>
+</section>
+{% endfor %}{% endfor %}
+{% endblock content %}

@@ -1,0 +1,77 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+
+@base <https://harshp.com/> .
+
+<https://harshp.com/> a schema:Blog, hpcom:RenderedItem ;
+    schema:accountablePerson <https://harshp.com/me> ;
+    schema:copyrightHolder <https://harshp.com/me> ;
+    schema:creator <https://harshp.com/me> ;
+    schema:license <http://creativecommons.org/licenses/by-nc/4.0/> ;
+    schema:usageInfo "Licensed under CC-by-NC 4.0 under otherwise noted"@en ;
+    schema:description "Personal website of Harshvardhan J. Pandit"@en ;
+    schema:name "harshp.com"^^xsd:string ;
+    schema:url "https://harshp.com/"^^xsd:anyURI ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:view_template "https://harshp.com/code/templates/template_homepage.jinja2" ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+        ] .
+
+<https://harshp.com/posts> a hpcom:RenderedItem ;
+    schema:name "all posts"@en ;
+    schema:url "https://harshp.com/posts"^^xsd:anyURI .
+
+<https://harshp.com/blog> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:BlogPost ;
+    rdfs:label "Blog"@en ;
+    schema:name "blog"@en ;
+    schema:url "https://harshp.com/blog"^^xsd:anyURI .
+
+<https://harshp.com/stories> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:ShortStory ;
+    rdfs:label "Stories"@en ;
+    schema:name "stories"@en ;
+    schema:url "https://harshp.com/stories"^^xsd:anyURI .
+
+<https://harshp.com/poems> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:Article ;
+    rdfs:label "Poems"@en ;
+    schema:name "poems"@en ;
+    schema:url "https://harshp.com/poems"^^xsd:anyURI .
+
+<https://harshp.com/research/blog> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:BlogPost ;
+    rdfs:label "Research Blog"@en ;
+    schema:name "research blog"@en ;
+    schema:url "https://harshp.com/research/blog"^^xsd:anyURI .
+
+<https://harshp.com/dev> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:Blog ;
+    rdfs:label "Dev Blog"@en ;
+    schema:name "dev"@en ;
+    schema:url "https://harshp.com/dev"^^xsd:anyURI .
+
+<https://harshp.com/research> a owl:Class, hpcom:RenderedItem ;
+    rdfs:subClassOf schema:Blog ;
+    rdfs:label "Research"@en ;
+    schema:name "research"@en ;
+    schema:url "https://harshp.com/research"^^xsd:anyURI .
+
+<https://harshp.com/contact> a hpcom:RenderedItem ;
+    schema:name "Contact Me"@en ;
+    schema:url "https://harshp.com/contact"^^xsd:anyURI .
+
+<https://harshp.com/me> a hpcom:RenderedItem ;
+    hpcom:content [
+        hpcom:view_template "https://harshp.com/code/templates/template_me.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+    ] .

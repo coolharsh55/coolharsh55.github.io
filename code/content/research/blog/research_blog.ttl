@@ -1,0 +1,180 @@
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix hptag: <https://harshp.com/tag/> .
+
+<https://harshp.com/research/blog> hpcom:content [
+        a hpcom:Content ;
+        hpcom:renderWith hpview:ResearchBlogIndexView ;
+        ] .
+
+<https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/a-short-guide-to-structuring-academic-presentations.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academia,
+        hptag:conference,
+        hptag:presentation ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2018-04-23 19:06:40"^^xsd:dateTime ;
+    schema:datePublished "2018-04-23 19:04:56"^^xsd:dateTime ;
+    schema:description "based on a message I sent to a friend"@en ;
+    schema:name "A short guide to structuring academic presentations"@en ;
+    schema:url "https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/boi-mobile-nothing-fishy-needs-better-documentation.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:banking,
+        hptag:privacy,
+        hptag:security ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-30 21:05:34"^^xsd:dateTime ;
+    schema:datePublished "2017-07-05 23:24:06"^^xsd:dateTime ;
+    schema:description "A mobile banking app that is under-documented, but not suspicious"@en ;
+    schema:name "BOI Mobile - nothing fishy; needs better documentation"@en ;
+    schema:url "https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/how-open-should-reviews-be-in-compsci> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/how-open-should-reviews-be-in-compsci.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academia,
+        hptag:publications,
+        hptag:reaction ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2019-03-17 16:36:16"^^xsd:dateTime ;
+    schema:datePublished "2019-03-17 16:37:08"^^xsd:dateTime ;
+    schema:description "A short collection of different review styles and their pros and cons"@en ;
+    schema:name "How open should reviews be in CompSci?"@en ;
+    schema:url "https://harshp.com/research/blog/how-open-should-reviews-be-in-compsci"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/ios-11-location-aware-blue-notification-bar> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/ios-11-location-aware-blue-notification-bar.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:iOS,
+        hptag:location,
+        hptag:privacy ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-04 15:02:46"^^xsd:dateTime ;
+    schema:datePublished "2017-07-04 14:47:04"^^xsd:dateTime ;
+    schema:description "iOS solidifies its privacy with location-aware notification bar"@en ;
+    schema:name "iOS 11 location-aware blue notification bar"@en ;
+    schema:url "https://harshp.com/research/blog/ios-11-location-aware-blue-notification-bar"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/privacy-guard> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/privacy-guard.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:Android,
+        hptag:apps,
+        hptag:privacy ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-03 20:44:46"^^xsd:dateTime ;
+    schema:datePublished "2017-07-03 20:08:37"^^xsd:dateTime ;
+    schema:description "An app study using Privacy Guard on Android"@en ;
+    schema:name "Privacy Guard"@en ;
+    schema:url "https://harshp.com/research/blog/privacy-guard"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/questions-about-self-publishing> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/questions-about-self-publishing.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academia,
+        hptag:publications ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2020-05-09 08:11"^^xsd:dateTime ;
+    schema:description "Questions I have investigating if self-publishing is a good and sustainable model"@en ;
+    schema:name "Questions about Self-Publishing"@en ;
+    schema:url "https://harshp.com/research/blog/questions-about-self-publishing"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/semantics-2019> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/semantics-2019.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:Germany,
+        hptag:academic,
+        hptag:conference ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2019-09-10 20:42"^^xsd:dateTime ;
+    schema:description "SEMANTiCS 2019 conference in Karlsruhe, Germany"@en ;
+    schema:subjectOf [
+        a hptag:Event ;
+        schema:name "SEMANTiCS 2019 Conference" ;
+        schema:url "https://2019.semantics.cc/"^^xsd:anyURI ;
+        ] ;
+    schema:image "https://2019.semantics.cc/sites/2019.semantics.cc/files/semantics-2019-rgb.png" ;
+    schema:name "SEMANTiCS 2019"@en ;
+    schema:url "https://harshp.com/research/blog/semantics-2019"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/student-project-ideas> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/student-project-ideas.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academic,
+        hptag:projects,
+        hptag:students ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2019-10-06 18:30"^^xsd:dateTime ;
+    schema:description "Ideas for student to implement as projects"@en ;
+    schema:name "Student Project Ideas"@en ;
+    schema:url "https://harshp.com/research/blog/student-project-ideas"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:presentation,
+        hptag:speaking ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2018-08-06 18:00:17"^^xsd:dateTime ;
+    schema:datePublished "2018-08-06 17:57:34"^^xsd:dateTime ;
+    schema:description "Gist of a very handy TED talk for speaking"@en ;
+    schema:name "How to speak so that people want to listen"@en ;
+    schema:url "https://harshp.com/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/what-every-postdoc-needs-to-know> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/what-every-postdoc-needs-to-know.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academia,
+        hptag:book,
+        hptag:research,
+        hptag:review ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2020-03-15 10:30"^^xsd:dateTime ;
+    schema:description "The book presents guidance on the postdoc life"@en ;
+    schema:name "What Every Postdoc Needs to Know - book notes"@en ;
+    schema:url "https://harshp.com/research/blog/what-every-postdoc-needs-to-know"^^xsd:anyURI .
+
+<https://harshp.com/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:Android,
+        hptag:Facebook,
+        hptag:Whatsapp,
+        hptag:apps,
+        hptag:privacy ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-05 23:30:40"^^xsd:dateTime ;
+    schema:datePublished "2017-07-04 23:37:16"^^xsd:dateTime ;
+    schema:description "Whatsapp holds up a reputation of being simple and sensible; the presence of Facebook makes it hard to swallo"@en ;
+    schema:name "Whatsapp - sensibly private; but tainted by Facebook"@en ;
+    schema:url "https://harshp.com/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook"^^xsd:anyURI .
+

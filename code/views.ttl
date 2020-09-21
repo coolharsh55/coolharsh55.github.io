@@ -1,0 +1,314 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+
+@prefix hpview: <https://harshp.com/code/views#> .
+
+hpview:RDFSResourceView a hpcom:View ;
+    hpcom:view_target rdfs:Resource ;
+    hpcom:view_template "https://harshp.com/code/templates/template_rdfs_resource.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "incoming" ;
+        hpcom:queryString """
+            SELECT ?p ?o
+            WHERE { 
+                ?iri ?p ?o .
+            }
+            """ ;
+        ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "outgoing" ;
+        hpcom:queryString """
+            SELECT ?s ?p
+            WHERE { 
+                ?s ?p ?iri .
+                OPTIONAL { ?s schema:datePublished ?date } .
+            } ORDER BY DESC(?date)
+            """ ;
+        ] .
+
+hpview:AllIndexView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/posts> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_all_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?s
+            WHERE { 
+                ?s schema:datePublished ?date .
+            } ORDER BY DESC(?date)
+            """ ;
+        ] .
+
+hpview:BlogIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_blog_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?s WHERE {
+            ?s a ?iri .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] .   
+
+hpview:PoemIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_poems_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?s WHERE {
+            ?s a ?iri .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] . 
+
+hpview:StoryIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_stories_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?s WHERE {
+            ?s a ?iri .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] . 
+
+hpview:ResearchBlogIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_blog_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?s WHERE {
+            ?s a ?iri .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] .    
+
+hpview:DevIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_dev_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?s ?project WHERE {
+            ?s a ?iri .
+            ?s schema:isPartOf ?project .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "projects" ;
+        hpcom:queryString """
+            SELECT ?project (COUNT(?post) as ?posts) WHERE {
+            ?project a ?iri .
+            ?post schema:isPartOf ?project .
+            FILTER NOT EXISTS { ?project schema:isPartOf ?another_project } .
+        } GROUP BY ?project ORDER BY ?project
+        """ ;
+    ] .
+
+hpview:ResearchView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    # hpcom:sparql [
+    #     # recent or selected publications
+    #     # current projects
+    #     # funding
+    #     # activities
+    #     # supervision
+    #     # teaching
+    # ] .
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "projects" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?name WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project schema:name ?name .
+                ?project schema:startDate ?date .
+                ?project schema:member ?role .
+                { 
+                    ?role schema:endDate ?end_date .
+                    FILTER(?end_date > ?today) . 
+                } UNION { 
+                    FILTER NOT EXISTS { ?role schema:endDate ?end_date } 
+                } 
+            } ORDER By DESC(?date)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_projects" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?name WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project schema:name ?name .
+                ?project schema:startDate ?date .
+                ?project schema:member ?role .
+                ?role schema:endDate ?end_date .
+                FILTER(?end_date < ?today) . 
+            } ORDER By DESC(?date)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "publications" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?publication ?date WHERE {
+                ?publication a schema:ScholarlyArticle .
+                ?publication schema:datePublished ?date .
+                ?publication hpcom:pinned 'true'^^xsd:boolean .
+            } ORDER By DESC(?date)
+        """ ;
+    ] .
+
+hpview:ResearchPublicationsIndexView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research/publications> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_publications.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "publications" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?publication ?date WHERE {
+                ?publication a schema:ScholarlyArticle .
+                ?publication schema:datePublished ?date .
+            } ORDER By DESC(?date)
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "count_peerreviewed_types" ;
+        hpcom:queryString """
+            SELECT ?label (COUNT(?publication) as ?nos) WHERE {
+                ?publication a schema:ScholarlyArticle .
+                ?publication a ?type .
+                ?type rdfs:subClassOf schema:ScholarlyArticle .
+                ?type schema:name ?label .
+                ?publication hpcom:peer_reviewed \"true\"^^xsd:boolean .
+            } GROUP BY ?label ORDER BY ?label
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "count_other_types" ;
+        hpcom:queryString """
+            SELECT ?label (COUNT(?publication) as ?nos) WHERE {
+                ?publication a schema:ScholarlyArticle .
+                ?publication a ?type .
+                ?type rdfs:subClassOf schema:ScholarlyArticle .
+                ?type schema:name ?label .
+                ?publication hpcom:peer_reviewed \"false\"^^xsd:boolean .
+            } GROUP BY ?label ORDER BY ?label
+        """ ;
+    ] .
+
+                # OPTIONAL { ?role schema:endDate ?date } .
+# what if a view has multiple targets???
+# check if target is in list in generator
+hpview:BlogPostView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/blog> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_blog_post.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:PoemView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/poems> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_poems_post.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:StoryView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/stories> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_stories_post.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:ResearchBlogPostView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research/blog> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_blog_post.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:DevProjectView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_dev_project.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "posts" ;
+        hpcom:queryString """
+            SELECT ?post ?date WHERE {
+                ?post a <https://harshp.com/dev> .
+                ?post schema:isPartOf ?iri .
+                ?post schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ;
+    ] .
+
+hpview:DevPostView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_dev_post.jinja2" ;
+    hpcom:view_target <https://harshp.com/dev> ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+# Each project will have its own view and content
+hpview:ResearchProjectView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research/projects> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_project.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:ResearchProjectIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_project_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "projects" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project schema:member ?role .
+                OPTIONAL { ?role schema:endDate ?date }
+            } ORDER By DESC(?date)
+        """ ;
+    ] .
+
+hpview:ContactView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_contact.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/contact> .
+
+hpview:GenericJinja2View a hpcom:View ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:FileCopyView a hpcom:View ;
+    hpcom:view_renderer hpcom:FileCopy .

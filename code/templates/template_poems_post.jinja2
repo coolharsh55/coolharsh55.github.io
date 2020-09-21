@@ -1,0 +1,9 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/poems">poems</a>{% endblock navtype %}
+{% block pageCSS %}{{ super () }}
+<style type="text/css">
+    article {
+        text-align: center;
+        margin: auto;
+    }
+</style>{% endblock pageCSS %}

@@ -1,9 +1,0 @@
-{% extends 'template_base' %}
-{% block navtype %}<a href="/research">research</a> | <a href="/research/blog">research blog</a> | <a href="/research/publications">publications</a> | <span class="current"><a href="/research#projects">projects</a> > <a href="/research/projects/privacy-policy/">privacy policy</a></span>{% endblock navtype %}
-{% block desc %}{% endblock desc %}
-{% block JS %}
-{{super()}}
-<script src="https://cdn.jsdelivr.net/npm/viz.js@2.1.2/viz.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/viz.js@2.1.2/lite.render.js" crossorigin="anonymous"></script>
-<script src="/js/diagrams.js"></script>
-{% endblock JS %}

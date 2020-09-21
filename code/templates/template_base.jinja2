@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% block meta %}
+    {# metadata #}
+    <title>{% block pagetitle %}{{ item }}{% endblock pagetitle %}</title>
+    <meta name="description" content="{{ description }}"/>
+    {# Google #}
+    <meta itemprop="name" content="{{ item.schema_name }}">
+    <meta itemprop="description" content="{{ item.schema_description }}">
+    {% if item.schema_image %}
+    <meta itemprop="image" content="{{ item.schema_image }}">
+    {% endif %}
+    <meta itemprop="datePublished" content="item.schema_datePublished">
+    {% if item.dateModified %}
+    <meta itemprop="dateModified" content="item.schema_dateModified">
+    {% endif %}
+    <meta itemprop="keywords" content="{% for tag in item.hpcom_tag %}{{ tag }},{% endfor %}">
+    <meta itemprop="author" content="https://harshp.com/me">
+    <meta itemprop="identifier" content="{{item.iri}}">
+    {# Twitter #}
+    <meta name="twitter:card" value="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="{{ item.schema_name }}">
+    <meta name="twitter:description" content="{{ item.schema_description }}">
+    <meta name="twitter:creator" content="@coolharsh55">
+    {% if headerimage %}
+    <meta name="twitter:image" content="{{ item.schema_image }}">
+    {% endif %}
+    {# Facebook #}
+    <meta property="og:title" content="{{ item.schema_name }}"/>
+    <meta property="og:type" content="article" />
+    {% if headerimage %}
+    <meta property="og:image" content="{{ item.schema_image }}"/>
+    {% endif %}
+    <meta property="og:site_name" content="harshp.com"/>
+    <meta property="og:description" content="{{ item.schema_image }}"/>
+    <meta property="article:published_time" content="{{ item.schema_datePublished }}" />
+    {% if item.dateModified %}
+    <meta property="article:modified_time" content="{{ item.schema_dateModified }}" />
+    {% endif %}
+    {% for tag in item.hpcom_tag|sort(attribute='schema_label') %}
+    <meta property="article:tag" content="{{ tag }}" />
+    {% endfor %}
+    {% endblock meta %}
+    {% block CSS %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/sitebase.css" />
+    {% block pageCSS %}{% endblock pageCSS %}{% endblock CSS %}
+</head>
+<body>
+    {% block nav %}
+    <nav>
+        <a href="/">harshp.com</a> 
+        {% block navtype %}{% endblock navtype %}
+    </nav>
+    {% endblock nav %}
+    <article>
+        {% block title_h1 %}
+        <h1>{% block title_body %}{{ item }}{% endblock title_body %}</h1>
+        {% endblock title_h1 %}
+        {% block desc %}
+        <section id="description">
+            <span itemprop='description'>{{ item.schema_description }}</span><br/>
+            {% if item.schema_datePublished %}
+            published: <span class="timestamp">{{item.schema_datePublished}}</span>
+            {% if item.schema_dateModified %}
+                <small>(updated: <span class="timestamp">{{ item.schema_dateModified }}</span>)</small>
+            {% endif %}
+            {% endif %}
+            {% if item.schema_author %}
+            by <a href="{{item.schema_author.iri}}">{{ item.schema_author }}</a>
+            {% endif %}
+            <br/>
+            {% if item.schema_isPartOf %}
+            is part of: <a href="{{item.schema_isPartOf.schema_url}}">{{item.schema_isPartOf.schema_name}}</a>
+            <br/>
+            {% endif %}
+            {% if item.schema_subjectOf %}
+            is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a>
+            <br/>
+            {% endif %}
+            {% for tag in item.hpcom_tag|sort(attribute='iri') %}
+            <a class="tag" href="{{tag.iri}}">{{ tag }}</a>
+            {% endfor %}
+        {% if item.schema_image %}<img src="{{ item.schema_image }}" alt="image for {{item}}"/>{% endif %}
+        </section>
+        {% endblock desc %}
+        <section id="content">
+        {% block content %}
+        {{ contents|safe }}
+        {% endblock content %}
+        </section>
+        {% if item.rdfs_seeAlso %}
+        <section id='rdfs-see-also'>
+        <h3>See Also:</h3>
+            <ul>
+            {% if item.rdfs_seeAlso is sequence %}
+                {% for article in item.rdfs_seeAlso %}
+                <li><a href="{{article.schema_url}}">{{article}}</a></li>
+                {% endfor %}
+            {% else %}
+                <li><a href="{{item.rdfs_seeAlso.schema_url}}">{{item.rdfs_seeAlso}}</a></li>
+            {% endif %}
+            </ul>
+        </section>
+        {% endif %}
+    </article>
+    <footer class="center">{% block footer %}
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
+    {% endblock footer %}</footer>
+    {% block JS %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
+    <script src="/js/utils.js"></script>
+    {% endblock JS %}
+</body>
+</html>

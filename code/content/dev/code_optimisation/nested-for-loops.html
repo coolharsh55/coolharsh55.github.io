@@ -1,0 +1,180 @@
+<p>I saw a post on Facebook by a colleague from my lab about the runtime of her program
+being quite high.. I thought this can’t be right, imagining a large
+amount of data being crunched copiously over and over. Thinking that this would offer
+an interesting problem (and a way to procrastinate from work), I offered to help her.
+The next day we sat looking at the lines of code trying to identify what exactly was
+taking that much time, and where could we do things better. Scrolling through the
+various files and classes and methods all made up of Java, my eyes fell on a nesting
+of for-loops that went on and on and on. Years of stereotyped-advice rang out in
+my head as I recoiled looking at the indentation of each for-loop going on and over.
+I resisted the urge to point out that this is bad practice , thinking it would be
+condescending on my part, and more importantly - not necessarily good advice.</p>
+<h2 id="understanding-for-loops">Understanding <code>for</code> loops</h2>
+<p>For loops have a purpose - to iterate a block of code over and over until the given
+condition no longer holds true. To that end, they are a fancy way of writing a while
+loop. Logically, they are equivalent -</p>
+<pre class="codehilite"><code class="language-java">for (int i=0 ; i&lt;100 ; i++) {
+    // do something
+}
+
+{ // if you are pedantic about block scope
+int i = 0;
+while(i &lt; 100) {
+    // do something
+}
+} // variable i will never leave this block</code></pre>
+
+
+<p>The for loop is meant to process things over and over, so a nested for loop can be
+used to iterate all possible permutations. For example,</p>
+<pre class="codehilite"><code class="language-java">for (int i=0 ; i&lt;m ; i++)
+    for (int j=0; j&lt;n ; j++)</code></pre>
+
+
+<p>is guaranteed to run <code>m x n</code> times, creating all possible pairs (combinations)
+of values of <code>i</code> and <code>j</code> . This is the easiest way to create such pairs.
+However, careful observations can be made for the sake of optimisation whether
+all such pairs are indeed required to be calculated.</p>
+<p>The nesting of for loops we had on the screen was <code>13</code> levels deep, with variable
+loop limits. That takes it to the order of <code>n^13</code> , which is pretty gigantic in theory.
+So how do we optimise this? The approach lies in understanding the problem, rather
+than speculating approaches based on abstract mathematical applications. </p>
+<h2 id="understanding-the-problem-background">Understanding the problem background</h2>
+<p>The colleague who wrote the original piece of code was researching into the spread
+of diseases. To that end, she wanted to test the various combinations of environmental
+factors and calculate a score for how infectious it is.
+The problem the for-loops meant to solve were to combine all factors in every possible
+way - hence the nesting.
+The key factor here is combination , and not permutation . The latter is where the
+order does not matter, therefore, it is fewer in number, and more efficient to calculate.</p>
+<p>Each environmental factor comes from a group which is distinct from the other groups,
+which are things like season and geographical location.
+If we have <code>n</code> distinct groups each with <code>m</code> distinct items, then the total possible
+ways of combining them becomes <code>n x n x n x ... (m times)</code> or <code>n ^ m</code>.
+This is how we get a nesting of 13 for-loops. </p>
+<h2 id="memoization">Memoization</h2>
+<p><a href="https://en.wikipedia.org/wiki/Memoization">Memoization</a> is a technique where previous
+computations are stored to speed up processing for repetitive calculations.
+A good way to describe it would be to write this function which stores the results
+of previously computed calculation in a cache . When a pre-computed result is asked
+for, it returns the value from the cache in constant time - O(1) . Pretty efficient.
+The only downside is the <a href="https://en.wikipedia.org/wiki/Lookup_table"><em>lookup cost</em></a>
+and the storage for the cache. Even this can be further optimized using
+<a href="https://en.wikipedia.org/wiki/Hash_function"><em>hashing</em></a> .</p>
+<pre class="codehilite"><code class="language-java">int[] cache = new int[100];
+
+// calculate something for 0 &lt;= n &lt; 100
+int calculate_something(int n) {
+    if (cache[n] != 0) {
+        return cache[n];
+    }
+    int result = perform_calculations();
+    cache[n] = result;
+    return result;
+}</code></pre>
+
+
+<p>For our use case, we can use memoization to save pre-computed combinations.
+This can be applied as saving the results of the inner loops so that they are
+not iterated over and over again. </p>
+<h2 id="java-string-ops">Java String-ops</h2>
+<p>In Java, <code>Strings</code> are <em>immutable</em> , which means that once assigned, a string is
+essentially a constant, and cannot be changed. Any operation that acts on the string
+creates a new String object. In the given scenario, each environmental condition
+was expressed as a String, and all loops were combining them through concatenation .
+Which meant that there were new String objects being created over and over 13 levels down.</p>
+<p>Perhaps a better design would be to represent the environmental conditions as
+<em>enumerations</em> or some other constant factor which speeds up their combination
+operation. But given the scenario, let us assume that they <em>have</em> to be Strings.
+In this case, the objective is to prevent the repetitive creation of new Strings.
+The goal of each nested loop to add an item from a group to the final String.
+Instead, we make use of <code>List</code> to hold the results for us, as they are much better
+in terms of performance and efficiency. If desired, they can be turned into a String
+at the end.</p>
+<p>We require one loop to go over all of the environmental groups.
+This will be the outer loop.
+We then require another loop to go over the items in each group and add them to
+a list of items. We store the results in a list of lists.
+Each list is a combination of items.</p>
+<p>The approach is pretty simple -</p>
+<ol>
+<li>For every list, add the current item to it</li>
+<li>Collect all lists and replace the result with this new list</li>
+</ol>
+<pre class="codehilite"><code class="language-java">// create a list of lists
+List&lt;List&lt;String&gt;&gt; results = new ArrayList&lt;ArrayList&lt;String&gt;&gt;();
+
+// put the items in the first group to populate the list
+for (i=0 ; i&lt;group[0].length ; i++) {
+    // create a new list for each item
+    List&lt;String&gt; newlist = new ArrayList&lt;String&gt;();
+    // add the item to the list; it will be the sole member
+    newlist.add(group[0][i]);
+    // add this new list to the results grouplist
+    results.add(newlist);
+}
+
+// iterate over the rest of groups
+for (i=1 ; i&lt;no_groups ; i++) {
+    // create an empty grouplist (list of lists)
+    // to preserve the original during processing
+    List&lt;List&lt;String&gt;&gt; newresults = new ArrayList&lt;ArrayList&lt;String&gt;&gt;();
+    // iterate over the items in group
+    for (j=0 ; j&lt;group[i].length ; j++) {
+        // iterate over the items in results
+        for (k=0 ; k&lt;results.length ; k++) {
+            // create a copy of the list, and add the current item to it
+            List&lt;String&gt; newlist = new ArrayList&lt;String&gt;(results[k]);
+            newlist.add(group[i][j]);
+            // add this list to the new group of results
+            newresults.add(newlist);
+    }
+    // replace the results with the new ones
+    results = newresults;
+}</code></pre>
+
+
+<p>The way this works is, after copying over items from the first group, the contents
+of results will be -</p>
+<pre class="codehilite"><code>[[A1],[A2],[A3]...[An]]</code></pre>
+
+
+<p>Then, we iterate <code>m</code> times, once for each of the remaining groups (outer loop);
+and then for each item in the group, we create a new list by adding the current
+item to every list in the results. Which gives -</p>
+<pre class="codehilite"><code>[[A1,B1],...[AnB1],[A1,B2]...[An,Bn]]</code></pre>
+
+
+<p>The <em>cache</em> here is the stored result of every combination of the previous
+iterations, and we only add the current items to each of them without repeating the
+calculations. Additionally, there are no new String operations, therefore, no
+new Strings are being created. However, we create a lot of lists . Turns out
+that this is quite efficient because lists are better in terms of memory management
+than Strings as they can be expanded with any free space on the heap whereas a String
+requires continuous allocations.</p>
+<p>Though the number of combinations remain the same - <code>m x n</code>, the number of loops
+required to process them has reduced them from 13 to 3. The optimization trick
+here is to avoid repeating the same computation over and over again by using
+memoization . This reduced the runtime of this part from several minutes to
+a few seconds . </p>
+<h2 id="more-optimizations">More optimizations</h2>
+<p>The original program also removed combinations which were impossible - such as
+a certain region having a certain season (which never happens). The way these
+were done was by taking the impossible condition in a list, generating all possible
+combinations of them and concatenating them as Strings. Then it checked whether
+these occurred as substring in the combinations of results. Since we deal with lists
+here, expressing these as lists of items that are impossible together makes sense.
+So we store the impossible conditions together as a list, and check whether the item is
+a sub-list of every list. If it is, then we remove that list as a violated condition.
+This operation is not as efficient as calculating substrings because lists deal in
+object references whereas Strings are allocated as continuous arrays and have byte
+checking. But the offset achieved from not creating Strings in the original loop
+problem is enough to make this a trivial delay in comparison. </p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Through the optimisations, the total runtime went down a bit,
+which I’m sure can be reduced further down. What I learnt through this
+little exercise was the application of what concepts I learned through
+college, and then later while doing little projects. I tailored the solution
+based on the problem, which is expected of an engineer - to solve real-world
+problems through practical solutions. It is through various such problems
+that collective experience is gained and one levels up in knowledge.</p>

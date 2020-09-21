@@ -1,0 +1,31 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/dev">dev</a>{% endblock navtype %}
+
+{% block desc %}{% endblock desc %}
+{% block content %}
+<section>
+    <h2>projects</h2>
+    <ol>
+    {% for project, no_posts in projects %}
+        <li><a href="{{project.iri}}">{{project}}</a> - {{no_posts}} posts</a></li>
+    {% endfor %}
+    </ol>
+</section>
+<section>
+    <h2>posts</h2>
+    <ol class='list-index' reversed>
+    {% for item, project in posts %}
+        <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
+        <small>
+            <span class="timestamp">{{item.schema_datePublished}}</span> 
+            {% for tag in item.hpcom_tag %}
+            <a class='tag' href="{{tag.iri}}">{{tag}}</a>
+            {% endfor %}
+            <br/> project: <a href="{{ project.iri }}">{{ project }}</a> <br/>
+            <small>{{ item.schema_description }}</small>
+        </small>
+        </li>
+    {% endfor %}
+    </ol>
+</section>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/blog">blog</a>{% endblock navtype %}
+
+{% block desc %}{% endblock desc %}
+{% block content %}
+<ol class="list-index">
+{% for itemlist in posts %}{% for item in itemlist %}
+    <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
+        <small class="timestamp">{{ item.schema_datePublished }}</small>&nbsp;
+        <small>{% for tag in item.hpcom_tag %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
+        <small>{{ item.schema_description }}</small>
+    </li>
+{% endfor %}{% endfor %}
+{% endblock content %}

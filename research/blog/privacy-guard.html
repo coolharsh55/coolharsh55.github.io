@@ -8,45 +8,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    <!-- metadata -->
     <title>Privacy Guard</title>
-    <meta name="description" content="An app study using Privacy Guard on Android"/>
-    <!-- Google -->
+    <meta name="description" content=""/>
     <meta itemprop="name" content="Privacy Guard">
     <meta itemprop="description" content="An app study using Privacy Guard on Android">
-    
-    <!-- Twitter -->
+    <meta itemprop="datePublished" content="item.schema_datePublished">
+    <meta itemprop="keywords" content="Android,apps,privacy,">
+    <meta itemprop="author" content="https://harshp.com/me">
+    <meta itemprop="identifier" content="https://harshp.com/research/blog/privacy-guard">
     <meta name="twitter:card" value="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="Privacy Guard">
     <meta name="twitter:description" content="An app study using Privacy Guard on Android">
     <meta name="twitter:creator" content="@coolharsh55">
-    
-    <!-- Facebook -->
     <meta property="og:title" content="Privacy Guard"/>
     <meta property="og:type" content="article" />
-    
     <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content="An app study using Privacy Guard on Android"/>
+    <meta property="og:description" content=""/>
     <meta property="article:published_time" content="2017-07-03 20:08:37" />
-    <meta property="article:modified_time" content="2017-07-03 20:44:46" />
-    <meta property="article:tag" content="AndroidappsPrivacy Guardresearchstudy" />
-    
-    
+    <meta property="article:tag" content="Android" />
+    <meta property="article:tag" content="apps" />
+    <meta property="article:tag" content="privacy" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
-    
 </head>
 <body>
     <nav>
-        <a href="/">harshp.com</a> | <a href="/research">research</a> | <span class="current"><a href="/research/blog">research blog</a></span> | <a href="/research/publications">publications</a> | <a href="/research#projects">projects</a> | <a href="/contact">contact me</a> | <a href="/me">about me</a>
-    </nav>
-    <article itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'><div>
-        <h1 itemprop='name'>Privacy Guard</h1>
-        
-        <div itemprop='articleBody'>
-            <p>We all have smartphones, and we all have several apps on them that we use regularly. From the good old dialer to make phone calls to fancy apps that add filters to photos and videos. But do we realise how much data these apps use and what they do with them? In most cases, we do not even realise how bad this problem this, partially because apps are really sly about it, but mostly because we don't really care. For a simple example, a flashlight app [1] sucked up data it had no business using, and users were left none the wiser. The recent study by HPE [2] shows that this is a continuing problem even today.</p>
+        <a href="/">harshp.com</a> 
+| <a href="/research/blog">research blog</a>    </nav>
+    <article>
+        <h1>Privacy Guard</h1>
+        <section id="description">
+            <span itemprop='description'>An app study using Privacy Guard on Android</span><br/>
+            published: <span class="timestamp">2017-07-03 20:08:37</span>
+                <small>(updated: <span class="timestamp">2017-07-03 20:44:46</span>)</small>
+            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tag/Android">Android</a>
+            <a class="tag" href="https://harshp.com/tag/apps">apps</a>
+            <a class="tag" href="https://harshp.com/tag/privacy">privacy</a>
+        </section>
+        <section id="content">
+        <p>We all have smartphones, and we all have several apps on them that we use regularly. From the good old dialer to make phone calls to fancy apps that add filters to photos and videos. But do we realise how much data these apps use and what they do with them? In most cases, we do not even realise how bad this problem this, partially because apps are really sly about it, but mostly because we don't really care. For a simple example, a flashlight app [1] sucked up data it had no business using, and users were left none the wiser. The recent study by HPE [2] shows that this is a continuing problem even today.</p>
 <p>In response, Apple's iOS and Google's Android, which share almost the entirety of the smartphone marketshare between them, have come up with several methods to tackle this problem. One of them is granular permission where the user has increased control over what resources are requested by an app. For example, instead of an app requesting a one-time permission to use the camera during install, the platform will show a message when the app <em>actually</em> requests to use the camera while running. The problem with such granular permissions is that they become a nuisance when they are being constantly deployed. No one wants to constantly answer whether the app should use the camera each time, and so they most often than not, click on <em>allow always</em>. While this model works at a basic level, there are a lot more things the apps use other than things such as camera and contacts. An app can run in the background, can use location while it is running, can read your call log, your SMS, see what apps are installed on your system, and so on and so forth.</p>
 <p>With an increased sensitivity towards privacy, I recently flashed my OnePlus 3T with an open source ROM (<a href="http://www.resurrectionremix.com/">Resurrection Remix OS</a> based on <a href="https://lineageos.org/">LineageOS</a>) that has several benefits over stock Android (and OxygenOS, which is OnePlus custom Android ROM). Important amongst them is <strong>Privacy Guard</strong>, which allows control over resources used by an app <em>transparent from the app</em>. This means that if I configure the privacy guard to not provide location info to an app, this is done without letting the app know that it has been restricted in some form. To the app, it sees as the location request having failed, and no location data being sent to it. Some apps are bold enough to quit or stall at that point, and explicitly ask the user for some piece of data in lieu of providing a certain service. </p>
 <p>My 'experiment', as much as I can call that, is to study these apps that I have installed on my system, and try and understand why they need all that data. Using the privacy guard as my primary tool, I will restrict data and see if it affects the functionality of the app. Based on how it functions, I will try to make an educated guess as to why the app needs that particular data to function. My Masters by Research topic involved poking around in smartphone apps to see how they could better make use of contextual data, something that helped me understand how apps work and what role the platform plays in providing data access. I intend to exploit this knowledge in the long run by exploring further in how apps make use of data they collect. This can involve logging what data is sent out from the phone and onto the server, whether it contains data that was obtained without fair permission, and if the app is truly <em>malicious</em> or just ignorant regarding security.</p>
@@ -60,14 +63,12 @@
 </ul>
 <p>[1] <a href="https://www.wired.com/2014/10/iphone-apps/">https://www.wired.com/2014/10/iphone-apps/</a></p>
 <p>[2] <a href="https://saas.hpe.com/sites/default/files/resources/files/Mobile%20Report%20ver%2010.2.pdf">https://saas.hpe.com/sites/default/files/resources/files/Mobile%20Report%20ver%2010.2.pdf</a></p>
-        </div>
-    </div></article>
-    <footer>
-        <a href="https://github.com/coolharsh55/harshp.com/">Source Code</a> | <a href="/contact">Contact Me</a> | privacy policy: no data collection | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a> unless noted otherwise
-    </footer>
-    
+        </section>
+    </article>
+    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
+</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
-    
 </body>
 </html>

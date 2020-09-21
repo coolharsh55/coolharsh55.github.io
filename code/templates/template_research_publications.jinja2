@@ -1,0 +1,107 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/research">research</a>{% endblock navtype %}
+{% block desc %}{% endblock desc %}
+
+{% block content %}
+<p>
+    Publication lists also available at 
+    <a href="https://scholar.google.com/citations?user=tugki3kAAAAJ">Google Scholar</a> and
+    <a href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>. <br/>
+    <small>peer-reviewed:
+    {% for ptype, pcount in count_peerreviewed_types %}
+    {{"; " if not loop.first}}{{ptype}} ({{pcount}})
+    {% endfor %}
+    </small>
+    <br/><small>other:
+    {% for ptype, pcount in count_other_types %}
+    {{"; " if not loop.first}}{{ptype}} ({{pcount}})
+    {% endfor %}
+    </small></p>
+<ol class='list-index'>
+{% for publication, date in publications %}
+    <li>
+        <a href="{{publication.iri}}">{{publication}}</a> <br/>
+            <small>
+                {% if publication.schema_status %}
+                <span class='note'>{{ publication.schema_status }}</span>
+                {% endif %}
+                <span class='timestamp'>{{publication.schema_datePublished}}</span> 
+                <i>{{publication|publication_type}}</i>
+                {% if publication.schema_url %}
+                ; <a href="{{publication.schema_url}}">publication</a>
+                {% endif %}
+                <br/>
+                {# pre-prints #}
+                {% if publication.hpcom_archived_version %}
+                    &#x1f513;open-access:
+                    {% if publication.hpcom_archived_version is sequence %}
+                    {% for archive in publication.hpcom_archived_version|sort(attribute='schema_name') %}
+                    {{", " if not loop.first}}<a href="{{archive.schema_url}}">{{archive}}</a>
+                    {% endfor %}
+                    {% else %}
+                    <a href="{{publication.hpcom_archived_version.schema_url}}">{{publication.hpcom_archived_version}}</a>
+                    {% endif %}
+                {% endif %}
+                {# supplementary resources #}
+                {% if publication.hpcom_supplementary %}
+                    ; &#128230;resources:
+                    {% if publication.hpcom_supplementary is sequence %}
+                    {% for archive in publication.hpcom_supplementary|sort(attribute='schema_name') %}
+                    {{", " if not loop.first}}<a href="{{archive.schema_url}}">{{archive}}</a>
+                    {% endfor %}
+                    {% else %}
+                    <a href="{{publication.hpcom_supplementary.schema_url}}">{{publication.hpcom_supplementary}}</a>
+                    {% endif %}
+                {% endif %}
+                <br/>
+                {# authors #}
+                &#9997;<i>
+                {% if publication.hpcom_author_lead is sequence %}
+                {% for author in publication.hpcom_author_lead %}
+                {{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}
+                {% endfor %}
+                {% else %}
+                {% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}
+                <u>{{publication.hpcom_author_lead}}</u>*
+                {% else %}
+                {{publication.hpcom_author_lead}}*
+                {% endif %}
+                {% endif %}
+                {% if publication.hpcom_author_other is sequence %}
+                {% for author in publication.hpcom_author_other %}
+                ,
+                {% if author.iri == "https://harshp.com/me" %}
+                <u>{{author}}</u>
+                {% else %}
+                {{author}}
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                ,
+                {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}
+                <u>{{publication.hpcom_author_other}}</u>
+                {% else %}
+                {{publication.hpcom_author_other}}
+                {% endif %}
+                {% endif %}
+                </i>
+                <br/>
+                {# venue #}
+                <i>
+                {% if publication.schema_publication %}
+                <a href="{{publication.schema_publication.schema_url}}">{{publication.schema_publication}}{% if publication.schema_publication.schema_alternateName %} ({{publication.schema_publication.schema_alternateName}}){% endif %}</a>
+                    {% if publication.schema_publication.schema_superEvent %}
+                    - co-located with <a href="{{publication.schema_publication.schema_superEvent.schema_url}}">{{publication.schema_publication.schema_superEvent}}{% if publication.schema_publication.schema_superEvent.schema_alternateName %} ({{publication.schema_publication.schema_superEvent.schema_alternateName}}){% endif %}</a>
+                    {% endif %}
+                {% else %}
+                <a href="{{publication.schema_publisher.schema_url}}">{{publication.schema_publisher}}</a>
+                {% endif %}
+                </i>
+                <br/>
+                {{ publication.schema_description }}
+            </small>
+    </li>
+{% endfor %}
+</ol>
+
+{% endblock content %}
