@@ -1,54 +1,45 @@
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>A short guide to structuring academic presentations</title>
     <meta name="description" content=""/>
-    <meta itemprop="name" content="A short guide to structuring academic presentations">
-    <meta itemprop="description" content="based on a message I sent to a friend">
-    <meta itemprop="datePublished" content="item.schema_datePublished">
-    <meta itemprop="keywords" content="conference,presentation,academia,">
-    <meta itemprop="author" content="https://harshp.com/me">
-    <meta itemprop="identifier" content="https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations">
-    <meta name="twitter:card" value="summary"/>
+    <meta name="schema:name" content="A short guide to structuring academic presentations">
+    <meta name="schema:description" content="based on a message I sent to a friend">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="presentation,conference,academia,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations">
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="A short guide to structuring academic presentations">
     <meta name="twitter:description" content="based on a message I sent to a friend">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:title" content="A short guide to structuring academic presentations"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="article:published_time" content="2018-04-23 19:04:56" />
-    <meta property="article:tag" content="conference" />
-    <meta property="article:tag" content="presentation" />
-    <meta property="article:tag" content="academia" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
 </head>
 <body>
-    <nav>
-        <a href="/">harshp.com</a> 
-| <a href="/research/blog">research blog</a>    </nav>
-    <article>
-        <h1>A short guide to structuring academic presentations</h1>
-        <section id="description">
-            <span itemprop='description'>based on a message I sent to a friend</span><br/>
-            published: <span class="timestamp">2018-04-23 19:04:56</span>
-                <small>(updated: <span class="timestamp">2018-04-23 19:06:40</span>)</small>
-            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research/blog">research blog</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/research/blog https://harshp.com/code/vocab#RenderedItem " resource="https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations">
+        <h1 property="schema:name schema:headline">A short guide to structuring academic presentations</h1>
+        <div id="description">
+            <span property='schema:description'>based on a message I sent to a friend</span><br/>
+            published: <time class="timestamp" property="schema:datePublished" datetime="2018-04-23 19:04:56">2018-04-23 19:04:56</time>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="2018-04-23 19:06:40">2018-04-23 19:06:40</time></small>
+            by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
-            <a class="tag" href="https://harshp.com/tag/academia">academia</a>
-            <a class="tag" href="https://harshp.com/tag/conference">conference</a>
-            <a class="tag" href="https://harshp.com/tag/presentation">presentation</a>
-        </section>
-        <section id="content">
+            <a class="tag" href="https://harshp.com/tag/academia" property="schema:about" resource="https://harshp.com/tag/academia" typeof="rdfs:Resource"><span property="rdfs:label">academia</span></a>
+            <a class="tag" href="https://harshp.com/tag/conference" property="schema:about" resource="https://harshp.com/tag/conference" typeof="rdfs:Resource"><span property="rdfs:label">conference</span></a>
+            <a class="tag" href="https://harshp.com/tag/presentation" property="schema:about" resource="https://harshp.com/tag/presentation" typeof="rdfs:Resource"><span property="rdfs:label">presentation</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
         <p>Presenting the paper:</p>
 <ul>
 <li>Present the same material as the paper or accompany the paper? Most conference that I know about have the form where they assume that people viewing the presentation have not read the paper, its abstract, or even its title. I think this is the norm everywhere. So the presentation is structured to provide a high-level description about the paper, its findings, etc. and if they want more details, they refer to the paper.</li>
@@ -64,11 +55,13 @@
 <li>Future work - what do you want to do next? How to take this work further?</li>
 </ul>
 <p>All of these are highly applicable to a 'technical' presentation. Conferences that revolve more around a single topic should also be structured similarly (IMHO) as the structure of problem-goals-work provides a good narrative and makes it easy for someone to follow the work.</p>
-        </section>
+        </div>
     </article>
-    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+    </main>
+    <footer class="center">
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
         Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
-</footer>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
 </body>

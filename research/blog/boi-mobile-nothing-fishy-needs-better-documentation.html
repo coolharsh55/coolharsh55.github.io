@@ -1,54 +1,45 @@
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BOI Mobile - nothing fishy; needs better documentation</title>
     <meta name="description" content=""/>
-    <meta itemprop="name" content="BOI Mobile - nothing fishy; needs better documentation">
-    <meta itemprop="description" content="A mobile banking app that is under-documented, but not suspicious">
-    <meta itemprop="datePublished" content="item.schema_datePublished">
-    <meta itemprop="keywords" content="security,banking,privacy,">
-    <meta itemprop="author" content="https://harshp.com/me">
-    <meta itemprop="identifier" content="https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation">
-    <meta name="twitter:card" value="summary"/>
+    <meta name="schema:name" content="BOI Mobile - nothing fishy; needs better documentation">
+    <meta name="schema:description" content="A mobile banking app that is under-documented, but not suspicious">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="privacy,security,banking,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation">
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="BOI Mobile - nothing fishy; needs better documentation">
     <meta name="twitter:description" content="A mobile banking app that is under-documented, but not suspicious">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:title" content="BOI Mobile - nothing fishy; needs better documentation"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="article:published_time" content="2017-07-05 23:24:06" />
-    <meta property="article:tag" content="security" />
-    <meta property="article:tag" content="banking" />
-    <meta property="article:tag" content="privacy" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
 </head>
 <body>
-    <nav>
-        <a href="/">harshp.com</a> 
-| <a href="/research/blog">research blog</a>    </nav>
-    <article>
-        <h1>BOI Mobile - nothing fishy; needs better documentation</h1>
-        <section id="description">
-            <span itemprop='description'>A mobile banking app that is under-documented, but not suspicious</span><br/>
-            published: <span class="timestamp">2017-07-05 23:24:06</span>
-                <small>(updated: <span class="timestamp">2017-07-30 21:05:34</span>)</small>
-            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research/blog">research blog</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/research/blog " resource="https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation">
+        <h1 property="schema:name schema:headline">BOI Mobile - nothing fishy; needs better documentation</h1>
+        <div id="description">
+            <span property='schema:description'>A mobile banking app that is under-documented, but not suspicious</span><br/>
+            published: <time class="timestamp" property="schema:datePublished" datetime="2017-07-05 23:24:06">2017-07-05 23:24:06</time>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="2017-07-30 21:05:34">2017-07-30 21:05:34</time></small>
+            by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
-            <a class="tag" href="https://harshp.com/tag/banking">banking</a>
-            <a class="tag" href="https://harshp.com/tag/privacy">privacy</a>
-            <a class="tag" href="https://harshp.com/tag/security">security</a>
-        </section>
-        <section id="content">
+            <a class="tag" href="https://harshp.com/tag/banking" property="schema:about" resource="https://harshp.com/tag/banking" typeof="rdfs:Resource"><span property="rdfs:label">banking</span></a>
+            <a class="tag" href="https://harshp.com/tag/privacy" property="schema:about" resource="https://harshp.com/tag/privacy" typeof="rdfs:Resource"><span property="rdfs:label">privacy</span></a>
+            <a class="tag" href="https://harshp.com/tag/security" property="schema:about" resource="https://harshp.com/tag/security" typeof="rdfs:Resource"><span property="rdfs:label">security</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
         <p>Mobile Banking allows us to easily access our accounts and make payments and transfers from the comfort of the palm. <a href="https://www.bankofireland.com/">Bank of Ireland</a> is one of the major banks in Ireland, and they have a mobile app called <a href="https://play.google.com/store/apps/details?id=com.bankofireland.mobilebanking&amp;hl=en">BOI Mobile</a> as a counterpart for their digital banking service called <a href="https://www.365online.com/">365 online</a>. As with any activity involving personal data and financial actions, one must be extremely careful and cautious on the side of suspicion. To that end, this post examines the permissions and data used by the BOI Mobile app on Android with a keener eye.</p>
 <p>While the app itself offers no explanation, and is little more than a mobile version of the website, the terms and conditions clearly mention with a larger emphasis on the data collected, and how it is not stored, or is made anonymous. In light of the upcoming GDPR, these terms and conditions also mention the use of <em>consent</em> multiple times, which enforces user choice and rights. However, none of these explain the permissions the app requires, or why it needs them in the specified manner, nor how it uses the data entered.</p>
 <p>On Android, the app requires/uses the following permissions, and are followed by explanations with the following convention:</p>
@@ -152,11 +143,13 @@
 </li>
 </ul>
 <p>As a banking app, BOI Mobile asks for a lot of permissions that are exactly clear in terms of usage. Their terms and conditions mention their approach to data - which is to maintain user privacy. This is good, the BOI Mobile app poses no dangers in terms of privacy, but I'm more concerned in terms of security as it stores and maintains the user's account details. The app automatically logs out whenever it is closed or another app is opened over it. Apart from the permissions mentioned by the app, it also has the capability to read SMS and call logs, something that is never <em>actually</em> used by the app when running. It may be used to contact BOI and for verification through security codes, but this is mere speculation. Overall, BOI Mobile seems to work fairly well, does not seem suspicious, but needs a lot of clarification in terms of telling users what the app is doing on their devices. This is important especially for the background activity aspect.</p>
-        </section>
+        </div>
     </article>
-    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+    </main>
+    <footer class="center">
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
         Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
-</footer>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
 </body>

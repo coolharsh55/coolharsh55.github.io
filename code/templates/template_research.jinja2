@@ -39,59 +39,6 @@ My other research activities include chairing and contributing to the <a class="
 
 </section>
 
-<section id="publications">
-<h2>Publications</h2>
-<p>See full list of publications <a href="/research/publications">here</a>.
-    Lists also available at 
-    <a href="https://scholar.google.com/citations?user=tugki3kAAAAJ">Google Scholar</a>
-    and
-    <a href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>.
-    </p>
-<h3>Selected publications</h3>
-{# iterate over selected publications #}
-<ol class='list-index'>
-{% for publication, date in publications %}
-    <li>
-        <a href="{{publication.iri}}">{{publication}}</a> <br/>
-            <small>
-                {% if publication.schema_status %}
-                <span class='note'>{{ publication.schema_status }}</span>
-                {% endif %}
-                <span class='timestamp'>{{publication.schema_datePublished}}</span> 
-                <i>{{publication|publication_type}}</i>
-                {# publication type filter #}
-                <br/>
-                {% if publication.schema_publication %}
-                {{publication.schema_publication}}
-                    {% if publication.schema_publication.schema_superEvent %}
-                    - co-located with {{publication.schema_publication.schema_superEvent}}
-                    {% endif %}
-                {% else %}
-                {{publication.schema_publisher}}
-                {% endif %}
-                <br/>
-                <i>
-                {% if publication.hpcom_author_lead is sequence %}
-                {% for author in publication.hpcom_author_lead %}
-                {{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}
-                {% endfor %}
-                {% else %}
-                {% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_lead}}</u>*{% else %}{{publication.hpcom_author_lead}}*{% endif %}
-                {% endif %}
-                {% if publication.hpcom_author_other is sequence %}
-                {% for author in publication.hpcom_author_other %}
-                , {% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>{% else %}{{author}}{% endif %}
-                {% endfor %}
-                {% else %}
-                , {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_other}}</u>{% else %}{{publication.hpcom_author_other}}{% endif %}
-                {% endif %}
-                </i>
-            </small>
-    </li>
-{% endfor %}
-</ol>
-</section>
-
 <section id="projects">
 <h2>Projects</h2>
 <h3>Ongoing</h3>
@@ -147,6 +94,59 @@ My other research activities include chairing and contributing to the <a class="
     </li>
 {% endfor %}
 </ul>
+</section>
+
+<section id="publications">
+<h2>Publications</h2>
+<p>See full list of publications <a href="/research/publications">here</a>.
+    Lists also available at 
+    <a href="https://scholar.google.com/citations?user=tugki3kAAAAJ">Google Scholar</a>
+    and
+    <a href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>.
+    </p>
+<h3>Selected publications</h3>
+{# iterate over selected publications #}
+<ol class='list-index'>
+{% for publication, date in publications %}
+    <li>
+        <a href="{{publication.iri}}">{{publication}}</a> <br/>
+            <small>
+                {% if publication.schema_status %}
+                <span class='note'>{{ publication.schema_status }}</span>
+                {% endif %}
+                <span class='timestamp'>{{publication.schema_datePublished}}</span> 
+                <i>{{publication|publication_type}}</i>
+                {# publication type filter #}
+                <br/>
+                {% if publication.schema_publication %}
+                {{publication.schema_publication}}
+                    {% if publication.schema_publication.schema_superEvent %}
+                    - co-located with {{publication.schema_publication.schema_superEvent}}
+                    {% endif %}
+                {% else %}
+                {{publication.schema_publisher}}
+                {% endif %}
+                <br/>
+                <i>
+                {% if publication.hpcom_author_lead is sequence %}
+                {% for author in publication.hpcom_author_lead %}
+                {{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}
+                {% endfor %}
+                {% else %}
+                {% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_lead}}</u>*{% else %}{{publication.hpcom_author_lead}}*{% endif %}
+                {% endif %}
+                {% if publication.hpcom_author_other is sequence %}
+                {% for author in publication.hpcom_author_other %}
+                , {% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>{% else %}{{author}}{% endif %}
+                {% endfor %}
+                {% else %}
+                , {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_other}}</u>{% else %}{{publication.hpcom_author_other}}{% endif %}
+                {% endif %}
+                </i>
+            </small>
+    </li>
+{% endfor %}
+</ol>
 </section>
 
 <section id="activities">

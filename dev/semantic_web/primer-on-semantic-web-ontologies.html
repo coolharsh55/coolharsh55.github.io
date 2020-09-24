@@ -1,54 +1,46 @@
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Primer on Semantic Web Ontologies</title>
     <meta name="description" content=""/>
-    <meta itemprop="name" content="Primer on Semantic Web Ontologies">
-    <meta itemprop="description" content="A short description for RDF,RDFS, and OWL and their serialisation formats">
-    <meta itemprop="datePublished" content="item.schema_datePublished">
-    <meta itemprop="keywords" content="ontologies,semantic-web,">
-    <meta itemprop="author" content="https://harshp.com/me">
-    <meta itemprop="identifier" content="https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies">
-    <meta name="twitter:card" value="summary"/>
+    <meta name="schema:name" content="Primer on Semantic Web Ontologies">
+    <meta name="schema:description" content="A short description for RDF,RDFS, and OWL and their serialisation formats">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="ontologies,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies">
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="Primer on Semantic Web Ontologies">
     <meta name="twitter:description" content="A short description for RDF,RDFS, and OWL and their serialisation formats">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:title" content="Primer on Semantic Web Ontologies"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="article:published_time" content="2017-08-18 17:51:39" />
-    <meta property="article:tag" content="ontologies" />
-    <meta property="article:tag" content="semantic-web" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
 </head>
 <body>
-    <nav>
-        <a href="/">harshp.com</a> 
-| <a href="/dev">dev</a>    </nav>
-    <article>
-        <h1>Primer on Semantic Web Ontologies</h1>
-        <section id="description">
-            <span itemprop='description'>A short description for RDF,RDFS, and OWL and their serialisation formats</span><br/>
-            published: <span class="timestamp">2017-08-18 17:51:39</span>
-                <small>(updated: <span class="timestamp">2017-08-18 19:25:32</span>)</small>
-            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies">
+        <h1 property="schema:name schema:headline">Primer on Semantic Web Ontologies</h1>
+        <div id="description">
+            <span property='schema:description'>A short description for RDF,RDFS, and OWL and their serialisation formats</span><br/>
+            published: <time class="timestamp" property="schema:datePublished" datetime="2017-08-18 17:51:39">2017-08-18 17:51:39</time>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="2017-08-18 19:25:32">2017-08-18 19:25:32</time></small>
+            by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
-            is part of: <a href="https://harshp.com/dev/semantic_web">Semantic Web</a>
+            is part of: <a href="https://harshp.com/dev/semantic_web" property="schema:isPartOf" resource="https://harshp.com/dev/semantic_web"><span property="rdfs:label">Semantic Web</span></a>
             <br/>
-            <a class="tag" href="https://harshp.com/tag/ontologies">ontologies</a>
-            <a class="tag" href="https://harshp.com/tag/semantic-web">semantic-web</a>
-        </section>
-        <section id="content">
+            <a class="tag" href="https://harshp.com/tag/ontologies" property="schema:about" resource="https://harshp.com/tag/ontologies" typeof="rdfs:Resource"><span property="rdfs:label">ontologies</span></a>
+            <a class="tag" href="https://harshp.com/tag/semantic-web" property="schema:about" resource="https://harshp.com/tag/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
         <h2 id="introduction">Introduction</h2>
 <p>The basic ontology for recording anything (and everything)
 is <a href="https://www.w3.org/RDF/">RDF</a>, which is just a way of expressing
@@ -106,11 +98,13 @@ not cater to RDF, but OWL, as an ontology is based on RDF.</p>
 <li><strong>JSON-LD:</strong> To make the propogation of RDF easier on the web, the JSON-LD format was developed. It uses a notation based on the JSON format with annotations catering to RDF keywords. It's extension is <code>.jsonld</code> and content-type is <code>application/ld+json</code>.</li>
 <li><strong>RDFa:</strong> This is a way to embed RDF information in HTML tags, while still allowing traditional page markup to be used and displayed. This is, in theory, the best of both worlds as the resulting document is presentable for human as well as machine consumption.</li>
 </ul>
-        </section>
+        </div>
     </article>
-    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+    </main>
+    <footer class="center">
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
         Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
-</footer>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
 </body>

@@ -1,52 +1,44 @@
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Year in Review - 2018</title>
     <meta name="description" content=""/>
-    <meta itemprop="name" content="Year in Review - 2018">
-    <meta itemprop="description" content="A summary of what happened in 2018">
-    <meta itemprop="datePublished" content="item.schema_datePublished">
-    <meta itemprop="keywords" content="personal,blog,">
-    <meta itemprop="author" content="https://harshp.com/me">
-    <meta itemprop="identifier" content="https://harshp.com/blog/personal/year-in-review-2018">
-    <meta name="twitter:card" value="summary"/>
+    <meta name="schema:name" content="Year in Review - 2018">
+    <meta name="schema:description" content="A summary of what happened in 2018">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="blog,personal,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/blog/personal/year-in-review-2018">
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="Year in Review - 2018">
     <meta name="twitter:description" content="A summary of what happened in 2018">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:title" content="Year in Review - 2018"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="article:published_time" content="2019-01-12 18:49:49" />
-    <meta property="article:tag" content="personal" />
-    <meta property="article:tag" content="blog" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
 </head>
 <body>
-    <nav>
-        <a href="/">harshp.com</a> 
-| <a href="/blog">blog</a>    </nav>
-    <article>
-        <h1>Year in Review - 2018</h1>
-        <section id="description">
-            <span itemprop='description'>A summary of what happened in 2018</span><br/>
-            published: <span class="timestamp">2019-01-12 18:49:49</span>
-                <small>(updated: <span class="timestamp">2019-01-12 18:52:59</span>)</small>
-            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/blog">blog</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/blog https://harshp.com/code/vocab#RenderedItem " resource="https://harshp.com/blog/personal/year-in-review-2018">
+        <h1 property="schema:name schema:headline">Year in Review - 2018</h1>
+        <div id="description">
+            <span property='schema:description'>A summary of what happened in 2018</span><br/>
+            published: <time class="timestamp" property="schema:datePublished" datetime="2019-01-12 18:49:49">2019-01-12 18:49:49</time>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="2019-01-12 18:52:59">2019-01-12 18:52:59</time></small>
+            by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
-            <a class="tag" href="https://harshp.com/tag/blog">blog</a>
-            <a class="tag" href="https://harshp.com/tag/personal">personal</a>
-        </section>
-        <section id="content">
+            <a class="tag" href="https://harshp.com/tag/blog" property="schema:about" resource="https://harshp.com/tag/blog" typeof="rdfs:Resource"><span property="rdfs:label">blog</span></a>
+            <a class="tag" href="https://harshp.com/tag/personal" property="schema:about" resource="https://harshp.com/tag/personal" typeof="rdfs:Resource"><span property="rdfs:label">personal</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
         <p><strong>Summary:</strong> 2018 was a memorable year. For professional reason, as well as for personal reasons. I travelled a lot (mostly for academic conferences), I read a lot, I watched some good films and TV shows, and I also played some phenomenal video games. </p>
 <h2 id="places-travelled">Places Travelled</h2>
 <ul>
@@ -89,11 +81,13 @@
 <li>I'm going to learn Italian this year.</li>
 <li>Academically: I'm going to write and finish my thesis this year. I'm going to try and submit 2 journal papers, 4 conference papers, and have all my past publications as open access in a native web format.</li>
 </ul>
-        </section>
+        </div>
     </article>
-    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+    </main>
+    <footer class="center">
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
         Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
-</footer>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
 </body>

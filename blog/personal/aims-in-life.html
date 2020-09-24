@@ -1,52 +1,44 @@
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Aims in Life</title>
     <meta name="description" content=""/>
-    <meta itemprop="name" content="Aims in Life">
-    <meta itemprop="description" content="Aims in Life">
-    <meta itemprop="datePublished" content="item.schema_datePublished">
-    <meta itemprop="keywords" content="blog,personally,">
-    <meta itemprop="author" content="https://harshp.com/me">
-    <meta itemprop="identifier" content="https://harshp.com/blog/personal/aims-in-life">
-    <meta name="twitter:card" value="summary"/>
+    <meta name="schema:name" content="Aims in Life">
+    <meta name="schema:description" content="Aims in Life">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="blog,personally,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/blog/personal/aims-in-life">
+    <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:title" content="Aims in Life">
     <meta name="twitter:description" content="Aims in Life">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:title" content="Aims in Life"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="harshp.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="article:published_time" content="2014-06-09 17:00:00" />
-    <meta property="article:tag" content="blog" />
-    <meta property="article:tag" content="personally" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css" integrity="sha256-Zw5yQ4t/rkGzqtEOBjgL4jcU9aSTBNAYj9WNTY90Ya8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/sitebase.css" />
 </head>
 <body>
-    <nav>
-        <a href="/">harshp.com</a> 
-| <a href="/blog">blog</a>    </nav>
-    <article>
-        <h1>Aims in Life</h1>
-        <section id="description">
-            <span itemprop='description'>Aims in Life</span><br/>
-            published: <span class="timestamp">2014-06-09 17:00:00</span>
-                <small>(updated: <span class="timestamp">2017-05-03 20:09:51</span>)</small>
-            by <a href="https://harshp.com/me">Harshvardhan J. Pandit</a>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/blog">blog</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/blog " resource="https://harshp.com/blog/personal/aims-in-life">
+        <h1 property="schema:name schema:headline">Aims in Life</h1>
+        <div id="description">
+            <span property='schema:description'>Aims in Life</span><br/>
+            published: <time class="timestamp" property="schema:datePublished" datetime="2014-06-09 17:00:00">2014-06-09 17:00:00</time>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="2017-05-03 20:09:51">2017-05-03 20:09:51</time></small>
+            by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
-            <a class="tag" href="https://harshp.com/tag/blog">blog</a>
-            <a class="tag" href="https://harshp.com/tag/personally">personally</a>
-        </section>
-        <section id="content">
+            <a class="tag" href="https://harshp.com/tag/blog" property="schema:about" resource="https://harshp.com/tag/blog" typeof="rdfs:Resource"><span property="rdfs:label">blog</span></a>
+            <a class="tag" href="https://harshp.com/tag/personally" property="schema:about" resource="https://harshp.com/tag/personally" typeof="rdfs:Resource"><span property="rdfs:label">personally</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
         <p>There isn&rsquo;t a single child in this world, who hasn&rsquo;t been asked the question &ndash; &ldquo;<em>What do you want to become when you grow up?</em>&rdquo;</p>
 <p>And the answers are bewildering &ndash; some say bus driver, some say astronaut, some say teacher, and so on.</p>
 <p>When I was a kid, around the first grade, I had just been introduced to computers. My parents had bought a 486 which cost a ton back then, and simultaneously, the school I was studying in had an introductory course on computers. They taught us a programming language called&nbsp;<strong>LOGO</strong>, which involved a triangle on the screen, to which we issued commands like MOVE X PLACES, TURN LEFT, MOVE Y PLACES and so on. Most of my classmates were confused with the introduction of this new machine. To my credit, I took right to it like another exciting toy. I got proficient in moving the Turtle, as the triangle on the screen was called, and was often asked to demonstrate short programs to other children. I would sneak books in the library to find some sort of documentation on LOGO. Of course, I didn&rsquo;t know it was called documentation back then. But I got better and better at LOGO than my other school activities. I sucked at drawing and crafts.</p>
@@ -67,11 +59,13 @@
 <p>&ldquo;<strong>Stay Hungry, Stay Foolish</strong>&rdquo;.</p>
 </blockquote>
 
-        </section>
+        </div>
     </article>
-    <footer class="center">        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+    </main>
+    <footer class="center">
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
         Made using <a href="">RDF</a>, <a href="">SPARQL</a>, and <a href="">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/"><code>source</code></a>
-</footer>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
 </body>
