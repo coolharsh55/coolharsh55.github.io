@@ -31,8 +31,7 @@ hpview:RDFSResourceView a hpcom:View ;
             SELECT ?s ?p
             WHERE { 
                 ?s ?p ?iri .
-                OPTIONAL { ?s schema:datePublished ?date } .
-            } ORDER BY DESC(?date)
+            } ORDER BY DESC(?s)
             """ ;
         ] .
 
@@ -238,7 +237,7 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
         """ ;
     ] .
 
-                # OPTIONAL { ?role schema:endDate ?date } .
+# OPTIONAL { ?role schema:endDate ?date } .
 # what if a view has multiple targets???
 # check if target is in list in generator
 hpview:BlogPostView a hpcom:View ;
@@ -331,9 +330,10 @@ hpview:BookListView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "read" ;
         hpcom:queryString """
-            SELECT ?book ?date ?year WHERE {
+            SELECT ?book ?title ?date ?year WHERE {
                 ?book a schema:Book .
                 ?book hpcom:book_status hpcom:book-read .
+                ?book schema:name ?title .
                 ?book hpcom:book_read ?date .
                 BIND(SUBSTR(STR(?date), 1, 4) as ?year) .
             } ORDER By DESC(?date)
@@ -348,4 +348,4 @@ hpview:BookListView a hpcom:View ;
                 ?book hpcom:book_status hpcom:book-to-read .
             } ORDER By ?title
         """ ;
-    ] .
+        ].

@@ -9,7 +9,7 @@
 <blockquote>
     I'm currently reading <a href="#currently-reading">{{ currently_reading|length }} books</a>, want to read <a href="#want-to-read">{{ want_to_read|length }} books</a>, and have read <a href="#read">{{ read|length }} books</a> to date.</blockquote>
 <p>
-    I'm a <a href="https://en.wikipedia.org/wiki/Bibliophilia"><i>bibliophile</i></a> - a person who loves books and loves reading. Also known more colloquially as a bookworm. I like to read <a href="https://en.wikipedia.org/wiki/Science_fiction">science fiction</a> the most - a genre that kick-started my imagination and love of reading. <a href="https://en.wikipedia.org/wiki/Jules_Verne">Jules Verne</a> will forever be my first love in reading, and an inspiration in imagining. These days I try to read a more variety of genres - social, drama, crime, noir, historical fiction. While this kind of reading is more tied to pleasure, I'm also trying to read more non-fiction as an educational exercise.</p>
+    I'm a <a href="https://en.wikipedia.org/wiki/Bibliophilia"><i>bibliophile</i></a> - a person who loves books and loves reading. Also known more colloquially as a bookworm. I like to read <a href="https://en.wikipedia.org/wiki/Science_fiction">science fiction</a> the most - a genre that kick-started my imagination and love of reading. These days I try to read a more variety of genres - social, drama, crime, noir, historical fiction. While this kind of reading is more tied to pleasure, I'm also trying to read more non-fiction as an educational exercise.</p>
 
 <section id="currently-reading">
 <h2>Books I'm Currently Reading</h2>
@@ -30,9 +30,9 @@
 </ol>
 </section>
 <section id="read">
-<h2>Books I've Read</h2>
+<h2>Books I have Read</h2>
 <ol reversed="true">
-    {% for book, date, year in read %}
+    {% for book, title, date, year in read|sort(attribute='2,1', reverse=true) %}
     <li id="{{book.hpcom_book_id}}">
         <u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
@@ -41,7 +41,7 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        | read in {{year}} and rated {{book.schema_aggregatedRating}}
+        ; read {{year}} ; rated {{book.schema_aggregatedRating}}
         </small>
     </li>
     {% endfor %}

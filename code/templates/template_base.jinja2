@@ -20,7 +20,7 @@
     {% if item.dateModified %}
     <meta name="schema:dateModified" content="item.schema_dateModified">
     {% endif %}
-    <meta name="schema:keywords" content="{% for tag in item.hpcom_tag %}{{ tag }},{% endfor %}">
+    <meta name="schema:keywords" content="{% for tag in item.hpcom_tag|sort(attribute='iri') %}{{ tag }},{% endfor %}">
     <meta name="schema:author" content="https://harshp.com/me">
     <meta name="schema:identifier" content="{{item.iri}}">
     {# Twitter #}
@@ -46,7 +46,7 @@
     </nav></header>
     {% endblock nav %}
     <main>
-    <article typeof="{% if item %}{% if item.rdf_type is sequence %}{% for type in item.rdf_type %}{{type.iri}} {% endfor %}{% else %}{{item.rdf_type.iri}}{% endif %}{% else %}https://schema.org/WebPage{% endif %}" resource="{{item.iri}}">
+    <article typeof="{% if item %}{% if item.rdf_type is sequence %}{% for type in item.rdf_type|sort(attribute='iri') %}{{type.iri}} {% endfor %}{% else %}{{item.rdf_type.iri}}{% endif %}{% else %}https://schema.org/WebPage{% endif %}" resource="{{item.iri}}">
         {% block title_h1 %}
         <h1 property="schema:name schema:headline">{% block title_body %}{{ item }}{% endblock title_body %}</h1>
         {% endblock title_h1 %}

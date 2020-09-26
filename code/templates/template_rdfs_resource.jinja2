@@ -8,7 +8,7 @@
             {% if prop not in RDF_DESC_PROP %}
             <li>{{prop}}: 
                 {% if obj is sequence and obj is not string %}
-                    {% for obj_item in obj %}
+                    {% for obj_item in obj|sort(attribute='iri') %}
                     {% if prop.startswith('date')%}
                     <span class='timestamp'>{{obj_item}}</span>
                     {% else %}

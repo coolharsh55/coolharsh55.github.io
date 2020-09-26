@@ -18,7 +18,7 @@
         <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
         <small>
             <span class="timestamp">{{item.schema_datePublished}}</span> 
-            {% for tag in item.hpcom_tag %}
+            {% for tag in item.hpcom_tag|sort(attribute='iri') %}
             <a class='tag' href="{{tag.iri}}">{{tag}}</a>
             {% endfor %}
             <br/> project: <a href="{{ project.iri }}">{{ project }}</a> <br/>

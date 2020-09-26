@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from jinja2 import FileSystemLoader, Environment
-
+import datetime
 import os
 
 from rdflib import Graph, Namespace
@@ -46,6 +46,25 @@ data.graph.ns = { k:v for k,v in data.graph.namespaces() }
 # rendered items are those that should be created into files
 # they are defined as hpcom:RenderedItem
 rendered_items = data.get_instances_of('hpcom_RenderedItem')
+
+# ########################
+# hyper-lazy testing shell
+
+# check for duplicate dates
+# set_published = dict()
+# for item in data.get_instances_of('schema_Book'):
+#     if not hasattr(item, 'hpcom_book_read'):
+#         continue
+#     date_published = str(item.hpcom_book_read)
+#     if date_published not in set_published:
+#         set_published[date_published] = item.schema_name
+#         continue
+#     print(item, item.rdf_type)
+#     print(f'same as: {set_published[date_published]}')
+# import sys
+# sys.exit()
+# ########################
+
 views = data.get_instances_of('hpcom_View')
 DEBUG(f'registered views: {views}')
 view_rdfs_resource = data.get_entity('hpview_RDFSResourceView')
@@ -149,9 +168,9 @@ def _execute_sparql(query, bindings=None):
     supplement query with given bindings"""
     DEBUG(f'executing query: {query}')
     results = data.graph.query(query, initBindings=bindings)
-    # for row in results:
-    #     DEBUG(row)
-    #     DEBUG(data.resolve_entities_to_objects(row))
+    for row in results:
+        DEBUG(row)
+        # DEBUG(data.resolve_entities_to_objects(row))
     DEBUG(f'query returned {len(results)} rows')
     return [data.resolve_entities_to_objects(row) for row in results]
 
@@ -273,12 +292,16 @@ def _resolve_view_and_write(view, path, metadata=None):
 
 
 def _today():
-    import datetime
     literal = Literal(datetime.datetime.now(), datatype=XSD.date)
     return literal
 
+def _year_start():
+    literal = Literal(
+        datetime.date.today().replace(day=1,month=1), datatype=XSD.date)
+
 SPARQL_ACTIONS = {
     'date-today': _today,
+    'date_year_start': _year_start,
 }
 
 

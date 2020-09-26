@@ -8,7 +8,7 @@
     {% for item, date in posts %}
         <li><a class='link-title' href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
             <small class="timestamp">{{ item.schema_datePublished }}</small>&nbsp;
-            <small>{% for tag in item.hpcom_tag %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
+            <small>{% for tag in item.hpcom_tag|sort(attribute='iri') %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
             {% if item.schema_subjectOf %}
             <br/><small>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></small>
             {% endif %}

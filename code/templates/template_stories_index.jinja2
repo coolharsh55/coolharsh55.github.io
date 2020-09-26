@@ -7,7 +7,7 @@
 {% for itemlist in posts %}{% for item in itemlist %}
     <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
         <small class="timestamp">{{ item.schema_datePublished }}</small>&nbsp;
-        <small>{% for tag in item.hpcom_tag %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
+        <small>{% for tag in item.hpcom_tag|sort(attribute='iri') %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
         <small>{{ item.schema_description }}</small>
     </li>
 {% endfor %}{% endfor %}
