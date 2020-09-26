@@ -37,6 +37,7 @@ graph.load('content/dev/dev.ttl', format='turtle')
 graph.load('content/research/blog/research_blog.ttl', format='turtle')
 graph.load('content/research/research.ttl', format='turtle')
 graph.load('../me.ttl', format='turtle')
+graph.load('content/hobbies/books.ttl', format='turtle')
 # # create data graph through ORM
 data = DataGraph()
 data.load(graph)
@@ -348,6 +349,9 @@ def render_item(item):
     path = _get_localised_path(item.iri)
     if path.endswith('/'):
         path = f'{path}index.html'
+    print(path)
+    if path.startswith('../code/vocab#'):
+        path = path.replace('../code/vocab#', '../resources/')
     _resolve_view_and_write(view, path, metadata)
 
 

@@ -10,6 +10,16 @@
         hpcom:renderWith hpview:StoryIndexView ;
         ] .
 
+<https://harshp.com/stories/ideas> a hpcom:RenderedItem ;
+    hpcom:content [
+        hpcom:contentFile "https://harshp.com/code/content/stories/ideas.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        hpcom:renderWith hpview:StoryView ;
+    ] ;
+    schema:name "Ideas for Stories"@en ;
+    schema:description "These are ideas for stories. Seeds that one day may bloom."@en ;
+    schema:url "https://harshp.com/stories/ideas"^^xsd:anyURI .
+
 <https://harshp.com/stories/apple-sauce-in-cranberry-juice> a hpcom:RenderedItem,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;

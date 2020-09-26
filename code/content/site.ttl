@@ -75,3 +75,13 @@
         hpcom:view_template "https://harshp.com/code/templates/template_me.jinja2"^^xsd:anyURI ;
         hpcom:renderWith hpview:GenericJinja2View ;
     ] .
+
+<https://harshp.com/hobbies> a hpcom:RenderedItem ;
+    hpcom:content [
+        hpcom:view_template "https://harshp.com/code/templates/template_hobbies.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+    ] .
+
+<https://harshp.com/hobbies/books> a hpcom:RenderedItem ;
+        schema:name "Books"@en ;
+    schema:url "https://harshp.com/hobbies/books"^^xsd:anyURI .

@@ -30,7 +30,7 @@
 <h2>pages linked to here</h2>
     <ul>
         {% for subj, prop in outgoing %}
-        <li><a href="{{subj}}">{{ subj }}</a> <small>as {{ prefix_this(prop) }}</small></li>
+        <li><a href="{{subj.iri}}">{{ subj }}</a> <small>as {{ prefix_this(prop) }}</small></li>
         {% endfor %}
     </ul>
 {% endblock content %}

@@ -312,3 +312,40 @@ hpview:GenericJinja2View a hpcom:View ;
 
 hpview:FileCopyView a hpcom:View ;
     hpcom:view_renderer hpcom:FileCopy .
+
+hpview:BookListView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_hobbies_books.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/hobbies/books> ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "currently_reading" ;
+        hpcom:queryString """
+            SELECT ?book ?title WHERE {
+                ?book a schema:Book .
+                ?book schema:name ?title .
+                ?book hpcom:book_status hpcom:book-currently-reading .
+            } ORDER By ?title
+        """ ; ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "read" ;
+        hpcom:queryString """
+            SELECT ?book ?date ?year WHERE {
+                ?book a schema:Book .
+                ?book hpcom:book_status hpcom:book-read .
+                ?book hpcom:book_read ?date .
+                BIND(SUBSTR(STR(?date), 1, 4) as ?year) .
+            } ORDER By DESC(?date)
+        """ ; ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "want_to_read" ;
+        hpcom:queryString """
+            SELECT ?book ?title WHERE {
+                ?book a schema:Book .
+                ?book schema:name ?title .
+                ?book hpcom:book_status hpcom:book-to-read .
+            } ORDER By ?title
+        """ ;
+    ] .
