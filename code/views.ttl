@@ -306,6 +306,22 @@ hpview:ContactView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_target <https://harshp.com/contact> .
 
+hpview:TagIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_tags_index.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/tags> ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "tags" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?tag (COUNT(?post) as ?linkeditems) WHERE {
+                ?tag a hpcom:Tag .
+                ?tag schema:name ?tag_label .
+                OPTIONAL { ?post hpcom:tag ?tag } .
+            } GROUP BY ?tag ORDER BY DESC(?linkeditems)
+        """ ;
+    ] .
+
 hpview:GenericJinja2View a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 .
 
