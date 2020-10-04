@@ -101,6 +101,16 @@ class RDFS_Resource(object):
         else:
             return 'Blank Node'
 
+    def __lt__(self, other):
+        if type(other) is not RDFS_Resource:
+            return self.iri < other
+        return self.iri < other.iri
+
+    def __gt__(self, other):
+        if type(other) is not RDFS_Resource:
+            return self.iri > other
+        return self.iri > other.iri        
+
 
 class DataGraph(object):
     """Graph of instances created from data.
@@ -190,7 +200,7 @@ class DataGraph(object):
             else:
                 o = str(o)
              
-            p = p.n3(graph.namespace_manager).replace(':', '_')
+            p = p.n3(graph.namespace_manager).replace(':', '_').replace('-', '_')
             if p in obj.metadata:
                 p_in_m = obj.metadata[p]
                 if type(p_in_m) is not list:
