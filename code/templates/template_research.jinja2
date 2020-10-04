@@ -182,48 +182,25 @@ My other research activities include chairing and contributing to the <a class="
 <h2>Peer-Review</h2>
     <h4>Reviewer for Journals</h4>
     <ul>
-        <li><a href="https://www.springer.com/computer/hci/journal/779">Journal of Personal and Ubiquitous Computing</a></li>
-        <li><a href="https://www.journals.elsevier.com/journal-of-web-semantics">Journal of Web Semantics</a></li>
+        {% for acronym, name, url in reviewing_journals %}
+        <li><a href="{{url}}">{{name}} ({{acronym}})</a></li>
+        {% endfor %}
     </ul>
     <h4>Reviewer for Conferences/Workshop</h4>
     <ul>
-        <li>AICOL <small>(AI Approaches to the Complexity of Legal Systems)</small>:
-            <a href="">2020</a></li>
-        <li>AICS <small>(Irish Conference on Artificial Intelligence and Cognitive Science)</small>: 
-            <a href="http://aics2018.scss.tcd.ie/">2018</a></li>
-        <li>CKG <small>(Workshop on Contextualized Knowledge Graphs)</small>: 
-            <a href="https://wiki.foodmedy.com/index.php/CKG2019">2019</a></li>
-        <li>DataValue <small>(International Workshop on Data Value)</small>:
-            <a href="http://datavalue.adaptcentre.ie/2019Workshop/">2019</a>,
-            <a href="http://datavalue.adaptcentre.ie/2018Workshop/">2018</a></li>
-        <li>ESWC <small>(Extended Semantic Web Conference)</small>: 
-            <a href="https://2019.eswc-conferences.org/">2019</a>, 
-            <a href="https://2018.eswc-conferences.org/">2018</a></li>
-        <li>IIKE <small>(International Workshop on Intelligence & Interaction in Knowledge Engineering)</small>: 
-            <a href="http://iike.adaptcentre.ie/">2019</a></li>
-        <li>ISWC <small>(International Semantic Web Conference)</small>: 
-            <a href="https://iswc2020.semanticweb.org/">2020</a>,
-            <a href="https://iswc2019.semanticweb.org/">2019</a>,
-            <a href="https://iswc2018.semanticweb.org/">2018</a></li>
-        <li>KESWC <small>(International Conference on Knowledge Engineering and Semantic Web)</small>:
-            <a href="http://2017.kesw.ru/">2017</a></li>
-        <li>KGSWC <small>(Iberoamerican Knowledge Graphs and Semantic Web Conference)</small>: 
-            <a href="http://www.kgswc.org/">2020</a>, 
-            <a href="http://www.kgswc.org/">2019</a></li>
-        <li>LASCAR <small>(Workshop on Large Scale RDF Analytics)</small>;
-            <a href="http://lascar.sda.tech/">2020</a></li>
-        <li>MEPDaW <small>(Workshop On Managing the Evolution and Preservation of the Data Web)</small>: 
-            <a href="https://mepdaw-ws.github.io/2020/">2020</a>,
-            <a href="https://mepdaw2019.ai.wu.ac.at/">2019</a>,
-            <a href="https://mepdaw2018.ai.wu.ac.at/">2018</a></li>
-        <li>ODBASE <small>(International Conference on Ontologies, DataBases, and Applications of Semantics)</small>:
-            <a href="http://www.otmconferences.org/index.php/conferences/odbase-2020">2020</a>,
-            <a href="http://www.otmconferences.org/index.php/conferences/odbase-2019">2019</a></li>
-        <li>SEMANTiCS <small>(International Conference on Ontologies, DataBases, and Applications of Semantics)</small>: 
-            <a href="https://2020-eu.semantics.cc/">2020</a>,
-            <a href="https://2019.semantics.cc">2019</a></li>
-        <li>TERECOM <small>(Workshop on Technologies for Regulatory Compliance)</small>: 
-            <a href="http://terecom2018.lynx-project.eu/">2018</a></li>
+        {% for acronym, name, date, url in reviewing_conferences|sort(attribute='3', reverse=True)|sort(attribute='0') %}
+            {% if loop.first %}
+        <li>{{acronym}} <small>({{name}})</small> <a href="{{url}}">{{date}}</a>
+            {% else %}
+                {% if acronym != loop.previtem[0] %}
+            </li>
+            <li>{{acronym}} <small>({{name}})</small> <a href="{{url}}">{{date}}</a>
+                {% else %}
+            <a href="{{url}}">{{date}}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </li>
     </ul>
 </section>
 <section>
@@ -238,45 +215,17 @@ My other research activities include chairing and contributing to the <a class="
 <h2>Supervision / Mentoring</h2>
 <h4>Current/Ongoing</h4>
     <ul>
-        <li><u>Modelling normative statements in AI ethics policy documents using ODRL</u> 
-            - Vidisha Dalvi, MSc project, 
-            <i>Assistant Supervisor</i>, 2020</li>
-        <li><u>AI Stakeholders Ontology</u> 
-            - Arthit Suriyawongkul, PhD research, 
-            <i>Mentor</i>, 2020-ongoing</li>
+        {% for project, name, course, agent, year_start, year_end, role  in current_supervision|sort(attribute='5,1') %}
+        <li><u>{{name}}</u> - {{agent}}, {{course}} <br/>
+            <i>{{role}}</i> {{year_start}}-{{year_end}} </li>
+        {% endfor %}
     </ul>
 <h4>Past</h4>
     <ul>
-        <li><u>Browser extension recording given consent</u> 
-            - Dhruv Sachdev, 4th year project, 
-            <i>Assistant Supervisor</i>, 2019-2020</li>
-        <li><u>Contextual Integrity framework based on GDPR</u> 
-            - Derrick Amponsa, MSc project, 
-            <i>Assistant Supervisor</i>, 2019-2020</li>
-        <li><u>Privacy policy generator</u> 
-            - Eoin Leahy, 4th year project, 
-            <i>Assistant Supervisor</i>, 2019-2020</li>
-        <li><u>Privacy policy visualisation widget</u> 
-            - Darragh Masterson, 4th year project, 
-            <i>Assistant Supervisor</i>, 2019-2020</li>
-        <li><u>AI Ethics Canvas</u> 
-            - Ankita Kalra, MSc project, 
-            <i>Assistant Supervisor</i>, 2019-2020</li>
-        <li><u>Automating ethics clearance applications</u>
-            - Mason Smith, 4th year intership,
-            <i>Assistant Supervisor</i>, 2019</li>
-        <li><u>Privacy policy visualisation</u>
-            - James Cox, 4th year project,
-            <i>Mentor</i>, 2018-2019</li>
-        <li><u>Ethics Canvas website development</u>
-            - Ankita Kalra, 4th year internship,
-            <i>Assistant Supervisor</i>, 2018-2019</li>
-        <li><u>Ethics Canvas website development</u>
-            - Andrew Knox, 4th year internship,
-            <i>Assistant Supervisor</i>, 2017-2018</li>
-        <li><u>Ethics Canvas website development</u>
-            - Andreas Burburan, internship,
-            <i>Assistant Supervisor</i>, 2017</li>
+        {% for project, name, course, agent, year_start, year_end, role  in past_supervision|sort(attribute='1')|sort(attribute='5', reverse=True) %}
+        <li><u>{{name}}</u> - {{agent}}, {{course}} <br/>
+            <i>{{role}}</i> {{year_start}}-{{year_end}} </li>
+        {% endfor %}
     </ul>
 </section>
 <section id="teaching">

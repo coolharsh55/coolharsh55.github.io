@@ -152,6 +152,20 @@ hpcom:peer_reviewed a rdfs:Property ;
     rdfs:domain schema:ScholarlyArticle ;
     rdfs:range xsd:boolean .
 
+# Reviewing
+hpcom:ReviewingEvent a owl:Class ;
+    rdfs:label "Reivewing Event" ;
+    rdfs:comment "Represents peer-review at some venue"@en .
+hpcom:reviewing_articles a rdfs:Property ;
+    rdfs:label "reviewing article"@en ;
+    rdfs:comment "number of articles reviewed at venue"@en ;
+    rdfs:domain hpcom:ReviewingEvent ;
+    rdfs:range xsd:int .
+hpcom:reviewing_positive a rdfs:Property ;
+    rdfs:label "reviewing positive"@en ;
+    rdfs:comment "number of articles marked positive in reviewing at venue"@en ;
+    rdfs:domain hpcom:ReviewingEvent ;
+    rdfs:range xsd:int .
 
 # Hobbies 
 hpcom:BookGenre a owl:Class ; rdfs:label "Book Genre"@en .

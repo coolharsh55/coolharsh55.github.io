@@ -136,14 +136,6 @@ hpview:ResearchView a hpcom:View ;
     hpcom:view_target <https://harshp.com/research> ;
     hpcom:view_template "https://harshp.com/code/templates/template_research.jinja2" ;
     hpcom:view_renderer hpcom:Jinja2 ;
-    # hpcom:sparql [
-    #     # recent or selected publications
-    #     # current projects
-    #     # funding
-    #     # activities
-    #     # supervision
-    #     # teaching
-    # ] .
     hpcom:sparql [
         a hpcom:SparqlQuery ;
         rdfs:label "projects" ;
@@ -183,6 +175,78 @@ hpview:ResearchView a hpcom:View ;
             hpcom:queryParamLabel "today" ;
             hpcom:queryParamValue "date-today" ;
         ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "current_supervision" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:name ?name .
+                ?project schema:agent ?agent .
+                ?project schema:subjectOf ?course .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                ?project schema:roleName ?role .
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+                FILTER(?date_end > ?today) . 
+            }
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_supervision" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:name ?name .
+                ?project schema:agent ?agent .
+                ?project schema:subjectOf ?course .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                ?project schema:roleName ?role .
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+                FILTER(?date_end < ?today) . 
+            }
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "reviewing_conferences" ;
+        hpcom:queryString """
+            SELECT ?acronym ?name ?date ?url  WHERE {
+                ?venue a schema:PublicationEvent .
+                ?venue a hpcom:ReviewingEvent .
+                ?venue schema:name ?name .
+                ?venue schema:alternateName ?acronym .
+                ?venue schema:startDate ?d .
+                BIND(YEAR(?d) as ?date) .
+                ?venue schema:url ?url .
+            }
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "reviewing_journals" ;
+        hpcom:queryString """
+            SELECT ?acronym ?name ?url  WHERE {
+                ?venue a schema:Periodical .
+                ?venue a hpcom:ReviewingEvent .
+                ?venue schema:name ?name .
+                ?venue schema:alternateName ?acronym .
+                ?venue schema:url ?url .
+            } ORDER BY ?acronym
+        """ ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;

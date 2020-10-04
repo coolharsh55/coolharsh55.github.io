@@ -239,6 +239,7 @@ def publication_type(publication):
 JINJA2_FILTERS = {
     'html_view': html_view,
     'publication_type': publication_type,
+    'year': lambda x: x,
 }
 
 
@@ -292,7 +293,7 @@ def _resolve_view_and_write(view, path, metadata=None):
 
 
 def _today():
-    literal = Literal(datetime.datetime.now(), datatype=XSD.date)
+    literal = Literal(datetime.datetime.now(), datatype=XSD.dateTime)
     return literal
 
 def _year_start():
@@ -372,7 +373,6 @@ def render_item(item):
     path = _get_localised_path(item.iri)
     if path.endswith('/'):
         path = f'{path}index.html'
-    print(path)
     if path.startswith('../code/vocab#'):
         path = path.replace('../code/vocab#', '../resources/')
     _resolve_view_and_write(view, path, metadata)
