@@ -378,11 +378,12 @@ hpview:TagIndexView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "tags" ;
         hpcom:queryString """
-            SELECT DISTINCT ?tag (COUNT(?post) as ?linkeditems) WHERE {
+            SELECT DISTINCT ?tag_label ?tag_url (COUNT(?post) as ?linkeditems) WHERE {
                 ?tag a hpcom:Tag .
                 ?tag schema:name ?tag_label .
+                ?tag schema:url ?tag_url
                 OPTIONAL { ?post hpcom:tag ?tag } .
-            } GROUP BY ?tag ORDER BY DESC(?linkeditems)
+            } GROUP BY ?tag_label
         """ ;
     ] .
 

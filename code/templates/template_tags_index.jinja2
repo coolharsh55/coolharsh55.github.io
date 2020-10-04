@@ -3,8 +3,8 @@
 {% block desc %}{% endblock desc %}
 {% block content %}
 <ul>
-{% for item, linked_items in tags %}
-    <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> - linked to {{linked_items}} posts</li>
+{% for label, url, linked_items in tags|sort(attribute='0')|sort(attribute='2',reverse=True) %}
+    <li><a href="{{url}}">{{label}}</a> - linked to {{linked_items}} posts</li>
 {% endfor %}
 </ul>
 {% endblock content %}
