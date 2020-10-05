@@ -138,19 +138,15 @@ hpview:ResearchView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
-        rdfs:label "projects" ;
+        rdfs:label "current_projects" ;
         hpcom:queryString """
             SELECT DISTINCT ?project ?name WHERE {
                 ?project a <https://harshp.com/research/projects> .
                 ?project schema:name ?name .
                 ?project schema:startDate ?date .
                 ?project schema:member ?role .
-                { 
-                    ?role schema:endDate ?end_date .
-                    FILTER(?end_date > ?today) . 
-                } UNION { 
-                    FILTER NOT EXISTS { ?role schema:endDate ?end_date } 
-                } 
+                ?role schema:endDate ?end_date .
+                FILTER(?end_date > ?today) .
             } ORDER By DESC(?date)
         """ ;
         hpcom:queryParam [

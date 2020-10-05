@@ -3,15 +3,15 @@
 {% block desc %}
 <p id="desc" class="center">
     <a href="{{ item.schema_url }}">{{ item.schema_description }}</a> <br/>
-    &#8986; project duration: {{ item.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %} <br/>
+    &#8986; project duration: <span class="timestamp">{{ item.schema_startDate}}</span> - {% if item.schema_endDate %}<span class="timestamp">{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %} <br/>
     my role(s):
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
-            {{ role.schema_roleName }} ({{ role.schema_startDate }} - {% if role.schema_endDate %}{{ role.schema_endDate }}{% else %}ongoing{% endif %}),
+            {{ role.schema_roleName }}{{", " if not loop.first }}
         {% endfor %}
     {% else %}
         {% set role = item.schema_member %}
-        {{ role.schema_roleName }} ({{ role.schema_startDate }} - {% if role.schema_endDate %}{{ role.schema_endDate }}{% else %}ongoing{% endif %})
+        {{ role.schema_roleName }}
     {% endif %}
 </p>
 {% endblock desc %}

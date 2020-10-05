@@ -56,11 +56,11 @@
             {% if item.schema_datePublished %}
             published: <time class="timestamp" property="schema:datePublished" datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
             {% if item.schema_dateModified %}
-                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="{{item.schema_dateModified}}">{{ item.schema_dateModified }}</time></small>
+                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="{{item.schema_dateModified}}">{{ item.schema_dateModified }}</time>)</small>
             {% endif %}
             {% endif %}
             {% if item.schema_author %}
-            by <a href="{{item.schema_author.iri}}" property="schema:author schema:publisher" typeof="schema:Person" resource="{{item.schema_author.iri}}">{{ item.schema_author }}</a>
+            <br/> by <a href="{{item.schema_author.iri}}" property="schema:author schema:publisher" typeof="schema:Person" resource="{{item.schema_author.iri}}">{{ item.schema_author }}</a>
             {% endif %}
             <br/>
             {% if item.schema_isPartOf %}

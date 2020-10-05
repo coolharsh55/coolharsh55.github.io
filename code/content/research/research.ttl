@@ -23,13 +23,13 @@
     schema:name "PhD Research"@en ;
     schema:description "Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance"@en ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI ;
-    schema:startDate "2016-03-01"^^xsd:date ;
-    schema:endDate "2020-02-29"^^xsd:date ;
+    schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
     schema:member [
         a schema:Role ;
         schema:member <https://harshp.com/me> ;
-        schema:startDate "2016-03-01"^^xsd:date ;
-        schema:endDate "2020-02-29"^^xsd:date ;
+        schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
         schema:roleName "researcher"@en ;
     ];
     schema:funder <http://example.com/ADAPT> .
@@ -38,13 +38,13 @@
     schema:name "PROTECT"@en ;
     schema:description "Protecting Personal Data Amidst Big Data Innovation"@en ;
     schema:url "https://protect-network.eu/"^^xsd:anyURI ;
-    schema:startDate "2019-08-01"^^xsd:date ;
-    schema:endDate "2023-07-31"^^xsd:date ;
+    schema:startDate "2019-08-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-07-31T00:00:00"^^xsd:dateTime ;
     schema:member [
         a schema:Role ;
         schema:memeber <https://harshp.com/me> ;
-        schema:startDate "2020-03-01"^^xsd:date ;
-        schema:endDate "2020-08-31"^^xsd:date ;
+        schema:startDate "2020-03-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2020-08-31T00:00:00"^^xsd:dateTime ;
         schema:roleName "Research Assistant (RA)"@en ;
     ] ;
     schema:funding [
@@ -67,30 +67,30 @@
     schema:name "Risky"@en ;
     schema:description "Exploring Privacy Risks of Technologies using Knowledge Graphs"@en ;
     schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI ;
-    schema:startDate "2020-10-01"^^xsd:date ;
-    schema:endDate "2022-09-30"^^xsd:date ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-09-30T00:00:00"^^xsd:dateTime ;
     schema:member [
         a schema:Role ;
         schema:member <https://harshp.com/me> ;
-        schema:startDate "2020-10-01"^^xsd:date ;
-        schema:endDate "2022-09-30"^^xsd:date ;
+        schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2022-09-30T00:00:00"^^xsd:dateTime ;
         schema:roleName "Principal Investigator (PI)"@en ;
     ] ;
-    schema:funding [
-        a schema:MonetaryGrant ;
-        schema:recipient <https://harshp.com/me> ;
-        schema:identifier "GOIPD/2020/790"^^xsd:string ;
-        schema:funder [
-            a schema:FundingScheme ;
-            schema:name "Government of Ireland Postdoctoral Fellowship Programme (GOIPD)"@en ;
-            schema:url "http://research.ie/funding/goipd/"^^xsd:anyURI ;
-            schema:funder [
-                a schema:FundingAgency ;
-                schema:name "Irish Research Council (IRC)"@en ;
-                schema:url "http://research.ie/"^^xsd:anyURI ;
-            ] ;
-        ] ;
-    ] ;
+    # schema:funding [
+    #     a schema:MonetaryGrant ;
+    #     schema:recipient <https://harshp.com/me> ;
+    #     schema:identifier "GOIPD/2020/790"^^xsd:string ;
+    #     schema:funder [
+    #         a schema:FundingScheme ;
+    #         schema:name "Government of Ireland Postdoctoral Fellowship Programme (GOIPD)"@en ;
+    #         schema:url "http://research.ie/funding/goipd/"^^xsd:anyURI ;
+    #         schema:funder [
+    #             a schema:FundingAgency ;
+    #             schema:name "Irish Research Council (IRC)"@en ;
+    #             schema:url "http://research.ie/"^^xsd:anyURI ;
+    #         ] ;
+    #     ] ;
+    # ] ;
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/index.html" ;
@@ -147,13 +147,13 @@
     schema:name "Privacy-as-Expected: Consent Gateway"@en ;
     schema:description "An end-to-end solution for managing consent online"@en ;
     schema:url "https://example.com/pae-consent/"^^xsd:anyURI ;
-    schema:startDate "2020-09-14"^^xsd:date ;
-    schema:endDate "2021-06-13"^^xsd:date ;
+    schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-06-13T00:00:00"^^xsd:dateTime ;
     schema:member [
         a schema:Role ;
         schema:memeber <https://harshp.com/me> ;
-        schema:startDate "2020-09-14"^^xsd:date ;
-        schema:endDate "2021-06-31"^^xsd:date ;
+        schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2021-06-31T00:00:00"^^xsd:dateTime ;
         schema:roleName "Project Lead"@en ;
     ] ;
     schema:funding [

@@ -43,18 +43,18 @@ My other research activities include chairing and contributing to the <a class="
 <h2>Projects</h2>
 <h3>Ongoing</h3>
 <ol class='list-index'>
-{% for item, role in projects %}
+{% for item, role in current_projects %}
     <li>
-        <b>{{ item }}</b> <br/>
-        <small>{{ item.schema_description }} <a href="{{ item.iri }}">Read more...</a></small> <br/>
-        <small><span class='timestamp'>{{ item.schema_startDate}}</span> - {% if item.schema_endDate %}<span class='timestamp'>{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %} <br/>
+        <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
+        <small>{{ item.schema_description }}</small> <br/>
+        <small>(<span class='timestamp'>{{ item.schema_startDate}}</span> - {% if item.schema_endDate %}<span class='timestamp'>{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %})</small>
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
-        {{ role.schema_roleName }} (<span class='timestamp'>{{ role.schema_startDate}}</span> - {% if item.schema_endDate %}<span class='timestamp'>{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %})
+        {{ role.schema_roleName }}{{", " if not loop.first }}
         {% endfor %}
     {% else %}
         {% set role = item.schema_member %}
-        {{ role.schema_roleName }} ({{ role.schema_startDate}} - {% if item.schema_endDate %}{{ item.schema_endDate }}{% else %}ongoing{% endif %})
+        {{ role.schema_roleName }}
     {% endif %}
         </small><br/>
     {% if item.schema_funding %}
@@ -77,20 +77,19 @@ My other research activities include chairing and contributing to the <a class="
 <ul>
 {% for item, name in past_projects %}
     <li>
-        <a href="{{item.iri}}">{{ item.schema_name }}</a> 
-        (<span class='timestamp'>{{item.schema_startDate}}</span> - <span class='timestamp'>{{item.schema_endDate}}</span>) <br/>
+        <a href="{{item.iri}}">{{ item.schema_name }}</a>  <br/>
+        <small>{{item.schema_description}}</small> <br/>
+        (<span class='timestamp'>{{item.schema_startDate}}</span> - <span class='timestamp'>{{item.schema_endDate}}</span>) 
         <small>
-        {% if item.schema_member is sequence %}
+    {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
-        {{ role.schema_roleName }} (<span class='timestamp'>{{ role.schema_startDate}}</span> - {% if item.schema_endDate %}<span class='timestamp'>{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %})
+        {{ role.schema_roleName }}{{", " if not loop.first }}
         {% endfor %}
-        {% else %}
+    {% else %}
         {% set role = item.schema_member %}
-        {{ role.schema_roleName }} ({{ role.schema_startDate}} - {% if item.schema_endDate %}{{ 
-        item.schema_endDate }}{% else %}ongoing{% endif %})
-        {% endif %}
-        </small> <br/>
-        <small>{{item.schema_description}}</small>
+        {{ role.schema_roleName }}
+    {% endif %}
+        </small> 
     </li>
 {% endfor %}
 </ul>
