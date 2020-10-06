@@ -196,3 +196,17 @@ h1 {
      padding-left: 1px;
      padding-right: 1px;
 }
+.list-filter {
+     font-size: 0.6rem;
+}
+.list-filter::before {
+     content: "sort-by: ";
+}
+.list-filter > .list-sort-attribute {
+     margin-right: 5px;
+     padding: 0px;
+     color: #9275FA;
+     background-color: #EFEFEF;
+     border: none;
+     border-bottom: 1px dotted #9275FA;
+}

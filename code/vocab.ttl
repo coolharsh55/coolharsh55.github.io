@@ -175,17 +175,27 @@ hpcom:BookSciFi a hpcom:BookGenre ; rdfs:label "sci-fi"@en .
 
 hpcom:Rating a owl:Class ; rdfs:label "Rating"@en .
 hpcom:Rating1 a hpcom:Rating, hpcom:RenderedItem ; 
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI ;
     rdfs:label " regret"@en .
 hpcom:Rating2 a hpcom:Rating, hpcom:RenderedItem ; 
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI ;
     rdfs:label "👎 dislike"@en .
 hpcom:Rating3 a hpcom:Rating, hpcom:RenderedItem ; 
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI ;
     rdfs:label "✨ okay"@en .
 hpcom:Rating4 a hpcom:Rating, hpcom:RenderedItem ; 
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI ;
     rdfs:label "👍 like"@en .
 hpcom:Rating5 a hpcom:Rating, hpcom:RenderedItem ; 
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI ;
     rdfs:label "💖 awesome"@en .

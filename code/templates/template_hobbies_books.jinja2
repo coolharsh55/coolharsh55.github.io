@@ -16,24 +16,24 @@
 
 <ol>
     {% for book, title in currently_reading %}
-    <li id="{{book.hpcom_book_id}}"><u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
+    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}"><u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
     {% endfor %}
 </ol>
 
 </section>
 <section id="want-to-read">
 <h2>Books I Want to Read</h2>
-<ol>
+<ol class="list-sort" data-attributes="name,author,year">
     {% for book, title in want_to_read %}
-    <li id="{{book.hpcom_book_id}}"><u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
+   <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}"><u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
     {% endfor %}
 </ol>
 </section>
 <section id="read">
 <h2>Books I have Read</h2>
-<ol reversed="true">
+<ol reversed="true" class="list-sort" data-attributes="name,author,year,date-read,rating">
     {% for book, title, date, year in read|sort(attribute='2,1', reverse=true) %}
-    <li id="{{book.hpcom_book_id}}">
+    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-date-read="{{date}}" data-rating="{{book.schema_aggregatedRating.schema_ratingValue}}">
         <u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
         {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}

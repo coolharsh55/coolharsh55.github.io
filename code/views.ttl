@@ -412,7 +412,7 @@ hpview:BookListView a hpcom:View ;
                 ?book hpcom:book_status hpcom:book-read .
                 ?book schema:name ?title .
                 ?book hpcom:book_read ?date .
-                BIND(SUBSTR(STR(?date), 1, 4) as ?year) .
+                BIND(YEAR(?date) as ?year) .
             } ORDER By DESC(?date)
         """ ; ] ;
     hpcom:sparql [
