@@ -5631,7 +5631,7 @@
 
 <https://harshp.com/hobbies/books#5> a schema:Book ;
     hpcom:book_id "5"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Peter Watts"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:isbn "9780765312181"^^xsd:string ;
@@ -6981,11 +6981,14 @@
 
 <https://harshp.com/hobbies/books#6> a schema:Book ;
     hpcom:book_id "6"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     schema:author "Mikhail Bulgakov"^^xsd:string ;
     schema:dateCreated "1967"^^xsd:int ;
     schema:isbn "9780679760801"^^xsd:string ;
     schema:name "The Master and Margarita"@en ;
+    hpcom:book_read "2020-10-04T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:genre hpcom:BookFiction ;
     schema:url "https://harshp.com/hobbies/books#6"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books#60> a schema:Book ;
