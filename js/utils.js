@@ -39,10 +39,13 @@ var list_filter_sort_click_handler = function(ele) {
     // will sort the list based on specified attribute
     // the element will be a button, placed as a child in a list-filter span
     // list will always be the next element/sibling of the parent
+    
+    // get list elements
     let list = this.parentNode.nextSibling;
+    let children = list.querySelectorAll('li');
     let sorting_variable = this.getAttribute('data-for');
     let items_sort_list = [] ;
-    for (let node of list.children) {
+    for (let node of children) {
         let key = node.getAttribute(sorting_variable);
         if (!isNaN(key)) {
             key = parseInt(key);
@@ -51,18 +54,19 @@ var list_filter_sort_click_handler = function(ele) {
             key: key,
             value: node}) ;
     }
+
+    // sort list using key and direction
     let sort_direction = this.getAttribute('data-sort-direction');
     if (sort_direction == "asc") {
-        items_sort_list.sort((a, b) => a.key > b.key);
+        items_sort_list.sort(function(a, b) { return a.key > b.key ? 1 : -1; });
         this.setAttribute('data-sort-direction', 'dsc');
     } else if (sort_direction == "dsc") {
-        items_sort_list.sort((a, b) => a.key < b.key);
+        items_sort_list.sort(function(a, b) { return a.key < b.key ? 1 : -1; });
         this.setAttribute('data-sort-direction', 'asc');
     }
-    let list_new = [] ;
-    items_sort_list.map(x => list_new.push(x.value));
-    list.replaceChildren();
-    for (let item of list_new) {
-        list.appendChild(item);
+
+    // replace old list with new
+    for (let item of items_sort_list) {
+        list.appendChild(item.value);
     }
 }
