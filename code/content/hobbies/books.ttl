@@ -5631,9 +5631,12 @@
 
 <https://harshp.com/hobbies/books#5> a schema:Book ;
     hpcom:book_id "5"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     schema:author "Peter Watts"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
+    hpcom:book_read "2020-10-10T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:isbn "9780765312181"^^xsd:string ;
     schema:name "Blindsight"@en ;
     schema:url "https://harshp.com/hobbies/books#5"^^xsd:anyURI .
@@ -7011,7 +7014,7 @@
 
 <https://harshp.com/hobbies/books#62> a schema:Book ;
     hpcom:book_id "62"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "J.J. Abrams"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:isbn "9780857864772"^^xsd:string ;
