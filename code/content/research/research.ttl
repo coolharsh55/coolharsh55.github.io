@@ -959,7 +959,6 @@
         hpcom:renderWith hpview:ResearchBlogPostView ;
         ] .
 
-
 <https://harshp.com/research/publications/036-semantic-schema-mapping-interoperable-data-exchange> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
     schema:name "Semantic Schema Mapping for Interoperable Data-Exchange"@en ;
     schema:description "Facilitating import/export of data between services based on GDPR's Right to Data Portability by using semantics to align different schemas"@en ;
@@ -977,6 +976,21 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4029338"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/93553"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/SCHEMA"^^xsd:anyURI ] ;
+    schema:status "accepted, to be presented"@en ;
+    hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/037-common-semantic-model-GDPR-ROPA> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
+    schema:name "A Common Semantic Model of the GDPR Register of Processing Activities"@en ;
+    schema:description "Creating a common semantic model of ROPA based on analyses of ROPA templates by EU DPAs"@en ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:semantics ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:ROPA ;
+    hpcom:author_lead <http://example.com/PaulRyan> ;
+    hpcom:author_other ( <https://harshp.com/me> <http://example.com/RobBrennan> ) ;
+    schema:datePublished "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/JURIX2020> ;
+    schema:funder <http://example.com/ADAPT> ;
     schema:status "accepted, to be presented"@en ;
     hpcom:peer_reviewed true .
 
@@ -1025,6 +1039,8 @@
     schema:name "Bert Bos" .
 <http://example.com/RobBrennan> a schema:Person ;
     schema:name "Rob Brennan" .
+<http://example.com/PaulRyan> a schema:Person ;
+    schema:name "Paul Ryan" .
 <http://example.com/BudBruegger> a schema:Person ;
     schema:name "Bud Bruegger" .
 <http://example.com/FajarEkaputra> a schema:Person ;
@@ -1441,6 +1457,14 @@
     schema:startDate "2018-12-12T00:00:00"^^xsd:dateTime ;
     schema:endDate "2018-12-12T00:00:00"^^xsd:dateTime ;
     schema:location "Groningen, Netherlands" .
+
+<http://example.com/conferences/JURIX2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    schema:name "International Conference on Legal Knowledge and Information Systems​"@en ;
+    schema:alternateName "JURIX" ;
+    schema:url "https://jurix2020.law.muni.cz/"^^xsd:anyURI ;
+    schema:startDate "2020-12-09T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-12-11T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
 
 # Supervision
 <https://harshp.com/research/supervision/2019-browser-extension-consent>  a schema:Role, hpcom:SupervisionRole ;
