@@ -6065,11 +6065,14 @@
 
 <https://harshp.com/hobbies/books#53> a schema:Book ;
     hpcom:book_id "53"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read "2020-10-16T00:00:00"^^xsd:dateTime ;
     schema:author "Adam  Becker"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:isbn "9780465096053"^^xsd:string ;
     schema:name "What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics"@en ;
+    schema:genre hpcom:BookNonFiction ;
     schema:url "https://harshp.com/hobbies/books#53"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books#530> a schema:Book ;
@@ -6975,7 +6978,10 @@
 
 <https://harshp.com/hobbies/books#593> a schema:Book ;
     hpcom:book_id "593"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookNonFiction ;
     schema:author "Ernest Becker"^^xsd:string ;
     schema:dateCreated "1973"^^xsd:int ;
     schema:isbn "9780285638976"^^xsd:string ;
