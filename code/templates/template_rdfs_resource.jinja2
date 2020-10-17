@@ -10,14 +10,14 @@
                 {% if obj is sequence and obj is not string %}
                     {% for obj_item in obj|sort(attribute='iri') %}
                     {% if prop.startswith('date')%}
-                    <span class='timestamp'>{{obj_item}}</span>
+                    <time datetime="{{obj_item}}">{{obj_item}}</time>
                     {% else %}
                     {{ obj_item | html_view | safe }}, 
                     {% endif %}
                     {% endfor %}
                 {% else %}
                     {% if prop.startswith('date')%}
-                    <span class='timestamp'>{{obj}}</span>
+                    <time datetime="{{obj}}">{{obj}}</time>
                     {% else %}
                     {{ obj | html_view | safe }}, 
                     {% endif %}

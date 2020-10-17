@@ -27,7 +27,7 @@
         {% if publication.schema_status %}
         <span class='note'>{{ publication.schema_status }}</span>
         {% endif %}
-        <span class='timestamp'>{{publication.schema_datePublished}}</span> 
+        <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
         <i>{{publication|publication_type}}</i>
         <br/>
         {# venue #}

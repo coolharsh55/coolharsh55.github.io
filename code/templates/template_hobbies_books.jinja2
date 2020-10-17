@@ -41,7 +41,7 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        ; read in {{year}} ; it was {{book.schema_aggregatedRating}}
+        ; read in <time datetime="{{year}}">{{year}}</time> ; it was {{book.schema_aggregatedRating}}
         </small>
     </li>
     {% endfor %}

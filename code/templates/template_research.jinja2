@@ -47,7 +47,7 @@ My other research activities include chairing and contributing to the <a class="
     <li>
         <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
         <small>{{ item.schema_description }}</small> <br/>
-        <small>(<span class='timestamp'>{{ item.schema_startDate}}</span> - {% if item.schema_endDate %}<span class='timestamp'>{{ item.schema_endDate }}</span>{% else %}ongoing{% endif %})</small>
+        <small>(<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time>}}</span>{% else %}ongoing{% endif %})</small>
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
         {{ role.schema_roleName }}{{", " if not loop.first }}
@@ -79,7 +79,7 @@ My other research activities include chairing and contributing to the <a class="
     <li>
         <a href="{{item.iri}}">{{ item.schema_name }}</a>  <br/>
         <small>{{item.schema_description}}</small> <br/>
-        (<span class='timestamp'>{{item.schema_startDate}}</span> - <span class='timestamp'>{{item.schema_endDate}}</span>) 
+        (<time datetime="{{item.schema_startDate}}">{{item.schema_startDate}}</time> - <time datetime="{{item.schema_endDate}}">{{item.schema_endDate}}</time>) 
         <small>
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
@@ -113,7 +113,7 @@ My other research activities include chairing and contributing to the <a class="
                 {% if publication.schema_status %}
                 <span class='note'>{{ publication.schema_status }}</span>
                 {% endif %}
-                <span class='timestamp'>{{publication.schema_datePublished}}</span> 
+                <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
                 <i>{{publication|publication_type}}</i>
                 {# publication type filter #}
                 <br/>
@@ -155,17 +155,17 @@ My other research activities include chairing and contributing to the <a class="
     <li>
         <a href="https://www.w3.org/community/dpvcg/"><b>W3C Data Privacy Vocabularies and Controls Community Group (DPVCG)</b></a><br/>
         The DPVCG is a community-group that works towards developing vocabularies and taxonomies arising from privacy laws such as the GDPR. The <a href="https://www.w3.org/ns/dpv">Data Privacy Vocabulary</a> represents its primary outcome and deliverable.
-        I am a participant and member of the group since <span class='timestamp'>2018-09-01</span> and am currently co-chairing it.
+        I am a participant and member of the group since <time datetime="2018-09-01">2018-09-01</time> and am currently co-chairing it.
         </li>
     <li>
         <a href="https://www.iso.org/committee/45306.html"><b>ISO/IEC JTC1/SC27/WG5 Identity Management and Privacy Technologies</b></a><br/>
         ISO/IEC has committees and working groups that work on development of standards, with the Working Group 5 in Sub-Committee 27 responsible for privacy technologies. 
-        I participate as a (domain) 'expert' in WG5 since <span class='timestamp'>2020-08-01</span> through membership in the<a href="https://www.nsai.ie/">National Standards Association of Ireland (NSAI)</a>. My specific interests include the <a href="https://www.iso.org/standard/80392.html">ISO/IEC 27560</a> standard currently under development for 'consent record information structure'.
+        I participate as a (domain) 'expert' in WG5 since <time datetime="2020-08-01">2020-08-01</time> through membership in the<a href="https://www.nsai.ie/">National Standards Association of Ireland (NSAI)</a>. My specific interests include the <a href="https://www.iso.org/standard/80392.html">ISO/IEC 27560</a> standard currently under development for 'consent record information structure'.
         </li>
 </ul>
 <h3>Past</h3>
 <ul>
-    <li><a href="https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=123339479">Information Sharing Interoperability (WG - ISI)</a> at <a href="https://kantarainitiative.org/">Kantara Initiative</a> from <time class='timestamp'>2020-03-31</time> to <time class='timestamp'>2020-06-25</time>.</li>
+    <li><a href="https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=123339479">Information Sharing Interoperability (WG - ISI)</a> at <a href="https://kantarainitiative.org/">Kantara Initiative</a> from <time datetime="2020-03-31">2020-03-31</time> to <time datetime="2020-06-25">2020-06-25</time>.</li>
 </ul>
 
 </section>

@@ -53,9 +53,9 @@
         <div id="description">
             <span property='schema:description'>{{ item.schema_description }}</span><br/>
             {% if item.schema_datePublished %}
-            published: <time class="timestamp" property="schema:datePublished" datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
+            published: <time property="schema:datePublished" datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
             {% if item.schema_dateModified %}
-                <small>(updated: <time class="timestamp" property="schema:dateModified" datetime="{{item.schema_dateModified}}">{{ item.schema_dateModified }}</time>)</small>
+                <small>(updated: <time property="schema:dateModified" datetime="{{item.schema_dateModified}}">{{ item.schema_dateModified }}</time>)</small>
             {% endif %}
             {% endif %}
             {% if item.schema_author %}
@@ -104,7 +104,6 @@
         {% endblock footer %}
     </footer>
     {% block JS %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.24/dayjs.min.js" integrity="sha256-cWonUId5xt6NkGriuU0+9b+pO+LlBm2LKIIzITvRyBI=" crossorigin="anonymous"></script>
     <script src="/js/utils.js"></script>
     {% endblock JS %}
 </body>

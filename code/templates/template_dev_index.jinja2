@@ -17,7 +17,7 @@
     {% for item, project in posts %}
         <li><a href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
         <small>
-            <span class="timestamp">{{item.schema_datePublished}}</span> 
+            <time datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
             {% for tag in item.hpcom_tag|sort(attribute='iri') %}
             <a class='tag' href="{{tag.iri}}">{{tag}}</a>
             {% endfor %}

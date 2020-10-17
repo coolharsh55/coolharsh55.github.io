@@ -9,7 +9,7 @@
         {% for parent in item.rdf_type|reject('sameas', 'RenderedItem')|sort(attribute='iri') %}
         {{parent.schema_name}}
         {% endfor %}
-        <span class="timestamp">{{ item.schema_datePublished }}</span>
+        <time datetime="{{ item.schema_datePublished }}">{{ item.schema_datePublished }}</time>
         <span>{{ item.schema_description }}</span>
         {% if item.schema_subjectOf %}
         <br/><span>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></span>

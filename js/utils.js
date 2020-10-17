@@ -1,8 +1,13 @@
 // converts ISO timestamps to simpler ones
 document.addEventListener('DOMContentLoaded', function () {
-    let items = document.getElementsByClassName('timestamp');
+    let items = document.getElementsByTagName('time');
     for(let item of items) {
-        item.innerHTML = dayjs(item.innerHTML).format("D MMM YY");
+        // this isn't a timestamp, it is probably a year/month
+        if (item.innerHTML.length < 10) { continue; }
+        var timestamp = Date.parse(item.innerHTML);
+        if (isNaN(timestamp)) { continue; }
+        timestamp = new Date(item.innerHTML);
+        item.innerHTML = timestamp.toDateString();
     }
 }, false);
 
