@@ -5,15 +5,16 @@
 <ol class="list-index">
 {% for itemlist in posts %}{% for item in itemlist %}
     <li><a class='link-title' href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
-        {% for parent in item.rdf_type|sort(attribute='iri') %}{% if parent != RenderedItem %}
-        <a class='section' href="{{parent.iri}}">{{parent.schema_name}}</a>
-        {% endif %}{% endfor %}
-        <small class="timestamp">{{ item.schema_datePublished }}</small>&nbsp;
-        <small>{% for tag in item.hpcom_tag|sort(attribute='iri') %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
+        <small>
+        {% for parent in item.rdf_type|reject('sameas', 'RenderedItem')|sort(attribute='iri') %}
+        {{parent.schema_name}}
+        {% endfor %}
+        <span class="timestamp">{{ item.schema_datePublished }}</span>
+        <span>{{ item.schema_description }}</span>
         {% if item.schema_subjectOf %}
-        <small>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></small> <br/>
+        <br/><span>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></span>
         {% endif %}
-        <small>{{ item.schema_description }}</small>
+        </small>
     </li>
 {% endfor %}{% endfor %}
 </ol>

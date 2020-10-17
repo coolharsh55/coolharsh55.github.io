@@ -1,8 +1,15 @@
+:root {
+     --background: #EFEFEF; 
+     --link: #870002;
+     --text: #0E0B16;
+     --text-link: #2F4D81;
+     --background-dark: #263261;
+}
 html {
      background:
-     linear-gradient(90deg, #EFEFEF 21px, transparent 1%) center,
-     linear-gradient(#EFEFEF 21px, transparent 1%) center,
-     #4717F6;
+     linear-gradient(90deg, var(--background) 21px, transparent 1%) center,
+     linear-gradient(var(--background) 21px, transparent 1%) center,
+     var(--text);
      background-size: 22px 22px;
 }
 body {
@@ -11,52 +18,60 @@ body {
      margin: auto;
      font-family: monospace, monospace;
      line-height: 1.5;
-     color: #0E0B16;
-     background-color: #EFEFEF;
-}
-
-footer {
-     text-align: center;
-     margin: auto;
-     display: block;
-     font-size: 0.75rem;
-     background-color: #4717F6;
-     color: #EFEFEF;
-     border: 1px solid #0E0B16;
-     margin-top: 10px;
-     margin-bottom: 10px;
-}
-footer a {
-     color: #EFEFEF;
-     font-weight: bold;
-     text-decoration: underline solid #EFEFEF;
-}
-footer a:visited {
-     color: #EFEFEF;
+     color: var(--text);
+     background-color: var(--background);
 }
 nav {
      font-size: 0.75rem;
-     background-color: #4717F6;
-     color: #EFEFEF;
-     border: 1px solid #0E0B16;
+     background-color: var(--background-dark);
+     padding-bottom: 2px;
+     color: var(--background);
+     border: 1px solid var(--background);
 }
 nav a {
-     color: #EFEFEF;
-     font-weight: bold;
-     text-decoration: underline solid #EFEFEF;
+     color: var(--background);
+     text-decoration: none;
+     border-bottom: 1px solid var(--background);
 }
 nav a:visited {
-     color: #EFEFEF;
+     color: var(--background);
+     text-decoration: none;
+     border-bottom: 1px solid var(--background);
 }
-
 h1, nav, img, #description {
      text-align: center;
 }
 h1, h2, h3 {
-     color: #4717F6;
+     color: var(--background-dark);
      font-variant: small-caps; text-transform: none;
 }
-
+article {
+     margin-top: 2px;
+     padding: 1rem;
+     border: 1px solid var(--background-dark);
+     box-shadow: 2px 2px 6px var(--background-dark);
+}
+h1 {
+     border: 1px solid var(--background-dark);
+     box-shadow: 2px 2px 2px var(--background-dark);
+}
+#description {
+     padding-bottom: 1rem;
+     border-bottom: 1px solid var(--background-dark);
+     box-shadow: 0px 4px 4px -4px var(--background-dark);
+}
+#description > img {
+     margin-top: 5px;
+     border: 1px solid var(--background-dark);
+     box-shadow: 2px 2px 2px var(--background-dark);
+}
+.content-block {
+     border: 1px solid var(--background-dark);
+     box-shadow: 2px 2px 2px var(--background-dark);
+     padding-left: 0.5rem;
+     padding-right: 0.5rem;
+     margin-bottom: 1rem;
+}
 img, svg {
      max-width: 100%;
      display: block;
@@ -64,36 +79,37 @@ img, svg {
 }
 hr {
      border: 0;
-     height: 2px;
-     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(71, 23, 246, 0.75), rgba(0, 0, 0, 0));
+     background: var(--background-dark);
+     height: 1px;
 }
-
 a {
-     text-decoration: underline dotted;
-     color: #4717F6;
+     text-decoration: none;
+     border-bottom: 1px solid var(--link);
+     color: var(--text-link);
 }
 a:hover {
-     color: #A239CA;
-     border-bottom: 2px solid #A239CA;
+     text-decoration: none;
+     border-bottom: 2px dotted var(--text);
+     color: var(--link);
 }
 a:visited {
-     color: #A239CA;
+     text-decoration: none;
+     border-bottom: 1px dotted var(--link);
+     color: var(--text-link);
 }
-
 blockquote {
      margin-top: 10px;
      margin-bottom: 10px;
      margin-left: 5px;
      padding-left: 5px;
-     border-left: 2px solid #4717F6;
+     border-left: 2px solid var(--text-link);
     ;
 }
-
 pre {
      display: block;
      padding: 1em;
-     background-color: #E0D8FD;
-     border: 1px solid #4717F6;
+     background-color: var(--background);
+     border: 1px solid var(--background-dark);
      white-space: pre-wrap;
      overflow-x: auto;
      tab-width: 4;
@@ -105,11 +121,10 @@ code {
      padding: 1px;
      font-family: Courier, monospace;
 }
-
 table {
      text-align: justify;
      border-collapse: collapse;
-     border: 1px solid #E0D8FD;
+     border: 1px solid var(--background-dark);
      margin: auto;
      display: block;
      overflow: auto;
@@ -123,13 +138,12 @@ th {
 }
 td, th {
      padding: 0.5em;
-     border-bottom: 1px solid #E0D8FD;
-     border-right: 1px solid #E0D8FD;
+     border-bottom: 1px solid var(--background-dark);
+     border-right: 1px solid var(--background-dark);
 }
 .center {
      text-align: center;
 }
-
 .tag {
      font-size: 0.8rem;
      padding-right: 2px;
@@ -149,52 +163,16 @@ td, th {
      padding-left: 0;
 }
 .list-index li {
-     border: 1px solid #9275FA;
-     box-shadow: 2px 2px 2px #9275FA;
+     border: 1px solid var(--background-dark);
+     box-shadow: 2px 2px 2px var(--background-dark);
      padding-left: 0.5rem;
      padding-right: 0.5rem;
      margin-bottom: 1rem;
-}
-a.section {
-     font-size: 0.75rem;
-     padding: 1px;
-}
-article {
-     margin-top: 2px;
-     padding: 1rem;
-     border: 1px solid #9275FA;
-     box-shadow: 2px 2px 6px #9275FA;
-}
-h1 {
-     border: 1px solid #9275FA;
-     box-shadow: 2px 2px 2px #9275FA;
-}
-#description {
-     padding-bottom: 1rem;
-     /*border-bottom: 2px dashed #4717F6;*/
-     box-shadow: 0px 4px 4px -4px #9275FA;
-}
-.content-block {
-     border: 1px solid #9275FA;
-     box-shadow: 2px 2px 2px #9275FA;
-     padding-left: 0.5rem;
-     padding-right: 0.5rem;
-     margin-bottom: 1rem;
-}
-#description > img {
-     margin-top: 2px;
-     border: 1px solid #9275FA;
-     box-shadow: 2px 2px 2px #9275FA;
 }
 .note {
-     border: 1px dotted #9275FA;
+     color: var(--link);
      font-size: 0.75rem;
-     padding: 1px;
-}
-.highlight {
-     background-color: rgba(255,255,0,0.75);
-     padding-left: 1px;
-     padding-right: 1px;
+     padding: 2px;
 }
 .list-filter {
      font-size: 0.6rem;
@@ -205,12 +183,29 @@ h1 {
 .list-filter > .list-sort-attribute {
      margin-right: 5px;
      padding: 0px;
-     color: #9275FA;
+     color: var(--background-dark);
      background-color: #EFEFEF;
      border: none;
-     border-bottom: 1px dotted #9275FA;
+     border-bottom: 1px dotted var(--background-dark);
 }
-.light-text {
-     /*color: #8979B9 ;*/
-     font-size: 0.7rem;
+footer {
+     text-align: center;
+     margin: auto;
+     display: block;
+     font-size: 0.75rem;
+     background-color: var(--background-dark);
+     color: var(--background);
+     border: 1px solid var(--background);
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+footer a {
+     color: var(--background);
+     text-decoration: none;
+     border-bottom: 1px solid var(--background);
+}
+footer a:visited {
+     color: var(--background);
+     text-decoration: none;
+     border-bottom: 1px solid var(--background);
 }
