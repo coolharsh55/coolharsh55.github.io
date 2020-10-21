@@ -1,67 +1,4 @@
-<!DOCTYPE html>
-<html
-    lang="en"
-    prefix="schema: http://schema.org/ ">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Semantic Schema Mapping for Interoperable Data-Exchange</title>
-    <meta name="description" content=""/>
-    <meta name="schema:name" content="Semantic Schema Mapping for Interoperable Data-Exchange">
-    <meta name="schema:description" content="Facilitating import/export of data between services based on GDPR&#39;s Right to Data Portability by using semantics to align different schemas">
-    <meta name="schema:datePublished" content="item.schema_datePublished">
-    <meta name="schema:keywords" content="GDPR,RtDP,semantic-web,semantics,">
-    <meta name="schema:author" content="https://harshp.com/me">
-    <meta name="schema:identifier" content="https://harshp.com/research/publications/036-semantic-schema-mapping-interoperable-data-exchange">
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="@coolharsh55">
-    <meta name="twitter:title" content="Semantic Schema Mapping for Interoperable Data-Exchange">
-    <meta name="twitter:description" content="Facilitating import/export of data between services based on GDPR&#39;s Right to Data Portability by using semantics to align different schemas">
-    <meta name="twitter:creator" content="@coolharsh55">
-    <link rel="stylesheet" href="/css/sitebase.css" />
-</head>
-<body>
-    <header><nav>
-        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
-| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
-    <main>
-    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/036-semantic-schema-mapping-interoperable-data-exchange">
-        <h1 property="schema:name schema:headline">Semantic Schema Mapping for Interoperable Data-Exchange</h1>
-<div id="description">
-	<small>
-	<time datetime="2020-09-14T00:00:00">2020-09-14T00:00:00</time>
-    <i>Full Paper, peer-reviewed</i>
-    <br/>
-    <span class='note'>accepted, to be presented</span>
-    International Workshop on Ontology Matching (OM)    - co-located with International Semantic Web Conference (ISWC)    <br/>
-    &#9997;<i>
-    <u>Harshvardhan J. Pandit</u>*
-    ,
-    Damien Graux
-    ,
-    Fabrizio Orlandi
-    ,
-    Ademar Crotti Junior
-    ,
-    Declan O&#39;Sullivan
-    ,
-    Dave Lewis
-    </i>
-    <br/>
-    <a href="https://doi.org/10.5281/zenodo.4029338">publication</a>
-        &#x1f513;copies:
-        <a href="http://hdl.handle.net/2262/93553">TARA</a>
-        , <a href="https://doi.org/10.5281/zenodo.4029338">zenodo</a>
-    	<br/>
-        &#128230;resources:
-        <a href="https://github.com/coolharsh55/SCHEMA">repo</a>
-    <br/>
-    Facilitating import/export of data between services based on GDPR&#39;s Right to Data Portability by using semantics to align different schemas
-    </small>
-</div>
-        <div id="content" property="schema:articleBody">
-        <h1 id="sec:intro">Introduction</h1>
+<h1 id="sec:intro">Introduction</h1>
 <p>Interoperability of data between services can facilitate innovation, collaboration, and competition to enable a richer ecosystem of services. The Right to Data Portability (RtDP) was designed and implemented with this as the motivation in Article 20 of the European General Data Protection Regulation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to provide a legal impetus for data to be exported out of silos and shared between services. RtDP requires organisations<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> to provide a copy of personal data they have collected from an individual in a structured, commonly used, and machine-readable format. RtDP also permits data to be transmitted directly to another organisation. In principle, this provides individuals as well as organisations the freedom to obtain and reuse existing data from different services and encourages greater competition and innovation between services by countering data silos and user monopolies.</p>
 <p>As of August 2020, however, RtDP is yet to be effectively implemented, and there is a lack of consensus in structure and semantics of data which presents technical difficulties associated with interoperability and data sharing across services <span class="citation" data-cites="zichichi_use_2019">[<a href="#ref-zichichi_use_2019" role="doc-biblioref">1</a>]</span>. One of the major issues in implementing RtDP concerns the ‘semantics’ of data i.e. how to indicate the structure, context, and meaning of data in an interoperable form. This issue is further compounded given that GDPR does not mandate use of semantics in provision of data. Therefore, data made under RtDP will either (a) have no schema; or (b) its schema is dictated by the service that exported it. In either case, an individual or organisation that wants to use this data must first understand the structure and contents of the data before building tools to use it – which may be feasible when there are a few services but difficult to scale within an ecosystem.</p>
 <p>In this article, we present an overview of practical problems regarding implementation of data portability which skew the balance of power against new services and SMEs (small and medium sized enterprises). We then present our vision for a solution that aims to solve this problem using the notion of semantic interoperability where ‘data models’ or ‘schemas’ are a) developed within a community, b) embedded or associated with data to convey meaning, and c) aligned with other schemas to enable importing and exporting data between services – thus achieving the intended goals of RtDP.</p>
@@ -224,14 +161,3 @@
 <li id="fn23" role="doc-endnote"><p>Twitter does not provide a data import service. So we reasonably assume its import tool will accept the same data format and structure as its export tool<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-
-        </div>
-    </article>
-    </main>
-    <footer>
-        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
-        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
-    </footer>
-    <script src="/js/utils.js"></script>
-</body>
-</html>

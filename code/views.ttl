@@ -426,3 +426,8 @@ hpview:BookListView a hpcom:View ;
             } ORDER By ?title
         """ ;
         ].
+
+hpview:ResearchPaperView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_paper.jinja2" ;
+    hpcom:view_target schema:ScholarlyArticle ;
+    hpcom:view_renderer hpcom:Jinja2 .
