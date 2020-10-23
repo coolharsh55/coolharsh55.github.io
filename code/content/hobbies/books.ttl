@@ -149,6 +149,8 @@
     hpcom:book_id "11"^^xsd:int ;
     hpcom:book_status hpcom:book-read ;
     hpcom:book_physical_copy true ;
+    schema:genre hpcom:BookFiction ;
+    schema:genre hpcom:BookSciFi ;
     hpcom:book_read "2020-10-22T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Ann Leckie"^^xsd:string ;
@@ -5492,6 +5494,8 @@
 
 <https://harshp.com/hobbies/books#49> a schema:Book ;
     hpcom:book_id "49"^^xsd:int ;
+    hpcom:book_physical_copy true ;
+    schema:genre hpcom:BookNonFiction ;
     hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Stuart Russell"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
