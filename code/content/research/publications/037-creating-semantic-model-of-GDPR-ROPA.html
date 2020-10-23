@@ -1,54 +1,4 @@
-<!DOCTYPE html>
-<html
-    lang="en"
-    prefix="schema: http://schema.org/ ">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>A Common Semantic Model of the GDPR Register of Processing Activities</title>
-    <meta name="description" content=""/>
-    <meta name="schema:name" content="A Common Semantic Model of the GDPR Register of Processing Activities">
-    <meta name="schema:description" content="Creating a common semantic model of ROPA based on analyses of ROPA templates by EU DPAs">
-    <meta name="schema:datePublished" content="item.schema_datePublished">
-    <meta name="schema:keywords" content="GDPR,Register of Processing Activities,semantic-web,semantics,">
-    <meta name="schema:author" content="https://harshp.com/me">
-    <meta name="schema:identifier" content="https://harshp.com/research/publications/037-common-semantic-model-GDPR-ROPA">
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:site" content="@coolharsh55">
-    <meta name="twitter:title" content="A Common Semantic Model of the GDPR Register of Processing Activities">
-    <meta name="twitter:description" content="Creating a common semantic model of ROPA based on analyses of ROPA templates by EU DPAs">
-    <meta name="twitter:creator" content="@coolharsh55">
-    <link rel="stylesheet" href="/css/sitebase.css" />
-</head>
-<body>
-    <header><nav>
-        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
-| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
-    <main>
-    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/code/vocab#ShortPaper https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/037-common-semantic-model-GDPR-ROPA">
-        <h1 property="schema:name schema:headline">A Common Semantic Model of the GDPR Register of Processing Activities</h1>
-<div id="description">
-	<small>
-	<time datetime="2020-10-15T00:00:00">2020-10-15T00:00:00</time>
-    <i>Short Paper, peer-reviewed</i>
-    <br/>
-    <span class='note'>accepted, to be presented</span>
-    International Conference on Legal Knowledge and Information Systems​ (JURIX)    <br/>
-    &#9997;<i>
-    Paul Ryan*
-    ,
-    <u>Harshvardhan J. Pandit</u>
-    ,
-    Rob Brennan
-    </i>
-    <br/>
-    <br/>
-    Creating a common semantic model of ROPA based on analyses of ROPA templates by EU DPAs
-    </small>
-</div>
-        <div id="content" property="schema:articleBody">
-        
+
 <h2 id="introduction">Introduction</h2>
 <p>A Register of Processing Activities (ROPA) is a comprehensive record of the personal data processing activities of an organisation. It is central to meet the principle of accountability as set out in Article 30 of the GDPR. Organisations most commonly create and maintain ROPAs through informal tools and spreadsheets [1]. EU Data Protection Regulators also seem to encourage this practice by providing spreadsheet-based templates to assist organisations in preparing and maintaining ROPAs. A spreadsheet, while being a simple and commonly utilised versatile medium, requires effort to enter information and keep it updated. As a human-oriented application, spreadsheets often lack the rich data structures and semantics that are suitable for building automated toolchains, especially when modelling complex legal concepts. The creation of a common data model is required to represent ROPA information across different compliance-related processes and act as the connection between an organisation's internal compliance data and what regulators would expect. This model can be used to fuse information stored in spreadsheets and facilitate the interconnectivity of data processing systems with ROPA-maintenance/compliance systems, automatically update spreadsheets and automated querying, validation, monitoring and reporting of ROPA information. Regulator template consolidation into a semantic model will facilitate an organisation to regulator interoperability; and will provide a single data model for compliance across jurisdictions. The variation of ROPA templates, allied with the option for organisations to develop their own data structures creates significant challenges when it comes to compliance automation and tool development. It is possible to resolve this s variation with a flexible, unified data model of a ROPA. It could support multi-jurisdiction tool development for ROPA maintenance and RegTech-style automated compliance reporting to regulators, thus reducing costs [2].</p>
 <p>Our research aims to enable the creation of technical solutions for the maintenance of ROPAs through semantic web technologies. We show in this paper that for ROPAs, there are differences within the templates provided by each regulator in terms of semantics and granularity - despite being based on common requirements of GDPR's Article 30. There is existing work regarding the use of semantic vocabularies to represent GDPR for various compliance-related tasks [3]. We select DPV as the most comprehensive and representative vocabulary of the Sot A and answer the research question "to what extent can the existing Data Privacy Vocabulary (DPV) be extended to build a semantic ROPA model spanning the range of regulator ROPA templates". To address these issues, we first consolidate the different regulator issued templates into a Common Semantic Model for ROPAs (CSM-ROPA). We then evaluate and extend the DPV for representing CSM-ROPA. The contributions of this paper are (i) analysis of six ROPA templates from EU data protection regulators (ii) a consolidated semantic model of ROPA and (iii) extensions of the DPV for representing a semantic model of a ROPA. The rest of the paper is structured as follows: Section 2 presents an analysis of the ROPA templates provided by EU regulators. In Section 3, we will present our Semantic Model of a ROPA, and provide an evaluation of the DPV to represent CSM-ROPA.</p>
@@ -115,13 +65,3 @@
 <li id="fn5" role="doc-endnote"><a href="https://lists.w3.org/Archives/Public/public-dpvcg/2020Sep/0006.html">https://lists.w3.org/Archives/Public/public-dpvcg/2020Sep/0006.html</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section>
-        </div>
-    </article>
-    </main>
-    <footer>
-        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
-        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
-    </footer>
-    <script src="/js/utils.js"></script>
-</body>
-</html>
