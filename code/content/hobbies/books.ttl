@@ -147,7 +147,10 @@
 
 <https://harshp.com/hobbies/books#11> a schema:Book ;
     hpcom:book_id "11"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:book_physical_copy true ;
+    hpcom:book_read "2020-10-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Ann Leckie"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:name "Provenance"@en ;
@@ -6980,6 +6983,7 @@
     hpcom:book_id "593"^^xsd:int ;
     hpcom:book_status hpcom:book-read ;
     schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
     hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Ernest Becker"^^xsd:string ;
