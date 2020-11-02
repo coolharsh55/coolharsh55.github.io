@@ -13,7 +13,12 @@
 
 <https://harshp.com/hobbies/books#10> a schema:Book ;
     hpcom:book_id "10"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:genre hpcom:BookFiction ;
+    schema:genre hpcom:BookSciFi ;
+    # hpcom:book_read "2020-11-XXT00:00:00"^^xsd:dateTime ;
+    # schema:aggregatedRating hpcom:Rating ;
+    hpcom:book_physical_copy true ;
     schema:author "Ann Leckie"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9780356506999"^^xsd:string ;
@@ -7030,8 +7035,13 @@
 
 <https://harshp.com/hobbies/books#62> a schema:Book ;
     hpcom:book_id "62"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    schema:author "J.J. Abrams"^^xsd:string ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:book_read "2020-11-01T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction ;
+    schema:genre hpcom:BookSciFi ;
+    hpcom:book_physical_copy true ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:author "Doug Dorst and J.J. Abrams"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:isbn "9780857864772"^^xsd:string ;
     schema:name "S."@en ;
@@ -7129,6 +7139,10 @@
 <https://harshp.com/hobbies/books#72> a schema:Book ;
     hpcom:book_id "72"^^xsd:int ;
     hpcom:book_status hpcom:book-currently-reading ;
+    schema:genre hpcom:BookNonFiction ;
+    # hpcom:book_read "2020-11-XXT00:00:00"^^xsd:dateTime ;
+    # schema:aggregatedRating hpcom:Rating ;
+    hpcom:book_physical_copy true ;
     schema:author "Marcus Aurelius"^^xsd:string ;
     schema:dateCreated "180"^^xsd:int ;
     schema:isbn "9780140449334"^^xsd:string ;

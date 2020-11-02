@@ -16,7 +16,15 @@
 
 <ol>
     {% for book, title in currently_reading %}
-    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}"><u>{{book.schema_name}}</u> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
+    <u>{{book.schema_name}}</u> - 
+    <small>
+        {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
+        {{genre}}{{' & ' if not loop.last}}
+        {% endfor %}{% else %}
+        {{ book.schema_genre }}
+        {% endif %}
+        by <i>{{book.schema_author}} ({{book.schema_dateCreated}})</i>
+    </small> <br/>
     {% endfor %}
 </ol>
 
