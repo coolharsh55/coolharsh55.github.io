@@ -409,7 +409,6 @@ hpview:BookListView a hpcom:View ;
         hpcom:queryString """
             SELECT ?book ?title ?date ?year WHERE {
                 ?book a schema:Book .
-                ?book hpcom:book_status hpcom:book-read .
                 ?book schema:name ?title .
                 ?book hpcom:book_read ?date .
                 BIND(YEAR(?date) as ?year) .
