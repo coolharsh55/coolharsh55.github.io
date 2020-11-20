@@ -1,108 +1,5 @@
-<style type="text/css">
-    .todo:after {
-        background-color: #FEE;
-        color: #333;
-        font-size: 0.5rem;
-        vertical-align: super;
-        margin: 5px;
-        padding: 2px;
-        text-align: center;
-        content: "todo";
-        float: left;
-    }
-    .page-number {
-        font-size: 0.5rem;
-        vertical-align: sub;
-        color: #333;
-        margin-left: 2px;
-    }
-    .page-number:before {
-        text-align: center;
-        content: "page: ";
-    }
-    .personal-note {
-        display: block;
-        border: 1px solid #999;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-size: 0.8rem;
-        background-color: #EEE;
-    }
-    .personal-note:before {
-        content: "PERSONAL NOTE";
-        padding: 2px;
-        color: #393;
-        font-weight: bold;
-    }
-    /* TOC */
-    #toc div.h2 { margin-left: 0 }
-    #toc div.h3 { margin-left: 1em }
-    #toc div.h4 { margin-left: 2em }
-    #toc div.h5 { margin-left: 3em }
-    /* TOC counters */
-    #toc {
-        counter-reset: v2;
-    }
-    #toc div.h2:before {
-        content: counter(v2);
-        counter-increment: v2;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-    #toc div.h2 {
-        counter-reset: v3;
-    }
-    #toc div.h3:before {
-        content: counter(v2) "." counter(v3);
-        counter-increment: v3;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-    #toc div.h3 {
-        counter-reset: v4;
-    }
-    #toc div.h4:before {
-        content: counter(v2) "." counter(v3) "." counter(v4);
-        counter-increment: v4;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-    /* H counters */
-    body {
-        counter-reset: h2counter;
-    }
-    h2:before {
-        content: counter(h2counter);
-        counter-increment: h2counter;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-    h2 {
-        counter-reset: h3counter;
-    }
-    h3:before {
-        content: counter(h2counter) "." counter(h3counter);
-        counter-increment: h3counter;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-    h3 {
-        counter-reset: h4counter;
-    }
-    h4:before {
-        content: counter(h2counter) "." counter(h3counter) "." counter(h4counter);
-        counter-increment: h4counter;
-        color: #666;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-</style> 
-        
+<link rel="stylesheet" type="text/css" href="/css/toc.css">
+
 <p>These book notes are made from the (excellent) "What Every Postdoc Needs to Know" guide-book by Elvidge, Spencely, and Williams. I would recommend going through the book to understand the questions and notes and to provide more context on how they can be best applied. Some of the notes below reflect excercises or thoughts triggered by the book's explicit questions, while others are highlighted items I found enlightening or worth remembering.</p>
 
 <b>ToC</b>
@@ -115,20 +12,22 @@
     <ul> 
     <li>People
         <ul>
-            <li><input type="checkbox" checked />Checklist - people going to be working with (pg.7)</li>
+            <li><input type="checkbox" />Checklist - people going to be working with (pg.7)</li>
             <li><input type="checkbox" />Networking at conferences and meetings (pg.113)</li>
         </ul></li>
     <li>Place
         <ul>
-            <li><input type="checkbox" checked />Checklist - institution and place (pg.8)</li>
-            <li><input type="checkbox" checked />Selecting good institution (pg.15)
+            <li><input type="checkbox" />Checklist - institution and place (pg.8)</li>
+            <li><input type="checkbox" />Selecting good institution (pg.15)
                 <ul>
                     <li>Whose advice will you seek regarding places to work?</li>
                     <li>What are you going to ask the people you have identified above?</li>
                     <li>Where else can you get some good advice and insight from?</li>
                     <li>university rankings (pg.17)</li>
+                    <li><input type="checkbox" />factors important in choosing a place to work ; whic of these are important? (pg.21)</li>
                     <li><input type="checkbox" />support for career development (pg.23)</li>
                 </ul></li>
+            <li><input type="checkbox" />Checklist - Visa/Permit (pg.30)</li>
             </ul></li>
     <li>Project
         <ul>
@@ -184,8 +83,6 @@
         <li>organise events for postdocs e.g. get someone to talk about CVs, preparing funding bids, or networking coffee session</li>
         <li>setup journal club or reading group</li>
         <li>attend staff development events</li>
-    </ul>
-    <ul>
         <li>present work at any given opportunitiy - departmental, local, instituation, city, national, international</li>
     </ul>
 
@@ -240,33 +137,36 @@
         <li>after meeting, confirm actions by email and thank them for their time</li>
     </ul>
 </section>
-
-<script type="text/javascript">
-    var toc = document.getElementById("toc");
-    var headings = [].slice.call(
-        document.body.querySelectorAll('h2, h3, h4'));
-    headings.forEach(function (heading, index) {
-        // set toc number
-        var ref = "toc" + (index+1);
-        if (heading.hasAttribute("id")) {
-            ref = heading.getAttribute("id");
-        } else {
-            heading.setAttribute("id", ref);
-        }
-        var link = document.createElement("a");
-        link.setAttribute("href", "#"+ ref);
-        link.textContent = heading.textContent;
-        var div = document.createElement("div");
-        div.setAttribute("class", heading.tagName.toLowerCase() );
-        div.appendChild(link);
-        toc.appendChild(div);
-
-        // set page number
-        if (heading.hasAttribute("page")) {
-            var page = document.createElement("span");
-            page.textContent = heading.getAttribute("page");
-            page.classList.add("page-number");
-            heading.appendChild(page);
-        }
-    });
-</script>
+<section>
+    <h2>Research Integrity and Ethics</h2>
+    <ul>
+        <li><input type="checkbox" />Checklist - Research ownership, IP (pg. 153)</li>
+    </ul>
+</section>
+<section>
+    <h2>Teaching &amp; Supervising</h2>
+    <ul>
+        <li><input type="checkbox" />Teaching Philosophy</li>
+        <li>Teaching Opportunities
+            <ul>
+                <li>Speak with PI</li>
+                <li>Speak with Head of graduate courses</li>
+                <li>Volunteer in skills development programmes or school workshops</li>
+                <li>Set up class on technique or topic</li>
+            </ul></li>
+    </ul>
+    <h3><input type="checkbox" />Teaching Record</h3>
+    <ul>
+        <li>Taught who, what, when</li>
+        <li>Class size</li>
+        <li>Record feedback</li>
+    </ul>
+</section>
+<section>
+    <h2>Career</h2>
+    <ul>
+        <li><input type="checkbox" />Checklist - Career information and options (pg.164-165)</li>
+        <li>Questions and Criteria for Career and Jobs (pg.178-179)</li>
+        <li><input type="checkbox" />Checklist - Fellowships (pg.191)</li>
+    </ul>
+</section>
