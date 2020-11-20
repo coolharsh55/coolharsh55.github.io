@@ -1,4 +1,4 @@
-// converts ISO timestamps to simpler ones
+// --- converts ISO timestamps to simpler ones
 document.addEventListener('DOMContentLoaded', function () {
     let items = document.getElementsByTagName('time');
     for(let item of items) {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }, false);
 
-// provides sorting options for lists of elements
+// --- provides sorting options for lists of elements
 document.addEventListener('DOMContentLoaded', function() {
     let lists = document.getElementsByClassName('list-sort');
     for(let list of lists) {
@@ -75,3 +75,27 @@ var list_filter_sort_click_handler = function(ele) {
         list.appendChild(item.value);
     }
 }
+
+// --- creates a toc listing
+document.addEventListener('DOMContentLoaded', function() {
+    var toc = document.getElementById("toc");
+    if (toc == null) return;
+    var headings = [].slice.call(
+        document.body.querySelectorAll('h2, h3, h4'));
+    headings.forEach(function (heading, index) {
+        // set toc number
+        var ref = "toc" + (index+1);
+        if (heading.hasAttribute("id")) {
+            ref = heading.getAttribute("id");
+        } else {
+            heading.setAttribute("id", ref);
+        }
+        var link = document.createElement("a");
+        link.setAttribute("href", "#"+ ref);
+        link.textContent = heading.textContent;
+        var div = document.createElement("div");
+        div.setAttribute("class", heading.tagName.toLowerCase() );
+        div.appendChild(link);
+        toc.appendChild(div);
+    });
+});
