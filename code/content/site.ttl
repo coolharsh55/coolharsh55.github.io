@@ -89,3 +89,9 @@
 <https://harshp.com/hobbies/books> a hpcom:RenderedItem ;
         schema:name "Books"@en ;
     schema:url "https://harshp.com/hobbies/books"^^xsd:anyURI .
+
+<https://harshp.com/polymathy> a hpcom:RenderedItem ;
+    hpcom:content [
+        hpcom:view_template "https://harshp.com/code/templates/template_polymathy.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+    ] .
