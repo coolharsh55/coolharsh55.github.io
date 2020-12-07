@@ -429,7 +429,9 @@
 
 <https://harshp.com/hobbies/books#13> a schema:Book ;
     hpcom:book_id "13"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_physical_copy true ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:name "Children of Ruin"@en ;
@@ -6464,11 +6466,12 @@
     hpcom:book_id "557"^^xsd:int ;
     hpcom:book_physical_copy true ;
     hpcom:book_read "2020-03-13T00:00:00"^^xsd:dateTime ;
-    # hpcom:book_read "2020-11-03T00:00:00"^^xsd:dateTime ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read "2020-11-30T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
     schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Liz Elvidge"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
+    hpcom:book_physical_copy true ;
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781786342355"^^xsd:string ;
     schema:name "What Every Postdoc Needs To Know"@en ;
@@ -6505,11 +6508,13 @@
 
 <https://harshp.com/hobbies/books#56> a schema:Book ;
     hpcom:book_id "56"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    # hpcom:book_read "2020-11-XXT00:00:00"^^xsd:dateTime ;
-    # schema:aggregatedRating hpcom:Rating ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:book_read "2020-12-07T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Octavia E. Butler"^^xsd:string ;
+    schema:genre hpcom:Fiction, hpcom:BookSciFi ;
     schema:dateCreated "1993"^^xsd:int ;
+    hpcom:book_physical_copy true ;
     schema:isbn "9780446675505"^^xsd:string ;
     schema:name "Parable of the Sower"@en ;
     schema:url "https://harshp.com/hobbies/books#56"^^xsd:anyURI .
@@ -7396,3 +7401,68 @@
     schema:isbn "9781886778184"^^xsd:string ;
     schema:name "From These Ashes: The Complete Short SF of Fredric Brown"@en ;
     schema:url "https://harshp.com/hobbies/books#99"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#594> a schema:Book ;
+    hpcom:book_id "594"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Octavia E. Butler"^^xsd:string ;
+    schema:dateCreated "1998"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Parable of the Talents"@en ;
+    schema:url "https://harshp.com/hobbies/books#594"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#595> a schema:Book ;
+    hpcom:book_id "595"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Ursula K. Le Guin"^^xsd:string ;
+    schema:dateCreated "2008"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Lavinia"@en ;
+    schema:url "https://harshp.com/hobbies/books#595"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#596> a schema:Book ;
+    hpcom:book_id "596"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Samuel R. Delany"^^xsd:string ;
+    schema:dateCreated "1966"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Babel-17"@en ;
+    schema:url "https://harshp.com/hobbies/books#596"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#597> a schema:Book ;
+    hpcom:book_id "597"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Poul Anderson"^^xsd:string ;
+    schema:dateCreated "1970"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Tao Zero"@en ;
+    schema:url "https://harshp.com/hobbies/books#597"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#598> a schema:Book ;
+    hpcom:book_id "598"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Ursula K. Le Guin"^^xsd:string ;
+    schema:dateCreated "1976"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Word for World Is Forest"@en ;
+    schema:url "https://harshp.com/hobbies/books#598"^^xsd:anyURI .
