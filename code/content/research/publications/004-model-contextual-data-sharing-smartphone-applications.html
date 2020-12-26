@@ -1,0 +1,502 @@
+<h2 class="unnumbered" id="abstract">Abstract</h2>
+<p><strong>Purpose</strong> - The purpose of this paper is to introduce a model for identifying, storing, and sharing contextual information across smartphone apps that uses the native device services. We present the idea of using user input and interaction within an app as contextual information; and how each app can identify and store contextual information.<br />
+<strong>Design/methodology/approach</strong> - Contexts are modelled as hierarchical objects that can be stored and shared by applications using native mechanisms. A proof-of-concept implementation of the model for the Android platform demonstrates contexts modelled as hierarchical objects stored and shared by applications using native mechanisms.<br />
+<strong>Findings</strong> - The model was found to be practically viable by implemented sample apps that share context and through a performance analysis of the system.<br />
+<strong>Practical implications</strong> - The contextual data-sharing model enables the creation of smart apps and services without being tied to any vendor’s cloud services.<br />
+<strong>Originality/value</strong> - This paper introduces a new approach for sharing context in smartphone applications that does not require cloud services.<br />
+<strong>Keywords</strong> Mobile middleware, Context, Context-aware, Context management, Database, Android<br />
+<strong>Paper type</strong> Research paper</p>
+<h2 id="Introduction">Introduction</h2>
+<p>Smartphone apps offer a large variety and choice of options to perform dedicated tasks such as movie booking or messaging. Their convenienve in terms of functionality form the core of the user’s smartphone experience. Such apps often compete on features and functionality based on how well they can help the user perform a particular task. Apps that offer more functionality have a higher chance of user adoption. With market saturation of apps with similar functionality, app developers are increasingly looking to create <em>smart apps</em><span class="citation" data-cites="SMARTAPPS"><a href="#ref-SMARTAPPS" role="doc-biblioref">[1]</a></span> that can adapt to the user’s requirements and provide better services. Such apps use contextual information to model services and present information to the user. Personal assistants such as Google Now<span class="citation" data-cites="Google:Now"><a href="#ref-Google:Now" role="doc-biblioref">[2]</a></span> and Siri<span class="citation" data-cites="Siri"><a href="#ref-Siri" role="doc-biblioref">[3]</a></span> use the available contextual information to present targeted services to the user. For example, Google Now can show weather and traffic information for upcoming events identified within the user’s emails. This gives an incentive to use such apps and services and requires other app developers to develop comparable services for their apps to remain viable.</p>
+<p>The basis of creating a smart app or a smart service is the availability of contextual information, which is then used to model or predict information that is most useful to the user. Without access to contextual information, apps and services can only offer a rigid functionality that does not adapt to the user’s tasks. As a consequence of this, the user experience becomes disjoint when using several apps. An example of this is presented in Fig. <a href="#fig:movie_use_case" data-reference-type="ref" data-reference="fig:movie_use_case">[fig:movie_use_case]</a> where tasks commonly associated with watching a movie are presented along with the user experience when using different apps within the given context.</p>
+<figure>
+    <img src="img/004-Fig01-1.png" />
+    <figcaption>Movie Use Case</figcaption>
+</figure>
+<p>A key problem identified through this example is the inability of applications to share data with each other due to the <em>sandboxing</em> <span class="citation" data-cites="Sandboxing"><a href="#ref-Sandboxing" role="doc-biblioref">[4]</a></span> security model. The user is forced to duplicate information represented in the form of information or even a set of choices as in the case of adding the movie event to the calendar, or sharing the ticket details with friends. Certain apps that provide such services, for example Google Now, require the user to be a member of their ecosystem of services. This limits the choice for the user to choose different services, and is detrimental to other developers who lack access to the aggregated contextual information.</p>
+<p>Some apps leverage this drawback by coupling other popular services in order to increase their functionality. Sunrise<span class="citation" data-cites="CalendarSunrise"><a href="#ref-CalendarSunrise" role="doc-biblioref">[5]</a></span>, which is a calendar app, offers integrations to a large number of services such as Facebook and Wunderlist, which are popular amongst users. It also provides navigation features for locations stored within events, though this requires the user to go through the app to access this feature. Reminders from only supported services are synced and shown within the calendar. This reduces the user’s choice, and increases the pressure on app developers to integrate more services. The lack of a framework supporting implicit sharing of information forces each app developer to depend on explicitly knowing another app’s services in order to use them. This has led to efforts such as X-Callback-Url <span class="citation" data-cites="xcallback"><a href="#ref-xcallback" role="doc-biblioref">[6]</a></span> that provides documentation for an app’s services that can be integrated in other apps, but does not provide a way to share contextual information.</p>
+<p>In this paper, we discuss how information present within apps can be modelled as contextual information, and can be used to develop a framework that supports apps to declare and use contexts within the smartphone environment. The contextual model described is motivated by three key challenges in the area of context-awareness: identifying and accessing contexts along with defining a practicle and usable contextual data store for use by apps. An implementation for the model is demonstrated using Android and native technologies, and is shown to be practically viable and effective.</p>
+<h2 id="background-and-related-information">Background and Related Information</h2>
+<p>The background and related work is divided into sub-sections based on the three key challenges mentioned at the end of Section 1. Section 2.1 shows the previous work done in defining context and context-aware computing. Section 2.2 discusses the various ways to share data in mobile operating systems and its impact on contextual sharing. Section 2.3 discusses utilizing cloud to offer contextual services. Section 2.4 contains a comparison of different ways for representing contexts.</p>
+<h3 id="context-aware-computing">Context-aware computing</h3>
+<p>The term <em>context-aware computing</em> was first introduced by Schilt et al. <span class="citation" data-cites="Contextawarecomputing"><a href="#ref-Contextawarecomputing" role="doc-biblioref">[7]</a></span> in 1994 and was defined as “<em>software that adapts according to its location of use, the collection of nearby people and objects, as well as changes to those objects over time</em>.” The word <em>context</em>, derived from Latin <em>con</em> meaning with or together, and <em>textere</em> meaning to weave, denotes context not just as a profile, but as an active process dealing with the way humans weave their experiences within their whole environment to give it meaning.</p>
+<p>Many approaches defining the notion of context have been proposed and several adaptive and personalized applications have been designed and implemented by introducing the notion of user profile and context <span class="citation" data-cites="contextmodelssurvey"><a href="#ref-contextmodelssurvey" role="doc-biblioref">[8]</a></span>. Dey <span class="citation" data-cites="ContextDef"><a href="#ref-ContextDef" role="doc-biblioref">[9]</a></span> gives an operational definition of context and discusses the different ways context can be used by context-aware applications. Three categories of features that a context-aware application can support are given as: presentation of information and services to the user, automatic execution of a service for a user, and tagging of context to information to support later retrieval. Zimmermann et al. <span class="citation" data-cites="ContextOpDef"><a href="#ref-ContextOpDef" role="doc-biblioref">[10]</a></span> introduce two extensions to available context definitions that define how the task itself is also part of the context as it characterizes the situation of the user. This central role of task is shared by Crowley et al. <span class="citation" data-cites="TaskCentral1"><a href="#ref-TaskCentral1" role="doc-biblioref">[11]</a></span> and Kofod-Petersen et al. <span class="citation" data-cites="TaskCentral2"><a href="#ref-TaskCentral2" role="doc-biblioref">[12]</a></span>, who assume that the user’s actions are generally goal driven. Henricksen <span class="citation" data-cites="TaskCentral3"><a href="#ref-TaskCentral3" role="doc-biblioref">[13]</a></span> makes task central in her definition of context. Abowd et al. <span class="citation" data-cites="ContextDef3"><a href="#ref-ContextDef3" role="doc-biblioref">[14]</a></span> discuss how context has been considered not simply as a state, but as part of a process in which users are involved.</p>
+<p>Surveys and comparisons of context-aware systems and models are presented in <span class="citation" data-cites="contextmodelssurvey"><a href="#ref-contextmodelssurvey" role="doc-biblioref">[8]</a></span>. Chihani and Bertin <span class="citation" data-cites="ContextSysClassify"><a href="#ref-ContextSysClassify" role="doc-biblioref">[15]</a></span> give a new approach for classifying context-aware communication systems, where adaptation is performed based on how context is used. They identify services as Instant or Deferred and On Device or On Cloud based on their implementation instead of their functionalities. They discuss how high level knowledge can be derived from raw contextual information to give a better understanding of the user. Yau et al. <span class="citation" data-cites="RCSM"><a href="#ref-RCSM" role="doc-biblioref">[16]</a></span> describe RCSM, a system that creates ad hoc communication between devices to facilitate information exchange. They present two categories of middleware in pervasive computing based on interaction between devices or entities.</p>
+<p>The fact that information such as user input and choice, which is interpreted and stored by apps can also represent actionable contexts has not been given much attention. The various approaches that enable interpreting raw contextual information such as time and location to form higher or complex contexts do not actively share it with other apps. This places a limit on the amount of contextual information an app can utilize, and has a direct effect on the nature of contextual services it provides.</p>
+<h3 id="data-sharing-in-mobile-operating-systems">Data Sharing in Mobile Operating Systems</h3>
+<p>The two most popular smartphone operating systems in use today are Android and iOS. Apps form an integral part of the user experience on both platforms, which allows the user the choice of using various apps to perform tasks based on preference or the features provided. Apps can access location and other sensor data available through system APIs. While Android supports sharing data explicitly between apps, iOS (version 8.1) has no such feature <span class="citation" data-cites="iOSCoreData"><a href="#ref-iOSCoreData" role="doc-biblioref">[17]</a></span>. Data sharing on both platforms is limited to the app’s process due to sandboxing, however both platforms allow the explicit use of another app’s services through custom URIs <span class="citation" data-cites="xcallback AndroidIPCComm"><a href="#ref-xcallback" role="doc-biblioref">[6]</a>, <a href="#ref-AndroidIPCComm" role="doc-biblioref">[18]</a></span> which provide features specifically developed for other apps to use. This increases the effort as services need to be integrated within an app, and exposes potential instability as used third-party APIs and services can change in the future.</p>
+<h3 id="context-and-cloud">Context and Cloud</h3>
+<p>Much of the research done previously on contextual models has been cloud-based, where the cloud is utilized to offer services not possible on a mobile device and to share information between multiple devices. Offloading work to the cloud enables services not previously possible on mobile devices <span class="citation" data-cites="MobileCloud1 MobileCloud2 MobileCloud4 MobileCloud5 MobileCloud3"><a href="#ref-MobileCloud1" role="doc-biblioref">[19]</a>–<a href="#ref-MobileCloud3" role="doc-biblioref">[23]</a></span>. One such approach related to this research is <em>COSMOS</em> <span class="citation" data-cites="COSMOS"><a href="#ref-COSMOS" role="doc-biblioref">[24]</a></span>, which describes a cloud-based PaaS system that provides infrastructure for mobile apps to share data. The authors emphasize the incentive for mobile apps’ to share information with one another on a large scale through a service based in the cloud and hosting the mobile apps’ datasets. They provide an implementation model that hosts app data in the cloud and provides seamless experience by sharing that data with multiple apps. An example provided is that of a user going to a conference, where his conference date and location is used to book airline tickets and the hotel room. The COSMOS data sets provide all the information required without the user specifying these requirements. For all services to work, the app must be hosted in COSMOS and must use its architecture.</p>
+<p>Intelligent personal assistants such as Google Now <span class="citation" data-cites="Google:Now"><a href="#ref-Google:Now" role="doc-biblioref">[2]</a></span>, Siri <span class="citation" data-cites="Siri"><a href="#ref-Siri" role="doc-biblioref">[3]</a></span> and Cortana <span class="citation" data-cites="Cortana"><a href="#ref-Cortana" role="doc-biblioref">[25]</a></span> perform tasks and services based on user input and information gathered from the user’s device and a variety of online sources. Google Now and Cortana are based on leveraging the user information gathered from the maker’s ecosystem of services to anticipate information the user most likely requires. Siri can act to delegate tasks for activities such as restaurant booking by having partnerships with service providers. Microsoft’s Cortana stores personal information such as interests and location data in a contextual datastore called <em>Notebook</em> which is used to learn the user’s behavior. It is not possible for other apps to create and access such services owing to the lack of access to contextual data.</p>
+<h2 id="contextual-sharing-model">Contextual Sharing Model</h2>
+<p>The Contextual Data Sharing Model as depicted in Fig. <a href="#fig:system_model" data-reference-type="ref" data-reference="fig:system_model">[fig:system_model]</a> consists of three parts - the <em>Context Database</em> that stores the contexts, the <em>Context Manager</em> that acts as middleware between the app and the Context database, and the <em>Context Definitions</em> that provide a uniform representation of contexts.</p>
+<figure>
+    <img src="img/004-Fig02-1.png" />
+    <figcaption>System Model</figcaption>
+</figure>
+<h3 id="context-definition">Context Definition</h3>
+<p>We extend Dey’s <span class="citation" data-cites="ContextDef"><a href="#ref-ContextDef" role="doc-biblioref">[9]</a></span> definition of <em>context</em> to include all information related to a user’s task across applications, using the following as a working definition of <em>context</em> for the purpose of our research: <em>context comprises of any information related to or affecting the users activities and tasks. This information includes time, location, weather, sensor information, and all information the user is presented with or enters.</em></p>
+<p>For all apps to store contexts and query information in an uniform way, each app must represent context in the same way irrespective of how it has been generated or acquired. Different types of context have different schema based on the information they represent. Each schema has a unique name and a fixed set of fields, which becomes its definition. Apps use this definition to instantiate context objects for that particular type of context. This allows identification and usage of different types of context across apps.</p>
+<p>In Listing <a href="#lst:movieinfo" data-reference-type="ref" data-reference="lst:movieinfo">[lst:movieinfo]</a>, the Movie context schema or definition is divided into two parts with some fields designated under <em>Event</em> context. Contextually, <em>Movie</em> is an <em>Event</em>, which means that some information related to <em>Movie</em> also belongs to <em>Event</em>. Therefore, we can say that <em>Movie</em> is an <em>extension</em> of <em>Event</em> or that the <em>Movie</em> context has been extended from the <em>Event</em> context. This means that all the fields within <em>Event</em> schema are implicitly included in the <em>Movie</em> schema.</p>
+<pre id="lst:movieinfo" data-float="" data-caption="Movie context information" data-float="" label="lst:movieinfo"><code>Movie-context
+    `extends&#39; Event-context
+        Title
+        Date / Time
+    `embeds&#39; Location-context
+        Place name
+        Co-ordinates
+    `embeds&#39; Contacts-context
+        { ... }
+    URI
+    TicketID
+    Seats
+    Offers</code></pre>
+    <figcaption>Movie context information</figcaption>
+<p>If we structure the contexts according to how they are extended, we get a tree representative of the hierarchy of contexts. The root of this tree is an abstract <em>Context</em> that acts as a common ancestor, and allows for generalization of contexts. As each context can extend only one other context, this keeps the definition and usage simple, and prevents the problems associated with multiple parents <span class="citation" data-cites="JavaMultipleInheritance"><a href="#ref-JavaMultipleInheritance" role="doc-biblioref">[26]</a></span>. As we move from the top to the bottom of the tree, each context is an extension of the context directly above it. This allows for use cases like the one depicted in Fig. <a href="#fig:extends" data-reference-type="ref" data-reference="fig:extends">[fig:extends]</a> that allow reusing of services handled by a parent context to all its children.</p>
+<figure>
+    <img src="img/004-Fig03-1.png" />
+    <figcaption>Extending Contexts</figcaption>
+</figure>
+<p>A context can <em>embed</em> other contexts in its schema. These are called <em>sub-contexts</em>. The schema for <em>Movie</em> contains a reference to the <em>Location</em> schema, which makes <em>Location</em> a part of <em>Movie</em> definition, and therefore its sub-context. It is important to note the difference between extend and embed, where extend is used to add additional information or generalize another context, an embed is used to add a context as a field in another context’s definition. This can be more clearly demonstrated by how information is related when we say the contextual information related to a <em>Movie is an Event</em>, and a <em>Movie contains a Location</em>. Fig. <a href="#fig:embeds" data-reference-type="ref" data-reference="fig:embeds">[fig:embeds]</a> depicts how different apps use the <em>Contact</em> and <em>Location</em> sub-contexts within the <em>Event</em> context to provide services related to the user’s task.</p>
+<figure>
+    <img src="img/004-Fig04-1.png" />
+    <figcaption>Embedding Contexts</figcaption>
+</figure>
+<p>We can create a hierarchy of contexts based on how other contexts embed them. The contexts that do not embed any other contexts are called <em>Simple</em> contexts; and those that are further down the tree are called <em>Complex</em> contexts. Using a complex context requires knowledge about all the sub-contexts it embeds. Conversely, an app handling a simple context does not need to be aware of how other contexts embed it. Therefore, apps that provide services for a particular context can provide services to all contexts below it in the hierarchy without being aware of those contexts.</p>
+<p>Apps can access a context without knowledge of how other contexts embed it. For example, Map applications <span class="citation" data-cites="AppleMaps GoogleMaps"><a href="#ref-AppleMaps" role="doc-biblioref">[27]</a>, <a href="#ref-GoogleMaps" role="doc-biblioref">[28]</a></span> that handle the <em>Location</em> context do not need to know about <em>Event</em> and <em>Movie</em> contexts that embed it in order to provide them with location services. This allows re-use of functionality without requiring the app or context schema to be modified. In general, an app that targets its services for contexts higher in the hierarchy can provide its services to all contexts situated below it. This allows for some apps to handle common contexts and specialized apps to target specific contexts. Apps that target contexts further down in the hierarchy can re-use the services related to contexts situated above it in the hierarchy. Such apps only have to provide services for the fields added or changed from the context it was extended from.</p>
+<p>In the Movie ticket booking use case, the Booking app would instantiate a context object of type Movie, and fill in the Movie title, date, time, theater location, ticket and seat information. Apps such as Calendar <span class="citation" data-cites="AndroidCalendarApps"><a href="#ref-AndroidCalendarApps" role="doc-biblioref">[29]</a></span>, that can provide notifications and management features for Event contexts, will also provide these same services to Movie contexts due to Movie being extended from the Event context. Since the app sees the Movie context object as an Event context, it has access to the fields (title, date, time and location) declared in the Event schema but not to the other fields (ticket and seats) from Movie schema.</p>
+<p>While we do not provide any recommendation for who should maintain the context definitions, it is important to note that the definitions need to be present on the device along with the contextual data sharing model. Putting the definitions and other context related features in an API and implementing the Context database may require support from the mobile operating system.</p>
+<h3 id="context-database">Context database</h3>
+<p>We use a Context database that stores contexts centrally for sharing between smartphone applications. Having a central repository makes it easier for apps to query and use contexts. The Context database is a system-managed data store located outside the locality of an app, which maintains independence from any particular app, and allows the persistence of contexts even after the app has been uninstalled. Being a system-managed database also safeguards against any malicious process that may corrupt data.</p>
+<p>Since apps will constantly access the Context database, operations and complex queries can affect the user experience with respect to the time they take. This restricts the database type and operations permissible on a device, and requires the implementation of simple designs that will not impact the system performance.</p>
+<p>Apps can insert or query contexts from the database, but are prohibited from deleting them explicitly. The system manages deletion of contexts from the database when required. This is done to prevent malicious apps from deleting contexts, and also to prevent an app from deleting a context when it might be useful for another app.</p>
+<p>All access from apps to the Context database is through the Context Manager, which acts as a mediator between the apps and the database. The Context Manager’s responsibility is to perform the query on the Context database and to interpret the response in a format requested by the app. It is also responsible for performing any checks and verifications on the correctness of a context. Instead of implementing the Context Manager as a middleware service, it is embedded in the app itself as a module or a library. This makes each app hold its own instance of the Context Manager, and creates greater abstraction between apps and the contextual processes. The Context Manager is executed as part of the app, which leads to all faults and errors being generated in the app’s process. This increases the stability and security of the context sharing.</p>
+<p>Going back to the movie example used in section 1, the Context database will hold all information related to the <em>Movie</em> context. The Booking app that generates the movie context object stores it in the Context database. This will then be queried by other apps to access contextual information such as seat information and the theater location.</p>
+<p>The size of the Context database will have an impact on performance as queries take more time when a large number of contexts have accumulated. It becomes necessary in such cases to trim the database to an acceptable size to keep the query time in an acceptable range. The time taken by a query to successfully execute depends on number of records, device configuration and app usage. A high specification device can execute complex queries faster than a comparably lower specification device. Multiple apps accessing the Context database simultaneously will also have an impact on its performance. Taking such effects into considerations a policy to delete contexts must be implemented whenever the size of the database or the number of contexts reaches some <em>threshold</em> value <span class="math inline"><em>t</em></span> that determines the maximum size of the database for which query times are acceptable. The value <span class="math inline"><em>t</em></span> will vary between devices depending on the specification, use of apps and available space.</p>
+<p>The contextual sharing model discussed in this paper does not recommend the use of any particular database software as long as it provides the features and services required by the model.</p>
+<h3 id="contextual-sharing-model-1">Contextual Sharing Model</h3>
+<p>Apps that wish to use the contextual data sharing model will need to use the Context Manager to store and retrieve contexts from the Context database. All means of sharing will be indirect, so the apps do not have to interact directly with one another, but through the Context database whose purpose is to share the contextual information across applications. The contextual sharing model enables the collection of information related to a context in a single structure, and enables apps to provide services using context. This allows users to seamlessly carry over tasks across different apps by sharing contextual information related to their actions.</p>
+<p>In the Movie booking example discussed in section 1, the task required the use of several apps, with each app requiring duplication of information and effort. With the contextual sharing model, each app can design its services to let the user choose a particular context, or provide services related to the context most likely to be used. Once the booking app has created the Movie context, other apps can access it and provide services based on the information saved within it.</p>
+<p>The possible actions the user might perform related to the movie context are to forward the movie details to other attendees, to find a route on a map to the theater, and accessing seat information once at the theater. When each app that provides these services uses the Context database to gain information about the Movie context, the services provided are directly related to the user’s task, and hence more useful. The messaging app can provide a way to insert the Movie context details such as title, date and theater location in the message similar to how contact details can be inserted. To make it easier for the user to access required information, the messaging app can provide access to recently used contexts. By providing information in an easily usable format, the user is more likely to complete the task in fewer steps. When the user opens the Maps application, it can provide a list of upcoming Events and utilize the Location embedded within them to provide routes to the destination selected by the user. This would save searching and typing the address as all information is stored within the relevant context.</p>
+<p>Some calendar applications <span class="citation" data-cites="CalendarFantastical CalendarSunrise"><a href="#ref-CalendarSunrise" role="doc-biblioref">[5]</a>, <a href="#ref-CalendarFantastical" role="doc-biblioref">[30]</a></span> that provide a map in their interface do so only in interactions with the application. A map application that provides routes for upcoming events requires fewer steps to accomplish the same goal, while giving a user the freedom to change the route or perform other map-related actions, which are not possible when other apps embed maps in their interface. At the theater location, an app that provides location-based reminders can show a notification containing the Ticket and Seat information with a link to open it in the Booking app. For the user, the default screen of the app changes to reflect the task they are most likely to perform, and if the user chooses, they can perform other actions in the app not related to the context.</p>
+<p>The Context Manager queries the database to retrieve context objects requested by the app. By providing a limiting parameter the queries can be used for specific needs in apps which leads to more services, and allows apps to specify the nature of contexts they require from the Context database. For example, an app that generates a daily planner can query for Event contexts occurring on the current date, or a restaurant app can query the Context database to check for events and their location to provide recommendations in a nearby area. By filtering contexts, apps can tailor specific services based on the results. Another example, mentioned previously with reference to the messaging app, was to show recently added contexts to the user, which would limit the contexts based on the time of when they were added to the database.</p>
+<p>An app has no ownership or control over the context after it is stored in the Context database. Apps can update or modify contexts in the database irrespective of whether the context was added by them. Since each context is stored independently in the database, and no duplicates are allowed, the modified context is reflected in all contexts that contains it. This allows apps to modify contexts and update information without changing the entire context that embeds it. For example, a Map app can update the Location context and modify its co-ordinates to a more accurate value, and all contexts that use that particular location will contain the updated values. This allows any app to update its part of the context information, while still providing all apps with the updated information.</p>
+<p>The contextual nature of information stored in the Context database can lead to security concerns such as maintaining privacy and preventing corruption of data. Permissions can be utilized to restrict use of contexts and accessing the Context database. We propose that apps be required to provide explicit read-write permissions for each kind of context they intend to use so that the system and the user are aware of applications’ access to information before installation. By separating read and write permissions, apps that want to use context, but are not generating them will be prevented from writing to the Context database. A malicious app can still take advantage of the security system and corrupt the app, but by enforcing permissions, an app can be scrutinized more carefully.</p>
+<h2 id="Implementation">Implementation</h2>
+<p>We built a proof-of-concept model as depicted in Fig. <a href="#fig:implementation" data-reference-type="ref" data-reference="fig:implementation">[fig:implementation]</a> for demonstrating the contextual data sharing using Android as the implementation platform. The choice of mobile operating system was made given the openness and ease of modification which Android provides. It uses Java classes to model the context definitions, SQLite for the Context database and a static Java class for the Context Manager. The model is platform independent and can be ported with minor adjustments to other platforms. A link to the code repository of this project can be found here.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<figure>
+    <img src="img/004-Fig05-1.png" />
+    <figcaption>Android Implementation</figcaption>
+</figure>
+<h3 id="context-definition-1">Context Definition</h3>
+<p>Contexts can be represented and implemented in a number of ways on a smartphone device as long as the entire context is provided as a single object that can be serialized and used natively in the code. We represent the context definitions through <em>Java Classes</em> which are then instantiated into <em>Java Objects</em>. This simplifies the code as there is no parsing or extraction, and all related functions such as error-checks and marshaling can be encapsulated into the class itself. Since Android has a native Java runtime environment, using Java objects for contexts provides better management of code and memory during execution and makes it easier for developers to use data structures and manage code.</p>
+<p>Apps such as Calendar that handle <em>Event</em> contexts also provide services for contexts such as <em>Movie, Lunch, Meeting, etc.</em> that extend it. Specific apps like Movie Booking will offer services for the particular type of context that they use. When the user books a movie ticket through the app, the contextual information is shared to Calendar, which provides notifications, reminders and planning features for the movie designated as an event. This allows one app to focus its services on the contextual information it has access to, while other apps can provide different services related to the same context.</p>
+<p>Generalizing an object of the derived class to its parent class increases re-usability of code in applications and allows the creation of apps that target contexts higher in the hierarchy, but work for all contexts that are below it. This allows functions written to accept <em>Event</em> objects to work with <em>Movie</em> objects as the system casts <em>Movie</em> to <em>Event</em> during runtime.</p>
+<p>A field that stores URI links is defined in some context definitions, and is used for storing links to related information. A URI in Android can refer to websites as well as apps. For <em>Events</em>, the link can point to the event website or an app that holds this information. Apps that want to handle a particular URI scheme need to register it in the manifest. The system reads the manifest during installation and associates the app with that particular scheme. For example, an app registering the URI scheme <em>http://</em> will be opened every time the user visits a web page. Similarly, apps can store a URI linking the context to some information or service they provide. For example, a restaurant booking app can link the URI in a dinner context to the booking information. Clicking the link will take the user to the app’s user interface elements related to that particular booking. These URI’s can be opened or triggered inside any app as the system opens the correct app to handle the context. This allows apps to provide links to information stored within other apps and allows the use of related services without explicitly switching apps.</p>
+<h3 id="context-database-1">Context Database</h3>
+<p>Android’s Content Providers <span class="citation" data-cites="ContentProvider"><a href="#ref-ContentProvider" role="doc-biblioref">[31]</a></span> provide access and encapsulation of structured data and provide mechanisms for defining data security. The Context database in our implementation of the model utilizes SQLite version 3.7.11, which is pre-installed in Android version 4.4.4 (Kit-Kat).</p>
+<p>The SQLite database is instantiated with a distinct table for every context type. In cases where a context extends another context, only fields that were added or changed are stored in the extended context’s table, with the rest of the fields stored in the parent context’s table. This allows a query to receive all kinds of events without implementing joins or multiple queries. This increases the usability of contexts and services an app can provide by being compatible with newer contexts that may be introduced. Where a context includes a sub-context in its definition, each relation is stored in a separate table to keep information distinct belonging to different contexts.</p>
+<p>An app requesting entries for a particular context receives a subset of contexts to avoid the cost of retrieving all objects in every query, and encourages apps to only query contexts that are relevant. For example, a query can request <em>Events</em> occurring in the current week in or around a particular location by providing the date and location range values.</p>
+<h3 id="context-manager">Context Manager</h3>
+<p>The Context Manager is a static Java class instantiated in the user app’s process and is responsible for querying the Context database through the Content Provider and to interpret the results returned. Every app has its own instance of the Context Manager, which acts independent of the Context database. All apps use the API for methods in Context Manager to insert or retrieve contexts. Except for the actual database queries, all other operations such as field-checking, marshaling and error-checks are performed by the Context Manager in the user app’s process. This reduces the burden on the database system and allows faster, simultaneous access by multiple apps. Also, any errors resulting from an operation are handled in the user app’s process, which prevents affecting other ongoing operations. This also provides a level of security by shifting potential crashes in Context Manager from the system to the user app.</p>
+<p>When inserting or updating a context object, the Context Manager will check for errors and completeness of fields and information before instantiating the query. When an app requests contexts from the database, the Context Manager retrieves the results from the database and creates context objects locally before returning them to the app. Since the objects are created locally in the app’s data, all garbage collection and lifetimes are restricted to the app’s process. This follows the sandboxing model in Android and allows the app to safely use objects without them being shared. Since the contexts are instantiated in the app’s data space, their lifetime is restricted to the lifetime of the app. When an app’s data is cleared after it is closed, or removed from the stack, the context objects are removed from the memory as well. Along with the Context Manager class, the required API’s and class definitions are bundled together into a library which the developers must include in their projects in order to interact with the Context database. Using a library makes it easy to integrate the functionality and definitions in projects.</p>
+<h3 id="demonstration-of-concept">Demonstration of concept</h3>
+<p>In our demonstration, we show the movie booking use case using apps that interact with the Context database. The movie booking app (Fig. <a href="#fig:booking" data-reference-type="ref" data-reference="fig:booking">[fig:booking]</a>) accepts user input and creates a new <em>Movie</em> context containing the movie title, the date/time of the show, the theater’s location, the ticket and seat information and a link to information websites such as IMDb. It then adds the <em>Movie</em> to the Context database through the Context Manager. This information is now available to other apps that can retrieve it by querying the Context database. The calendar app queries the Context database to retrieve upcoming events. The results include the movie event added by the booking app, which the user can edit to change the date/time and add contacts. This saves the user the effort of entering the information as the app retrieves it from the database, and also allows contacts to be added to the contextual information of the movie event. The messaging app (Fig. <a href="#fig:message" data-reference-type="ref" data-reference="fig:message">[fig:message]</a>) allows inserting contextual information in messages by querying contexts in the Context database. The user can choose the fields to be inserted from a list of contexts displayed in a menu. If a context contains contacts, these contacts are added to the <em>recipient</em> field and the information from other fields is added to the message body. By selecting the movie context from the list, the user can send the movie details to all contacts attending the movie without having to type the information in the message.</p>
+<figure>
+    <img src="img/004-Fig06-1.png" />
+    <figcaption>Booking app saves Movie Context</figcaption>
+    <img src="img/004-Fig07-1.png" />
+    <figcaption>Messaging app can send Movie info</figcaption>
+</figure>
+<p>The maps app (Fig. <a href="#fig:maps" data-reference-type="ref" data-reference="fig:maps">[fig:maps]</a>) displays upcoming events with a location by querying the Context database. When the user selects a particular entry, the location from that context is used as destination to provide navigational features. This allows the user to navigate to the theater by selecting the movie context from the list, and saves the effort of entering the address and selecting a location. The reminder app (Fig. <a href="#fig:notif" data-reference-type="ref" data-reference="fig:notif">[fig:notif]</a>) is used for displaying notifications based on time or location. When the user reaches the theater, the reminder app identifies the location and displays a notification containing the ticket and seat information. The user does not have to enter the contextual information as it is queried from the Context database. The ticket and seat information is used as the notification contents and the location is used as a trigger.</p>
+<figure>
+    <img src="img/004-Fig08-1.png" />
+    <figcaption>Maps app can show upcoming event locations</figcaption>
+    <img src="img/004-Fig09-1.png" />
+    <figcaption>Calendar can show contextual notifications</figcaption>
+</figure>
+<p>Each app used in the demonstration belongs to a separate package and uses different developer signatures to isolate their identities from one another. This is used to prevent any implicit sharing of data between the apps, and to demonstrate how contextual information is shared through the Context database. The apps used the Context Manager to insert and query the Context database, and receive context objects as results which they use to provide services. The user has to enter significantly less information as the apps retrieve the related contextual information from the Context database.</p>
+<p>Since the information is generated and consumed by apps installed on a smartphone, having the Context database situated on the device is beneficial as all related information is generated, stored and consumed in the same ecosystem. It is possible to use cloud offloading to offer more functionalities and resources based on contexts not stored in the device database, but such functionality will form an extension to the model.</p>
+<h3 id="privacy-and-security">Privacy and Security</h3>
+<p>Android’s permissions model provides some degree of privacy and security by requiring apps to declare the required resources such as camera, location, and telephony through its manifest. When the app requests access to that particular resource, the system checks the permissions at runtime and grants access to the specified resource. The user is made aware of these permissions during the installtion of the app.</p>
+<p>The permissions model can be extended for the Contextual Data Sharing Model by implementing changes to the system code that handles the permissions mechanisms. Each context type would be considered as a seperate resource, and would require the app to declare its use before it can access the information in the Context database. This would require the application to declare all context types it would be accessing during installation, which can then be displayed to the user to provide awareness about the app’s acess to sensitive information. By seperating the permissions for accessing and updating/writing to the Context database, further control over the privacy and security can be achieved. Since the Context Manager is a seperate system component that connects to the Context Database, it would be easy to achieve a fine granularity of control over the information made available to apps.</p>
+<h2 id="metrics-and-performance">Metrics and Performance</h2>
+<p>The proof-of-concept experiments were carried out on a Nexus 7 running Android version 4.4.4 (KitKat). Test results were gathered using timestamps from logging at important points in the code. The number of entries (<em>records</em>) in the Context Database have an impact on the time required to complete each operation.</p>
+<p>The following tables show the time taken for various operations to complete for different number of <em>Event</em> entries in the database. The operations were run multiple times (<span class="math inline"><em>n</em> = 100</span>) in standard operating conditions. In the tables, <span class="math inline">$t\textsubscript{min}$</span> depicts the minimum value, <span class="math inline">$t\textsubscript{max}$</span> the maximum value, <span class="math inline">$t\textsubscript{avg}$</span> the average, and <span class="math inline">$t\textsubscript{stdev}$</span> the standard deviation.</p>
+<p>Table <a href="#tab:CM_I_E" data-reference-type="ref" data-reference="tab:CM_I_E">1</a> shows the time taken to insert one <em>Event</em> object using Context Manager. The total time is inclusive of the time spent performing error and validation checks, IPC between user app and Content Provider, checking for duplicates, and inserting the entry in the database. Table <a href="#tab:CM_G_E" data-reference-type="ref" data-reference="tab:CM_G_E">2</a> shows the time taken for Context Manager to retrieve <em>Event</em> entries from the database. This includes the time required to execute the database query, perform IPC between Content Provider and user app, and instantiate the <em>Event</em> objects.</p>
+<div id="tab:CM_I_E">
+<table>
+    <caption>Time taken by Context Manager to insert one <em>Event</em> object into the database. <span id="tab:CM_I_E" label="tab:CM_I_E">[tab:CM_I_E]</span></caption>
+    <tr class="header">
+    <th>entries</th>
+    <th>t<sub>min</sub>(ms)</th>
+    <th>t<sub>max</sub>(ms)</th>
+    <th>t<sub>avg</sub>(ms)</th>
+    <th>t<sub>stdev</sub>(ms)</th>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>1</td>
+        <td>25</td>
+        <td>1.7</td>
+        <td>3.1</td>
+    </tr>
+    <tr>
+        <td>500</td>
+        <td>2</td>
+        <td>47</td>
+        <td>2.9</td>
+        <td>5.01</td>
+    </tr>
+    <tr>
+        <td>1000</td>
+        <td>5</td>
+        <td>58</td>
+        <td>6.77</td>
+        <td>7.41</td>
+    </tr>
+    <tr>
+        <td>5000</td>
+        <td>25</td>
+        <td>243</td>
+        <td>35.8</td>
+        <td>34.02</td>
+    </tr>
+    <tr>
+        <td>10000</td>
+        <td>51</td>
+        <td>491</td>
+        <td>62.34</td>
+        <td>48.86</td>
+    </tr>
+    <tr>
+        <td>50000</td>
+        <td>74</td>
+        <td>783</td>
+        <td>89.02</td>
+        <td>89.18</td>
+    </tr>
+    <tr>
+        <td>100000</td>
+        <td>100</td>
+        <td>1176</td>
+        <td>130.2</td>
+        <td>137.6</td>
+    </tr>
+</table>
+
+<div id="tab:CM_G_E">
+<table>
+<caption>Time taken by Context Manager to retrieve <em>Event</em> entries from the database <span id="tab:CM_G_E" label="tab:CM_G_E">[tab:CM_G_E]</span></caption>
+    <tr>
+        <td>entries</td>
+        <td>tmin(ms)</td>
+        <td>tmax(ms)</td>
+        <td>tavg(ms)</td>
+        <td>tstdev(ms)</td>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td>10</td>
+        <td>39</td>
+        <td>16.72</td>
+        <td>4.6</td>
+    </tr>
+    <tr>
+        <td>500</td>
+        <td>100</td>
+        <td>198</td>
+        <td>120.61</td>
+        <td>10.05</td>
+    </tr>
+    <tr>
+        <td>1000</td>
+        <td>200</td>
+        <td>388</td>
+        <td>240.95</td>
+        <td>16.28</td>
+    </tr>
+    <tr>
+        <td>5000</td>
+        <td>500</td>
+        <td>1781</td>
+        <td>663.56</td>
+        <td>115.86</td>
+    </tr>
+    <tr>
+        <td>10000</td>
+        <td>2000</td>
+        <td>4896</td>
+        <td>2265.74</td>
+        <td>364.46</td>
+    </tr>
+    <tr>
+        <td>50000</td>
+        <td>5000</td>
+        <td>10192</td>
+        <td>6681.94</td>
+        <td>712.68</td>
+    </tr>
+    <tr>
+        <td>100000</td>
+        <td>10024</td>
+        <td>18094</td>
+        <td>11459.12</td>
+        <td>1429.04</td>
+    </tr>
+</table>
+</div>
+<p>Table <a href="#tab:CP_I_E" data-reference-type="ref" data-reference="tab:CP_I_E">3</a> shows the time required to execute the query for inserting one <em>Event</em> entry in the database. The total time is inclusive of the time required for unmarshalling values, inserting <em>Contact, Location, Event</em> entries in their respective tables, creating relational entries in various tables, and checking for duplicates. Table <a href="#tab:CP_G_E" data-reference-type="ref" data-reference="tab:CP_G_E">4</a> shows the time taken to execute the query for retrieving all <em>Event</em> entries from the database. The query performs joins over the <em>Event, Contact, Location</em> and relation tables to put all associated information together in the result.</p>
+<div id="tab:CP_I_E">
+<table>
+<caption>Time required to execute query for inserting one <em>Event</em> context into the database. <span id="tab:CP_I_E" label="tab:CP_I_E">[tab:CP_I_E]</span></caption>
+<thead>
+<tr class="header">
+<th>entries</th>
+<th>t<sub>min</sub>(ms)</th>
+<th>t<sub>max</sub>(ms)</th>
+<th>t<sub>avg</sub>(ms)</th>
+<th>t<sub>stdev</sub>(ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100</td>
+<td>1</td>
+<td>5</td>
+<td>1.65</td>
+<td>0.81</td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>1</td>
+<td>5</td>
+<td>1.72</td>
+<td>1.02</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>1</td>
+<td>5</td>
+<td>2.03</td>
+<td>1.14</td>
+</tr>
+<tr class="even">
+<td>5000</td>
+<td>2</td>
+<td>9</td>
+<td>4.21</td>
+<td>1.6</td>
+</tr>
+<tr class="odd">
+<td>10000</td>
+<td>4</td>
+<td>19</td>
+<td>6</td>
+<td>2.28</td>
+</tr>
+<tr class="even">
+<td>50000</td>
+<td>9</td>
+<td>49</td>
+<td>12.19</td>
+<td>6.51</td>
+</tr>
+<tr class="odd">
+<td>100000</td>
+<td>20</td>
+<td>119</td>
+<td>42.55</td>
+<td>12.08</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tab:CP_G_E">
+<table>
+<caption>Time required to execute query for retrieving <em>Event</em> entries from the database <span id="tab:CP_G_E" label="tab:CP_G_E">[tab:CP_G_E]</span></caption>
+<thead>
+<tr class="header">
+<th>entries</th>
+<th>t<sub>min</sub>(ms)</th>
+<th>t<sub>max</sub>(ms)</th>
+<th>t<sub>avg</sub>(ms)</th>
+<th>t<sub>stdev</sub>(ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100</td>
+<td>1</td>
+<td>5</td>
+<td>1.87</td>
+<td>0.87</td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>1</td>
+<td>5</td>
+<td>2.11</td>
+<td>0.94</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>1</td>
+<td>5</td>
+<td>2.34</td>
+<td>1.13</td>
+</tr>
+<tr class="even">
+<td>5000</td>
+<td>3</td>
+<td>10</td>
+<td>5.42</td>
+<td>1.95</td>
+</tr>
+<tr class="odd">
+<td>10000</td>
+<td>9</td>
+<td>39</td>
+<td>12.05</td>
+<td>4.29</td>
+</tr>
+<tr class="even">
+<td>50000</td>
+<td>10</td>
+<td>49</td>
+<td>15.83</td>
+<td>6.98</td>
+</tr>
+<tr class="odd">
+<td>100000</td>
+<td>20</td>
+<td>137</td>
+<td>31.51</td>
+<td>15.73</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A comparison of insert and retrieval times for <em>Event</em> objects using Context Manager is given in Fig. <a href="#fig:performance" data-reference-type="ref" data-reference="fig:performance">[fig:performance]</a>. The graph shows a range of values containing the minimum (t<sub>min</sub>), maximum (t<sub>max</sub>) and average time (t<sub>avg</sub>) required for an operation based on the number of entries in the database. Analyzing the graph shows how the cost of inserting objects increases almost linearly with the number of entries in the database. While t<sub>min</sub> and t<sub>avg</sub> at large the database sizes are within an acceptable range for responsiveness in UI (0-100ms <span class="citation" data-cites="ResponseTime"><a href="#ref-ResponseTime" role="doc-biblioref">[32]</a></span>), the variations can be seen through t<sub>max</sub>. The time required to retrieve <em>Event</em> objects from the database increases much more rapidly with the size of the database. The value of t<sub>avg</sub> reaches 5000ms with 35000 entries in the database, which is outside the range of acceptable values. If the number of entries is restricted to 100, t<sub>avg</sub> equals 120ms, which is just outside the acceptable range. Further analysis of these values can be used to limit the number of entries returned in response to a query in order to keep the performance of the operation under permissible values.</p>
+<figure>
+    <img src="img/004-Fig10-1.png" />
+    <figcaption>Comparison of time required to insert/retrieve <emph>Event</emph> objects with number of entries in the database.</figcaption>
+</figure>
+<p>The CPU load resulting from Context Manager requesting 10000 <em>Event</em> objects from the database is shown in Fig. <a href="#fig:cpuload" data-reference-type="ref" data-reference="fig:cpuload">[fig:cpuload]</a>. The horizontal axis depicts the running time given in seconds, and the vertical axis depicts the CPU usage in percent. The app that is responsible for the request draws <em>Event</em> objects on screen using a list view. At about <span class="math inline"><em>t</em> = 3.1<em>s</em></span>, the app requests the Context Manager to retrieve all <em>Event</em> objects. The Context Manager sends this request to the Content Provider in the database’s process. the database executes the appropriate queries from <span class="math inline"><em>t</em> = 3.2<em>s</em></span> to <span class="math inline"><em>t</em> = 3.5<em>s</em></span> and retrieves all <em>Event</em> entries along with the related information. It then sends this data back to the Context Manager in the app’s process. The context-manager constructs the <em>Event</em> objects from this data from <span class="math inline"><em>t</em> = 3.8<em>s</em></span> to <span class="math inline"><em>t</em> = 5.5<em>s</em></span>. The app then draws the GUI with the <em>Event</em> objects from <span class="math inline"><em>t</em> = 6.0<em>s</em></span> to <span class="math inline"><em>t</em> = 10.3<em>s</em></span>. The total duration from sending the request till drawing the list view is about <span class="math inline"><em>t</em> = 7.5<em>s</em></span>, which is well outside the acceptable range for UI interactions. If the number of entries retrieved from the database is restricted to 100 using the analysis of Fig. <a href="#fig:performance" data-reference-type="ref" data-reference="fig:performance">[fig:performance]</a>, it would further reduce the CPU time and memory used and would allow more fluid user interactions. The average CPU load at all times is well below 50%, which can be considered as not being under stress. This allows the CPU to run other apps and operations in the background.</p>
+<figure>
+    <img src="img/004-Fig11-1.png" />
+    <figcaption>CPU load caused by ContextManager creating 10000 <emph>Event</emph> objects retrieved from the database</figcaption>
+</figure>
+<h2 id="conclusion-and-future-works">Conclusion and Future Works</h2>
+<p>In this paper, we introduce a Contextual Data Sharing Model for smartphone applications that structures contexts using definitions and shares contexts through a Context Database. Apps query the Context Database to retrieve contextual information which saves the effort of entering related information in multiple apps used within the same context. This leads to better features and an improved user experience due to the availability of contextual information across apps.</p>
+<p>An implementation on Android is used to demonstrate the contextual data sharing model. It uses Java classes for Context Definitions, which provide uniform context representations across apps and devices, and are instantiated as Java objects on device. The Context Database uses Android’s Content Provider interface with SQLite as the storage backend for context entries. The Context Manager acts as a middleware between apps and the Context Database is implemented as a static Java class in the app’s process. The Context Definitions and the Context Manager class are bundled together into a library which the developers can include in their project to use contexts and interact with the Context Database.</p>
+<p>The time required to complete various database operations relative to the size of the database in the implementation is analyzed to identify its impacts on performance and usability. Conclusions regarding optimization of performance regarding queries are also discussed. The impact of running operations on device was analyzed and presented no hindrance to other apps on the device.</p>
+<p>Concerns and considerations such as security and performance are discussed in relation to the implementation on Android. The main concern of adapting Android’s security and permission model for the contextual data sharing model is also discussed.</p>
+<p>The main goal of this research is to enable apps to query contextual information stored on the device to access contextual information. This allows the apps to present users with services they most likely require and saves the effort of entering related information multiple times. By offloading operations and Context Database to the cloud, additional features such as analyzing and mediating contexts between different devices can be achieved. More powerful and useful services can be developed in the cloud using contextual information accessible from various sources. This can be used to provide users access to services or information that is relevant to their contexts, but not present on the device. The local datastore on the device can act as a cache for the datastore based in the cloud, allowing operations that execute faster by querying the local datastore, and will also allow the app to work without network dependence.</p>
+<p>The Context Database used can be optimized based on the nature of queries being performed. A NoSQL graph database for mobile devices can be used to store relations between contexts, which can lead to new and interesting features. Utilizing database features like narrowing search results and ordering based on parameters give apps more ways to utilize contexts.</p>
+<p>By introducing or re-using more use cases in the Context Definitions, new services based on the user’s context can be created that were not previously possible. For example, by including weather and traffic information within an <em>Event</em> context, apps can present this information without querying for weather or traffic data themselves. This allows apps to share services present on the device to provide related information in more useful ways.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-SMARTAPPS" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Elgan, <span>“Smart apps think (so you don’t have to),”</span> Mar-2013. [Online]. Available: <a href="http://www.computerworld.com/article/2496110/mobile-apps/smart-apps-think–so-you-don-t-have-to-.html">http://www.computerworld.com/article/2496110/mobile-apps/smart-apps-think–so-you-don-t-have-to-.html</a></div>
+</div>
+<div id="ref-Google:Now" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><span>“Google now,”</span> Sep-2014. [Online]. Available: <a href="https://www.google.com/landing/now/">https://www.google.com/landing/now/</a></div>
+</div>
+<div id="ref-Siri" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><span>“Siri,”</span> Sep-2014. [Online]. Available: <a href="https://www.apple.com/ios/siri/">https://www.apple.com/ios/siri/</a></div>
+</div>
+<div id="ref-Sandboxing" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">K. W. Y. Au, Y. F. Zhou, Z. Huang, P. Gill, and D. Lie, <span>“Short paper: A look at smartphone permission models,”</span> in <em>Proceedings of the 1st ACM workshop on security and privacy in smartphones and mobile devices</em>, 2011, pp. 63–68, doi: <a href="https://doi.org/10.1145/2046614.2046626">10.1145/2046614.2046626</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/2046614.2046626">http://doi.acm.org/10.1145/2046614.2046626</a></div>
+</div>
+<div id="ref-CalendarSunrise" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline"><span>“Sunrise calendar,”</span> Sep-2014. [Online]. Available: <a href="https://calendar.sunrise.am/">https://calendar.sunrise.am/</a></div>
+</div>
+<div id="ref-xcallback" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><span>“X-callback-url - iOS interapp communication,”</span> Sep-2014. [Online]. Available: <a href="http://x-callback-url.com/">http://x-callback-url.com/</a></div>
+</div>
+<div id="ref-Contextawarecomputing" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B. Schilit, N. Adams, and R. Want, <span>“Context-aware computing applications,”</span> in <em>Proceedings of the 1994 first workshop on mobile computing systems and applications</em>, 1994, pp. 85–90, doi: <a href="https://doi.org/10.1109/WMCSA.1994.16">10.1109/WMCSA.1994.16</a> [Online]. Available: <a href="http://dx.doi.org/10.1109/WMCSA.1994.16">http://dx.doi.org/10.1109/WMCSA.1994.16</a></div>
+</div>
+<div id="ref-contextmodelssurvey" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">C. Bolchini, C. A. Curino, E. Quintarelli, F. A. Schreiber, and L. Tanca, <span>“A data-oriented survey of context models,”</span> <em>SIGMOD Rec.</em>, vol. 36, no. 4, pp. 19–26, Dec. 2007, doi: <a href="https://doi.org/10.1145/1361348.1361353">10.1145/1361348.1361353</a>. [Online]. Available: <a href="http://doi.acm.org/10.1145/1361348.1361353">http://doi.acm.org/10.1145/1361348.1361353</a></div>
+</div>
+<div id="ref-ContextDef" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A. K. Dey, <span>“Understanding and using context,”</span> <em>Personal Ubiquitous Comput.</em>, vol. 5, no. 1, pp. 4–7, Jan. 2001, doi: <a href="https://doi.org/10.1007/s007790170019">10.1007/s007790170019</a>. [Online]. Available: <a href="http://dx.doi.org/10.1007/s007790170019">http://dx.doi.org/10.1007/s007790170019</a></div>
+</div>
+<div id="ref-ContextOpDef" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">A. Zimmermann, A. Lorenz, and R. Oppermann, <span>“An operational definition of context,”</span> in <em>Proceedings of the 6th international and interdisciplinary conference on modeling and using context</em>, 2007, pp. 558–571 [Online]. Available: <a href="http://dl.acm.org/citation.cfm?id=1770806.1770848">http://dl.acm.org/citation.cfm?id=1770806.1770848</a></div>
+</div>
+<div id="ref-TaskCentral1" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">J. L. Crowley, J. Coutaz, G. Rey, and P. Reignier, <span>“Perceptual components for context aware computing,”</span> in <em>Proceedings of the 4th international conference on ubiquitous computing</em>, 2002, pp. 117–134 [Online]. Available: <a href="http://dl.acm.org/citation.cfm?id=647988.741482">http://dl.acm.org/citation.cfm?id=647988.741482</a></div>
+</div>
+<div id="ref-TaskCentral2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A. Kofod-petersen and J. Cassens, <span>“Using activity theory to model context awareness,”</span> in <em>Modeling and retrieval of context: Second international workshop, MRC 2005, revised selected papers. Volume 3946 of lecture notes in computer science</em>, 2006, pp. 1–17. </div>
+</div>
+<div id="ref-TaskCentral3" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">K. Henricksen and J. Indulska, <span>“Developing context-aware pervasive computing applications: Models and approach,”</span> <em>Pervasive Mob. Comput.</em>, vol. 2, no. 1, pp. 37–64, Feb. 2006, doi: <a href="https://doi.org/10.1016/j.pmcj.2005.07.003">10.1016/j.pmcj.2005.07.003</a>. [Online]. Available: <a href="http://dx.doi.org/10.1016/j.pmcj.2005.07.003">http://dx.doi.org/10.1016/j.pmcj.2005.07.003</a></div>
+</div>
+<div id="ref-ContextDef3" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">G. D. Abowd, A. K. Dey, P. J. Brown, N. Davies, M. Smith, and P. Steggles, <span>“Towards a better understanding of context and context-awareness,”</span> in <em>Proceedings of the 1st international symposium on handheld and ubiquitous computing</em>, 1999, pp. 304–307 [Online]. Available: <a href="http://dl.acm.org/citation.cfm?id=647985.743843">http://dl.acm.org/citation.cfm?id=647985.743843</a></div>
+</div>
+<div id="ref-ContextSysClassify" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">B. Chihani, E. Bertin, and N. Crespi, <span>“A comprehensive framework for context-aware communication services,”</span> in <em>Intelligence in next generation networks (ICIN), 2011 15th international conference on</em>, 2011, pp. 52–57, doi: <a href="https://doi.org/10.1109/ICIN.2011.6081102">10.1109/ICIN.2011.6081102</a>. </div>
+</div>
+<div id="ref-RCSM" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">S. S. Yau, F. Karim, Y. Wang, B. Wang, and S. K. S. Gupta, <span>“Reconfigurable context-sensitive middleware for pervasive computing,”</span> <em>Pervasive Computing, IEEE</em>, vol. 1, no. 3, pp. 33–40, 2002, doi: <a href="https://doi.org/10.1109/MPRV.2002.1037720">10.1109/MPRV.2002.1037720</a>. </div>
+</div>
+<div id="ref-iOSCoreData" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline"><span>“Data management in iOS,”</span> Sep-2014. [Online]. Available: <a href="https://developer.apple.com/technologies/ios/data-management.html">https://developer.apple.com/technologies/ios/data-management.html</a></div>
+</div>
+<div id="ref-AndroidIPCComm" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">E. Chin, A. P. Felt, K. Greenwood, and D. Wagner, <span>“Analyzing inter-application communication in android,”</span> in <em>Proceedings of the 9th international conference on mobile systems, applications, and services</em>, 2011, pp. 239–252, doi: <a href="https://doi.org/10.1145/1999995.2000018">10.1145/1999995.2000018</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/1999995.2000018">http://doi.acm.org/10.1145/1999995.2000018</a></div>
+</div>
+<div id="ref-MobileCloud1" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B.-G. Chun, S. Ihm, P. Maniatis, M. Naik, and A. Patti, <span>“CloneCloud: Elastic execution between mobile device and cloud,”</span> in <em>Proceedings of the sixth conference on computer systems</em>, 2011, pp. 301–314, doi: <a href="https://doi.org/10.1145/1966445.1966473">10.1145/1966445.1966473</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/1966445.1966473">http://doi.acm.org/10.1145/1966445.1966473</a></div>
+</div>
+<div id="ref-MobileCloud2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">E. Cuervo <em>et al.</em>, <span>“MAUI: Making smartphones last longer with code offload,”</span> in <em>Proceedings of the 8th international conference on mobile systems, applications, and services</em>, 2010, pp. 49–62, doi: <a href="https://doi.org/10.1145/1814433.1814441">10.1145/1814433.1814441</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/1814433.1814441">http://doi.acm.org/10.1145/1814433.1814441</a></div>
+</div>
+<div id="ref-MobileCloud4" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">A. Fahim, A. Mtibaa, and K. A. Harras, <span>“Making the case for computational offloading in mobile device clouds,”</span> in <em>Proceedings of the 19th annual international conference on mobile computing &amp;#38; networking</em>, 2013, pp. 203–205, doi: <a href="https://doi.org/10.1145/2500423.2504576">10.1145/2500423.2504576</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/2500423.2504576">http://doi.acm.org/10.1145/2500423.2504576</a></div>
+</div>
+<div id="ref-MobileCloud5" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">N. Fernando, S. W. Loke, and W. Rahayu, <span>“Mobile cloud computing: A survey,”</span> <em>Future Generation Computer Systems</em>, vol. 29, no. 1, pp. 84–106, 2013, doi: <a href="http://dx.doi.org/10.1016/j.future.2012.05.023">http://dx.doi.org/10.1016/j.future.2012.05.023</a>. [Online]. Available: <a href="http://www.sciencedirect.com/science/article/pii/S0167739X12001318">http://www.sciencedirect.com/science/article/pii/S0167739X12001318</a></div>
+</div>
+<div id="ref-MobileCloud3" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">K. Kumar and Y.-H. Lu, <span>“Cloud computing for mobile users: Can offloading computation save energy?”</span> <em>Computer</em>, vol. 43, no. 4, pp. 51–56, Apr. 2010, doi: <a href="https://doi.org/10.1109/MC.2010.98">10.1109/MC.2010.98</a>. [Online]. Available: <a href="http://dx.doi.org/10.1109/MC.2010.98">http://dx.doi.org/10.1109/MC.2010.98</a></div>
+</div>
+<div id="ref-COSMOS" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">J. Sankaranarayanan, H. Hacigumus, and J. Tatemura, <span>“COSMOS: A platform for seamless mobile services in the cloud,”</span> in <em>Mobile data management (MDM), 2011 12th IEEE international conference on</em>, 2011, vol. 1, pp. 303–312, doi: <a href="https://doi.org/10.1109/MDM.2011.68">10.1109/MDM.2011.68</a>. </div>
+</div>
+<div id="ref-Cortana" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline"><span>“Cortana,”</span> Sep-2014. [Online]. Available: <a href="http://www.windowsphone.com/en-US/how-to/wp8/cortana/meet-cortana">http://www.windowsphone.com/en-US/how-to/wp8/cortana/meet-cortana</a></div>
+</div>
+<div id="ref-JavaMultipleInheritance" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">B. Venners, <span>“Designing with interfaces : One programmer’s struggle to understand the interface,”</span> Dec-1998. [Online]. Available: <a href="http://www.javaworld.com/article/2076841/core-java/designing-with-interfaces.html">http://www.javaworld.com/article/2076841/core-java/designing-with-interfaces.html</a></div>
+</div>
+<div id="ref-AppleMaps" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline"><span>“Apple maps,”</span> Sep-2014. [Online]. Available: <a href="https://www.apple.com/ie/ios/maps/">https://www.apple.com/ie/ios/maps/</a></div>
+</div>
+<div id="ref-GoogleMaps" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline"><span>“Google maps,”</span> Sep-2014. [Online]. Available: <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps&amp;hl=en">https://play.google.com/store/apps/details?id=com.google.android.apps.maps&amp;hl=en</a></div>
+</div>
+<div id="ref-AndroidCalendarApps" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline"><span>“Calendar apps on google play,”</span> Sep-2014. [Online]. Available: <a href="https://play.google.com/store/search?q=calendar&amp;c=apps">https://play.google.com/store/search?q=calendar&amp;c=apps</a></div>
+</div>
+<div id="ref-CalendarFantastical" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline"><span>“Fantastical,”</span> Sep-2014. [Online]. Available: <a href="https://flexibits.com/fantastical-iphone">https://flexibits.com/fantastical-iphone</a></div>
+</div>
+<div id="ref-ContentProvider" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline"><span>“Android - content provider,”</span> Sep-2014. [Online]. Available: <a href="https://developer.android.com/guide/topics/providers/content-providers.html">https://developer.android.com/guide/topics/providers/content-providers.html</a></div>
+</div>
+<div id="ref-ResponseTime" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">M. Jovic and M. Hauswirth, <span>“Performance testing of GUI applications,”</span> in <em>Software testing, verification, and validation workshops (ICSTW), 2010 third international conference on</em>, 2010, pp. 247–251, doi: <a href="https://doi.org/10.1109/ICSTW.2010.27">10.1109/ICSTW.2010.27</a>. </div>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>https://github.com/coolharsh55/ContentProvider<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

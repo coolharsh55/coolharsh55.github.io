@@ -143,22 +143,22 @@
     schema:name "resources"@en ;
     schema:url "https://harshp.com/research/projects/risky/resources"^^xsd:anyURI .
 
-<https://harshp.com/research/projects/paecg> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
+<https://harshp.com/research/projects/pae-consent> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
     schema:name "Privacy-as-Expected: Consent Gateway"@en ;
     schema:description "An end-to-end solution for managing consent online"@en ;
-    schema:url "https://privacy-as-expected.org/"^^xsd:anyURI ;
-    schema:startDate "2020-10-05T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2021-07-04T00:00:00"^^xsd:dateTime ;
+    schema:url "https://example.com/pae-consent/"^^xsd:anyURI ;
+    schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-06-13T00:00:00"^^xsd:dateTime ;
     schema:member [
         a schema:Role ;
         schema:memeber <https://harshp.com/me> ;
-        schema:startDate "2020-10-05T00:00:00"^^xsd:dateTime ;
-        schema:endDate "2021-07-04T00:00:00"^^xsd:dateTime ;
+        schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2021-06-31T00:00:00"^^xsd:dateTime ;
         schema:roleName "Project Lead"@en ;
     ] ;
     schema:funding [
         a schema:MonetaryGrant ;
-        schema:identifier "Call3"^^xsd:string ;
+        schema:identifier "TBD"^^xsd:string ;
         schema:funder [
             a schema:FundingScheme ;
             schema:name "NGI TRUST"@en ;
@@ -176,11 +176,6 @@
                 ] ;
             ] ;
         ] ;
-    ] ;
-    hpcom:content [
-        a hpcom:Content ;
-        hpcom:contentFile "https://harshp.com/code/content/research/projects/paecg/index.html" ;
-        hpcom:contentFileFormat hpcom:formatHTML ;
     ] .
 
 # Activities / Groups
@@ -257,6 +252,11 @@
     hpcom:tag hptag:filesystem ;
     hpcom:tag hptag:semantics ;
     hpcom:tag hptag:recommender-system ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/001-kwest-semantically-tagged-virtual-fs.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3244361"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/kwest"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "documentation" ; schema:url "https://github.com/coolharsh55/kwest.documentation"^^xsd:anyURI ] .
@@ -277,6 +277,11 @@
     hpcom:tag hptag:Java ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3244325"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/Smartphone_App_Contextual_Model"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/002-model-contextual-data-sharing-smartphone-applications.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed false .
 
 <https://harshp.com/research/publications/003-open-data-improve-readability-adaptability-personalisation> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -294,6 +299,11 @@
     hpcom:tag hptag:open-science ;
     schema:publication <http://example.com/workshops/EvalUMAP2016> ;
     schema:funder <http://example.com/ADAPT> ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/003-open-data-improve-readability-adaptability-personalisation.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/82658"^^xsd:anyURI ; ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3244365"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/the-use-of-open-data-to-improve-the-repeatability-of-adaptivity-and-personalisation-experiment"^^xsd:anyURI ; ] .
@@ -315,6 +325,11 @@
     hpcom:tag hptag:Java ;
     schema:publisher <https://www.emerald.com/insight/publication/issn/1742-7371> ;
     hpcom:peer_reviewed true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/004-model-contextual-data-sharing-smartphone-applications.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/Smartphone_App_Contextual_Model"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/3244289"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91566"^^xsd:anyURI ; ] .
@@ -339,6 +354,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "web (canonical)" ; schema:url "https://openscience.adaptcentre.ie/publications/2017/eswc"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/utilising-semantic-web-ontologies-to-publish-experimental-workflows"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/opmw_workflow_editor"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/005-ontologies-publish-workflows.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/006-linked-data-contract-sharing-scientific-data> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -361,6 +381,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246472"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/linked-data-contracts-to-support-data-protection-and-data-ethics-in-the-sharing-of-scientific-data"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "dprl ontology" ; schema:url "http://openscience.adaptcentre.ie/projects/CDMM/DPRL/"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/006-linked-data-contract-sharing-scientific-data.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/007-compliance-informed-consent-management-model> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -384,6 +409,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246470"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/compliance-through-informed-consent-semantic-based-consent-permission-and-data-management-model"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "consent ontology" ; schema:url "http://openscience.adaptcentre.ie/projects/CDMM/consent/"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/007-compliance-informed-consent-management-model.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/008-provenance-gdpr-compliance> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -406,6 +436,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/modelling-provenance-for-gdpr-compliance-using-linked-open-data-vocabularies"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "GDPRov ontology" ; schema:url "https://w3id.org/GDPRov/"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/GDPRov"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/008-provenance-gdpr-compliance.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/009-ease-ethics-black-mirror> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -425,6 +460,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91567"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246508"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/ease-and-ethics-of-user-profiling-in-black-mirror"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/009-ease-ethics-black-mirror.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/010-gdpr-data-interoperability-model> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -446,6 +486,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "web (HTML)" ; schema:url "http://openscience.adaptcentre.ie/pb/EURAS2018/"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246438"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/gdpr-data-interoperability-model"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/010-gdpr-data-interoperability-model.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/011-ethical-impacts-roi-ethics-canvas> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -465,6 +510,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246446"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/discussing-ethical-impacts-in-research-and-innovation-the-ethics-canvas"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "ethics-canvas" ; schema:url "https://www.ethicscanvas.org/"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/011-ethical-impacts-roi-ethics-canvas.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/012-linked-data-automatic-enrichment-historical-archives> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -484,6 +534,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/86850"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246425"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/exploring-linked-data-for-the-automatic-enrichment-of-historical-archives"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/012-linked-data-automatic-enrichment-historical-archives.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/013-linked-data-automatic-enrichment-historical-archives-extended> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -502,6 +557,11 @@
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91571"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246427"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/013-linked-data-automatic-enrichment-historical-archives-extended.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/014-gdpr-driven-change-detection-consent-activity> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -521,6 +581,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91562"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246402"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/gdprdriven-change-detection-in-consent-and-activity-metadata"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/014-gdpr-driven-change-detection-consent-activity.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/015-gdprtext> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -542,6 +607,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/gdprtext-gdpr-as-a-linked-data-resource"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "GDPRtEXT ontology" ; schema:url "https://w3id.org/GDPRtEXT/"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/GDPRtEXT"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/015-gdprtext.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true ;
     hpcom:pinned true .
 
@@ -564,6 +634,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246458"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/extracting-provenance-metadata-from-privacy-policies"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/extracting-provenance-metadata-from-privacy-policies-poster"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/016-extract-provenance-metadata-privacy-policies.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/017-personalised-privacy-policies> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -585,6 +660,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246500"^^xsd:anyURI ; ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/personalised-privacy-policies"^^xsd:anyURI ; ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/privacy-policy-dashboard"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/017-personalised-privacy-policies.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/018-queryable-provenance-metadata-gdpr-compliance> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -607,6 +687,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/queryable-provenance-metadata-for-gdpr-compliance"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/GDPR-readiness-checklist-usecase"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "demo" ; schema:url "http://openscience.adaptcentre.ie/GDPR-checklist-demo/demo/"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/018-queryable-provenance-metadata-gdpr-compliance.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/019-towards-open-data-vocabulary-canvas-innovation-ethics> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -623,6 +708,11 @@
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91541"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246478"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/019-towards-open-data-vocabulary-canvas-innovation-ethics.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/020-towards-kb-systems-gdpr-compliance> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -643,6 +733,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91663"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246476"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/towards-knowledgebased-systems-for-gdpr-compliance"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/020-towards-kb-systems-gdpr-compliance.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/021-odp-define-shacl-shapes> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -663,6 +758,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91662"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/using-ontology-design-patterns-to-define-shacl-shapes"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/using-ontology-design-patterns-to-define-shacl-shapes-poster"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/021-odp-define-shacl-shapes.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/022-odp-describe-personal-data-privacy-policies> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -685,6 +785,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/an-ontology-design-pattern-for-describing-personal-data-in-privacy-policies"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/an-ontology-design-pattern-for-describing-personal-data-in-privacy-policies-poster"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/privacy-policy-odp"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/022-odp-describe-personal-data-privacy-policies.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/023-exploring-gdpr-compliance-provenance-graphs-shacl> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -706,6 +811,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91542"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246492"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/exploring-gdpr-compliance-over-provenance-graphs-using-shacl-poster"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/023-exploring-gdpr-compliance-provenance-graphs-shacl.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/024-investigating-conditional-data-value-gdpr> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -725,6 +835,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91661"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246486"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/investigating-conditional-data-value-under-gdpr"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/024-investigating-conditional-data-value-gdpr.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/025-exploration-data-interoperability-gdpr> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -744,6 +859,11 @@
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91631"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246452"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/025-exploration-data-interoperability-gdpr.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/026-towards-generating-policy-compliant-datasets> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -765,6 +885,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246448"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/christophedebruyne/towards-generating-policycompliant-datasets"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/consent-mapping-jit"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/026-towards-generating-policy-compliant-datasets.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/027-towards-cataloguing-potential-derivations-personal-data> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -784,6 +909,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3246434"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/towards-cataloguing-potential-derivations-of-personal-data"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/personal-data-inferences"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/027-towards-cataloguing-potential-derivations-personal-data.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/028-gconsent-consent-ontology-gdpr> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -807,6 +937,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "GConsent ontology" ; schema:url "https://w3id.org/GConsent"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url ""^^xsd:anyURI ] ;
     hpcom:pinned true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/028-gconsent-consent-ontology-gdpr.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/029-test-driven-approach-gdpr-compliance> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -831,6 +966,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "code" ; schema:url "https://github.com/coolharsh55/GDPR-semantics-demo"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "documentation" ; schema:url "https://openscience.adaptcentre.ie/projects/CDMM/compliance/"^^xsd:anyURI ] ;
     hpcom:pinned true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/029-test-driven-approach-gdpr-compliance.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/030-OPN-open-notice-receipt-schema> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -848,6 +988,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3353668"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/opn-open-notice-receipt-schema"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/OpenConsent/OPN-notice-receipt-schema"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/030-OPN-open-notice-receipt-schema.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/031-explaining-disclosure-decisions-personal-data> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
@@ -867,6 +1012,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3727054"^^xsd:anyURI ] ;
     # TODO: request poster from Ramisa
     # hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url ""^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/031-explaining-disclosure-decisions-personal-data.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/032-creating-vocabulary-data-privacy> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -889,6 +1039,11 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "DPV ontology" ; schema:url "https://www.w3.org/ns/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "github.com/dpvcg/dpv"^^xsd:anyURI ] ;
     hpcom:pinned true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/032-creating-vocabulary-data-privacy.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/033-standardisation-data-interoperability-gdpr> a schema:ScholarlyArticle, hpcom:BookChapter, hpcom:RenderedItem ;
@@ -908,6 +1063,11 @@
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91583"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/3934461"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/033-standardisation-data-interoperability-gdpr.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed false .
 
 <https://harshp.com/research/publications/034-jit-generation-datasets-structured-consent-gdpr-compliance> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
@@ -927,6 +1087,11 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/92966"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/3934456"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/consent-mapping-jit"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/034-jit-generation-datasets-structured-consent-gdpr-compliance.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance> a schema:ScholarlyArticle, hpcom:Thesis, hpcom:RenderedItem ;
@@ -940,29 +1105,19 @@
     schema:inSupportOf "PhD in Computer Science"@en ;
     schema:datePublished "2020-05-06T00:00:00"^^xsd:dateTime ;
     schema:identifier "hdl.handle.net/2262/92446"^^xsd:anyURI ;
-    schema:url "hdl.handle.net/2262/92446"^^xsd:anyURI ;
+    schema:url "https://hdl.handle.net/2262/92446"^^xsd:anyURI ;
     schema:publisher <https://www.tcd.ie/> ;
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "web (HTML)" ; schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.3795513"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "viva slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/phd-viva-representing-activities-associated-with-processing-of-personal-data-and-consent-using-semantic-web-for-gdpr-compliance"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/phd-thesis"^^xsd:anyURI ] ;
-    hpcom:peer_reviewed false .
-
-<https://harshp.com/research/phd-thesis/index> a hpcom:RenderedItem ;
-    schema:name "Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance"@en ;
-    schema:description "PhD research showing use of semantic web in representing activities and consent for GDPR"@en ;
-    hpcom:tag hptag:semantic-web ;
-    hpcom:tag hptag:GDPR ;
-    hpcom:tag hptag:provenance ;
-    hpcom:tag hptag:consent ;
-    schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI ;
     hpcom:content [
         a hpcom:Content ;
-        hpcom:contentFile "https://harshp.com/code/content/research/phd-thesis/index.html" ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
-        hpcom:renderWith hpview:ResearchBlogPostView ;
-        ] .
+    ] ;
+    hpcom:peer_reviewed false .
 
 <https://harshp.com/research/publications/036-semantic-schema-mapping-interoperable-data-exchange> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
     schema:name "Semantic Schema Mapping for Interoperable Data-Exchange"@en ;
@@ -975,14 +1130,14 @@
     hpcom:author_other ( <http://example.com/DamienGraux> <http://example.com/FabrizioOrlandi> <http://example.com/AdemarCrottiJunior> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     schema:datePublished "2020-09-14T00:00:00"^^xsd:dateTime ;
     schema:identifier "https://doi.org/10.5281/zenodo.4029338"^^xsd:anyURI ;
+    # TODO: SCHEMA publication url
     schema:url "https://doi.org/10.5281/zenodo.4029338"^^xsd:anyURI ;
     schema:publication <http://example.com/workshops/OM2020> ;
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4029338"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/93553"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/SCHEMA"^^xsd:anyURI ] ;
-    hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/semantic-schema-mapping-for-interoperable-dataexchange"^^xsd:anyURI ] ;
-    schema:status "in-press"@en ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www2.slideshare.net/HarshvardhanPandit1/semantic-schema-mapping-for-interoperable-dataexchange-239969594"^^xsd:anyURI ] ;
     hpcom:peer_reviewed true ;
     hpcom:content [
         a hpcom:Content ;
@@ -1001,8 +1156,12 @@
     hpcom:author_other ( <https://harshp.com/me> <http://example.com/RobBrennan> ) ;
     schema:datePublished "2020-10-15T00:00:00"^^xsd:dateTime ;
     schema:publication <http://example.com/conferences/JURIX2020> ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:status "accepted, to be presented"@en ;
+    schema:url "https://doi.org/10.3233/FAIA200876"^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ; 
+    hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/94371"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/4315607"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/dpv-ropa"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://www.slideshare.net/HarshvardhanPandit1/a-common-semantic-model-of-the-gdpr-register-of-processing-activities"^^xsd:anyURI ] ;
     hpcom:peer_reviewed true ;
     hpcom:content [
         a hpcom:Content ;

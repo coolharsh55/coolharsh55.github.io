@@ -59,7 +59,282 @@
     </small>
 </div>
         <div id="content" property="schema:articleBody">
-        None
+        <section id="abstract">
+<h2>Abstract</h2>
+<div datatype="rdf:HTML" property="schema:abstract">
+    <p>
+        Consent is an important legal basis for the processing of personal data under the General Data Protection Regulation (GDPR), which is the current European data protection law. GPDR provides constraints and obligations on the validity of consent, and provides data subjects with the right to withdraw their consent at any time.
+
+        Determining and demonstrating compliance to these obligations require information on how the consent was obtained, used, and changed over time.
+
+        Existing work demonstrates feasibility of semantic web technologies in modelling information and determining compliance for GDPR. Although these address consent, they currently do not model all the information associated with it.
+
+        In this paper, we address this by first presenting our analysis of information associated with consent under the GDPR. We then present GConsent, an OWL2-DL ontology for representation of consent and its associated information such as provenance.
+        The paper presents the methodology used in the creation and validation of the ontology as well as an example use-case demonstrating its applicability.
+
+        The ontology and this paper can be accessed online at <a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a>.
+    </p>
+</div>
+</section>
+
+<section id="keywords">
+<h2>Keywords</h2>
+<div>
+    <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Consent">consent</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Regulatory_compliance">regulatory compliance</a></li>
+        <li><a href="https://www.w3.org/TR/owl2-overview/">OWL2-DL ontology</a></li>
+    </ul>
+</div>
+</section>
+<h2 id="sec:Introduction">Introduction</h2>
+<p>The General Data Protection Regulation (GDPR) <span class="citation" data-cites="noauthor_regulation_2016">[<a href="#ref-noauthor_regulation_2016" role="doc-biblioref">1</a>]</span> is the current European data protection law, which affects any service or organisation that uses personal data, and uses large fines to deter non-compliance. Consent is one of the legal basis for processing of personal data under the GDPR (Rec.40, Art.6)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and is considered valid only when it is freely given, specific, informed, and unambiguous (Rec.32, Art.2-11); and in the case of minors should be given by their legal guardian (Art.8). GDPR also provides rights regarding changing and withdrawing consent at any time (Art.7-3). To demonstrate compliance with these conditions and obligations of the GDPR, Data Controllers, which are the organisations responsible for deciding how personal data is collected and processed and therefore the ones responsible for obtaining consent when needed, should maintain a demonstrable proof of the given consent <span class="citation" data-cites="tikkinen-piri_eu_2018">[<a href="#ref-tikkinen-piri_eu_2018" role="doc-biblioref">3</a>]</span> by collecting and storing information on how consent was collected, used, and any changes made to it <span class="citation" data-cites="mittal_role_2017">[<a href="#ref-mittal_role_2017" role="doc-biblioref">4</a>]</span> over time.</p>
+<p>The information regarding consent and compliance needs to be maintained and shared by multiple parties - data subject, controller, processor, and authorities - which requires its representation to be interoperable between them. Additionally, querying of information is required to comply with requests by data subjects and authorities. Semantic Web technologies are ideal for representing this information because of the flexibility provided for expressing concepts and relationships in an open, interoperable and queryable manner based on standards. Existing work <span class="citation" data-cites="bartolini_reconciling_2015 fatema_compliance_2017 kirrane_scalable_2018 palmirani_pronto:_2018 pandit_modelling_2017 pandit_queryable_2018 pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">2</a>], [<a href="#ref-bartolini_reconciling_2015" role="doc-biblioref">5</a>]–[<a href="#ref-pandit_queryable_2018" role="doc-biblioref">10</a>]</span> has demonstrated the feasibility of using semantic web technologies for representing and querying metadata for assisting with the GDPR compliance process.</p>
+<p>The focus of existing work in terms of consent is mostly on the ‘given’ aspect of consent i.e. consent provided by the data subject. There is a lack of work regarding representing other aspects, or states, of consent such as ‘not given’ or ‘refused’ or ‘withdrawn’ which cannot be modelled in the same manner as ‘given consent’. There is also a lack of modelling representations for events such as delegation or associations with third parties regarding consent which have an effect on its validity regarding compliance.</p>
+<p>In this paper, we present our analysis of information associated with consent under the GDPR. We present this through a methodology that creates possible use-cases and scenarios to determine information required for representing consent with a view towards GDPR compliance. We then present the resulting modelling of an ontology in the form of GConsent - an OWL2-DL ontology for representing information associated with consent. The ontology, along with its documentation, is available online at <a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a> under the CC-by-4.0 license.</p>
+<p>The rest of the paper is structured as follows: Section 2 presents an overview of the related work regarding representation of consent using semantic web, Section 3 presents the methodology used to create GConsent, Section 4 presents an overview of the GConsent ontology with an example use-case and discusses limitations, with Section 5 concluding the paper by discussing potential future work.</p>
+<h2 id="related-work">Related Work</h2>
+<p>This section provides an overview of the existing related work in the context of representing information pertaining to consent using semantic web ontologies. Other relevant work can be found through the W3C Community Group for Data Protection Vocabularies and Controls (DPVCG).</p>
+<p>A precursor to GConsent was the consent ontology part of the Consent and Data Management Model (CDMM) <span class="citation" data-cites="fatema_compliance_2017">[<a href="#ref-fatema_compliance_2017" role="doc-biblioref">6</a>]</span>, created before requirements were documented regarding consent and GDPR. GConsent reuses modelling choices such as consent attributes for medium, location, and delegation, and improves upon the overall ontology by adding additional concepts such as consent status and states, processing, and additional relationships for context, provision of consent, and relationship between instances of consent. GConsent is also linked to the GDPR and is based on guidance and clarifications provided by authorities and legal-domain organisations regarding consent.</p>
+<p>The SPECIAL Usage Policy Language (SPL) <span class="citation" data-cites="kirrane_scalable_2018">[<a href="#ref-kirrane_scalable_2018" role="doc-biblioref">7</a>]</span> defines an usage policy as a set consisting of five items - personal data, purpose, processing, storage, and recipients - which represents authorisation provided by the consent. SPL combines several such (basic) policies into a general usage policy, which is used to enforce and verify compliance by ensuring the requirements of executed processes are within the subset of those permitted by the (consent) usage policy. The core attributes describing consent are similar between GConsent and the SPL, which provides some form of compatibility. SPL provides rigid modelling of storage and data recipient while GConsent leaves it open to the adopter. There are also differences in how provenance is modelled, with SPL focusing on maintaining a log of events for the controller, while GConsent is focused on capturing information about all entities and activities as provenance.</p>
+<p>Consent Receipt <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">11</a>]</span> by the Kantara Initiative provides a way to represent the consent granted by the data subject to a controller using JSON. It provides a specification which controllers can implement to provide a receipt of the given consent to the data subject. There is a large semantic overlap between the information modelled by Consent Receipt and GConsent, such as the modelling of data subject, personal data, and purposes. It is currently not compatible with GConsent due to the differences in terminology as the Consent Receipt was created well before the GDPR. For example, Consent Receipt uses the term "PII" (personally identifiable information) whereas GDPR uses "personal data". A key difference is that the Consent Receipt is a record of consent between two parties that is provided to the data subject, whereas GConsent is used to specify the role of various parties and activities in the context of consent. Both feature information that can be useful towards documenting compliance. By aligning the concepts between the two, GConsent can be used to create an updated semantic GDPR-version of the Consent Receipt, which is part of the planned future work.</p>
+<h2 id="ontology-creation">Ontology Creation</h2>
+<h3 id="methodology">Methodology</h3>
+<p>The foremost methodology we used in the creation of GConsent was the seminal guide “Ontology Development 101” by Noy and McGuiness <span class="citation" data-cites="noy_ontology_2001">[<a href="#ref-noy_ontology_2001" role="doc-biblioref">12</a>]</span>, which included using Protégé in maintaining the correctness (e.g. unwanted inferences) of the ontology using the HermiT reasoner. The creation of the ontology followed an iterative model. Each iteration of the ontology was tested for suitability and expressiveness by modelling the collected use-cases and scenarios, then evaluating using competency questions. The methodology can be summarised with the following steps:</p>
+<ol>
+<li><p>Gather information about consent from GDPR, articles, academic papers, communications from various supervisory bodies and regulatory authorities</p></li>
+<li><p>Create use-cases and competency questions based on collected information</p></li>
+<li><p>Create ontology to express information about use-cases</p></li>
+<li><p>Evaluate suitability to express information using competency questions</p></li>
+</ol>
+<h3 id="information-collection-analysis">Information Collection &amp; Analysis</h3>
+<p>This section describes the information collection process and its analysis used to model the information associated with consent. The primary source of information were the articles and recitals pertaining to consent within the GDPR <span class="citation" data-cites="noauthor_regulation_2016">[<a href="#ref-noauthor_regulation_2016" role="doc-biblioref">1</a>]</span>. Additionally, Article 29 Working Party, which was the official advisory body providing expert opinions regarding data protection, has provided guidelines on consent <span class="citation" data-cites="article_29_working_party_guidelines_2018">[<a href="#ref-article_29_working_party_guidelines_2018" role="doc-biblioref">13</a>]</span> that assisted in the interpretation of the GDPR. Apart from these, various guidelines and reports published by the Data Protection Offices and legal firms, Handbook on European Data Protection Law, and relevant court laws<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> were also used to understand and formulate technical requirements regarding consent.</p>
+<p>For the scope of our work, we only considered consent as defined within Art.4-11 of the GDPR. Other special cases of consent (Art.9) such scientific research (Rec.33) and children’s personal data (Art.8, Rec.38) were not included due to additional requirements and complexity, as well as lack of legal guidance on their compliance requirements. The use of consent as a legal basis (Art.6,Rec.40) includes conditions for consent to be considered valid (Art.7, Rec.42, Rec.43). The burden of proof and requirements for consent is specified to be on the Data Controller (Rec.42), which requires demonstrable proof that the data subject provided the consent and that it was valid as per the obligations specified in the GDPR.</p>
+<p>For consent to be informed, it is necessary to provide certain information to the data subject, such as the specific purposes the personal data will be used for. GDPR also provides data subjects with the right to modify or withdraw consent (Art.7-3). In cases where the consent is withdrawn, processing done prior to the withdrawal is considered valid under the valid consent applicable at that time. This information along with other guidelines provided by the collected resources was used to iterate on a model of consent that could represent the required information.</p>
+<p>The information regarding consent can be summarised as follow. Consent has associated attributes regarding the data subject the consent is about, their personal data, the purposes and processing operations associated with personal data, and who the consent is provided to. This is similar to the existing model used by SPL for given consent <span class="citation" data-cites="kirrane_scalable_2018">[<a href="#ref-kirrane_scalable_2018" role="doc-biblioref">7</a>]</span>.</p>
+<p>In addition to these, there are additional attributes such as - entity that provided consent, status, context (location, medium, instant of creation), and expiry that are useful in determining whether the specific instance of consent satisfies the obligations of the GDPR. It is also necessary to include the provenance of consent to determine its validity, particularly for qualitative requirements which cannot be machine-evaluated. The provenance aspect shows some overlap with GDPRov <span class="citation" data-cites="pandit_modelling_2017">[<a href="#ref-pandit_modelling_2017" role="doc-biblioref">9</a>]</span> which models provenance of consent based on GDPR. This is resolved by clarifying the scope of GConsent to be limited to modelling consent as an entity, and using GDPRov along with PROV-O <span class="citation" data-cites="lebo_prov-o:_2013">[<a href="#ref-lebo_prov-o:_2013" role="doc-biblioref">14</a>]</span> to define the provenance.</p>
+<h3 id="use-cases-scenarios">Use-cases &amp; Scenarios</h3>
+<p>This section describes the use-cases and scenarios that were used in the creation of GConsent. The use-cases reflect the requirements gathered from the legal documents as well as various real-world scenarios. They were used to identify the information required regarding consent, and how it should be modelled in the form of an ontology. They were also useful to test the expression of consent using GConsent in different contexts. The complete list of use-cases and scenarios can be found in the documentation.</p>
+<p>The use-cases are categorised based on the specific information they relate to. There are a total of 15 categories for use-cases based on the provenance of consent, involved persons and organisations, use of delegation, and third-parties. An example use-case for obtaining consent contains scenarios where consent is given via different mediums such as a web-form or a signed document, as well as when it is given implicitly or via delegation. Similarly, use-cases focusing on the agent that provided consent contain scenarios involving a legal representative of the data subject such as parent or guardian for a minor. Use-cases about the provenance identify the agents and activities involved. Similarly, there are use-cases regarding expiry, medium, modification, and revocation of consent.</p>
+<h3 id="evaluation">Evaluation</h3>
+<p>The ontology was evaluated regarding its capability to express information about consent using a set of competency questions. The competency questions, listed in Table <a href="#table:cq" data-reference-type="ref" data-reference="table:cq">1</a>. were based on the collected use-cases and scenarios, and reflect the queries that can arise regarding compliance of consent under the GDPR. The questions were used as SPARQL queries over the information modelled using GConsent.</p>
+<p>The validation of GConsent was done by exploring the suitability of using the ontology to define the information required by each competency question. This was an iterative process where the ontology was tested and modified to accommodate the requirements of the competency questions. Changes were made to the ontology where information was found to be missing or incorrectly modelled. The complete list of these questions along with the specific classes and properties involved in answering them can be found in the documentation. The use of competency questions as compliance queries was based on prior work that demonstrated the use of SPARQL in evaluating GDPR compliance <span class="citation" data-cites="pandit_queryable_2018">[<a href="#ref-pandit_queryable_2018" role="doc-biblioref">10</a>]</span>.</p>
+<p>The questions are grouped into four broad categories based on their context. The first category of questions relates to consent itself, and inquires about things such as personal data or purpose associated with consent. The second category of questions relates to the activity responsible for creation or invalidation of consent. It inquires whether consent was given by delegation, the role played by the person in delegation, and the activity responsible for delegation. The third category of questions inquire about the context of consent, such as location, medium, expiry, or timestamp of instantiation. The fourth and final category of questions inquire about involvement and role of third parties in any purpose or processing.</p>
+<div id="table:cq">
+<table>
+<caption>Competency Questions used to evaluate and validate the ontology</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ID</th>
+<th style="text-align: left;">Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Questions about consent</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C1</td>
+<td style="text-align: left;">Who is the consent about?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C2</td>
+<td style="text-align: left;">What type of Personal Data are associated with the Consent?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C3</td>
+<td style="text-align: left;">What type of Purposes are associated with the Consent?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C4</td>
+<td style="text-align: left;">What type of Processing are associated with the Consent?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C5</td>
+<td style="text-align: left;">What is the Status of Consent?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C6</td>
+<td style="text-align: left;">Is the current status valid for processing?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C7</td>
+<td style="text-align: left;">Who is the consent given to?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Questions about how the consent was created/given/changed/invalidated</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P1</td>
+<td style="text-align: left;">Who created/gave/acquired/invalidated the consent?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P2</td>
+<td style="text-align: left;">If consent was created/given/acquired/invalidated through Delegation, who acted as the Delegate?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P3</td>
+<td style="text-align: left;">If consent was created/gave/acquired/invalidated through Delegation, what was the role played by Delegate?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P4</td>
+<td style="text-align: left;">If consent was created/gave/acquired/invalidated through Delegation, how was the delegation executed?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Questions about the context of how consent was created/given/invalidated</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T1</td>
+<td style="text-align: left;">What is the location of associated with consent?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T2</td>
+<td style="text-align: left;">What is the medium associated with consent?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T3</td>
+<td style="text-align: left;">What is the timestamp associated with the consent?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T4</td>
+<td style="text-align: left;">What is the expiry of the consent?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">T5</td>
+<td style="text-align: left;">How was the consent acquired/changed/created/invalidated?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T6</td>
+<td style="text-align: left;">What artefacts were shown when consent was acquired/changed/created/invalidated?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Questions related to Third Party associated with the consent</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D1</td>
+<td style="text-align: left;">Is the purpose or processing associated with a third party?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D2</td>
+<td style="text-align: left;">What is the role played by the third party in the purpose or processing?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="table:cq" label="table:cq">[table:cq]</span></p>
+<h2 id="gconsent-ontology">GConsent Ontology</h2>
+<p>Based on the methodology described in Section 3, we identified requirements in terms of information required to model the use-cases and scenarios identified in Section 4. These were then used to develop GConsent - an OWL2-DL ontology to express information associated with consent for GDPR. We chose OWL2-DL for its expressibility of relationship and constraints while maintaining reasoning capabilities. GConsent aims to model the context, state, and provenance of consent. Its scope is limited to consent as defined in the GDPR, and is meant to assist in the modelling of information associated with compliance but not determining the compliance itself. GConsent does not model consent as a policy or contract, and therefore is not useful for expressing information such as conditions or clauses that affect consent.</p>
+<p>GConsent reuses existing vocabularies such as PROV-O <span class="citation" data-cites="lebo_prov-o:_2013">[<a href="#ref-lebo_prov-o:_2013" role="doc-biblioref">14</a>]</span> and its GDPR-specific extension GDPRov <span class="citation" data-cites="pandit_modelling_2017">[<a href="#ref-pandit_modelling_2017" role="doc-biblioref">9</a>]</span> to model provenance and Time Ontology in OWL <span class="citation" data-cites="cox_time_2017">[<a href="#ref-cox_time_2017" role="doc-biblioref">15</a>]</span> for temporal values. It has a preferred namespace of <code>gc</code> as used in this paper. Terms within GConsent are linked to their respective definitions in the GDPR using GDPRtEXT <span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">2</a>]</span>.</p>
+<p>GConsent follows best practices and guidelines advocated by the community for self-documenting ontologies <span class="citation" data-cites="berrueta_best_2008 garijo_widoco:_2017 gurk_towards_2017 poveda-villalon_validating_2012">[<a href="#ref-berrueta_best_2008" role="doc-biblioref">16</a>]–[<a href="#ref-poveda-villalon_validating_2012" role="doc-biblioref">19</a>]</span> and uses a persistent identifier (w3id) for its IRIs. The ontology and its documentation are available online at <a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a> under the CC-by-4.0 license. The online documentation presents a comprehensive overview of the ontology along with describing the methodology used in its creation, including an analysis of the GDPR. The documentation also presents examples of how the ontology can be used using use-cases and scenarios, with one presented in Section 4.2. All figures follow the Graffoo specification <span class="citation" data-cites="falco_modelling_2014">[<a href="#ref-falco_modelling_2014" role="doc-biblioref">20</a>]</span> and were created using yEd tool.</p>
+<h3 id="ontology-overview">Ontology Overview</h3>
+<p>The core concepts within GConsent, as presented in Fig. <a href="#fig:concepts" data-reference-type="ref" data-reference="fig:concepts">1</a> are <em>Consent, Data Subject, Personal Data, Purpose, Processing,</em> and <em>Status</em>. These form the essential information that constitute consent as a legal basis under the GDPR. This is similar to other approaches <span class="citation" data-cites="kirrane_scalable_2018">[<a href="#ref-kirrane_scalable_2018" role="doc-biblioref">7</a>]</span> in the state of the art. The status of consent refers to its state or suitability with respect to use as a valid legal basis under the GDPR.</p>
+<p>To facilitate its usage, GConsent distinguishes between valid and invalid states for consent, and provides instances to define states such as implicitly or explicitly given, given via delegation, withdrawn, not given, refused, expired, invalidated, and unknown. The property <em>invalidates</em> defines the relation between two iterations of consent - such as when a data subject withdraws given consent where only the latest iteration is considered valid.</p>
+<figure>
+<img src="img/028-gconsent_core.png" id="fig:concepts" alt="Overview of the GConsent core ontology" /><figcaption aria-hidden="true">Overview of the GConsent core ontology</figcaption>
+</figure>
+<p>Context of consent refers to the information associated with how the consent was created, or obtained, or ‘given’. GConsent provides classes and properties, as depicted in Fig. <a href="#fig:context" data-reference-type="ref" data-reference="fig:context">2</a>, to represent location (using <em>prov:Location</em>), medium, and instance of creation (using <em>time:Instant</em>). Expiry of consent is defined as the duration or instant after which the consent is no longer considered valid. It is modelled using <em>time:TemporalEntity</em> which makes it possible to define it either as a duration (e.g. 6 months) or as an instant in time. To represent the entity that provided consent, GConsent provides the <em>isProvidedBy</em> property, whose range is defined as the union of <em>prov:Person</em>, <em>Data Subject</em>, and <em>Delegation</em>, since it is not necessary that the person that provided consent (by delegation) must be a data subject as well. To define other aspects of context, GConsent defines generic properties <em>hasContext</em> and its inverse <em>isContextForConset</em> that act as the parent properties for all context relationships.</p>
+<figure>
+<img src="img/028-context.png" id="fig:context" alt="Concepts representing context of consent" /><figcaption aria-hidden="true">Concepts representing context of consent</figcaption>
+</figure>
+<h3 id="example-use-case">Example Use-Case</h3>
+<p>The example use-case described in Fig. <a href="#fig:use-case" data-reference-type="ref" data-reference="fig:use-case">3</a> shows implied consent<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> in an emergency ward where a nurse provides consent on behalf of the patient. The status of consent in this case is set as implicitly given<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> even though consent was provided by a delegation where the nurse is the agent that provided consent. The example also shows use of PROV-O and GDPRov vocabularies in capturing provenance aspects of given consent such as the activity that generated consent and entities such as patient records used by it.</p>
+<figure>
+<img src="img/028-example_ds2.png" id="fig:use-case" alt="Example use-case showing delegation of consent and use of punning" /><figcaption aria-hidden="true">Example use-case showing delegation of consent and use of punning</figcaption>
+</figure>
+<p>When giving consent, sometimes it is required to refer to an abstraction such as a category rather than a specific instance for personal data, processing, or purpose. In the above example, consent is linked using property <em>gc:forPersonalData</em> to the broader category of ‘<em>Health Data</em>’ rather than some specific instance such as blood group. Such use of punning<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> allows using a class rather as an instance with a property. As this makes <em>gc:PersonalData</em> a meta-class for <em>ex:HealthData</em>, further specialisation can be done by defining it as a subclass of an arbitrary class such as <em>ex:PersonalDataCategory</em>. Creating examples and guidelines regarding the semantics of such modelling to accurately reflect the use of such abstractions in the real-world<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> are part of the future work.</p>
+<h3 id="limitations">Limitations</h3>
+<p>GConsent as an ontology has some limitations due to the novelty of consent under the GDPR and the challenges in creating a common ontology for all possible use-cases. In particular, GConsent does not provide a fixed vocabulary for representing temporal and location associated with processing operations such as data sharing or storage. This is due to the perceived ambiguity over whether such attributes only apply to a particular (sub-)set of personal data or processing, or to the consent as a whole. Additionally, the validity of conditions such as "as long as required" for data storage makes modelling these values difficult. This is expected to be clarified with time as authorities and court cases provide declarative information on their validity. Until then, one can use Time ontology in OWL <span class="citation" data-cites="cox_time_2017">[<a href="#ref-cox_time_2017" role="doc-biblioref">15</a>]</span> to model timestamps and durations. Using this pattern in GConsent itself can break future versions where non-specific time values, such as those above, are found to be valid in relation to consent. Similarly, the granularity of location is an issue for modelling as it can refer to exact location (GPS), a city, country or a region such as the EU. Additionally, there can be multiple locations that store the same data, and be under different jurisdictions. Therefore, we plan to provide separate design patterns for time and location in the documentation, and use them to extend the ontology in future.</p>
+<p>GConsent does not provide any information or modelling of compliance regarding the various obligations of the GDPR. For example, it does not require the specification of legal justification (also termed as legal basis) with the purpose or processing. Planned future work is the creation of a property to specify the legal justification for processing of personal data using GDPRtEXT <span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">2</a>]</span> to indicate the possible legal basis.</p>
+<h2 id="conclusion-future-work">Conclusion &amp; Future Work</h2>
+<p>This paper presented GConsent, an OWL2-DL ontology for representing information associated with consent for the GDPR. The paper described the methodology used to create the ontology, which used an analysis of compliance requirements gathered from official publications and related resources. This was used to iteratively develop the ontology using a set of use-cases and scenarios which were validated using competency questions. The resulting ontology has applications in modelling information essential in the determination of compliance regarding consent for the GDPR.</p>
+<p>GConsent uses PROV-O and its GDPR-specific extension GDPRov to model provenance of consent, and GDPRtEXT to link concepts to the relevant text within the GDPR. Its documentation followed best practices advocated by the community regarding self-documenting ontologies, and contains examples for its use and adoption. The ontology, its documentation, and this paper is available at <a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a> under CC-by-4.0 license.</p>
+<p>Compared to the state of the art, GConsent provides additional states for indicating the use of consent other than ‘given consent’. It provides the distinction between valid and invalid states for use as the legal basis for processing of personal data. GConsent also demonstrates the modelling of provenance for activities and agents (such as third parties) and their role in the consent. This is useful to model aspects of provenance such as delegation and agents associated with consent.</p>
+<h3 class="unnumbered" id="future-work">Future Work</h3>
+<p>GConsent provides a generic way to model consent under the GDPR. While the aim of the ontology is to encompass as many use-cases and scenarios as possible, there needs to be a clear and demonstrable application of the work in specific use-cases to drive adoption in the wider community. We plan to develop design patterns that demonstrate the modelling information related to consent and its associated compliance in a variety of contexts. GConsent will play a vital role in such approaches for evaluating compliance based on using consent as a legal basis for processing of data.</p>
+<p>One specific example we are working towards takes an existing RDBMS that stores (given) consent information and uses R2RML to produce mappings for generating RDF metadata using GConsent. The resulting data can then be explored and evaluated for compliance using SPARQL queries. The work also aims to address the practice of storing partial information regarding the given consent and combining this information with a common model of the system using GDPRov to generate documentation of consent using GConsent. The approach is expected to demonstrate the feasibility of using a common model versus storing all the information for each instance of consent. This would also facilitate using data validation of information regarding consent.</p>
+<h3 class="unnumbered" id="acknowledgements">Acknowledgements</h3>
+<p>This paper is supported by the ADAPT Centre for Digital Content Technology, which is funded under the SFI Research Centres Programme (Grant 13/RC/2106) and is co-funded under the European Regional Development Fund.</p>
+<p>The authors wish to thank the members of Data Protection Vocabularies and Controls Community Group (DPVCG) for their inputs in the discussion of consent and its related research. The authors also wish to thank Pat McBennett for their help in this work.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-noauthor_regulation_2016">
+<p>[1] “Regulation (EU) 2016/679 of the european parliament and of the council of 27 april 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing directive 95/46/EC (general data protection regulation),” <em>Official Journal of the European Union</em>, vol. L119. pp. 1–88, May-2016 [Online]. Available: <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC</a></p>
+</div>
+<div id="ref-pandit_gdprtext_2018">
+<p>[2] H. J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis, “GDPRtEXT - GDPR as a linked data resource,” in <em>The semantic web - european semantic web conference</em>, 2018, pp. 481–495, doi: <a href="https://doi.org/10/c3n4">10/c3n4</a>. </p>
+</div>
+<div id="ref-tikkinen-piri_eu_2018">
+<p>[3] C. Tikkinen-Piri, A. Rohunen, and J. Markkula, “EU general data protection regulation: Changes and implications for personal data collecting companies,” <em>Computer Law &amp; Security Review</em>, vol. 34, no. 1, pp. 134–153, 2018, doi: <a href="https://doi.org/10/gc484m">10/gc484m</a>. </p>
+</div>
+<div id="ref-mittal_role_2017">
+<p>[4] S. Mittal and P. P. Sharma, “The role of consent in legitimising the processing of personal data under the current EU data protection framework,” <em>Asian Journal of Computer Science And Information Technology 7</em>, pp. 76–78, Aug. 2017 [Online]. Available: <a href="https://papers.ssrn.com/abstract=2975277">https://papers.ssrn.com/abstract=2975277</a>. [Accessed: 17-Sep-2018]</p>
+</div>
+<div id="ref-bartolini_reconciling_2015">
+<p>[5] C. Bartolini and R. Muthuri, “Reconciling data protection rights and obligations: An ontology of the forthcoming EU regulation,” in <em>Workshop on language and semantic technology for legal domain</em>, 2015, p. 8. </p>
+</div>
+<div id="ref-fatema_compliance_2017">
+<p>[6] K. Fatema, E. Hadziselimovic, H. J. Pandit, C. Debruyne, D. Lewis, and D. O’Sullivan, “Compliance through informed consent: Semantic based consent permission and data management model,” in <em>Proceedings of the 5th workshop on society, privacy and the semantic web - policy and technology (PrivOn2017) (PrivOn)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-1951/#paper-05">http://ceur-ws.org/Vol-1951/#paper-05</a></p>
+</div>
+<div id="ref-kirrane_scalable_2018">
+<p>[7] S. Kirrane <em>et al.</em>, “A scalable consent, transparency and compliance architecture,” in <em>Proceedings of the posters and demos track of the extended semantic web conference (ESWC 2018)</em>, 2018. </p>
+</div>
+<div id="ref-palmirani_pronto:_2018">
+<p>[8] M. Palmirani, M. Martoni, A. Rossi, C. Bartolini, and L. Robaldo, “PrOnto: Privacy ontology for legal reasoning,” in <em>Electronic government and the information systems perspective</em>, 2018, pp. 139–152. </p>
+</div>
+<div id="ref-pandit_modelling_2017">
+<p>[9] H. J. Pandit and D. Lewis, “Modelling provenance for GDPR compliance using linked open data vocabularies,” in <em>Proceedings of the 5th workshop on society, privacy and the semantic web - policy and technology (PrivOn2017) (PrivOn)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-1951/#paper-06">http://ceur-ws.org/Vol-1951/#paper-06</a></p>
+</div>
+<div id="ref-pandit_queryable_2018">
+<p>[10] H. J. Pandit, D. O’Sullivan, and D. Lewis, “Queryable provenance metadata for GDPR compliance,” in <em>Procedia computer science</em>, 2018, vol. 137, pp. 262–268, doi: <a href="https://doi.org/10/gfdc6r">10/gfdc6r</a>. </p>
+</div>
+<div id="ref-lizar_consent_2017">
+<p>[11] M. Lizar and D. Turner, “Consent receipt specification.” p. 29, 2017 [Online]. Available: <a href="https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf">https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf</a></p>
+</div>
+<div id="ref-noy_ontology_2001">
+<p>[12] N. F. Noy, D. L. McGuinness, and others, <em>Ontology development 101: A guide to creating your first ontology</em>. Stanford knowledge systems laboratory technical report KSL-01-05; …, 2001. </p>
+</div>
+<div id="ref-article_29_working_party_guidelines_2018">
+<p>[13] A. 2. W. Party, “Guidelines on consent under regulation 2016/679 (wp259rev.01).” 2018 [Online]. Available: <a href="https://ec.europa.eu/newsroom/article29/item-detail.cfm?item_id=623051">https://ec.europa.eu/newsroom/article29/item-detail.cfm?item_id=623051</a>. [Accessed: 06-Dec-2018]</p>
+</div>
+<div id="ref-lebo_prov-o:_2013">
+<p>[14] T. Lebo <em>et al.</em>, “PROV-o: The PROV ontology. PROV-o: The PROV ontology.” 2013. </p>
+</div>
+<div id="ref-cox_time_2017">
+<p>[15] S. Cox and C. Little, “Time ontology in OWL,” <em>World Wide Web Consortium. Retrieved from https://www. w3. org/TR/owl-time</em>, 2017. </p>
+</div>
+<div id="ref-berrueta_best_2008">
+<p>[16] D. Berrueta, J. Phipps, A. Miles, T. Baker, and R. Swick, “Best practice recipes for publishing RDF vocabularies,” <em>Working draft, W3C</em>, 2008. </p>
+</div>
+<div id="ref-garijo_widoco:_2017">
+<p>[17] D. Garijo, “WIDOCO: A wizard for documenting ontologies,” in <em>International semantic web conference</em>, 2017, pp. 94–102. </p>
+</div>
+<div id="ref-gurk_towards_2017">
+<p>[18] S. M. Gurk, C. Abela, and J. Debattista, “Towards ontology quality assessment,” <em>Joint proceedings of the MEPDaW</em>, p. 12, 2017. </p>
+</div>
+<div id="ref-poveda-villalon_validating_2012">
+<p>[19] M. Poveda-Villalón, M. C. Suárez-Figueroa, and A. Gómez-Pérez, “Validating ontologies with oops!” in <em>International conference on knowledge engineering and knowledge management</em>, 2012, pp. 267–281, doi: <a href="https://doi.org/10/gfkzwf">10/gfkzwf</a>. </p>
+</div>
+<div id="ref-falco_modelling_2014">
+<p>[20] R. Falco, A. Gangemi, S. Peroni, D. Shotton, and F. Vitali, “Modelling OWL ontologies with graffoo,” in <em>European semantic web conference</em>, 2014, pp. 320–325, doi: <a href="https://doi.org/10/gfkzwg">10/gfkzwg</a>. </p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>This is a form of legal notation to denote Recitals (Rec) or Articles (Art) in legal text. These are hyperlinked to where they occur in GDPR using GDPRtEXT <span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">2</a>]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>The recent decision by CNIL (Décision n<span class="math inline"><sup>∘</sup></span>MED-2018-042 du 30 octobre 2018) regarding validity of consent was particularly influential.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Although the legal basis for obtaining this data under the GDPR could be interpreted as legitimate interest or benefit of data subject, it highlights the recording of information associated with such consent. The example also highlights the potential applicability of GConsent to scenarios other than GDPR such medical consent where additional laws and guidelines apply regarding consent.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>The nurse is the agent that assumes and collects the given consent of the patient, making it an implicit consent given by delegation.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Punning allows reuse of types. See <a href="https://www.w3.org/TR/owl2-new-features/#F12:_Punning">https://www.w3.org/TR/owl2-new-features/#F12:_Punning</a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Example: privacy policies which mention consent for data categories such as "Account Information" rather than specific instances.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
         </div>
     </article>
     </main>

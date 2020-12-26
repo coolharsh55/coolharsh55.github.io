@@ -50,7 +50,1967 @@
     </small>
 </div>
         <div id="content" property="schema:articleBody">
-        None
+        <p>ABSTRACT</p>
+<p>The limitation of data representation in today’s ﬁle systems is that data representation is bound only in a single way of hierarchically organising ﬁles. A semantic ﬁle system provides addressing and querying based on the content rather than storage location. Semantic tagging is a new way to organise ﬁles by using tags in place of directories. In traditional ﬁle systems, symbolic links become non-existent when ﬁle paths are changed. Assigning multiple tags to each ﬁle ensures that the ﬁle is linked to several virtual directories based on its content. By providing semantic access to information, users can organise ﬁles in a more intuitive way. In this way, the same ﬁle can be accessed through more than one virtual directory. The metadata and linkages for tagging are stored in a relational database which is invisible to the user. This allows efﬁcient searching based on context rather than keywords. The classiﬁcation of ﬁles into various ontologies can be done by the user manually or through automated rules. For certain ﬁles types, tags can be suggested by analysing the contents of ﬁles. The system would be modular in design to allow customisation while retaining a ﬂexible and stable structure.</p>
+<p>Keywords : virtual ﬁle system, semantics, indexing, classiﬁcation, database, tagging, information access, metadata</p>
+<p>Chapter 1</p>
+<p>INTRODUCTION</p>
+<p><strong>1.1</strong> <strong>Overview</strong></p>
+<p>Information organisation and management is an essential and inevitable part of everyday computer usage. Huge amount of data is produced on daily basis. With data growing in size, we are faced with the problem of locating ﬁles. Traditional ﬁle systems impose a hierarchical structure of storage on the user. Traditional ﬁle systems are mono-hierarchical and implement directory trees to categorise and store ﬁles. In such systems, directories are the only means to access particular ﬁles.</p>
+<p>In such systems, directories are the only means to access particular ﬁles. The path of a ﬁle contains directories, which refer to its context and categorisation. As an example</p>
+<p>“c:nphotosncollegetripnmuseum*.jpg” refers to all photos of a museum from a college trip. In this case, it is not possible to store that photo in another directory say “c:n photosnmuseum*.jpg” without copying the ﬁle. This severely limits the searching capabilities in a ﬁle system. The user is faced with the dilemma of which directory best represents the context of current ﬁle. While storing the ﬁle is identiﬁed by its ﬁle name alone which serves as its identiﬁer. For searching a particular ﬁle, the user has to accurately remember the path and ﬁle name.</p>
+<p>A ﬁle cannot be searched by any other information relating to its context. Creating the directory structure is based on the users organisational skills. Searching or browsing throughsomeoneelsedataistrickyastheorganisationisdifferentforeveryuser.Previous approaches to such problems provided symbolic links and aliases as an incomplete answer. Symbolic links become redundant when the target ﬁle paths are changed. Similarly, aliases may become redundant or may not function properly with certain programs. Working with such solutions requires advanced skills on the users part. Keyword based searches which extract metadata from ﬁles were brought to fore by Apple’s Spotlight[13] and Google’s Desktop Search[14] . Both function only on limited ﬁletypesanddonotallowmanualcategorisation.Thisledtothedevelopmentofsemantic ﬁle systems, containing categorisation of ﬁles based on context. It provides access to ﬁles by using categories formed from extracting metadata. It is similar to how music ﬁles can be searched by artist, genre, album etc. However, this presents a limitation on the amount and capabilities of what metadata can be extracted from a ﬁle. Virtual directories are used to represent data from the ﬁle system. These directories do not have a permanent listing and the user has to explicitly query for data. There have been several implementations based on semantic ﬁle systems.</p>
+<p>However, they have several limitations in usability. Most of the projects are based only on a few key points, such as limitations over ﬁle types. This project thus is to create a semantic solution to the problems and shortcomings of traditional ﬁle systems while covering the limitations of other implemented projects.</p>
+<p><strong>1.2</strong> <strong>Brief</strong> <strong>Introduction</strong></p>
+<p>Organising and retrieving information accurately and efﬁciently has attracted a lot of attention. While few have been successful, a number of innovative implementations have</p>
+<p>emerged. KWEST is a virtual ﬁle system capable of storing semantics with which it facilitates the ﬁnding of relevant information. Information is stored in tags, which are extracted from a ﬁles metadata. This information may be generated implicitly by the system or supplied explicitly by the user. Thus, the validity of information is based on the user’s level of organising things.</p>
+<p>The current system can extract metadata from a limited set of known ﬁle types. However, the modular architecture allows for plugins to be added which can add functionality for other ﬁle types. This allows for the project to be extended and modiﬁed according to the functionality required. The level of awareness generated by the system is based on the frequency of access and input provided by the user. The amount of relevance is determined by the tags generated and their associated ﬁles. This affects how the system categorises and searches ﬁles. Thus the actual outcome of the system which is the searching capabilities is totally dependent on these relationships. The current implementation is based on the Linux kernel. Future implementations can be extended to other platforms and devices. Furthermore, as the system is a virtual one, it needs only slight modiﬁcations to be ported to other ﬁle systems and operating systems.</p>
+<p><strong>1.3</strong> <strong>Problem</strong> <strong>Deﬁnition</strong></p>
+<p>The goal of this project is to develop a semantic ﬁle system that extracts metadata from ﬁles and allows storage and searching based on its context. Such a system should overcome the drawbacks of traditional ﬁle systems while leveraging the limitations of other such similar implementations.</p>
+<p><strong>1.4</strong> <strong>Feasibility</strong> <strong>Study</strong></p>
+<p><strong>1.4.1</strong> <strong>Technical</strong> <strong>Feasibility</strong></p>
+<p>The team have knowledge of C and Object Oriented concepts. The Project is being implemented using loadable kernel module known as FUSE. In the current versions of some Linux based OS this module is included in the kernel itself. The query processing and programming will be done using SQLite. It is a relational database contained in a small C programming library. In contrast to other database management systems, SQLite is not a process that is accessed from the client application, but an integral part of it. This is also open source and is freely available. Thus, the cost for developing KWEST will be minimal and hence will be feasible without the need for large capital.</p>
+<p><strong>1.4.2</strong> <strong>Economic</strong> <strong>Feasibility</strong></p>
+<p>Cost of Software: We have used open-source technologies for building our system, thus there was no software cost incurred.</p>
+<p>Cost of Hardware: No hardware was required to be purchased, thus no cost was incurred in building the system.</p>
+<p><strong>1.5</strong> <strong>Application</strong> <strong>of</strong> <strong>a</strong> <strong>Software</strong> <strong>Engineering</strong> <strong>Approach</strong></p>
+<p>We are using incremental model of Software Development Life Cycle. The Software development life cycle (SDLC) is a process used by a systems analyst to develop an information system, training, and user (stakeholder) ownership. The SDLC aims to</p>
+<p>produce a high quality system that meets or exceeds customer expectations, reaches completionwithintimeandcostestimates,workseffectivelyandefﬁcientlyinthecurrent and planned Information Technology infrastructure, and is inexpensive to maintain and cost-effective to enhance.The Software Development Life Cycle framework provides a sequence of activities for system designers and developers to follow. It consists of a set of steps or phases in which each phase of the SDLC uses the results of the previous one. A Software Development Life Cycle (SDLC) adheres to important phases that are essential for developers, such as planning, analysis, design, and implementation.</p>
+<p>Figure 1.1: Incremental Model</p>
+<p><strong>1.5.1</strong> <strong>Planning</strong></p>
+<p>During this stage, business opportunities and problems are identiﬁed, and information technology solutions are discussed. Multiple alternative projects may be suggested and their feasibility analysed.</p>
+<p>Tasks proposed were</p>
+<p>1. Analysing need of user to access related data.</p>
+<p>2. Identifying drawbacks of existing ﬁle system.</p>
+<p>3. The development of a project goals- identifying relations between data, ﬁle system operations, metadata storage, accessing related data.</p>
+<p>4. The collection of project requirements.</p>
+<p>5. The development of a project schedule.</p>
+<p><strong>1.5.2</strong> <strong>System</strong> <strong>Analysis</strong></p>
+<p>The goal of system analysis is to determine where the problem is in an attempt to ﬁx the system.This step involves breaking down the system in different pieces to analyse the situation,analysingprojectgoals,breakingdownwhatneedstobecreatedandattempting to engage users so that deﬁnite requirements can be deﬁned.</p>
+<p>Tasks proposed were</p>
+<p>1. Interface for implementing ﬁle system.</p>
+<p>2. Analyse various database alternatives based on size and speed of operation.</p>
+<p>3. Analysis of libraries to be used for metadata operations.</p>
+<p>4. Generation of ﬁles and tags suggestions.</p>
+<p>5. Analysing various methods to provide user with suggestions.</p>
+<p><strong>1.5.3</strong> <strong>System</strong> <strong>Design</strong></p>
+<p>In systems design the design functions and operations are described in detail, including screen layouts, business rules, process diagrams and other documentation. The output of this stage will describe the new system as a collection of modules or subsystems.</p>
+<p>Tasks proposed were</p>
+<p>1. Separating system implementation into following modules.</p>
+<p>2. File System Operations.</p>
+<p>3. Generating Tags.</p>
+<p>4. Importing Semantics.</p>
+<p>5. Exporting Semantics.</p>
+<p>6. Database Consistency.</p>
+<p><strong>1.5.4</strong> <strong>Coding</strong></p>
+<p>In coding we do actual implementation of system design, produced running software.</p>
+<p>Tasks proposed were</p>
+<p>1. Implementing modules of project using ﬁnalised programming language and libraries</p>
+<p>2. Having modularity in code to allow for reusable modules.</p>
+<p>3. Documenting the code using standard tools.</p>
+<p>4. Testing project using various software testing approaches.</p>
+<p><strong>1.5.5</strong> <strong>Testing</strong></p>
+<p>Testing is the process of evaluating a system or application, to check whether the application meets all requirements of the client and to detect the errors.</p>
+<p>Tasks proposed were</p>
+<p>1. Testing of executable code using robust testing tools.</p>
+<p>2. Performing Regression Testing.</p>
+<p>3. Usability Testing.</p>
+<p>4. GUI Testing.</p>
+<p>5. Stress Testing.</p>
+<p>6. Integrity Testing.</p>
+<p><strong>1.5.6</strong> <strong>Deployment</strong></p>
+<p>Deployment starts after the code is appropriately tested, approved for release, and sold or otherwise distributed into a production environment. This may involve installation, customisation (such as by setting parameters to the customer’s values), testing, and possibly an extended period of evaluation.</p>
+<p>Tasks proposed were</p>
+<p>1. The project will be deployed as a executable which will mount the KWEST ﬁle system.</p>
+<p>2. Utilise available GUI tools in the form of ﬁle managers.</p>
+<p>3. Installation of utility should follow standard Linux OS procedures.</p>
+<p>Chapter 2</p>
+<p>LITERATURE SURVEY</p>
+<p>Over the years, organising and retrieving information accurately and efﬁciently has attracted lot of attention. While few have been successful, a number of innovative implementations [11] have emerged. The idea of using a ﬁle’s semantics as the means to categorise it has been around for quite some time. This section discusses the various implementations made in the ﬁeld of semantic ﬁle system.</p>
+<p>An efﬁcient implementation of keyword based searching was brought to the desktop by Apple’s Spotlight[13] and Google’s Desktop Search[14] . Both allow efﬁcient and quick ﬁle retrieval based on keywords. They support many ﬁle types and have a simple interface which attracts a large number of users. However, both of them are limited to returning search results without any way to organising contents. In addition, they do not provide any provision to the user for classiﬁcation of data. This limitation prevented the user from having a personalised way to retrieve data stored by them.</p>
+<p>Semantic systems depend on data stored inside the ﬁles rather merely relying on an ﬁle’s attributes. Most implementations use common methodologies like content recognition[2] , tagging[7] , extracting metadata, etc. to categorise ﬁles by using various algorithms.</p>
+<p>“Semantic File System”[8] , as developed by O’Toole and Gittord in 1992, provides access to ﬁle contents and metadata by extracting the attributes using special modules called “transducers”. It was one of the very ﬁrst attempts to classify ﬁles by semantics using metadata. Its biggest drawback was the need for ﬁle type speciﬁc transducers which were necessary to extract meta information and content from the ﬁle. Also, the user does not have any say in what kind of category the ﬁle is classiﬁed under. This drawback makes it an unattractive option to the general user. It was decided during designing KWEST, that it is necessary to involve the end-user in the tagging process. This allows each user to have their own personal way of classiﬁcation and organisation of ﬁles.</p>
+<p>NHFS (Non Hierarchical File System)[12] was a project developed by Robert Freund in July 2007. It allows the user to place any ﬁle into any number of directories. Likewise, any directory can be placed into as many directories as required. NHFS therefore allows one to create a non-hierarchical structure with poly-hierarchically connected ﬁles. This allows for a powerful metaphor of ﬁnding a ﬁle in any of the category (directory) it could be stored under. Therefore, we decided to retain this feature by using tags in place of actual directories. Tags are associated with ﬁles and other tags as well. Thus, a tag may be placed under multiple tags allowing a relationship to be deﬁned between them. This analogy is much more powerful than restricting ﬁles to actual directories. Using tags prevents duplication and redundancy, making it an efﬁcient implementation.</p>
+<p>A more recent implementation is Tagsistant[15] , which is a semantic ﬁle system that also attempts to organise ﬁles using tags. It interacts with the Linux kernel using the FUSE module. Under Tagsistant, directories are considered to be equivalent to tags. As a consequence, creating a directory is creating a tag and putting a ﬁle inside a directory means tagging that ﬁle. After you have tagged your ﬁles, you can search all of them by using queries. Queries are just paths where each element is either a directory or logical operators. The entire system has a modular design and uses SQLite. However, it suffers from some speed issues and the lack of SQL indexes. Major ﬂaws of this design were</p>
+<p>high consumption of inodes on real ﬁle systems and high computational time which was required to fulﬁl each request. Most of the features of Tagsistant were decided to be included in KWEST. These were modular design, SQLite repository, tagged structure, etc. whichenhancethesemanticsofaﬁlesystem. However,caremustbetakentoprevent the occurrence of similar drawbacks.</p>
+<p>Another implementation called Tagster[16] , is a peer-to-peer tagging application for organisingdesktopdata.ItisplatformindependentandisimplementedinJAVA.Multiple ﬁles and also directories can be tagged through its interface. The selected directories are recursively examined and all ﬁles contained within them are tagged. The GUI for a Linux system consists of three main areas.</p>
+<p>1. Tag view</p>
+<p>It displays a list of tags.</p>
+<p>2. Resource view</p>
+<p>It lists resources that have the currently selected tags assigned.</p>
+<p>3. User view</p>
+<p>It displays a list of users that have tagged the currently selected resource with some selectedtag. ItalsoincludesGUIsupportforWindowswithsomeunresolvedissues. However, it lacks auto classiﬁcation of data due to which several common tags may be generated for each user increasing the database size.</p>
+<p>Papers referred for the developement of KWEST.</p>
+<p>1. K. Chang, W.T. Perdana, B. Ramadhana, K. Sethuraman, T.V. Le, and N. Chachra, Knowledge File System-A principled approach to personal information management, 2010 IEEE International Conference on Data Mining Workshops, Sydney, December 2010, pp. 1037-1044[1] .</p>
+<p>Abstract: The Knowledge File System (KFS) is a smart virtual ﬁle system that sits between the operating system and the ﬁle system. Its primary functionality is to automatically organise ﬁles in a transparent and seamless manner so as to facilitate easyretrieval.ThinkoftheKFSasapersonalassistant,whocanﬁleeveryoneofyou documents into multiple appropriate folders, so that when it comes time for you to retrieveaﬁle,youcaneasilyﬁnditamonganyofthefoldersthatarelikelytocontain it. Technically, KFS analyses each ﬁle and hard links (which are simply pointers to a physical ﬁle on POSIX ﬁle systems) it to multiple destination directories (categories). The actual classiﬁcation can be based on a combination of ﬁle content analysis,ﬁleusageanalysis,andmanuallyconﬁguredrules.SincetheKFSorganises ﬁles using the familiar ﬁle/folder metaphor, it enjoys 3 key advantages against desktopsearchbasedsolutionssuchasGoogle’sdesktopSearch,namely1)usability, 2) portability, and 3) compatibility. The KFS has been prototyped using the FUSE (File system in USErspace) framework on Linux. Apache Lucene was used to provide traditional desktop search capability in the KFS. A machine learning text classiﬁer was used as the KFS content classiﬁer, complimenting the customisable rule-based KFS classiﬁcation framework. Lastly, an embedded database is used to log all ﬁle access to support ﬁle-usage classiﬁcation.</p>
+<p>Usefulness: This paper describes approach to personal information management through Knowledge File System. It is designed to help users organise information usingVirtualFileSystemtoreducetheproblemofmanualinformationclassiﬁcation andretrieval. KFSprovidesfunctionssoastoautomaticallyclassifytheinformation based on the content similarity with respect to predeﬁned ontologies or also give the option for manual classiﬁcation of the information. The operations carried out on the KFS can also be monitored with the event logger feature. Searching of ﬁles can be carried out by keyword with the help of a text indexer. Furthermore the comparisons between Google desktop ﬁle system, beagle and KFS are given. Finally the details of the implementation of the KFS on the Linux platform using of FUSE are given.</p>
+<p>2. O. Eck, and D. Schaefer, A semantic ﬁle system for integrated product data management, Advanced Engineering Informatics, 2011, pp. 177-184[4] .</p>
+<p>Abstract:Weinitiallydiscussanumberofdisadvantagesofcurrentﬁlemanagement systems. In the body of the paper our main contribution is presented. That is, a formal mathematical model of a new semantic ﬁle system, SIL (Semantics Instead of Location), that allows engineers to access data based on semantic information rather than storage location is proposed. A major difference between our approach and previous related work is that we do not aim at yet another point solution and, instead, propose an approach that may be employed by next generation engineering</p>
+<p>dataprocessingsystemsonalargerscale.Inaddition,acorrespondingprogramming interface along with a graphical user interface used as a ﬁle browser is presented and the beneﬁts of utilising the proposed semantic ﬁle system for product data management in the ﬁeld of integrated design of mechatronic systems are discussed.</p>
+<p>Usefulness: This paper describes a formal mathematical model that allows engineers to access data based on semantics rather than actual storage location. The main goal of this ﬁle system is to search ﬁles based on content of data. The browsing of the system is done based on ﬁle’s metadata and attributes. Logical operator such as AND, OR, NOT are used to ﬁlter the results. The classiﬁcation allows multiple tags to be created for ﬁles. Furthermore API’s are written to create views and for the automation of notiﬁcation updates.</p>
+<p>3. P. Mohan, S. Venkateswaran, Raghuraman, and A. Siromoney, Semantic File Retrieval in File Systems using Virtual Directories, Proc. Linux Expo Conference, Raleigh, NC, May 2007, pp. 141-151[5] .</p>
+<p>Abstract: Hard Disk capacity is no longer a problem. However, increasing disk capacityhasbroughtwithitanewproblem,theproblemoflocatingﬁles. Retrieving a document from a myriad of ﬁles and directories is no easy task. Industry solutions are being created to address this short coming. We propose to create an extendable UNIX based File System which will integrate searching as a basic function of the ﬁle system. The File System will provide Virtual Directories which list the results of a query. The contents of the Virtual Directory are formed at run time. Although, the Virtual Directory is used mainly to facilitate the searching of ﬁle, it can also be used by plugins to interpret other queries.</p>
+<p>Usefulness: This paper describes the design of SemFS, which provides semantics based on the ﬁle’s meta-data and attributes. It allows the usage of logical operators to ﬁlter query results. It is implemented as a user space ﬁle system upon journaling storage. The architecture is server-clientwithsupportforAPI’s to extend functionality. Features such as ﬁle tagging and versioning are also implemented.</p>
+<p>4. R. Agarwal, T. Imielinski, and A. Swami, Mining Association Rules between Sets of Items in Large Databases, 1993 ACM SIGMOD Conference, Washington DC, USA, May 1993, pp. 207-216[6] .</p>
+<p>Abstract : We are given a large database of customer transactions. Each transaction consists of items purchased by a customer in a visit. We present an efﬁcient algorithm that generates all signiﬁcant association rules between items in the database. The algorithm incorporates buffer management and novel estimation and pruning techniques. We also present results of applying this algorithm to sales data obtained from a large retailing company, which shows the effectiveness of the algorithm.</p>
+<p>Usefulness : For ﬁnding frequently occurring ﬁle and tags, creating association rules based on them give and providing suggestions to user.</p>
+<p>Many tagging systems exist that allow efﬁcient manual classiﬁcation of information. Most implementations tend to be theoretical demonstrations or compleximplementations[9]existingforsomeveryspeciﬁcpurpose. Thesesuggest the possibility of using semantics[3] in operating systems in some future date. But a major problem is scalability with regard to related information. However, on a large multi-user ﬁle system, one can get tons of tags to shift through in each folder, increasing the load for users to search and maintain data. Our idea is to introduce a new concept of relating tags to overcome this situation. Implementing all the desired and necessary features from previous implementations,our design goal is to create an efﬁcient Semantic File System which could be used by any class of users.</p>
+<p>Chapter 3</p>
+<p>SOFTWARE REQUIREMENT SPECIFICATION</p>
+<p><strong>3.1</strong> <strong>Introduction</strong></p>
+<p><strong>3.1.1</strong> <strong>Purpose</strong></p>
+<p>The goal of this project is to develop a semantic ﬁle system that extracts metadata from ﬁles and allows storage and searching based on its context. The purpose of this document is to present a detailed description of KWEST. It will explain the purpose and features of the system, the interfaces of the system, what the system will do, the constraint under which it must operate and how the system will react to the users actions.</p>
+<p><strong>3.1.2</strong> <strong>Intended</strong> <strong>Audience</strong> <strong>and</strong> <strong>Reading</strong> <strong>Suggestion</strong></p>
+<p>The intended audience of this document includes both developers and reviewers of the system.</p>
+<p><strong>3.1.3</strong> <strong>Project</strong> <strong>Scope</strong></p>
+<p>This project is a virtual ﬁle system capable of storing semantics with which it facilitates the ﬁnding of relevant information.</p>
+<p>1. Information is stored in tags, which are extracted from a ﬁle’s metadata. This information may be generated implicitly by the system or supplied explicitly by the user.</p>
+<p>2. The validity of information is based on the users level of organising things.</p>
+<p>3. The system is currently designed to extract metadata from a limited set of popular ﬁle types for audio(.mp3, .ogg, .spx, .mpc, .ape, .ﬂac, .wv, .tta, .wma, .m4a, .wav, .aif[f]), video(.ﬂv, .real, .riff(.avi), .mpeg, .qt, .asf), images(.jpeg, .gif, .png, .tiff) and PDF documents.</p>
+<p>4. The modular architecture allows for plugins to be added which can add additional functionality, and recognition for more ﬁle types. This allows the project to be extended and modiﬁed according to the functionality required.</p>
+<p>5. The level of awareness generated by the system is based on the frequency of access and input provided by the user.</p>
+<p>6. The current implementation is based on the Linux kernel.</p>
+<p>7. As the system is an virtual entity, it does not need extensive modiﬁcations to be ported to other ﬁle systems and operating systems.</p>
+<p><strong>User</strong> <strong>Classes</strong> <strong>and</strong> <strong>Characteristics</strong></p>
+<p>The system can be used by three types of users:</p>
+<p>1. General User</p>
+<p>Uses the system without any complex modiﬁcations in the system.</p>
+<p>2. Advanced User</p>
+<p>Understands the system and creates rules and automations based on personal needs.</p>
+<p>3. Developer</p>
+<p>UsestheAPIprovidedanddevelopsmodulesthatextendthesystem.Onlyadvanced users utilise the semantic nature of underlying ﬁle system to the fullest. This does not create any blocks for the general user, who can also use KWEST satisfactorily. Developers are a differentgroupofusers who can extendKWEST throughmodules. Thesemodulescanmodifyordeﬁneadditionalbehaviourforthesystemforspeciﬁc ﬁle types.</p>
+<p><strong>Operating</strong> <strong>Environment</strong></p>
+<p>1. KWEST requires FUSE [17] minimum version 2.8.6</p>
+<p>2. KWEST can run on any Linux installation which contains required versions of FUSE.</p>
+<p>3. Furthermore, since kernel version 2.6.14, FUSE has been merged into the mainstreamLinuxkerneltree.AsaresultKWESTcanrunonanyLinuxdistribution having a minimum Kernel version 2.6.14.</p>
+<p>4. KWEST is a virtual ﬁle system mounted to a folder or a loop device.</p>
+<p><strong>3.1.4</strong> <strong>Design</strong> <strong>and</strong> <strong>Implementation</strong> <strong>Constraints</strong></p>
+<p>Implementation Constraints</p>
+<p>1. KWEST uses FUSE to manage userspace ﬁle systems. Hence, access is limited to the executing userspace for the program.</p>
+<p>2. Sincetheentireapplicationisexecutedinuserspaceonly,therecannotbeinteraction swith the kernel directly.</p>
+<p>3. AlthoughKWESTimplementsavirtualﬁlesystemwhichisaccessibletoallentities, wehaveimplementedthesystemwithcommandlineastheprimaryinterface. Other ﬁle managers such as Nautilus can only browse but not tag ﬁles. This limitation can be addressed with plugins or additional modules built for the speciﬁc ﬁle manager.</p>
+<p>4. It is the responsibility of the user that mounting and unmounting of the system be done with standard rules and precaution.</p>
+<p>5. The SQLite database is an integral part of KWEST and is contained in a single ﬁle. It is vital for the system that integrity of the database is maintained.</p>
+<p>Design Constraints</p>
+<p>1. Currently, the auto-tagging feature has been limited to common and popular ﬁle types such as audio(.mp3, .ogg, .spx, .mpc, .ape, .ﬂac, .wv, .tta, .wma, .m4a, .wav, .aif[f]), images(.jpeg, .gif, .png, .tiff), video(.ﬂv, .real, .riff(.avi), .mpeg, .qt, .asf) and .pdf documents. This functionality can be extended with modules or through special tools made speciﬁcally for this purpose.</p>
+<p>2. The amount of information visible through common ﬁle system commands (e.g. ls - list contents) is a limitation for KWEST. We cannot show tagging information through these interfaces. Alternate methods for this can be implemented keeping the end user in mind.</p>
+<p><strong>3.1.5</strong> <strong>Assumptions</strong> <strong>and</strong> <strong>Dependencies</strong></p>
+<p>Assumptions</p>
+<p>1. Users of this software should be aware of how semantics are used to categorise information.</p>
+<p>2. Users should recognise or identify appropriate tags in relation to ﬁles.</p>
+<p>3. It is assumed that the user is well versed in organisation information and uses KWEST as a tool rather than an assistant.</p>
+<p>4. The user should have the required privileges and rights to run KWEST and all its operations.</p>
+<p>Dependencies</p>
+<p>1. KWEST uses several external libraries to extract metadata from supported popular formats like TagLib for audio, Libextractor for images, video and Poppler for PDF documents.Theselibrariesarerequiredatcompilationtime.Theyenablethesystem to handle metadata extraction.</p>
+<p><strong>3.2</strong> <strong>System</strong> <strong>Features</strong></p>
+<p><strong>3.2.1</strong> <strong>Tags</strong></p>
+<p>1. Manual Tagging</p>
+<p>Manual tagging is the basis of semantics in KWEST. The user can assign any tag to the ﬁles in KWEST. These tags are then stored internally in a database. The user can create new tags or use tags already deﬁned by the system. Total freedom is given to the user to organise data. Multiple tags can be assigned to the to a single thus allowing its access through multiple locations without duplication of data.</p>
+<p>2. Automatic Tagging</p>
+<p>KWEST also features automatic tagging of ﬁles. The user can deﬁne certain rules under which ﬁles will be assigned tags. The system will implement those rules for all ﬁles satisfying the deﬁned constraints. This would prevent repetitive tagging operations for the user.</p>
+<p>3. Importing tags</p>
+<p>Certain popularﬁle formats such as mp3,jpeg etc have metadata embedded in them. KWEST supports such popular format and uses this metadata to automatically assign tags to the ﬁles. This feature enables the user to collectively classify and store the data under these tags.</p>
+<p><strong>3.2.2</strong> <strong>Database</strong></p>
+<p>1. Consistency</p>
+<p>KWEST uses an internal database to store and manage data. It is vital that the database always remains consistent. KWEST uses logging mechanisms to ensure that operations on the database always reach an endpoint.</p>
+<p>2. Access</p>
+<p>The database ﬁles used by KWEST are not locked down or access restricted. The KWEST API provides facilities that can be used to access the database. However, this feature is made available with the understanding that the integrity of the database will be maintained always.</p>
+<p><strong>3.2.3</strong> <strong>Relation</strong> <strong>with</strong> <strong>Existing</strong> <strong>Data</strong></p>
+<p>1. Importing semantics</p>
+<p>Users alreadyhave certain organisationalstructures in the waytheystore data in ﬁle systems. KWEST imports these semantics by converting the storage hierarchy to tag-based hierarchy. This allows the entire ﬁle system to be imported into KWEST along with the users previous organisation structure.</p>
+<p>2. Files are executable ready</p>
+<p>The ﬁles can be directly executed through the virtual ﬁle system without making any modiﬁcation to the ﬁles like audio, video ﬁles can be played through the virtual system, images can viewed and documents can be opened and read.</p>
+<p><strong>3.2.4</strong> <strong>Exporting</strong> <strong>Semantics</strong></p>
+<p>1. Export ﬁle system</p>
+<p>As the entire ﬁle system exists as a virtual entity, KWEST provides the export feature. Where the ﬁle system can be exported to another system where the data can be imported by another instance of KWEST.</p>
+<p>2. Export tagged ﬁles</p>
+<p>Itisalsopossiblefortheusertoexportdataundercertaintagstoanexternallocation. The semantic organisation showed by tags is converted to actual directories and ﬁles are then copied to these directories. This way the user can export KWEST semantics and data to outside locations.</p>
+<p><strong>3.2.5</strong> <strong>Modularity</strong></p>
+<p>1. Modules As Plugins</p>
+<p>KWEST is an extendable system. It can use external modules to increase functionality or to modify existing operations. Support for using modules is built into KWEST right from the design stage. Additional extraction libraries can be included using the plugin module.</p>
+<p>2. Support for developers</p>
+<p>KWEST provides support to developers by providing access to all internal features and database. The API layer allows developers to easily supplement internal operations with their modules.</p>
+<p><strong>3.3</strong> <strong>External</strong> <strong>Interface</strong> <strong>Requirements</strong></p>
+<p><strong>3.3.1</strong> <strong>User</strong> <strong>Interfaces</strong></p>
+<p>The user can use the system through the command line. The system mounts a virtual ﬁle system which the user can use to navigate through. If the ﬁle explorer/browser supports virtual ﬁle system, the user can use that to navigate through the ﬁles.</p>
+<p><strong>3.3.2</strong> <strong>Hardware</strong> <strong>Interfaces</strong></p>
+<p>No hardware interfaces used as the ﬁle system exists as a virtual entity.</p>
+<p><strong>3.3.3</strong> <strong>Software</strong> <strong>Interfaces</strong></p>
+<p>• FUSE[17]</p>
+<p>KWEST uses FUSE to run the ﬁle system code in user space without editing the kernel code.The FUSE module provides only a “bridge” to the actual kernel interfaces. Major ﬁle system operations are deﬁned by FUSE and forwarded to KWEST for implementation.</p>
+<p>• SQLite[18]</p>
+<p>KWEST uses SQLite database to store data. In contrast to other database management systems, SQLite is not a separate process but an integral part of KWEST. Database is accessed and modiﬁed for most of the operations performed by KWEST.</p>
+<p><strong>3.3.4</strong> <strong>Communication</strong> <strong>Interfaces</strong></p>
+<p>KWEST can be accessed like any other ﬁle system via Command line or ﬁle managers like Nautilus, Thunar etc.</p>
+<p><strong>3.4</strong> <strong>Nonfunctional</strong> <strong>Requirements</strong></p>
+<p><strong>3.4.1</strong> <strong>Performance</strong> <strong>Requirements</strong></p>
+<p>• Response Time</p>
+<p>The response time for any action on the ﬁle system or the database should be reasonable under normal operational circumstances.</p>
+<p>• Capacity</p>
+<p>KWEST can be used by any user with sufﬁcient permissions to initialise the ﬁlesystem. Subsequent operations like read,write,modify etc. are restricted by user permissions similar to normal ﬁle systems.</p>
+<p>• Scalability</p>
+<p>KWEST provides suggestions and includes automated tagging rules for Audio, Video and Images. It also allows manual tagging of ﬁles by the user. Various modules can be further added for recognising and categorising other ﬁle types.</p>
+<p><strong>3.4.2</strong> <strong>Safety</strong> <strong>Requirements</strong></p>
+<p>• Power Failure</p>
+<p>The system maintains a log ﬁle for database. It prevents data corruption by committing data that has been fully written to the log. This should prevent most, if not all, data corruption.</p>
+<p>• Data Loss</p>
+<p>If any ﬁle is accessed which is mentioned in database but deleted from the system then it is removed from the database and appropriate message is displayed to user.</p>
+<p>• Access Rights</p>
+<p>The system checks if the ﬁle tagged is available to user for access. It does not allow ﬁles to be included which cannot be access by the user.</p>
+<p><strong>3.4.3</strong> <strong>Security</strong> <strong>Requirements</strong></p>
+<p>KWEST can be used only by a single user with sufﬁcient rights to execute the software. No other user will have permissions to modify tags and ﬁles in the system.</p>
+<p><strong>3.4.4</strong> <strong>Software</strong> <strong>Quality</strong> <strong>Attributes</strong></p>
+<p>• Availability</p>
+<p>The System shall be available from mounting the ﬁle system until its unmounted.</p>
+<p>• Updatability</p>
+<p>The system shall allow for addition or deletion of ﬁles under tags.</p>
+<p>• Reliability</p>
+<p>– The system shall save new tags created by active user.</p>
+<p>– The system shall save the ﬁle path of an active user to database whenever new ﬁles are added to a tag.</p>
+<p>– The system shall maintain a log ﬁle which records every operation on database. – The system shall modify database whenever tags or ﬁles are deleted.</p>
+<p>– The system shall remove ﬁle entries from database whenever it is unable to access them.</p>
+<p>• Portability</p>
+<p>The system is implemented on Linux. It is compatible with various other Linux distributions like Ubuntu, Fedora, Red Hat, etc.</p>
+<p>• Testability</p>
+<p>New modules designed to be added to the system, to identify ﬁle types other than audio, video and images must be tested to check if they are compatible with input-output format of the system.</p>
+<p>• Usability</p>
+<p>The system does not have a large learning curve as the user deals with commands common to all ﬁle systems. Documentation provided for the system will include user manuals, developer reference and common FAQ.</p>
+<p><strong>3.5</strong> <strong>Other</strong> <strong>Requirements</strong></p>
+<p><strong>3.5.1</strong> <strong>Legal</strong> <strong>Requirements</strong></p>
+<p>All the libraries, programs used in this project are open sourced under GPL. SQLite is a database which is free to use, distribute or modify. The FUSE kernel module is merged with the Linux Kernel, which is open sourced and freely available under GPL. There are no proprietary or closed source products, libraries or interfaces used in this program. The project KWEST and its subsequent implementations will be open sourced under the GPL upon completion.</p>
+<p><strong>3.6</strong> <strong>Analysis</strong> <strong>Model</strong></p>
+<p><strong>3.6.1</strong> <strong>Data</strong> <strong>Flow</strong> <strong>diagram</strong></p>
+<p>Level 0</p>
+<p>Figure 3.1: Data ﬂow diagram - Level 0</p>
+<p>Level 1</p>
+<p>Figure 3.2: Data ﬂow diagram - Level 1</p>
+<p>Level 2</p>
+<p>Figure 3.3: Data ﬂow diagram - Level 2</p>
+<p><strong>3.6.2</strong> <strong>Entity</strong> <strong>Relationship</strong> <strong>diagram</strong></p>
+<p>Figure 3.4: Entity Relationship diagram</p>
+<p><strong>3.7</strong> <strong>System</strong> <strong>Implementation</strong> <strong>Plan</strong></p>
+<p><strong>Phase</strong> <strong>1:</strong> <strong>September</strong> <strong>2012</strong> <strong>-</strong> <strong>November</strong> <strong>2012</strong></p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Task</p>
+</blockquote></td>
+<td><blockquote>
+<p>Start Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>End Date</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Problem identiﬁcation</p>
+</blockquote></td>
+<td><blockquote>
+<p>01/09/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>07/09/12</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Information gathering</p>
+</blockquote></td>
+<td><blockquote>
+<p>08/09/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>14/09/12</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Creating problem deﬁnition</p>
+</blockquote></td>
+<td><blockquote>
+<p>15/09/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>21/09/12</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Understanding underlying technology</p>
+</blockquote></td>
+<td><blockquote>
+<p>22/09/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>05/10/12</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Analysing problem</p>
+</blockquote></td>
+<td><blockquote>
+<p>06/10/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>12/10/12</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Designing solution</p>
+</blockquote></td>
+<td><blockquote>
+<p>13/10/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>26/10/12</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Reﬁning design</p>
+</blockquote></td>
+<td><blockquote>
+<p>27/10/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>02/11/12</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Creating design report</p>
+</blockquote></td>
+<td><blockquote>
+<p>03/11/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>09/11/12</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 3.1: Phase 1 Implementation Plan</p>
+<p><strong>Phase</strong> <strong>2:</strong> <strong>December</strong> <strong>2012</strong> <strong>-</strong> <strong>March</strong> <strong>2013</strong></p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Task</p>
+</blockquote></td>
+<td><blockquote>
+<p>Start Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>End Date</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Building a stub implementation</p>
+</blockquote></td>
+<td><blockquote>
+<p>01/12/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>14/12/12</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Implement ﬁle system operations</p>
+</blockquote></td>
+<td><blockquote>
+<p>15/12/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>28/12/12</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Extract Metadata from ﬁles</p>
+</blockquote></td>
+<td><blockquote>
+<p>28/12/12</p>
+</blockquote></td>
+<td><blockquote>
+<p>11/01/13</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Implement modular plugins</p>
+</blockquote></td>
+<td><blockquote>
+<p>12/01/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>25/01/13</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Apply Apriori algorithm to database</p>
+</blockquote></td>
+<td><blockquote>
+<p>26/01/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>08/02/13</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Rigorous testing</p>
+</blockquote></td>
+<td><blockquote>
+<p>09/02/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>22/02/13</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Debugging and reﬁning</p>
+</blockquote></td>
+<td><blockquote>
+<p>23/02/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>08/03/13</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>System testing</p>
+</blockquote></td>
+<td><blockquote>
+<p>09/03/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>15/03/13</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Creating implementation report</p>
+</blockquote></td>
+<td><blockquote>
+<p>16/03/13</p>
+</blockquote></td>
+<td><blockquote>
+<p>31/03/13</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 3.2: Phase 2 Implementation Plan</p>
+<p>Chapter 4</p>
+<p>SYSTEM DESIGN</p>
+<p><strong>4.1</strong> <strong>System</strong> <strong>Architecture</strong></p>
+<p>Figure 4.1: System Architecture</p>
+<p><strong>4.2</strong> <strong>UML</strong> <strong>Diagrams</strong></p>
+<p><strong>4.2.1</strong> <strong>Use-case</strong> <strong>diagram</strong></p>
+<p>Figure 4.2: Use Case diagram</p>
+<p><strong>4.2.2</strong> <strong>Component</strong> <strong>diagram</strong></p>
+<p>Figure 4.3: Component diagram</p>
+<p><strong>4.2.3</strong> <strong>Deployment</strong> <strong>diagram</strong></p>
+<p>Figure 4.4: Deployment diagram</p>
+<p>Chapter 5</p>
+<p>TECHNICAL SPECIFICATIONS</p>
+<p><strong>5.1</strong> <strong>Technology</strong> <strong>Details</strong> <strong>Used</strong> <strong>in</strong> <strong>the</strong> <strong>Project</strong></p>
+<p><strong>5.1.1</strong> <strong>Development</strong></p>
+<p><strong>FUSE</strong></p>
+<p>For developing and managing the virtual ﬁle system we have used FUSE. Minimum required: 2.8</p>
+<p>Version used: 2.9.0</p>
+<p><strong>SQLite</strong></p>
+<p>We have used SQLite as the data repository for this project. Minimum required: 3.6</p>
+<p>Version Used: 3.7.13</p>
+<p><strong>Language</strong> <strong>for</strong> <strong>Implementation</strong></p>
+<p>We use ANSI C for implementing our project modules. Speciﬁcally, we follow the GNU C99 standards while compiling our code. GNU C99 is an extension of the C99 providing some extra features. Note: Some features are incompatible with other standards.</p>
+<p>GNU C99</p>
+<p><strong>Compiler</strong></p>
+<p>For compiling our project modules we use the GNU Compiler Collection (GCC). Minimum required: 4.6</p>
+<p>Version used: 4.7.2 on Linux Mint 14</p>
+<p><strong>5.1.2</strong> <strong>Operating</strong> <strong>Environment</strong></p>
+<p><strong>Platform</strong></p>
+<p>The project is based on operating systems utilising the linux kernel. Any implementation which provides a POSIX compatible environment is sufﬁcient.</p>
+<p>Minimum required: 2.6.14</p>
+<p>Version used: 3.5.0-generic on Linux Mint 14</p>
+<p><strong>Operating</strong> <strong>System</strong></p>
+<p>We have used various operating environments while creating and testing the project. Linux distributions were Ubuntu 12.04, Ubuntu 12.10, Fedora 18, Linux Mint 13, Linux Mint 14.</p>
+<p><strong>5.1.3</strong> <strong>External</strong> <strong>Libraries</strong></p>
+<p><strong>TagLib</strong></p>
+<p>Used for extracting Audio metadata from ﬁles. Minimum required: TagLib 1.7.1</p>
+<p>Version used: TagLib 1.8</p>
+<p><strong>LibExtractor</strong></p>
+<p>GNU Libextractor is a library used to extract meta data from ﬁles. It supports extraction from Image, PDF and Video ﬁle types.</p>
+<p>Minimum required: 1.0.0 Version used: 1.0.1</p>
+<p><strong>Poppler</strong></p>
+<p>Poppler is a PDF rendering library based on the xpdf-3.0 code base. Minimum required: 0.21</p>
+<p>Version used: 0.22</p>
+<p><strong>5.1.4</strong> <strong>Debugging</strong></p>
+<p><strong>GDB:</strong> <strong>GNU</strong> <strong>Project</strong> <strong>Debugger</strong></p>
+<p>Used to debug program crashes and memory errors. Version used: 7.5</p>
+<p><strong>Valgrind</strong></p>
+<p>Used as a proﬁling tool, for memory related issues and program crashes. Version used: 3.7.0</p>
+<p><strong>5.2</strong> <strong>Reference</strong> <strong>to</strong> <strong>Technology</strong></p>
+<p><strong>5.2.1</strong> <strong>Development</strong></p>
+<p><strong>FUSE</strong></p>
+<p>FUSE is a loadable kernel module for Unix-like computer operating systems that lets non-privileged users create their own ﬁle systems without editing kernel code. This is achieved by running ﬁle system code in user space while the FUSE module provides only a bridge to the actual kernel interfaces.</p>
+<p>http://fuse.sourceforge.net/</p>
+<p><strong>SQLite</strong></p>
+<p>SQLite is a relational database management system contained in a small C programming library. It implements a self-contained, zero-conﬁguration, transactional SQL database engine which can be embedded in applications.</p>
+<p>http://www.sqlite.org/</p>
+<p><strong>Language</strong> <strong>for</strong> <strong>Implementation</strong></p>
+<p>We use GNU99 C standard for implementing our project modules. http://gcc.gnu.org/c99status.html</p>
+<p><strong>Compiler</strong></p>
+<p>GCC is a compiler system which provides front ends for various languages including C. It provides optimisation’s, debugging and other features to help program development. http://gcc.gnu.org/</p>
+<p><strong>5.2.2</strong> <strong>Operating</strong> <strong>Environment</strong></p>
+<p><strong>Platform</strong></p>
+<p>The project is based on operating systems utilising the linux kernel. Any implementation which provides a POSIX compatible environment is sufﬁcient.</p>
+<p>https://www.kernel.org/</p>
+<p><strong>Operating</strong> <strong>System</strong></p>
+<p>Linux distributions were : http://www.ubuntu.com/ http://linuxmint.com/ http://fedoraproject.org/</p>
+<p><strong>5.2.3</strong> <strong>External</strong> <strong>Libraries</strong></p>
+<p><strong>TagLib</strong></p>
+<p>TagLib is a library for reading and editing the meta-data of several popular audio formats. Currently it supports both ID3v1 and ID3v2 for MP3 ﬁles, Ogg Vorbis comments and ID3 tags and Vorbis comments in FLAC,MPC,Speex,WavPack TrueAudio,WAV,AIFF, MP4 and ASF ﬁles.</p>
+<p>http://taglib.github.com/</p>
+<p><strong>LibExtractor</strong></p>
+<p>GNU Libextractor is a library used to extract meta data from ﬁles. The goal is to provide developers of ﬁle-sharing networks, browsers or WWW-indexing bots with a universal library to obtain simple keywords and meta data to match against queries and to show to users instead of only relying on ﬁle names.</p>
+<p>http://www.gnu.org/software/libextractor/</p>
+<p><strong>Poppler</strong></p>
+<p>Poppler is a PDF rendering library based on the xpdf-3.0 code base. http://poppler.freedesktop.org/</p>
+<p><strong>5.2.4</strong> <strong>Debugging</strong></p>
+<p><strong>GDB:</strong> <strong>GNU</strong> <strong>Project</strong> <strong>Debugger</strong></p>
+<p>GDB, the GNU Project debugger, allows you to see what is going on ‘inside’ another programwhileitexecutes–orwhatanotherprogramwasdoingatthemomentitcrashed. http://www.gnu.org/software/gdb/</p>
+<p><strong>Valgrind</strong></p>
+<p>Valgrind is a GPL licensed programming tool for memory debugging, memory leak detection,andproﬁling. Valgrindwas originallydesignedto be afree memorydebugging tool for Linux on x86, but has since evolved to become a generic framework for creating dynamic analysis tools such as checkers and proﬁlers.</p>
+<p>http://valgrind.org/</p>
+<p>Chapter 6</p>
+<p>PROJECT ESTIMATION, SCHEDULE AND TEAM STRUCTURE</p>
+<p><strong>6.1</strong> <strong>Project</strong> <strong>Estimate</strong> <strong>and</strong> <strong>Schedule</strong></p>
+<p>We use the Work Breakdown Structure (WBS) for project estimation. The WBS is organised around the primary products of the project (or planned outcomes) instead of the work needed to produce the products (planned actions). The Work Breakdown Structure presented here represents all the work required to complete this project.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>Project Management</p>
+</blockquote></td>
+<td><blockquote>
+<p>1 Week</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>1.1 1.2 1.3 1.4</p>
+</blockquote></td>
+<td><blockquote>
+<p>Project Initiation Project Planning</p>
+<p>Project Execution and Control Project Closeout</p>
+</blockquote></td>
+<td><blockquote>
+<p>1 Day 2 Days 3 Days 1 Day</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p>Deﬁnition</p>
+</blockquote></td>
+<td><blockquote>
+<p>2 Weeks</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2.1 2.2 2.3 2.4 2.5</p>
+</blockquote></td>
+<td><blockquote>
+<p>Start-up and Orientation Determine Project Requirements Create future process model Reconcile Project Requirements Functional Speciﬁcation</p>
+</blockquote></td>
+<td><blockquote>
+<p>2 Days 3 Days 2 Days 2 Days 5 Days</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>System Design</p>
+</blockquote></td>
+<td><blockquote>
+<p>3 Weeks</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>3.1 3.2 3.3 3.4 3.5 3.6</p>
+</blockquote></td>
+<td><blockquote>
+<p>Technical Architecture System Standards Physical Environment Technical Speciﬁcation Creating Prototypes Test Plans</p>
+</blockquote></td>
+<td><blockquote>
+<p>5 Days 2 Days 2 Days 3 Days 6 Days 3 Days</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td><blockquote>
+<p>System Development</p>
+</blockquote></td>
+<td><blockquote>
+<p>5 Weeks</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4.1 4.2 4.3 4.4 4.5 4.6</p>
+</blockquote></td>
+<td><blockquote>
+<p>Develop and Test Software Modules User Training Materials</p>
+<p>Technical Documentation</p>
+<p>Unit, Integration and System Test Results Performance testing</p>
+<p>Acceptance testing</p>
+</blockquote></td>
+<td><blockquote>
+<p>10 Days 2 Days 5 Days 10 Days 4 Days 4 Days</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td><blockquote>
+<p>System Implementation</p>
+</blockquote></td>
+<td><blockquote>
+<p>3 Weeks</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>5.1 5.2 5.3 5.4</p>
+</blockquote></td>
+<td><blockquote>
+<p>Acceptance Environment</p>
+<p>Data Initialisation and Conversion Test Results Acceptance test results</p>
+<p>Supporting Material</p>
+</blockquote></td>
+<td><blockquote>
+<p>5 Days 8 Days 4 Days 4 Days</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td><blockquote>
+<p>Transition to Ready State</p>
+</blockquote></td>
+<td><blockquote>
+<p>1 Week</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6.1 6.2 6.3</p>
+</blockquote></td>
+<td><blockquote>
+<p>Train Users Convert Data Deploy System</p>
+</blockquote></td>
+<td><blockquote>
+<p>2 Days 2 Days 3 Days</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 6.1: Work Breakdown Structure</p>
+<p><strong>6.2</strong> <strong>Team</strong> <strong>Structure</strong></p>
+<p>Member Member 1 Member 2 Member 3 Member 4</p>
+<p>Member 1: Aseem Gogte Prior Experience:</p>
+<p>• Well versed in C, C++</p>
+<p>• Visual Basic</p>
+<p>• Java</p>
+<p>• Databases - Oracle</p>
+<p>New Technology Learnt:</p>
+<p>• Version Control - GIT</p>
+<p>• FUSE</p>
+</blockquote>
+<p>Name Aseem Gogte Sahil Gupta</p>
+<blockquote>
+<p>Harshvardhan Pandit Rohit Sharma</p>
+<p>• Proﬁling and Debugging Tools - Valgrind, GDB</p>
+<p>Member 2: Sahil Gupta Prior Experience:</p>
+<p>• Well versed in C, C++</p>
+<p>• Visual Basic</p>
+<p>• Java</p>
+<p>• Databases - Oracle</p>
+<p>New Technology Learnt:</p>
+<p>• Version Control - GIT</p>
+<p>• FUSE</p>
+<p>• Databases - SQLite</p>
+<p>Member 3: Harshvardhan Pandit Prior Experience:</p>
+<p>• Well versed in C, C++</p>
+<p>• Visual Basic, .NET</p>
+<p>• Java</p>
+<p>• System programming</p>
+<p>New Technology Learnt:</p>
+<p>• Version Control - GIT</p>
+<p>• FUSE</p>
+<p>• Proﬁling and Debugging Tools - Valgrind, GDB</p>
+<p>Member 4: Rohit Sharma Prior Experience:</p>
+<p>• Well versed in C, C++</p>
+<p>• Visual Basic</p>
+<p>• Java</p>
+<p>• Databases - Oracle</p>
+<p>New Technology Learnt:</p>
+<p>• Version Control - GIT</p>
+<p>• FUSE</p>
+<p>• Databases - SQLite</p>
+<p>Chapter 7</p>
+<p>SOFTWARE IMPLEMENTATION</p>
+<p><strong>7.1</strong> <strong>Introduction</strong></p>
+<p>The implementation ofthe software was done in a modularmannerusing the incremental approach of SDLC. ANSI C was the language used to implement the project. An SQLite database was used for creating and managing the data repository. Various external libraries were used for the extraction of the metadata. The following modules constituted our project: •</p>
+<p>• Module 1: Creation of a virtual ﬁle system using FUSE</p>
+<p>• Module 2: Interfacing a Data Repository using SQLite</p>
+<p>• Module 3: Adding automated Extraction of Metadata</p>
+<p>• Module 4: Importing Semantics in to the ﬁle system</p>
+<p>• Module 5: Exporting Semantics from the ﬁle system</p>
+<p>• Module 6: Association Rule learning using Apriori Algorithm</p>
+<p><strong>7.2</strong> <strong>Databases</strong></p>
+<p>The project was to implement a semantic ﬁle system. This required a data repository to store all the information such as ﬁle name, physical location, attributes, etc. Also, the metadata extracted from the ﬁles was also stored in the database. This way the database formed a central information location for the ﬁle system. Therefore, for the ﬁle system implementation to be stable andefﬁcient,the system requiredan in-place robustdatabase whichoffers integrity andspeed. From the various options available,the SQLite database was selected and used.</p>
+<p>SQLite is a relational database management system contained in a small C programming library. Unlike client-server database management systems, the SQLite engine has no standalone processes with which the application program communicates. Instead,theSQLitelibraryislinkedinandthusbecomesanintegralpartoftheapplication program. SQLitestorestheentiredatabase(deﬁnitions,tables,indices,andthedataitself) as a single cross- platform ﬁle on a host machine. Features include :</p>
+<p>1. Zero Conﬁguration</p>
+<p>2. Serverless</p>
+<p>3. Single Database File</p>
+<p>4. Stable Cross-platform database</p>
+<p>5. Manifest typing</p>
+<p><strong>7.3</strong> <strong>Important</strong> <strong>modules</strong> <strong>and</strong> <strong>algorithms</strong></p>
+<p><strong>7.3.1</strong> <strong>Creation</strong> <strong>of</strong> <strong>a</strong> <strong>Virtual</strong> <strong>File</strong> <strong>System</strong> <strong>using</strong> <strong>FUSE</strong></p>
+<p>The ﬁrst module of implementation was to create a basic ﬁle system using FUSE. Using FUSE we created a virtual ﬁle system capable of doing all the operations that a normal ﬁle system does. The module consists of the following phases: •</p>
+<p>• Phase 1: Implement FUSE to create a basic ﬁle system structure using ANSI C as the implementation language.</p>
+<p>• Phase 2: Connect the ﬁle system created to the data repository created using a SQLite database. Create tags and ﬁles view by querying the database through FUSE.</p>
+<p>• Phase 3: Implementing common ﬁle operations with respect to tags and ﬁles such as read, write, open, copy, move etc.</p>
+<p>• Phase 4: Extraction of metadata from the ﬁles using external libraries and organisation of the ﬁle system based on metadata.</p>
+<p>• Phase 5: Displaying suggestion based on associations derived using Apriori Algorithm.</p>
+<p><strong>7.3.2</strong> <strong>Interfacing</strong> <strong>a</strong> <strong>Data</strong> <strong>Repository</strong> <strong>using</strong> <strong>SQLite</strong></p>
+<p>The database is an important module of the ﬁle system. All the data required to browse and navigate the ﬁle system is stored in the database. FUSE interacts with the data in the database by querying for particular data based on path accessed. It is vital for the proper functioning of the system that the database always remains consistent. Logging mechanisms ensure that operations on the database always reach an endpoint. This module is used to check, correct and maintain integrity of the database by checking for redundant entries. Also, if there are new ﬁles which have not been added to KWEST, this module can help the user add them. We implement this module in the following ways: •</p>
+<p>• Phase 1: Create database tables for a ﬁle system.</p>
+<p>• Phase 2: The relation tables between tags, ﬁles are stored.</p>
+<p>• Phase 3: Store the extracted metadata in the database.</p>
+<p>• Phase 4: The association rules for the data are derived using the Apriori algorithm.</p>
+<p><strong>7.3.3</strong> <strong>Adding</strong> <strong>Automated</strong> <strong>Extraction</strong> <strong>of</strong> <strong>Metadata</strong></p>
+<p>Metadata (meta content) is deﬁned as data providing information about one or more aspects of the data. Metadata can be stored either internally, in the same ﬁle as the data, or externally, in a separate ﬁle. Metadata that is embedded with content is called embedded metadata. The metadata of the ﬁle is extracted by using external libraries. The data repository stores the extracted metadata in a predetermined format. •</p>
+<p>• Phase 1: Test external libraries to determine which of them can be used.</p>
+<p>• Phase 2: Extract metadata using external libraries.</p>
+<p>• Phase 3: Store the extracted metadata in the database.</p>
+<p>• Phase 4: Form relations between metadata and ﬁles using association rules.</p>
+<p><strong>7.3.4</strong> <strong>Importing</strong> <strong>Semantics</strong> <strong>in</strong> <strong>to</strong> <strong>the</strong> <strong>File</strong> <strong>System</strong></p>
+<p>Users already have certain organisational structures in the way they store data in ﬁle systems. This module imports semantics by converting the storage hierarchy to tag-based hierarchy. This means the directory structure present in the ﬁle system will be used to form tags and the ﬁles listed under the directory are tagged under that tag. •</p>
+<p>• Phase 1: Parse the folder structure on local hard disk.</p>
+<p>• Phase 2: Add entry for each ﬁle and folder to the database. • Phase 3: Remove or ignore hidden and system ﬁles.</p>
+<p>• Phase 4: Prune the database entries on every start up.</p>
+<p><strong>7.3.5</strong> <strong>Exporting</strong> <strong>Semantics</strong> <strong>from</strong> <strong>the</strong> <strong>File</strong> <strong>System</strong></p>
+<p>This module can export the storage hierarchy to some external location. The semantic organisation of tags is converted to actual directories and the ﬁles are then copied to these directories. This is similar to copying contents from one ﬁle system to another. •</p>
+<p>• Phase 1: Copy virtual locations to external location. • Phase 2: Perform physical copy of ﬁles.</p>
+<p>• Phase 3: Create folders and sub folders based on tags. • Phase 4: Copy suggestions using data repository.</p>
+<p><strong>7.3.6</strong> <strong>Association</strong> <strong>Rule</strong> <strong>Learning</strong> <strong>using</strong> <strong>Apriori</strong> <strong>Algorithm</strong></p>
+<p>Association rules help in organising the ﬁle system data by providing suggestions while tagging ﬁles. These suggestions can be helpful when the user has either forgotten to tag the ﬁle, or is yet about to do it. This association rule learning approach uses the Apriori algorithm. •</p>
+<p>• Phase 1: Run Apriori over the KWEST database. • Phase 2: Perform optimisation’s and prune steps. • Phase 3: Store association rules in database.</p>
+<p>• Phase 4: Integrate with KWEST to show suggestions.</p>
+<p><strong>7.4</strong> <strong>Buisness</strong> <strong>logic</strong> <strong>and</strong> <strong>architecture</strong></p>
+<p><strong>7.4.1</strong> <strong>Buisness</strong> <strong>logic</strong></p>
+<p>In computing, a ﬁle system (or ﬁlesystem) is a type of data store which can be used to store,retrieve andupdate a setofﬁles. The term couldreferto the abstractdata structures used to deﬁne ﬁles, or to the actual software or ﬁrmware components that implement the abstract ideas.</p>
+<p>Traditionally, ﬁle systems were always developed with performance parameters in mind. However, with the data-rich systems of today, the responsibilities of a ﬁle system have increased. The onus of organisation and retrieval of data is much more on the ﬁle system than the user. The ﬁle system structure deﬁnes the capability and capacity of searches performed on it. In such a scenario, a ﬁle system that facilitates retrieval by providing features that help automate organisation is a lucrative option.</p>
+<p><strong>7.4.2</strong> <strong>Expenses</strong> <strong>and</strong> <strong>Legal</strong> <strong>ramniﬁcations</strong></p>
+<p>The software has been open sourced under the Apache License. As such, there are no cost requirments that can be incurred by the adaption of KWEST. All the utilised tools, libraries, platforms and algorithms are free to use. This encourages technology adaption for other students, developers and organisations.</p>
+<p><strong>7.4.3</strong> <strong>Novelty</strong> <strong>of</strong> <strong>idea</strong></p>
+<p>There have been no previous implementations of adapting data mining techniques to a ﬁle system. This suggests the novelty of the idea of KWEST and the possibilities for future work.</p>
+<p><strong>7.4.4</strong> <strong>Buisness</strong> <strong>Architecture</strong></p>
+<p>Chapter 8</p>
+<p>SOFTWARE TESTING</p>
+<p><strong>8.1</strong> <strong>Introduction</strong></p>
+<p><strong>8.1.1</strong> <strong>Purpose</strong></p>
+<p>Software testing can be stated as the process of validating and verifying that a computer program/application/product:</p>
+<p>• Meets the requirements that guided its design and development. • Works as expected.</p>
+<p>• Can be implemented with the same characteristics. • Satisﬁes the needs of stakeholders.</p>
+<p>Software testing, depending on the testing method employed, can be implemented at any time in the development process. Traditionally most of the test effort occurs after the requirements have been deﬁned and the coding process has been completed, but in the Agile approaches most of the test effort is on-going. As such, the methodology of the test is governed by the chosen software development methodology.</p>
+<p><strong>8.1.2</strong> <strong>Scope</strong></p>
+<p>The testing of the system was done manually and no testing tools were used. The test plan describes the unit, functional, performance, usability, regression tests that were performed. Only codes that were pushed as commits were considered as candidates for testing.</p>
+<p><strong>8.1.3</strong> <strong>Intended</strong> <strong>Audience</strong></p>
+<p>The testing of this system is intended for 3 types of audiences:</p>
+<p>1. End Users: The users who will be using the system will review the testing as a mark of stability and performance of the system.</p>
+<p>2. Developers: Will view the testing for knowing existing limitations and bugs. 3. Reviewers: Will use these test results as a metric to evaluate the project.</p>
+<p><strong>8.2</strong> <strong>Test</strong> <strong>Plan</strong></p>
+<p><strong>8.2.1</strong> <strong>Target</strong> <strong>Items</strong></p>
+<p>The following have been identiﬁed as targets for testing: 1. Code and associated areas</p>
+<p>2. File system operations 3. Databases: SQLite3</p>
+<p>4. Operating Systems</p>
+<p><strong>8.2.2</strong> <strong>Outline</strong> <strong>of</strong> <strong>Tests</strong></p>
+<p><strong>Tests</strong> <strong>performed</strong></p>
+<p>1. Performance tests</p>
+<p>2. Functional tests</p>
+<p>3. Data Integrity tests</p>
+<p>4. Regression tests</p>
+<p>5. Usability tests</p>
+<p><strong>8.2.3</strong> <strong>Test</strong> <strong>Approach</strong></p>
+<p>Any bugs found should be reported with related information, which should include who discovered it, how, a description of the bug, and who ﬁxed it and when. Also, re-testing of the code done to make sure that defect has been ﬁxed and there no new bugs produced due to change in code.</p>
+<p>1. Performance Testing:</p>
+<p>The focus of Performance testing is checking a software program’s</p>
+<p>• Speed : Determines whether the system responds quickly.</p>
+<p>• Scalability : Determines maximum user load the software application can handle.</p>
+<p>• Stability : Determines if the application is stable under varying loads.</p>
+<p>Tools required: Software timers Success criteria:</p>
+<p>a) Manual(user) perception does not notice any “lags”.</p>
+<p>b) Time to perform operations is within an acceptable range.</p>
+<p>2. Functional Testing:</p>
+<p>The prime objective of Functional testing is checking the functionalities of the software system. It mainly concentrates on -</p>
+<p>• Mainline functions : Testing the main functions of an application.</p>
+<p>• Basic Usability : It involves basic usability testing of the system. It checks whetheran usercan freelynavigate throughthe screens withoutanydifﬁculties.</p>
+<p>• Accessibility : Checks the accessibility of the system for the user.</p>
+<p>• Error Conditions : Usage of testing techniques to check for error conditions. It checks whether suitable error messages are displayed.</p>
+<p>Tools required: None(manual testing)</p>
+<p>Success criteria: All of the following are successfully tested:</p>
+<p>a) all key use-case scenarios. b) all key features.</p>
+<p>3. Data Integrity Testing:</p>
+<p>Data integrity refers to the quality of the data in databases and is the measurement by which users examine data quality, reliability and usefulness. Data integrity testing veriﬁes that converted data is accurate andfunctions correctly within a given application. Testing data integrity involves:</p>
+<p>• Database : Verifying that correct values are saved in databases. • Write-back : Correct data is written to disk.</p>
+<p>• Read : Correct data is read from disk.</p>
+<p>• File Integrity : Operations do not break existing ﬁles.</p>
+<p>Tools required: File compare tools (manual testing)</p>
+<p>Success criteria: All of the following are successfully tested:</p>
+<p>a) ﬁles are same in size, byte-blocks, permissions and parameters. b) data is not changed, modiﬁed or removed unless intended.</p>
+<p>4. Regression Testing:</p>
+<p>Regression Testing is required when there is a :</p>
+<p>• Change in requirements and code is modiﬁed according to the requirement • New feature is added to the software</p>
+<p>• Defect ﬁxing</p>
+<p>• Performance issue ﬁx</p>
+<p>Tools required: None(manual testing)</p>
+<p>Success criteria: All of the following are successfully tested:</p>
+<p>a) all previous operations are successfully executed. b) previously solved bugs are not re-introduced.</p>
+<p>c) operations do not suffer from unwanted performance hits.</p>
+<p>5. Usability Testing:</p>
+<p>Goal of this testing is to satisfy users and it mainly concentrates on the following parameters of a system:</p>
+<p>Effectiveness of the system</p>
+<p>• Is the system is easy to learn?</p>
+<p>• Is the system useful and adds value to the target audience?</p>
+<p>• Is Content, Colour, Icons, Images used are aesthetically pleasing ? Efﬁciency</p>
+<p>• Navigation required to reach desired screen/web page should be very less. Scroll bars shouldn’t be used frequently.</p>
+<p>• Uniformity in the format of screen/pages in your application/website. • Provision to search within your software application or website</p>
+<p>Accuracy</p>
+<p>• No outdated or incorrect data like contact information/address should be present.</p>
+<p>• No broken links should be present. • User Friendliness</p>
+<p>• Controls used should be self-explanatory and must not require training to operate</p>
+<p>• Help should be provided for the users to understand the application / website • Alignment with above goals helps in effective usability testing</p>
+<p>Tools required: None(manual testing)</p>
+<p>Success criteria: All of the following are successfully tested:</p>
+<p>a) operations are not changed drastically from a traditional ﬁle system. b) user can use the ﬁle system without any special tools.</p>
+<p><strong>8.2.4</strong> <strong>Entry</strong> <strong>and</strong> <strong>Exit</strong> <strong>Criteria:</strong></p>
+<p>1. Test Plan</p>
+<p>A Test Plan Entry Criteria: Code is complete and has been pushed to the Git repository.</p>
+<p>B Test Plan Exit Criteria: All functional requirements have been veriﬁed.</p>
+<p>C Suspension and Resumption Criteria: Testing will be suspended on critical design ﬂaws that will changes in redesign of critical components. Testing will resume when the coding is complete and code is reviewed successfully.</p>
+<p>2. Test Cycle</p>
+<p>A Test Cycle Entry Criteria: When a module has been completed.</p>
+<p>B Test Cycle Exit Criteria: All tests speciﬁed at the start of the testing have completed successfully.</p>
+<p><strong>8.2.5</strong> <strong>Risks,</strong> <strong>Dependencies,</strong> <strong>Assumptions,</strong> <strong>Constraints</strong></p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Risk</p>
+</blockquote></td>
+<td><blockquote>
+<p>Mitigation Strategy</p>
+</blockquote></td>
+<td><blockquote>
+<p>Contingency</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>FUSE API changes</p>
+</blockquote></td>
+<td><blockquote>
+<p>Use FUSE version numbers to run a static check while compiling for required version of FUSE.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Change operation code to new version.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>External Library is no longer maintained</p>
+</blockquote></td>
+<td><blockquote>
+<p>Try to use the latest version number of library available and keep a source ready for distribution.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Change to alternate library.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Performance has degraded</p>
+</blockquote></td>
+<td><blockquote>
+<p>Code with performance in mind, using fast algorithms and approaches.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Use proﬁling tools to detect memory issues and static code analysers for code checking.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 8.1: Risk Management</p>
+<p><strong>8.2.6</strong> <strong>Problem</strong> <strong>Reporting,</strong> <strong>Escalation,</strong> <strong>and</strong> <strong>Issue</strong> <strong>Resolution</strong></p>
+<p>Eachbugwillbegivenapriority,whichwilldeterminewhenitisaddressedinthecurrent iteration. The bug priority may change due to other bugs, issues or re-evaluation of the bug by a peer review.</p>
+<p><strong>8.3</strong> <strong>Test</strong> <strong>Cases</strong></p>
+<p><strong>8.3.1</strong> <strong>Introduction</strong></p>
+<p>The purpose of this Test Case document is to specify and communicate the speciﬁc conditions which need to be validated to enable an assessment of the system. Test Cases aremotivatedbymanythingsbutwillusuallyincludeasubsetofUseCases,performance</p>
+<p>characteristics and the risks the project is concerned with. A separate test case document is prepared for each testing phase (unit, integration, integrity, etc.) identiﬁed in the test plan. The test cases should be organised into related groups that are meaningful to the project – i.e. test suites.</p>
+<p><strong>8.3.2</strong> <strong>File</strong> <strong>System</strong> <strong>Operations</strong></p>
+<p>Testing the ﬁle system for implementations of required operations:</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Operation</p>
+</blockquote></td>
+<td><blockquote>
+<p>Status</p>
+</blockquote></td>
+<td><blockquote>
+<p>Comment</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>getattr readdir access truncate destroy open release mknod rename unlink read write chmod chown mkdir rmdir symlink readlink link utimens statfs fsync setxattr getxattr listxattr</p>
+<p>removexattr</p>
+</blockquote></td>
+<td><blockquote>
+<p>YES YES YES YES YES YES YES YES YES YES YES YES YES YES YES YES INVALID INVALID INVALID NO</p>
+<p>NO INVALID NO</p>
+<p>NO NO NO</p>
+</blockquote></td>
+<td><blockquote>
+<p>checks whether the given path exits lists the contents of the given tag checks for access to speciﬁed tag closes ﬁle after operation</p>
+<p>called on ﬁle system unmount opens for ﬁle for access releases ﬁle after access creates new ﬁle</p>
+<p>renames ﬁles and folders removes ﬁle from system reads data from ﬁle writes data to ﬁle changes permissions changes owner</p>
+<p>creates new directory removes directory</p>
+<p>not required in KWEST not required in KWEST not required in KWEST not implemented</p>
+<p>not implemented</p>
+<p>not required in KWEST not implemented</p>
+<p>not implemented not implemented not implemented</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 8.2: File system operations</p>
+<p><strong>8.3.3</strong> <strong>Performance</strong> <strong>of</strong> <strong>ﬁle</strong> <strong>system</strong> <strong>operations</strong></p>
+<p>Comparison of KWEST ﬁle system against underlying ﬁle system. Test Bench:</p>
+<p>• Operating System: Linux Mint 14 3.5.0-25-generic</p>
+<p>• Original ﬁle system: ext4 500GB disk with partition size 150GB</p>
+<p>• RAM: 4GB</p>
+<p>• swap: 8GB on disk</p>
+<p>• CPU utilisation: average 4</p>
+<p>Contents of Music folder imported into KWEST:</p>
+<p>• Audio: 17 ﬁles totalling 102.9MB</p>
+<p>• Images: 81 ﬁles totalling 196MB</p>
+<p>• PDF: 11 ﬁles totalling 17.9MB</p>
+<p>• Video: 4 ﬁles totalling 1GB</p>
+<p>• Others: 7 ﬁles totalling 7MB</p>
+<p>• Total: 120 ﬁles of size 1.3GB</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Test</p>
+</blockquote></td>
+<td><blockquote>
+<p>Time taken</p>
+</blockquote></td>
+<td><blockquote>
+<p>Comment</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>all ﬁles</p>
+</blockquote></td>
+<td><blockquote>
+<p>120sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>total ﬁle size imported was 1.3GB</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>videos</p>
+</blockquote></td>
+<td><blockquote>
+<p>40sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>extracting metadata from videos is more expensive compared to other ﬁle types</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>images</p>
+</blockquote></td>
+<td><blockquote>
+<p>35sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>images having metadata take longer than those without</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>audio</p>
+</blockquote></td>
+<td><blockquote>
+<p>4sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>audio ﬁles are the fastest to parse and load</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PDF</p>
+</blockquote></td>
+<td><blockquote>
+<p>2sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>PDF ﬁles are parsed quickly as compared to other document types</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>forming associations</p>
+</blockquote></td>
+<td><blockquote>
+<p>2sec</p>
+</blockquote></td>
+<td><blockquote>
+<p>time is proportional to number of common ﬁles in user tags</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 8.3: Performance tests for mounting KWEST</p>
+<p><strong>Test</strong> <strong>scripts</strong></p>
+<p>The following is a simple test script used to evaluate ﬁle system operations. The script works by calculating the difference in time before and after the execution of operations.</p>
+<p>#store current time <strong>let</strong> DA=(‘date +%s ‘)</p>
+<p>#perform file system operation ls -R kwest/src/mnt</p>
+<p>#store new time</p>
+<p><strong>let</strong> DB=(‘date +%s‘) #calculate the difference <strong>let</strong> DC=$DB-$DA</p>
+<p>#output the time taken <strong>echo</strong> $DC</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Operation</p>
+</blockquote></td>
+<td><blockquote>
+<p>ext4</p>
+</blockquote></td>
+<td><blockquote>
+<p>KWEST</p>
+</blockquote></td>
+<td><blockquote>
+<p>Comment</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>list directory</p>
+</blockquote></td>
+<td><blockquote>
+<p>500ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>550ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>there is no noticeable difference</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>read ﬁle</p>
+</blockquote></td>
+<td><blockquote>
+<p>700ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>850ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>some extra time is taken to read a ﬁle depending on the amount of data being read. In general, there is no noticeable difference.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>write ﬁle</p>
+</blockquote></td>
+<td><blockquote>
+<p>1200ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>2200ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>(for5MB textﬁle) writing takes slightlymore time, but the difference is within acceptable range.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>read and write</p>
+</blockquote></td>
+<td><blockquote>
+<p>1010ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>2400ms</p>
+</blockquote></td>
+<td><blockquote>
+<p>(for 5MB text ﬁle) reading and writing simultaneously does not produce any performance degradation.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 8.4: Performance tests for using KWEST</p>
+<p><strong>READ</strong> <strong>operation</strong> <strong>TEST</strong></p>
+<p>Read operation test included reading from a 4.1MB ﬁle and outputing the contents on terminal. The ﬁle was accessed on the KWEST ﬁle system.</p>
+<p>GNU nano 2.2.6 File: ./<strong>test</strong>.sh <strong>echo</strong> "READ test"</p>
+<p><strong>echo</strong> "cat ./mnt/Files/Music/t2.txt let kT=0</p>
+<p>for i in 1 2 3 4 5 do</p>
+<p>echo "Run#" $i #store current time <strong>let</strong> kS=(‘date +%s‘)</p>
+<p>#perform file system operation</p>
+<p><strong>cat</strong> ./mnt/Files/Music/t2.txt &gt; ./mnt/Files/Music/<strong>test</strong>.txt #store new time</p>
+<p><strong>let</strong> kE=(‘date +%s‘) #calculate the difference <strong>let</strong> kO=$kE-$kS</p>
+<p><strong>let</strong> kT=kT+kO</p>
+<p>#output the time taken</p>
+<p><strong>echo</strong> "kwest operation time = " $kO "sec" <strong>done</strong></p>
+<p><strong>let</strong> kT=kT/5</p>
+<p><strong>echo</strong> "average time taken = " $kT</p>
+<p>Figure 8.1: Read operation average time for 4.1MB text ﬁle</p>
+<p><strong>WRITE</strong> <strong>operation</strong> <strong>test</strong></p>
+<p>Write operation test included reading from a 4.1MB ﬁle and writing the contents to another ﬁle. Both the ﬁles were accessed from the KWEST ﬁle system.</p>
+<p>GNU nano 2.2.6 File: ./<strong>test</strong>.sh <strong>echo</strong> "READ test"</p>
+<p><strong>echo</strong> "cat ./mnt/Files/Music/t2.txt &gt; ./mnt/Files/Music/ test.txt"</p>
+<p><strong>let</strong> kT=0</p>
+<p><strong>for</strong> i <strong>in</strong> 1 2 3 4 5 <strong>do</strong></p>
+<p><strong>echo</strong> "Run#" $i #store current time <strong>let</strong> kS=(‘date +%s‘)</p>
+<p>#perform file system operation</p>
+<p><strong>cat</strong> ./mnt/Files/Music/t2.txt &gt; ./mnt/Files/Music/<strong>test</strong>.txt #store new time</p>
+<p><strong>let</strong> kE=(‘date +%s‘) #calculate the difference <strong>let</strong> kO=$kE-$kS</p>
+<p><strong>let</strong> kT=kT+kO</p>
+<p>#output the time taken</p>
+<p><strong>echo</strong> "kwest operation time = " $kO "sec" <strong>done</strong></p>
+<p><strong>let</strong> kT=kT/5</p>
+<p><strong>echo</strong> "average time taken = " $kT</p>
+<p>Figure 8.2: Write operation average time on 4.1MB text ﬁle</p>
+<p><strong>8.3.4</strong> <strong>Proﬁling</strong> <strong>Code</strong></p>
+<p>Code can be proﬁled using Manual methods, or using speciﬁc tools such as Valgrind, GDB, Splint etc. For testing KWEST, we have used the following proﬁling tools:</p>
+<p><strong>GDB</strong></p>
+<p>GDB can be used to debug the ﬁle system and check for memory leaks, errors and irregular operations. The sample output given below shows a clean mount and unmount of the KWEST ﬁle system.</p>
+<p>$ gdb ./kwest</p>
+<p>GNU gdb (GDB) 7.5-ubuntu</p>
+<p>Copyright (C) 2012 Free Software Foundation, Inc. Reading symbols from kwest/src/kwest....</p>
+<p>(gdb) run -s -d -f mnt</p>
+<p>Starting program: kwest/src/kwest -s -d -f mnt [Thread debugging using libthread_db enabled]</p>
+<p>Using host libthread_db library "/lib/x86_64-linux-gnu/ libthread_db.so.1".</p>
+<p>KWEST - A Semantically Tagged Virtual File System ...</p>
+<p>...</p>
+<p>[Inferior 1 (process 20863) exited normally] (gdb) bt</p>
+<p>No stack.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Test</p>
+</blockquote></td>
+<td><blockquote>
+<p>Status</p>
+</blockquote></td>
+<td><blockquote>
+<p>Possible Errors</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>list directory</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>I/O error, illegal operation, transport endpoint not connection, connection abort</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>read ﬁle</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>I/O error, illegal operation, access denied, database error</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>write ﬁle</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>I/O error,illegal operation,access denied,ﬁle system busy</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>mknod</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>Operation not permitted, I/O error, database error</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>unlink</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>Device busy, Operation not permitted, I/O error, database error</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>mkdir</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>Operation not permitted, I/O error, database error</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>rmdir</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>Device busy, Operation not permitted, I/O error, database error</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>chmod</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>Access denied, I/O error, device busy, database error</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>associations</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>memoryerror,segmentationfault,unconditionaljump,I/O error</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fuse main</p>
+</blockquote></td>
+<td><blockquote>
+<p>PASS</p>
+</blockquote></td>
+<td><blockquote>
+<p>incompatible version</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Table 8.5: GDB debugging for KWEST</p>
+<p>Chapter 9</p>
+<p>RESULTS</p>
+<p><strong>9.1</strong> <strong>File</strong> <strong>System</strong> <strong>View</strong> <strong>after</strong> <strong>Mounting</strong></p>
+<p>The KWEST ﬁle system needs to be mounted by running a program and specifying a mount point. Once mounted, the ﬁle system can be used through any tool or application.</p>
+<p><strong>9.1.1</strong> <strong>Terminal</strong> <strong>View</strong></p>
+<p>Figure 9.1: KWEST ﬁle system in Terminal after mounting</p>
+<p><strong>9.1.2</strong> <strong>File</strong> <strong>Manager</strong> <strong>View</strong></p>
+<p>A ﬁle manager or ﬁle browser is a computer program that provides a user interface to work with ﬁle systems. Files are typically displayed in a hierarchy. This is the default and only way traditional ﬁle systems can work. For semantic ﬁle systems like KWEST, virtual entries act like folders and ﬁles. These allow the ﬁle system to specify what entries to display without adhering to any strict hierarchy.</p>
+<p>File managers used and tested with KWEST include:</p>
+<p>• Nautilus - The default ﬁle manager on Gnome distributions.</p>
+<p>• Nemo - The default ﬁle manager for Cinnamon desktop.</p>
+<p>• PCManFM - Lightweight ﬁle manager found in LXDE.</p>
+<p>• XFE - File manager for the X Window system.</p>
+<p>• Dolphin - The default ﬁle manager for KDE distributions.</p>
+<p>• Thunar - Fast and extendable ﬁle manager which supports plugins.</p>
+<p>Figure 9.2: KWEST ﬁle system in PCManFM after mounting</p>
+<p><strong>9.1.3</strong> <strong>Organisation</strong> <strong>by</strong> <strong>File</strong> <strong>Types</strong></p>
+<p>The KWEST ﬁle system extracts metadata from ﬁles while it is being imported. Depending on the extracted metadata, ﬁles are categorised and put into folders corresponding to their types. Currently, KWEST supports the following ﬁle types:</p>
+<p>1. Audio ﬁles</p>
+<p>2. Images</p>
+<p>3. PDF Documents</p>
+<p>4. Videos</p>
+<p>The separation of ﬁles into individual folders based on their types makes it easy to ﬁnd a particular ﬁle. This is because each ﬁle type has its own metadata, which is used to categorise that ﬁle. An automated and organised view of ﬁles helps avoid clutter and provides efﬁcient searching facilities.</p>
+<p>Figure 9.3: Chaotic organisation in normal ﬁle system vs KWEST auto-organisation</p>
+<p><strong>9.2</strong> <strong>Usage</strong> <strong>and</strong> <strong>Performance</strong></p>
+<p>Figure 9.4: Performance test for KWEST with normal user task loads</p>
+<p>Although KWEST is a virtual ﬁle system, it can be used for normal daily tasks such as listening to music, reading documents, watching videos, etc. In the screenshot below, the applications each run or open a ﬁle on the KWEST ﬁle system simultaneously. No perceptible lag or performance degradation was noticed while playing music or watching the video. The ﬁle system performed sufﬁciently well in all four application operations.</p>
+<p><strong>9.3</strong> <strong>Displaying</strong> <strong>Suggested</strong> <strong>Files</strong></p>
+<p>Suggestions are ﬁles which are not actually present in that tag, but can be tagged as per the system’s recommendation. There are two types of suggestions:</p>
+<p>• Probably Related : The ﬁles probably belong to the tag, but the system is not sure about it.</p>
+<p>• Related : The ﬁle deﬁnitely belongs to the tag, and the user can tag it.</p>
+<p>Figure 9.5: KWEST showing suggestions for including ﬁles in the favourites tag</p>
+<p><strong>9.4</strong> <strong>Exporting</strong> <strong>Files</strong></p>
+<p>Figure 9.6: KWEST Export function - Copy ﬁle to external location</p>
+<p>The entries, ﬁles, tags in KWEST are all virtual entries. They do not exist anywhere on a physical disk. In order to “export” this organisation to another location outside of KWEST, there is the Export feature. Practically there is not difference between a normal copy and export. Export copies the virtual entries as real ﬁles by physically accessing the location where they are stored, and then copying them. To the end user, there is no increase in steps or time for the copying to complete.</p>
+<p>Chapter 10</p>
+<p>DEPLOYMENT AND MAINTAINENCE</p>
+<p><strong>10.1</strong> <strong>Installation</strong> <strong>and</strong> <strong>Uninstallaion</strong></p>
+<p><strong>10.1.1</strong> <strong>Installing</strong></p>
+<p>• Get the latest copy of KWEST by downloading from the project hosting site: <a href="https://code.google.com/p/kwest/downloads">https://code.google.com/p/kwest/downloads</a></p>
+<p>• After extracting the contents, open up a terminal and type in the following commands:</p>
+<p>make kwest_libs</p>
+<p><strong>export</strong> LD_LIBRARY_PATH=../lib:D_LIBRARY_PATH make</p>
+<p><strong>10.1.2</strong> <strong>Mounting</strong> <strong>and</strong> <strong>Unmounting</strong></p>
+<p>• To mount a KWEST ﬁle system, the user needs to run the mount script which will mount the ﬁle system in the speciﬁed folder.</p>
+<p>./kwest mount-point</p>
+<p>• TounmountaKWESTﬁlesystem,theuserneedstorunthefusermount-ucommand with the argument path of KWEST mount point. A successful unmount operation does not return any message.</p>
+<p>fusermount -u mount-point</p>
+<p><strong>10.1.3</strong> <strong>Uninstallation</strong> <strong>and</strong> <strong>Removal</strong> <strong>of</strong> <strong>Data</strong></p>
+<p>1. KWEST “installs” ﬁles in the users local directory.</p>
+<p>2. To clean allthe installation data including the database andlog ﬁles,the usershould use the make clean or make ob commands.</p>
+<p>3. These commands are present in the Makeﬁle, which comes with the project source.</p>
+<p>4. In case of manual installation, there is a KWEST folder in the .conﬁg directory.</p>
+<p>5. Incomplete removal of ﬁles may cause haphazard execution of the program or corruption of ﬁles.</p>
+<p><strong>10.2</strong> <strong>User</strong> <strong>Help</strong></p>
+<p>KWEST is a virtual ﬁle system. This means that the folders and ﬁles represented by it are a part of its virtual organisation. Each ﬁle in KWEST represents an actual ﬁle stored somewhere on the underlying ﬁle system. The main focus of using KWEST is organisation.</p>
+<p><strong>10.2.1</strong> <strong>Importing</strong> <strong>Files</strong> <strong>and</strong> <strong>Folders</strong></p>
+<p>• By default KWEST imports from the users HOME folder. It recursively scans all the sub folders and imports the folder hierarchy into KWEST. Hidden ﬁles are ignored by KWEST.</p>
+<p>• The user can also explicitly use the import tool to import ﬁles and folders into KWEST. The import tool accepts the folder to import as argument and imports all ﬁles and folders within it. It can work regardless of whether the KWEST ﬁle system is mounted or not.</p>
+<p>• While importing, the metadata of the ﬁle is used to organise each ﬁle. For e.g.: A music ﬁle contains the song’s artist, which is used to categorise that ﬁle.</p>
+<p><strong>10.3</strong> <strong>Browsing</strong> <strong>Files</strong> <strong>by</strong> <strong>Type</strong></p>
+<p><strong>10.3.1</strong> <strong>Audio</strong></p>
+<p>This folder contains all the ﬁles recognised by the system as being of type audio. Upon accessing the folder, each Audio ﬁle is further categorised by Album, Artist, Genre. If a particular metadata is absent for the audio ﬁle, KWEST categorises it in the Unknown folder.</p>
+<p>For e.g. If the audio ﬁle does not have any artist associated with it, it can be found in UnknownArtist.</p>
+<p>Figure 10.1: Audio ﬁles being categorised by /Album and /Artist/Album views</p>
+<p><strong>10.3.2</strong> <strong>Image</strong></p>
+<p>This folder contains all the image ﬁles recognised by the system. Inside, the images are organised by ImageCreator and ImageDate. The ImageCreator sub folder is based on Creators like software - Adobe Photoshop, or hardware - Camera Models. Each ImageCreator tag is further organised by ImageDate. The ImageDate folder contains images sorted by Month-Year of creation. E.g.: A picture taken on “2nd March 1992” will appear under “1992Mar”. As with Audio, ﬁles with metadata missing will appear under appropriate Unknown sub folders.</p>
+<p>Figure 10.2: Images being categorised by Creator and CreationDate</p>
+<p><strong>10.3.3</strong> <strong>PDF</strong></p>
+<p>All PDF documents are tagged with the PDF tag. Each PDF document is organised by its Author,Publisher,Subject and Title. Files with metadata missing are appropriately tagged under Unknown tags.</p>
+<p>Figure 10.3: PDF documents being separated by Author and Title</p>
+<p><strong>10.3.4</strong> <strong>Video</strong></p>
+<p>Currently, the system organises video based only on Length, with the categories being Short, Medium and Long. A short video is anything with less than 1800s of playtime. Videos with play time equal to or greater than 5400s are considered Long, and anything between them is considered Medium. The Video tag does not contain any categories as most of the videos stored by the user do not have any metadata present.</p>
+<p>Figure 10.4: Browsing the KWEST Video folder in a terminal</p>
+<p><strong>10.3.5</strong> <strong>USER</strong></p>
+<p>The tag ‘USER’ refers to the username of the current user. The user can create and manage his own personal tags in this folder.</p>
+<p>Figure 10.5: User tags displayed in KWEST</p>
+<p><strong>10.3.6</strong> <strong>Using</strong> <strong>Suggestions</strong> <strong>to</strong> <strong>tag</strong> <strong>ﬁles</strong></p>
+<p>KWEST helps the user with organisation by providing suggestions for tagging ﬁles. These suggestions are provided as ﬁles preﬁxed with the word - “SUGGESTED”. The user may make use of that suggestion by tagging that ﬁle in the current tag.</p>
+<p>e.g. in tag Zodiac, there are 3 suggestions: ARIES, GEMINI, CANCER each shown as a ﬁle with SUGGESTED preﬁxed in their names. To make use of the suggestion on ARIES, the user tags the ﬁle ARIES under the tag Zodiac. The ﬁle is now seen in the tag without the suggested preﬁx. The other suggestions are still present and may be used further or deleted.</p>
+<p>Figure 10.6: KWEST offering suggestions for tag favourites</p>
+<p>Chapter 11</p>
+<p>Conclusion and Future Scope</p>
+<p><strong>11.1</strong> <strong>Conclusion</strong></p>
+<p><strong>Considering</strong> <strong>data</strong> <strong>organisation</strong></p>
+<p>A ﬁle system, considering that it stores data, is created with stability and performance in mind. An end-user is more concerned with how they can store and access their data efﬁciently. Using a KWEST ﬁle system, the user can organise their data efﬁciently. All ﬁles are stored and accessed by their content or context rather than just a bunch of string-names. This allows the user to think and remember the ﬁle in terms of what it represents, rather than a path-name which may not be related to the data it contains. This semantic approach is helpful to the user, as it becomes easier to manage for them to search for and manage their data.</p>
+<p><strong>Automation</strong> <strong>of</strong> <strong>Tasks</strong></p>
+<p>KWEST automatically uses the metadata embedded in a ﬁle to apply tags and categorise it.Thisautomationhelpstheuserbyprovidingaccesstoﬁlesaccordingtotheirrespective contexts. By doing this, the user gets all Audio ﬁles under the Audio folder, all Image ﬁles under the Image folder and so on. Further, each folder is organised by meta-type belonging to that mime type. E.g. the Audio folder is sorted by Album, Artist, Genre.</p>
+<p><strong>Providing</strong> <strong>Suggestions</strong></p>
+<p>It may happen that the user inadvertently misses out tagging some ﬁle, which may result in an incomplete organisation. The user may later search for that particular ﬁle in the tag, but will not ﬁnd it. In a KWEST ﬁle system, based on the occurrences of ﬁles in various user tags, the system provides suggestions that help the user tag a ﬁle in appropriate places. This helps avoid missing out on important ﬁles, and allows a faster method of organisation as the ﬁles to be tagged are available as suggestions.</p>
+<p><strong>Performance</strong> <strong>and</strong> <strong>Stability</strong></p>
+<p>Although a KWEST ﬁle system is created and operates as a VFS, there is no perceptible lag or performance hit on the operations the user performs. Common operations like listening to music, watching a video, writing to a document can be carried out smoothly.</p>
+<p>Also, since KWEST is based on an always stable implementation of FUSE, the ﬁle system itself is stable. Strict coding standards and rigorous tests against memory allow the ﬁle system to remain stable even under moderate usage.</p>
+<p><strong>11.2</strong> <strong>Future</strong> <strong>Scope</strong></p>
+<p>The project, with its novel concept of Applying association rule learning in a semantic ﬁle system; is the ﬁrst implementation of a semantic ﬁle system to actively help the user categorise and organise their data.</p>
+<p><strong>Support</strong> <strong>for</strong> <strong>more</strong> <strong>Standard</strong> <strong>File</strong> <strong>Types</strong></p>
+<p>Right now the import feature can extract metadata only from a ﬁxed set of ﬁle types. More ﬁle types can be handled which increase the feature and usefulness of the ﬁle system. Every operating system or ﬁle manager has a certain knowledge of what kind of metadata each ﬁle type can contain. Using this knowledge in the KWEST ﬁle system will allow the user to be able to browse a ﬁle system completely based on it’s semantics.</p>
+<p><strong>More</strong> <strong>Relations</strong> <strong>and</strong> <strong>Associations</strong></p>
+<p>Currently, the system creates associations based on the common occurrences of ﬁles between various tags. This is done using the Apriori algorithm. There are a lot of other interesting approaches which can be utilised. Like algorithms to create various different associations. OrchangingthewayApriorihandlesﬁlesandtags. Fileaccesses,frequency of usage, explicit user choices can also be utilised for forming results.</p>
+<p><strong>Efﬁciency</strong> <strong>and</strong> <strong>Performance</strong></p>
+<p>Although the system is both efﬁcient and performant, it can be vastly improved to provide a high-quality ﬁle system. Operations can be threaded to reduce the wait time. Simultaneous access to ﬁles can be used to provide a ﬂuid experience. Algorithm throughput can be raised to get more accurate results. These are just a few performance and efﬁciency related things we can do with KWEST. The ultimate approach is to integrate this ﬁle system at the kernel level. This will allow performance and stability similar those of traditional ﬁle systems.</p>
+<p><strong>Collect</strong> <strong>Data</strong> <strong>from</strong> <strong>Various</strong> <strong>Locations</strong></p>
+<p>The KWEST ﬁle system imports data only from the user’s HOME folder. The data stored there might not be the only location a user wants to use. In today’s world, each person has a multitude of devices ranging from laptops,PCs,tablets and phones to Cloud services like Dropbox, Google Drive. Each of them have data which the KWEST ﬁle system can utilise to form associations and display using virtual suggestions. It will result in a uniﬁed view of all the user’s data categorised and organised, which is spread and available across all of their devices.</p>
+<p><strong>11.3</strong> <strong>Need</strong> <strong>for</strong> <strong>KWEST</strong> <strong>Tomorrow</strong></p>
+<p>With data usage almost doubling with each passing year, people are bound to focus on organising it. A tool like KWEST, with its semantic roots, automation and suggestions will be immensely helpful when a large data storage has to be properly catalogued, organised and accessed. Thus, we have tried to implement a research based project with its usefulness reﬂected in the problems of tomorrow.</p>
+<p>Chapter 12</p>
+<p>APPENDIX</p>
+<p>A: MATHEMATICAL MODEL</p>
+<p>The relationship between ﬁles andtags can be representedby using Settheory. Settheory is the branch of mathematics that studies sets, which are collections of objects. The following mathematical model represents the working of this ﬁlesystem.</p>
+<p>The following dynamic and variable sets are deﬁned as, F : Set of Files</p>
+<p>T : Set of Tags</p>
+<p>S : Set of Tags in query ( S T )</p>
+<p><strong>.1</strong> <strong>Relation</strong> <strong>between</strong> <strong>Files</strong> <strong>(F)</strong> <strong>and</strong> <strong>Tags</strong> <strong>(T)</strong></p>
+<p>R=f(f;t)j f hastagt; f 2F;t 2Tg</p>
+<p>Here R deﬁnes the relation between a ﬁle f and its tag t where R F T. This relationship is many-to-many. That is a ﬁle can have many tags, and a tag can describe many ﬁles.</p>
+<p><strong>.2</strong> <strong>Association</strong> <strong>between</strong> <strong>Tags</strong> <strong>(T)</strong></p>
+<p>Using discovered associations, we can form various relations between tags. These tag-to-tag help in displaying related information. For any two tags there exists a distinct relation between them given by r. The function Xr(A;B) returns the relation between two tags. Associations can be broadly categorized as:</p>
+<p>• AB : A and B are not directly related, but there may exist some indirect relation between them.</p>
+<p>• AB : A and B are directly related, where A always has a path leading to B. This relation is similar to AB.</p>
+<p>• A./B : A and B are not directly related, but B supplements additional information related to A.</p>
+<p>• f : This relation states that there does not exist any relation between the two tags.</p>
+<p><strong>.3</strong> <strong>Operations</strong></p>
+<p>g(f)= ft : f Rtg</p>
+<p>g is an operation which takes input as a ﬁle f and returns the set of tags (t 2S) related by R to that ﬁle.</p>
+<p>h(t)= ff : f Rtg</p>
+<p>h is an operation which takes input as a tag t and returns the set of ﬁles (f 2F ) related by R to that tag.</p>
+<p><strong>.4</strong> <strong>Storing</strong> <strong>Tags</strong> <strong>and</strong> <strong>Files</strong></p>
+<p>The relation R is stored as a set of ordered pairs (f;t), where RFT. The operations g and h operate on these ordered pairs and return mapped or matched elements. A relation which has to be added must be represented in the form of of ordered pair (f;t). Storage of all relations is given by FT where ordered pairs exist according to R=ff 2F;t 2T j f Rtg.</p>
+<p>For example, we have the sets and their relations as:</p>
+<p>F =ff1; f2; f3g;T =ft1;t2;t3g;R=ff1Rt1; f2Rt2; f3Rt1; f1Rt3g</p>
+<p>Then we store this relation by its ordered pairs given by:</p>
+<p>R=f(f1;t1);(f2;t2);(f3;t1);(f1;t3)g</p>
+<p><strong>.5</strong> <strong>Extraction</strong> <strong>of</strong> <strong>metadata</strong></p>
+<p>The extraction of metadata is deﬁned by the function XE which takes a ﬁle f(f 2F) and returns a set of tags (TE T) that form the relation (f Rt :t 2TE).</p>
+<p>XE(f)= TE 22T</p>
+<p>Addition of new information (metadata, tags) is done as:</p>
+<p>if(t 2= T)then(T T [ftg)</p>
+<p>We then store this relation as a ordered pair f(f;t)8t 2TEg. At the end of this operation TE T will hold true.</p>
+<p><strong>.6</strong> <strong>Importing</strong> <strong>Semantics</strong></p>
+<p>The existing ﬁle-directory structure can be imported to the system and represented in the form of tags and ﬁles. We deﬁne:</p>
+<p>FH : Set of Files on hard-disk which are not represented in system.</p>
+<p>DH : Set of Directories on hard-disk which are not represented in system.</p>
+<p>Then for every ﬁle stored within a directory d, the relation R is expressed as (f Rd). When importing semantics we create the ordered pair (f;d) given by the relation (f Rd;8d 2Dd). Where Dd contains the directory the ﬁle is stored in, as well as every parent directory of that directory itself.</p>
+<p>Directories also contain sub-directories which we store in the form of tag relationships. We represent them as: 8(d1;d2)2DH, if d2 d1 (d2 is a sub-directory of d1) store the relation as</p>
+<p>d1 !d2</p>
+<p><strong>.7</strong> <strong>Apriori</strong> <strong>Algorithm</strong></p>
+<p>The apriori algorithm[10] is a classic algorithm for learning association rules. The algorithm is designed to operate on databases containing transactions. As is common in association rule mining, given a set of itemsets (for instance, sets of retail transactions, each listing individual items purchased), the algorithm attempts to ﬁnd subsets which are common to at least a minimum number C of the itemsets. Apriori uses a ”bottom up” approach, where frequent subsets are extended one item at a time (a step known as</p>
+<p>candidategeneration),andgroupsofcandidatesaretestedagainstthedata. Thealgorithm terminates when no further successful extensions are found.</p>
+<p>The purpose of the apriori algorithm is to ﬁnd associations between different sets of data. Each set of data has a number of items and is called a transaction. The output of Apriori is sets of rules that tell us how often items are contained in sets of data.</p>
+<p><strong>Itemset</strong></p>
+<p>A collection of one or more items. Example: A, B, C</p>
+<p>k-itemset</p>
+<p>An itemset that contains k items.</p>
+<p><strong>Support</strong> <strong>count</strong> <strong>(S)</strong></p>
+<p>Number of transactions containing an itemset. Example: S(A, B) = 2</p>
+<p><strong>Support</strong> <strong>(supp)</strong></p>
+<p>The support supp(X) of an itemset X is deﬁned as the proportion of transactions in the data set which contain the itemset. Suppose minsup is the minimum support threshold. Example: supp(A, B) = 2/5</p>
+<p><strong>Frequent</strong> <strong>Itemset</strong> <strong>(L)</strong></p>
+<p>Anitemsetsatisﬁesminimumsupportiftheoccurrencefrequencyoftheitemsetisgreater or equal to a threshold. If an itemset satisﬁes minimum support, then it is a frequent itemset. Thusanitemsetwhosesupportisgreaterorequaltominsupisafrequentitemset.</p>
+<p><strong>Conﬁdence</strong></p>
+<p>The conﬁdence of a rule is deﬁned as,</p>
+<p>Conf(A!B)= supp(A!B)=supp(A) (12.1) Suppose minconf is the minimum conﬁdence threshold.</p>
+<p><strong>Rule</strong> <strong>Generation</strong></p>
+<p>Given a setoftransactions T,the goalofassociation rule mining is to ﬁndallrules having</p>
+<p>support minsupthreshold (12.2) confidenceminconf threshold (12.3)</p>
+<p>Given a frequent itemset L, ﬁnd all non-empty subsets f L such that f ! L f satisﬁes the minimum conﬁdence requirement.</p>
+<p>Example: If A;B;C is a frequent itemset, then the following candidate rules are formed AB!C; AC !B; BC !A; A!BC; B!AC; C !AB</p>
+<p>If jLj = k, then there are (2k) 2 candidate association rules (ignoring L ! Fand F!L)</p>
+<p><strong>Apriori</strong> <strong>principle</strong></p>
+<p>The princciple sttes that if an itemset is frequent, then all of its subsets must also be frequent. Apriori principle holds due to the following property of the support measure:</p>
+<p>8X;Y :(X Y)!s(X)s(Y) (12.4)</p>
+<p>Support of an itemset never exceeds the support of its subsets. This is known as the anti-monotone property of support.</p>
+<p>Algorithm Input</p>
+<p>T - Database of transactions I - Items</p>
+<p>L - Itemset s - support</p>
+<p>c - conﬁdence</p>
+<p>Output</p>
+<p>R - Association rules satisfying s and c</p>
+<p>Algorithm to Generate Frequent Itemsets Apriori(T,s)</p>
+<p>L1 Large1 itemset k 2</p>
+<p>whileLk 1 =F</p>
+<p>Ck =Generate(Lk 1) fortransactionst 2T</p>
+<p>C Subset(Ck;t) for candidatesc2C</p>
+<p>count[c] count[c]+1 Lk c2Ckjcount[c]s k k+1</p>
+<p>return[Lk</p>
+<p>Algorithm to Generate Association Rules GenRule</p>
+<p>R=F;</p>
+<p>for eachl 2L do</p>
+<p>for eachx l suchthat x =Fand x =l do if(supp(l)=supp(x)) cthen</p>
+<p>R=R [ (x !(l x));</p>
+<p>B: TESTING OF DATA</p>
+<p>Testing of the system will be done on the following points:</p>
+<p><strong>.2</strong> <strong>Storing</strong> <strong>the</strong> <strong>relation</strong> R<strong>:</strong></p>
+<p>The working of the system depends on correctly storing the relation R. These tests check whether the relations are stored and represented correctly.</p>
+<p>1. For any ﬁle f associated with tag t there should exist an ordered pair (f;t).</p>
+<p>2. For a ﬁle f associated with tags S = ft1;t2;t3g, the operation g(f) should return exacty S.</p>
+<p>3. For a tagt containing ﬁles F =ff1; f2; f3g, the operation h(t) should return exactly F.</p>
+<p><strong>.3</strong> <strong>Relation</strong> <strong>between</strong> <strong>tags:</strong></p>
+<p>1. The relation r between two tags t1;t2 is given by function Xr(t1;t2)= c.</p>
+<p>2. The relation r is distinct i.e. there exists only one relation between any two tags. If contradictions arise where more than one relation is present between two tags, then all those relations must be made void and r =f. The user can then explicitly specify which relation should be created between those two tags.</p>
+<p>3. Extensive testing must be done on relations to determine which r needs to be set under certain conditions.</p>
+<p><strong>.4</strong> <strong>Extraction</strong> <strong>of</strong> <strong>Metadata:</strong></p>
+<p>Let M be the set of all metadata tagst for ﬁle f. The function XE represents an algorithm to extract t from f. It returns a set TE such that ft 2TE j f Rtg and (TE M). To test the efﬁciency of the function, or the effectiveness of it, we compare the cardinality of the generated set TE with the set of Metadata M. The efﬁciency can be calculated by</p>
+<p>Efﬁciencye= jTE j</p>
+<p>Using e we can compare algorithms and their efﬁciency. Appropriate algorithms can be chosen for various ﬁle types so that efﬁciency of the entire system remains high. For e.g.</p>
+<p>XE1 :fe=0:7 for audio;e=0:4 for images g XE2 :fe=0:6 for audio;e=0:6 for images g</p>
+<p>Then we have the following options:</p>
+<p>1. XE2 is a better choice as it yeilds a more consisten efﬁciency.</p>
+<p>2. XE1 is used only for audio and XE2 is used only for image extractions.</p>
+<p><strong>.5</strong> <strong>Queries</strong> <strong>and</strong> <strong>their</strong> <strong>results:</strong></p>
+<p>Queries are parsed into tokens of the form (t1;s;t2). We need to test whether s returns the correct results for the query. A Query Q(S) is said to be successfully executed when the expected result are shown.</p>
+<p>• The Query q(t) for a single tag t should return a set of ﬁles (f 2 F ) through the operation h(t).</p>
+<p>• In a query if no operation is given, Intersubsection should be performed.</p>
+<p>• For Query Q(S) the operations should be performed from left to right unless precedence is speciﬁed by paranthesis.</p>
+<p>Example: Let t1;t2;t3 be tags having the following ﬁles: t1 : fphoto1;photo2;doc1g</p>
+<p>t2 : fphoto1;doc1;ppt1g t3 : fphoto1;doc3g</p>
+<p>1. q(t) = F where f should follow the relation (f 2 F j f RT). For example, q(t1) returns F =fphoto1;photo2;doc1g.</p>
+<p>2. Consider a query containing tags S=ft1;t2g. It generates results by performing the operations Q(S)= q(t1)sq(t2) where s is an operator.</p>
+<p>a) Putting s = [ for Union in query Q(S) = q(t1)[q(t2); the result should be F =fphoto1;photo2;doc1;ppt1g.</p>
+<p>b) Putting s = \ for Intersubsection in query Q(S) = q(t1)\q(t2); the result should be F =fphoto1;doc1g.</p>
+<p>c) Puttings=nforSetDifferenceinqueryQ(S)=q(t1)nq(t2);theresultshould be F =fphoto2g,whereas the query Q(S)=q(t2)nq(t1) willreturn the result as F =fppt1g.</p>
+<p>d) Putting s = for Symmetric Difference in query Q(S) = q(t1) q(t2); the result should be F =fphoto2;ppt1g.</p>
+<p>3. Consider a query containing tags S = ft1;t2;t3g. It performs operations as : Q(S) = q(t1)s1q(t2)s2q(t3) The default order for processing is from left to right unless precedence is speciﬁed through parenthesis.</p>
+<p>a) For the query Q(S) = q(t1)q(t2)q(t3) the result will be returned as ﬁles fphoto1g</p>
+<p>b) For the query Q(S) = q(t1)[q(t2)\q(t3) the result will be returned as ﬁles fphoto1;doc1;doc3g</p>
+<p>After verifying that individual queries return correct results, we must check whether Q(S) runs correctly as well. This is done by seperating the query into tokens, and calculating their results in turn. It must be veriﬁed that results are correct and have not been mis-intepreted through tokenization of the query.</p>
+<p><strong>.6</strong> <strong>Forming</strong> <strong>Associations</strong></p>
+<p>Consider a database, D, consisting of 9 transactions. Suppose minimum support count required is 2 (i.e. minsup = 2=9 = 22% ). Let minimum conﬁdence required is minconf =70%. We have to ﬁrst ﬁnd out the frequent itemset using apriori algorithm. Then, Association rules will be generated using minsup and minconf.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>TagID</p>
+</blockquote></td>
+<td><blockquote>
+<p>Files</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T100</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F2, F5</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>T101</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F2, F5</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T102</p>
+</blockquote></td>
+<td><blockquote>
+<p>F2, F4</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>T103</p>
+</blockquote></td>
+<td><blockquote>
+<p>F2, F3</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T104</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F2, F4</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>T105</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F3</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T106</p>
+</blockquote></td>
+<td><blockquote>
+<p>F2, F3</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>T107</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F3</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T108</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F2, F3, F5</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>T109</p>
+</blockquote></td>
+<td><blockquote>
+<p>F1, F2, F3</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Step 1: Generating initial Candidate Itemset</p>
+<p>In the ﬁrst iteration of the algorithm, each item is a member of the set of candidate.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Itemset</p>
+</blockquote></td>
+<td><blockquote>
+<p>Support count</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF1g</p>
+</blockquote></td>
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF2g</p>
+</blockquote></td>
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF3g</p>
+</blockquote></td>
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF4g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF5g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Step 2: Generating 1-itemset Frequent Pattern</p>
+<p>The set of frequent 1-itemsets, L1, consists of the candidate 1-itemsets satisfying minimum support.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Itemset</p>
+</blockquote></td>
+<td><blockquote>
+<p>Support count</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF1g</p>
+</blockquote></td>
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF2g</p>
+</blockquote></td>
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF3g</p>
+</blockquote></td>
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF4g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF5g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Step 3: Generating 2-itemset Frequent Pattern</p>
+<p>To discover the set of frequent 2-itemsets, L2, the algorithm uses L1 Join L1 to generate a candidate set of 2-itemsets, C2. Next, the transactions in D are scanned and the support count for each candidate itemset in C2 is accumulated. The set of frequent 2-itemsets, L2, is then determined, consisting of those candidate 2-itemsets in C2 having minimum support.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Itemset</p>
+</blockquote></td>
+<td><blockquote>
+<p>Support count</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF1, F2g</p>
+</blockquote></td>
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF1, F3g</p>
+</blockquote></td>
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF1, F5g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF2, F3g</p>
+</blockquote></td>
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF2, F4g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF2, F5g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Step 4: Generating 3-itemset Frequent Pattern Thegenerationofthesetofcandidate3-itemsets,C3,involvesuseoftheAprioriProperty. First, we generate C3 using L2 join L2.</p>
+<p>C3 = ffF1, F2, F3g, fF1, F2, F5g, fF1, F3, F5g, fF2, F3, F4g, fF2, F3, F5g, fF2, F4, F5gg.</p>
+<p>Now we will apply Apriori property to determine which candidate itemsets are frequent. The 2-item subsets of fF1, F2, F3g are fF1, F2g, fF1, F3g and fF2, F3g. Since all</p>
+<p>2-item subsets of fF1, F2, F3g are members of L2, We will keep fF1, F2, F3g in C3. The 2-item subsets of fF2, F3, F5g are fF2, F3g, fF2, F5g and fF3, F5g. But, fF3,</p>
+<p>F5g is not a member of L2 and hence it is violating Apriori Property. Thus we will remove fF2, F3, F5g from C3. Therefore,</p>
+<p>C3 = ffF1, F2, F3g, fF1, F2, F5gg.</p>
+<p>Now, the transactions in D are scanned in order to determine L3, consisting of those candidates 3-itemsets in C3 having minimum support.</p>
+</blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Itemset</p>
+</blockquote></td>
+<td><blockquote>
+<p>Support count</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>fF1, F2, F3g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>fF1, F2, F5g</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Step 5: Generating 4-itemset Frequent Pattern</p>
+<p>The algorithm uses L3 Join L3 to generate a candidate set of 4-itemsets, C4. Although the join results in ffF1, F2, F3, F5gg, this itemset is removed since its subset ffF2, F3, F5gg is not frequent. Thus,C4=F , and algorithm terminates, having found all of the frequent items. This completes our apriori algorithm.</p>
+<p>Step 6: Generating Association Rules from Frequent Itemsets</p>
+<p>For each frequent itemset ’l’, generate all nonempty subsets of l. For every nonempty subset s of l, output the rule s!(l s) if supp(l)=supp(s)minconf</p>
+<p>We had L = ffF1g, fF2g, fF3g, fF4g, fF5g, fF1, F2g, fF1, F3g, fF1, F5g, fF2, F3g, fF2, F4g, fF2, F5g, fF1, F2, F3g, fF1, F2, F5gg.</p>
+<p>Consider l = fF1, F2, F5g. Its all nonempty subsets are fF1, F2g, fF1, F5g, fF2, F5g, fF1g, fF2g, fF5g.</p>
+<p>The association rules are shown below, each listed with its conﬁdence.</p>
+<p>1. R1:F1;F2!F5 Confidence=suppfF1;F2;F5g=suppfF1;F2g=2=4=50% R1 is Rejected.</p>
+<p>2. R2:F1;F5!F2 Confidence=suppfF1;F2;F5g=suppfF1;F5g=2=2=100% R2 is Selected.</p>
+<p>3. R3:F2;F5!F1 Confidence=suppfF1;F2;F5g=suppfF2;F5g=2=2=100% R3 is Selected.</p>
+<p>4. R4:F1!F2;F5 Confidence=suppfF1;F2;F5g=suppfF1g=2=6=33% R4 is Rejected.</p>
+<p>5. R5:F2!F1;F5 Confidence=suppfF1;F2;F5g=suppfF2g=2=7=29% R5 is Rejected.</p>
+<p>6. R6:F5!F1;F2 Confidence=suppfF1;F2;F5g=suppfF5g=2=2=100% R6 is Selected.</p>
+<p>In this way, we have found the following three strong association rules.</p>
+<p>1. F1;F5!F2</p>
+<p>2. F2;F5!F1</p>
+<p>3. F5!F1;F2</p>
+<p>C: PAPERS PUBLISHED</p>
+<p>Sr.No. Paper Name</p>
+<p>[1] A. Gogte, S. Gupta, H. Pandit, R. Sharma, Using association rule learninginaSemanticﬁlesystem,InternationalConferenceonAdvanced Computer Sciences and Information Technology, Pune, Februrary 15, 2013, pp. 29-31. [Published]</p>
+<p>[2] A. Gogte, S. Gupta, H. Pandit, R. Sharma, KWEST - A Semantically Tagged Virtual File System, International Conference on Advanced Computer Engineering and Applications, Trivandrum, 2012. [Accepted]</p>
+<p>D: PAPERS REFERRED</p>
+<p>Sr.No. Paper Name</p>
+<p>[1] K. Chang, W.T. Perdana, B. Ramadhana, K. Sethuraman, T.V. Le, and N. Chachra, Knowledge File System-A principled approach to personal information management, 2010 IEEE International Conference on Data Mining Workshops, Sydney, December 2010, pp. 1037-1044.</p>
+<p>[2] O. Eck, and D. Schaefer, A semantic ﬁle system for integrated product data management, Advanced Engineering Informatics, 2011, pp. 177-184.</p>
+<p>[3] P. Mohan, S. Venkateswaran, Raghuraman, and A. Siromoney, Semantic FileRetrievalinFileSystemsusingVirtualDirectories,Proc.LinuxExpo Conference, Raleigh, NC, May 2007, pp. 141-151.</p>
+<p>[4] R. Agarwal, and R. Srikant, Fast algorithms for mining association rules in large databases, 20th International Conference on Very Large Data Bases, VLDB, Santiago, Chile, September 1994, pp. 487-499.</p>
+<p>E : CONTRIBUTION OF TEAM MEMBERS</p>
+<p>Member 1: Aseem Gogte</p>
+<p>• Literature Survey</p>
+<p>• Mathematical model</p>
+<p>• Module for Extraction of metadata from audio using TagLib</p>
+<p>• Testing related to File operations</p>
+<p>• Source code formatting and documentation</p>
+<p>Member 2: Sahil Gupta</p>
+<p>• Designing database queries</p>
+<p>• Database design</p>
+<p>• Module for importing and exporting semantics</p>
+<p>• Tag associations</p>
+<p>• Integrating database with FUSE</p>
+<p>• Data mining, association rule learning alternatives</p>
+<p>• Module for Apriori algorithm study and implementation</p>
+<p>Member 3: Harshvardhan Pandit</p>
+<p>• Design program ﬂow</p>
+<p>• Component design</p>
+<p>• Module for interact with FUSE technology</p>
+<p>• Module for extraction of metadata from images and videos using Libextrator</p>
+<p>• Plugin architecture for metadata extraction</p>
+<p>• API for developers, dynamic libraries</p>
+<p>• Logging mechanism for for debugging code</p>
+<p>• Debugging using GDB, valgrind</p>
+<p>Member 4: Rohit Sharma</p>
+<p>• Database design</p>
+<p>• Module for managing database consistency</p>
+<p>• Module for extraction of metadata from PDF using Poppler</p>
+<p>• Integrating modules</p>
+<p>• Testing related to database</p>
+<p>APPENDIX F: GLOSSARY</p>
+<p>Acronym SDLC FUSE GCC GPL</p>
+<p>API GUI FAQ SFS VFS KFS</p>
+</blockquote>
+<p>Deﬁnition</p>
+<p>Software Development Life Cycle File system in Userspace</p>
+<p>GNU Compiler Collection General Public License</p>
+<p>Application programming interface Graphical user interface Frequently asked questions Semantic File System</p>
+<p>Virtual File System Knowledge File System</p>
+<blockquote>
+<p>Chapter 13</p>
+<p>BIBLIOGRAPHY</p>
+<p>[1] K. Chang, W.T. Perdana, B. Ramadhana, K. Sethuraman, T.V. Le, and N. Chachra, Knowledge File System-A principled approach to personal information management, 2010 IEEE International Conference on Data Mining Workshops, Sydney, December 2010, pp. 1037-1044.</p>
+<p>[2] S. Gopal, Y. Yang, K. Salomatin, and J. Carbonell, Statistical Learning for File-Type Identiﬁcation, 2011 10th International Conference on Machine Learning and Applications, May 2011, pp. 68-73.</p>
+<p>[3] Y. Hua, H. Jiang, Y. Zhu, D. Feng, and L. Tian, Semantic-Aware Metadata Organization Paradigm in Next-Generation File Systems, IEEE Transactions On Parallel And Distributed Systems, Vol. 23, No. 2, February 2012, pp. 337-344.</p>
+<p>[4] O. Eck, and D. Schaefer, A semantic ﬁle system for integrated product data management, Advanced Engineering Informatics, 2011, pp. 177-184.</p>
+<p>[5] P. Mohan, S. Venkateswaran, Raghuraman, and A. Siromoney, Semantic File Retrieval in File Systems using Virtual Directories, Proc. Linux Expo Conference, Raleigh, NC, May 2007, pp. 141-151.</p>
+<p>[6] R. Agarwal, T. Imielinski, and A. Swami, Mining Association Rules between Sets of Items in Large Databases, 1993 ACM SIGMOD Conference, Washington DC, USA, May 1993, pp. 207-216.</p>
+<p>[7] S. Bloehdorn, O. Grlitz, S. Schenk, and M. Vlkel, TagFS - Tag Semantics for Hierarchical File Systems, 6th International Conference on Knowledge Management (I-KNOW 06), Graz, Austria, September 6-8, 2006.</p>
+<p>[8] D. Gifford, P. Jouvelot, M. Sheldon, and J.W. O’Toole, Sematic File Systems. 13th ACM Symposium on Operating Systems Principles, ACM Operating Systems Review, October 1991, pp. 16-25.</p>
+<p>[9] A. Schroder, R. Fritzsche, S. Schmidt, A. Mitschick, and K. Meißner, Semantic Extension of a Hierarchical Storage Management System for Small and Medium-sized Enterprises, 1st International Workshop on Semantic Digital Archives, 2011.</p>
+<p>[10] R. Agarwal, and R. Srikant, Fast algorithms for mining association rules in large databases, 20th International Conference on Very Large Data Bases, VLDB, Santiago, Chile, September 1994, pp. 487-499.</p>
+<p>[11] C. Mangold, A survey and classiﬁcation of semantic search approaches, Int. J. Metadata, Semantics and Ontology, Vol. 2, No. 1, pp.23-34.</p>
+<p>[12] R. Freund, File Systems and Usability — the Missing Link, Cognitive Science, University of Osnabruck, July 2007.</p>
+<p>[13] Apple Spotlight, from http://developer.apple.com/macosx/spotlight.html</p>
+<p>[14] Google Desktop Search, from http://googledesktop.blogspot.in</p>
+<p>[15] Tagsistant, from http://www.tagsistant.net</p>
+<p>[16] G.Olaf (2008), Tagster, from http://www.uni-koblenz.de</p>
+<p>[17] Homepage and documentation File system in USERspace (FUSE), from http://fuse.sourceforge.net</p>
+<p>[18] Homepage and documentation SQLite database, from http://www.sqlite.org</p>
+</blockquote>
+
         </div>
     </article>
     </main>

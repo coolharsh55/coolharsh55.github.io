@@ -47,7 +47,7 @@ My other research activities include chairing and contributing to the <a class="
     <li>
         <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
         <small>{{ item.schema_description }}</small> <br/>
-        <small>(<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time>}}</span>{% else %}ongoing{% endif %})</small>
+        <small>(<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time></span>{% else %}ongoing{% endif %})</small>
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
         {{ role.schema_roleName }}{{", " if not loop.first }}

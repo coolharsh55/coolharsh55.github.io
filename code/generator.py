@@ -1,25 +1,50 @@
 #!/usr/bin/env python3
 
-from jinja2 import FileSystemLoader, Environment
+"""Generator for HTML
+
+This is the main file that takes in the data written inside ttl files
+and renders it into static HTML files that can be served via a server.
+
+The gist of the approach is thus:
+* RDF data is based on IRIs which act as unique identifiers for each node 
+* A RenderedItem is a class that represents nodes to be rendered in HTML
+* The generator loads all RDF data, then looks for instances of RenderedItem
+* A 'view' is a way to render a node
+* Views can be defined at any arbitrary level e.g. node, class, generic
+* The generator will find an appropriate view to render the node
+* The generator then executes the view
+* If the view contains a SPARQL query, the generator will execute it
+* Results of the query are passed to the view as data
+
+The file is to be executed as a script `python generator.py`
+It does not have a mains method.
+"""
+
 import datetime
 import os
-
-from rdflib import Graph, Namespace
-from rdflib import URIRef
-from rdflib import RDF, RDFS
+# RDFlib is used to interact with RDF data
+from rdflib import Graph
+from rdflib import Namespace
 from rdflib.namespace import NamespaceManager
 from rdflib.namespace import XSD
+from rdflib import RDF, RDFS
 from rdflib.term import Literal, URIRef
+# RDF-SPARQL is a plugin for RDFlib for executing SPARQL queries
 from rdflib.plugins.sparql import prepareQuery
-
+# RDF-ORM is a custom library for conveniently using RDF in Python
 from rdform import DataGraph, RDFS_Resource
+# Jinja2 is used as the templating engine for rendering HTML
+from jinja2 import FileSystemLoader
+from jinja2 import Environment
 
-import logging
 # logging configuration for debugging to console
+import logging
 logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
 
+# Namespaces used in the RDF files
+# RDF-ORM can also auto-detect them
 SCHEMA = Namespace('https://schema.org/')
 HPCOM = Namespace('https://harshp.com/code/vocab#')
 HPVIEWS = Namespace('https://harshp.com/code/views#')
@@ -38,9 +63,12 @@ graph.load('content/research/blog/research_blog.ttl', format='turtle')
 graph.load('content/research/research.ttl', format='turtle')
 graph.load('../me.ttl', format='turtle')
 graph.load('content/hobbies/books.ttl', format='turtle')
-# # create data graph through ORM
+
+# create data graph through ORM
 data = DataGraph()
 data.load(graph)
+# This create a namespace mapping for the namespaces defined in graph
+# E.g. 'rdfs' will be k="rdfs" v="Namespace(RDFS IRI)"
 data.graph.ns = { k:v for k,v in data.graph.namespaces() }
 
 # rendered items are those that should be created into files
@@ -49,6 +77,7 @@ rendered_items = data.get_instances_of('hpcom_RenderedItem')
 
 # ########################
 # hyper-lazy testing shell
+# this provides a lazy way to load data and check some output
 
 # check for duplicate dates
 # set_published = dict()
@@ -65,18 +94,22 @@ rendered_items = data.get_instances_of('hpcom_RenderedItem')
 # sys.exit()
 # ########################
 
+# Views define how the RDF data gets rendered into formats
 views = data.get_instances_of('hpcom_View')
 DEBUG(f'registered views: {views}')
+# RDFS Resource View is a generic view targeting rdfs:Resource
+# If all other views fail or are not found, it gets selected
 view_rdfs_resource = data.get_entity('hpview_RDFSResourceView')
 DEBUG(f'default view: {view_rdfs_resource}')
 RenderedItem = data.get_entity('hpcom_RenderedItem')
 
+# Tests that can be used within Jinja2 code
 JINJA2_TESTS = {
     'RDFS_Resource': lambda x: type(x) is RDFS_Resource,
     'BNode': lambda x: x.startswith('u'),
 }
 
-
+# Path where rendered data is exported or to be stored
 LOCAL_PATH = '../'
 
 

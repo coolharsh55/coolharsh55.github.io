@@ -1,0 +1,86 @@
+<p><strong>Abstract</strong>
+SHACL shapes used for validation are not related to the axioms used in ontologies used to define the instances.
+One of the issues with using such axioms is their dependence on concepts which may not be used within the data graph, as well as the presence of other concepts and relationships which the axioms do not cover.
+By contrast, an Ontology Design Pattern (ODP) contains axioms that are closer to how its instances are defined.
+In this position paper, we discuss the reuse of ODP axioms from modelling contexts to defining SHACL shapes, using the use-case of MicroblogEntry ODP. The aim of this approach is to foster automated generation of SHACL shapes based on contexts, represented by an ODP, defined within data graphs.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Shapes Constraint Language (SHACL)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is a language for describing and validating RDF graphs, and is a W3C recommendation since July 2017. The set of constraints used by SHACL for validation are expressed as an RDF graph and are called ‘shapes’ or ‘shape graphs’ and the RDF data being validated is called the ‘data graph.’ Shapes offer a description of the data graph in the form of constraints that a valid data graph satisfies. This is based on the closed-world assumption where all the required information is assumed to be present in the correct format or is considered to be invalid. This allows shapes to be used for other purposes such as code generation and data integration<a href="#ref:shacl" data-reference-type="ref" data-reference="ref:shacl">[ref:shacl]</a>.</p>
+<p>Creation of the validation conditions, called shapes in SHACL, is invariably tied to the data within the graph, and is therefore dependant on the ontologies used to model them. Such ontologies are modelled using axioms which serve to provide constraints over the use of the ontology and can therefore also be used to validate data. However, such axioms are only scoped to the ontology they are defined in, and therefore may not relate to other ontologies used within the RDF graph. Additionally, the RDF graph may only use selective concepts and properties from multiple ontologies. Such selective use may not be verifiable using axioms, which could depend on concepts and properties not used within the graph. Therefore, there is no reuse within the activities of modelling ontology axioms, choosing ontologies for use in data graphs, and creating SHACL shapes to validate the data graph.</p>
+<p>By contrast, an Ontology Design Pattern (ODP) captures only the concepts and relationships necessary to define a particular context. Such ODPs can combine concepts and relationships from multiple ontologies to express new relationships between them. Since an ODP is smaller and more modular than a comparatively larger ontology, the coverage of its terms used is larger in instances based on it. Its axioms, therefore, are more suitable for validation, and can be related to constraints in SHACL shapes.</p>
+<p>In this position paper, we discuss this similarity between the axioms used to model ODPs and the constraints within SHACL shapes. We present our argument in using ODP axioms for generating SHACL shapes for validation of instances based on the pattern. Our aim is to investigate the automation of SHACL shape generation from modular patterns for a given data graph. This paper also serves to encourage the reuse of ODPs outside of modelling ontologies for validating RDF graphs. The approach discussed in this paper is applicable only to those graphs which use a selective set from multiple ontologies.</p>
+<p>The rest of the paper is structured as follows: Section <a href="#sec:constraints" data-reference-type="ref" data-reference="sec:constraints">2</a> discusses the use of ODP axioms to generate SHACL shapes, with an example provided in Section <a href="#sec:example" data-reference-type="ref" data-reference="sec:example">3</a>. Section <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">4</a> concludes this paper.</p>
+<h2 id="sec:constraints">ODP axioms and SHACL shapes</h2>
+<p>An axiom is defined within description logic as a logical statement relating roles and/or concepts <span class="citation" data-cites="grau_owl_2008"><a href="#ref-grau_owl_2008" role="doc-biblioref">[1]</a></span>. Axioms in an ontology define constraints over concepts and relationships that must be satisfied by the instances that use the ontology. These axioms cannot be reused as part of an ODP as this can cause issues with missing entities (dependencies) which are not part of the ODP. Instead, the ODP defines its own set of axioms that are limited to only those concepts and relationships that are a part of it. In that sense, these axioms operate in a similar fashion to the constraints within SHACL, which are based on the closed-world assumption.</p>
+<p>Existing work comparing OWL axioms and SHACL <span class="citation" data-cites="noauthor_shacl_nodate"><a href="#ref-noauthor_shacl_nodate" role="doc-biblioref">[2]</a></span> finds the expressivity of OWL being comparable to the SHACL Core vocabulary, and that syntactic translation between OWL and SHACL is straight-forward in most cases. Automating this process would involve two steps - the first to identify the relevant OWL statements forming a single constraint, and the second to then generate their equivalent SHACL shape constraints. Since both OWL and SHACL are essentially defined using RDF triples, both steps can be performed programmatically using the table of associated concepts mapping OWL and SHACL constraints <span class="citation" data-cites="noauthor_shacl_nodate"><a href="#ref-noauthor_shacl_nodate" role="doc-biblioref">[2]</a></span>.</p>
+<h2 id="sec:example">Example</h2>
+<p>The MicroBlog ODP <span class="citation" data-cites="shimizu_ontology_2017"><a href="#ref-shimizu_ontology_2017" role="doc-biblioref">[3]</a></span> is based on real-world use-cases for modelling data related to tweets (Twitter posts). It’s core class, <em>MicroblogEntry</em>, defines three axioms describing constraints and relationships within the ODP, which are:</p>
+<ol>
+<li><code>MicroblogEntry ⊑ ∀  = 1hasPayload.Payload</code></li>
+<li><code>MicroblogEntry ⊑ ∀  = 1hasAuthor.Author</code></li>
+<li><code>MicroblogEntry ⊑ ∀ ≤ 1writtenAt.Location</code></li>
+</ol>
+<p>These are defined<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> using <em>rdfs:subClassOf</em> and <em>owl:Restriction</em> as:</p>
+<pre><code>###  http://www.example.org/dase/MicroblogEntry#MicroblogEntry
+:MicroblogEntry rdf:type owl:Class ;
+    rdfs:subClassOf :ReportingEvent ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :hasPayload ;
+          owl:qualifiedCardinality &quot;1&quot;^^xsd:nonNegativeInteger ;
+          owl:onClass :Payload
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :hasAuthor ;
+          owl:qualifiedCardinality &quot;1&quot;^^xsd:nonNegativeInteger ;
+          owl:onClass :Author
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :writtenAt ;
+          owl:maxQualifiedCardinality &quot;1&quot;^^xsd:nonNegativeInteger ;
+          owl:onClass :Location
+        ] .</code></pre>
+<p>These axioms can be used to directly generate the corresponding constraints in a SHACL shape using <em>sh:class</em> and <em>sh:qualified(Max/Min)Count</em> conditions. An example of this is the following SHACL shape:</p>
+<pre><code>:MicroblogEntryShape
+    a sh:NodeShape ;
+    sh:targetClass :MicroblogEntry ;
+    
+    sh:property [
+        sh:path :hasPayload ;
+        sh:class :Payload ;
+        sh:MinCount 1;
+        sh:MaxCount 1;
+    ] ,
+    sh:property [
+        sh:path :hasAuthor ;
+        sh:class :Author ;
+        sh:MinCount 1;
+        sh:MaxCount 1;
+    ] .</code></pre>
+<p>While the SHACL shape defines constraints for two axioms, the third axioms defines an optional triple, which does not provide a constraint on the data, and hence is not part of the shape. It can be represented as a constraint with a maximum of one to specify none or at most one location.</p>
+<h2 id="sec:conclusion">Conclusion</h2>
+<p>Through this position paper, we presented our arguments towards the use of ontology design patterns (ODPs) to generate SHACL shapes. The approach uses axioms defined within ODPs to generate equivalent SHACL shape constraints for data validation over a RDF dataset using those ODPs. The paper provides an example of this, where the RDF triples representing the ODP axioms within an OWL file are used to generate their corresponding SHACL shape. The paper also discusses the possibility of automating the SHACL shape generation process.</p>
+<p>The paper emphasises the use of ODPs rather than ontologies as the basis of validation. This is because RDF ontologies may contain multiple ontologies, where the axioms in any ontology may not be sufficient for verification of their instances in the data graph. ODPs can capture such use-cases due to their smaller and modular structure that allows representing axioms over multiple ontologies in different ways to express varying contexts.</p>
+<p>This approach encourages the reuse of ODPs beyond the data modelling phase. Relating such ODPs with their corresponding SHACL shapes provides a way to visualise the model of the data as well as to validate it using the same context. The ODPs defined in this manner are modelled more closer to the instances used in actual RDF graphs, and can therefore be used in approaches such as data summarising, visualisation, and exploration. Conversely, ODPs can assist approaches relevant to validation such as visualising SHACL shapes. This can be done by taking SHACL shapes and generating corresponding ODPs to represent their context.</p>
+<p>In terms of future work, the approach discussed in this position paper needs to be validated in terms of mappings between (OWL) axioms and SHACL shape constraints. In addition, the paper only considers the SHACL core vocabulary, and needs an investigation of the features provided by SHACL advanced and SHACL-SPARQL. The ability to convert OWL axioms to SPARQL queries using approaches such as OWL2SPARQL<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> would allow the generation of SHACL shapes from ODPs by using the SHACL-SPARQL features. This could also potentially assist in dealing with recursive constraints based on existing methods <span class="citation" data-cites="corman_krdb18-01.pdf_2018 corman_towards_2018"><a href="#ref-corman_krdb18-01.pdf_2018" role="doc-biblioref">[4]</a>, <a href="#ref-corman_towards_2018" role="doc-biblioref">[5]</a></span>. Based on these, an implementation of a proof-of-concept model needs to be created to demonstrate the feasibility of the approach. Anti-patterns that increase complexity for generation of SHACL shapes also need to be investigated.</p>
+<p>Our intended application is to automate the generation of SHACL shapes from existing patterns/models describing the data. This will allow us to validate a data graph based on specific contexts (represented through ODPs), and reusing the same validation mechanisms to check for existence and correctness of required data in the graph. The reporting feature of SHACL would then be used to produce a documentation based on the outcome of the validation to describe the quality of data.</p>
+<h3 class="unnumbered" id="note">Note:</h3>
+<p>The paper,“Learning SHACL Constraints for Validation of Relation Assertions in Knowledge Graphs” by André Melo and Heiko Paulheim, presents work of relevance to this paper regarding generating SPARQL queries from OWL axioms and using SHACL-SPARQL to use them as constraints. It was submitted<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> to ESWC 2018, but was not accepted.</p>
+<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+<p>This work is supported by the ADAPT Centre for Digital Content Technology which is funded under the SFI Research Centres Programme (Grant 13/RC/2106) and is co-funded under the European Regional Development Fund.<br />
+We also wish to thank Heiko Paulheim and Sebastian Rudolf for their discussion and guidance in the comparison of axioms and SHACL constraints.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<ol>
+<li id="ref-grau_owl_2008">B. C. Grau, I. Horrocks, B. Motik, B. Parsia, P. Patel-Schneider, and U. Sattler, “OWL 2: The next step for OWL,” <em>Web Semantics: Science, Services and Agents on the World Wide Web</em>, vol. 6, no. 4, pp. 309–322, Nov. 2008, doi: <a href="https://doi.org/dkbfp8">dkbfp8</a>. [Online]. Available: <a href="http://www.sciencedirect.com/science/article/pii/S1570826808000413">http://www.sciencedirect.com/science/article/pii/S1570826808000413</a>. [Accessed: 30-May-2018]</li>
+<li id="ref-noauthor_shacl_nodate">H. Knublauch, “SHACL and OWL Compared.” 2017-08-07 [Online]. Available: <a href="http://spinrdf.org/shacl-and-owl.html">http://spinrdf.org/shacl-and-owl.html</a>. [Accessed: 30-May-2018]</li>
+<li id="ref-shimizu_ontology_2017">C. Shimizu and M. Cheatham, “An Ontology Design Pattern for Microblog Entries,” in <em>Proceedings of the 8th Workshop on Ontology Design and Patterns (WOP 2017) co-located with the 16th International Semantic Web Conference (ISWC 2017)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-2043/paper-06.pdf">http://ceur-ws.org/Vol-2043/paper-06.pdf</a></li>
+<li id="ref-corman_krdb18-01">J. Corman, J. L. Reutter, and O. Savkovic, “KRDB18-01.pdf,” Technical Report KRDB18-01, Apr. 2018 [Online]. Available: <a href="https://www.inf.unibz.it/krdb/KRDB">https://www.inf.unibz.it/krdb/KRDB</a>. [Accessed: 31-May-2018]</li>
+<li id="ref-corman_towards_2018">J. Corman, J. L. Reutter, and O. Savković, “Towards a Robust Semantics for SHACL: Preliminary Discussion,” in <em>Proceedings of the 12th Alberto Mendelzon International Workshop on Foundations of Data Management</em>, 2018 [Online]. Available: <a href="http://ceur-ws.org/Vol-2100/paper22.pdf">http://ceur-ws.org/Vol-2100/paper22.pdf</a></li>
+</ol>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><span id="ref:shacl" label="ref:shacl">[ref:shacl]</span><a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://raw.githubusercontent.com/cogan-shimizu-wsu/MicroblogEntryOWL/master/MicroblogEntry.owl">https://raw.githubusercontent.com/cogan-shimizu-wsu/MicroblogEntryOWL/master/MicroblogEntry.owl</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://github.com/SmartDataAnalytics/OWL2SPARQL">https://github.com/SmartDataAnalytics/OWL2SPARQL</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://2018.eswc-conferences.org/paper_151/">https://2018.eswc-conferences.org/paper_151/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

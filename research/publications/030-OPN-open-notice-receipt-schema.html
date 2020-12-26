@@ -50,7 +50,164 @@
     </small>
 </div>
         <div id="content" property="schema:articleBody">
-        None
+        <p><strong>Abstract</strong> Effective digital transparency largely depends on provision of a notice, which historically has been a static document such as a privacy policy rather than a contextually useful notice or sign. 
+In this paper, we present Open Notice (OPN) network as a solution to address digital governance transparency challenges to make invisible changes to the state of policy (or governance) visible.
+OPN uses an open notice receipt schema to capture the semantics of a notice, which allows broadcasting changes and automating the tracking of policy changes. </p>
+<p><strong>Keywords</strong> digital transparency, GDPR, privacy, privacy notice, schema</p>
+<h2 id="introduction">Introduction</h2>
+<p>A critical challenge for the trustworthiness of information sharing in today’s internet-fuelled world is digital transparency. A key part of this challenge is the security and accountability of information sharing that is reliant upon regulations. For example, all privacy laws require a notice be provided to a person in order to manage the expectation of privacy (or governance). The information contained within online notices or signs is shaped by legal notice requirements that govern how privacy, surveillance, health, and safety are delivered.</p>
+<p>Notices, the most common and interoperable privacy legal requirement<span class="citation" data-cites="noauthor_analysis_2007">[<a href="#ref-noauthor_analysis_2007" role="doc-biblioref">1</a>]</span>, are intended to facilitate a shared understanding between provider and service consumers. In the context of shared understanding, notice is a broadly defined term, which includes terms of use, licenses, privacy policies and privacy statements. While approaches exist to express <span class="citation" data-cites="schwartz_looking_2009">[<a href="#ref-schwartz_looking_2009" role="doc-biblioref">2</a>]</span> and understand notifications through the use of a privacy policy <span class="citation" data-cites="oltramari_privonto:_2018 noauthor_terms_nodate">[<a href="#ref-oltramari_privonto:_2018" role="doc-biblioref">3</a>], [<a href="#ref-noauthor_terms_nodate" role="doc-biblioref">4</a>]</span>, in the context of meaningful privacy or consent, transparency over the provenance of notice information is a key factor in assessing the compliance and security of the active state of governance a policy provides in context.</p>
+<p>The lack of contextual transparency reflects an absence of the standardisation required for people to autonomously track changes to privacy<span class="citation" data-cites="lizar_towards_2012">[<a href="#ref-lizar_towards_2012" role="doc-biblioref">5</a>]</span>, which presents a critical security and trust flaw with legacy notice infrastructure. This is also evident in the challenge of maintaining informed consent where a person is required to understand changes to a notice and for the provider to ensure people are sufficiently informed of such changes, without a record to automate transparency outside of the context of the notice.</p>
+<h2 id="open-notice-opn">Open Notice (OPN)</h2>
+<p>The OPN project originally started as an industry project in 2012 called Open Notice<span class="citation" data-cites="noauthor_opening_2012">[<a href="#ref-noauthor_opening_2012" role="doc-biblioref">6</a>]</span> that presented a call for standards collaboration to address the lack of governance transparency in online contexts. The objective was to address the global “fake policy notice/contract of adhesion” challenge that people experience when clicking a checkbox to agree to terms or policy they have not read and do not understand. OPN is a solution for the challenge to reverse the impossible burden of policy awareness placed on people is to improve upon the current experience for all stakeholders by reducing friction, improving the experience while also reducing the policy risk. OPN is available at <a href="https://opn.openconsent.com/">https://opn.openconsent.com/</a>.</p>
+<p>The OPN Network, depicted in Fig <a href="#fig:OPN" data-reference-type="ref" data-reference="fig:OPN">1</a>, is used to maintain privacy profiles of a service provider and privacy processors to automate the tracking and broadcasting of policy states to people. The privacy profile of a controller is actively monitored so that changes can be tracked to provide an active privacy broadcasting signal. This signal is used to generate a notice receipt, which can be compared against the current (or future) state of privacy profile with the notice receipt schema. This enables the privacy network to provide a personalisation of privacy notices automatically and autonomously, which substantially reduces the repetitive burden to check notices requiring reading of policies in order to track unexpected changes in the state of policy.</p>
+<figure>
+<img src="img/030-OPN.png" id="fig:OPN" alt="Overview of OPN" /><figcaption aria-hidden="true">Overview of OPN</figcaption>
+</figure>
+<p>In an OPN Network a public policy profile is generated when a provider (website or service) registers a policy pointer, a policy identity contact pointer (for example a Data Protection Officer), and a auto generated controller category policy profile statement in the network. Once this profile is published, the provider’s profile is activated and verified, which is then automatically monitored for changes. The OPN Network stores changes to profile in a profile ledger so that changes can be annotated by the controller and broadcast automatically. People can generate a notice receipt on-demand (or automatically) for every context they interact with. The receipt is then used to check the provider profile for state changes, which once detected, is visualised using an icon embedded in the policy, e.g. by changing colour from green to red.</p>
+<h2 id="notice-receipt-schema">Notice Receipt Schema</h2>
+<p>The notice receipt schema consists of a set of fields used to define an interoperable receipt. The schema can be combined and used within other standards, such as JWT<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, to provide a single notice format that people can understand and use to control their own personal data utilising privacy rights, licenses and contracts. The schema can be represented using JSON-schema<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> or JSON-LD<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> to leverage its semantics with a web-native format. The notice receipt schema can be extended in different ways using different open standards and specifications such as ISO 29184<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, OASIS COEL<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, Kantara Consent Receipt <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">7</a>]</span>, and W3C DPVCG<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Table. <a href="#table:schema" data-reference-type="ref" data-reference="table:schema">1</a> provides an overview of the schema for the JSON specification with further documentation available online<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<div id="table:schema">
+<table>
+<caption>Notice Receipt Schema Fields (for JSON specification</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>label</strong></th>
+<th style="text-align: left;"><strong>format</strong></th>
+<th style="text-align: left;"><strong>description</strong></th>
+<th style="text-align: left;"><strong>req/opt</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The version of specification used to which the receipt conforms. To refer to this version of the specification, the string "v1" or the IRI "https://w3id.org/OPN/v1" should be used.</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">profile</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Link to the controller’s profile in the OPN registry.</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">A unique number for each Notice Receipt. SHOULD use UUID-4 [RFC 4122].</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">integer</td>
+<td style="text-align: left;">Date and time of when the notice was generated and provided. The JSON value MUST be expressed as the number of seconds since 1970-01-01 00:00:00 GMT (Unix epoch).</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">key</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The Controller’s profile public key. Used to sign notice icons, receipts and policies for higher assurance.</td>
+<td style="text-align: left;">opt.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">language</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Language in which the consent was obtained. MUST use ISO 639-1:2002 [ISO 639] if this field is used. Default is ’EN’.</td>
+<td style="text-align: left;">opt.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">controllerID</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The identity (legal name) of the controller.</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">jurisdiction</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The jurisdiction(s) applicable to this notice</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">controllerContact</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Contact name of the Controller. Contact could be a telephone number or an email address or a twitter handle.</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">notice</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Link to the notice the receipt is for</td>
+<td style="text-align: left;">opt.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">policy</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Link to the policies relevant to this notice e.g. privacy policy active at the time notice was provided</td>
+<td style="text-align: left;">req.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">context</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Method of notice presentation, sign, website pop-up etc</td>
+<td style="text-align: left;">opt.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">justification</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Authority of notice provider</td>
+<td style="text-align: left;">opt.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the table, <em>label</em> denotes the field, <em>format</em> states the expected data type, and <em>req/opt</em> states if the field is required - where valid notice receipts MUST contain every field defined as required. The field <em>id</em> allows each receipt to be uniquely identified and referenced for provenance and compliance purposes. The field <em>timestamp</em> allows the receipt to be associated with a specific instance of policy state in time, and to detect future changes using the profile of the provider within the open notice network. The field <em>profile</em> allows the receipt to be compared with the latest state profile in ledger, and to notify the service user of any changes or updates. The identity of the provider is represented using the <em>controllerID</em> field in schema, with the term ‘controller’ used to align it with common international privacy legal vocabularies such as the GDPR.</p>
+<p>The field <em>notice</em> links the receipt to the specific notice and information provided to the user, for example as an URL. The field <em>context</em> in the schema captures additional attributes about the provision of the notice such as the medium it was provided in (e.g. online), or the method of presentation (e.g. pop-up dialogue). The field <em>jurisdiction</em> refers to applicable jurisdictions for assistance with legal compliance purposes. The policy applicable at the time of the provision of the notice is linked using the (<em>policy</em> field. Where such policies change over time, the link in the notice receipt should point to the correct specific version of the policy rather than the latest one. The field <em>justification</em> is used to capture information regarding authority of the notice provider.</p>
+<p>Notice receipt providers can optionally provide a signing key or certificate using the field <em>key</em> to provide a higher assurance of non-repudiation for verification of the notice and the receipt. This verification key is generated when the provider of a notice registers their policy profile in the OPN Network profile registry. As the notice receipt schema itself does not contain any personally identifiable information, it is not constituted as personal data artefact. This allows the receipt to be safely shared with other services (by the service user) for purposes such as storage, verification of compliance, or extended automation functionality. Within the OPN Network, each notice receipt is identified with a unique ID used to reference the COEL event atom <span class="citation" data-cites="noauthor_classification_2019">[<a href="#ref-noauthor_classification_2019" role="doc-biblioref">8</a>]</span> and stored in a 3rd party <em>COEL/Engine</em> for privacy compliance when the receipt is extended with personal data applications or standards.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>A notice receipt is a demonstrable record of a service users consumption of a notice when it is provided by a service (e.g. website). The notice receipt is a machine readable record of the active ‘state’ of privacy, produced at the point of interaction, with a service in context. This notice captured ‘state’ can then be compared to future states to provide contextual transparency. OPN enables providers and consumers of notice to better track and understand the state of governance with automated machine readable governance contexts.</p>
+<p>The notice receipt schema presented in this paper is central to the implementation of OPN Network to capture machine readable notice. Work is currently in progress to extend the combined schema with the Kantara Consent Receipt specification <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">7</a>]</span> and the DPVCG taxonomies<sup><a href="#dpvcg" data-reference-type="ref" data-reference="dpvcg">[dpvcg]</a></sup> to add elements for a GDPR version of the Consent Receipt.</p>
+<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+<p><span>Harshvardhan J. Pandit is funded by the ADAPT Centre for Digital Content Technology which is funded under the SFI Research Centres Programme (Grant 13/RC/2106) and is co-funded under the European Regional Development Fund.</span></p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-noauthor_analysis_2007">
+<p>[1] “Analysis of Privacy Principles: Making Privacy Operational.” International Security, Trust; Privacy Alliance (ISTPA), 2007 [Online]. Available: <a href="http://xml.coverpages.org/ISTPA-AnalysisOfPrivacyPrinciplesV2.pdf">http://xml.coverpages.org/ISTPA-AnalysisOfPrivacyPrinciplesV2.pdf</a>. [Accessed: 16-May-2019]</p>
+</div>
+<div id="ref-schwartz_looking_2009">
+<p>[2] A. Schwartz, “Looking back at P3P: Lessons for the future,” <em>Center for Democracy &amp; Technology, https://www. cdt. org/files/pdfs/P3P_Retro_Final_0. pdf</em>, 2009. </p>
+</div>
+<div id="ref-oltramari_privonto:_2018">
+<p>[3] A. Oltramari <em>et al.</em>, “PrivOnto: A semantic framework for the analysis of privacy policies,” <em>Semantic Web</em>, vol. 9, no. 2, pp. 185–203, Jan. 2018, doi: <a href="https://doi.org/10/gdfqnk">10/gdfqnk</a>. [Online]. Available: <a href="http://www.medra.org/servlet/aliasResolver?alias=iospress&amp;doi=10.3233/SW-170283">http://www.medra.org/servlet/aliasResolver?alias=iospress&amp;doi=10.3233/SW-170283</a>. [Accessed: 15-Apr-2018]</p>
+</div>
+<div id="ref-noauthor_terms_nodate">
+<p>[4] “Terms of Service; Didn’t Read.” [Online]. Available: <a href="https://tosdr.org/">https://tosdr.org/</a>. [Accessed: 25-Apr-2019]</p>
+</div>
+<div id="ref-lizar_towards_2012">
+<p>[5] M. Lizar and G. Potter, “Towards a framework of contextual integrity:Legality, trust and compliance of CCTV signage,” in <em>Eyes everywhere</em>, A. Doyle, R. K. Lippert, and D. Lyon, Eds. Abingdon: Routledge, 2012 [Online]. Available: <a href="http://eprints.lancs.ac.uk/74146/">http://eprints.lancs.ac.uk/74146/</a>. [Accessed: 16-May-2019]</p>
+</div>
+<div id="ref-noauthor_opening_2012">
+<p>[6] “Opening up the Online Notice Infrastructure An ‘Open Notice’ Call For Collaboration.” W3C 2012 Do Not Track &amp; Beyond: Call for Collaboration, 2012 [Online]. Available: <a href="https://www.w3.org/2012/dnt-ws/position-papers/23.pdf">https://www.w3.org/2012/dnt-ws/position-papers/23.pdf</a>. [Accessed: 16-May-2019]</p>
+</div>
+<div id="ref-lizar_consent_2017">
+<p>[7] M. Lizar and D. Turner, “Consent Receipt Specification v1.1.0,” Kantara Initiative, 2017 [Online]. Available: <a href="https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf">https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf</a></p>
+</div>
+<div id="ref-noauthor_classification_2019">
+<p>[8] “Classification of Everyday Living Version 1.0.” OASIS, Jan-2019 [Online]. Available: <a href="https://docs.oasis-open.org/coel/COEL/v1.0/os/COEL-v1.0-os.pdf">https://docs.oasis-open.org/coel/COEL/v1.0/os/COEL-v1.0-os.pdf</a></p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>JSON Web Token <a href="https://tools.ietf.org/html/rfc7519">https://tools.ietf.org/html/rfc7519</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>JSON Schema <a href="https://json-schema.org/">https://json-schema.org/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>JSON-LD <a href="https://json-ld.org/">https://json-ld.org/</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>ISO 29184 <a href="https://www.iso.org/standard/70331.html">https://www.iso.org/standard/70331.html</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>COEL <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=coel">https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=coel</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>DPVCG <span id="dpvcg" label="dpvcg">[dpvcg]</span><a href="https://www.w3.org/community/dpvcg/">https://www.w3.org/community/dpvcg/</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>OPN Specification <a href="https://openconsent.com/blog/2019/5/16/opn-receipt-spec">https://openconsent.com/blog/2019/5/16/opn-receipt-spec</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
         </div>
     </article>
     </main>

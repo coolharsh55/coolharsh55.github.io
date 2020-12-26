@@ -1,0 +1,200 @@
+<p><strong>Abstract</strong> Privacy laws such as the General Data Protection Regulation (GDPR) specify several obligations involving personal data. A privacy policy is a document that provides information for legal compliance on how personal data is collected, used, stored, and shared, which is essential for understanding their privacy implications. Approaches such as the UsablePrivacy project that extract information from the text of the privacy policy need to structure it in a manner suitable for machine processing. Semantic web has been proven to be suitable to represent this knowledge as a set of queryable concepts and relationships. However, there is a large overlap between different projects and approaches targeting the privacy policy that does not take advantage of the significant similarity of its underlying information. We present an ontology design pattern to aid these efforts in representing and modelling information related to personal data within a privacy policy. The pattern aims to assist the existing ecosystem of machine-based approaches for interpretation and visualisation of privacy policies by providing a common structured representation to ease modelling and sharing of related information.</p>
+<h2 id="motivation-scope">Motivation &amp; Scope</h2>
+<p>A privacy policy provides disclosure of information regarding the collection, usage, storage, and sharing of personal data as governed by territorial laws <span class="citation" data-cites="wilson_creation_2016">[<a href="#ref-wilson_creation_2016" role="doc-biblioref">1</a>]</span>. The privacy policy is most commonly presented as a monolithic text document. It has been repeatedly proven to be difficult to read and understand<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> for the users <span class="citation" data-cites="contissa_claudette_2018 fabian_large-scale_2017 jensen_privacy_2004">[<a href="#ref-contissa_claudette_2018" role="doc-biblioref">2</a>]–[<a href="#ref-jensen_privacy_2004" role="doc-biblioref">4</a>]</span>.</p>
+<p>To remedy this, there have been several approaches towards making interpretation of privacy policies easier for end users. ‘Terms of Service; Didn’t Read’<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> is a community driven approach to summarise privacy policies in the interest of user awareness. Some recent approaches use machine-learning to interpret the contents of the privacy policy and to present their analysis to the user in a visual format. This allows the approaches to scale with the ever-increasing and changing nature of services and their privacy policies. Relevant approaches regarding this are the UsablePrivacy project<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="citation" data-cites="oltramari_privonto:_2018">[<a href="#ref-oltramari_privonto:_2018" role="doc-biblioref">5</a>]</span> and the PrivacyGuide project <span class="citation" data-cites="tesfay_i_2018 tesfay_privacyguide:_2018">[<a href="#ref-tesfay_i_2018" role="doc-biblioref">6</a>], [<a href="#ref-tesfay_privacyguide:_2018" role="doc-biblioref">7</a>]</span>.</p>
+<p>The privacy policy provides information associated with personal data such as its collection, usage, sharing, and storage along with other information such as the provision of various rights required by law. The General Data Protection Regulation (GDPR) <span class="citation" data-cites="noauthor_regulation_2016">[<a href="#ref-noauthor_regulation_2016" role="doc-biblioref">8</a>]</span>, which is a European law for data protection, requires specification of this information in privacy policies for compliance. This provides commonality with respect to the mandatory information specified by laws which is provided in privacy policies. Machine-processing approaches require this information to be structured in a machine-readable format that can aid in the automation of processes. Approaches that target the same set of information have to deal with the same set of data - in this case the information regarding personal data provided in privacy policies. This commonality of underlying information (within privacy policies) can be represented using a common vocabulary for its expression. This will aid the different approaches through sharing of extracted information from privacy policies, while also making it possible to compare the efficiency of different methods in extracting this information.</p>
+<p>Using a semantic web based approach provides a way to define such knowledge in the form of concepts and relationships with the freedom for them to be expanded and connected based on requirements. The UsablePrivacy project already uses such an approach involving semantic web ontologies to represent its underlying information about the categorisation of sentences within a privacy policy <span class="citation" data-cites="oltramari_privonto:_2018">[<a href="#ref-oltramari_privonto:_2018" role="doc-biblioref">5</a>]</span>. In addition to such machine-based approaches, other work involving the information presented within a privacy policy will also benefit from such structuring of information based on semantic web technologies.</p>
+<p>With this as our motivation, we present an ontology design pattern (ODP) for modelling the information related to personal data within a privacy policy. This ODP provides a way to express the personal data and the information associated with it as a set of concepts and relationships which can be incorporated into a larger semantic web ontology.</p>
+<p>In terms of scope, we limit to expressing information related to personal data provided explicitly within a privacy policy. Other relevant information within a privacy policy but not part of the pattern is discussed as future work at the end of this paper. In terms of relevant work, we are not aware of any similar approaches for modelling of information within a privacy policy towards creating an ontology design pattern.</p>
+<p>The ODP is based on an investigation of privacy policies from Airbnb Ireland<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> and Twitter,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> with archived copies made available<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> in case of changes to the policy in future. While we also evaluated other privacy policies for their structure and content, we specify these two as being our primary use-cases for the purpose of this work. An investigation of information within the privacy policy provided by Airbnb Ireland is available online<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> but is not part of this paper’s contribution.</p>
+<p>The rest of this paper is structured as follows: Section <a href="#sec:pattern" data-reference-type="ref" data-reference="sec:pattern">2</a> provides a description of the pattern with an example provided in Section <a href="#sec:example" data-reference-type="ref" data-reference="sec:example">3</a>. Section <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">4</a> concludes the paper with a discussion regarding future work.</p>
+<h2 id="sec:pattern">Pattern Description</h2>
+<h3 id="sec:questions">Competency Questions</h3>
+<p>The pattern aims to answer the following competency questions:</p>
+<ol>
+    <li>What personal data is collected? e.g. email</li>
+    <li>Does the data have a category? e.g. contact information</li>
+    <li>What was its source? e.g. user</li>
+    <li>How is it collected? e.g. given by user, automated</li>
+    <li>What is it used for? e.g. creating an account, authentication and verification</li>
+    <li>How long is it retained for? e.g. 90days after account deletion</li>
+    <li>Who is it shared with? e.g. name of partner organisation(s)</li>
+    <li>What is the legal basis? e.g. given consent, legitimate use</li>
+    <li>What processes/purposes was the data shared for? e.g. analytics, marketing</li>
+    <li>What is the legal type of third party? e.g. processor, controller, authority</li>
+</ol>
+<p>The pattern does not consider questions related to the provision of GDPR rights. While these questions are relevant, they are directly related to the data subject (or user), and are common to all instances of personal data. They are better represented in the model of the privacy policy rather than as an instance of personal data. We provide them here for brevity, with a further discussion on this provided in the future work section:</p>
+<ol>
+    <li>How can personal data be rectified or corrected?</li>
+    <li>How can personal data be deleted or removed?</li>
+    <li>How can a copy of the personal data be obtained?</li>
+    <li>How can personal data be transferred to another party?</li>
+    <li>How can information about the personal data be obtained?</li>
+</ol>
+<p>The pattern uses the GDPRtEXT<span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">9</a>]</span> and GDPRov<span class="citation" data-cites="pandit_modelling_2017">[<a href="#ref-pandit_modelling_2017" role="doc-biblioref">10</a>]</span> ontologies for defining concepts relevant to the GDPR. GDPRov is an ontology for describing the provenance of consent and personal data lifecycles using GDPR relevant terminology, and is an extension of PROV-O and P-Plan. GDPRtEXT provides definitions of concepts and terms used within the text of the GDPR using SKOS.</p>
+<p>The pattern is available online along with its documentation<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> and has been submitted to the ontology design patterns collaborative wiki<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<h3 id="sec:concepts">Concepts &amp; Relationships</h3>
+<p>A visualisation of the pattern is presented in <a href="#fig:fullpattern" data-reference-type="ref" data-reference="fig:fullpattern">Fig. 1</a>, and was created using the yEd graph editor<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> with the Graffoo <span class="citation" data-cites="graffoo">[<a href="#ref-graffoo" role="doc-biblioref">11</a>]</span> palette.</p>
+<figure id="fig:fullpattern">
+    <img src="img/022-odp-personal-data.png" />
+    <figcaption>Fig. 1. Personal data pattern illustrated using Graffoo [4]</figcaption>
+</figure>
+<h4 class="unnumbered" id="personal-data">Personal Data</h4>
+<p><em>PersonalData</em> represents an instance of personal data, such as an <em>email address</em>, which is described in the privacy policy. It is defined as an instance of <em>gdprov:PersonalData</em>. Privacy policies often group related instances of personal data in broader categories such as <em>contact information</em> for representing <em>email</em> and <em>phone number</em>. To represent such a grouping in the pattern, the category can be represented as a subclass of <em>PersonalData</em> using <em>rdfs:subClassOf</em>, with its instances representing individual personal data items. In this case, <em>contact information</em> would be a subclass of <em>gdprov:PersonalData</em> with <em>email</em> and <em>phone number</em> being its instances. </p>
+<pre><code>PersonalDataCategory ⊑ PersonalData (1)</code></pre>
+<h4 class="unnumbered" id="data-collection">Data Collection</h4>
+<p>Data is collected through a <em>gdprov:DataCollectionStep</em>, and is represented using the property <em>gdprov:collectsData</em>. The data provider is represented using <em>prov:Agent</em> through the property <em>gdprov:collectsDataFromAgent</em>.</p>
+<p>Apart from the source, the privacy policy may also mention the particular collection mechanism used for data collection. This is represented using the <em>gdprov:hasCollectionMechanism</em> property, where the collection mechanism is represented by a suitable subclass of <em>gdprtext:CollectionMechanism</em>, such as <em>gdprtext:GivenByUser</em> or <em>gdprtext:AutomatedCollection</em>.</p>
+
+<pre><code>DataCollectionStep ⊑ ≥ 1 collectsData.PersonalData (2)</code></pre>
+<pre><code>DataCollectionStep ⊑ ≥ 1 collectsDataFromAgent.Agent (3)</code></pre>
+<pre><code>PersonalData ⊑ ∀ hasCollectionMechanism.CollectionMechanism (4)</code></pre>
+
+<h4 class="unnumbered" id="data-retention">Data Retention</h4>
+<p>The retention of personal data informs how long it would be stored for. This is represented using the Time Ontology in OWL<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, which is the W3C recommendation for describing temporal concepts. The retention period is represented using the property <em>time:hasDuration</em> with the range being an instance of <em>time:Duration</em>. This information is arbitrary and may be missing or in an un-representable format within the privacy policy such as “retained for as long as necessary” where the information is difficult to represent.</p>
+<pre><code>PersonalData ⊑ ∀ hasDuration.Duration (5)</code></pre>
+<h4 class="unnumbered" id="data-usage-processing">Data Usage &amp; Processing</h4>
+<p>Data Usage, also termed as Processing, is the use of personal data for some purpose as specified within the privacy policy. This can vary in terms of granularity from a comparatively simple step such as sending an email to a more abstract process such as marketing which encompasses several steps and processes. The pattern therefore uses <em>gdprov:Process</em>, which is a subclass of <em>p-plan:Plan</em>, to define a process which can contain one or more steps and processes. The property <em>gdprov:usesData</em> is used to represent the use of personal data within a process.</p>
+<pre><code>Process ⊑ ≥ 1 usesData.PersonalData (6)</code></pre>
+<h4 class="unnumbered" id="legal-basis-for-data-usage">Legal Basis for Data Usage</h4>
+<p>Every use of personal data within a process must have a legal basis under the GDPR. Examples of such legal basis defined within GDPRtEXT include consent, legitimate interest, compliance with the law, and performance of contract. To represent this, the pattern uses the property <em>gdprov:hasLegalBasis</em> with the range <em>gdprtext:LawfulBasisForProcessing</em>. Since every data use must have at least one legal basis, this provides the axiom: </p>
+<pre><code>Process ⊑ ≥ 1 hasLegalBasis.LawfulBasisForProcessing (7)</code></pre>
+<h4 class="unnumbered" id="data-sharing">Data Sharing</h4>
+<p>The sharing of data involves the entity the data is shared with, the purposes for sharing, and their legal basis. This is represented within the pattern through the use of <em>gdprov:DataSharingStep</em> and the property <em>gdprov:sharesData</em>. The entity the data is shared with is represented using the <em>gdprov:sharesDataWith</em> property with the domain as <em>gdprov:DataSharingStep</em> and the range as a type of <em>gdprov:Agent</em>, such as another Data Controller, Data Processor, or an Authority. The purpose of sharing is represented using <em>gdprov:Process</em> and the property <em>gdprov:sharesDataForProcess</em> to model the data being used in that process after sharing. The legal basis of processes for which the data is shared is represented using <em>gdprov:hasLegalBasis</em> as specified earlier. Since it is mandatory to inform who the data is being shared with, along with its intended purposes, and the specific legal obligation, we have the following axioms: </p>
+<pre><code>DataSharingStep ⊑ ≥ 1 sharesData.PersonalData (8)</code></pre>
+<pre><code>DataSharingStep ⊑ ≥ 1 sharesDataWith.Agent (9)</code></pre>
+<pre><code>DataSharingStep ⊑ ≥ 1 sharesDataFor.Process (10)</code></pre>
+<h2 id="sec:example">Example Use-Case</h2>
+<p>We present here an example use-case of the pattern for depicting personal data from Airbnb Ireland’s privacy policy. The use-case was chosen for its generality in terms of being common to other privacy policies as well as ease of understanding for users.</p>
+<p>The use-case concerns the ‘email address’ specified as personal data within the privacy policy, which is provided by the user. It is used to “provide, improve, and develop platform services”, which is specified as a process with the legal basis of legitimate interest. It is shared with the ‘Payments Controller’ entity for ‘Identity Verification’ process which has a legal basis of ’contract fulfilment’.</p>
+<p>The example use-case is illustrated in <a href="#fig:usecase" data-reference-type="ref" data-reference="fig:usecase">Fig. 2</a> using Graffoo <span class="citation" data-cites="graffoo">[<a href="#ref-graffoo" role="doc-biblioref">11</a>]</span> and shows the classes, properties, and instances. The corresponding code is presented in <a href="#listing-use-case" data-reference-type="ref" data-reference="use-case">Listing. 1</a> using the Turtle<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> notation for RDF. The answers to the competency questions corresponding to the use-case are provided below.</p>
+<figure id="fig:usecase">
+    <img src="img/022-odp-personal-data-use-case.png" />
+    <figcaption>Fig. 2. Example Use-case illustrated using Graffoo [4] and showing collection, storage, usage, and sharing of Email Address as Personal Data</figcaption>
+</figure>
+<ol>
+<li>What personal data is collected: Email Address</li>
+<li>Does the data have a category: Account Information</li>
+<li>What was its source: User</li>
+<li>How is it collected: Given by user</li>
+<li>What is it used for: Platform Services, Payments</li>
+<li>How long is it retained for: indefinitely (no end duration)</li>
+<li>Who is it shared with: Payments Controller</li>
+<li>What is the legal basis: Legitimate Interest, Contract</li>
+<li>What processes/purposes was the data shared for: Identity Verification</li>
+<li>What is the legal type of third party: Data Controller</li>
+</ol>
+<h2 id="sec:conclusion">Conclusion</h2>
+<p>This paper presents an ontology design pattern for representing information associated with personal data in the context of a privacy policy. More specifically, it allows modelling and representation of collection, usage, storage, and sharing of personal data along with the associated processes and entities, as well as their legal basis. Concepts and relationships within the pattern are defined using the previously published GDPRov <span class="citation" data-cites="pandit_modelling_2017">[<a href="#ref-pandit_modelling_2017" role="doc-biblioref">10</a>]</span> and GDPRtEXT <span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">9</a>]</span> ontologies. For defining the duration of storage, the pattern uses the Time ontology in OWL.</p>
+<p>The paper provides an use-case of the pattern based on an real-world privacy policy to reflect its suitability. The use-case captures one instance of personal data and the information related to it within the privacy policy. The depicted usage of ontology design patterns provides motivation for adoption in approaches related to the use of information within a privacy policy. This allows sharing of information through a common representation for related activities such as summarising, visualisation, analytics, or determining compliance using information contained within privacy policies.</p>
+<p>Based on the intended motivation, the pattern provides a way to share the relevant information regarding personal data, and provides further avenues for research regarding similar patterns or meta-patterns related to privacy policies.</p>
+<h2 class="unnumbered" id="future-work">Future Work</h2>
+<p>We consider our work an initial effort towards consolidating information within privacy policies. Using the pattern to reflect information from several distinct real-world privacy policies will demonstrate its feasibility and applicability in real-world scenarios. This presents a challenge as the pattern currently assumes the presence of all required information which may not be the case for some use-cases, particularly where interpretations of information are ambiguous. However, capturing such ambiguities through a meta-pattern can possibly aid in flagging them for review by legal experts.</p>
+<p>In addition to the above, the pattern faces other challenges for the modelling of information it aims to represent. For example, it is not clear what level of abstraction should be represented in the pattern regarding concepts such as storage and sharing. Should there be a <em>DataStorageStep</em> which can be further annotated to represent various pieces of information relating to the storage of personal data? Abstractions can help to represent different storage duration and formats for the same instance of personal data, such as storing the actual data for 6 months while a (pseudo-)anonymised copy is stored for 2 years. However, tacking on such abstractions in to the pattern can make it rigid (in terms of modelling) and complex. More work needs to be undertaken to evaluate whether such abstractions are necessary in the pattern, and how they should be represented.</p>
+<p>Another challenge is the representation of storage duration (or retention period). Concrete values such as 6 months or 2 years can be represented using appropriate ontologies, but ambiguous statements are difficult to represent using such ontologies. An example of this is the statement "data may be stored for as long as necessary..." in which there is no end to the duration for storage. Representing this as a <em>time:Duration</em> instance is problematic as there is no clear method to represent its end period. Not defining an end period is also not a solution due to the open world assumption. Our approach towards solving this issue is to abstract the storage activity as described earlier. However, we are open for other approaches and solutions towards this problem.</p>
+<p>The privacy policy contains more information than is reflected by the pattern. To represent this additional set(s) of information, larger (combinations of) patterns and ontologies will be needed to model and represent all the relevant information and context. This is especially relevant for GDPR as it mandates the inclusion of information regarding its various rights, which is presented through the privacy policy.</p>
+<p>Some of this information was presented in this paper as additional competency questions. These help evaluate information regarding how the personal data can be changed (rectified), deleted, and obtained (download a copy). Additionally, GDPR allows the data subject to change their consent, thereby affecting the processes involving personal data. Capturing this information is essential towards quantifying the privacy policies into machine-readable data, with the paper demonstrating the suitability of ODP for this task.</p>
+<p>Listing 1: Example Use-case in Turtle format presenting Email Address as an
+instance of personal data along its collection, storage, and sharing</p>
+<pre id="use-case-listing"><code>@prefix dct: &lt;http://purl.org/dc/terms/&gt; . 
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; . 
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; . 
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; . 
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; . 
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; . 
+@prefix gdprov: &lt;http://purl.org/adaptcentre/openscience/ontologies/gdprov#&gt; . 
+@prefix gdprtext: &lt;http://purl.org/adaptcentre/openscience/ontologies/GDPRtEXT#&gt; . 
+@prefix : &lt;http://example.com/personaldata#&gt; .
+
+:PaymentProcess a gdprov:DataSharingStep ;
+    rdfs:label &quot;Payment Process&quot;^^xsd:string ;
+    gdprov:sharesData :EmailAddress ;
+    gdprov:sharesDataForProcess :IdentityVerification ;
+    gdprov:sharesDataWith :PaymentsController .
+
+:PlatformServices a gdprov:Process ;
+    rdfs:label &quot;Provide, Improve, and Develop Platform&quot;^^xsd:string ;
+    gdprov:hasLegalBasis gdprtext:LegitimateInterest ;
+    gdprov:usesData :EmailAddress .
+
+:Registration a gdprov:DataCollectionStep ;
+    rdfs:label &quot;Registration for new users&quot;^^xsd:string ;
+    gdprov:collectsData :EmailAddress ;
+    gdprov:collectsDataFromAgent :User ;
+    gdprov:hasCollectionMechanism gdprtext:GivenByUser .
+
+:AccountInformation a rdfs:Class, owl:Class ;
+    rdfs:label &quot;Account Information of an User&quot;^^xsd:string ;
+    rdfs:subClassOf gdprov:PersonalData .
+
+:IdentityVerification a gdprov:Process ;
+    rdfs:label &quot;Identity Verification&quot;^^xsd:string ;
+    gdprov:hasLegalBasis gdprtext:Contract ;
+    gdprov:usesData :EmailAddress .
+
+:PaymentsController a gdprov:Controller,
+        prov:Agent ;
+    rdfs:label &quot;Payments Controller&quot;^^xsd:string .
+
+:User a gdprov:DataSubject,
+        prov:Agent ;
+    rdfs:label &quot;User of Service&quot;^^xsd:string .
+
+:EmailAddress a :AccountInformation,
+        :PersonalData ;
+    rdfs:label &quot;Email Address&quot;^^xsd:string .</code></pre>
+<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+<p>This work is supported by the ADAPT Centre for Digital Content Technology which is funded under the SFI Research Centres Programme (Grant 13/RC/2106) and is co-funded under the European Regional Development Fund.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-wilson_creation_2016">
+<p>[1] S. Wilson <em>et al.</em>, “The Creation and Analysis of a Website Privacy Policy Corpus,” in <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, 2016, pp. 1330–1340 [Online]. Available: <a href="http://www.aclweb.org/anthology/P16-1126">http://www.aclweb.org/anthology/P16-1126</a>. [Accessed: 02-May-2018]</p>
+</div>
+<div id="ref-contissa_claudette_2018">
+<p>[2] G. Contissa <em>et al.</em>, “Claudette Meets GDPR: Automating the Evaluation of Privacy Policies Using Artificial Intelligence,” 2018. </p>
+</div>
+<div id="ref-fabian_large-scale_2017">
+<p>[3] B. Fabian, T. Ermakova, and T. Lentz, “Large-scale Readability Analysis of Privacy Policies,” in <em>Proceedings of the International Conference on Web Intelligence</em>, 2017, pp. 18–25, doi: <a href="https://doi.org/10.1145/3106426.3106427">10.1145/3106426.3106427</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/3106426.3106427">http://doi.acm.org/10.1145/3106426.3106427</a>. [Accessed: 15-Apr-2018]</p>
+</div>
+<div id="ref-jensen_privacy_2004">
+<p>[4] C. Jensen and C. Potts, “Privacy Policies As Decision-making Tools: An Evaluation of Online Privacy Notices,” in <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 2004, pp. 471–478, doi: <a href="https://doi.org/10.1145/985692.985752">10.1145/985692.985752</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/985692.985752">http://doi.acm.org/10.1145/985692.985752</a>. [Accessed: 02-May-2018]</p>
+</div>
+<div id="ref-oltramari_privonto:_2018">
+<p>[5] A. Oltramari <em>et al.</em>, “PrivOnto: A semantic framework for the analysis of privacy policies,” <em>Semantic Web</em>, vol. 9, no. 2, pp. 185–203, Jan. 2018, doi: <a href="https://doi.org/10.3233/SW-170283">10.3233/SW-170283</a>. [Online]. Available: <a href="http://www.medra.org/servlet/aliasResolver?alias=iospress&amp;doi=10.3233/SW-170283">http://www.medra.org/servlet/aliasResolver?alias=iospress&amp;doi=10.3233/SW-170283</a>. [Accessed: 15-Apr-2018]</p>
+</div>
+<div id="ref-tesfay_i_2018">
+<p>[6] W. B. Tesfay, P. Hofmann, T. Nakamura, S. Kiyomoto, and J. Serna, “I Read but Don’T Agree: Privacy Policy Benchmarking Using Machine Learning and the EU GDPR,” in <em>Companion Proceedings of the The Web Conference 2018</em>, 2018, pp. 163–166, doi: <a href="https://doi.org/10.1145/3184558.3186969">10.1145/3184558.3186969</a> [Online]. Available: <a href="https://doi.org/10.1145/3184558.3186969">https://doi.org/10.1145/3184558.3186969</a>. [Accessed: 02-May-2018]</p>
+</div>
+<div id="ref-tesfay_privacyguide:_2018">
+<p>[7] W. B. Tesfay, P. Hofmann, T. Nakamura, S. Kiyomoto, and J. Serna, “PrivacyGuide: Towards an Implementation of the EU GDPR on Internet Privacy Policy Evaluation,” in <em>Proceedings of the Fourth ACM International Workshop on Security and Privacy Analytics</em>, 2018, pp. 15–21, doi: <a href="https://doi.org/10.1145/3180445.3180447">10.1145/3180445.3180447</a> [Online]. Available: <a href="http://doi.acm.org/10.1145/3180445.3180447">http://doi.acm.org/10.1145/3180445.3180447</a>. [Accessed: 15-Apr-2018]</p>
+</div>
+<div id="ref-noauthor_regulation_2016">
+<p>[8] “Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation),” <em>Official Journal of the European Union</em>, vol. L119, pp. 1–88, May 2016 [Online]. Available: <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC</a></p>
+</div>
+<div id="ref-pandit_gdprtext_2018">
+<p>[9] H. J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis, “GDPRtEXT - GDPR as a Linked Data Resource,” 2018, p. 14. </p>
+</div>
+<div id="ref-pandit_modelling_2017">
+<p>[10] H. J. Pandit and D. Lewis, “Modelling Provenance for GDPR Compliance using Linked Open Data Vocabularies,” in <em>Proceedings of the 5th Workshop on Society, Privacy and the Semantic Web - Policy and Technology (PrivOn2017) (PrivOn)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-1951/#paper-06">http://ceur-ws.org/Vol-1951/#paper-06</a></p>
+</div>
+<div id="ref-graffoo">
+<p>[11] R. Falco, A. Gangemi, S. Peroni, D. Shotton, and F. Vitali, “Modelling owl ontologies with graffoo,” in <em>The semantic web: ESWC 2014 satellite events</em>, 2014, pp. 320–325. </p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>The impact of GDPR on the readability of privacy policies is yet to be determined<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://tosdr.org/index.html">https://tosdr.org/index.html</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://www.usableprivacy.org">https://www.usableprivacy.org</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://www.airbnb.ie/terms/privacy_policy">https://www.airbnb.ie/terms/privacy_policy</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a href="https://twitter.com/en/privacy">https://twitter.com/en/privacy</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a href="https://opengogs.adaptcentre.ie/harsh/privacy-policy-dashboard/">https://opengogs.adaptcentre.ie/harsh/privacy-policy-dashboard/</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="http://openscience.adaptcentre.ie/privacy-policy/personalise/demo/policy.html">http://openscience.adaptcentre.ie/privacy-policy/personalise/demo/policy.html</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p><a href="https://openscience.adaptcentre.ie/projects/privacy-policy/design-pattern/">https://openscience.adaptcentre.ie/projects/privacy-policy/design-pattern/</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><a href="http://ontologydesignpatterns.org/wiki/Submissions:PrivacyPolicyPersonalData">http://ontologydesignpatterns.org/wiki/Submissions:PrivacyPolicyPersonalData</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><a href="https://www.yworks.com/products/yed">https://www.yworks.com/products/yed</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a href="https://www.w3.org/TR/owl-time/">https://www.w3.org/TR/owl-time/</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

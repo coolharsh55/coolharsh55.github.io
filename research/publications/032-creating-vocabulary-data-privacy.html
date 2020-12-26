@@ -72,7 +72,339 @@
     </small>
 </div>
         <div id="content" property="schema:articleBody">
-        None
+        <p><strong>Abstract</strong> Managing privacy and understanding handling of personal data has turned into a fundamental right, at least within the  European Union, with the General Data Protection Regulation (GDPR) being enforced since May 25\textsuperscript{th} 2018. This has led to tools and services that promise compliance to GDPR in terms of consent management and keeping track of personal data being processed. The information recorded within such tools, as well as that for compliance itself, needs to be interoperable to provide sufficient transparency in its usage. Additionally, interoperability is also necessary towards addressing the right to data portability under GDPR as well as creation of user-configurable and manageable privacy policies. We argue that such interoperability can be enabled through agreement over vocabularies using linked data principles. The W3C Data Privacy Vocabulary and Controls Community Group (DPVCG) was set up to jointly develop such vocabularies towards interoperability in the context of data privacy. This paper presents the resulting Data Privacy Vocabulary (DPV), along with a discussion on its potential uses, and an invitation for feedback and participation. </p>
+<p><strong>Keywords</strong> Privacy, GDPR, Interoperability, Semantic Web</p>
+<h2 id="sec:intro">Introduction</h2>
+<p>Concerns regarding privacy and trust have been raised to a point where regulators, citizens, and companies have started to take action. Services on the Web are often very complex orchestrations of co-operation between multiple actors, and the processing of personal data in Big Data environments is becoming more complex while being less transparent.</p>
+<p>Yet, while from a legal point of view, the adoption of the General Data Protection Regulation (GDPR) <span class="citation" data-cites="2016-679-GDPR">[<a href="#ref-2016-679-GDPR" role="doc-biblioref">2</a>]</span> in April 2016, as well the California Consumer Privacy Act (CCPA) <span class="citation" data-cites="noauthor_assembly_2018">[<a href="#ref-noauthor_assembly_2018" role="doc-biblioref">3</a>]</span> of 2018 regulate processing of personal data, their technical implementation in operative IT systems is far from being standardised. While building privacy-by-design <span class="citation" data-cites="cavoukian2009privacy">[<a href="#ref-cavoukian2009privacy" role="doc-biblioref">4</a>]</span> into systems is a much wider scope, we lack the tools, standards, and best practices for those wanting to be good citizens of the Web to provide interoperable and understandable privacy controls, or to keep records of data processing in an accountable manner, with the possible exception of work on permissions <span class="citation" data-cites="iannella_odrl_2018">[<a href="#ref-iannella_odrl_2018" role="doc-biblioref">5</a>]</span> and tracking protection <span class="citation" data-cites="fielding_tracking_2019">[<a href="#ref-fielding_tracking_2019" role="doc-biblioref">6</a>]</span>, but even those only cover partial aspects.</p>
+<p>To this end, the work presented in this paper aims to set a basis for the establishment of <em>interoperable standards</em> in this domain. In particular, it addresses the following gaps by complementing existing (W3C) standards:</p>
+<ul>
+<li><p>There are no standard vocabularies to describe and interchange personal data. Such vocabularies are relevant, for instance, to support data subjects’ right to data portability under Article 20 of the GDPR <span class="citation" data-cites="2016-679-GDPR">[<a href="#ref-2016-679-GDPR" role="doc-biblioref">2</a>]</span>.</p></li>
+<li><p>There are no agreed upon vocabularies or taxonomies for describing <em>purposes</em> of personal data handling and <em>categories of processing</em>: the GDPR requires legal bases for data processing, including consent, be tied to the specific <em>purposes</em> and <em>processing</em> of personal data to justify their lawful use. Consequently personal data processing should be logged with a standard reference to a purpose which complies with the norms set by the legal bases - such as the individual’s consent. The concrete taxonomies for representing this information in the context of personal data handling are not yet standardised.</p></li>
+<li><p>There are no agreed upon vocabularies or ontologies that align the <em>terminology of privacy legislations</em> - such as the GDPR, to allow organisations to claim compliance with such regulations using machine-readable information.</p></li>
+</ul>
+<p>The herein presented Data Privacy Vocabulary (DPV) aims at addressing these challenges by providing a comprehensive, standardized way set of terms for annotating provacy policies, consent receipts, and - in general - records of personal data handling. To this end, the rest of the paper is structured as follows: Section <a href="#sec:cg" data-reference-type="ref" data-reference="sec:cg">2</a> explains the setup and governance of the DPV Community group within the World Wide Web Consortium (W3C) whereafter Section <a href="#sec:vocabularies" data-reference-type="ref" data-reference="sec:vocabularies">3</a> summarizes pre-existing relevant vocabularies and standards that served as inputs. Section <a href="#sec:methodology" data-reference-type="ref" data-reference="sec:methodology">4</a> describes the methodology that we applied in reconciling these towards the DPV vocabulary. The vocabulary itself and its modules are described in Section <a href="#sec:dpv" data-reference-type="ref" data-reference="sec:dpv">5</a> (ommitting detailed descriptions of all classes and properties, which can be found in the published W3C CG draft at <a href="https://www.w3.org/ns/dpv">https://www.w3.org/ns/dpv</a>). We close with a discussion of applications and adoption (Section <a href="#sec:application" data-reference-type="ref" data-reference="sec:application">6</a>) followed by conclusions and a call for participation and feedback (Section <a href="#sec:conclusion" data-reference-type="ref" data-reference="sec:conclusion">7</a>).</p>
+<h2 id="sec:cg">DPVCG: Data Privacy Vocabularies and Controls CG</h2>
+<p>To address the gaps mentioned in Section <a href="#sec:intro" data-reference-type="ref" data-reference="sec:intro">1</a>, a W3C workshop was announced<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, which received 32 position statements and expressions of interest. These were used to create an agenda based on standards and solutions for interoperable privacy. The workshop took place on 17<sup>th</sup> and 18<sup>th</sup> April 2018 in Vienna and consisted of about 40 participants. Discussions and interactions were structured into sessions around the four themes of: (1) ‘relevant vocabularies and initiatives’, (2) ‘industry perspective’, (3) ‘research topics’, and (4) ‘governmental side and initiatives’. The workshop concluded with a discussion of the next steps and priorities in terms of standardisation and interoperability. The identified goals were (from highest to lowest priority): taxonomies for regulatory privacy terms (including GDPR), personal data, purposes, disclosure and consent (as well as other legal bases), details of anonymisation (and measures taken to protect personal data), and for recording logs of personal data processing.</p>
+<p>Following this, a W3C Community Group (CG) with the title ‘<em>Data Privacy Vocabularies and Controls CG</em>’ (DPVCG) was formally established on 25<sup>th</sup> May 2018 - the implementation date of the GDPR. The group has a total of 55 participants to date representing academia, industry, legal experts, and other stakeholders. Its discussions are open via the public mailing list<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, along with a wiki<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> documenting meetings, resources, general information.</p>
+<p>The CG had its first face-to-face meeting on 30<sup>th</sup> August 2018 co-located with the MyData 2018<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> conference at Helsinki, Finland. The goal of this meeting was agreement on the first steps and deliverables of the CG as well as establishment of meeting and management procedures. The outcome of this meeting was agreement on working towards the following deliverables:</p>
+<ul>
+<li><p><strong>Use cases and requirements:</strong> Collect and align common requirements from industry and stakeholders to identify areas where interoperability is needed in the handling of personal data. The outcome of this was a prioritised list of requirements to enable interoperability in the identified use-cases.</p></li>
+<li><p><strong>Alignment of vocabularies and identification of overlaps:</strong> Collect existing vocabularies and standardisation efforts, and identify their overlaps and suitability for covering the requirements prioritised in step one. The identified vocabularies are presented in Section <a href="#sec:vocabularies" data-reference-type="ref" data-reference="sec:vocabularies">3</a>.</p></li>
+<li><p><strong>Glossary of GDPR terms:</strong> An understandable and interoperable glossary of common terms from the GDPR and an analysis of how they are covered by the agreed vocabularies.</p></li>
+<li><p><strong>Vocabularies:</strong> Based on the heterogeneity or homogeneity of identified use-cases and requirements, create a set of (modular) vocabularies for exchanging and representing information in an interoperable form for personal data, purposes, processing, consent, anonymisation, and transparency logs. The resulting vocabulary is presented in Section <a href="#sec:dpv" data-reference-type="ref" data-reference="sec:dpv">5</a>.</p></li>
+</ul>
+<p>A second face-to-face meeting was conducted on 3<sup>rd</sup> and 4<sup>th</sup> December 2019 at Vienna, Austria. The goal of this meeting was to analyse the collected use-cases and vocabularies, to establish agreement on the requirements for vocabularies to be delivered, and to plan ahead towards their conception and completion. A third face-to-face was organised on 4<sup>th</sup> and 5<sup>th</sup> April 2019 in Vienna and Dublin to finalise the vocabulary and reach an agreement towards the first public draft. The outcome of the meeting was agreement of terms used and its expression using RDF and OWL. The meeting also provided agreement over the namespace of the vocabulary, its hosting, and documentation. After over a year of collaborative effort, the CG published the ‘<em>Data Privacy Vocabulary</em>‘ (DPV) on 26<sup>th</sup> July 2019. The CG is currently welcoming feedback for DPV from the community and stakeholders in terms of comments, suggestions, and contributions.</p>
+<h2 id="sec:vocabularies">Existing and Relevant Vocabularies</h2>
+<p>Existing relevant use cases and vocabularies were collected and documented in the wiki<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> through individual submissions by CG members. The wiki page for each vocabulary presents a summary, its relevance, covered requirements, uptake, and applicable use-cases. Relevant terms were then identified from each vocabulary and categorised as per requirements. These were used as the basis for discussions regarding terms to be included and aligned in the DPV.</p>
+<h3 id="existing-standards-and-standardisation-efforts">Existing Standards and Standardisation Efforts</h3>
+<p>The CG considered several web-relevant standards for terms relevant towards identified requirements: PROV-O <span class="citation" data-cites="lebo_prov-o:_2013">[<a href="#ref-lebo_prov-o:_2013" role="doc-biblioref">7</a>]</span> (and its extension P-Plan <span class="citation" data-cites="garijo_p-plan_2014">[<a href="#ref-garijo_p-plan_2014" role="doc-biblioref">8</a>]</span>) for provenance, ODRL <span class="citation" data-cites="iannella_odrl_2018">[<a href="#ref-iannella_odrl_2018" role="doc-biblioref">5</a>]</span> for expressing policies, vCard <span class="citation" data-cites="iannella_vcard_2014">[<a href="#ref-iannella_vcard_2014" role="doc-biblioref">9</a>]</span> for describing people and organisations, Activity Streams <span class="citation" data-cites="snell_activity_2017">[<a href="#ref-snell_activity_2017" role="doc-biblioref">10</a>]</span> for describing activities on the web, and Schema.org <span class="citation" data-cites="noauthor_schema.org_nodate">[<a href="#ref-noauthor_schema.org_nodate" role="doc-biblioref">11</a>]</span> for metadata used in description of web pages.</p>
+<p>The CG also considered standardisation efforts undertaken by bodies relevant to the areas of privacy and interoperability. Classification of Everyday Living (COEL) <span class="citation" data-cites="noauthor_classification_2019">[<a href="#ref-noauthor_classification_2019" role="doc-biblioref">12</a>]</span> describes a privacy-by-design framework for the collection and processing of behavioural data with a focus on transparency and pseudo-anonymisation. It was developed by OASIS, which is a non-profit organisation dedicated to the development of open standards.</p>
+<p>The ISA<sup>2</sup> is a programme by the by the European Parliament and the Council of European Union for development of interoperable framework and solutions, which includes a set of vocabularies, termed ‘Core Vocabularies’ <span class="citation" data-cites="aleksandrova_core_2016">[<a href="#ref-aleksandrova_core_2016" role="doc-biblioref">13</a>]</span>, for person, business, location, criterion and evidence, and public organisation. IEEE P7012 <span class="citation" data-cites="noauthor_p7012_nodate">[<a href="#ref-noauthor_p7012_nodate" role="doc-biblioref">14</a>]</span> is a work-in-progress effort to standardise privacy terms in a machine-readable manner for use and sharing on the web.</p>
+<p>Consent Receipt <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">15</a>]</span> is an interoperable standard developed by the Kantara Initiative for capturing the consent given by a person regarding use of their personal data. The standard enables creation of receipts in human as well as machine readable formats for expressing information using pre-defined categories for personal data collection, purposes, and its use and disclosire. However, it does not address the requirements specified by the GDPR.</p>
+<p>The Platform for Privacy Preferences Project (P3P) <span class="citation" data-cites="noauthor_p3p:_nodate">[<a href="#ref-noauthor_p3p:_nodate" role="doc-biblioref">16</a>]</span> is a (now-abandoned) protocol for websites to declare their intended use of personal data collection and usage with an emphasis on providing users with more control of their personal information when browsing the web. P3P provided a machine-readable vocabulary for websites and users to define their policies, which were then compared to determine privacy actions.</p>
+<h3 id="vocabularies-addressing-privacy-and-gdpr">Vocabularies addressing Privacy and GDPR</h3>
+<p>The Scalable Policy-aware Linked Data Architecture For Privacy, Transparency and Compliance (SPECIAL) is an European h3020 project that uses semantic-web technologies in the expression and evaluation of information for GDPR compliance. SPECIAL has developed vocabularies for expressing Usage Policy <span class="citation" data-cites="bonatti_special_2018">[<a href="#ref-bonatti_special_2018" role="doc-biblioref">17</a>]</span> and Policy Log <span class="citation" data-cites="bonatti_special_2018-1">[<a href="#ref-bonatti_special_2018-1" role="doc-biblioref">18</a>]</span> in order to evaluate whether the recorded use of personal data is compliant with a given consent.</p>
+<p>Mining and Reasoning with Legal Texts (MIREL) is another European h3020 project that uses semantic-web technologies for GDPR compliance. It has developed PrOnto (Privacy Ontology for Legal Reasoning) <span class="citation" data-cites="palmirani_pronto:_2018">[<a href="#ref-palmirani_pronto:_2018" role="doc-biblioref">19</a>]</span> - a legal ontology of concepts consisting of privacy agents, personal data types, processing operations, rights and obligations.</p>
+<p>GDPRtEXT <span class="citation" data-cites="pandit_gdprtext_2018">[<a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">20</a>]</span> provides a linked data version of the text of the GDPR that makes it possible for links to be established between information and the text of the GDPR by using RDF and OWL. It also provides a thesauri or vocabulary of concepts defined or referred to within the GDPR in a machine-readable manner using SKOS.</p>
+<p>GDPRov <span class="citation" data-cites="pandit_modelling_2017">[<a href="#ref-pandit_modelling_2017" role="doc-biblioref">21</a>]</span> is an ontology to represent processes and activities associated with the lifecycle of personal data and consent as an abstract model or plan indicating what is supposed to happen, as well as the corresponding activity logs indicating things that have happened. It extends PROV-O and P-Plan with GDPR-specific terminology. GConsent <span class="citation" data-cites="pandit_gconsent_2019">[<a href="#ref-pandit_gconsent_2019" role="doc-biblioref">22</a>]</span> is an ontology for expressing necessary information for management and evaluating compliance of consent as governed by the obligations and requirements of the GDPR.</p>
+<p>Considered ontologies developed prior to implementation of GDPR also include an ontology to express privacy preferences <span class="citation" data-cites="sacco_privacy_2011">[<a href="#ref-sacco_privacy_2011" role="doc-biblioref">23</a>]</span>, a data protection ontology based on the GDPR <span class="citation" data-cites="bartolini_reconciling_2015">[<a href="#ref-bartolini_reconciling_2015" role="doc-biblioref">24</a>]</span>, and an ontology for expressing consent <span class="citation" data-cites="fatema_compliance_2017">[<a href="#ref-fatema_compliance_2017" role="doc-biblioref">25</a>]</span>.</p>
+<h2 id="sec:methodology">Methodology</h2>
+<p>The process of vocabulary development was largely shaped by discussions and interactions between CG members, and was (informally) based on NeOn methodology scenarios <span class="citation" data-cites="suarez-figueroa_neon_2012">[<a href="#ref-suarez-figueroa_neon_2012" role="doc-biblioref">26</a>]</span>. The CG decided to work towards creating a generic or top-level vocabulary rather than restricting it to a particular domain or use-case in order to facilitate universal application and adoption. For this, existing work and approaches were analysed to identify terms relevant for describing specific categories of information, such as purposes of processing and personal data.</p>
+<p>The analysis of existing vocabularies revealed a lack of top-level or abstract concepts necessary to provide an extendable mechanism for representing information in a hierarchical structure. Therefore, the CG decided to work towards creating a vocabulary that provided the necessary top-level concepts and relationships in a hierarchical structure. Agreement over categories of terms to be included in the vocabulary and relevance of existing terms was carried out through discussions, and documented in the wiki<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<p>While initially working towards a hierarchical taxonomy, the need for representing relationships and logic between terms led towards the creation of an ontology, with RDF/OWL being used to provide standardised serialisation. A base vocabulary was created based on the SPECIAL Usage Policy Language <span class="citation" data-cites="bonatti_special_2018">[<a href="#ref-bonatti_special_2018" role="doc-biblioref">17</a>]</span> to represent a policy, and additional terms were structured to extend them as modular (sub-)ontologies. Terms were then added in a top-down fashion, based on existing work or its identified absence.</p>
+<p>Documentation of how terms were proposed, discussed, and added was recorded through a collaborative spreadsheet hosted on the Google Sheets platform<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. The spreadsheet contained separate tabs for each ‘modular’ ontology and a base ontology representing combined their combined usage to represent personal data handling. The columns in the spreadsheet were mapped to semantic web representations, as depicted in Table <a href="#table:spreadsheet" data-reference-type="ref" data-reference="table:spreadsheet">1</a>. The vocabulary was created by using the Google Drive API in a script<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> that extracted terms to create documentation of the taxonomy. This was then modified to generate RDF serialisations using rdflib<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> as RDF/OWL was later adopted<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. and documentation using ReSpec<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Plans for additions and changes to the vocabulary will follow a similar approach, where the proposal is documented and agreed upon through the public mailing list or CG meetings.</p>
+<div id="table:spreadsheet">
+<table>
+<caption>Columns in spreadsheet for generating RDF serialisations and documentation</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Column Name</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+<th style="text-align: left;"><strong>Representation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Class/Property</td>
+<td style="text-align: left;">If term is Class or Property</td>
+<td style="text-align: left;"><em>rdfs:Class|rdfs:Property</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">term</td>
+<td style="text-align: left;">The IRI of the term</td>
+<td style="text-align: left;">as IRI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">description</td>
+<td style="text-align: left;">Description or definition</td>
+<td style="text-align: left;"><em>dct:description</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">Domain if it is a property</td>
+<td style="text-align: left;"><em>rdfs:domain</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">range</td>
+<td style="text-align: left;">Range if it is a property</td>
+<td style="text-align: left;"><em>rdfs:range</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">super classes/properties</td>
+<td style="text-align: left;">Parent classes or properties</td>
+<td style="text-align: left;"><em>rdfs:isSubClassOf</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sub classes/properties</td>
+<td style="text-align: left;">Child classes or properties</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">related terms</td>
+<td style="text-align: left;">Terms relevant to this</td>
+<td style="text-align: left;"><em>rdfs:seeAlso</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">how related?</td>
+<td style="text-align: left;">Nature of relation</td>
+<td style="text-align: left;">use as is</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Comments used for discussion</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">source</td>
+<td style="text-align: left;">The source of the term</td>
+<td style="text-align: left;"><em>rdfs:isDefinedBy</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Date of creation</td>
+<td style="text-align: left;"><em>dct:created</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">Status e.g. accepted,proposed</td>
+<td style="text-align: left;"><em>sw:term_status</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comments</td>
+<td style="text-align: left;">Comments to be recorded</td>
+<td style="text-align: left;"><em>rdfs:comment</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">contributor</td>
+<td style="text-align: left;">dc:creator</td>
+<td style="text-align: left;"><em>dct:creator</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">date-accepted</td>
+<td style="text-align: left;">Date of acceptance</td>
+<td style="text-align: left;"><em>dct:date-</em>accepted</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">resolution</td>
+<td style="text-align: left;">Record e.g. minutes of meeting</td>
+<td style="text-align: left;">as IRI</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sec:dpv">Data Privacy Vocabulary</h2>
+<p>As a result of the process above, the ‘<em>Data Privacy Vocabulary</em>‘ (DPV) has been published on 26<sup>th</sup> July 2019 at the namespace <a href="http://w3.org/ns/dpv">http://w3.org/ns/dpv</a> (for which we will use the prefix <code>dpv:</code>) as a public draft for feedback. The current vocabulary provides terms (classes and properties) to annotate and categorise instances of <em>legally compliant personal data handling</em>. In particular, DPV provides extensible concepts and relationships to describe the following components (which are elaborated in further sections):</p>
+<ol>
+<li><p>Personal Data Categories</p></li>
+<li><p>Purposes</p></li>
+<li><p>Processing Categories</p></li>
+<li><p>Technical and Organisational Measures</p></li>
+<li><p>Legal Basis</p></li>
+<li><p>Consent</p></li>
+<li><p>Recipients, Data Controllers, Data Subjects</p></li>
+</ol>
+<p>These terms are intended to express <em>Personal Data Handling</em> in a machine-readable form by specifying the <em>personal data categories</em> undergoing some <em>processing</em>, for some <em>purpose</em>, by <em>data controller</em>, justified by <em>legal basis</em>, with specific <em>technical and organisational measures</em>, which may result in data being shared with some <em>recipient</em>. The vocabulary is built up in a modular fashion, where each ‘module’ covers one of the above listed aspects, and which is linked together using a core Base Vocabulary.</p>
+<h3 id="sec:dpv-base">Base Ontology</h3>
+<p>The ‘Base Ontology’ describes the top-level classes defining a policy for legal personal data handling. Classes and properties for each top-level class are further elaborated using sub-vocabularies, which are available as separate modules and are outlined in subsequent sections. While all concepts in DPV share a single <code>dpv:</code> namespace, the modular approach of providing the base ontology as a separate module makes it possible to use sub-vocabularies without the <code>dpv:PersonalDataHandling</code> class, for example to refer only to purposes. Exceptions to this are the NACE purpose taxonomy (cf. details Section <a href="#sec:dpv-purposes" data-reference-type="ref" data-reference="sec:dpv-purposes">5.3</a>) extending the <code>dpv:Sector</code> concept in the <em>Purposes</em> vocabulary, and the GDPR legal bases taxonomy (cf. details in Section <a href="#sec:dpv-legalbasis" data-reference-type="ref" data-reference="sec:dpv-legalbasis">[sec:dpv-legalbasis]</a>) extending the top-level <code>dpv:LegalBasis</code> class - which are provided under a separate namespaces to indicate their specialisation. The core concepts of the Base Ontology module and their relationships are depicted in Figure <a href="#fig:dpv-base" data-reference-type="ref" data-reference="fig:dpv-base">1</a>.</p>
+<figure>
+<img src="img/032-personaldatahandling.png" id="fig:dpv-base" alt="DPV Base Ontology classes and properties" /><figcaption aria-hidden="true">DPV Base Ontology classes and properties</figcaption>
+</figure>
+<h3 id="sec:dpv-personaldatacategories">Personal Data Categories</h3>
+<p>DPV provides broad top-level personal data categories adapted from the taxonomy provided by EnterPrivacy <span class="citation" data-cites="enterprivacy">[<a href="#ref-enterprivacy" role="doc-biblioref">27</a>]</span>. The top-level concepts in this taxonomy refer to the nature of information (financial, social, tracking) and to its inherent source (internal, external). Each top-level concept is represented in the DPV as a class, and is further elaborated by subclasses for referring to specific categories of information - such as preferences or demographics.</p>
+<p>Regulations such as the GDPR allow information about personal data used in processing to be provided either as specific instances of persona data (e.g., “John Doe”) or as categories (e.g., name). Additionally, the class <code>dpv:SpecialCategoryOfPersonalData</code> represents categories that are ‘special’ or ‘sensitive’ and require additional conditions as per GDPR’s Article 9.</p>
+<p>The categories defined in the personal data taxonomy can be used directly or further extended to refer to the scope of personal data used in processing. The taxonomy can be extended by subclassing the respective classes to depict specialised concepts, such as “likes regarding movies” or combined with classes to indicate specific contexts. The class <code>dpv:DerivedPersonalData</code> is one such context where information has been derived from existing information, e.g., inference of opinions from social media. Additional classes can be defined to specify contexts such as use of machine learning, accuracy, and source.</p>
+<p>While the taxonomy is by no means exhaustive, the aim is to provide a sufficient coverage of abstract categories of personal data which can be extended using the subclass mechanism to represent concepts used in the real-world. For instance, Figure <a href="#fig:dpv-personal-data-branch" data-reference-type="ref" data-reference="fig:dpv-personal-data-branch">2</a>. shows the hierarchy of concepts for classifying depictions of individuals in pictures.</p>
+<figure>
+<img src="img/032-personal-data-branch.png" id="fig:dpv-personal-data-branch" style="width:60.0%" alt="Hierarchy of concepts for classifying depictions of individuals in pictures (inspired by EnterPrivacy [27])" /><figcaption aria-hidden="true">Hierarchy of concepts for classifying depictions of individuals in pictures (inspired by EnterPrivacy <span class="citation" data-cites="enterprivacy">[<a href="#ref-enterprivacy" role="doc-biblioref">27</a>]</span>)</figcaption>
+</figure>
+<h3 id="sec:dpv-purposes">Purposes</h3>
+<p>DPV at present defines a hierarchically (by subclassing) organized set of generic categories of data handling <em>purposes</em>, as depicted in Figure <a href="#fig:dpv-purposes" data-reference-type="ref" data-reference="fig:dpv-purposes">3</a>. Overall, DPV provides a list of 31 suggested purposes as subclasses of these generic purposes which may be extended as shown in Listing  <a href="#lst:purpose-example" data-reference-type="ref" data-reference="lst:purpose-example">[lst:purpose-example]</a> by further subclassing to create more specific ones. As regulations such as the GDPR generally require a specific purpose to be declared in an understandable manner, we suggest to such declare specific purposes as subclasses of one or several <code>dpv:Purpose</code> categories to make them as specific as possible, and to always annotate them with a human readable description (e.g., by using <code>rdfs:label</code> and <code>rdfs:comment</code>).</p>
+<figure>
+<img src="img/032-purposes.png" id="fig:dpv-purposes" alt="Categories of Purposes for Data Processing in DPV" /><figcaption aria-hidden="true">Categories of Purposes for Data Processing in DPV</figcaption>
+</figure>
+<p><span>turtle</span> :NewPurpose rdfs:subClassOf dpv:DeliveryOfGoods, dpv:FraudPreventionAndDetection ; rdfs:label "New Purpose" ; rdfs:comment "Intended delivery of goods with fraud prevention" .</p>
+<p>Moreover, purposes can be further restricted to specific <em>contexts</em> using the class <code>dpv:Context</code> and the property <code>dpv:hasContext</code>. Similarly, DPVCG provides a way to restrict purposes to a specific <em>business sector</em>, i.e., allowing/restricting data handling to purposes related to particular business activities, using the class <code>dpv:Sector</code> and the property <code>dpv:hasSector</code>. Potential hierarchies for defining such business sectors include NACE<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> (EU), NAICS<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> (USA), ISIC<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> (UN), and GICS<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. At the moment, we recommend to use NACE (EU) codes using <code>dpv-nace:NACE-CODE</code> as shown in Listing  <a href="#lst:purpose-example-nace" data-reference-type="ref" data-reference="lst:purpose-example-nace">[lst:purpose-example-nace]</a>, where the prefix <code>dpv-nace:</code> represents the DPV defined namespace <a href="http://www.w3.org/ns/dpv-nace#">http://www.w3.org/ns/dpv-nace#</a>.</p>
+<p><span>turtle</span> :SomePurpose a dpv:Purpose ; rdfs:label "Some Purpose" ; dpv:hasSector dpv-nace:M72 .</p>
+<h3 id="processing-categories">Processing Categories</h3>
+<p>In this module, DPV provides a hierarchy of classes to specify operations associated with processing of personal data, which are required by regulations such as the GDPR. As common processing operations such as collect, share, and use have certain constraints or obligations in GDPR, it is necessary to accurately represent and define them for personal data handling. While the term ‘use’ is liberally used to refer to a broad range of processing categories in privacy notices, we recommend to select the most appropriate and specific terms to accurately reflect the nature of processing as applicable.</p>
+<p>DPV defines top-level classes to represent the following broad categories of processing - Disclose, Copy, Obtain, Remove, Store, Transfer, Transform, and Use, as shown in Figure <a href="#fig:dpv-processing" data-reference-type="ref" data-reference="fig:dpv-processing">4</a>. Each of these are then again further expanded using subclasses to provide 33 processing categories, which includes terms defined in the definition of processing in GDPR (Article 4-2).</p>
+<p>The DPVCG taxonomy further provides properties with a boolean range to indicate the nature of processing regarding <em>Systematic Monitoring</em>, <em>Evaluation or Scoring</em>, <em>Automated Decision-Making</em>, <em>Matching or Combining</em>, <em>Large Scale processing</em>, and <em>Innovative use of new solutions</em>, as these are relevant towards assessment of processing for GDPR compliance. <span id="sec:dpv-processing" label="sec:dpv-processing">[sec:dpv-processing]</span></p>
+<figure>
+<img src="img/032-processing.png" id="fig:dpv-processing" alt="Categories of Data Processing in DPV" /><figcaption aria-hidden="true">Categories of Data Processing in DPV</figcaption>
+</figure>
+<h3 id="technical-and-organisational-measures">Technical and Organisational Measures</h3>
+<p>Regulations require certain technical and organisational measures to be in place depending on the context of processing involving personal data. For example, GDPR (Article 32) states implementing appropriate measures by taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing, as well as risks, rights and freedoms. Examples of measures stated in the article states include:</p>
+<ul>
+<li><p>the pseudonymisation and encryption of personal data</p></li>
+<li><p>the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services</p></li>
+<li><p>the ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident</p></li>
+<li><p>a process for regularly testing, assessing and evaluating the effectiveness of technical and organisational measures for ensuring the security of the processing</p></li>
+</ul>
+<p>To address these requirements, DPV defines a module comprising of a hierarchical vocabulary for declaring such technical and organisational measures, as shown in Figure <a href="#fig:dpv-techorgmeasures" data-reference-type="ref" data-reference="fig:dpv-techorgmeasures">5</a>.</p>
+<p>For any of the DPV declared measures, we provide a generic ObjectProperty (<code>dpv:measureImplementedBy</code>), and for the values of this attribute, we either allow a blank node with a single <code>rdfs:comment</code> to describe the measure, or a URI to a standard or best practice followed, i.e. a well-known identifier for that standard or a URL where the respective document describes the standard. The class <em>StorageRestriction</em> represents the measures used for storage of data with two specific properties provided for storage location and duration restrictions. While at the moment, we do not yet refer to specific certifications or security standards, in the future, we plan to provide a collection of URIs for identifying recommended standards and best practices, as they further develop. Feedback on adding specific ones to future versions of the DPV specification is particularly welcome.</p>
+<p><span id="sec:dpv-measures" label="sec:dpv-measures">[sec:dpv-measures]</span></p>
+<figure>
+<img src="img/032-technicalorganisationalmeasure.png" id="fig:dpv-techorgmeasures" alt="Technical and Organisational Measures in DPV" /><figcaption aria-hidden="true">Technical and Organisational Measures in DPV</figcaption>
+</figure>
+<h3 id="consent-and-other-legal-bases">Consent and other Legal Bases</h3>
+<p>While the vocabulary provides <code>dpv:LegalBasis</code> as a top-level concept representing the various legal bases that can be used for justifying processing of personal data, such legal bases may be defined differently in different legislations within the scope of legal jurisdictions. For the particular case of GDPR, we therefore provide the legal bases specific to GDPR as a separate aligned vocabulary, under the <a href="https://www.w3.org/ns/dpv-gdpr">https://www.w3.org/ns/dpv-gdpr</a> namespace (prefix: <code>dpv-gdpr:</code>).</p>
+<p>This vocabulary defines the legal bases defined by Articles 6 and 9 of the GDPR, including consent, along with their description and source within. For example, <code>dpv-gdpr:A6-1-b</code> denotes the legal basis provided by <em>fulfillement/performance of a contract</em>.</p>
+<p>In addition to the legal bases, Consent is addressed with additional properties and classes within the core DPV vocabulary as it is a common form of legal justification across jurisdictions. The module describing consent, illustrated in Figure <a href="#fig:dpv-consent" data-reference-type="ref" data-reference="fig:dpv-consent">6</a>, provides the necessary terms to describe consent provision, withdrawal, and expiry. This is based on an analysis of existing work in the form of Consent Receipt <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">15</a>]</span> and GConsent <span class="citation" data-cites="pandit_gconsent_2019">[<a href="#ref-pandit_gconsent_2019" role="doc-biblioref">22</a>]</span>.</p>
+<p><span id="sec:dpv-legalbasis" label="sec:dpv-legalbasis">[sec:dpv-legalbasis]</span></p>
+<figure>
+<img src="img/032-consent.png" id="fig:dpv-consent" alt="Consent in DPV" /><figcaption aria-hidden="true">Consent in DPV</figcaption>
+</figure>
+<h3 id="sec:dpv-stakeholder">Recipients, Data Controllers, and Data Subjects</h3>
+<p>Last but not least, this module of the ontology is meant for defining a taxonomy of stakeholders involved in Personal DataHandling, extending the top level classes <code>dpv:DataController</code>, <code>dpv:DataSubject</code>, and <code>dpv:Recipient</code> from the Base vocabulary module. We consider defining recipients is important in the context of data privacy as it allows tracking the entities personal data is shared/transferred with. Similarly, a categorisation of Data Controllers and Data Subjects has bearing on the privacy of personal data handling, especially when considering situations such as where data subjects are children. The vocabulary currently provides only a few top-level classes to describe such recipients and data subjects, with an invitation to suggest/provide more terms for future releases:</p>
+<ul>
+<li><p><code>dpv:Child</code> as a subclass of <code>dpv:DataSubject</code> in order to capture policies and restrictions of data Handling related to children;</p></li>
+<li><p><code>dpv:Processor</code> as a subclass of <code>dpv:Recipient</code> to denote natural or legal persons, public authorities, agencies or other bodies which <em>processes personal data on behalf of the controller</em>;</p></li>
+<li><p><code>dpv:ThirdParty</code> as a subclass of <code>dpv:Recipient</code> to provide a generic class for third party recipients, i.e. natural or legal persons, public authorities, agencies or bodies <em>other than the data subject, controller, processor</em> and persons who, under the direct authority of the controller or processor, are authorised to process personal data.</p></li>
+</ul>
+<h2 id="sec:application">Potential Adoption and Usage</h2>
+<p>The primary aim of DPV is to assist in the representation of information concerning privacy in the context of personal data processing. To this end, it models concepts at an abstract or top-level to cover a broad range of concepts. This shall enable the DPV to be used as an domain-independent vocabulary which can be extended or specialised for specific domains or use-cases. Though the DPV does not define or restrict how such extension should be created, this section highlights some suggested methods for its adoption and usage.</p>
+<p>Firstly, the modular nature of DPV enables adoption of a selected subset of the vocabulary only to address a specific use-case. For example, an adopter may only wish to utilise the concepts under <em>Purpose</em> and <em>PersonalDataCategory</em> without using/describing all aspects of a particular <em>PersonalDataHandling</em> from the base vocabulary.</p>
+<p>In addition, the use of RDFS and OWL enables extending the DPV in a compatible manner to define domain-specific use-cases. For example, an extension targeting the finance domain can define additional concepts by using RDFS’ subclass mechanism. Such an extension, when represented as an ontology, will be compatible with the DPV, and will enable semantic interoperability of information, and ideally applications such as automated compliance checking for privacy policies and data handling records annotated with DPV and its extensions.</p>
+<p>The DPV is intended to be used as an interoperable vocabulary where terms are structured in a hierarchy and have unambiguous definition to enable common agreement over their semantics. Such usage involves limiting the concepts to other pre-defined vocabulary, as seen in the case of Consent Receipts <span class="citation" data-cites="lizar_consent_2017">[<a href="#ref-lizar_consent_2017" role="doc-biblioref">15</a>]</span> and the SPECIAL vocabularies <span class="citation" data-cites="bonatti_special_2018-1">[<a href="#ref-bonatti_special_2018-1" role="doc-biblioref">18</a>]</span>.</p>
+<p>The SPECIAL project<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> actually has demonstrated how the above-mentioned use case of automated compliance checking can be implemented based modeling privacy policies and log records of personal data handling in a manner compatible with DPV <span class="citation" data-cites="kirrane_special_2018-1">[<a href="#ref-kirrane_special_2018-1" role="doc-biblioref">28</a>]</span>. The SPECIAL project with its industry use case partners may also be viewed as a set of early adopters of the DPV, where currently further tools and a scalable architecture for transparent and accountable personal data processing in accordance with GDPR is being developed.</p>
+<h2 id="sec:conclusion">Conclusion</h2>
+<p>The Data Privacy Vocabulary is the outcome of cumulative effort of over a year in W3C’s Data Privacy Vocabulary and Controls Community Group (DPVCG). It represents the first step towards an effort to provide a standardised vocabulary to represent instances of legally compliant personal data handling. To this end, it provides a modular vocabulary representing concepts of personal data categories, purposes of processing, categories of processing, technical and organisational measures, legal bases, recipients, and consent.</p>
+<p>With the onset of regulations in the privacy domain, the DPV fills an important gap by providing the necessary terms in an interoperable and extendable format. It is, to the best of our knowledge, currently the most comprehensive vocabulary regarding definition of privacy-related terms in addition to being aligned with regulations such as the GDPR, and attempting to comprehensively cover the relevant aspects of personal data handling. For continued development of this work, the DPVCG is currently inviting participation in the form of comments, feedback, and suggestions. Specifically, the DPVCG kindly requests proposals to extend its initial taxonomies by additional terms, where these are missing or need refinements in order to describe specific use cases of personal data handling.</p>
+<p>Future plans also include producing documented examples of how the DPV could be adopted for further specific use-cases. Examples include annotating privacy policies, documenting information for specific laws such as GDPR, and producing transparent, machine-readable processing logs (for instance by mapping the DPV to existing database schemas and thereby generating/aggregating machine-readable transparency records directly out of their logging.</p>
+<p><strong>Acknowledgements</strong>
+	We thank all members of the W3C DPVCG for their feedback and input to this work: a preliminary outline of the goals of CG has been presented in ISWC2018's SWSG workshop~\cite{bona-etal2018SW4SG} where we also gathered valuable feedback by the participants; this work is the first complete presentation of the resulting, proposed vocabulary elaborated by the DPVCG since. 
+    This work was supported by the European Union's Horizon 2020 research and innovation programme under grant 731601 (SPECIAL), by the Austrian Research Promotion Agency (FFG) under the projects ``EXPEDiTE'' and ``CitySpin'',
+    by the ADAPT Centre for Digital Excellence funded by SFI Research Centres Programme (Grant 13/RC/2106), and co-funded by European Regional Development Fund.</p>
+<div id="refs" class="references" role="doc-bibliography">
+	<h2>References</h2>
+<div id="ref-bona-etal2018SW4SG">
+<p>[1] P. Bonatti <em>et al.</em>, “Data privacy vocabularies and controls: Semantic web for transparency and privacy,” in <em>Semantic web for social good workshop (swsg) co-located with iswc2018</em>, 2018, vol. 2182 [Online]. Available: <a href="http://ceur-ws.org/Vol-2182/paper_3.pdf">http://ceur-ws.org/Vol-2182/paper_3.pdf</a></p>
+</div>
+<div id="ref-2016-679-GDPR">
+<p>[2] European Parliament and Council, “Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation),” vol. 59. European Union, pp. 1–88, May-2016. </p>
+</div>
+<div id="ref-noauthor_assembly_2018">
+<p>[3] “Assembly Bill No. 375 Privacy: Personal information: Businesses.” <em>California State Legislature</em>, Jun. 2018 [Online]. Available: <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201720180AB375">https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201720180AB375</a>. [Accessed: 24-Jul-2019]</p>
+</div>
+<div id="ref-cavoukian2009privacy">
+<p>[4] A. Cavoukian and others, “Privacy by design: The 7 foundational principles,” <em>Information and Privacy Commissioner of Ontario, Canada</em>, vol. 5, 2009. </p>
+</div>
+<div id="ref-iannella_odrl_2018">
+<p>[5] R. Iannella and S. Villata, “ODRL Information Model 2.2,” <em>ODRL Information Model 2.2</em>. Feb-2018 [Online]. Available: <a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a>. [Accessed: 19-Sep-2018]</p>
+</div>
+<div id="ref-fielding_tracking_2019">
+<p>[6] R. T. Fielding and D. Singer, “Tracking Preference Expression (DNT).” Jan-2019 [Online]. Available: <a href="https://www.w3.org/TR/tracking-dnt/">https://www.w3.org/TR/tracking-dnt/</a>. [Accessed: 24-Jul-2019]</p>
+</div>
+<div id="ref-lebo_prov-o:_2013">
+<p>[7] T. Lebo <em>et al.</em>, “PROV-O: The PROV Ontology,” <em>PROV-O: The PROV Ontology</em>. 2013. </p>
+</div>
+<div id="ref-garijo_p-plan_2014">
+<p>[8] D. Garijo and Y. Gil, “The P-PLAN Ontology,” <em>The P-PLAN Ontology</em>. Mar-2014 [Online]. Available: <a href="http://vocab.linkeddata.es/p-plan/">http://vocab.linkeddata.es/p-plan/</a>. [Accessed: 19-Sep-2018]</p>
+</div>
+<div id="ref-iannella_vcard_2014">
+<p>[9] R. Iannella and J. McKinney, “vCard Ontology - for describing People and Organizations.” May-2014 [Online]. Available: <a href="https://www.w3.org/TR/vcard-rdf/">https://www.w3.org/TR/vcard-rdf/</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-snell_activity_2017">
+<p>[10] J. M. Snell and E. Prodromou, “Activity Streams 2.0.” May-2017 [Online]. Available: <a href="https://www.w3.org/TR/activitystreams-core/">https://www.w3.org/TR/activitystreams-core/</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-noauthor_schema.org_nodate">
+<p>[11] “Schema.org.” [Online]. Available: <a href="https://schema.org/">https://schema.org/</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-noauthor_classification_2019">
+<p>[12] “Classification of Everyday Living Version 1.0.” OASIS, Jan-2019 [Online]. Available: <a href="https://docs.oasis-open.org/coel/COEL/v1.0/os/COEL-v1.0-os.pdf">https://docs.oasis-open.org/coel/COEL/v1.0/os/COEL-v1.0-os.pdf</a></p>
+</div>
+<div id="ref-aleksandrova_core_2016">
+<p>[13] Z. Aleksandrova, “Core Vocabularies,” <em>ISA² - European Commission</em>. Nov-2016 [Online]. Available: <a href="https://ec.europa.eu/isa2/solutions/core-vocabularies_en">https://ec.europa.eu/isa2/solutions/core-vocabularies_en</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-noauthor_p7012_nodate">
+<p>[14] “P7012 - Standard for Machine Readable Personal Privacy Terms.” [Online]. Available: <a href="https://standards.ieee.org/project/7012.html">https://standards.ieee.org/project/7012.html</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-lizar_consent_2017">
+<p>[15] M. Lizar and D. Turner, “Consent Receipt Specification v1.1.0,” Kantara Initiative, 2017 [Online]. Available: <a href="https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf">https://docs.kantarainitiative.org/cis/consent-receipt-specification-v1-1-0.pdf</a></p>
+</div>
+<div id="ref-noauthor_p3p:_nodate">
+<p>[16] “P3P: The Platform for Privacy Preferences.” [Online]. Available: <a href="https://www.w3.org/P3P/">https://www.w3.org/P3P/</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-bonatti_special_2018">
+<p>[17] P. A. Bonatti, S. Kirrane, I. M. Petrova, L. Sauro, and E. Schlehahn, “The SPECIAL Usage Policy Language, V0.1,” 2018 [Online]. Available: <a href="https://www.specialprivacy.eu/vocabs">https://www.specialprivacy.eu/vocabs</a></p>
+</div>
+<div id="ref-bonatti_special_2018-1">
+<p>[18] B. A. Bonatti, W. Dullaert, J. D. Fernandez, S. Kirrane, U. Milosevic, and A. Polleres, “The SPECIAL Policy Log Vocabulary.” Nov-2018 [Online]. Available: <a href="https://aic.ai.wu.ac.at/qadlod/policyLog/">https://aic.ai.wu.ac.at/qadlod/policyLog/</a>. [Accessed: 23-Jul-2019]</p>
+</div>
+<div id="ref-palmirani_pronto:_2018">
+<p>[19] M. Palmirani, M. Martoni, A. Rossi, C. Bartolini, and L. Robaldo, “PrOnto: Privacy Ontology for Legal Reasoning,” in <em>Electronic Government and the Information Systems Perspective</em>, 2018, pp. 139–152. </p>
+</div>
+<div id="ref-pandit_gdprtext_2018">
+<p>[20] H. J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis, “GDPRtEXT - GDPR as a Linked Data Resource,” in <em>The Semantic Web - European Semantic Web Conference</em>, 2018, pp. 481–495, doi: <a href="https://doi.org/10/c3n4">10/c3n4</a> [Online]. Available: <a href="https://link.springer.com/chapter/10.1007/978-3-319-93417-4_31">https://link.springer.com/chapter/10.1007/978-3-319-93417-4_31</a>. [Accessed: 17-Jun-2018]</p>
+</div>
+<div id="ref-pandit_modelling_2017">
+<p>[21] H. J. Pandit and D. Lewis, “Modelling Provenance for GDPR Compliance using Linked Open Data Vocabularies,” in <em>Proceedings of the 5th Workshop on Society, Privacy and the Semantic Web - Policy and Technology (PrivOn2017) (PrivOn)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-1951/PrivOn2017_paper_6.pdf">http://ceur-ws.org/Vol-1951/PrivOn2017_paper_6.pdf</a></p>
+</div>
+<div id="ref-pandit_gconsent_2019">
+<p>[22] H. J. Pandit, C. Debruyne, D. O’Sullivan, and D. Lewis, “GConsent - A Consent Ontology Based on the GDPR,” in <em>The Semantic Web</em>, 2019, pp. 270–282 [Online]. Available: <a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a></p>
+</div>
+<div id="ref-sacco_privacy_2011">
+<p>[23] O. Sacco and A. Passant, “A Privacy Preference Ontology (PPO) for Linked Data.” in <em>LDOW</em>, 2011 [Online]. Available: <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.357.3591&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.357.3591&amp;rep=rep1&amp;type=pdf</a>. [Accessed: 08-Mar-2017]</p>
+</div>
+<div id="ref-bartolini_reconciling_2015">
+<p>[24] C. Bartolini and R. Muthuri, “Reconciling Data Protection Rights and Obligations: An Ontology of the Forthcoming EU Regulation,” in <em>Workshop on Language and Semantic Technology for Legal Domain</em>, 2015, p. 8. </p>
+</div>
+<div id="ref-fatema_compliance_2017">
+<p>[25] K. Fatema, E. Hadziselimovic, H. J. Pandit, C. Debruyne, D. Lewis, and D. O’Sullivan, “Compliance through Informed Consent: Semantic Based Consent Permission and Data Management Model,” in <em>Proceedings of the 5th Workshop on Society, Privacy and the Semantic Web - Policy and Technology (PrivOn2017) (PrivOn)</em>, 2017 [Online]. Available: <a href="http://ceur-ws.org/Vol-1951/PrivOn2017_paper_5.pdf">http://ceur-ws.org/Vol-1951/PrivOn2017_paper_5.pdf</a></p>
+</div>
+<div id="ref-suarez-figueroa_neon_2012">
+<p>[26] M. C. Suárez-Figueroa, A. Gómez-Pérez, and M. Fernández-López, “The NeOn Methodology for Ontology Engineering,” in <em>Ontology Engineering in a Networked World</em>, M. C. Suárez-Figueroa, A. Gómez-Pérez, E. Motta, and A. Gangemi, Eds. Berlin, Heidelberg: Springer Berlin Heidelberg, 2012, pp. 9–34 [Online]. Available: <a href="http://link.springer.com/10.1007/978-3-642-24794-1_2">http://link.springer.com/10.1007/978-3-642-24794-1_2</a>. [Accessed: 27-Nov-2017]</p>
+</div>
+<div id="ref-enterprivacy">
+<p>[27] R. J. Cronk, “CATEGORIES of personal information.” 01-Mar-2017 [Online]. Available: <a href="https://enterprivacy.com/2017/03/01/categories-of-personal-information/">https://enterprivacy.com/2017/03/01/categories-of-personal-information/</a></p>
+</div>
+<div id="ref-kirrane_special_2018-1">
+<p>[28] S. Kirrane <em>et al.</em>, “SPECIAL deliverable d2.8 – transparency and compliance algorithms v2.” Nov-2018 [Online]. Available: <a href="https://www.specialprivacy.eu/images/documents/SPECIAL_D28_M23_V10.pdf">https://www.specialprivacy.eu/images/documents/SPECIAL_D28_M23_V10.pdf</a></p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://www.w3.org/2018/vocabws/">https://www.w3.org/2018/vocabws/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://lists.w3.org/Archives/Public/public-dpvcg/">https://lists.w3.org/Archives/Public/public-dpvcg/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://www.w3.org/community/dpvcg/wiki/Main_Page">https://www.w3.org/community/dpvcg/wiki/Main_Page</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://mydata2018.org/">https://mydata2018.org/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a href="https://www.w3.org/community/dpvcg/wiki/Use-Cases,_Requirements,_Vocabularies">https://www.w3.org/community/dpvcg/wiki/Use-Cases,_Requirements,_Vocabularies</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a href="https://www.w3.org/community/dpvcg/wiki/Taxonomy">https://www.w3.org/community/dpvcg/wiki/Taxonomy</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="https://www.google.com/sheets/about/">https://www.google.com/sheets/about/</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p><a href="https://github.com/dpvcg/extract-sheets/">https://github.com/dpvcg/extract-sheets/</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><a href="https://github.com/RDFLib/rdflib">https://github.com/RDFLib/rdflib</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>In hindsight, a better alternative was mapping languages such as R2RML https://www.w3.org/TR/r2rml/ for creating RDF data from spreadsheets.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a href="https://github.com/w3c/respec">https://github.com/w3c/respec</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&amp;StrNom=NACE_REV2">https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&amp;StrNom=NACE_REV2</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a href="https://www.census.gov/eos/www/naics/">https://www.census.gov/eos/www/naics/</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a href="https://unstats.un.org/unsd/classifications">https://unstats.un.org/unsd/classifications</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Global_Industry_Classification_Standard#cite_note-mapbook-1">https://en.wikipedia.org/wiki/Global_Industry_Classification_Standard#cite_note-mapbook-1</a><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p>http://www.specialpricacy.eu<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
         </div>
     </article>
     </main>
