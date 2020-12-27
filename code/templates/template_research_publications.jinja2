@@ -7,28 +7,30 @@
     Other publication lists:
     <a href="https://scholar.google.com/citations?user=tugki3kAAAAJ">Google Scholar</a> and
     <a href="http://dblp.uni-trier.de/search?q=harshvardhan+pandit">dblp</a>. <br/>
-    <small>peer-reviewed:
-    {% for ptype, pcount in count_peerreviewed_types %}
-    {{"; " if not loop.first}}{{ptype}} ({{pcount}})
-    {% endfor %}
-    </small>
-    <br/><small>other:
-    {% for ptype, pcount in count_other_types %}
-    {{"; " if not loop.first}}{{ptype}} ({{pcount}})
-    {% endfor %}
-    </small>
+    <strong>Summary</strong> {{publications|length}} publications with {{count_peerreviewed_types[0][0]}} peer-reviewed <br/>
 </p>
 <ol class='list-index list-sort' data-attributes="title,date,type">
 {% for publication, date in publications %}
     <li data-title="{{publication.schema_name}}" data-date="{{publication.schema_datePublished}}" data-type="{{publication|publication_type}}">
-        <a href="{{publication.iri}}">{{publication}}</a>
+        <strong>#{{loop.revindex}}</strong> <a href="{{publication.iri}}">{{publication}}</a>
         <br/>
-        <small>
         {% if publication.schema_status %}
         <span class='note'>{{ publication.schema_status }}</span>
         {% endif %}
         <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
-        <i>{{publication|publication_type}}</i>
+        {{publication|publication_type}}
+        <br/>
+        {# authors #}
+        &#9997;<i>
+        {% if publication.hpcom_author_lead is sequence %}
+        {% for author in publication.hpcom_author_lead %}{{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}{% endfor %}
+        {% else %}{% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_lead}}</u>*{% else %}{{publication.hpcom_author_lead}}*{% endif %}
+        {% endif %}
+        {% if publication.hpcom_author_other is sequence %}
+        {% for author in publication.hpcom_author_other %},{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% endfor %}
+        {% else %},{% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_other}}</u>{% else %}{{publication.hpcom_author_other}}{% endif %}
+        {% endif %}
+        </i>
         <br/>
         {# venue #}
         {% if publication.schema_publication %}
@@ -40,40 +42,8 @@
         {{publication.schema_publisher}}
         {% endif %}
         <br/>
-        {# authors #}
-        &#9997;<i>
-        {% if publication.hpcom_author_lead is sequence %}
-        {% for author in publication.hpcom_author_lead %}
-        {{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}
-        {% endfor %}
-        {% else %}
-        {% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}
-        <u>{{publication.hpcom_author_lead}}</u>*
-        {% else %}
-        {{publication.hpcom_author_lead}}*
-        {% endif %}
-        {% endif %}
-        {% if publication.hpcom_author_other is sequence %}
-        {% for author in publication.hpcom_author_other %}
-        ,
-        {% if author.iri == "https://harshp.com/me" %}
-        <u>{{author}}</u>
-        {% else %}
-        {{author}}
-        {% endif %}
-        {% endfor %}
-        {% else %}
-        ,
-        {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}
-        <u>{{publication.hpcom_author_other}}</u>
-        {% else %}
-        {{publication.hpcom_author_other}}
-        {% endif %}
-        {% endif %}
-        </i>
-        <br/>
         {% if publication.schema_url %}
-        <a href="{{publication.schema_url}}">publication</a>
+        <a href="{{publication.schema_url}}">official publication</a> <br/>
         {% endif %}
         {# pre-prints #}
         {% if publication.hpcom_archived_version %}
@@ -97,7 +67,6 @@
             <a href="{{publication.hpcom_supplementary.schema_url}}">{{publication.hpcom_supplementary}}</a>
             {% endif %}
         {% endif %}
-        </small>
     </li>
 {% endfor %}
 </ol>

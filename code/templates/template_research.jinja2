@@ -24,17 +24,17 @@ My other research activities include chairing and contributing to the <a class="
 <h2>Research Interests</h2>
     <ul class="list-index">
         <li><a href="https://en.wikipedia.org/wiki/Privacy">Privacy</a> <br/>
-            <small>I'm interested in the exploration of issues regarding privacy, especially those related to use of technology and data protection. My primary motivation in this area is to facilitate discovery and consolidation of existing work in identification and mitigation of risks, and applying existing knowledge to future technologies and innovations.
-            </small></li>
+            I'm interested in the exploration of issues regarding privacy, especially those related to use of technology and data protection. My primary motivation in this area is to facilitate discovery and consolidation of existing work in identification and mitigation of risks, and applying existing knowledge to future technologies and innovations.
+            </li>
         <li><a href="https://en.wikipedia.org/wiki/Consent">Consent</a> <br/>
-            <small>Consent is a broad mechanism for agreement in the society, and is also an essential aspect of freedom based on choice. My primary interest regarding consent relates to its connection with privacy and data protection issues, where it is used as the legal justification for collecting and using personal data. My research revolves around quantification and representation of information regarding consent towards identifying and mitigating issues regarding transparency, accountability, and comprehension.
-            </small></li>
+            Consent is a broad mechanism for agreement in the society, and is also an essential aspect of freedom based on choice. My primary interest regarding consent relates to its connection with privacy and data protection issues, where it is used as the legal justification for collecting and using personal data. My research revolves around quantification and representation of information regarding consent towards identifying and mitigating issues regarding transparency, accountability, and comprehension.
+            </li>
         <li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">General Data Protection Regulation (GDPR)</a> <br/>
-            <small>The GDPR and other recent data protection/privacy laws such as the <a href="https://en.wikipedia.org/wiki/California_Consumer_Privacy_Act">CCPA</a> provide  legal regulation of collecting, using, sharing personal data based upon the principles of privacy and data protection. My research interest revolves around quantification of the requirements and concepts of such laws and its representation for evaluating compliance of processes and activities involving personal data.
-            </small></li>
+            The GDPR and other recent data protection/privacy laws such as the <a href="https://en.wikipedia.org/wiki/California_Consumer_Privacy_Act">CCPA</a> provide  legal regulation of collecting, using, sharing personal data based upon the principles of privacy and data protection. My research interest revolves around quantification of the requirements and concepts of such laws and its representation for evaluating compliance of processes and activities involving personal data.
+            </li>
         <li><a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a> and <a href="https://en.wikipedia.org/wiki/Data_model">Data Modeling</a> <br/>
-            <small>The Semantic Web standards, particularly <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, provide a way for modeling and querying information based on the web infrastructure, permits creation of schemas and ontologies to represent concepts and relationships. My interest lies in using these for the representation, documentation, and modeling of information from other research interests.
-            </small></li>
+            The Semantic Web standards, particularly <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, provide a way for modeling and querying information based on the web infrastructure, permits creation of schemas and ontologies to represent concepts and relationships. My interest lies in using these for the representation, documentation, and modeling of information from other research interests.
+            </li>
     </ul>
 
 </section>
@@ -46,8 +46,8 @@ My other research activities include chairing and contributing to the <a class="
 {% for item, role in current_projects %}
     <li>
         <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
-        <small>{{ item.schema_description }}</small> <br/>
-        <small>(<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time></span>{% else %}ongoing{% endif %})</small>
+        {{ item.schema_description }} <br/>
+        (<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time></span>{% else %}ongoing{% endif %})
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
         {{ role.schema_roleName }}{{", " if not loop.first }}
@@ -56,9 +56,9 @@ My other research activities include chairing and contributing to the <a class="
         {% set role = item.schema_member %}
         {{ role.schema_roleName }}
     {% endif %}
-        </small><br/>
+        <br/>
     {% if item.schema_funding %}
-        <small>funded by:
+        funded by:
         {% if item.schema_funding is sequence %}
             {% for funding in item.schema_funding %}
         {{ funding.schema_name }} funded by {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }} ;
@@ -67,7 +67,7 @@ My other research activities include chairing and contributing to the <a class="
         {% set funding = item.schema_funding %}
         {{ funding.schema_funder.schema_name }} under Grant#{{ funding.schema_identifier }}
         {% endif %}
-        </small>
+        
     {% endif %}        
     </li>
 {% endfor %}
@@ -78,9 +78,9 @@ My other research activities include chairing and contributing to the <a class="
 {% for item, name in past_projects %}
     <li>
         <a href="{{item.iri}}">{{ item.schema_name }}</a>  <br/>
-        <small>{{item.schema_description}}</small> <br/>
+        {{item.schema_description}} <br/>
         (<time datetime="{{item.schema_startDate}}">{{item.schema_startDate}}</time> - <time datetime="{{item.schema_endDate}}">{{item.schema_endDate}}</time>) 
-        <small>
+        
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
         {{ role.schema_roleName }}{{", " if not loop.first }}
@@ -89,7 +89,7 @@ My other research activities include chairing and contributing to the <a class="
         {% set role = item.schema_member %}
         {{ role.schema_roleName }}
     {% endif %}
-        </small> 
+         
     </li>
 {% endfor %}
 </ul>
@@ -109,7 +109,7 @@ My other research activities include chairing and contributing to the <a class="
 {% for publication, date in publications %}
     <li>
         <a href="{{publication.iri}}">{{publication}}</a> <br/>
-            <small>
+            
                 {% if publication.schema_status %}
                 <span class='note'>{{ publication.schema_status }}</span>
                 {% endif %}
@@ -142,7 +142,7 @@ My other research activities include chairing and contributing to the <a class="
                 , {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_other}}</u>{% else %}{{publication.hpcom_author_other}}{% endif %}
                 {% endif %}
                 </i>
-            </small>
+            
     </li>
 {% endfor %}
 </ol>
@@ -189,11 +189,11 @@ My other research activities include chairing and contributing to the <a class="
     <ul>
         {% for acronym, name, date, url in reviewing_conferences|sort(attribute='3', reverse=True)|sort(attribute='0') %}
             {% if loop.first %}
-        <li>{{acronym}} <small>({{name}})</small> <a href="{{url}}">{{date}}</a>
+        <li>{{acronym}} ({{name}}) <a href="{{url}}">{{date}}</a>
             {% else %}
                 {% if acronym != loop.previtem[0] %}
             </li>
-            <li>{{acronym}} <small>({{name}})</small> <a href="{{url}}">{{date}}</a>
+            <li>{{acronym}} ({{name}}) <a href="{{url}}">{{date}}</a>
                 {% else %}
             <a href="{{url}}">{{date}}</a>
                 {% endif %}
@@ -207,7 +207,7 @@ My other research activities include chairing and contributing to the <a class="
 <ul>
     <li>Team <a href="https://lexparency.org">Lexparency</a> 
         <a href="https://publications.europa.eu/en/web/eudatathon/2018-home">EU Datathon 2018</a>
-        <small><b>Secured 1st Prize in Challenge 2</b></small></li>
+        <b>Secured 1st Prize in Challenge 2</b></li>
 </ul>
 </section>
 <section id="supervision">

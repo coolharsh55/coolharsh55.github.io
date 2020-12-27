@@ -274,26 +274,10 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "count_peerreviewed_types" ;
         hpcom:queryString """
-            SELECT ?label (COUNT(?publication) as ?nos) WHERE {
+            SELECT (COUNT(?publication) as ?nos) WHERE {
                 ?publication a schema:ScholarlyArticle .
-                ?publication a ?type .
-                ?type rdfs:subClassOf schema:ScholarlyArticle .
-                ?type schema:name ?label .
                 ?publication hpcom:peer_reviewed \"true\"^^xsd:boolean .
-            } GROUP BY ?label ORDER BY ?label
-        """ ;
-    ] ;
-    hpcom:sparql [
-        a hpcom:SparqlQuery ;
-        rdfs:label "count_other_types" ;
-        hpcom:queryString """
-            SELECT ?label (COUNT(?publication) as ?nos) WHERE {
-                ?publication a schema:ScholarlyArticle .
-                ?publication a ?type .
-                ?type rdfs:subClassOf schema:ScholarlyArticle .
-                ?type schema:name ?label .
-                ?publication hpcom:peer_reviewed \"false\"^^xsd:boolean .
-            } GROUP BY ?label ORDER BY ?label
+            }
         """ ;
     ] .
 
