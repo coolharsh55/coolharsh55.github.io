@@ -1169,6 +1169,29 @@
         hpcom:contentFileFormat hpcom:formatHTML ;
         ] .
 
+<https://harshp.com/research/publications/038-comparison-notice-requirements-consent-29184-gdpr> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Comparison of notice requirements for consent between ISO/IEC 29184:2020 and GDPR "@en ;
+    schema:description "Comparing the requirements for applicability of ISO/IEC 29184 towards GDPR compliance"@en ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:ISO ;
+    hpcom:author_lead ( <https://harshp.com/me> <http://example.com/GeorgPKrog> ) ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2021-01-31T00:00:00"^^xsd:dateTime ;
+    schema:identifier "https://doi.org/10.5281/zenodo.4444925"^^xsd:anyURI ;
+    schema:url "https://www.henrystewartpublications.com/jdpp"^^xsd:anyURI ;
+    schema:publisher <https://www.henrystewartpublications.com/jdpp> ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/pae-consent> <http://example.com/ADAPT> );
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/92966"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4444925"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/038-comparison-notice-requirements-consent-29184-gdpr.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "Forthcoming"@en ;
+    hpcom:peer_reviewed true .
+
 # Authors
 <https://www.scss.tcd.ie/Seamus.Lawless> a schema:Person ;
     schema:name "Séamus Lawless" .
@@ -1236,6 +1259,8 @@
     schema:name "Fabrizio Orlandi" .
 <http://example.com/AdemarCrottiJunior> a schema:Person ;
     schema:name "Ademar Crotti Junior" .
+<http://example.com/GeorgPKrog> a schema:Person ;
+    schema:name "Georg Philip Krog" .
 
 # Publication Venues
 <https://www.emerald.com/insight/publication/issn/1742-7371> a schema:Periodical ;
@@ -1272,6 +1297,12 @@
     schema:alternateName "JWS" ;
     schema:url "https://www.journals.elsevier.com/journal-of-web-semantics" ;
     schema:issn "1570-8268" .
+
+<https://www.henrystewartpublications.com/jdpp> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Journal of Data Protection & Privacy"@en ;
+    schema:alternateName "JDPP" ;
+    schema:url "https://www.henrystewartpublications.com/jdpp" ;
+    schema:issn "2398-1687" .
 
 <http://ceur-ws.org/> a schema:Publication ;
     schema:name "CEUR-WS" ;

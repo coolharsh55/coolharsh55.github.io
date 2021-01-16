@@ -246,9 +246,16 @@ def publication_type(publication):
     if HPCOM.Thesis in type_iris:
         s = f'Thesis for {publication.schema_inSupportOf}'
     elif HPCOM.FullPaper in type_iris:
-        if hasattr(publication, 'schema_publisher') \
-            and publication.schema_publisher.rdf_type.iri == str(SCHEMA.Periodical):
-            s = 'Journal Paper'
+        if hasattr(publication, 'schema_publisher'):
+            if type(publication.schema_publisher.rdf_type) is list:
+                for parent in publication.schema_publisher.rdf_type:
+                    if str(parent) == str(SCHEMA.Periodical):
+                        s = 'Journal Paper'
+                        break
+            elif str(publication.schema_publisher.rdf_type) == str(SCHEMA.Periodical):
+                s = 'Journal Paper'
+            else:
+                s = 'Full Paper' 
         else:
             s = 'Full Paper' 
     elif HPCOM.ShortPaper in type_iris:

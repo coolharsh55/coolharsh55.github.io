@@ -269,16 +269,6 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
                 ?publication schema:datePublished ?date .
             } ORDER By DESC(?date)
         """ ;
-    ] ;
-    hpcom:sparql [
-        a hpcom:SparqlQuery ;
-        rdfs:label "count_peerreviewed_types" ;
-        hpcom:queryString """
-            SELECT (COUNT(?publication) as ?nos) WHERE {
-                ?publication a schema:ScholarlyArticle .
-                ?publication hpcom:peer_reviewed \"true\"^^xsd:boolean .
-            }
-        """ ;
     ] .
 
 # OPTIONAL { ?role schema:endDate ?date } .
