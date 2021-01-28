@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GPC + GDPR: will it work?</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="GPC + GDPR: will it work?">
+    <meta name="schema:description" content="Global Privacy Controls (GPC) represents a signal to opt out of data sharing. Will it work with GDPR?">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="CCPA,consent,GDPR,GPC,privacy,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/blog/gpc-gdpr-can-it-work">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="GPC + GDPR: will it work?">
+    <meta name="twitter:description" content="Global Privacy Controls (GPC) represents a signal to opt out of data sharing. Will it work with GDPR?">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research/blog">research blog</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/research/blog " resource="https://harshp.com/research/blog/gpc-gdpr-can-it-work">
+        <h1 property="schema:name schema:headline">GPC + GDPR: will it work?</h1>
+        <div id="description">
+            <span property='schema:description'>Global Privacy Controls (GPC) represents a signal to opt out of data sharing. Will it work with GDPR?</span><br/>
+            published: <time property="schema:datePublished" datetime="2021-01-28T22:52:00">2021-01-28T22:52:00</time>
+                <small>(updated: <time property="schema:dateModified" datetime="2021-01-28T22:52:00">2021-01-28T22:52:00</time>)</small>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/CCPA" property="schema:about" resource="https://harshp.com/tags/CCPA" typeof="rdfs:Resource"><span property="rdfs:label">CCPA</span></a>
+            <a class="tag" href="https://harshp.com/tags/consent" property="schema:about" resource="https://harshp.com/tags/consent" typeof="rdfs:Resource"><span property="rdfs:label">consent</span></a>
+            <a class="tag" href="https://harshp.com/tags/GDPR" property="schema:about" resource="https://harshp.com/tags/GDPR" typeof="rdfs:Resource"><span property="rdfs:label">GDPR</span></a>
+            <a class="tag" href="https://harshp.com/tags/GPC" property="schema:about" resource="https://harshp.com/tags/GPC" typeof="rdfs:Resource"><span property="rdfs:label">GPC</span></a>
+            <a class="tag" href="https://harshp.com/tags/privacy" property="schema:about" resource="https://harshp.com/tags/privacy" typeof="rdfs:Resource"><span property="rdfs:label">privacy</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <p><a href='https://globalprivacycontrol.github.io/gpc-spec/'>Global Privacy Control (GPC)</a> is a boolean or binary signal sent by browsers to websites to indicate the user&#39;s request for not sharing (or selling) their personal data with third parties. The authors (and supporters) of this specification include people from New York Times, Wesleyan University, DuckDuckGo, and Brave (with many other researchers and supporters). This makes it <em>not</em> a toy project, given that a big publisher, search engine, and web browser vendor is actively supporting its implementation and adoption. </p>
+<p>Today, GPC <a href='https://twitter.com/globalprivctrl/status/1354824123801759748'>tweeted</a> uptake numbers into &quot;hundreds of thousands&quot; with inclusion by major publishers in the USA, and WordPress. GPC is legally enforceable under CCPA where it acts as the &#39;opt-out&#39; for &#39;selling&#39; personal data, as confirmed in a <a href='https://twitter.com/AGBecerra/status/1354850321692934144'>tweet</a> by AG Becerra (California). My interest in writing this is to explore how GPC relates to the other data protection and privacy law across the Atlantic - the General Data Protection Regulation.</p>
+<h3>What is the GPC?</h3>
+<p>In essence, GPC is <a href='https://en.wikipedia.org/wiki/Do_Not_Track'>DNT</a> reborn. It is a singular signal that when <em>set</em> or <em>true</em> indicates that the user has requested the controller (the website the signal is sent to) to not share or sell their data with third parties. In essence, it is a request to <em>stop</em> or <em>opt-out</em> of sharing/selling of personal data to third parties. Given its binary or boolean nature, the GPC is <em>simple</em> to send, read, and evaluate. It is either <em>set</em> or <em>true</em> or it is not. The specification goes into more details regarding the HTTP requests, headers, and structure for using the signal and its interactions. It also deals with how website can indicate their support (or lack of) for abiding to the signal. </p>
+<h3>GPC data-flow</h3>
+<p>The GPC works somewhat in the following manner:</p>
+<ol start='' >
+<li>I go to a website using a web browser where GPC is set to on</li>
+<li>I consent to a notice</li>
+<li>The web browser sends the GPC signal to the website (this may already have occurred before Step.2) to indicate request to opt-out</li>
+<li>Website abides by the request and stops sharing data with third parties</li>
+
+</ol>
+<h3>Legality</h3>
+<p>The GPC spec mentions that websites are responsible for conveying how the signal is going to be used or interpreted, based on their operating and applicable jurisdictions and binding regulations. Under CCPA, the GPC has teeth to be legally enforceable, and thus we have a large (and expanding) adoption across platforms. The spec also specifically <a href='https://globalprivacycontrol.github.io/gpc-spec/#legal-effects'>mentions GDPR</a>, and quotes the potential legal clauses it can use. I&#39;m copying it verbatim here:</p>
+<blockquote><p>The GDPR requires that &quot;Natural persons should have control of their own personal data&quot; ([GDPR], Recital 7). The GPC signal is intended to convey a general request that data controllers limit the sale or sharing of the user&#39;s personal data to other data controllers ([GDPR] Articles 7 &amp; 21). This request is expressed with every interaction that the user agent has with the server.</p>
+<p>Note that this request is not meant to withdraw a user&#39;s consent to local storage as per the ePrivacy Directive (&quot;cookie consent&quot;) ([EPRIVACY-DIRECTIVE]) nor is it intended to object to direct marketing under legitimate interest ([GDPR]).</p>
+</blockquote>
+<p>In addition, Robin Berjon (New York Times), one of the authors of the spec, elaborated more about workings through a debate in a <a href='https://twitter.com/robinberjon/status/1313843015945981964'>Twitter thread</a>. Paul-Oliver Dehaye (founder of PersonalData.io and of &quot;The Great Hack&quot; documentary fame) then <a href='https://twitter.com/podehaye/status/1313933725399429120'>quipped</a> about possibility of using GDPR&#39;s Code of Conduct mechanism to make GPC enforceable.</p>
+<blockquote><p>Has any EU data protection expert reviewed this? Companies have no obligation to honor a particular method chosen by the data subject to exercise their rights (unfortunately).</p>
+<p>This being said, Art 40.2.f (Code of Conduct) does offer a chance to move in the right direction.</p>
+</blockquote>
+<p>Others also pointed out various takes and relations to GDPR and DNT. See tweets by <a href='https://twitter.com/nataliabielova/status/1313928943616045057'>Nataliia Bielova</a> regarding broader applicability to the framework of legal bases under GDPR, <a href='https://twitter.com/bendrath/status/1314356920103374849'>Ralf Bendrath</a> discussed applicability of Article 21 of GDPR regarding right to object. <a href='https://twitter.com/kamara_irene/status/1314547203717947393'>Irene Kamara</a> and Lucas shared articles (<a href='https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3466822'>this</a> and <a href='https://www.wired.com/story/a-second-life-for-the-do-not-track-setting/'>this</a>) about DNT being useful in today&#39;s world.</p>
+<h2>What does GDPR say about consent?</h2>
+<p>GDPR has consent as a lawful basis for processing in Article 6(1-a) for personal data, and Article 9(2-a) for special categories of personal data, and others, such as data transfers, but lets focus on these broadly as &#39;consent&#39;. About withdrawal, Article 7(3) states the following:</p>
+<blockquote><p>The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.</p>
+</blockquote>
+<p>Notably, GDPR does not have &#39;opt-outs&#39;. It explicitly requires an &#39;opt-in&#39; via consent (where it is the legal basis), and the request to stop sharing data with a third party is equivalent to withdrawing the consent for it. Under GDPR, consent for  purposes and processing actions that are separate must also be given separately. That is, consent for sharing data with controller is one instance of consent, and sharing that data further with a third party should be a separate instance of consent. Recital 43 of the GDPR says:</p>
+<blockquote><p>Consent is presumed not to be freely given if it does not allow separate consent to be given to different personal data processing operations  despite it being appropriate in the individual case</p>
+</blockquote>
+<p>For inclusion, Article 21 of GDPR relates to the Right to Object. Specifically, Recital 69 says,</p>
+<blockquote><p>Where personal data might lawfully be processed because  processing is necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in the  controller, or on grounds of the legitimate interests of a controller or a third party, a data subject should, nevertheless, be entitled to  object to the processing of any personal data relating to his or her  particular situation.</p>
+</blockquote>
+<p>Thus, if consent is the legal basis, then withdrawing should limit the sharing of data with third parties. And if legitimate interest is the legal basis, then exercising the right to object should limit it. This is (probably) what GPC mentions in its specification about applicability for GDPR.</p>
+<h2>Why I&#39;m feeling unsure</h2>
+<p>GPC is an exciting development for me. It is the first time (for me) where people have got together, created something, managed to roll it out, and  even have a law that legalises its enforcement. I&#39;ve thought about this many times, and there are several large questions that loom out to me whenever GPC comes across. Through GPC&#39;s own specification, and admission, its applicability and enforceability under GDPR is ambiguous at best, and non-existent at worst. Where the CCPA has provisions that can be applied directly to make request about sharing data with third parties, the GDPR does not specify any such broad restrictions, and instead relies on its framework of legal bases and rights. </p>
+<p>This distance between legalese and real world has been a point of pain, contention, and frustration as we see no actions against large scale and systemic consent mechanisms that misuse <a href='https://hal.inria.fr/hal-02566891/document'>legal basis</a>, <a href='https://hal.inria.fr/hal-02567022/document'>purposes</a>, and are clearly falling <a href='https://techreg.org/index.php/techreg/article/download/43/25'>afoul</a> of GDPR compliance. So even a regulator weighing in on the applicability of GPC is no guarantee of its applicability because (a) there are ~50 DPAs in EU so there needs to be uniformity in interpretation, something the EDPB would be likely to be involved with, and (b) unless case law explicitly outlines that GPC is enforceable, there is always scope for someone raising objections to using it.</p>
+<p>Even without these, the process of applying GPC is unconvincing to me, no matter how well intentioned it is. I feel that it has some weird loopholes that it does not clarify upon, and as a result, there are too many uncertainties - which in the GDPR and adtech world translate into as loopholes, exploits, and malpractices.</p>
+<h3>#1 Setting GPC off could mean share with everyone</h3>
+<p>Let us pretend that I use an GPC-enabled browser, and I visit a website that requests my consent under GDPR. My browser has probably signalled to the website or the website or its consent CMP has checked whether I use GPC. Under GDPR, consent choices should be set to a default of &quot;no&quot; or &quot;off&quot; or &quot;prohibit&quot;. Therefore, the interpretation of the GPC should have no effect on the default choices. However, if the GPC is set to an explicit <em>off</em>, then there one could argue for a case to be made to set the consent defaults to <em>permit</em> third-party data sharing since the individual clearly wishes it (through GPC = <em>off</em>).</p>
+<h3>#2 GPC vs Agree button - who wins?</h3>
+<p>Lets say I agree to sharing my data with a third party, knowingly, and intentionally, by using the choices in the consent dialogue. Now I have indicated my wishes but the GPC signal indicates otherwise. What should a website / controller do in such a situation where the user&#39;s consent is in conflict with an automatic signal? I would presume that a rational decision would be to respect the user&#39;s choice over the user&#39;s automatic agent&#39;s choice. And this here is a subtle avenue for manipulation, where as long as individuals continue to click on the <em>Agree</em> and <em>Accept All</em> buttons, the GPC could be argued to have been overridden by the user&#39;s choices. For proponents of imbalanced consent requests, I&#39;m speaking about hypothetical scenarios where the choices and interactions are actually valid.</p>
+<p>Where GPC does benefit is when the consent dialogue is malicious and abusive. In such cases, we <em>want</em> the GPC to enforce a right to withdraw or object despite us having clicked on <em>Agree to All</em>. This also forms the elevator pitch for adopting GPC: &quot;don&#39;t worry, click on the agree buttons, we&#39;ll send a withdraw request right along with it&quot;. So which method should we go with? Should GPC override the consent choices or vice-versa? I imagine this is a chicken and egg problem (though the egg definitely came first because evolution).</p>
+<p>A more generous interpretation and argument is that CMP vendors or providers would somehow integrate the GPC into the choices. This is a fallacy as long as the <em>Accept All</em> button exists - because along with it, the dilemma above also exists. In wonderland, the CMP would actually respect the GPC signal and turn off the sharing choices no matter what agree button you choose., or make you set them explicitly to affirm your choices.</p>
+<h3>#3 Tiny windows of opportunities and leaky pipelines</h3>
+<p>The crux of the issues for consent online stem from the mess that is the adtech ecosystem consisting of data sharing with thousands of websites, real-time bidding, and impossible demands of informed choices, all built on the backbone that is IAB TCF &#39;framework&#39;. In this, the moment you hit <em>Agree</em>, a signal is sent out to all controllers along with all of the data you consented to. Let us imagine this is what really happens for a moment. You click <em>Agree</em> and your personal data is sent to all of the thousands of third parties mentioned in the dialogue. Now, my browser also sends a GPC signal. Who receives it?</p>
+<p>If the GPC is used by the CMP to block data being sent to the third parties, then we&#39;re back at the problem in #2. If all the third parties receive the GPC signal, what are they supposed to do, and will they do it? What if the third parties claim that they will respect the GPC signal, but it will <em>take time to process and implement</em>? That leaves a tiny window of opportunity, where that third party has the personal data and my consent to process it for their desired purpose. In this case, GPC probably only restricts continued processing.</p>
+<p>To think further along these lines, how will I know whether a third party has actually respected my GPC signal or my consent or both or neither? There is no requirement to confirm withdrawal of consent, and since GPC is automatic, one can presume there could be an automatic signal sent back in acknowledgement. But who is keeping track, where, and how? If the IAB decides to include the GPC signal in a future update to the TCF, will it make it mandatory to check the GPC for all consent interactions (nothing else will work)? Even if the answer is yes, we are still going to be sharing data with a third party. Thus, we have leaky pipelines of data that look like they might be respecting the GPC but could actually be malicious actors or claim innocence under the guise of technical naughtiness.  </p>
+<h3>#4 Which of my consents does GPC represent?</h3>
+<p>GPC is singular, i.e. there is only one GPC signal AFAIK sent by the browser. There is no way to say, or associate the GPC with a particular consent. So will the GPC blanket withdraw or object everything and everywhere? What if I have given consent to A as a third party, but don&#39;t want to give to B? In this case, will GPC request revocation to both? I know that GPC can be indicated per website, and can be checked per website when giving consent (I think, as per the specification and assumption that CMP takes it into account). But then there is an uncertainty as to whether my consent still applies or has been withdrawn by the GPC. Further, if controllers silently accept (or worse, ignore) the GPC - how do I keep track of what impact that automatic signal is having, and on which of my consents.</p>
+<h2>Lots of promise, Lots of worries</h2>
+<p>My nightmare is the GPC having a global and wide adoption, and then being abused for loopholes all around. It is likely to happen, because, common, look at any random website to see what we live with. So why don&#39;t we take time to think this through, and find these weird cases, discuss it, and close them as and how we can. This blog post is a think-aloud type of draft I&#39;ve just written for the sake of thinking about GPC. I intend to study it more, think about it in terms of GDPR, and then perhaps update this article as I come across new information and consequences.</p>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
