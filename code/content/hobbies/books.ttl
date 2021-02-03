@@ -429,9 +429,12 @@
 
 <https://harshp.com/hobbies/books#13> a schema:Book ;
     hpcom:book_id "13"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_physical_copy true ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    hpcom:book_read "2021-01-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:name "Children of Ruin"@en ;
@@ -472,7 +475,7 @@
     schema:dateCreated "1892"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780517174968"^^xsd:string ;
-    schema:name "The Complete Adventures and Memoirs of Sherlock Holmes"@en ;
+    schema:name "Complete Adventures and Memoirs of Sherlock Holmes"@en ;
     schema:url "https://harshp.com/hobbies/books#132"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books#133> a schema:Book ;
@@ -7583,3 +7586,16 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Privacy is Power"@en ;
     schema:url "https://harshp.com/hobbies/books#607"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books#608> a schema:Book ;
+    hpcom:book_id "608"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    # hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "China Miéville"^^xsd:string ;
+    schema:dateCreated "2002"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Scar"@en ;
+    schema:url "https://harshp.com/hobbies/books#608"^^xsd:anyURI .
