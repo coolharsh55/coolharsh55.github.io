@@ -1348,6 +1348,24 @@
     schema:url "https://www.henrystewartpublications.com/jdpp" ;
     schema:issn "2398-1687" .
 
+<http://www.semantic-web-journal.net/> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Semantic Web Journal"@en ;
+    schema:alternateName "SWJ" ;
+    schema:url "http://www.semantic-web-journal.net/" ;
+    schema:issn "1570-0844" .
+
+<https://www.journals.elsevier.com/journal-of-information-security-and-applications/> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Journal of Information Security and Applications"@en ;
+    schema:alternateName "JISA" ;
+    schema:url "Journal of Information Security and Applications" ;
+    schema:issn "2214-2126" .
+
+<https://www.sciencedirect.com/journal/future-generation-computer-systems> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Future Generation Computer Systems"@en ;
+    schema:alternateName "FGCS" ;
+    schema:url "https://www.sciencedirect.com/journal/future-generation-computer-systems" ;
+    schema:issn "0167-739X" .
+
 <http://ceur-ws.org/> a schema:Publication ;
     schema:name "CEUR-WS" ;
     schema:url "http://ceur-ws.org/"^^xsd:anyURI .
@@ -1383,7 +1401,7 @@
     schema:url "https://www.ucc.ie/"^^xsd:anyURI .
 
 # conferences, workshops
-<http://example.com/conferences/ICACEA2012> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+<http://example.com/conferences/ICACEA2012> a schema:PublicationEvent ;
     schema:name "International Conference on Advanced Computer Engineering and Applications"@en ;
     schema:alternateName "ICACEA" ;
     schema:url "www.irdindia.in/ICACEA_Trivandrum_Dec/"^^xsd:anyURI ;
@@ -1391,7 +1409,7 @@
     schema:endDate "2012-12-09T00:00:00"^^xsd:dateTime ;
     schema:location "Trivandrum, India" .
 
-<http://example.com/conferences/ICACSIT2013> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+<http://example.com/conferences/ICACSIT2013> a schema:PublicationEvent ;
     schema:name "International Conference on Advanced Computer Sciences and Information Technology"@en ;
     schema:alternateName "ICACSIT" ;
     schema:url "http://itresearch.org.in/conference/Feb_2013/Pune_feb_2013/acsit/index.php"^^xsd:anyURI ;
@@ -1732,37 +1750,82 @@
     schema:endDate "2020-12-11T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
+<http://example.com/conferences/ESWC2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    schema:name "Extended Semantic Web Conference"@en ;
+    schema:alternateName "ESWC" ;
+    schema:url "https://2021.eswc-conferences.org"^^xsd:anyURI ;
+    schema:startDate "2021-06-02T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-06-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://example.com/conferences/RELATED2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    schema:name "International Workshop on Relations in the Legal Domain"@en ;
+    schema:alternateName "RELATED" ;
+    schema:url "https://related.di.unito.it/"^^xsd:anyURI ;
+    schema:startDate "2021-06-21T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-06-21T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
 # Supervision
+<https://harshp.com/research/supervision/2020-highlight-risk-consent>  a schema:Role, hpcom:SupervisionRole ;
+    schema:name "Highlighting risks in consent dialogues"@en ;
+    schema:agent "Hasan Opiev" ;
+    schema:subjectOf "4th year project" ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime .
+<https://harshp.com/research/supervision/2020-consent-annotation-tool>  a schema:Role, hpcom:SupervisionRole ;
+    schema:name "Annotation tool for issues in consent dialogues"@en ;
+    schema:agent "Brian Lynch" ;
+    schema:subjectOf "4th year project" ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime .
+<https://harshp.com/research/supervision/2020-consent-adblocker>  a schema:Role, hpcom:SupervisionRole ;
+    schema:name "Granular removal of consent dialogue elements using ad-blockers"@en ;
+    schema:agent "Rohan Taneja" ;
+    schema:subjectOf "4th year project" ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime .
+<https://harshp.com/research/supervision/2020-dataportability-schema-mappings>  a schema:Role, hpcom:SupervisionRole ;
+    schema:name "Implementing semantics for interoperable data portability"@en ;
+    schema:agent "Claire Farrell" ;
+    schema:subjectOf "MSc project" ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-07-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2019-browser-extension-consent>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Browser extension recording given consent"@en ;
+    schema:name "Recording online consent via a browser extension"@en ;
     schema:agent "Dhruv Sachdev" ;
     schema:subjectOf "4th year project" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2019-contextual-integrity-gdpr>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Contextual Integrity framework based on GDPR"@en ;
+    schema:name "Representing and Evaluating the Flow of Information in Privacy Policies Based on the Theory of Contextual Integrity (for GDPR)"@en ;
     schema:agent "Derrick Amponsa" ;
     schema:subjectOf "MSc project" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2019-privacy-policy-generator>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Privacy policy generator"@en ;
+    schema:name "A Generator for Annotated Privacy Policies"@en ;
     schema:agent "Eoin Leahy" ;
     schema:subjectOf "4th year project" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2019-privacy-policy-visualisation>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Privacy policy visualisation widget"@en ;
+    schema:name "Data Protection Process Browser Widget (for privacy policy visualisation)"@en ;
     schema:agent "Darragh Masterson" ;
     schema:subjectOf "4th year project" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2019-AI-ethics-canvas>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "AI Ethics Canvas"@en ;
+    schema:name "Artificial Intelligence Ethics Canvas: A Tool for Ethical and Socially Responsible AI"@en ;
     schema:agent "Ankita Kalra" ;
     schema:subjectOf "MSc project" ;
     schema:roleName "Assistant Supervisor" ;
@@ -1776,28 +1839,28 @@
     schema:startDate "2019-05-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2019-10-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2018-privacy-policy-visualisation>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Privacy policy visualisation"@en ;
+    schema:name "Data Protection Process Browser Widget: A Visualization Tool for Interacting with Privacy Policies"@en ;
     schema:agent "James Cox" ;
     schema:subjectOf "4th year project" ;
     schema:roleName "Mentor" ;
     schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2019-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2018-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Ethics Canvas website developmen"@en ;
+    schema:name "Ethics Canvas website development"@en ;
     schema:agent "Ankita Kalra" ;
     schema:subjectOf "4th year internship" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2019-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2017-ethics-canvas-website-2>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Ethics Canvas website developmen"@en ;
+    schema:name "Ethics Canvas website development"@en ;
     schema:agent "Andrew Knox" ;
     schema:subjectOf "4th year internship" ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2017-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2018-05-01T00:00:00"^^xsd:dateTime .
 <https://harshp.com/research/supervision/2017-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole ;
-    schema:name "Ethics Canvas website developmen"@en ;
+    schema:name "Ethics Canvas website development"@en ;
     schema:agent "Andreas Burburan" ;
     schema:subjectOf "internship" ;
     schema:roleName "Assistant Supervisor" ;
@@ -1819,4 +1882,13 @@
     schema:subjectOf "PhD research" ;
     schema:roleName "Mentor" ;
     schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2022-08-31T00:00:00"^^xsd:dateTime .
+    schema:endDate "2020-10-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2020-AI-risk-ontology> a schema:Role, hpcom:SupervisionRole ;
+    schema:name "Risk Management for AI Governance"@en ;
+    schema:agent "Delaram Golpayegani" ;
+    schema:subjectOf "PhD research" ;
+    schema:roleName "Mentor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
+
