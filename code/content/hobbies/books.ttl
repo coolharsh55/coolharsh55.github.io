@@ -4,11 +4,15 @@
 
 <https://harshp.com/hobbies/books/1> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "1"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2020-11-04T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Abhijit V. Banerjee"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:isbn "9780718193669"^^xsd:string ;
     schema:name "Poor Economics"@en ;
+    schema:genre hpcom:BookNonFiction ;
     schema:url "https://harshp.com/hobbies/books/1"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/10> a schema:Book, hpcom:RenderedItem ;
@@ -7433,10 +7437,10 @@
 
 <https://harshp.com/hobbies/books/596> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "596"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
     hpcom:book_physical_copy true ;
-    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read "2021-03-07T00:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Samuel R. Delany"^^xsd:string ;
     schema:dateCreated "1966"^^xsd:int ;
@@ -7446,10 +7450,10 @@
 
 <https://harshp.com/hobbies/books/597> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "597"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
     hpcom:book_physical_copy true ;
-    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read "2021-03-09T00:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Poul Anderson"^^xsd:string ;
     schema:dateCreated "1970"^^xsd:int ;
@@ -7615,10 +7619,10 @@
 
 <https://harshp.com/hobbies/books/610> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "610"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating2 ;
     hpcom:book_physical_copy true ;
-    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read "2021-03-06T00:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "N. K. Jemisin"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
@@ -7626,18 +7630,18 @@
     schema:name "The City We Became"@en ;
     schema:url "https://harshp.com/hobbies/books/610"^^xsd:anyURI .
 
-<https://harshp.com/hobbies/books/611> a schema:Book, hpcom:RenderedItem ;
-    hpcom:book_id "611"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    # hpcom:book_physical_copy true ;
-    #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
-    schema:author "Poul Anderson"^^xsd:string ;
-    schema:dateCreated "1970"^^xsd:int ;
-    # schema:isbn ""^^xsd:string ;
-    schema:name "Tau Zero"@en ;
-    schema:url "https://harshp.com/hobbies/books/611"^^xsd:anyURI .
+#<https://harshp.com/hobbies/books/611> a schema:Book, hpcom:RenderedItem ;
+#    hpcom:book_id "611"^^xsd:int ;
+#    hpcom:book_status hpcom:book-to-read ;
+#    #schema:aggregatedRating hpcom:Rating4 ;
+#    #hpcom:book_physical_copy true ;
+#    #hpcom:book_read "2021-03-09T00:00:00"^^xsd:dateTime ;
+#    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+#    schema:author ""^^xsd:string ;
+#    schema:dateCreated ""^^xsd:int ;
+#    # schema:isbn ""^^xsd:string ;
+#    schema:name ""@en ;
+#    schema:url "https://harshp.com/hobbies/books/611"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/612> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "612"^^xsd:int ;
