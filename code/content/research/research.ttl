@@ -1236,6 +1236,72 @@
     schema:status "Forthcoming"@en ;
     hpcom:peer_reviewed true .
 
+<https://harshp.com/research/publications/039-benefits-of-consent> a schema:ScholarlyArticle, hpcom:ExtendedAbstract, hpcom:RenderedItem ;
+    schema:name "[How] Do Users Benefit From Giving Consent?"@en ;
+    schema:description "Proposal for research investigating what benefits, if any, do consumers get when consenting"@en ;
+    hpcom:tag hptag:ConsumerProtection ;
+    hpcom:tag hptag:consent ;
+    hpcom:author_lead ( <https://harshp.com/me> <http://example.com/SoheilHuman> <http://example.com/MandanKazzazi> );
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; PaE:CG (Privacy as Expected: Consent Gateway)"@en ;
+    schema:datePublished "2021-03-12T17:30:00"^^xsd:dateTime ;
+    schema:identifier "https://doi.org/10.5281/zenodo.4601141"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.5281/zenodo.4601141"^^xsd:anyURI ;
+    schema:publication <http://example.com/workshops/ConPro2021> ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/pae-consent> <http://example.com/ADAPT> );
+    hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url ""^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4601141"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/039-benefits-of-consent.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "To be Presented"@en ;
+    hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/040-standardization-governance-ai-standards> a schema:ScholarlyArticle, hpcom:BookChapter, hpcom:RenderedItem ;
+    schema:name "Standardization and the Governance of Artificial Intelligence Standards "@en ;
+    schema:description "A glossary entry for existing state regarding AI and its standardisation activities"@en ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:standardisation ;
+    hpcom:author_lead <https://www.scss.tcd.ie/dave.lewis/> ;
+    hpcom:author_other ( <https://harshp.com/me> <http://example.com/PJWall> <http://example.com/DavlidFilip>  ) ;
+    schema:datePublished "2021-02-14T00:00:00"^^xsd:dateTime ;
+    schema:identifier "https://doi.org/10.1007/978-3-319-23514-1_1226-1"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.1007/978-3-319-23514-1_1226-1"^^xsd:anyURI ;
+    schema:publisher <https://link.springer.com/referencework/10.1007/978-3-319-23514-1> ;
+    # schema:funder <http://example.com/ADAPT> ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/91583"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/3934461"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/040-standardization-governance-ai-standards.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:peer_reviewed false .
+
+<https://harshp.com/research/publications/041-crowdsourcing-issues-consent-automated-legal-complaints> a schema:ScholarlyArticle, hpcom:ExtendedAbstract, hpcom:RenderedItem ;
+    schema:name "Crowd-sourcing Multi-Domain Issues in Consent Dialogues for Automated Generation of Legal Complaints"@en ;
+    schema:description "Proposal for reporting issues across domains and linking them for legal complaints"@en ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/BrianLynch> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; PaE:CG (Privacy as Expected: Consent Gateway)"@en ;
+    schema:datePublished "2021-03-12T18:00:00"^^xsd:dateTime ;
+    schema:identifier " http://doi.org/10.5281/zenodo.4553324"^^xsd:anyURI ;
+    schema:url " http://doi.org/10.5281/zenodo.4553324"^^xsd:anyURI ;
+    schema:publication <http://example.com/workshops/DarkPatterns2021> ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/pae-consent> <http://example.com/ADAPT> );
+    hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url ""^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url " http://doi.org/10.5281/zenodo.4553324"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/041-crowdsourcing-issues-consent-automated-legal-complaints.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "To be Presented"@en ;
+    hpcom:peer_reviewed true .
+
 # Authors
 <https://www.scss.tcd.ie/Seamus.Lawless> a schema:Person ;
     schema:name "Séamus Lawless" .
@@ -1305,6 +1371,16 @@
     schema:name "Ademar Crotti Junior" .
 <http://example.com/GeorgPKrog> a schema:Person ;
     schema:name "Georg Philip Krog" .
+<http://example.com/SoheilHuman> a schema:Person ;
+    schema:name "Soheil Human" .
+<http://example.com/MandanKazzazi> a schema:Person ;
+    schema:name "Mandan Kazzazi" .
+<http://example.com/PJWall> a schema:Person ;
+    schema:name "P. J. Wall" .
+<http://example.com/DavlidFilip> a schema:Person ;
+    schema:name "David Filip" .
+<http://example.com/BrianLynch> a schema:Person ;
+    schema:name "Brian Lynch" .
 
 # Publication Venues
 <https://www.emerald.com/insight/publication/issn/1742-7371> a schema:Periodical ;
@@ -1323,6 +1399,10 @@
     schema:name "Standardisation, Data Interoperability, and GDPR"@en ;
     schema:url "https://www.igi-global.com/book/shaping-future-through-standardization/235703" ;
     schema:issn "9781799821816" .
+
+<https://link.springer.com/referencework/10.1007/978-3-319-23514-1> a schema:Book ;
+    schema:name "Encyclopedia of Business and Professional Ethics"@en ;
+    schema:url "https://link.springer.com/referencework/10.1007/978-3-319-23514-1" .
 
 <https://www.springer.com/journal/10115> a schema:Periodical ;
     schema:name "Knowledge and Information Systems"@en ;
@@ -1764,6 +1844,40 @@
     schema:url "https://related.di.unito.it/"^^xsd:anyURI ;
     schema:startDate "2021-06-21T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-06-21T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://example.com/workshops/ConPro2021> a schema:PublicationEvent ;
+    schema:name "Workshop on Technology and Consumer Protection"@en ;
+    schema:alternateName "ConPro" ;
+    schema:url "https://www.ieee-security.org/TC/SPW2021/ConPro/index.html"^^xsd:anyURI ;
+    schema:startDate "2021-05-27T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-27T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/IEEESP2021> ;
+    schema:location "Virtual" .
+
+<http://example.com/conferences/IEEESP2021> a schema:PublicationEvent ;
+    schema:name "IEEE Symposium on Security and Privacy"@en ;
+    schema:alternateName "IEEE S&P" ;
+    schema:url "https://www.ieee-security.org/TC/SP2021/"^^xsd:anyURI ;
+    schema:startDate "2021-05-23T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-27T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://example.com/workshops/DarkPatterns2021> a schema:PublicationEvent ;
+    schema:name "CHI Workshop on Dark Patterns in Design: What Can CHI Do About Dark Patterns?"@en ;
+    schema:alternateName "DarkPatterns" ;
+    schema:url "https://darkpatternsindesign.com/"^^xsd:anyURI ;
+    schema:startDate "2021-05-08T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-08T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/CHI2021> ;
+    schema:location "Virtual" .
+
+<http://example.com/conferences/CHI2021> a schema:PublicationEvent ;
+    schema:name "ACM Conference on Human Factors in Computing Systems"@en ;
+    schema:alternateName "CHI" ;
+    schema:url "https://chi2021.acm.org/"^^xsd:anyURI ;
+    schema:startDate "2021-05-08T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-05-13T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
 # Supervision
