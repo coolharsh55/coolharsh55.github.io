@@ -61,6 +61,8 @@ graph.load('content/stories/stories.ttl', format='turtle')
 graph.load('content/dev/dev.ttl', format='turtle')
 graph.load('content/research/blog/research_blog.ttl', format='turtle')
 graph.load('content/research/research.ttl', format='turtle')
+graph.load('content/research/projects/risky/risky.ttl', format='turtle')
+graph.load('content/research/projects/paecg/paecg.ttl', format='turtle')
 graph.load('../me.ttl', format='turtle')
 graph.load('content/hobbies/books.ttl', format='turtle')
 

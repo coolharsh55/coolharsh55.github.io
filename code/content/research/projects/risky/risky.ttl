@@ -1,0 +1,90 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+<https://harshp.com/research/projects/risky> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
+    schema:name "Risky"@en ;
+    schema:description "Exploring Privacy Risks of Technologies using Knowledge Graphs"@en ;
+    schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-09-30T00:00:00"^^xsd:dateTime ;
+    schema:member [
+        a schema:Role ;
+        schema:member <https://harshp.com/me> ;
+        schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2022-09-30T00:00:00"^^xsd:dateTime ;
+        schema:roleName "Principal Investigator (PI)"@en ;
+    ] ;
+    schema:funding [
+        a schema:MonetaryGrant ;
+        schema:recipient <https://harshp.com/me> ;
+        schema:identifier "GOIPD/2020/790"^^xsd:string ;
+        schema:funder [
+            a schema:FundingScheme ;
+            schema:name "Government of Ireland Postdoctoral Fellowship Programme (GOIPD)"@en ;
+            schema:url "http://research.ie/funding/goipd/"^^xsd:anyURI ;
+            schema:funder [
+                a schema:FundingAgency ;
+                schema:name "Irish Research Council (IRC)"@en ;
+                schema:url "http://research.ie/"^^xsd:anyURI ;
+            ] ;
+        ] ;
+    ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/index.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] .
+
+<https://harshp.com/research/projects/risky/blog001_intro> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog>, <https://harshp.com/research/projects/risky> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/blog001_intro.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:privacy,
+        hptag:consent,
+        hptag:risk,
+        hptag:knowledge-graph ;
+    schema:author <https://harshp.com/me> ;
+    schema:subjectOf <https://harshp.com/research/projects/risky> ;
+    schema:datePublished "2020-09-21T00:00:00"^^xsd:dateTime ;
+    schema:description "Exploring privacy risks of technologies using knowledge graphs"@en ;
+    schema:name "The RISKY Project"@en ;
+    schema:url "https://harshp.com/research/projects/risky/blog001_intro"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/risky/deliverables> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog>, <https://harshp.com/research/projects/risky> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/deliverables.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:privacy,
+        hptag:consent,
+        hptag:risk,
+        hptag:knowledge-graph ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2020-09-21T00:00:00"^^xsd:dateTime ;
+    schema:description "lists the milestones and deliverables for RISKY project"@en ;
+    schema:name "milestones and deliverables"@en ;
+    schema:url "https://harshp.com/research/projects/risky/deliverables"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/risky/resources> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog>, <https://harshp.com/research/projects/risky> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/resources.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:privacy,
+        hptag:consent,
+        hptag:risk,
+        hptag:knowledge-graph ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2020-09-21T00:00:00"^^xsd:dateTime ;
+    schema:description "lists the resources developed in RISKY project"@en ;
+    schema:name "resources"@en ;
+    schema:url "https://harshp.com/research/projects/risky/resources"^^xsd:anyURI .
