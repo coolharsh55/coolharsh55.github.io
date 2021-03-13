@@ -57,6 +57,7 @@
     hpcom:tag hptag:privacy,
         hptag:consent ;
     schema:author <https://harshp.com/me> ;
+    schema:subjectOf <https://harshp.com/research/projects/paecg> ;
     schema:dateModified "2020-09-21T00:00:00"^^xsd:dateTime ;
     schema:description "lists the milestones and deliverables for paecg project"@en ;
     schema:name "milestones and deliverables"@en ;
@@ -70,7 +71,24 @@
     hpcom:tag hptag:privacy,
         hptag:consent ;
     schema:author <https://harshp.com/me> ;
+    schema:subjectOf <https://harshp.com/research/projects/paecg> ;
     schema:dateModified "2020-09-21T00:00:00"^^xsd:dateTime ;
     schema:description "lists the resources developed in paecg project"@en ;
     schema:name "resources"@en ;
     schema:url "https://harshp.com/research/projects/paecg/resources"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/paecg/publications> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog>, <https://harshp.com/research/projects/paecg> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/paecg/publications.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:privacy,
+        hptag:consent,
+        hptag:risk,
+        hptag:knowledge-graph ;
+    schema:author <https://harshp.com/me> ;
+    schema:subjectOf <https://harshp.com/research/projects/paecg> ;
+    schema:dateModified "2021-02-21T00:00:00"^^xsd:dateTime ;
+    schema:description "lists the publications arising from this project"@en ;
+    schema:name "publications"@en ;
+    schema:url "https://harshp.com/research/projects/paecg/publications"^^xsd:anyURI .
