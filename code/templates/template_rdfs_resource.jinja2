@@ -8,7 +8,7 @@
             {% if prop not in RDF_DESC_PROP %}
             <li>{{prop}}: 
                 {% if obj is sequence and obj is not string %}
-                    {% for obj_item in obj|sort(attribute='iri') %}
+                    {% for obj_item in obj|sort(attribute='iri')|sort(attribute='0') %}
                     {% if prop.startswith('date')%}
                     <time datetime="{{obj_item}}">{{obj_item}}</time>
                     {% else %}
