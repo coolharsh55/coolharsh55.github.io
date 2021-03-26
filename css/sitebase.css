@@ -2,26 +2,25 @@
      --background: #EFEFEF; 
      --link: #870002;
      --text: #0E0B16;
-     --text-link: #2F4D81;
+     --text-link: #1B2D4B;
      --background-dark: #263261;
 }
 @media screen {
-     html {
-          background:
-          linear-gradient(90deg, var(--background) 21px, transparent 1%) center,
-          linear-gradient(var(--background) 21px, transparent 1%) center,
-          var(--text);
-          background-size: 22px 22px;
-     }
      body {
-          max-width: 42rem;
+          max-width: 48rem;
           padding: 5px;
           margin: auto;
           /*font-family: monospace, monospace;*/
           font-size: 1.25rem;
           line-height: 1.5;
           color: var(--text);
-          background-color: var(--background);
+          background-color: var(--background-dark);
+     }
+     header, footer {
+          background: var(--background);
+     }
+     main {
+          background: var(--background);
      }
      nav {
           font-size: 0.75rem;
@@ -74,7 +73,6 @@
           padding-right: 0.5rem;
           margin-bottom: 1rem;
      }
-
      hr {
           border: 0;
           background: var(--background-dark);
@@ -82,7 +80,7 @@
      }
      a {
           text-decoration: none;
-          border-bottom: 1px solid var(--link);
+          border-bottom: 1px solid var(--background-dark);
           color: var(--text-link);
      }
      a:hover {
@@ -92,7 +90,7 @@
      }
      a:visited {
           text-decoration: none;
-          border-bottom: 1px dotted var(--link);
+          border-bottom: 1px dotted var(--background-dark);
           color: var(--text-link);
      }
      .center {
@@ -188,13 +186,16 @@ img, svg {
      padding: 1px;
      box-shadow: 1px 1px 2px var(--background-dark);
 }
-     blockquote {
+blockquote {
+     margin: 0px;
      margin-top: 10px;
      margin-bottom: 10px;
-     margin-left: 5px;
-     padding-left: 5px;
-     border-left: 2px solid var(--text-link);
-    ;
+     margin-left: 2px;
+     padding: 0px;
+     padding-right: 10px;
+     padding-left: 15px;
+     border: 1px solid var(--background-dark);
+     border-left: 5px solid var(--background-dark);
 }
 pre {
      display: block;
