@@ -1105,3 +1105,27 @@
     #] ;
     schema:status "To be Presented"@en ;
     hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/043-ontology-standardising-trustworthy-ai> a schema:ScholarlyArticle, hpcom:BookChapter, hpcom:RenderedItem ;
+    schema:name "An Ontology for Standardising Trustworthy AI"@en ;
+    schema:description "Presents a simple ontology that can be used for checking the consistency and overlap of concepts from different standards, regulations and policies for Trustworthy AI."@en ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:accountability ;
+    hpcom:tag hptag:trustworthy ;
+    hpcom:author_lead <https://www.scss.tcd.ie/dave.lewis/> ;
+    hpcom:author_other ( <http://example.com/DavlidFilip> <https://harshp.com/me>) ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; PaE:CG (Privacy as Expected: Consent Gateway)"@en ;
+    schema:datePublished "2021-05-15T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <https://www.intechopen.com/> ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/paecg> <http://example.com/ADAPT> );
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/95781"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url " http://doi.org/10.5281/zenodo.4553324"^^xsd:anyURI ] ;
+    #hpcom:content [
+    #    a hpcom:Content ;
+    #    hpcom:contentFile "https://harshp.com/code/content/research/publications/041-crowdsourcing-issues-consent-automated-legal-complaints.html" ;
+    #    hpcom:contentFileFormat hpcom:formatHTML ;
+    #] ;
+    schema:status "forthcoming"@en ;
+    hpcom:peer_reviewed false .
