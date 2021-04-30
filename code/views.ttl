@@ -384,7 +384,7 @@ hpview:BookListView a hpcom:View ;
             SELECT ?book ?title ?date ?year WHERE {
                 ?book a schema:Book .
                 ?book schema:name ?title .
-                ?book hpcom:book_read ?date .
+                ?book hpcom:date_book_read ?date .
                 BIND(YEAR(?date) as ?year) .
             } ORDER By DESC(?date)
         """ ; ] ;

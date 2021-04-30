@@ -2,13 +2,19 @@
 {% block desc %}<section id="description"><a href="{{item.iri}}">{{ item.iri }}</a></section>{% endblock desc %}
 {% block content %}
 <h2>properties</h2>
+{# <pre><code>
+    {{item.metadata.items()}}
+</code></pre>
+<br/> #}
     <ul>
         {% for prop, obj in item.metadata.items() | sort(attribute='0') %}
             {% set prop = prefix_this(prop) %}
+            {# <br/><b>prop: {{prop}}</b><br/> #}
             {% if prop not in RDF_DESC_PROP %}
             <li>{{prop}}: 
                 {% if obj is sequence and obj is not string %}
-                    {% for obj_item in obj|sort(attribute='iri')|sort(attribute='0') %}
+                {# <br/><b>sequence: {{obj}}</b><br/> #}
+                    {% for obj_item in obj|sort %}
                     {% if prop.startswith('date')%}
                     <time datetime="{{obj_item}}">{{obj_item}}</time>
                     {% else %}
