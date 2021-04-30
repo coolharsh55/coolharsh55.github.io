@@ -4,10 +4,10 @@
 
 <https://harshp.com/hobbies/books/1> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "1"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_physical_copy true ;
-    #hpcom:book_read "2020-11-04T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read "2021-04-29T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Abhijit V. Banerjee"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:isbn "9780718193669"^^xsd:string ;
@@ -7671,9 +7671,9 @@
 
 <https://harshp.com/hobbies/books/614> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "614"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
-    # hpcom:book_physical_copy true ;
+    hpcom:book_physical_copy true ;
     #hpcom:book_read "2020-10-15T00:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Max Tegmark"^^xsd:string ;
@@ -7772,3 +7772,16 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "The Stone Sky"@en ;
     schema:url "https://harshp.com/hobbies/books/621"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/622> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "622"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:book_read "2021-04-19T19:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction ;
+    schema:author "Haruki Murakami"^^xsd:string ;
+    schema:dateCreated "1999"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Wind-up Bird Chronicle"@en ;
+    schema:url "https://harshp.com/hobbies/books/622"^^xsd:anyURI .
