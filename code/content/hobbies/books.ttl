@@ -2673,9 +2673,12 @@
 
 <https://harshp.com/hobbies/books/29> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "29"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-05-18T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Edward S. Herman"^^xsd:string ;
     schema:dateCreated "1988"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780375714498"^^xsd:string ;
     schema:name "Manufacturing Consent: The Political Economy of the Mass Media"@en ;
     schema:url "https://harshp.com/hobbies/books/29"^^xsd:anyURI .
