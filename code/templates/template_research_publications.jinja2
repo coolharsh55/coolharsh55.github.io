@@ -49,7 +49,7 @@
             &#x1f513;copies:
             {% if publication.hpcom_archived_version is sequence %}
             {% for archive in publication.hpcom_archived_version|sort(attribute='schema_name') %}
-            {{", " if not loop.first}}<a href="{{archive.schema_url}}">{{archive}}</a>
+            <a href="{{archive.schema_url}}">{{archive}}</a>{{"," if not loop.last}}
             {% endfor %}
             {% else %}
             <a href="{{publication.hpcom_archived_version.schema_url}}">{{publication.hpcom_archived_version}}</a>
@@ -60,7 +60,7 @@
             ; &#128230;resources:
             {% if publication.hpcom_supplementary is sequence %}
             {% for archive in publication.hpcom_supplementary|sort(attribute='schema_name') %}
-            {{", " if not loop.first}}<a href="{{archive.schema_url}}">{{archive}}</a>
+            <a href="{{archive.schema_url}}">{{archive}}</a>{{"," if not loop.last}}
             {% endfor %}
             {% else %}
             <a href="{{publication.hpcom_supplementary.schema_url}}">{{publication.hpcom_supplementary}}</a>
