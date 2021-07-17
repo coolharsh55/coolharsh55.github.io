@@ -1,0 +1,341 @@
+<p><strong>Abstract:</strong> Solid, the emerging technology for organizing data in decentralized stores, relies on a simple authorization mechanism for granting access to data. Solid's personal online datastores (Pods) are ideal for keeping personal data, as they allow individuals to represent the access permissions in a very simple manner using Access Control Language (ACL) expressions. Whereas these expressions suffice for yes/no and read/write permissions, they cannot represent more complex rules nor invoke regulation-specific concepts. This paper describes an extension of the ACL language and algorithm to implement consent and data requests. The extension is based on the Open Digital Rights Language (ODRL) policy language, which allows expressing rich rules, and the Data Privacy Vocabulary (DPV), which permits invoking privacy and data protection-specific terms.
+Some usage examples illustrate this proposal.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Solid is a specification<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> for decentralised personal data stores (called ‘Pods’) based on the tenets of user control and interoperability using linked data and web standards. Access to data stored within Pods is governed by the access control specification Web Access Control<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> (WAC) which uses Internationalized Resource Identifiers (IRIs) to represent resources and agents, and stores authorisation statements within an Access Control List (ACL) defined per resource or inherited from the parent resource within the IRI. Currently, WAC supports four operations: read, write, append, and control (of ACLs) which can be declared for specific agents or trusted apps, and is interpreted as a prohibition by default unless there is an ACL authorisation permitting it. As per Solid, the user controlling the ACL is the entity responsible for deciding who has access to the data. In this manner, Solid intends to provide and standardise implementations for users to store their own data and have control over who they wish to share it with.</p>
+<p>Given that Solid provides a way for personal data to be stored and managed by individuals, it is important to consider the impact and application of data protection and privacy laws such as the European General Data Protection Regulation<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> (GDPR) that defines specific concepts and obligations for how personal data can be collected, stored, used, and shared. In addition, such laws also specify requirements for provision and validity of legal bases such as consent used to justify processing of data. While we focus on GDPR in this article, the argument applies to other existing and emerging laws following similar trends<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>GDPR requires controllers to provide information such as identity, purpose, personal data categories, legal bases, and recipients where they collect personal data directly (Art.13) or indirectly (Art.14) from individuals. The intent behind the provision of this information is to provide transparency and accountability, and to benefit the individual in making informed decisions regarding use of their personal data. The information is made available conventionally through notices, consent dialogues, and privacy policies; and is also relevant for the utilisation of technology in compliance-related tasks.</p>
+<p>Applied to Solid, this information can be presented using conventional methods, e.g., showing a notice provided on a website controlled by the data requester, and the resulting authorisation stored within the ACL. However, we argue that empowering individuals to control their data practices requires the Solid Pod to contain this information as well so that the individual has the opportunity to: (i) introspect use of their personal data within an environment under their control; (ii) store consent and authorisations for accountability purposes; (iii) determine their data sharing preferences; and (iv) be assisted in expressing and enforcing their data sharing preferences, including withdrawal of consent. Achieving this requires understanding: (a) what the law says/requires in terms of information to be provided and its use for exercising a legal basis such as consent; (b) what do individuals need to know or would like to know; and (c) what forms of control would the individuals like to have in the context of their personal data.</p>
+<p>Through this paper, we address the above goals with the research question, <strong><em>How can Solid’s ACL be extended to specify and enforce an individual’s data sharing preferences?</em></strong>. We generalise <em>consent</em> to <em>data sharing preferences</em> to align consent requests with authorisation permissions within the Solid architecture, and later discuss the requirements for consent regarding information, explicitness, and withdrawal. For this, we first propose extending the ACL mechanism by utilising Open Digital Rights Language (ODRL) policies that express the permissions or prohibitions associated with data stored in a Solid Pod and utilise the Data Privacy Vocabulary (DPV) as a controlled vocabulary for representing metadata relevant to the legal compliance. Along with the description and demonstration of its practical applicability, we also discuss how this mechanism can be utilised for consent requests, the potential of automation in the process, and the challenges and issues for successful implementation of our solution.</p>
+<p><a href="#rationale" data-reference-type="ref" data-reference="rationale">[rationale]</a> outlines the motivations and the resulting requirements we used to inform our approach; <a href="#sota" data-reference-type="ref" data-reference="sota">3</a> provides an overview of related work; <a href="#profile" data-reference-type="ref" data-reference="profile">4</a> describes the proposed ODRL profile; <a href="#architecture" data-reference-type="ref" data-reference="architecture">5</a> provides details of a prototype demonstration; <a href="#challenges" data-reference-type="ref" data-reference="challenges">6</a> presents a discussion on challenges and issues and <a href="#conclusion" data-reference-type="ref" data-reference="conclusion">7</a> concludes the paper.</p>
+<h2 id="rationalerationale">Rationale<span id="rationale" label="rationale">[rationale]</span></h2>
+<p>This section outlines the rationale and resulting requirements motivating the need for our proposed approach in extending Solid’s existing ACL with additional functionality. The motivation for adopting the technologies we propose can be substantiated in the following points:</p>
+<ul>
+<li><p><span>Legal compliance - organisations and individuals wish to:</span></p>
+<ul>
+<li><p><span>Document activities and provenance regarding personal data processing, requests for access, notices and use of logs, e.g., for audits;</span></p></li>
+<li><p><span>Determine applicable rights, obligations, and requirements based on jurisdictional laws or contextually, e.g., specific categories of personal data;</span></p></li>
+<li><p><span>Evaluate, assess, or validate if obligations and requirements are fulfilled;</span></p></li>
+<li><p><span>Implement security, specifically access to data.</span></p></li>
+</ul></li>
+<li><p><span>User-defined preferences for data sharing and use</span></p>
+<ul>
+<li><p><span>Express human-centric preferences, e.g., willingness to share particular data for research, or prohibition of profiling and surveillance;</span></p></li>
+<li><p><span>Granularity for specifying broad permissions, e.g., permit data use for scientific research, or prohibit any third party data collection;</span></p></li>
+<li><p><span>Granularity for specifying narrow permissions, e.g., permit sharing contact details for a specific app, or prohibit accessing a confidential resource;</span></p></li>
+<li><p><span>Conflict resolution going from local to global, e.g., generally prohibiting sharing of location, but making an exception for specific services.</span></p></li>
+</ul></li>
+<li><p><span>Transparency of data practices</span></p>
+<ul>
+<li><p><span>Individuals want to know who is using which data categories, for what purposes, sharing it with whom, and under what legal basis;</span></p></li>
+<li><p><span>Individuals want to understand permissions/authorisations they already have provided based on self-defined context, e.g., for specific services, or based on purposes, or categories of personal data;</span></p></li>
+<li><p><span>Organisations may want to specify machine-readable data policies accessible by users.</span></p></li>
+</ul></li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li><p><span>Support specifying user preferences as policies.</span></p></li>
+<li><p><span>Incorporate vocabulary specifying/aligned to law.</span></p></li>
+<li><p><span>Support permissions/prohibitions at arbitrary granularity.</span></p></li>
+<li><p><span>Support identifying and resolving conflicts with scope.</span></p></li>
+<li><p><span>Record (store) policies used to authorise access.</span></p></li>
+<li><p><span>Support querying/analysis of policies and authorisations.</span></p></li>
+</ul>
+<p>The existing functionality of Solid’s WAC partially implements requirements R1, R3, and R5 by enabling users to declare granular policies (e.g., for specific agents or groups of agents) that are stored in the Pod; and although the ACL can specify permissions, it is currently not possible to model prohibitions. For continued interoperability and adherence to the specification, the proposed extension to Solid’s ACL must ideally continue to implement existing functionality while incorporating the legal and user-centric requirements.</p>
+<p>The requirements R1 to R3 can be satisfied with an extension of the ODRL ontology as an ODRL profile. In order to determine the extent of such profile, formal competency questions were made using the methodology described by Suárez de Figueroa <span class="citation" data-cites="maricarmen"><a href="#ref-maricarmen" role="doc-biblioref">[1]</a></span> and shown in <a href="#tab:ORSD" data-reference-type="ref" data-reference="tab:ORSD">[tab:ORSD]</a>.</p>
+<figure>
+    <figcaption>Table. 1 Ontology Requirement Specification Document</figcaption>
+<strong>ODRL Profile for Access Control in Solid</strong><br />
+<strong>1. Purpose</strong><br />
+<span>The purpose of this profile of ODRL is to support policies determining the access control to personal data stored in Solid Pods</span><br />
+<strong>2. Scope</strong><br />
+<span>The scope of this profile is limited to the definition of an ODRL Profile for Access Control in Solid. In particular, the introduced elements will serve one of these purposes: <br/>
+(i) define actions supporting enforcement of current ACL verbs, <br/>
+(ii) define data protection-related actions and restrictions defined in GDPR, <br/>
+(iii) any vocabulary element to support policy patterns that can be anticipated to be common, and <br/>
+(iv) elements necessary to support the authorization reasoning decision. </span><br />
+<strong>3. Implementation Language</strong><br />
+<span>OWL</span><br />
+<strong>4. Intended End-Users</strong><br />
+<span>Developers of Solid servers and Solid clients.</span><br />
+<strong>5. Intended Uses</strong><br />
+<span> Use 1. Declaration of a policy by an individual storing personal data in a Pod <br/>
+Use 2. Request of data made by a person or application to gain access to the data in different modalities <br/>
+Use 3. Contextual elements to be considered in the authorization decision. <br/>
+Use 4. Explanation of the authorization decision . </span><br />
+<strong>6. Ontology Requirements</strong><br />
+<strong>a. Non-Functional Requirements</strong><br />
+<span> NFR 1. The ontology shall be published online with standard documentation. </span><br />
+<strong>b. Functional Requirements: Groups of Competency Questions</strong><br />
+</figure>
+<h2 id="sota">Background and related Work</h2>
+<p>A large body of work exists within the general fields of ‘business process compliance’ <span class="citation" data-cites="fellmann16"><a href="#ref-fellmann16" role="doc-biblioref">[2]</a></span> and ‘legal ontologies’ <span class="citation" data-cites="oliveira19"><a href="#ref-oliveira19" role="doc-biblioref">[3]</a></span> which specify how jurisdictional laws translate into specific obligations and requirements for systems. For this work, we focus on the existing research and solutions limited to addressing requirements presented in Section <a href="#rationale" data-reference-type="ref" data-reference="rationale">[rationale]</a>, and present the state of the art across two broad areas of: (i) access control policies using linked data, and (ii) specifying information about personal data and metadata processing.</p>
+<h3 id="access-control-policies-using-linked-data">Access Control Policies using Linked Data</h3>
+<p>Access control in the context of linked data and RDF has a plethora of models, approaches, and policy specification languages that can be used to express and evaluate rules for access to resources. The survey paper by Kirrane et al. <span class="citation" data-cites="kirrane17"><a href="#ref-kirrane17" role="doc-biblioref">[4]</a></span> provides an overview of the state of the art and outlines relevant standards and their adoption. Of these, WebID and WAC, as standards, are already used by Solid.</p>
+<p>XACML<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> (eXtensible Access Control Markup Language) is a standard specifying an access control policy language, an architecture, and a processing model for evaluating access control rules in policies. Its use has been demonstrated for GDPR regarding consent <span class="citation" data-cites="fatema17"><a href="#ref-fatema17" role="doc-biblioref">[5]</a></span> and access control <span class="citation" data-cites="piras19"><a href="#ref-piras19" role="doc-biblioref">[6]</a></span>.</p>
+<p>The Open Digital Rights Language<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> (ODRL) <span class="citation" data-cites="odrl2 odrl1"><a href="#ref-odrl2" role="doc-biblioref">[7]</a>, <a href="#ref-odrl1" role="doc-biblioref">[8]</a></span>, a W3C Recommendation, is a policy expression language used to represent permissions and prohibitions in terms of actions over assets that can be further restricted using constraints and duties, and which supports ‘profiles’ extensions<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. Existing work has used the profiles mechanism to represent obligations and compliance requirements for GDPR using ODRL. Two noteworthy approaches for this include that by Agarwal et al. <span class="citation" data-cites="agarwal2018legislative"><a href="#ref-agarwal2018legislative" role="doc-biblioref">[9]</a></span> for an ODRL profile modelling legislative rights and obligations in GDPR with support for multiple legislations; and the work by De Vos et al. <span class="citation" data-cites="devos19"><a href="#ref-devos19" role="doc-biblioref">[10]</a></span> who also define an ODRL profile to model GDPR compliance requirements that are translated into ASP rules for automatic compliance checking.</p>
+<p>Though XACML provides an arguably richer set of expressivity and a reference implementation for access control, ODRL profiles provide a convenient extension mechanism and integration with existing RDF-based systems within the Solid architecture. For this work, we therefore chose ODRL for the ease of adapting it to our requirements.</p>
+<h3 id="specifying-personal-data-and-processing-metadata">Specifying Personal Data and Processing Metadata</h3>
+<p>The SPECIAL<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> project has produced open-access vocabularies and implementations for expressing, recording, and validating user policies with data requests regarding consent and data handling <span class="citation" data-cites="kirrane_scalable_2018 westphal_spirit:_2018"><a href="#ref-kirrane_scalable_2018" role="doc-biblioref">[11]</a>, <a href="#ref-westphal_spirit:_2018" role="doc-biblioref">[12]</a></span>. The expressiveness of SPECIAL’s policy language (SPL) is minimal: it consists of purpose, processing operations, personal data categories, data storage location and duration, and recipients, which are then used with a compliance reasoner to match user and requester policies for consent.</p>
+<p>The application of SPL to Solid’s ACL mechanisms has been proposed by Havur et al. <span class="citation" data-cites="havur00"><a href="#ref-havur00" role="doc-biblioref">[13]</a></span> which meets several requirements outlined in Section <a href="#rationale" data-reference-type="ref" data-reference="rationale">[rationale]</a>, and also describes evaluation of policies for compliance based on consent through utilisation of SPECIAL’s compliance reasoner and framework. It thus provides a guiding direction for our approach, and although it does not specify details about implementing granularity or expressing prohibitions, it does mention the suitability of using ODRL in its discussion of future work.</p>
+<p>The MIREL<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> project has produced the PrOnto <span class="citation" data-cites="palmirani18"><a href="#ref-palmirani18" role="doc-biblioref">[14]</a></span> ontology which provides concepts for modeling relationships between privacy agents, data types, processing operations and deontic specifications to support compliance with the GDPR. DAPRECO is a repository of rules written in LegalRuleML <span class="citation" data-cites="robaldo20"><a href="#ref-robaldo20" role="doc-biblioref">[15]</a></span> that represents the provisions of the General Data Protection Regulation based on PrOnto. The BPR4GDPR<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> project is an ongoing effort involving the Information Model Ontology <span class="citation" data-cites="lioudakis19"><a href="#ref-lioudakis19" role="doc-biblioref">[16]</a></span> that specifies activities and entities in organisations, processing operations, events, and purposes of data handling which are used by the Policy Model Language <span class="citation" data-cites="papa13"><a href="#ref-papa13" role="doc-biblioref">[17]</a></span> to define deontic policies for data access and control.</p>
+<p>GDPRtEXT<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> <span class="citation" data-cites="pandit_gdprtext_2018"><a href="#ref-pandit_gdprtext_2018" role="doc-biblioref">[18]</a></span> provides a vocabulary of concepts associated with GDPR as a thesaurus. GConsent<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> <span class="citation" data-cites="pandit_gconsent_2019"><a href="#ref-pandit_gconsent_2019" role="doc-biblioref">[19]</a></span> is an ontology for representing information about consent as an entity with a life-cycle based on GDPR by modeling state, entities, purposes, personal data categories, and provenance. DUO<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> (Data Use Ontology) enables modeling restrictions based on organisations, purposes, and data categories for using medical data for research, but does not include legal concepts.</p>
+<div class="table*">
+
+</div>
+<p>The Data Privacy Vocabulary<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> (DPV) <span class="citation" data-cites="pandit_creating_2019"><a href="#ref-pandit_creating_2019" role="doc-biblioref">[20]</a></span> is an outcome of the W3C Data Privacy Vocabularies and Controls Community Group<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> (DPVCG), established within the SPECIAL project to extend its work through community participation. DPV provides top-down taxonomies that are based on GDPR but intended to be jurisdiction-agnostic to represent personal data handling practices in terms of personal data categories, purposes, processing, technical and organisational measures, legal entities, legal bases, rights, and risks.</p>
+<p>The work proposed by Havur et al. <span class="citation" data-cites="havur00"><a href="#ref-havur00" role="doc-biblioref">[13]</a></span> describing use of SPL in Solid’s ACL provides a strong motivation for utilising SPECIAL’s language and tools. However, we chose DPV given that it is open and accessible, is an extension of SPL, and is more comprehensive.</p>
+<h2 id="profile">An ODRL Profile for Solid’s ACL</h2>
+<p>From the existing work, we decided to create an ODRL profile using DPV as a controlled vocabulary for expressing and implementing user-preferences as profiles in Solid’s existing access control system which uses the Web Access Control (WAC) specification for authorisation.</p>
+<p>While ACL authorizations suffice for establishment of read/write permissions, they cannot be used to specify prohibitions or obligations over the resources and cannot define more complex rules. Furthermore, they cannot be used to invoke legal concepts related to data protection and privacy. To overcome these issues, we extend the ACL with ODRL policies that specify permissions and prohibitions and utilise DPV to specify and invoke data protection and privacy concepts.</p>
+<p>We use the following prefixes and namespaces in this paper:</p>
+<p><span id="tab:namespaces" label="tab:namespaces">[tab:namespaces]</span></p>
+<div id="tab:namespaces">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Prefix</th>
+<th style="text-align: center;">Namespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">rdf</td>
+<td style="text-align: center;">http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">cert</td>
+<td style="text-align: center;">http://www.w3.org/ns/auth/cert#</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">xsd</td>
+<td style="text-align: center;">http://www.w3.org/2001/XMLSchema#</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">odrl</td>
+<td style="text-align: center;">http://www.w3.org/ns/odrl/2/</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">dpv</td>
+<td style="text-align: center;">http://www.w3.org/ns/dpv#</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">acl</td>
+<td style="text-align: center;">http://www.w3.org/ns/auth/acl#</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">oac</td>
+<td style="text-align: center;">https://w3id.org/oac/</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In order to use ODRL and DPV with WAC/ACL, our profile specifies alignments between the vocabularies so as to permit their semantics to be interpreted correctly. <a href="#tab:profileElements" data-reference-type="ref" data-reference="tab:profileElements">[tab:profileElements]</a> lists terms in our ODRL profile along with information regarding the alignment with ODRL, DPV and ACL and their interpretation. The profile can be accessed at <a href="https://w3id.org/oac/">https://w3id.org/oac/</a>.</p>
+<p>We decided to focus on <em>Purpose, Personal Data Category, Processing,</em> and <em>Recipients</em> as the minimum ‘core concepts’ for our profile, and (for now) leave out other DPV concepts such as technical and organisational measures, rights, and risks. As DPV’s processing concepts (e.g., use, store, share) differ from their WAC counterparts (read, write, append, control), we mapped the two based on our interpretation of possible WAC operations permitted under each processing type. Under our interpretation, <code>acl:Read</code> corresponds to <code>dpv:Use, dpv:Collect</code>, and <code>acl:Write</code> corresponds to <code>dpv:Store, dpv:MakeAvailable</code>. Of note in this exercise is that concepts such as ‘share’ and ‘transfer’ have no exact corresponding concept in WAC, which calls for further introspection in aligning legal processing concepts with access control operations.</p>
+<p>The ODRL profile relies on invocation of legal concepts using DPV, which in turn relies on declarative metadata for specifying which resource within the Pod contains what categories of personal data. To alleviate this, we presume that the ACL for a resource also declares its personal data category, if any. Absence of explicit definition is interpreted as the resource being generically personal data represented by <code>dpv:PersonalData</code>. Therefore, an ACL specifying a policy involving <code>dpv:Contact</code> indicates that the resource contains contact information.</p>
+<p>Using our ODRL profile, it is possible to express preferences in terms of granular (broad or fine-grained) policies that outline permissions and prohibitions based on user-specific contexts such as for personal data categories, purposes, or recipients. For the examples in this document, we consider Anne as identified by her WebID <code>&lt;https://anne.databox.me/profile/card#me&gt;</code>.</p>
+<p>First, we provide examples - <a href="#lst:permission-rnd" data-reference-type="ref" data-reference="lst:permission-rnd">[lst:permission-rnd]</a> and <a href="#lst:prohibition-tp" data-reference-type="ref" data-reference="lst:prohibition-tp">[lst:prohibition-tp]</a> are two user preferences expressed within the ACL with our ODRL profile. In <a href="#lst:permission-rnd" data-reference-type="ref" data-reference="lst:permission-rnd">[lst:permission-rnd]</a>, a broad permission over contact data is set by the owner of the Pod for the purpose of research and development, which permits read access operations over her contact data for the purpose of research and development.</p>
+<pre id="lst:permission-rnd" data-caption="Read-only policy for Contact for R\&amp;D Purposes" label="lst:permission-rnd" data-basicstyle="\fontsize{9}{9}\ttfamily" data-frame="single"><code>:policy-1 a odrl:Policy ;
+    odrl:profile oac: ;
+    odrl:permission [
+        a odrl:Permission ;
+        odrl:assigner :anne ;
+        odrl:target oac:Contact ;
+        odrl:action oac:Read ;
+        odrl:constraint [
+            odrl:leftOperand oac:Purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand 
+                dpv:ResearchAndDevelopment ] ] .
+                
+:anne a oac:DataSubject ;
+    cert:key &lt;https://anne.databox.me/profile/card#me&gt; .</code></pre>
+<pre><code>[caption=Prohibition to share resource with more than 3 third parties, ,label={lst:prohibition-tp},basicstyle=\fontsize{9}{9}\ttfamily,frame=single]
+:policy-2 a odrl:Policy ;
+    odrl:profile oac: ;
+    odrl:prohibition [
+        a odrl:Prohibition ;
+        odrl:assigner :anne ;
+        odrl:target &lt;https://anne.databox.me/docs/file1&gt; ;
+        odrl:action oac:Share ;
+        odrl:constraint [
+            odrl:leftOperand oac:Recipient ;
+            odrl:operator odrl:gt ;
+            odrl:rightOperand &quot;3&quot;^^xsd:integer ] ] .</code></pre>
+<p>The second set of examples concern requests made by services to access personal data stored in users’ Pods. In <a href="#lst:request-registration" data-reference-type="ref" data-reference="lst:request-registration">[lst:request-registration]</a>, an app requests permission to use and store the email address and social network information of users for the purpose of registering and authenticating to their service.</p>
+<pre id="lst:request-registration" data-caption="Request to use data for Registration purposes" label="lst:request-registration" data-basicstyle="\fontsize{9}{9}\ttfamily" data-frame="single"><code>:app-1 a odrl:Policy ;
+    odrl:profile oac: ;
+    odrl:permission [
+        a odrl:Permission ;
+        odrl:assignee :app-1-controller ;
+        odrl:target oac:EmailAddress, oac:SocialNetwork ;
+        odrl:action oac:Use, oac:Store ;
+        odrl:constraint [
+            odrl:leftOperand oac:Purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand 
+                dpv:RegistrationAuthentication ] ] .
+                
+:app-1-controller a oac:DataController ;
+    cert:key &lt;https://example-app-1.com&gt; .</code></pre>
+<p>In <a href="#lst:request-research" data-reference-type="ref" data-reference="lst:request-research">[lst:request-research]</a>, an app requests permission to collect and produce a copy of (sensitive) health records, medical prescriptions and health history of users for academic research and to publish it in anonymised forms.</p>
+<pre id="lst:request-research" data-caption="Request to collect and share anonymised Health Records" label="lst:request-research" data-basicstyle="\fontsize{9}{9}\ttfamily" data-frame="single"><code>:app-2 a odrl:Policy ;
+    odrl:profile oac: ;
+    odrl:assignee :app-2-controller ;
+    odrl:target oac:HealthRecord, 
+        oac:Prescription, oac:HealthHistory ;
+    odrl:permission [
+        a odrl:Permission ;
+        odrl:action oac:Collect, oac:Copy ;
+        odrl:constraint [
+            odrl:leftOperand oac:Purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:AcademicResearch ] ] ;
+    odrl:permission [
+        a odrl:Permission ;
+        odrl:action oac:Anonymise, oac:MakeAvailable ;
+        odrl:constraint [
+            odrl:leftOperand oac:Recipient ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:ThirdParty ] ] .
+            
+:app-2-controller a oac:DataController ;
+    cert:key &lt;https://example-app-2.com&gt; .</code></pre>
+<p>These examples, as well as the profile serialisation, can be accessed at <a href="https://github.com/besteves4/odrl-access-control-profile">https://github.com/besteves4/odrl-access-control-profile</a>.</p>
+<p>For purposes of accountability and transparency, the request is stored within the ACL of the resource so that it can be accessed after authorisation. Anne can then utilise, with the support of her Solid Pod, simple SPARQL queries to inquire who is using her data and for what purposes - based on utilising the stored requests and authorizations.</p>
+<h2 id="architecture">Implementation &amp; Architecture</h2>
+<p>In this section, we describe the implementation of an algorithm for matching and authorizing access requests. A prototype implementation of the matching algorithm is available at <a href="https://protect.oeg.fi.upm.es/solid-consent/">https://protect.oeg.fi.upm.es/solid-consent/</a>. In <a href="#fig:implementation" data-reference-type="ref" data-reference="fig:implementation">[fig:implementation]</a>, a flowchart for the algorithm is presented.</p>
+<figure>
+    <img src="img/048-flowchart.png">
+    <figcaption>Fig. 1 Algorithm for the authorization of access requests</figcaption>
+</figure>
+<p>After fetching the policies of the app which is making a request and the Pod user’s permissions and prohibitions, the authorization mechanism should first check if there is an explicit authorization for this particular app. If so, then the request must be authorized, otherwise each app permission request should be matched with the user policy for the resource being requested. In the case where a policy is found for the specific resource, the algorithm proceeds with matching the request and the user preference in relation to the personal data, purposes, processing and recipients presented in the policies. If no match is found for any of the categories, then the algorithm must look for the parent resource and its respective policy and repeat this process until either a match is found for all categories or until there is no more parent resources, i.e. Pod-level resources.</p>
+<p>Once every policy is checked and matched, the algorithm has to reason over the found permitted and prohibited requests and determine the authorized access requests based on the conflict resolution mechanism.</p>
+<p>The proposed Pod architecture, visualised in <a href="#fig:architecture" data-reference-type="ref" data-reference="fig:architecture">[fig:architecture]</a>, is an extension to the existing Solid Pod specification and implementations. We propose to add a Consent datastore component to keep a record of the consent actions already given, associated with a copy of the accepted app requests, as well as an Audit Log component to store metadata related to logins, access requests, changes in policies and consent authorisations and so on. In this context, the permissions and prohibitions specified by the users or the contents of the policy matching, described above by the algorithm in <a href="#fig:implementation" data-reference-type="ref" data-reference="fig:implementation">[fig:implementation]</a>, can be considered as the consent of the user. Moreover, the recording of informed consent is performed as followed: (i) the controller requests for consent through an access policy request; (ii) the Pod matches the request with the stored user policies; (iii) in the case where a match is found, the application UI presents the user with a message such as <em>‘<strong>Application X</strong> wants to access <strong>data Y</strong> for <strong>purpose Z</strong>. This request matches your preferences to allow access to <strong>data Y</strong> for <strong>purpose Z</strong>. Grant or refuse access?’</em>, and otherwise a similar message will be displayed without the matching user preference; and (iv) the user’s choice in consent is stored and used in further access control requests solicited by the application in question. Automatic authorisations can also be performed over the matching of user preferences and apps policies, however this cannot be considered as informed consent. For instance, taking into consideration the requests in <a href="#lst:request-registration" data-reference-type="ref" data-reference="lst:request-registration">[lst:request-registration]</a> and <a href="#lst:request-research" data-reference-type="ref" data-reference="lst:request-research">[lst:request-research]</a>, the application should specify that <a href="#lst:request-research" data-reference-type="ref" data-reference="lst:request-research">[lst:request-research]</a> requires explicit consent from the user since it is directly related to sensitive categories of data, while <a href="#lst:request-registration" data-reference-type="ref" data-reference="lst:request-registration">[lst:request-registration]</a> is related to email and social networks information and therefore automated authorisation can be permitted.</p>
+<p>The existing Notification Mechanism should also be updated to allow for update or revoke requests regarding consent and the Reasoner component should be extended to be able to reason over ODRL policies stored on the ACL files.</p>
+<figure>
+    <img src="img/048-architecture.png">
+    <figcaption>Fig. 2 Architecture of the proposed solution</figcaption>
+</figure>
+<p>The User Interface, along with the Authentication and Inbox features already provided by the existing Solid specification, proposes the addition of two components: Metadata and Policies Editors. These components will assist users to craft granular policies for the management of access to their Pod, without burdening them with technicalities of writing ODRL policies. The proposed Service client should also implement an Inbox feature for the notification mechanism already discussed and additionally a Policies Editor for the crafting of access permission requests based on the proposed ODRL profile.</p>
+<h2 id="challenges">Discussion on Challenges</h2>
+<p><strong>Efficiency and performance:</strong> Real-world practices might see the Solid Pod receive and work with a large collection of policies in the form of preferences, requests, and authorisations. This may require limiting features to a subset of the possible ODRL features to ensure optimal performance of the policy conflict resolution and the reasoning processes, as well as to facilitate efficient querying of policies and authorisations stored within the Pod. Additionally, Pods are a decentralised technology with no guarantees about their storage or implementation environments. Therefore, in addition to the efficiency of algorithms, the different components also need to be tested on different Pod clients and server infrastructures to ensure correct functionality. Given that this involves sharing of personal data, simulated use-cases can provide a safe environment for testing.</p>
+<p><strong>Complexity of ODRL policies:</strong> To ensure the mechanisms we propose work correctly and efficiently, it is necessary to understand the complexity of the authorisation process and to establish guarantees regarding its operations. While the profile that we have defined increases the expressiveness of policies, one can argue that these policies, when used to represent real-world use-cases, might became too complex. Therefore, the more data is transmitted in policies and requests are made, the more time and resource-consuming will be the authorization checking mechanism. In addition, the resolving of authorization checks over policies in other scoped fashions, i.e. global prohibitions outweigh local permissions, might result in a complex reasoning issues. Given these challenges, one solution can be to limit the complexity of the policies to a ’reasonable’ limit and restrict the usage of nested policies. Another potential solution is to adopt a ‘minimal’ known set of concepts within the policy for efficiency of reasoning, as demonstrated by SPECIAL’s compliance-checking reasoner.</p>
+<p><strong>Storage and Management of Policies:</strong> In our approach, we have utilised the existing ACL storage (file) to also host the policies for request and user preferences. This was based on the existing pattern for storing authorisation policies in Solid’s implementation. However, this approach has drawbacks in that anyone with access to the ACL file can view or change the data sharing preferences of the user - which can pose a security and privacy risk. Additionally, the discovery of whether a policy exists for a given resource is currently undertaken by iteratively checking for a corresponding ACL file attached to that resource or its parent - which can complicate the policy finding and resolution processes due to complexity and number of iterations. A potential solution for both drawbacks could be to dedicate a separate protected area of the Pod to house a local database/datastore containing the policies and metadata declarations. Another challenge for users can be the crafting of policies, which can be solved with a ’Policies Editor’ component that supports users in drafting the policies, without having the need for previous ODRL knowledge, or other UI/UX component that assists users in authorising apps based on policies stored, e.g., you have expressed preference not to share this information and this app is asking for that information, how should I proceed?</p>
+<p><strong>Policies and Personal Data:</strong> If the policies allow discovery of all categories of personal data in a Pod by means of automated requests or a listing mechanism, it can result in unintended risks to the user by way of disclosing unintended existence of personal data. This raises the question of how and whether apps should be allowed to query through discovery mechanisms, or to put it in another way - what restrictions should be placed on apps and policies to ensure data (or categories) are not unintentionally ‘leaked.’</p>
+<p><strong>Legal Implications of Requests:</strong> The use of legal vocabulary and concepts within the policies is done with the intention of invoking legal concepts. While the idea is to hold organisations accountable and make data sharing practices transparent, it also opens a can of worms in relation to other legal bases. For example, if the request from an app specifies that it needs some personal data for “legitimate interests,” or even more worrisome - for “fulfilling legal obligation,” it is debatable whether the Pod should automatically grant access to the resource. In cases where it does not grant access, it is further unclear whether the liability falls to the user or the Pod provider. For centralised datastores, the app has carte blanche i.e. full discretion to utilise this data under those legal bases without prior request or permission from the user. With a lack of legal regulation and precedence in case law, this issue is unlikely to be satisfactorily addressed.</p>
+<p><strong>Legal Interpretation of Request and Preferences:</strong> It is important for policies, requests, and preferences to be mapped and clarified in terms of their legal interpretation, e.g. if they can indicate consent. Without such clarity, it is unclear what terms and conditions or legal obligations are applicable where a request is made by an app and an user agrees, or where an user expressed their preference. Additionally, derived from the legal basis, additional obligations and rights can be triggered based on jurisdictions - which will need to be factored in when designing the APIs and interfaces based on Solid’s Pod-based infrastructures. For example, regarding consent, it may necessitate requiring the individual to explicitly agree (via manual human interaction instead of automation) that they agree to the proposed request. Similarly, the interpretation whether absence of information should be considered opt-in vs opt-out is necessary.</p>
+<p><strong>Consent:</strong> To ensure that consent is informed and explicit, specific information items should be provided to the users and recorded in the Pod so that the users have access to their consent authorisations. Furthermore, the Pod should have in place methods to allow the users to update or revoke consent actions previously given. Also regarding consent, it can be debated whether the implicit consent from the established user preferences is enough to provide automated access to non-sensitive personal data such as social network account information. These challenges can be tackled by allowing users to choose which data types, and perhaps purposes, they are comfortable with enabling automation and which not, and also by having a queryable Consent datastore which can be easily updated.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The design decision of Solid for access control, ACL, has the benefit of simplicity –ACL is easily understood and the implementation is straightforward. However, this technology may fall short in two situations: (i) when the user wants to express more complex policies beyond a yes/no; (ii) when the actions must be aligned to GDPR concepts. This paper has shown how the joint use of two specifications of the W3C sphere, ODRL and DPV, can help in these two cases.</p>
+<p>Big challenges lie ahead: (i) implementing reasoners that can efficiently perform the authorization decision; (ii) defining the RDF SHACL shapes that neatly determine which ODRL expressions can be evaluated; (iii) declaring mappings to other languages that grant interoperability with compliance tools, Data Management Plan support tools such as Argos<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> and (iv) granting seamless operation with non-ODRL Solid Pods.</p>
+<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
+<p>This research has been supported by European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No 813497 (PROTECT) and ‘Datos 4.0 Retos y Soluciones’ (TIN2016-78011-C4-3-R). Harshvardhan J. Pandit is funded by Irish Research Council Government of Ireland Postdoctoral Fellowship Grant#GOIPD/2020/790; European Union’s Horizon 2020 research and innovation programme under NGI TRUST Grant#825618 for Project#3.40 Privacy-as-Expected: Consent Gateway; and by the ADAPT SFI Centre for Digital Media Technology which is funded by Science Foundation Ireland through the SFI Research Centres Programme and is co-funded under the European Regional Development Fund (ERDF) through Grant#13/RC/2106_P2.</p>
+<div id="tab:online-material">
+<table>
+<caption>Developed online material.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Prefix</th>
+<th style="text-align: center;">Namespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Project webpage</td>
+<td style="text-align: center;"><a href="https://protect.oeg.fi.upm.es/solid-consent/">https://protect.oeg.fi.upm.es/solid-consent/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Profile documentation</td>
+<td style="text-align: center;"><a href="https://w3id.org/oac/">https://w3id.org/oac/</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Code repository</td>
+<td style="text-align: center;"><a href="https://github.com/besteves4/odrl-access-control-profile">https://github.com/besteves4/odrl-access-control-profile</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-maricarmen" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. C. Suárez-Figueroa, A. Gómez-Pérez, and B. Villazón-Terrazas, <span>“How to write and use the ontology requirements specification document,”</span> in <em>OTM confederated international conferences" on the move to meaningful internet systems"</em>, 2009, pp. 966–982. </div>
+</div>
+<div id="ref-fellmann16" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Fellmann and A. Zasada, <span>“<span class="nocase">State-of-the-art of Business Process Compliance Approaches: A Survey</span>,”</span> <em><span>EMISA</span> Forum</em>, vol. 36, no. 2, pp. 45–48, 2016. </div>
+</div>
+<div id="ref-oliveira19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">C. M. de Oliveira Rodrigues, F. L. G. de Freitas, E. F. S. Barreiros, R. R. de Azevedo, and A. T. de Almeida Filho, <span>“<span class="nocase">Legal ontologies over time: A systematic mapping study</span>,”</span> <em>Expert Systems with Applications</em>, vol. 130, pp. 12–30, 2019. </div>
+</div>
+<div id="ref-kirrane17" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S. Kirrane, A. Mileo, and S. Decker, <span>“<span class="nocase">Access control and the resource description framework: A survey</span>,”</span> <em>Semantic Web</em>, vol. 8, no. 2, pp. 311–352, 2017. </div>
+</div>
+<div id="ref-fatema17" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">K. Fatema, E. Hadziselimovic, H. J. Pandit, C. Debruyne, D. Lewis, and D. O’Sullivan, <span>“<span class="nocase">Compliance through Informed Consent: Semantic Based Consent Permission and Data Management Model</span>,”</span> in <em>PrivOn@ ISWC</em>, 2017. </div>
+</div>
+<div id="ref-piras19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">L. Piras <em>et al.</em>, <span>“<span class="nocase">DEFeND architecture: a privacy by design platform for GDPR compliance</span>,”</span> in <em>International conference on trust and privacy in digital business</em>, 2019, pp. 78–93. </div>
+</div>
+<div id="ref-odrl2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">R. Iannella, M. Steidl, S. Myles, and V. Rodriguez-Doncel, <span>“<span>ODRL Vocabulary &amp; Expression 2.2: W3C Recommendation, 15 February 2018</span>.”</span> 2018. </div>
+</div>
+<div id="ref-odrl1" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">R. Iannella and S. Villata, <span>“<span>ODRL Information Model 2.2</span>,”</span> <em>W3C Recommendation</em>, 2018. </div>
+</div>
+<div id="ref-agarwal2018legislative" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">S. Agarwal, S. Steyskal, F. Antunovic, and S. Kirrane, <span>“<span class="nocase">Legislative compliance assessment: framework, model and GDPR instantiation</span>,”</span> in <em>Annual privacy forum</em>, 2018, pp. 131–149. </div>
+</div>
+<div id="ref-devos19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M. De Vos, S. Kirrane, J. Padget, and K. Satoh, <span>“<span class="nocase">ODRL Policy Modelling and Compliance Checking</span>,”</span> in <em>Rules and reasoning</em>, 2019, pp. 36–51. </div>
+</div>
+<div id="ref-kirrane_scalable_2018" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">S. Kirrane <em>et al.</em>, <span>“A <span>Scalable Consent</span>, <span>Transparency</span> and <span>Compliance Architecture</span>,”</span> in <em>Proceedings of the <span>Posters</span> and <span>Demos Track</span> of the <span>Extended Semantic Web Conference</span> (<span>ESWC</span> 2018)</em>, 2018, doi: <a href="https://doi.org/gfxvsf">gfxvsf</a>. </div>
+</div>
+<div id="ref-westphal_spirit:_2018" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">P. Westphal, J. D. Fernandez, and S. Kirrane, <span>“<span>SPIRIT</span>: <span>A Semantic Transparency</span> and <span>Compliance Stack</span>,”</span> in <em>Proceedings of the 14th <span>International Conference</span> on <span>Semantic Systems</span> (<span>SEMANTiCS</span>)</em>, 2018, p. 4. </div>
+</div>
+<div id="ref-havur00" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">G. Havur., M. Sande., and S. Kirrane., <span>“<span class="nocase">Greater Control and Transparency in Personal Data Processing</span>.”</span> INSTICC; SciTePress, pp. 655–662, 2020. </div>
+</div>
+<div id="ref-palmirani18" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">M. Palmirani, M. Martoni, A. Rossi, C. Bartolini, and L. Robaldo, <span>“<span class="nocase">PrOnto: Privacy ontology for legal reasoning</span>,”</span> in <em>International conference on electronic government and the information systems perspective</em>, 2018, pp. 139–152. </div>
+</div>
+<div id="ref-robaldo20" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">L. Robaldo, C. Bartolini, and G. Lenzini, <span>“<span class="nocase">The DAPRECO knowledge base: representing the GDPR in LegalRuleML</span>,”</span> in <em>Proceedings of the 12th language resources and evaluation conference</em>, 2020, pp. 5688–5697. </div>
+</div>
+<div id="ref-lioudakis19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">G. Lioudakis, D. C. BAK, N. D. SLG, and M. H. TUE, <span>“<span>Project BPR4GDPR Deliverable D3.1: Compliance Ontology</span>.”</span> 2019. </div>
+</div>
+<div id="ref-papa13" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">E. I. Papagiannakopoulou <em>et al.</em>, <span>“Leveraging ontologies upon a holistic privacy-aware access control model,”</span> in <em>International symposium on foundations and practice of security</em>, 2013, pp. 209–226. </div>
+</div>
+<div id="ref-pandit_gdprtext_2018" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">H. J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis, <span>“<span>GDPRtEXT</span> - <span>GDPR</span> as a <span>Linked Data Resource</span>,”</span> in <em>The <span>Semantic Web</span> - <span>European Semantic Web Conference</span></em>, 2018, pp. 481–495, doi: <a href="https://doi.org/c3n4">c3n4</a>. </div>
+</div>
+<div id="ref-pandit_gconsent_2019" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">H. J. Pandit, C. Debruyne, D. O’Sullivan, and D. Lewis, <span>“<span>GConsent</span> - <span>A Consent Ontology Based</span> on the <span>GDPR</span>,”</span> in <em>The <span>Semantic Web</span></em>, 2019, pp. 270–282. </div>
+</div>
+<div id="ref-pandit_creating_2019" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">H. J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for <span>Data Privacy</span>,”</span> in <em>The 18th <span>International Conference</span> on <span>Ontologies</span>, <span>DataBases</span>, and <span>Applications</span> of <span>Semantics</span> (<span>ODBASE2019</span>)</em>, 2019, p. 17, doi: <a href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://solid.github.io/web-access-control-spec/">https://solid.github.io/web-access-control-spec/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://eur-lex.europa.eu/eli/reg/2016/679/">https://eur-lex.europa.eu/eli/reg/2016/679/</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Global privacy laws catalogue <a href="http://www.worldlii.org/int/special/privacy/">http://www.worldlii.org/int/special/privacy/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml">https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>ODRL Profile Best Practices - <a href="https://w3c.github.io/odrl/profile-bp/">https://w3c.github.io/odrl/profile-bp/</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p><a href="https://www.specialprivacy.eu/about/project-overview">https://www.specialprivacy.eu/about/project-overview</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><a href="https://www.mirelproject.eu/index.html">https://www.mirelproject.eu/index.html</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><a href="https://www.bpr4gdpr.eu/">https://www.bpr4gdpr.eu/</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a href="https://w3id.org/GDPRtEXT/">https://w3id.org/GDPRtEXT/</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="https://w3id.org/GConsent">https://w3id.org/GConsent</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a href="http://www.obofoundry.org/ontology/duo.html">http://www.obofoundry.org/ontology/duo.html</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a href="https://w3.org/ns/dpv">https://w3.org/ns/dpv</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a href="https://www.w3.org/community/dpvcg/">https://www.w3.org/community/dpvcg/</a><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p><a href="https://argos.openaire.eu/">https://argos.openaire.eu/</a><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
