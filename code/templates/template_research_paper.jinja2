@@ -83,3 +83,11 @@
     </small>
 </div>
 {% endblock desc %}
+
+{% block content %}
+{{super()}}{% if item.hpcom_publishing_attempt %}
+<section>
+    <h4>Prior Publication Attempts</h4>
+    <p>This paper was published after {% if item.hpcom_publishing_attempt is sequence and item.hpcom_publishing_attempt is not string %}{{item.hpcom_publishing_attempt|length + 1}}{% else %}2{% endif %} attempts. Before being accepted at this venue, it was submitted to: {% if item.hpcom_publishing_attempt is sequence and item.hpcom_publishing_attempt is not string %}{% for venue in item.hpcom_publishing_attempt %}{% if not loop.first %}, {% endif %}{{venue}}{% endfor %}{% else %}{{item.hpcom_publishing_attempt}}{% endif %}</p>
+</section>{%endif%}
+{% endblock content %}

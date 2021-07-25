@@ -67,6 +67,7 @@
             <a href="{{publication.hpcom_supplementary.schema_url}}">{{publication.hpcom_supplementary}}</a>
             {% endif %}
         {% endif %}
+        {% if publication.hpcom_publishing_attempt %}<br/><small>published after {% if publication.hpcom_publishing_attempt is sequence and publication.hpcom_publishing_attempt is not string %}{{publication.hpcom_publishing_attempt|length + 1}}{% else %}2{% endif %} attempts</small>{% endif %}
     </li>
 {% endfor %}
 </ol>
