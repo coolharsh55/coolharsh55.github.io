@@ -300,6 +300,7 @@
     hpcom:book_id "12"^^xsd:int ;
     hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Nancy S. Kim"^^xsd:string ;
+    hpcom:book_physical_copy true ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:name "Consentability: Consent and its Limits"@en ;
     schema:url "https://harshp.com/hobbies/books/12"^^xsd:anyURI .
@@ -713,9 +714,13 @@
 <https://harshp.com/hobbies/books/15> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "15"^^xsd:int ;
     hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    # hpcom:book_physical_copy false ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Robert L. Forward"^^xsd:string ;
     schema:dateCreated "1980"^^xsd:int ;
-    schema:isbn "9780345435293"^^xsd:string ;
+    # schema:isbn ""^^xsd:string ;
     schema:name "Dragon's Egg"@en ;
     schema:url "https://harshp.com/hobbies/books/15"^^xsd:anyURI .
 
@@ -7956,19 +7961,6 @@
     schema:name "Incandescence"@en ;
     schema:url "https://harshp.com/hobbies/books/635"^^xsd:anyURI .
 
-<https://harshp.com/hobbies/books/636> a schema:Book, hpcom:RenderedItem ;
-    hpcom:book_id "636"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    # hpcom:book_physical_copy false ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
-    schema:author "Robert L. Forward"^^xsd:string ;
-    schema:dateCreated "1980"^^xsd:int ;
-    # schema:isbn ""^^xsd:string ;
-    schema:name "Dragon's Egg"@en ;
-    schema:url "https://harshp.com/hobbies/books/636"^^xsd:anyURI .
-
 <https://harshp.com/hobbies/books/637> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "637"^^xsd:int ;
     hpcom:book_status hpcom:book-to-read ;
@@ -8182,6 +8174,7 @@
     hpcom:book_status hpcom:book-currently-reading ;
     schema:author "P. L. Deshpande [ पु. ल. देशपांडे ]"^^xsd:string ;
     schema:dateCreated "1974"^^xsd:int ;
+    hpcom:book_physical_copy true ;
     schema:name "Jyave Tyanchya Desha [जावे त्यांच्या देशा]"@en ;
     schema:genre hpcom:BookNonFiction ;
     schema:url "https://harshp.com/hobbies/books/653"^^xsd:anyURI .
@@ -8246,3 +8239,29 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Martian Time-Slip"@en ;
     schema:url "https://harshp.com/hobbies/books/658"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/636> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "636"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_physical_copy true ;
+    hpcom:date_book_read "2021-07-24T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Arthur C. Clarke"^^xsd:string ;
+    schema:dateCreated "1961"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "A Fall of Moondust"@en ;
+    schema:url "https://harshp.com/hobbies/books/636"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/659> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "659"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_physical_copy true ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Frederik Pohl"^^xsd:string ;
+    schema:dateCreated "1977"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Gateway"@en ;
+    schema:url "https://harshp.com/hobbies/books/659"^^xsd:anyURI .
