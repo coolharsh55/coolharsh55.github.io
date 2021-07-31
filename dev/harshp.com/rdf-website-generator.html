@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RDF Website Generator</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="RDF Website Generator">
+    <meta name="schema:description" content="How harshp.com gets generated from RDF metadata">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="harshp.com,hosting,website,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/harshp.com/rdf-website-generator">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="RDF Website Generator">
+    <meta name="twitter:description" content="How harshp.com gets generated from RDF metadata">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/harshp.com/rdf-website-generator">
+        <h1 property="schema:name schema:headline">RDF Website Generator</h1>
+        <div id="description">
+            <span property='schema:description'>How harshp.com gets generated from RDF metadata</span><br/>
+            published: <time property="schema:datePublished" datetime="2021-07-31T22:45:00">2021-07-31T22:45:00</time>
+                <small>(updated: <time property="schema:dateModified" datetime="2021-07-31T22:45:00">2021-07-31T22:45:00</time>)</small>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/harshp.com" property="schema:isPartOf" resource="https://harshp.com/dev/harshp.com"><span property="rdfs:label">harshp.com</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/harshp.com" property="schema:about" resource="https://harshp.com/tags/harshp.com" typeof="rdfs:Resource"><span property="rdfs:label">harshp.com</span></a>
+            <a class="tag" href="https://harshp.com/tags/hosting" property="schema:about" resource="https://harshp.com/tags/hosting" typeof="rdfs:Resource"><span property="rdfs:label">hosting</span></a>
+            <a class="tag" href="https://harshp.com/tags/website" property="schema:about" resource="https://harshp.com/tags/website" typeof="rdfs:Resource"><span property="rdfs:label">website</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <p>My website is currently based on using RDF to generate static web pages which are then served via GitHub Pages. This post is a documentation of the architecture and data models for how content gets converted to HTML.</p>
+<h2 id='conceptual-motivation'>Conceptual Motivation</h2>
+<p>A request is received containing a URL - the path for which content must be rendered and presented in the web browser. This could be the homepage, a specific post, or a list of items. For static web pages, the URLs map to the filepath i.e. a request for <code>/a/b/c</code> is translated to serve <code>c.html</code> in the folder <code>/a/b</code> relative to the root folder for that website.</p>
+<p>Conventional static web page builders will require content to be stored in some folder (<code>/content</code>) which is then compiled, or converted from one format to HTML, into the required filepath to serve it at the URL it represents. So <code>/content/a/b/c.md</code> is compiled and served at <code>/content/a/b/c.html</code>. Here, there is implicit understanding that the <code>content</code> folder represents an exact mapping between the files within it and the HTMLs to be generated for serving.</p>
+<p>Conventional static web page builders incorporate logic and functinoality to enable creating dynamic content such as index pages, lists, and collections. These are either implicitly provided through inbuilt functions or require writing some code that represents a query and rendering of results.</p>
+<p>What got me started down the route of writing my website generator using RDF was trying to write a fun little project for generating static web pages similar to the conventional features. I started generating HTML content by using <a href='https://palletsprojects.com/p/jinja/'>Jinja2</a> and a Python script. Then I wanted to create a list of my publications, which was easily done in JSON. But as I increasingly started crafting more complex needs - such as associating code or preprint copies - I found myself struggling with creating a data model and using it within the script because I constantly needed to edit the JSON, then the python script, and then the HTML template and pages generated. I could have gone with a simple CSV file and/or an SQLite file to store and query the data, but that had been done so many times before. So at some point, I decided to experiment with writing all metadata in RDF and using a SPARQL query to generate the necessary static web pages. For fun.</p>
+<p><a href='https://ruben.verborgh.org/articles/queryable-research-data/'>Ruben Verborgh has written a nice article</a> about embedding metadata within webpages using RDFa and using an ETL pipeline to extract that metadata and do fun stuff with it - like querying, reasoning, and figuring out where the data and the metadata should live. Much of this work is inspired from Ruben&#39;s, and that of <a href='https://csarven.ca/how-to-create-a-linked-data-site'>Sarven&#39;s website building approach</a>. After I had already completed work on my site, I found out about <a href='https://github.com/KNowledgeOnWebScale/walder'>Walder</a> which takes a similar approach for providing an API and views over existing RDF data, and which <a href="http://sabrinakirrane.com/">Sabrina</a> uses to manage her academic website. There's also <a href="https://bitbucket.org/jibalamy/owlready2/src/master/">OWLready2</a> and <a href="https://github.com/edmondchuc/rdflib-orm">rdflib-orm"</a> which provide convenient wrappers for using RDF and OWL in Python.</p>
+<p>Where my approach differs is that I started with wanting to write my metadata in RDF for its appeal in being used as a graph and query model, and ended up including informating on how to associate content with IRIs, how these should be rendered, can it be made programmatic, what queries and results are required to be generated and how to associate them in a modular and reusable fashion, and how to use RDF within Python in the simplest form possible. It gave perspective on how easy or difficult it is to roll one's own RDF-based system using Python to work with documents and web publishing. The end result is a hacked together system which isn&#39;t elegant, but works, and has so far not given me much trouble.  It is also quite easy to work with (for me), and I can adapt my wanton ideas with little effort. The aim wasn&#39;t to provide a product or even be competitive - it was simply to have fun creating my own website builder using semantic web - and I can say it has been fun to build something like this from scratch.</p>
+<h2 id='basics-page-urls-as-rdf-iris'>Basics: Page URLs as RDF IRIs</h2>
+<p>RDF is based on IRIs - which can be considered URLs for our purpose - as the unique identifiers with which each node or &#39;data&#39; is identified and referenced by. For example, an IRI of <code>&lt;https://harshp.com/&gt;</code> refers to the website root, and is also the URL of the webpage it represents. I use this to consider that every page or URL to be served on my website is an RDF node with the URL acting as its IRI.</p>
+<p>To distinguish what IRIs should be served as URLs, and what should not be, I create a class called <code>RenderedItem</code> - which represents rendering the given IRI into a web page to be served with the IRI as its URL. So declaring <code>&lt;https://harshp.com/&gt;</code> as <code>RenderedItem</code> means there will be a webpage created in the root folder that will be served at that address. This permits control over which IRIs should be rendered and which should not.</p>
+<p>For folders, the convention is to either have a <code>foldername.html</code> file present that is rendered or have an <code>index.html</code> file inside that folder that is used to render the URL. For root URLs, the only option is to have an <code>index.html</code> file. Therefore, if the <code>RenderedItem</code> does not specify what specific filepath is to be generated, a general rule of  <code>&lt;IRI&gt;.html</code> is applied, unless the IRI ends in <code>/</code>, in which case the rule <code>&lt;IRI&gt;/index.html</code> is applied.</p>
+<h2 id='attaching-content-to-an-iri'>Attaching Content to an IRI</h2>
+<p>The post here is <a href='https://harshp.com/blog/events/eswc-2018'>https://harshp.com/blog/events/eswc-2018</a> which is part of my blog. The first piece of metadata is to use this URL to write RDF metadata about it.</p>
+<pre><code class='language-turtle' lang='turtle'>&lt;https://harshp.com/blog/events/eswc-2018&gt; a &lt;https://harshp.com/blog&gt;,
+        hpcom:RenderedItem ;
+hpcom:tag hptag:academia,
+        hptag:blog,
+        hptag:conference,
+        hptag:personal ;
+    schema:author &lt;https://harshp.com/me&gt; ;
+    schema:dateModified &quot;2018-08-01T09:03:42&quot;^^xsd:dateTime ;
+    schema:datePublished &quot;2018-06-10T05:00:00&quot;^^xsd:dateTime ;
+    schema:description &quot;ESWC 2018 conference in Heraklion, Crete, Greece&quot;@en ;
+    schema:name &quot;ESWC 2018&quot;@en ;
+    schema:url &quot;https://harshp.com/blog/events/eswc-2018&quot;^^xsd:anyURI .
+</code></pre>
+<p>I use <a href='schema.org'>schema.org</a> as it is the dominant vocabulary on the web for annoating metadata, and is compatible with RDF (as seen above). For other properties, I used by own vocabulary (prefixed as <code>hpcom</code>) so as to enable me to create arbitrary concepts as needed while I test and build stuff.</p>
+<p>The declaration of URL as an instance of <code>&lt;https://harshp.com/blog&gt;</code> means the post is part of my Blog. This permits applying uniform design and control over all blog related items - such as by using different templates or CSS layouts for different sections of my website. I&#39;ll get to that later in the post.</p>
+<p>The content is declared by associating the file where the content is stored along with information about its format. The file extension can be used to infer the file format as well, but I prefer it to be made explicit since it saves a step, and more importantly - it allows attaching things like functionality to the RDF representation of HTML as a format.</p>
+<pre><code class='language-turtle' lang='turtle'>hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile &quot;https://harshp.com/code/content/blog/events/eswc-2018.html&quot; ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+</code></pre>
+<h2 id='rendering-iri-with-views'>Rendering IRI with Views</h2>
+<p>When the generator script encounters this metadata, it goes looking for a &#39;<em>View</em>&#39; to render the file. This is done by first checking the metadata itself to see if it declares a <em>View</em>. In this case, the view is absent. So it looks in the data graph to see if any <em>View</em> is registered to handle that specific IRI. Failing that, it looks for a <em>View</em> that handles the parent class of which the IRI is an instance. Failing that, it looks for <em>View</em> associated with the parent of parent, and so on up the chain. If it finds nothing, it renders with the <em>Generic View</em> provided for all RDF objects.</p>
+<p>In the case of this particular blog post, a <em>View</em> has been declared for all instances of the Blog as shown below:</p>
+<pre><code class='language-turtle' lang='turtle'>hpview:BlogPostView a hpcom:View ;
+    hpcom:view_target &lt;https://harshp.com/blog&gt; ;
+    hpcom:view_template &quot;https://harshp.com/code/templates/template_blog_post.jinja2&quot; ;
+    hpcom:view_renderer hpcom:Jinja2 .
+</code></pre>
+<p>It informs the <em>View</em> uses Jinja2 as a rendering mechanism and has the template specified by the filepath. The generator then takes this template and uses it to render the content provided by the metadata, and exports the results as a HTML file.</p>
+<h2 id='rendering-with-sparql-query-results'>Rendering with SPARQL query results</h2>
+<p>For blog posts, the content is already present in the HTML file and just needs to be rendered with the template for consistency and design considerations. For more dynamic content, such as the blog index page, a query needs to be issued to retrieve all the posts along with their metadata and to then render this information in the HTML.</p>
+<p>For this purpose, <em>Views</em> can contain SPARQL queries embedded within them which is executed and its data is passed to the template which renders it to the specified filepath. For the blog, the metadata is as follows:</p>
+<pre><code class='language-turtle' lang='turtle'>hpview:BlogPostView a hpcom:View ;
+    hpcom:view_target &lt;https://harshp.com/blog&gt; ;
+    hpcom:view_template &quot;https://harshp.com/code/templates/template_blog_post.jinja2&quot; ;
+    hpcom:view_renderer hpcom:Jinja2 .
+</code></pre>
+<p>This shows two things: that a <em>View</em> can be specified directly in the metadata, and secondly that not every IRI requires content. In this case, the template is sufficient because the data is provided by the SPARQL query associated within the <em>View</em>.</p>
+<pre><code class='language-turtle' lang='turtle'>hpview:BlogIndexView a hpcom:View ;
+    hpcom:view_template &quot;https://harshp.com/code/templates/template_blog_index.jinja2&quot; ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label &quot;posts&quot; ;
+        hpcom:queryString &quot;&quot;&quot;
+            SELECT ?s WHERE {
+            ?s a ?iri .
+            ?s schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        &quot;&quot;&quot; ;
+    ] .   
+</code></pre>
+<p>The simple SPARQL query retrieves all instances of <code>?iri</code> - which in this case is the IRI of the blog, i.e. <code>&lt;https://harshp.com/blog&gt;</code> which have a date of publication and orders it newest first. The replacement of <code>?iri</code> with the IRI of the node that the <em>View</em> is currently handling is done by the generator. If the same view were to be used for another type of blog, then its IRI would be used instead - thus providing reusability and modularity of content and processes.</p>
+<h2 id='wrapper-for-dealing-with-rdf-when-writing-html'>Wrapper for dealing with RDF when writing HTML</h2>
+<p>The template specified for the blog index page needs to access the metadata for the nodes it is required to render or print in HTML. If all metadata to be printed were retrieved using SPARQL, it creates an issue where the order of items retrieved must be consistent between the query and the HTML usage. It also affects when additional metadata is needed to be retrieved - which means that the query must be changed. Changing the query means it can no longer be used generically for other IRIs.</p>
+<p>Instead, the generator, after retrieving the query results, simply passes the IRIs to the HTML template (rendered using Jinja2) in the form of native python classes which need no special consideration. To do this, I wrote an ORM for RDF (called <code>rdform</code>) which takes each IRI, creates an instance of a <code>RDFS_Resource</code> class for it, and starts putting data associated with it in the <code>__dict__</code> variable used by python to store information in an instance. Properties are referenced as class members and properties, and are easy to use. So <code>X rdfs:label &quot;Y&quot;</code> becomes <code>x.rdfs_label = y</code>.</p>
+<p>For annotations, such as string labels, it is trivial to create such records. For objects, it becomes more difficult since the IRIs need to be tracked globally. So instead of waiting for the SPARQL query to return and figure out the data and IRIs involved, the generator transforms all RDF data loaded from the data graph into <code>RDFS_Resource</code> objects and uses them to replace IRIs retrieved from a SPARQL query. </p>
+<p>This means for any template or function written in Python, the SPARQL query only needs to retrieve the IRIs of the objects required, and the code can use any metadata as required without worrying about whether the query has retrieved that result. <a href='https://ruben.verborgh.org/publications/verborgh_iswc_2020/'>Ruben wrote about LDflex</a> which takes this conceptually even further by actually retrieving results from remote IRIs as the data is being used.</p>
+<p>With the IRIs and RDF objects converted to native Python instances, using them in Jinja2 template becomes trivial:</p>
+<pre><code class='language-turtle' lang='turtle'>{% block content %}
+&lt;ol class=&quot;list-index&quot;&gt;
+{% for itemlist in posts %}{% for item in itemlist %}
+    &lt;li&gt;&lt;a href=&quot;{{ item.iri }}&quot;&gt;{{ item.schema_name }}&lt;/a&gt; &lt;br/&gt;
+        &lt;small&gt;&lt;time datetime=&quot;{{ item.schema_datePublished }}&quot;&gt;{{ item.schema_datePublished }}&lt;/time&gt;&lt;/small&gt;&amp;nbsp;
+        &lt;small&gt;{% for tag in item.hpcom_tag|sort(attribute=&#39;iri&#39;) %}&lt;a class=&quot;tag&quot; href=&quot;{{tag.iri}}&quot;&gt;{{tag}};&lt;/a&gt;{% endfor %}&lt;/small&gt; &lt;br/&gt;
+        &lt;small&gt;{{ item.schema_description }}&lt;/small&gt;
+    &lt;/li&gt;
+{% endfor %}{% endfor %}
+</code></pre>
+<p>Here, the data variable <code>posts</code> is generated from the <code>rdfs:label</code> delcared within the <em>View&#39;s</em> SPARQL query. This further simplifies things as a <em>View</em> may contain multiple SPARQL queries, and each of them gets converted to a variable and is passed to the tempalte for use. The conversion of RDF objects into Python instances also enables use of Jinja2 convenience features like filters, sorting of lists, and loop controls.</p>
+<h2 id='sparql-convenience-features---inserting-parameters'>SPARQL convenience features - inserting parameters</h2>
+<p>While a static SPARQL query can only do so much, there are times when the string of the query needs to be modified to specify particular values - such as today&#39;s date or year. For this reason, I use the <code>queryParam</code> property to specify parameters associated with a query, which the generator uses to replace their occurence within the string with specified functions or values.</p>
+<pre><code class='language-turtle' lang='turtle'>hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label &quot;current_projects&quot; ;
+        hpcom:queryString &quot;&quot;&quot;
+            SELECT DISTINCT ?project ?name WHERE {
+                ?project a &lt;https://harshp.com/research/projects&gt; .
+                ?project schema:name ?name .
+                ?project schema:startDate ?date .
+                ?project schema:member ?role .
+                ?role schema:endDate ?end_date .
+                FILTER(?end_date &gt; ?today) .
+            } ORDER By DESC(?date)
+        &quot;&quot;&quot; ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel &quot;today&quot; ;
+            hpcom:queryParamValue &quot;date-today&quot; ;
+        ] ;
+    ] ;
+</code></pre>
+<p>Here, the variable label <code>today</code> and value <code>date-today</code> are specified as a query parameter to be replaced, with the date of today derived from the function <code>data-today</code>.</p>
+<pre><code class='language-turtle' lang='turtle'>def _today():
+    literal = Literal(datetime.datetime.now(), datatype=XSD.dateTime)
+    return literal
+
+SPARQL_ACTIONS = {
+    &#39;date-today&#39;: _today,
+    # ...
+}
+</code></pre>
+<p>The variable <code>SPARQL_ACTIONS</code> holds such functions or values to be replaced whenever a query parameter is declared in a <em>View</em>. </p>
+<h2 id='common-metadata-for-all-pages'>Common Metadata for all Pages</h2>
+<p>Since all pages are generated by me for my site, they have common metadata. But I can also have invited posts, or posts authored by others. Additionally, posts can have different parent posts, sections, and so on. Instead of writing multiple tempaltes with the same repeated boilerplate, all of the common stuff is put in to a <em>base</em> template which is used by Jinja2 to render all other templates. This permits writing some basic RDFa for all pages which also works for SEO in the header section. It also permits linking pages together, as in provide links and references to other related pages and resources.</p>
+<pre><code class='language-turtle' lang='turtle'>{% block desc %}
+{% if item.schema_isPartOf %}
+...
+{% endif %}
+{% if item.schema_subjectOf %}
+...
+{% endif %}
+    
+{% if item.rdfs_seeAlso %}
+    ...
+    {% if item.rdfs_seeAlso is sequence %}
+        {% for article in item.rdfs_seeAlso %}
+        ...
+        {% endfor %}
+    {% else %}
+        ...
+    {% endif %}
+   ...
+{% endif %}
+</code></pre>
+<p>The above examples outlines and interesting problem associated with RDF - how to handle sequences and lists? Usually they are a pain to handle because of the first-rest iteration pattern. Instead, most common uses just declare multiple values for properties, such as: <code>x prop a, b, c .</code> which when used in Python, returns a list for <code>prop</code> containing <code>[a, b, c]</code>. To iterate through this in Jinja2, the pattern is the same as iterating over a native Python list - just check if something is a sequence (and not a string) and use it as usual.</p>
+<h2 id='smarter-publication-management'>Smarter Publication Management</h2>
+<p>Using the above principles and data models, my original task of how to manage my publications, and associate them with resources and items became much easier. Now all I had to do was create a data model for publication using RDF, declare a view for it, and publish it using a template.</p>
+<p>Here is my PhD thesis in RDF metadata form:</p>
+<pre><code class='language-turtle' lang='turtle'>&lt;https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance&gt; a schema:ScholarlyArticle, hpcom:Thesis, hpcom:RenderedItem ;
+    schema:name &quot;Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance&quot;@en ;
+    schema:description &quot;PhD research showing use of semantic web in representing activities and consent for GDPR&quot;@en ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:provenance ;
+    hpcom:tag hptag:consent ;
+    hpcom:author_lead &lt;https://harshp.com/me&gt; ;
+    schema:inSupportOf &quot;PhD in Computer Science&quot;@en ;
+    schema:datePublished &quot;2020-05-06T00:00:00&quot;^^xsd:dateTime ;
+    schema:identifier &quot;hdl.handle.net/2262/92446&quot;^^xsd:anyURI ;
+    schema:url &quot;https://hdl.handle.net/2262/92446&quot;^^xsd:anyURI ;
+    schema:publisher &lt;https://www.tcd.ie/&gt; ;
+    schema:funder &lt;http://example.com/ADAPT&gt; ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name &quot;harshp.com&quot; ; schema:url &quot;https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance&quot;^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name &quot;web (HTML)&quot; ; schema:url &quot;https://harshp.com/research/phd-thesis&quot;^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name &quot;zenodo&quot; ; schema:url &quot;https://doi.org/10.5281/zenodo.3795513&quot;^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name &quot;viva slides&quot; ; schema:url &quot;https://www.slideshare.net/HarshvardhanPandit1/phd-viva-representing-activities-associated-with-processing-of-personal-data-and-consent-using-semantic-web-for-gdpr-compliance&quot;^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name &quot;repo&quot; ; schema:url &quot;https://github.com/coolharsh55/phd-thesis&quot;^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile &quot;https://harshp.com/code/content/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance.html&quot; ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:peer_reviewed false .
+</code></pre>
+<p>And here is the PhD Thesis in <a href='https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance'>HTML form</a> generated from this metadata. More examples: A <a href='https://harshp.com/research/publications'>list of all publications</a> generated using SPARQL query is. <a href='https://harshp.com/research'>My research activities</a>.</p>
+<h2 id='code'>Code</h2>
+<p>The code for my website is available at: <a href='https://github.com/coolharsh55/coolharsh55.github.io'>GitHub: @coolharsh55</a>. </p>
+<ul>
+<li>The <a href='https://github.com/coolharsh55/coolharsh55.github.io/blob/master/code/generator.py'>generator.py</a> is the one that contains code for generating HTML pages and doing all of the chores specified here. </li>
+<li><a href='https://github.com/coolharsh55/coolharsh55.github.io/blob/master/code/rdform.py'>rdform.py</a> provides the convenience wrapper for using RDF objects as native Python instances</li>
+<li><a href='https://github.com/coolharsh55/coolharsh55.github.io/blob/master/code/views.ttl'>views.ttl</a> contains all the views (those not declared in the RDF metadata itself)</li>
+<li><a href='https://github.com/coolharsh55/coolharsh55.github.io/tree/master/code/content/research'>research</a> contains metadata and content about research activities used here for example</li>
+<li><a href='https://github.com/coolharsh55/coolharsh55.github.io/blob/master/code/templates/template_research.jinja2'>template_research.jinja2</a> contains the template used for rendering the research activities page</li>
+
+</ul>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
