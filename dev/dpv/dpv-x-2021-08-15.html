@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>dpv-x 2021-08-15</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="dpv-x 2021-08-15">
+    <meta name="schema:description" content="Some ideas for extending and improving DPV and documentation">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="dpv,dpvcg,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/dpv-x-2021-08-15">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:title" content="dpv-x 2021-08-15">
+    <meta name="twitter:description" content="Some ideas for extending and improving DPV and documentation">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/dpv-x-2021-08-15">
+        <h1 property="schema:name schema:headline">dpv-x 2021-08-15</h1>
+        <div id="description">
+            <span property='schema:description'>Some ideas for extending and improving DPV and documentation</span><br/>
+            published: <time property="schema:datePublished" datetime="2021-08-15T21:00:00">2021-08-15T21:00:00</time>
+                <small>(updated: <time property="schema:dateModified" datetime="2021-08-15T21:00:00">2021-08-15T21:00:00</time>)</small>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/dpv" property="schema:about" resource="https://harshp.com/tags/dpv" typeof="rdfs:Resource"><span property="rdfs:label">dpv</span></a>
+            <a class="tag" href="https://harshp.com/tags/dpvcg" property="schema:about" resource="https://harshp.com/tags/dpvcg" typeof="rdfs:Resource"><span property="rdfs:label">dpvcg</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        
+<p>I&#39;m in a community called the <a href='https://www.w3.org/community/dpvcg/'>Data Privacy Vocabulary and Controls Community Group (DPVCG)</a> where we develop vocabularies for describing how personal data is collected, used, stored, shared, and the associated justifications in law, use of technology and measures, and so on. I got into the group when I was <a href='https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance'>doing my PhD</a>, given the relation of it to my research. The group itself started out from the <a href='https://specialprivacy.eu'>SPECIAL project</a> - and I joined as a member some 6 months after its inception. Through continued used, I volunteered to chair the group. </p>
+<p>The primary and chief outcome of the DPVCG is the <a href='http://w3.org/ns/dpv'>Data Privacy Vocabulary (DPV)</a> - a taxonomy or vocabulary or ontology for describing what is happening with the (personal) data in terms of its purposes, processing, stakeholders, legal justifications, technical measures, rights, and so on.</p>
+<p>As I continue to handle the progress of the group and its outcomes, I decided to write this post as a reflection of things I want to see happen within the DPVCG or with the DPV. I titled my &#39;experimental&#39; thoughts and activities as <a href='https://github.com/coolharsh55/dpv-x'><em>dpv-x</em></a> so as to keep the code and approaches separate from the primary work on dpv.. </p>
+<h2 id='documentation'>Documentation</h2>
+<h3 id='specifying-the-specification'>Specifying the Specification</h3>
+<p>The DPV spec, currently at <a href='http://w3.org/ns/dpv'>http://w3.org/ns/dpv</a>, is a monolithic document that tries to do everything in one place. It aims to introduce the DPV, explain its rational, describe the concepts and their motivation, formally describe the concepts, relations between them, and explain how they should be use. As a result, it is intimidating and exhaustive for a newcomer to grasp and comprehend the DPV in its entirety when pointed directly to the spec.</p>
+<p>Instead, the spec should be broken down into layered documents, each explaining part of what information is implicit, or intended for specific audiences e.g. newcomers, practioners, or adopters in specific domains or using specific technologies. The spec itself should contain the overview of concepts, their formal definitions, relations, sources, and so on - providing a consolidated authoritative documentation without being burdened of their motivation or usage or issues.</p>
+<p>DPV is a vocabulary, there are no arguments about that. But is it or does it want to be more? For example, does it want to provide specific applications or controls or tooling or frameworks that can be used? Maybe. But regardless of these, the DPV spec, as it stands, is about the DPV as a vocabulary, and so how those concepts are to be used is beyond its scope. </p>
+<p>At the same time, how to use a concept or where it is applicable are genuine questions to the reader and/or adopter, and for this, it is essential to provide some guidance on the &#39;use-cases&#39; where that concept can be applied. For example, consider the following scenario: Reading section for &#39;<em>access control</em>&#39;, the use-cases might detail how this is used as a technical measure to protect data by the controller, by the processor, or how some access control measure is specifically associated for some sensitive/special categories of personal data. Here, the concept &#39;<em>access control</em>&#39; is not sufficient to be provided with just a definition and its existence as a &#39;<em>technical measure</em>&#39;, but must be demonstrated through use-cases that show where it occurs and how its use is dependant on the context. </p>
+<p>Providing use-cases for concepts, and ensuring they are consistent and applicable is important because as the DPV is an extremely high-level functional vocabulary, its application can vary greatly depending on the use-cases it is applied within as well as restrictions applicable in the technical or semantic use (e.g. use of specific data model methods such as OWL2, or integration with ODRL, or within Java/Python tooling) which are not universal.</p>
+<h3 id='priming-using-a-primer'>Priming using a Primer</h3>
+<p>A primer is a good guide for newcomers and offers. an overview of the concepts without overwhelming the reader. Its a gentle introduction that explains why the concepts and models exist as they do without delving into the complexities of design and the intricacies of applications. Imagine a car, then a primer explains the &#39;common sense&#39; components of the chasis, wheels, engine, fuel, steering wheels, driver, passengers, and how they work together. It does not explain how fuel is combusted in the engine chambers, nor how the gears (manual or automatic) are used to control the speeds and directions. The specification is the exhaustive and authoritative document for the car. The &#39;<em>manual</em>&#39; is distinct from either of these, in being a documentation for the &#39;<em>user</em>&#39; of the car in a specific scenario.</p>
+<p>In this way, the primer is the first source of information for someone who doesn&#39;t know what DPV is, or what it provides, for what reasons, and what are the concepts one must be aware of before delving further/deeper into it. A primer is also the first source of information intended for someone who wants to know what they can do with DPV, whether they have to follow specific formally specified requirements, or what aspects of their use and application they need to figure out themselves.</p>
+<p>From this, the Primer should contain a brief description of the aims/goals of the DPV(CG) in terms of what information is being modelled. It should provide an overview of the &#39;<em>base</em>&#39; or &#39;<em>top</em>&#39; concepts that give a good idea for what the vocabulary consists of. Everything else then is either specialisation or expansion of these concepts, or exists to supplement them with additional information. As it currently stands, the Primer should explain: Purpose, Processing, Personal Data Categories, Entities (Controller, Processor, Third Party, Data Subject), Technical and Organisational Measures, Legal Bases, Rights, and Risks.</p>
+<p>The Primer should also clarify whether these concepts <em>must</em> be utilised within a semantic web environment, or they can be adopted and used outside in other tools and technologies (the latter is desired). It should explain how the DPV can be applied to specific common situations and use-cases (e.g. compliance documentation, privacy notices, compliance checking) and what are the available avenues for doing so. More importantly, it should point to other related vocabularies (e.g. <a href='https://www.w3.org/TR/odrl-model/'>ODRL</a>, <a href='https://www.w3.org/TR/prov-primer/'>PROV</a>) and resources (e.g. publications, projects, tools) that can assist the reader in using DPV in some environment.</p>
+<h3 id='adopters-guide'>Adopters Guide </h3>
+<p>A guide for how the DPV can be used in different ways, and what each way offers in terms of benefits and limitations. Also explains where the DPV needs to be extended, changed, or modified for use in specific scenarios and use-cases.</p>
+<p>Should explain what to do if DPV is needed in specific shapes and forms: e.g. RDFS, OWL2, SKOS, and so on. Should also explain how to utilise DPV if all that is needed is a part of the taxonomy e.g. list of purposes. And how to utilise or rather extract/convert DPV to something non-sem-web, e.g. JSON list.</p>
+<p>One thing I often get asked is how to use the DPV concepts in assessing compliance states. Since DPV doesn&#39;t model the norms and obligations, it is left up to the adopter to specify what they want to use and that will then tell them how DPV is applicable. The guide can explain this, and point to existing resources in terms of projects that use DPV or offer ways to do compliance related tasks, e.g. <a href='http://specialprivacy.eu/'>SPECIAL</a>, <a href='https://mirelproject.eu/'>MIREL</a>, <a href='https://www.bpr4gdpr.eu/'>BPR4GDPR</a>, <a href='https://trapeze-project.eu/'>TRAPEZE</a>, <a href='https://mosaicrown.eu/'>MOSAICROWN</a>.</p>
+<h3 id='programmatic-generation-of-diagrams'>Programmatic Generation of Diagrams</h3>
+<p>Diagrams are a nice way to visually comprehend information, and in the case of DPV, especially the overview of a taxonomy (or specific sub-group) as well as the modelling and relations for a specific concept. However, creating diagrams manually is time-consuming, as well as laborius to keep updated, and difficult to get correct when unfamiliar with the progress of the work.</p>
+<p>As a solution, programmatic generation of diagrams automatically from the concepts can assist in easing some if not all of the work. Diagrams of this form are of two types: (i) overview diagrams for presenting all concepts associated in a particular taxonomy (e.g. categories of purposes); and (ii) overview diagrams for presenting relationships associated with a given concept (e.g. properties and parent/children for both the concept and its ancestors). </p>
+<p>As an experiment, I tried to use <a href='https://graphviz.org/'>GraphViz</a> and a python script to see if I can create programmatic diagrams. While the code and result (see below) need more work, the approach does hold promise. Once generated, such systems can continue functioning without requiring much effort as more concepts are added and the DPV continues to evolve and expand, including as extensions.</p>
+<svg width="890pt" height="513pt" viewBox="0.00 0.00 890.35 513.05" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 509.05)">
+<title>PersonalDataHandling</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-509.05 886.35,-509.05 886.35,4 -4,4"></polygon>
+<!-- PersonalDataHandling -->
+<g id="node1" class="node">
+<title>PersonalDataHandling</title>
+<ellipse fill="Yellow" stroke="Black" stroke-width="2" cx="115.04" cy="-246.05" rx="115.08" ry="18"></ellipse>
+<text text-anchor="middle" x="115.04" y="-242.35" font-family="Times,serif" font-size="14.00">PersonalDataHandling</text>
+</g>
+<!-- DataController -->
+<g id="node2" class="node">
+<title>DataController</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-462.05" rx="79.89" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-458.35" font-family="Times,serif" font-size="14.00">DataController</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;DataController -->
+<g id="edge1" class="edge">
+<title>PersonalDataHandling-&gt;DataController</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M122.2,-264.22C136.79,-304.07 177.63,-398.67 248.08,-438.05 375.89,-509.49 555.07,-492.69 651.12,-476.17"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="651.76,-479.61 661,-474.42 650.54,-472.72 651.76,-479.61"></polygon>
+<text text-anchor="middle" x="393.08" y="-493.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasDataController</text>
+</g>
+<!-- DataSubject -->
+<g id="node3" class="node">
+<title>DataSubject</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-408.05" rx="67.69" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-404.35" font-family="Times,serif" font-size="14.00">DataSubject</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;DataSubject -->
+<g id="edge2" class="edge">
+<title>PersonalDataHandling-&gt;DataSubject</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M129.03,-264.07C150.31,-291.99 195.54,-344.88 248.08,-368.05 379.51,-426.02 551.48,-423.34 646.78,-415.9"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="647.21,-419.38 656.89,-415.07 646.63,-412.4 647.21,-419.38"></polygon>
+<text text-anchor="middle" x="393.08" y="-422.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasDataSubject</text>
+</g>
+<!-- PersonalDataCategory -->
+<g id="node4" class="node">
+<title>PersonalDataCategory</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-354.05" rx="115.08" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-350.35" font-family="Times,serif" font-size="14.00">PersonalDataCategory</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;PersonalDataCategory -->
+<g id="edge3" class="edge">
+<title>PersonalDataHandling-&gt;PersonalDataCategory</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M146.15,-263.5C172.22,-277.73 211.41,-297.05 248.08,-307.05 362.73,-338.31 498.18,-349.24 594.17,-352.84"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="594.09,-356.34 604.21,-353.2 594.34,-349.35 594.09,-356.34"></polygon>
+<text text-anchor="middle" x="393.08" y="-352.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasPersonalDataCategory</text>
+</g>
+<!-- LegalBasis -->
+<g id="node5" class="node">
+<title>LegalBasis</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-300.05" rx="61.19" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-296.35" font-family="Times,serif" font-size="14.00">LegalBasis</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;LegalBasis -->
+<g id="edge4" class="edge">
+<title>PersonalDataHandling-&gt;LegalBasis</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M197.63,-258.68C214.3,-261.01 231.73,-263.27 248.08,-265.05 390.03,-280.53 556.85,-291.16 648.71,-296.37"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="648.54,-299.87 658.72,-296.93 648.94,-292.88 648.54,-299.87"></polygon>
+<text text-anchor="middle" x="393.08" y="-291.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasLegalBasis</text>
+</g>
+<!-- Processing -->
+<g id="node6" class="node">
+<title>Processing</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-246.05" rx="61.99" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-242.35" font-family="Times,serif" font-size="14.00">Processing</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;Processing -->
+<g id="edge5" class="edge">
+<title>PersonalDataHandling-&gt;Processing</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M230.37,-246.05C353.05,-246.05 544.09,-246.05 646.92,-246.05"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="647.2,-249.55 657.2,-246.05 647.2,-242.55 647.2,-249.55"></polygon>
+<text text-anchor="middle" x="393.08" y="-249.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasProcessing</text>
+</g>
+<!-- Purpose -->
+<g id="node7" class="node">
+<title>Purpose</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-192.05" rx="48.99" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-188.35" font-family="Times,serif" font-size="14.00">Purpose</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;Purpose -->
+<g id="edge6" class="edge">
+<title>PersonalDataHandling-&gt;Purpose</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M197.63,-233.42C214.3,-231.09 231.73,-228.83 248.08,-227.05 396.39,-210.88 571.86,-199.99 660.61,-195.06"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="660.94,-198.55 670.74,-194.5 660.56,-191.56 660.94,-198.55"></polygon>
+<text text-anchor="middle" x="393.08" y="-230.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasPurpose</text>
+</g>
+<!-- Recipient -->
+<g id="node8" class="node">
+<title>Recipient</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-138.05" rx="54.69" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-134.35" font-family="Times,serif" font-size="14.00">Recipient</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;Recipient -->
+<g id="edge7" class="edge">
+<title>PersonalDataHandling-&gt;Recipient</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M145.59,-228.57C171.63,-214.07 211.08,-194.22 248.08,-184.05 389.51,-145.17 562.8,-138.16 654.4,-137.47"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="654.64,-140.97 664.62,-137.42 654.6,-133.97 654.64,-140.97"></polygon>
+<text text-anchor="middle" x="393.08" y="-187.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasRecipient</text>
+</g>
+<!-- Risk -->
+<g id="node9" class="node">
+<title>Risk</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-84.05" rx="30.59" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-80.35" font-family="Times,serif" font-size="14.00">Risk</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;Risk -->
+<g id="edge8" class="edge">
+<title>PersonalDataHandling-&gt;Risk</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M128.6,-228.17C149.62,-199.89 194.9,-145.63 248.08,-122.05 396.14,-56.4 596.06,-69.51 679.31,-78.87"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="679,-82.36 689.34,-80.04 679.82,-75.4 679,-82.36"></polygon>
+<text text-anchor="middle" x="393.08" y="-125.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasRisk</text>
+</g>
+<!-- TechnicalOrganisationalMeasure -->
+<g id="node10" class="node">
+<title>TechnicalOrganisationalMeasure</title>
+<ellipse fill="#f2f2f2" stroke="#f2f2f2" cx="719.22" cy="-30.05" rx="163.27" ry="18"></ellipse>
+<text text-anchor="middle" x="719.22" y="-26.35" font-family="Times,serif" font-size="14.00">TechnicalOrganisationalMeasure</text>
+</g>
+<!-- PersonalDataHandling&#45;&gt;TechnicalOrganisationalMeasure -->
+<g id="edge9" class="edge">
+<title>PersonalDataHandling-&gt;TechnicalOrganisationalMeasure</title>
+<path fill="none" stroke="#8b2323" stroke-dasharray="5,2" d="M122.02,-227.97C136.38,-187.86 176.96,-91.83 248.08,-52.05 368.22,15.15 533.83,3.43 633.04,-12.44"></path>
+<polygon fill="#8b2323" stroke="#8b2323" points="632.59,-15.91 643.02,-14.08 633.73,-9 632.59,-15.91"></polygon>
+<text text-anchor="middle" x="393.08" y="-55.85" font-family="Times,serif" font-size="14.00" fill="#8b2323">dpv:hasTechnicalOrganisationalMeasure</text>
+</g>
+</g>
+</svg>
+
+<svg width="868pt" height="152pt" viewBox="0.00 0.00 867.74 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>ResearchAndDevelopment</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-148 863.74,-148 863.74,4 -4,4"></polygon>
+<!-- ResearchAndDevelopment -->
+<g id="node1" class="node">
+<title>ResearchAndDevelopment</title>
+<ellipse fill="Yellow" stroke="Black" stroke-width="2" cx="515.01" cy="-72" rx="133.48" ry="18"></ellipse>
+<text text-anchor="middle" x="515.01" y="-68.3" font-family="Times,serif" font-size="14.00">ResearchAndDevelopment</text>
+</g>
+<!-- Purpose -->
+<g id="node5" class="node">
+<title>Purpose</title>
+<ellipse fill="lightskyblue" stroke="Black" cx="811" cy="-72" rx="48.99" ry="18"></ellipse>
+<text text-anchor="middle" x="811" y="-68.3" font-family="Times,serif" font-size="14.00">Purpose</text>
+</g>
+<!-- ResearchAndDevelopment&#45;&gt;Purpose -->
+<g id="edge4" class="edge">
+<title>ResearchAndDevelopment-&gt;Purpose</title>
+<path fill="none" stroke="blue" d="M648.39,-72C684.65,-72 722.11,-72 751.83,-72"></path>
+<polygon fill="blue" stroke="blue" points="752,-75.5 762,-72 752,-68.5 752,-75.5"></polygon>
+<text text-anchor="middle" x="705.25" y="-75.8" font-family="Times,serif" font-size="14.00" fill="blue">subclassOf</text>
+</g>
+<!-- Non&#45;Commercial Research -->
+<g id="node2" class="node">
+<title>Non-Commercial Research</title>
+<ellipse fill="cornflowerblue" stroke="Black" cx="133.89" cy="-126" rx="133.78" ry="18"></ellipse>
+<text text-anchor="middle" x="133.89" y="-122.3" font-family="Times,serif" font-size="14.00">Non-Commercial Research</text>
+</g>
+<!-- Non&#45;Commercial Research&#45;&gt;ResearchAndDevelopment -->
+<g id="edge1" class="edge">
+<title>Non-Commercial Research-&gt;ResearchAndDevelopment</title>
+<path fill="none" stroke="blue" d="M226.66,-112.93C282.79,-104.93 354.67,-94.7 412.5,-86.46"></path>
+<polygon fill="blue" stroke="blue" points="413.35,-89.87 422.76,-85 412.36,-82.94 413.35,-89.87"></polygon>
+<text text-anchor="middle" x="324.78" y="-106.8" font-family="Times,serif" font-size="14.00" fill="blue">subclassOf</text>
+</g>
+<!-- Academic Research -->
+<g id="node3" class="node">
+<title>Academic Research</title>
+<ellipse fill="cornflowerblue" stroke="Black" cx="133.89" cy="-72" rx="100.98" ry="18"></ellipse>
+<text text-anchor="middle" x="133.89" y="-68.3" font-family="Times,serif" font-size="14.00">Academic Research</text>
+</g>
+<!-- Academic Research&#45;&gt;ResearchAndDevelopment -->
+<g id="edge2" class="edge">
+<title>Academic Research-&gt;ResearchAndDevelopment</title>
+<path fill="none" stroke="blue" d="M235,-72C276.7,-72 325.91,-72 371.3,-72"></path>
+<polygon fill="blue" stroke="blue" points="371.52,-75.5 381.52,-72 371.52,-68.5 371.52,-75.5"></polygon>
+<text text-anchor="middle" x="324.78" y="-75.8" font-family="Times,serif" font-size="14.00" fill="blue">subclassOf</text>
+</g>
+<!-- Commercial Research -->
+<g id="node4" class="node">
+<title>Commercial Research</title>
+<ellipse fill="cornflowerblue" stroke="Black" cx="133.89" cy="-18" rx="112.38" ry="18"></ellipse>
+<text text-anchor="middle" x="133.89" y="-14.3" font-family="Times,serif" font-size="14.00">Commercial Research</text>
+</g>
+<!-- Commercial Research&#45;&gt;ResearchAndDevelopment -->
+<g id="edge3" class="edge">
+<title>Commercial Research-&gt;ResearchAndDevelopment</title>
+<path fill="none" stroke="blue" d="M218.56,-29.92C275.78,-38.07 351.95,-48.92 412.62,-57.56"></path>
+<polygon fill="blue" stroke="blue" points="412.2,-61.03 422.6,-58.98 413.19,-54.1 412.2,-61.03"></polygon>
+<text text-anchor="middle" x="324.78" y="-52.8" font-family="Times,serif" font-size="14.00" fill="blue">subclassOf</text>
+</g>
+</g>
+</svg>
+<h2 id='extensions-for-specific-jurisdictions-and-domains'>Extensions for specific jurisdictions and domains</h2>
+<p><strong>GDPR specification:</strong> The GDPR iteration of DPV. An extension based on equating or extending the concepts within DPV so they match the expected vocabulary required for working with GDPR and its compliance. Currently, this is the DPV-GDPR specification.</p>
+<p><strong>ISO and CCPA specifications:</strong> More iterations of DPV regarding ISO and CCPA applications respectively. An extension is where the concepts are applied in a specific setting or use-case, and which cannot be modelled in the base or primary iteration of DPV without forcing everyone else to only limit themselves to the defined concept. For example, ISO has &#39;PII&#39; and CCPA has &#39;sell&#39;, where these two concepts are often equated to &#39;personal data&#39; and &#39;sharing&#39; at a broad level for global understanding, but where their use implies the specific notions within their respective scopes (ISO activities and California respectively). Here, when I say it involves CPRA as its successor. There is no point in modelling these two as separate vocabularies given that they target the same jurisdiction and stakeholders. Whether there should be a separate extension for each jurisdiction or use-case is dependant on how much control and changes are expected (e.g. if each USA state creates new terms that are only applicable in their respective jurisdictions, the DPV should not include these).</p>
+<p><strong>DUO Alignment:</strong> <a href='https://github.com/EBISPOT/DUO'>DUO</a> is a good vocabulary for sharing and management of health/medical datasets - specifically genetics, but it has broader applications. In comparison with DPV, DUO is much more focused on its scope, and as a result has a richer set of concepts that demonstrate practicality of use-cases. It encompasses how datasets can be acquired, collected, and shared along with specific permissions and prohibitions. It is difficult to model such permissions/prohibitions within the DPV because of the much higher and broader scope of both the concepts and legal compliance. That said, DUO and DPV can be aligned through either a) creation additional concepts for permission expression; or b) using existing vocabularies such as ODRL to express the combination. The end (or resulting) semantics permit the same type of usage - where each concept (or code) is intended to convey a specific set of applicable conditions.</p>
+<p><strong>Extensions for domains</strong>: The DPV aims to be domain agnostic and doesn&#39;t care where the purpose is applied or interpreted. This is by design so that it can be utilised in as much a wide areas as possible. However, some use-cases or domains, like jurisdictions, require specific interpretation and definitions for applications. Often times, these domains also have specific separate and specialised laws that introduce terms or define processes which must be incorporated along side other privacy and data protection concerns. Extensions are a good mechanism for providing usefulness of DPV to these domains without them affecting other &#39;normal&#39; applications and use-cases. Examples of such domains are: healthcare (as in medical, hospital), finance (as in banks, insurance), government (as in governing bodies, authorities, police). Creating such extensions require (multi-discplinary) experts specifically with knowledge of the domain requirements as well as how it applies to more generalised areas that are targeted by DPV.</p>
+<p><strong>Extensions for Convenience:</strong> There are terms and concepts used in several instances which are not formalised in any domain or law, but are adhoc creations of the industry or common usage across media and users. Examples of these are: app (as in smartphone, but also desktop), app (separetly, as a possible synonym of both app and company together), service, product, company, and so on. These terms can be loosely defined in a separate extension so that they do not necessitate a large amount of impact within DPV or have tight integrations with concepts within the core vocabulary - such as Data Controller and app. As things mature or are made more clear, concepts can be moved into the core vocabulary (primary, as in DPV).</p>
+<p><strong>Technologies and Tools:</strong> The DPV, in its current state, does not model specific technologies - such as devices, storage (hard disk, cloud), specific databases, or even cookies. Whether these should be provided as an ad-hoc list within the DPV or as an extension is for discussion. My opinion is that by starting this as an extension, we can quickly provide these terms without worrying too much about implication on other DPV terms. Then when we have had time to discuss their relation and usefulness, they can be integrated as necessary, or only as top-level abstract concepts within the DPV. One of the challenges in directly including them is the association between technology and technical measure. For example, using a database with replication across locations and use of specific access control and encryption. It is difficult to find an ideal way to represent all this information, and at the moment it is trivial to say some technical measures are associated with the processing and/or purpose.</p>
+<h2 id='skos-modelling'>SKOS Modelling</h2>
+<p>Currently, the DPV is exlusively modelled using RDFS semantics. Even though it contains statements based in OWL, these are trivial in terms of the impact they have on the model and reusability in non-OWL environments. A common issue I hear about is the problematic application of subclass as a relation expression in tooling that expects to have instances of classes - such as in dropdowns; which is difficult to provide while staying in the current set of logic constraints we have put ourselves into. A SKOS iteration of DPV can vastly improve the quality of application when the DPV terms are not needed to instantiate (e.g. say what specific type of access control is being used), but are only used as a vocabulary (e.g. select access control from available technical measures).</p>
+<pre><code class='language-turtle' lang='turtle'># existing model
+dpv:Concept, dpv:ParentConcept a rdfs:Class .
+dpv:Concept rdfs:subClassOf dpv:ParentConcept .
+dpv:ParentConcept rdfs:subClassOf dpv:TopConcept .
+# SKOS model
+dpv:TopConcept a skos:Concept .
+dpv:Concept, dpv:ParentConcept a skos:Concept, dpv:TopConcept .
+dpv:Concept skos:broader dpv:ParentConcept .
+</code></pre>
+<p>Arguably a complicated way to express the same relations, but here any instance of <code>dpv:TopConcept</code> can be used, while still having relations between them expressed using SKOS.</p>
+<p>I&#39;m not an expert (or experienced) person with the implications of such type of semantic alignments between RDFS, OWL, and SKOS, especially when reasoning is involved.  Still, as long as the reasoning for RDFS and SKOS is satisfied and the OWL semantics are not complicated (or involved), I think this is valuable to work with in terms of practical tools and developing frameworks.</p>
+<h3 id='owl2-model'>OWL2 model</h3>
+<p>Converse to the application of SKOS, this is all about going as deep in to OWL2 as is possible. The origins of DPV are based in SPECIAL, which had a nice minimal layer of OWL subsumption upon which a modified reasoning engine calculated compliance by comparing two policies (preference and request) to identify compliance, all in a fast few microseconds optimised fashion. In the interest of continuing this effort, the current state of DPV can benefit from a native OWL iteration that can be readily plugged into and used alongside tooling from SPECIAL and its successor TRAPEZE projects. </p>
+<p>My hope is that the SPECIAL compliance checker is translated to be capable of running in the browser with minimal performance penalties or requirements, which can open up an entire new world of online preference matching and compliance tooling to be developed. Putting semantics back on the web. The TRAPEZE project is working on something related (I think), given that they are working on a minimal JSON specification for expressing policies which can be converted to formal OWL2 ones.</p>
+<h2 id='use-cases-and-examples'>Use-Cases and Examples</h2>
+<p>Without use-cases, it is getting more and more difficult (and absurd) to develop the DPV. Its a vaccum of what concepts <em>might</em> be useful, with lots of implicit references and requirements (mostly from GDPR), and no implications on how the modelling of terms will impact specific areas of application. For example, when developing purposes as a taxonomy, having a clear picture of where the purposes are defined, or what use-cases require specific notions of purpose (such as where commercial profit making is intended as opposed to non-commercial social benfit). These have an impact on how the purposes should be designed. </p>
+<p>A list of use-cases, and a way to identify them as being applicable for a given concept would be a massive help for both the creators and adopters of the DPV. However, doing this is not an easy task, because each use-case must be documented along with information on what concepts (from DPV) are associated with it. This can be done by giving the use-case a specific identifier, creating a file for each use-case, storing the RDF representation of concepts as being applicable, and then integrating this with the documentation system for finding and listing related use-cases (trivially done using a SPARQL query). More complex iterations can identify use-cases for a given concept where parent and ancestor concepts are relevant. Thus a use-case for a top-concept can easily provide guidance for more specialised and narrower concepts down the taxonomy.</p>
+<p>In a way, each use-case can also be made into an example for where the given concept is to be defined and/or applied. The difference is that the example should be declared with some specific formal representation e.g. RDFS, OWL2, or SKOS. Like the use-case, the example can also be given an identifier and stored into a separate file. However, the application of a parent concept can be tricky in some serialisations such as OWL2 or SKOS if there are other assertions are play (e.g. disjoint sets for OWL2 or non-transitive relations for SKOS). Still, the idea is nice and simple, and can help cover a large number of concepts with use-cases and examples from a small carefully chosen set targeted towards the top concepts.</p>
+<h2 id='datasets'>Datasets</h2>
+<p>While the DPV is doing a good effort at providing a vocabulary, it would be nice to have some collection of real-world data reflecting the practices of apps, companies, privacy-policies, consent dialogues, and so on. Currently, AFAIK, no such dataset exists, though there is some significant technological capability and demonstration (e.g. <a href='https://usableprivacy.org/'>UsablePrivacy project</a> and <a href='https://pribot.org/'>PriBot project</a>) who have shown use of ML and NLP to analyse privacy policies and show summaries of personal data use. Sadly, none of the researchers involved have released any of this data or their models or any resources, other than well crafted websites. </p>
+<p>A lot of good can be created from such datasets, especially when paired with exhausitve and interoperable vocabularies such as the DPV. For example, <a href='https://noyb.eu/en/noyb-aims-end-cookie-banner-terror-and-issues-more-500-gdpr-complaints'>NOYB launched hundreds of complaints using an automated system</a>. If real-world data is available, researchers can initiate compliance assessments and documentations by linking it with legal obligations and requirements and assist practioners in developing such tools for social good.</p>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

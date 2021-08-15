@@ -598,6 +598,11 @@
     schema:name "klip - Kindle Annotations"@en ;
     schema:url "https://harshp.com/dev/klip"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
+
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem, <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "HDD Indexer - sharing movies & files"@en ;
@@ -617,3 +622,17 @@
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "GNIB Appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv/dpv-x-2021-08-15> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-x-2021-08-15.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:dpv, hptag:semantic-web, hptag:dpvcg ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2021-08-15T21:00:00"^^xsd:dateTime ;
+    schema:datePublished "2021-08-15T21:00:00"^^xsd:dateTime ;
+    schema:description "Some ideas for extending and improving DPV and documentation"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "dpv-x 2021-08-15"@en ;
+    schema:url "https://harshp.com/dev/dpv/dpv-x-2021-08-15"^^xsd:anyURI .
