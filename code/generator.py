@@ -252,35 +252,35 @@ def publication_type(publication):
     # for cat in publication.rdf_type:
     #     DEBUG(f'{cat} {type(cat)} {type(HPCOM.FullPaper)}')
     if HPCOM.Thesis in type_iris:
-        s = f'Thesis for {publication.schema_inSupportOf}'
+        s = f'Thesis'
     elif HPCOM.FullPaper in type_iris:
         if hasattr(publication, 'schema_publisher'):
             if type(publication.schema_publisher.rdf_type) is list:
                 for parent in publication.schema_publisher.rdf_type:
                     if str(parent) == str(SCHEMA.Periodical):
-                        s = 'Journal Paper'
+                        s = 'Journal'
                         break
             elif str(publication.schema_publisher.rdf_type) == str(SCHEMA.Periodical):
-                s = 'Journal Paper'
+                s = 'Journal'
             else:
-                s = 'Full Paper' 
+                s = str(publication.schema_publication.hpcom_event_type)
         else:
-            s = 'Full Paper' 
+            s = str(publication.schema_publication.hpcom_event_type)
     elif HPCOM.ShortPaper in type_iris:
-        s = 'Short Paper'
+        s = 'Abstract'
     elif HPCOM.Abstract in type_iris:
         s = 'Abstract'
     elif HPCOM.ExtendedAbstract in type_iris:
-        s = 'Extended Abstract'
+        s = 'Abstract'
     elif HPCOM.BookChapter in type_iris:
         s = 'Book Chapter'
     elif HPCOM.Report in type_iris:
         s = 'Report'
     else:
         s = 'Publication'
-    if hasattr(publication, 'hpcom_peer_reviewed') \
-        and publication.hpcom_peer_reviewed == "true":
-        s = f'{s}, peer-reviewed'
+    # if hasattr(publication, 'hpcom_peer_reviewed') \
+    #     and publication.hpcom_peer_reviewed == "true":
+    #     s = f'{s}, peer-reviewed'
     return s
 
 

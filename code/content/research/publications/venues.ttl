@@ -119,6 +119,7 @@
 
 # conferences, workshops
 <http://example.com/conferences/ICACEA2012> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Advanced Computer Engineering and Applications"@en ;
     schema:alternateName "ICACEA" ;
     schema:url "www.irdindia.in/ICACEA_Trivandrum_Dec/"^^xsd:anyURI ;
@@ -127,6 +128,7 @@
     schema:location "Trivandrum, India" .
 
 <http://example.com/conferences/ICACSIT2013> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Advanced Computer Sciences and Information Technology"@en ;
     schema:alternateName "ICACSIT" ;
     schema:url "http://itresearch.org.in/conference/Feb_2013/Pune_feb_2013/acsit/index.php"^^xsd:anyURI ;
@@ -135,6 +137,7 @@
     schema:location "Pune, India" .
 
 <http://example.com/workshops/EvalUMAP2016> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop EvalUMAP2016: Towards Comparative Evaluation in the User Modelling, Adaptation and Personalization Space"@en ;
     schema:alternateName "EvalUMAP" ;
     schema:url "http://evalumap.adaptcentre.ie/2016/"^^xsd:anyURI ;
@@ -145,6 +148,7 @@
     schema:publisher <http://ceur-ws.org/> .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "ACM Conference on User Modeling, Adaptation and Personalisation"@en ;
     schema:alternateName "UMAP" ;
     schema:url "http://www.um.org/umap2016/"^^xsd:anyURI ;
@@ -153,6 +157,7 @@
     schema:location "Halifax, Canada" .
 
 <http://example.com/workshops/DeSciCom2017> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Enabling Decentralised Scholarly Communication" ;
     schema:alternateName "SciEDSC" ;
     schema:startDate "2017-05-28T00:00:00"^^xsd:dateTime ;
@@ -162,6 +167,7 @@
     schema:publisher <http://ceur-ws.org/> .
 
 <http://example.com/conferences/ESWC2017> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
     schema:alternateName "ESWC" ;
     schema:url "http://2017.eswc-conferences.org/"^^xsd:anyURI ;
@@ -170,6 +176,7 @@
     schema:location "Portorož, Slovenia" .
 
 <http://example.com/workshops/SemSci2017> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Enabling Open Semantic Science"@en ;
     schema:alternateName "SemSci" ;
     schema:url "https://semsci.github.io/semSci2017/"^^xsd:anyURI ;
@@ -179,6 +186,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/workshops/PrivOn2017> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Society, Privacy and the Semantic Web - Policy and Technology"@en ;
     schema:alternateName "PrivOn" ;
     schema:url "http://privon.semanticweb.org/"^^xsd:anyURI ;
@@ -188,6 +196,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/conferences/ISWC2017> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Semantic Web Conference"@en ;
     schema:alternateName "ISWC" ;
     schema:url "https://iswc2017.semanticweb.org/"^^xsd:anyURI ;
@@ -196,6 +205,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Re-coding Black Mirror"@en ;
     schema:url "https://kmitd.github.io/recoding-black-mirror/rbm-2018.html"^^xsd:anyURI ;
     schema:startDate "2018-04-24"^^xsd:anyURI ;
@@ -204,6 +214,7 @@
     schema:location "Lyon, France" .
 
 <http://example.com/conferences/WWW2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "The Web Conference"@en ;
     schema:alternateName "TheWebConf" ;
     schema:url "https://www2018.thewebconf.org/"^^xsd:anyURI ;
@@ -212,6 +223,7 @@
     schema:location "Lyon, France" .
 
 <http://example.com/conferences/EURAS2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "EURAS Annual Standardisation Conference"@en ;
     schema:alternateName "EURAS" ;
     schema:url "http://www.euras.org/web1/downloads/category/12-euras-2018-conference"^^xsd:anyURI ;
@@ -220,6 +232,7 @@
     schema:location "Dublin, Ireland" .
 
 <http://example.com/conferences/HCC13> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "IFIP International Conference on Human Choice and Computers: This Changes Everything"@en ;
     schema:alternateName "HCC13" ;
     schema:url "http://ifiptc9.org/hcc13/"^^xsd:anyURI ;
@@ -228,6 +241,7 @@
     schema:location "Poznan, Poland" .
 
 <http://example.com/workshops/SW4CH2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Semantic Web for Cultural Heritage"@en ;
     schema:alternateName "SW4CH" ;
     schema:url "https://sw4ch2018.ensma.fr/"^^xsd:anyURI ;
@@ -237,11 +251,13 @@
     schema:location "Heraklion, Crete, Greece" .
 
 <http://example.com/workshops/ESWC2018Satellite> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "ESWC 2018 Satellite Events"@en ;
     schema:superEvent <http://example.com/conferences/ESWC2018> ;
     schema:location "Heraklion, Crete, Greece" .
 
 <http://example.com/workshops/MEPDaW2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Managing the Evolution and Preservation of the Data Web"@en ;
     schema:alternateName "MEPDaW" ;
     schema:url "https://mepdaw2018.ai.wu.ac.at/"^^xsd:anyURI ;
@@ -251,6 +267,7 @@
     schema:location "Heraklion, Crete, Greece" .
 
 <http://example.com/conferences/ESWC2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
     schema:alternateName "ESWC" ;
     schema:url "https://2018.eswc-conferences.org"^^xsd:anyURI ;
@@ -259,6 +276,7 @@
     schema:location "Heraklion, Crete, Greece" .
 
 <http://example.com/workshops/IPAW2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "International Provenance and Annotation Workshop"@en ;
     schema:alternateName "IPAW" ;
     schema:url "http://provenanceweek2018.org/"^^xsd:anyURI ;
@@ -267,6 +285,7 @@
     schema:location "London, United Kingdom" .
 
 <http://example.com/workshops/TELERISE2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Technical and Legal aspects of Data Privacy and Security"@en ;
     schema:alternateName "TELERISE" ;
     schema:url "https://www.iit.cnr.it/telerise2018/"^^xsd:anyURI ;
@@ -276,6 +295,7 @@
     schema:location "Budapest, Hungary" .
 
 <http://example.com/conferences/ADBIS2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "European Conference on Advances in Databases and Information Systems"@en ;
     schema:alternateName "ADBIS" ;
     schema:url "http://www.adbis2018.org/"^^xsd:anyURI ;
@@ -284,6 +304,7 @@
     schema:location "Budapest, Hungary" .
 
 <http://example.com/conferences/ISWC2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Semantic Web Conference"@en ;
     schema:alternateName "ISWC" ;
     schema:url "https://iswc2018.semanticweb.org/"^^xsd:anyURI ;
@@ -292,6 +313,7 @@
     schema:location "Monterey, California, USA" .
 
 <http://example.com/workshops/SWSG2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Semantic Web for Social Good"@en ;
     schema:alternateName "SWSG" ;
     schema:url "https://sw4sg.github.io/ISWC2018/"^^xsd:anyURI ;
@@ -301,6 +323,7 @@
     schema:location "Monterey, California, USA" .
 
 <http://example.com/workshops/CKG2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Contextualized Knowledge Graphs"@en ;
     schema:alternateName "CKG" ;
     schema:url "http://wiki.knoesis.org/index.php/CKG2018"^^xsd:anyURI ;
@@ -310,6 +333,7 @@
     schema:location "Monterey, California, USA" .
 
 <http://example.com/workshops/WOP2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Ontology Design and Patterns"@en ;
     schema:alternateName "WOP" ;
     schema:url "http://ontologydesignpatterns.org/wiki/WOP:2018"^^xsd:anyURI ;
@@ -319,6 +343,7 @@
     schema:location "Monterey, California, USA" .
 
 <http://example.com/conferences/SEMANTiCS2018> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Systems"@en ;
     schema:alternateName "SEMANTiCS" ;
     schema:url "https://2018.semantics.cc/"^^xsd:anyURI ;
@@ -327,6 +352,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/workshops/DataValue2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Governing Value: The Practice of Exploiting Data Value"@en ;
     schema:alternateName "DataValue" ;
     schema:url "http://datavalue.adaptcentre.ie/2018Workshop/"^^xsd:anyURI ;
@@ -336,6 +362,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/workshops/DataValue2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Governing Value: The Practice of Exploiting Data Value"@en ;
     schema:alternateName "DataValue" ;
     schema:url "http://datavalue.adaptcentre.ie/2019Workshop/"^^xsd:anyURI ;
@@ -344,6 +371,7 @@
     schema:location "Vienna, Austria" .
 
 <http://example.com/conferences/ICSC2019> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Computing"@en ;
     schema:alternateName "ICSC" ;
     schema:url "https://semanticcomputing.wixsite.com/icsc-2019"^^xsd:anyURI ;
@@ -352,6 +380,7 @@
     schema:location "Newport Beach, California, USA" .
 
 <http://example.com/conferences/SEMANTiCS2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Systems"@en ;
     schema:alternateName "SEMANTiCS" ;
     schema:url "https://2019.semantics.cc/"^^xsd:anyURI ;
@@ -360,6 +389,7 @@
     schema:location "Karlsruhe, Germany" .
 
 <http://example.com/conferences/ESWC2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
     schema:alternateName "ESWC" ;
     schema:url "https://2019.eswc-conferences.org"^^xsd:anyURI ;
@@ -368,6 +398,7 @@
     schema:location "Portorož, Slovenia" .
 
 <http://example.com/conferences/ISWC2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Semantic Web Conference"@en ;
     schema:alternateName "ISWC" ;
     schema:url "https://iswc2019.semanticweb.org/"^^xsd:anyURI ;
@@ -376,6 +407,7 @@
     schema:location "Auckland, New Zealand" .
 
 <http://example.com/conferences/ODBASE2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Ontologies, DataBases, and Applications of Semantics"@en ;
     schema:alternateName "ODBASE" ;
     schema:url "http://www.otmconferences.org/index.php/conferences/odbase-2019"^^xsd:anyURI ;
@@ -384,6 +416,7 @@
     schema:location "Rhodes, Greece" .
 
 <http://example.com/workshops/OM2020> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "International Workshop on Ontology Matching"@en ;
     schema:alternateName "OM" ;
     schema:url "http://om2020.ontologymatching.org/"^^xsd:anyURI ;
@@ -393,6 +426,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/ISWC2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Semantic Web Conference"@en ;
     schema:alternateName "ISWC" ;
     schema:url "https://iswc2020.semanticweb.org/"^^xsd:anyURI ;
@@ -409,6 +443,7 @@
     schema:location "Dublin, Ireland" .
 
 <http://example.com/workshops/CKG2019> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Contextualized Knowledge Graphs"@en ;
     schema:alternateName "CKG" ;
     schema:url "http://wiki.knoesis.org/index.php/CKG2019"^^xsd:anyURI ;
@@ -418,6 +453,7 @@
     schema:location "Auckland, New Zealand" .
 
 <http://example.com/workshops/Consent2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Consent Management in Online Services, Networks and Things"@en ;
     schema:alternateName "COnSeNT" ;
     schema:url "https://privacy-as-expected.org/consent2021/"^^xsd:anyURI ;
@@ -444,6 +480,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/ESWC2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
     schema:alternateName "ESWC" ;
     schema:url "https://2020.eswc-conferences.org"^^xsd:anyURI ;
@@ -452,6 +489,7 @@
     schema:location "Virtual" .
 
 <http://example.com/workshops/MEPDaW2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Managing the Evolution and Preservation of the Data Web"@en ;
     schema:alternateName "MEPDaW" ;
     schema:url "https://mepdaw-ws.github.io/2020/"^^xsd:anyURI ;
@@ -461,6 +499,7 @@
     schema:location "Virtual" .
 
 <http://example.com/workshops/TERECOM2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Technologies for Regulatory Compliance"@en ;
     schema:alternateName "TERECOM" ;
     schema:url "https://terecom2018.lynx-project.eu/"^^xsd:anyURI ;
@@ -469,6 +508,7 @@
     schema:location "Groningen, Netherlands" .
 
 <http://example.com/conferences/JURIX2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Legal Knowledge and Information Systems​"@en ;
     schema:alternateName "JURIX" ;
     schema:url "https://jurix2020.law.muni.cz/"^^xsd:anyURI ;
@@ -477,6 +517,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/ESWC2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
     schema:alternateName "ESWC" ;
     schema:url "https://2021.eswc-conferences.org"^^xsd:anyURI ;
@@ -485,6 +526,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/RELATED2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Workshop on Relations in the Legal Domain"@en ;
     schema:alternateName "RELATED" ;
     schema:url "https://related.di.unito.it/"^^xsd:anyURI ;
@@ -493,6 +535,7 @@
     schema:location "Virtual" .
 
 <http://example.com/workshops/ConPro2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Technology and Consumer Protection"@en ;
     schema:alternateName "ConPro" ;
     schema:url "https://www.ieee-security.org/TC/SPW2021/ConPro/index.html"^^xsd:anyURI ;
@@ -502,6 +545,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/IEEESP2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "IEEE Symposium on Security and Privacy"@en ;
     schema:alternateName "IEEE S&P" ;
     schema:url "https://www.ieee-security.org/TC/SP2021/"^^xsd:anyURI ;
@@ -510,6 +554,7 @@
     schema:location "Virtual" .
 
 <http://example.com/workshops/DarkPatterns2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Workshop ;
     schema:name "CHI Workshop on Dark Patterns in Design: What Can CHI Do About Dark Patterns?"@en ;
     schema:alternateName "DarkPatterns" ;
     schema:url "https://darkpatternsindesign.com/"^^xsd:anyURI ;
@@ -519,6 +564,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/CHI2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "ACM Conference on Human Factors in Computing Systems"@en ;
     schema:alternateName "CHI" ;
     schema:url "https://chi2021.acm.org/"^^xsd:anyURI ;
@@ -527,6 +573,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/OpenIdentity2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "Open Identity Summit 2021"@en ;
     schema:alternateName "OpenIdentity" ;
     schema:url "https://oid2021.compute.dtu.dk/"^^xsd:anyURI ;
@@ -535,6 +582,7 @@
     schema:location "Virtual" .
 
 <http://example.com/conferences/SEMANTiCS2021> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Systems"@en ;
     schema:alternateName "SEMANTiCS" ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI ;
@@ -543,6 +591,7 @@
     schema:location "Amsterdam, Netherlands" .
 
 <http://example.com/conferences/EuroSP21> a schema:PublicationEvent ;
+	hpcom:event_type hpcom:Conference ;
     schema:name "IEEE European Symposium on Security and Privacy"@en ;
     schema:alternateName "EuroS&P 2021" ;
     schema:url "https://www.ieee-security.org/TC/EuroSP2021/"^^xsd:anyURI ;

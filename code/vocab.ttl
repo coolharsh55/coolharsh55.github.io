@@ -15,11 +15,11 @@
     owl:versionInfo "0.1"^^xsd:string .
 
 # Renderings
-hpcom:RenderedItem a owl:Class ;
+hpcom:RenderedItem a rdfs:Class ;
     rdfs:label "RenderedItem"@en ;
     rdfs:comment "Represents the set of items that are rendered on the website."@en .
 # Content
-hpcom:Content a owl:Class ;
+hpcom:Content a rdfs:Class ;
     rdfs:label "Content"@en ;
     rdfs:comment "Represents content associated with an IRI/Entity"@en .
 hpcom:content a rdfs:Property ;
@@ -32,7 +32,7 @@ hpcom:contentFile a rdfs:Property ;
     rdfs:comment "associates a file URI with Content"@en ;
     rdfs:domain hpcom:Content ;
     rdfs:range xsd:anyURI .
-hpcom:FileFormat a owl:Class ;
+hpcom:FileFormat a rdfs:Class ;
     rdfs:label "FileFormat"@en ;
     rdfs:comment "Represents formats for content"@en .
 hpcom:contentFormat a rdfs:Property ;
@@ -44,7 +44,7 @@ hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
 # View
-hpcom:View a owl:Class ;
+hpcom:View a rdfs:Class ;
     rdfs:label "View"@en ;
     rdfs:comment "Represents a specific representation or view of a resource"@en .
 hpcom:view_target a rdfs:Property ;
@@ -57,7 +57,7 @@ hpcom:view_template a rdfs:Property ;
     rdfs:comment "associates a view with its template for rendering"@en ;
     rdfs:domain hpcom:View ;
     rdfs:range xsd:anyURI .
-hpcom:SparqlQuery a owl:Class ;
+hpcom:SparqlQuery a rdfs:Class ;
     rdfs:label "SparqlQuery"@en ;
     rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 hpcom:sparql a rdfs:Property ;
@@ -65,7 +65,7 @@ hpcom:sparql a rdfs:Property ;
     rdfs:comment "associates a SPARQL query that must be executed for the renderer"@en ;
     rdfs:domain hpcom:View ;
     rdfs:range xsd:string .
-hpcom:Renderer a owl:Class ;
+hpcom:Renderer a rdfs:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
 hpcom:view_renderer a rdfs:Property ;
@@ -81,7 +81,7 @@ hpcom:PlainText a hpcom:Renderer ;
     rdfs:comment "Renders a view by converting plain text to HTML"@en .
 
 # Tags
-hpcom:Tag a owl:Class ;
+hpcom:Tag a rdfs:Class ;
     rdfs:label "Tag"@en ;
     rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 hpcom:tag a rdfs:Property ;
@@ -153,7 +153,7 @@ hpcom:peer_reviewed a rdfs:Property ;
     rdfs:range xsd:boolean .
 
 # Reviewing
-hpcom:ReviewingEvent a owl:Class ;
+hpcom:ReviewingEvent a rdfs:Class ;
     rdfs:label "Reivewing Event" ;
     rdfs:comment "Represents peer-review at some venue"@en .
 hpcom:reviewing_articles a rdfs:Property ;
@@ -167,8 +167,19 @@ hpcom:reviewing_positive a rdfs:Property ;
     rdfs:domain hpcom:ReviewingEvent ;
     rdfs:range xsd:int .
 
+# Event Types
+hpcom:event_type a rdfs:Property ;
+    rdfs:label "event type"@en ;
+    rdfs:range hpcom:EventType .
+hpcom:EventType a rdfs:Class ;
+    rdfs:label "Event Type"@en .
+hpcom:Conference a hpcom:EventType ;
+    rdfs:label "Conference"@en .
+hpcom:Workshop a hpcom:EventType ;
+    rdfs:label "Workshop"@en .
+
 # Hobbies 
-hpcom:BookGenre a owl:Class ; rdfs:label "Book Genre"@en .
+hpcom:BookGenre a rdfs:Class ; rdfs:label "Book Genre"@en .
 hpcom:BookFiction a hpcom:BookGenre ; rdfs:label "fiction"@en .
 hpcom:BookNonFiction a hpcom:BookGenre ; rdfs:label "non-fiction"@en .
 hpcom:BookSciFi a hpcom:BookGenre ; rdfs:label "sci-fi"@en .
@@ -181,7 +192,7 @@ hpcom:book-read a hpcom:BookStatus ; rdfs:label "read"@en .
 hpcom:book-to-read a hpcom:BookStatus ; rdfs:label "to read"@en .
 hpcom:book-currently-reading a hpcom:BookStatus ; rdfs:label "currently reading"@en .
 
-hpcom:Rating a owl:Class ; rdfs:label "Rating"@en .
+hpcom:Rating a rdfs:Class ; rdfs:label "Rating"@en .
 hpcom:Rating1 a hpcom:Rating, hpcom:RenderedItem ; 
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "1"^^xsd:int ;

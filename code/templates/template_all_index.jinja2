@@ -6,9 +6,7 @@
 {% for itemlist in posts %}{% for item in itemlist %}
     <li><a class='link-title' href="{{ item.iri }}">{{ item.schema_name }}</a> <br/>
         <small>
-        {% for parent in item.rdf_type|reject('sameas', 'RenderedItem')|sort(attribute='iri') %}
-        {{parent.schema_name}}
-        {% endfor %}
+        <span class="label">{% for parent in item.rdf_type|reject('sameas', 'RenderedItem')|sort(attribute='iri') %}{{parent.schema_name}}{% endfor %}</span>
         <time datetime="{{ item.schema_datePublished }}">{{ item.schema_datePublished }}</time>
         <span>{{ item.schema_description }}</span>
         {% if item.schema_subjectOf %}
