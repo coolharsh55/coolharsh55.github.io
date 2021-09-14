@@ -267,11 +267,11 @@ def publication_type(publication):
         else:
             s = str(publication.schema_publication.hpcom_event_type)
     elif HPCOM.ShortPaper in type_iris:
-        s = 'Abstract'
+        s = 'Short Paper'
     elif HPCOM.Abstract in type_iris:
         s = 'Abstract'
     elif HPCOM.ExtendedAbstract in type_iris:
-        s = 'Abstract'
+        s = 'Ext. Abstract'
     elif HPCOM.BookChapter in type_iris:
         s = 'Book Chapter'
     elif HPCOM.Report in type_iris:
