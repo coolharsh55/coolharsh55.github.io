@@ -66,6 +66,7 @@ graph.load('content/hobbies/books.ttl', format='turtle')
 # research
 graph.load('content/research/research.ttl', format='turtle')
 graph.load('content/research/publications/publications.ttl', format='turtle')
+graph.load('content/research/presentations/presentations.ttl', format='turtle')
 graph.load('content/research/publications/authors.ttl', format='turtle')
 graph.load('content/research/publications/venues.ttl', format='turtle')
 graph.load('content/research/supervision/supervision.ttl', format='turtle')
@@ -111,10 +112,25 @@ view_rdfs_resource = data.get_entity('hpview_RDFSResourceView')
 DEBUG(f'default view: {view_rdfs_resource}')
 RenderedItem = data.get_entity('hpcom_RenderedItem')
 
+
+def _is_schema_PresentationDigitalDocument(item):
+    if type(item.rdf_type) is RDFS_Resource:
+        type_iris = [item.rdf_type]
+    if type(item.rdf_type) is list:
+        type_iris = [URIRef(t.iri) for t in item.rdf_type]
+    else:
+        type_iris = [item.rdf_type]
+    # for cat in item.rdf_type:
+    #     DEBUG(f'{cat} {type(cat)} {type(HPCOM.FullPaper)}')
+    if SCHEMA.PresentationDigitalDocument in type_iris:
+        return True
+    return False
+
 # Tests that can be used within Jinja2 code
 JINJA2_TESTS = {
     'RDFS_Resource': lambda x: type(x) is RDFS_Resource,
     'BNode': lambda x: x.startswith('u'),
+    'schema_PresentationDigitalDocument': _is_schema_PresentationDigitalDocument,
 }
 
 # Path where rendered data is exported or to be stored
@@ -291,6 +307,23 @@ JINJA2_FILTERS = {
 }
 
 
+def _is_rdf_type(item, rdf_type):
+    if type(item) is RDFS_Resource:
+        if type(item.rdf_type) is list:
+            for item_type in item.rdf_type:
+                if prefix_this(item_type) == rdf_type:
+                    return True
+        else:
+            if prefix_this(item.rdf_type) == rdf_type:
+                return True
+    return False
+
+
+JINJA2_FUNCS = {
+    'is_rdf_type': _is_rdf_type,
+}
+
+
 def _view_jinja2(path, metadata=None):
     """jinja2 renderer --> renders contents using Jinja2
     requires metadata['template'] to render with"""
@@ -303,6 +336,7 @@ def _view_jinja2(path, metadata=None):
         autoescape=True, trim_blocks=True, lstrip_blocks=True)
     template_env.tests.update(JINJA2_TESTS)
     template_env.filters.update(JINJA2_FILTERS)
+    template_env.globals.update(JINJA2_FUNCS)
     template = template_env.get_template(template_file)
     if not path.endswith('html'):
         path = f'{path}.html'
@@ -312,7 +346,8 @@ def _view_jinja2(path, metadata=None):
     DEBUG(f'writing {metadata["item"].iri} to {path}')
     with open(path, 'w+') as fd:
         fd.write(template.render(
-            **metadata, RenderedItem=RenderedItem, **JINAJ2_TEMPLATE_VARS))
+            **metadata, RenderedItem=RenderedItem, 
+            **JINAJ2_TEMPLATE_VARS, SCHEMA=SCHEMA))
 
 
 def _view_empty(*args, **kwargs):

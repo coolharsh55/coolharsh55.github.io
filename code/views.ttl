@@ -45,6 +45,7 @@ hpview:AllIndexView a hpcom:View ;
         hpcom:queryString """
             SELECT ?s
             WHERE { 
+                ?s a hpcom:RenderedItem .
                 ?s schema:datePublished ?date .
             } ORDER BY DESC(?date)
             """ ;
@@ -267,6 +268,24 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
                 ?publication schema:datePublished ?date .
+            } ORDER By DESC(?date)
+        """ ;
+    ] .
+
+hpview:PresentationsIndexView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/presentations> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_presentations.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "presentations" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+                ?presentation a schema:PresentationDigitalDocument .
+                ?presentation schema:performer <https://harshp.com/me> .
+                ?presentation schema:datePublished ?date .
+                ?presentation schema:publication ?venue .
+                ?presentation schema:about ?topic .
             } ORDER By DESC(?date)
         """ ;
     ] .

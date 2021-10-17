@@ -1,7 +1,15 @@
 {% extends 'template_base.jinja2' %}
 {% block navtype %}| <a href="/research">research</a>{% endblock navtype %}
 {% block desc %}{% endblock desc %}
-
+{% block pageCSS %}
+<style type="text/css">
+.publication-info {
+    font-size: 0.75rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+</style>
+{% endblock pageCSS %}
 {% block content %}
 <p>
     Other publication lists:
@@ -13,13 +21,12 @@
 {% for publication, date in publications %}
     <li data-title="{{publication.schema_name}}" data-date="{{publication.schema_datePublished}}" data-type="{{publication|publication_type}}">
         <strong>#{{loop.revindex}}</strong> <a href="{{publication.iri}}">{{publication}}</a>
-        <br/>
+        <br/><div class='publication-info'>
         {% if publication.schema_status %}
         <span class='note'>{{ publication.schema_status }}</span>
         {% endif %}
         <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
         <span class="label">{{publication|publication_type}}</span>
-        <br/>
         {# authors #}
         &#9997;<i>
         {% if publication.hpcom_author_lead is sequence %}
@@ -61,13 +68,13 @@
             ; &#128230;resources:
             {% if publication.hpcom_supplementary is sequence %}
             {% for archive in publication.hpcom_supplementary|sort(attribute='schema_name') %}
-            <a href="{{archive.schema_url}}">{{archive}}</a>{{"," if not loop.last}}
+            <a href="{{archive.schema_url}}"> {% if is_rdf_type(archive, 'schema:PresentationDigitalDocument') %}slides{% else %}{{ archive }}{% endif %}</a>{{"," if not loop.last}}
             {% endfor %}
             {% else %}
-            <a href="{{publication.hpcom_supplementary.schema_url}}">{{publication.hpcom_supplementary}}</a>
+            <a href="{{publication.hpcom_supplementary.schema_url}}">{% if is_rdf_type(publication.hpcom_supplementary, 'schema:PresentationDigitalDocument') %}slides{% else %}{{publication.hpcom_supplementary}}{% endif %}</a>
             {% endif %}
         {% endif %}
-        {% if publication.hpcom_publishing_attempt %}<br/><small>published after {% if publication.hpcom_publishing_attempt is sequence and publication.hpcom_publishing_attempt is not string %}{{publication.hpcom_publishing_attempt|length + 1}}{% else %}2{% endif %} attempts</small>{% endif %}
+        {% if publication.hpcom_publishing_attempt %}<br/><small>published after {% if publication.hpcom_publishing_attempt is sequence and publication.hpcom_publishing_attempt is not string %}{{publication.hpcom_publishing_attempt|length + 1}}{% else %}2{% endif %} attempts</small>{% endif %}</div>
     </li>
 {% endfor %}
 </ol>
