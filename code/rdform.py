@@ -69,7 +69,7 @@ class RDFS_Resource(object):
         if name in self.metadata:
             return self.metadata[name]
         else:
-            raise AttributeError
+            raise AttributeError(name)
 
     def __str__(self):
         """String representation of object"""
