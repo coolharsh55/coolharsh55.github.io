@@ -319,8 +319,17 @@ def _is_rdf_type(item, rdf_type):
     return False
 
 
+def _rdf_check_object(s, p, o):
+    if not hasattr(s, p):
+        return False
+    sp = str(getattr(s, p).iri)
+    so = str(o)
+    return sp == so
+
+
 JINJA2_FUNCS = {
     'is_rdf_type': _is_rdf_type,
+    'rdf_check_object': _rdf_check_object,
 }
 
 
@@ -347,7 +356,7 @@ def _view_jinja2(path, metadata=None):
     with open(path, 'w+') as fd:
         fd.write(template.render(
             **metadata, RenderedItem=RenderedItem, 
-            **JINAJ2_TEMPLATE_VARS, SCHEMA=SCHEMA))
+            **JINAJ2_TEMPLATE_VARS, SCHEMA=SCHEMA, HPCOM=HPCOM))
 
 
 def _view_empty(*args, **kwargs):
