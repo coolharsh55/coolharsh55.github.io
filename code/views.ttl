@@ -417,6 +417,17 @@ hpview:BookListView a hpcom:View ;
                 ?book hpcom:book_status hpcom:book-to-read .
             } ORDER By ?title
         """ ;
+        ];
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "on_loan" ;
+        hpcom:queryString """
+            SELECT ?book ?title WHERE {
+                ?book a schema:Book .
+                ?book schema:name ?title .
+                ?book hpcom:book_on_loan true .
+            } ORDER By ?title
+        """ ;
         ].
 
 hpview:ResearchPaperView a hpcom:View ;

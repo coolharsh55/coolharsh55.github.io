@@ -59,4 +59,15 @@
     {% endfor %}
 </ol>        
 </section>
+
+<section id="on-loan">
+<h2>Books On-Loan</h2>
+<ol>
+{% for book, title in on_loan %}
+    <li><a href="{{book.iri}}">{{book}}</a><small><sub>{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% endif %}</sub></small> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
+{% else %}
+No books on loan...!
+{% endfor %}
+</ol>
+</section>
 {% endblock content %}
