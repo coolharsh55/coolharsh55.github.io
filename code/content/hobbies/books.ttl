@@ -209,7 +209,7 @@
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "John Moe"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
-    schema:genre hpcom:NonFiction ;
+    schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781250209283"^^xsd:string ;
     schema:name "The Hilarious World of Depression"@en ;
     schema:review "An autobiography of someone who has and overcame depression. Some gems to collect as you read"@en ;
@@ -8411,6 +8411,7 @@
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     schema:name "Project Hail Mary"@en ;
     schema:url "https://harshp.com/hobbies/books/611"^^xsd:anyURI .
 
@@ -9360,6 +9361,7 @@
         schema:Book ;
     hpcom:book_id "680"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
     schema:author "China Miéville"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
@@ -9769,3 +9771,45 @@
     hpcom:book_on_loan true ;
     schema:name "Quiet: The Power of Introverts in a World That Can't Stop Talking"@en ;
     schema:url "https://harshp.com/hobbies/books/714"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/715> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "715"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction ;
+    schema:author "Salman Rushdie"^^xsd:string ;
+    schema:dateCreated "1983"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Shame"@en ;
+    schema:url "https://harshp.com/hobbies/books/715"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/716> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "716"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction ;
+    schema:author "Umberto Eco"^^xsd:string ;
+    schema:dateCreated "1980"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Name of the Rose"@en ;
+    schema:url "https://harshp.com/hobbies/books/716"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/717> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "717"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Umberto Eco"^^xsd:string ;
+    schema:dateCreated "1986"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Faith in Fakes"@en ;
+    schema:url "https://harshp.com/hobbies/books/717"^^xsd:anyURI .
