@@ -144,8 +144,8 @@ hpview:ResearchView a hpcom:View ;
             SELECT DISTINCT ?project ?name WHERE {
                 ?project a <https://harshp.com/research/projects> .
                 ?project schema:name ?name .
-                ?project schema:startDate ?date .
                 ?project schema:member ?role .
+                ?project schema:startDate ?date .
                 ?role schema:endDate ?end_date .
                 FILTER(?end_date > ?today) .
             } ORDER By DESC(?date)
@@ -247,7 +247,17 @@ hpview:ResearchView a hpcom:View ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
-        rdfs:label "publications" ;
+        rdfs:label "recent_publications" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?publication ?date WHERE {
+                ?publication a schema:ScholarlyArticle .
+                ?publication schema:datePublished ?date .
+            } ORDER By DESC(?date) LIMIT 5
+        """ ;
+    ];
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "selected_publications" ;
         hpcom:queryString """
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
@@ -286,6 +296,24 @@ hpview:PresentationsIndexView a hpcom:View ;
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
+            } ORDER By DESC(?date)
+        """ ;
+    ] .
+
+hpview:SeminarsIndexView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research/seminars> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_seminars.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "Seminars, Talks, Lectures" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?seminar ?date ?venue ?topic WHERE {
+                ?seminar a schema:EducationEvent .
+                ?seminar schema:performer <https://harshp.com/me> .
+                ?seminar schema:endDate ?date .
+                ?seminar schema:event ?venue .
+                ?seminar schema:about ?topic .
             } ORDER By DESC(?date)
         """ ;
     ] .

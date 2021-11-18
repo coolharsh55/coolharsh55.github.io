@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+<https://harshp.com/research/seminars> a hpcom:RenderedItem, owl:Class ;
+    schema:name "Seminars, Talks, Lectures"@en ;
+    schema:url "https://harshp.com/research/seminars"^^xsd:anyURI ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:renderWith hpview:SeminarsIndexView ;
+    ] .
+
+<https://harshp.com/seminars/2021-DCMI-DPV> a schema:EducationEvent, <https://harshp.com/research/seminars> ; 
+        schema:name "Data Privacy Vocabulary (DPV)"@en ;
+        schema:identifier "2021-DCMI-DPV" ;
+        schema:url "https://harshp.com/seminars/2021-DCMI-DPV"^^xsd:anyURI ;
+        schema:about [ a hpcom:Link ; schema:name "DPV" ; schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+        hpcom:supplementary [ a hpcom:Link ; schema:name "slides" ; schema:url "https://harshp.com/presentations#2021-DCMI-DPV" ] ;
+        schema:event <http://example.com/events/DCMI2021> ;
+        schema:endDate "2021-10-04T22:00:00"^^xsd:dateTime ;
+        hpcom:content [
+	        a hpcom:Content ;
+	        hpcom:contentFile "https://harshp.com/code/content/research/seminars/2021-DCMI-DPV.html" ;
+	        hpcom:contentFileFormat hpcom:formatHTML ;
+	    ] ;

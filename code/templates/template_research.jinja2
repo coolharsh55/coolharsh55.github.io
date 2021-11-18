@@ -97,7 +97,7 @@ My other research activities include chairing and contributing to the <a class="
 
 <section id="publications">
 <h2>Publications</h2>
-<p>See full list of publications <a href="/research/publications">here</a>.
+<p>See full list of publications with links to copies and resources <a href="/research/publications">here</a>.
     Lists also available at 
     <a href="https://scholar.google.com/citations?user=tugki3kAAAAJ">Google Scholar</a>
     and
@@ -106,7 +106,49 @@ My other research activities include chairing and contributing to the <a class="
 <h3>Selected publications</h3>
 {# iterate over selected publications #}
 <ol class='list-index'>
-{% for publication, date in publications %}
+{% for publication, date in selected_publications %}
+    <li>
+        <a href="{{publication.iri}}">{{publication}}</a> <br/>
+            
+                {% if publication.schema_status %}
+                <span class='note'>{{ publication.schema_status }}</span>
+                {% endif %}
+                <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
+                <i>{{publication|publication_type}}</i>
+                {# publication type filter #}
+                <br/>
+                {% if publication.schema_publication %}
+                {{publication.schema_publication}}
+                    {% if publication.schema_publication.schema_superEvent %}
+                    - co-located with {{publication.schema_publication.schema_superEvent}}
+                    {% endif %}
+                {% else %}
+                {{publication.schema_publisher}}
+                {% endif %}
+                <br/>
+                <i>
+                {% if publication.hpcom_author_lead is sequence %}
+                {% for author in publication.hpcom_author_lead %}
+                {{", " if not loop.first }}{% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>*{% else %}{{author}}*{% endif %}
+                {% endfor %}
+                {% else %}
+                {% if publication.hpcom_author_lead.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_lead}}</u>*{% else %}{{publication.hpcom_author_lead}}*{% endif %}
+                {% endif %}
+                {% if publication.hpcom_author_other is sequence %}
+                {% for author in publication.hpcom_author_other %}
+                , {% if author.iri == "https://harshp.com/me" %}<u>{{author}}</u>{% else %}{{author}}{% endif %}
+                {% endfor %}
+                {% else %}
+                , {% if publication.hpcom_author_other.iri == "https://harshp.com/me" %}<u>{{publication.hpcom_author_other}}</u>{% else %}{{publication.hpcom_author_other}}{% endif %}
+                {% endif %}
+                </i>
+            
+    </li>
+{% endfor %}
+</ol>
+<h3>Recent Publications</h3>
+<ol>
+{% for publication, date in recent_publications %}
     <li>
         <a href="{{publication.iri}}">{{publication}}</a> <br/>
             
@@ -158,6 +200,10 @@ My other research activities include chairing and contributing to the <a class="
         I am a participant and member of the group since <time datetime="2018-09-01">2018-09-01</time> and am currently co-chairing it.
         </li>
     <li>
+        <a href="https://www.w3.org/community/consent/"><b>W3C Consent Community Group (DPVCG)</b></a><br/>
+        The ConsentCG aims to improve the experience of digital "consenting" while ensuring it remains adherent to relevant standards and laws. I am the founder of the group and its co-chair since <time datetime="2020-11-12">2020-11-12</time>.
+        </li>
+    <li>
         <a href="https://www.iso.org/committee/45306.html"><b>ISO/IEC JTC1/SC27/WG5 Identity Management and Privacy Technologies</b></a><br/>
         ISO/IEC has committees and working groups that work on development of standards, with the Working Group 5 in Sub-Committee 27 responsible for privacy technologies. 
         I participate as a (domain) 'expert' in WG5 since <time datetime="2020-08-01">2020-08-01</time> through membership in the<a href="https://www.nsai.ie/">National Standards Association of Ireland (NSAI)</a>. My specific interests include the <a href="https://www.iso.org/standard/80392.html">ISO/IEC 27560</a> standard currently under development for 'consent record information structure'.
@@ -188,7 +234,7 @@ My other research activities include chairing and contributing to the <a class="
     </ul>
     <h4>Reviewer for Conferences/Workshop</h4>
     <ul>
-        {% for acronym, name, date, url in reviewing_conferences|sort(attribute='3', reverse=True)|sort(attribute='0') %}
+        {% for acronym, name, date, url in reviewing_conferences|sort(attribute='2', reverse=True)|sort(attribute='0') %}
             {% if loop.first %}
         <li>{{acronym}} ({{name}}) <a href="{{url}}">{{date}}</a>
             {% else %}
@@ -235,7 +281,7 @@ My other research activities include chairing and contributing to the <a class="
     <li><u>CS3014 Concurrent System I</u>: 
         2018 Integrated Computer Science Degree Year 3, Trinity College Dublin</li>
     </ul>
-<h3>Seminars, Lectures</h3>
+<h3>Talks, Seminars, Lectures</h3>
 
 <h3>Teaching Assistant</h3>
 <ul>
@@ -256,7 +302,7 @@ My other research activities include chairing and contributing to the <a class="
     <li><u>CS7IS1 Knowledge and Data Engineering</u> - 2018 Term I, MSc Computer Science, Trinity College Dublin</li>
     <!-- UCC -->
     <li><u>CS1061 C Programming</u> - 2014 Term I, University College Cork</li>
-    <li><u>CS5008, CS6509, CS1069 Internet Computing<</u> - HiDip ACT, MSc and PGDip DSA, BSc Math Sci 2014 Term II, University College Cork</li>
+    <li><u>CS5008, CS6509, CS1069 Internet Computing</u> - HiDip ACT, MSc and PGDip DSA, BSc Math Sci 2014 Term II, University College Cork</li>
     <li><u>CS5015, CS6120 Object-Oriented Software Development</u> - 2014 Term II, University College Cork</li>
 </ul>
 </section>
