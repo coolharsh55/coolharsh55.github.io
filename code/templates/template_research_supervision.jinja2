@@ -1,0 +1,13 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/research">research</a>{% endblock navtype %}
+
+{% block desc %}
+<div id="description">
+    {{item.schema_roleName}} to <i>{{item.schema_agent}}</i> <br/>
+    from <time>{{item.schema_startDate}}</time> to <time>{{item.schema_endDate}}</time> for {{item.schema_subjectOf}}
+</div>
+{% endblock desc %}
+
+{% block content %}
+{{super()}}
+{% endblock content %}

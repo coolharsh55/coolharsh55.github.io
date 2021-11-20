@@ -247,6 +247,34 @@ hpview:ResearchView a hpcom:View ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
+        rdfs:label "organisation" ;
+        hpcom:queryString """
+            SELECT ?acronym ?name ?date ?url WHERE {
+                ?event a hpcom:OrganisationEvent .
+                ?event schema:alternateName ?acronym .
+                ?event schema:name ?name .
+                ?event schema:startDate ?d .
+                BIND(YEAR(?d) as ?date) .
+                ?event schema:url ?url .
+            }
+
+        """ ;
+    ] ; 
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "seminars" ;
+        hpcom:queryString """
+            SELECT ?name ?url ?date WHERE {
+                ?seminar a schema:PresentationDigitalDocument .
+                FILTER NOT EXISTS { ?paper hpcom:supplementary ?seminar } . 
+                ?seminar schema:name ?name .
+                ?seminar schema:url ?url .
+                ?seminar schema:datePublished ?date .
+            } ORDER BY DESC(?date)
+        """ ;
+    ] ; 
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
         rdfs:label "recent_publications" ;
         hpcom:queryString """
             SELECT DISTINCT ?publication ?date WHERE {
@@ -474,4 +502,9 @@ hpview:BookListView a hpcom:View ;
 hpview:ResearchPaperView a hpcom:View ;
     hpcom:view_template "https://harshp.com/code/templates/template_research_paper.jinja2" ;
     hpcom:view_target schema:ScholarlyArticle ;
+    hpcom:view_renderer hpcom:Jinja2 .
+
+hpview:ResearchSupervisionView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_supervision.jinja2" ;
+    hpcom:view_target hpcom:SupervisionRole ;
     hpcom:view_renderer hpcom:Jinja2 .

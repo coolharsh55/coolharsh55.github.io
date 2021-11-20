@@ -464,7 +464,7 @@
     schema:superEvent <http://example.com/conferences/ISWC2019> ;
     schema:location "Auckland, New Zealand" .
 
-<http://example.com/workshops/Consent2021> a schema:PublicationEvent ;
+<http://example.com/workshops/Consent2021> a schema:PublicationEvent, hpcom:OrganisationEvent ;
 	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Consent Management in Online Services, Networks and Things"@en ;
     schema:alternateName "COnSeNT" ;
@@ -637,14 +637,23 @@
     schema:endDate "2021-06-02T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
-<http://example.com/conferences/SEMANTiCS2021> a schema:PublicationEvent ;
-	hpcom:event_type hpcom:Conference ;
+<http://example.com/conferences/SEMANTiCS2021> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+    hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Systems"@en ;
     schema:alternateName "SEMANTiCS" ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-09-09T00:00:00"^^xsd:dateTime ;
-    schema:location "Amsterdam, Netherlands" .
+    schema:location "Hybrid - Amsterdam, Netherlands" .
+
+<http://example.com/conferences/SEMANTiCS2020> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+	hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2020-eu.semantics.cc/"^^xsd:anyURI ;
+    schema:startDate "2020-09-09T15:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-09-09T19:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
 
 <http://example.com/conferences/EuroSP21> a schema:PublicationEvent ;
 	hpcom:event_type hpcom:Conference ;
