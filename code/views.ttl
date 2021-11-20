@@ -298,6 +298,19 @@ hpview:PresentationsIndexView a hpcom:View ;
                 ?presentation schema:about ?topic .
             } ORDER By DESC(?date)
         """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "presentations_others" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+                ?presentation a schema:PresentationDigitalDocument .
+                FILTER NOT EXISTS { ?presentation schema:performer <https://harshp.com/me> } .
+                ?presentation schema:datePublished ?date .
+                ?presentation schema:publication ?venue .
+                ?presentation schema:about ?topic .
+            } ORDER By DESC(?date)
+        """ ;
     ] .
 
 hpview:SeminarsIndexView a hpcom:View ;
