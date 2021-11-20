@@ -74,8 +74,20 @@
 <https://www.journals.elsevier.com/journal-of-information-security-and-applications/> a schema:Periodical, hpcom:ReviewingEvent ;
     schema:name "Journal of Information Security and Applications"@en ;
     schema:alternateName "JISA" ;
-    schema:url "Journal of Information Security and Applications" ;
+    schema:url "https://www.journals.elsevier.com/journal-of-information-security-and-applications/" ;
     schema:issn "2214-2126" .
+
+<https://www.sciencedirect.com/journal/journal-of-responsible-technology> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Journal of Responsible Technology"@en ;
+    schema:alternateName "JRT" ;
+    schema:url "https://www.sciencedirect.com/journal/journal-of-responsible-technology" ;
+    schema:issn "2666-6596" .
+
+<https://www.sciencedirect.com/journal/future-generation-computer-systems> a schema:Periodical, hpcom:ReviewingEvent ;
+    schema:name "Future Generation Computer Systems"@en ;
+    schema:alternateName "FGCS" ;
+    schema:url "https://www.sciencedirect.com/journal/future-generation-computer-systems" ;
+    schema:issn "0167-739X" .
 
 <https://www.sciencedirect.com/journal/future-generation-computer-systems> a schema:Periodical, hpcom:ReviewingEvent ;
     schema:name "Future Generation Computer Systems"@en ;
@@ -452,7 +464,7 @@
     schema:superEvent <http://example.com/conferences/ISWC2019> ;
     schema:location "Auckland, New Zealand" .
 
-<http://example.com/workshops/Consent2021> a schema:PublicationEvent ;
+<http://example.com/workshops/Consent2021> a schema:PublicationEvent, hpcom:OrganisationEvent ;
 	hpcom:event_type hpcom:Workshop ;
     schema:name "Workshop on Consent Management in Online Services, Networks and Things"@en ;
     schema:alternateName "COnSeNT" ;
@@ -468,6 +480,22 @@
     schema:url "http://www.kgswc.org/"^^xsd:anyURI ;
     schema:startDate "2020-07-28T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-07-31T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://www.kgswc.org/#2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    schema:name "Iberoamerican Knowledge Graphs and Semantic Web Conference"@en ;
+    schema:alternateName "KGSWC" ;
+    schema:url "http://www.kgswc.org/"^^xsd:anyURI ;
+    schema:startDate "2021-11-22T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-11-24T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<https://www.cikm2020.org/> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    schema:name "29th ACM International Conference on Information and Knowledge Management"@en ;
+    schema:alternateName "CIKM" ;
+    schema:url "https://www.cikm2020.org/"^^xsd:anyURI ;
+    schema:startDate "2020-10-19T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-10-23T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
 <http://lascar.sda.tech/#2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
@@ -488,6 +516,15 @@
     schema:endDate "2020-06-04T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
+<http://example.com/conferences/ISWC2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Semantic Web Conference"@en ;
+    schema:alternateName "ISWC" ;
+    schema:url "https://iswc2021.semanticweb.org/"^^xsd:anyURI ;
+    schema:startDate "2021-10-24T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-10-28T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
 <http://example.com/workshops/MEPDaW2020> a schema:PublicationEvent, hpcom:ReviewingEvent ;
 	hpcom:event_type hpcom:Workshop ;
     schema:name "Managing the Evolution and Preservation of the Data Web"@en ;
@@ -496,6 +533,16 @@
     schema:startDate "2020-11-02T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-11-03T00:00:00"^^xsd:dateTime ;
     schema:superEvent <http://example.com/conferences/ISWC2020> ;
+    schema:location "Virtual" .
+
+<http://example.com/workshops/MEPDaW2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Managing the Evolution and Preservation of the Data Web"@en ;
+    schema:alternateName "MEPDaW" ;
+    schema:url "https://mepdaw-ws.github.io/2021/"^^xsd:anyURI ;
+    schema:startDate "2021-10-25T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-10-25T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/ISWC2021> ;
     schema:location "Virtual" .
 
 <http://example.com/workshops/TERECOM2018> a schema:PublicationEvent, hpcom:ReviewingEvent ;
@@ -516,6 +563,15 @@
     schema:endDate "2020-12-11T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
+<http://example.com/conferences/JURIX2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Legal Knowledge and Information Systems​"@en ;
+    schema:alternateName "JURIX" ;
+    schema:url "https://jurix2021.mruni.eu/"^^xsd:anyURI ;
+    schema:startDate "2021-12-08T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-12-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Vilnius, Lithuania / Hybrid" .
+
 <http://example.com/conferences/ESWC2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
 	hpcom:event_type hpcom:Conference ;
     schema:name "Extended Semantic Web Conference"@en ;
@@ -523,6 +579,15 @@
     schema:url "https://2021.eswc-conferences.org"^^xsd:anyURI ;
     schema:startDate "2021-06-02T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-06-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://example.com/conferences/ESWC2022> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "Extended Semantic Web Conference"@en ;
+    schema:alternateName "ESWC" ;
+    schema:url "https://2022.eswc-conferences.org"^^xsd:anyURI ;
+    schema:startDate "2022-05-29T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-06-02T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
 <http://example.com/conferences/RELATED2021> a schema:PublicationEvent, hpcom:ReviewingEvent ;
@@ -581,14 +646,23 @@
     schema:endDate "2021-06-02T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
 
-<http://example.com/conferences/SEMANTiCS2021> a schema:PublicationEvent ;
-	hpcom:event_type hpcom:Conference ;
+<http://example.com/conferences/SEMANTiCS2021> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+    hpcom:event_type hpcom:Conference ;
     schema:name "International Conference on Semantic Systems"@en ;
     schema:alternateName "SEMANTiCS" ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-09-09T00:00:00"^^xsd:dateTime ;
-    schema:location "Amsterdam, Netherlands" .
+    schema:location "Hybrid - Amsterdam, Netherlands" .
+
+<http://example.com/conferences/SEMANTiCS2020> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+	hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2020-eu.semantics.cc/"^^xsd:anyURI ;
+    schema:startDate "2020-09-09T15:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-09-09T19:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
 
 <http://example.com/conferences/EuroSP21> a schema:PublicationEvent ;
 	hpcom:event_type hpcom:Conference ;
@@ -598,6 +672,15 @@
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-09-10T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
+
+<https://2022.eswc-conferences.org/> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "Extended Semantic Web Conference"@en ;
+    schema:alternateName "ESWC" ;
+    schema:url "https://2022.eswc-conferences.org/"^^xsd:anyURI ;
+    schema:startDate "2020-05-29T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-06-02T00:00:00"^^xsd:dateTime ;
+    schema:location "Hersonissos, Greece" .
 
 # events
 
@@ -609,3 +692,11 @@
     schema:startDate "2021-10-04T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-10-15T00:00:00"^^xsd:dateTime ;
     schema:location "Virtual" .
+
+<https://down.dsg.cs.tcd.ie/witidtm/> a schema:EducationEvent, schema:PublicationEvent ;
+    schema:name "What is the Internet doing to me? (witidtm)" ; 
+    schema:alternateName "WITIDTM" ;
+    schema:url "https://down.dsg.cs.tcd.ie/witidtm/"^^xsd:anyURI ;
+    schema:startDate "2021-11-18T16:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-11-18T17:00:00"^^xsd:dateTime ;
+    schema:location "Trinity College Dublin" .
