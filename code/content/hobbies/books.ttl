@@ -8406,7 +8406,7 @@
 <https://harshp.com/hobbies/books/611> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "611"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Andy Weir"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -8842,7 +8842,9 @@
         schema:Book ;
     hpcom:book_id "643"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-11-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10008,3 +10010,17 @@
     schema:genre hpcom:BookNonFiction ;
     schema:name "Theft by Finding Diaries"@en ;
     schema:url "https://harshp.com/hobbies/books/732"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/733> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "733"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Diane Coyle"^^xsd:string ;
+    schema:dateCreated ""^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Cogs and Monsters: What Economics Is, and What It Should Be"@en ;
+    schema:url "https://harshp.com/hobbies/books/733"^^xsd:anyURI .
