@@ -451,7 +451,7 @@ hpview:GenericJinja2View a hpcom:View ;
 hpview:FileCopyView a hpcom:View ;
     hpcom:view_renderer hpcom:FileCopy .
 
-hpview:BookListView a hpcom:View ;
+hpview:BookIndexView a hpcom:View ;
     hpcom:view_template "https://harshp.com/code/templates/template_hobbies_books.jinja2" ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_target <https://harshp.com/hobbies/books> ;
@@ -498,6 +498,36 @@ hpview:BookListView a hpcom:View ;
             } ORDER By ?title
         """ ;
         ].
+
+hpview:BookListIndexView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_lists.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "lists" ;
+        hpcom:queryString """
+            SELECT ?list (COUNT(?book) as ?nos_books) ?id WHERE {
+                ?list a <https://harshp.com/hobbies/books/lists> .
+                ?list schema:identifier ?id .
+                ?book schema:isPartOf ?list .
+            } GROUP BY ?list
+            ORDER By ASC(?id)
+        """ ; ] .
+
+hpview:BookListView a hpcom:View ;
+    hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/hobbies/books/lists> ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "books" ;
+        hpcom:queryString """
+            SELECT ?book ?name WHERE {
+                ?book a schema:Book .
+                ?book schema:isPartOf ?iri .
+                ?book schema:name ?name .
+            } ORDER By ASC(?name)
+        """ ; ] .
 
 hpview:ResearchPaperView a hpcom:View ;
     hpcom:view_template "https://harshp.com/code/templates/template_research_paper.jinja2" ;

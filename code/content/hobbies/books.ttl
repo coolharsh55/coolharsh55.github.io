@@ -1,6 +1,7 @@
 @prefix hpcom: <https://harshp.com/code/vocab#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix list: <https://harshp.com/hobbies/books/lists/> .
 
 <https://harshp.com/hobbies/books/1> a hpcom:RenderedItem,
         schema:Book ;
@@ -15,6 +16,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780718193669"^^xsd:string ;
     schema:name "Poor Economics"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/1"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/2> a hpcom:RenderedItem,
@@ -41,6 +43,7 @@
     schema:isbn "9781780724379"^^xsd:string ;
     schema:name "Secrets of a Devon Wood: My Nature Journal"@en ;
     schema:review "Delightful illustrations. Worth being a collectible."@en ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/3"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/4> a hpcom:RenderedItem,
@@ -67,6 +70,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780765312181"^^xsd:string ;
     schema:name "Blindsight"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/5"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/6> a hpcom:RenderedItem,
@@ -82,6 +87,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780679760801"^^xsd:string ;
     schema:name "The Master and Margarita"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/6"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/7> a hpcom:RenderedItem,
@@ -130,6 +136,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780356506999"^^xsd:string ;
     schema:name "The Raven Tower"@en ;
+    schema:isPartOf list:best-fantasy ;
     schema:url "https://harshp.com/hobbies/books/10"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/11> a hpcom:RenderedItem,
@@ -159,6 +166,7 @@
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Consentability: Consent and its Limits"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/12"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/13> a hpcom:RenderedItem,
@@ -174,6 +182,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Children of Ruin"@en ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/13"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/14> a hpcom:RenderedItem,
@@ -348,6 +357,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780375714498"^^xsd:string ;
     schema:name "Manufacturing Consent: The Political Economy of the Mass Media"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/29"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/30> a hpcom:RenderedItem,
@@ -402,6 +412,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781250195524"^^xsd:string ;
     schema:name "Cosmos"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/34"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/35> a hpcom:RenderedItem,
@@ -604,6 +615,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780465096053"^^xsd:string ;
     schema:name "What Is Real?: The Unfinished Quest for the Meaning of Quantum Physics"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/53"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/54> a hpcom:RenderedItem,
@@ -708,6 +720,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780857864772"^^xsd:string ;
     schema:name "S."@en ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/62"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/63> a hpcom:RenderedItem,
@@ -1080,6 +1093,7 @@
     schema:dateCreated "1969"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Godfather"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/100"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/101> a hpcom:RenderedItem,
@@ -1093,6 +1107,8 @@
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Harry Potter and the Sorcerer's Stone"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/101"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/102> a hpcom:RenderedItem,
@@ -1121,6 +1137,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "2940012102744"^^xsd:string ;
     schema:name "The Complete Sherlock Holmes and Tales of Terror and Mystery"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/103"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/104> a hpcom:RenderedItem,
@@ -1135,6 +1152,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780192833594"^^xsd:string ;
     schema:name "Great Expectations"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/104"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/105> a hpcom:RenderedItem,
@@ -1148,6 +1166,8 @@
     schema:dateCreated "2005"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Harry Potter and the Half-Blood Prince"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/105"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/106> a hpcom:RenderedItem,
@@ -1162,6 +1182,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780545010221"^^xsd:string ;
     schema:name "Harry Potter and the Deathly Hallows"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/106"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/107> a hpcom:RenderedItem,
@@ -1175,6 +1197,8 @@
     schema:dateCreated "1889"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "A Connecticut Yankee in King Arthur's Court"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/107"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/108> a hpcom:RenderedItem,
@@ -1189,6 +1213,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780192840509"^^xsd:string ;
     schema:name "Aesop's Fables"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/108"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/109> a hpcom:RenderedItem,
@@ -1272,6 +1297,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780143039563"^^xsd:string ;
     schema:name "The Adventures of Tom Sawyer"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/114"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/115> a hpcom:RenderedItem,
@@ -1313,6 +1339,8 @@
     schema:dateCreated "2000"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Harry Potter and the Goblet of Fire"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/117"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/118> a hpcom:RenderedItem,
@@ -1424,6 +1452,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780142437179"^^xsd:string ;
     schema:name "The Adventures of Huckleberry Finn"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/125"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/126> a hpcom:RenderedItem,
@@ -1519,6 +1548,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780517174968"^^xsd:string ;
     schema:name "Complete Adventures and Memoirs of Sherlock Holmes"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/132"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/133> a hpcom:RenderedItem,
@@ -1533,6 +1563,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780688120498"^^xsd:string ;
     schema:name "Through the Looking-Glass and What Alice Found There"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/133"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/134> a hpcom:RenderedItem,
@@ -1548,6 +1580,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780760728505"^^xsd:string ;
     schema:name "Twenty Thousand Leagues Under the Sea"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/134"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/135> a hpcom:RenderedItem,
@@ -1615,6 +1649,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780439358071"^^xsd:string ;
     schema:name "Harry Potter and the Order of the Phoenix"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/139"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/140> a hpcom:RenderedItem,
@@ -1658,6 +1694,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780451527745"^^xsd:string ;
     schema:name "Alice's Adventures in Wonderland & Through the Looking-Glass"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/142"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/143> a hpcom:RenderedItem,
@@ -1672,6 +1710,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780689848377"^^xsd:string ;
     schema:name "Tales of Mystery and Madness"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/143"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/144> a hpcom:RenderedItem,
@@ -1701,6 +1741,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780439655484"^^xsd:string ;
     schema:name "Harry Potter and the Prisoner of Azkaban"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/145"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/146> a hpcom:RenderedItem,
@@ -1741,6 +1783,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780439064866"^^xsd:string ;
     schema:name "Harry Potter and the Chamber of Secrets"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/148"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/149> a hpcom:RenderedItem,
@@ -1961,6 +2005,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Lord of the Rings (The Lord of the Rings, #1-3)"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/164"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/165> a hpcom:RenderedItem,
@@ -2128,6 +2174,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780451191151"^^xsd:string ;
     schema:name "The Fountainhead"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/176"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/177> a hpcom:RenderedItem,
@@ -2239,6 +2286,7 @@
     schema:dateCreated "1981"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Red Dragon"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/184"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/185> a hpcom:RenderedItem,
@@ -2281,6 +2329,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780099446781"^^xsd:string ;
     schema:name "The Silence of the Lambs "@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/187"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/188> a hpcom:RenderedItem,
@@ -2323,6 +2372,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780553380163"^^xsd:string ;
     schema:name "A Brief History of Time"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/190"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/191> a hpcom:RenderedItem,
@@ -2365,6 +2415,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780452011878"^^xsd:string ;
     schema:name "Atlas Shrugged"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/193"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/194> a hpcom:RenderedItem,
@@ -2547,6 +2598,7 @@
     schema:dateCreated "1611"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Holy Bible: King James Version"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/206"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/207> a hpcom:RenderedItem,
@@ -2561,6 +2613,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Dance with Dragons"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/207"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/208> a hpcom:RenderedItem,
@@ -2576,6 +2629,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780441016792"^^xsd:string ;
     schema:name "WWW: Wake"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/208"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/209> a hpcom:RenderedItem,
@@ -2618,6 +2673,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780451210852"^^xsd:string ;
     schema:name "The Drawing of the Three"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/211"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/212> a hpcom:RenderedItem,
@@ -2674,6 +2730,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Restaurant at the End of the Universe"@en ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/215"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/216> a hpcom:RenderedItem,
@@ -2703,6 +2760,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780007120819"^^xsd:string ;
     schema:name "The Big Four"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/217"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/218> a hpcom:RenderedItem,
@@ -2732,6 +2790,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9781841499000"^^xsd:string ;
     schema:name "Blackout"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/219"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/220> a hpcom:RenderedItem,
@@ -2745,6 +2804,7 @@
     schema:dateCreated "2004"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Song of Susannah"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/220"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/221> a hpcom:RenderedItem,
@@ -2760,6 +2820,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553281743"^^xsd:string ;
     schema:name "Mona Lisa Overdrive"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/221"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/222> a hpcom:RenderedItem,
@@ -2802,6 +2863,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780451167804"^^xsd:string ;
     schema:name "Firestarter"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/224"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/225> a hpcom:RenderedItem,
@@ -2859,6 +2921,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780441013678"^^xsd:string ;
     schema:name "Count Zero"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/228"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/229> a hpcom:RenderedItem,
@@ -2873,6 +2936,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841493312"^^xsd:string ;
     schema:name "King of Ayodhya"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/229"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/230> a hpcom:RenderedItem,
@@ -2915,6 +2979,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780595401888"^^xsd:string ;
     schema:name "The Mahabharata: A Modern Rendering, Vol. 2"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/232"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/233> a hpcom:RenderedItem,
@@ -2944,6 +3009,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841493305"^^xsd:string ;
     schema:name "Bridge of Rama"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/234"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/235> a hpcom:RenderedItem,
@@ -2958,6 +3024,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780450417399"^^xsd:string ;
     schema:name "Misery"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/235"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/236> a hpcom:RenderedItem,
@@ -3029,6 +3096,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781430219484"^^xsd:string ;
     schema:name "Coders at Work: Reflections on the Craft of Programming"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/240"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/241> a hpcom:RenderedItem,
@@ -3073,6 +3141,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780340837948"^^xsd:string ;
     schema:name "The Moon Is a Harsh Mistress"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/243"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/244> a hpcom:RenderedItem,
@@ -3088,6 +3157,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9781857231588"^^xsd:string ;
     schema:name "Rendezvous with Rama"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/244"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/245> a hpcom:RenderedItem,
@@ -3118,6 +3188,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553588484"^^xsd:string ;
     schema:name "A Game of Thrones"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/246"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/247> a hpcom:RenderedItem,
@@ -3145,6 +3216,7 @@
     schema:dateCreated "1980"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Mist"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/248"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/249> a hpcom:RenderedItem,
@@ -3160,6 +3232,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316081061"^^xsd:string ;
     schema:name "Deadline"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/249"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/250> a hpcom:RenderedItem,
@@ -3174,6 +3247,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781416552512"^^xsd:string ;
     schema:name "Duma Key"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/250"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/251> a hpcom:RenderedItem,
@@ -3188,6 +3262,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780450031069"^^xsd:string ;
     schema:name "'Salem's Lot"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/251"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/252> a hpcom:RenderedItem,
@@ -3203,6 +3278,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780060541811"^^xsd:string ;
     schema:name "The Andromeda Strain"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/252"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/253> a hpcom:RenderedItem,
@@ -3217,6 +3293,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Hitchhiker's Guide to the Galaxy"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/253"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/254> a hpcom:RenderedItem,
@@ -3273,6 +3351,7 @@
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Vengeance of Ravana"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/257"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/258> a hpcom:RenderedItem,
@@ -3288,6 +3367,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553573428"^^xsd:string ;
     schema:name "A Storm of Swords"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/258"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/259> a hpcom:RenderedItem,
@@ -3303,6 +3383,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553381696"^^xsd:string ;
     schema:name "A Clash of Kings "@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/259"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/260> a hpcom:RenderedItem,
@@ -3331,6 +3412,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781416524304"^^xsd:string ;
     schema:name "Carrie"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/261"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/262> a hpcom:RenderedItem,
@@ -3389,6 +3471,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780441788385"^^xsd:string ;
     schema:name "Stranger in a Strange Land"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/265"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/266> a hpcom:RenderedItem,
@@ -3445,6 +3528,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841491868"^^xsd:string ;
     schema:name "Prince of Ayodhya"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/269"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/270> a hpcom:RenderedItem,
@@ -3459,6 +3543,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780450040184"^^xsd:string ;
     schema:name "The Shining"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/270"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/271> a hpcom:RenderedItem,
@@ -3472,6 +3557,7 @@
     schema:dateCreated "2005"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Girl with the Dragon Tattoo"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/271"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/272> a hpcom:RenderedItem,
@@ -3527,6 +3613,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841493299"^^xsd:string ;
     schema:name "Armies of Hanuman"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/275"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/276> a hpcom:RenderedItem,
@@ -3555,6 +3642,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "So Long, and Thanks for All the Fish"@en ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/277"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/278> a hpcom:RenderedItem,
@@ -3569,6 +3657,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780142437247"^^xsd:string ;
     schema:name "Moby-Dick or, the Whale"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/278"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/279> a hpcom:RenderedItem,
@@ -3596,6 +3685,7 @@
     schema:dateCreated "1982"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Gunslinger"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/280"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/281> a hpcom:RenderedItem,
@@ -3610,6 +3700,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780595401871"^^xsd:string ;
     schema:name "The Mahabharata: A Modern Rendering, Vol. 1"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/281"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/282> a hpcom:RenderedItem,
@@ -3666,6 +3757,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780450411434"^^xsd:string ;
     schema:name "It"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/285"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/286> a hpcom:RenderedItem,
@@ -3680,6 +3772,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841491783"^^xsd:string ;
     schema:name "Demons of Chitrakut"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/286"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/287> a hpcom:RenderedItem,
@@ -3694,6 +3787,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780340829783"^^xsd:string ;
     schema:name "Wizard and Glass"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/287"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/288> a hpcom:RenderedItem,
@@ -3722,6 +3816,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Neuromancer"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/289"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/290> a hpcom:RenderedItem,
@@ -3735,6 +3831,7 @@
     schema:dateCreated "2004"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Dark Tower"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/290"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/291> a hpcom:RenderedItem,
@@ -3764,6 +3861,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781590302255"^^xsd:string ;
     schema:name "The Art of War"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/292"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/293> a hpcom:RenderedItem,
@@ -3793,6 +3891,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781416516934"^^xsd:string ;
     schema:name "Wolves of the Calla"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/294"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/295> a hpcom:RenderedItem,
@@ -3821,6 +3920,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780143066965"^^xsd:string ;
     schema:name "Sons of Sita"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/296"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/297> a hpcom:RenderedItem,
@@ -3865,6 +3965,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316081054"^^xsd:string ;
     schema:name "Feed"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/299"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/300> a hpcom:RenderedItem,
@@ -3880,6 +3981,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553582024"^^xsd:string ;
     schema:name "A Feast for Crows"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/300"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/301> a hpcom:RenderedItem,
@@ -3893,6 +3995,7 @@
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Wind Through the Keyhole (The Dark Tower, #4.5)"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/301"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/302> a hpcom:RenderedItem,
@@ -3923,6 +4026,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316218955"^^xsd:string ;
     schema:name "Parasite"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/303"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/304> a hpcom:RenderedItem,
@@ -3978,6 +4082,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781841491981"^^xsd:string ;
     schema:name "Siege of Mithila"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/307"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/308> a hpcom:RenderedItem,
@@ -3992,6 +4097,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781579125745"^^xsd:string ;
     schema:name "Delta of Venus"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/308"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/309> a hpcom:RenderedItem,
@@ -4006,6 +4113,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780140449181"^^xsd:string ;
     schema:name "The Bhagavad Gita"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/309"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/310> a hpcom:RenderedItem,
@@ -4021,6 +4129,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780345418906"^^xsd:string ;
     schema:name "Life, the Universe and Everything"@en ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/310"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/311> a hpcom:RenderedItem,
@@ -4036,6 +4145,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780140285604"^^xsd:string ;
     schema:name "Cat's Cradle"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/311"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/312> a hpcom:RenderedItem,
@@ -4049,6 +4159,7 @@
     schema:dateCreated "1889"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Three Men in a Boat"@en ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/312"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/313> a hpcom:RenderedItem,
@@ -4064,6 +4175,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780765316998"^^xsd:string ;
     schema:name "Redshirts"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/313"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/314> a hpcom:RenderedItem,
@@ -4077,6 +4189,7 @@
     schema:dateCreated "1877"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Anna Karenina"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/314"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/315> a hpcom:RenderedItem,
@@ -4092,6 +4205,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780425256770"^^xsd:string ;
     schema:name "Neptune's Brood"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/315"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/316> a hpcom:RenderedItem,
@@ -4121,6 +4235,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Metamorphosis"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/317"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/318> a hpcom:RenderedItem,
@@ -4164,6 +4280,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780140424386"^^xsd:string ;
     schema:name "The Canterbury Tales"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/320"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/321> a hpcom:RenderedItem,
@@ -4194,6 +4311,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780060530921"^^xsd:string ;
     schema:name "The Graveyard Book"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/322"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/323> a hpcom:RenderedItem,
@@ -4264,6 +4382,7 @@
     schema:dateCreated "1925"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Trial"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/327"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/328> a hpcom:RenderedItem,
@@ -4307,6 +4426,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9781400078776"^^xsd:string ;
     schema:name "Never Let Me Go"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/330"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/331> a hpcom:RenderedItem,
@@ -4323,6 +4443,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780575081505"^^xsd:string ;
     schema:name "Dune"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/331"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/332> a hpcom:RenderedItem,
@@ -4352,6 +4474,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "American Gods"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/333"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/334> a hpcom:RenderedItem,
@@ -4367,6 +4490,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780199213610"^^xsd:string ;
     schema:name "The Nicomachean Ethics"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/334"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/335> a hpcom:RenderedItem,
@@ -4408,6 +4532,7 @@
     schema:dateCreated "1960"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "To Kill a Mockingbird"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/337"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/338> a hpcom:RenderedItem,
@@ -4422,6 +4547,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Do Androids Dream of Electric Sheep?"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/338"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/339> a hpcom:RenderedItem,
@@ -4436,6 +4562,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780140283334"^^xsd:string ;
     schema:name "Lord of the Flies"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/339"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/340> a hpcom:RenderedItem,
@@ -4451,6 +4578,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780679740674"^^xsd:string ;
     schema:name "The Man in the High Castle"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/340"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/341> a hpcom:RenderedItem,
@@ -4495,6 +4623,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780062316097"^^xsd:string ;
     schema:name "Sapiens: A Brief History of Humankind"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/343"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/344> a hpcom:RenderedItem,
@@ -4510,6 +4639,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780062464316"^^xsd:string ;
     schema:name "Homo Deus: A Brief History of Tomorrow"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/344"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/345> a hpcom:RenderedItem,
@@ -4525,6 +4655,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780765377067"^^xsd:string ;
     schema:name "The Three-Body Problem"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/345"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/346> a hpcom:RenderedItem,
@@ -4582,6 +4713,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780684830490"^^xsd:string ;
     schema:name "The Old Man and the Sea"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/349"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/350> a hpcom:RenderedItem,
@@ -4610,6 +4742,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Dark Forest"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/351"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/352> a hpcom:RenderedItem,
@@ -4637,6 +4770,8 @@
     schema:dateCreated "1949"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "1984"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/353"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/354> a hpcom:RenderedItem,
@@ -4665,6 +4800,7 @@
     schema:dateCreated "1890"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Picture of Dorian Gray"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/355"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/356> a hpcom:RenderedItem,
@@ -4680,6 +4816,9 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780374275631"^^xsd:string ;
     schema:name "Thinking, Fast and Slow"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:books-changed-life ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/356"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/357> a hpcom:RenderedItem,
@@ -4694,6 +4833,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781771642484"^^xsd:string ;
     schema:name "The Hidden Life of Trees: What They Feel, How They Communicate – Discoveries from a Secret World"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/357"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/358> a hpcom:RenderedItem,
@@ -4708,6 +4848,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780156032971"^^xsd:string ;
     schema:name "Foucault's Pendulum"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/358"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/359> a hpcom:RenderedItem,
@@ -4767,6 +4908,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780765377104"^^xsd:string ;
     schema:name "Death's End"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/362"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/363> a hpcom:RenderedItem,
@@ -4809,6 +4951,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Snow Crash"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/365"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/366> a hpcom:RenderedItem,
@@ -4853,6 +4996,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Handmaid's Tale"@en ;
+    schema:isPartOf list:books-changed-life ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/368"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/369> a hpcom:RenderedItem,
@@ -4883,6 +5028,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780393355949"^^xsd:string ;
     schema:name "Fight Club"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/370"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/371> a hpcom:RenderedItem,
@@ -4898,6 +5044,9 @@
         hpcom:BookSciFi ;
     schema:isbn "9780060929879"^^xsd:string ;
     schema:name "Brave New World"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/371"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/372> a hpcom:RenderedItem,
@@ -4913,6 +5062,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553587579"^^xsd:string ;
     schema:name "Foundation and Earth"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/372"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/373> a hpcom:RenderedItem,
@@ -4954,6 +5104,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Prelude to Foundation"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/375"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/376> a hpcom:RenderedItem,
@@ -4982,6 +5133,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780812536362"^^xsd:string ;
     schema:name "Rainbows End"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/377"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/378> a hpcom:RenderedItem,
@@ -4996,6 +5149,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780307347978"^^xsd:string ;
     schema:name "Fahrenheit 451"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/378"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/379> a hpcom:RenderedItem,
@@ -5042,6 +5196,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9788498000832"^^xsd:string ;
     schema:name "Ubik"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/381"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/382> a hpcom:RenderedItem,
@@ -5071,6 +5226,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780198724254"^^xsd:string ;
     schema:name "The Art of Rhetoric"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/383"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/384> a hpcom:RenderedItem,
@@ -5115,6 +5271,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780486266893"^^xsd:string ;
     schema:name "Candide"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/386"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/387> a hpcom:RenderedItem,
@@ -5145,6 +5302,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780441014156"^^xsd:string ;
     schema:name "Accelerando"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/388"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/389> a hpcom:RenderedItem,
@@ -5159,6 +5318,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780385333849"^^xsd:string ;
     schema:name "Slaughterhouse-Five"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/389"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/390> a hpcom:RenderedItem,
@@ -5174,6 +5334,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780441783588"^^xsd:string ;
     schema:name "Starship Troopers"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/390"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/391> a hpcom:RenderedItem,
@@ -5232,6 +5393,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553803716"^^xsd:string ;
     schema:name "Foundation"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/394"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/395> a hpcom:RenderedItem,
@@ -5305,6 +5467,8 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780525427575"^^xsd:string ;
     schema:name "Enlightenment Now: The Case for Reason, Science, Humanism, and Progress"@en ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/399"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/400> a hpcom:RenderedItem,
@@ -5320,6 +5484,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780812550702"^^xsd:string ;
     schema:name "Ender's Game"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/400"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/401> a hpcom:RenderedItem,
@@ -5349,6 +5514,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780061474095"^^xsd:string ;
     schema:name "Anathem"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/402"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/403> a hpcom:RenderedItem,
@@ -5363,6 +5529,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780451526342"^^xsd:string ;
     schema:name "Animal Farm"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/403"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/404> a hpcom:RenderedItem,
@@ -5378,6 +5546,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780394573434"^^xsd:string ;
     schema:name "The Remains of the Day"@en ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/404"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/405> a hpcom:RenderedItem,
@@ -5393,6 +5562,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781400106653"^^xsd:string ;
     schema:name "The White Tiger "@en ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/405"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/406> a hpcom:RenderedItem,
@@ -5437,6 +5607,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553293388"^^xsd:string ;
     schema:name "Foundation's Edge"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/408"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/409> a hpcom:RenderedItem,
@@ -5452,6 +5623,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553565072"^^xsd:string ;
     schema:name "Forward the Foundation"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/409"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/410> a hpcom:RenderedItem,
@@ -5482,6 +5654,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781847084316"^^xsd:string ;
     schema:name "The Luminaries"@en ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/411"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/412> a hpcom:RenderedItem,
@@ -5497,6 +5670,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553803730"^^xsd:string ;
     schema:name "Second Foundation"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/412"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/413> a hpcom:RenderedItem,
@@ -5512,6 +5686,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553803723"^^xsd:string ;
     schema:name "Foundation and Empire"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/413"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/414> a hpcom:RenderedItem,
@@ -5540,6 +5715,9 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780099578512"^^xsd:string ;
     schema:name "Midnight's Children"@en ;
+    schema:isPartOf list:fantasy ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/415"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/416> a hpcom:RenderedItem,
@@ -5570,6 +5748,9 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780140449143"^^xsd:string ;
     schema:name "The Republic"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/417"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/418> a hpcom:RenderedItem,
@@ -5613,6 +5794,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780007902248"^^xsd:string ;
     schema:name "Grimm's Fairy Tales"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/420"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/421> a hpcom:RenderedItem,
@@ -5700,6 +5882,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553580518"^^xsd:string ;
     schema:name "Passage"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/426"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/427> a hpcom:RenderedItem,
@@ -5713,6 +5896,8 @@
     schema:dateCreated "1879"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Brothers Karamazov"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/427"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/428> a hpcom:RenderedItem,
@@ -5743,6 +5928,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316389686"^^xsd:string ;
     schema:name "Six Wakes"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/429"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/430> a hpcom:RenderedItem,
@@ -5759,6 +5945,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780434018420"^^xsd:string ;
     schema:name "The Gone-Away World"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/430"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/431> a hpcom:RenderedItem,
@@ -5774,6 +5961,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780156306300"^^xsd:string ;
     schema:name "Fiasco"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/431"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/432> a hpcom:RenderedItem,
@@ -5804,6 +5993,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780684853680"^^xsd:string ;
     schema:name "Flaming Iguanas: An Illustrated All-Girl Road Novel Thing"@en ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/433"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/434> a hpcom:RenderedItem,
@@ -5877,6 +6067,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780575077027"^^xsd:string ;
     schema:name "Ringworld"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/438"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/439> a hpcom:RenderedItem,
@@ -5922,6 +6113,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780141182537"^^xsd:string ;
     schema:name "Lolita"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/441"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/442> a hpcom:RenderedItem,
@@ -5982,6 +6174,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780684833392"^^xsd:string ;
     schema:name "Catch-22"@en ;
+    schema:isPartOf list:classics ;
     schema:url "https://harshp.com/hobbies/books/445"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/446> a hpcom:RenderedItem,
@@ -6024,6 +6217,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Solaris"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/448"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/449> a hpcom:RenderedItem,
@@ -6038,6 +6233,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780465017522"^^xsd:string ;
     schema:name "Intercourse"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/449"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/450> a hpcom:RenderedItem,
@@ -6052,6 +6248,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780307346605"^^xsd:string ;
     schema:name "World War Z: An Oral History of the Zombie War"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/450"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/451> a hpcom:RenderedItem,
@@ -6095,6 +6292,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780674430006"^^xsd:string ;
     schema:name "Capital in the Twenty-First Century"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/453"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/454> a hpcom:RenderedItem,
@@ -6152,6 +6350,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780307269935"^^xsd:string ;
     schema:name "The Master Switch: The Rise and Fall of Information Empires"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/457"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/458> a hpcom:RenderedItem,
@@ -6166,6 +6365,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780307377906"^^xsd:string ;
     schema:name "The Righteous Mind: Why Good People Are Divided by Politics and Religion"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/458"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/459> a hpcom:RenderedItem,
@@ -6181,6 +6381,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781560970972"^^xsd:string ;
     schema:name "Passionella and Other Stories"@en ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/459"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/460> a hpcom:RenderedItem,
@@ -6225,6 +6426,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780140022766"^^xsd:string ;
     schema:name "Nausea "@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/462"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/463> a hpcom:RenderedItem,
@@ -6240,6 +6443,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780088619451"^^xsd:string ;
     schema:name "If on a Winter's Night a Traveler"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/463"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/464> a hpcom:RenderedItem,
@@ -6269,6 +6473,7 @@
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Calypso"@en ;
+    schema:isPartOf list:humour ;
     schema:url "https://harshp.com/hobbies/books/465"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/466> a hpcom:RenderedItem,
@@ -6284,6 +6489,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780394752846"^^xsd:string ;
     schema:name "Hopscotch"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/466"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/467> a hpcom:RenderedItem,
@@ -6298,6 +6504,7 @@
     schema:dateCreated "1962"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Pale Fire"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/467"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/468> a hpcom:RenderedItem,
@@ -6341,6 +6548,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553278224"^^xsd:string ;
     schema:name "The Martian Chronicles"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/470"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/471> a hpcom:RenderedItem,
@@ -6500,6 +6708,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780062413505"^^xsd:string ;
     schema:name "Not That Bad: Dispatches from Rape Culture"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/481"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/482> a hpcom:RenderedItem,
@@ -6514,6 +6723,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781473666900"^^xsd:string ;
     schema:name "The Wonder Down Under: A User's Guide to the Vagina"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/482"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/483> a hpcom:RenderedItem,
@@ -6529,6 +6739,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781532913686"^^xsd:string ;
     schema:name "The Princess Saves Herself in This One"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/483"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/484> a hpcom:RenderedItem,
@@ -6557,6 +6768,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780143058144"^^xsd:string ;
     schema:name "Crime and Punishment"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/485"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/486> a hpcom:RenderedItem,
@@ -6570,6 +6783,8 @@
     schema:dateCreated "1922"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Ulysses"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/486"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/487> a hpcom:RenderedItem,
@@ -6642,6 +6857,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9788186211922"^^xsd:string ;
     schema:name "The Night Life of Trees"@en ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/491"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/492> a hpcom:RenderedItem,
@@ -6657,6 +6873,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781524852313"^^xsd:string ;
     schema:name "The Mermaid's Voice Returns in This One"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/492"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/493> a hpcom:RenderedItem,
@@ -6715,6 +6932,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780804139021"^^xsd:string ;
     schema:name "The Martian"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/496"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/497> a hpcom:RenderedItem,
@@ -6729,6 +6947,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Dispossessed"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/497"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/498> a hpcom:RenderedItem,
@@ -6744,6 +6963,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Left Hand of Darkness"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/498"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/499> a hpcom:RenderedItem,
@@ -6789,6 +7009,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780060512743"^^xsd:string ;
     schema:name "The Lathe of Heaven"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/501"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/502> a hpcom:RenderedItem,
@@ -6805,6 +7026,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553380965"^^xsd:string ;
     schema:name "The Diamond Age: Or, A Young Lady's Illustrated Primer"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/502"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/503> a hpcom:RenderedItem,
@@ -6820,6 +7042,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781419729072"^^xsd:string ;
     schema:name "Invisible Women: Data Bias in a World Designed for Men"@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/503"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/504> a hpcom:RenderedItem,
@@ -6849,6 +7072,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780571338764"^^xsd:string ;
     schema:name "Milkman"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/505"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/506> a hpcom:RenderedItem,
@@ -6941,6 +7165,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780812536355"^^xsd:string ;
     schema:name "A Deepness in the Sky"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/511"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/512> a hpcom:RenderedItem,
@@ -6956,6 +7181,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780062255655"^^xsd:string ;
     schema:name "The Ocean at the End of the Lane"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/512"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/513> a hpcom:RenderedItem,
@@ -6971,6 +7197,8 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780141014081"^^xsd:string ;
     schema:name "The Complete Maus"@en ;
+    schema:isPartOf list:storytelling ;
+    schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/513"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/514> a hpcom:RenderedItem,
@@ -6986,6 +7214,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9781400079278"^^xsd:string ;
     schema:name "Kafka on the Shore"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/514"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/515> a hpcom:RenderedItem,
@@ -7061,6 +7290,9 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780486414249"^^xsd:string ;
     schema:name "Politics"@en ;
+    schema:isPartOf list:classics ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/519"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/520> a hpcom:RenderedItem,
@@ -7137,6 +7369,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9780374104092"^^xsd:string ;
     schema:name "Annihilation"@en ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/524"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/525> a hpcom:RenderedItem,
@@ -7348,6 +7581,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781328662057"^^xsd:string ;
     schema:name "Maybe You Should Talk to Someone: A Therapist, Her Therapist, and Our Lives Revealed"@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/539"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/540> a hpcom:RenderedItem,
@@ -7378,6 +7612,9 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Exhalation"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:books-changed-life ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/541"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/542> a hpcom:RenderedItem,
@@ -7394,6 +7631,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553283686"^^xsd:string ;
     schema:name "Hyperion"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/542"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/543> a hpcom:RenderedItem,
@@ -7410,6 +7649,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780553288209"^^xsd:string ;
     schema:name "The Fall of Hyperion"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/543"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/544> a hpcom:RenderedItem,
@@ -7440,6 +7681,9 @@
         hpcom:BookSciFi ;
     schema:isbn "9780330426640"^^xsd:string ;
     schema:name "Stories of Your Life and Others"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:books-changed-life ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/545"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/546> a hpcom:RenderedItem,
@@ -7497,6 +7741,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316246620"^^xsd:string ;
     schema:name "Ancillary Justice"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/549"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/550> a hpcom:RenderedItem,
@@ -7513,6 +7759,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780316246651"^^xsd:string ;
     schema:name "Ancillary Sword"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/550"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/551> a hpcom:RenderedItem,
@@ -7529,6 +7777,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780812515282"^^xsd:string ;
     schema:name "A Fire Upon the Deep"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/551"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/552> a hpcom:RenderedItem,
@@ -7544,6 +7794,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780345497512"^^xsd:string ;
     schema:name "The City & the City"@en ;
+    schema:isPartOf list:thriller ;
     schema:url "https://harshp.com/hobbies/books/552"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/553> a hpcom:RenderedItem,
@@ -7590,6 +7841,7 @@
     schema:isbn "9780805091748"^^xsd:string ;
     schema:name "The Checklist Manifesto: How to Get Things Right"@en ;
     schema:review "Checklists work, they provide discipline, and are critical in complicated tasks such as surgery and flying a plane. That sums the book, though of course why checklists are needed, and how they are adopted and some good stories about their use is what makes the book a good read. Alas, I bought the book in the hope of using checklists for personal productivity - to which the book provides no clue or indication. Still, I will say this has been an enjoyable read if only so as to read about checklists used and being useful across the world."@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/555"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/556> a hpcom:RenderedItem,
@@ -7622,6 +7874,7 @@
     schema:isbn "9781786342355"^^xsd:string ;
     schema:name "What Every Postdoc Needs To Know"@en ;
     schema:review "A lot of stuff presented in the book may seem like common-sense and common-advice so prevalent in academia, but the impact and coherent view really puts everything in perspective together. There are lists, checklists, and areas where you are asked to stop and think before moving ahead. This book presents a great exercise in shaping the postdoc career from the start and is a good reference to keep coming back to in the first two years. Receiving this at the end of my PhD was a delightful (and useful) gift. That said, I would go ahead and recommend this to PhDs who are curious about careers in academia and want to move on the becoming a postdoc."@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/557"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/558> a hpcom:RenderedItem,
@@ -7653,6 +7906,7 @@
     schema:isbn "9781910695432"^^xsd:string ;
     schema:name "Flights"@en ;
     schema:review "This book has been an absolute delight (in both literal and figurative sense) and a pleasure to read. Flights is composed of short stories of varying lengths - from single paragraphs to novella-esque lengths. Sometimes the stories have connections between them, sometimes they are split into parts. But the best part is that each story is a tiny island of personality into itself. I could never guess which storyteller I would get next. Each starting was a new adventure. The stories themselves are varied in topics, themes, and places - but they all share a vague resemblance and relation to the title \"Flights\". The English translation was quite well done - but the beauty of this prose is undoubtedly in its descriptions and characters written by the author almost as if they exist. Maybe they do, and this was a travelogue all along - I don't want to know. I am sure I will be revisiting this book again some day and will enjoy it once again again too."@en ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/559"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/560> a hpcom:RenderedItem,
@@ -7745,6 +7999,8 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781610395694"^^xsd:string ;
     schema:name "The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power"@en ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/565"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/566> a hpcom:RenderedItem,
@@ -7794,6 +8050,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780356502427"^^xsd:string ;
     schema:name "Ancillary Mercy"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/568"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/569> a hpcom:RenderedItem,
@@ -7826,6 +8084,7 @@
     schema:isbn "9781982113223"^^xsd:string ;
     schema:name "Embrace Your Weird: Face Your Fears and Unleash Creativity"@en ;
     schema:review "This is an amazing book. Absolutely great at forcing yourself to get out (or in?) and do some stuff - even if it is mundane scribbling on a paper (of the book). Felicia Day is like that hyper-cheerful host of a workshop that you turn up and sit silently at but then get asked in an extremely enthusiastic way to get excited and do some things. The start is annoying, a bit uncomfortable, and there is a dislike for the cheerful excited loud person in the room. But eventually once you start doing things it gets easier then nicer and then fun. The only right way to read (perform?) this book is to do some exercises, get on with life, then come back and do some more. The exercises (let's call them activities?) are stupid, fun, self-reflective, creative. And doing them makes the book personal - this is your creative diary now. The focal point of the book - which it hammers by showing you a mirror - is that you are responsible for the things that hold you back in your own head. I quite enjoyed going through the book - and plan to do the activities in ink someday again. "@en ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/570"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/571> a hpcom:RenderedItem,
@@ -7872,6 +8131,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Children of Time"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/573"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/574> a hpcom:RenderedItem,
@@ -7953,6 +8214,7 @@
         hpcom:BookSciFi ;
     schema:name "Star Maker"@en ;
     schema:review "The sheer scope of this work is immense - stars, civilisations, universes, and beyond. Difficult to read due to the language and dry descriptions, and the mystic attributes in discussions. A classic for a reason. Rewarding myth building as Stapledon likes to call it."@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/578"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/579> a hpcom:RenderedItem,
@@ -7984,6 +8246,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Perdido Street Station"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/580"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/581> a hpcom:RenderedItem,
@@ -8000,6 +8263,7 @@
         hpcom:BookSciFi ;
     schema:isbn "9781938584992"^^xsd:string ;
     schema:name "Soft Science"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/581"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/582> a hpcom:RenderedItem,
@@ -8062,6 +8326,8 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781847925190"^^xsd:string ;
     schema:name "Entangled Life: How Fungi Make Our Worlds, Change Our Minds and Shape Our Futures"@en ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/585"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/586> a hpcom:RenderedItem,
@@ -8077,6 +8343,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780099429838"^^xsd:string ;
     schema:name "Invisible Cities"@en ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/586"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/587> a hpcom:RenderedItem,
@@ -8157,6 +8424,8 @@
         hpcom:BookSciFi ;
     schema:isbn "9780575094215"^^xsd:string ;
     schema:name "Lord of Light"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/591"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/592> a hpcom:RenderedItem,
@@ -8187,6 +8456,8 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780285638976"^^xsd:string ;
     schema:name "The Denial of Death"@en ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/593"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/594> a hpcom:RenderedItem,
@@ -8233,6 +8504,7 @@
         hpcom:BookSciFi ;
     schema:name "Babel-17"@en ;
     hpcom:book_on_loan true ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/596"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/597> a hpcom:RenderedItem,
@@ -8248,6 +8520,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Tau Zero"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/597"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/598> a hpcom:RenderedItem,
@@ -8376,6 +8649,8 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Scar"@en ;
+    schema:isPartOf list:fantasy ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/608"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/609> a hpcom:RenderedItem,
@@ -8456,6 +8731,8 @@
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Our Mathematical Universe: My Quest for the Ultimate Nature of Reality"@en ;
+    schema:isPartOf list:educational ;
+    schema:isPartOf list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/614"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/615> a hpcom:RenderedItem,
@@ -8482,6 +8759,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Memory Called Empire"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/616"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/617> a hpcom:RenderedItem,
@@ -8497,6 +8775,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Bloodchild"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/617"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/618> a hpcom:RenderedItem,
@@ -8509,6 +8788,7 @@
     schema:author "Olga Tokarczuk"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:name "Drive your Plow over the Bones of the Dead"@en ;
+    schema:isPartOf list:storytelling ;
     schema:url "https://harshp.com/hobbies/books/618"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/619> a hpcom:RenderedItem,
@@ -8524,6 +8804,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Fifth Season"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/619"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/620> a hpcom:RenderedItem,
@@ -8539,6 +8820,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Obelisk Gate"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/620"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/621> a hpcom:RenderedItem,
@@ -8554,6 +8836,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Stone Sky"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/621"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/622> a hpcom:RenderedItem,
@@ -8569,6 +8852,7 @@
     schema:genre hpcom:BookFiction ;
     schema:name "The Wind-up Bird Chronicle"@en ;
     schema:review "Like reading someone's else's dreams. Enjoy the dish. Don't try to guess the ingredients." ;
+    schema:isPartOf list:horror ;
     schema:url "https://harshp.com/hobbies/books/622"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/623> a hpcom:RenderedItem,
@@ -8598,6 +8882,8 @@
     schema:dateCreated "1962"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Labyrinths"@en ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:ai ;
     schema:url "https://harshp.com/hobbies/books/624"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/625> a hpcom:RenderedItem,
@@ -8628,6 +8914,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Scanner Darkly"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/626"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/627> a hpcom:RenderedItem,
@@ -8784,6 +9071,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Contact"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/638"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/639> a hpcom:RenderedItem,
@@ -8809,6 +9097,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Hard to be a God"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/640"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/641> a hpcom:RenderedItem,
@@ -8850,6 +9139,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Cage of Souls"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/643"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/644> a hpcom:RenderedItem,
@@ -9065,6 +9355,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Gateway"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/659"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/660> a hpcom:RenderedItem,
@@ -9080,6 +9371,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Raft"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/660"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/661> a hpcom:RenderedItem,
@@ -9141,6 +9433,7 @@
         hpcom:BookSciFi ;
     schema:name "VALIS"@en ;
     schema:review "Disturbingly brilliant." ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/664"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/665> a hpcom:RenderedItem,
@@ -9199,6 +9492,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Monday Starts on a Saturday"@en ;
+    schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/668"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/669> a hpcom:RenderedItem,
@@ -9372,6 +9666,8 @@
     schema:name "Railsea"@en ;
     hpcom:date_book_read "2021-11-14T11:30:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating5 ;
+    schema:isPartOf list:scifi ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/680"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/681> a hpcom:RenderedItem,

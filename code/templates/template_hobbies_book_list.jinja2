@@ -1,0 +1,8 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/hobbies">hobbies</a>{% endblock navtype %}
+{% block desc %}{% endblock desc %}
+{% block content %}
+<ol class="list-sort" data-attributes="name,author,year,physicalcopy">{% for book, name in books %}
+   <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-physicalcopy="{{'true' if book.hpcom_book_physical_copy else 'false'}}"><a href="{{book.iri}}">{{book.schema_name}}</a><small><sub>{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% endif %}</sub> - by <i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'template_base.jinja2' %}
+{% block pagetitle %}book lists{% endblock pagetitle %}
+{% block navtype %}| <a href="/hobbies">hobbies</a>{% endblock navtype %}
+{% block title_body %}book lists{% endblock title_body %}
+{% block desc %}{% endblock desc %}
+{% block content %}
+<ol>{% for list, nos_books, id in lists|sort(attribute='schema_name') %}
+    <li><a href="{{list.iri}}">{{ list.schema_name }}</a> <small>({{nos_books}} books)</small></li>
+{% endfor %}</ol>
+{% endblock content %}

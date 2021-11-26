@@ -1,0 +1,74 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix book: <https://harshp.com/hobbies/books/> .
+@prefix list: <https://harshp.com/hobbies/books/lists/> .
+
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://harshp.com/hobbies/books/lists> a hpcom:RenderedItem, owl:Class ;
+        rdfs:subClassOf schema:CreativeWork, schema:ItemList ;
+        schema:name "Book Lists"@en ;
+    schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:renderWith hpview:BookListIndexView ;
+    ] .
+
+list:scifi a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Exciting Sci-Fi"@en ;
+        schema:identifier "scifi"@en .
+
+list:fantasy a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Fantastic Fantasy"@en ;
+        schema:identifier "fantasy"@en .
+
+list:horror a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Horrifying Horror"@en ;
+        schema:identifier "horror"@en .
+
+list:thriller a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Thrilling Thrillers"@en ;
+        schema:identifier "thriller"@en .
+
+list:books-changed-life a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Books that changed my life"@en ;
+        schema:identifier "books-changed-life"@en .
+
+list:educational a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Educational and Illuminating"@en ;
+        schema:identifier "educational"@en .
+
+list:visually-stunning a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Visually Stunning"@en ;
+        schema:identifier "visually-stunning"@en .
+
+list:aliens a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en ;
+        schema:identifier "aliens"@en .
+
+list:ai a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Perspectives on Artificial Intelligence"@en ;
+        schema:identifier "ai"@en .
+
+list:humour a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Funny and Humorous"@en ;
+        schema:identifier "humour"@en .
+
+list:storytelling a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Great Storytelling"@en ;
+        schema:identifier "storytelling"@en .
+
+list:language a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Beautiful Language"@en ;
+        schema:identifier "language"@en .
+
+list:classics a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Classics"@en ;
+        schema:identifier "classics"@en .
