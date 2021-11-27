@@ -5718,6 +5718,7 @@
     schema:isPartOf list:fantasy ;
     schema:isPartOf list:classics ;
     schema:isPartOf list:storytelling ;
+    schema:isPartOf list:language ;
     schema:url "https://harshp.com/hobbies/books/415"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/416> a hpcom:RenderedItem,
@@ -8681,13 +8682,18 @@
 <https://harshp.com/hobbies/books/611> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "611"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-11-27T13:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Andy Weir"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:name "Project Hail Mary"@en ;
+    schema:review "Enjoyable read. Project Hail Mary = The Martian + Children of Time + The Andromeda Strain" ;
+    schema:isPartOf list:scifi, list:aliens ;
     schema:url "https://harshp.com/hobbies/books/611"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/612> a hpcom:RenderedItem,
@@ -9072,6 +9078,7 @@
         hpcom:BookSciFi ;
     schema:name "Contact"@en ;
     schema:isPartOf list:scifi ;
+    schema:isPartOf list:aliens ;
     schema:url "https://harshp.com/hobbies/books/638"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/639> a hpcom:RenderedItem,
@@ -9131,6 +9138,7 @@
         schema:Book ;
     hpcom:book_id "643"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2021-11-25T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating5 ;
@@ -10220,7 +10228,8 @@
         schema:Book ;
     hpcom:book_id "726"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Anna Burns"^^xsd:string ;

@@ -53,7 +53,12 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; it was {{book.schema_aggregatedRating}}
+        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; it was {{book.schema_aggregatedRating}} {% if book.schema_isPartOf %}<br/>
+        {% if book.schema_isPartOf is sequence %}featured in lists:
+            {% for list in book.schema_isPartOf | sort(attribute='schema_identifier') %}<a href="{{list.iri}}">{{list.schema_identifier}}</a>{{ ", " if not loop.last }}{% endfor %}
+        {% else %}featured in list:
+            <a href="{{book.schema_isPartOf.iri}}">{{book.schema_isPartOf.schema_identifier}}</a>
+        {% endif %}{% endif %}
         </small>
     </li>
     {% endfor %}
