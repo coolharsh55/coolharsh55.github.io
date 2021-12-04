@@ -419,7 +419,7 @@
         schema:Book ;
     hpcom:book_id "35"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     hpcom:book_on_loan true ;  # AC
     schema:author "Erika Lopez"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
@@ -9989,7 +9989,9 @@
         schema:Book ;
     hpcom:book_id "707"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-12-04T11:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Philip K. Dick"^^xsd:string ;
     schema:dateCreated "1970"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10216,9 +10218,9 @@
     hpcom:book_id "725"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-12-03T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
     schema:dateCreated "2001"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
