@@ -419,12 +419,16 @@
         schema:Book ;
     hpcom:book_id "35"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:date_book_read "2021-12-04T22:30:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_on_loan true ;  # AC
     schema:author "Erika Lopez"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
     schema:isbn "9781878067968"^^xsd:string ;
     schema:name "Lap Dancing for Mommy: Tender Stories of Disgust, Blame and Inspiration"@en ;
+    schema:genre hpcom:BookFiction ;
     schema:url "https://harshp.com/hobbies/books/35"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/36> a hpcom:RenderedItem,
@@ -9989,6 +9993,7 @@
         schema:Book ;
     hpcom:book_id "707"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2021-12-04T11:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating4 ;
@@ -10285,7 +10290,8 @@
         schema:Book ;
     hpcom:book_id "730"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Lisa Margonelli"^^xsd:string ;
