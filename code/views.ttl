@@ -526,7 +526,13 @@ hpview:BookListView a hpcom:View ;
                 ?book a schema:Book .
                 ?book schema:isPartOf ?iri .
                 ?book schema:name ?name .
-            } ORDER By ASC(?name)
+                ?book schema:dateCreated ?datePublished .
+                BIND(?datePublished as ?date) .
+                OPTIONAL { 
+                    ?book hpcom:date_book_read ?dateRead .
+                    BIND(?dateRead as ?date) .
+                }
+            } ORDER By DESC(?date)
         """ ; ] .
 
 hpview:ResearchPaperView a hpcom:View ;
