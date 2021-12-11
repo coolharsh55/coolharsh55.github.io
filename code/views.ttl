@@ -509,7 +509,7 @@ hpview:BookListIndexView a hpcom:View ;
             SELECT ?list (COUNT(?book) as ?nos_books) ?id WHERE {
                 ?list a <https://harshp.com/hobbies/books/lists> .
                 ?list schema:identifier ?id .
-                ?book schema:isPartOf ?list .
+                OPTIONAL { ?book schema:isPartOf ?list . }
             } GROUP BY ?list
             ORDER By ASC(?id)
         """ ; ] .

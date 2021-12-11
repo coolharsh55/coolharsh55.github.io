@@ -72,3 +72,60 @@ list:language a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
 list:classics a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
         schema:name "Classics"@en ;
         schema:identifier "classics"@en .
+
+list:owned a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Owned Books"@en ;
+        schema:identifier "owned"@en ;
+        hpcom:renderWith [ a hpcom:View ;
+            hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+            hpcom:view_renderer hpcom:Jinja2 ;
+            hpcom:sparql [
+                a hpcom:SparqlQuery ;
+                rdfs:label "books" ;
+                hpcom:queryString """
+                    SELECT ?book ?name WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book hpcom:book_owned_medium ?medium .
+                        } ORDER By ASC(?name)
+                    """ ;
+            ] ;
+        ] .
+
+list:owned_paper a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Owned Books - Paper"@en ;
+        schema:identifier "owned_paper"@en ;
+        hpcom:renderWith [ a hpcom:View ;
+            hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+            hpcom:view_renderer hpcom:Jinja2 ;
+            hpcom:sparql [
+                a hpcom:SparqlQuery ;
+                rdfs:label "books" ;
+                hpcom:queryString """
+                    SELECT ?book ?name WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book hpcom:book_owned_medium hpcom:PhysicalBook .
+                        } ORDER By ASC(?name)
+                    """ ;
+            ] ;
+        ] .
+
+list:owned_digital a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Owned Books - Digital"@en ;
+        schema:identifier "owned_digital"@en ;
+        hpcom:renderWith [ a hpcom:View ;
+            hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+            hpcom:view_renderer hpcom:Jinja2 ;
+            hpcom:sparql [
+                a hpcom:SparqlQuery ;
+                rdfs:label "books" ;
+                hpcom:queryString """
+                    SELECT ?book ?name WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book hpcom:book_owned_medium hpcom:EBook .
+                        } ORDER By ASC(?name)
+                    """ ;
+            ] ;
+        ] .

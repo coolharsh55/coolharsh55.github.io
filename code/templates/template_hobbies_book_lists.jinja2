@@ -5,6 +5,6 @@
 {% block desc %}{% endblock desc %}
 {% block content %}
 <ol>{% for list, nos_books, id in lists|sort(attribute='schema_name') %}
-    <li><a href="{{list.iri}}">{{ list.schema_name }}</a> <small>({{nos_books}} books)</small></li>
+    <li><a href="{{list.iri}}">{{ list.schema_name }}</a> <small>({% if nos_books > 0 %}{{nos_books}} books{% else %}dynamic collection{% endif %})</small></li>
 {% endfor %}</ol>
 {% endblock content %}

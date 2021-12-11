@@ -5,11 +5,9 @@
 {% block desc %}{% endblock desc %}
 {% block content %}
 <p>
-    Here I keep a record of books that I've read or want to read. I also <a href="/hobbies/books/lists">maintain lists of books</a> for suggestion and recommendation to others. </p>
+    As a <a href="https://en.wikipedia.org/wiki/Bibliophilia"><i>bibliophile</i></a>, I keep a record of books I've read and want to read, along with <a href="/hobbies/books/lists">lists of books</a> as recommendations. I mostly read <a href="https://en.wikipedia.org/wiki/Science_fiction">science fiction</a>, along with drama, crime, noir, historical fiction, and occasionally non-fiction as an educational exercise. <small><i><u>notations:</u> 📚 - paper book ; 💾 - ebook</i></small></p>
 <blockquote>
     I'm currently reading <a href="#currently-reading">{{ currently_reading|length }} books</a>, want to read <a href="#want-to-read">{{ want_to_read|length }} books</a>, and have read <a href="#read">{{ read|length }} books</a> to date.</blockquote>
-<p>
-    I'm a <a href="https://en.wikipedia.org/wiki/Bibliophilia"><i>bibliophile</i></a> - a person who loves books and loves reading. Also known more colloquially as a bookworm. I like to read <a href="https://en.wikipedia.org/wiki/Science_fiction">science fiction</a> the most - a genre that kick-started my imagination and love of reading. These days I try to read a more variety of genres - social, drama, crime, noir, historical fiction. While this kind of reading is more tied to pleasure, I'm also trying to read more non-fiction as an educational exercise.</p>
 
 <section id="currently-reading">
 <h2>Books I'm Currently Reading</h2>
@@ -31,9 +29,9 @@
 </section>
 <section id="want-to-read">
 <h2>Books I Want to Read</h2>
-<ol class="list-sort" data-attributes="name,author,year,physicalcopy">
+<ol class="list-sort" data-attributes="name,author,year,medium">
     {% for book, title in want_to_read %}
-   <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-physicalcopy="{{'true' if book.hpcom_book_physical_copy else 'false'}}"><a href="{{book.iri}}">{{book.schema_name}}</a><small><sub>{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% endif %}</sub></small> - <small>{% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
+   <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-medium="{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% else %}NA{% endif %}"><a href="{{book.iri}}">{{book.schema_name}}</a><small><sub>{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% endif %}</sub></small> - <small>{% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
         {{genre}}{{' & ' if not loop.last}}
         {% endfor %}{% else %}
         {{ book.schema_genre }}
@@ -43,9 +41,9 @@
 </section>
 <section id="read">
 <h2>Books I have Read</h2>
-<ol reversed="true" class="list-sort" data-attributes="name,author,year,date-read,rating">
+<ol reversed="true" class="list-sort" data-attributes="name,author,year,date-read,medium-read,medium-owned,rating">
     {% for book, title, date, year in read|sort(attribute='2,1', reverse=true) %}
-    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-date-read="{{date}}" data-rating="{{book.schema_aggregatedRating.schema_ratingValue}}">
+    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-year="{{book.schema_dateCreated}}" data-date-read="{{date}}" data-medium-read="{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% else %}NA{% endif %}" data-medium-owned="{{ book.hpcom_book_owned_medium if book.hpcom_book_owned_medium else 'NA'}}" data-rating="{{book.schema_aggregatedRating.schema_ratingValue}}">
         <a href="{{book.iri}}">{{book.schema_name}}</a> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
         {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
@@ -53,7 +51,7 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; it was {{book.schema_aggregatedRating}} {% if book.schema_isPartOf %}<br/>
+        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %} it was {{book.schema_aggregatedRating}} {% if book.schema_isPartOf %}<br/>
         {% if book.schema_isPartOf is sequence %}featured in lists:
             {% for list in book.schema_isPartOf | sort(attribute='schema_identifier') %}<a href="{{list.iri}}">{{list.schema_identifier}}</a>{{ ", " if not loop.last }}{% endfor %}
         {% else %}featured in list:

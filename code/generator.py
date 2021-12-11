@@ -163,6 +163,10 @@ def _get_view(item):
     # view declared as targeting the parent classes of this object
     # view declared as targeting rdfs:Resource (generic fallback)
 
+    if hasattr(item, 'hpcom_renderWith'):
+        # DEBUG('item declared its own renderer')
+        return item.hpcom_renderWith
+
     # checking content for associated view
     if hasattr(item, 'hpcom_content'):
         content = item.hpcom_content
