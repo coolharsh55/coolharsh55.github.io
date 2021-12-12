@@ -522,17 +522,17 @@ hpview:BookListView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "books" ;
         hpcom:queryString """
-            SELECT ?book ?name WHERE {
-                ?book a schema:Book .
-                ?book schema:isPartOf ?iri .
-                ?book schema:name ?name .
-                ?book schema:dateCreated ?datePublished .
-                BIND(?datePublished as ?date) .
-                OPTIONAL { 
-                    ?book hpcom:date_book_read ?dateRead .
-                    BIND(?dateRead as ?date) .
-                }
-            } ORDER By DESC(?date)
+            SELECT DISTINCT ?book ?name (MAX(?date) as ?dt) WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book schema:isPartOf ?iri .
+                        ?book schema:dateCreated ?datePublished .
+                        BIND(?datePublished as ?date) .
+                        OPTIONAL { 
+                            ?book hpcom:date_book_read ?dateRead .
+                            BIND(?dateRead as ?date) .
+                        }
+                    } GROUP BY ?book ORDER By DESC(?dt) ASC(?name)
         """ ; ] .
 
 hpview:ResearchPaperView a hpcom:View ;

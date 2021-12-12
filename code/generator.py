@@ -195,6 +195,8 @@ def _get_view(item):
     ancestors = [p.rdf_type for p in item.rdf_type if hasattr(p, 'rdf_type')]
     while ancestors:
         ancestor = ancestors.pop()
+        if not ancestor:
+            break
         if type(ancestor) is list:
             temp = ancestor.pop()
             for a in ancestor:
@@ -308,7 +310,7 @@ def publication_type(publication):
 JINJA2_FILTERS = {
     'html_view': html_view,
     'publication_type': publication_type,
-    'year': lambda x: x,
+    'year': lambda x: x[:4],
 }
 
 
