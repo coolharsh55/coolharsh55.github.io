@@ -1,0 +1,21 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/tea">Tea</a>{% endblock navtype %}
+
+{% block desc %}{% endblock desc %}
+{% block content %}
+<p>Tea is the most popular and probably the most consumed category of beverages. Its a cultural necessity in many parts of the world, being an important aspect of ceremonies and prestige. Growing up in India, tea has been the norm in every household, and a social bonding event. Wikipedia has a <a href="https://en.wikipedia.org/wiki/Tea">comprehensive overview</a> on the history, impact, use, and categorisation of tea across the world. On this page, I keep track of the teas I've consumed and my thoughts about them. Consider this my <i>tea diary</i>.</p>
+<p><b>Categories of teas:</b> {% for name, id in categories %}<a href="#{{id}}">{{name[:-4]}}</a>{{ ", " if not loop.last}}{% endfor %}
+<hr/>
+{% for tea, type in teas %}
+{% if type != loop.prevItem %}{% if not loop.first %}</section>{% endif %}
+<section id={{type.schema_identifier}}>
+    <h2><a href="{{type.schema_identifier}}">{{type.schema_name}}</a></h2>{% endif %}
+    
+    <a href="{{tea.schema_identifier}}"><h3 id={{tea.schema_identifier}}>{{tea.schema_name}}</h3></a>
+    <small>{{tea.schema_aggregatedRating}}</small> - {{tea.schema_review}}
+    {% if tea.hpcom_experience %}<p><b>Experiences:</b>{% if tea.hpcom_experience is sequence %}{% for entry in tea.hpcom_experience|sort(attribute='schema_datePublished') %}
+        <br/><u>{{entry.schema_datePublished}}:</u> {{entry.rdfs_comment}}
+    {% endfor %}{% else %}<br/><u>{{tea.hpcom_experience.schema_datePublished}}:</u> {{tea.hpcom_experience.rdfs_comment}}{% endif %}</p>{% endif %}
+{% endfor %}
+</section>
+{% endblock content %}
