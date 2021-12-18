@@ -1,0 +1,16 @@
+{% extends 'template_base.jinja2' %}
+{% block navtype %}| <a href="/{{item.identifier}}">{{item.identifier}}</a>{% endblock navtype %}
+
+{% block desc %}{% endblock desc %}
+{% block content %}
+<p><b>Categories of teas:</b> {% for name, id in categories %}<a href="#{{id}}">{{name[:-4]}}</a>{{ ", " if not loop.last}}{% endfor %}
+<hr/>
+{% for tea, type in teas %}
+{% if type != loop.prevItem %}{% if not loop.first %}</section>{% endif %}
+<section id={{type.schema_identifier}}>
+    <h2><a href="{{type.schema_identifier}}">{{type.schema_name}}</a></h2>{% endif %}
+    
+    <p id={{tea.schema_identifier}}><a href="{{tea.schema_identifier}}"><b>{{tea.schema_name}}</b></a> - <small>{{tea.schema_aggregatedRating}}</small><br/>{{tea.schema_review}}</p>
+{% endfor %}
+</section>
+{% endblock content %}

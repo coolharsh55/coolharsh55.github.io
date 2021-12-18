@@ -1,0 +1,117 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+
+@prefix tea: <https://harshp.com/hobbies/tea#> .
+
+@base <https://harshp.com/> .
+
+<https://harshp.com/hobbies/tea> a owl:Class, hpcom:RenderedItem ;
+    schema:name "Tea"@en ;
+    schema:identifier "tea"@en ;
+    schema:url "https://harshp.com/hobbies/tea"^^xsd:anyURI ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:view_template "https://harshp.com/code/templates/template_hobby_tea.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+        ] .
+
+
+#    hpcom:renderWith [ a hpcom:View ;
+#    	hpcom:view_template "https://harshp.com/code/templates/template_hobby_tea.jinja2"^^xsd:anyURI ;
+#        hpcom:view_renderer hpcom:Jinja2 ;
+#        hpcom:sparql [
+#            a hpcom:SparqlQuery ;
+#            rdfs:label "categories" ;
+#            hpcom:queryString """
+#                SELECT DISTINCT ?name ?id WHERE {
+#                	?type rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#                    ?type schema:name ?name .
+#                    ?type schema:identifier ?id .
+#                } ORDER BY ASC(?type)
+#                """ ;
+#        	] ;
+#        hpcom:sparql [
+#            a hpcom:SparqlQuery ;
+#            rdfs:label "teas" ;
+#            hpcom:queryString """
+#                SELECT DISTINCT ?tea ?type WHERE {
+#                	?type rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#                    ?tea a ?type .
+#                    OPTIONAL { ?tea schema:aggregatedRating ?rating } .
+#                    OPTIONAL { ?tea schema:review ?review } .
+#                } ORDER BY ASC(?type)
+#                """ ;
+#        	] ;
+#        ] .
+#
+#### Categories of Tea ###
+#
+#tea:black-tea a owl:Class ;
+#	schema:name "Black Tea"@en ;
+#	schema:identifier "black-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:white-tea a owl:Class ;
+#	schema:name "White Tea"@en ;
+#	schema:identifier "white-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:yellow-tea a owl:Class ;
+#	schema:name "Yellow Tea"@en ;
+#	schema:identifier "yellow-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:green-tea a owl:Class ;
+#	schema:name "Green Tea"@en ;
+#	schema:identifier "green-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:oolong-tea a owl:Class ;
+#	schema:name "Oolong Tea"@en ;
+#	schema:identifier "oolong-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:herbal-tea a owl:Class ;
+#	schema:name "Herbal Tea"@en ;
+#	schema:identifier "herbal-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:puer-tea a owl:Class ;
+#	schema:name "Pu'er Tea"@en ;
+#	schema:identifier "puer-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#tea:mixed-tea a owl:Class ;
+#	schema:name "Mixed Tea"@en ;
+#	schema:identifier "mixed-tea" ;
+#	rdfs:subClassOf <https://harshp.com/hobbies/tea> .
+#
+#### Teas I've Tried ###
+#
+#tea:earl-grey a tea:black-tea ;
+#	schema:name "Earl Grey"@en ;
+#	schema:identifier "earl-grey" ;
+#	schema:aggregatedRating hpcom:Rating5 ;
+#	schema:review """My favoured black tea. Great taste, classical status, and refreshing with a lemon."""@en ;
+#	hpcom:experience [ a hpcom:Experience ;
+#		schema:datePublished "2019-07-01"^^xsd:date ;
+#		rdfs:comment """Earl Grey has many varieties in Dublin. The best one to go by is called "Earl Grey Superior"."""@en
+#		] .
+#	hpcom:experience [ a hpcom:Experience ;
+#		schema:datePublished "2018-05-20"^^xsd:date ;
+#		rdfs:comment "A good shop to sample variety of teas amongst other"
+#		] .
+#
+#tea:jin-xuan a tea:green-tea ;
+#	schema:name "Jin Xuan (Milk Oolong)"@en ;
+#	schema:identifier "jin-xuan" ;
+#	schema:aggregatedRating hpcom:Rating4 ;
+#	schema:review """A tasty oolong from Taiwan with a smooth texture and distinguished tones."""@en .
