@@ -9867,6 +9867,7 @@
 <https://harshp.com/hobbies/books/696> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "696"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Micaiah Johnson"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
@@ -10225,7 +10226,7 @@
         schema:Book ;
     hpcom:book_id "724"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kurt Vonnegut"^^xsd:string ;
@@ -10321,13 +10322,16 @@
         schema:Book ;
     hpcom:book_id "731"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-12-23T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    schema:review """Got interested in the book upon learning it was an epic fantasy released the same year as the Lord of the Rings. Turned out to be an enjoyable read."""@en ;
     schema:author "Poul Anderson"^^xsd:string ;
     schema:dateCreated "1954"^^xsd:int ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:genre hpcom:BookFiction ;
     schema:name "The Broken Sword"@en ;
+    schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/731"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/732> a hpcom:RenderedItem,
