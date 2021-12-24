@@ -484,7 +484,8 @@ hpview:BookIndexView a hpcom:View ;
                 ?book a schema:Book .
                 ?book schema:name ?title .
                 ?book hpcom:book_status hpcom:book-to-read .
-            } ORDER By ?title
+                ?book schema:dateCreated ?date .
+            } ORDER By DESC(?date) ASC(?title)
         """ ;
         ];
     hpcom:sparql [
