@@ -76,26 +76,36 @@ var list_filter_sort_click_handler = function(ele) {
     }
 }
 
-// --- creates a toc listing
+// --- creates a toc listing and add link references
 document.addEventListener('DOMContentLoaded', function() {
     var toc = document.getElementById("toc");
-    if (toc == null) return;
+    // if (toc == null) return;
     var headings = [].slice.call(
         document.body.querySelectorAll('h2, h3, h4'));
     headings.forEach(function (heading, index) {
         // set toc number
-        var ref = "toc" + (index+1);
+        var ref = "Sec" + (index+1);
         if (heading.hasAttribute("id")) {
             ref = heading.getAttribute("id");
         } else {
             heading.setAttribute("id", ref);
         }
-        var link = document.createElement("a");
-        link.setAttribute("href", "#"+ ref);
-        link.textContent = heading.textContent;
-        var div = document.createElement("div");
-        div.setAttribute("class", heading.tagName.toLowerCase() );
-        div.appendChild(link);
-        toc.appendChild(div);
+        // h_link is the link attached to headers
+        var h_link = document.createElement("a")
+        h_link.setAttribute("href", "#"+ ref);
+        h_link.setAttribute("class", "linkid");
+        if (toc !== null) {
+            // if toc exists, the distance to h_link is reduced
+            h_link.style.margin = "5px 0 0 -40px";
+            // add link to sec to toc div
+            var toc_link = document.createElement("a");
+            toc_link.setAttribute("href", "#"+ ref);
+            toc_link.textContent = heading.textContent;
+            var div = document.createElement("span");
+            div.setAttribute("class", heading.tagName.toLowerCase() );
+            div.appendChild(toc_link);
+            toc.appendChild(div);
+        }
+        heading.prepend(h_link);
     });
 });
