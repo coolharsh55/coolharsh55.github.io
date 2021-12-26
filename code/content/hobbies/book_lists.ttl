@@ -144,3 +144,23 @@ list:owned_digital a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedIte
                     """ ;
             ] ;
         ] .
+
+list:best-rated a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Best Books by Rating"@en ;
+        schema:identifier "best-rated"@en ;
+        hpcom:renderWith [ a hpcom:View ;
+            hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+            hpcom:view_renderer hpcom:Jinja2 ;
+            hpcom:sparql [
+                a hpcom:SparqlQuery ;
+                rdfs:label "books" ;
+                hpcom:queryString """
+                    SELECT DISTINCT ?book ?name (MAX(?date) as ?dt) WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book hpcom:date_book_read ?date .
+                        ?book schema:aggregatedRating hpcom:Rating5 .
+                    } GROUP BY ?book ORDER By DESC(?dt) ASC(?name) 
+                    """ ;
+            ] ;
+        ] .
