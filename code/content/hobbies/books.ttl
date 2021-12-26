@@ -10226,13 +10226,15 @@
         schema:Book ;
     hpcom:book_id "724"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2021-12-26T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kurt Vonnegut"^^xsd:string ;
     schema:dateCreated "1990"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Hocus Pocus"@en ;
+    schema:review """A clever and witty book that shows Vonnegut's style and humour. Read for the experience."""@en ;
     schema:url "https://harshp.com/hobbies/books/724"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/725> a hpcom:RenderedItem,
@@ -10311,7 +10313,7 @@
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2021-12-09T08:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating2 ;
-    schema:review "Too much people experience, not enough termites"@en ;
+    schema:review """Too much people experience, not enough termites"""@en ;
     schema:author "Lisa Margonelli"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -10664,7 +10666,7 @@
         schema:Book ;
     hpcom:book_id "756"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Simon Barnes"^^xsd:string ;
