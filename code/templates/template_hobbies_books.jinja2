@@ -51,7 +51,11 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %} it was {{book.schema_aggregatedRating}} {% if book.schema_isPartOf %}<br/>
+        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %} it was {{book.schema_aggregatedRating}} ;
+        {% if book.schema_review %}<br/>{% if book.schema_review|length > 150 %}
+            <details><summary>{{ book.schema_review[:25]}}... (read more)</summary> <span>{{ book.schema_review }}</span></details>
+            {% else %}<span>{{ book.schema_review }}</span>{% endif %}{% endif %}
+        {% if book.schema_isPartOf %}{{ "<br/>" if not book.schema_review }}
         {% if book.schema_isPartOf is sequence %}featured in lists:
             {% for list in book.schema_isPartOf | sort(attribute='schema_identifier') %}<a href="{{list.iri}}">{{list.schema_identifier}}</a>{{ ", " if not loop.last }}{% endfor %}
         {% else %}featured in list:
