@@ -8886,6 +8886,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Klara and the Sun"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/623"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/624> a hpcom:RenderedItem,
@@ -9726,6 +9727,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Kraken"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/683"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/684> a hpcom:RenderedItem,
@@ -9762,6 +9764,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "MaddAddam"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/686"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/687> a hpcom:RenderedItem,
@@ -9974,6 +9977,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Wireless"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/704"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/705> a hpcom:RenderedItem,
@@ -9996,12 +10000,17 @@
         schema:Book ;
     hpcom:book_id "706"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-01-01T19:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Philip K. Dick"^^xsd:string ;
     schema:dateCreated "1986"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Humpty Dumpty in Oakland"@en ;
+    schema:review """A non-sci-fi book from PKD that follows the same themes but loses the cohesion."""@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/706"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/707> a hpcom:RenderedItem,
@@ -10028,6 +10037,7 @@
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Gene: An Intimate History"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/708"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/709> a hpcom:RenderedItem,
@@ -10050,6 +10060,7 @@
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "When You Are Engulfed in Flames"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/710"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/711> a hpcom:RenderedItem,
@@ -10061,6 +10072,7 @@
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Naked"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/711"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/712> a hpcom:RenderedItem,
@@ -10072,6 +10084,7 @@
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Let's Explore Diabetes with Owls"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/712"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/713> a hpcom:RenderedItem,
@@ -10084,6 +10097,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "House of Suns"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/713"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/714> a hpcom:RenderedItem,
@@ -10112,6 +10126,7 @@
     schema:dateCreated "1983"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Shame"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/715"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/716> a schema:Book, hpcom:RenderedItem ;
@@ -10126,6 +10141,7 @@
     schema:dateCreated "1980"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Name of the Rose"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/716"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/717> a schema:Book, hpcom:RenderedItem ;
@@ -10140,6 +10156,7 @@
     schema:dateCreated "1986"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Faith in Fakes"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/717"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/718> a hpcom:RenderedItem,
@@ -10153,6 +10170,7 @@
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Obelisk"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/718"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/719> a hpcom:RenderedItem,
@@ -10181,6 +10199,7 @@
     schema:dateCreated "1994"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Feersum Endjinn"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/720"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/721> a hpcom:RenderedItem,
@@ -10194,6 +10213,7 @@
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Homeland"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/721"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/722> a hpcom:RenderedItem,
@@ -10207,6 +10227,7 @@
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Unreal and the Real: Selected Stories, Volume One: Where on Earth"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/722"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/723> a hpcom:RenderedItem,
@@ -10220,6 +10241,7 @@
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Unreal and the Real: Selected Stories, Volume Two: Outer Space, Inner Lands "@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/723"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/724> a hpcom:RenderedItem,
@@ -10235,6 +10257,7 @@
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Hocus Pocus"@en ;
     schema:review """A clever and witty book that shows Vonnegut's style and humour. Read for the experience."""@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/724"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/725> a hpcom:RenderedItem,
@@ -10277,6 +10300,7 @@
     schema:dateCreated "1977"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Dying of the Light"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/727"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/728> a hpcom:RenderedItem,
@@ -10290,6 +10314,7 @@
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Enchantress of Florence"@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/728"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/729> a hpcom:RenderedItem,
@@ -10303,6 +10328,7 @@
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Numero Zero"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/729"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/730> a hpcom:RenderedItem,
@@ -10333,7 +10359,7 @@
     schema:dateCreated "1954"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Broken Sword"@en ;
-    schema:isPartOf list:fantasy ;
+    schema:isPartOf list:fantasy, list:cork ;
     schema:url "https://harshp.com/hobbies/books/731"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/732> a hpcom:RenderedItem,
@@ -10646,6 +10672,7 @@
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Last Days of New Paris"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/754"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/755> a hpcom:RenderedItem,
@@ -10666,13 +10693,16 @@
         schema:Book ;
     hpcom:book_id "756"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-01-01T14:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Simon Barnes"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Ten Million Aliens: A Journey Through the Entire Animal Kingdom"@en ;
+    schema:review """A nice collection of short stories with facts. Kind of lick those 90s Discovery TV shows I grew up watching."""@en ;
+    schema:isPartOf list:educational, list:cork ;
     schema:url "https://harshp.com/hobbies/books/756"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/757> a hpcom:RenderedItem,

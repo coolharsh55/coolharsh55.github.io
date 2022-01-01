@@ -487,17 +487,6 @@ hpview:BookIndexView a hpcom:View ;
                 ?book schema:dateCreated ?date .
             } ORDER By DESC(?date) ASC(?title)
         """ ;
-        ];
-    hpcom:sparql [
-        a hpcom:SparqlQuery ;
-        rdfs:label "on_loan" ;
-        hpcom:queryString """
-            SELECT ?book ?title WHERE {
-                ?book a schema:Book .
-                ?book schema:name ?title .
-                ?book hpcom:book_on_loan true .
-            } ORDER By ?title
-        """ ;
         ].
 
 hpview:BookListIndexView a hpcom:View ;

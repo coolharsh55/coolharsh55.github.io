@@ -55,26 +55,14 @@
         {% if book.schema_review %}<br/>{% if book.schema_review|length > 150 %}
             <details><summary>{{ book.schema_review[:25]}}... (read more)</summary> <span>{{ book.schema_review }}</span></details>
             {% else %}<span>{{ book.schema_review }}</span>{% endif %}{% endif %}
-        {% if book.schema_isPartOf %}{{ "<br/>" if not book.schema_review }}
-        {% if book.schema_isPartOf is sequence %}featured in lists:
+        {% if book.schema_isPartOf is sequence %}<br/>featured in lists:
             {% for list in book.schema_isPartOf | sort(attribute='schema_identifier') %}<a href="{{list.iri}}">{{list.schema_identifier}}</a>{{ ", " if not loop.last }}{% endfor %}
-        {% else %}featured in list:
+        {% else %}<br/>featured in list:
             <a href="{{book.schema_isPartOf.iri}}">{{book.schema_isPartOf.schema_identifier}}</a>
-        {% endif %}{% endif %}
+        {% endif %}
         </small>
     </li>
     {% endfor %}
 </ol>        
-</section>
-
-<section id="on-loan">
-<h2>Books On-Loan</h2>
-<ol>
-{% for book, title in on_loan %}
-    <li><a href="{{book.iri}}">{{book}}</a><small><sub>{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% endif %}</sub></small> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small></li>
-{% else %}
-No books on loan...!
-{% endfor %}
-</ol>
 </section>
 {% endblock content %}
