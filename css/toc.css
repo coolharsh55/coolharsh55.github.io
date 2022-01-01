@@ -1,33 +1,34 @@
 /* TOC */
-#toc div.h2 { margin-left: 0 }
-#toc div.h3 { margin-left: 1em }
-#toc div.h4 { margin-left: 2em }
-#toc div.h5 { margin-left: 3em }
+#toc span.h2 { margin-left: 0 }
+#toc span.h3 { margin-left: 1em }
+#toc span.h4 { margin-left: 2em }
+#toc span.h5 { margin-left: 3em }
+#toc span { display: block; }
 /* TOC counters */
 #toc {
     counter-reset: v2;
 }
-#toc div.h2:before {
+#toc span.h2:before {
     content: counter(v2);
     counter-increment: v2;
     color: #666;
     font-size: 0.8em;
     margin-right: 5px;
 }
-#toc div.h2 {
+#toc span.h2 {
     counter-reset: v3;
 }
-#toc div.h3:before {
+#toc span.h3:before {
     content: counter(v2) "." counter(v3);
     counter-increment: v3;
     color: #666;
     font-size: 0.8em;
     margin-right: 5px;
 }
-#toc div.h3 {
+#toc span.h3 {
     counter-reset: v4;
 }
-#toc div.h4:before {
+#toc span.h4:before {
     content: counter(v2) "." counter(v3) "." counter(v4);
     counter-increment: v4;
     color: #666;
