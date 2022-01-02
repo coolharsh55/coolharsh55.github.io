@@ -644,9 +644,28 @@
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:tag hptag:DPV, hptag:DPVCG ;
     schema:author <https://harshp.com/me> ;
-    schema:dateModified "2022-01-13T00:00:00"^^xsd:dateTime ;
-    schema:datePublished "2022-01-13T00:00:00"^^xsd:dateTime ;
+    schema:dateModified "2022-01-01T15:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-01-01T15:00:00"^^xsd:dateTime ;
     schema:description "Items and their progress towards the first stable release of DPV"@en ;
     schema:isPartOf <https://harshp.com/dev/dpv> ;
     schema:name "DPV v1 Checklist"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-v1-checklist"^^xsd:anyURI .
+
+<https://harshp.com/dev/rants> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "Rants"@en ;
+    schema:url "https://harshp.com/dev/rants"^^xsd:anyURI .
+
+<https://harshp.com/dev/rants/ieee-7000> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/rants/ieee-7000-user-hostile.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:standardisation, hptag:ethics ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-01-01T23:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-01-01T23:00:00"^^xsd:dateTime ;
+    schema:description "Frustrating and annoying experience in trying to read a free standards document"@en ;
+    schema:isPartOf <https://harshp.com/dev/rants> ;
+    schema:name "Accessing IEEE 7000 standard is hostile to User"@en ;
+    schema:url "https://harshp.com/dev/rants/ieee-7000"^^xsd:anyURI .
