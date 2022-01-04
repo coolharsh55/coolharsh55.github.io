@@ -148,16 +148,38 @@ class DataGraph(object):
         # instantiate objects from class data
         DEBUG('loading objects from graph')
 
-        collections = []
-
         # iterate triples in graph
+        # register all subjects first so that they are available when
+        # later resolving objects
         for s, p, o in graph:
             iri = str(s)
             # DEBUG(f'{iri}')
             # if the object has been encountered before, retrieve it
             # otherwise create new object for given iri
+            if type(s) == BNode:
+                # do not handle collections as subjects
+                if (s, RDF.first, None) in graph:
+                    # this is a collection
+                    continue
+            if iri not in self.objects:
+                obj = RDFS_Resource()
+                obj.iri = iri
+                # DEBUG(f'created {obj.iri}')
+                self.objects[iri] = obj
+
+        # iterate triples in graph
+        for s, p, o in graph:
+            iri = str(s)
+            # DEBUG(f'{iri}')
+            if str(p) in (str(RDF.first), str(RDF.rest), str(RDF.nil)):
+                # don't handle collection statements
+                continue
+
+            # if the object has been encountered before, retrieve it
+            # otherwise create new object for given iri
             if iri.startswith('f'):
                 # do not handle collections as subjects
+                # DEBUG('discarded as BNode')
                 continue
             if iri in self.objects:
                 obj = self.objects[iri]
@@ -167,12 +189,34 @@ class DataGraph(object):
                 # DEBUG(f'created {obj.iri}')
                 self.objects[obj.iri] = obj
 
+            o_str = str(o)
+            # DEBUG(f'Collection test: {(o, RDF.first, None) in graph} o type {type(o)}')
             if type(o) == URIRef or type(o) == BNode:
-                o_str = str(o)
                 if o_str in self.objects:
+                    # DEBUG('o found in self.objects')
                     o = self.objects[o_str]
+                elif type(o) == BNode:
+                    # rdf collection
+                    # DEBUG('BNode detected')
+                    if (o, RDF.first, None) in graph:
+                        temp_o = list(Collection(graph, o))
+                        # DEBUG(f'collection {temp_o}')
+                        o = list()
+                        for o_s in temp_o:
+                            # create objects for each item in collection
+                            o_s_str = str(o_s)
+                            if o_s_str in self.objects:
+                                o_s = self.objects[o_s_str]
+                            elif type(o_s) != Literal:
+                                o_s = RDFS_Resource()
+                                o_s.iri = o_s_str
+                                # DEBUG(f'created {o_s.iri}')
+                                self.objects[o_s_str] = o_s
+                            else:
+                                o_s = o_str
+                            o.append(o_s)
                 else:
-                    if o_str.startswith('f'):
+                    if o_str.startswith('f') and (o, RDF.first, None) in graph:
                         # rdf collection
                         temp_o = list(Collection(graph, o))
                         o = list()
@@ -208,7 +252,7 @@ class DataGraph(object):
                 obj.metadata[p].append(o)
             else:
                 obj.metadata[p] = o
-            # DEBUG(f'handled triple: {iri} {p} {o}')
+            # DEBUG(f'handled triple: {iri} {p} {o} ({type(o)})')
             # DEBUG(f'type of s: {type(iri)}')
             # DEBUG(f'data in p: {obj.metadata[p]}')
 
