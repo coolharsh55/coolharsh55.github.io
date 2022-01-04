@@ -55,11 +55,11 @@
         {% if book.schema_review %}<br/>{% if book.schema_review|length > 150 %}
             <details><summary>{{ book.schema_review[:25]}}... (read more)</summary> <span>{{ book.schema_review }}</span></details>
             {% else %}<span>{{ book.schema_review }}</span>{% endif %}{% endif %}
-        {% if book.schema_isPartOf is sequence %}<br/>featured in lists:
+        {% if book.schema_isPartOf %}{% if book.schema_isPartOf is sequence %}<br/>featured in lists:
             {% for list in book.schema_isPartOf | sort(attribute='schema_identifier') %}<a href="{{list.iri}}">{{list.schema_identifier}}</a>{{ ", " if not loop.last }}{% endfor %}
         {% else %}<br/>featured in list:
             <a href="{{book.schema_isPartOf.iri}}">{{book.schema_isPartOf.schema_identifier}}</a>
-        {% endif %}
+        {% endif %}{% endif %}
         </small>
     </li>
     {% endfor %}
