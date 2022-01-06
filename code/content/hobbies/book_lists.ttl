@@ -153,6 +153,27 @@ list:owned_digital a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedIte
             ] ;
         ] .
 
+list:owned_unread a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
+        schema:name "Owned Unread Books"@en ;
+        schema:identifier "owned_digital"@en ;
+        hpcom:renderWith [ a hpcom:View ;
+            hpcom:view_template "https://harshp.com/code/templates/template_hobbies_book_list.jinja2" ;
+            hpcom:view_renderer hpcom:Jinja2 ;
+            hpcom:sparql [
+                a hpcom:SparqlQuery ;
+                rdfs:label "books" ;
+                hpcom:queryString """
+                    SELECT DISTINCT ?book ?name (MAX(?date) as ?dt) WHERE {
+                        ?book a schema:Book .
+                        ?book schema:name ?name .
+                        ?book hpcom:book_status hpcom:book-to-read .
+                        ?book hpcom:book_owned_medium ?medium .
+                        BIND(?datePublished as ?date) .
+                    } GROUP BY ?book ORDER By DESC(?dt) ASC(?name) 
+                    """ ;
+            ] ;
+        ] .
+
 list:best-rated a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
         schema:name "Best Books by Rating"@en ;
         schema:identifier "best-rated"@en ;
