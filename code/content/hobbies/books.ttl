@@ -10047,11 +10047,16 @@
         schema:Book ;
     hpcom:book_id "709"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-01-05T00:00:00"^^xsd:dateTime ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Pygmy"@en ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    schema:review """Sharp wit but a difficult read and excessive Americanisation of sarcasm to extremes. Maybe that was the point."""@en ;
     schema:url "https://harshp.com/hobbies/books/709"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/710> a hpcom:RenderedItem,
@@ -10890,7 +10895,7 @@
 
 <https://harshp.com/hobbies/books/770> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "770"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
