@@ -71,7 +71,7 @@
     	<br/>
         &#128230;resources:
         {% if item.hpcom_supplementary is sequence %}
-        {% for archive in item.hpcom_supplementary|sort(attribute='schema_name,iri') %}
+        {% for archive in item.hpcom_supplementary|sort(attribute='schema_url') %}
         {{", " if not loop.first}}<a href="{{archive.schema_url}}">{{archive}}</a>
         {% endfor %}
         {% else %}

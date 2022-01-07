@@ -67,7 +67,7 @@
         {% if publication.hpcom_supplementary %}
             ; &#128230;resources:
             {% if publication.hpcom_supplementary is sequence %}
-            {% for archive in publication.hpcom_supplementary|sort(attribute='iri') %}
+            {% for archive in publication.hpcom_supplementary|sort(attribute='schema_url') %}
             <a href="{{archive.schema_url}}"> {% if is_rdf_type(archive, 'schema:PresentationDigitalDocument') %}slides{% else %}{{ archive }}{% endif %}</a>{{"," if not loop.last}}
             {% endfor %}
             {% else %}
