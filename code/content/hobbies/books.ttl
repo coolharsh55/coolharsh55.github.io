@@ -9010,7 +9010,7 @@
     hpcom:book_read_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2021-11-09T00:00:00"^^xsd:dateTime ;
-    schema:aggregatedRating hpcom:Rating5 ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Hal Clement"^^xsd:string ;
     schema:dateCreated "1954"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -9692,7 +9692,7 @@
         hpcom:BookSciFi ;
     schema:name "Railsea"@en ;
     hpcom:date_book_read "2021-11-14T11:30:00"^^xsd:dateTime ;
-    schema:aggregatedRating hpcom:Rating5 ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:isPartOf list:scifi ;
     schema:isPartOf list:fantasy ;
     schema:url "https://harshp.com/hobbies/books/680"^^xsd:anyURI .
@@ -10099,7 +10099,10 @@
         schema:Book ;
     hpcom:book_id "713"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10892,16 +10895,17 @@
 
 <https://harshp.com/hobbies/books/770> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "770"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2022-01-07T23:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Kurt Vonnegut"^^xsd:string ;
     schema:dateCreated "1976"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Slapstick or Lonesome No More"@en ;
+    schema:review """Funny dark humour. Not Cat's Cradle though."""@en ;
     schema:url "https://harshp.com/hobbies/books/770"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/771> a schema:Book, hpcom:RenderedItem ;
