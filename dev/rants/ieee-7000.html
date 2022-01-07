@@ -81,6 +81,9 @@
 <p>Another more convenient way is to simply simulate what the human might do in such situations, which is clicking the next button to load the rest of the pages. However, doing this too quickly makes the pages load in the wrong order. So there has to be an artificial delay between one click and the next. And it has to be enough to guarantee that the pages load in order.</p>
 
 <code><pre>
+// set initial page count to pages loaded (will be 1)
+var pages = $('#pdf-viewer > img').length;
+
 // temp0 is obtained by using the element clicker
 // and selecting the next page button
 var rec_page_load = function() {
