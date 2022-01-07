@@ -23,14 +23,15 @@
     <meta name="schema:keywords" content="{% for tag in item.hpcom_tag|sort(attribute='iri') %}{{ tag }},{% endfor %}">
     <meta name="schema:author" content="https://harshp.com/me">
     <meta name="schema:identifier" content="{{item.iri}}">
-    {# Twitter #}
+    {# OpenGraph #}
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
-    <meta name="twitter:title" content="{{ item.schema_name }}">
-    <meta name="twitter:description" content="{{ item.schema_description }}">
     <meta name="twitter:creator" content="@coolharsh55">
-    {% if headerimage %}
-    <meta name="twitter:image" content="{{ item.schema_image }}">
+    <meta property="og:url" content="{{ item.schema_url }}">
+    <meta property="og:title" content="{{ item.schema_name }}">
+    <meta property="og:description" content="{{ item.schema_description }}">
+    {% if item.schema_image %}
+    <meta property="og:image" content="{{ item.schema_image }}">
     {% endif %}
     {% endblock meta %}
     {% block CSS %}
