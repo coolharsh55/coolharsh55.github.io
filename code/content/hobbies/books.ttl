@@ -768,12 +768,17 @@
 <https://harshp.com/hobbies/books/67> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "67"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:date_book_read "2022-01-13T23:00:00"^^xsd:dateTime ;
     schema:author "Kurt Vonnegut Jr."^^xsd:string ;
     schema:dateCreated "1961"^^xsd:int ;
     schema:isbn "9780385334143"^^xsd:string ;
+    schema:genre hpcom:BookFiction ;
     schema:name "Mother Night"@en ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:review """A darker and well concocted humour mixture from Vonnegut. Small and quick read."""@en ;
     schema:url "https://harshp.com/hobbies/books/67"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/68> a hpcom:RenderedItem,
@@ -11085,7 +11090,7 @@
 
 <https://harshp.com/hobbies/books/784> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "784"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
