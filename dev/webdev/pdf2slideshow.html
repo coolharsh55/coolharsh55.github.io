@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>pdf2slideshow: Convert your PDFs to HTML Slideshows</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="pdf2slideshow: Convert your PDFs to HTML Slideshows">
+    <meta name="schema:description" content="Creating a nifty script to convert PDF into HTML slideshow">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="presentation,web-dev,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/webdev/pdf2slideshow">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/webdev/pdf2slideshow">
+    <meta property="og:title" content="pdf2slideshow: Convert your PDFs to HTML Slideshows">
+    <meta property="og:description" content="Creating a nifty script to convert PDF into HTML slideshow">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/webdev/pdf2slideshow">
+        <h1 property="schema:name schema:headline">pdf2slideshow: Convert your PDFs to HTML Slideshows</h1>
+        <div id="description">
+            <span property='schema:description'>Creating a nifty script to convert PDF into HTML slideshow</span><br/>
+            published: <time property="schema:datePublished" datetime="2022-01-14T23:00:00">2022-01-14T23:00:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/webdev" property="schema:isPartOf" resource="https://harshp.com/dev/webdev"><span property="rdfs:label">web development</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/presentation" property="schema:about" resource="https://harshp.com/tags/presentation" typeof="rdfs:Resource"><span property="rdfs:label">presentation</span></a>
+            <a class="tag" href="https://harshp.com/tags/web-dev" property="schema:about" resource="https://harshp.com/tags/web-dev" typeof="rdfs:Resource"><span property="rdfs:label">web-dev</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <blockquote><a href="https://github.com/coolharsh55/pdf2slideshow">pdf2slideshow GitHub repo</a> and <a href="https://harshp.com/pdf2slideshow/example/">example</a></blockquote>
+
+<p><a href="https://www.slideshare.net/">SlideShare</a> is a popular platform for sharing presentations on the web. It allows one to upload a PDF or a PPTX, and displays it as a set of slides one can navigate. It grew in popularity because it offered a simple interface, functional viewing of the slides, and didn't have any storage limits or requirements. Over time, it was bought by <a href="https://www.scribd.com/">Scribd</a>, and became part of its corporate offering. Though still free, there is always the issue of control (by a company) and lock-in (my data).</p>
+
+<p>As an alternative, <a href="https://pages.github.com/">GitHub Pages</a> is a free offering where a git repository can be rendered as a webpage. The good part of this is that there is no necessary lock-in. I can easily take that repository and host it somewhere else without loss of functionality. GitHub Pages also offers file hosting, which means it can store PDFs and PPTXs, and serve them for download. When using these features to host presentations, one gets a link to share with others for downloading the slides (PDF), but no nice-looking slideshow viewer like SlideShare.</p>
+
+<p>My slides used to be hosted on SlideShare, and I eventually moved them to a <a href="https://github.com/coolharsh55/presentations">GitHub repo</a> so that I have control of my data and can choose how to provide it. Since these are PDFs, they can only be downloaded or viewed in the browser (as PDFs). Some others, such as <a href="https://www.rubensworks.net/#me">Ruben Taelman</a>, write their presentations in text, and render it natively using a HTML/JS engine such as <a href="https://shwr.me/">shower.js</a> or <a href="https://revealjs.com/">reveal.js</a>. As an example, see <a href="https://rubensworks.github.io/slides-2020-iswc-ssws-amf/#">Ruben's slides</a> and their <a href="https://github.com/rubensworks/slides-2020-iswc-ssws-amf">source</a>.</p>
+
+<p>While I wanted to create something similarly convenient and web-native for my presentations, the task got pushed further and further down the queue. Until today when I came across <a href="https://twitter.com/PFCdgayo">Daniel Gayo-Avello's</a> <a href="https://twitter.com/PFCdgayo/status/1481738204596391936">tweet asking about an alternative to SlideShare</a>. My knee-jerk <a href="https://twitter.com/coolharsh55/status/1482020306277572614">reply</a> was that of course you can convert PDF to images and host that as a slideshow. But after posting it, I started wondering how would one go about doing that. Surely something that does this must already exist.</p>
+
+<p>Turns out I couldn't really find anything that does <i>exactly</i> this in the 15 minutes I tried to search using terms like "<i>PDF to image slideshow</i>". I'm still certain someone somewhere must have had the same thought and there's an elegant and ready-to-use solution sitting somewhere, probably on GitHub or in a stackoverflow answer. Regardless, I decided to create my own, because procrastination is the necessity of inventions.</p>
+
+<h2>Converting PDF to Images</h2>
+<p>There are lots of ways to convert a PDF to images. When in doubt, always look towards <a href="http://www.imagemagick.org/">ImageMagick</a> or <a href="https://pandoc.org/">Pandoc</a> for conversion related tasks. In this case, though there are ways to extract or print a PDF as images in both of these, we're looking for something more convenient and easily scriptable without messing around with variables and settings. The solution turned out to be in <a href="https://poppler.freedesktop.org/">Poppler</a>, a powerful set of tools for working with PDFs. The specific tool is called <code>pdftoppm</code>, and converts PDFs to various image formats. See its <a href="https://manpages.debian.org/testing/poppler-utils/pdftoppm.1.en.html">man page</a> for an overview.</p>
+
+<p>Using <code>pdftoppm</code>, converting a PDF to images is as easy as calling it on the file, specifying the output format, and specifying the prefix for images. The below command exports each page of the specified PDF as a PNG image with the filename generated using format <code>slide-NN.png</code> where <code>NN</code> is the page number.</p>
+
+<pre><code>$&gt; pdftoppm &lt;PDF&gt; slide -png</code></pre>
+
+<h2>Compressing Images</h2>
+<p>For my sample PDF, which was about 10MB, the total size of pictures generated was about 25MB, which is too high for a reasonable slideshow on the web. To ensure images don't get too heavy, one could use other PDF to image generation tools that offer a lot of options to bring the size down using resolution, colour depth, and other technical tricks. For simplicity, I wanted something like <a href="https://tinypng.com/">TinyPNG</a> where you just throw an image at it and it reduces its file size.</p>
+
+<p>I found two utilities that were straightforward to use, and were available in the package managers. First was <a href="http://optipng.sourceforge.net/">OptiPNG</a> which had optimisation levels for aggresive compression. Its results were not that efficient. Second was <a href="https://pngquant.org/">pngquant</a> which turned out to be a better tool based on output sizes. Neither of these were as efficient as TinyPNG, but their results were acceptable.</p>
+
+<p>Using <code>pngquant</code>, shown in the example below, also allows specifying the level of optimisation it aims to achieve. Higher optimisation means slower speed, with 1 being the most optimised (highest compression) and 11 is the least (fastest). The below example takes a file and overwrites it with a compressed version.</p>
+
+<pre><code>$&gt; pngquant &lt;file&gt; -s 1 -f -o &lt;file&gt;</code></pre>
+
+<h2>Embedding Images into a HTML Slideshow</h2>
+<p>Finally to create a slideshow, I used <a href="https://revealjs.com/">reveal.js</a> to do most of the heavy lifting. I downloaded its simple minimal example, and inserted links to images in the HTML. That's it. The reveal.js library does all the work in terms of ensuring images are displayed correctly, navigation between them, and rendering it on different display sizes.</p>
+
+<p>To correctly insert images as slides with the least amount of work possible, I sorted the images in reverse order (last page of PDF to first) based on their filename, and inserted them as a HTML snippet in the file at a specific line where slides are supposed to be inserted. In my case, the HTML template had slides to be inserted at line 16. To actually insert the text, the usual text tool on *NIX environments do the job (awk, sed). See the example below.</p>
+
+<pre><code>$&gt; sed -i "16i &lt;section&gt;&lt;img src='IMAGE.png'&gt;&lt;/section&gt;" &lt;template.html&gt;</code></pre>
+
+<p>To instead use <a href="https://shwr.me/">shower.js</a> as the slideshow library, download its minimal version, figure out the line number where to insert the slide and in what format, and modify the sed usage accordingly. For example, I would guess that shower.js uses a similar <code>section</code> tag to indicate each tile, but with <code>class="slide"</code> annotation.</p>
+
+<h2>Automating and Packaging using Bash script</h2>
+<p>For convenience and repeatability, the entire thing can be put in a bash script. This also helps in applying the script to different PDFs, or choosing different templates (e.g. specifying year or styles) and rendering options (e.g. themes).</p>
+
+<pre><code>#!/usr/bin/env bash
+# Step1: convert PDF to images
+pdftoppm $1 ${2}/slide -png
+
+# Step2: compress PNG images for the web
+for f in ${2}/*.png; do
+    pngquant $f -s 1 -f -o $f
+done
+
+# Step3: insert link to images in HTML template
+cp ./template.html ${2}/index.html
+slides=($(ls -1 ${2}/*.png | sort -r))
+for f in "${slides[@]}"; do
+    f=$(basename $f)
+    img="&lt;section&gt;&lt;img src='$f'&gt;&lt;/section&gt;"
+    sed -i "16i $img" ${2}/index.html 
+done;</code></pre>
+
+<p>As with all scripts, be wary of simply downloading someone elses code and running it. Always read through the script to at least see if it makes sense or is a bunch of obfuscate code that hides disasters inside. My go-to rules is if a script doesn't have comments, I won't bother figuring out unless it is absolutely essential. A script executed incorrectly can cause all sorts of pains, like deleted data or broken systems.</p>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
