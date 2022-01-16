@@ -57,7 +57,6 @@
             published: <time property="schema:datePublished" datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
             {% if item.schema_dateModified %}{% if item.schema_dateModified > item.schema_datePublished %}
                 <small>(updated: <time property="schema:dateModified" datetime="{{item.schema_dateModified}}">{{ item.schema_dateModified }}</time>)</small>
-            }
             {% endif %}{% endif %}
             {% endif %}
             {% if item.schema_author %}

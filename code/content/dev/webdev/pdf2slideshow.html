@@ -1,4 +1,7 @@
-<blockquote><a href="https://github.com/coolharsh55/pdf2slideshow">pdf2slideshow GitHub repo</a> and <a href="https://harshp.com/pdf2slideshow/example/">example</a></blockquote>
+<blockquote>
+    <a href="https://github.com/coolharsh55/pdf2slideshow">pdf2slideshow GitHub repo</a> and <a href="https://harshp.com/pdf2slideshow/example/">example</a><br/>
+    Update 16-JAN-2022: <a href="#batch-script">batch script</a> to process folders with PDFs.
+</blockquote>
 
 <p><a href="https://www.slideshare.net/">SlideShare</a> is a popular platform for sharing presentations on the web. It allows one to upload a PDF or a PPTX, and displays it as a set of slides one can navigate. It grew in popularity because it offered a simple interface, functional viewing of the slides, and didn't have any storage limits or requirements. Over time, it was bought by <a href="https://www.scribd.com/">Scribd</a>, and became part of its corporate offering. Though still free, there is always the issue of control (by a company) and lock-in (my data).</p>
 
@@ -57,3 +60,18 @@ for f in "${slides[@]}"; do
 done;</code></pre>
 
 <p>As with all scripts, be wary of simply downloading someone elses code and running it. Always read through the script to at least see if it makes sense or is a bunch of obfuscate code that hides disasters inside. My go-to rules is if a script doesn't have comments, I won't bother figuring out unless it is absolutely essential. A script executed incorrectly can cause all sorts of pains, like deleted data or broken systems.</p>
+
+<section id="batch-script">
+<h2>Batch script for handling folders with PDFs</h2>
+<p>The original script worked with a single PDF and folder. Which means it is a lot of work to convert all PDFs manually. Automation is nice. Hence a batch script that navigates through folders and processes PDFs in each sub-folder to generate HTML slideshows in each of those folders.</p>
+<p>Some nice to have features that make this chore convenient is ignore git folders so that the script can be safely run on folders with version control or other hidden folder. Another feature is checking if a HTML slideshow already exists - and if yes ignoring that PDF to avoid repeating processing.</p>
+<p>It is also possible to generate an index page by using the tree command which automatically generates a HTML page with hyperlinks to files. The following example creates a tree listing for the folder. Clicking on the <code>index.html</code> link or the folder will open the HTML slideshow, while clicking on the other files will download them.</p>
+<pre><code>$&gt; tree -r -I '*.png' -H '&lt;URL&gt;' &gt; page.html
+</code></pre>
+<p>The use of parameters is as follows:</p>
+<ul>
+    <li><code>-r</code> sorts the items in reverse order; for folders organised by year this will cause the most recent year to be listed first.</li>
+    <li><code>-I '*.png'</code> will ignore all PNG files in the folder. This helps clean up the images and only list the 'slideshow' or 'download' files.</li>
+    <li><code>-H URL</code> specifies HTML as the output and indicates the URL (which can be absolute or relative) for hyperlinks to files. A good option is to generate the output file in the same folder and use relative links (<code>./</code>) so the folder can be hosted anywhere.</li>
+</ul>
+</section>
