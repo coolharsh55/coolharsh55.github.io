@@ -10114,7 +10114,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "House of Suns"@en ;
-    schema:review """I was hooked right from page 1. The sheer breadth and scope of the story and characters makes this one a classic. What a wonderful reading."""@en ;
+    schema:review """Awesome from page1. The breadth, scope, and story makes this one a classic. What a wonderful reading."""@en ;
     schema:isPartOf list:scifi ;
     schema:url "https://harshp.com/hobbies/books/713"^^xsd:anyURI .
 
@@ -10889,7 +10889,7 @@
 
 <https://harshp.com/hobbies/books/769> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "769"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -11090,15 +11090,17 @@
 
 <https://harshp.com/hobbies/books/784> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "784"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2022-01-18T23:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction ;
     schema:author "Dan Simmons"^^xsd:string ;
     schema:dateCreated "2005"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Song of Kali"@en ;
+    schema:review """A slow burner with a fair setting in Kolkata. Thought it was slow but the scenes lingered after reading."""@en ;
     schema:url "https://harshp.com/hobbies/books/784"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/785> a schema:Book, hpcom:RenderedItem ;
