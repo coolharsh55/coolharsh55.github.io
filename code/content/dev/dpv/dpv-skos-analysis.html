@@ -1,0 +1,398 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6c79cb1">1. SKOS Basics</a>
+<ul>
+<li><a href="#org8f4bd40">1.1. Concept</a></li>
+<li><a href="#orgf7f7c80">1.2. Labels</a></li>
+<li><a href="#orgf872a6b">1.3. Hierarchy Relationships</a></li>
+<li><a href="#org17dfe5d">1.4. Definitions, and notes for Examples, Changes, and Scope</a></li>
+<li><a href="#org0267fc1">1.5. Structuring concept hierarchies using SKOS</a>
+<ul>
+<li><a href="#orgbec42fc">1.5.1. Replicating OWL/RDFS hierarchy with SKOS broader/narrower</a></li>
+<li><a href="#orgb789cf3">1.5.2. Concept Schemes in SKOS</a></li>
+<li><a href="#org8791497">1.5.3. Collections in SKOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org324884a">2. DPV as SKOS vocabulary</a>
+<ul>
+<li><a href="#org3847da4">2.1. Requirements</a></li>
+<li><a href="#orga8175ba">2.2. Proposal for providing DPV using both SKOS and RDFS/OWL</a></li>
+</ul>
+</li>
+<li><a href="#org9526f98">3. Summary</a></li>
+</ul>
+</div>
+</div>
+<dl class="org-dl">
+<dt>skos reference</dt><dd><a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></dd>
+<dt>skos primer</dt><dd><a href="https://www.w3.org/TR/skos-primer/">https://www.w3.org/TR/skos-primer/</a></dd>
+</dl>
+
+<div id="outline-container-org6c79cb1" class="outline-2">
+<h2 id="org6c79cb1"><span class="section-number-2">1</span> SKOS Basics</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org8f4bd40" class="outline-3">
+<h3 id="org8f4bd40"><span class="section-number-3">1.1</span> Concept</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="http://www.w3.org/TR/skos-reference#Concept">skos:Concept</a></li>
+<li><code>Concept</code> is the equivalent of both class and instance within SKOS.</li>
+<li>All <i>concepts</i> within DPV which are now provided as classes would become <code>skos:Concept</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf7f7c80" class="outline-3">
+<h3 id="orgf7f7c80"><span class="section-number-3">1.2</span> Labels</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>The <a href="http://www.w3.org/TR/skos-reference#prefLabel">skos:prefLabel</a> provides a way to state this is the <i>preferred</i> method of
+referring to a concept</li>
+<li>It necessitates that <code>prefLabel</code> be unique i.e. no two concepts should have the
+same preferred labels</li>
+<li>In DPV, <code>prefLabel</code> is what we used to state this is recommended way of
+referring to the concept, and also what we use in the IRI i.e. <code>dpv:&lt;prefLabel&gt;</code></li>
+<li>For other labels, there is <a href="http://www.w3.org/TR/skos-reference#altLabel">skos:altLabel</a> and <a href="http://www.w3.org/TR/skos-reference#hiddenLabel">skos:hiddenLabel</a></li>
+<li><code>skos:altLabel</code> provides alternate ways of referring to the same concept</li>
+<li><p>
+In DPV, <code>altLabel</code> provides a way to incorporate other ways of referring to the
+same concept. For example,
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">dpv:PrivacyNotice a skos:Concept ;
+    skos:prefLabel "Privacy Notice"@en ;
+    skos:altLabel "Privacy Policy"@en .
+</pre>
+</div></li>
+<li><p>
+In DPV, <code>altLabel</code> provides a way to have different labels arising from other
+standards or common uses. For example, instead of creating an entirely
+separate vocabulary for ISO, the equivalent concepts can be indicated using a
+customised property for ISO labels.
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">dpv:labelISO rdfs:subPropetyOf skos:altLabel .
+dpv:DataController skos:prefLabel "Data Controller" ;
+    dpv:labelISO "PII Controller" .
+</pre>
+</div></li>
+<li><code>hiddenLabel</code> is a way to have labels for convenience and other uses, but which
+usually would be <i>hidden</i> from general use of that concept.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf872a6b" class="outline-3">
+<h3 id="orgf872a6b"><span class="section-number-3">1.3</span> Hierarchy Relationships</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>In RDFS and OWL, hierarchy is specified using the unidirectional property <code>subClassOf</code></li>
+<li>In SKOS, the properties <a href="http://www.w3.org/TR/skos-reference#broader">skos:broader</a> and <a href="http://www.w3.org/TR/skos-reference#narrower">skos:narrower</a> are used to indicate
+relationship between two concepts bidirectionally</li>
+<li><p>
+This is used as follows: <code>A skos:broader B</code> means A has B as a broader concept
+of itself. For example <code>cat skos:broader mammal</code>
+</p>
+<div class="org-center">
+<p>
+I always find it confusing to remember how <code>broader</code> and <code>narrower</code> are to be used
+in terms of their direction. As a mnemonic, I use <i>has</i> as the prefix of these
+properties to make sense of what they are supposed to mean. Therefore, saying
+<code>A &lt;has&gt;broader B</code> helps understand A has B as its broader concept.
+</p>
+</div></li>
+<li>In SKOS, the properties <code>skos:broaderTransitive</code> and <code>skos:narrowerTransitive</code> are
+sub-properties used for transitive inferences.</li>
+<li><p>
+In DPV, the hierarchies are expected to be transitive, which necessitates the
+use of SKOS transitive properties. Otherwise we lose inferences. See example:
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle"># given this data (example concepts)
+dpv:PersonalData skos:narrower dpv:SpecialCategoryPersonalData .
+dpv:SpecialCategoryPersonalData skos:narrower dpv:GeneticData .
+# this inference would be wrong because of non-transitive properties
+dpv:GeneticData skos:broader dpv:PersonalData .
+
+# however, using transitive versions like this would work as expected
+dpv:PersonalData skos:narrowerTransitive dpv:SpecialCategoryPersonalData .
+dpv:SpecialCategoryPersonalData skos:narrowerTransitive dpv:GeneticData .
+# these two inferences are now possible and correct
+dpv:GeneticData skos:broader dpv:PersonalData .
+dpv:GeneticData skos:broaderTransitive dpv:PersonalData .
+</pre>
+</div></li>
+<li>The property <a href="http://www.w3.org/TR/skos-reference#broader">skos:Related</a> is used to indicate another concept is related
+without establishing any <i>specific</i> relationship between the two.</li>
+<li>SKOS thus provides a way to indicate a hierarchy using <code>broader</code> and <code>narrower</code>
+and <code>related</code> to associate unidirectionally another concept.</li>
+<li>SKOS specifies that concepts related via a hierarchy should not also be
+associated through the related property. This means <code>related</code> is a strictly
+specified relationship between concepts not present in the same hierarchy.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org17dfe5d" class="outline-3">
+<h3 id="org17dfe5d"><span class="section-number-3">1.4</span> Definitions, and notes for Examples, Changes, and Scope</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>SKOS has the general property <a href="http://www.w3.org/TR/skos-reference#note">skos:note</a> to associate a note with a concept. A
+note can be anything: a literal, a string, another node.</li>
+<li>SKOS provides subproperty <a href="http://www.w3.org/TR/skos-reference#definition">skos:definition</a> to indicate the definition of a
+concept.</li>
+<li>In DPV, we currently use <code>dct:description</code> to indicate definitions. Instead, the
+<code>skos:definition</code> property is better suited for explicitly indicating
+definition.</li>
+<li>SKOS provides subproperty <a href="http://www.w3.org/TR/skos-reference#scopeNote">skos:scopeNote</a> to provide information about the
+<i>scope</i> of a concept.</li>
+<li>In DPV, the <code>scopeNote</code> property can be used to indicate how the concept is to
+be interpreted, whether there are any specific considerations regarding the
+use of interpretation of that concept, or additional information not provided
+within a definition. This information could be what we usually put in notes
+alongside a concept in the definition.</li>
+<li><code>historyNote</code>, <code>editorialNote</code>, and <code>changeNote</code> are subproperties used to describe
+the <i>historical</i>, <i>editorial</i>, and <i>provenance</i> related information for a concept.</li>
+<li><a href="http://www.w3.org/TR/skos-reference#example">skos:example</a> can be used to provide an example of a concept</li>
+<li>In DPV, <code>skos:example</code> can be used in two ways: first in providing textual
+examples of a concept as it occurs in the real world; or secondly by providing
+examples of how that concept is used in code and use-cases. The first is
+better for documentation, while the second is better for adoption and
+use. However, other vocabularise (e.g. dct, vann) exist that could be used to
+indicate code examples. So this property can be used to help humans understand
+what the concept is about through example(s).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0267fc1" class="outline-3">
+<h3 id="org0267fc1"><span class="section-number-3">1.5</span> Structuring concept hierarchies using SKOS</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgbec42fc" class="outline-4">
+<h4 id="orgbec42fc"><span class="section-number-4">1.5.1</span> Replicating OWL/RDFS hierarchy with SKOS broader/narrower</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ul class="org-ul">
+<li>Currently, the hierarchy in DPV is expressed using <code>rdfs:subClassOf</code> property
+usage in the following manner: <code>A -subClassOf-&gt; B</code></li>
+<li>An intuitive conversion of this would be like this:
+<code>A -narrower-&gt; B</code> and <code>B -broader-&gt; A</code></li>
+<li>While this will work in that it will provide a taxonomy of concepts structured
+in a hierarchy, it is not the best method nor the only one SKOS provides.</li>
+<li>If this is used, there is no good reason to migrate DPV from OWL or RDFS to a
+similar structure within SKOS.</li>
+<li>For one, there is no way to indicate a relationship between a concept and a
+top-concept. For example, consider the following example: <i>EmailAddress</i> is a
+subclass of <i>PersonalData</i> with some 4 or 5 levels of abstractions between
+them. To indicate <i>EmailAddress</i> is a category of personal data, one would have
+to either travel up the chain of <i>subclass</i> relationships of use a reasoner to
+add statements that directly state <i>EmailAddress</i> is a subclass of
+<i>PersonalData</i>. This is a lot of non-intuitive usage.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb789cf3" class="outline-4">
+<h4 id="orgb789cf3"><span class="section-number-4">1.5.2</span> Concept Schemes in SKOS</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<ul class="org-ul">
+<li>SKOS provides the <a href="http://www.w3.org/TR/skos-reference#ConceptScheme">skos:ConceptScheme</a> class to group related concepts together
+in a <i>concept scheme</i> or a <i>thesaurus</i>.</li>
+<li><code>ConceptScheme</code> can have annotations <code>dct:title</code> and <code>dct:creator</code></li>
+<li>Concepts can be indicated to be a part of a scheme using <code>skos:inScheme</code></li>
+<li>To indicate hierarchies and the top-concept within that hierarchy, the
+property <a href="http://www.w3.org/TR/skos-reference#hasTopConcept">skos:hasTopConcept</a> is used</li>
+<li>The same concept can be part of different concept schemes</li>
+<li>The entirety of DPV can be a <code>skos:ConceptScheme</code> with each of its core concepts
+and modules providing the <i>top concept</i>. This results in a single collection of
+concepts with multiple hierarchies defined by the top concepts.</li>
+<li>Another alternative is to define each module or concept collection as a
+<code>skos:ConceptScheme</code> and to define the concepts within it as top
+concepts. However, there is no way to <i>collect</i> concept schemes within a package
+to create <i>DPV</i>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8791497" class="outline-4">
+<h4 id="org8791497"><span class="section-number-4">1.5.3</span> Collections in SKOS</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<ul class="org-ul">
+<li><a href="http://www.w3.org/TR/skos-reference#Collection">skos:Collection</a> is a way to group related concepts together under an arbitrary
+label which is <i>not itself a concept</i>. The example given in the primer refers to
+milk and types of milk (cow, goat, buffalo) and a collection for <i>milk by
+source animal</i> that includes only the concepts for cow, goat, and buffalo milk.</li>
+<li>Collections specify inclusion of a concept or another collection using the
+property <a href="http://www.w3.org/TR/skos-reference#member">skos:member</a></li>
+<li>The primer describes where collections may be necessary, and that the same
+<i>pattern</i> could be replicated by declaring the collection label as a <i>Concept</i> and
+using broader and narrower properties to construct a hierarchy.</li>
+<li>It concludes with the decision being based on whether the collection should be
+a concept or not. If yes, then <i>ConceptScheme</i> may be more suitable. If not,
+then <i>Collection</i> would be more suitable.</li>
+<li>For DPV, using <code>skos:Collection</code> seems to incur additional complexities without
+any apparent benefits. So far, we do not have any specific hierarchy or
+collection that cannot be represent using <i>ConceptScheme</i>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org324884a" class="outline-2">
+<h2 id="org324884a"><span class="section-number-2">2</span> DPV as SKOS vocabulary</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org3847da4" class="outline-3">
+<h3 id="org3847da4"><span class="section-number-3">2.1</span> Requirements</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>We have <i>Concepts</i> that have a hierarchy; this can be specified using
+<code>skos:Concept</code> and <code>skos:broader</code> and <code>skos:narrower</code> relationships</li>
+<li>We have properties that relate concepts, e.g. <code>dpv:hasPersonalData</code> whose range
+we want to have as an <i>instance</i> of <code>dpv:PersonalData</code>.</li>
+<li><p>
+It should be possible to use multiple concepts as types, for e.g. to declare
+something is an instance of two purposes as:
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">ex:MyPurpose a dpv:Marketing, dpv:Personalisation .
+</pre>
+</div>
+<p>
+which is an issue as SKOS concepts cannot be 'combined' in a similar manner to
+what we assume RDFS/OWL2 classes can be.
+</p></li>
+<li>If possible, we would like to keep meta-modelling and OWL-DL
+compatibility. This would means having the T-box and A-box be disjoint
+sets. While not affecting the SKOS usage in any major manner, this has
+implications on use of DPV in OWL2 and more specifically reasoner-oriented
+tasks and use-cases.</li>
+<li>We want a way to <i>package</i> all concepts and hierarchies within DPV. While
+currently we don't explicitly declare this in the RDFS/OWL2 vocabulary, if
+there is a way to express this formally, we could do it.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga8175ba" class="outline-3">
+<h3 id="orga8175ba"><span class="section-number-3">2.2</span> Proposal for providing DPV using both SKOS and RDFS/OWL</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>The top-level classes are declared as an instance of both <code>owl:Class</code> and
+<code>skos:Concept</code>. This permits creating instances of that class that are
+compatible with both OWL (as an instance) and SKOS (as members of concept
+scheme). This also keeps the T-box and A-box separate by not having them
+mixing together.</li>
+<li><p>
+In the example below, we have <code>PersonalData</code> as the top-level concept which is
+declared as also a class. This permits the following:
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">&lt;dpv&gt; a skos:ConceptScheme ;
+    skos:hasTopConcept dpv:PersonalData .
+dpv:PersonalData a owl:Class, skos:Concept ;
+    dct:title "Personal Data"@en ;
+    skos:inScheme &lt;dpv&gt; .
+dpv:Email a dpv:PersonalData, skos:Concept ;
+    skos:prefLabel "Email"@en ;
+    skos:narrower dpv:EmailAddress .
+dpv:EmailAddress a dpv:PersonalData, skos:Concept ;
+    skos:prefLabel "Email Address"@en ;
+    skos:broader dpv:Email .
+dpv:hasPersonalData a owl:ObjectProperty ;
+    rdfs:range dpv:PersonalData .
+</pre>
+</div></li>
+<li>This has the following implications:
+<ul class="org-ul">
+<li>The property <code>hasPersonalData</code> can be defined with range <code>PersonalData</code> and can
+correctly refer to both <code>Email</code> and <code>EmailAddress</code></li>
+<li>This use of <code>PersonalData</code> is okay, because we never expect the following:
+<code>&lt;Something&gt; hasPersonalData PersonalData</code></li>
+<li><code>Email</code> and <code>EmailAddress</code> are related using the SKOS hierarchy instead of OWL</li>
+<li><code>Email</code> and <code>EmailAddress</code> cannot be resolved using subclass mechanism
+anymore. For this a separate OWL equivalence ontology would have to be
+created which specifies <code>subClassOf</code> relationships instead of <code>broader</code>. As the
+semantic implications of this OWL iteration are different from those of DPV,
+it would be better to provide it using a separate IRI.</li>
+<li><p>
+Note that mixing SKOS and OWL for both classes and instances would turn this
+into OWL-Full and cause issues when using a reasoner, like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">dpv:PersonalData a owl:Class, skos:ConceptScheme .
+# issue1: instances of concept scheme are incorrect
+# issue2: a class as instance of another class
+dpv:Email a owl:Class, dpv:PersonalData .
+# issue3: property assertions are complex
+# issue4: skos:Concept and skos:ConceptScheme as disjoint
+dpv:Email a skos:Concept ;
+    skos:inScheme dpv:PersonalData .
+ex:MyEmail a skos:Concept ;
+    skos:inScheme dpv:PersonalData ;
+    skos:broader dpv:Email 
+# the range of dpv:hasPersonalData cannot be stated
+# unless we use [ skos:inScheme dpv:PersonalData ] as path
+ex:PDH dpv:hasPersonalData ex:Email .
+ex:PDH dpv:hasPersonalData ex:MyEmail .
+</pre>
+</div></li>
+</ul></li>
+<li><p>
+To create further <i>instances</i> of a concept provided in DPV, such as EmailAddress
+and a specific email address, SKOS could still be used.
+</p>
+<div class="org-src-container">
+<pre class="src src-turtle">dpv:EmailAddress a dpv:PersonalData, skos:Concept .
+ex:MyEmail a dpv:PersonalData, skos:Concept ;
+    skos:broader dpv:EmailAddress ;
+    skos:prefLabel "jane.doe@example.com"^^xsd:string .
+# okay to use property like this
+ex:PDH dpv:hasPersonalData ex:EmailAddress .
+ex:PDH dpv:hasPersonalData ex:MyEmail .
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9526f98" class="outline-2">
+<h2 id="org9526f98"><span class="section-number-2">3</span> Summary</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><code>DPV</code> as an ontology also becomes a <code>skos:ConceptScheme</code></li>
+<li>Core and other top-level classes become <code>skos:Concept</code> with <code>skos:inScheme &lt;DPV&gt;</code></li>
+<li>Core and other top-level classes are instances of <code>owl:Class</code></li>
+<li>Taxonomies are created using instances of <code>skos:Concept</code> and using <code>skos:broader</code>
+and <code>skos:narrower</code> relationships.</li>
+<li>Properties are declared with domain or range as the appropriate top-level
+class, for example <code>dpv:hasPersonalData rdfs:range dpv:PersonalData</code></li>
+<li>What used to be <i>instances</i> of specific concepts are now represented as
+instances of <code>skos:Concept</code> and whatever top-level concept they represent. For
+example, as: <code>ex:MyEmail a dpv:PersonalData, skos:Concept</code> ; To declare what is
+their closest concept within DPV taxonomy, SKOS properties are used thus:
+<code>ex:MyEmail skos:broader dpv:EmailAddress, dpv:Identifier</code> .</li>
+<li>T-Box and A-box are kept strictly separate thus making this OWL-DL
+compatible. However, SPECIAL and TRAPEZE's reasoners won't work any longer
+because there are no sub-class relationships. To remedy this, a <i>separate</i>
+serialisation using OWL and using a separate IRI is provided.</li>
+<li>For other general uses, SKOS and OWL mixed like this provide a better
+possibility for using as needed, whether requiring property domains and
+ranges, or for further extending concepts and creating instances at arbitrary
+levels of abstractions.</li>
+<li>SKOS provides a lot of useful organisational tools, like <i>ConceptScheme</i> which
+can be further used to group concepts without declaring hierarchies. For
+example, in <code>LegalEntity</code>, concept schemes can be created to separate what is
+essentially a <i>legal role</i> such as a controller from what is a <i>type</i> of
+organisation such as SME. Through this, the actual legal entity taxonomy would
+be clean and not include these categorisation, since <i>ConceptScheme</i> is disjoint
+from <i>Concept</i> within SKOS.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<h2>Example RDF for dpv-skos consistency checking</h2>
+<p>I created the following minimal set of information to test whether such usage of SKOS and OWL is okay or if a reasoner might throw errors and inconsistencies for using it.</p>
+<p>Protege with reasoners FACT++ and Pellet produces no errors or inconsistencies. The <a href="https://github.com/stain/profilechecker">OWL profile checker</a> indicates issues for OWL2 QL and EL profiles based on SKOS's use of transitive properties and property domain/range assertions. Other than that, this use has no issues for OWL2 DL, RL, and Full profiles.</p>
+
+<script src="https://gist.github.com/coolharsh55/3e71fa9b4d94f183864bc593f41f332d.js"></script>
