@@ -1,0 +1,225 @@
+<div class="outline-text-2" id="text-4">
+<p>
+I was cleaning the spreadsheet we use to maintain DPV concepts, and while
+on the newly added location fields (<i>Location</i>, <i>SupraNationalUnion</i>, <i>Country</i>, <i>City</i>)
+I wondered how they might be used with SKOS, especially since this is one case
+where there will always be '<i>instances</i>'. So I wrote down my thought process here
+to have some clarity and start with an use-case to motivate finding a solution.
+</p>
+
+<blockquote><b>tldr;</b> Top-concept is declared as <code>owl:Class</code> and <code>skos:ConceptScheme</code> and 
+subsequent concepts are declared as instances of that top-concept, and also as
+a <code>skos:Concept</code> with <code>skos:broader</code>/<code>skos:narrower</code> used to indicate relation; and
+<code>skos:inScheme</code> to denote collections or groupings of different concepts.
+</blockquote>
+
+<p>
+<i>Atlantis</i> is a <i>Country</i>. <i>Atlantis City</i> is the capital of <i>Atlantis</i>. 
+Data of Atlantians is permitted to be stored only in Atlantis. If the data
+is stored within Atlantis City, we need to demonstrate how this is
+permitted to be stored because Atlantis City is within Atlantis.
+</p>
+
+<p>
+First question is how do we model location. If we only use this:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv:Location a owl:Class .
+dpv:Country a owl:Class .
+dpv:City a owl:Class .
+</pre>
+</div>
+<p>
+Then we lose the relation between <code>Location</code>, <code>Country</code>, and <code>City</code>. Then if we do
+this:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv:Location a owl:Class .
+dpv:Country rdfs:subClassOf dpv:Location .
+dpv:City rdfs:subClassOf dpv:Country .
+</pre>
+</div>
+
+<p>
+It is useful if we want to say everything that is in the set <code>City</code> is also
+in the set <code>Country</code>. But we get incorrect inferences as well:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">ex:AtlantisCity a dpv:City . # assertion
+ex:AtlantisCity a dpv:Country . # inference
+</pre>
+</div>
+
+<p>
+We could take the horrible road of declaring both <code>Atlantis</code> and <code>AtlantisCity</code>
+as subclasses instead of instances. But that would not be a good model because
+we want to use them as instances. So we create a property <code>isPartOf</code>, and declare
+it to be transitive to derive relations.
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">ex:isPartOf a owl:TransitiveObjectProperty .
+dpv:Location a owl:Class .
+dpv:Country a owl:Class .
+dpv:City a owl:Class .
+ex:Atlantis a dpv:Country .
+ex:AtlantisCity a dpv:City ; ex:isPartOf ex:Atlantis .
+</pre>
+</div>
+
+<p>
+Now checking whether storage is permitted only requires checking whether
+there is a path from storage location (<code>AtlantisCity</code>) to <code>Atlantis</code>, which there
+is because of the <code>isPartOf</code> relation.
+</p>
+
+<p>
+Now when we use only SKOS, we have all these as concepts, with broader and
+narrower relations between them to indicate the <code>isPartOf</code> relations:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv:Location a skos:Concept .
+dpv:Country a skos:Concept ; skos:broader dpv:Location .
+dpv:City a skos:Cnocept ; skos:broader dpv:Country .
+</pre>
+</div>
+
+<p>
+However, we want to create 'instances' of countries and cities, which we can
+either do using <code>skos:Concept</code> and using <code>skos:broader</code>:.
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">ex:Atlantis a skos:Concept ; skos:broader dpv:Country .
+ex:AtlantisCity a skos:Concept ; skos:broader dpv:Atlantis .
+</pre>
+</div>
+
+<p>
+Now checking whether storage is permitted can be done by checking if there
+is a path to <code>Atlantis</code> through <code>skos:broaderTransitive</code> instead of <code>ex:isPartOf</code>.
+Note that <code>skos:broader</code> is a sub-property of <code>skos:broaderTransitive</code>, so every
+assertion of <code>skos:broader</code> produces inferences chained through
+<code>skos:broaderTransitive</code> in a hierarchy. SKOS recommendes using <code>broader</code> to link
+directly related concepts and to use <code>broaderTransitive</code> to associate relations
+between linked concepts.
+</p>
+<pre class="example">
+# inferences
+ex:Atlantis skos:broaderTransitive dpv:Country .
+ex:Atlantis skos:broaderTransitive dpv:Location .
+ex:AtlantisCity skos:broaderTransitive ex:Atlantis .
+ex:AtlantisCity skos:broaderTransitive dpv:Country .
+ex:AtlantisCity skos:broaderTransitive dpv:Location .
+</pre>
+
+<p>So our design is veering towards having both <code>owl:Class</code> and <code>skos:Concept</code> to use the <i>best of both worlds</i>. But if we mix OWL and SKOS like this:
+</p>
+<pre class="example">
+dpv:Location a owl:Class, skos:Concept .
+dpv:Country a dpv:Location .
+# or someone does
+ex:Atlantis a dpv:Country .
+</pre>
+
+<p>
+Then we create an overlap between <code>skos:Concept</code> and <code>owl:Class</code>, which seems to
+be a big no-no in <a href="https://www.w3.org/2006/07/SWD/SKOS/skos-and-owl/master.html">this document about SKOS and OWL</a>. Even if OWL2 does
+provide punning and several other capabilities, it would be better to not
+freely mix OWL2 classes and instances to avoid punning and overlaps between
+classes and instances everywhere. This is just to reduce the complexity of 
+graphs, make sensible use of concepts, and have reliable inferences.
+</p>
+
+<p>
+We want to declare something is a OWL class and as a SKOS concept is either
+because we want to create instances of it in OWL or link it in a hierarchy
+within SKOS. Both of these can be achieved through other SKOS mechanisms, such
+as use of <code>skos:ConceptScheme</code> which is disjoint from <code>skos:Concept</code>.
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv:Location a owl:Class, skos:ConceptScheme .
+dpv:Country a dpv:Location, skos:Concept ; 
+skos:inScheme dpv:Location .
+dpv:City a dpv:Location, skos:Concept ; 
+    skos:inScheme dpv:Location ;
+    skos:broader dpv:Country .
+# use-case
+ex:Atlantis a dpv:Location, skos:Concept ;
+    skos:broader dpv:Country .
+ex:AtlantisCity a dpv:Location, skos:Concept ; 
+    skos:broader ex:Atlantis .
+</pre>
+</div>
+
+<p>
+Now to get a list of countries, one can query the path
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">[ a skos:Concept ; skos:broader dpv:Country ]
+</pre>
+</div>
+
+<p>
+To identify whether something occurs within a country, such as to check whether
+data storage is permitted; one can use the transitive path
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">[ a skos:Concept ; skos:broaderTransitive ex:Atlantis ]
+</pre>
+</div>
+
+<p>
+To create a separate OWL-only variant, all the SKOS annotations are removed
+and replaced with their equivalent OWL variants:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv-owl:Location a owl:Class .
+dpv-owl:Country a owl:Class ; rdfs:subClassOf dpv-owl:Location .
+dpv-owl:City a owl:Class ; rdfs:subClassOf dpv-owl:Location ;
+dpv-owl:isPartOf a owl:TransitiveObjectProperty .
+ex:Atlantis a dpv-owl:Country .
+ex:AtlantisCity a dpv-owl:City ;
+    dpv-owl:isPartOf ex:Atlantic .
+</pre>
+</div>
+
+<p>
+Deriving list of countries is easy because of instances. Checking whether
+something occurs within a region is also easy because of deterministic
+inferences drawn from either subclass or another property like <code>isPartOf</code>.
+</p>
+
+<p>
+A good reason for this separation through namespaces is that it enables 
+interoperability between the SKOS and OWL versions by not having them mix
+unless someone wants to (they can explicitly declare equivalence).
+Now even if this graph is merged with the main DPV vocabulary, there are no
+issues because the namespaces are separate and therefore the two can be
+safely used alongside each other (two variants of same vocabulary) or by 
+aligning/mapping the two, one could be transformed to another. This provides
+compatibility for work that uses only OWL with another one which is based in
+SKOS. The assumption that most number of uses will be based in SKOS is the
+argument for why 'SKOS' should be the primary serialisation instead of OWL.
+</p>
+
+<p>
+The nice thing about this use of OWL and SKOS is that we get properties that can
+safely have domains and ranges without worry about how their use might happen
+with what used to be <i>classes</i> as well as <i>instances</i>. Which means there is no risk
+of suddenly finding a mixture of classes and instances (if you don't mix
+<code>owl:Class</code> and <code>skos:Concept</code>). So both the following uses below are okay in OWL
+and SKOS with the new model:
+</p>
+<div class="org-src-container">
+<pre class="src language-turtle">dpv:hasPersonalData a owl:ObjectProperty ;
+    rdfs:range dpv:PersonalData .
+dpv:PersonalData a owl:Class, skos:ConceptScheme ;
+    skos:hasTopConcept dpv:EmailAddress .  # for convenience here
+dpv:EmailAddress a dpv:PersonalData, skos:Concept ;
+    skos:inScheme dpv:PersonalData .
+ex:MyEmailAddress a dpv:Personal Data, skos:Concept ;
+    skos:broader dpv:EmailAddress .
+ex:PDH dpv:hasPersonalData dpv:EmailAddress .  # as "class"
+ex:PDH dpv:hasPersonalData ex:MyEmailAddress . # as "instance"
+</pre>
+</div>
+</div>
