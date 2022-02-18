@@ -11106,16 +11106,18 @@
 
 <https://harshp.com/hobbies/books/785> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "785"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2022-02-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+     hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Paul J. Steinhardt and Neil Turok"^^xsd:string ;
     schema:dateCreated "2007"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Endless Universe: Beyond the Big Bang"@en ;
+    schema:review "An educational read, though a bit heavy on the physics side, of the big bang, origins of the universe, and the theories out there."@en ;
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/785"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/786> a schema:Book, hpcom:RenderedItem ;
@@ -11134,7 +11136,7 @@
 
 <https://harshp.com/hobbies/books/787> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "787"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
