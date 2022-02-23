@@ -10310,7 +10310,7 @@
         schema:Book ;
     hpcom:book_id "727"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Georg R. R. Martin"^^xsd:string ;
@@ -11136,16 +11136,17 @@
 
 <https://harshp.com/hobbies/books/787> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "787"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2022-02-20T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Stephen Kelman"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Pigeon English"@en ;
+    schema:review """A thematic book written in London slang. Like watching City of Gold mixed with Mud in word form."""@en ;
     schema:url "https://harshp.com/hobbies/books/787"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/788> a schema:Book, hpcom:RenderedItem ;
