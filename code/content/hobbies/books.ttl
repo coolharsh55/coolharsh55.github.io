@@ -10311,7 +10311,7 @@
     hpcom:book_id "727"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read;
     hpcom:date_book_read "2022-02-26T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Georg R. R. Martin"^^xsd:string ;
@@ -11153,7 +11153,7 @@
 
 <https://harshp.com/hobbies/books/788> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "788"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -11181,14 +11181,15 @@
 
 <https://harshp.com/hobbies/books/790> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "790"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2022-03-04T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Luke Heaton"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "A Brief History of Mathematical Thought"@en ;
+    schema:review """A (truly) brief summary of different mathematical 'philosophies'. Would have been nice to read in school."""@en ;
     schema:url "https://harshp.com/hobbies/books/790"^^xsd:anyURI .
