@@ -1145,7 +1145,7 @@
     hpcom:author_other ( <http://example.com/VitorJesus> <http://example.com/ShankarAmmai> <http://example.com/MarkLizar> <http://example.com/SalvatoreDAgostino> ) ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; PaE:CG (Privacy as Expected: Consent Gateway)"@en ;
     schema:datePublished "2021-06-01T00:00:00"^^xsd:dateTime ;
-    schema:identifier ""^^xsd:anyURI ;
+    schema:identifier "https://dl.gi.de/handle/20.500.12116/36495"^^xsd:anyURI ;
     schema:url "https://dl.gi.de/handle/20.500.12116/36495"^^xsd:anyURI ;
     schema:publication <http://example.com/conferences/OpenIdentity2021> ;
     schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/paecg> <http://example.com/ADAPT> );
@@ -1244,8 +1244,8 @@
     hpcom:author_other ( <http://example.com/TekRajChhetri> <https://harshp.com/me> <http://example.com/AnnaFensel> ) ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; PaE:CG (Privacy as Expected: Consent Gateway)"@en ;
     schema:datePublished "2021-06-04T00:00:00"^^xsd:dateTime ;
-    schema:identifier ""^^xsd:anyURI ;
-    schema:url "https://doi.org/10/gmsjzn"^^xsd:anyURI ;
+    schema:identifier "10.3233/SW-210438"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.3233/SW-210438"^^xsd:anyURI ;
     schema:publisher <http://www.semantic-web-journal.net/> ;
     schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/paecg> <http://example.com/ADAPT> );
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/96593"^^xsd:anyURI ] ;
@@ -1332,3 +1332,28 @@
         hpcom:contentFile "https://harshp.com/code/content/research/publications/048-odrl-profile-consent-solid-acp.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
         ] .
+
+<https://harshp.com/research/publications/049-consent-receipts-auditable-web> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Consent Recipts for a Usage And Auditable Web of Personal Data"@en ;
+    schema:description "Providing requirements, uses, and benefits offered by Consent Receipts along with proof-of-concepts for common scenarios"@en ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:consent-receipt ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:author_lead <http://example.com/VitorJesus> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    schema:inSupportOf "PaE:CG (Privacy as Expected: Consent Gateway) ; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2022-03-08T00:00:00"^^xsd:dateTime ;
+    schema:identifier "10.1109/ACCESS.2022.3157850"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.1109/ACCESS.2022.3157850"^^xsd:anyURI ;
+    schema:publisher <https://ieeeaccess.ieee.org/> ;
+    schema:funder ( <https://harshp.com/research/projects/paecg> <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> );
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/96593"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4732357"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/049-consent-receipts-auditable-web.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/049-consent-receipts-auditable-web"^^xsd:anyURI ] ;
+    hpcom:peer_reviewed true .
