@@ -9731,7 +9731,7 @@
         schema:Book ;
     hpcom:book_id "683"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "China Miéville"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10696,15 +10696,17 @@
 <https://harshp.com/hobbies/books/755> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "755"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-03-18T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
-    schema:genre hpcom:BookFiction ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Beautiful You"@en ;
+    schema:review """Shocking start, crazy middle, typical ending - more Palahniuk books please."""@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/755"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/756> a hpcom:RenderedItem,
@@ -10921,16 +10923,17 @@
 
 <https://harshp.com/hobbies/books/771> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "771"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2022-03-16T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Kurt Vonnegut"^^xsd:string ;
     schema:dateCreated "1973"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Breakfast of Champions"@en ;
+    schema:review """Classic Vonnegut - where some satirical stuff happens."""@en ;
     schema:url "https://harshp.com/hobbies/books/771"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/772> a schema:Book, hpcom:RenderedItem ;
@@ -11195,3 +11198,18 @@
     schema:name "A Brief History of Mathematical Thought"@en ;
     schema:review """A (truly) brief summary of different mathematical 'philosophies'. Would have been nice to read in school."""@en ;
     schema:url "https://harshp.com/hobbies/books/790"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/791> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "791"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Milo Beckman"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Math Without Numbers"@en ;
+    schema:isPartOf list:cork ;
+    schema:url "https://harshp.com/hobbies/books/791"^^xsd:anyURI .
