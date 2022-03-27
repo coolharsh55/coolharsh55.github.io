@@ -9731,13 +9731,16 @@
         schema:Book ;
     hpcom:book_id "683"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-03-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "China Miéville"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Kraken"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """Mieville doing what he does so well: write weird fiction."""@en ;
     schema:url "https://harshp.com/hobbies/books/683"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/684> a hpcom:RenderedItem,
@@ -10181,7 +10184,7 @@
         schema:Book ;
     hpcom:book_id "718"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stephen Baxter"^^xsd:string ;
