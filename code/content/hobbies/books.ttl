@@ -9839,14 +9839,17 @@
 <https://harshp.com/hobbies/books/688> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "688"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:date_book_read "2022-04-14T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Arkady Martine"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Desolation Called Peace"@en ;
+    schema:review """An enjoyable sequel to an amazing first book, it is also full of delightful characters, cultures, norms, languages, biologies, aliens, first contacts, and so much more."""@en ;
     schema:url "https://harshp.com/hobbies/books/688"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/689> a hpcom:RenderedItem,
@@ -11327,7 +11330,7 @@
         schema:Book ;
     hpcom:book_id "795"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Greg Egan"^^xsd:string ;
