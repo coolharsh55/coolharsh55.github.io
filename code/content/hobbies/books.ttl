@@ -11330,13 +11330,15 @@
         schema:Book ;
     hpcom:book_id "795"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-04-16T13:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Greg Egan"^^xsd:string ;
     schema:dateCreated "1992"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Quarantine"@en ;
+    schema:review """An impressiv feat of futuristic sci-fi thriller that manages to squeeze in bioengineering, quantum physics, and aliens into a small package. As a fan of Philip K. Dick, this was immensely enjoyable."""@en ;
     schema:url "https://harshp.com/hobbies/books/795"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/796> a hpcom:RenderedItem,
@@ -11409,7 +11411,7 @@
         schema:Book ;
     hpcom:book_id "801"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
