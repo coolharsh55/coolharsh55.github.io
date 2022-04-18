@@ -678,6 +678,25 @@
     schema:endDate "2022-06-02T00:00:00"^^xsd:dateTime ;
     schema:location "Hersonissos, Greece" .
 
+<http://example.com/workshops/IWPE2022> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "International Workshop on Privacy Engineering"@en ;
+    schema:alternateName "IWPE 2022" ;
+    schema:url "https://iwpe.info/"^^xsd:anyURI ;
+    schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/EuroSP22> ;
+    schema:location "Genoa, Italy" .
+
+<http://example.com/conferences/EuroSP22> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "IEEE European Symposium on Security and Privacy"@en ;
+    schema:alternateName "EuroS&P 2022" ;
+    schema:url "https://www.ieee-security.org/TC/EuroSP2022/"^^xsd:anyURI ;
+    schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-06-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Genoa, Italy" .
+
 # events
 
 <http://example.com/events/DCMI2021> a schema:PublicationEvent ;
