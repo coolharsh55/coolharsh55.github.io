@@ -10399,7 +10399,7 @@
         schema:Book ;
     hpcom:book_id "729"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Umberto Eco"^^xsd:string ;
@@ -11286,7 +11286,6 @@
     When I accepted this book, I was sceptical - how much math stuff would I *not* know. I've finished high-school, I've finished an engineering college (where despite my failed math exams, I always did know how to do math), and a PhD in computer science. Turns out the answer was - there's always more I don't know, including the exactness of mathematical concepts, or why they are the way they are, or how they associate to the way I'm supposed to be thinking. It reminded me something about another book - "Thinking in Systems: A Primer", which also was about fundamentals and building a thought process that was close to what we're used to in terms of language and comprehension.
 
     A good read, a good topic, and a good gift!"""@en ;
-    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/791"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/792> a schema:Book, hpcom:RenderedItem ;
@@ -11321,14 +11320,16 @@
         schema:Book ;
     hpcom:book_id "794"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-04-19T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Greg Egan"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Diaspora"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """I have definitely not grasped half the stuff that was going on, but the things that I did were... awesome! One might need a PhD in Physics, or Quantum Mechanics, or Mathematics to fully appreciate the level of detailing that is presented here, but the concepts start off with known ones so there's something for anyone who knows a bit about these topics. Some really cool stuff in here."""@en ;
+    schema:isPartOf list:cork, list:ai, list:aliens, list:scifi ;
     schema:url "https://harshp.com/hobbies/books/794"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/795> a hpcom:RenderedItem,
@@ -11427,7 +11428,7 @@
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Terminal World"@en ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:cork, list:scifi ;
     schema:review """What began as an exciting cyberpunk Zone-of-Thought meets Blade Runner type adventure eventually devolved into post-apocalyptic Mad Max adventures that lacked the sci-fi details I was so hooked on to. Great start, disappointing finish."""@en ;
     schema:url "https://harshp.com/hobbies/books/801"^^xsd:anyURI .
 
