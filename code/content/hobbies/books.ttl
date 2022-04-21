@@ -925,7 +925,8 @@
 <https://harshp.com/hobbies/books/82> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "82"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Hermann Hesse"^^xsd:string ;
     schema:dateCreated "1922"^^xsd:int ;
     schema:name "Siddhartha"@en ;
@@ -10567,13 +10568,15 @@
         schema:Book ;
     hpcom:book_id "741"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-04-21T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Tim Hwang"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Subprime Attention Crisis: Advertising and the Time Bomb at the Heart of the Internet"@en ;
+    schema:review """A good summary for the uninitiated. But we are initiated, aren't we Bruce?"""@en ;
     schema:url "https://harshp.com/hobbies/books/741"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/742> a hpcom:RenderedItem,
@@ -11465,11 +11468,13 @@
         schema:Book ;
     hpcom:book_id "804"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-04-21T11:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Elder Race"@en ;
+    schema:review """Interesting and innovative take on advanced science being indistinguishable from magic"""@en ;
     schema:url "https://harshp.com/hobbies/books/804"^^xsd:anyURI .
