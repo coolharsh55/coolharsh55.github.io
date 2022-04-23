@@ -585,11 +585,12 @@
         schema:Book ;
     hpcom:book_id "50"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Donald D. Hoffman"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9780393254693"^^xsd:string ;
     schema:name "The Case Against Reality: Why Evolution Hid the Truth from Our Eyes"@en ;
+    schema:genre hpcom:BookNonFiction ;
     schema:url "https://harshp.com/hobbies/books/50"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/51> a hpcom:RenderedItem,
@@ -926,10 +927,15 @@
         schema:Book ;
     hpcom:book_id "82"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-04-22T20:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Hermann Hesse"^^xsd:string ;
     schema:dateCreated "1922"^^xsd:int ;
     schema:name "Siddhartha"@en ;
+    schema:genre hpcom:BookFiction ;
+    schema:review """A gentle but thoughtful rendition of meeting the Buddha and being the Buddha."""@en ;
     schema:url "https://harshp.com/hobbies/books/82"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/83> a hpcom:RenderedItem,
@@ -11100,7 +11106,7 @@
 <https://harshp.com/hobbies/books/779> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "779"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11113,7 +11119,7 @@
 <https://harshp.com/hobbies/books/780> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "780"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11126,7 +11132,7 @@
 <https://harshp.com/hobbies/books/781> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "781"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11139,7 +11145,7 @@
 <https://harshp.com/hobbies/books/782> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "782"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11152,7 +11158,7 @@
 <https://harshp.com/hobbies/books/783> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "783"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11411,7 +11417,7 @@
         schema:Book ;
     hpcom:book_id "800"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:Ebook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -11478,3 +11484,87 @@
     schema:name "Elder Race"@en ;
     schema:review """Interesting and innovative take on advanced science being indistinguishable from magic"""@en ;
     schema:url "https://harshp.com/hobbies/books/804"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/805> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "805"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Tom Burgis"^^xsd:string ;
+    schema:dateCreated "2020"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Kleptopia: How Dirty Money Is Conquering the World"@en ;
+    schema:url "https://harshp.com/hobbies/books/805"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/806> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "806"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Ari Ezra Waldman"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Industry Unbound: The Inside Story of Privacy, Data, and Corporate Power"@en ;
+    schema:url "https://harshp.com/hobbies/books/806"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/807> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "807"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Brett Frischmann and Evan Selinger"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Re-engineering Humanity"@en ;
+    schema:url "https://harshp.com/hobbies/books/807"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/808> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "808"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Malka Ann Older"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Infomocracy"@en ;
+    schema:url "https://harshp.com/hobbies/books/808"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/809> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "809"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Neil Richards"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Why Privacy Matters"@en ;
+    schema:url "https://harshp.com/hobbies/books/809"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/810> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "810"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Michael Redhead"^^xsd:string ;
+    schema:dateCreated "1989"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Incompleteness, Nonlocality, and Realism: A Prolegomenon to the Philosophy of Quantum Mechanics"@en ;
+    schema:url "https://harshp.com/hobbies/books/810"^^xsd:anyURI .
