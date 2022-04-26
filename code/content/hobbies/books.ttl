@@ -585,11 +585,15 @@
         schema:Book ;
     hpcom:book_id "50"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:date_book_read "2022-04-26T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    hpcom:book_status hpcom:book-read ;
     schema:author "Donald D. Hoffman"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9780393254693"^^xsd:string ;
     schema:name "The Case Against Reality: Why Evolution Hid the Truth from Our Eyes"@en ;
+    schema:review """This book was one of the most difficult reads so far. It definitely has valuable concepts and interesting perspectives. But reading it is just so painful that I wanted to give up in the first chapter itself. Things are excessively repetitive, often vague enough to make me browse back 10-15 pages to see if I had missed something explaining it, narratives jump across domains and seemingly unrelated topics that distracts immesely from what was being discussed, and to top it all - how designed jeans can make butts look bigger is used as an example of how our perception is not the 'objective reality'. Good topic, bad book."""@en ;
     schema:genre hpcom:BookNonFiction ;
     schema:url "https://harshp.com/hobbies/books/50"^^xsd:anyURI .
 
@@ -11391,7 +11395,7 @@
         schema:Book ;
     hpcom:book_id "798"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
