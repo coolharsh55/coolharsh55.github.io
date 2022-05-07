@@ -10806,7 +10806,7 @@
         schema:Book ;
     hpcom:book_id "757"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
@@ -11410,13 +11410,15 @@
         schema:Book ;
     hpcom:book_id "799"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-04T08:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Stanley I. Greenspan, Stuart G. Shanker"^^xsd:string ;
     schema:dateCreated "2004"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:name "The First Idea"@en ;
+    schema:name "The First Idea: The First Idea: How Symbols, Language, and Intelligence Evolved from Our Primate Ancestors to Modern Humans "@en ;
+    schema:review """Interesting idea, dense and limited views. The authors and consequently the book is very much rooted in Psychology and Anthropology as opposed to what I was hoping would be a more broader view of Biology and Philosophy. It spends too much time on anecdotal stories about babies and their abilities to communicate - which while very interesting, does not satisfy the question of how did we evolve to think symbols and languages. The title should have warned me - this book is only about primates, and nothing before that, but I suppose I was too excited to notice. For instance, communication is the basis for an idea - which the book makes clear, but utterly fails to consider any notion of communication in non-primates as being of relevance other than a few related mammalian instances. Birds, bees, insects, even plans all communicate. Do they have a language? Undoubtedly yes. Do they have symbols? Probably. Do they have Ideas? I don't know! By not considering this, the book fails at the premise of answering its own question. And identifying a larger one at that - whether the notion of ideas and symbols has been evolutionary only within us or we merely at the tail of a long chain of developments in nature."""@en ;
     schema:url "https://harshp.com/hobbies/books/799"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/800> a hpcom:RenderedItem,
