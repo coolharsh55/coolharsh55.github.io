@@ -1,0 +1,90 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+
+@prefix : <https://harshp.com/code/shacl_constraints#> .
+
+:Prefixes 
+    sh:declare [ 
+        sh:prefix "hpcom"; 
+        sh:namespace "https://harshp.com/code/vocab#"^^xsd:anyURI ; ] ;
+    sh:declare [ 
+        sh:prefix "schema"; 
+        sh:namespace "https://schema.org/"^^xsd:anyURI ; ] ;
+ rdfs:label "Shape declarations" .
+
+:BookShape a sh:NodeShape ;
+    rdfs:label "Book Shape"@en ;
+    sh:targetClass schema:Book ;
+    sh:property [
+        sh:path hpcom:book_status ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+        sh:in ( hpcom:book-to-read hpcom:book-currently-reading hpcom:book-read ) ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Books with status read should have a read-date"@en ;
+        sh:prefixes :Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+                $this hpcom:book_status hpcom:book-read .
+                FILTER NOT EXISTS {$this hpcom:date_book_read ?date}
+            }
+        """
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Books with status read should have a rating"@en ;
+        sh:prefixes :Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+                $this hpcom:book_status hpcom:book-read .
+                FILTER NOT EXISTS {$this schema:aggregatedRating ?rating}
+            }
+        """
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Books with status read should have a read-medium"@en ;
+        sh:prefixes :Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+                $this hpcom:book_status hpcom:book-read .
+                FILTER NOT EXISTS {$this hpcom:book_read_medium ?medium}
+            }
+        """
+    ] ;
+    sh:property [
+        sh:path hpcom:book_read_medium ;
+        sh:in ( hpcom:PhysicalBook hpcom:EBook ) ;
+    ] ;
+    sh:property [
+        sh:path hpcom:book_id ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:author ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:dateCreated ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:name ;
+        sh:maxCount 1 ;
+        sh:minCount 1 ;
+    ] ;
+    rdfs:comment "Validates book instances"@en .
+

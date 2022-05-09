@@ -30,37 +30,37 @@
     schema:name "all posts"@en ;
     schema:url "https://harshp.com/posts"^^xsd:anyURI .
 
-<https://harshp.com/blog> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/blog> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:BlogPost ;
     rdfs:label "Blog"@en ;
     schema:name "blog"@en ;
     schema:url "https://harshp.com/blog"^^xsd:anyURI .
 
-<https://harshp.com/stories> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/stories> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:ShortStory ;
     rdfs:label "Stories"@en ;
     schema:name "stories"@en ;
     schema:url "https://harshp.com/stories"^^xsd:anyURI .
 
-<https://harshp.com/poems> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/poems> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:Article ;
     rdfs:label "Poems"@en ;
     schema:name "poems"@en ;
     schema:url "https://harshp.com/poems"^^xsd:anyURI .
 
-<https://harshp.com/research/blog> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/research/blog> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:BlogPost ;
     rdfs:label "Research Blog"@en ;
     schema:name "research blog"@en ;
     schema:url "https://harshp.com/research/blog"^^xsd:anyURI .
 
-<https://harshp.com/dev> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/dev> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:Blog ;
     rdfs:label "Dev Blog"@en ;
     schema:name "dev"@en ;
     schema:url "https://harshp.com/dev"^^xsd:anyURI .
 
-<https://harshp.com/research> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/research> a rdfs:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:Blog ;
     rdfs:label "Research"@en ;
     schema:name "research"@en ;
@@ -86,7 +86,7 @@
         hpcom:renderWith hpview:GenericJinja2View ;
     ] .
 
-<https://harshp.com/hobbies/books> a owl:Class, hpcom:RenderedItem ;
+<https://harshp.com/hobbies/books> a rdfs:Class, hpcom:RenderedItem ;
         schema:name "Books"@en ;
     schema:url "https://harshp.com/hobbies/books"^^xsd:anyURI .
 
