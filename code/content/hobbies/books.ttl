@@ -10806,13 +10806,15 @@
         schema:Book ;
     hpcom:book_id "757"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-08T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Revenger"@en ;
+    schema:review """A decent mix of cyberpunk and space pirates."""@en ;
     schema:url "https://harshp.com/hobbies/books/757"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/758> a hpcom:RenderedItem,
@@ -11381,7 +11383,7 @@
         schema:Book ;
     hpcom:book_id "797"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Aldous Huxley"^^xsd:string ;
@@ -11426,7 +11428,7 @@
     hpcom:book_id "800"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jen Gunter"^^xsd:string ;
