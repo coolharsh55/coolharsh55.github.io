@@ -16976,6 +16976,39 @@ list:owned_unread a hpcom:RenderedItem,
     schema:status "accepted for presentation"@en ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/052-DPCat-ROPA-spec> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.6448787"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/052-DPCat-ROPA-spec"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/PaulRyan> ;
+    hpcom:author_other ( <http://example.com/RobBrennan> <https://harshp.com/me> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/052-DPCat-ROPA-spec.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://w3id.org/dpcat/repo"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DPCat spec" ;
+            schema:url "https://w3id.org/dpcat"^^xsd:anyURI ] ;
+    hpcom:tag hptag:GDPR,
+        hptag:ROPA,
+        hptag:semantic-web ;
+    schema:datePublished "2022-05-10T00:00:00"^^xsd:dateTime ;
+    schema:description "Analysing all DPA ROPA templates and guidelines to create a DCAT and DCAT-AP based ROPA catalogue specification"@en ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> ) ;
+    schema:identifier "10.3390/info13050244"^^xsd:anyURI ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "DPCat: Specification for an Interoperable and Machine-Readable Data Processing Catalogue Based on GDPR"@en ;
+    schema:publisher <https://www.mdpi.com/journal/information> ;
+    schema:url "https://doi.org/10.3390/info13050244"^^xsd:anyURI .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
@@ -20449,6 +20482,11 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "Factoring Ethics in Technology, Policy Making and Regulation"@en ;
     schema:url "https://www.intechopen.com/" .
 
+<https://www.mdpi.com/journal/information> a schema:Periodical ;
+    schema:alternateName "Information" ;
+    schema:name "MDPI Information"@en ;
+    schema:url "https://www.mdpi.com/journal/information" .
+
 <https://www.springer.com/journal/10115> a schema:Periodical ;
     schema:alternateName "KAIS" ;
     schema:issn "0219-3116" ;
@@ -20840,11 +20878,6 @@ hptag:NLP a hpcom:RenderedItem,
     schema:name "NLP"@en ;
     schema:url "https://harshp.com/tags/NLP"^^xsd:anyURI .
 
-hptag:ROPA a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Register of Processing Activities"@en ;
-    schema:url "https://harshp.com/tags/ROPA"^^xsd:anyURI .
-
 hptag:SHACL a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "SHACL"@en ;
@@ -20980,9 +21013,6 @@ hptag:work a hpcom:RenderedItem,
 <http://example.com/RamisaHamed> a schema:Person ;
     schema:name "Ramisa Hamed" .
 
-<http://example.com/RobBrennan> a schema:Person ;
-    schema:name "Rob Brennan" .
-
 <http://example.com/RohitSharma> a schema:Person ;
     schema:name "Rohit Sharma" .
 
@@ -21034,6 +21064,11 @@ hptag:GPC a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GPC"@en ;
     schema:url "https://harshp.com/tags/GPC"^^xsd:anyURI .
+
+hptag:ROPA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Register of Processing Activities"@en ;
+    schema:url "https://harshp.com/tags/ROPA"^^xsd:anyURI .
 
 hptag:academic a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -21113,8 +21148,8 @@ hptag:website a hpcom:RenderedItem,
 <http://example.com/EnsarHadziselimovic> a schema:Person ;
     schema:name "Ensar Hadziselimovic" .
 
-<http://example.com/PaulRyan> a schema:Person ;
-    schema:name "Paul Ryan" .
+<http://example.com/RobBrennan> a schema:Person ;
+    schema:name "Rob Brennan" .
 
 <http://example.com/conferences/ESWC2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -21236,6 +21271,9 @@ hptag:trains a hpcom:RenderedItem,
     schema:address "Dublin, Ireland" ;
     schema:name "Trinity College Dublin" ;
     schema:url "https://www.tcd.ie/"^^xsd:anyURI .
+
+<http://example.com/PaulRyan> a schema:Person ;
+    schema:name "Paul Ryan" .
 
 <http://example.com/conferences/ESWC2018> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -21553,6 +21591,11 @@ hptag:humor a hpcom:RenderedItem,
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
 
+hptag:drama a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "drama" ;
+    schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
+
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
@@ -21578,11 +21621,6 @@ hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Risky"@en ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI .
-
-hptag:drama a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "drama" ;
-    schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
 
 hptag:article a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -21631,13 +21669,13 @@ list:educational a hpcom:RenderedItem,
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 hptag:emotional a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "emotional" ;
     schema:url "https://harshp.com/tags/emotional"^^xsd:anyURI .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
@@ -21656,14 +21694,14 @@ list:fantasy a hpcom:RenderedItem,
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
 
+hpcom:ReviewingEvent a owl:Class ;
+    rdfs:label "Reivewing Event" ;
+    rdfs:comment "Represents peer-review at some venue"@en .
+
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
-hpcom:ReviewingEvent a owl:Class ;
-    rdfs:label "Reivewing Event" ;
-    rdfs:comment "Represents peer-review at some venue"@en .
 
 hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
@@ -21754,15 +21792,15 @@ hpcom:Tag a owl:Class ;
 hpcom:book-to-read a hpcom:BookStatus ;
     rdfs:label "to read"@en .
 
-hpcom:Link a owl:Class ;
-    rdfs:label "Link"@en .
-
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙂okay (3/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
+
+hpcom:Link a owl:Class ;
+    rdfs:label "Link"@en .
 
 hpcom:BookSciFi a hpcom:BookGenre ;
     rdfs:label "sci-fi"@en .
