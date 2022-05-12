@@ -13488,13 +13488,16 @@ book:797 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "797"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-11T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Aldous Huxley"^^xsd:string ;
     schema:dateCreated "1932"^^xsd:int ;
-    schema:genre hpcom:BookFiction,
-        hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "Brave New World Revisited"@en ;
+    schema:review "An excellent and astute observation from the mind that wrote Brave New World, the Revisited can be interpreted as a collection of essays on the reflection of that book's topics to the functioning in real world. It is quite sobering, and astounding, if not merely depressing - to realise that this book was written 60 years ago (from today) and yet the words are eerily accurate and applicable to the current times. Whether to call people like Huxley and Orwell is an understatement. The fact that we did not course-correct is more telling that whether they were accurate. Because we could have decided not to let them be accurate. And yet here we are two generations later, seeminly worse than ever."@en ;
     schema:url "https://harshp.com/hobbies/books/797"^^xsd:anyURI .
 
 book:798 a hpcom:RenderedItem,
@@ -20769,6 +20772,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -21047,9 +21053,6 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
