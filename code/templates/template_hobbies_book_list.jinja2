@@ -4,7 +4,13 @@
 {% block content %}
 <ol class="list-sort" data-attributes="name,author,published,date-read,medium-read,medium-owned,rating">
     {% for book, name, date in books %}
-    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-published="{{book.schema_dateCreated}}" data-date-read="{{ date if book.hpcom_date_book_read else 'NA'}}" data-medium-read="{% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}💾{% else %}0{% endif %}" data-medium-owned="{{ book.hpcom_book_owned_medium if book.hpcom_book_owned_medium else 'NA'}}" data-rating="{{book.schema_aggregatedRating.schema_ratingValue if book.schema_aggregatedRating else 0}}">
+    <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-published="{{book.schema_dateCreated}}" data-date-read="{{ date if book.hpcom_date_book_read else 'NA'}}" 
+        data-medium-read="{% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% else %}0{% endif %}" 
+        data-medium-owned="{% if book.hpcom_book_owned_medium is sequence %}
+            {% for medium in book.hpcom_book_owned_medium %}{{ medium }}{% endfor %}
+            {% else %}{{ book.hpcom_book_owned_medium if book.hpcom_book_owned_medium else 'NA'}}
+            {% endif %}" 
+        data-rating="{{book.schema_aggregatedRating.schema_ratingValue if book.schema_aggregatedRating else 0}}">
       <a href="{{book.iri}}">{{book.schema_name}}</a> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
         {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
@@ -14,8 +20,13 @@
         {% endif %}
         {% if book.hpcom_date_book_read %}
             ; read in {% if book.hpcom_date_book_read is sequence and book.hpcom_date_book_read is not string %}{{book.hpcom_date_book_read|max|year}}{% else %}{{book.hpcom_date_book_read|year}}{% endif %} in 
-            {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; 
-            {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %}
+            {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} 
+            medium ; 
+            {% if book.hpcom_book_owned_medium is sequence %}
+                {%  for medium in book.hpcom_book_owned_medium %}{% if medium == HPCOM.PhysicalBook %}owned as 📚 ;{% elif medium == HPCOM.EBook %}owned as 💾 ;{% endif %}{% endfor %}
+                {% else %}
+                    {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %}
+                {% endif %}
             {% if book.schema_aggregatedRating %} it was {{book.schema_aggregatedRating}}{% endif %}
          {% else %}
             ; unread

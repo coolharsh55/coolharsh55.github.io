@@ -49,24 +49,23 @@ var list_filter_sort_click_handler = function(ele) {
     let list = this.parentNode.nextSibling;
     let children = list.querySelectorAll('li');
     let sorting_variable = this.getAttribute('data-for');
+    console.log(sorting_variable)
     let items_sort_list = [] ;
     for (let node of children) {
         let key = node.getAttribute(sorting_variable);
-        if (!isNaN(key)) {
-            key = parseInt(key);
-        }
         items_sort_list.push({
             key: key,
             value: node}) ;
+        elist[elist.length] = key;
     }
 
     // sort list using key and direction
     let sort_direction = this.getAttribute('data-sort-direction');
     if (sort_direction == "asc") {
-        items_sort_list.sort(function(a, b) { return a.key > b.key ? 1 : -1; });
+        items_sort_list.sort(function(a, b) { return a.key.localeCompare(b.key); });
         this.setAttribute('data-sort-direction', 'dsc');
-    } else if (sort_direction == "dsc") {
-        items_sort_list.sort(function(a, b) { return a.key < b.key ? 1 : -1; });
+    } else  {
+        items_sort_list.sort(function(a, b) { return -1 * a.key.localeCompare(b.key); });
         this.setAttribute('data-sort-direction', 'asc');
     }
 
