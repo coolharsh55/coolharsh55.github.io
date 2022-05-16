@@ -14319,11 +14319,16 @@ book:800 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "800"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jen Gunter"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "The Vagina Bible"@en ;
+    schema:review "Undeniably educational, this book is a good collection of short chapters on various topics and issues and all sorts of things a woman (and a man, and everyone for that matter) could benefit from knowing. A lot of online reviews, e.g. goodreads, point out the tone of the book being too opionated or that this information can be found elsewhere. I don't understand them. Can you blame the author when history and even large swathes of the current society are ignorant of women and their bodies? I'm bitter about not knowing things that 50% of all humans have or are facing. And I don't even have a women's body. Despite this, I found the book to be educational, even if as a refresher to things, to know more about the crazy amount of issues women have to live with, every day every month, and that there are a lot of things that I should know about too."@en ;
     schema:url "https://harshp.com/hobbies/books/800"^^xsd:anyURI .
 
 book:801 a hpcom:BookReading,
@@ -14466,6 +14471,18 @@ book:810 a hpcom:BookReading,
     schema:genre hpcom:BookNonFiction ;
     schema:name "Incompleteness, Nonlocality, and Realism: A Prolegomenon to the Philosophy of Quantum Mechanics"@en ;
     schema:url "https://harshp.com/hobbies/books/810"^^xsd:anyURI .
+
+book:811 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "811"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Italo Calvino"^^xsd:string ;
+    schema:dateCreated "1983"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Mr. Palomar"@en ;
+    schema:url "https://harshp.com/hobbies/books/811"^^xsd:anyURI .
 
 book:82 a hpcom:BookReading,
         hpcom:RenderedItem,
@@ -22464,11 +22481,6 @@ hptag:consent a hpcom:RenderedItem,
     schema:name "consent" ;
     schema:url "https://harshp.com/tags/consent"^^xsd:anyURI .
 
-list:educational a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "educational"@en ;
-    schema:name "Educational and Illuminating"@en .
-
 hptag:emotional a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "emotional" ;
@@ -22476,6 +22488,11 @@ hptag:emotional a hpcom:RenderedItem,
 
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
+
+list:educational a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "educational"@en ;
+    schema:name "Educational and Illuminating"@en .
 
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
