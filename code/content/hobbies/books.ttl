@@ -10151,7 +10151,7 @@
         schema:Book ;
     hpcom:book_id "711"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -11589,14 +11589,16 @@
 
 <https://harshp.com/hobbies/books/811> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "811"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:date_book_read "2022-05-18T07:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:genre hpcom:BookFiction ;
     schema:author "Italo Calvino"^^xsd:string ;
     schema:dateCreated "1983"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Mr. Palomar"@en ;
+    schema:isPartOf hpcom:language ;
+    schema:review """A delightful read that is clever and thoughtful"""@en ;
     schema:url "https://harshp.com/hobbies/books/811"^^xsd:anyURI .

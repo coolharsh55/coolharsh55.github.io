@@ -12985,7 +12985,7 @@ book:711 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "711"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -14476,12 +14476,16 @@ book:811 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "811"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-18T07:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Italo Calvino"^^xsd:string ;
     schema:dateCreated "1983"^^xsd:int ;
-    schema:genre hpcom:BookFiction,
-        hpcom:BookSciFi ;
+    schema:genre hpcom:BookFiction ;
+    schema:isPartOf hpcom:language ;
     schema:name "Mr. Palomar"@en ;
+    schema:review "A delightful read that is clever and thoughtful"@en ;
     schema:url "https://harshp.com/hobbies/books/811"^^xsd:anyURI .
 
 book:82 a hpcom:BookReading,
@@ -22595,16 +22599,16 @@ hpcom:Rating4 a hpcom:Rating,
     schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI .
 
+hpcom:Tag a owl:Class ;
+    rdfs:label "Tag"@en ;
+    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
+
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😍awesome (5/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
-
-hpcom:Tag a owl:Class ;
-    rdfs:label "Tag"@en ;
-    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
 hpcom:book-to-read a hpcom:BookStatus ;
     rdfs:label "to read"@en .
