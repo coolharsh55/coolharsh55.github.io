@@ -10087,11 +10087,16 @@ book:54 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "54"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-29T09:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Amanda Lovelace"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
     schema:isbn "9781449489427"^^xsd:string ;
     schema:name "The Witch Doesn't Burn in This One"@en ;
+    schema:review "Book 3 of the series, just as wonderful and evocative."@en ;
     schema:url "https://harshp.com/hobbies/books/54"^^xsd:anyURI .
 
 book:540 a hpcom:BookReading,
@@ -12453,12 +12458,16 @@ book:675 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "675"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-05-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Arkady & Boris Strugatsky"^^xsd:string ;
     schema:dateCreated "1989"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Doomed City"@en ;
+    schema:review "A masterpiece of how science fiction can be a work of philosophical and political commentary. Reading it today there is no indication of why this was a controversial or risky venture in its time and place. But the explanation provided at the end by the authors explains it quite well how imagining this in today's social situation where freedom of thought and speech are common is a difficult - we have no means of comparing or experiencing what it would mean to consider some thoughts as illegal. To imagine this has happened, and at the risk of happening again is a provocative realisation."@en ;
     schema:url "https://harshp.com/hobbies/books/675"^^xsd:anyURI .
 
 book:676 a hpcom:BookReading,
@@ -14617,7 +14626,7 @@ book:9 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "9"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Charlie Kaufman"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:name "Antkind"@en ;
