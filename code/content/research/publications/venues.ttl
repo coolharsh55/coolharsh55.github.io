@@ -683,10 +683,10 @@
     schema:endDate "2022-06-02T00:00:00"^^xsd:dateTime ;
     schema:location "Hersonissos, Greece" .
 
-<http://example.com/workshops/IWPE2022> a schema:PublicationEvent ;
+<http://example.com/workshops/IWPE2022> a schema:PublicationEvent, hpcom:ReviewingEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:name "International Workshop on Privacy Engineering"@en ;
-    schema:alternateName "IWPE 2022" ;
+    schema:alternateName "IWPE" ;
     schema:url "https://iwpe.info/"^^xsd:anyURI ;
     schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
     schema:endDate "2022-06-06T00:00:00"^^xsd:dateTime ;
@@ -701,6 +701,54 @@
     schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
     schema:endDate "2022-06-10T00:00:00"^^xsd:dateTime ;
     schema:location "Genoa, Italy" .
+
+<http://example.com/workshops/Consent2022> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Workshop on Consent Management in Online Services, Networks and Things"@en ;
+    schema:alternateName "COnSeNT" ;
+    schema:url "https://consentworkshop.com/"^^xsd:anyURI ;
+    schema:startDate "2022-04-26T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-04-26T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/Web2022> ;
+    schema:location "Virtual" .
+
+<http://example.com/conferences/Web2022> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "ACM Web Conference 2022"@en ;
+    schema:alternateName "WebConf" ;
+    schema:url "https://www2022.thewebconf.org/"^^xsd:anyURI ;
+    schema:startDate "2022-04-25T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-04-29T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" .
+
+<http://example.com/workshops/MEPDaW2022> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Managing the Evolution and Preservation of the Data Web"@en ;
+    schema:alternateName "MEPDaW" ;
+    schema:url "https://mepdaw2022.ai.wu.ac.at/"^^xsd:anyURI ;
+    schema:startDate "2022-10-23T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-10-23T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/ISWC2022> ;
+    schema:location "Heraklion, Crete, Greece" .
+
+<http://example.com/conferences/ISWC2022> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Semantic Web Conference"@en ;
+    schema:alternateName "ISWC" ;
+    schema:url "https://iswc2022.semanticweb.org/"^^xsd:anyURI ;
+    schema:startDate "2022-10-23T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-10-27T00:00:00"^^xsd:dateTime ;
+    schema:location "Hybrid - Hangzhou, China" .
+
+<http://example.com/conferences/SEMANTiCS2022> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI ;
+    schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-09-15T00:00:00"^^xsd:dateTime ;
+    schema:location "Vienna, Austria" .
+
 
 # events
 
