@@ -14681,10 +14681,15 @@ book:9 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "9"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-05T09:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Charlie Kaufman"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
     schema:name "Antkind"@en ;
+    schema:review "This is Kaufman, but 700 pages long."@en ;
     schema:url "https://harshp.com/hobbies/books/9"^^xsd:anyURI .
 
 book:90 a hpcom:BookReading,
@@ -17857,7 +17862,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://github.com/besteves4/solid-sope"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "demo" ;
-            schema:url "https://protect.oeg.fi.upm.es/eswc-demo/"^^xsd:anyURI ] ;
+            schema:url "https://protect.oeg.fi.upm.es/eswc-demo/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "poster" ;
+            schema:url "https://doi.org/10.5281/zenodo.6614165"^^xsd:anyURI ] ;
     hpcom:tag hptag:Solid,
         hptag:access-control,
         hptag:semantic-web ;
@@ -19212,6 +19220,9 @@ hpview:StoryView a hpcom:View ;
 hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
@@ -21716,9 +21727,6 @@ hpcom:FileFormat a owl:Class ;
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
