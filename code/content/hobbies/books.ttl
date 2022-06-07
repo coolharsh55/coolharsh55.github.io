@@ -11038,7 +11038,7 @@
 
 <https://harshp.com/hobbies/books/772> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "772"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -11052,16 +11052,16 @@
 
 <https://harshp.com/hobbies/books/773> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "773"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2022-06-06T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read_medium hpcom:EBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Arthur C. Clarke"^^xsd:string ;
     schema:dateCreated "1971"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "A Meeting with Medusa"@en ;
+    schema:review """A classic Clarke short story"""@en ;
     schema:url "https://harshp.com/hobbies/books/773"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/774> a hpcom:RenderedItem, hpcom:BookReading,

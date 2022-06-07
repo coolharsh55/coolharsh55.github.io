@@ -13919,7 +13919,7 @@ book:772 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "772"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Stephen Baxter & Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -13930,12 +13930,16 @@ book:772 a hpcom:RenderedItem,
 book:773 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "773"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Arthur C. Clarke"^^xsd:string ;
     schema:dateCreated "1971"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Meeting with Medusa"@en ;
+    schema:review "A classic Clarke short story"@en ;
     schema:url "https://harshp.com/hobbies/books/773"^^xsd:anyURI .
 
 book:774 a hpcom:BookReading,
@@ -19221,9 +19225,6 @@ hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
     schema:url "https://harshp.com/contact"^^xsd:anyURI .
@@ -21727,6 +21728,9 @@ hpcom:FileFormat a owl:Class ;
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
