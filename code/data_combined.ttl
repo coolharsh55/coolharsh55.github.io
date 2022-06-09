@@ -8159,9 +8159,11 @@ book:43 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "43"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Jared Diamond"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780739467350"^^xsd:string ;
     schema:name "Guns, Germs, and Steel: The Fates of Human Societies"@en ;
     schema:url "https://harshp.com/hobbies/books/43"^^xsd:anyURI .
@@ -13919,12 +13921,16 @@ book:772 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "772"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-08T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Stephen Baxter & Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Medusa Chronicles"@en ;
+    schema:review "A worthy successor to Clarke's story, this was so much more entertaining and interesting than I initially thought. A great example of a sequel nobody asked for being outstanding."@en ;
     schema:url "https://harshp.com/hobbies/books/772"^^xsd:anyURI .
 
 book:773 a hpcom:RenderedItem,
