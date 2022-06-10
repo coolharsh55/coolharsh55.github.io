@@ -7,7 +7,7 @@
     <li id="{{book.hpcom_book_id}}" data-name="{{book.schema_name}}" data-author="{{book.schema_author}}" data-published="{{book.schema_dateCreated}}" data-date-read="{{ date if book.hpcom_date_book_read else 'NA'}}" 
         data-medium-read="{% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% else %}0{% endif %}" 
         data-medium-owned="{% if book.hpcom_book_owned_medium is sequence %}
-            {% for medium in book.hpcom_book_owned_medium %}{{ medium }}{% endfor %}
+            {% for medium in book.hpcom_book_owned_medium|sort(attribute='iri') %}{{ medium }}{% endfor %}
             {% else %}{{ book.hpcom_book_owned_medium if book.hpcom_book_owned_medium else 'NA'}}
             {% endif %}" 
         data-rating="{{book.schema_aggregatedRating.schema_ratingValue if book.schema_aggregatedRating else 0}}">
