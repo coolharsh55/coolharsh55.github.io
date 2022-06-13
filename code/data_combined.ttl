@@ -1663,13 +1663,17 @@ hpview:ResearchView a hpcom:View ;
         [ a hpcom:SparqlQuery ;
             rdfs:label "seminars" ;
             hpcom:queryString """
-            SELECT ?name ?url ?date WHERE {
+            SELECT ?name ?url ?date ?about ?about_url ?event ?category WHERE {
                 ?seminar a schema:PresentationDigitalDocument .
                 FILTER NOT EXISTS { ?paper hpcom:supplementary ?seminar } . 
                 ?seminar schema:name ?name .
                 ?seminar schema:url ?url .
                 ?seminar schema:datePublished ?date .
-            } ORDER BY DESC(?date)
+                OPTIONAL { ?seminar schema:about/schema:url ?about_url . 
+                    ?seminar schema:about/schema:name ?about } .
+                OPTIONAL { ?seminar schema:publication/schema:name ?event } .
+                ?seminar schema:category ?category .
+            } ORDER BY DESC(?date) LIMIT 5
         """ ],
         [ a hpcom:SparqlQuery ;
             rdfs:label "recent_publications" ;
@@ -16820,6 +16824,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2015-ADAPT-KDEG-Workshop-workflows> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2016-08-04T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16839,6 +16844,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2015-PhD-Interview> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/002-model-contextual-data-sharing-smartphone-applications> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2015-12-04T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16855,6 +16861,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2017-ADAPT-Industry-showcase> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-07-09T10:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16871,6 +16878,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2017-ADAPT-Theme-GDPR> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-05-09T10:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16887,6 +16895,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2017-PhD-transfer> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-11-09T10:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16909,6 +16918,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2020-ADAPT-SFI-Review> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-01-16T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16927,6 +16937,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "Common Good" ;
             schema:url "https://en.wikipedia.org/wiki/Common_good"^^xsd:anyURI ] ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-04-22T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16946,6 +16957,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2020-ADAPT-Townhall> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/phd> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-10-01T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16964,6 +16976,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "Consent" ;
             schema:url "https://en.wikipedia.org/wiki/Informed_consent"^^xsd:anyURI ] ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-06-24T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -16983,6 +16996,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2020-PROTECT-Workshop> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/protect> ;
+    schema:category "Invited Talk"@en ;
     schema:datePublished "2020-05-05T09:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PPTX" ;
@@ -17004,6 +17018,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
             schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2021-03-24T16:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17025,6 +17040,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
             schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+    schema:category "Invited Talk"@en ;
     schema:datePublished "2021-10-04T22:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17045,6 +17061,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "Consent" ;
             schema:url "https://en.wikipedia.org/wiki/Informed_consent"^^xsd:anyURI ] ;
+    schema:category "Guest Lecture"@en ;
     schema:datePublished "2021-03-15T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17066,6 +17083,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "GDPR" ;
             schema:url "https://eur-lex.europa.eu/eli/reg/2016/679/oj"^^xsd:anyURI ] ;
+    schema:category "Guest Lecture"@en ;
     schema:datePublished "2021-12-20T10:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "HTML" ;
@@ -17090,6 +17108,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "What is the Internet doing to me? (witidtm) - TCD" ;
             schema:url "https://down.dsg.cs.tcd.ie/witidtm/"^^xsd:anyURI ] ;
+    schema:category "Guest Lecture"@en ;
     schema:datePublished "2021-11-18T17:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17109,6 +17128,7 @@ list:owned_unread a hpcom:RenderedItem,
 
 <https://harshp.com/research/presentations#2021-WU-SC-RISKY> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/projects/risky> ;
+    schema:category "Invited Talk"@en ;
     schema:datePublished "2021-05-21T12:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17127,6 +17147,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "Personalisation" ;
             schema:url "https://en.wikipedia.org/wiki/Personalization"^^xsd:anyURI ] ;
+    schema:category "Invited Talk"@en ;
     schema:datePublished "2022-03-03T11:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17148,6 +17169,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
             schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+    schema:category "Networking Event"@en ;
     schema:datePublished "2022-01-28T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -17172,6 +17194,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:about [ a hpcom:Link ;
             schema:name "FAIR Data" ;
             schema:url "https://en.wikipedia.org/wiki/FAIR_data"^^xsd:anyURI ] ;
+    schema:category "Invited Talk"@en ;
     schema:datePublished "2022-03-23T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19155,23 +19178,25 @@ hpview:PresentationsIndexView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
             rdfs:label "presentations" ;
             hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
                 ?presentation schema:performer <https://harshp.com/me> .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
+                ?presentation schema:category ?category .
             } ORDER By DESC(?date)
         """ ],
         [ a hpcom:SparqlQuery ;
             rdfs:label "presentations_others" ;
             hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
                 FILTER NOT EXISTS { ?presentation schema:performer <https://harshp.com/me> } .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
+                ?presentation schema:category ?category .
             } ORDER By DESC(?date)
         """ ] ;
     hpcom:view_renderer hpcom:Jinja2 ;
@@ -19281,6 +19306,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2016-EvalUMAP> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/003-open-data-improve-readability-adaptability-personalisation> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2016-07-16T10:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "HTML" ;
@@ -19296,6 +19322,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2017-PrivOn-GDPRov> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/008-provenance-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-10-22T10:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19317,6 +19344,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2017-PrivOn-consent> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/007-compliance-informed-consent-management-model> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-10-22T10:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19335,6 +19363,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2017-SciEDSC-Workflows> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/005-ontologies-publish-workflows> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-06-04T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19353,6 +19382,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2017-SemSci-DPRL> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/005-ontologies-publish-workflows> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2017-09-04T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19368,6 +19398,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-CKG-GDPR> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/020-towards-kb-systems-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19383,6 +19414,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-ESWC-GDPRtEXT> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/015-gdprtext> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-06-06T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19404,6 +19436,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-EURAS-GDPR> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/010-gdpr-data-interoperability-model> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-05-18T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19422,6 +19455,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-HCC13-EthicsCanvas> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/011-ethical-impacts-roi-ethics-canvas> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-09-19T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19437,6 +19471,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-IPAW-Extract> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/016-extract-provenance-metadata-privacy-policies> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-07-16T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19452,6 +19487,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-MEPDaW-Change> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/014-gdpr-driven-change-detection-consent-activity> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-06-04T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19470,6 +19506,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-SEMANTiCS-DataValue> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/024-investigating-conditional-data-value-gdpr> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-09-12T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19485,6 +19522,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-SEMANTiCS-GDPR-SHACL> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/023-exploring-gdpr-compliance-provenance-graphs-shacl> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-09-12T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19503,6 +19541,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-SEMANTiCS-Queryable> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/018-queryable-provenance-metadata-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-09-12T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19518,6 +19557,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-SW4CH-Archives> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/012-linked-data-automatic-enrichment-historical-archives> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-06-05T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19536,6 +19576,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-SW4SG-Vocab> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/019-towards-open-data-vocabulary-canvas-innovation-ethics> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19554,6 +19595,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-TELERISE-Personalised> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/017-personalised-privacy-policies> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-09-02T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19569,6 +19611,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-WOP-ODP> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/022-odp-describe-personal-data-privacy-policies> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19590,6 +19633,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-WOP-SHACL> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/021-odp-define-shacl-shapes> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19611,6 +19655,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2018-WWW-BlackMirror> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/009-ease-ethics-black-mirror> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2018-04-28T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19626,6 +19671,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-ESWC-GConsent> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/028-gconsent-consent-ontology-gdpr> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-06-06T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19644,6 +19690,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-ESWC-Infer> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/027-towards-cataloguing-potential-derivations-personal-data> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-06-04T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19662,6 +19709,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-ICSC-Policy> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/026-towards-generating-policy-compliant-datasets> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-01-30T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "slides (PDF)" ;
@@ -19680,6 +19728,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-ODBASE-DPV> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/032-creating-vocabulary-data-privacy> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-10-23T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19698,6 +19747,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-SEMANTiCS-GDPR-Test> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/029-test-driven-approach-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-09-21T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19716,6 +19766,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2019-SEMANTiCS-OPN> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/030-OPN-open-notice-receipt-schema> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2019-09-21T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19734,6 +19785,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2020-JURIX-DPV-ROPA> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/037-common-semantic-model-GDPR-ROPA> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-12-09T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19752,6 +19804,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2020-OM-SCHEMA> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/036-semantic-schema-mapping-interoperable-data-exchange> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-11-02T10:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19767,6 +19820,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2020-PhD-Mock-Viva> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-04-20T11:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "Mock Viva (PDF)" ;
@@ -19783,6 +19837,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2020-PhD-Viva> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/035-representing-activities-processing-personal-data-consent-semweb-gdpr-compliance> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2020-04-27T09:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19802,6 +19857,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2021-ConPro-Benefits> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/039-benefits-of-consent> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2021-05-27T15:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19821,6 +19877,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 <https://harshp.com/research/presentations#2021-ConsentW-Solid-ODRL-ACP> a hpcom:Link,
         schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/048-odrl-profile-consent-solid-acp> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2021-09-07T10:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19839,6 +19896,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 
 <https://harshp.com/research/presentations#2021-OI-PAECG> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/042-role-identity-identification-receipts-consent> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2021-06-02T00:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
@@ -19858,6 +19916,7 @@ hpcom:Report rdfs:subClassOf schema:Report,
 <https://harshp.com/research/presentations#2021-SEMANTiCS-DPCat> a hpcom:Link,
         schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/047-data-processing-activities-catalog> ;
+    schema:category "Research Presentation"@en ;
     schema:datePublished "2021-09-07T14:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;

@@ -264,13 +264,17 @@ hpview:ResearchView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "seminars" ;
         hpcom:queryString """
-            SELECT ?name ?url ?date WHERE {
+            SELECT ?name ?url ?date ?about ?about_url ?event ?category WHERE {
                 ?seminar a schema:PresentationDigitalDocument .
                 FILTER NOT EXISTS { ?paper hpcom:supplementary ?seminar } . 
                 ?seminar schema:name ?name .
                 ?seminar schema:url ?url .
                 ?seminar schema:datePublished ?date .
-            } ORDER BY DESC(?date)
+                OPTIONAL { ?seminar schema:about/schema:url ?about_url . 
+                    ?seminar schema:about/schema:name ?about } .
+                OPTIONAL { ?seminar schema:publication/schema:name ?event } .
+                ?seminar schema:category ?category .
+            } ORDER BY DESC(?date) LIMIT 5
         """ ;
     ] ; 
     hpcom:sparql [
@@ -318,12 +322,13 @@ hpview:PresentationsIndexView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "presentations" ;
         hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
                 ?presentation schema:performer <https://harshp.com/me> .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
+                ?presentation schema:category ?category .
             } ORDER By DESC(?date)
         """ ;
     ] ;
@@ -331,12 +336,13 @@ hpview:PresentationsIndexView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "presentations_others" ;
         hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
                 FILTER NOT EXISTS { ?presentation schema:performer <https://harshp.com/me> } .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
+                ?presentation schema:category ?category .
             } ORDER By DESC(?date)
         """ ;
     ] .

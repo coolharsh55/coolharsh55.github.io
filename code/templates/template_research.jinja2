@@ -5,7 +5,7 @@
 {% block content %}
 <section id="summary">
 <h2>Overview</h2>
-<p>I'm currently a <u>Research Fellow</u> in the <a href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a> at <a href="http://www.tcd.ie/">Trinity College Dublin</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT Research Centre</a>. I primarily work on exploring privacy risks of technologies using knowledge graphs through the <a class="raised" href="/research/projects/risky">RISKY</a> project. I also work on the <a class="raised" href="/research/projects/paecg">Privacy-as-Expected: Consent Gateway</a> project funded by NGI TRUST.
+<p>I'm currently a <u>Research Fellow</u> in the <a href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a> at <a href="http://www.tcd.ie/">Trinity College Dublin</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT Research Centre</a>. I primarily work on exploring privacy risks of technologies using knowledge graphs through the <a class="raised" href="/research/projects/risky">RISKY</a> project. 
 My other research activities include chairing and contributing to the <a class="raised" href="https://www.w3.org/community/dpvcg/">DPVCG</a>, and continuation of my PhD work regarding <a href="https://openscience.adaptcentre.ie/">GDPR compliance using semantic web</a>.</p>
 <p>You can see more information about my:</p>
 <ul>
@@ -292,10 +292,13 @@ My other research activities include chairing and contributing to the <a class="
     <li><u>CS3014 Concurrent System I</u>: 
         2018 Integrated Computer Science Degree Year 3, Trinity College Dublin</li>
     </ul>
-<h3>Talks, Seminars, Lectures</h3>
+<h3>Recent Talks, Seminars, Lectures</h3>
+<p>See full list of presentations with links to slides and resources <a href="/research/presentations">here</a>.
 <ul>
-    {% for name, url, date in seminars %}
-    <li><a href="{{url}}">{{name}}</a> <time datetime="{{date}}">{{date}}</time></li>
+    {% for name, url, date, about, about_url, event, category in seminars %}
+    <li><a href="{{url}}"><strong>{{name}}</strong></a> <br/>
+        <time datetime="{{date}}">{{date}}</time> {{category}} at <i>{{ event }}</i> about <a href="{{about_url}}">{{ about }}</a>
+        </li>
     {% endfor %}
 </ul>
 <h3>Teaching Assistant</h3>
