@@ -49,14 +49,14 @@ var list_filter_sort_click_handler = function(ele) {
     let list = this.parentNode.nextSibling;
     let children = list.querySelectorAll('li');
     let sorting_variable = this.getAttribute('data-for');
-    console.log(sorting_variable)
+    console.log(sorting_variable);
     let items_sort_list = [] ;
     for (let node of children) {
         let key = node.getAttribute(sorting_variable);
         items_sort_list.push({
             key: key,
             value: node}) ;
-        elist[elist.length] = key;
+        list[list.length] = key;
     }
 
     // sort list using key and direction
