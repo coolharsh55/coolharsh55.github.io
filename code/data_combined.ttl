@@ -8164,12 +8164,18 @@ book:43 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "43"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jared Diamond"^^xsd:string ;
     schema:dateCreated "1997"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:TCD,
+        list:educational ;
     schema:isbn "9780739467350"^^xsd:string ;
     schema:name "Guns, Germs, and Steel: The Fates of Human Societies"@en ;
+    schema:review "An interesting book with a more scientific premise of social progress, and understandable why it is so highly awarded. Though it did tend to go off more on the anthropological and sociological side, which made the book quite difficult to read (as in entertaining) but its typical of books of this type. The title is anecdoctal, so the initial impression was quite misleading that the book would offer a historical perspective on the three things - guns, germs, and steel."@en ;
     schema:url "https://harshp.com/hobbies/books/43"^^xsd:anyURI .
 
 book:430 a hpcom:BookReading,
@@ -12581,8 +12587,9 @@ book:682 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "682"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook,
+        hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Yoon Ha Lee"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
