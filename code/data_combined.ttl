@@ -12588,12 +12588,17 @@ book:682 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "682"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-17T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Yoon Ha Lee"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:scifi ;
     schema:name "Ninefox Gambit"@en ;
+    schema:review "Exciting, action-packed, weird, enjoyable. Space opera with some weird belief system and mechanics thrown in. Fully built world, consistent use, and no hidden surprises that felt out of place. I went out to the store to buy the sequels as soon as I finished this."@en ;
     schema:url "https://harshp.com/hobbies/books/682"^^xsd:anyURI .
 
 book:683 a hpcom:BookReading,
@@ -12723,11 +12728,13 @@ book:691 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "691"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Rebecca Roanhorse"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
     schema:name "Black Sun"@en ;
     schema:url "https://harshp.com/hobbies/books/691"^^xsd:anyURI .
 
@@ -12759,6 +12766,7 @@ book:694 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "694"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
@@ -13987,12 +13995,14 @@ book:776 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "776"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:EBook,
+        hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
     schema:name "The Doors of Eden"@en ;
     schema:url "https://harshp.com/hobbies/books/776"^^xsd:anyURI .
 
@@ -14546,7 +14556,8 @@ book:811 a hpcom:RenderedItem,
     schema:author "Italo Calvino"^^xsd:string ;
     schema:dateCreated "1983"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
-    schema:isPartOf hpcom:language ;
+    schema:isPartOf list:TCD,
+        list:language ;
     schema:name "Mr. Palomar"@en ;
     schema:review "A delightful read that is clever and thoughtful"@en ;
     schema:url "https://harshp.com/hobbies/books/811"^^xsd:anyURI .
@@ -14606,6 +14617,42 @@ book:816 a hpcom:RenderedItem,
     schema:name "The Book Eaters"@en ;
     schema:url "https://harshp.com/hobbies/books/816"^^xsd:anyURI .
 
+book:817 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "817"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Yoon Ha Lee"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Raven Strategem"@en ;
+    schema:url "https://harshp.com/hobbies/books/817"^^xsd:anyURI .
+
+book:818 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "818"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Yoon Ha Lee"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Revenant Gun"@en ;
+    schema:url "https://harshp.com/hobbies/books/818"^^xsd:anyURI .
+
+book:819 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "819"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Greg Egan"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Best of Greg Egan"@en ;
+    schema:url "https://harshp.com/hobbies/books/819"^^xsd:anyURI .
+
 book:82 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
@@ -14621,6 +14668,116 @@ book:82 a hpcom:BookReading,
     schema:name "Siddhartha"@en ;
     schema:review "A gentle but thoughtful rendition of meeting the Buddha and being the Buddha."@en ;
     schema:url "https://harshp.com/hobbies/books/82"^^xsd:anyURI .
+
+book:820 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "820"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Sussane Wedlich"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Slime: A Natural History"@en ;
+    schema:url "https://harshp.com/hobbies/books/820"^^xsd:anyURI .
+
+book:821 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "821"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Peter Wohlleben"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Secret Network of Nature"@en ;
+    schema:url "https://harshp.com/hobbies/books/821"^^xsd:anyURI .
+
+book:822 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "822"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Thomas Piketty"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Time for Socialism"@en ;
+    schema:url "https://harshp.com/hobbies/books/822"^^xsd:anyURI .
+
+book:823 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "823"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2004"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "Iron Sunrise"@en ;
+    schema:url "https://harshp.com/hobbies/books/823"^^xsd:anyURI .
+
+book:824 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "824"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Jorge Luis Borges"^^xsd:string ;
+    schema:dateCreated "1949"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "The Aleph"@en ;
+    schema:url "https://harshp.com/hobbies/books/824"^^xsd:anyURI .
+
+book:825 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "825"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Alastair Reynolds"^^xsd:string ;
+    schema:dateCreated "2005"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "Pushing Ice"@en ;
+    schema:url "https://harshp.com/hobbies/books/825"^^xsd:anyURI .
+
+book:826 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "826"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "N. K. Jemisin"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "Killing Moon"@en ;
+    schema:url "https://harshp.com/hobbies/books/826"^^xsd:anyURI .
+
+book:827 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "827"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2003"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "Singularity Sky"@en ;
+    schema:url "https://harshp.com/hobbies/books/827"^^xsd:anyURI .
+
+book:828 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "828"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Nick Harkaway"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:TCD ;
+    schema:name "Gnomon"@en ;
+    schema:url "https://harshp.com/hobbies/books/828"^^xsd:anyURI .
 
 book:83 a hpcom:BookReading,
         hpcom:RenderedItem,
@@ -22542,11 +22699,6 @@ hptag:visa a hpcom:RenderedItem,
     schema:name "GNIB Appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
 
-list:language a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "language"@en ;
-    schema:name "Beautiful Language"@en .
-
 list:storytelling a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "storytelling"@en ;
@@ -22581,6 +22733,11 @@ list:horror a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "horror"@en ;
     schema:name "Horrifying Horror"@en .
+
+list:language a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "language"@en ;
+    schema:name "Beautiful Language"@en .
 
 hptag:data-governance a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22815,15 +22972,15 @@ list:classics a hpcom:RenderedItem,
     schema:identifier "classics"@en ;
     schema:name "Classics"@en .
 
-list:TCD a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "TCD"@en ;
-    schema:name "Books in TCD"@en .
-
 list:scifi a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "scifi"@en ;
     schema:name "Exciting Sci-Fi"@en .
+
+list:TCD a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "TCD"@en ;
+    schema:name "Books in TCD"@en .
 
 hptag:poem a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22851,15 +23008,15 @@ hpcom:Rating5 a hpcom:Rating,
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
 
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
-
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙂okay (3/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
+
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
 
 hpcom:Link a owl:Class ;
     rdfs:label "Link"@en .
