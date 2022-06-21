@@ -14621,24 +14621,32 @@ book:817 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "817"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-20T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Yoon Ha Lee"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Raven Strategem"@en ;
+    schema:review "Thrilling follow-up, like the middle layer in a really good sandwich!"@en ;
     schema:url "https://harshp.com/hobbies/books/817"^^xsd:anyURI .
 
 book:818 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "818"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-21T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Yoon Ha Lee"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Revenant Gun"@en ;
+    schema:review "The third course in a very entertaining series."@en ;
     schema:url "https://harshp.com/hobbies/books/818"^^xsd:anyURI .
 
 book:819 a hpcom:RenderedItem,
@@ -14684,7 +14692,7 @@ book:821 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "821"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Peter Wohlleben"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -23008,15 +23016,15 @@ hpcom:Rating5 a hpcom:Rating,
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
 
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
+
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙂okay (3/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
-
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
 
 hpcom:Link a owl:Class ;
     rdfs:label "Link"@en .
