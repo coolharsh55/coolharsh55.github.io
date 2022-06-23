@@ -420,11 +420,13 @@ def _today():
 
 def _year_start():
     literal = Literal(
-        datetime.date.today().replace(day=1,month=1), datatype=XSD.date)
+        datetime.datetime.now().replace(
+            day=1,month=1,hour=0,minute=0), datatype=XSD.dateTime)
+    return literal
 
 SPARQL_ACTIONS = {
     'date-today': _today,
-    'date_year_start': _year_start,
+    'date-year-start': _year_start,
 }
 
 

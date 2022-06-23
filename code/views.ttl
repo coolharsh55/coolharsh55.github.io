@@ -473,6 +473,22 @@ hpview:BookIndexView a hpcom:View ;
         """ ; ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
+        rdfs:label "read_this_year" ;
+        hpcom:queryString """
+            SELECT (COUNT(?book) as ?nos_books) WHERE {
+                ?book a schema:Book .
+                ?book schema:name ?title .
+                ?book hpcom:book_status hpcom:book-read .
+                ?book hpcom:date_book_read ?read_date .
+                FILTER (?read_date > ?this_year_start) .
+            } ORDER By ?title
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "this_year_start" ;
+            hpcom:queryParamValue "date-year-start" ;
+        ] ; ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
         rdfs:label "read" ;
         hpcom:queryString """
             SELECT ?book ?title ?date ?year WHERE {
