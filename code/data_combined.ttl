@@ -17205,7 +17205,7 @@ list:owned_unread a hpcom:RenderedItem,
 <https://harshp.com/research/presentations#2021-ADAPT-SFI-Review> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
-            schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
     schema:category "Research Presentation"@en ;
     schema:datePublished "2021-03-24T16:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
@@ -17227,7 +17227,7 @@ list:owned_unread a hpcom:RenderedItem,
 <https://harshp.com/research/presentations#2021-DCMI-DPV> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
-            schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
     schema:category "Invited Talk"@en ;
     schema:datePublished "2021-10-04T22:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
@@ -17356,7 +17356,7 @@ list:owned_unread a hpcom:RenderedItem,
 <https://harshp.com/research/presentations#2022-DPSN-DPV> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
-            schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
     schema:category "Networking Event"@en ;
     schema:datePublished "2022-01-28T13:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
@@ -17403,10 +17403,38 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "FAIRPoints Events" ] ;
     schema:url "https://harshp.com/research/presentations#2022-FAIRPoints-Legal-Compliance"^^xsd:anyURI .
 
+<https://harshp.com/research/presentations#2022-PEPR-DPV> a schema:PresentationDigitalDocument ;
+    schema:about [ a hpcom:Link ;
+            schema:name "DPV" ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2022-06-24T17:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2022/PEPR-DPV/DPV-PEPR.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "KEY" ;
+            schema:url "https://harshp.com/presentations/2022/PEPR-DPV/DPV-PEPR.key"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2022/PEPR-DPV/"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PEPR PDF" ;
+            schema:url "https://www.usenix.org/system/files/pepr22_slides_pandit.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PEPR Page" ;
+            schema:url "https://www.usenix.org/conference/pepr22/presentation/pandit"^^xsd:anyURI ] ;
+    schema:identifier "2022-PEPR-DPV" ;
+    schema:name "Data Privacy Vocabulary (DPV): Concepts for Legal Compliance"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication [ a schema:Event ;
+            schema:name "2022 USENIX Conference on Privacy Engineering Practice and Respect" ] ;
+    schema:url "https://harshp.com/research/presentations#2022-PEPR-DPV"^^xsd:anyURI .
+
 <https://harshp.com/research/presentations#2022-PIDSKG-DPV-Solid> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
             schema:name "DPV" ;
-            schema:url "https://w3.org/ns/dpv"^^xsd:anyURI ] ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
     schema:category "Invited Talk"@en ;
     schema:datePublished "2022-06-14T12:30:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
@@ -23057,6 +23085,9 @@ hpcom:Content a owl:Class ;
     rdfs:label "Content"@en ;
     rdfs:comment "Represents content associated with an IRI/Entity"@en .
 
+hpcom:EBook a hpcom:BookMedium ;
+    rdfs:label "💾digital"@en .
+
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
     hpcom:content [ hpcom:renderWith hpview:GenericJinja2View ;
@@ -23085,9 +23116,6 @@ hpcom:Content a owl:Class ;
             schema:name "India" ] ;
     schema:url "https://harshp.com/me"^^xsd:anyURI ;
     schema:worksFor <https://www.tcd.ie/> .
-
-hpcom:EBook a hpcom:BookMedium ;
-    rdfs:label "💾digital"@en .
 
 hpcom:PhysicalBook a hpcom:BookMedium ;
     rdfs:label "📚physical"@en .
