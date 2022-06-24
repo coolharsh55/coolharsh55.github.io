@@ -1456,6 +1456,19 @@ hpview:BookIndexView a hpcom:View ;
             } ORDER By ?title
         """ ],
         [ a hpcom:SparqlQuery ;
+            rdfs:label "read_this_year" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "this_year_start" ;
+                    hpcom:queryParamValue "date-year-start" ] ;
+            hpcom:queryString """
+            SELECT (COUNT(?book) as ?nos_books) WHERE {
+                ?book a schema:Book .
+                ?book schema:name ?title .
+                ?book hpcom:book_status hpcom:book-read .
+                ?book hpcom:date_book_read ?read_date .
+                FILTER (?read_date > ?this_year_start) .
+            } ORDER By ?title
+        """ ],
+        [ a hpcom:SparqlQuery ;
             rdfs:label "read" ;
             hpcom:queryString """
             SELECT ?book ?title ?date ?year WHERE {
@@ -14681,7 +14694,7 @@ book:820 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "820"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Sussane Wedlich"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -14692,11 +14705,15 @@ book:821 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "821"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-23T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Peter Wohlleben"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Secret Network of Nature"@en ;
+    schema:review "A good nature documentary in book form."@en ;
     schema:url "https://harshp.com/hobbies/books/821"^^xsd:anyURI .
 
 book:822 a hpcom:RenderedItem,
