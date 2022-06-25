@@ -42,6 +42,7 @@ import logging
 logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
+FLAG_VALIDATE_CONSTRAINTS = True
 
 # Namespaces used in the RDF files
 # RDF-ORM can also auto-detect them
@@ -77,25 +78,26 @@ graph.load('content/research/projects/paecg/paecg.ttl', format='turtle')
 graph.serialize('data_combined.ttl', format='turtle')
 
 # validate using PySHACL
-from pyshacl import validate
-validation_constraints = Graph()
-validation_constraints.load('shacl_constraints.ttl', format='turtle')
-validation_results = validate(graph,
-      shacl_graph=validation_constraints,
-      ont_graph=None,
-      inference='rdfs',
-      abort_on_first=False,
-      allow_infos=False,
-      allow_warnings=False,
-      meta_shacl=False,
-      advanced=False,
-      js=False,
-      debug=False)
-conforms, results_graph, results_text = validation_results
-if conforms is False:
-    print(results_text)
-    import sys
-    sys.exit()
+if FLAG_VALIDATE_CONSTRAINTS:
+    from pyshacl import validate
+    validation_constraints = Graph()
+    validation_constraints.load('shacl_constraints.ttl', format='turtle')
+    validation_results = validate(graph,
+          shacl_graph=validation_constraints,
+          ont_graph=None,
+          inference='rdfs',
+          abort_on_first=False,
+          allow_infos=False,
+          allow_warnings=False,
+          meta_shacl=False,
+          advanced=False,
+          js=False,
+          debug=False)
+    conforms, results_graph, results_text = validation_results
+    if conforms is False:
+        print(results_text)
+        import sys
+        sys.exit()
 
 # create data graph through ORM
 data = DataGraph()
