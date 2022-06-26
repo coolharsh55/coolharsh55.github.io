@@ -11741,7 +11741,7 @@
         schema:Book ;
     hpcom:book_id "819"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Greg Egan"^^xsd:string ;
@@ -11754,13 +11754,15 @@
         schema:Book ;
     hpcom:book_id "820"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-06-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Sussane Wedlich"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Slime: A Natural History"@en ;
+    schema:review """The title and cover implied this would be about slime substances and slime molds. But instead, it was a collection of short articles mostly about slime as in the gooey substance with very little about slime molds. The articles were interesting, but too short to keep up interest. Disappointing pick to read."""@en ;
     schema:url "https://harshp.com/hobbies/books/820"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/821> a hpcom:RenderedItem,
