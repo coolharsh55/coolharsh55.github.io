@@ -116,15 +116,6 @@
     schema:startDate "2020-09-09T15:00:00"^^xsd:dateTime ;
     schema:url "https://2020-eu.semantics.cc/"^^xsd:anyURI .
 
-<http://example.com/conferences/SEMANTiCS2022> a schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "SEMANTiCS" ;
-    schema:endDate "2022-09-15T00:00:00"^^xsd:dateTime ;
-    schema:location "Vienna, Austria" ;
-    schema:name "International Conference on Semantic Systems"@en ;
-    schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
-    schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI .
-
 <http://example.com/workshops/CKG2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -18229,6 +18220,41 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info13050244"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/053-DPV-DPIA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/053-DPV-DPIA"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.6783203"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/053-DPV-DPIA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/coolharsh55/dpv-dpia"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "specification" ;
+            schema:url "https://harshp.com/dpv-dpia"^^xsd:anyURI ] ;
+    hpcom:tag hptag:DPIA,
+        hptag:DPV,
+        hptag:GDPR,
+        hptag:privacy,
+        hptag:risk ;
+    schema:datePublished "2022-06-30T00:00:00"^^xsd:dateTime ;
+    schema:description "Expressing GDPR's Data Protection Impact Assessments (DPIA) as semantic information by extending DPV"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "A Semantic Specification for Data Protection Impact Assessments (DPIA)"@en ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2022> ;
+    schema:status "to be presented"@en ;
+    schema:url ""^^xsd:anyURI .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
@@ -19270,6 +19296,16 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2022-10-23T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2022.semanticweb.org/"^^xsd:anyURI .
+
+<http://example.com/conferences/SEMANTiCS2022> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:endDate "2022-09-15T00:00:00"^^xsd:dateTime ;
+    schema:location "Vienna, Austria" ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
+    schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -21284,6 +21320,11 @@ hptag:ConsumerProtection a hpcom:RenderedItem,
     schema:name "consumer protection"@en ;
     schema:url "https://harshp.com/tags/ConsumerProtection"^^xsd:anyURI .
 
+hptag:DPIA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPIA"@en ;
+    schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
+
 hptag:EU a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "EU" ;
@@ -22608,11 +22649,6 @@ hptag:privacy-policy a hpcom:RenderedItem,
     schema:name "privacy-policy"@en ;
     schema:url "https://harshp.com/tags/privacy-policy"^^xsd:anyURI .
 
-hptag:risk a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "risk" ;
-    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
-
 hptag:routine a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "routine" ;
@@ -22648,10 +22684,10 @@ list:visually-stunning a hpcom:RenderedItem,
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
 
-hptag:DPV a hpcom:RenderedItem,
+hptag:risk a hpcom:RenderedItem,
         hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
+    schema:name "risk" ;
+    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
 
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22669,6 +22705,11 @@ hptag:travel a hpcom:RenderedItem,
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
+
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:conference a hpcom:RenderedItem,
         hpcom:Tag ;

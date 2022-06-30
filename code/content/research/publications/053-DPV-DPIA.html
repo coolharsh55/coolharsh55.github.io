@@ -1,0 +1,1090 @@
+<link rel="stylesheet" href="/css/toc.css" /><div id="toc"></div>
+<div class="frontmatter">
+<p><strong>Abstract</strong> The GDPR requires assessing and conducting a Data Protection Impact Assessment (DPIA) for processing of personal data that may result in high risk and impact to the data subjects. Documenting this process requires information about processing activities, entities and their roles, risks, mitigations and resulting impacts, and consultations. Impact assessments are complex activities where stakeholders face difficulties to identify relevant risks and mitigations, especially for emerging technologies and specific considerations in their use-cases, and to document outcomes in a consistent and reusable manner. We address this challenge by utilising linked-data to represent DPIA related information so that it can be better managed and shared in an interoperable manner. For this, we consulted the guidance documents produced by EU Data Protection Authorities (DPA) regarding DPIA and by ENISA regarding risk management. The outcome of our efforts is an extension to the Data Privacy Vocabulary (DPV) for documenting DPIAs and an ontology for risk management based on ISO 31000 family of standards. Our contributions fill an important gap within the state of the art, and paves the way for shared impact assessments with future regulations such as for AI and Cybersecurity.</p>
+<div class="keyword">
+<p>GDPR ,DPIA ,Risk Management ,ISO ,Semantic-Web</p>
+</div>
+</div>
+<h2 id="sec:intro">Introduction</h2>
+<h3 id="sec:intro-background">Motivation</h3>
+<p>The EU’s General Data Protection Regulation (GDPR) <span
+class="citation" data-cites="Regulation_GDPR"><a
+href="#ref-Regulation_GDPR" role="doc-biblioref">[1]</a></span> requires
+every Data Controller to assess and document whether their processing is
+“likely to result in a high risk to the rights and freedoms” of
+individuals (i.e. <em>high-risk</em><a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>), and if so - to carry
+out a ‘Data Protection Impact Assessment (DPIA)’. A DPIA is essentially
+a three-step iterative risk governance process where the organisation
+first identifies its activities, then checks whether any DPIA-requiring
+criteria is met, and if yes - conduct a DPIA (see more in ). GDPR does
+not impose a strict process for how organisations have to conduct their
+risk and impact assessments, but instead specifies only broad
+requirements. Data Protection Authorities (DPA), tasked with enforcing
+GDPR, have published (on respective websites) guidance and tools related
+to compliance, including DPIA and risk governance.</p>
+<p>We identify five important challenges regarding DPIAs present in the
+current landscape that serve as motivation for this work. (1) DPIAs can
+involve multiple stakeholders (e.g. Data Processors) which creates
+information dependencies (e.g. measures implemented by processors). (2)
+Since DPIAs must be specific, controllers conducting similar DPIAs will
+repeat information and tasks. (3) Despite existing standards for risk
+management, there is variance in methodologies that prevents common
+universal solutions. (4) Current documentation norms are heavily
+human-oriented (e.g. spreadsheets, PDF), which severely limit
+development and application of tools for DPIAs. (5) Solutions do not
+take into account that high-risk impact assessments are a form of shared
+activity i.e. they share processing activity information, risks, and
+impacts with other GDPR requirements (e.g. Register of Processing
+Activities (ROPA), data transfers), and have overlaps with similar
+assessments in aligned regulations, e.g. the EU’s proposal for AI Act
+<span class="citation" data-cites="EU_AI_Reg"><a href="#ref-EU_AI_Reg"
+role="doc-biblioref">[2]</a></span>.</p>
+<p>The state of the art contains multifaceted application-specific
+solutions for expressing risks, DPIA methodologies, and GDPR compliance.
+In particular, they demonstrate advantages of semantic web technologies
+for: (i) specialising for a use-case; (ii) interoperability between
+stakeholders and tools; (iii) creating shared knowledge-bases; and (iv)
+developing tooling for machine-based compliance. However, there are two
+important gaps that have not been addressed: impact assessments and
+documenting DPIAs.</p>
+<h3 id="sec:intro-contributions">Contributions of this Work</h3>
+<p>We take the first step towards improving the DPIA processes by
+enabling sharing and reuse of information required for risk/impact
+assessments through the use of semantic web technologies. Our approach
+reflects the positioning of DPIAs within a broader framework of
+information and compliance management associated with GDPR. Thus, rather
+than creating an ontology solely dedicated to representing DPIA, we
+extend an existing ontology - the Data Privacy Vocabulary (DPV) produced
+by the Data Privacy Vocabularies and Controls Community Group<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> (DPVCG) as the state of the art (see
+). DPV provides a comprehensive taxonomy of data processing related
+concepts, including rudimentary concepts for risks and DPIA, that are
+meant to be jurisdiction and domain agnostic, with a separate extension
+(<code>dpv-gdpr</code>) providing GDPR specific concepts. We identified
+and proposed concepts currently missing in (core) DPV, and from these
+developed a DPIA specification as an extension (called
+<code>DPV-DPIA</code>). For expressing risk/impact assessments - we
+developed an ontology based on the ISO 31000 family of risk-related
+standards. For expressing impacts to fundamental rights and freedoms, we
+created a thesauri from the EU Charter regarding rights and freedoms<a
+href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>.</p>
+<p>To ensure the specification is useful and practical for stakeholders,
+we based it on DPA guidelines and tools to first ensure important
+requirements are met (see ). We then modelled real-world instances of
+(publicly available) DPIAs as a form of reflective evaluation, and to
+demonstrate sharing of knowledge we used the DPV-specified concepts
+within French DPA’s (CNIL) DPIA tool (see ). We conclude with a
+discussion (see ) on identified and perceived limitations of our work,
+and the pragmatism of developing shared impact assessments for EU’s
+regulatory landscape.</p>
+<p>To summarise, our major contributions are: (i) Machine-readable DPIA
+specification; and (ii) Enabling reuse and sharing of risks,
+mitigations, and impacts through linked data. Minor contributions
+include: (i) Risk ontology based on ISO 31000 family of standards; (ii)
+Thesauri of EU fundamental rights and freedoms; (iii) Collection of
+risks, mitigations, and impacts from literature; (iv) Extension of DPV
+and state of the art; and (v) Practical discussions towards developing
+shared impact assessments.</p>
+<h2 id="sec:sota">Background and State of the Art</h2>
+<h3 id="sec:sota-gdpr">GDPR and Data Protection Impact Assessments
+(DPIA)</h3>
+<p>GDPR’s Article 35 prescribes requirements for assessing necessity of
+DPIAs based on potential for high-risk, and for carrying out a DPIA if a
+criteria is met. In this, it describes conditions that always need a
+DPIA and lays down the basis where DPAs can specify further rules on
+conditions that do/don’t require DPIA. It also describes consultation of
+stakeholders such as Data Protection Officers (DPO) and data subjects
+where necessary.</p>
+<p>In order to determine necessity, controllers require descriptions of
+processing activities in terms of specific criteria, for example the
+scale and scope of data (Art.35-3b), or whether automated decision
+making and profiling operations are involved (Art.35-3a). DPA guidelines
+provide additional nuanced descriptions of concepts that are relevant
+for determining risk, impact, and the basis on which DPIAs should be
+conducted.</p>
+<p>While GDPR intends to provide harmonised requirements for DPIAs,
+individual DPAs have taken different approaches with deviations
+regarding use of organisational processes related to management
+practices and risk governance - which are not necessarily directly
+associated with a DPIA. For example, as part of the DPIA templates, both
+AEPD (Spanish DPA) and CNIL (French DPA) ask about the organisation’s
+“internal practices and context” which includes “ organisation’s
+structure, functions and competencies, adopted policies, norms and
+standards, organisational maturity objectives and in general the
+organisation’s culture”. Owing to this, organisations have difficulties
+in determining what requirements a DPIA must meet given that the
+guidance is varied, complex, nuanced, and difficult to judge for
+sufficiency. Additionally, Georgiadis et al. <span class="citation"
+data-cites="georgiadisPrivacyImpactAssessment2022"><a
+href="#ref-georgiadisPrivacyImpactAssessment2022"
+role="doc-biblioref">[3]</a></span> conducted a systemic literature
+review on the different privacy and data protection risks specified
+within the state of the art, with a conclusion on the necessity to
+further develop better DPIA methodologies due to organisation’s limited
+knowledge on this topic.</p>
+<h3 id="sec:sota-semweb">Models for DPIAs and Risk Assessments</h3>
+<p>There are several domain and application specific approaches for
+modelling risk in ontological form. Some examples are: Agrawal’s <span
+class="citation" data-cites="agrawalOntologyISOIEC2016"><a
+href="#ref-agrawalOntologyISOIEC2016"
+role="doc-biblioref">[4]</a></span> ontology based on ISO/IEC 27005:2011
+risk management standard, Ameida et al’s <span class="citation"
+data-cites="almeidaConceptualModelEnterprise2019"><a
+href="#ref-almeidaConceptualModelEnterprise2019"
+role="doc-biblioref">[5]</a></span> conceptual enterprise architecture
+models for organisational risk management based on ISO 31000, Rosa et
+al’s. <span class="citation" data-cites="rosaDesigningITRisk2021"><a
+href="#ref-rosaDesigningITRisk2021" role="doc-biblioref">[6]</a></span>
+ontology for IT risk management based on ISO 31000, Vicente et al’s.
+<span class="citation"
+data-cites="vicenteConceptualModelIntegrated2011"><a
+href="#ref-vicenteConceptualModelIntegrated2011"
+role="doc-biblioref">[7]</a></span> high-level model for organisational
+risk governance, and Hayes et al’s. <span class="citation"
+data-cites="haynesUnderstandingPersonalOnline2020"><a
+href="#ref-haynesUnderstandingPersonalOnline2020"
+role="doc-biblioref">[8]</a></span> ontological model of online privacy
+risks and harms. While these approaches model risk concepts in
+ontological form, they focus on organisational perspective of risks
+(e.g. economic), or on generalised concepts (e.g. philosophical) that
+are not sufficient for expressing impacts as needed for a DPIA.</p>
+<p>In approaches that represent DPIA related information, GDPRtEXT <span
+class="citation" data-cites="panditGDPRtEXTGDPRLinked2018"><a
+href="#ref-panditGDPRtEXTGDPRLinked2018"
+role="doc-biblioref">[9]</a></span> provides insufficient concepts
+related to DPIA. PrOnto <span class="citation"
+data-cites="palmiraniPrOntoPrivacyOntology2018"><a
+href="#ref-palmiraniPrOntoPrivacyOntology2018"
+role="doc-biblioref">[10]</a></span> specifies DPIA as a workflow with
+steps and different categorisations of risk. Data Privacy Vocabulary<a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> (DPV) <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[11]</a></span> provides comprehensive taxonomies
+for describing personal data processing activities, which includes DPIA
+and risk concepts. In approaches related to automating DPIA processes,
+Dashti et al. <span class="citation"
+data-cites="dashtiAutomatedRiskAssessment2021"><a
+href="#ref-dashtiAutomatedRiskAssessment2021"
+role="doc-biblioref">[12]</a></span> explore automation of DPIA based on
+rule-based mechanisms to identify alternatives for less risky
+implementations. And Saniei <span class="citation"
+data-cites="sanieiChallengesImplementationPrivacy2021"><a
+href="#ref-sanieiChallengesImplementationPrivacy2021"
+role="doc-biblioref">[13]</a></span> proposes use of semantic web
+technologies to represent DPIA related knowledge and to use rules and
+inferences to identify relevant obligations and actions, with ongoing
+work <span class="citation"
+data-cites="sanieiDataProtectionImpact2021"><a
+href="#ref-sanieiDataProtectionImpact2021"
+role="doc-biblioref">[14]</a></span> in collecting competency questions
+and creating a vocabulary - which was useful for this work.</p>
+<p>Of these approaches, none provided all necessary concepts or could be
+readily used. Of these, DPV was the most suitable choice to extend given
+that it is: (a) most comprehensive; (b) open access; (c) has a mechanism
+for updating through DPVCG. This finding is backed by a recent survey by
+Esteves et al <span class="citation"
+data-cites="estevesAnalysisOntologiesPolicy2022"><a
+href="#ref-estevesAnalysisOntologiesPolicy2022"
+role="doc-biblioref">[15]</a></span> regarding modelling of GDPR related
+information flows that also included DPIA as a factor in investigation,
+with favourable reviews for DPV, though it found no suitably complete
+vocabulary for DPIAs.</p>
+<h2 id="sec:spec">DPIA Specification</h2>
+<h3 id="sec:spec-req">Requirements and Objectives</h3>
+<p>For understanding DPIA information requirements, we utilised EU DPA
+provided guidelines, tools, and templates. For non-English documents, we
+utilised machine-translation to convert them, and manually inspected
+them for correctness (relying on the author’s familiarity with
+information). In particular, we focused on identifying requirements
+regarding: (1) personal data processing activities; (2) DPIA necessity
+assessment and outcomes; (3) risk/impact assessments and outcome; (4)
+conditions regarded as high-risk, and requirement for a DPIA; and (5)
+documentation required for maintaining DPIAs.</p>
+<p>As outlined earlier in , these documents provide a wide range of
+information requirements that do not necessarily relate directly to
+DPIAs as stated in GDPR Art.35. In particular, the DPAs from Spain,
+France, and UK have provided comprehensive documentation which does not
+provide justification for how these are connected to specific legal
+requirements, and often go well beyond GDPR and into describing internal
+risk and governance procedures. The scope and breadth of these practices
+necessitate a much larger study given their complexity, variance, and
+connection to legal requirements. We focused on representing relevant
+information at a ‘high-level’ while also being sufficient in terms of
+GDPR requirements. This led to identifying the following specific
+requirements regarding documentation of information: (1) provenance
+records for DPIA in terms of processes and actors; (2) representing
+risk/impact assessments; (3) description of processing activities; and
+(4) risks, mitigations, and impacts.</p>
+<h3 id="sec:spec-overview">Specification Overview</h3>
+<p>The specification, available online<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>,
+models three categories of information: provenance and status of DPIA,
+processing activities associated with a DPIA, and the risks/impacts
+involved in that DPIA. In this, the existing<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> DPV
+concept <code>dpv:DPIA</code> is reused as a focal point with further
+specialisation into three aspects: <code>DPIANecessityAssessment</code>
+representing determination of whether a DPIA is required;
+<code>DPIAProcedure</code> for risks, impacts, and mitigations being
+investigated and documented; and <code>DPIAOutcome</code> for
+documenting the outcomes of a DPIA in terms of continuation of
+processing. <a href="#fig-spec">Figure. 1</a> represents these along with other core concepts to provide
+an overview of the specification.</p>
+<figure id="fig-spec">
+    <img src="img/053-spec.png">
+    <figcaption>Overview of the DPIA Specification</figcaption>
+</figure>
+<p>DPIAs require documentation of provenance information regarding when
+it took place (temporal information), and who was involved (agents, e.g.
+approval). For these, we reuse Dublin Core Metadata Innovation<a
+href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> (DCMI) terms for temporal
+information
+(<code>dct:created, dct:modified, dct:dateSubmitted, dct:dateAccepted, dct:temporal, dct:valid</code>),
+conformance e.g. codes of conduct (<code>dct:conformsTo</code>),
+descriptions (<code>dct:title, dct:description</code>), identifier or
+version (<code>dct:identifier, dct:isVersionOf</code>), and subject or
+scope of DPIA (<code>dct:subject, dct:coverage</code>).</p>
+<p>To record outcomes of DPIA processes, we consider a DPIA to be a form
+of <em>Audit</em> and use <code>dpv:hasStatus</code> with the
+appropriate <code>dpv:AuditStatus</code>. For example,
+<code>DPIANecessityAssessment</code> with <code>dpv:AuditRequired</code>
+indicates a necessity assessment is required, whereas
+<code>DPIAProcedure</code> with <code>dpv:AuditApproved</code> indicates
+the DPIA results were approved (e.g. by a DPO). The relation
+<code>hasOutcome</code> was created to indicate status of each DPIA
+process as - (i) for <code>dpv:DPIANecessityAssessment</code>:
+<code>DPIANecessityStatus</code> and specialisations related to whether
+a DPIA is required or not-required; (ii) for
+<code>dpv:DPIAProcedure</code>: <code>DPIARiskStatus</code> and
+specialisations related to level of risk as high, low, or none; and
+(iii) for <code>dpv:DPIAOutcome</code>: <code>DPIAOutcomeStatus</code>
+and specialisations for whether processing is permitted or prohibited or
+consultation is required<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a>. These represent the broad outcomes
+to be recorded when carrying out a DPIA in terms of whether risks have
+been mitigated (or deemed acceptable) and whether processing can (or
+cannot) be carried out.</p>
+<p>For indicating the different stages and processes in conducting and
+managing DPIA, the concepts <code>Audit, Approval, Investigation</code>,
+and <code>Review</code> were created with specific relations (e.g.
+<code>hasAudit</code>) to associate them with the relevant concepts. For
+indicating specific categories of consultations, the existing concept
+<code>dpv:Consultation</code> was extended as
+<code>ConsultationWithDataSubject</code> and
+<code>ConsultationWithDPO</code> to record their views and inputs within
+the DPIA process.</p>
+<p>For indicating the scope and contents covered within a DPIA, the
+property <code>dct:coverage</code> is reused with
+<code>dpv:PersonalDataHandling</code> instances to indicate the
+specifics of purposes, processing operations, personal data categories,
+entities (e.g. controllers, recipients), technical &amp; organisational
+measures, legal bases, and other details. Here, <code>dct:subject</code>
+can be optionally used to indicate a DPIA (and its associated processing
+activities) relate to a specific topic, such as a service or a
+product.</p>
+<p>The existing risk concepts in DPV are used as: to indicate risks
+(<code>dpv:Risk, dpv:hasRisk</code>), mitigations
+(<code>dpv:RiskMitigationMeasure, dpv:mitigatesRisk</code>),
+consequences (<code>dpv:Consequence, dpv:hasConsequence</code>), and
+impacts (<code>dpv:Impact, dpv:hasImpact, dpv:hasImpactOn</code>). For
+more specific risk assessment information, such as risk levels and
+severity, the ISO 31000 based risk ontology is used.</p>
+<h3 id="sec:spec-dpv">Extending DPV</h3>
+<p>We found DPV currently has several concepts missing regarding not
+only DPIAs, but also those related to descriptions of processing
+activities beyond what is needed from a risk/impact perspective. For
+example, one of the prominent criteria in determining whether processing
+is likely to be high-risk is the understanding of scale and scope
+regarding personal data, processing activities, and data subjects.
+Rather than specifying their expression only within what is needed for a
+DPIA, we consider these concepts to be useful in other tasks and
+assessments, and thus propose their inclusion in DPV.</p>
+<p>An important addition we propose is the indication of certain
+<code>Scale</code> concepts along with commonly used qualitative terms<a
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a> that relates to a measurement of
+dimension of some other concept. <code>DataVolume</code> indicates the
+scale of personal data being processed with qualifiers (from larger to
+smaller in context) -
+{<code>Huge, Large, Medium, Small, Sporadic, Singular</code>}.
+<code>DataSubjectScale</code> indicates a measurement of the scale of
+data subjects with the same qualifiers as data volume.
+<code>GeographicScale</code> indicates the geo-physical scale (e.g. for
+processing activities or data subjects) as
+{<code>Global, NearlyGlobal, MultiNational, National, Regional, Locality, WithinEnvironment</code>}
+with the last item referring to instances such as on device. Separate
+from scale, we also propose the modelling of <code>Scope</code> as a
+concept referring to the <em>extent or range</em> of other concepts such
+as processing activities. To differentiate between scale and scope, the
+former refers to a <em>measurement</em> such as volume or number whereas
+the latter relates to <em>variance</em> such as categories or
+dimensions.</p>
+<p>Along with scale and scope as new concepts, we also propose
+remodelling existing concepts that relate to either. These include
+<code>dpv:Frequency</code> which indicates temporal periodicity, and
+should be a specialisation of <code>Scale</code> with qualifiers
+{<code>Continuous, Often, Sporadic, Singular</code>}. Similarly,
+<code>dpv:Duration</code> should also be a specialisation of
+<code>Scale</code> with qualifiers
+{<code>Endless, TemporalDuration, UntilEvent, UntilTime, FixedOccurences</code>}
+to represent the different categories of durations that are utilised
+regarding personal data processing activities.</p>
+<p>In our analysis of the DPIA documents, a large amount of information
+was expected to be recorded in the form of “<em>justification</em>” for
+why something was or was not done regarding the requirements set out by
+GDPR or DPAs. This information would typically be indicated as a textual
+description (i.e. free-form text) accompanying some question or concept.
+Given the importance of this concept in legal compliance, and the
+necessity to record this information in a form more explicit than (mere)
+descriptions, we propose the property <code>hasJustification</code> for
+inclusion in DPV. The concept enables associating a textual statement,
+or document, or specific concept as the justification for its state or
+existence, and is also useful beyond DPIAs - such as for acknowledging
+legal compliance obligations or recording a DPO’s statements during an
+investigation.</p>
+<p>We also identified concepts missing regarding processing operations:
+{<code>Access, Assess, Filter, Monitor, Modify, Observe, Screen</code>}
+- that refer to specific kinds of actions over personal data relevant
+when conducting a DPIA. Other missing concepts relate to certain
+categories of purposes, and technical and organisational measures, in
+particular those that are relevant in determining whether processing
+activities require a DPIA. Similarly, missing concepts were also
+identified regarding personal data categories (for the DPV-PD
+extension<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>) relating to behavioural,
+financial, professional, and in particular their indication as sensitive
+and special categories. We have shared these findings with the DPVCG
+through the public mailing list<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p>
+<h3 id="sec:spec-iso">Risk Ontology based on ISO 31000 family of
+Documents</h3>
+<p>As stated before, DPV offers a few abstract risk-related concepts
+that are not sufficient to represent risks, mitigations, consequences,
+impacts, and their assessments as required within a DPIA. Additionally,
+the state of the art does not provide a suitable risk ontology that can
+be used readily or adapted for this work. Due to these reasons, we
+initiated development of a risk ontology. For this, we looked towards
+existing standardised forms of risk management, but found no consistent
+or common modelling of risk or its associated processes. Our experience
+revealed a fragmented landscape consisting of often conflicting use of
+terms and a high degree of use-case specific solutions within both
+academia and industry. The few standardised approaches regarding risk
+limited themselves to either providing an organisational perspective of
+risk or forced the use of domain-specific terms that raised questions
+regarding its usefulness outside those domains.</p>
+<p>Within these, the ISO 31000 family of standards provide a set of
+harmonised and consensus-building documents that provide guidance,
+principles, and vocabularies associated with risk management and risk
+governance. Other approaches also exist that are more systematised -
+such as the US Government’s NIST Risk Management framework<a
+href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a> <span class="citation"
+data-cites="nationalinstituteofstandardsandtechnologyNistPrivacyFramework2020"><a
+href="#ref-nationalinstituteofstandardsandtechnologyNistPrivacyFramework2020"
+role="doc-biblioref">[16]</a></span>, or are intuitive for businesses -
+such as FAIR Risk Management<a href="#fn13" class="footnote-ref"
+id="fnref13" role="doc-noteref"><sup>13</sup></a>.</p>
+<p>We decided to utilise the ISO standards due to their global
+applicability, standardised terminology, involvement and alignment with
+EU standardisation bodies, and also because one of our future ambitions
+is to provide a way for expressing utilisation of ISO standards in
+processing activities, e.g. regarding cloud security. Though it must be
+noted that the FAIR risk management approach specifies use of an
+ontology in its modelling of risk concepts, we decided against adopting
+it in favour of ISO 31000 being standardised.</p>
+<p>The two main standards we utilised for our risk ontology were ISO
+31000:2018<a href="#fn14" class="footnote-ref" id="fnref14"
+role="doc-noteref"><sup>14</sup></a> Risk Management Guidelines and
+31073:2022<a href="#fn15" class="footnote-ref" id="fnref15"
+role="doc-noteref"><sup>15</sup></a> Risk Management Vocabulary. From
+these, we analysed risk-related concepts, definitions, intended uses in
+these and other documents, and identified relations to create an
+ontology. Here it is important to state that the resulting ontology is
+our representation of how the ISO 31000 series can be used for
+representing risk related information, and that these documents by
+themselves do not prescribe any specific modelling of relations between
+the concepts.</p>
+<p>We first identified and represented all risk-related concepts from
+ISO 31073:2022 as a SKOS vocabulary and identified taxonomic (i.e.
+broader/narrower) relationships between them. This provided us with an
+overview of what concepts are present in ISO’s risk standards and how
+they relate to each other. We then identified additional relationships
+between these concepts based on statements from ISO 31073:2022 and ISO
+31000:2018 and expressed them as an <em>OWL</em> ontology. An overview
+of the outcome is presented in <a href="#fig-riskonto">Figure. 2</a>, and the risk ontology is available
+online<a href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a>.</p>
+<figure id="fig-riskonto">
+    <img src="img/053-riskonto.png">
+    <figcaption>Overview of the Risk Ontology</figcaption>
+</figure>
+<p>By itself, this risk ontology is sufficient to represent risk-related
+information required for DPIAs i.e. risk, risk sources, threat actors,
+consequences and impacts of risks, and their attributes such as
+likelihoods, severity, and levels. However, in practice, we found
+variance in how these attributes are used by adopters, for example as
+differences in risk scale where one set of levels goes from 1 to 5 and
+another goes from 1 to 10, and yet another that uses only qualitative
+labels (e.g. high/low). This represented a challenge in modelling
+use-cases as it prevents a consistent representation of risk-related
+information.</p>
+<p>To address this, we created top-level concepts (e.g.
+<code>RiskLevel</code>) with guidance that any attributes (e.g. risk
+levels) must follow existing norms where statistical distributions are
+used to harmonise differences in scales across use-cases. For example,
+by representing 0 as the lowest possible scale and 1 as the highest,
+qualitative terms like ’high risk’ or ’frequently occurring’ are forced
+to be expressed as values or ranges between <code>0..1</code>. While the
+exact values may differ between use-cases (for example, <code>0.5</code>
+may be high-risk in one situation and <code>0.9</code> in another), they
+are useful to compare the actual importance of concepts and harmonise
+them when information is shared, reused, or imported. To aid with the
+DPIA processes, we provide a list of commonly used scales regarding risk
+levels and severity based on DPA guidance documents. The risk ontology
+can thus be used alongside DPV to represent risk-related information
+with more detail and granularity.</p>
+<h3 id="sec:spec-rights">Thesauri of Fundamental Rights and
+Freedoms</h3>
+<p>The consideration of whether processing activities are likely to have
+an impact on fundamental rights and freedoms of individuals is what
+determines high-risk within DPIAs. While the actual assessment of
+whether a use-case has impacts on fundamental rights requires expertise
+and nuanced interpretations, we focused on the information required for
+documenting these impacts. This required creating a vocabulary of
+fundamental rights and freedoms, as defined within the EU Charter of
+Fundamental Rights, and associating them with impacts of a risk as well
+as the effect of those impacts.</p>
+<p>We started by representing each Article in the document as a
+<code>skos:Concept</code> (e.g. Article 7 as <em>RightToPrivacy</em>),
+with the Title used to structure them (e.g. Title II as Freedoms).
+Further distinction between these, in particular regarding what
+constitutes a <em>right</em> and a <em>freedom</em> would require
+philosophical interpretations and their application within the legal
+domain of EU laws <span class="citation"
+data-cites="vandijkRiskRightData2016"><a
+href="#ref-vandijkRiskRightData2016"
+role="doc-biblioref">[17]</a></span>. In future, we aim to expand this
+vocabulary by modelling the concepts from specific clauses within each
+article, and investigating whether they can be represented as an
+ontology. The current iteration is available online<a href="#fn17"
+class="footnote-ref" id="fnref17"
+role="doc-noteref"><sup>17</sup></a>.</p>
+<p>To indicate impacts affecting rights and freedoms, we created the
+concept <code>ImpactOnRights</code> as a specialisation of
+<code>dpv:Impact</code> within the DPIA specification, with further
+specialisations for each identified rights (e.g.
+<code>ImpactOnRightToPrivacy</code>). The decision on whether concepts
+related to impact on rights should be part of the main DPV vocabulary
+requires careful deliberation as the notion of <em>rights</em> is not
+uniformly represented or interpreted in laws across the globe.</p>
+<h3 id="sec:spec-concepts">Populating Risks and Mitigation Concepts</h3>
+<p>Along with concepts related to DPIAs, providing commonly used terms
+related to risks and mitigations would also benefit adopters in
+representing their use-cases and documentations. As DPA guidance
+documents provide a small but good number of examples, we looked for
+additional concepts to better model industry challenges, and to
+incorporate and represent as much of the commonly utilised terms and
+‘good practices’.</p>
+<p>We first referred to documents published by the European Union Agency
+for Cybersecurity<a href="#fn18" class="footnote-ref" id="fnref18"
+role="doc-noteref"><sup>18</sup></a> (ENISA) which provide an expert
+collection and overview of cybersecurity related incidents, issues, and
+methods for addressing them. We identified four candidate documents: (i)
+Risk Management Standards; (ii) Compendium of Risk Management Frameworks
+with Potential Interoperability; (iii) Interoperable EU Risk Management
+Framework; and (iv) Guidelines for SMEs on the security of personal data
+processing.</p>
+<p>We also identified three existing privacy risk methodologies and
+taxonomies that we plan to integrate into our work: Jakobi et al’s list
+of user-perceived privacy risks <span class="citation"
+data-cites="jakobiTaxonomyUserperceivedPrivacy2022"><a
+href="#ref-jakobiTaxonomyUserperceivedPrivacy2022"
+role="doc-biblioref">[18]</a></span>, Solove’s Privacy Harms <span
+class="citation" data-cites="citronPrivacyHarms2021a"><a
+href="#ref-citronPrivacyHarms2021a"
+role="doc-biblioref">[19]</a></span>, and LINDDUN <span class="citation"
+data-cites="wuytsLINDDUNGOLightweight2020"><a
+href="#ref-wuytsLINDDUNGOLightweight2020"
+role="doc-biblioref">[20]</a></span>. Of these, LINDDUN is notable in
+that it provides a privacy engineering framework that provides knowledge
+bases and taxonomies for threats and mitigations associated with
+software systems. It models 7 threat categories and their mitigations,
+structured according to the LINDDUN acronym as: Linkability,
+Identifiability, Non-repudiation, Detectability, Disclosure of
+Information, Unawareness, and Non-compliance. These will be used to
+categorise and structure risk concepts from other sources for DPIAs,
+with the ‘threats’ in LINDDUN modelled as ‘risks’ in our work, and
+‘mitigations’ modelled as technical and organisational measures in DPV
+or risk mitigation measures in DPIA (as appropriate).</p>
+<h2 id="sec:demo">Applying to Real-World Use-Cases and Tools</h2>
+<h3 id="sec:demo-usecase">Documenting Real-world Use-cases</h3>
+<p>To better understand how our specification fits its purpose, we
+looked for publicly available documents and selected three prominent
+ones based on quality of information, conclusion of investigation, and
+their topicality. These relate to DPIAs carried out in Netherlands (and
+involving government bodies and authorities) for use of Zoom <span
+class="citation" data-cites="DPIASURFDutch2022"><a
+href="#ref-DPIASURFDutch2022" role="doc-biblioref">[21]</a></span>,
+Microsoft Office 365 <span class="citation"
+data-cites="DPIAOffice3652020"><a href="#ref-DPIAOffice3652020"
+role="doc-biblioref">[22]</a></span>, and Google Apps (GSuite) <span
+class="citation" data-cites="DPIAGoogleSuite2021"><a
+href="#ref-DPIAGoogleSuite2021" role="doc-biblioref">[23]</a></span>.
+All three cases represent complex services and infrastructures, and the
+large length of reports produced reflect the scope and breadth of
+information that is considered relevant for their DPIAs.</p>
+<p>As we stated in the motivation, these DPIAs are also produced as
+human-readable documents with no ability to extract, query, or reuse
+their information. First we analysed the kind of information represented
+in these reports and whether our work (along with DPV) was sufficient in
+expressing it. We found that we could represent most of the concepts
+associated with how the processing takes place, e.g. personal data
+involved or purposes or data transfers. What we could not represent
+related to complexities of data collections and transfers, such as where
+Microsoft and Google combine their data across different services and
+transfer them outside EU/EEA. We also could not represent information
+about <em>absence</em> - such as a specific measure not being present,
+or <em>negation</em> - such as when a company asserted that they do not
+perform some activity. This resulted in gaps associated with information
+the DPIA was generated based upon.</p>
+<p>The information regarding risks, mitigations, consequences, and
+impacts in most cases was directly associated with specific
+implementation details and technologies, and therefore could be
+represented using DPV and our DPIA and risk ontologies. However some of
+the consequences and impacts were difficult to quantify since they
+related to specific behaviours of individuals or groups, and were
+hypothetical scenarios that could not be specified with likelihood or
+severity. We observed this pattern in all three documents. We perform a
+self-reflection on this experience in <a href="#fig-pia">Figure. 3.</a></p>
+<figure id="fig-pia">
+    <img src="img/053-PIA.png">
+    <figcaption>Example of CNIL's PIA tool modified for using DPV as: (1) a knowledge base; (2) providing concepts in relevant sections as controls and definitions; (3) selectively adding concepts to DPIA with description; (4) custom templates explaining how to use DPV concepts; (5) guided data entry for using DPV concepts.</figcaption>
+</figure>
+<h3 id="sec:demo-cnil">Use with CNIL’s PIA Tool</h3>
+<p>CNIL, the French DPA, has developed the PIA (Privacy Impact
+Assessment) tool that assists organisations in documenting, reviewing,
+and sharing information regarding DPIAs. The tool is open source<a
+href="#fn19" class="footnote-ref" id="fnref19"
+role="doc-noteref"><sup>19</sup></a>, free to use, and can be used as
+standalone software or on a server (e.g. for sharing). A DPIA is
+conducted by filling in free-form text or selecting one of specified
+options within the different form-like sections that relate to
+description of processing activities, and identifying risks and
+mitigations. The user can create and select ’templates’ that contain
+pre-populated questions and guidance, and ’knowledge bases’ that enable
+creating concepts for definitions, principles, risks, and mitigations.
+At the end of input, the tool provides an overview of risk scores based
+on entered information, and provides the ability for reviewing and
+approving (e.g. by a DPO).</p>
+<p>The PIA tool provides import/export functionality using JSON for
+DPIA, templates, and knowledge bases. However, it is not documented in
+terms of structure and content, as well as how the tool interprets (or
+<em>parses</em>) the content and uses it within the layout. We
+investigated how our DPV-based DPIA information could be integrated or
+reused within this tool. This required reverse-engineering the import
+formats by experimenting with different data exports and analysing them.
+See for work in progress.</p>
+<p>We are investigating the full extent of PIA’s undocumented format and
+attempting to liaise with the developers on how to integrate RDF-based
+concepts within it. For this work, we used a script to convert and
+import DPV’s concept using JSON. However, this removes the usefulness of
+DPV’s semantics, e.g. identifying relevant risks associated with a
+parent concept. We hope to utilise (and advance) our DPIA specification
+so that it can be used within the PIA tool as a knowledge base, to
+describe various DPIA templates, and to provide consistent and
+interoperable access to exported information. From this, we also hope to
+investigate the capability of assisting stakeholders with automated
+forms of: risk discovery - in particular high-risk, suitable
+mitigations, and expressing impacts.</p>
+<h2 id="sec:eval">Discussion</h2>
+<p><strong>Sufficiency of Concepts in DPV:</strong><span
+id="sec:eval-sufficiency" label="sec:eval-sufficiency"></span>
+Sufficiency as a criteria refers to the extent to which our concepts can
+represent information. The DPIA specification (including DPV) is
+sufficient to represent the information as specified in GDPR Art.35, but
+lacks representing concepts associated with other parts of the GDPR - in
+particular the principles in Art.5. This is because the focus of DPV has
+been on providing only a <em>conceptual vocabulary</em>, whereas tasks
+such as DPIAs require also <em>principles</em> and <em>controls</em> -
+both of which have specific meaning within law and industry practices.
+In addition, the DPA guidance clearly points to a need to represent
+organisational processes regarding governance and risk management in the
+same document as processing activities and GDPR compliance.</p>
+<p>We therefore recommend undertaking an evaluation of what aspects of
+GDPR are currently represented within the DPV, and to prioritise
+inclusion of concepts such as principles which are important in legal
+investigations - such as DPIAs. A relevant resource in this is the
+Standard Data Protection Model (SDM) <span class="citation"
+data-cites="StandardDataProtection2020"><a
+href="#ref-StandardDataProtection2020"
+role="doc-biblioref">[24]</a></span> produced by the German body of
+DPAs, which provides interpretations of the GDPR in the form of
+technical and organisational measures. That said, our approach as
+compared to the SotA definitively is novel, and extends the available
+methods for conducting and documenting DPIAs as machine-readable
+information that can be shared and reused. It provides the advantage of
+machine-readability for using the same information for multiple tasks
+e.g. to carry out DPIAs (this work) and ROPA - another obligation under
+GDPR Art.30 <span class="citation"
+data-cites="ryanDPCatSpecificationInteroperable2022"><a
+href="#ref-ryanDPCatSpecificationInteroperable2022"
+role="doc-biblioref">[25]</a></span>.</p>
+<p><strong>Knowledge Representation vs Practical
+Considerations:</strong><span id="sec:eval-knowledge"
+label="sec:eval-knowledge"></span> GDPR and DPIAs are a relatively new
+legal requirement. As a result, both DPAs and organisations are still
+understanding the intricacies, complexities, and requirements associated
+with it. We have only laid the groundwork for creating DPIA-related
+knowledge bases and tools, and there is abundant scope for enriching
+this work - such as adding more concepts from existing sources. At the
+same time, the work needs grounding and analysis of specific DPIA
+approaches to ensure that whatever knowledge is generated is of
+practical use and beneficial to stakeholders. Our experience with the
+three DPIAs and the use of the PIA tool shows that automation of
+processes such as DPIAs have a long road ahead.</p>
+<p>We believe impact assessments such as DPIAs are an important aspect
+of accountability and responsibility, and that completely automating
+them disregards the intended purpose, and creates false or incorrect
+notions of safety. Instead, we advocate technology (and technologists)
+should aim to assist rather than replace a human with related DPIA
+tasks. Therefore, in addition to adding concepts or using rules or
+similar mechanisms, DPIA-related approaches should also investigate
+their role and usefulness in conducting <em>actual DPIAs</em> to better
+understand the disparity between investigation and documentation, and to
+provide better solutions for capturing the human-generated inputs that
+can be used for enriching the underlying semantics in future updates.
+This requires time, financing, and domain expertise - which are
+difficult to obtain and efficiently utilise in smaller capacities. We
+therefore recommend undertaking this at larger avenues, such as national
+and EU frameworks and projects so that a culture of shared knowledge
+(based on use of semantics) can be established and exploited by public
+and private bodies alike.</p>
+<p><strong>Shared Impact Assessments:</strong><span
+id="sec:eval-sharing" label="sec:eval-sharing"></span> The lack of
+domain-specific knowledge regarding what is being investigated, who it
+affects, technologies involved, requirements of laws such as GDPR, and
+governance processes associated with risk management is a challenge in
+DPIAs. Our motivation was to address this through sharing and
+interoperability of information by using semantic web technologies.
+Through this, common shared resources for risks and impact management
+can be developed and shared for reuse. However, a DPIA is not the only
+impact assessment that concerns risks, mitigations, and fundamental
+rights and freedoms. The GDPR itself specifies similar assessments
+regarding data transfers and legitimate interests. In addition, future
+regulation proposed by the EU, in particular the AI Act <span
+class="citation" data-cites="EU_AI_Reg"><a href="#ref-EU_AI_Reg"
+role="doc-biblioref">[2]</a></span> and Health Data Space<a href="#fn20"
+class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>,
+include impact assessment for high-risk as obligations. Such impact
+assessments have a large degree of commonality and overlap.</p>
+<p>While researchers have investigated the overlap between DPIAs and the
+proposed AI impact assessment <span class="citation"
+data-cites="selbstInstitutionalViewAlgorithmic2021"><a
+href="#ref-selbstInstitutionalViewAlgorithmic2021"
+role="doc-biblioref">[26]</a></span>, there is no work to date that
+effectively shows how one can benefit from the other. Instead of
+developing separate and fragmented approaches for how these risk and
+impact assessments are carried out, documented, and investigated, a good
+solution would be to ‘share’ them as much as possible to reduce the
+burden on both organisations and auditors. In this, the shared
+information could relate to risks, mitigations, or categories of
+impacts, or even the structuring of information for reusing the same
+tools. This requires undertaking exercises similar to this one for other
+kinds of impact assessments, which has not been done within the state of
+the art, and to then identify avenues for shared impact assessments. We
+plan to undertake such an exercise for combining DPIAs with AI Act’s
+impact assessments in the future.</p>
+<h2 id="sec:conclusion">Conclusion</h2>
+<p>Data Protection Impact Assessments (DPIAs), obligated by the EU
+General Data Protection Regulation (GDPR), are an important part of
+ensuring accountability and responsibility of personal data processing,
+and to identify and minimise harmful impacts to individuals regarding
+their fundamental rights. We presented the first step towards expressing
+DPIA and its relevant information as a machine-readable specification
+that can be used to document risks, mitigations, and their impacts in a
+formal manner and reused in information systems based on semantic web
+technologies. To better understand and explore how this work would be of
+practical use, we utilised three real-world complex DPIAs and identified
+limitations and important gaps within use of automation and
+human-involvement in DPIA investigations. Based on this, we have
+provided discussions on practicality and benefits of our approach in
+sharing information regarding risks and mitigations, and that this needs
+to incorporate human-generated information as an important aspect of
+DPIA documentations. In terms of future work, we have clearly identified
+concrete steps - such as enrichment of vocabularies based on available
+sources, and several promising directions - such as the creation of
+<em>shared impact assessments</em> based on commonalities between DPIA
+and EU’s proposed AI Act.</p>
+<p><strong>Post-review Changes:</strong> We thank the reviewers for
+comprehensive and useful comments, and have incorporated them in this
+version. The changes made within DPV during the review period have also
+been incorporated, and the provided links have been edited to point to
+the resulting adoption of this work within DPV and DPV-GDPR. The
+original unedited article is available at <a
+href="https://doi.org/10.5281/zenodo.6783204"
+class="uri">https://doi.org/10.5281/zenodo.6783204</a>.</p>
+<p><strong>Funding Acknowledgements:</strong> This work has been funded
+by Irish Research Council Government of Ireland Postdoctoral Fellowship
+Grant#GOIPD/2020/790. The ADAPT SFI Centre for Digital Media Technology
+is funded by Science Foundation Ireland through the SFI Research Centres
+Programme and is co-funded under the European Regional Development Fund
+(ERDF) through Grant#13/RC/2106_P2.</p>
+<p><strong>Thanks:</strong> We thank Rana Saniei for early discussions
+relevant to DPIAs, Delaram Golpayegani for discussions related to ISO
+risk management, and Georg P. Krog and other members of DPVCG for
+discussions on concepts.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-Regulation_GDPR" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Regulation (<span>EU</span>) 2016/679 of
+the <span>European Parliament</span> and of the <span>Council</span> of
+27 <span>April</span> 2016 on the protection of natural persons with
+regard to the processing of personal data and on the free movement of
+such data, and repealing <span>Directive</span> 95/46/<span>EC</span>
+(<span>General Data Protection Regulation</span>),”</span> <em>Official
+Journal of the European Union</em>, vol. L119, May 2016 [Online].
+Available: <a
+href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC</a></div>
+</div>
+<div id="ref-EU_AI_Reg" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline"><span>“Regulation <span>Of The European
+Parliament And Of The Council</span> <span>Laying Down Harmonised Rules
+On Artificial Intelligence</span> (<span>Artificial Intelligence
+Act</span>) <span>And Amending Certain Union Legislative
+Acts</span>.”</span> <span>European Commission</span>, Apr-2021
+[Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52021PC0206&amp;from=EN">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52021PC0206&amp;from=EN</a>.
+[Accessed: 20-Jul-2021]</div>
+</div>
+<div id="ref-georgiadisPrivacyImpactAssessment2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">G.
+Georgiadis and G. Poels, <span>“Towards a privacy impact assessment
+methodology to support the requirements of the general data protection
+regulation in a big data analytics context: <span>A</span> systematic
+literature review,”</span> <em>Computer Law &amp; Security Review</em>,
+vol. 44, p. 105640, Apr. 2022, doi: <a
+href="https://doi.org/10.1016/j.clsr.2021.105640">10.1016/j.clsr.2021.105640</a>.
+</div>
+</div>
+<div id="ref-agrawalOntologyISOIEC2016" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">V.
+Agrawal, <span>“Towards the <span>Ontology</span> of
+<span>ISO</span>/<span>IEC</span> 27005:2011 <span>Risk Management
+Standard</span>,”</span> in <em>Proceedings of the <span>Tenth
+International Symposium</span> on <span>Human Aspects</span> of
+<span>Information Security</span> &amp; <span>Assurance</span>
+(<span>HAISA</span> 2016)</em>, 2016, p. 11. </div>
+</div>
+<div id="ref-almeidaConceptualModelEnterprise2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R.
+Almeida, J. M. Teixeira, M. Mira da Silva, and P. Faroleiro, <span>“A
+conceptual model for enterprise risk management,”</span> <em>Journal of
+Enterprise Information Management</em>, vol. 32, no. 5, pp. 843–868,
+Sep. 2019, doi: <a href="https://doi.org/gmcdgq">gmcdgq</a>. </div>
+</div>
+<div id="ref-rosaDesigningITRisk2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">M.
+Rosa, S. Guerreiro, and R. Pereira, <span>“Designing an <span>IT Risk
+Management Ontology</span> grounded on <span>Systematic Literature
+Review</span>,”</span> in <em>Hawaii <span>International
+Conference</span> on <span>System Sciences</span></em>, 2021, doi: <a
+href="https://doi.org/gmjqg8">gmjqg8</a>. </div>
+</div>
+<div id="ref-vicenteConceptualModelIntegrated2011" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">P.
+Vicente and M. Mira da Silva, <span>“A <span>Conceptual Model</span> for
+<span>Integrated Governance</span>, <span>Risk</span> and
+<span>Compliance</span>,”</span> in <em>Advanced <span>Information
+Systems Engineering</span> (<span>CAiSE</span>)</em>, 2011, vol. 141,
+pp. 199–213, doi: <a
+href="https://doi.org/10.1007/978-3-642-21640-4_16">10.1007/978-3-642-21640-4_16</a>.
+</div>
+</div>
+<div id="ref-haynesUnderstandingPersonalOnline2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">D.
+Haynes, <span>“<a
+href="https://doi.org/10.5771/9783956507762-171">Understanding
+<span>Personal Online Risk</span> to <span>Individuals Via Ontology
+Development</span></a>,”</span> in <em>Knowledge
+<span>Organization</span> at the <span>Interface</span></em>, M. Lykke,
+T. Svarre, M. Skov, D. Martínez-Ávila, and International Societey for
+Knowledge Organziation (ISKO), Eds. <span>Ergon</span>, 2020, pp.
+171–180. </div>
+</div>
+<div id="ref-panditGDPRtEXTGDPRLinked2018" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">H.
+J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis,
+<span>“<span>GDPRtEXT</span> - <span>GDPR</span> as a <span>Linked Data
+Resource</span>,”</span> in <em>European <span>Semantic Web
+Conference</span></em>, 2018, pp. 481–495, doi: <a
+href="https://doi.org/c3n4">c3n4</a>. </div>
+</div>
+<div id="ref-palmiraniPrOntoPrivacyOntology2018" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M.
+Palmirani, M. Martoni, A. Rossi, C. Bartolini, and L. Robaldo,
+<span>“<span>PrOnto</span>: <span>Privacy Ontology</span> for
+<span>Legal Compliance</span>,”</span> in <em>Proceedings of the 18th
+<span>European Conference</span> on <span>Digital Government</span>
+(<span>ECDG</span>)</em>, 2018, p. 10 [Online]. Available: <a
+href="http://hdl.handle.net/11576/2691050">http://hdl.handle.net/11576/2691050</a></div>
+</div>
+<div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
+<span>Data Privacy</span>,”</span> in <em>The 18th <span>International
+Conference</span> on <span>Ontologies</span>, <span>DataBases</span>,
+and <span>Applications</span> of <span>Semantics</span>
+(<span>ODBASE2019</span>)</em>, 2019, p. 17, doi: <a
+href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+<div id="ref-dashtiAutomatedRiskAssessment2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">S.
+Dashti, A. Sharif, R. Carbone, and S. Ranise, <span>“Automated
+<span>Risk Assessment</span> and <span class="nocase">What-if
+Analysis</span> of <span>OpenID Connect</span> and <span>OAuth</span>
+2.0 <span>Deployments</span>,”</span> in <em>Data and <span>Applications
+Security</span> and <span>Privacy XXXV</span></em>, 2021, pp. 325–337,
+doi: <a href="https://doi.org/gmhz8s">gmhz8s</a>. </div>
+</div>
+<div id="ref-sanieiChallengesImplementationPrivacy2021"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">R.
+Saniei, <span>“<a
+href="https://doi.org/10.1007/978-3-030-89811-3_20">Challenges in the
+<span>Implementation</span> of <span>Privacy Enhancing Semantic
+Technologies</span> (<span>PESTs</span>) <span>Supporting
+GDPR</span></a>,”</span> in <em><span>AI Approaches</span> to the
+<span>Complexity</span> of <span>Legal Systems XI-XII</span></em>, vol.
+13048, <span>Cham</span>: <span>Springer International
+Publishing</span>, 2021, pp. 283–297. </div>
+</div>
+<div id="ref-sanieiDataProtectionImpact2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">R.
+Saniei, <span>“Data <span>Protection Impact Assessment</span>
+(<span>DPIA</span>) <span>Vocabulary</span> v0.1.”</span> Sep-2021
+[Online]. Available: <a
+href="https://protect.oeg.fi.upm.es/def/gdpia/">https://protect.oeg.fi.upm.es/def/gdpia/</a>.
+[Accessed: 23-May-2022]</div>
+</div>
+<div id="ref-estevesAnalysisOntologiesPolicy2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">B.
+Esteves and V. Rodriguez-Doncel, <span>“Analysis of
+<span>Ontologies</span> and <span>Policy Languages</span> to
+<span>Represent Information Flows</span> in <span>GDPR</span>,”</span>
+<em>Semantic Web J.</em>, vol. Forthcoming, 2022. </div>
+</div>
+<div
+id="ref-nationalinstituteofstandardsandtechnologyNistPrivacyFramework2020"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div
+class="csl-right-inline">National Institute of Standards and Technology,
+<span>“<a href="https://doi.org/10.6028/NIST.CSWP.01162020">Nist
+<span>Privacy Framework</span>:: A <span>Tool For Improving Privacy
+Through Enterprise Risk Management</span>, <span>Version</span>
+1.0</a>,”</span> <span>National Institute of Standards and
+Technology</span>, <span>Gaithersburg, MD</span>, NIST CSWP 01162020,
+Jan. 2020. </div>
+</div>
+<div id="ref-vandijkRiskRightData2016" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">N.
+van Dijk, R. Gellert, and K. Rommetveit, <span>“A risk to a right?
+<span>Beyond</span> data protection risk assessments,”</span>
+<em>Computer Law &amp; Security Review</em>, vol. 32, no. 2, pp.
+286–306, Apr. 2016, doi: <a href="https://doi.org/f8nqhw">f8nqhw</a>.
+</div>
+</div>
+<div id="ref-jakobiTaxonomyUserperceivedPrivacy2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">T.
+Jakobi, M. von Grafenstein, P. Smieskol, and G. Stevens, <span>“A
+<span>Taxonomy</span> of user-perceived privacy risks to foster
+accountability of data-based services,”</span> <em>Journal of
+Responsible Technology</em>, vol. 10, p. 100029, Jul. 2022, doi: <a
+href="https://doi.org/10.1016/j.jrt.2022.100029">10.1016/j.jrt.2022.100029</a>.
+</div>
+</div>
+<div id="ref-citronPrivacyHarms2021a" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">D.
+K. Citron and D. J. Solove, <span>“<a
+href="https://doi.org/10.2139/ssrn.3782222">Privacy
+<span>Harms</span></a>,”</span> <span>SSRN</span>, <span>Rochester,
+NY</span>, {{SSRN Scholarly Paper}} 3782222, Feb. 2021. </div>
+</div>
+<div id="ref-wuytsLINDDUNGOLightweight2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">K.
+Wuyts, L. Sion, and W. Joosen, <span>“<span>LINDDUN GO</span>: <span>A
+Lightweight Approach</span> to <span>Privacy Threat
+Modeling</span>,”</span> in <em>2020 <span>IEEE European
+Symposium</span> on <span>Security</span> and <span>Privacy
+Workshops</span> (<span>EuroS PW</span>)</em>, 2020, pp. 302–309, doi:
+<a href="https://doi.org/gjwh3m">gjwh3m</a>. </div>
+</div>
+<div id="ref-DPIASURFDutch2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[21] </div><div
+class="csl-right-inline"><span>“<span>DPIA</span> for <span>SURF</span>
+and <span>Dutch</span> government on <span>Zoom</span>.”</span>
+<span>Privacy Company</span>, Feb-2022 [Online]. Available: <a
+href="https://www.privacycompany.eu/blogpost-en/new-dpia-for-surf-and-dutch-government-on-zoom-all-high-risks-solved">https://www.privacycompany.eu/blogpost-en/new-dpia-for-surf-and-dutch-government-on-zoom-all-high-risks-solved</a>.
+[Accessed: 12-May-2022]</div>
+</div>
+<div id="ref-DPIAOffice3652020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[22] </div><div
+class="csl-right-inline"><span>“<span>DPIA Office</span> 365 for the
+<span>Web</span> and mobile <span>Office</span> apps.”</span>
+<span>Privacy Company</span>, Jun-2020 [Online]. Available: <a
+href="https://www.privacycompany.eu/blogpost-en/new-dpia-on-microsoft-office-and-windows-software-still-privacy-risks-remaining-short-blog">https://www.privacycompany.eu/blogpost-en/new-dpia-on-microsoft-office-and-windows-software-still-privacy-risks-remaining-short-blog</a></div>
+</div>
+<div id="ref-DPIAGoogleSuite2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[23] </div><div
+class="csl-right-inline"><span>“<span>DPIA Google G Suite
+Enterprise</span>.”</span> <span>Data Protection Authority
+Netherlands</span>, Feb-2021 [Online]. Available: <a
+href="https://www.privacycompany.eu/blogpost-en/google-mitigates-8-high-privacy-risks-for-workspace-for-education">https://www.privacycompany.eu/blogpost-en/google-mitigates-8-high-privacy-risks-for-workspace-for-education</a></div>
+</div>
+<div id="ref-StandardDataProtection2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[24] </div><div
+class="csl-right-inline"><span>“The <span>Standard Data Protection
+Model</span>.”</span> <span>Conference of the Independent Data
+Protection Supervisory Authorities of the Federation and the
+Länder</span>, Apr-2020 [Online]. Available: <a
+href="https://www.datenschutz-mv.de/datenschutz/datenschutzmodell/">https://www.datenschutz-mv.de/datenschutz/datenschutzmodell/</a>.
+[Accessed: 13-Feb-2022]</div>
+</div>
+<div id="ref-ryanDPCatSpecificationInteroperable2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">P.
+Ryan, R. Brennan, and H. J. Pandit, <span>“<span>DPCat</span>:
+<span>Specification</span> for an <span>Interoperable</span> and
+<span>Machine-Readable Data Processing Catalogue Based</span> on
+<span>GDPR</span>,”</span> <em>Information</em>, vol. 13, no. 5, p. 244,
+May 2022, doi: <a
+href="https://doi.org/10.3390/info13050244">10.3390/info13050244</a>.
+</div>
+</div>
+<div id="ref-selbstInstitutionalViewAlgorithmic2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">A.
+D. Selbst, <span>“An <span>Institutional View Of Algorithmic Impact
+Assessments</span>,”</span> <em>Harvard Journal of Law &amp;
+Technology</em>, 2021 [Online]. Available: <a
+href="https://papers.ssrn.com/abstract=3867634">https://papers.ssrn.com/abstract=3867634</a>.
+[Accessed: 26-Jul-2021]</div>
+</div>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Hereafter, <em>high-risk</em> is used
+as a shortened form of “high risk to the rights and freedoms of natural
+persons”<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Disclaimer: The lead author currently
+chairs the DPVCG.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a
+href="http://data.europa.eu/eli/treaty/char_2012/oj"
+class="uri">http://data.europa.eu/eli/treaty/char_2012/oj</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://w3id.org/dpv/"
+class="uri">https://w3id.org/dpv/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a
+href="https://w3id.org/dpv/dpv-gdpr/dpia"
+class="uri">https://w3id.org/dpv/dpv-gdpr/dpia</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>For brevity, concepts presented as
+contribution are specified without prefix, and existing ones with
+prefix.<a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a
+href="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+class="uri">https://dublincore.org/specifications/dublin-core/dcmi-terms/</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>These reflect the possibility where a
+first iteration of DPIA identifies a high-risk which cannot be mitigated
+by the second, leading to a consultation with a DPA.<a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>Here concepts are derived from
+specific obligations, e.g. ’large scale of data’, which gives concepts
+for more/less than ’large’. The specifics of whether something is
+’large’ is to be interpreted contextually.<a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><a
+href="https://w3id.org/dpv/dpv-pd/"
+class="uri">https://w3id.org/dpv/dpv-pd/</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a
+href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0003.html"
+class="uri">https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0003.html</a><a
+href="#fnref11" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a
+href="https://www.nist.gov/risk-management"
+class="uri">https://www.nist.gov/risk-management</a><a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a
+href="https://www.fairinstitute.org/fair-risk-management"
+class="uri">https://www.fairinstitute.org/fair-risk-management</a><a
+href="#fnref13" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a
+href="https://www.iso.org/standard/65694.html"
+class="uri">https://www.iso.org/standard/65694.html</a><a
+href="#fnref14" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a
+href="https://www.iso.org/standard/79637.html"
+class="uri">https://www.iso.org/standard/79637.html</a><a
+href="#fnref15" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p><a href="https://w3id.org/riskonto"
+class="uri">https://w3id.org/riskonto</a><a href="#fnref16"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p><a
+href="https://w3id.org/rights-vocabulary"
+class="uri">https://w3id.org/rights-vocabulary</a><a href="#fnref17"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p><a
+href="https://www.enisa.europa.eu/publications/"
+class="uri">https://www.enisa.europa.eu/publications/</a><a
+href="#fnref18" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn19" role="doc-endnote"><p><a
+href="https://github.com/LINCnil/pia/"
+class="uri">https://github.com/LINCnil/pia/</a><a href="#fnref19"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20" role="doc-endnote"><p><a
+href="https://ec.europa.eu/health/ehealth-digital-health-and-care/"
+class="uri">https://ec.europa.eu/health/ehealth-digital-health-and-care/</a><a
+href="#fnref20" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
