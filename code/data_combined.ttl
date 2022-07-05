@@ -18148,41 +18148,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
-<https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms> a hpcom:FullPaper,
-        hpcom:RenderedItem,
-        schema:ScholarlyArticle ;
-    hpcom:archived_version [ a hpcom:Link ;
-            schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "WU" ;
-            schema:url "https://epub.wu.ac.at/8604/"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "TARA" ;
-            schema:url "http://hdl.handle.net/2262/98927"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "zenodo" ;
-            schema:url "https://doi.org/10.5281/zenodo.6614179"^^xsd:anyURI ] ;
-    hpcom:author_lead <http://example.com/SoheilHuman> ;
-    hpcom:author_other ( <https://harshp.com/me> <http://example.com/VictorMorel> <http://example.com/CristianaSantos> <http://example.com/MartinDegeling> <http://example.com/AriannaRossi> <http://example.com/WilhelminaBotes> <http://example.com/VitorJesus> <http://example.com/IreneKamara> ) ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/051-Consenting-Communication-Mechanisms.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:peer_reviewed true ;
-    hpcom:tag hptag:ADPC,
-        hptag:GDPR,
-        hptag:GPC,
-        hptag:consent,
-        hptag:privacy ;
-    schema:datePublished "2022-06-06T00:00:00"^^xsd:dateTime ;
-    schema:description "An analysis of ADPC and GPC communication mechanisms using interdisciplinary factors"@en ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:identifier ""^^xsd:anyURI ;
-    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
-    schema:name "Data Protection and Consenting Communication Mechanisms: Current Open Proposals and Challenges"@en ;
-    schema:publication <http://example.com/workshops/IWPE2022> ;
-    schema:url "https://doi.org/10.1109/EuroSPW55150.2022.00029"^^xsd:anyURI .
-
 <https://harshp.com/research/publications/052-DPCat-ROPA-spec> a hpcom:FullPaper,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
@@ -19369,17 +19334,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "ESWC 2018 Satellite Events"@en ;
     schema:superEvent <http://example.com/conferences/ESWC2018> .
 
-<http://example.com/workshops/IWPE2022> a hpcom:ReviewingEvent,
-        schema:PublicationEvent ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:alternateName "IWPE" ;
-    schema:endDate "2022-06-06T00:00:00"^^xsd:dateTime ;
-    schema:location "Genoa, Italy" ;
-    schema:name "International Workshop on Privacy Engineering"@en ;
-    schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
-    schema:superEvent <http://example.com/conferences/EuroSP22> ;
-    schema:url "https://iwpe.info/"^^xsd:anyURI .
-
 <http://publish.ucc.ie/researchprofiles/D005/aoriordan> a schema:Person ;
     schema:name "Adrian O'Riordan" ;
     schema:url "http://publish.ucc.ie/researchprofiles/D005/aoriordan"^^xsd:anyURI .
@@ -20206,6 +20160,22 @@ hpcom:Report rdfs:subClassOf schema:Report,
     schema:performer <http://example.com/PaulRyan> ;
     schema:publication <http://example.com/conferences/SEMANTiCS2021> ;
     schema:url "https://harshp.com/research/presentations#2021-SEMANTiCS-DPCat"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2022-IWPE-DPCCM> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2022/IWPE-DPCCM/IWPE2022_DPCCM.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2022/IWPE-DPCCM/"^^xsd:anyURI ] ;
+    schema:identifier "2022-IWPE-DPCCM" ;
+    schema:name "Data Protection and Consenting Communication Mechanisms: Current Open Proposals and Challenges"@en ;
+    schema:performer <http://example.com/SoheilHuman> ;
+    schema:publication <http://example.com/workshops/IWPE2022> ;
+    schema:url "https://harshp.com/research/presentations#2022-IWPE-DPCCM"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/protect> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -21300,6 +21270,42 @@ hpcom:Report rdfs:subClassOf schema:Report,
     schema:publication <http://example.com/workshops/Consent2021> ;
     schema:url "https://doi.org/10.1109/EuroSPW54576.2021.00038"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "WU" ;
+            schema:url "https://epub.wu.ac.at/8604/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "TARA" ;
+            schema:url "http://hdl.handle.net/2262/98927"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.6614179"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/SoheilHuman> ;
+    hpcom:author_other ( <https://harshp.com/me> <http://example.com/VictorMorel> <http://example.com/CristianaSantos> <http://example.com/MartinDegeling> <http://example.com/AriannaRossi> <http://example.com/WilhelminaBotes> <http://example.com/VitorJesus> <http://example.com/IreneKamara> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/051-Consenting-Communication-Mechanisms.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary <https://harshp.com/research/presentations#2022-IWPE-DPCCM> ;
+    hpcom:tag hptag:ADPC,
+        hptag:GDPR,
+        hptag:GPC,
+        hptag:consent,
+        hptag:privacy ;
+    schema:datePublished "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:description "An analysis of ADPC and GPC communication mechanisms using interdisciplinary factors"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "Data Protection and Consenting Communication Mechanisms: Current Open Proposals and Challenges"@en ;
+    schema:publication <http://example.com/workshops/IWPE2022> ;
+    schema:url "https://doi.org/10.1109/EuroSPW55150.2022.00029"^^xsd:anyURI .
+
 <https://harshp.com/tags> a hpcom:RenderedItem ;
     schema:name "tags"@en ;
     schema:url "https://harshp.com/tags"^^xsd:anyURI .
@@ -21822,9 +21828,6 @@ hptag:workshop a hpcom:RenderedItem,
 <http://example.com/JavierFernandez> a schema:Person ;
     schema:name "Javier Fernandez" .
 
-<http://example.com/SoheilHuman> a schema:Person ;
-    schema:name "Soheil Human" .
-
 <http://example.com/VictorRodriguezDoncel> a schema:Person ;
     schema:name "Victor Rodriguez Doncel" .
 
@@ -21995,6 +21998,17 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Provenance and Annotation Workshop"@en ;
     schema:startDate "2018-07-09T00:00:00"^^xsd:dateTime ;
     schema:url "http://provenanceweek2018.org/"^^xsd:anyURI .
+
+<http://example.com/workshops/IWPE2022> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:alternateName "IWPE" ;
+    schema:endDate "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:location "Genoa, Italy" ;
+    schema:name "International Workshop on Privacy Engineering"@en ;
+    schema:startDate "2022-06-06T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/EuroSP22> ;
+    schema:url "https://iwpe.info/"^^xsd:anyURI .
 
 <http://example.com/workshops/MEPDaW2018> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -22337,6 +22351,9 @@ hptag:work a hpcom:RenderedItem,
 
 <http://example.com/SahilGupta> a schema:Person ;
     schema:name "Sahil Gupta" .
+
+<http://example.com/SoheilHuman> a schema:Person ;
+    schema:name "Soheil Human" .
 
 <http://example.com/VitorJesus> a schema:Person ;
     schema:name "Vitor Jesus" .
