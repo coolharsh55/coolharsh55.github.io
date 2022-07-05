@@ -322,23 +322,9 @@ hpview:PresentationsIndexView a hpcom:View ;
         a hpcom:SparqlQuery ;
         rdfs:label "presentations" ;
         hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category ?performer WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
-                ?presentation schema:performer <https://harshp.com/me> .
-                ?presentation schema:datePublished ?date .
-                ?presentation schema:publication ?venue .
-                ?presentation schema:about ?topic .
-                ?presentation schema:category ?category .
-            } ORDER By DESC(?date)
-        """ ;
-    ] ;
-    hpcom:sparql [
-        a hpcom:SparqlQuery ;
-        rdfs:label "presentations_others" ;
-        hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
-                ?presentation a schema:PresentationDigitalDocument .
-                FILTER NOT EXISTS { ?presentation schema:performer <https://harshp.com/me> } .
+                ?presentation schema:performer ?performer .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .

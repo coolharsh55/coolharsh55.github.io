@@ -13,14 +13,14 @@
 </style>
 {% endblock pageCSS %}
 {% block content %}
-<p>This page lists the presentations associated with my work and interests, with those <a href="#me">given by me</a> as well as those <a href="#others">given by others</a>. Along with the presentation information, links to resources associated with it such as slides in various formats are also provided.</p>
+<p>This page lists the presentations associated with my work and interests, including those presented by others. Along with the presentation information, links to relevant resources and slides in various formats are also provided.</p>
 <section id="me">
     <ol class='list-index list-sort' data-attributes="title,date,type">
-    {% for presentation, date, venue, topic, category in presentations %}
+    {% for presentation, date, venue, topic, category, performer in presentations %}
         <li id="{{presentation.schema_identifier}}" data-title="{{presentation.schema_name}}" data-date="{{presentation.schema_datePublished}}" data-type="{{category}}">
             <sup><small><a href="{{presentation.schema_url}}">&#x1f517;</a></small></sup> <span class="title"><strong>{{presentation}}</strong></span>
             <div class="presentation-info">
-                <time datetime="{{presentation.schema_datePublished}}">{{presentation.schema_datePublished}}</time> | {{category}} <br/>
+                <time datetime="{{presentation.schema_datePublished}}">{{presentation.schema_datePublished}}</time> | {{category}} | <small><i>presented by {{performer}}</i></small> <br/>
                 Event: {% if venue.schema_url %}<a href="{{venue.schema_url}}"><i>{{venue}}</i></a>{% else %}<i>{{venue}}</i>{% endif %} |
                 Topic: 
                         {% if topic.schema_name == presentation.schema_name %}
@@ -29,38 +29,7 @@
                             <a href="{% if is_rdf_type(topic, 'hpcom:Link') %}{{ topic.schema_url }}{% else %}{{ topic.iri }}{% endif %}">{{topic}}</a>
                         {% endif %}
                 <br/>            
-                Resources: {% if presentation.schema_encoding is sequence %}
-                    {% for encoding in presentation.schema_encoding|sort(attribute='schema_encodingFormat') %}
-                        <a href="{{encoding.schema_url}}">{{encoding.schema_encodingFormat}}</a>{{", " if not loop.last }}
-                    {% endfor %}
-                {% else %}
-                    <a href="{{presentation.schema_encoding.schema_url}}">{{presentation.schema_encoding.schema_encodingFormat}}</a>
-                {% endif %}
-                
-                
-            </div>
-        </li>
-    {% endfor %}
-    </ol>
-</section>
-<section id="others">
-    <h2>Presentations related to my work, but presented by others</h2>
-    <ol class='list-index list-sort' data-attributes="title,date,type">
-    {% for presentation, date, venue, topic, category in presentations_others %}
-        <li id="{{presentation.schema_identifier}}" data-title="{{presentation.schema_name}}" data-date="{{presentation.schema_datePublished}}" data-type="{{category}}">
-            <sup><small><a href="{{presentation.schema_url}}">&#x1f517;</a></small></sup> <span class="title"><strong>{{presentation}}</strong></span>
-            <small><i>by {{presentation.schema_performer}}</i></small>
-            <div class="presentation-info">
-                <time datetime="{{presentation.schema_datePublished}}">{{presentation.schema_datePublished}}</time> | {{category}} <br/>
-                Event: {% if venue.schema_url %}<a href="{{venue.schema_url}}"><i>{{venue}}</i></a>{% else %}<i>{{venue}}</i>{% endif %} |
-                Topic: 
-                        {% if topic.schema_name == presentation.schema_name %}
-                            <a href="{% if is_rdf_type(topic, 'hpcom:Link') %}{{ topic.schema_url }}{% else %}{{ topic.iri }}{% endif %}">{% if topic.rdf_type is sequence %}{% for parent in topic.rdf_type|reject('sameas', 'RenderedItem')|sort(attribute='iri') %}{{parent.schema_name}}{% endfor %}{% else %}{{ topic.rdf_type}}{% endif %}</a>
-                        {% else %}
-                            <a href="{% if is_rdf_type(topic, 'hpcom:Link') %}{{ topic.schema_url }}{% else %}{{ topic.iri }}{% endif %}">{{topic}}</a>
-                        {% endif %}
-                <br/>            
-                Resources: {% if presentation.schema_encoding is sequence %}
+                View in format: {% if presentation.schema_encoding is sequence %}
                     {% for encoding in presentation.schema_encoding|sort(attribute='schema_encodingFormat') %}
                         <a href="{{encoding.schema_url}}">{{encoding.schema_encodingFormat}}</a>{{", " if not loop.last }}
                     {% endfor %}

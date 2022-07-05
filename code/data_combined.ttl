@@ -19409,21 +19409,9 @@ hpview:PresentationsIndexView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
             rdfs:label "presentations" ;
             hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
+            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category ?performer WHERE {
                 ?presentation a schema:PresentationDigitalDocument .
-                ?presentation schema:performer <https://harshp.com/me> .
-                ?presentation schema:datePublished ?date .
-                ?presentation schema:publication ?venue .
-                ?presentation schema:about ?topic .
-                ?presentation schema:category ?category .
-            } ORDER By DESC(?date)
-        """ ],
-        [ a hpcom:SparqlQuery ;
-            rdfs:label "presentations_others" ;
-            hpcom:queryString """
-            SELECT DISTINCT ?presentation ?date ?venue ?topic ?category WHERE {
-                ?presentation a schema:PresentationDigitalDocument .
-                FILTER NOT EXISTS { ?presentation schema:performer <https://harshp.com/me> } .
+                ?presentation schema:performer ?performer .
                 ?presentation schema:datePublished ?date .
                 ?presentation schema:publication ?venue .
                 ?presentation schema:about ?topic .
@@ -23027,14 +23015,14 @@ hpcom:Conference a hpcom:EventType ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
 
+hpcom:SparqlQuery a owl:Class ;
+    rdfs:label "SparqlQuery"@en ;
+    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
+
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
-hpcom:SparqlQuery a owl:Class ;
-    rdfs:label "SparqlQuery"@en ;
-    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 
 hpcom:View a owl:Class ;
     rdfs:label "View"@en ;
