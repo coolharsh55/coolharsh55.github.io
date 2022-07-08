@@ -1389,6 +1389,7 @@
     hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/051-Consenting-Communication-Mechanisms"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "WU" ; schema:url "https://epub.wu.ac.at/8604/"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/98927"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "ORBiLU" ; schema:url "http://hdl.handle.net/10993/51194"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.6614179"^^xsd:anyURI ] ;
     hpcom:supplementary <https://harshp.com/research/presentations#2022-IWPE-DPCCM> ;
     hpcom:content [
@@ -1448,6 +1449,35 @@
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/053-DPV-DPIA.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "to be presented"@en ;
+    hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/054-AIRO-AI-Risk-AI-Act-ISO> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "AIRO: an Ontology for Representing AI Risks based on the Proposed EU AI Act and ISO Risk Management Standards"@en ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:description "AI Risk Ontology (AIRO) for expressing information associated with high-risk AI systems based on the requirements of the proposed AI Act and ISO 31000 series of standards"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:risk ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:ISO ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2022-07-08T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2022> ;
+    schema:funder <http://example.com/ADAPT> ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/054-AIRO-AI-Risk-AI-Act-ISO"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/98927"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.6783203"^^xsd:anyURI ] ;
+    # hpcom:supplementary <https://harshp.com/research/presentations#2018-SEMANTiCS-Queryable> ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/DelaramGlp/AIRO/"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "specification" ; schema:url "https://w3id.org/AIRO"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/054-AIRO-AI-Risk-AI-Act-ISO.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
     schema:status "to be presented"@en ;

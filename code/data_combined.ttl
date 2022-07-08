@@ -18219,6 +18219,35 @@ list:owned_unread a hpcom:RenderedItem,
     schema:status "to be presented"@en ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/054-AIRO-AI-Risk-AI-Act-ISO> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/054-AIRO-AI-Risk-AI-Act-ISO.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/DelaramGlp/AIRO/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "specification" ;
+            schema:url "https://w3id.org/AIRO"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI,
+        hptag:AI-Act,
+        hptag:ISO,
+        hptag:risk ;
+    schema:datePublished "2022-07-08T00:00:00"^^xsd:dateTime ;
+    schema:description "AI Risk Ontology (AIRO) for expressing information associated with high-risk AI systems based on the requirements of the proposed AI Act and ISO 31000 series of standards"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "AIRO: an Ontology for Representing AI Risks based on the Proposed EU AI Act and ISO Risk Management Standards"@en ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2022> ;
+    schema:status "to be presented"@en ;
+    schema:url ""^^xsd:anyURI .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
@@ -19260,16 +19289,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2022-10-23T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2022.semanticweb.org/"^^xsd:anyURI .
-
-<http://example.com/conferences/SEMANTiCS2022> a hpcom:ReviewingEvent,
-        schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "SEMANTiCS" ;
-    schema:endDate "2022-09-15T00:00:00"^^xsd:dateTime ;
-    schema:location "Vienna, Austria" ;
-    schema:name "International Conference on Semantic Systems"@en ;
-    schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
-    schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -21271,6 +21290,9 @@ hpcom:Report rdfs:subClassOf schema:Report,
             schema:name "TARA" ;
             schema:url "http://hdl.handle.net/2262/98927"^^xsd:anyURI ],
         [ a hpcom:Link ;
+            schema:name "ORBiLU" ;
+            schema:url "http://hdl.handle.net/10993/51194"^^xsd:anyURI ],
+        [ a hpcom:Link ;
             schema:name "zenodo" ;
             schema:url "https://doi.org/10.5281/zenodo.6614179"^^xsd:anyURI ] ;
     hpcom:author_lead <http://example.com/SoheilHuman> ;
@@ -21303,6 +21325,11 @@ hptag:ADPC a hpcom:RenderedItem,
     schema:name "ADPC"@en ;
     schema:url "https://harshp.com/tags/ADPC"^^xsd:anyURI .
 
+hptag:AI-Act a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI-Act"@en ;
+    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
+
 hptag:Apple a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Apple" ;
@@ -21327,11 +21354,6 @@ hptag:Germany a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Germany" ;
     schema:url "https://harshp.com/tags/Germany"^^xsd:anyURI .
-
-hptag:ISO a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ISO"@en ;
-    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
 
 hptag:India a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -21797,6 +21819,10 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "MDPI Information"@en ;
     schema:url "https://www.mdpi.com/journal/information" .
 
+<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
+    schema:name "Delaram Golpayegani" ;
+    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
+
 <https://www.springer.com/journal/10115> a schema:Periodical ;
     schema:alternateName "KAIS" ;
     schema:issn "0219-3116" ;
@@ -21916,6 +21942,16 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Semantic Systems"@en ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI .
+
+<http://example.com/conferences/SEMANTiCS2022> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:endDate "2022-09-15T00:00:00"^^xsd:dateTime ;
+    schema:location "Vienna, Austria" ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
+    schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI .
 
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -22174,11 +22210,6 @@ hpcom:book-currently-reading a hpcom:BookStatus ;
     schema:publisher <https://www.tcd.ie/> ;
     schema:url "https://hdl.handle.net/2262/92446"^^xsd:anyURI .
 
-hptag:AI a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI"@en ;
-    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
-
 hptag:Apple-Arcade a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Apple-Arcade" ;
@@ -22188,6 +22219,11 @@ hptag:CCPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "CCPA"@en ;
     schema:url "https://harshp.com/tags/CCPA"^^xsd:anyURI .
+
+hptag:ISO a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ISO"@en ;
+    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
 
 hptag:Java a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22375,6 +22411,11 @@ hpcom:Renderer a owl:Class ;
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "web development"@en ;
     schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
+
+hptag:AI a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI"@en ;
+    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
 
 hptag:Facebook a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22688,11 +22729,6 @@ list:visually-stunning a hpcom:RenderedItem,
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
 
-hptag:risk a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "risk" ;
-    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
-
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "social" ;
@@ -22729,6 +22765,11 @@ hptag:friendship a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "friendship" ;
     schema:url "https://harshp.com/tags/friendship"^^xsd:anyURI .
+
+hptag:risk a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "risk" ;
+    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
 
 hptag:romance a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22990,13 +23031,13 @@ hptag:emotional a hpcom:RenderedItem,
     schema:name "emotional" ;
     schema:url "https://harshp.com/tags/emotional"^^xsd:anyURI .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
