@@ -12738,7 +12738,7 @@ book:691 a hpcom:BookReading,
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Black Sun"@en ;
     schema:url "https://harshp.com/hobbies/books/691"^^xsd:anyURI .
 
@@ -12776,6 +12776,7 @@ book:694 a hpcom:BookReading,
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "The Long Way to a Small, Angry Planet"@en ;
     schema:url "https://harshp.com/hobbies/books/694"^^xsd:anyURI .
 
@@ -14006,7 +14007,7 @@ book:776 a hpcom:BookReading,
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "The Doors of Eden"@en ;
     schema:url "https://harshp.com/hobbies/books/776"^^xsd:anyURI .
 
@@ -14657,12 +14658,19 @@ book:819 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "819"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-09T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Greg Egan"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:books-changed-life,
+        list:cork,
+        list:scifi ;
     schema:name "The Best of Greg Egan"@en ;
+    schema:review "I enjoyed this collection very very very much. Emphasis on the overuse of subjective adjectives describing my experience. Each story is an intense rendering of some concept that I had to sit back and think about for a while, even if it was mentioned in passing. There are things about self-reflection, AI, mind, modification of the mind, philosophies, quantum physics, computing, information theory, Godel's theorem, Turing machines, cloning, biology, society, cosmology, relationships, religion, beliefs, physchology, and so much more. It was worth the time to read this slowly, digesting each story and its experience. Definitely made me enthusiastic about reading (again). The best part was that the stories were collected based on the author's perception of their best work - so it was not an arbitrary collection of 'best selling' stories or something like that."@en ;
     schema:url "https://harshp.com/hobbies/books/819"^^xsd:anyURI .
 
 book:82 a hpcom:BookReading,
@@ -14777,12 +14785,12 @@ book:827 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "827"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Singularity Sky"@en ;
     schema:url "https://harshp.com/hobbies/books/827"^^xsd:anyURI .
 
@@ -14795,7 +14803,7 @@ book:828 a hpcom:RenderedItem,
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Gnomon"@en ;
     schema:url "https://harshp.com/hobbies/books/828"^^xsd:anyURI .
 
@@ -22867,11 +22875,6 @@ list:ai a hpcom:RenderedItem,
     schema:identifier "ai"@en ;
     schema:name "Perspectives on Artificial Intelligence"@en .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 list:horror a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "horror"@en ;
@@ -22957,6 +22960,11 @@ hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -23115,15 +23123,15 @@ list:classics a hpcom:RenderedItem,
     schema:identifier "classics"@en ;
     schema:name "Classics"@en .
 
-list:scifi a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "scifi"@en ;
-    schema:name "Exciting Sci-Fi"@en .
-
 list:TCD a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "TCD"@en ;
     schema:name "Books in TCD"@en .
+
+list:scifi a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "scifi"@en ;
+    schema:name "Exciting Sci-Fi"@en .
 
 hptag:poem a hpcom:RenderedItem,
         hpcom:Tag ;
