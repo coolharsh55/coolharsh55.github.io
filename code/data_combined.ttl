@@ -12771,7 +12771,7 @@ book:694 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "694"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -14785,13 +14785,18 @@ book:827 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "827"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-09T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:cork,
+        list:scifi ;
     schema:name "Singularity Sky"@en ;
+    schema:review "A blazing story about futurism, politics, philosophy, and impact of technological progress on society and social structures. Not only was this exciting sci-fi, but also a great read on the nature of information and its role in sociological structures like governments. Information wants to be free - a phrase that will be imprinted after reading this one."@en ;
     schema:url "https://harshp.com/hobbies/books/827"^^xsd:anyURI .
 
 book:828 a hpcom:RenderedItem,
