@@ -1,0 +1,1439 @@
+<link rel="stylesheet" href="/css/toc.css" /><div id="toc"></div>
+
+<div class="frontmatter">
+    <p><strong>Abstract</strong> The growing number of incidents caused by (mis)using Artificial Intelligence (AI) is a matter of concern for governments, organisations, and the public. To control the harmful impacts of AI, multiple efforts are being taken all around the world from guidelines promoting trustworthy development and use, to standards for managing risks and regulatory frameworks. Amongst these efforts, the first-ever AI regulation proposed by the European Commission, known as the AI Act, is prominent as it takes a risk-oriented approach towards regulating development and use of AI within systems. In this paper, we present the AI Risk Ontology (AIRO) for expressing information associated with high-risk AI systems based on the requirements of the proposed AI Act and ISO 31000 series of standards. AIRO assists stakeholders in determining `high-risk' AI systems, maintaining and documenting risk information, performing impact assessments, and achieving conformity with AI regulations. To show its usefulness, we model existing real-world use-cases from the AIAAIC repository of AI-related risks, determine whether they are high-risk, and produce documentation for the EU's proposed AI Act. </p>
+<div class="keyword">
+<p>AI ,Ontology ,Semantic Web ,Risk ,Risk Management ,AI Act ,ISO</p>
+</div>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>The adoption of AI has brought many benefits to individuals,
+communities, industries, businesses, and society. However, use of AI
+systems can involve critical risks as shown by multiple cases where AI
+has negatively impacted its stakeholders by producing biased outcomes,
+violating privacy, causing psychological harm, facilitating mass
+surveillance, and posing environmental hazards <span class="citation"
+data-cites="aiid aiaaic"><a href="#ref-aiid"
+role="doc-biblioref">[1]</a>, <a href="#ref-aiaaic"
+role="doc-biblioref">[2]</a></span>. The growing number of incidents
+caused by (mis)using AI is a matter of concern for governments,
+organisations, and the public. With the rapid progression of AI
+technologies and the wide adoption of innovative AI solutions, new forms
+of risk emerge quickly, which in turn adds to the uncertainties of
+already complex AI development and deployment processes. According to
+ISO risk management standards, risk management practices aim to manage
+uncertainties, in this case regarding AI systems and their risks, by
+adopting a risk management system for identification, analysis,
+evaluation, and treatment of risks <span class="citation"
+data-cites="iso31000"><a href="#ref-iso31000"
+role="doc-biblioref">[3]</a></span>.</p>
+<p>To guide and in some cases mandate organisations in managing risk of
+harms associated with AI systems, multiple efforts are currently
+underway across the globe. These activities aim to provide
+recommendations on development and use of AI systems, and consist of
+creating ethical and trustworthy AI guidelines <span class="citation"
+data-cites="hlegtai"><a href="#ref-hlegtai"
+role="doc-biblioref">[4]</a></span>, developing AI-specific standards
+such as the AI risk management standard <span class="citation"
+data-cites="iso23894"><a href="#ref-iso23894"
+role="doc-biblioref">[5]</a></span>, and establishing AI regulatory
+frameworks - prominently the EU’s AI Act proposal (hereafter the AI Act)
+<span class="citation" data-cites="aiactproposal"><a
+href="#ref-aiactproposal" role="doc-biblioref">[6]</a></span>.</p>
+<p>The AI Act aims to avoid the harmful impacts of AI on critical areas
+such as health, safety, and fundamental rights by setting down
+obligations which are proportionate to the type and severity of risk
+posed by the system. It distinguishes specific areas and the application
+of AI within them that constitutes ‘high-risk’ and has additional
+obligations (Art. 6) that require providers of high-risk AI systems to
+identify and document risks associated with AI systems at all stages of
+development and deployment (Art. 9).</p>
+<p>Existing risk management practises consist of maintaining, querying,
+and sharing information associated with risks for compliance checking,
+demonstrating accountability, and building trust. Maintaining
+information about risks for AI systems is a complex task given the rapid
+pace with which the field progresses, as well as the complexities
+involved in its lifecycle and data governance processes where several
+entities are involved and need to share information for risk
+assessments. In turn, investigations based on this information are
+difficult to perform which makes their auditing and assessment of
+compliance a challenge for organisations and authorities. To address
+some of these issues, the AI Act relies on creation of standards that
+alleviate some of the compliance related obligations and tasks (Art.
+40).</p>
+<p>In this paper, we propose an approach regarding the information
+required to be maintained and used for the AI Act’s compliance and
+conformance by utilising open data specifications for documenting risks
+and performing AI risk assessment activities. Such data specifications
+utilise interoperable machine-readable formats to enable automation in
+information management, querying, and verification for self-assessment
+and third-party conformity assessments. Additionally, they enable
+automated tools for supporting AI risk management that can both import
+and export information meant to be shared with stakeholders - such as AI
+users, providers, and authorities.</p>
+<p>The paper explores the following questions: (<em>RQ1</em>) What is
+the information required to determine whether an AI system is
+‘high-risk’ as per the AI Act? (<em>RQ2</em>) What information must be
+maintained regarding risk and impacts of high-risk AI systems according
+to the AI Act and ISO risk management standards? (<em>RQ3</em>) To what
+extent can semantic web technologies assist with representing
+information and generating documentation for high-risk AI systems
+required by the AI Act?</p>
+<p>To address <em>RQ1</em> and <em>RQ2</em>, in Section <a
+href="#Requirements Specification &amp; Analysis"
+data-reference-type="ref"
+data-reference="Requirements Specification &amp; Analysis">3.2</a>, we
+analyse the AI Act and ISO 31000 risk management series of standards to
+identify information requirements associated with AI risks. To address
+<em>RQ3</em>, we create the AI Risk Ontology (AIRO), described in
+Section <a href="#AIRO Overview" data-reference-type="ref"
+data-reference="AIRO Overview">3.3</a>, and demonstrate its application
+in identification of high-risk AI systems and generating documentation
+through analysis and representation of real-world use-cases in Section
+<a href="#AIRO Usage &amp; Application" data-reference-type="ref"
+data-reference="AIRO Usage &amp; Application">4</a>.</p>
+<h2 id="state-of-the-art">State of the Art</h2>
+<h3 id="ai-risk-management-standards">AI Risk Management Standards</h3>
+<p>The ISO 31000 family of standards support risk management in
+organisations by providing principles, guidelines, and activities. ISO
+31000:2018 Risk management – Guidelines <span class="citation"
+data-cites="iso31000"><a href="#ref-iso31000"
+role="doc-biblioref">[3]</a></span> is the main standard that provides
+generic principles, framework, and processes for managing risks faced by
+organisations throughout their lifecycle. Another member of this family
+is ISO 31073:2022 Risk management — Vocabulary <span class="citation"
+data-cites="iso31073"><a href="#ref-iso31073"
+role="doc-biblioref">[7]</a></span> which provides a list of generic
+concepts in risk management and their definitions to promote a shared
+understanding among different business units and organisations.</p>
+<p>There is ongoing work within ISO to further apply these risk
+standards within the domains and processes associated with AI. In
+particular, ISO/IEC 23894 Information technology — Artificial
+intelligence — Risk management <span class="citation"
+data-cites="iso23894"><a href="#ref-iso23894"
+role="doc-biblioref">[5]</a></span> specifically addresses risk
+management within AI systems. Efforts are also underway to provide
+agreements on a vocabulary of relevant AI concepts (ISO/IEC 22989 <span
+class="citation" data-cites="iso22989"><a href="#ref-iso22989"
+role="doc-biblioref">[8]</a></span>) and addressing ethical and societal
+concerns (ISO/IEC TR 24368 <span class="citation"
+data-cites="iso/iec24368"><a href="#ref-iso/iec24368"
+role="doc-biblioref">[9]</a></span>). These are intended to be utilised
+alongside recently published standards regarding AI, such as those
+relating to trustworthiness (ISO/IEC TR 24028:2020 <span
+class="citation" data-cites="iso/iec24028"><a href="#ref-iso/iec24028"
+role="doc-biblioref">[10]</a></span>), and bias and decision making
+(ISO/IEC TR 24027:2021<span class="citation"
+data-cites="iso/iec24027"><a href="#ref-iso/iec24027"
+role="doc-biblioref">[11]</a></span>).</p>
+<h3 id="ai-risk-taxonomies">AI Risk Taxonomies</h3>
+<p>There is a growing body of literature on discovering types of risk
+stemming from AI techniques and algorithms. For example, a taxonomy of
+AI risk sources, proposed in <span class="citation"
+data-cites="steimers2022sourcesofriskofAIsystems"><a
+href="#ref-steimers2022sourcesofriskofAIsystems"
+role="doc-biblioref">[12]</a></span>, classifies the sources that impact
+AI trustworthiness into two categories: sources which deal with ethical
+aspects and the ones that deal with reliability and robustness of the
+system. The US National Institute of Standards and Technology (NIST)
+<span class="citation" data-cites="nistai"><a href="#ref-nistai"
+role="doc-biblioref">[13]</a></span> has developed an AI risk management
+framework which includes a taxonomy of the characteristics that should
+be taken into account when dealing with risks. The taxonomy identifies
+three categories of risk sources associated with AI systems, namely
+sources related technical design attributes such as accuracy, sources
+related to the way the system is perceived e.g. transparency, and
+sources associated with principles mentioned in trustworthy AI
+guidelines e.g. equity. The framework also identifies three types of
+harmful impacts: harm to people, harm to an organisation/enterprise, and
+harm to a system.</p>
+<p>Andrade and Kontschieder <span class="citation"
+data-cites="andrade2021aiaopenloop"><a
+href="#ref-andrade2021aiaopenloop" role="doc-biblioref">[14]</a></span>
+developed a taxonomy of potential harms associated with machine learning
+applications and automated decision-making systems. The taxonomy
+identifies the root cause of the harms, their effects, the impacted
+values, and technical and organisational measures needed for mitigating
+the harms. Roselli et al. <span class="citation"
+data-cites="roselli2019managing"><a href="#ref-roselli2019managing"
+role="doc-biblioref">[15]</a></span> proposed a taxonomy of AI bias
+sources and mitigation measures, which classifies AI bias into three
+categories based on the source: bias that arises from translating
+business goals to system implementation, bias stemmed from training
+datasets, and bias that is present in individual input samples.</p>
+<p>The mentioned studies provide taxonomies without formally modelling
+the relationships that exist between concepts, e.g. the relation between
+risk and its controls that indicates which controls are suitable or
+effective to mitigate the risk. An ontology that expresses the semantic
+relations between risk concepts enables reasoning over risk information
+and exploring patterns in the risk management process. This paper goes
+further than defining a hierarchy of concepts and proposes an ontology
+for AI risk. The identified concepts and proposed classifications in
+resources such as the aforementioned studies can be used to populate the
+AI risk ontology.</p>
+<h3 id="risk-models-and-ontologies">Risk Models and Ontologies</h3>
+<p>There are attempts to provide a general model of risk such as the
+common ontology of value and risk <span class="citation"
+data-cites="sales2018common"><a href="#ref-sales2018common"
+role="doc-biblioref">[16]</a></span> which describes risk by associating
+it to the concept of value and the ontology presented in <span
+class="citation" data-cites="agrawal2016towards"><a
+href="#ref-agrawal2016towards" role="doc-biblioref">[17]</a></span>
+which models the core concepts and relations in ISO/IEC 27005 standard
+for infrastructure security risk management.</p>
+<p>There are also several studies where ontologies were developed to
+facilitate risk management in different areas such as construction and
+health. For instance, Masso et al. <span class="citation"
+data-cites="masso2022softwarerisk"><a href="#ref-masso2022softwarerisk"
+role="doc-biblioref">[18]</a></span> developed SRMO (Software Risk
+Management Ontology) based on widely-used risk management standards and
+guidelines to address ambiguity and inconsistency of risk terminologies.
+Hayes <span class="citation" data-cites="haynes2020understanding"><a
+href="#ref-haynes2020understanding" role="doc-biblioref">[19]</a></span>
+created a risk ontology to represent the risk associated with online
+disclosure of personal information. A key feature of this ontology is
+separation of consequence of risk from harm. McKenna et al. <span
+class="citation" data-cites="mckenna2021ark"><a
+href="#ref-mckenna2021ark" role="doc-biblioref">[20]</a></span>
+implemented the Access Knowledge Risk (ARK) platform which employs SKOS
+data models to enable risk analysis, risk evidence collection, and risk
+data integration in socio-technical systems.</p>
+<p>To the best of our knowledge, there is no ontology available for
+expressing fundamental risk concepts based on ISO 31000 series of
+standard, nor one specific to AI risks. Our future ambition is to
+investigate the state of the art in the areas of (AI) risk modelling as
+the literature advances and systematically compare our work with the
+recent advances in an iterative manner.</p>
+<h2 id="airo-development">AIRO Development</h2>
+<p>Given the lack of readily available semantic ontologies regarding
+risk management and AI systems, answering <em>RQ3</em> regarding use of
+semantic web technologies necessitated creation of an ontology to
+represent risks associated with AI systems based on ISO risk management
+standards. The AI Risk Ontology (AIRO) provides a formal representation
+of AI systems as per the requirements of the AI Act with the risk and
+impacts being represented based on ISO 31000 family of standards. It is
+the first step in identifying and demonstrating the extent of semantic
+web technologies in enabling automation of risk documentation, querying
+for legal compliance checking, and facilitating risk information sharing
+for the AI Act and other future regulations.</p>
+<h3 id="methodology">Methodology</h3>
+<p>The development of AIRO followed the “Ontology Development 101”
+guideline provided by Noy and McGuinness <span class="citation"
+data-cites="noy2001ontology"><a href="#ref-noy2001ontology"
+role="doc-biblioref">[21]</a></span> and the Linked Open Terms (LOT)
+methodology <span class="citation" data-cites="poveda2022lot"><a
+href="#ref-poveda2022lot" role="doc-biblioref">[22]</a></span>. The
+steps followed for creating AIRO are as follows:</p>
+<ol>
+<li><p><em>Ontology requirements specification</em>: The requirements
+regarding identification of high-risk AI systems and generating
+technical documentation are extracted from the AI Act and materialised
+as competency questions.</p></li>
+<li><p><em>Ontology implementation</em>: To build the ontology we first
+identify core risk concepts and relations from ISO 31000 series of
+standards. The top-level AI concepts are derived from the AI Act. Then,
+the Act and ISO/IEC FDIS 22989 Information technology — Artificial
+intelligence — Artificial intelligence concepts and terminology <span
+class="citation" data-cites="iso22989"><a href="#ref-iso22989"
+role="doc-biblioref">[8]</a></span>, which provides a uniform reference
+vocabulary regarding AI concepts and terminology, are used for further
+expanding the core concepts.</p></li>
+<li><p><em>Ontology evaluation</em>: To ensure that AIRO fulfils the
+requirements identified in the first step, the ontology is evaluated
+against the competency questions and its applicability is evaluated by
+modelling example use-cases from the AIAAIC repository <span
+class="citation" data-cites="aiaaic"><a href="#ref-aiaaic"
+role="doc-biblioref">[2]</a></span>. The quality of the ontology is
+ensured by following Semantic Web best practices guidelines, including
+W3C Best Practice Recipes for Publishing RDF Vocabularies<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and
+the OntOlogy Pitfall Scanner (OOPS!) <span class="citation"
+data-cites="poveda2014oops"><a href="#ref-poveda2014oops"
+role="doc-biblioref">[23]</a></span>.</p></li>
+<li><p><em>Ontology publication</em>: The documentation is created using
+WIDOCO <span class="citation" data-cites="garijo2017widoco"><a
+href="#ref-garijo2017widoco" role="doc-biblioref">[24]</a></span> - a
+tool for generating HTML documents from ontology metadata. AIRO is
+available online at <a href="https://w3id.org/AIRO"
+class="uri">https://w3id.org/AIRO</a> under the CC BY 4.0
+license.</p></li>
+<li><p><em>Ontology maintenance</em>: Since the proposed AI Act is
+subject to change, requirements and concepts derived from it will need
+to be revised as newer versions are published. Additionally, relevant
+documents including trustworthy AI guidelines and AI incident
+repositories e.g. AIAAIC, will also influence the design through
+concepts such as types of AI and known impacts. This leads to an
+iterative process for updating the ontology, with appropriate
+documentation of changes.</p></li>
+</ol>
+<h3 id="Requirements Specification &amp; Analysis">AIRO
+Requirements</h3>
+<p>The purpose of AIRO is to express AI risks to enable organisations
+(i) determine whether their AI systems are ‘high-risk’ as per Annex III
+of the AI Act and (ii) generate the technical documentation required for
+conformity to the AI Act.</p>
+<h4 id="describing-high-risk-ai-systems">Describing High-Risk AI
+Systems</h4>
+<p>The EU’s proposed AI Act aims to regulate the development,
+deployment, and use of AI systems with the purpose of eliminating
+harmful impacts of AI on health, safety, and fundamental rights. At the
+heart of the Act there is a four-level risk pyramid that classifies AI
+systems into the following categories where the level of risk
+corresponds to the strictness of rules and obligations imposed: 1)
+prohibited AI systems, 2) high-risk AI systems, 3) AI systems with
+limited risk, 4) AI systems with minimal risk.</p>
+<p>According to the AI Act, AI systems are software systems that are
+developed using at least one of the three types of techniques and
+approaches listed in Annex I namely, machine learning, logic- and
+knowledge-based, and statistical approaches. High-risk AI systems are
+either (i) a product or safety component of a product, for example
+medical devices, as legislated by existing regulations listed in Annex
+II; or (ii) systems that are intended to be used in specific domains and
+purposes as mentioned in Annex III.</p>
+<p>A major part of the AI Act is dedicated to the requirements of
+high-risk AI systems and the obligations for providers and users of
+these systems. To understand their legal obligations regarding the
+development and use of AI systems, providers need to identify whether
+the system falls into the category of high-risk. To facilitate this
+process, we analysed the requirements of the AI Act, in particular the
+list of high-risk systems in Annex III, and identified the specific
+concepts whose combinations determine whether the AI system is
+considered high-risk; for example, according to Annex III 6(d), use of
+AI in the domain of law enforcement (<code>Domain</code>) by law
+enforcement authorities (<code>AI User</code>) for evaluation of the
+reliability of evidence (<code>Purpose</code>) in the course of
+investigation or prosecution of criminal offences
+(<code>Environment Of Use</code>) is high-risk. These are listed in
+Table <a href="#tab:questions to identify high-risk AI system"
+data-reference-type="ref"
+data-reference="tab:questions to identify high-risk AI system">1</a> in
+the form of: competency questions, concepts, and relation with AI
+system.</p>
+<div id="tab:questions to identify high-risk AI system">
+<table>
+<caption>Questions necessary to identify whether an AI system is
+high-risk according to Annex III</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Competency question</strong></th>
+<th style="text-align: left;"><strong>Concept</strong></th>
+<th style="text-align: left;"><strong>Relation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">What techniques are utilised in the
+system?</td>
+<td style="text-align: left;"><code>AITechnique</code></td>
+<td style="text-align: left;"><code>usesTechnique</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">What domain is the system intended to be
+used in?</td>
+<td style="text-align: left;"><code>Domain</code></td>
+<td style="text-align: left;"><code>isAppliedWithinDo-main</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">What is the intended purpose of the
+system?</td>
+<td style="text-align: left;"><code>Purpose</code></td>
+<td style="text-align: left;"><code>hasPurpose</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">What is the application of the
+system?</td>
+<td style="text-align: left;"><code>Application</code></td>
+<td style="text-align: left;"><code>hasApplication</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Who is the intended user of the
+system?</td>
+<td style="text-align: left;"><code>AIUser</code></td>
+<td style="text-align: left;"><code>isUsedBy</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Who is the subject of the system?</td>
+<td style="text-align: left;"><code>AISubject</code></td>
+<td style="text-align: left;"><code>affects</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In which environment is the system
+used?</td>
+<td style="text-align: left;"><code>EnvironmentOfUse</code></td>
+<td style="text-align: left;"><code>isUsedInEnvironment</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="technical-documentation">Technical Documentation</h4>
+<p>To conform to the AI Act, high-risk AI systems need to fulfil the
+requirements laid out in Title III, Chapter 2. One of the key
+obligations is implementing a risk management system to continuously
+identify, evaluate, and mitigate risks throughout the system’s entire
+lifecycle (Art. 9). To demonstrate conformity to authorities, the
+providers of high-risk systems need to create a technical documentation
+(Art. 11) containing information listed in Annex IV. In addition,
+providers have to identify the information needed to be registered in
+the EU public database (Art. 60) and provided to the users (Art. 13)
+<span class="citation" data-cites="veale2021demystifying"><a
+href="#ref-veale2021demystifying"
+role="doc-biblioref">[25]</a></span>.</p>
+<p>To assist with this process, we identified the information required
+to be provided as the technical documentation for an AI system as per AI
+Act Annex IV, with relevant concepts and relations as presented in Table
+<a href="#tab:technical documentation requirements"
+data-reference-type="ref"
+data-reference="tab:technical documentation requirements">2</a>.
+Recording the sources from which the ontology’s requirements are
+identified is helpful in the maintenance process where AIRO should be
+updated with regard to the amendments that will be applied to the AI
+Act.</p>
+<div id="tab:technical documentation requirements">
+<table>
+<caption>Information needed to be featured in the AI Act technical
+documentation</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Annex IV Clause</strong></th>
+<th style="text-align: left;"><strong>Required information</strong></th>
+<th style="text-align: left;"><strong>Domain</strong></th>
+<th style="text-align: left;"><strong>Relation</strong></th>
+<th style="text-align: left;"><strong>Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1(a)</td>
+<td style="text-align: left;">System’s intended purpose</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasPurpose</td>
+<td style="text-align: left;">Purpose</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">System’s developers</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">isDevelopedBy</td>
+<td style="text-align: left;">AIDeveloper</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">System’s date</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">dcterms:date</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">System’s version</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasVersion</td>
+<td style="text-align: left;">Version</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1(c)</td>
+<td style="text-align: left;">Versions of relevant software or
+firmware</td>
+<td style="text-align: left;">System/ Component</td>
+<td style="text-align: left;">hasVersion</td>
+<td style="text-align: left;">Version</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1(d)</td>
+<td style="text-align: left;">Forms in which AI system is placed on the
+market or put into service</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">isUsedInFormOf</td>
+<td style="text-align: left;">AISystemForm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1(e)</td>
+<td style="text-align: left;">Hardware on which the AI system run</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasExecutionEnvironment</td>
+<td style="text-align: left;">AIHardware</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1(f)</td>
+<td style="text-align: left;">Internal layout of the product which the
+system is part of</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">Blueprint</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1(g)</td>
+<td style="text-align: left;">Instruction of use for the user</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">InstructionOfUse</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Installation instructions</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">InstallationInstruction</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2(a)</td>
+<td style="text-align: left;">third party tools used</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasComponent</td>
+<td style="text-align: left;">Tool</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Pre-trained system used</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasComponent</td>
+<td style="text-align: left;">Pre-trainedSystem</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2(b)</td>
+<td style="text-align: left;">Design specifications of the system</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">SystemDesignSpecification</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2(c)</td>
+<td style="text-align: left;">The system architecture</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumenatation</td>
+<td style="text-align: left;">SystemArchitecture</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2(d)</td>
+<td style="text-align: left;">Data requirements</td>
+<td style="text-align: left;">Data</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">Datasheet</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2(e)</td>
+<td style="text-align: left;">Human oversight measures</td>
+<td style="text-align: left;">HumanOversightMeasure</td>
+<td style="text-align: left;">modifiesEvent</td>
+<td style="text-align: left;">Event</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2(g)</td>
+<td style="text-align: left;">Testing data</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasComponent</td>
+<td style="text-align: left;">TestingData</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Validation data</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasComponent</td>
+<td style="text-align: left;">ValidationData</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Characteristics of data</td>
+<td style="text-align: left;">Data</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">Datasheet</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Metrics used to measure accuracy/
+robustness/ cybersecurity</td>
+<td style="text-align: left;">Accuracy/ Robustness/
+CybersecurityMertic</td>
+<td style="text-align: left;">isUsedToMeasure</td>
+<td style="text-align: left;">AISystemAccuracy/ Robustness/
+Cybersecurity</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Discriminatory impacts of the system</td>
+<td style="text-align: left;">Consequence</td>
+<td style="text-align: left;">hasImpact</td>
+<td style="text-align: left;">Impact</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Test log</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">TestLog</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Test report</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">TestReport</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Expected level of accuracy</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasExpectedAccuray</td>
+<td style="text-align: left;">AISystemAccuracy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Foreseeable unintended outcomes of the
+risk</td>
+<td style="text-align: left;">Risk</td>
+<td style="text-align: left;">hasConsequence</td>
+<td style="text-align: left;">Consequence</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Sources of the risk</td>
+<td style="text-align: left;">RiskSource</td>
+<td style="text-align: left;">isRiskSourceFor</td>
+<td style="text-align: left;">Risk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Human oversight measures</td>
+<td style="text-align: left;">HumanOversightMeasure</td>
+<td style="text-align: left;">modifiesEvent</td>
+<td style="text-align: left;">Event</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Technical measures</td>
+<td style="text-align: left;">TechnicalMeasure</td>
+<td style="text-align: left;">modifiesEvent</td>
+<td style="text-align: left;">Event</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Specification of input data</td>
+<td style="text-align: left;">InputData</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">Datasheet</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Risks associated with the AI system</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasRisk</td>
+<td style="text-align: left;">Risk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Sources of the risk</td>
+<td style="text-align: left;">RiskSource</td>
+<td style="text-align: left;">isRiskSourceFor</td>
+<td style="text-align: left;">Risk</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Consequences of the risk</td>
+<td style="text-align: left;">Risk</td>
+<td style="text-align: left;">hasConsequence</td>
+<td style="text-align: left;">Consequence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Harmful impacts of the risk</td>
+<td style="text-align: left;">Consequence</td>
+<td style="text-align: left;">hasImpact</td>
+<td style="text-align: left;">Impact</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Probability of risk source/ risk/
+consequence /impact</td>
+<td style="text-align: left;">RiskSource/ Risk/ Consequence/ Impact</td>
+<td style="text-align: left;">hasLikelihood</td>
+<td style="text-align: left;">Likelihood</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Severity of consequence/ impact</td>
+<td style="text-align: left;">Consequence/ Impact</td>
+<td style="text-align: left;">hasSeverity</td>
+<td style="text-align: left;">Severity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Impacted stakeholders</td>
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">hasImpactOnAISubject</td>
+<td style="text-align: left;">AISubject</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Impacted area</td>
+<td style="text-align: left;">Impact</td>
+<td style="text-align: left;">hasImpactOnArea</td>
+<td style="text-align: left;">AreaOfImpact</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Risk management measures applied</td>
+<td style="text-align: left;">Control</td>
+<td style="text-align: left;">modifiesEvent</td>
+<td style="text-align: left;">Event</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Standard applied</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">usesStandard</td>
+<td style="text-align: left;">Standard</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Harmonised standards applied</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">usesStandard</td>
+<td style="text-align: left;">HarmonisedStandard</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Technical specifications applied</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">usesTechnicalSpecification</td>
+<td style="text-align: left;">TechnicalSpecification</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">EU declaration of conformity</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasDocumentation</td>
+<td style="text-align: left;">EUDeclarationOfConform-ity</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Post-market monitoring system</td>
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">hasPostmarketMonitoring System</td>
+<td style="text-align: left;">PostmarketMonitoringSys-tem</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Description of the post-market system that
+evaluates the performance</td>
+<td style="text-align: left;">PostmarketMonitoringSy-stem</td>
+<td style="text-align: left;">dcterms:description</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:technical documentation requirements"
+label="tab:technical documentation requirements"></span></p>
+<h3 id="AIRO Overview">AIRO Overview</h3>
+<p>AIRO’s core concepts and relations are illustrated in Figure <a
+href="#fig-AIRO-main-concepts" data-reference-type="ref"
+data-reference="fig:AIRO main concepts">1</a>.
+The upper half shows the main concepts required for describing an
+<code>AI System</code> (green boxes), and the lower half represents key
+concepts for expressing <code>Risk</code> (yellow boxes). The relation
+<code>hasRisk</code> links these two halves by connecting risk to either
+an AI system or a component of the system.</p>
+<figure ud="fig-AIRO-main-concepts">
+    <img src="img/054-AIRO-main-concepts.jpg">
+    <figcaption>Figure 1: Overview of AIRO's main concepts and relations</figcaption>
+</figure>
+<p>The core concepts related to an <code>AI System</code> are: (1) the
+intended <code>Purpose</code> of the system, (2) the <code>Domain</code>
+the AI system is supposed to be used in, (3) the
+<code>AI Application</code> of the system, (4) the
+<code>Environment Of Use</code> which specifies the environment the
+system is designed to be used in, e.g. publicly accessible spaces, (5)
+the <code>AI Technique(s)</code> utilised by the system such as <span
+class="sans-serif">knowledge-based</span>, <span
+class="sans-serif">machine learning</span>, and <span
+class="sans-serif">statistical</span> approaches, (6)
+<code>Output(s)</code> the system generates and (7) the system’s
+incorporating <code>AI Component(s)</code>. Furthermore, the key
+stakeholders in the AI value chain are modelled including (8)
+<code>AI Users</code> who utilise the system, (9)
+<code>AI Developers</code> that develop(ed) the AI system, and (10)
+<code>AI Subjects</code> that are impacted by the system including
+individuals, groups, and organisations. To specify the area that is
+impacted by the system the concept of (11) <code>Area Of Impact</code>
+is defined.</p>
+<p>The key risk concepts in AIRO are: (1) <code>Risk Source</code>,
+indicates an event that has the potential to give rise to risks, (2)
+<code>Consequence</code>, indicates an outcome of risks, (3)
+<code>Impact</code>, represents an effect of consequences on
+<code>AI Subject(s)</code>, and (4) <code>Control</code>, indicates a
+measure that is applied to detect, mitigate, or eliminate risks. ISO
+31000 sees risk as being both an opportunity and a threat. However, in
+the context of the AI Act the concept of risk, and therefore its
+consequence and impact, refers to the risk of harm. To reflect this,
+AIRO only refers to risks in the context of harms. AIRO also
+distinguishes between <code>Consequence</code> and <code>Impact</code>
+to indicate consequence as direct outcomes which may or may not involve
+individuals, which can then lead to an impact (harm) to some AI
+subjects. Risks, consequences, and impacts can be addressed using
+<code>Control</code> that can relate to detection, mitigation, and
+elimination.</p>
+<p>To further expand AIRO, the top-level concepts are populated by the
+classes obtained from the AI Act and ISO/IEC 22989. Then, the classes
+are categorised using a bottom-up approach. To give an example, the AI
+Act refers to some of the potential purposes of using AI, such as
+dispatching emergency services, generating video content (using
+deepfake), monitoring employees’ behaviour, and assessing tests. After
+identifying sub-classes of <span class="sans-serif">Purpose</span>, they
+are classified into more general categories. In this case, we identified
+six high-level classes for <span class="sans-serif">Purpose</span>
+namely, <span class="sans-serif">Generating Content</span>, <span
+class="sans-serif">Knowledge Reasoning</span>, <span
+class="sans-serif">Making Decision</span>, <span
+class="sans-serif">Making Prediction</span>, <span
+class="sans-serif">Monitoring</span>, and <span
+class="sans-serif">Producing Recommendation</span>. The current version
+of AIRO incorporates 45 object properties and 276 classes, including 13
+<code>AI Techniques</code>, 76 <code>Purposes</code>, 47
+<code>Risk Sources</code>, 18 <code>Consequences</code>, 7
+<code>Areas of Impact</code>, and 18 <code>Controls</code>.</p>
+<h2 id="AIRO Usage &amp; Application">Applying AIRO by Modelling
+Real-World Use-Cases</h2>
+<p>The AI and Algorithmic Incidents and Controversies (AIAAIC) is an
+ongoing effort to document and analyse AI-related problematic incidents.
+As of July 2022, it has over 850 incidents collected from news articles,
+reports, and other sources. Here, we utilise two scenarios from this
+repository, selected based on availability of detailed information
+regarding AI system in use and topicality, and manually represent them
+using AIRO, with potential for automation in future. We then evaluate
+and demonstrate how AIRO can be used to query relevant information,
+identify missing concepts, and generate technical documentation - as per
+the AI Act. RDF representations for both are available online<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>.</p>
+<h3 id="use-case-1-ubers-real-time-id-check-system">Use-case 1: Uber’s
+Real-time ID Check System</h3>
+<p>This use-case<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> describes an instance where Uber
+used a facial recognition identification system, known as the Real Time
+ID (RTID), to ensure that the driver’s account is not used by anyone
+other than the registered Uber driver. If the system failed to recognise
+a person for two consecutive times, the driver’s contract would be
+terminated and their driver and vehicle licenses would be revoked.
+Multiple incidents where the system failed to verify drivers of BAME
+(Black, Asian, Minority Ethnic) background proved that the use of the
+facial recognition system involved risks of inaccuracy which could have
+lead to unfair dismissal of drivers. Figure <a href="#fig-Uber-use-case"
+data-reference-type="ref" data-reference="fig:Uber use-case">2</a> 
+illustrates how AIRO is used in modelling the use-case
+described.</p>
+<figure id="fig-Uber-use-case">
+    <img src="img/054-Uber-use-case.jpeg">
+    <figcaption>Figure 2: AIRO-based representation of Uber's facial recognition system use-case</figcaption>
+</figure>
+<h3 id="use-case-2-viogén-domestic-violence-system">Use-case 2: VioGén
+Domestic Violence System</h3>
+<p>This use-case<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> describes the VioGén Domestic
+Violence System that was used by the Spanish law enforcement agencies to
+assess the likelihood of a victim of gender violence to be assaulted by
+the same perpetrator again, which is used for determining the victim’s
+eligibility for police protection <span class="citation"
+data-cites="alvarez2018viogen"><a href="#ref-alvarez2018viogen"
+role="doc-biblioref">[26]</a></span>.</p>
+<p>Its use of statistical models to predict the risk faced by a victim
+raise questions regarding the accuracy of its predictions since these
+would be highly dependent on the quality of data fed into the models.
+The input data was generated based on a questionnaire answered by
+victims who filed a report. The ambiguity of questions and timing of
+questionnaire could have lead to inaccurate or biased predictions, and
+if the score was not modified by police officers - the victim would not
+required protection. To control this risk, police officers were granted
+the power to increase the risk score calculated by the system. However,
+according to <span class="citation" data-cites="eticas2022viogen"><a
+href="#ref-eticas2022viogen" role="doc-biblioref">[27]</a></span>, in
+most cases the officers trusted the system’s scoring despite warning
+signs, which led to “automation bias” i.e. over-reliance on the system’s
+outcomes. Figure <a href="#fig-Viogen-use-case"
+data-reference-type="ref"
+data-reference="fig:Viogen use-case">3</a> shows the
+representation of this use-case using AIRO.</p>
+<figure id="fig-Viogen-use-case">
+    <img src="img/054-Viogen-use-case.jpeg">
+    <figcaption>AIRO-based representation of VioG{\'e}n system use-case</figcaption>
+</figure>
+<h3 id="identification-of-high-risk-ai-systems">Identification of
+High-risk AI Systems</h3>
+<p>To assist with determination of whether the system would be
+considered a high-risk AI system under the AI Act, the concepts
+presented in Table.<a
+href="#tab:questions to identify high-risk AI system"
+data-reference-type="ref"
+data-reference="tab:questions to identify high-risk AI system">1</a>
+need to be retrieved for the use-case and compared against the specific
+criteria described in Annex III. This can be achieved through several
+means: such as using a SPARQL <code>ASK</code> query, SHACL shapes, or
+any other rule-based mechanism.</p>
+<p>For demonstration, we first utilise a SPARQL query, depicted in
+Listing <a href="#lst-sparql-for-high-risk" data-reference-type="ref"
+data-reference="lst:sparqlforhigh-risk">1</a>, to
+list the concepts necessary to determine whether the system is high-risk
+(see Table <a href="#tab:result of high-risk query"
+data-reference-type="ref"
+data-reference="tab:result of high-risk query">3</a>). It is worth
+noting that one of the contributions of this paper is translating the
+high-risk conditions specified in Annex III of the AI Act into 7
+concepts which can be retrieved using the SPARQL query depicted in
+Listing <a href="#lst-sparql-for-high-risk" data-reference-type="ref"
+data-reference="lst:sparqlforhigh-risk">1</a>. A
+manual inspection of the use-cases and query results shows that both
+systems would be considered as high-risk under the AI Act. Uber’s system
+falls within the category of high-risk since it was employed for the
+purpose of biometric identification of natural persons (Annex III,1-a)
+and for making decisions on termination of work-related relationships
+(Annex III, 4-b). VioGén system is considered a high-risk AI system as
+it is employed by law enforcement authorities as means for predicting
+the risk of gender violence recidivism (Annex III, 6-a) that in turn is
+used for determining access to public services, i.e. police protection
+(Annex III, 5-a).</p>
+<p>Listing 1: SPARQL query retrieving information for determining high-risk AI systems</p>
+<pre id="list-sparql-for-high-risk"><code>PREFIX airo: &lt;https://w3id.org/AIRO#&gt;
+SELECT  ?system ?technique ?domain ?purpose 
+        ?application ?user ?subject ?environment
+WHERE {
+        ?system a airo:AISystem ;
+        airo:usesTechnique ?technique ;
+        airo:isUsedWithinDomain ?domain ;
+        airo:hasPurpose ?purpose ;
+        airo:hasApplication ?application ;
+        airo:isUsedBy ?user ;
+        airo:affects ?subject ;
+        airo:isUsedInEnvironment ?environment . }</code></pre>
+<div id="tab:result of high-risk query">
+<table>
+<caption>Information retrieved from the use-cases for identification of
+high-risk AI systems using the SPARQL query</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>AIRO concept</strong></th>
+<th style="text-align: left;"><strong>Uber’s Real-time ID
+Check</strong></th>
+<th style="text-align: left;"><strong>VioG<span>é</span>n
+system</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AISystem</td>
+<td style="text-align: left;">uber’s_real_time_id_check</td>
+<td style="text-align: left;">viog<span>é</span>n_system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AITechnique</td>
+<td style="text-align: left;">machine_learning</td>
+<td style="text-align: left;">statistical_model</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Purpose</td>
+<td style="text-align: left;">biometric_identification_of_drivers_to
+_decide_on_contract_termination</td>
+<td style="text-align: left;">determining_access_to_police_protection
+&amp; assessing_risk_of_gender_violence _recidivism</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Domain</td>
+<td style="text-align: left;">employment</td>
+<td style="text-align: left;">law_enforcement &amp; public_service</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AIApplication</td>
+<td style="text-align: left;">facial_recognition</td>
+<td style="text-align: left;">profiling</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIUser</td>
+<td style="text-align: left;">uber_driver</td>
+<td style="text-align: left;">the_spanish_ministry_of_the_interior</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AISubject</td>
+<td style="text-align: left;">uber_driver_of_bame_background</td>
+<td style="text-align: left;">victim_of_gender_violence</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EnvironmentOfUse</td>
+<td style="text-align: left;">work_relate_relations</td>
+<td style="text-align: left;">investigation_of_criminal_offences</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">High-Risk?</td>
+<td style="text-align: left;">Yes (Annex III. 1-a &amp; 4-b)</td>
+<td style="text-align: left;">Yes (Annex III. 6-a &amp; 5-a)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To show automation in determination of whether an AI system is
+high-risk, and to show the usefulness of our analysis and AIRO’s
+concepts, we created SHACL shapes, depicted in Listing <a
+href="#lst-shacl-for-high-risk" data-reference-type="ref"
+data-reference="lst:shaclforhigh-risk">2</a>,
+representing two of the high-risk conditions defined in Annex III, and
+then applied them over the use-cases. Annex III defines criteria where
+systems are high-risk, and SHACL shapes are meant to fail when
+constraints are not satisfied. Therefore, we modelled these SHACL shapes
+to check where AI systems are <em>not high-risk</em>, that is - they
+fail when a condition such as purpose being
+<code>BiometricIdentification</code> is met, with the annotation
+assisting in identifying the source in Annex III-1.</p>
+<p>Listing 2: Examples of SHACL shapes identifying high-risk AI Systems from Annex III of the AI Act</p>
+<pre id="shacl-for-high-risk"><code>@prefix dash: &lt;http://datashapes.org/dash#&gt; .
+@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+@prefix airo: &lt;https://w3id.org/AIRO#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+:AnnexIII-1
+    a sh:NodeShape ;
+    sh:targetClass airo:AISystem ;
+    sh:message &quot;High-Risk AI System as per AI Act Annex III-1&quot;@en ;
+    sh:description &quot;Biometric Identification of Natural Persons&quot;@en ;
+    sh:not [
+        a sh:PropertyShape ;
+        sh:path airo:hasPurpose ;
+        sh:class airo:BiometricIdentification; ] .
+:AnnexIII-6a
+    a sh:NodeShape ;
+    sh:targetClass airo:AISystem ;
+    sh:message &quot;High-Risk AI System as per AI Act Annex III-6a&quot;@en ;
+    sh:description &quot;AI systems intended to be used by law enforcement...&quot;
+        &quot;... or the risk for potential victims of criminal offences;&quot;@en ;
+    sh:not [ sh:and (
+            sh:property [
+                a sh:PropertyShape ;
+                sh:path airo:isUsedWithinDomain ;
+                sh:hasValue airo:law_enforcement ;
+            ]
+            sh:property [
+                a sh:PropertyShape ;
+                sh:path airo:hasPurpose ;
+                # omitted (sh:or .. airo:AssessingRiskOfReoffending) here for brevity
+                sh:class airo:AssessingRiskOfReoffending ; ] ) ] .</code></pre>
+<p>We preferred SHACL since it is a standardised mechanism for
+expression validations, it always produces a Boolean output, and it can
+be annotated with documentation and messages. Also, SHACL has been
+demonstrated to be useful for legal compliance tasks where constraints
+can first ensure the necessary information is present and in the correct
+form, and then produce outputs linked to appropriate legal clauses <span
+class="citation" data-cites="pandit2019test"><a
+href="#ref-pandit2019test" role="doc-biblioref">[28]</a></span>.</p>
+<h3 id="generating-technical-documentation">Generating Technical
+Documentation</h3>
+<p>To demonstrate how AIRO assists with producing technical
+documentation as required by Art. 11 and described in Annex IV of the AI
+Act, we utilised SPARQL queries to retrieve the information regarding
+the two use-cases. The (summarised) results of this are shown in Table
+<a href="#tab:technical documentation usecases"
+data-reference-type="ref"
+data-reference="tab:technical documentation usecases">4</a>. Within the
+table, the “N/A” cells represents lack of information in the available
+sources regarding the related concept. For the sake of brevity, the rows
+with “N/A” values for both use-cases are excluded from the table.</p>
+<p>In the future, we plan to demonstrate the application of AIRO in
+modelling multiple, different use-cases where comprehensive information
+about the AI system and its risks is publicly available.</p>
+<div id="tab:technical documentation usecases">
+<table>
+<caption>Retrieving Information for generating technical documentation
+using AIRO</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Anx.IV. Required
+Information</strong></th>
+<th style="text-align: left;"><strong>Concept</strong></th>
+<th style="text-align: left;"><strong>Uber’s Real-time ID
+Check</strong></th>
+<th style="text-align: left;"><strong>VioG<span>é</span>n
+system</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1(a). System’s intended purpose</td>
+<td style="text-align: left;"><code>Purpose</code></td>
+<td style="text-align: left;">biometric_identification_of_drivers
+_to_decide_on_contract_termination</td>
+<td style="text-align: left;">assessing_risk_of_gender_violence
+_recidivism determining_access_to_police _protection</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1(a). System’s developers</td>
+<td style="text-align: left;"><code>AIDeveloper</code></td>
+<td style="text-align: left;">uber</td>
+<td style="text-align: left;">the_spanish_secretary_of_state_for
+_security</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1(d). Forms in which AI system is placed
+on the market or put into service</td>
+<td style="text-align: left;"><code>AISystemForm</code></td>
+<td style="text-align: left;">service</td>
+<td style="text-align: left;">software</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2(e) &amp; 3. Human oversight
+measures</td>
+<td style="text-align: left;"><code>HumanOversightControl</code></td>
+<td style="text-align: left;">manual_review</td>
+<td style="text-align: left;">manual_modification_of_risk_score</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2(g). Discriminatory impacts of the
+system</td>
+<td
+style="text-align: left;"><code>Impact</code><code>ImpactedArea</code></td>
+<td style="text-align: left;">unfair_dismissal_of_bame_drivers
+non-discrimination</td>
+<td style="text-align: left;">lower_risk_scores_assigned
+_to_women_without_children non-discrimination</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3. Expected level of accuracy</td>
+<td style="text-align: left;"><code>AISystemAccuracy</code></td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">high</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3. Foreseeable unintended outcomes of the
+risk . Consequences of the risk</td>
+<td style="text-align: left;"><code>Consequence</code></td>
+<td style="text-align: left;">failed_to_identify_some_bame_ drivers</td>
+<td style="text-align: left;">(1) victim_at_risk_remains _unprotected
+(2) risk_score_is_not_manually _modified_when_necessary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3 &amp; 4. Sources of the risk</td>
+<td style="text-align: left;"><code>RiskSource</code></td>
+<td style="text-align: left;">bias_in_algorithm_training</td>
+<td style="text-align: left;">(1) poor_quality_of_input_data (2)
+N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Risks associated with the AI
+system</td>
+<td style="text-align: left;"><code>Risk</code></td>
+<td
+style="text-align: left;">inaccuracy_in_identifying_bame _drivers</td>
+<td style="text-align: left;">(1) inaccurate_predictions (2)
+automation_bias</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Harmful impacts of the risk</td>
+<td style="text-align: left;"><code>Impact</code></td>
+<td style="text-align: left;">unfair_dismissal_of_bame_drivers</td>
+<td style="text-align: left;">(1&amp;2) victim_being_assaulted</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Severity of impact</td>
+<td style="text-align: left;"><code>Severity</code></td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">critical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Impacted stakeholders</td>
+<td style="text-align: left;"><code>AISubject</code></td>
+<td style="text-align: left;">uber_driver_of_bame_background</td>
+<td style="text-align: left;">victim_of_gender_violence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4. Impacted area</td>
+<td style="text-align: left;"><code>AreaOfImpact</code></td>
+<td style="text-align: left;">non-discrimination</td>
+<td style="text-align: left;">safety_of_victim</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4. Risk management measures applied</td>
+<td style="text-align: left;"><code>Control</code></td>
+<td style="text-align: left;">manual_review</td>
+<td style="text-align: left;">(1) manual_modification_of_risk _score (2)
+N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:technical documentation usecases"
+label="tab:technical documentation usecases"></span></p>
+<h2 id="conclusion-further-work">Conclusion &amp; Further Work</h2>
+<p>In this paper, we presented AIRO - an ontology for expressing risk of
+harm associated with AI systems based on the proposed EU AI Act and ISO
+31000 family of standards. AIRO assists with expressing risk of AI
+systems as per the requirements of the AI Act, in a machine-readable,
+formal, and interoperable manner through use of semantic web
+technologies. We demonstrated the usefulness of AIRO in determination of
+high-risk AI systems and for generating the technical documentation
+based on use of SPARQL and SHACL by modelling two real-world use-cases
+from the AIAAIC repository.</p>
+<h4 class="unnumbered" id="benefit-to-stakeholders">Benefit to
+Stakeholders</h4>
+<p>AIRO assists organisations in maintaining risk information in a
+machine-readable and queryable forms. This enables automating the
+retrieval of information related to AI systems and their risks, which is
+necessary to create and maintain technical documentation as required by
+Art. 11. Furthermore, by assigning timestamp values to the
+machine-readable risk information expressed by AIRO, organisations can
+keep track of changes of risks, which is useful for implementation of
+the post-market monitoring system requirements referred to in Art. 61.
+Utilising AIRO for modelling AI incidents helps with classification,
+collation, and comparison of AI risks and impacts over time. This can be
+helpful in addressing the gaps exist between the ongoing AI regulation
+and standardisation activities and real-world AI incidents.</p>
+<h4 class="unnumbered" id="further-work">Further Work</h4>
+<p>In the future, the design of AIRO and the SHACL shapes represented
+for determination of high-risk AI systems will be revisited in the light
+of the amendments to the proposed AI Act. Our future investigations aim
+to extend AIRO to (i) represent known categories of AI incidents through
+their identification within incident reports, such as from the AIAAIC
+repository, (ii) provide the information required for creating
+incorporated documents within the technical documentation such as system
+architecture, datasheet, and the EU declaration of the conformity, (iii)
+express fundamental risk management concepts from the ISO 31000 family,
+which are essential for modelling AI risk and impact assessments, and
+(iv) express provenance of AI risk management activities, which is
+helpful in the AI Act conformity assessment process and implementation
+of post-market monitoring systems, by reusing the PROV Ontology <a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>.</p>
+<p>We plan to demonstrate application of AIRO in sharing risk
+information between entities in the AI governance and value chain. Given
+the similarity and overlap between the AI Act’s risk and impact
+assessments with the GDPR’s Data Protection Impact Assessments (DPIA),
+we aim to investigate how the use of AIRO can provide a common point for
+the information management and investigations regarding risks and
+impacts associated with use of AI.</p>
+<h4 class="unnumbered" id="acknowledgements">Acknowledgements</h4>
+<p>This project has received funding from the European Union’s Horizon
+2020 research and innovation programme under the Marie Skłodowska-Curie
+grant agreement No 813497, as part of the ADAPT SFI Centre for Digital
+Media Technology is funded by Science Foundation Ireland through the SFI
+Research Centres Programme and is co-funded under the European Regional
+Development Fund (ERDF) through Grant#13/RC/2106_P2. Harshvardhan J.
+Pandit has received funding under the Irish Research Council Government
+of Ireland Postdoctoral Fellowship Grant#GOIPD/2020/790.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-aiid" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“AI incident database (AIID).”</span>
+[Online]. Available: <a
+href="https://incidentdatabase.ai">https://incidentdatabase.ai</a></div>
+</div>
+<div id="ref-aiaaic" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline"><span>“AI, algorithmic and automation incident
+and controversy (AIAAIC) repository.”</span> [Online]. Available: <a
+href="https://www.aiaaic.org/aiaaic-repository">https://www.aiaaic.org/aiaaic-repository</a></div>
+</div>
+<div id="ref-iso31000" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline"><span>“ISO 31000 risk management —
+guidelines.”</span> International Standardization Organization, 2018.
+</div>
+</div>
+<div id="ref-hlegtai" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">European Commission and Directorate-General for
+Communications Networks, Content and Technology, <em>Ethics guidelines
+for trustworthy AI</em>. Publications Office, 2019 [Online]. Available:
+<a
+href="https://data.europa.eu/doi/10.2759/346720">https://data.europa.eu/doi/10.2759/346720</a></div>
+</div>
+<div id="ref-iso23894" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><span>“ISO/IEC DIS 23894 information technology
+— artificial intelligence — risk management.”</span> [Online].
+Available: <a
+href="https://www.iso.org/standard/77304.html">https://www.iso.org/standard/77304.html</a></div>
+</div>
+<div id="ref-aiactproposal" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div
+class="csl-right-inline"><span>“Artificial intelligence act: Proposal
+for a regulation of the european parliament and the council laying down
+harmonised rules on artificial intelligence (artificial intelligence
+act) and amending certain union legislative acts.”</span> 2021 [Online].
+Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELLAR:e0649735-a372-11eb-9585-01aa75ed71a1">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELLAR:e0649735-a372-11eb-9585-01aa75ed71a1</a></div>
+</div>
+<div id="ref-iso31073" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div
+class="csl-right-inline"><span>“ISO 31073:2022 risk management —
+vocabulary.”</span> International Standardization Organization, 2022.
+</div>
+</div>
+<div id="ref-iso22989" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div
+class="csl-right-inline"><span>“ISO/IEC FDIS 22989 information
+technology — artificial intelligence — artificial intelligence concepts
+and terminology.”</span> [Online]. Available: <a
+href="https://www.iso.org/standard/74296.html">https://www.iso.org/standard/74296.html</a></div>
+</div>
+<div id="ref-iso/iec24368" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline"><span>“ISO/IEC TR 24368 information technology
+— artificial intelligence — overview of ethical and societal
+concerns.”</span> [Online]. Available: <a
+href="https://www.iso.org/standard/78507.html">https://www.iso.org/standard/78507.html</a></div>
+</div>
+<div id="ref-iso/iec24028" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div
+class="csl-right-inline"><span>“ISO/IEC TR 24028:2020 information
+technology — artificial intelligence — overview of trustworthiness in
+artificial intelligence.”</span> International Standardization
+Organization/International Electrotechnical Commission, 2020 [Online].
+Available: <a
+href="https://www.iso.org/standard/77608.html">https://www.iso.org/standard/77608.html</a></div>
+</div>
+<div id="ref-iso/iec24027" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div
+class="csl-right-inline"><span>“ISO/IEC TR 24027:2021 information
+technology — artificial intelligence (AI) — bias in AI systems and AI
+aided decision making.”</span> International Standardization
+Organization/International Electrotechnical Commission, 2021 [Online].
+Available: <a
+href="https://www.iso.org/standard/77607.html">https://www.iso.org/standard/77607.html</a></div>
+</div>
+<div id="ref-steimers2022sourcesofriskofAIsystems" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A.
+Steimers and M. Schneider, <span>“Sources of risk of AI systems,”</span>
+<em>International Journal of Environmental Research and Public
+Health</em>, vol. 19, no. 6, p. 3641, 2022. </div>
+</div>
+<div id="ref-nistai" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div
+class="csl-right-inline"><span>“AI risk management framework: Initial
+draft.”</span> 2022 [Online]. Available: <a
+href="https://www.nist.gov/system/files/documents/2022/03/17/AI-RMF-1stdraft.pdf">https://www.nist.gov/system/files/documents/2022/03/17/AI-RMF-1stdraft.pdf</a></div>
+</div>
+<div id="ref-andrade2021aiaopenloop" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">N.
+N. G. de Andrade and V. Kontschieder, <span>“AI impact assessment: A
+policy prototyping experiment,”</span> <em>Available at SSRN
+3772500</em>, 2021. </div>
+</div>
+<div id="ref-roselli2019managing" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">D.
+Roselli, J. Matthews, and N. Talagala, <span>“Managing bias in
+AI,”</span> in <em>Companion proceedings of the 2019 world wide web
+conference</em>, 2019, pp. 539–544. </div>
+</div>
+<div id="ref-sales2018common" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T.
+P. Sales, F. Baião, G. Guizzardi, J. P. A. Almeida, N. Guarino, and J.
+Mylopoulos, <span>“The common ontology of value and risk,”</span> in
+<em>International conference on conceptual modeling</em>, 2018, pp.
+121–135. </div>
+</div>
+<div id="ref-agrawal2016towards" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">V.
+Agrawal, <span>“Towards the ontology of ISO/IEC 27005: 2011 risk
+management standard.”</span> in <em>HAISA</em>, 2016, pp. 101–111.
+</div>
+</div>
+<div id="ref-masso2022softwarerisk" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">J.
+Masso, F. Garcı́a, C. Pardo, F. J. Pino, and M. Piattini, <span>“A common
+terminology for software risk management,”</span> <em>ACM Transactions
+on Software Engineering and Methodology</em>, 2022. </div>
+</div>
+<div id="ref-haynes2020understanding" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">D.
+Haynes, <span>“Understanding personal online risk to individuals via
+ontology development,”</span> in <em>Knowledge organization at the
+interface</em>, 2020, pp. 171–180. </div>
+</div>
+<div id="ref-mckenna2021ark" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L.
+McKenna, J. Liang, N. Duda, N. McDonald, and R. Brennan,
+<span>“Ark-virus: An ark platform extension for mindful risk governance
+of personal protective equipment use in healthcare,”</span> in
+<em>Companion proceedings of the web conference 2021</em>, 2021, pp.
+698–700. </div>
+</div>
+<div id="ref-noy2001ontology" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">N.
+F. Noy, D. L. McGuinness, <em>et al.</em>, <span>“Ontology development
+101: A guide to creating your first ontology.”</span> 2001. </div>
+</div>
+<div id="ref-poveda2022lot" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">M.
+Poveda-Villalón, A. Fernández-Izquierdo, M. Fernández-López, and R.
+Garcı́a-Castro, <span>“LOT: An industrial oriented ontology engineering
+framework,”</span> <em>Engineering Applications of Artificial
+Intelligence</em>, vol. 111, p. 104755, 2022. </div>
+</div>
+<div id="ref-poveda2014oops" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">M.
+Poveda-Villalón, A. Gómez-Pérez, and M. C. Suárez-Figueroa, <span>“<span
+class="nocase">OOPS! (OntOlogy Pitfall Scanner!): An On-line Tool for
+Ontology Evaluation</span>,”</span> <em>International Journal on
+Semantic Web and Information Systems (IJSWIS)</em>, vol. 10, no. 2, pp.
+7–34, 2014. </div>
+</div>
+<div id="ref-garijo2017widoco" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">D.
+Garijo, <span>“WIDOCO: A wizard for documenting ontologies,”</span> in
+<em>International semantic web conference</em>, 2017, pp. 94–102. </div>
+</div>
+<div id="ref-veale2021demystifying" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">M.
+Veale and F. Z. Borgesius, <span>“Demystifying the draft EU artificial
+intelligence act—analysing the good, the bad, and the unclear elements
+of the proposed approach,”</span> <em>Computer Law Review
+International</em>, vol. 22, no. 4, pp. 97–112, 2021. </div>
+</div>
+<div id="ref-alvarez2018viogen" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">J.
+L. G. Álvarez, J. J. L. Ossorio, C. Urruela, and M. R. Dı́az,
+<span>“Integral monitoring system in cases of gender violence
+VioG<span>é</span>n system,”</span> <em>Behavior &amp; Law Journal</em>,
+vol. 4, no. 1, 2018. </div>
+</div>
+<div id="ref-eticas2022viogen" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[27] </div><div
+class="csl-right-inline"><span>“External audit of the
+VioG<span>é</span>n system.”</span> Eticas Foundation, 2022 [Online].
+Available: <a
+href="https://eticasfoundation.org/wp-content/uploads/2022/03/ETICAS-FND-The-External-Audit-of-the-VioGen-System.pdf">https://eticasfoundation.org/wp-content/uploads/2022/03/ETICAS-FND-The-External-Audit-of-the-VioGen-System.pdf</a></div>
+</div>
+<div id="ref-pandit2019test" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">H.
+J. Pandit, D. O’Sullivan, and D. Lewis, <span>“Test-driven approach
+towards gdpr compliance,”</span> in <em>International conference on
+semantic systems</em>, 2019, pp. 19–33. </div>
+</div>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a
+href="https://www.w3.org/TR/swbp-vocab-pub/"
+class="uri">https://www.w3.org/TR/swbp-vocab-pub/</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a
+href="https://github.com/DelaramGlp/AIRO/"
+class="uri">https://github.com/DelaramGlp/AIRO/</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a
+href="https://www.aiaaic.org/aiaaic-repository/ai-and-algorithmic-incidents-and-controversies/uber-real-time-id-check-racial-bias#h.8t0z8j1p0rj0"
+class="uri">https://www.aiaaic.org/aiaaic-repository/ai-and-algorithmic-incidents-and-controversies/uber-real-time-id-check-racial-bias#h.8t0z8j1p0rj0</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a
+href="https://www.aiaaic.org/aiaaic-repository/ai-and-algorithmic-incidents-and-controversies/viog%C3%A9n-gender-violence-system#h.hh0s4mc5o6ec"
+class="uri">https://www.aiaaic.org/aiaaic-repository/ai-and-algorithmic-incidents-and-controversies/viog%C3%A9n-gender-violence-system#h.hh0s4mc5o6ec</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a
+href="https://www.w3.org/TR/prov-o/"
+class="uri">https://www.w3.org/TR/prov-o/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
