@@ -9919,13 +9919,17 @@
         schema:Book ;
     hpcom:book_id "691"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Rebecca Roanhorse"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Black Sun"@en ;
     schema:isPartOf list:cork ;
+    schema:review """There was nothing here to hook me. The world-building was nice, but there was no hook to keep me interested. Everything felt meh, and rushed. While cliffhanger endings can be great, this book turned it into a frustrating experience of reading parts of a book instead of feeling like a complete novel."""@en ;
     schema:url "https://harshp.com/hobbies/books/691"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/692> a hpcom:RenderedItem, hpcom:BookReading,
@@ -9954,13 +9958,17 @@
         schema:Book ;
     hpcom:book_id "694"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Long Way to a Small, Angry Planet"@en ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:cork, list:scifi, list:aliens ;
+    schema:review """A space opera that feels like an incredible episodic season. Eager to read the other two books."""@en ;
     schema:url "https://harshp.com/hobbies/books/694"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/695> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11111,7 +11119,7 @@
         schema:Book ;
     hpcom:book_id "776"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook, hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
@@ -11898,3 +11906,45 @@
     schema:name "Short Fiction"@en ;
     schema:review """A collection of short stories by the author from a diverse and prolific career. Overshadowed by some of the noteworthy novels read before."""@en ;
     schema:url "https://harshp.com/hobbies/books/829"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/830> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "830"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "A Closed and Common Orbit"@en ;
+    schema:url "https://harshp.com/hobbies/books/830"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/831> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "831"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Record of a Spaceborn Few"@en ;
+    schema:url "https://harshp.com/hobbies/books/831"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/832> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "832"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "The Galaxy, and the Ground Within"@en ;
+    schema:url "https://harshp.com/hobbies/books/832"^^xsd:anyURI .

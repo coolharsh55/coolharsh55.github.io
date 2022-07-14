@@ -12733,13 +12733,17 @@ book:691 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "691"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Rebecca Roanhorse"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:isPartOf list:cork ;
     schema:name "Black Sun"@en ;
+    schema:review "There was nothing here to hook me. The world-building was nice, but there was no hook to keep me interested. Everything felt meh, and rushed. While cliffhanger endings can be great, this book turned it into a frustrating experience of reading parts of a book instead of feeling like a complete novel."@en ;
     schema:url "https://harshp.com/hobbies/books/691"^^xsd:anyURI .
 
 book:692 a hpcom:BookReading,
@@ -12771,13 +12775,19 @@ book:694 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "694"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:aliens,
+        list:cork,
+        list:scifi ;
     schema:name "The Long Way to a Small, Angry Planet"@en ;
+    schema:review "A space opera that feels like an incredible episodic season. Eager to read the other two books."@en ;
     schema:url "https://harshp.com/hobbies/books/694"^^xsd:anyURI .
 
 book:695 a hpcom:BookReading,
@@ -14002,7 +14012,7 @@ book:776 a hpcom:BookReading,
     hpcom:book_id "776"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook,
         hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -14838,6 +14848,39 @@ book:83 a hpcom:BookReading,
     schema:isbn "9780142437346"^^xsd:string ;
     schema:name "A Portrait of the Artist as a Young Man"@en ;
     schema:url "https://harshp.com/hobbies/books/83"^^xsd:anyURI .
+
+book:830 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "830"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "A Closed and Common Orbit"@en ;
+    schema:url "https://harshp.com/hobbies/books/830"^^xsd:anyURI .
+
+book:831 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "831"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Record of a Spaceborn Few"@en ;
+    schema:url "https://harshp.com/hobbies/books/831"^^xsd:anyURI .
+
+book:832 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "832"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Becky Chambers"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Galaxy, and the Ground Within"@en ;
+    schema:url "https://harshp.com/hobbies/books/832"^^xsd:anyURI .
 
 book:84 a hpcom:BookReading,
         hpcom:RenderedItem,
@@ -22822,11 +22865,6 @@ hptag:script a hpcom:RenderedItem,
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
 
-list:aliens a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "aliens"@en ;
-    schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
-
 list:thriller a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "thriller"@en ;
@@ -22845,6 +22883,11 @@ hptag:video-games a hpcom:RenderedItem,
 <https://chrdebru.github.io/> a schema:Person ;
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
+
+list:aliens a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "aliens"@en ;
+    schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
 
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23114,17 +23157,17 @@ hpcom:ReviewingEvent a owl:Class ;
     rdfs:label "Reivewing Event" ;
     rdfs:comment "Represents peer-review at some venue"@en .
 
+hptag:semantic-web a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "semantic-web" ;
+    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
+
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙁bad (2/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
-
-hptag:semantic-web a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "semantic-web" ;
-    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
