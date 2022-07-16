@@ -1917,6 +1917,47 @@ hpcom:view_template a rdf:Property ;
     schema:name "dpv-x 2021-08-15"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-x-2021-08-15"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/standards-iso> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/standards-iso.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:ISO,
+        hptag:semantic-web,
+        hptag:standard ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-07-16T13:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-07-16T13:00:00"^^xsd:dateTime ;
+    schema:description "Proposal for linking Standards to DPV concepts and using them as TOMs"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Add ISO standards to tech-org measures"@en ;
+    schema:subjectOf [ a hpcom:Link ;
+            schema:name "Data Privacy Vocabulary (DPV)" ;
+            schema:url "https://www.w3.org/ns/dpv" ] ;
+    schema:url "https://harshp.com/dev/dpv/standards-iso"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv/updating-consent-concepts> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/updating-consent-concepts.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:consent,
+        hptag:semantic-web ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-07-15T23:55:00"^^xsd:dateTime ;
+    schema:datePublished "2022-07-15T23:55:00"^^xsd:dateTime ;
+    schema:description "Fixing issues, and enabling specific concepts in different jurisdictions"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Proposal for updating Consent concepts"@en ;
+    schema:subjectOf [ a hpcom:Link ;
+            schema:name "Data Privacy Vocabulary (DPV)" ;
+            schema:url "https://www.w3.org/ns/dpv" ] ;
+    schema:url "https://harshp.com/dev/dpv/updating-consent-concepts"^^xsd:anyURI .
+
 <https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -21798,6 +21839,11 @@ hptag:speaking a hpcom:RenderedItem,
     schema:name "speaking" ;
     schema:url "https://harshp.com/tags/speaking"^^xsd:anyURI .
 
+hptag:standard a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "standard"@en ;
+    schema:url "https://harshp.com/tags/standard"^^xsd:anyURI .
+
 hptag:students a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "students" ;
@@ -22303,11 +22349,6 @@ hptag:CCPA a hpcom:RenderedItem,
     schema:name "CCPA"@en ;
     schema:url "https://harshp.com/tags/CCPA"^^xsd:anyURI .
 
-hptag:ISO a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ISO"@en ;
-    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
-
 hptag:Java a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Java"@en ;
@@ -22510,6 +22551,11 @@ hptag:GPC a hpcom:RenderedItem,
     schema:name "GPC"@en ;
     schema:url "https://harshp.com/tags/GPC"^^xsd:anyURI .
 
+hptag:ISO a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ISO"@en ;
+    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
+
 hptag:ROPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Register of Processing Activities"@en ;
@@ -22643,13 +22689,6 @@ hpcom:Rating1 a hpcom:Rating,
     schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -22757,11 +22796,6 @@ hpcom:Rating a owl:Class ;
     schema:name "research projects"@en ;
     schema:url "https://harshp.com/research/projects"^^xsd:anyURI .
 
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
-
 hptag:ethics a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ethics" ;
@@ -22786,6 +22820,13 @@ hptag:weather a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 list:humour a hpcom:RenderedItem,
         book:lists ;
@@ -22829,10 +22870,10 @@ hptag:travel a hpcom:RenderedItem,
     schema:name "Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
 
-hptag:DPV a hpcom:RenderedItem,
+hptag:DPVCG a hpcom:RenderedItem,
         hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 hptag:conference a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22887,6 +22928,11 @@ list:aliens a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "aliens"@en ;
     schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
+
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23099,15 +23145,15 @@ list:books-changed-life a hpcom:RenderedItem,
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
 
-hptag:consent a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "consent" ;
-    schema:url "https://harshp.com/tags/consent"^^xsd:anyURI .
-
 hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
+
+hptag:consent a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "consent" ;
+    schema:url "https://harshp.com/tags/consent"^^xsd:anyURI .
 
 hptag:emotional a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23156,17 +23202,17 @@ hpcom:ReviewingEvent a owl:Class ;
     rdfs:label "Reivewing Event" ;
     rdfs:comment "Represents peer-review at some venue"@en .
 
-hptag:semantic-web a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "semantic-web" ;
-    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
-
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙁bad (2/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
+
+hptag:semantic-web a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "semantic-web" ;
+    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;

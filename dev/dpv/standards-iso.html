@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Add ISO standards to tech-org measures</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Add ISO standards to tech-org measures">
+    <meta name="schema:description" content="Proposal for linking Standards to DPV concepts and using them as TOMs">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,ISO,semantic-web,standard,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/standards-iso">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/standards-iso">
+    <meta property="og:title" content="Add ISO standards to tech-org measures">
+    <meta property="og:description" content="Proposal for linking Standards to DPV concepts and using them as TOMs">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/standards-iso">
+        <h1 property="schema:name schema:headline">Add ISO standards to tech-org measures</h1>
+        <div id="description">
+            <span property='schema:description'>Proposal for linking Standards to DPV concepts and using them as TOMs</span><br/>
+            published: <time property="schema:datePublished" datetime="2022-07-16T13:00:00">2022-07-16T13:00:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            is about: <a href="https://www.w3.org/ns/dpv" property="schema:about"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/ISO" property="schema:about" resource="https://harshp.com/tags/ISO" typeof="rdfs:Resource"><span property="rdfs:label">ISO</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/standard" property="schema:about" resource="https://harshp.com/tags/standard" typeof="rdfs:Resource"><span property="rdfs:label">standard</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <blockquote>  
+  <p>Sent to DPVCG mailing list: <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html">https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html</a></p>
+</blockquote>
+
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8e37eb4">1. Summary</a></li>
+<li><a href="#org1577aef">2. Reorganising DPV concepts for Guidelines / Standards</a></li>
+<li><a href="#orgb49f510">3. Declaring ISO standards using DCT and DPV</a></li>
+<li><a href="#orgdf1ab74">4. Examples</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li>example of some standards related to specific concepts</li>
+<li><a href="https://github.com/w3c/dpv/issues/26">https://github.com/w3c/dpv/issues/26</a></li>
+</ul>
+<div id="outline-container-org8e37eb4" class="outline-2">
+<h2 id="org8e37eb4"><span class="section-number-2">1.</span> Summary</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><code>GuidelinesPrinciples</code> (rename)
+<ul class="org-ul">
+<li><code>Guideline</code> (new)
+<ul class="org-ul">
+<li><code>DesignGuidelines</code> (rename)</li>
+<li><code>CodeOfConduct</code> (change parent)</li>
+</ul></li>
+<li><code>Principle</code> (new)
+<ul class="org-ul">
+<li><code>PrivacyByDesign</code> (change parent)</li>
+<li><code>PrivacyByDefault</code></li>
+</ul></li>
+</ul></li>
+<li><code>Standard</code> (new, parent: <code>OrganisationalMeasure</code>)
+<ul class="org-ul">
+<li><code>ManagementStandard</code> (new)</li>
+<li><code>TechnicalStandard</code> (new, parent+: <code>TechnicalMeasure</code>)</li>
+</ul></li>
+<li>DPV-Standards as separate extension for providing standards and guidelines
+associated with DPV concepts</li>
+<li>Reusing DCterms concepts for annotation of standard and its topics</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1577aef" class="outline-2">
+<h2 id="org1577aef"><span class="section-number-2">2.</span> Reorganising DPV concepts for Guidelines / Standards</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><code>dpv:GuidelinesPrinciple</code> represents abstract guidelines and principles
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Harmonise by renaming it to <code>GuidelinesPrinciples</code> (both plural)</li>
+<li>Its subtypes include <code>PrivacyByDefault</code> but not <code>PrivacyByDesign</code></li>
+<li class="off"><code>[&#xa0;]</code> Move <code>PrivacyByDesign</code> to be subtype of <code>GuidelinesPrinciple</code></li>
+<li>Subtype also includes <code>DesignStandard</code> which is defined as guidelines for
+design rather than being a standard</li>
+<li class="off"><code>[&#xa0;]</code> Rename this to <code>DesignGuidelines</code> to not confuse this with actual
+standards and standardisation outputs</li>
+<li class="off"><code>[&#xa0;]</code> Create two new classes for <code>Guidelines</code> and <code>Principles</code>.</li>
+<li>The distinction is necessary as principles (e.g. GDPR Art-5) relate to
+abstract aims whereas guidelines refer to a suggested method of achieving or
+implementing something. The other subtypes should be moved into these as
+appropriate, e.g. <code>PrivacyByDefault</code> is a <code>Principle</code></li>
+<li><code>dpv:CodeOfConduct</code> already exists</li>
+<li class="off"><code>[&#xa0;]</code> Move <code>CodeOfConduct</code> under <code>Guideline</code></li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> <code>dpv:Standard</code> is the class for standards
+<ul class="org-ul">
+<li><code>Standard</code> will be under <code>OrganisationalMeasure</code> since it is something that is
+inherently expected to be interpreted and applied by humans regardless of
+whether it is machine- or people-oriented in nature. For example, management
+standards are organisational measures, but encryption security is both a
+technical and organisational measure since the 'controls' or specifics of
+that standard need to be interpreted for the use-case and applied by whoever
+is developing/managing the infrastructures.</li>
+<li class="off"><code>[&#xa0;]</code> <code>ManagementStandard</code> and <code>TechnicalStandard</code> as two subtypes of <code>Standard</code></li>
+<li>The management standard relate to organisational processes in the purest
+sense. The technical standard relate to details of technical
+implementations, and are a subtype of <code>TechnicalMeasure</code> in addition to the
+organisational one to reflect this.</li>
+</ul></li>
+<li>The application of standard is thus possible through the same means as
+technical and organisational measures, i.e. <code>hasTechnicalOrganisationalMeasure</code></li>
+<li>Note that DCT has the class <code>Standard</code> which can be applied as is, but DPV
+defines its own concept to fit it within the organisational measures
+hierarchy. When alignments with other vocabularies are defined, <code>dpv:Standard</code>
+will be expressed as <code>skos:exactMatch dct:Standard</code> and <code>rdfs:subClassOf
+  dct:Standard</code> (in different semantics).</li>
+<li>Implementing a standard vs Conforming to a standard
+<ul class="org-ul">
+<li>implementing a standard could mean interpreting it and applying its
+guidelines and principles</li>
+<li>Conforming to a standard means following the specified requirements (whether
+they be concrete or abstract) in a manner that the satisfaction of those
+requirements can be checked or audited. As the WCAG puts it, "Conformance to
+a standard means that you meet or satisfy the 'requirements' of the
+standard".</li>
+<li>To distinguish between these, merely saying something has an organisational
+measure means they follow the specifics of that measure, but it does not say
+anything about the conformance.</li>
+<li>For conformance, the concept of <code>Certification</code> is provided, which can be
+through an external audit or self-certification, depending on the specifics
+of the domain and application. For example, a Controller who wishes to
+implement a Standard can use it as an organisational measure. The same
+Controller when dealing with a Processor may be similarly satisfied that the
+Processor implements a Standard (as a tech/org measure) OR it can
+specifically see that the Processor has been certified for that standard. In
+this case, the processor would state that it is implementing a tech/org
+measure that is both a <code>Standard</code> and a <code>Certification</code> or express them in a
+different manner as applicable (e.g. details of auditing process or body).</li>
+<li>Note that attempts to simplify this further can lead to surprising avenues
+of complexities, such as requirements to specify Certifications against the
+entire entity (as opposed to a process), including the auditing body as part
+of information, temporal coverage, jurisdictional coverage, etc. Pending
+further exploration of these, we should limit the initial concepts to a
+simpler design and later expand them as necessary for these.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb49f510" class="outline-2">
+<h2 id="orgb49f510"><span class="section-number-2">3.</span> Declaring ISO standards using DCT and DPV</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>To provide an easy way to express some ISO standard is used, what it is about,
+who published it, when, etc. a separate extension is proposed.</li>
+<li class="off"><code>[&#xa0;]</code> <code>dpv/standards</code> as an extension providing a list of standards and guidelines</li>
+<li>The intention of this is to provide an easy way to specify some standard, its
+topics, and link them to DPV concepts.</li>
+<li><code>dpv:Standard</code> or its appropriate subtype (<code>Management</code> or <code>Technical</code>) as the type</li>
+<li>title and description
+<ul class="org-ul">
+<li><code>dct:title</code> for name of the standard</li>
+<li><code>dct:alternative</code> for an alternative name (e.g. common reference)</li>
+<li><code>dct:identifier</code> for an unique reference to the standard</li>
+<li><code>dct:description</code> for a short summary describing the standard</li>
+</ul></li>
+<li>publication
+<ul class="org-ul">
+<li><code>dct:publisher</code> for specifying the body who publishes the standard</li>
+<li><code>dct:issued</code> for when the standard was published or formally issued</li>
+</ul></li>
+<li>relations
+<ul class="org-ul">
+<li><code>dct:isReplacedBy</code> for some other standard replacing this</li>
+<li><code>dct:replaces</code> for indicating this standard replaces another</li>
+<li><code>dct:hasVersion</code> to indicate another version of the standard (note that a
+second version does not necessarily replace the first)</li>
+<li><code>dct:isVersionOf</code> to specify this standard is a version of another</li>
+<li><code>dct:requires</code> to specify this standard requires another</li>
+<li><code>dct:isRequiredBy</code> to specify this standard is required by another</li>
+</ul></li>
+<li>topics / subjects
+<ul class="org-ul">
+<li><code>dct:subject</code> to specify the topics or subjects of that standard i.e. what the
+standard is about (note: this only refers to the primary topics). This can
+be a DPV Tech/Org concept, or a Processing operation, or something else.</li>
+<li><code>dct:coverage</code> to specify what topics the standard 'covers' or includes,
+i.e. what things does the standard talk about other than primary
+topics. This can be a DPV Tech/Org concept, or a Processing operation, or
+something else.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf1ab74" class="outline-2">
+<h2 id="orgdf1ab74"><span class="section-number-2">4.</span> Examples</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+standard:ISO-IEC-27018-2019 a dpv:Standard ;
+    dct:title "ISO/IEC 27018:2019 Information technology ...
+	      — Security techniques — Code of practice for protection of
+	      personally identifiable information (PII) in public clouds
+	      acting as PII processors"@en ;
+    dct:alternative "ISO/IEC 27108:2019" ;
+    dct:identifier "27018:2019" ;
+    dct:description "This document establishes ..."@en ;
+    dct:published standard:ISO, standard:IEC, standard:ISO-IEC-JTC1-SC27 ;
+    dct:issued "2019-01" ;
+    dct:replaces standard:ISO-IEC-27018-2014 ;
+    dct:isVersionOf standard:ISO-IEC-27018-2014 ;
+    dct:requires standard:ISO-IEC-29100, standard:ISO-IEC-27002 ;
+    dct:subject dpv:PersonalData, dpv:DataProcessor, dpv-tech:CloudInfrastructure ;
+    dct:coverage dpv:Policy, dpv:EnforceSecurity, dpv:EnforceAccessControl,
+		 dpv:CryptographicSecurity, dpv:IncidentManagement,
+		 dpv:ComplianceManagement .
+    # note: some of these concepts are not in DPV, we should add them!
+</pre>
+
+<p>
+In the DPV documentation, this can be linked to as suggesting there are
+standards related to a concept. For example, as:
+</p>
+<pre class="example">
+# HTML documentation of dpv:DataProcessor
+Topic of standards: "ISO/IEC 27018:2019" with link to standard:ISO-IEC-27018-2019
+Topic of guidelines: ... (e.g. EDPB guideline)
+
+# HTML documentation of dpv:EnforceSecurity
+Mentioned in standards: "ISO/IEC 27018:2019" with link to standard:ISO-IEC-27018-2019
+Mentioned in standards: ... (e.g. EDPB guideline)
+</pre>
+</div>
+</div>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

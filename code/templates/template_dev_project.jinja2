@@ -10,7 +10,7 @@
             <small><time datetime="{{ item.schema_datePublished }}">{{ item.schema_datePublished }}</time></small>&nbsp;
             <small>{% for tag in item.hpcom_tag|sort(attribute='iri') %}<a class="tag" href="{{tag.iri}}">{{tag}};</a>{% endfor %}</small> <br/>
             {% if item.schema_subjectOf %}
-            <br/><small>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></small>
+            <small>is about: <a href="{{item.schema_subjectOf.schema_url}}">{{item.schema_subjectOf.schema_name}}</a></small><br/>
             {% endif %}
             <small>{{ item.schema_description }}</small>
         </li>

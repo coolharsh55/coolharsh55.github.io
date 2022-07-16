@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Proposal for updating Consent concepts</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Proposal for updating Consent concepts">
+    <meta name="schema:description" content="Fixing issues, and enabling specific concepts in different jurisdictions">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="consent,DPV,DPVCG,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/updating-consent-concepts">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/updating-consent-concepts">
+    <meta property="og:title" content="Proposal for updating Consent concepts">
+    <meta property="og:description" content="Fixing issues, and enabling specific concepts in different jurisdictions">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/updating-consent-concepts">
+        <h1 property="schema:name schema:headline">Proposal for updating Consent concepts</h1>
+        <div id="description">
+            <span property='schema:description'>Fixing issues, and enabling specific concepts in different jurisdictions</span><br/>
+            published: <time property="schema:datePublished" datetime="2022-07-15T23:55:00">2022-07-15T23:55:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            is about: <a href="https://www.w3.org/ns/dpv" property="schema:about"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/consent" property="schema:about" resource="https://harshp.com/tags/consent" typeof="rdfs:Resource"><span property="rdfs:label">consent</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <blockquote>  
+  <p>Sent to DPVCG mailing list: <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html">https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html</a></p>
+</blockquote>
+
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5b9dffd">1. Summary</a></li>
+<li><a href="#org8ddf4c7">2. Examples</a></li>
+<li><a href="#orgb3e7a03">3. Issues and Suggestions for Consent concepts in DPV</a></li>
+<li><a href="#orgd8727ff">4. Sources</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5b9dffd" class="outline-2">
+<h2 id="org5b9dffd"><span class="section-number-2">1.</span> Summary</h2>
+<div class="outline-text-2" id="text-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Information</th>
+<th scope="col" class="org-left">currently in DPV</th>
+<th scope="col" class="org-left">proposed change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Consent Information</td>
+<td class="org-left">Consent</td>
+<td class="org-left">ConsentRecord</td>
+</tr>
+
+<tr>
+<td class="org-left">Notice</td>
+<td class="org-left">hasConsentNotice</td>
+<td class="org-left">hasNotice</td>
+</tr>
+
+<tr>
+<td class="org-left">Duration</td>
+<td class="org-left">hasExpiry</td>
+<td class="org-left">hasDuration</td>
+</tr>
+
+<tr>
+<td class="org-left">Refresh/Reaffirm</td>
+<td class="org-left">N/A</td>
+<td class="org-left">hasReaffirmationPeriod</td>
+</tr>
+
+<tr>
+<td class="org-left">Given by Person</td>
+<td class="org-left">hasProvisionBy</td>
+<td class="org-left">isIndicatedBy</td>
+</tr>
+
+<tr>
+<td class="org-left">Given how?</td>
+<td class="org-left">hasProvisionMethod</td>
+<td class="org-left">hasIndicationMethod</td>
+</tr>
+
+<tr>
+<td class="org-left">Given by someone else?</td>
+<td class="org-left">hasProvisionByJustification</td>
+<td class="org-left">hasRelationWithDataSubject</td>
+</tr>
+
+<tr>
+<td class="org-left">Given when? Time?</td>
+<td class="org-left">hasProvisionTime</td>
+<td class="org-left">isIndicatedAtTime</td>
+</tr>
+
+<tr>
+<td class="org-left">Withdrawal by Person</td>
+<td class="org-left">hasWithdrawalBy</td>
+<td class="org-left">isIndicatedBy</td>
+</tr>
+
+<tr>
+<td class="org-left">Withdrawal how?</td>
+<td class="org-left">hasWithdrawalMethod</td>
+<td class="org-left">hasIndicationMethod</td>
+</tr>
+
+<tr>
+<td class="org-left">Withdrawal by someone else?</td>
+<td class="org-left">hasWithdrawalJustification</td>
+<td class="org-left">hasRelationWithDatasubject</td>
+</tr>
+
+<tr>
+<td class="org-left">Withdrawal when? Time?</td>
+<td class="org-left">hasWithdrawalTime</td>
+<td class="org-left">isIndicatedAtTime</td>
+</tr>
+
+<tr>
+<td class="org-left">Status? Given, Refused, etc.</td>
+<td class="org-left">N/A</td>
+<td class="org-left">hasConsentStatus</td>
+</tr>
+
+<tr>
+<td class="org-left">Consent condition? Explicit?</td>
+<td class="org-left">isExplicit</td>
+<td class="org-left">hasConsentExpression</td>
+</tr>
+
+<tr>
+<td class="org-left">Consent condition? Not-explciit?</td>
+<td class="org-left">N/A</td>
+<td class="org-left">hasConsentExpression</td>
+</tr>
+
+<tr>
+<td class="org-left">GDPR Explicit vs other Explicit?</td>
+<td class="org-left">N/A</td>
+<td class="org-left">dpv-gdpr:ExplicitlyExpressedConsent</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>New Concepts</b>
+</p>
+<ol class="org-ol">
+<li>ConsentRecord subtype of DataProcessingRecords</li>
+<li>ConsentStatus subtype of Status, with subtypes Unknown, Requested, Refused,
+Given, Expired, Invalidated, Revoked, Reaffirmed</li>
+<li>ConsentExpression with subtypes UninformedConsent, and InformedConsent - which
+has more subtypes as ImpliedConsent, and ExpressedConsent - which has more
+subtypes as ExplicitlyExpressedConsent.</li>
+</ol>
+
+<p>
+<b>Breaking backwards compatibility</b>
+</p>
+<ul class="org-ul">
+<li>IF there are strong considerations for existing use of these properties, we
+can offer a "sunset period" where the current concepts/properties will
+continue to be in DPV for a period of time after which they will be
+retired, with a note to this effect in the spec. The new concepts will be
+added now and will be indicated as the preferred ones.</li>
+<li>It is no longer possible to express both 'given time' and 'withdrawal time'
+over the same instance of consent. However, this loss has made awy to indicate
+a wider range of 'states' such as refused and reaffirmed which need their own
+timestamps (such as under GDPR and EU-DSA)</li>
+<li>There will no longer be a separation between 'consent properties' and those
+that can be used elsewhere. Most of the consent specified properties will be
+possible to use elsewhere as required, for example - notice, indication (of a
+decision), relation with data subject. The consent specific properties will
+have 'consent' in their name, e.g. 'hasConsentExpression'</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8ddf4c7" class="outline-2">
+<h2 id="org8ddf4c7"><span class="section-number-2">2.</span> Examples</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="example">
+ex:101 a dpv:ConsentRecord ;
+    dpv:hasPersonalDataHandling ex:PDH_with_processing_details ;
+    # PDH can contain Data Subject
+    # PDH can also directly specify notice i.e. ex:PDH dpv:hasNotice
+    dpv:hasNotice ex:NoticeShown ;
+    dpv:hasConsentStatus dpv:ConsentGiven ;
+    dpv:isIndicatedAtTime "2022-07-15" ;
+    dpv:hasIndicationMethod "consent dialogue on website" ;
+    dpv:hasConsentExpression dpv-gdpr:ExplicitlyGivenConsent ;
+    dpv:hasReaffirmationPeriod "2023-07-14" ;
+    dpv:hasDuration "2 years" .
+
+ex:102 a dpv:ConsentRecord ;
+    # optional provenance
+    # using PROV-O - prov:wasDerivedFrom ex:101
+    # using DCT - dct:isVersionOf ex:101
+    dpv:hasPersonalDataHandling ex:PDH_with_processing_details ;
+    dpv:hasConsentStatus dpv:ConsentWithdrawn ;
+    dpv:isIndicatedAtTime "2022-07-15" ;
+    dpv:hasIndicationMethod "consent dialogue on website" .
+
+ex:103 a dpv:ConsentRecord ;
+    # IF we want to integrate "events" as a concept, but separately
+    #    from DPV, e.g. in an extension, alongside other 'events',
+    #    that relate to processing, compliance, etc.
+    #    WARNING: this will result in complexity, sever overlap with
+    #    other vocabularies such as PROV-O, and definite confusion.
+    #    This example intentionally avoids PROV-O for brevity.
+    # The record will contain the 'common stuff for this record'
+    dpv:hasPersonalDataHandling ex:PDH_with_processing_details ;
+    dpv:hasNotice ex:NoticeShown ;
+    # IF there is a need to know consent status at record level
+    dpv:hasConsentStatus dpv:ConsentWithdrawn ;
+    event:hasEvent [
+	a event:ConsentEvent ;
+	dpv:hasConsentStatus dpv:ConsentRequested ;
+	dpv:isIndicatedAtTime "2022-07-15" ; ] ;
+    event:hasEvent [
+	a event:ConsentEvent ;
+	dpv:hasConsentStatus dpv:ConsentGiven ;
+	dpv:isIndicatedAtTime "2022-07-15" ; ] ;
+    event:hasEvent [
+	a event:ConsentEvent ;
+	dpv:hasConsentStatus dpv:ConsentWithdrawn ;
+	dpv:isIndicatedAtTime "2022-12-31" ; ] .
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb3e7a03" class="outline-2">
+<h2 id="orgb3e7a03"><span class="section-number-2">3.</span> Issues and Suggestions for Consent concepts in DPV</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><code>hasConsentNotice</code>
+<ul class="org-ul">
+<li>issue: Consent is not the only legal basis or concept that needs a
+notice. We have <code>Notice</code> and <code>PrivacyNotice</code> as concepts within organisational
+measures which are useful in places other than consent.</li>
+<li>suggestions: remove this relation, and provide the generic <code>hasNotice</code>
+relation that can be used anywhere, not just for consent</li>
+</ul></li>
+<li><code>hasExpiry</code>
+<ul class="org-ul">
+<li>issue: "Expiry" indicates consent is not valid after this time, which is not
+always the case. For example, EDPB guidelines on Consent 05/2020 pt.111 uses
+the term "refresh" to indicate a time when consent should be asked or
+confirmed again. This does not necessarily mean that consent expires or
+becomes invalid at that point.</li>
+<li>issue: "Expiry" is a broad concept that can be applied to other concepts,
+such as other legal bases, processing, personal data, etc. DPV already has
+<code>Duration</code> concepts to specify contextual information on the temporal duration
+of processing activities. The same can be applied for consent instead of
+expiry to ensure consistent application of terms.</li>
+<li>suggestions:
+<ol class="org-ol">
+<li>remove the relations <code>hasExpiry</code>, <code>hasExpiryCondition</code>, <code>hasExpiryTime</code> - and
+replace these with use of <code>hasDuration</code> and <code>Duration</code> concepts</li>
+<li>for expressing when consent should be refreshed, the term "reaffirm" is
+more clear than "refresh", to express this add relation
+<code>hasReaffirmationPeriod</code> which can then be used with a temporal timestamp
+or duration, or a condition. The relation can also be used to reaffirm
+other concepts, such as contracts, so that's an added benefit.</li>
+</ol></li>
+</ul></li>
+<li><code>hasProvisionBy</code> and <code>hasProvisionMethod</code>
+<ul class="org-ul">
+<li>issue: "provision" can also be applicable for other concepts, such as
+providing data, accepting contracts, acknowledging receipts. The information
+we want to represent here relates to "who has given their consent", or
+rather the more correct question "who has expressed their consent".</li>
+<li>suggestion: Remove the provision relations, and use "express" or
+"indication" - these are preferred over "give" because it works for when
+consent is refused. For example, <code>indicatedBy</code> could be for any decision,
+whether it was giving consent or refusing consent or withdrawing
+consent. The relations here would then be <code>indicatedBy</code>. For the provision
+method, it would be <code>hasIndicationMethod</code> to specify the method by which a
+decision was indicated.</li>
+</ul></li>
+<li><code>hasProvisionByJustification</code>
+<ul class="org-ul">
+<li>issue: This relation was meant to enable representing information when the
+data subject was not the one indicating their decision, for e.g. a parent
+expressing consent in lieu of their child. So instead of justification of
+provision as a complicated way of expressing this information, what is
+needed is to express the relationship between the Data Subject and whoever
+has provided the consent. This relationship, i.e. some other entity having a
+relationship with the Data Subject, can also occur at other places, such as
+contracts, or for expressing relationship between Controller and Data
+Subject.</li>
+<li>suggestion: remove this relation, and replace it with a broader relation as
+<code>hasRelationWithDataSubject</code> that can be used to indicate a parent is related
+to the child as the data subject, or a controller is the employer of the
+data subject. Note that the use of this relation would be to provide a
+description of the relationship since the other properties would be used to
+express the entities involved. For example, <code>hasDataSubject</code> and
+<code>indicatedBy</code> to specify the two entities, and <code>hasRelationWithDataSubject</code>
+as "parent" or "employer". We can provide the concept
+<code>RelationWithDataSubject</code> since its a common concept in use-cases, and also
+provide examples for commonly occuring relationships.</li>
+</ul></li>
+<li><code>hasProvisionTime</code> and <code>hasWithdrawalTime</code>
+<ul class="org-ul">
+<li>issue: These are timestamps associated with consent as "events" i.e. when
+consent was given and when it was withdrawn. There are two issues here -
+first, consent can be given multiple times such as when being refreshed or
+when withdrawing and giving it again. But it can also have a timestamp for
+when it was refused, or requested, or expired/invalidated/etc. - any other
+types of 'events' that are not covered by 'provisioned' and
+'withdrawn'. Second, consent is not the only concept that has an associated
+timestamp. For example, contract has a timestamp too. It is typically up to
+the use-case whether they want to represent these different 'events' as
+separate instances (e.g. one for given, one for withdrawn), or to express
+all information over a single instance (e.g. what we have now in DPV where
+the same instance has both given and withdrawn).</li>
+<li>suggestion: remove provision timestamp, and replace with <code>indicatedAtTime</code>
+to bring it in line with other 'indication' relations and to enable its use
+anywhere where there is a need to represent timestamp for some
+decision. Because withdrawal is just one type of revocation, others being
+that consent has 'expired' or been 'invalidated', the intention of recording
+this timestamp is to represent when that consent has stopped being suitable
+to be used to justify processing. Therefore, this can be represented through
+the relation <code>revokedAtTime</code></li>
+</ul></li>
+<li><code>ConsentRecord</code> and <code>hasStatus</code>
+<ul class="org-ul">
+<li>issue: Consent as a term almost always refers to the textbook definition as
+the agreement of the individual i.e. "given consent". However, when dealing
+with consent as an <span class="underline">artefact</span>, i.e. a piece of information, we want to specify
+things about something that is supposed to be 'given consent', but can be
+other things - such as a request for given consent, or refusal to give
+consent, or an invalidated given consent. Rather than create more and more
+concepts to represent these (which is possible as an alternate model),
+technological concepts almost always specify this as "Consent" or
+"GivenConsent" and leave it at that. The issue here is that this causes
+confusion (has caused, will cause) between 'consent' and its 'record'.</li>
+<li>suggestion: Create a new concept called <code>ConsentRecord</code> as a subtype of
+<code>DataProcessingRecords</code> to represent the information associated with consent
+regardless of what 'status' it has i.e. given, refused, etc. This also helps
+fulfil compliance obligations associated with maintaining information about
+consent records. To indicate what the state of that consent is within the
+consent record, the existing DPV relation <code>hasStatus</code> can be used with
+creation of <code>ConsentStatus</code> and its subtypes - <code>Unknown</code>, <code>Requested</code>, <code>Given</code>,
+<code>Refused</code>, <code>Withdrawn</code>, <code>Revoked</code>, <code>Invalidated</code>, <code>Expired</code>, and <code>Reaffirmed</code>. For more
+clarity, the relation <code>hasStatus</code> can be specialised to <code>hasConsentStatus</code>.</li>
+</ul></li>
+<li><code>isExplicit</code> as a boolean
+<ul class="org-ul">
+<li>issue: Currently, the DPV indicates consent is explicitly given using the
+relation <code>isExplicit</code> which only offers three possible states being a
+boolean - True, False, and Unknown. This makes it impossible to specify
+other conditions, such as non-explicit or implied consent without creating
+additional properties, and which is not a good design since it can result in
+Explicit + Implied consent being expressed in the same instance. It also
+does not facilitate separation between different definitions or conditions
+of 'explicit' consent such as between ISO/IEC 29184 vs GDPR where they are
+non-compatible.</li>
+<li>suggestion: Remove the existing <code>isExplicit</code> Property. Add
+<code>hasConsentExpression</code> property to clearly indicate that this is the criteria
+for how consent is expressed. Create <code>ConsentExpression</code> as a concept, with
+subtypes <code>InformedConsent</code> and <code>UninformedConsent</code> as being the two broad types
+(note: being informed is not strictly a type of expression, however here we
+consider the response to information as being the expression and a way to
+shoehorn the legally defined concept into the taxonomy). For informed, we
+have more subtypes: <code>ImpliedConsent</code> and <code>ExpressedConsent</code> where 'express'
+means the data subject specifically and directly expresses their consent
+such as through a button, with implied meaning they do some other action
+from which the consent is implicit or assumed such as browsing the website
+or walking into a CCTV-equipped store. <code>ExplicitlyExpressedConsent</code> is a
+specialised subtype where there is a further specific criteria for how the
+expression (direct) of consent should be carried out. In ISO/IEC, this means
+clicking a button for that specific consent, but under GDPR the requirement
+is much higher. To reflect this, DPV-GDPR will contain another definition of
+<code>ExplicitlyExpressedConsent</code> as the subtype of its corresponding concept in
+DPV to indicate GDPR level of explicit expression.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd8727ff" class="outline-2">
+<h2 id="orgd8727ff"><span class="section-number-2">4.</span> Sources</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>PAECG deliverable for Consent Receipt <a href="https://doi.org/10.5281/zenodo.5076603">https://doi.org/10.5281/zenodo.5076603</a>
+<ul class="org-ul">
+<li>outlines consent concepts with analysis of Consent Receipt v1.1 and GDPR
+requirements ;</li>
+<li>provides recommendation for semantic vocabulary and use</li>
+</ul></li>
+<li>gconsent ontology <a href="http://w3id.org/GConsent">http://w3id.org/GConsent</a>
+<ul class="org-ul">
+<li>provides semantic concepts for consent and modelling of 'states' and 'actors'</li>
+</ul></li>
+<li>FHIR consent codes <a href="https://www.hl7.org/fhir/valueset-consent-state-codes.html">https://www.hl7.org/fhir/valueset-consent-state-codes.html</a>
+<ul class="org-ul">
+<li>comprehensive standard for 'codes' representing use of consent (similar to
+states in GConsent) and its management within systems</li>
+<li>primarily intended for Health records</li>
+</ul></li>
+<li>DUO <a href="http://purl.obolibrary.org/obo/duo.owl">http://purl.obolibrary.org/obo/duo.owl</a>
+<ul class="org-ul">
+<li>another health-oriented vocabulary about consent</li>
+<li>outlines permissions and prohibitions for use-cases related to
+health/medical data sharing in terms of practical use-cases</li>
+</ul></li>
+<li>sem-web + consent survey paper
+<a href="https://content.iospress.com/articles/semantic-web/sw210438">https://content.iospress.com/articles/semantic-web/sw210438</a></li>
+<li>georg: consent 'expiry' as a concept is not liked by clients, instead they
+prefer the term 'refresh' which indicates that consent needs to be confirmed
+again after this time</li>
+<li>ISO/IEC AWI TS 27560 Privacy technologies — Consent record information
+structure <a href="https://www.iso.org/standard/80392.html">https://www.iso.org/standard/80392.html</a></li>
+<li><a href="https://github.com/w3c/dpv/issues/21">https://github.com/w3c/dpv/issues/21</a></li>
+</ul>
+</div>
+</div>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
