@@ -10204,7 +10204,7 @@
         schema:Book ;
     hpcom:book_id "712"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -11119,14 +11119,16 @@
         schema:Book ;
     hpcom:book_id "776"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-20T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Doors of Eden"@en ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:TCD ;
+    schema:review """A fantastic imagination of what life would have been like if sentient species had dominated at various points in the timeline instead of humans, their existence on parallel earths, and how their various cultures might clash. A lesser rating because the part where it was all shoehorned into a human society episodic chase between an organisation and the good folk was not interesting at all, and the characters were shallow with no interest to read about."""@en ;
     schema:url "https://harshp.com/hobbies/books/776"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/777> a hpcom:RenderedItem, hpcom:BookReading,
