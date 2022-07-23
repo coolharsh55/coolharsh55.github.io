@@ -14926,6 +14926,16 @@ book:832 a hpcom:RenderedItem,
     schema:name "The Galaxy, and the Ground Within"@en ;
     schema:url "https://harshp.com/hobbies/books/832"^^xsd:anyURI .
 
+book:833 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "833"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Matthias Schmelzer, Aaron Vansintjan, Andrea Vetter"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Future is Degrowth: A Guide to a World beyond Capitalism"@en ;
+    schema:url "https://harshp.com/hobbies/books/833"^^xsd:anyURI .
+
 book:84 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
@@ -23277,15 +23287,15 @@ hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
     rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
-
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😍awesome (5/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
+
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
 
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
