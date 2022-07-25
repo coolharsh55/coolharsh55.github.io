@@ -11997,8 +11997,8 @@ book:644 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "644"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Jonas Jonasson"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -13117,12 +13117,15 @@ book:712 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "712"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-24T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:isPartOf list:TCD ;
     schema:name "Let's Explore Diabetes with Owls"@en ;
+    schema:review "The standard fare of Sedaris stories."@en ;
     schema:url "https://harshp.com/hobbies/books/712"^^xsd:anyURI .
 
 book:713 a hpcom:BookReading,
@@ -23287,15 +23290,15 @@ hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
     rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
+
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😍awesome (5/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
-
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
 
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
