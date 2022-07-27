@@ -9252,12 +9252,15 @@
         schema:Book ;
     hpcom:book_id "644"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-27T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Jonas Jonasson"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
-    schema:genre hpcom:BookFiction,
-        hpcom:BookSciFi ;
+    schema:genre hpcom:BookFiction ;
     schema:name "Hitman Anders and the Meaning of it all"@en ;
+    schema:review """The book starts off at a good spot. There's simple exposition, situational humour, and all the makings of a good recipie. By the end, it got boring, repetitive, the humour had all but become stale and there was nothing special anymore. A nice book if this had been half its length, or had spent some time on its characters instead of shuffling them from scene to scene."""@en ;
     schema:url "https://harshp.com/hobbies/books/644"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/645> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10206,7 +10209,7 @@
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
-    hpcom:date_book_read "2022-07-24T00:00:00"^^xsd:dateTime ;
+    hpcom:date_book_read "2022-07-24T23:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
@@ -11358,16 +11361,17 @@
 
 <https://harshp.com/hobbies/books/792> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "792"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:aggregatedRating hpcom:Rating1 ;
+    hpcom:date_book_read "2022-07-24T20:00:00"^^xsd:dateTime ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "D.K. Publishing"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Simply Maths"@en ;
+    schema:review """I'm not sure who exactly this book is for. The illustrations seem intended for a younger audience, but the concepts themselves are far too complex to be suitable. And to further aggravate the experience, nothing is explained in either details or placed within some larger picture. The book is nothing but a fancy index of concepts, and not a good one at that. Too bad this was a gift, I had hoped to like it."""@en ;
     schema:url "https://harshp.com/hobbies/books/792"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/793> a schema:Book, hpcom:RenderedItem ;

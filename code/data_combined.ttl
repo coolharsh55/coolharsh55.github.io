@@ -11998,12 +11998,15 @@ book:644 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "644"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-27T12:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Jonas Jonasson"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
-    schema:genre hpcom:BookFiction,
-        hpcom:BookSciFi ;
+    schema:genre hpcom:BookFiction ;
     schema:name "Hitman Anders and the Meaning of it all"@en ;
+    schema:review "The book starts off at a good spot. There's simple exposition, situational humour, and all the makings of a good recipie. By the end, it got boring, repetitive, the humour had all but become stale and there was nothing special anymore. A nice book if this had been half its length, or had spent some time on its characters instead of shuffling them from scene to scene."@en ;
     schema:url "https://harshp.com/hobbies/books/644"^^xsd:anyURI .
 
 book:645 a hpcom:BookReading,
@@ -13119,7 +13122,7 @@ book:712 a hpcom:BookReading,
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
-    hpcom:date_book_read "2022-07-24T00:00:00"^^xsd:dateTime ;
+    hpcom:date_book_read "2022-07-24T23:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "David Sedaris"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
@@ -14303,12 +14306,16 @@ book:792 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "792"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-24T20:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating1 ;
     schema:author "D.K. Publishing"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Simply Maths"@en ;
+    schema:review "I'm not sure who exactly this book is for. The illustrations seem intended for a younger audience, but the concepts themselves are far too complex to be suitable. And to further aggravate the experience, nothing is explained in either details or placed within some larger picture. The book is nothing but a fancy index of concepts, and not a good one at that. Too bad this was a gift, I had hoped to like it."@en ;
     schema:url "https://harshp.com/hobbies/books/792"^^xsd:anyURI .
 
 book:793 a hpcom:RenderedItem,
@@ -19640,6 +19647,9 @@ hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
     schema:url "https://harshp.com/contact"^^xsd:anyURI .
@@ -22268,9 +22278,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -22701,13 +22708,6 @@ hptag:website a hpcom:RenderedItem,
     schema:superEvent <http://example.com/conferences/ISWC2018> ;
     schema:url "http://ontologydesignpatterns.org/wiki/WOP:2018"^^xsd:anyURI .
 
-hpcom:Rating1 a hpcom:Rating,
-        hpcom:RenderedItem ;
-    rdfs:label "😠awful (1/5)"@en ;
-    rdfs:subClassOf schema:Rating ;
-    schema:ratingValue "1"^^xsd:int ;
-    schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
-
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -22805,6 +22805,13 @@ hpcom:BookChapter rdfs:subClassOf schema:ScholarlyArticle ;
 
 hpcom:Rating a owl:Class ;
     rdfs:label "Rating"@en .
+
+hpcom:Rating1 a hpcom:Rating,
+        hpcom:RenderedItem ;
+    rdfs:label "😠awful (1/5)"@en ;
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "1"^^xsd:int ;
+    schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
 
 <https://harshp.com/research/projects> a owl:Class,
         hpcom:RenderedItem ;
