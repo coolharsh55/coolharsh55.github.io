@@ -13611,7 +13611,7 @@ book:744 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "744"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Kit Chapman"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -19647,9 +19647,6 @@ hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
     schema:url "https://harshp.com/contact"^^xsd:anyURI .
@@ -22277,6 +22274,9 @@ hpcom:FileFormat a owl:Class ;
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
