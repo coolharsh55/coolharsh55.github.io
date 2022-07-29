@@ -12764,6 +12764,7 @@ book:690 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "690"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
@@ -12838,6 +12839,7 @@ book:695 a hpcom:BookReading,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "695"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Nnedi Okorafor"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
@@ -14945,6 +14947,66 @@ book:833 a hpcom:RenderedItem,
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Future is Degrowth: A Guide to a World beyond Capitalism"@en ;
     schema:url "https://harshp.com/hobbies/books/833"^^xsd:anyURI .
+
+book:834 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "834"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Baoshu"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Redemption of Time"@en ;
+    schema:url "https://harshp.com/hobbies/books/834"^^xsd:anyURI .
+
+book:835 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "835"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Greg Egan"^^xsd:string ;
+    schema:dateCreated "2010"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Schild's Ladder"@en ;
+    schema:url "https://harshp.com/hobbies/books/835"^^xsd:anyURI .
+
+book:836 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "836"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Nnedi Okorafor"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Binti: Home"@en ;
+    schema:url "https://harshp.com/hobbies/books/836"^^xsd:anyURI .
+
+book:837 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "837"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Nnedi Okorafor"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Binti: The Night Masquerade"@en ;
+    schema:url "https://harshp.com/hobbies/books/837"^^xsd:anyURI .
+
+book:838 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "838"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Greg Egan"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Books of All Skies"@en ;
+    schema:url "https://harshp.com/hobbies/books/838"^^xsd:anyURI .
 
 book:84 a hpcom:BookReading,
         hpcom:RenderedItem,
@@ -23299,15 +23361,15 @@ hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
     rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
-
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😍awesome (5/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
+
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
 
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
@@ -23329,9 +23391,6 @@ hpcom:formatHTML a hpcom:FileFormat ;
 hpcom:Content a owl:Class ;
     rdfs:label "Content"@en ;
     rdfs:comment "Represents content associated with an IRI/Entity"@en .
-
-hpcom:EBook a hpcom:BookMedium ;
-    rdfs:label "💾digital"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
@@ -23361,6 +23420,9 @@ hpcom:EBook a hpcom:BookMedium ;
             schema:name "India" ] ;
     schema:url "https://harshp.com/me"^^xsd:anyURI ;
     schema:worksFor <https://www.tcd.ie/> .
+
+hpcom:EBook a hpcom:BookMedium ;
+    rdfs:label "💾digital"@en .
 
 hpcom:PhysicalBook a hpcom:BookMedium ;
     rdfs:label "📚physical"@en .
