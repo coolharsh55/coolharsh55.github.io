@@ -10097,7 +10097,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Wireless"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/704"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/705> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10344,14 +10344,14 @@
         schema:Book ;
     hpcom:book_id "721"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cory Doctorow"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Homeland"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/721"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/722> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10454,7 +10454,7 @@
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Enchantress of Florence"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/728"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/729> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10671,13 +10671,16 @@
         schema:Book ;
     hpcom:book_id "744"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kit Chapman"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Superheavy: Making and Breaking the Periodic Table"@en ;
+    schema:isPartOf list:cork ;
+    schema:review """If discovery of superheavy elements were a thriller TV series (in a good way)."""@en ;
     schema:url "https://harshp.com/hobbies/books/744"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/745> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11828,7 +11831,7 @@
     schema:dateCreated "2004"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Iron Sunrise"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/823"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/824> a hpcom:RenderedItem,

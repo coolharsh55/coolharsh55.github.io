@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-
+echo "=========================="
+echo "Summary of Reading History"
+echo "=========================="
 dates=$(grep -oP '[^#]\s+hpcom:date_book_read "\K([0-9\-]+)' content/hobbies/books.ttl) ;
 year_max=$(date +%Y)
 for i in $(seq 1995 $year_max) ; do
@@ -9,6 +11,10 @@ done
 current_month=$(date +%m)
 books_per_month=$((books_read/current_month))
 projected_books_read_year=$((books_per_month*12))
+echo " --- "
 echo "books read per month this year: $books_per_month"
 echo "projected books read this year: $projected_books_read_year"
-
+echo " --- "
+echo "books in TCD: $(grep -oP 'list:TCD' content/hobbies/books.ttl | wc -l)"
+echo "books in Cork: $(grep -oP 'list:cork' content/hobbies/books.ttl | wc -l)"
+echo "=========================="

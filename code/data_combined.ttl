@@ -12989,7 +12989,7 @@ book:704 a hpcom:BookReading,
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Wireless"@en ;
     schema:url "https://harshp.com/hobbies/books/704"^^xsd:anyURI .
 
@@ -13266,12 +13266,12 @@ book:721 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "721"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Cory Doctorow"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Homeland"@en ;
     schema:url "https://harshp.com/hobbies/books/721"^^xsd:anyURI .
 
@@ -13379,7 +13379,7 @@ book:728 a hpcom:BookReading,
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "The Enchantress of Florence"@en ;
     schema:url "https://harshp.com/hobbies/books/728"^^xsd:anyURI .
 
@@ -13613,11 +13613,16 @@ book:744 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "744"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-07-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kit Chapman"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:cork ;
     schema:name "Superheavy: Making and Breaking the Periodic Table"@en ;
+    schema:review "If discovery of superheavy elements were a thriller TV series (in a good way)."@en ;
     schema:url "https://harshp.com/hobbies/books/744"^^xsd:anyURI .
 
 book:745 a hpcom:BookReading,
@@ -14804,7 +14809,7 @@ book:823 a hpcom:RenderedItem,
     schema:dateCreated "2004"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:cork ;
     schema:name "Iron Sunrise"@en ;
     schema:url "https://harshp.com/hobbies/books/823"^^xsd:anyURI .
 
@@ -23165,11 +23170,6 @@ hptag:humor a hpcom:RenderedItem,
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "drama" ;
@@ -23210,6 +23210,11 @@ hptag:philosophy a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "philosophy" ;
     schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;
