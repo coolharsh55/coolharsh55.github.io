@@ -8,10 +8,12 @@ for i in $(seq 1995 $year_max) ; do
     books_read=$(echo $dates | grep -o $i | wc -w)
     echo "$i :: $books_read" ;
 done
-current_month=$(date +%m)
-books_per_month=$((books_read/current_month))
-projected_books_read_year=$((books_per_month*12))
+weeks="$(date +%V)"
+books_per_week=$(echo "num=$books_read/$weeks;print(f'{num:.2f}')" | python3)
+books_per_month=$(echo "num=$books_read/$weeks*4;print(f'{num:.2f}')" | python3)
+projected_books_read_year=$(echo "num=$books_per_week*54; print(f'{num:.2f}')" | python3)
 echo " --- "
+echo "books read per week this year: $books_per_week"
 echo "books read per month this year: $books_per_month"
 echo "projected books read this year: $projected_books_read_year"
 echo " --- "

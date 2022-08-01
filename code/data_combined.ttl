@@ -13266,13 +13266,17 @@ book:721 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "721"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-01T09:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cory Doctorow"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:isPartOf list:cork ;
     schema:name "Homeland"@en ;
+    schema:review "This was scary to read because it might as well be what's happening out there. Not so much the actual sinister stuff, but the systemic normalisation of authoritative surveillance and the vast potential for it to become a norm that we shrug and live with because we're too complacent to do something."@en ;
     schema:url "https://harshp.com/hobbies/books/721"^^xsd:anyURI .
 
 book:722 a hpcom:BookReading,
@@ -13375,7 +13379,7 @@ book:728 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "728"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -15012,6 +15016,22 @@ book:838 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "The Books of All Skies"@en ;
     schema:url "https://harshp.com/hobbies/books/838"^^xsd:anyURI .
+
+book:839 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "839"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Cory Doctorow"^^xsd:string ;
+    schema:dateCreated "2008"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Little Brother"@en ;
+    schema:review "This book made me remember why I started caring about privacy and surveillance in the first place, and now that I'm older and wiser - why I need to continue."@en ;
+    schema:url "https://harshp.com/hobbies/books/839"^^xsd:anyURI .
 
 book:84 a hpcom:BookReading,
         hpcom:RenderedItem,
