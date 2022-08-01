@@ -1892,9 +1892,10 @@ hpcom:view_template a rdf:Property ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-v1-checklist.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:tag hptag:DPV,
-        hptag:DPVCG ;
+        hptag:DPVCG,
+        hptag:checklist ;
     schema:author <https://harshp.com/me> ;
-    schema:dateModified "2022-01-01T15:00:00"^^xsd:dateTime ;
+    schema:dateModified "2022-08-01T14:00:00"^^xsd:dateTime ;
     schema:datePublished "2022-01-01T15:00:00"^^xsd:dateTime ;
     schema:description "Items and their progress towards the first stable release of DPV"@en ;
     schema:isPartOf <https://harshp.com/dev/dpv> ;
@@ -21673,6 +21674,11 @@ hptag:browser a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "browser" ;
     schema:url "https://harshp.com/tags/browser"^^xsd:anyURI .
+
+hptag:checklist a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "checklist"@en ;
+    schema:url "https://harshp.com/tags/checklist"^^xsd:anyURI .
 
 hptag:code a hpcom:RenderedItem,
         hpcom:Tag ;
