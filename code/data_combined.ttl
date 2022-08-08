@@ -12826,7 +12826,7 @@ book:694 a hpcom:BookReading,
     hpcom:date_book_read "2022-07-13T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Becky Chambers"^^xsd:string ;
-    schema:dateCreated "2016"^^xsd:int ;
+    schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:isPartOf list:aliens,
@@ -13380,12 +13380,16 @@ book:728 a hpcom:BookReading,
         schema:Book ;
     hpcom:book_id "728"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:isPartOf list:cork ;
     schema:name "The Enchantress of Florence"@en ;
+    schema:review "An enchanting fairy tale full of beautiful language and magical realism. But the constant objectification of women and confining them to sexual roles somehow left a bad impression."@en ;
     schema:url "https://harshp.com/hobbies/books/728"^^xsd:anyURI .
 
 book:729 a hpcom:BookReading,
@@ -14334,7 +14338,7 @@ book:793 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "793"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Olga Tokarczuk"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -14822,13 +14826,17 @@ book:824 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "824"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jorge Luis Borges"^^xsd:string ;
     schema:dateCreated "1949"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:isPartOf list:TCD ;
     schema:name "The Aleph"@en ;
+    schema:review "A learning experience on writing and reading from a master of the craft."@en ;
     schema:url "https://harshp.com/hobbies/books/824"^^xsd:anyURI .
 
 book:825 a hpcom:RenderedItem,
@@ -14920,7 +14928,7 @@ book:830 a hpcom:RenderedItem,
     hpcom:book_id "830"^^xsd:int ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Becky Chambers"^^xsd:string ;
-    schema:dateCreated "2014"^^xsd:int ;
+    schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Closed and Common Orbit"@en ;
@@ -15043,6 +15051,29 @@ book:84 a hpcom:BookReading,
     schema:dateCreated "1887"^^xsd:int ;
     schema:name "On the Geneology of Morals"@en ;
     schema:url "https://harshp.com/hobbies/books/84"^^xsd:anyURI .
+
+book:840 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "840"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Kim Stanley Robinson"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "2312"@en ;
+    schema:url "https://harshp.com/hobbies/books/840"^^xsd:anyURI .
+
+book:841 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "841"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adam Zeman"^^xsd:string ;
+    schema:dateCreated "2002"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Consciousness: A User's Guide"@en ;
+    schema:url "https://harshp.com/hobbies/books/841"^^xsd:anyURI .
 
 book:85 a hpcom:BookReading,
         hpcom:RenderedItem,
