@@ -14338,12 +14338,16 @@ book:793 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "793"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-12T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Olga Tokarczuk"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Books of Jacob"@en ;
+    schema:review "The sheer magnitude of this work is immense and worthy of admiration. I had no idea of the background much of the book hopes upon - the cultural significance of this work in Poland, the state of affairs related to this notorious personality and religion within that time, and that someone could write such a mythical book of fiction as their magnum opus."@en ;
     schema:url "https://harshp.com/hobbies/books/793"^^xsd:anyURI .
 
 book:794 a hpcom:BookReading,
@@ -15056,7 +15060,7 @@ book:840 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "840"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Kim Stanley Robinson"^^xsd:string ;
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -23423,15 +23427,15 @@ hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
     rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
+
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😍awesome (5/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "5"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating5"^^xsd:anyURI .
-
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
 
 hpcom:Rating3 a hpcom:Rating,
         hpcom:RenderedItem ;
