@@ -10330,14 +10330,13 @@
         schema:Book ;
     hpcom:book_id "720"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Iain M. Banks"^^xsd:string ;
     schema:dateCreated "1994"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Feersum Endjinn"@en ;
-    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/720"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/721> a hpcom:RenderedItem, hpcom:BookReading,
@@ -12067,13 +12066,16 @@
         schema:Book ;
     hpcom:book_id "840"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kim Stanley Robinson"^^xsd:string ;
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "2312"@en ;
+    schema:review """A bold mystery set in solar space that manages to convince that not just humankind's set but the setting has changed as well. Personal computing, gender identity, sexuality, ethics, a lot of things that mesh well together without feeling forced or introduced to make a point. Just matter of fact, as if part of the world. The story I thought I'd read before, so was not novel. But the plot points and space-tech was enough to continue reading."""@en ;
+    schema:isPartOf list:TCD ;
     schema:url "https://harshp.com/hobbies/books/840"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/841> a hpcom:RenderedItem,
