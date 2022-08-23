@@ -1,22 +1,12 @@
+<link rel="stylesheet" type="text/css" href="/css/toc.css">
+<div id="toc"></div>
 <blockquote>  
   <p>Sent to DPVCG mailing list: <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html">https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html</a></p>
+  <p>Updated 23-AUG-2022 - <a href="#update-20220823">see additions</a></p>
 </blockquote>
 
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org8e37eb4">1. Summary</a></li>
-<li><a href="#org1577aef">2. Reorganising DPV concepts for Guidelines / Standards</a></li>
-<li><a href="#orgb49f510">3. Declaring ISO standards using DCT and DPV</a></li>
-<li><a href="#orgdf1ab74">4. Examples</a></li>
-</ul>
-</div>
-</div>
-<ul class="org-ul">
-<li>example of some standards related to specific concepts</li>
-<li><a href="https://github.com/w3c/dpv/issues/26">https://github.com/w3c/dpv/issues/26</a></li>
-</ul>
+<p>Relevant GitHub Issue: <a href="https://github.com/w3c/dpv/issues/26">https://github.com/w3c/dpv/issues/26</a></p>
+
 <div id="outline-container-org8e37eb4" class="outline-2">
 <h2 id="org8e37eb4"><span class="section-number-2">1.</span> Summary</h2>
 <div class="outline-text-2" id="text-1">
@@ -204,3 +194,94 @@ Mentioned in standards: ... (e.g. EDPB guideline)
 </pre>
 </div>
 </div>
+
+<section id="update-20220823">
+<blockquote >Update: 23-AUG-2022</blockquote>
+<h2>How to extract data from ISO webpage to spreadsheets</h2>
+<ul class="org-ul">
+<li>The data for the ISO spreadsheet is based on the following (ordered) fields:</li>
+<li>Term, dct:alternative, dct:title, dct:identifier, dct:description,
+dct:publisher, dct:issued, dct:replaces, dct:isVersionOf, dct:requires,
+dct:subject, dct:coverage, source, status, contributor, resolution,</li>
+</ul>
+
+<div id="outline-container-org52c9b96" class="outline-2">
+<h3>Copy Data</h3>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>The ISO Catalogue <a href="https://www.iso.org/committee/45020/x/catalogue/">https://www.iso.org/committee/45020/x/catalogue/</a> provides
+links to specific groups of standards based on sub-committees.</li>
+<li>The link for a sub-comittee provide a page with standards under the management
+of that committee. For e.g. SC27 related to information security has the page
+<a href="https://www.iso.org/committee/45306/x/catalogue/p/1/u/0/w/0/d/0">https://www.iso.org/committee/45306/x/catalogue/p/1/u/0/w/0/d/0</a></li>
+<li>On this page, there are various options to selectively display
+standards. Ensure that only "Published Standards" is selected. Alternately,
+see the coding in the link, and ensure only <code>/p/1</code> is the only attribute set,
+and that others are unset, i.e. <code>/u/0</code></li>
+<li>Copy the data from the table displayed i.e. click on text of first standard,
+drag to end of line, then end of page at the very bottom to cover all
+displayed standards. Ensure you have copied the data.</li>
+<li>Paste this data into Excel, which will also recognise the hyperlinks and will
+insert them along with the text.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org909f25d" class="outline-2">
+<h3>Extract Standard Details</h3>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Copy the table as before, and use regex to extract parts of it. I like to use
+<a href="https://regex101.com">https://regex101.com</a> as it provides ample options and is
+convenient. Otherwise, <i>grep</i> or <i>sublime-text</i> are other options.</li>
+<li>The pattern <code>^(ISO\/IEC)( [A-Z]+)? ([\d\:\-]+)\n(.+)</code> with the subtitution
+filter <code>$1$2 $3 $4\n</code> will extract only the necessary data, and discard the
+additional information such as stages.</li>
+<li>Each line in this pattern is the <code>dct:title</code> value</li>
+<li>On titles, the pattern <code>$1$2 $3\n</code> will provide <code>dct:alternative</code></li>
+<li>On alternatives, substituting <code>[\/ \:]</code> with <code>-</code> will provide the term IRI</li>
+<li>On alternatives, substituting <code>(^(ISO\/IEC)( [A-Z]+)? (\d+)(.+)</code> with <code>$3</code> will
+provide the <code>dct:identifier</code></li>
+<li>On alternatives, substituting <code>(.+)(\d{4})</code> with <code>$2</code> will provide the publication
+year for <code>dct:issued</code></li>
+<li>For <code>dct:publisher</code>, the dependance is on whether "ISO" or "IEC" occurs within
+the title. Additionally, the specific subcommittee can be manually added to
+the list as needed.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb0d707b" class="outline-2">
+<h3>Extract Hyperlinks</h3>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>This requires copying the table data from the webpage, and using a spreadsheet
+with macros or formulas. I prefer MS-Excel since its relatively simpler and
+reliable as compared to LibreOffice Calc (in this instance), and the Google
+Sheets macro system is too complicated for what should be a 2-min task.</li>
+<li>To copy the hyperlinks only, or rather to extract them, a Macro is
+needed. Depending on OS and Office version, this will be through different
+settings or methods. Look for <i>Tools -&gt; Macro -&gt; Visual Basic Editor</i></li>
+<li>Then right-click the project area, and select <i>Insert -&gt; Module</i></li>
+<li><p>
+Create a new macro with the following snippet:
+</p>
+<pre class="example">
+Function GetURL(rng As Range) As String
+    On Error Resume Next
+    GetURL = rng.Hyperlinks(1).Address 
+End Function
+</pre></li>
+<li>In a new column, insert the formula to call this macro, as <code>Get_URL(COL+ROW)</code></li>
+<li>Then select the cell, and drag it down to replicate the macro across the
+sheet, copying all the hyperlinks.</li>
+<li>This will create a column with several blank spaces. To remove them, copy the
+entire row's contents and use regex substitutions to get rid of continous new
+lines (i.e. <code>\n{2+}</code>) or matching to select only the desired contents without
+the suffix (i.e. <code>^(.+)/?browse=tc</code>). If only blank links are removed, the
+suffix should also be removed using the same regex.</li>
+<li>Copy the results back into the spreadsheet so that the cell contents for those
+standards match up with the hyperlinks.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
