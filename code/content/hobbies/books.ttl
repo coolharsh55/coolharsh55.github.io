@@ -11324,17 +11324,18 @@
 
 <https://harshp.com/hobbies/books/789> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "789"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2022-08-28T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+     hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Joseph Stiglitz"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Globalization and its Discontents"@en ;
-    # schema:isPartOf list:TCD ;
+    schema:isPartOf list:TCD, list:educational ;
+    schema:review """I'm not an economist, nor do I have any formal training or background knowledge on this subject. Despite this, the book was remarkably easy to read and understand, and illuminating and how plain and simple the causal models of fiscal policies can be. Even before I had finished the first chapter, I knew more about the world, and could understand and appreciate better the way finances work. By the time I had finished the book, I had realised the immense huge machinery that is the global economy, and how increasingly it looks like economics = rich people. A narrative that *must* change if we are to progress."""@en ;
     schema:url "https://harshp.com/hobbies/books/789"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/790> a schema:Book, hpcom:RenderedItem ;
@@ -12115,7 +12116,7 @@
         schema:Book ;
     hpcom:book_id "843"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Matt Wilkinson"^^xsd:string ;
