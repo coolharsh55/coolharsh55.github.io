@@ -12116,20 +12116,22 @@
         schema:Book ;
     hpcom:book_id "843"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-08-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Matt Wilkinson"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Restless Creatures"@en ;
+    schema:review """Interesting way to present what is essentially a biological phenomenon - walking. There's physics, chemistry, biology - of course, but also lots of practical mix-match between these. Educational in the sense of presenting a way of thinking how disciplines flow into one another at the face of a problem. The writing was difficult and dry at times, but the overall pacing was good and the topic was handled well. At the end of it all, I did learn something new about walking, and its various forms such as flying, slithering, contracting, expanding, floating, and so on."""@en ;
     schema:url "https://harshp.com/hobbies/books/843"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/845> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "845"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Shing-Tung Yau & Steve Nadis"^^xsd:string ;
@@ -12150,3 +12152,16 @@
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Book of Universes: Exploring the Limits of the Cosmos"@en ;
     schema:url "https://harshp.com/hobbies/books/846"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/847> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "847"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Bear Head"@en ;
+    schema:url "https://harshp.com/hobbies/books/847"^^xsd:anyURI .
