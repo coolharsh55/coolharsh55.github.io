@@ -9,6 +9,11 @@
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix hptag: <https://harshp.com/tags/> .
 
+<http://example.com/unpublished> a schema:Publication ;
+    schema:name "unpublished work"@en ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:url "http://example.com/unpublished" .
+
 # Publication Venues
 <https://www.emerald.com/insight/publication/issn/1742-7371> a schema:Periodical ;
     schema:name "International Journal of Pervasive Computing and Communications"@en ;

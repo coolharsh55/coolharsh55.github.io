@@ -1,0 +1,1287 @@
+<div class="IEEEkeywords">
+<p>consent, dark patterns, privacy signal, GDPR</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<h3 id="motivation">Motivation</h3>
+<p>The mechanisms surrounding consenting on the web are today rife with
+problematic issues (for an overview, refer to <a href="#sec:issues"
+data-reference-type="ref" data-reference="sec:issues">2</a>) that
+threaten its use as a means for organisations to source personal data,
+and for people to exercise their agency and rights - in compliance with
+privacy and data protection regulations. The requirements established by
+the General Data Protection Regulation (GDPR) provide a legal framework
+through which authorities can take action and dissuade their
+prevalence.</p>
+<p>However, in practice, such enforcement has not been effective in
+terms of mitigating such issues despite the requirements of GDPR being
+known for 5 years (2016-2022). This is evident from the existing
+prevalence of such issues, as well as the actions of consumer protection
+organisations and NGOs in calling for better enforcement of the GDPR.
+Notable examples include: The European Parliament’s resolution <span
+class="citation" data-cites="EU_Parliament_GDPR_report_2021"><a
+href="#ref-EU_Parliament_GDPR_report_2021"
+role="doc-biblioref">[1]</a></span> on implementation of the GDPR; The
+Irish Council of Civil Liberties suing <span class="citation"
+data-cites="ICCLSuesDPC2022"><a href="#ref-ICCLSuesDPC2022"
+role="doc-biblioref">[2]</a></span> the Irish Data Protection Commission
+with the claim of failed duties in enforcing GDPR for Real Time Bidding
+(RTB) as a ‘data breach’; and None of Your Business (NOYB) filing 422
+formal complaints regarding consenting dialogues <span class="citation"
+data-cites="NoybFiles422a"><a href="#ref-NoybFiles422a"
+role="doc-biblioref">[3]</a></span>.</p>
+<p>This has resulted in concerns regarding the performance and
+effectiveness of Data Protection Authorities (DPAs), and has resulted
+into an official enquiry by the EU Ombudsman <span class="citation"
+data-cites="EuropeanCommissionFailure"><a
+href="#ref-EuropeanCommissionFailure"
+role="doc-biblioref">[4]</a></span> to look into the EU Commission’s
+handling of GDPR enforcement. At the same time, DPAs have (repeatedly)
+indicated the lack of available expertise and funding required to be
+effective in their duties, which has had an effect on the ability to
+effectively address the large amount of complaints they receive <span
+class="citation" data-cites="EuropeEnforcementParalysis2021a"><a
+href="#ref-EuropeEnforcementParalysis2021a"
+role="doc-biblioref">[5]</a></span>.</p>
+<p>To date, typical actions undertaken by DPAs have included specific
+investigations into problematic areas of technologies, such as facial
+recognition, and to issue guidelines that call upon organisations to
+effectively ensure their own compliance in the hopes of self-regulation
+fixing existing known problems. The few high-profile decisive cases,
+such as CNIL’s fine to Google <span class="citation"
+data-cites="DeliberationSAN2021023December2022"><a
+href="#ref-DeliberationSAN2021023December2022"
+role="doc-biblioref">[6]</a></span> and Facebook <span class="citation"
+data-cites="DeliberationSAN2021024December2022"><a
+href="#ref-DeliberationSAN2021024December2022"
+role="doc-biblioref">[7]</a></span> regarding their consenting practices
+has failed to have any domino effect or reactive changes<a href="#fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>.</p>
+<p>GDPR allows for easing some of the investigation and compliance
+efforts through creation of codes of conduct and certifications.
+However, to date, no such mechanism exists that applies itself to remedy
+or prevent issues regarding consent. While IAB Europe has applied to
+utilise its Transparency &amp; Control Framework (TCF) framework as a
+code of conduct, the recent (FEB’22) decision by the Belgian DPA
+concerning the legality of TCF <span class="citation"
+data-cites="BEDPARestore"><a href="#ref-BEDPARestore"
+role="doc-biblioref">[8]</a></span> and its use by the advertisement
+industry reaffirms important issues about the legitimacy of RTB
+mechanisms in the first place <span class="citation"
+data-cites="vealeAdtechRealTimeBidding2021 vealeImpossibleAsksCan2022"><a
+href="#ref-vealeAdtechRealTimeBidding2021" role="doc-biblioref">[9]</a>,
+<a href="#ref-vealeImpossibleAsksCan2022"
+role="doc-biblioref">[10]</a></span>. It also raises the question on how
+individuals and society at large do not have a medium to participate in
+such processes to outlay a balance between rights and requirements
+without getting into the legal quagmires of being controllers themselves
+<span class="citation" data-cites="edwardsDataSubjectsData2019"><a
+href="#ref-edwardsDataSubjectsData2019"
+role="doc-biblioref">[11]</a></span>.</p>
+<p>While all the above should be used in demanding greater effectiveness
+of the law through its enforcement agents (courts and DPAs), this
+article argues that such effectiveness should not rely solely on the
+capabilities of the organisations to self-regulate, but should instead
+<strong>motivate socio-technical solutions that mitigate the root causes
+of known prolonged issues</strong>. This would require a change within
+the EU’s approach towards development and utilisation standards in
+connection with legal compliance, where the onus is always on assisting
+organisations with their legal compliance tasks. While the EU has
+promoted standards developments in a more globally cohesive manner, such
+as through co-operation agreement between CEN/CENELEC and ISO<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>, it has refused to take any measures
+on the technologies and standards that underline the use of internet or
+its standardisation processes<a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a> (e.g. IETF, W3C). As a
+result - the capabilities, values, and features developed within such
+technologies do not assist with any of the requirements established by
+the GDPR to increase the expected level of privacy and data
+protection.</p>
+<p>For example, consider the prevalence of cookie banners to fulfil
+requirements of the ePrivacy Directive (ePD, 2002) to provide
+information and management of cookies to users, and which are known to
+have widespread issues <span class="citation"
+data-cites="fouadComplianceCookiePurposes2020 matteCookieBannersRespect2020 santosAreCookieBanners2020a soeCircumventionDesignDark2020"><a
+href="#ref-fouadComplianceCookiePurposes2020"
+role="doc-biblioref">[12]</a>–<a
+href="#ref-soeCircumventionDesignDark2020"
+role="doc-biblioref">[15]</a></span>. In the 20 years since ePD was
+adopted, the underlying technological mechanisms in terms of how cookies
+can be set by websites and managed by users within their browsers have
+not changed in significance other than browsers attempting to prevent
+their usage in tracking and surveillance. To date, there is no cookie
+categorisation specification through which websites can clearly indicate
+what the cookies are necessary for, nor are there any cookie management
+interfaces for users within the web browsers. Now with GDPR, cookie
+banners have been supplemented with consenting interfaces that also show
+similar issues <span class="citation"
+data-cites="utzInformedConsentStudying2019 fouadComplianceCookiePurposes2020 grayDarkPatternsLegal2020 machuletzMultiplePurposesMultiple2020 matteCookieBannersRespect2020 mattePurposesIABEurope2020 nouwensDarkPatternsGDPR2020 santosAreCookieBanners2020a soeCircumventionDesignDark2020 santosConsentManagementPlatforms2021"><a
+href="#ref-fouadComplianceCookiePurposes2020"
+role="doc-biblioref">[12]</a>–<a
+href="#ref-santosConsentManagementPlatforms2021"
+role="doc-biblioref">[21]</a></span>, and demonstrate the same pattern
+of no fundamental developments being undertaken to remedy them at a
+technological level.</p>
+<p>To sum all of the above, this article raises the question,
+“<strong><em>What significant developments are needed to mitigate the
+widespread issues or malpractices associated with the application and
+use of consenting interfaces?</em></strong>”</p>
+<h3 id="existing-approaches">Existing Approaches</h3>
+<p>Researchers have proposed several interesting approaches regarding
+how users can express, communicate, manage, control, and enforce their
+privacy and decisions<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>. However, this article focuses on
+concrete proposals used or proposed by stakeholder organisations so as
+to limit the discussion on feasible applications for real-world issues.
+The focus here is on user-side solutions as alternatives to the
+industry-specified standards, such as the TCF and its exclusive use by
+Consent Management Platforms (CMPs), which can be argued to be the cause
+of such issues itself <span class="citation"
+data-cites="vealeAdtechRealTimeBidding2021 vealeImpossibleAsksCan2022"><a
+href="#ref-vealeAdtechRealTimeBidding2021" role="doc-biblioref">[9]</a>,
+<a href="#ref-vealeImpossibleAsksCan2022"
+role="doc-biblioref">[10]</a></span>. This is to counter the
+<em>status-quo</em> where industry members band together to create a
+solution that only they can participate within, and which is then forced
+upon users under the guise of a compliant framework.</p>
+<p>Existing attempts at creating standardised approaches, such as Do Not
+Track<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> (DNT) and Platform for Privacy
+Preferences<a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> (P3P) are either obsolete or
+abandoned, with new proposals including Global Privacy Control<a
+href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> (GPC) and the Advanced Data
+Protection Control<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a> (ADPC) being candidates for
+investigation.</p>
+<p>GPC has been developed to be applied within California’s Consumer
+Protection Act (CCPA) <span class="citation" data-cites="CCPA"><a
+href="#ref-CCPA" role="doc-biblioref">[22]</a></span>, and is a unary
+(single value) signal that expresses ‘do not sell’ as per the CCPA’s
+enforceable obligation of providing an option to prohibit organisations
+from ‘selling’ data to other third parties. GPC has been adopted by
+numerous high-profile websites such as the New York Times and is
+implemented by web browsers such as Brave and Firefox.</p>
+<p>ADPC is a specification for expression and communication of
+information regarding purposes and their use in giving or withdrawing
+consent and exercising the right to object. Developed by None of Your
+Business (NOYB) as part of the RESPECTeD project<a href="#fn9"
+class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>,
+ADPC currently does not provide the necessary information for how
+specific purposes should be expressed in an interoperable manner and the
+governance processes that should be followed by each actor i.e.
+websites, user-agents, and the users.</p>
+<p>While both GPC and ADPC claim to be actionable under the GDPR and
+ePrivacy Directive as automated signals (i.e. GDPR Art.7 for withdrawing
+consent and Art.21 for right to object), there are important issues that
+need clarification for their effectiveness. For GPC, the difference
+between its CCPA-influenced terminology and that of GDPR (e.g. sell,
+third-party) prevents a clear interpretation for how it applies under
+GDPR<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>. For ADPC, a lack of implementation
+details prevents its realisation and possibly effective adoption, e.g. a
+website implementing ADPC requires certainty that the user-agent
+understands its purposes, which necessitates some interoperability,
+which ADPC does not provide. As the DPAs or other data protection bodies
+have not commented on authoritative interpretations of these proposals,
+it is an unresolved question as to the effectiveness of these in
+mitigating issues regarding consenting online.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">GDPR Clause</th>
+<th style="text-align: left;">HCI</th>
+<th style="text-align: left;">IT</th>
+<th style="text-align: left;">Law</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">freely given (R43)</td>
+<td style="text-align: left;">nudging <span class="citation"
+data-cites="utzInformedConsentStudying2019 deConsentTargetedAdvertising2020 grayDarkPatternsLegal2020 humanHumancentricPerspectiveDigital2020 machuletzMultiplePurposesMultiple2020 nouwensDarkPatternsGDPR2020 santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a" role="doc-biblioref">[14]</a>,
+<a href="#ref-utzInformedConsentStudying2019"
+role="doc-biblioref">[16]</a>–<a
+href="#ref-machuletzMultiplePurposesMultiple2020"
+role="doc-biblioref">[18]</a>, <a
+href="#ref-nouwensDarkPatternsGDPR2020" role="doc-biblioref">[20]</a>,
+<a href="#ref-deConsentTargetedAdvertising2020"
+role="doc-biblioref">[23]</a>, <a
+href="#ref-humanHumancentricPerspectiveDigital2020"
+role="doc-biblioref">[24]</a></span>, consent wall <span
+class="citation"
+data-cites="grayDarkPatternsLegal2020 santosAreCookieBanners2020a utzInformedConsentStudying2019 soeCircumventionDesignDark2020"><a
+href="#ref-santosAreCookieBanners2020a" role="doc-biblioref">[14]</a>–<a
+href="#ref-grayDarkPatternsLegal2020"
+role="doc-biblioref">[17]</a></span>, cannot refuse <span
+class="citation"
+data-cites="matteCookieBannersRespect2020 santosAreCookieBanners2020a"><a
+href="#ref-matteCookieBannersRespect2020" role="doc-biblioref">[13]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span>,preselected options <span
+class="citation"
+data-cites="matteCookieBannersRespect2020 nouwensDarkPatternsGDPR2020 santosAreCookieBanners2020a"><a
+href="#ref-matteCookieBannersRespect2020" role="doc-biblioref">[13]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a>, <a
+href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a></span>, nagging <span class="citation"
+data-cites="soeCircumventionDesignDark2020"><a
+href="#ref-soeCircumventionDesignDark2020"
+role="doc-biblioref">[15]</a></span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">tracking wall <span class="citation"
+data-cites="zuiderveenborgesiusTrackingWallsTakeItorLeaveIt2017 gilgonzalezUnderstandingLegalProvisions2019 nouwensDarkPatternsGDPR2020 santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a" role="doc-biblioref">[14]</a>,
+<a href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a>, <a
+href="#ref-zuiderveenborgesiusTrackingWallsTakeItorLeaveIt2017"
+role="doc-biblioref">[25]</a>, <a
+href="#ref-gilgonzalezUnderstandingLegalProvisions2019"
+role="doc-biblioref">[26]</a></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">specific (R43)</td>
+<td style="text-align: left;">wording <span class="citation"
+data-cites="utzInformedConsentStudying2019 deConsentTargetedAdvertising2020 machuletzMultiplePurposesMultiple2020"><a
+href="#ref-utzInformedConsentStudying2019"
+role="doc-biblioref">[16]</a>, <a
+href="#ref-machuletzMultiplePurposesMultiple2020"
+role="doc-biblioref">[18]</a>, <a
+href="#ref-deConsentTargetedAdvertising2020"
+role="doc-biblioref">[23]</a></span></td>
+<td style="text-align: left;">cookie purposes <span class="citation"
+data-cites="fouadComplianceCookiePurposes2020"><a
+href="#ref-fouadComplianceCookiePurposes2020"
+role="doc-biblioref">[12]</a></span>, ignore preferences <span
+class="citation" data-cites="matteCookieBannersRespect2020"><a
+href="#ref-matteCookieBannersRespect2020"
+role="doc-biblioref">[13]</a></span></td>
+<td style="text-align: left;">wording <span class="citation"
+data-cites="nouwensDarkPatternsGDPR2020 mattePurposesIABEurope2020 matteCookieBannersRespect2020 santosAreCookieBanners2020a"><a
+href="#ref-matteCookieBannersRespect2020" role="doc-biblioref">[13]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a>, <a href="#ref-mattePurposesIABEurope2020"
+role="doc-biblioref">[19]</a>, <a
+href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">informed (R43)</td>
+<td style="text-align: left;">framing <span class="citation"
+data-cites="grayDarkPatternsLegal2020 machuletzMultiplePurposesMultiple2020 santosAreCookieBanners2020a utzInformedConsentStudying2019 santosConsentManagementPlatforms2021 soeCircumventionDesignDark2020"><a
+href="#ref-santosAreCookieBanners2020a" role="doc-biblioref">[14]</a>–<a
+href="#ref-machuletzMultiplePurposesMultiple2020"
+role="doc-biblioref">[18]</a>, <a
+href="#ref-santosConsentManagementPlatforms2021"
+role="doc-biblioref">[21]</a></span>, granularity <span class="citation"
+data-cites="nouwensDarkPatternsGDPR2020 santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a" role="doc-biblioref">[14]</a>,
+<a href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a></span>, layering <span class="citation"
+data-cites="nouwensDarkPatternsGDPR2020"><a
+href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a></span></td>
+<td style="text-align: left;">third party <span class="citation"
+data-cites="deConsentTargetedAdvertising2020"><a
+href="#ref-deConsentTargetedAdvertising2020"
+role="doc-biblioref">[23]</a></span>, cookie syncing <span
+class="citation" data-cites="urbanUnwantedSharingEconomy2018"><a
+href="#ref-urbanUnwantedSharingEconomy2018"
+role="doc-biblioref">[27]</a></span>, cookie purposes <span
+class="citation" data-cites="fouadComplianceCookiePurposes2020"><a
+href="#ref-fouadComplianceCookiePurposes2020"
+role="doc-biblioref">[12]</a></span></td>
+<td style="text-align: left;">information required <span
+class="citation" data-cites="santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">unambigious (R43)</td>
+<td style="text-align: left;"><span class="citation"
+data-cites="utzInformedConsentStudying2019 habibEmpiricalAnalysisData2019 deConsentTargetedAdvertising2020"><a
+href="#ref-utzInformedConsentStudying2019"
+role="doc-biblioref">[16]</a>, <a
+href="#ref-deConsentTargetedAdvertising2020"
+role="doc-biblioref">[23]</a>, <a
+href="#ref-habibEmpiricalAnalysisData2019"
+role="doc-biblioref">[28]</a></span>, action or expression <span
+class="citation" data-cites="santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span></td>
+<td style="text-align: left;">assume consent without action <span
+class="citation"
+data-cites="matteCookieBannersRespect2020 santosAreCookieBanners2020a"><a
+href="#ref-matteCookieBannersRespect2020" role="doc-biblioref">[13]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span>, assume given regardless of choice
+<span class="citation"
+data-cites="matteCookieBannersRespect2020 santosAreCookieBanners2020a"><a
+href="#ref-matteCookieBannersRespect2020" role="doc-biblioref">[13]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span>, transmission of signal <span
+class="citation" data-cites="santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">information provision (A13,A14)</td>
+<td style="text-align: left;">broken links <span class="citation"
+data-cites="habibEmpiricalAnalysisData2019"><a
+href="#ref-habibEmpiricalAnalysisData2019"
+role="doc-biblioref">[28]</a></span>, missing information <span
+class="citation" data-cites="habibEmpiricalAnalysisData2019"><a
+href="#ref-habibEmpiricalAnalysisData2019"
+role="doc-biblioref">[28]</a></span>, excessive interactions <span
+class="citation" data-cites="habibEmpiricalAnalysisData2019"><a
+href="#ref-habibEmpiricalAnalysisData2019"
+role="doc-biblioref">[28]</a></span>, covertness <span class="citation"
+data-cites="humanHumancentricPerspectiveDigital2020"><a
+href="#ref-humanHumancentricPerspectiveDigital2020"
+role="doc-biblioref">[24]</a></span></td>
+<td style="text-align: left;">cookie syncing <span class="citation"
+data-cites="urbanUnwantedSharingEconomy2018"><a
+href="#ref-urbanUnwantedSharingEconomy2018"
+role="doc-biblioref">[27]</a></span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">legal basis</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">incorrect for implementation <span
+class="citation" data-cites="mattePurposesIABEurope2020"><a
+href="#ref-mattePurposesIABEurope2020"
+role="doc-biblioref">[19]</a></span></td>
+<td style="text-align: left;">unclear or incorrect <span
+class="citation"
+data-cites="costelloImpactsAdTechPrivacy2020 mattePurposesIABEurope2020"><a
+href="#ref-mattePurposesIABEurope2020" role="doc-biblioref">[19]</a>, <a
+href="#ref-costelloImpactsAdTechPrivacy2020"
+role="doc-biblioref">[29]</a></span>, applicability of consent <span
+class="citation" data-cites="mattePurposesIABEurope2020"><a
+href="#ref-mattePurposesIABEurope2020"
+role="doc-biblioref">[19]</a></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">withdrawal (A7)</td>
+<td style="text-align: left;">number of actions <span class="citation"
+data-cites="nouwensDarkPatternsGDPR2020"><a
+href="#ref-nouwensDarkPatternsGDPR2020"
+role="doc-biblioref">[20]</a></span></td>
+<td style="text-align: left;">cookie <span class="citation"
+data-cites="santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span>, communication to third parties
+<span class="citation" data-cites="santosAreCookieBanners2020a"><a
+href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">explicit consent (A9)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">consent should be explicit <span
+class="citation"
+data-cites="costelloImpactsAdTechPrivacy2020 deConsentTargetedAdvertising2020"><a
+href="#ref-deConsentTargetedAdvertising2020"
+role="doc-biblioref">[23]</a>, <a
+href="#ref-costelloImpactsAdTechPrivacy2020"
+role="doc-biblioref">[29]</a></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="research-goals">Research Goals</h3>
+<p>Rather than expressing an entirely new proposal, this articles takes
+the view that harmonised developments over existing proposals are better
+to consolidate stakeholder support. For this, it aims to resolve known
+issues and improve current consenting mechanisms by proposing novel use
+of existing information and communication protocols, namely HTML and
+ADPC respectively. Through these, it proposes a radical alternative to
+the current status quo of website-controlled consent interfaces where
+implementation of user-side consenting interfaces is argued to be
+useful, practical, and feasible. The rest of the article is structured
+in terms of the following research goals:</p>
+<ol>
+<li><p>To identify, categorise, and analyse existing issues regarding
+consenting on the web</p></li>
+<li><p>To address identified issues using ADPC by proposing extensions
+for:</p>
+<ol>
+<li><p>Communication of information and decisions</p></li>
+<li><p>Establishing a shared interoperable vocabulary</p></li>
+<li><p>Generation of consent dialogues on user-side</p></li>
+<li><p>Annotating dialogues with semantic markup</p></li>
+</ol></li>
+<li><p>To discuss practicality of proposed work through legal, industry,
+and socio-technical perspectives</p></li>
+</ol>
+<h2 id="sec:issues">Categorisation of Issues</h2>
+<p>‘Issue’ in this context refers to a problematic aspect that prevents
+the effective or intended mechanism of consenting from realising i.e.
+preventing the individual from understanding and controlling the
+existence and extent of personal data processing associated with them.
+For identification of issues, the state of the art was generated through
+a literature search (in Q2-Q4 2021) and reviewed using the following
+methods:</p>
+<ul>
+<li><p>Searching for related keywords: consent, CMP, GDPR, cookie,
+banner, dialogue, dark patterns, compliance</p></li>
+<li><p>Publications at relevant venues: privacy, security, data
+protection, law, HCI, networking</p></li>
+<li><p>Authoritative sources: DPA (including EDPS and EDPB) guidelines,
+DPA decisions and filed complaints (where made available), court
+proceedings</p></li>
+<li><p>Secondary and Tertiary identifications through citations from
+collected literature</p></li>
+</ul>
+<p>The collected references were filtered for relevance based on
+directly addressing issues associated with GDPR’s consenting
+requirements, and were discarded otherwise (e.g. where dealing with
+ePrivacy Directive or CCPA or other consenting requirements). These
+selected references were then categorised as to which GDPR requirement
+they addressed, with possibility to link multiple requirements for the
+same work. The GDPR requirements used here were: (i) Rec. 43 - freely
+given; (ii) Rec. 43 - specific; (iii) Rec. 43 - unambigious; (iv)
+Art.13, Art.14 - Information provision; (v) Art.6 - Legal Basis; (vi)
+Art.7 - withdrawal; and (vii) Art.9 - explicit consent.</p>
+<p>In this exercise, neither the collected literature nor the GDPR
+requirements are exhaustive or definitive, but are intended to be a
+preliminary collection sufficient to demonstrate the existence of
+categories so as to justify the proposed solutions that address them.
+Future work in this regards therefore involves performing an exhaustive
+literature search to identify issues, categories, and requirements not
+presented here. The identified literature, relevance to GDPR’s
+requirements, and their categorisation across three broad topics of HCI
+(e.g. interfaces, UI/UX, comprehension), IT (e.g. technical
+implementation), and Law (e.g. enforceability) are presented in .</p>
+<p>The following are some observations :</p>
+<p><strong>Issues related to information</strong>: terminology used in
+description depends on framing of concepts, their granularity (broad vs
+specific), and can lead to missing or incomplete information. In this,
+users have no means to understand exactly what these terms mean or to
+provide a vocabulary they understand or are comfortable with.</p>
+<p><strong>Issues related to presentation of information</strong>:
+complex information, with layering used to hide problematic aspects
+(e.g. third-party sharing), with the placement of information and
+choices having a ‘nudging’ effect. In this, users have no alternatives,
+must interact with given interfaces, and are faced with ‘consent
+fatigue’.</p>
+<p><strong>Issues related to presentation of choices/options</strong>:
+active manipulation through design choices, nudging, consent wall,
+disparity or imbalance between choices, preselected options, layering
+(hiding options). The user does not have fair choices due to being
+provided an interface designed for such manipulation or coercion. Even
+where interfaces may not be directly manipulative, them being cumbersome
+is enough to dissuade users from configuring options.</p>
+<p><strong>Issues related to expression of choice</strong>: no choice
+provided (e.g. no reject button), disparity in placement of choice (e.g.
+accept on 1st layer, refuse in 2nd), pre-selected options, granularity
+(e.g. agree all but refuse individually), layering (hiding choices in
+different layers), assumption (e.g. consent on scrolling or visiting),
+fatigue or no of actions (excessive actions e.g. to refuse all). In
+this, it is evident that users are aware of disparities, but gravitate
+towards ‘easy’ actions for getting the dialogue out of the way. At other
+times, users are not aware of choices e.g. they are ‘hidden’ in another
+layer or option.</p>
+<p><strong>Issues related to third-parties</strong>: hiding scale/scope
+of third party sharing, and insufficient information for each
+third-party. In this, some interfaces deliberately made it difficult to
+control sharing data with third-parties e.g. by using legitimate
+interest on consent refusal, or forcing selection over hundreds of third
+parties individually.</p>
+<p><strong>Issues related to legal basis</strong>: incorrect legal basis
+(e.g. legitimate interest instead of consent), and incorrect consent
+expression quality (e.g. not explicit) were predominant in practice.
+Users are not expected to discern the existence of such requirements or
+have the cognitive willingness to indulge in detection of their
+misuse.</p>
+<p>From the above exercise, the proposals for solutions are broadly
+specified as two forms of technological innovations to address known
+issues: <strong>(1) Automating the expression of decisions</strong> - to
+prevent and mitigate consent fatigue, repetitive consenting, and to
+ensure consistent expression of user decisions; and <strong>(2)
+Providing a user-controlled method for expression of decisions</strong>
+- to prevent and mitigate dark patterns, manipulative design choices,
+and coercion.</p>
+<h2 id="extending-adpc">Extending ADPC</h2>
+<p>The ADPC specification currently defines multiple ways for obtaining
+information about the intended processing purposes: (1) link in HTML
+header to a file containing consent requests; or (2) Script that calls
+the consent-request API and passes the information. The websites
+determine which purposes they want to use, where users (and user-agents)
+are required to be aware of the terms (and their variance) to enable
+expression of consent/object decisions. In absence of this, every
+website could implement ADPC with its own special customised purpose,
+thus creating information comprehension and management overload for
+users, especially when websites change terms or users have to manage it
+for every website individually. A pragmatic solution would be using an
+existing common specification - the IAB’s TCF<a href="#fn11"
+class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.
+However, the TCF has known issues <span class="citation"
+data-cites="santosAreCookieBanners2020a vealeAdtechRealTimeBidding2021 vealeImpossibleAsksCan2022"><a
+href="#ref-vealeAdtechRealTimeBidding2021" role="doc-biblioref">[9]</a>,
+<a href="#ref-vealeImpossibleAsksCan2022" role="doc-biblioref">[10]</a>,
+<a href="#ref-santosAreCookieBanners2020a"
+role="doc-biblioref">[14]</a></span> and cannot be customised by
+websites or users.</p>
+<p>To rectify this, the first proposed solution consists of three
+incrementally radical proposals: (1) giving users control over TCF; (2)
+giving users and websites freedom to use any purpose - and matching them
+semantically; and (3) creating a globally standardised mechanism for
+establishing interoperability between purposes.</p>
+<h3 id="applying-adpc-to-iabs-tcf-v2">Applying ADPC to IAB’s TCF v2</h3>
+<p>TCF v2 is a specification dedicated to the sharing of personal data
+with IAB-defined purposes. The TCF string is effectively a JSON-like
+policy encoded in Base64 that consists of additional info than just
+purposes - e.g. it also specifies parties, data categories, legal
+basess. Given that ADPC only defines purposes as a single-field, and
+that users may want to express preferences for each of TCF’s granular
+fields, the entirety of TCF’s bit-string can be specified as a single
+purpose that can then be consented or objected to. For (a simplified)
+example, the identifier <code>1A2B3C</code> can be the id of purpose
+<code>1A</code> that uses data <code>2B</code> for controller
+<code>3C</code>. Users can selectively (through their user-agent)
+configure ADPC to permit or reject specific parts of the TCF, such as
+prohibiting all uses of data <code>2B</code> or consenting only to
+controller <code>3C</code>. This approach enables to utilising existing
+ecosystems of TCF with ADPC’s signal expression, and allows existing
+websites and ad-mechanisms to continue operating, and provides users
+with more transparency and control of their choices instead of it being
+obfuscated in a cookie.</p>
+<p>Since the TCF is already optimised for transmission (as binary
+encoding), a further optimised version can be developed by removing
+irrelevant fields (e.g. timestamps, metrics) for transmission through
+HTTP headers. The matching between a TCF-expressed request and
+user-expressed preference can also be made performant e.g. based on the
+complexity of matching, two bloom filters may suffice to simply check
+whether the user has expressed any preference over permitting or
+prohibiting an item (e.g. purpose) in the current request.</p>
+<h3 id="using-dpv-for-interoperability-between-adpc-purposes">Using DPV
+for Interoperability between ADPC purposes</h3>
+<p>One of the challenges with effective use of ADPC’s purposes is that
+is necessitates websites and user(-agents) to agree upon the vocabulary
+to correctly interpret the purposes. To enable some flexibility in this
+where websites and users can select their individual purposes and
+preferences, which are then semantically matched with each other to
+determine whether the action is permitted or prohibited. This is based
+on P3P’s design for matching user-preferences with website requests.</p>
+<p>For ADPC, the proposal is to use (something similar to) the Data
+Privacy Vocabulary (DPV) <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[30]</a></span> - which provides hierarchical
+taxonomies of purposes, personal data, legal bases, and other relevant
+concepts. DPV’s taxonomies enable one party (e.g. user) to define their
+preferences at an abstract or broad level (e.g. prohibit marketing),
+while the other party (e.g. website) can be specific for their use-case
+(e.g. request sending newsletters of new products). The receiving party
+(e.g. web browser) then performs a semantic matching that involves
+inferring that the request to send newsletters is prohibited by the
+preference to not receive any marketing, and therefore undertake consent
+refusal / withdrawal or express objection. This works in favour of both
+websites - that are required to utilise specific purposes, and users -
+that can set preferences at a broad level and avoid repetitive
+consenting decisions.</p>
+<p>To enable the above within ADPC, requests must contain two pieces of
+information: the purpose as requested by the controller and the parent
+concept it is expanded from, e.g.
+<code>Send Newsletters :: Marketing</code>. In this only the top or
+parent concept needs to be known or interoperable between the website
+and user-agent, thereby reducing the requirement for shared purposes,
+and permitting the creation or utilisation of taxonomies like DPV that
+provide a broad structure of purposes.</p>
+<p>The DPV may not be suitable for use in HTTP transmission due to a
+larger byte-size. Here, an approach similar to the compression utilised
+by TCF can be developed where a binary expression can be created by
+converting DPV to a ‘flat list’ and assigning identifiers (e.g. top
+concept is 0, next concept is 1, etc. using the Shannong-Fano encoding<a
+href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a>).</p>
+<p>Using DPV is beneficial as its taxonomy is richer than TCF, more
+flexible in that multiple purposes can be cleanly combined and retain
+individuality (i.e. multiple parent concepts), and has granularity of
+requests and decision management.</p>
+<h3 id="a-global-shared-registry-of-purposes">A Global Shared Registry
+of Purposes</h3>
+<p>The previous two approaches assumed that the website and user-agent
+have a mutual understanding on which vocabulary to use. In practicality,
+it may be difficult to reach agreement on a single such vocabulary given
+the differences in domain, sector, application, jurisdiction, and
+actors. To avoid a constant struggle over which vocabulary should be
+used, and to avoid/prevent a single restricted vocabulary such as TCF
+being the only available vocabulary, a globally standardised registry of
+‘purposes’ could be established under a neutral umbrella e.g. by W3C.
+The registry (and its shepherd organisation) is then responsible for
+maintaining the list of vocabularies conforming to some specified
+standards, requirements, or norms - with legal enforceability
+necessitating use of only registered vocabularies to avoid misuse.</p>
+<p>Use of registered vocabularies is similar to previous proposals - as
+a specification expressed in binary form similar to TCF usage to enable
+an optimised expression. For example, consider 4-byte words:
+<code>0110 1110 1010 0111</code> where the first 8 bits indicate the
+identifier of registered vocabulary used
+(<code>0110 1110 = 108 of 127</code>), with the vocabulary then
+specifying how the following 8 (or more) bits should be interpreted. If
+vocabulary 127 was TCF, then the user-agent would interpret the next 8
+bits as defined by TCF’s specification in the registry e.g. as each bit
+indicating permission for a purpose in the list (same as existing use of
+TCF).</p>
+<p>The creation of vocabularies at a standardisation organisation (e.g.
+W3C) offers advantage in the form establishing governance procedures
+where authorities, NGOs, etc. can have the ability to specify additional
+information/requirements at the purpose level. For example, saying
+<code>x</code> purpose in a list <em>must</em> require explicit consent,
+or that <code>y</code> <em>must not</em> be used with legitimate
+interest.</p>
+<p>Such a global registry can also maintain ‘mappings’ between
+vocabularies that permit websites to request using a vocabulary (e.g.
+TCF) and match it with user preferences in another (e.g. DPV). This can
+enable websites and user-agents to communicate in the language they deem
+suitable without requiring strict restrictions on communication.</p>
+<h2 id="generating-dialogues-on-user-side">Generating Dialogues on
+User-side</h2>
+<p>For UI/UX or HCI issues, they are directly associated with how
+information is presented, what and how choices are offered, and how
+consenting takes place (e.g. dark patterns). To rectify this, the second
+proposed solution consists of some or all of the consenting interface
+being generated and managed at the user-side by the user-agent of choice
+(e.g. web browser or external provider).</p>
+<p>To better understand the implications of these solutions, a common
+acceptance of the terms associated with different interface elements is
+necessary. For the puropses of this paper: a ‘notice’ is the entire
+interface which contains information; ‘notice elements’ are parts of a
+notice, ‘controls’ are actionable elements meant to be interacted with
+by the user (e.g. more info, select choice), and ‘dialogue’ refers to
+the entire interface consisting of notice and controls. Controls can be
+further distinguished as: ‘layer controls’ refers to controls associated
+with varying interface elements in terms of information density,
+granularity, presentation, etc.; ‘preference controls’ refer to the user
+expressing a preference - where it is important to note that a
+preference is not a final decision e.g. checkboxes vs accept button; and
+‘decision controls’ that convey the decision of the user e.g.
+accept/reject button.</p>
+<h3 id="complete-generation">Complete Generation</h3>
+<p>The first approach consists of the controller providing all the
+necessary information in a machine-readable format (e.g. via ADPC), and
+receiving the user’s decision (e.g. true/false). The user-agent
+generates the interface and presents the information and controls to the
+user.</p>
+<p>The information conveyed could be based on standardised
+specifications, such as those based on GDPR’s Art.13 and Art.14, and
+using mechanisms such as the DPV <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[30]</a></span> for interoperable communication of
+<em>Purpose, Processing, Personal Data, Controller, Recipients, Legal
+Basis, and Tech/Org Measures</em>.</p>
+<p>Even though the user-agent generates the dialogue on user-side, the
+controller can still be provided with some (limited) ability to control
+the design and layout of individual elements (e.g. using CSS) - such as
+to ensure consistency with website design or to provide additional
+emphasis on information. Such access can be restricted to a limited set
+of CSS or providing specific rules on elements so as to avoid hiding
+elements or changing layouts for manipulation.</p>
+<p>This approach avoids the pitfalls related with manipulative designs
+and dark patterns, but interestingly also reduces the requirements for
+controllers to develop notice and consenting mechanisms themselves. At
+the same time, it also works in favour of controllers by reducing their
+efforts in developing notice and consent interfaces. However, the caveat
+here is that for controllers to respect not generating interfaces or
+using the user-agent’s interfaces - a legal intervention is
+necessary.</p>
+<h3 id="providing-customisable-interfaces">Providing Customisable
+Interfaces</h3>
+<p>Where the earlier approach proposed completely removing the ability
+of controllers to create any consenting interface, this proposal relaxes
+this restriction to instead provide a limited ability to generate
+interfaces. In this, controllers retain the ability to customise
+interfaces i.e. use any HTML structure, but have to use the provided
+framework to make requests. The term ‘framework’ refers to some API
+provided by the user-agent through which the controller can generate
+interfaces and offer choices and controls to the user. For example, as a
+standardised JavaScript call <code>createNotice()</code> that takes as
+parameters DOM elements containing contents of a notice - such as
+options for notice elements, controls, styling, etc. Like before, the
+final consenting decision controls are offered by the user-agent.</p>
+<p>This approach permits more flexibility to controllers to express
+notices and dialogues in granular form, in a way that they determine,
+with their own styling. The only caveat is that they have to explicitly
+structure their interfaces and processes to conform with the APIs
+offered. This enables user-agents to rectify or correct known issues
+such as disparity in consenting choices or use of layers to ‘hide’
+information. This also enables users to request consent interfaces look
+or behave in a certain way by controlling the use of APIs themselves
+e.g. by asking the user-agent to display all elements in a single screen
+instead of as layers.</p>
+<h3 id="only-generating-choices-and-expression">Only Generating Choices
+and Expression</h3>
+<p>The final proposal is a vastly reduced condition where the user-agent
+only generates the choices and controls within an interface - which
+might prove to be more palatable to controllers as they retain complete
+control of what they want to show and how. However, to avoid some forms
+of dark patterns, such as the user not having the ability to discern
+between choices, or being forced to interact and make a decision - the
+user-agent requires the controller to request consent via an API call.
+This is similar to the way websites can currently request access to and
+use microphones or cameras through the browser or on the smartphone.</p>
+<p>An example of this could be: calling the JavaScript API
+<code>requestConsent(html_element_id)</code> where the HTML element ID
+refers to the ID of DOM element containing the notice and choice
+elements. As before, the final decision elements are generated user-side
+and are not available for manipulation by the controller.</p>
+<p>While this provides controller the ability to control how they want
+to make a request (and use dark patterns), the final decision making
+capability is specified by the user. A more granular iteration of this
+option is the requirement to make controllers also use the API calls to
+specify other controls (e.g. checkboxes) so as to prohibit manipulation
+of any form in making choices.</p>
+<h3 id="use-of-adpc-and-quality-of-consent">Use of ADPC, and Quality of
+Consent</h3>
+<p>In all options, ADPC (as defined) takes on a more passive role, where
+it can act as the bearer of information required to generate a dialogue,
+or for communicating the decisions made by the user. However, the
+proposals presented in this paper also work towards enabling consenting
+interfaces, such as through the use of standardised and interoperable
+vocabularies that can be useful in generated consenting interfaces
+programmatically.</p>
+<p>This opens up an interesting aspect of research regarding the
+‘quality of consent’ - e.g. regular or explicit as defined by the GDPR.
+The user-agent could utilise the vocabularies and known norms (e.g.
+special categories require explicit consent) to automatically present
+the appropriate level of information and choices to the user. Not only
+is this beneficial for enforcement of the law (i.e. GDPR) as intended,
+it helps users in making them more aware of when sensitive decisions are
+needed, and is better for controllers to avoid incorrect or
+non-compliant interfaces.</p>
+<h3 id="semantic-markup-in-html-documents">Semantic Markup in HTML
+documents</h3>
+<p>Further use of vocabularies is that they can also be used as semantic
+markup within the HTML or externally as machine-readalbe policies.
+Existing proposals<a href="#fn13" class="footnote-ref" id="fnref13"
+role="doc-noteref"><sup>13</sup></a> for this include embedding semantic
+markup alongside the HTML elements so that the user-agent can identify
+the notice elements and assist in the requesting and decision making
+process. This can be the source of information required for some of the
+proposed approaches above with the HTML existing as a fallback in case
+the user-agent does not support ADPC. In this, the explored approach
+consists of specifying ‘notice’ using the <code>dialog</code> HTML
+element, customising buttons/choices by identifying them using semantic
+markup (e.g. button type as providing consent); and indicating action or
+application or information using <code>data-*</code> attributes (e.g.
+<code>data-purpose</code> indicating the text following the element is
+the purpose of processing).</p>
+<p>A semantic markup mechanism already exists in the form of <a
+href="schema.org" class="uri">schema.org</a> which provides metadata for
+websites to declare their contents to search-engines and other
+web-crawlers. However, despite aiming to offer rich semantic markup for
+websites, it lacks relevant concepts to represent important information
+such as privacy policies, t&amp;c, entities and roles (e.g. controller),
+dialogues and interfaces, consent, preferences, etc. Therefore,
+alongside the creation of vocabularies and user-side generation of
+dialogues, a tangential proposal also includes the further development
+of HTML elements as identified earlier and accompanying semantic markup
+within schema.org so they can be used in HTML to identify notice
+elements and its contents e.g. to indicate which button is consent
+action. Where some of these concepts could be deemed to not be in scope
+for schema.org, they could be explored to be alternately expressed using
+another vocabulary such as the DPV <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[30]</a></span>.</p>
+<h2
+id="discussion-on-practicality-and-feasibility-in-real-world">Discussion
+on Practicality and Feasibility in Real-World</h2>
+<p>This section discusses important questions in terms of the practical
+application of proposed approaches, the history of similar approaches
+facing resilience from actors historically, as well the difficulties
+associated with making such approaches legally required and
+enforceable.</p>
+<p><strong>Controllers:</strong> While the proposed approaches make it
+more difficult for controllers to indulge in malpractices, this must be
+taken as a benefit in terms of lesser legal liability rather than a
+hindrance in terms of lesser data sourcing. Additionally, giving users
+more control may open new opportunities to build relationships based on
+trust rather than coercion. However, in practice, controllers may still
+largely rely on third-party tools such as CMPs and services such as
+TCF/RTB given the prevalent use of advertisements on websites.
+Therefore, effective adoption for controllers may be entirely determined
+by available support in third-party tooling. This creates a risk that
+proposed solutions might be rejected, diluted, or convoluted to not be
+effective by such third-party platforms.</p>
+<p><strong>User-Agents:</strong> User-agent here refers mainly to web
+browsers (i.e. Google Chrome, Mozilla Firefox, Apple Safari, and
+Microsoft Edge) and smartphone platform OS providers (Apple’s iOS family
+and Google’s Android). Of these, Google and Microsoft have a conflict of
+interest in developing such technologies given their reliance on data
+harvesting and ad-based revenues. For example, Chrome, despite being the
+dominant browser, is the last in terms of adopting beneficial approaches
+such as third-party cookie restrictions, but the first to offer counter
+proposals such as Federated Learning of Cohorts<a href="#fn14"
+class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>
+(FLoC). Collectively, the browsers have also been reluctant to improve
+the state of privacy-based approaches on the web as related to
+consenting - as evidenced by lack of related proposals or work in web
+communities. In addition, there is a culture of implementing things
+in-house, such as Apple’s App Tracking Transparency<a href="#fn15"
+class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
+(ATT), instead of having a collective standardised approach.</p>
+<p><strong>Users:</strong> The proposed approaches promise several
+benefits to users ranging from lesser consenting decisions to more
+empowerment and better management of their relationships with
+controllers. However, for true effectiveness, the approaches have to be
+implemented by user-agents that the users commonly use and expect to
+work on their behalf. This is problematic because the users now face an
+unexpected hurdle in that they are at the mercy of their user-agents in
+terms of what options and abilities are made available to them. Given
+the historical basis for how user-agents (see prior para) have not
+provided any means to alleviate consenting issues, users are at a
+different end of power imbalance - a surprising outcome from the
+development of user-empowerment approaches.</p>
+<p><strong>Data Protection Authorities (DPAs):</strong> Authorities
+exist to enforce the law, which means that their powers, abilities, and
+perspectives are largely shaped within the confines of what the law
+declares and permits. However, authorities are also agencies in their
+own right, as evidenced from their lack of effective enforcement under
+the GDPR. While some of this can be attributed to lack of resources, the
+complexities of enforcing a new regulation, or the large difference in
+capabilities between DPAs and multi-national organisations, at the end
+of the day - DPAs have the power to validate solutions that they deem
+enforceable. While European DPAs have been reluctant to provide any
+reassuring endorsement to a particular solution, the Californian
+authority has been notable in being proactive regarding development and
+enforcement of technological solutions - most notably the GPC. Despite
+California being a smaller non-national jurisdiction and CCPA being
+vastly smaller than the more complex GDPR, it asserts how DPAs endorsing
+technological solutions can fast-track their adoption and effectiveness
+in legal enforcement.</p>
+<p><strong>Legal Enforceability:</strong> For solutions to be enforced,
+they are required to have a basis in law, such as a statement indicating
+applicability of a category of solutions. For example: GDPR’s Art.21-5
+specifically mentione “data subject may exercise his or her right to
+object by automated means using technical specifications.”. Here, the
+exact nature of “technical specification” is not defined, and is open to
+interpretation by the courts and DPAs, but it can be taken to refer to
+any automated solution e.g. a signal such as ADPC. Despite this, the
+enforceability of a signal is still an open question as no DPA has
+confirmed what criteria must be fulfilled for a signal, as automated
+means, to be considered enforceable. There seems to be a reluctance to
+await adoption and support from the same stakeholders which cause issues
+- thereby resulting in an enforcement paralysis and a technological
+stagnation in terms of legally enforceable solutions. Though there are
+upcoming proposals that aim to change things, notably EU’s Data Services
+Act<a href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a> (DSA) and the ePrivacy Regulation<a
+href="#fn17" class="footnote-ref" id="fnref17"
+role="doc-noteref"><sup>17</sup></a> (ePR) - their current drafts (as of
+MAR’22) do not provide any further clarity or ability for the use of
+proposed solutions.</p>
+<p><strong>Standardisation:</strong> For solutions to be generally
+adopted, it is essential for them to be standardised (whether formally
+or informally). However, the standardisation body itself does not
+necessarily act on its own agency. For example, IAB is a consortium made
+up of members who have a vested interest in advertising-based profit,
+and thereby a conflict on interest in any solution that reduces their
+capabilities. Similarly, W3C, while a web-focused body, comprises of
+members which include Google, Facebook, Apple, etc. that make up most of
+the web development task forces. While this can be mitigated through
+wider community participation, e.g. by NGOs, or by researchers - it is
+difficult to sustain such initiatives given the disparity between
+available human resources and funding.</p>
+<p><strong>Way Forward:</strong> While each of the prior topics was
+critical in that it presented barriers to the adoption of proposed
+solutions, it also opens discussion for overcoming these hurdles. The
+largest mechanism for adoption of proposed solutions is the ability for
+user-agents to express them, which necessitates development within web
+browsers (primarily) and smartphone platforms. This can be done through
+the W3C working and community groups dedicated to development of
+privacy-based features, with legal and societal backing to avoid
+reluctance by big-tech. At the same time, the lack of motivation stems
+from lesser legal enforcement and clarity - which needs to be addressed
+in upcoming proposals explicitly. For this, additional work
+demonstrating why laws and DPAs need to be progressive regarding
+technological solutions for enforcement is desperately needed. Finally,
+the proposed research is theoretical, and needs to be implemented in
+real-world conditions as prototypes to demonstrate its effectiveness and
+ability to function. For this, collaborations are needed to ensure
+adequate stakeholder representation (e.g. users, user-agents, and
+websites). Forums such as community groups<a href="#fn18"
+class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+provide a common ground for finding and exploiting such
+opportunities.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This paper presented two sets of radical proposals associated with
+issues regarding consenting it identified from the existing literature.
+The first proposal dealt with automated communication of information and
+decisions based on the ADPC specification, which addressed consent
+fatigue, user decision-making, and misuse of consenting. The second
+proposal consisted of generating consenting interfaces at the user-side
+by the user-agent through different variations of control available to
+the controller. It aimed to resolve issues regarding dark patterns,
+manipulation, coercion, and lack of control by users in consenting.</p>
+<p>To address how these proposals face hurdles in real-world adoption,
+the paper presented a discussion section that provided a critical
+overlook of how the different actors have been historically reluctant to
+adopt such solutions. In conclusion, it identified promise in the
+upcoming European legal proposals for technological approaches and
+solutions taking a more active role in effective consenting and its
+enforcement by all actors.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-EU_Parliament_GDPR_report_2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Texts adopted - <span>Commission</span>
+evaluation report on the implementation of the <span>General Data
+Protection Regulation</span> two years after its application -
+<span>Thursday</span>, 25 <span>March</span> 2021.”</span>
+https://www.europarl.europa.eu/doceo/document/TA-9-2021-0111_EN.html.
+</div>
+</div>
+<div id="ref-ICCLSuesDPC2022" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline"><span>“<span>ICCL</span> sues <span>DPC</span>
+over failure to act on massive <span>Google</span> data breach,”</span>
+<em>Irish Council for Civil Liberties</em>.
+https://www.iccl.ie/news/iccl-sues-dpc-over-failure-to-act-on-massive-google-data-breach/,
+Mar-2022. </div>
+</div>
+<div id="ref-NoybFiles422a" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline"><span>“Noyb files 422 formal <span>GDPR</span>
+complaints on nerve-wrecking <span>‘<span>Cookie
+Banners</span>’</span>.”</span>
+https://noyb.eu/en/noyb-files-422-formal-gdpr-complaints-nerve-wrecking-cookie-banners.
+</div>
+</div>
+<div id="ref-EuropeanCommissionFailure" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline"><span>“The <span>European Commission</span>’s
+failure to reply to an infringement complaint concerning an alleged
+breach by <span>Ireland</span> of the <span>General Data Protection
+Regulation</span> (<span>GDPR</span>) | <span>Case</span> opened |
+<span>European Ombudsman</span>.”</span>
+https://www.ombudsman.europa.eu/en/opening-summary/en/149949. </div>
+</div>
+<div id="ref-EuropeEnforcementParalysis2021a" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><span>“Europe’s enforcement paralysis:
+<span>ICCL</span>’s 2021 <span>GDPR</span> report,”</span> <em>Irish
+Council for Civil Liberties</em>.
+https://www.iccl.ie/digital-data/2021-gdpr-report/, Sep-2021. </div>
+</div>
+<div id="ref-DeliberationSAN2021023December2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div
+class="csl-right-inline"><span>“Deliberation <span>SAN-2021-023</span>
+of <span>December</span> 31, 2021 concerning <span>GOOGLE</span>
+companies <span>LLC</span> and <span>GOOGLE IRELAND
+LIMITED</span>.”</span> <span>CNIL (FR)</span>, 2022. </div>
+</div>
+<div id="ref-DeliberationSAN2021024December2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div
+class="csl-right-inline"><span>“Deliberation <span>SAN-2021-024</span>
+of <span>December</span> 31, 2021 concerning the company <span>FACEBOOK
+IRELAND LIMITED</span>.”</span> <span>CNIL (FR)</span>, 2022. </div>
+</div>
+<div id="ref-BEDPARestore" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div
+class="csl-right-inline"><span>“The <span>BE DPA</span> to restore order
+to the online advertising industry: <span>IAB Europe</span> held
+responsible for a mechanism that infringes the <span>GDPR</span> |
+<span>Autorité</span> de protection des données<span><span
+class="math inline">&lt;</span></span>br<span><span
+class="math inline">&gt;</span></span><span>Gegevensbeschermingsautoriteit</span>.”</span>
+https://www.dataprotectionauthority.be/citizen/iab-europe-held-responsible-for-a-mechanism-that-infringes-the-gdpr.
+</div>
+</div>
+<div id="ref-vealeAdtechRealTimeBidding2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">M.
+Veale and F. Zuiderveen Borgesius, <span>“Adtech and <span>Real-Time
+Bidding</span> under <span>European Data Protection Law</span>,”</span>
+<em>German Law Journal</em>, Jul. 2021. </div>
+</div>
+<div id="ref-vealeImpossibleAsksCan2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M.
+Veale, M. Nouwens, and C. Santos, <span>“Impossible <span>Asks</span>:
+<span>Can</span> the <span>Transparency</span> and <span>Consent
+Framework Ever Authorise Real-Time Bidding After</span> the
+<span>Belgian DPA Decision</span>?”</span> <em>Technology and
+Regulation</em>, vol. 2022, pp. 12–22, Feb. 2022, doi: <a
+href="https://doi.org/10.26116/techreg.2022.002">10.26116/techreg.2022.002</a>.
+</div>
+</div>
+<div id="ref-edwardsDataSubjectsData2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">L.
+Edwards, M. Finck, M. Veale, and N. Zingales, <span>“Data subjects as
+data controllers: A <span>Fashion</span>(able) concept?”</span>
+<em>Internet Policy Review</em>, Jun. 2019. </div>
+</div>
+<div id="ref-fouadComplianceCookiePurposes2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">I.
+Fouad, C. Santos, F. A. Kassar, N. Bielova, and S. Calzavara, <span>“On
+<span>Compliance</span> of <span>Cookie Purposes</span> with the
+<span>Purpose Specification Principle</span>,”</span> in
+<em><span>IWPE</span></em>, 2020, p. 9. </div>
+</div>
+<div id="ref-matteCookieBannersRespect2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">C.
+Matte, N. Bielova, and C. Santos, <span>“Do <span>Cookie Banners
+Respect</span> my <span>Choice</span>?”</span> in <em>41st <span>IEEE
+Symposium</span> on <span>Security</span> and <span>Privacy</span></em>,
+2020, p. 19. </div>
+</div>
+<div id="ref-santosAreCookieBanners2020a" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C.
+Santos, N. Bielova, and C. Matte, <span>“Are cookie banners indeed
+compliant with the law? <span>Deciphering EU</span> legal requirements
+on consent and technical means to verify compliance of cookie
+banners,”</span> <em>Technology and Regulation</em>, pp. 91–135, Dec.
+2020, doi: <a href="https://doi.org/ghtr3n">ghtr3n</a>. </div>
+</div>
+<div id="ref-soeCircumventionDesignDark2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">T.
+H. Soe, O. E. Nordberg, F. Guribye, and M. Slavkovik,
+<span>“Circumvention by design – dark patterns in cookie consents for
+online news outlets,”</span> <em>arXiv:2006.13985 [cs]</em>, Jun. 2020
+[Online]. Available: <a
+href="https://arxiv.org/abs/2006.13985">https://arxiv.org/abs/2006.13985</a></div>
+</div>
+<div id="ref-utzInformedConsentStudying2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C.
+Utz, M. Degeling, S. Fahl, F. Schaub, and T. Holz,
+<span>“(<span>Un</span>)informed <span>Consent</span>: <span>Studying
+GDPR Consent Notices</span> in the <span>Field</span>,”</span> in
+<em><span>ACM SIGSAC Conference</span> on <span>Computer</span> and
+<span>Communications Security</span> (<span>CCS</span>’19)</em>, 2019,
+p. 18. </div>
+</div>
+<div id="ref-grayDarkPatternsLegal2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C.
+M. Gray, C. Santos, N. Bielova, M. Toth, and D. Clifford, <span>“Dark
+<span>Patterns</span> and the <span>Legal Requirements</span> of
+<span>Consent Banners</span>: <span>An Interaction Criticism
+Perspective</span>,”</span> <em>arXiv:2009.10194 [cs]</em>, Sep. 2020
+[Online]. Available: <a
+href="https://arxiv.org/abs/2009.10194">https://arxiv.org/abs/2009.10194</a></div>
+</div>
+<div id="ref-machuletzMultiplePurposesMultiple2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">D.
+Machuletz and R. Böhme, <span>“Multiple <span>Purposes</span>,
+<span>Multiple Problems</span>: <span>A User Study</span> of
+<span>Consent Dialogs</span> after <span>GDPR</span>,”</span>
+<em>Proceedings on Privacy Enhancing Technologies</em>, vol. 2020, no.
+2, pp. 481–498, Apr. 2020, doi: <a
+href="https://doi.org/ghqdq8">ghqdq8</a>. [Online]. Available: <a
+href="https://arxiv.org/abs/1908.10048">https://arxiv.org/abs/1908.10048</a></div>
+</div>
+<div id="ref-mattePurposesIABEurope2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">C.
+Matte, C. Santos, and N. Bielova, <span>“Purposes in <span>IAB
+Europe</span>’s <span>TCF</span>: Which legal basis and how are they
+used by advertisers?”</span> in <em>Annual <span>Privacy Forum</span>
+(<span>APF</span> 2020)</em>, 2020. </div>
+</div>
+<div id="ref-nouwensDarkPatternsGDPR2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">M.
+Nouwens, I. Liccardi, M. Veale, D. Karger, and L. Kagal, <span>“Dark
+<span>Patterns</span> after the <span>GDPR</span>: <span
+class="nocase">Scraping Consent Pop-ups</span> and
+<span>Demonstrating</span> their <span>Influence</span>,”</span>
+<em>Proceedings of the 2020 CHI Conference on Human Factors in Computing
+Systems</em>, pp. 1–13, Apr. 2020, doi: <a
+href="https://doi.org/ggx9vq">ggx9vq</a>. [Online]. Available: <a
+href="https://arxiv.org/abs/2001.02479">https://arxiv.org/abs/2001.02479</a></div>
+</div>
+<div id="ref-santosConsentManagementPlatforms2021" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">C.
+Santos, M. Nouwens, M. Toth, N. Bielova, and V. Roca, <span>“Consent
+<span>Management Platforms Under</span> the <span>GDPR</span>:
+<span>Processors</span> and/or <span>Controllers</span>?”</span> in
+<em>Privacy <span>Technologies</span> and <span>Policy</span></em>,
+2021, pp. 47–69, doi: <a href="https://doi.org/gkq7h4">gkq7h4</a>.
+</div>
+</div>
+<div id="ref-CCPA" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[22] </div><div
+class="csl-right-inline"><span>“Assembly <span>Bill No</span>. 375
+<span>Chapter</span> 55: <span>An</span> act to add <span>Title</span>
+1.81.5 (commencing with <span>Section</span> 1798.100) to
+<span>Part</span> 4 of <span>Division</span> 3 of the <span>Civil
+Code</span>, relating to privacy,”</span> <em>California State
+Legislature</em>, Jun. 2018. </div>
+</div>
+<div id="ref-deConsentTargetedAdvertising2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">S.
+J. De and A. Imine, <span>“Consent for targeted advertising: The case of
+<span>Facebook</span>,”</span> <em>AI &amp; SOCIETY</em>, May 2020, doi:
+<a href="https://doi.org/ggzp38">ggzp38</a>. </div>
+</div>
+<div id="ref-humanHumancentricPerspectiveDigital2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">S.
+Human and F. Cech, <span>“A <span class="nocase">Human-centric
+Perspective</span> on <span>Digital Consenting</span>: <span>The
+Case</span> of <span>GAFAM</span>,”</span> in <em>Human <span>Centred
+Intelligent Systems</span> 2020</em>, 2020. </div>
+</div>
+<div id="ref-zuiderveenborgesiusTrackingWallsTakeItorLeaveIt2017"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">F.
+J. Zuiderveen Borgesius, S. Kruikemeier, S. C. Boerman, and N.
+Helberger, <span>“Tracking <span>Walls</span>, <span
+class="nocase">Take-It-or-Leave-It Choices</span>, the
+<span>GDPR</span>, and the <span class="nocase">ePrivacy
+Regulation</span>,”</span> <em>European Data Protection Law Review
+(EDPL)</em>, vol. 3, no. 3, pp. 353–368, 2017, doi: <a
+href="https://doi.org/gfsh4x">gfsh4x</a>. </div>
+</div>
+<div id="ref-gilgonzalezUnderstandingLegalProvisions2019"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">E.
+Gil González and P. de Hert, <span>“Understanding the legal provisions
+that allow processing and profiling of personal dataan analysis of
+<span>GDPR</span> provisions and principles,”</span> <em>ERA Forum</em>,
+vol. 19, no. 4, pp. 597–621, Apr. 2019, doi: <a
+href="https://doi.org/gf6mnt">gf6mnt</a>. </div>
+</div>
+<div id="ref-urbanUnwantedSharingEconomy2018" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">T.
+Urban, D. Tatang, M. Degeling, T. Holz, and N. Pohlmann, <span>“The
+<span>Unwanted Sharing Economy</span>: <span>An Analysis</span> of
+<span>Cookie Syncing</span> and <span>User Transparency</span> under
+<span>GDPR</span>,”</span> <em>arXiv:1811.08660 [cs]</em>, Nov. 2018
+[Online]. Available: <a
+href="https://arxiv.org/abs/1811.08660">https://arxiv.org/abs/1811.08660</a></div>
+</div>
+<div id="ref-habibEmpiricalAnalysisData2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">H.
+Habib <em>et al.</em>, <span>“An <span>Empirical Analysis</span> of
+<span>Data Deletion</span> and <span>Opt-Out Choices</span> on 150
+<span>Websites</span>,”</span> in <em>Proceedings of the <span>Fifteenth
+Symposium</span> on <span>Usable Privacy</span> and
+<span>Security</span></em>, 2019, p. 21. </div>
+</div>
+<div id="ref-costelloImpactsAdTechPrivacy2020" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">R.
+Á. Costello, <span>“The <span>Impacts</span> of <span>AdTech</span> on
+<span>Privacy Rights</span> and the <span>Rule</span> of
+<span>Law</span>,”</span> <em>Technology and Regulation</em>, pp. 11–23,
+Apr. 2020. </div>
+</div>
+<div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
+<span>Data Privacy</span>,”</span> in <em>The 18th <span>International
+Conference</span> on <span>Ontologies</span>, <span>DataBases</span>,
+and <span>Applications</span> of <span>Semantics</span>
+(<span>ODBASE2019</span>)</em>, 2019, p. 17, doi: <a
+href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>To verify: as of MAR’22 Google’s and
+Facebook’s websites from EU still present a non-GDPR-compliant consent
+dialogue<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a
+href="https://www.cencenelec.eu/about-cen/cen-and-iso-cooperation/"
+class="uri">https://www.cencenelec.eu/about-cen/cen-and-iso-cooperation/</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>The Article 29 Working Party strongly
+supported enforcement of DNT, see <em>Opinion 01/2017 on the Proposed
+Regulation for the ePrivacy Regulation (2002/58/EC)</em>. However, there
+has been no further development for its enforcement, and the attempt at
+standardising DNT failed.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>For example, look for personal
+information management system (PIMS), decision support systems, personal
+agents.<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a
+href="https://www.w3.org/TR/tracking-dnt/"
+class="uri">https://www.w3.org/TR/tracking-dnt/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a
+href="https://www.w3.org/TR/P3P11/"
+class="uri">https://www.w3.org/TR/P3P11/</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a
+href="https://globalprivacycontrol.github.io/gpc-spec/"
+class="uri">https://globalprivacycontrol.github.io/gpc-spec/</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p><a
+href="https://www.dataprotectioncontrol.org/spec/"
+class="uri">https://www.dataprotectioncontrol.org/spec/</a><a
+href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><a href="https://www.respected.eu/"
+class="uri">https://www.respected.eu/</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><a
+href="https://harshp.com/research/blog/gpc-gdpr-can-it-work"
+class="uri">https://harshp.com/research/blog/gpc-gdpr-can-it-work</a><a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a
+href="https://iabeurope.eu/tcf-2-0/"
+class="uri">https://iabeurope.eu/tcf-2-0/</a><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>See - The Transmission of
+Information by Robert M. Fano (1949)<a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a
+href="https://doi.org/10.5281/zenodo.5076603"
+class="uri">https://doi.org/10.5281/zenodo.5076603</a><a href="#fnref13"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a
+href="https://developer.chrome.com/docs/privacy-sandbox/floc/"
+class="uri">https://developer.chrome.com/docs/privacy-sandbox/floc/</a><a
+href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a
+href="https://developer.apple.com/documentation/apptrackingtransparency"
+class="uri">https://developer.apple.com/documentation/apptrackingtransparency</a><a
+href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p><a
+href="https://digital-strategy.ec.europa.eu/en/policies/digital-services-act-package"
+class="uri">https://digital-strategy.ec.europa.eu/en/policies/digital-services-act-package</a><a
+href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p><a
+href="https://digital-strategy.ec.europa.eu/en/policies/eprivacy-regulation"
+class="uri">https://digital-strategy.ec.europa.eu/en/policies/eprivacy-regulation</a><a
+href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p>W3C Consent CG <a
+href="https://www.w3.org/community/consent/"
+class="uri">https://www.w3.org/community/consent/</a><a href="#fnref18"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

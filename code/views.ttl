@@ -310,6 +310,22 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
                 ?publication schema:datePublished ?date .
+                FILTER NOT EXISTS { ?publication a hpcom:DraftPaper } .
+            } ORDER By DESC(?date)
+        """ ;
+    ] .
+
+hpview:ResearchDraftPublicationsIndexView a hpcom:View ;
+    hpcom:view_target <https://harshp.com/research/publications/drafts> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_publications.jinja2" ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "publications" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?publication ?date WHERE {
+                ?publication a hpcom:DraftPaper .
+                ?publication schema:datePublished ?date .
             } ORDER By DESC(?date)
         """ ;
     ] .

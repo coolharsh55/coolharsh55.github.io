@@ -18597,6 +18597,39 @@ list:owned_unread a hpcom:RenderedItem,
     schema:status "to be presented"@en ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
+        hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://osf.io/6cvra/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://arxiv.org/abs/2208.05786"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/001-Consent-Signal-User-Dialogue.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed false ;
+    hpcom:tag hptag:ADPC,
+        hptag:IAB-TCF,
+        hptag:consent,
+        hptag:dark-patterns,
+        hptag:signal ;
+    schema:datePublished "2022-08-10T00:00:00"^^xsd:dateTime ;
+    schema:description "Consent dialogues are a source of annoyance, malicious intent, dark patterns, illegal practices and a plethora of other issues. This work presents known problems based on GDPR requirements grouped into two categories: (i) UI/UX for consenting; and (ii) power imbalance in expressing consent. To resolve this, it presents two proposals: First, the use of automation through privacy signals to better govern consenting processes and to reduce ‘consent-fatigue’. Second, as generation of consent dialogues on the user side and its practicalities for both websites as well as users and agents (e.g. web browsers). Both proposals are discussed in terms of possibilities for implementation and suitability for stakeholders. The article concludes with a discussion on the difficulties in achieving such solutions owing to the conflicts of interest between ‘web-enablers’ and ‘web-consumers’, and the necessity for the EU to take a direct stance in addressing these in their future laws."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "Proposals for Resolving Consenting Issues with Signals and User-side Dialogues"@en ;
+    schema:publication <http://example.com/unpublished> ;
+    schema:status "inviting feedback"@en ;
+    schema:url ""^^xsd:anyURI .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
@@ -19675,6 +19708,11 @@ list:owned_unread a hpcom:RenderedItem,
     schema:startDate "2021-10-04T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.dublincore.org/conferences/2021/"^^xsd:anyURI .
 
+<http://example.com/unpublished> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "unpublished work"@en ;
+    schema:url "http://example.com/unpublished" .
+
 <http://example.com/workshops/DarkPatterns2021> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:alternateName "DarkPatterns" ;
@@ -19802,6 +19840,19 @@ hpview:ResearchBlogIndexView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_template "https://harshp.com/code/templates/template_research_blog_index.jinja2" .
 
+hpview:ResearchDraftPublicationsIndexView a hpcom:View ;
+    hpcom:sparql [ a hpcom:SparqlQuery ;
+            rdfs:label "publications" ;
+            hpcom:queryString """
+            SELECT DISTINCT ?publication ?date WHERE {
+                ?publication a hpcom:DraftPaper .
+                ?publication schema:datePublished ?date .
+            } ORDER By DESC(?date)
+        """ ] ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/research/publications/drafts> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_research_publications.jinja2" .
+
 hpview:ResearchProjectIndexView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
             rdfs:label "projects" ;
@@ -19822,6 +19873,7 @@ hpview:ResearchPublicationsIndexView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
                 ?publication schema:datePublished ?date .
+                FILTER NOT EXISTS { ?publication a hpcom:DraftPaper } .
             } ORDER By DESC(?date)
         """ ] ;
     hpcom:view_renderer hpcom:Jinja2 ;
@@ -19844,6 +19896,9 @@ hpview:StoryView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_target <https://harshp.com/stories> ;
     hpcom:view_template "https://harshp.com/code/templates/template_stories_post.jinja2" .
+
+hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Draft Paper"@en .
 
 hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
@@ -21665,14 +21720,15 @@ hpcom:Report rdfs:subClassOf schema:Report,
     schema:publication <http://example.com/workshops/IWPE2022> ;
     schema:url "https://doi.org/10.1109/EuroSPW55150.2022.00029"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ] ;
+    schema:name "draft publications for feedback"@en ;
+    schema:url "https://harshp.com/research/publications/drafts"^^xsd:anyURI .
+
 <https://harshp.com/tags> a hpcom:RenderedItem ;
     schema:name "tags"@en ;
     schema:url "https://harshp.com/tags"^^xsd:anyURI .
-
-hptag:ADPC a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ADPC"@en ;
-    schema:url "https://harshp.com/tags/ADPC"^^xsd:anyURI .
 
 hptag:AI-Act a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -22572,6 +22628,11 @@ hpcom:book-currently-reading a hpcom:BookStatus ;
     schema:publisher <https://www.tcd.ie/> ;
     schema:url "https://hdl.handle.net/2262/92446"^^xsd:anyURI .
 
+hptag:ADPC a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ADPC"@en ;
+    schema:url "https://harshp.com/tags/ADPC"^^xsd:anyURI .
+
 hptag:Apple-Arcade a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Apple-Arcade" ;
@@ -23393,13 +23454,13 @@ hptag:emotional a hpcom:RenderedItem,
     schema:name "emotional" ;
     schema:url "https://harshp.com/tags/emotional"^^xsd:anyURI .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
@@ -23418,14 +23479,14 @@ hpcom:Conference a hpcom:EventType ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
 
-hpcom:SparqlQuery a owl:Class ;
-    rdfs:label "SparqlQuery"@en ;
-    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
-
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
+
+hpcom:SparqlQuery a owl:Class ;
+    rdfs:label "SparqlQuery"@en ;
+    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 
 hpcom:View a owl:Class ;
     rdfs:label "View"@en ;
@@ -23447,6 +23508,11 @@ hpcom:Rating2 a hpcom:Rating,
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
+hptag:blog a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "blog" ;
+    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
+
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -23456,11 +23522,6 @@ hpcom:Rating2 a hpcom:Rating,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
-
-hptag:blog a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "blog" ;
-    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;

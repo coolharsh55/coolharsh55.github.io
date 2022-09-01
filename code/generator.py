@@ -70,6 +70,7 @@ graph.load('content/hobbies/tea.ttl', format='turtle')
 # research
 graph.load('content/research/research.ttl', format='turtle')
 graph.load('content/research/publications/publications.ttl', format='turtle')
+graph.load('content/research/publications/drafts/drafts.ttl', format='turtle')
 graph.load('content/research/presentations/presentations.ttl', format='turtle')
 graph.load('content/research/publications/authors.ttl', format='turtle')
 graph.load('content/research/publications/venues.ttl', format='turtle')

@@ -44,6 +44,9 @@
     <a href="https://www.scss.tcd.ie/personnel/pandithj">TCD</a>.
 </p>
 <p>
+    Also see <a href="/research/publications/drafts">draft publications</a> inviting feedback and collaborations.
+</p>
+<p>
     categorise by:
     <button id="btn-categorise-year" disabled><label>year</label></button>
     <button id="btn-categorise-type"><label>type</label></button>
@@ -1751,7 +1754,7 @@
                 </a>
             <br/>
             <small>&#128161; previous submissions:
-                Personal and Ubiquitous Computing ,Journal of Pervasive and Mobile Computing ,Journal on Data Semantics ,Journal of Computing and Informatics
+                Journal of Computing and Informatics ,Journal of Pervasive and Mobile Computing ,Journal on Data Semantics ,Personal and Ubiquitous Computing
             </small>
         </div>
     </li>
@@ -1989,6 +1992,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Report',
         ];
         for (const key of ordered_keys) {
+            if (!(key in new_papers)) continue;
             let title = document.createElement('h2');
             title.appendChild(document.createTextNode(key));
             let paper_count = document.createElement('p');
@@ -2017,34 +2021,37 @@ document.addEventListener('DOMContentLoaded', function() {
         let new_papers = func_categorise(func);
         let new_div = [];
 
-        let title = document.createElement('h2');
-        title.appendChild(document.createTextNode('Lead Authored'));
-        let paper_count = document.createElement('p');
-        paper_count.appendChild(document.createTextNode(new_papers['true'].length + ' papers'));
-        let ol = document.createElement('ol');
-        ol.classList.add('list-index');
-        new_papers['true'].sort((a,b) => a.getAttribute('data-date') < b.getAttribute('data-date'));
-        for (const val of new_papers['true']) {
-            ol.appendChild(val);
+        if ('true' in new_papers) {
+            let title = document.createElement('h2');
+            title.appendChild(document.createTextNode('Lead Authored'));
+            let paper_count = document.createElement('p');
+            paper_count.appendChild(document.createTextNode(new_papers['true'].length + ' papers'));
+            let ol = document.createElement('ol');
+            ol.classList.add('list-index');
+            new_papers['true'].sort((a,b) => a.getAttribute('data-date') < b.getAttribute('data-date'));
+            for (const val of new_papers['true']) {
+                ol.appendChild(val);
+            }
+            new_div.push(title);
+            new_div.push(paper_count);
+            new_div.push(ol);
         }
-        new_div.push(title);
-        new_div.push(paper_count);
-        new_div.push(ol);
 
-
-        title = document.createElement('h2');
-        title.appendChild(document.createTextNode('Co-Authored'));
-        paper_count = document.createElement('p');
-        paper_count.appendChild(document.createTextNode(new_papers['false'].length + ' papers'));
-        ol = document.createElement('ol');
-        ol.classList.add('list-index');
-        new_papers['false'].sort((a,b) => a.getAttribute('data-date') < b.getAttribute('data-date'));
-        for (const val of new_papers['false']) {
-            ol.appendChild(val);
+        if ('false' in new_papers) {
+            title = document.createElement('h2');
+            title.appendChild(document.createTextNode('Co-Authored'));
+            paper_count = document.createElement('p');
+            paper_count.appendChild(document.createTextNode(new_papers['false'].length + ' papers'));
+            ol = document.createElement('ol');
+            ol.classList.add('list-index');
+            new_papers['false'].sort((a,b) => a.getAttribute('data-date') < b.getAttribute('data-date'));
+            for (const val of new_papers['false']) {
+                ol.appendChild(val);
+            }
+            new_div.push(title);
+            new_div.push(paper_count);
+            new_div.push(ol);
         }
-        new_div.push(title);
-        new_div.push(paper_count);
-        new_div.push(ol);
 
         // div_main.textContent = '';
         div_main.replaceChildren(...new_div);

@@ -1,0 +1,45 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+# Publications
+<https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
+    schema:name "draft publications for feedback"@en ;
+    schema:url "https://harshp.com/research/publications/drafts"^^xsd:anyURI ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ;
+    ] .
+
+<https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:DraftPaper, hpcom:RenderedItem ;
+    schema:name "Proposals for Resolving Consenting Issues with Signals and User-side Dialogues"@en ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    schema:description "Consent dialogues are a source of annoyance, malicious intent, dark patterns, illegal practices and a plethora of other issues. This work presents known problems based on GDPR requirements grouped into two categories: (i) UI/UX for consenting; and (ii) power imbalance in expressing consent. To resolve this, it presents two proposals: First, the use of automation through privacy signals to better govern consenting processes and to reduce ‘consent-fatigue’. Second, as generation of consent dialogues on the user side and its practicalities for both websites as well as users and agents (e.g. web browsers). Both proposals are discussed in terms of possibilities for implementation and suitability for stakeholders. The article concludes with a discussion on the difficulties in achieving such solutions owing to the conflicts of interest between ‘web-enablers’ and ‘web-consumers’, and the necessity for the EU to take a direct stance in addressing these in their future laws."@en ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:dark-patterns ;
+    hpcom:tag hptag:signal ;
+    hpcom:tag hptag:ADPC ;
+    hpcom:tag hptag:IAB-TCF ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2022-08-10T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <http://example.com/unpublished> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://osf.io/6cvra/"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://arxiv.org/abs/2208.05786"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/001-Consent-Signal-User-Dialogue.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "inviting feedback"@en ;
+    hpcom:peer_reviewed false .
