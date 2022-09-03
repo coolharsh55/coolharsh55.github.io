@@ -77,7 +77,6 @@ graph.load('content/research/publications/venues.ttl', format='turtle')
 graph.load('content/research/supervision/supervision.ttl', format='turtle')
 graph.load('content/research/projects/risky/risky.ttl', format='turtle')
 graph.load('content/research/projects/paecg/paecg.ttl', format='turtle')
-graph.serialize('data_combined.ttl', format='turtle')
 
 # validate using PySHACL
 if FLAG_VALIDATE_CONSTRAINTS:
@@ -100,6 +99,7 @@ if FLAG_VALIDATE_CONSTRAINTS:
         print(results_text)
         import sys
         sys.exit()
+    graph.serialize('data_combined.ttl', format='turtle')
 
 # create data graph through ORM
 data = DataGraph()
