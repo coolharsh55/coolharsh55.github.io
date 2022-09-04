@@ -12131,13 +12131,16 @@
         schema:Book ;
     hpcom:book_id "845"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-09-04T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Shing-Tung Yau & Steve Nadis"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Shape of Inner Space: String Theory and the Geometry of the Universe's Hidden Dimensions"@en ;
+    schema:review """An excellent book that takes a slow but methodological approach to present mathematical concepts of geometry and topology and how they fit within the applications required by physics and more specifically quantum gravity and string theories. I think I barely understood 10% of what is covered, given that a lot of the mathematical theories require time to digest and ruminate and grasp, but the fact that the book really explains things from a simple approach first approach means I have both an appreciation as well as knowledge about what goes on inside the reseach in these areas. Illuminating, educational."""@en ;
+    schema:isPartOf list:TCD, list:educational ;
     schema:url "https://harshp.com/hobbies/books/845"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/846> a hpcom:RenderedItem,
