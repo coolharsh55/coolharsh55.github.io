@@ -14945,7 +14945,8 @@ book:83 a hpcom:BookReading,
 book:830 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "830"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -14956,6 +14957,7 @@ book:830 a hpcom:RenderedItem,
 book:831 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "831"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
@@ -14967,6 +14969,7 @@ book:831 a hpcom:RenderedItem,
 book:832 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "832"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Becky Chambers"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
@@ -15127,6 +15130,7 @@ book:843 a hpcom:RenderedItem,
 book:845 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "845"^^xsd:int ;
+    hpcom:book_on_loan true ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
@@ -15135,8 +15139,7 @@ book:845 a hpcom:RenderedItem,
     schema:author "Shing-Tung Yau & Steve Nadis"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:isPartOf list:TCD,
-        list:educational ;
+    schema:isPartOf list:educational ;
     schema:name "The Shape of Inner Space: String Theory and the Geometry of the Universe's Hidden Dimensions"@en ;
     schema:review "An excellent book that takes a slow but methodological approach to present mathematical concepts of geometry and topology and how they fit within the applications required by physics and more specifically quantum gravity and string theories. I think I barely understood 10% of what is covered, given that a lot of the mathematical theories require time to digest and ruminate and grasp, but the fact that the book really explains things from a simple approach first approach means I have both an appreciation as well as knowledge about what goes on inside the reseach in these areas. Illuminating, educational."@en ;
     schema:url "https://harshp.com/hobbies/books/845"^^xsd:anyURI .
@@ -19913,9 +19916,6 @@ hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
     schema:url "https://harshp.com/contact"^^xsd:anyURI .
@@ -22549,6 +22549,9 @@ hpcom:FileFormat a owl:Class ;
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
