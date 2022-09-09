@@ -43,7 +43,7 @@ logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
 logging.disable(logging.CRITICAL)
-FLAG_VALIDATE_CONSTRAINTS = True
+FLAG_VALIDATE_CONSTRAINTS = False
 
 # Namespaces used in the RDF files
 # RDF-ORM can also auto-detect them
@@ -53,36 +53,36 @@ HPVIEWS = Namespace('https://harshp.com/code/views#')
 
 # load data from files into graph
 graph = Graph()
-graph.load('vocab.ttl', format='turtle')
-graph.load('views.ttl', format='turtle')
-graph.load('content/site.ttl', format='turtle')
-graph.load('content/tags.ttl', format='turtle')
-graph.load('../me.ttl', format='turtle')
+graph.parse ('vocab.ttl', format='turtle')
+graph.parse ('views.ttl', format='turtle')
+graph.parse ('content/site.ttl', format='turtle')
+graph.parse ('content/tags.ttl', format='turtle')
+graph.parse ('../me.ttl', format='turtle')
 # blog, hobbies, dev
-graph.load('content/blog/blog.ttl', format='turtle')
-graph.load('content/poems/poems.ttl', format='turtle')
-graph.load('content/stories/stories.ttl', format='turtle')
-graph.load('content/dev/dev.ttl', format='turtle')
-graph.load('content/research/blog/research_blog.ttl', format='turtle')
-graph.load('content/hobbies/books.ttl', format='turtle')
-graph.load('content/hobbies/book_lists.ttl', format='turtle')
-graph.load('content/hobbies/tea.ttl', format='turtle')
+graph.parse ('content/blog/blog.ttl', format='turtle')
+graph.parse ('content/poems/poems.ttl', format='turtle')
+graph.parse ('content/stories/stories.ttl', format='turtle')
+graph.parse ('content/dev/dev.ttl', format='turtle')
+graph.parse ('content/research/blog/research_blog.ttl', format='turtle')
+graph.parse ('content/hobbies/books.ttl', format='turtle')
+graph.parse ('content/hobbies/book_lists.ttl', format='turtle')
+graph.parse ('content/hobbies/tea.ttl', format='turtle')
 # research
-graph.load('content/research/research.ttl', format='turtle')
-graph.load('content/research/publications/publications.ttl', format='turtle')
-graph.load('content/research/publications/drafts/drafts.ttl', format='turtle')
-graph.load('content/research/presentations/presentations.ttl', format='turtle')
-graph.load('content/research/publications/authors.ttl', format='turtle')
-graph.load('content/research/publications/venues.ttl', format='turtle')
-graph.load('content/research/supervision/supervision.ttl', format='turtle')
-graph.load('content/research/projects/risky/risky.ttl', format='turtle')
-graph.load('content/research/projects/paecg/paecg.ttl', format='turtle')
+graph.parse ('content/research/research.ttl', format='turtle')
+graph.parse ('content/research/publications/publications.ttl', format='turtle')
+graph.parse ('content/research/publications/drafts/drafts.ttl', format='turtle')
+graph.parse ('content/research/presentations/presentations.ttl', format='turtle')
+graph.parse ('content/research/publications/authors.ttl', format='turtle')
+graph.parse ('content/research/publications/venues.ttl', format='turtle')
+graph.parse ('content/research/supervision/supervision.ttl', format='turtle')
+graph.parse ('content/research/projects/risky/risky.ttl', format='turtle')
+graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
 
 # validate using PySHACL
 if FLAG_VALIDATE_CONSTRAINTS:
     from pyshacl import validate
     validation_constraints = Graph()
-    validation_constraints.load('shacl_constraints.ttl', format='turtle')
+    validation_constraints.parse ('shacl_constraints.ttl', format='turtle')
     validation_results = validate(graph,
           shacl_graph=validation_constraints,
           ont_graph=None,
