@@ -1,0 +1,665 @@
+<div class="CCSXML">
+<p><strong>keywords</strong>Security and privacy - Human and societal aspects of
+security and privacy; Social and professional topics - Privacy
+policies; Security and privacy - Domain-specific security and
+privacy architectures</p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<p>As people and businesses increasingly rely on the Web as a medium for
+communication, interaction, provision of information, and deployment of
+innovative services, such intense data sharing triggers the application
+of existing data protection and privacy laws (e.g. ePrivacy Directive
+ - <span class="citation" data-cites="leg_ePrivacyDir"><a
+href="#ref-leg_ePrivacyDir"
+role="doc-biblioref">[leg_ePrivacyDir]</a></span>, GDPR
+ - <span class="citation" data-cites="leg_GDPR"><a href="#ref-leg_GDPR"
+role="doc-biblioref">[leg_GDPR]</a></span>, and
+CCPA/CPRA). These laws govern how valid consent should be obtained and
+used for personal data management, laying down strict requirements. Yet
+again, with the upcoming ePrivacy Regulation - <span class="citation"
+data-cites="leg_ePrivacyReg"><a href="#ref-leg_ePrivacyReg"
+role="doc-biblioref">[leg_ePrivacyReg]</a></span>, the
+Digital Services Act - <span class="citation"
+data-cites="leg_DigServAct"><a href="#ref-leg_DigServAct"
+role="doc-biblioref">[leg_DigServAct]</a></span>, the
+Data Governance Act - <span class="citation" data-cites="regDataGov"><a
+href="#ref-regDataGov"
+role="doc-biblioref">[regDataGov]</a></span> and the
+Data Act - <span class="citation" data-cites="regDataAct"><a
+href="#ref-regDataAct"
+role="doc-biblioref">[regDataAct]</a></span>, the data
+economy will be changed. Pursuant to such requirements, both research,
+policy making and industry move towards increasing transparency, user
+empowerment and usability, accountability, and privacy by design to
+ensure the required legal compliance framework. This demanding setting
+has led to new consent proposals, disciplines, actors and roles.
+Standardised user centric consent proposals such as the Consent Receipt
+Specification - <span class="citation" data-cites="kantaraCRS"><a
+href="#ref-kantaraCRS"
+role="doc-biblioref">[kantaraCRS]</a></span>, the
+Internet Advertising Bureau’s Transparency and Consent Framework (TCF)
+standard - <span class="citation" data-cites="IABTCF"><a
+href="#ref-IABTCF"
+role="doc-biblioref">[IABTCF]</a></span>, ISO/IEC 29184
+Online Privacy Notices and Consent - <span class="citation"
+data-cites="ISOconsent"><a href="#ref-ISOconsent"
+role="doc-biblioref">[ISOconsent]</a></span>, the Global
+Privacy Control (GPC) specification - <span class="citation"
+data-cites="GPCspec"><a href="#ref-GPCspec"
+role="doc-biblioref">[GPCspec]</a></span>, and recently
+the Advanced Data Protection Control (ADPC) specification - <span
+class="citation" data-cites="ADPCspec"><a href="#ref-ADPCspec"
+role="doc-biblioref">[ADPCspec]</a></span>.
+<strong>Consent Management as a discipline</strong> is only now becoming
+prominent as an emerging result of the many challenges across various
+disciplines, among the legal, technological, sociological, UI/UX and
+HCI, privacy, and security domains. Current consent implementation and
+its management on the Web is still in its infancy when intersecting
+concomitant <strong>actors and their roles</strong>, such as average
+(and vulnerable) users, their devices, publishers, consent management
+platforms, content providers, third-parties, regulators, and information
+itself. The Workshop on Consent Management in Online Services, Networks
+and Things (COnSeNT) provides a dedicated venue for researchers,
+practitioners, and all stakeholders to discuss and present
+investigations, critiques, and advances related to consent and privacy
+preferences.</p>
+<h3 id="recent-debates-events-and-trends">Recent Debates, Events and
+Trends</h3>
+<p>In the period of 2021–2022, consent has raised many debates and
+several events occurred that have the potential to affect how consenting
+takes place in the online and digital world.</p>
+<p>For COnSeNT 2022, the call for papers specifically referred to the
+following currently discussed:</p>
+<ul>
+<li><p>Phasing out 1<sup>st</sup>/3<sup>rd</sup> Party Cookies</p></li>
+<li><p>Privacy-preserving advertising based on consent</p></li>
+<li><p>Consenting in/with novel proposals e.g. Google’s FLOC</p></li>
+<li><p>User interactions and consent for automation (i.e. AI)</p></li>
+<li><p>Internet/Web protocols and standards for Consent</p></li>
+<li><p>Role of web browsers in adopting consent mechanisms</p></li>
+</ul>
+<p>The following events and trends of 2021–2022 are particularly
+relevant and impactful:</p>
+<h3 id="cross-disciplinarity">Cross-Disciplinarity</h3>
+<p>COnSeNT is a cross-disciplinary workshop and serves as a forum for
+talks and discussions from diverse perspectives, as online consent
+management has numerous dimensions. Online consent management first and
+foremost poses legal and technological challenges, but also raises
+questions in other areas such as psychology, linguistics, human computer
+interaction, communication studies, and economics.</p>
+<p><strong>Law</strong>. Current and incoming EU data protection and
+privacy regulations impact consent management in online services. The
+GDPR imposes strict requirements for a valid consent request: it must be
+freely given, prior to any data collection, informed, specific,
+unambiguous, readable and accessible and revocable (Articles 4(11) and
+7 - <span class="citation" data-cites="cristianacookies"><a
+href="#ref-cristianacookies"
+role="doc-biblioref">[cristianacookies]</a></span>.</p>
+<p>A recent decision - <span class="citation"
+data-cites="BelgianDecision"><a href="#ref-BelgianDecision"
+role="doc-biblioref">[BelgianDecision]</a></span> by the
+Belgian Data Protection Authority (APD) highlights some of the most
+pressing legal challenges regarding consent. This decision hold that the
+Interactive Advertising Bureau Europe’s Transparency &amp; Consent
+Framework (IAB TCF) - <span class="citation" data-cites="IABTCF"><a
+href="#ref-IABTCF"
+role="doc-biblioref">[IABTCF]</a></span>, a consent
+industry standard, does not fully satisfy ePrivacy and GDPR requirements
+in its current form (also cf.  - <span class="citation"
+data-cites="cristianacookies MBS2020 VealeBorgesius CNTBR2021 CNILdec PolishDPA CNIL-Google ICOadtechRTB"><a
+href="#ref-cristianacookies"
+role="doc-biblioref">[cristianacookies]</a>, <a
+href="#ref-MBS2020" role="doc-biblioref">[MBS2020]</a>,
+<a href="#ref-VealeBorgesius"
+role="doc-biblioref">[VealeBorgesius]</a>, <a
+href="#ref-CNTBR2021"
+role="doc-biblioref">[CNTBR2021]</a>, <a
+href="#ref-CNILdec" role="doc-biblioref">[CNILdec]</a>,
+<a href="#ref-PolishDPA"
+role="doc-biblioref">[PolishDPA]</a>, <a
+href="#ref-CNIL-Google"
+role="doc-biblioref">[CNIL-Google]</a>, <a
+href="#ref-ICOadtechRTB"
+role="doc-biblioref">[ICOadtechRTB]</a></span>). The
+decision asserts IAB Europe’s status as a "controller" of personal data
+jointly with the participants of the TCF: publishers, CMPs and ad-tech
+vendors for the collection and sharing of the TC string and for
+subsequent processing of personal data, as part of OpenRTB. It also
+ruled that the current form of the TCF is insufficient for: the purposes
+of providing transparency to data subjects, for obtaining consent to
+adtech processing and to establish legitimate interests as a legal basis
+for processing data subjects’ personal data for profiling - <span
+class="citation" data-cites="VNSimpossible"><a href="#ref-VNSimpossible"
+role="doc-biblioref">[VNSimpossible]</a></span>.</p>
+<p>Regarding incoming legislative initiatives, the current ePrivacy
+Regulation proposal – facing trilogue negotiations, is yet to define
+relevant aspects of online privacy. For example, whether browsers, and
+other software placed on the market permitting electronic communications
+( such as automatic privacy signals) will, by default, be set to prevent
+tracking individuals’ digital footsteps  - <span class="citation"
+data-cites="leg_ePrivacyReg"><a href="#ref-leg_ePrivacyReg"
+role="doc-biblioref">[leg_ePrivacyReg]</a></span>. It
+will also determine whether the use of tracking walls will permissible.
+The EU Parliament recently voted on the proposed Digital Services Act
+<span class="citation" data-cites="leg_DigServAct"><a
+href="#ref-leg_DigServAct"
+role="doc-biblioref">[leg_DigServAct]</a></span> to
+include a “ban on dark patterns” relating to consent and to offer
+options based on “tracking-free advertising” in case consent is refused
+or withdrawn to avoid coercion via tracking walls.</p>
+<p><strong>Technology</strong>. Consent is a challenge that stems from
+technology and, necessarily, approaches for its effective management
+will necessarily require novel technologies. Notably, managing consent
+is not simply managing the collection point but should involve the whole
+lifecycle of personal data. At the moment, we can see three main
+approaches that are, likely, complimentary rather than self-sufficient,
+at least in the absence of regulations. The first approach consists of
+the Consent Management Providers (CMPs), whose role and responsibilities
+have been questioned  - <span class="citation"
+data-cites="cristianacookies"><a href="#ref-cristianacookies"
+role="doc-biblioref">[cristianacookies]</a></span>. The
+key strategy is to display a prominent consent request that asks for
+user action in an unambiguous (e.g., by clicking a button) and, in
+principle, halts data collection until the user’s notification. The
+second approach, which is sponsored by CCPAs, is to use simple
+notifications, or "signals" such as the <em>Global Privacy Control</em>
+(GPC), sent directly from the user agent (often a browser) and,
+commonly, which can be asynchronously to a notice (see a comprehensive
+overview on consent signals in - <span class="citation"
+data-cites="PPFsignals"><a href="#ref-PPFsignals"
+role="doc-biblioref">[PPFsignals]</a></span>). The third
+approach is to rely on an authenticated user artefact, such as a Consent
+Receipt  - <span class="citation" data-cites="jesusharsh3022"><a
+href="#ref-jesusharsh3022"
+role="doc-biblioref">[jesusharsh3022]</a></span>, that
+enables management of the consent lifecycle thus removing the focus from
+the point of collection and bringing to the front accountability and
+transparency.</p>
+<p>Technology is not only crucial for consent implementation.
+Technological approaches can provide deep insights into the consent
+ecosystem and can allow for automated compliance checks: For example,
+scrapers and crawlers can be used to collect data on cookie banners on
+large numbers of of websites - <span class="citation"
+data-cites="MaxMeasuring"><a href="#ref-MaxMeasuring"
+role="doc-biblioref">[MaxMeasuring]</a></span>  - <span
+class="citation" data-cites="darkpatternsscrape"><a
+href="#ref-darkpatternsscrape"
+role="doc-biblioref">[darkpatternsscrape]</a></span>.
+The NGO noyb uses automated website-scans to enforce the compliance of
+cookie banners with the GDPR on a large scale - <span class="citation"
+data-cites="noybterror"><a href="#ref-noybterror"
+role="doc-biblioref">[noybterror]</a></span>.</p>
+<p><strong>Other social sciences</strong>. Unraveling consent also calls
+for social science perspectives other than the legal. Facilitating truly
+informed consent requires providing online users with information they
+are not only able to perceive and understand but also willing to absorb.
+To design functioning consent dialogues that attract online users’
+attention and promote an informed decision, it is necessary to consider
+psychological and linguistic aspects, and to carry out empirical user
+studies on users’ perception and interaction with consent dialogues (cf.
+ - <span class="citation"
+data-cites="comicsinfographics BotesRossi2021"><a
+href="#ref-comicsinfographics"
+role="doc-biblioref">[comicsinfographics]</a>, <a
+href="#ref-BotesRossi2021"
+role="doc-biblioref">[BotesRossi2021]</a></span>).
+Furthermore, economic research can provide valuable insights into the
+consent ecosystem and contribute to solutions for improving privacy
+online. As the processing of personal data for targeted advertising
+promises to increase revenues, consent signals might be monetisable,
+creating incentives to collect as much consent as possible - <span
+class="citation" data-cites="commodification"><a
+href="#ref-commodification"
+role="doc-biblioref">[commodification]</a></span>. Law
+and economics can provide an approach to proposals for regulatory
+frameworks that improve online users’ privacy - <span class="citation"
+data-cites="externalities"><a href="#ref-externalities"
+role="doc-biblioref">[externalities]</a></span>.</p>
+<h2 id="consent-2022">COnSeNT 2022</h2>
+<p>The program of COnSeNT 2022 comprises paper presentations, a keynote,
+and a panel discussion. At the time of writing, the list of panelists
+and the panel description are not yet finalised. This section,
+therefore, provides an overview of the accepted papers and the keynote
+only.</p>
+<h3 id="papers-to-be-presented-at-consent-2022">Papers to be presented
+at COnSeNT 2022</h3>
+<p>The three submissions accepted for presentation at COnSeNT 2022
+discuss aspects of consent from the empirical, conomics and law, and
+technical perspective.</p>
+<p>In their empirical paper “Conciseness, interest, and unexpectedness:
+user attitudes towards infographic and comic consent mediums” - <span
+class="citation" data-cites="comicsinfographics"><a
+href="#ref-comicsinfographics"
+role="doc-biblioref">[comicsinfographics]</a></span>
+Xengie Cheng Doan, Annika Selzer, Arianna Rossi, Wilhelmina Maria Botes,
+and Gabriele Lenzini examine how users perceive consent mediums beyond
+plain text information. Through structured interviews with 24 internet
+users in Germany, the authors found significant differences in users’
+attitudes towards a consent comic on the one hand and a consent
+infographic on the other hand. The authors identify infographics as more
+promising for consent especially as they enable users to prioritise
+information and skim. Based on the interviewees’ widely varying
+attitudes towards the comic, the authors emphasise the importance of
+audience fit and tone for presenting information to users.</p>
+<p>Nils Wehkamp, in his paper “Internalization of privacy externalities
+through negotiation: Social costs of third-party web-analytic tools and
+the limits of the legal data protection framework” - <span
+class="citation" data-cites="externalities"><a href="#ref-externalities"
+role="doc-biblioref">[externalities]</a></span>,
+scrutinises third-party web-analytic tools from a economics and law
+analysis. The author interprets the data collection and sharing for
+web-analytics as externalities, arguing that website owners benefit of
+the use of third-party tools, while the data processing negatively
+impacts users especially where their data are further used for targeted
+advertising. The further analysis explores possibilities for users to
+negotiate about the use of such tools in a semi-automated way through
+cookie banners. The author points out that, albeit existing data
+protection law in theory gives users control over their data, effective
+negotiation in practice does not take place.</p>
+<p>Laurens Debackere, Pieter Colpart, Ruben Taelman, and Ruben Verborgh
+present “A Policy-Oriented Architecture for Enforcing Consent in
+Solid” - <span class="citation" data-cites="ConsentSolid"><a
+href="#ref-ConsentSolid"
+role="doc-biblioref">[ConsentSolid]</a></span>, a
+specification for access control over decentrally stored data - <span
+class="citation" data-cites="solidproject"><a href="#ref-solidproject"
+role="doc-biblioref">[solidproject]</a></span>. To
+obtain informed consent in compliance with the GDPR based on the
+existing web access model in Solid, the authors propose a layered
+architecture comprising two components: an Access Management App that
+uses digital signatures to ensure integrity of data controllers’
+requests and users decisions, and an Authorisation Agent. Through the
+Access Management App data controllers shall create specific Processing
+Requests for which online users shall grant and revoke access to their
+data, while the authorisation Agent matches access requests with users’
+decisions.</p>
+<h3 id="keynote">Keynote</h3>
+<p>The Keynote speaker of COnSeNT’22 is Robin Berjon, a long standing
+computer scientist working in Computer Privacy and Data protection.
+Among other works, the speaker was the editor of the HTML5 specification
+and, more recently, co-author of the Global Privacy Control
+specification at W3C. His keynote addresses the interplay between
+informed consent, that necessarily builds on voluntariness, and the
+hyper-monetisation that currently drives the Web of Personal Data. The
+talk will explore ethical conflicts, the misalignment of procedures and
+incentives, and the constraints users see, starting with usability and
+human interfaces.</p>
+<h2 id="previous-edition-consent-2021">Previous Edition: COnSeNT
+2021</h2>
+<p>The 1st edition of CoNSeNT<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a> was successfully held at
+IEEE Euro S&amp;P 2021<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> conference on 7<sup>th</sup>
+September 2021. The program of the full-day virtual workshop with
+approximately 40 participants from diverse fields and professional
+backgrounds comprised six paper presentations, a keynote, and a panel
+discussion.</p>
+<p>The <strong>paper presentations</strong> provided diverse
+perspectives on different aspects of consent and encouraged vivid
+interdiscplinary discussions. The workshop started with
+interdisciplinary talks with a focus on regulation. Paulina Jo Pesch
+shared findings from interviews with members of the Global Vendor List
+(GVL) - <span class="citation" data-cites="IABGVL"><a href="#ref-IABGVL"
+role="doc-biblioref">[IABGVL]</a></span>, shedding light
+on “Drivers and Obstacles for the Adoption of Consent Management
+Solutions by Ad-Tech Providers” - <span class="citation"
+data-cites="pjpvendors"><a href="#ref-pjpvendors"
+role="doc-biblioref">[pjpvendors]</a></span> against the
+background of legal issues of the TCF - <span class="citation"
+data-cites="IABTCF"><a href="#ref-IABTCF"
+role="doc-biblioref">[IABTCF]</a></span>. This was
+followed by Vitor Jesus’ position paper “Pragmatic Online Privacy: the
+SftE Approach” - <span class="citation" data-cites="Jesus2021"><a
+href="#ref-Jesus2021"
+role="doc-biblioref">[Jesus2021]</a></span>, in which
+the speaker proposed a “Start-from-the-End" regulatory approach to
+re-empower online users. Two papers focused on the translation of legal
+requirements to technical solutions. The paper “Representing Consent and
+Policies for Compliance” - <span class="citation"
+data-cites="BonattiSauroLangens2021"><a
+href="#ref-BonattiSauroLangens2021"
+role="doc-biblioref">[BonattiSauroLangens2021]</a></span>
+by Piero A. Bonatti, Luigi Sauro and Jonathan Langens explored a
+machine-understandable policy language for consent solutions and
+algorithms for checking compliance with the GDPR and providing users
+with explanations. Beatriz Esteves, Harshcardhan J. Pandit and Víctor
+Rodríguez-Doncel described an extension to Solid’s - <span
+class="citation" data-cites="solidproject"><a href="#ref-solidproject"
+role="doc-biblioref">[solidproject]</a></span> Access
+Control Language ACL) based on the Open Digital Rights Language (ODRL)
+in their paper “ODRL Profile for Expressing Consent through Granular
+Access Control Policies in Solid” - <span class="citation"
+data-cites="EstevesPanditRodD2021"><a href="#ref-EstevesPanditRodD2021"
+role="doc-biblioref">[EstevesPanditRodD2021]</a></span>.
+Two papers approached consent from a social science perspective. Maria
+Wilhelmina Botes and Arianna Rossi, with their paper “Visualisation
+Techniques for Consent: Finding Common Ground in Comic Art with
+Indigenous Populations”<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> - <span class="citation"
+data-cites="BotesRossi2021"><a href="#ref-BotesRossi2021"
+role="doc-biblioref">[BotesRossi2021]</a></span>
+evaluated a low-tech informed consent solution in form of a comic.
+Soheil Human and Mandan Kazzazi, in their paper “Contextuality and
+Intersectionality of E-Consent: A Human-centric Reflection on Digital
+Consenting in the Emerging Genetic Data Markets” - <span class="citation"
+data-cites="humankazzazi2021"><a href="#ref-humankazzazi2021"
+role="doc-biblioref">[humankazzazi2021]</a></span>
+proposed and applied an interdiscplinary and human-centric approach to
+consent solutions.</p>
+<p>The <strong>keynote</strong>, titled “Consent ‘spam’ and the
+undermining of European data protection law” was given by Dr Johnny Ryan
+(FRHistS) – a Senior Fellow at the Irish Council for Civil Liberties<a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> (ICCL). The speaker was previously
+the Chief Policy &amp; Industry Relations Officer at Brave (the web
+browser), and is well-known for exposing the problems of internet-based
+surveillance ad-industry and its implications for competition,
+anti-trust, and privacy.</p>
+<p>The talk presented an in-depth and approachable explanation of how
+RTB-based ad mechanisms work, who the actors are, and the involvement of
+problematic sensitive personal data. In particular, it focused on the
+perceived incompatibilities of such mechanisms with the underlying
+principles and obligations of GDPR. The keynote was presented between
+Dr. Ryan’s complaint to the Belgian DPA and its decision in 2022  - <span
+class="citation" data-cites="BelgianDecision"><a
+href="#ref-BelgianDecision"
+role="doc-biblioref">[BelgianDecision]</a></span>. As
+such, it led to an interesting series of discussions during the Q&amp;A
+session with the attendees, which included the CEO of IAB Europe. They
+keynote was recorded and is available for viewing online<a href="#fn5"
+class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>.</p>
+<p>Accompanying the keynote and diverse topics presented through papers,
+the workshop also featured a <strong>panel</strong> consisting of
+experts and stakeholder representatives discussing “Does Consent work?
+If not Consent, what else?”. The panel consisted of:</p>
+<ul>
+<li><p><strong>Armand Heslot</strong> (CNIL): Head of technology experts
+department at CNIL and member of EDPB’s Technology subgroup.</p></li>
+<li><p><strong>Irene Kamara</strong> (Tilburg university): Assistant
+Professor of Cybersecurity Governance at Tilburg, and an expert in
+standardisation with prior experience at EDPS, CEN and CENELEC, and a
+member of the ENISA Experts List.</p></li>
+<li><p><strong>Mark Lizar</strong> (Kantara Initiative): Co-inventor of
+the Kantara Consent Receipt specification, active member of
+standardisation processes as representative of Canada.</p></li>
+<li><p><strong>Robin Berjon</strong> (New York Times): VP of Data
+Governance at New York Times, established expertise in developing and
+driving standardisation efforts in W3C, editor of HTML Specification,
+and co-author of the Global Privacy Control specification.</p></li>
+<li><p><strong>Rob van Eijk</strong> (Future of Privacy Forum): FPF’s
+Managing Director for Europe, previously member of the Dutch Data
+Protection Authority (DPA) for 10 years, involved in Article 29 Working
+Party’s discussions on Do Not Track, and with a recent PhD focusing on
+online advertising (real-time bidding).</p></li>
+<li><p><strong>Townsend Feehan</strong> (IAB Europe): CEO of Interactive
+Advertising Bureau (IAB) Europe, and previously Microsoft Legal &amp;
+Corporate Affairs in Brussels.</p></li>
+</ul>
+<p>The panelists discussed the current state of consenting on the web in
+terms of cookie and consent dialogues, the issues surrounding it, how it
+relates to the legal requirements (in particular the GDPR), and the
+disparities between using consent and legitimate interests within online
+advertising mechanisms. While there was no formal conclusion to the
+panel, there was a general agreement at the end regarding known issues
+and necessity to produce solutions that fix and improve the
+situation.</p>
+<p>They panel was recorded and is available for viewing online<a
+href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a>.</p>
+<div class="acks">
+<p>Harshvardhan J. Pandit is funded by the Irish Research Council
+Government of Ireland Postdoctoral Fellowship Grant#GOIPD/2020/790. The
+ADAPT SFI Centre for Digital Media Technology is funded by Science
+Foundation Ireland through the SFI Research Centres Programme and is
+co-funded under the European Regional Development Fund (ERDF) through
+Grant #13/RC/2106_P2. Cristiana Santos is funded by RENFORCE, Utrecht
+University.</p>
+</div>
+<div class="thebibliography">
+<p><span>99</span> V. Jesus and H. J. Pandit, "Consent Receipts For a
+Usable And Auditable Web of Personal Data," in IEEE Access, 2022. doi:
+10.1109/ACCESS.2022.3157850.</p>
+<p>Cristiana Santos, Nataliia Bielova, and Celestin Matte. 2020. "Are
+cookie banners indeed compliant with the law? Deciphering EU legal
+requirements on consent and technical means to verify compliance of
+cookie banners.", Technology and Regulation 2020 (Dec. 2020), 91-135. <a
+href="https://doi.org/10.26116/techreg.2020.009"
+class="uri">https://doi.org/10.26116/techreg.2020.009</a>.</p>
+<p>Paulina Pesch. 2020. "Drivers and Obstacles for the Adoption of
+Consent Management Solutions by Ad-Tech Providers". In Euro S&amp;P
+Workshop on Consent Management in Online Services (COnSeNT 2021).</p>
+<p>Soheil Human and Mandan Kazzazi. 2021. "A Human-centric Reflection on
+Digital Consenting in the Emerging Genetic Data Markets". In Euro
+S&amp;P Workshop on Consent Management in Online Services (COnSeNT
+2021).</p>
+<p>Beatriz Esteves, Harshvardhan J. Pandit, and Víctor Rodrígues-Doncel.
+2021. "ODRL Profile for Expressing Consent Through Granular Access
+Control Policies in Solid". In Euro S&amp;P Workshop on Consent
+Management in Online Services (COnSeNT 2021).</p>
+<p>Piero E. Bonatti, Luigi Sauro, and Jonathan Langens. 2021.
+"Representing Consent and Policies for Compliance". In Euro S&amp;P
+Workshop on Consent Management in Online Services (COnSeNT 2021).</p>
+<p>Vitor Jesus. 2021. "Pragmatic Online Privacy: the SftE Approach. In
+Euro S&amp;P Workshop on Consent Management in Online Services (COnSeNT
+2021).</p>
+<p>Maria W. Botes and Arianna Rossi. 2021 "Visualisation Techniques for
+Consent: Finding Common Ground in Comic Art with Indigenous
+Populations". In Euro S&amp;P Workshop on Consent Management in Online
+Services (COnSeNT 2021).</p>
+<p>Belgian DPA. "Decision on the merits 21/2022 of 2 February 2022,
+Unofficial Translation from Dutch, Case number DOS-2019-01377". <a
+href="https://www.gegevensbeschermingsautoriteit.be/publications/beslissing-ten-gronde-nr.-21-2022-english.pdf"
+class="uri">https://www.gegevensbeschermingsautoriteit.be/publications/beslissing-ten-gronde-nr.-21-2022-english.pdf</a>.</p>
+<p>Regulation (EU) 2016/679 of the European Parliament and if the
+Council of 27 April 2016 on the protection of natural persons with
+regard to the processing of personal data and on the free movement of
+such data, and repealing Directive 95/46/EC (General Data Protection
+Regulation).</p>
+<p>Directive 2002/58/EC of the European Parliament and of the Council of
+12 July 2002 concerning the processing of personal data and the
+protection of privacy in the electronic communications sector (Directive
+on privacy and electronic communications).</p>
+<p>Proposal for a Regulation of the European Parliament and of the
+Council concerning the respect for private life and the protection of
+personal data in electronic communications and repealing Directive
+2002/58/EC (Regulation on Privacy and Electronic Communications).</p>
+<p>Proposal for a Regulation of the European Parliament and of the
+Council on a Single Market For Digital Services (Digital Services Act)
+and amending Directive 2000/31/EC.</p>
+<p>IAB Europe. 2021 "Transparency and Consent Framework Policies". <a
+href="https://iabeurope.eu/wp-content/uploads/2021/09/TransparencyConsentFramework-_Policies_version_TCF-v2.0-2021-06-22.3.4.docx.pdf"
+class="uri">https://iabeurope.eu/wp-content/uploads/2021/09/TransparencyConsentFramework-_Policies_version_TCF-v2.0-2021-06-22.3.4.docx.pdf</a>.</p>
+<p>Kantara Initiative. 2018. Consent Receipt Specification. <a
+href="https://kantarainitiative.org/download/7902/"
+class="uri">https://kantarainitiative.org/download/7902/</a>.</p>
+<p>ISO standard "ISO/IEC 29184:2020 Information technology — Online
+privacy notices and consent". <a
+href="https://www.iso.org/standard/70331.html"
+class="uri">https://www.iso.org/standard/70331.html</a>.</p>
+<p>Global Privacy Control (GPC). Proposal 27 January 2022. <a
+href="https://globalprivacycontrol.github.io/gpc-spec/"
+class="uri">https://globalprivacycontrol.github.io/gpc-spec/</a>.</p>
+<p>Advanced Data Protection Control (ADPC) Unofficial Draft 08 July 2021
+<a href="https://www.dataprotectioncontrol.org/spec/"
+class="uri">https://www.dataprotectioncontrol.org/spec/</a>.</p>
+<p>Kif Leswing. 2022. "Facebook says Apple iOS privacy change will
+result in $10 billon revenue hit this year". <a
+href="https://www-cnbc-com.cdn.ampproject.org/c/s/www.cnbc.com/amp/2022/02/02/facebook-says-apple-ios-privacy-change-will-cost-10-billion-this-year.html"
+class="uri">https://www-cnbc-com.cdn.ampproject.org/c/s/www.cnbc.com/amp/2022/02/02/facebook-says-apple-ios-privacy-change-will-cost-10-billion-this-year.html</a>.</p>
+<p>IAB. Vendors List. <a href="https://iabeurope.eu/vendor-list/"
+class="uri">https://iabeurope.eu/vendor-list/</a>.</p>
+<p>Solid Project. <a href="https://solidproject.org/about"
+class="uri">https://solidproject.org/about</a>.</p>
+<p>Daniel W. Woods and Rainer Böhme. 2020. “The Commodification of
+Consent”, in: Workshop on the Economics of Information Security (WEIS),
+Belgium 2020.</p>
+<p>Xengie Cheng Doan, Annika Selzer, Arianna Rossi, Wilhelmina Maria
+Botes and Gabriele Lenzini. 2022. In COnSeNT 2022. Web Conference, Lyon,
+France (<em>in press</em>).</p>
+<p>Nils Wehkamp. 2022. "Internalization of privacy externalities through
+negotiation: Social costs of third-party web-analytic tools and the
+limits of the legal data protection framework". In COnSeNT 2022. In
+Proceedings of The Web Conference (Web’22). Web Conference, Lyon, France
+(<em>in press</em>).</p>
+<p>Laurens Debackere, Pieter Colpart, Ruben Taelman and Ruben Verborgh.
+2022. "A Policy-Oriented Architecture for Enforcing Consent in Solid".
+In COnSeNT 2022. In Proceedings of The Web Conference (Web’22). Web
+Conference, Lyon, France (<em>in press</em>).</p>
+<p>Maximilian Hils, Daniel W. Woods and Rainer Böhme. 2020. “Measuring
+the Emergence of Consent Management on the Web, in: Internet Measurement
+Conference (IMC)”, ACM.</p>
+<p>noyb.eu. "noyb aims to end “cookie banner terror” and issues more
+than 500 GDPR complaints". <a
+href="https://noyb.eu/en/noyb-aims-end-cookie-banner-terror-and-issues-more-500-gdpr-complaints"
+class="uri">https://noyb.eu/en/noyb-aims-end-cookie-banner-terror-and-issues-more-500-gdpr-complaints</a>.</p>
+<p>Midas Nouwens, Ilaria Liccardi, Michael Veale, David Karger and
+Lalana Kagal. 2020. “Dark Patterns after the GDPR: Scraping Consent
+Pop-ups and Demonstrating their Influence”. In: Proceedings of CHI ’20
+CHI Conference on Human Factors in Computing Systems, April 25–30, 2020,
+Honolulu, HI, USA.</p>
+<p>Célestin Matte, Nataliia Bielova and Cristiana Santos. 2020. “Do
+Cookie Banners rRespect My Choice? Measuring Legal Compliance of Banners
+from IAB Europe’s Transparency and Consent framework” in IEEE Symposium
+on Security and Privacy (IEEE S&amp;P’20).</p>
+<p>M. Veale, and F. Z. Borgesius. 2021. “Adtech and Real-Time Bidding
+under European Data Protection Law.” German Law Journal.</p>
+<p>Maximilian Hils, Daniel W. Woods and Rainer Böhme. 2021. Privacy
+Preference Signals Past, Present and Future. In Proceedings on Privacy
+Enhancing Technologies, vol.2021, no.4, pp.249-269.</p>
+<p>Cristiana Santos, Midas Nouwens, Michael Toth, Nataliia Bielova and
+Vincent Roca. 2021. “Consent management platforms under the GDPR:
+processors and/or controllers?”. In Gruschka N., Antunes LFC, Rannenberg
+K., Drogkaris P. (eds) Privacy Technologies and Policy. APF 2021.
+Lecture Notes in Computer Science, vol 12703.</p>
+<p>Michael Veale, Midas Nouwens and Cristiana Santos. 2022. "Impossible
+Asks: Can the Trasparency and Consent Framework Ever Authorise Real-Time
+Bidding After the Belgian DPA Decision?" Technology and Regulation 2022,
+12–22. <a href="https://doi.org/10.26116/techreg.2022.002"
+class="uri">https://doi.org/10.26116/techreg.2022.002</a>.</p>
+<p>Commission Nationale de l’Informatique et des Libertés. Décision
+MED-2018-042 du 30 octobre 2018.</p>
+<p>European Data Protection Board. 2019. “Polish DPA Withdrawal of
+consent shall not be impeded.” <a
+href="https://edpb.europa.eu/news/national-news/2019/polish-dpa-withdrawal-consent-shall-not-beimpeded_en"
+class="uri">https://edpb.europa.eu/news/national-news/2019/polish-dpa-withdrawal-consent-shall-not-beimpeded_en</a>.</p>
+<p>European Data Protection Board. 2019. “The CNIL’s restricted
+committee imposes a financial penalty of 50 Million euros against GOOGLE
+LLC.” <a
+href="https://edpb.europa.eu/news/national-news/2019/cnils-restricted-committee-imposes-financial-penalty-50-million-euros_en"
+class="uri">https://edpb.europa.eu/news/national-news/2019/cnils-restricted-committee-imposes-financial-penalty-50-million-euros_en</a>.</p>
+<p>Information Commissioner’s Office. 2019. “Update report into adtech
+and real time bidding.” <a
+href="https://ico.org.uk/media/about-the-ico/documents/2615156/adtech-real-time-bidding-report-201906-dl191220.pdf"
+class="uri">https://ico.org.uk/media/about-the-ico/documents/2615156/adtech-real-time-bidding-report-201906-dl191220.pdf</a>.</p>
+<p>Proposal for a Regulation of the European Parliament and of the
+Council on European data governance (Data Governance Act).</p>
+<p>Proposal for a Regulation of the European Parliament and of the
+Council on harmonised rules on fair access to and use of data (Data
+Act).</p>
+</div>
+<section id="references">
+    <h2>References</h2>
+<div id="ref-jesusharsh3022">V. Jesus and H. J. Pandit, "Consent Receipts For a Usable And Auditable Web of Personal Data," in IEEE Access, 2022. doi: 10.1109/ACCESS.2022.3157850.</div>
+
+<div id="ref-cristianacookies">Cristiana Santos, Nataliia Bielova, and Celestin Matte. 2020. "Are cookie banners indeed compliant with the law? Deciphering EU legal requirements on consent and technical means to verify compliance of cookie banners.", Technology and Regulation 2020 (Dec. 2020), 91-135. <a href="https://doi.org/10.26116/techreg.2020.009">https://doi.org/10.26116/techreg.2020.009</a>.</div>
+
+<div id="ref-pjpvendors">Paulina Pesch. 2020. "Drivers and Obstacles for the Adoption of Consent Management Solutions by Ad-Tech Providers". In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021). </div>
+
+<div id="ref-humankazzazi2021">Soheil Human and Mandan Kazzazi. 2021. "A Human-centric Reflection on Digital Consenting in the Emerging Genetic Data Markets". In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021).</div>
+
+<div id="ref-EstevesPanditRodD2021">Beatriz Esteves, Harshvardhan J. Pandit, and Víctor Rodrígues-Doncel. 2021. "ODRL Profile for Expressing Consent Through Granular Access Control Policies in Solid". In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021). </div>
+
+<div id="ref-BonattiSauroLangens2021">Piero E. Bonatti, Luigi Sauro, and Jonathan Langens. 2021. "Representing Consent and Policies for Compliance". In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021). </div>
+
+<div id="ref-Jesus2021">Vitor Jesus. 2021. "Pragmatic Online Privacy: the SftE Approach. In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021).</div>
+
+<div id="ref-BotesRossi2021">Maria W. Botes and Arianna Rossi. 2021 "Visualisation Techniques for Consent: Finding Common Ground in Comic Art with Indigenous Populations". In Euro S\&P Workshop on Consent Management in Online Services (COnSeNT 2021).</div>
+
+<div id="ref-BelgianDecision">Belgian DPA. "Decision on the merits 21/2022 of 2 February 2022, Unofficial Translation from Dutch, Case number DOS-2019-01377". <a href="https://www.gegevensbeschermingsautoriteit.be/publications/beslissing-ten-gronde-nr.-21-2022-english.pdf">https://www.gegevensbeschermingsautoriteit.be/publications/beslissing-ten-gronde-nr.-21-2022-english.pdf</a>.</div>
+
+<div id="ref-leg_GDPR">Regulation (EU) 2016/679 of the European Parliament and if the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).</div>
+
+<div id="ref-leg_ePrivacyDir">Directive 2002/58/EC of the European Parliament and of the Council of 12 July 2002 concerning the processing of personal data and the protection of privacy in the electronic communications sector (Directive on privacy and electronic communications).</div>
+
+<div id="ref-leg_ePrivacyReg">Proposal for a Regulation of the European Parliament and of the Council concerning the respect for private life and the protection of personal data in electronic communications and repealing Directive 2002/58/EC (Regulation on Privacy and Electronic Communications).</div>
+
+<div id="ref-leg_DigServAct">Proposal for a  Regulation of the European Parliament and of the Council on a Single Market For Digital Services (Digital Services Act) and amending Directive 2000/31/EC.</div>
+
+<div id="ref-IABTCF">IAB Europe. 2021 "Transparency and Consent Framework Policies". <a href="https://iabeurope.eu/wp-content/uploads/2021/09/TransparencyConsentFramework-_Policies_version_TCF-v2.0-2021-06-22.3.4.docx.pdf">https://iabeurope.eu/wp-content/uploads/2021/09/TransparencyConsentFramework-_Policies_version_TCF-v2.0-2021-06-22.3.4.docx.pdf</a>.</div>
+
+<div id="ref-kantaraCRS">Kantara Initiative. 2018. Consent Receipt Specification. <a href="https://kantarainitiative.org/download/7902/">https://kantarainitiative.org/download/7902/</a>.</div>
+
+<div id="ref-ISOconsent">ISO standard "ISO/IEC 29184:2020 Information technology — Online privacy notices and consent". <a href="https://www.iso.org/standard/70331.html">https://www.iso.org/standard/70331.html</a>.</div>
+
+<div id="ref-GPCspec">Global Privacy Control (GPC).  Proposal 27 January 2022. <a href="https://globalprivacycontrol.github.io/gpc-spec/">https://globalprivacycontrol.github.io/gpc-spec/</a>.</div>
+
+<div id="ref-ADPCspec">Advanced Data Protection Control (ADPC) Unofficial Draft 08 July 2021 <a href="https://www.dataprotectioncontrol.org/spec/">https://www.dataprotectioncontrol.org/spec/</a>.</div>
+
+<div id="ref-CNNfacebook">Kif Leswing. 2022. "Facebook says Apple iOS privacy change will result in $10 billon revenue hit this year". <a href="https://www-cnbc-com.cdn.ampproject.org/c/s/www.cnbc.com/amp/2022/02/02/facebook-says-apple-ios-privacy-change-will-cost-10-billion-this-year.html">https://www-cnbc-com.cdn.ampproject.org/c/s/www.cnbc.com/amp/2022/02/02/facebook-says-apple-ios-privacy-change-will-cost-10-billion-this-year.html</a>.</div>
+
+<div id="ref-IABGVL">IAB. Vendors List. <a href="https://iabeurope.eu/vendor-list/">https://iabeurope.eu/vendor-list/</a>.</div>
+
+<div id="ref-solidproject">Solid Project. <a href="https://solidproject.org/about">https://solidproject.org/about</a>.</div>
+
+<div id="ref-commodification">Daniel W. Woods and Rainer Bohme. 2020. “The Commodification of Consent”, in:
+Workshop on the Economics of Information Security (WEIS), Belgium 2020.</div>
+
+<div id="ref-comicsinfographics">Xengie Cheng Doan, Annika Selzer, Arianna Rossi, Wilhelmina Maria Botes and Gabriele Lenzini. 2022. In COnSeNT 2022. Web Conference, Lyon, France.</div>
+
+<div id="ref-externalities">Nils Wehkamp. 2022. "Internalization of privacy externalities through negotiation: Social costs of third-party web-analytic tools and the limits of the legal data protection framework". In COnSeNT 2022. In Proceedings of The Web Conference (Web’22). Web Conference, Lyon, France.</div>
+
+<div id="ref-ConsentSolid">Laurens Debackere, Pieter Colpart, Ruben Taelman and Ruben Verborgh. 2022. "A Policy-Oriented Architecture for Enforcing Consent in Solid". In COnSeNT 2022. In Proceedings of The Web Conference (Web’22). Web Conference, Lyon, France.</div>
+
+<div id="ref-MaxMeasuring">Maximilian Hils, Daniel W. Woods and Rainer Bohme. 2020. “Measuring the Emergence of Consent Management on the Web, in: Internet Measurement Conference (IMC)”, ACM.</div>
+
+<div id="ref-noybterror">noyb.eu. "noyb aims to end “cookie banner terror” and issues more than 500 GDPR complaints". <a href="https://noyb.eu/en/noyb-aims-end-cookie-banner-terror-and-issues-more-500-gdpr-complaints">https://noyb.eu/en/noyb-aims-end-cookie-banner-terror-and-issues-more-500-gdpr-complaints</a>.</div>
+
+<div id="ref-darkpatternsscrape">Midas Nouwens, Ilaria Liccardi, Michael Veale, David Karger and Lalana Kagal. 2020. “Dark Patterns after the GDPR: Scraping Consent Pop-ups and Demonstrating their Influence”. In: Proceedings of CHI ’20 CHI Conference on Human Factors in Computing Systems, April 25–30, 2020, Honolulu, HI, USA.</div>
+
+<div id="ref-MBS2020">Celestin Matte, Nataliia Bielova and Cristiana Santos. 2020. "Do Cookie Banners rRespect My Choice? Measuring Legal Compliance of Banners from IAB Europe’s Transparency and Consent framework" in IEEE Symposium on Security and Privacy (IEEE S&amp;P'20).</div>
+
+<div id="ref-VealeBorgesius">M. Veale, and F. Z. Borgesius. 2021. "Adtech and Real-Time Bidding under European Data Protection Law." German Law Journal.</div>
+
+<div id="ref-PPFsignals">Maximilian Hils, Daniel W. Woods and Rainer Bohme. 2021. Privacy Preference Signals: Past, Present and Future. In Proceedings on Privacy Enhancing Technologies, vol.2021, no.4, pp.249-269. </div>
+
+<div id="ref-CNTBR2021">Cristiana Santos, Midas Nouwens, Michael Toth, Nataliia Bielova and Vincent Roca. 2021. “Consent management platforms under the GDPR: processors and/or controllers?”. In Gruschka N., Antunes LFC, Rannenberg K., Drogkaris P. (eds) Privacy Technologies and Policy. APF 2021. Lecture Notes in Computer Science, vol 12703.</div>
+
+<div id="ref-VNSimpossible">Michael Veale, Midas Nouwens and Cristiana Santos. 2022. "Impossible Asks: Can the Trasparency and Consent Framework Ever Authorise Real-Time Bidding After the Belgian DPA Decision?" Technology and Regulation 2022, 12–22. <a href="https://doi.org/10.26116/techreg.2022.002">https://doi.org/10.26116/techreg.2022.002</a>.</div>
+
+<div id="ref-CNILdec">Commission Nationale de l’Informatique et des Libertés. Décision MED-2018-042 du 30 octobre 2018.</div>
+
+<div id="ref-PolishDPA">European Data Protection Board. 2019. "Polish DPA: Withdrawal of consent shall not be impeded." <a href="https://edpb.europa.eu/news/national-news/2019/polish-dpa-withdrawal-consent-shall-not-beimpeded_en">https://edpb.europa.eu/news/national-news/2019/polish-dpa-withdrawal-consent-shall-not-beimpeded_en</a>.</div>
+
+<div id="ref-CNIL">oogle} European Data Protection Board. 2019. "The CNIL’s restricted committee imposes a financial penalty of 50 Million euros against GOOGLE LLC." <a href="https://edpb.europa.eu/news/national-news/2019/cnils-restricted-committee-imposes-financial-penalty-50-million-euros_en">https://edpb.europa.eu/news/national-news/2019/cnils-restricted-committee-imposes-financial-penalty-50-million-euros_en</a>.</div>
+
+<div id="ref-ICOadtechRTB">Information Commissioner’s Office. 2019. “Update report into adtech and real time bidding.” <a href="https://ico.org.uk/media/about-the-ico/documents/2615156/adtech-real-time-bidding-report-201906-dl191220.pdf">https://ico.org.uk/media/about-the-ico/documents/2615156/adtech-real-time-bidding-report-201906-dl191220.pdf</a>.</div>
+
+<div id="ref-regDataGov">Proposal for a Regulation of the European Parliament and of the Council on European data governance (Data Governance Act).</div>
+
+<div id="ref-regDataAct">Proposal for a Regulation of the European Parliament and of the Council on harmonised rules on fair access to and use of data (Data Act).</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://privacy-as-expected.org/consent2021/"
+class="uri">https://privacy-as-expected.org/consent2021/</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.ieee-security.org/TC/EuroSP2021/"
+class="uri">https://www.ieee-security.org/TC/EuroSP2021/</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>At the workshop the authors presented their paper under
+the title “Standards for consent? From icons to comics and beyond!”.<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.iccl.ie/staff/dr-johnny-ryan/"
+class="uri">https://www.iccl.ie/staff/dr-johnny-ryan/</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://consentworkshop.com/perma/keynote2021"
+class="uri">https://consentworkshop.com/perma/keynote2021</a><a
+href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://consentworkshop.com/perma/panel2021"
+class="uri">https://consentworkshop.com/perma/panel2021</a><a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
