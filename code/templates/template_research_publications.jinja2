@@ -133,7 +133,7 @@
             <br/>
             <small>&#128161; previous submissions:
             {% if publication.hpcom_publishing_attempt is sequence and publication.hpcom_publishing_attempt is not string %}
-                {{ ' ,'.join(publication.hpcom_publishing_attempt) }}
+                {{ ' ,'.join(publication.hpcom_publishing_attempt|sort) }}
             {% else %}
                 {{publication.hpcom_publishing_attempt}}
             {% endif %}
