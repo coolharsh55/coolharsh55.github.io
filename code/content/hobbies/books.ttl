@@ -9979,12 +9979,16 @@
         schema:Book ;
     hpcom:book_id "695"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-09-12T09:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Nnedi Okorafor"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Binti"@en ;
+    schema:review """A nice fresh tale, though cut short by hasty endings."""@en ;
     schema:url "https://harshp.com/hobbies/books/695"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/696> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11125,7 +11129,7 @@
         schema:Book ;
     hpcom:book_id "775"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Peter Watts"^^xsd:string ;
