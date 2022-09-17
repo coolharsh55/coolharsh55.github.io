@@ -11116,7 +11116,7 @@
         schema:Book ;
     hpcom:book_id "774"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Linda Jaivin"^^xsd:string ;
@@ -11129,13 +11129,15 @@
         schema:Book ;
     hpcom:book_id "775"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-09-16T11:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Peter Watts"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Echopraxia"@en ;
+    schema:review """A disappointing sequel following a spectacular first part. There are nuggets of awesome things, but the package is so disarrayed that it make things difficult to follow and just feels no as enjoyable as the first book. I would still want to check out other books from the author, because there are really intelligent discussions and explorations that pique my interest.""" ;
     schema:url "https://harshp.com/hobbies/books/775"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/776> a hpcom:RenderedItem, hpcom:BookReading,
