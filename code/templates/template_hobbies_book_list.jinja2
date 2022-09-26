@@ -11,7 +11,7 @@
             {% else %}{{ book.hpcom_book_owned_medium if book.hpcom_book_owned_medium else 'NA'}}
             {% endif %}" 
         data-rating="{{book.schema_aggregatedRating.schema_ratingValue if book.schema_aggregatedRating else 0}}">
-      <a href="{{book.iri}}">{{book.schema_name}}</a> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
+      <a href="{{book.iri}}">{{name}}</a> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
         {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
             {{genre}}{{', ' if not loop.last}}{% endfor %}

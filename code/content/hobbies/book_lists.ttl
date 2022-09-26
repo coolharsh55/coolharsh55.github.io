@@ -206,10 +206,12 @@ list:loaned a <https://harshp.com/hobbies/books/lists>, hpcom:RenderedItem ;
                 hpcom:queryString """
                     SELECT DISTINCT ?book ?name (MAX(?date) as ?dt) WHERE {
                         ?book a schema:Book .
-                        ?book schema:name ?name .
+                        ?book schema:name ?sname .
                         ?book schema:dateCreated ?date .
-                        ?book hpcom:book_on_loan true .
-                    } GROUP BY ?book ORDER By DESC(?dt) ASC(?name) 
+                        ?book hpcom:book_on_loan ?whom .
+                        BIND(CONCAT(" -- ", ?sname) as ?tname) .
+                        BIND(CONCAT(?whom, ?tname) as ?name) .
+                    } GROUP BY ?book ORDER By ASC(?name) ASC(?sname) 
                     """ ;
             ] ;
         ] .
