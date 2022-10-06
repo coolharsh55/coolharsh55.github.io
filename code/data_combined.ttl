@@ -19429,6 +19429,24 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publication <http://example.com/workshops/Consent2022> ;
     schema:url "https://doi.org/10.1145/3487553.3524866"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/056-Citizen-Thinkin-AI-2022> a hpcom:RenderedItem,
+        hpcom:Report,
+        schema:ScholarlyArticle ;
+    hpcom:author_lead <http://example.com/EmmaClarke> ;
+    hpcom:author_other ( <https://harshp.com/me> <http://example.com/PJWall> ) ;
+    hpcom:peer_reviewed false ;
+    hpcom:tag hptag:AI,
+        hptag:privacy,
+        hptag:thinkin ;
+    schema:datePublished "2022-10-05T00:00:00"^^xsd:dateTime ;
+    schema:description "Analysis of the various discussions that took place within the Citizens’ Think-Ins series 2020-2021"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "https://doras.dcu.ie/27820/"^^xsd:anyURI ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:name "We need to talk about AI: the case for citizens’ think-ins for citizen-researcher dialogue and deliberation"@en ;
+    schema:publication <https://www.dcu.ie/> ;
+    schema:url "https://doras.dcu.ie/27820/"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -20332,6 +20350,9 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/ElmarKiesling> a schema:Person ;
     schema:name "Elmar Kiesling" .
 
+<http://example.com/EmmaClarke> a schema:Person ;
+    schema:name "Emma Clarke" .
+
 <http://example.com/EvaSchlehahn> a schema:Person ;
     schema:name "Eva Schlehahn" .
 
@@ -20361,9 +20382,6 @@ list:owned_unread a hpcom:RenderedItem,
 
 <http://example.com/NicolasMondada> a schema:Person ;
     schema:name "Nicolas Mondada" .
-
-<http://example.com/PJWall> a schema:Person ;
-    schema:name "P. J. Wall" .
 
 <http://example.com/PatMcBennett> a schema:Person ;
     schema:name "Pat McBennett" .
@@ -20742,10 +20760,6 @@ hpview:StoryView a hpcom:View ;
 
 hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Draft Paper"@en .
-
-hpcom:Report rdfs:subClassOf schema:Report,
-        schema:ScholarlyArticle ;
-    schema:name "Report"@en .
 
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
@@ -23157,6 +23171,11 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "Encyclopedia of Business and Professional Ethics"@en ;
     schema:url "https://link.springer.com/referencework/10.1007/978-3-319-23514-1" .
 
+<https://www.dcu.ie/> a schema:CollegeOrUniversity ;
+    schema:address "Dublin, Ireland" ;
+    schema:name "Dublin City University" ;
+    schema:url "https://www.dcu.ie/"^^xsd:anyURI .
+
 <https://www.emerald.com/insight/publication/issn/1742-7371> a schema:Periodical ;
     schema:alternateName "ISPCC" ;
     schema:issn "1742-7371" ;
@@ -23219,6 +23238,9 @@ hptag:workshop a hpcom:RenderedItem,
 
 <http://example.com/JavierFernandez> a schema:Person ;
     schema:name "Javier Fernandez" .
+
+<http://example.com/PJWall> a schema:Person ;
+    schema:name "P. J. Wall" .
 
 <http://example.com/VictorRodriguezDoncel> a schema:Person ;
     schema:name "Victor Rodriguez Doncel" .
@@ -23480,6 +23502,10 @@ hptag:workshop a hpcom:RenderedItem,
 hpcom:FileFormat a owl:Class ;
     rdfs:label "FileFormat"@en ;
     rdfs:comment "Represents formats for content"@en .
+
+hpcom:Report rdfs:subClassOf schema:Report,
+        schema:ScholarlyArticle ;
+    schema:name "Report"@en .
 
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
@@ -23777,11 +23803,6 @@ hpcom:book-currently-reading a hpcom:BookStatus ;
     schema:name "web development"@en ;
     schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
 
-hptag:AI a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI"@en ;
-    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
-
 hptag:Facebook a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Facebook" ;
@@ -23939,6 +23960,11 @@ hptag:website a hpcom:RenderedItem,
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "Pune-Lonavala Train Schedule App"@en ;
     schema:url "https://harshp.com/dev/train_schedule"^^xsd:anyURI .
+
+hptag:AI a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI"@en ;
+    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
 
 hptag:Android a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24386,13 +24412,13 @@ book:lists a owl:Class,
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
 
+<https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
+    schema:name "Declan O'Sullivan" .
+
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
-
-<https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
-    schema:name "Declan O'Sullivan" .
 
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
