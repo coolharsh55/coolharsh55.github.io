@@ -12503,12 +12503,17 @@ book:639 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "639"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-10-02T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Arkady and Boris Strugatsky"^^xsd:string ;
     schema:dateCreated "1972"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:scifi ;
     schema:name "Roadside Picnic"@en ;
+    schema:review "An amazing work that really paints a beautifully haunting picture of human condition. Justifiably the best known work of Strugatsky - and as a fan of Stalker - just as fulfilling to read."@en ;
     schema:url "https://harshp.com/hobbies/books/639"^^xsd:anyURI .
 
 book:64 a hpcom:Book,
@@ -22731,6 +22736,11 @@ hptag:Germany a hpcom:RenderedItem,
     schema:name "Germany" ;
     schema:url "https://harshp.com/tags/Germany"^^xsd:anyURI .
 
+hptag:IAB-TCF a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "IAB-TCF"@en ;
+    schema:url "https://harshp.com/tags/IAB-TCF"^^xsd:anyURI .
+
 hptag:India a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "India" ;
@@ -22845,6 +22855,11 @@ hptag:crime a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "crime" ;
     schema:url "https://harshp.com/tags/crime"^^xsd:anyURI .
+
+hptag:dark-patterns a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "dark-patterns"@en ;
+    schema:url "https://harshp.com/tags/dark-patterns"^^xsd:anyURI .
 
 hptag:data-value a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23076,6 +23091,11 @@ hptag:security a hpcom:RenderedItem,
     schema:name "security" ;
     schema:url "https://harshp.com/tags/security"^^xsd:anyURI .
 
+hptag:signal a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "signal"@en ;
+    schema:url "https://harshp.com/tags/signal"^^xsd:anyURI .
+
 hptag:sleep a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "sleep"@en ;
@@ -23125,6 +23145,11 @@ hptag:technology a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "technology" ;
     schema:url "https://harshp.com/tags/technology"^^xsd:anyURI .
+
+hptag:thinkin a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "thinkin"@en ;
+    schema:url "https://harshp.com/tags/thinkin"^^xsd:anyURI .
 
 hptag:thriller a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23511,6 +23536,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -23792,9 +23820,6 @@ hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -24529,15 +24554,15 @@ list:TCD a hpcom:RenderedItem,
     schema:identifier "TCD"@en ;
     schema:name "Books in TCD"@en .
 
-list:scifi a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "scifi"@en ;
-    schema:name "Exciting Sci-Fi"@en .
-
 hptag:poem a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "poem" ;
     schema:url "https://harshp.com/tags/poem"^^xsd:anyURI .
+
+list:scifi a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "scifi"@en ;
+    schema:name "Exciting Sci-Fi"@en .
 
 hpcom:BookNonFiction a hpcom:BookGenre ;
     rdfs:label "non-fiction"@en .
