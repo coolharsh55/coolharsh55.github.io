@@ -12011,7 +12011,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "834"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Baoshu"^^xsd:string ;
@@ -12186,3 +12186,32 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Bear Head"@en ;
     schema:url "https://harshp.com/hobbies/books/847"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/848> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "848"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-10-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Frederik Pohl"^^xsd:string ;
+    schema:dateCreated "1980"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Beyond the Blue Event Horizon"@en ;
+    schema:review """A sequel that manages to keep up with its predecessor is always an enjoyable experience. In this case, there's science fiction, humanity and its cliches that are dated but integrated well into the story, and a great hook for yet another sequel. The whole thing with sexualised teenagers seems weird and out of place and really dated. It also feels forced. I'm not sure why that even made it into the story in the first place."""@en ;
+    schema:url "https://harshp.com/hobbies/books/848"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/849> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "849"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Frederik Pohl"^^xsd:string ;
+    schema:dateCreated "1984"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Heechee Rendezvous"@en ;
+    schema:url "https://harshp.com/hobbies/books/849"^^xsd:anyURI .
