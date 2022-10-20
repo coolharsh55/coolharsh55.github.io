@@ -8701,7 +8701,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "606"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Katie Mack"^^xsd:string ;
@@ -12011,13 +12011,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "834"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-10-20T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Baoshu"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Redemption of Time"@en ;
+    schema:review """Despite containing a lot of cool and recent science concepts webbed into the story, the overall execution falls much short of the epic saga from Three Body Problem trilogy. There are far too many cliches, and a discomforting return to good vs evil that somehow feels like an imitation."""@en ;
     schema:url "https://harshp.com/hobbies/books/834"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/835> a hpcom:RenderedItem,
