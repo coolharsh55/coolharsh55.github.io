@@ -1907,6 +1907,27 @@ hpcom:view_template a rdf:Property ;
     schema:name "dpv-x 2021-08-15"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-x-2021-08-15"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/notes-reuse-euvoc> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/notes-reuse-euvoc.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:EUVoc,
+        hptag:semantic-web,
+        hptag:standard ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-10-23T14:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-10-23T14:00:00"^^xsd:dateTime ;
+    schema:description "Notes on reusing EU Vocabularies for/with DPV (legal) concepts"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Notes on reuse of EU Vocabularies for DPV"@en ;
+    schema:subjectOf [ a hpcom:Link ;
+            schema:name "Data Privacy Vocabulary (DPV)" ;
+            schema:url "https://www.w3.org/ns/dpv" ] ;
+    schema:url "https://harshp.com/dev/dpv/notes-reuse-euvoc"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/standards-iso> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -22762,6 +22783,11 @@ hptag:EU a hpcom:RenderedItem,
     schema:name "EU" ;
     schema:url "https://harshp.com/tags/EU"^^xsd:anyURI .
 
+hptag:EUVoc a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "EUVoc"@en ;
+    schema:url "https://harshp.com/tags/EUVoc"^^xsd:anyURI .
+
 hptag:Germany a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Germany" ;
@@ -23146,11 +23172,6 @@ hptag:speaking a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "speaking" ;
     schema:url "https://harshp.com/tags/speaking"^^xsd:anyURI .
-
-hptag:standard a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "standard"@en ;
-    schema:url "https://harshp.com/tags/standard"^^xsd:anyURI .
 
 hptag:students a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -23779,6 +23800,11 @@ hptag:smartphone a hpcom:RenderedItem,
     schema:name "smartphone"@en ;
     schema:url "https://harshp.com/tags/smartphone"^^xsd:anyURI .
 
+hptag:standard a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "standard"@en ;
+    schema:url "https://harshp.com/tags/standard"^^xsd:anyURI .
+
 hptag:standardisation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "standardisation"@en ;
@@ -24157,13 +24183,6 @@ hptag:weather a hpcom:RenderedItem,
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 list:humour a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "humour"@en ;
@@ -24199,17 +24218,19 @@ hptag:travel a hpcom:RenderedItem,
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
+
 <https://harshp.com/dev/semantic_web> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
-
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 hptag:conference a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24246,6 +24267,11 @@ list:thriller a hpcom:RenderedItem,
     schema:identifier "thriller"@en ;
     schema:name "Thrilling Thrillers"@en .
 
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
+
 hptag:automation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "automation" ;
@@ -24264,11 +24290,6 @@ list:aliens a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "aliens"@en ;
     schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
-
-hptag:DPV a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24311,6 +24332,11 @@ list:storytelling a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "storytelling"@en ;
     schema:name "Great Storytelling"@en .
+
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:GNIB a hpcom:RenderedItem,
         hpcom:Tag ;

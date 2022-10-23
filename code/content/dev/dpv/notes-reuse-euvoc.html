@@ -1,0 +1,136 @@
+<h2 id="summary">Summary</h2>
+<ul>
+	<li>EUvocs provide an IRI for countries and memberships</li>
+	<li>EUvocs provide IRIs for places (region, city) and their status as being within
+	the Country which is then linked to being in EU (jurisdiction)</li>
+	<li>The UN vocabs provide bidirectional regional association (City &lt;&#x2013;&gt; Country)</li>
+	<li>MISSING: an association from place/country to membership, but not vice-versa</li>
+	<li>MISSING: a single graph containing all pertinent information about countries,
+	places, and memberships</li>
+	<li>CELEX and other metadata provide information about laws (title, dates, topics)</li>
+	<li>MISSING: association of areas with applicable areas e.g. GDPR is applicable
+	for EU, countries, regions, and so on</li>
+	<li>MISSING: authorities (e.g. Data Protection Authority) type and their
+	association with specific laws and jurisdictions</li>
+	<li>There are other vocabularies that DPV can reuse / consider alignment (see
+	notes for concepts and links)</li>
+</ul>
+<h2 id="country">Country</h2>
+<ul>
+	<li>dataset <a href="http://publications.europa.eu/resource/dataset/country">http://publications.europa.eu/resource/dataset/country</a></li>
+	<li>Namespace for country <a href="http://publications.europa.eu/resource/authority/country/">http://publications.europa.eu/resource/authority/country/</a></li>
+	<li>IRI for contry uses ISO Alpha-3, so Ireland is <code>country:IRL</code></li>
+	<li>All countries are accessible through the IRI (and not just EU)</li>
+	<li><code>rdf:type euvoc:Country</code> (I cannot access EuroVoc for some reason)</li>
+	<li><code>dc:identifier</code> for the ID used in IRI</li>
+	<li>There are ISO codes displayed in the HTML, but I cannot find them in RDF</li>
+	<li>There is <a href="http://publications.europa.eu/resource/authority/notation-type">http://publications.europa.eu/resource/authority/notation-type</a> that
+		provides notations including ISO Alpha codes, and the graph refers to several
+		blank nodes that are not present in the file. The XML (non-RDF) version has
+	this information.</li>
+	<li><a href="http://publications.europa.eu/resource/authority/notation-type">http://publications.europa.eu/resource/authority/notation-type</a> lists various
+	codes for ISO and UN schemes.</li>
+	<li><code>skos:prefLabel</code> with language tag</li>
+	<li><code>dct:language</code> with identifier from authority table, e.g.
+		<a href="http://publications.europa.eu/resource/authority/language/SPA">http://publications.europa.eu/resource/authority/language/SPA</a></li>
+		<li>group memberships are represented by <code>dct:type</code> and denoting EU, EEA, etc.</li>
+		<li>territorial areas are linked using <code>skos:broader/skos:narrower</code></li>
+		<li>geopolitical membership is depicted using <code>ogcgs:sfWithin</code> e.g. IRL -&gt; EUROPE</li>
+		<li>Continent URI: <a href="http://publications.europa.eu/resource/authority/continent">http://publications.europa.eu/resource/authority/continent</a></li>
+		<li>Places URI: <a href="http://publications.europa.eu/resource/authority/place">http://publications.europa.eu/resource/authority/place</a></li>
+	</ul>
+	<h2 id="membership">Membership</h2>
+	<ul>
+		<li>namespace
+			<a href="http://publications.europa.eu/resource/authority/membership-classification/">http://publications.europa.eu/resource/authority/membership-classification/</a></li>
+			<li>memberships: EEA, EFTA, EU, EURO, SCHENGEN, NATO</li>
+			<li>these do not specify the inverse i.e. what country is in a membership</li>
+		</ul>
+		<h2 id="address-type">Address Type</h2>
+		<ul>
+			<li>Namespace <a href="http://publications.europa.eu/resource/authority/address-type">http://publications.europa.eu/resource/authority/address-type</a></li>
+			<li>types of addresses such as office, email, twitter</li>
+			<li>These are relevant for &quot;Contact&quot; concepts, but there must be other more
+			comprehensive vocabularies out there?</li>
+			<li>If not, is this something we should consider? E.g. how to indicate contact
+			mechanisms for emails, post, twitter DMs, etc.</li>
+		</ul>
+		<h2 id="administrative-territorial-unit">Administrative Territorial Unit</h2>
+		<ul>
+			<li>URI: <a href="http://publications.europa.eu/resource/dataset/atu">http://publications.europa.eu/resource/dataset/atu</a></li>
+			<li>Namespace: <a href="http://publications.europa.eu/resource/authority/atu/">http://publications.europa.eu/resource/authority/atu/</a></li>
+			<li>has <code>dct:type atu-type:EU</code> to denote being within EU</li>
+			<li>URI: <a href="http://publications.europa.eu/resource/dataset/atu-type">http://publications.europa.eu/resource/dataset/atu-type</a> provides
+				information on type of region - e.g. City, Country - with specific instances
+			for each country - e.g. County for Ireland</li>
+		</ul>
+		<h2 id="buyer-legal-type">Buyer legal type</h2>
+		<ul>
+			<li>URI: <a href="http://publications.europa.eu/resource/authority/buyer-legal-type">http://publications.europa.eu/resource/authority/buyer-legal-type</a></li>
+			<li><code>la</code> represents local authority and <code>ra</code> represents regional authority</li>
+			<li><code>grp-p-aut</code> for group of public authorities</li>
+			<li><code>cga</code> central government authority</li>
+			<li>Not sure how this relates to DPV or what the difference is between local
+			authority and regional authority</li>
+		</ul>
+		<h2 id="frequency">Frequency</h2>
+		<ul>
+			<li>URI: <a href="http://publications.europa.eu/resource/authority/frequency">http://publications.europa.eu/resource/authority/frequency</a></li>
+			<li>contains many different frequencies e.g. twice in a year</li>
+			<li>refers to Dublin Core description frequency <a href="http://purl.org/cld/freq/">http://purl.org/cld/freq/</a></li>
+			<li>Namespace: <a href="http://publications.europa.eu/resource/authority/frequency/">http://publications.europa.eu/resource/authority/frequency/</a></li>
+			<li>Does not specify the occurence or period in explicit terms</li>
+			<li>This can be mentioned (the DC vocab) for frequency types in HTML docs</li>
+		</ul>
+		<h2 id="notice-types">Notice Types</h2>
+		<ul>
+			<li>Namespace: <a href="http://publications.europa.eu/resource/authority/notice-type">http://publications.europa.eu/resource/authority/notice-type</a></li>
+			<li>Provides notice types for publication/EU activities</li>
+			<li>has differentiation between prior notice for information and notice (ex-post)
+			on the existence of a system</li>
+			<li>DPV can distinguish between notices in a similar manner, e.g. ExAnteNotice and
+				ExPostNotice for notices that relate to prior information and post-activity
+			information respectively</li>
+		</ul>
+		<h2 id="organisation-type">Organisation Type</h2>
+		<ul>
+			<li>Namespace: <a href="http://publications.europa.eu/resource/authority/organization-type">http://publications.europa.eu/resource/authority/organization-type</a></li>
+			<li>Provides a list of organisation types, including company, unit, sector</li>
+			<li>DPV has some organisation concepts, which are sufficient for legal purposes in
+			DPV. For more, the HTML can refer to other vocabularies like this and Gist</li>
+		</ul>
+		<h2 id="permission">Permission</h2>
+		<ul>
+			<li>URI: <a href="http://publications.europa.eu/resource/authority/permission">http://publications.europa.eu/resource/authority/permission</a></li>
+			<li>has three: allowed, not-allowed, required</li>
+			<li>DPV has added rules which map exactly onto this as - permission, prohibition,
+			and obligation</li>
+			<li>The HTML can mention this alongside comparison to other rule systems such as
+			ODRL and RuleML etc.</li>
+		</ul>
+		<h2 id="cybersecurity-taxonomy">Cybersecurity Taxonomy</h2>
+		<ul>
+			<li>URI: <a href="http://data.jrc.ec.europa.eu/ontology/cybersecurity/cybersecurity-taxonomy">http://data.jrc.ec.europa.eu/ontology/cybersecurity/cybersecurity-taxonomy</a></li>
+			<li>docs: <a href="https://op.europa.eu/s/w9dC">https://op.europa.eu/s/w9dC</a></li>
+			<li>has several broad/generic and security specific concepts</li>
+			<li>These are a good source for additional technical and organisational measures</li>
+		</ul>
+		<h2 id="rights-and-freedoms">Rights and Freedoms</h2>
+		<ul>
+			<li>URI: <a href="http://eurovoc.europa.eu/100184">http://eurovoc.europa.eu/100184</a></li>
+			<li>docs: <a href="https://op.europa.eu/s/w9dD">https://op.europa.eu/s/w9dD</a></li>
+			<li>has economic rights, fundamental rights</li>
+			<li>has Charter of Fundamental Rights, but does not state relation of terms with
+			specific clauses, and the terms do not match or seem to cover all concepts</li>
+			<li>Since this is intended to be an annotation vocabulary, I do not think it
+				provides a &#39;list of rights&#39; by itself, but instead relates to legislative
+			documents and topics that are about rights and have this topic</li>
+			<li>DPV can adapt this and provide a comprehensive list of rights and links
+			between them (difficult and time-consuming, but nice for future efforts)</li>
+		</ul>
+		<h2 id="relevant-names-without-relevant-terms">Relevant names without relevant terms</h2>
+		<ul>
+			<li>Legal Basis</li>
+			<li>Organisation Roles</li>
+			<li>Organisation subrole</li>
+		</ul>
