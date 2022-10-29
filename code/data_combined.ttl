@@ -11935,11 +11935,16 @@ book:606 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "606"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-10-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Katie Mack"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "The End of Everything (Astrophysically Speaking)"@en ;
+    schema:review "When I finished reading this book, I went, 'is that it?' because I was surprised that I had finished reading all of it. Like a big meal that you do not realise was immensely satiating well until you've started walking back home. This book was a feat in breaking down complex scenarios down into simple explanations without burdening the reader with the complexities of any specifics. I hope they make a documentary of this some day."@en ;
     schema:url "https://harshp.com/hobbies/books/606"^^xsd:anyURI .
 
 book:607 a hpcom:Book,
@@ -12491,7 +12496,7 @@ book:637 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "637"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Christopher Priest"^^xsd:string ;
     schema:dateCreated "1974"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -12589,12 +12594,16 @@ book:642 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "642"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-10-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Walking to Aldebaran"@en ;
+    schema:review "A short, but intense, novella that clearly takes inspiration from The Martian and several other great entertaining books, and puts enough of a spin on them to have something of its own. Like the author, and will continue to invest my time in their books."@en ;
     schema:url "https://harshp.com/hobbies/books/642"^^xsd:anyURI .
 
 book:643 a hpcom:Book,
@@ -24525,14 +24534,14 @@ hptag:emotional a hpcom:RenderedItem,
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
 
+hpcom:Jinja2 a hpcom:Renderer ;
+    rdfs:label "Jinaj2"@en ;
+    rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
+
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
-
-hpcom:Jinja2 a hpcom:Renderer ;
-    rdfs:label "Jinaj2"@en ;
-    rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
 
 list:fantasy a hpcom:RenderedItem,
         book:lists ;
@@ -24624,15 +24633,15 @@ list:scifi a hpcom:RenderedItem,
 hpcom:BookNonFiction a hpcom:BookGenre ;
     rdfs:label "non-fiction"@en .
 
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
+
 hpcom:Rating4 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😁good (4/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI .
-
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
 
 hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
