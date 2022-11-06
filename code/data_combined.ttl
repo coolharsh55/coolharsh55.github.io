@@ -12651,7 +12651,7 @@ book:645 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "645"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Bobby Duffy"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16068,6 +16068,67 @@ book:85 a hpcom:Book,
     schema:isbn "9780807071700"^^xsd:string ;
     schema:name "Inferior: How Science Got Women Wrong—and the New Research That's Rewriting the Story"@en ;
     schema:url "https://harshp.com/hobbies/books/85"^^xsd:anyURI .
+
+book:850 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "850"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Jaap-Henk Hoepman"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Privacy Is Hard and Seven Other Myths"@en ;
+    schema:url "https://harshp.com/hobbies/books/850"^^xsd:anyURI .
+
+book:851 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "851"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Mireille Hildebrandt"^^xsd:string ;
+    schema:dateCreated "2020"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Law for Computer Scientists and Other Folks"@en ;
+    schema:url "https://harshp.com/hobbies/books/851"^^xsd:anyURI .
+
+book:852 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "852"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Neil Richards"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Why Privacy Matters"@en ;
+    schema:url "https://harshp.com/hobbies/books/852"^^xsd:anyURI .
+
+book:853 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "853"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Woodrow Hartzog"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Privacy's Blueprint: The Battle to Control the Design of New Technologies"@en ;
+    schema:url "https://harshp.com/hobbies/books/853"^^xsd:anyURI .
+
+book:854 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "854"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Danielle Citron"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Fight for Privacy: Protecting Dignity, Identity, and Love in the Digital Age"@en ;
+    schema:url "https://harshp.com/hobbies/books/854"^^xsd:anyURI .
+
+book:855 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "855"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Daniele J. Solove and Woodrow Hartzog"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Breached: Why Security Law Fails and How to Improve It"@en ;
+    schema:url "https://harshp.com/hobbies/books/855"^^xsd:anyURI .
 
 book:86 a hpcom:Book,
         hpcom:BookReading,
@@ -23601,9 +23662,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -23890,6 +23948,9 @@ hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -24637,15 +24698,15 @@ list:scifi a hpcom:RenderedItem,
 hpcom:BookNonFiction a hpcom:BookGenre ;
     rdfs:label "non-fiction"@en .
 
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
-
 hpcom:Rating4 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😁good (4/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI .
+
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
 
 hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
