@@ -48,93 +48,189 @@
 		font-size: 0.75rem;
 	}
 </style>
-<div id="toc"></div>
+
+<p>In preparation for DPV's v1 release, this is a collection of tasks to be done. They are separated into those where Volunteers are requested to assist, and those that I have to do myself. Where a task already has an existing GitHub issue, use that for commenting & discussion. Otherwise, feel free to open a new issue. Where a task has writing or reviewing, you can directly submit content via emails, attachments, shared docs, etc. The specs are written in HTML, so I don't have a plain-text version but can produce it using <a href="https://pandoc.org/">pandoc</a> on request.</p>
+
+<b>Volunteers Welcome</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/w3c/dpv/issues/50">https://github.com/w3c/dpv/issues/50</a> overview of issues on GitHub</li>
+<li>diagrams
+<ul class="org-ul">
+<li><a href="dpv_documentation_generator.html#ID-cd42894f-6779-47cd-b234-3a41d788c33c">Diagrams for concepts</a> - see todos in HTML on diagrams. See for context
+<ul class="org-ul">
+<li><a href="https://github.com/w3c/dpv/issues/24">https://github.com/w3c/dpv/issues/24</a></li>
+<li><a href="https://github.com/w3c/dpv/issues/65">https://github.com/w3c/dpv/issues/65</a></li>
+</ul></li>
+<li><a href="dpv_primer.html#ID-f3909042-02c3-44eb-9344-3fa63459f485">Primer Diagrams</a></li>
+</ul></li>
+<li>reviewing
+<ul class="org-ul">
+<li><a href="dpv_documentation_generator.html#ID-edad4cd0-8642-4680-8b58-4fa8d08b61fa">dpv: check links for editor's draft - all point to DPV</a></li>
+<li>review existing writing in primer and spec</li>
+<li><a href="dpv_spec.html#ID-07da5673-1b17-41cd-b69f-cf10c7f00a3d">Safeguards</a> - <a href="https://github.com/w3c/dpv/issues/23">https://github.com/w3c/dpv/issues/23</a> for some context</li>
+<li><a href="https://github.com/w3c/dpv/issues/14">https://github.com/w3c/dpv/issues/14</a> - add PII as category to Personal Data
+to indicate Identifiable Information as a category</li>
+<li><a href="https://github.com/w3c/dpv/issues/15">https://github.com/w3c/dpv/issues/15</a> - tech/org measure terms are correct
+regarding anonymisation and pseudonymisation</li>
+<li><a href="https://github.com/w3c/dpv/issues/71">https://github.com/w3c/dpv/issues/71</a> (code) - a SHACL test or a SPARQL query
+or python/rdflib code to detect typos or undefined concepts</li>
+</ul></li>
+<li>writing
+<ul class="org-ul">
+<li><a href="dpv_documentation_generator.html#ID-c2d2b030-9683-44aa-9f11-66b4697ca4ae">Add text to specs</a> - (also includes reviewing text) see specs, for each section
+there should be a descriptive section that summarises the concepts and how
+they can be used.</li>
+<li><a href="https://github.com/w3c/dpv/issues/12">https://github.com/w3c/dpv/issues/12</a> - use-cases and examples</li>
+<li><a href="https://github.com/w3c/dpv/issues/4">https://github.com/w3c/dpv/issues/4</a> - right exercise HTML</li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li>wiki
+<ul class="org-ul">
+<li><a href="../Nextcloud/org/dpvcg_wiki.html#ID-ca4bdf29-7ce8-43a3-9304-806cf732dbe2">Landing page summary and new participants</a> - in wiki</li>
+<li><a href="../Nextcloud/org/dpvcg_wiki.html#ID-4c28ce05-7304-4060-be38-d0fd78b15f09">Adoption page for DPV</a> - in wiki</li>
+<li><a href="../Nextcloud/org/dpvcg_wiki.html#ID-02570468-2781-45d8-b4b7-5ed06953db06">Add DPV presentations to Wiki page</a> - in wiki</li>
+<li><a href="dpvcg_wiki.html#ID-059e453e-12d8-4633-a6d5-1c6ab61622e6">Add DPV citations and uses to Wiki page</a> - in wiki</li>
+</ul></li>
+</ul>
+
+<p>
+<b>Harsh ToDo</b>
+</p>
+<ul class="org-ul">
+<li>coding
+<ul class="org-ul">
+<li><a href="dpv_documentation_generator.html#ID-f0a25db8-6c84-4fff-8ab2-dc2fb6aba91c">Update Concepts and Documentation</a></li>
+<li><a href="dpv_documentation_generator.html#ID-69a6c33a-e401-47ae-ad16-3523d560f83b">DPV hierarchical diagram</a> - this exists as <a href="https://harshp.com/dpv-x/overview/">https://harshp.com/dpv-x/overview/</a>
+and needs to be updated</li>
+<li><a href="dpv_spec.html#ID-03df3521-6b6e-4b16-83b5-77e76d9988c1">dpv: change Jurisdiction module name to Location</a></li>
+<li><a href="https://github.com/w3c/dpv/issues/59">https://github.com/w3c/dpv/issues/59</a> - OWL import</li>
+<li><a href="https://github.com/w3c/dpv/issues/42">https://github.com/w3c/dpv/issues/42</a> - OWL serialisation</li>
+<li><a href="https://github.com/w3c/dpv/issues/40">https://github.com/w3c/dpv/issues/40</a> - release contains only data (done)</li>
+</ul></li>
+<li>HTML
+<ul class="org-ul">
+<li><a href="dpv_documentation_generator.html#ID-44ebdd9e-8f43-44ed-9dcf-df9d34367266">dpv: put link to release / downloads in the spec</a></li>
+<li><a href="dpv_gdpr.html#ID-18d5ba14-044a-4f31-bc77-6e0f8f23109b">dpv-gdpr DPIA properties section fix ID</a></li>
+<li><a href="dpv_rights.html#ID-ea749ba8-b842-44d8-810c-63b4009d69ce">Add note on rights vocabulary linking it to EUROVOC</a></li>
+<li><a href="dpv_risk.html#ID-63c63256-d00f-4d7b-8d0b-ca63afd766a4">DPV add todo for benefits</a></li>
+<li><a href="https://github.com/w3c/dpv/issues/72">https://github.com/w3c/dpv/issues/72</a> - minor HTML fixes</li>
+<li><a href="https://github.com/w3c/dpv/issues/70">https://github.com/w3c/dpv/issues/70</a> - missing term (fixed in spreadsheet)</li>
+<li><a href="https://github.com/w3c/dpv/issues/46">https://github.com/w3c/dpv/issues/46</a> - note on DPV-LEGAL</li>
+<li><a href="https://github.com/w3c/dpv/issues/58">https://github.com/w3c/dpv/issues/58</a> - fix label</li>
+</ul></li>
+<li>concepts
+<ul class="org-ul">
+<li><a href="dpv_gdpr.html#ID-b9129b37-3252-4216-ab66-f36ebf74f721">DPV add concepts to DPV-GDPR for legal basis</a></li>
+<li><a href="dpv_juris.html#ID-08760b5f-f31b-4a66-b653-10652728ed3d">DPV: replace existing concepts in dpv-legal</a></li>
+<li><a href="../Nextcloud/org/dpv_rights.html#ID-691e4255-afec-4128-8b6a-14845914cf87">DPV concepts for Rights exercise</a></li>
+<li><a href="https://github.com/w3c/dpv/issues/22">https://github.com/w3c/dpv/issues/22</a> - purposes (done)</li>
+<li><a href="https://github.com/w3c/dpv/issues/21">https://github.com/w3c/dpv/issues/21</a> - consent (done)</li>
+<li><a href="https://github.com/w3c/dpv/issues/18">https://github.com/w3c/dpv/issues/18</a> - rules (done)</li>
+<li><a href="https://github.com/w3c/dpv/issues/16">https://github.com/w3c/dpv/issues/16</a> - Collection Method (done)</li>
+<li><a href="https://github.com/w3c/dpv/issues/5">https://github.com/w3c/dpv/issues/5</a> - Data subject categories (done)</li>
+</ul></li>
+<li><a href="dpv_style_guide.html#ID-7d4db620-c5e1-46c9-9b2d-2e384973c28c">Documentation Style Guide</a> - stating each term should have a label,
+description, status, etc.</li>
+<li><a href="dpvcg_contributors.html#ID-531d13d6-a3f9-4491-96c4-9f374ad1ec49">Acknowledgements</a></li>
+<li><a href="dpv_versions.html#ID-f43254da-7077-4580-ba23-99a5426597b2">Provide guidance for sunset concepts</a></li>
+<li>can be done after v1 publication
+<ul class="org-ul">
+<li><a href="dpv_consent.html#ID-3b268371-34fa-44cc-97d6-62d48b5b8289">Consent Guide</a></li>
+<li><a href="dpv_gdpr.html#ID-6d6473d8-a9c8-49fb-a561-1c283b95fb7a">GitHub documentation for DPIA</a></li>
+</ul></li>
+</ul>
+</div>
+
+<blockquote>Old content useful as guide for Future</blockquote>
+
 <h2>Documentation</h2>
 <h3>Primer</h3>
-<input type="checkbox" checked>first draft - <a href="https://w3id.org/dpv/primer">https://w3id.org/dpv/primer</a>
-<br/><input type="checkbox">add examples in SKOS
-<br/><input type="checkbox">add examples in RDFS
-<br/><input type="checkbox">add examples in OWL
-<br/><input type="checkbox">add examples in JSON-LD
-<br/><input type="checkbox">add diagrams
-<br/><input type="checkbox">editorial proofreading
+<input type="checkbox" checked>first draft - <a href="https://w3id.org/dpv/primer">https://w3id.org/dpv/primer</a></input>
+<br/><input type="checkbox">add examples in SKOS</input>
+<br/><input type="checkbox">add examples in RDFS</input>
+<br/><input type="checkbox">add examples in OWL</input>
+<br/><input type="checkbox">add examples in JSON-LD</input>
+<br/><input type="checkbox">add diagrams</input>
+<br/><input type="checkbox">editorial proofreading</input>
 
 <h3>Specification</h3>
-<input type="checkbox" checked>update spec to latest release - <a href="https://w3id.org/dpv">https://w3id.org/dpv/primer</a>
-<br/><input type="checkbox" checked>add links to primer
-<br/><input type="checkbox" checked>add links to other documents
-<br/><input type="checkbox" checked>remove material duplicated in primer
-<br/><input type="checkbox">programmatic diagrams (<a href="https://github.com/coolharsh55/dpv-x/tree/diagram-generator/documentation-generator">WIP</a>)
-<br/><input type="checkbox">programmatic linking of use-cases (<a href="https://github.com/coolharsh55/dpv-x/blob/master/use-cases/vocab.ttl">WIP</a>)
-<br/><input type="checkbox">programmatic linking of relevant examples
+<input type="checkbox" checked>update spec to latest release - <a href="https://w3id.org/dpv">https://w3id.org/dpv/primer</a></input>
+<br/><input type="checkbox" checked>add links to primer</input>
+<br/><input type="checkbox" checked>add links to other documents</input>
+<br/><input type="checkbox" checked>remove material duplicated in primer</input>
+<br/><input type="checkbox">programmatic diagrams</input>
+<br/><input type="checkbox" checked>programmatic linking of use-cases</input>
+<br/><input type="checkbox" checked>programmatic linking of relevant examples</input>
 
 <h3>Use-Cases</h3>
-<input type="checkbox">simple, common, small use-cases
-<br/><input type="checkbox">complex use-cases
-<br/><input type="checkbox">use-cases from papers and projects
-<br/><input type="checkbox">use-cases from DPA decisions and court law
-<br/><input type="checkbox">use-cases from real-world privacy policies
+<input type="checkbox">simple, common, small use-cases</input>
+<br/><input type="checkbox">complex use-cases</input>
+<br/><input type="checkbox">use-cases from papers and projects</input>
+<br/><input type="checkbox">use-cases from DPA decisions and court law</input>
+<br/><input type="checkbox">use-cases from real-world privacy policies</input>
 
 <h3>Examples</h3>
-<input type="checkbox">examples in RDFS
-<br/><input type="checkbox">examples in OWL
-<br/><input type="checkbox">examples in SKOS
-<br/><input type="checkbox">examples in JSON-LD
-<br/><input type="checkbox">examples in programming languages as libraries
+<input type="checkbox">examples in RDFS</input>
+<br/><input type="checkbox">examples in OWL</input>
+<br/><input type="checkbox">examples in SKOS</input>
+<br/><input type="checkbox">examples in JSON-LD</input>
+<br/><input type="checkbox">examples in programming languages as libraries</input>
 
 <h3>Tutorials</h3>
-<input type="checkbox" checked>ROPA documents generated from DPV - <a href="https://harshp.com/research/publications/052-DPCat-ROPA-spec">see DPCat article</a>
-<br/><input type="checkbox">Privacy Policies generated from DPV
-<br/><input type="checkbox">Privacy Policies annotated with DPV
-<br/><input type="checkbox">Consent Notices generated from DPV - (see <a href="https://doi.org/10.5281/zenodo.5076603">PaE:CG project deliverable</a>)
-<br/><input type="checkbox">Consent Notices annotated with DPV - (see <a href="https://doi.org/10.5281/zenodo.5076603">PaE:CG project deliverable</a>)
-<br/><input type="checkbox">Rules expressed using ODRL and DPV - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)
-<br/><input type="checkbox">DPIA generated from DPV - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0003.html">proposal on mailing list</a>)
-<br/><input type="checkbox">Interoperable data exchange using DPV
+<input type="checkbox" checked>ROPA documents generated from DPV - <a href="https://harshp.com/research/publications/052-DPCat-ROPA-spec">see DPCat article</a></input>
+<br/><input type="checkbox">Privacy Policies generated from DPV</input>
+<br/><input type="checkbox">Privacy Policies annotated with DPV</input>
+<br/><input type="checkbox">Consent Notices generated from DPV - (see <a href="https://doi.org/10.5281/zenodo.5076603">PaE:CG project deliverable</a>)</input>
+<br/><input type="checkbox">Consent Notices annotated with DPV - (see <a href="https://doi.org/10.5281/zenodo.5076603">PaE:CG project deliverable</a>)</input>
+<br/><input type="checkbox">Rules expressed using ODRL and DPV - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)</input>
+<br/><input type="checkbox">DPIA generated from DPV - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0003.html">proposal on mailing list</a>)</input>
+<br/><input type="checkbox">Interoperable data exchange using DPV</input>
 
 <h3>Explanations</h3>
-<input type="checkbox">DPV structure design choices
-<br/><input type="checkbox">Rationale for Personal Data Handling
-<br/><input type="checkbox">Freedom vs Restriction in concept use
+<input type="checkbox">DPV structure design choices</input>
+<br/><input type="checkbox">Rationale for Personal Data Handling</input>
+<br/><input type="checkbox">Freedom vs Restriction in concept use</input>
 
 <h2>Concepts</h2>
 <h3>Jurisdictions</h3>
-<input type="checkbox" checked>Countries - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a>
-<br/><input type="checkbox" checked>Supra-national bodies, e.g. EU and EEA - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a>
-<br/><input type="checkbox" checked>DPAs for regions (national level) - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a>
-<br/><input type="checkbox">Laws for regions (to add national level laws)
-<br/><input type="checkbox">Legal Bases in regions (to add national legal bases)
-<br/><input type="checkbox">Rights (EU) - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0005.html">proposal on mailing list</a>)
+<input type="checkbox" checked>Countries - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a></input>
+<br/><input type="checkbox" checked>Supra-national bodies, e.g. EU and EEA - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a></input>
+<br/><input type="checkbox" checked>DPAs for regions (national level) - <a href="https://w3id.org/dpv/dpv-legal">https://w3id.org/dpv/dpv-legal</a></input>
+<br/><input type="checkbox">Laws for regions (to add national level laws)</input>
+<br/><input type="checkbox">Legal Bases in regions (to add national legal bases)</input>
+<br/><input type="checkbox">Rights (EU) - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0005.html">proposal on mailing list</a>)</input>
 
 <h3>Consent</h3>
-<input type="checkbox">Revamp quale, e.g. explicit consent, informed consent - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)
-<br/><input type="checkbox">GDPR's consent types in DPV-GDPR - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)
-<br/><input type="checkbox">consent attributes from PAECG project - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)
+<input type="checkbox" checked>Revamp quale, e.g. explicit consent, informed consent - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)</input>
+<br/><input type="checkbox" checked>GDPR's consent types in DPV-GDPR - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)</input>
+<br/><input type="checkbox" checked>consent attributes from PAECG project - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0003.html"> proposal on mailing list</a>)</input>
 
 <h3>Technologies</h3>
-<input type="checkbox" checked>Common infra - Databases, Cookies, Servers - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a>
-<br/><input type="checkbox" checked>Processes and capabilities e.g. Querying in relation to processing - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a>
-<br/><input type="checkbox">Technical measures present in technology, e.g. database has access control - needs proposal to express such collections
+<input type="checkbox" checked>Common infra - Databases, Cookies, Servers - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a></input>
+<br/><input type="checkbox" checked>Processes and capabilities e.g. Querying in relation to processing - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a></input>
+<br/><input type="checkbox">Technical measures present in technology, e.g. database has access control - needs proposal to express such collections</input>
 
 <h3>Standards and Specifications</h3>
-<br/><input type="checkbox">ISO/IEC (cybersec and management) - - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html"> proposal on mailing list</a>)
-<br/><input type="checkbox">W3C (for internet)
-<br/><input type="checkbox">IETF (for internet)
+<br/><input type="checkbox">ISO/IEC (cybersec and management) - - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022Jul/0004.html"> proposal on mailing list</a>)</input>
+<br/><input type="checkbox">W3C (for internet)</input>
+<br/><input type="checkbox">IETF (for internet)</input>
 
 <h3>Convenience</h3>
-<br/><input type="checkbox" checked>Concepts like Apps, Services, Products - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a>
-<br/><input type="checkbox">Services (i.e. grouping of Purposes)
+<br/><input type="checkbox" checked>Concepts like Apps, Services, Products - <a href="https://w3id.org/dpv/dpv-tech">https://w3id.org/dpv/dpv-tech</a></input>
+<br/><input type="checkbox">Services (i.e. grouping of Purposes)</input>
 
 <h3>Deontic</h3>
-<input type="checkbox">Permissions and Restrictions  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)
-<br/><input type="checkbox">Constraints  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)
-<br/><input type="checkbox">Duty  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)
-<br/><input type="checkbox">segway into ODRL without overlap  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)
+<input type="checkbox" checked>Permissions and Restrictions  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)</input>
+<br/><input type="checkbox" checked>Constraints  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)</input>
+<br/><input type="checkbox" checked>Duty  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)</input>
+<br/><input type="checkbox" checked>segway into ODRL without overlap  - (see <a href="https://lists.w3.org/Archives/Public/public-dpvcg/2022May/0010.html">proposal on mailing list</a>)</input>
 
 <h3>Languages</h3>
-<input type="checkbox" checked>English
-<br/><input type="checkbox">German - needs translators
-<br/><input type="checkbox">French - needs translators
+<input type="checkbox" checked>English</input>
+<br/><input type="checkbox">German - needs translators</input>
+<br/><input type="checkbox">French - needs translators</input>
 
 <h2>Timeline</h2>
 <h3>Concepts</h3>
