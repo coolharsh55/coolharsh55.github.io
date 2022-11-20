@@ -208,6 +208,15 @@
     schema:startDate "2021-11-22T00:00:00"^^xsd:dateTime ;
     schema:url "http://www.kgswc.org/"^^xsd:anyURI .
 
+<https://aics2022.mtu.ie/> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    schema:alternateName "AICS" ;
+    schema:endDate "2022-12-09T00:00:00"^^xsd:dateTime ;
+    schema:location "Cork, Ireland" ;
+    schema:name "Irish Conference on Artificial Intelligence and Cognitive Science"@en ;
+    schema:startDate "2022-12-08T00:00:00"^^xsd:dateTime ;
+    schema:url "http://aics2018.scss.tcd.ie/"^^xsd:anyURI .
+
 <https://down.dsg.cs.tcd.ie/witidtm/> a schema:EducationEvent,
         schema:PublicationEvent ;
     schema:alternateName "WITIDTM" ;
@@ -16130,6 +16139,17 @@ book:855 a hpcom:RenderedItem,
     schema:name "Breached: Why Security Law Fails and How to Improve It"@en ;
     schema:url "https://harshp.com/hobbies/books/855"^^xsd:anyURI .
 
+book:856 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "856"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Benjamin Harnett"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Happy Valley"@en ;
+    schema:url "https://harshp.com/hobbies/books/856"^^xsd:anyURI .
+
 book:86 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
@@ -21630,7 +21650,7 @@ hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
             schema:recipient "PROTECT Consortium"@en ] ;
     schema:member [ a schema:Role ;
             schema:endDate "2020-08-31T00:00:00"^^xsd:dateTime ;
-            schema:memeber <https://harshp.com/me> ;
+            schema:member <https://harshp.com/me> ;
             schema:roleName "Research Assistant (RA)"@en ;
             schema:startDate "2020-03-01T00:00:00"^^xsd:dateTime ] ;
     schema:name "PROTECT"@en ;

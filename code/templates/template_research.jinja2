@@ -5,8 +5,7 @@
 {% block content %}
 <section id="summary">
 <h2>Overview</h2>
-<p>I'm currently a <u>Research Fellow</u> in the <a href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a> at <a href="http://www.tcd.ie/">Trinity College Dublin</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT Research Centre</a>. I primarily work on exploring privacy risks of technologies using knowledge graphs through the <a class="raised" href="/research/projects/risky">RISKY</a> project. 
-My other research activities include chairing and contributing to the <a class="raised" href="https://www.w3.org/community/dpvcg/">DPVCG</a>, and continuation of my PhD work regarding <a href="https://openscience.adaptcentre.ie/">GDPR compliance using semantic web</a>.</p>
+<p>I'm currently an <u>Assistant Professor</u> in the <a href="https://www.dcu.ie/computing">School of Computing</a> at <a href="http://dcu.ie/">Dublin City University</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT Research Centre</a>. I work on applying semantics and information management to assist with legal enforcement and compliance for data laws (e.g. GDPR). My other research activities include chairing and contributing to the <a class="raised" href="https://www.w3.org/community/dpvcg/">DPVCG</a>, and continuation of my PhD work regarding <a href="https://openscience.adaptcentre.ie/">GDPR compliance using semantic web</a>.</p>
 <p>You can see more information about my:</p>
 <ul>
     <li><a href="#interests">research interests</a></li>
@@ -40,15 +39,21 @@ My other research activities include chairing and contributing to the <a class="
 
 </section>
 
+<section id="employment">
+    <h2>Employment</h2>
+    <p>I was a <u>Research Fellow</u> in the <a href="https://www.cs.tcd.ie/">School of Computer Science and Statistics</a> at <a href="http://www.tcd.ie/">Trinity College Dublin</a>, and part of the <a href="http://adaptcentre.ie/">ADAPT Research Centre</a> where I primarily worked on exploring privacy risks of technologies using knowledge graphs through the <a class="raised" href="/research/projects/risky">RISKY</a> project. 
+    </p>
+</section>
 <section id="projects">
 <h2>Projects</h2>
-<h3>Ongoing</h3>
+{% if current_projects %}
+<h3>Ongoing Projects</h3>
 <ol class='list-index'>
 {% for item, role in current_projects %}
     <li>
         <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
         {{ item.schema_description }} <br/>
-        (<time datetime="{{ item.schema_startDate}}">{{ item.schema_startDate}}</time> - {% if item.schema_endDate %}<time datetime="{{ item.schema_endDate}}">{{ item.schema_endDate}}</time></span>{% else %}ongoing{% endif %})
+        (<time datetime="{{ item.schema_member.schema_startDate}}">{{ item.schema_member.schema_startDate}}</time> - {% if item.schema_member.schema_endDate %}<time datetime="{{ item.schema_member.schema_endDate}}">{{ item.schema_member.schema_endDate}}</time>{% else %}ongoing{% endif %})
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
         {{ role.schema_roleName }}{{", " if not loop.first }}
@@ -73,14 +78,15 @@ My other research activities include chairing and contributing to the <a class="
     </li>
 {% endfor %}
 </ol>
-<h3>Past</h3>
+{% endif %}
+<h3>Past Projects</h3>
 <a href="/research/projects">see complete list of projects</a>
 <ul>
 {% for item, name in past_projects %}
     <li>
-        <a href="{{item.iri}}">{{ item.schema_name }}</a>  <br/>
-        {{item.schema_description}} <br/>
-        (<time datetime="{{item.schema_startDate}}">{{item.schema_startDate}}</time> - <time datetime="{{item.schema_endDate}}">{{item.schema_endDate}}</time>) 
+        <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
+        {{ item.schema_description }} <br/>
+        (<time datetime="{{ item.schema_member.schema_startDate}}">{{ item.schema_member.schema_startDate}}</time> - <time datetime="{{ item.schema_member.schema_endDate}}">{{ item.schema_member.schema_endDate}}</time>)
         
     {% if item.schema_member is sequence %}
         {% for role in item.schema_member %}
