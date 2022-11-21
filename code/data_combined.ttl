@@ -12660,12 +12660,16 @@ book:645 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "645"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-11-17T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Bobby Duffy"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Perils of Perception: Why We're Wrong About Nearly Everything"@en ;
+    schema:review "Interesting, well-studied collection of how what we believe deviates from facts and that sharing those facts doesn't 'educate' us, but instead confirms out pre-existing distortions and biases. But, the book did not go too deep into these things, instead presenting anecdotes and rehashed arguments from other books. It is much more rewarding to read specific investigations, such as into politics, sexism, and social behaviours - which also inform about such distortions, but are more rewarding because they look at through the lens of causality."@en ;
     schema:url "https://harshp.com/hobbies/books/645"^^xsd:anyURI .
 
 book:646 a hpcom:Book,
@@ -13898,7 +13902,7 @@ book:715 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "715"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "1983"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
