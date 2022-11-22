@@ -1527,3 +1527,29 @@
     #    hpcom:contentFileFormat hpcom:formatHTML ;
     #] ;
     hpcom:peer_reviewed false .
+
+<https://harshp.com/research/publications/057-Comparison-3-key-AI-documents> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Comparison and Analysis of 3 Key AI  Documents: EU's Proposed AI Act, Assessment List for Trustworthy AI (ALTAI), and ISO/IEC 42001 AI Management System"@en ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:description "An analysis of the three key documents related to regulating AI and identifying how to represent the identified analysis in the form of linked data"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:risk ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:ISO ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2022-12-08T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <https://aics2022.mtu.ie/> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/057-Comparison-3-key-AI-documents"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/100132"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.6821844"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/057-Comparison-3-key-AI-documents.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "accepted; to be presented"@en ;
+    hpcom:peer_reviewed true .

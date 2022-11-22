@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comparison and Analysis of 3 Key AI  Documents: EU&#39;s Proposed AI Act, Assessment List for Trustworthy AI (ALTAI), and ISO/IEC 42001 AI Management System</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Comparison and Analysis of 3 Key AI  Documents: EU&#39;s Proposed AI Act, Assessment List for Trustworthy AI (ALTAI), and ISO/IEC 42001 AI Management System">
+    <meta name="schema:description" content="An analysis of the three key documents related to regulating AI and identifying how to represent the identified analysis in the form of linked data">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="AI,AI-Act,ISO,risk,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/057-Comparison-3-key-AI-documents">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Comparison and Analysis of 3 Key AI  Documents: EU&#39;s Proposed AI Act, Assessment List for Trustworthy AI (ALTAI), and ISO/IEC 42001 AI Management System">
+    <meta property="og:description" content="An analysis of the three key documents related to regulating AI and identifying how to represent the identified analysis in the form of linked data">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/057-Comparison-3-key-AI-documents">
+        <h1 property="schema:name schema:headline">Comparison and Analysis of 3 Key AI  Documents: EU&#39;s Proposed AI Act, Assessment List for Trustworthy AI (ALTAI), and ISO/IEC 42001 AI Management System</h1>
+<div id="description">
+	<small>
+	<time datetime="2022-12-08T00:00:00">2022-12-08T00:00:00</time>
+    <i>Conference</i>
+    <br/>
+    <span class='note'>accepted; to be presented</span>
+    Irish Conference on Artificial Intelligence and Cognitive Science (AICS)    <br/>
+    &#9997;<i>
+    Delaram Golpayegani*
+    ,
+    <u>Harshvardhan J. Pandit</u>
+    ,
+    Dave Lewis
+    </i>
+    <br/>
+        &#x1f513;copies:
+        <a href="https://harshp.com/research/publications/057-Comparison-3-key-AI-documents">harshp.com</a>
+    <br/>
+    An analysis of the three key documents related to regulating AI and identifying how to represent the identified analysis in the form of linked data
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <h2>Abstract</h2>
+<p>Conforming to multiple and sometimes conflicting guidelines, standards, and legislations regarding development, deployment, and governance of AI is a serious challenge for organisations. While the AI standards and regulations are both in early stages of development, it is prudent to avoid a highly-fragmented landscape and market confusion by finding out the gaps and resolving the potential conflicts. 
+This paper provides an initial comparison of ISO/IEC 42001 AI management system standard with the EU trustworthy AI assessment list (ALTAI) and the proposed AI Act using an upper-level ontology for semantic interoperability between trustworthy AI documents with a focus on activities. The comparison is provided as an RDF resource graph to enable further enhancement and reuse in an extensible and interoperable manner.</p>
+<p><strong>Keywords:</strong>Trustworthy AI, AI management system, ALTAI, AI Act, ISO/IEC 42001, Ontology, Activity, Comparison.</p>
+
+<h2 id="Introduction">Introduction</h2>
+<p>The wide application of AI systems urges governments, legislators,
+standardisation bodies, and think tanks to encourage and sometimes
+obligate organisations to develop and use AI in a trustworthy manner. AI
+regulations, standards, and guidelines developed separately and in
+isolation risk a highly fragmented landscape that can lead to regulatory
+and market confusion. Consequently, organisations are compelled to
+navigate a large number of competing and changing requirements from
+multiple sources regarding AI development and use. The lack of alignment
+between different sources of requirements, such as laws and standards,
+creates difficulties in identifying and fulfilling obligations.</p>
+<p>In this paper, we identify the commonality, inconsistencies, and gaps
+across the following three dominant AI documents within the scope of
+EU’s regulatory regime: the proposed AI Act <span class="citation"
+data-cites="aiact"><a href="#ref-aiact"
+role="doc-biblioref">[1]</a></span>, Assessment List for Trustworthy AI
+(ALTAI) <span class="citation" data-cites="altai"><a href="#ref-altai"
+role="doc-biblioref">[2]</a></span>, and the draft ISO/IEC 42001
+standard for AI management systems<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Amongst these three, we utilise ISO/IEC 42001 as the primary source
+of requirements given its distinct role as a certifiable standard, and
+compare the others with it to indicate adherence towards guidelines
+(ALTAI) and regulations (AI Act). More specifically, we investigate the
+following questions:</p>
+<ol>
+<li><p>To what extent can ALTAI’s trustworthy AI requirements be
+integrated into ISO/IEC 42001’s AI management system
+activities?</p></li>
+<li><p>To what extent can AI Act’s high-risk AI obligations be
+integrated into ISO/IEC 42001’s AI management system
+activities?</p></li>
+</ol>
+<p>We address the aforementioned questions by proposing a methodology to
+compare AI documents using an upper-level trustworthy AI ontology <span
+class="citation" data-cites="Lewis2021trustworthy"><a
+href="#ref-Lewis2021trustworthy" role="doc-biblioref">[3]</a></span>,
+which enables modelling and linking concepts within AI documents (see
+Section <a href="#Methodology for Comparison and Analysis"
+data-reference-type="ref"
+data-reference="Methodology for Comparison and Analysis">2</a>). We then
+demonstrate the comparison of ISO/IEC 42001 with ALTAI’s trustworthy AI
+(Section <a href="#ALTAI" data-reference-type="ref"
+data-reference="ALTAI">3</a>) and the AI Act (Section <a href="#AI Act"
+data-reference-type="ref" data-reference="AI Act">4</a>). The comparison
+is made available online as an RDF resource to enable further
+enhancement and reuse<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>. We discuss semantic modelling of
+activities extracted from the documents in Section <a
+href="#Semantic Modelling of Activities" data-reference-type="ref"
+data-reference="Semantic Modelling of Activities">5</a>. In Section <a
+href="#Related Work" data-reference-type="ref"
+data-reference="Related Work">6</a>, related work on ontology-based
+comparison of policies, regulations, and standards is mentioned and we
+conclude the paper and identify avenues for future work in Section <a
+href="#Conclusion" data-reference-type="ref"
+data-reference="Conclusion">7</a>.</p>
+<h2 id="Methodology for Comparison and Analysis">Methodology for
+Comparison and Analysis</h2>
+<p>AI documents can be compared on the basis of different semantic
+building blocks: key terms defined within them, activities mentioned,
+and normative requirements or obligations required to be met for
+compliance. Considering the central focus of management system standards
+on organisational activities and processes, we limit the scope of our
+comparison to activities.</p>
+<p>Given that different standards, regulations, and policies are being
+created for evaluating trustworthiness of AI, there is bound to be some
+overlap between them. To assist in the task of comparing them, a
+conceptual model and framework is essential to identify and link
+together the relevant concepts within different documents. An
+ontological representation permits formalisation of the conceptual model
+and its application in use-cases. With this view, Fig. <a
+href="#fig:TAI ontology" data-reference-type="ref"
+data-reference="fig:TAI ontology">[fig:TAI ontology]</a> presents the
+core ontology for supporting mapping of concepts between different
+emerging AI standards. It is based on activities carried out within
+ISO/IEC (more specifically sub-committee 42) regarding AI
+standardisation and incorporates existing ISO/IEC standards and outputs
+for ‘characteristics’ expressed by trustworthy AI systems.</p>
+<p>The premise of the ontology rests on the fact that several of
+trustworthy characteristics are yet to be clarified and defined in
+relation to AI and AI development activities. Therefore, it focuses on
+specifying the relationships between activities, entities, assets, and
+characteristics (exhibited for trustworthiness), agents, stakeholders,
+and organisations. The ontology is based on Basic Formal Ontology (BFO)
+- a generic upper-level ontology used in formalisations across domains,
+and the PROV-O ontology which is a W3C standard for expressing
+provenance.</p>
+<p>The ontology provides a way to express activities of organisations
+that relate to AI where the trustworthiness is manifested through
+characteristics of Entities that make up a product or service employing
+AI. It also provides a way to depict the influence of entities,
+activities, and agents in these processes, and captures the role of
+stakeholders in disclosing and exhibiting trustworthiness of AI through
+its characteristics. The ontology thus enables representing use of AI
+from both within and outside the perspective of an organisation or
+service, and is useful for comparing different AI guidelines by using
+its conceptual model as a framework for identifying and aligning
+concepts.</p>
+<p>We utilise the trustworthy AI ontology to compare AI documents in
+order to assess the degree of alignment between them by modelling and
+linking trustworthy AI activities mentioned within them. The following
+describes the steps taken for analysis and comparison of documents:</p>
+<ol>
+<li><p>The documents are analysed to extract relevant activities to
+trustworthy AI, which then modelled as <code>Activity</code>.</p></li>
+<li><p><code>partOf</code> relationship is used to bridge the isolated
+sets of <code>Activities</code> identified from the documents.</p></li>
+<li><p>An analysis is carried out to identify the overlaps and potential
+conflicts through investigation of activities that are mapped or could
+not be mapped using the <code>partOf</code> relation.</p></li>
+</ol>
+<h2 id="ALTAI">Comparison of ALTAI with ISO/IEC 42001</h2>
+<h3 id="altai-activities">ALTAI Activities</h3>
+<p>ALTAI suggests a set of questions, grouped by the ethical principle
+under assessment, for assessing whether an AI system adheres to
+trustworthy AI requirements specified in <span class="citation"
+data-cites="hlegtai"><a href="#ref-hlegtai"
+role="doc-biblioref">[4]</a></span> (see the structure of ALTAI in Fig.
+<a href="#fig:ALTAI structure" data-reference-type="ref"
+data-reference="fig:ALTAI structure">[fig:ALTAI structure]</a>).
+Designed for trustworthy AI self-assessment, ALTAI provides useful hints
+regarding development and use of AI systems. One of the aspects of
+trustworthiness assessment is execution of particular activities; for
+example, ‘Are end-users or other subjects adequately made aware that a
+decision, content, advice or outcome is the result of an algorithmic
+decision?’, which is a question listed under Human Agency and Oversight
+requirements, implies execution of an activity to <em>inform end-users
+or other subjects that a decision, content, advice or outcome is the
+result of an algorithmic decision</em>. For the purpose of comparison,
+we made the management activities implied by ALTAI questions
+explicit.</p>
+<h3 id="ai-management-system-activities">AI Management System
+Activities</h3>
+<p>The ISO/IEC 42001 standard for AI management systems, being developed
+by JTC 1/SC 42, is currently (Nov’22) in DIS or draft stage, implying
+relative maturity awaiting final comments before publication. It follows
+the ‘harmonised structure’ of all management system standards developed
+by ISO, which is defined in the openly available ISO/IEC Directives on
+procedures for ISO technical work<a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a>. Based on the harmonised
+structure, Lewis et al. <span class="citation"
+data-cites="Lewis2021trustworthy"><a href="#ref-Lewis2021trustworthy"
+role="doc-biblioref">[3]</a></span> identified AI management system
+activities, where each is given an identifier, a label, and a ‘see also’
+attribute which is a link to the relevant harmonised structure clause.
+The entities generated and used by each activity are represented in a
+similar manner. The updated list of AI management system activities,
+which reflects the latest version of the Directive published in 2022, is
+presented in Table <a href="#tab:aims" data-reference-type="ref"
+data-reference="tab:aims">1</a>.</p>
+<div id="tab:aims">
+<table>
+<caption>AI Management System (AIMS) activities</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">o No.</th>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">AIMS activity (label)</th>
+<th style="text-align: left;">HS clause (see also)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">UOC</td>
+<td style="text-align: left;">Understanding organisation and its
+context</td>
+<td style="text-align: left;">4.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">USE</td>
+<td style="text-align: left;">Understanding stakeholder needs and
+expectation</td>
+<td style="text-align: left;">4.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">DS</td>
+<td style="text-align: left;">Determine AIMS scope</td>
+<td style="text-align: left;">4.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">EIMI</td>
+<td style="text-align: left;">Establish, implement, maintain and
+continually improve management system and its processes</td>
+<td style="text-align: left;">4.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">DLC</td>
+<td style="text-align: left;">Demonstrate leadership and commitment to
+the management system</td>
+<td style="text-align: left;">5.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">EP</td>
+<td style="text-align: left;">Establish AIMS policy</td>
+<td style="text-align: left;">5.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">ARRA</td>
+<td style="text-align: left;">Assign roles, responsibilities and
+authorities</td>
+<td style="text-align: left;">5.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">ARO</td>
+<td style="text-align: left;">Address risks and opportunities</td>
+<td style="text-align: left;">6.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">EPAO</td>
+<td style="text-align: left;">Establish and plan to achieve AI
+objectives</td>
+<td style="text-align: left;">6.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">ARRA</td>
+<td style="text-align: left;">Assign roles, responsibilities and
+authorities</td>
+<td style="text-align: left;">6.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">DAR</td>
+<td style="text-align: left;">Determine and allocate resources for
+AIMS</td>
+<td style="text-align: left;">7.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">DEC</td>
+<td style="text-align: left;">Determine and ensure competence of people
+affecting AI performance</td>
+<td style="text-align: left;">7.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">Promote awareness</td>
+<td style="text-align: left;">7.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">DC</td>
+<td style="text-align: left;">Determine AIMS communication</td>
+<td style="text-align: left;">7.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">CUCD</td>
+<td style="text-align: left;">Create, update, and control documented
+information</td>
+<td style="text-align: left;">7.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">PCP</td>
+<td style="text-align: left;">Plan and control AI processes</td>
+<td style="text-align: left;">8.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">MMAE</td>
+<td style="text-align: left;">Monitor, measure, analyse and evaluate
+AI</td>
+<td style="text-align: left;">9.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">IA</td>
+<td style="text-align: left;">Internal (AIMS) audit</td>
+<td style="text-align: left;">9.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">UMR</td>
+<td style="text-align: left;">Undertake management review</td>
+<td style="text-align: left;">9.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">DNCA</td>
+<td style="text-align: left;">Detect non-conformance and take corrective
+action</td>
+<td style="text-align: left;">10.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">CI</td>
+<td style="text-align: left;">AIMS Continual improvement</td>
+<td style="text-align: left;">10.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:aims" label="tab:aims"></span></p>
+<h3 id="altai---isoiec-42001-activity-comparison">ALTAI - ISO/IEC 42001
+Activity Comparison</h3>
+<p>By comparing ALTAI with ISO/IEC 42001, we aim to investigate the
+following:</p>
+<ul>
+<li><p>Is there any organisational activity required for trustworthy AI
+that cannot be integrated into an AI management system?</p></li>
+<li><p>Which AI management systems activities do not play a role in
+achieving trustworthiness?</p></li>
+<li><p>What management systems activities are involved in achieving a
+particular trustworthy AI requirement, e.g. privacy and data
+governance?</p></li>
+</ul>
+<h4 class="unnumbered" id="alignment-groups">Alignment Groups</h4>
+<p>In the comparison process, a number of commonly occurring structures
+are identified. For instance, multiple ALTAI activities that refer to
+achieving AI objectives such as <em>Accuracy</em>,
+<em>Explainability</em>, <em>Privacy</em>, and <em>Fairness</em> are
+<code>partOf</code> ‘establish and plan to achieve AI objectives’
+activity. We categorise these structures into the 17 alignment groups
+listed in Table <a href="#tab:mapping groups" data-reference-type="ref"
+data-reference="tab:mapping groups">2</a>.</p>
+<div id="tab:mapping groups">
+<table>
+<caption>ALTAI - AI management system activities alignment
+groups</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">ALTAI activity structure</th>
+<th style="text-align: left;">partOf (AIMS activity)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AG1</td>
+<td style="text-align: left;">Assess the impact of the AI system</td>
+<td style="text-align: left;">ARO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG2</td>
+<td style="text-align: left;">Assess the system vulnerabilities or
+threats</td>
+<td style="text-align: left;">ARO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG3</td>
+<td style="text-align: left;">Assess whether the AI system respects a
+specific right</td>
+<td style="text-align: left;">ARO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG4</td>
+<td style="text-align: left;">Establish processes to test or monitor AI
+impacts or risks</td>
+<td style="text-align: left;">PCP &amp; ARO &amp; MMAE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG5</td>
+<td style="text-align: left;">Establish processes to measure and assess
+AI risks</td>
+<td style="text-align: left;">PCP &amp; ARO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG6</td>
+<td style="text-align: left;">Establish processes to mitigate, rectify,
+or avoid AI risks</td>
+<td style="text-align: left;">PCP &amp; ARO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG7</td>
+<td style="text-align: left;">Establish processes to achieve an AI
+objective</td>
+<td style="text-align: left;">PCP &amp; EPAO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG8</td>
+<td style="text-align: left;">Assess whether an AI objective is
+achieved</td>
+<td style="text-align: left;">EPAO &amp; MMAE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG9</td>
+<td style="text-align: left;">Establish processes to test and monitor AI
+objectives</td>
+<td style="text-align: left;">PCP &amp; EPAO &amp; MMAE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG10</td>
+<td style="text-align: left;">Establish processes to measure and assess
+AI objectives</td>
+<td style="text-align: left;">PCP &amp; EPAO &amp; MMAE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG11</td>
+<td style="text-align: left;">Provide information about a design
+decision</td>
+<td style="text-align: left;">UOC</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG12</td>
+<td style="text-align: left;">Determine compliance / Align the systems
+with a specific standard or guideline</td>
+<td style="text-align: left;">PCP &amp; UOC</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG13</td>
+<td style="text-align: left;">Designate a role</td>
+<td style="text-align: left;">ARRA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG14</td>
+<td style="text-align: left;">Establish a broad (e.g. ethics review
+board)</td>
+<td style="text-align: left;">ARRA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG15</td>
+<td style="text-align: left;">Provide employee training / Ensure workers
+competence</td>
+<td style="text-align: left;">DEC</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AG16</td>
+<td style="text-align: left;">Communicate with or inform users or third
+parties</td>
+<td style="text-align: left;">DC</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AG17</td>
+<td style="text-align: left;">Inform staff and employees about the AI
+policy</td>
+<td style="text-align: left;">PA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:mapping groups" label="tab:mapping groups"></span></p>
+<h4 class="unnumbered" id="insights">Insights</h4>
+<p>The comparison revealed that ALTAI is centred around trustworthy AI
+issues and principles rather than how to manage trustworthy AI processes
+and policies within an organisation. In comparison, the draft AI
+management system standard does not specifically refer to any
+trustworthy principle, however, it provides a foundation for
+implementing these principles in an organisation. The two are therefore
+complementary regarding effective implementation and assessment of
+trustworthy AI, with the comparison providing a way to achieve
+trustworthiness through management system activities.</p>
+<p>Table <a href="#tab:altai-aims mapping insights"
+data-reference-type="ref"
+data-reference="tab:altai-aims mapping insights">3</a> presents the
+number of ALTAI activities that are mapped into each AI management
+system activity. It should be noted that the total number indicates the
+number of times an AI management system activity is individually mapped
+to ALTAI activities as the mapping between the two is many-to-many.
+Activities within AI management system that do not have a corresponding
+ALTAI activity are omitted from the table (8 in total).</p>
+<p>As shown in the table, approximately 50 percent (73 of 144) of ALTAI
+activities refer to risk management which makes the fact that ALTAI
+adopts a risk-oriented approach towards trustworthy AI clear. The
+missing management system activities in the table, which are nearly half
+of total, demonstrates that processes and tasks at a high level of
+organisational governance and management are not covered in ALTAI.</p>
+<div id="tab:altai-aims mapping insights">
+<table>
+<caption>Number of ALTAI activities mapped into each AIMS
+activity</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">AIMS activity</th>
+<th style="text-align: left;">AIMS activity (label)</th>
+<th style="text-align: left;">Nos. ALTAI activities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ARO</td>
+<td style="text-align: left;">Address risks and opportunities</td>
+<td style="text-align: left;">73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCP</td>
+<td style="text-align: left;">Plan and control AI processes</td>
+<td style="text-align: left;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EPAO</td>
+<td style="text-align: left;">Establish and plan to achieve AI
+objectives</td>
+<td style="text-align: left;">44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DC</td>
+<td style="text-align: left;">Determine AIMS communication</td>
+<td style="text-align: left;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MMAE</td>
+<td style="text-align: left;">Monitor, measure, analyse and evaluate
+AI</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UOC</td>
+<td style="text-align: left;">Understanding organisation and its
+context</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEC</td>
+<td style="text-align: left;">Determine and ensure competence of people
+affecting AI performance</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ARRA</td>
+<td style="text-align: left;">Assign roles, responsibilities and
+authorities</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">Promote awareness</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:altai-aims mapping insights"
+label="tab:altai-aims mapping insights"></span></p>
+<h2 id="AI Act">Comparison of AI Act with ISO/IEC 42001</h2>
+<h3 id="the-ai-act-activities">The AI Act Activities</h3>
+<p>In April 2021, the European Commission published the proposal for EU
+AI regulation, called AI Act, to create a legal framework for
+trustworthy AI by laying down obligations which are proportionate to the
+level of risk imposed by AI systems. Under the AI Act, providers of
+high-risk AI systems, i.e. systems that are likely to cause harm to
+health, safety, and rights of individuals, are required to implement a
+quality management system (Art. 17), among other requirements. The AI
+Act relies on creation of harmonised AI standards to facilitate
+conformity to its requirements by providing technical solutions (Art.
+40).</p>
+<p>Conformity with the AI Act’s high-risk AI obligations requires
+performing organisational as well as technical activities. By analysis
+of the requirements for high-risk AI systems and the obligations of
+providers of those systems, described in title III, Chapters 2 and 3, we
+identified 52 high-level organisational activities that are
+<code>associatedWith</code> high-risk AI providers, which are modelled
+as <code>Agent</code>s. It is important to note that our list of
+activities is not exhaustive, and therefore performing the identified
+activities is essential for conformity to the AI Act but not necessarily
+sufficient.</p>
+<h3 id="ai-act---isoiec-42001-activity-comparison">AI Act - ISO/IEC
+42001 Activity Comparison</h3>
+<p>Using the methodology described earlier, we mapped the activities
+identified from the AI Act to the ones extracted from ISO/IEC 42001.
+Table <a href="#tab:AI Act risk management activities"
+data-reference-type="ref"
+data-reference="tab:AI Act risk management activities">4</a> shows
+mapping of AI Act’s risk management activities into AI management
+system.</p>
+<div id="tab:AI Act risk management activities">
+<table>
+<caption>Comparison of AI Act’s risk management activities with
+AIMS</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">AI Act risk management activity</th>
+<th style="text-align: left;">partOf (AIMS)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Establish risk management system</td>
+<td style="text-align: left;">DC &amp; EIMI &amp; ARO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Implement risk management system</td>
+<td style="text-align: left;">EIMI &amp; ARO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Document risk management system</td>
+<td style="text-align: left;">EIMI &amp; ARO &amp; CUCD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maintain risk management system</td>
+<td style="text-align: left;">EIMI &amp; ARO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Identify/ Analyse/ Evaluate/ Mitigate
+Risks</td>
+<td style="text-align: left;">ARO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Communicate Residual Risk to Users</td>
+<td style="text-align: left;">PA &amp; AIRO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Identify Impact On Stakeholders (e.g.
+children)</td>
+<td style="text-align: left;">USNE &amp; ARO</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:AI Act risk management activities"
+label="tab:AI Act risk management activities"></span></p>
+<h4 class="unnumbered" id="insights-1">Insights</h4>
+<p>Our analysis indicates activities to establish management systems,
+address risks, create documentation, and communicate with external
+entities are among the most mapped management system activities. This
+shows that in conformity to the AI Act’s legal requirements,
+documentation and sharing information with external stakeholders are as
+important as conducting risk management.</p>
+<p>Identification of the degree to which compliance to ISO/IEC 42001
+assists in conformity to AI Act’s high-risk AI obligations needs further
+investigation as our focus was primarily on the organisational
+activities explicitly referenced therein.</p>
+<h2 id="Semantic Modelling of Activities">Semantic Modelling of
+Activities</h2>
+<p>Documents that specify guidelines generally refer to activities and
+processes across three distinct phases: ex-ante where a plan of activity
+must exist; ongoing or during where an activity is currently in the
+process of being executed; and ex-post where an activity has finished
+execution or has produced artefacts. For AI guidelines, it is important
+to model the corresponding semantic representation of activities in a
+similar manner so as to distinguish when an organisation or system must
+have a plan in place representing some <em>future activity</em> versus
+having carried out that activity i.e. <em>in the past</em>. This notion
+is also applicable and demonstrated in the area of legal and regulatory
+compliance where an obligation can entail provenance of both a plan as
+well as executed activities, and therefore requires documentation at
+both ex-ante and ex-post phases <span class="citation"
+data-cites="pandit2019test"><a href="#ref-pandit2019test"
+role="doc-biblioref">[5]</a></span>.</p>
+<p>Intended for self-assessment purposes, ALTAI predominately refers to
+the ex-post phase. This means that to provide answers to ALTAI questions
+we have to look into the results and artefacts of executed activities.
+Furthermore, separation between ex-ante and ex-post phases of ALTAI
+activities enables ex-ante planning for trustworthiness and ex-post
+trustworthy AI (self-) assessment as outlined by AI management system
+activities. However, for semantic representation of the activities
+extracted from ALTAI both planning and execution phases should be taken
+into account. For example, from ‘establish processes to assess AI risks’
+two activities are inferred: plan for AI risk assessment (ex-ante) and
+AI risk assessment (ex-post). A semantic model of the former should be
+able to represent plans for risk assessment, intended steps and actions,
+responsible parties, and entities generated and used during the
+planning. This can be done by extending the Ontology for Provenance and
+Plans (P-Plan)<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>. Naja et al. <span class="citation"
+data-cites="naja2021semantic"><a href="#ref-naja2021semantic"
+role="doc-biblioref">[6]</a></span> have adopted the same approach for
+recording accountability plans. Representing ex-post activities is
+possible by extending the PROV-O ontology.</p>
+<p>To model previously introduced alignment groups we consider the
+ex-post phase. Each alignment group can be represented as an ontology
+design pattern (ODP) <span class="citation"
+data-cites="gangemi2005ontology"><a href="#ref-gangemi2005ontology"
+role="doc-biblioref">[7]</a></span>. An example of one such pattern for
+AG17 (providing training for employees to ensure competence) that uses
+the PROV-O ontology to represent agents<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> and
+activities is shown in fig. <a href="#fig:training activity"
+data-reference-type="ref"
+data-reference="fig:training activity">[fig:training activity]</a>. By
+modelling training activities using this pattern all processes and
+activities which are part of DEC (Determine and ensure competence of
+people affecting AI performance) can be uniformly represented, and
+retrieved e.g. using SPARQL queries.</p>
+<p>Using the pattern as a generic template for different activities and
+roles regarding training enables a uniform mechanism to answer questions
+such as:</p>
+<ul>
+<li><p>Did the organisation provide training to staff on risk
+management?</p></li>
+<li><p>Who provided the training? When? To whom? On what topic?</p></li>
+<li><p>What activities are relevant to training?</p></li>
+<li><p>What are the subjects that the organisation provides training
+on?</p></li>
+<li><p>Who is trained on a specific topic, e.g. risk
+management?</p></li>
+</ul>
+<h2 id="Related Work">Related Work</h2>
+<p>Boer et al. <span class="citation"
+data-cites="boer2003harmonizinglegislation"><a
+href="#ref-boer2003harmonizinglegislation"
+role="doc-biblioref">[8]</a></span> used an ontology-based approach to
+facilitate comparison of similar regulations, i.e. in a specific area
+such as tax, within different jurisdictions. Despres and Szulman <span
+class="citation" data-cites="despres2007merging"><a
+href="#ref-despres2007merging" role="doc-biblioref">[9]</a></span>
+proposed an approach for integrating ontologies created from the
+European community directives. Fiorentini et al. <span class="citation"
+data-cites="fiorentini2009towards"><a href="#ref-fiorentini2009towards"
+role="doc-biblioref">[10]</a></span> proposed an approach for
+harmonisation which compares documents using informal analysis, typology
+of standards, use-cases, and ontologies. Pardo et al. <span
+class="citation" data-cites="pardo2012ontology"><a
+href="#ref-pardo2012ontology" role="doc-biblioref">[11]</a></span>
+created h3mO - an ontology for harmonisation of reference models and
+standards utilised in software process improvement. Koelle et al. <span
+class="citation" data-cites="koelle2013towards"><a
+href="#ref-koelle2013towards" role="doc-biblioref">[12]</a></span>
+proposed a tool for ATM security which harmonises relevant standards and
+regulations. Lewis et al. <span class="citation"
+data-cites="Lewis2021trustworthy"><a href="#ref-Lewis2021trustworthy"
+role="doc-biblioref">[3]</a></span> presented an analysis of the
+normative content of trustworthy AI guidelines presented by IEEE, EU
+HLEG, and OECD and mapped these guidelines into ISO 26000 social
+responsibility issues.</p>
+<h2 id="Conclusion">Conclusion</h2>
+<p>This paper presented a comparison and analysis between the EU AI Act,
+ALTAI, and ISO/IEC AI management system standard to identify the
+potential alignment between these 3 key documents. The assessment
+compared management-level activities mentioned in the documents and is
+represented formally using the trustworthy AI upper-level ontology
+proposed by <span class="citation" data-cites="Lewis2021trustworthy"><a
+href="#ref-Lewis2021trustworthy"
+role="doc-biblioref">[3]</a></span>.</p>
+<h4 class="unnumbered"
+id="implications-of-comparison-and-analysis-of-ai-documents">Implications
+of Comparison and Analysis of AI documents</h4>
+<p>Identification of the gaps existed in the AI documents being
+developed assists standardisation bodies in determining the areas that
+need creation or modification of standards. Legislators can use the
+comparison to determine the degree to which compliance with existing AI
+standards contributes to conformity to legal obligations and identify
+the aspects of trustworthy AI that are not subject to regulation.
+Furthermore, comparison of activities provides a baseline for the
+communications between authorities and standardisation bodies for
+development of harmonised regulations and standards.</p>
+<p>The comparison assists AI providers and developers in adoption of
+standards and guidelines required for satisfying legal requirements by
+helping them identify inconsistencies and areas of overlaps. It can also
+be used to ensure organisational AI policies are effective in satisfying
+normative and legal requirements.</p>
+<p>Given the potential of AI research to cause harm, recently some AI
+conferences, such as NeurIPS<a href="#fn6" class="footnote-ref"
+id="fnref6" role="doc-noteref"><sup>6</sup></a>, provide ethical
+guidelines and ask researchers to assess the impact of their work on key
+areas of concern, e.g. safety, fairness, and privacy. The comparison
+methodology can be applied in assessing the alignment of ethical
+guidelines provided by different conferences, universities’ policies on
+ethics and data protection as well as ethical assessment approaches.</p>
+<h4 class="unnumbered" id="further-work">Further Work</h4>
+<p>The comparison presented in this paper will be expanded to provide a
+more comprehensive analysis and alignment of key terms, technical
+activities, and requirements detailed within AI documents. Starting with
+the analysis provided in this paper, we aim to identify a common set of
+AI risk and impact assessment activities from the AI Act, ALTAI, and ISO
+risk management and management system standards and extend AIRO - an
+ontology for describing AI risks <span class="citation"
+data-cites="golpayegani2022airo"><a href="#ref-golpayegani2022airo"
+role="doc-biblioref">[13]</a></span>, to represent provenance of
+activities. Future work also includes updating this work based on
+changes made in the subsequent drafts and finalisations of the AI Act
+and ISO/IEC 42001 standard.</p>
+<h2>Funding Acknowledgements</h2>
+<p>This project has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No 813497, as part of the ADAPT SFI Centre for Digital Media Technology is funded by Science Foundation Ireland through the SFI Research Centres Programme and is co-funded under the European Regional Development Fund (ERDF) through Grant#13/RC/2106\_P2. Harshvardhan J. Pandit has received funding under the Irish Research Council Government of Ireland Postdoctoral Fellowship Grant#GOIPD/2020/790.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-aiact" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Artificial intelligence act: Proposal
+for a regulation of the european parliament and the council laying down
+harmonised rules on artificial intelligence (artificial intelligence
+act) and amending certain union legislative acts.”</span> 2021 [Online].
+Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELLAR:e0649735-a372-11eb-9585-01aa75ed71a1">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELLAR:e0649735-a372-11eb-9585-01aa75ed71a1</a></div>
+</div>
+<div id="ref-altai" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">E.
+Commission, C. Directorate-General for Communications Networks, and
+Technology, <em>The assessment list for trustworthy artificial
+intelligence <span>(ALTAI)</span> for self assessment</em>. Publications
+Office, 2020 [Online]. Available: <a
+href="https://data.europa.eu/doi/10.2759/002360">https://data.europa.eu/doi/10.2759/002360</a></div>
+</div>
+<div id="ref-Lewis2021trustworthy" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">D.
+Lewis, D. Filip, and H. J. Pandit, <span>“An ontology for standardising
+trustworthy AI,”</span> in <em>Factoring ethics in technology, policy
+making, regulation and AI</em>, A. G. Hessami and P. Shaw, Eds. Rijeka:
+IntechOpen, 2021 [Online]. Available: <a
+href="https://doi.org/10.5772/intechopen.97478">https://doi.org/10.5772/intechopen.97478</a></div>
+</div>
+<div id="ref-hlegtai" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">European Commission and Directorate-General for
+Communications Networks, Content and Technology, <em>Ethics guidelines
+for trustworthy AI</em>. Publications Office, 2019 [Online]. Available:
+<a
+href="https://data.europa.eu/doi/10.2759/346720">https://data.europa.eu/doi/10.2759/346720</a></div>
+</div>
+<div id="ref-pandit2019test" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">H.
+J. Pandit, D. O’Sullivan, and D. Lewis, <span>“Test-driven approach
+towards GDPR compliance,”</span> in <em>International conference on
+semantic systems</em>, 2019, pp. 19–33. </div>
+</div>
+<div id="ref-naja2021semantic" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">I.
+Naja, M. Markovic, P. Edwards, and C. Cottrill, <span>“A semantic
+framework to support AI system accountability and audit,”</span> in
+<em>European semantic web conference</em>, 2021, pp. 160–176. </div>
+</div>
+<div id="ref-gangemi2005ontology" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A.
+Gangemi, <span>“Ontology design patterns for semantic web
+content,”</span> in <em>International semantic web conference</em>,
+2005, pp. 262–276. </div>
+</div>
+<div id="ref-boer2003harmonizinglegislation" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">A.
+Boer, T. van Engers, and R. Winkels, <span>“Using ontologies for
+comparing and harmonizing legislation,”</span> in <em>Proceedings of the
+9th international conference on artificial intelligence and law</em>,
+2003, pp. 60–69. </div>
+</div>
+<div id="ref-despres2007merging" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">S.
+Despres and S. Szulman, <span>“Merging of legal micro-ontologies from
+european directives,”</span> <em>Artificial Intelligence and Law</em>,
+vol. 15, no. 2, pp. 187–200, 2007. </div>
+</div>
+<div id="ref-fiorentini2009towards" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">X.
+Fiorentini, S. Rachuri, S. Ray, and R. D. Sriram, <span>“Towards a
+method for harmonizing information standards,”</span> in <em>2009 IEEE
+international conference on automation science and engineering</em>,
+2009, pp. 466–471. </div>
+</div>
+<div id="ref-pardo2012ontology" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">C.
+Pardo, F. J. Pino, F. Garcı́a, M. Piattini, and M. T. Baldassarre,
+<span>“An ontology for the harmonization of multiple standards and
+models,”</span> <em>Computer Standards &amp; Interfaces</em>, vol. 34,
+no. 1, pp. 48–59, 2012. </div>
+</div>
+<div id="ref-koelle2013towards" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">R.
+Koelle, W. Strijland, and S. Roels, <span>“Towards harmonising the
+legislative, regulatory, and standards-based framework for ATM security:
+Developing a software support tool,”</span> in <em>2013 international
+conference on availability, reliability and security</em>, 2013, pp.
+787–793. </div>
+</div>
+<div id="ref-golpayegani2022airo" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“<span>AIRO</span>: An
+ontology for representing <span>AI</span> risks based on the proposed
+<span>EU</span> <span>AI</span> act and <span>ISO</span> risk management
+standards,”</span> <em>Towards a Knowledge-Aware <span>AI</span></em>,
+pp. 51–65, 2022. </div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.iso.org/standard/81230.html"
+class="uri">https://www.iso.org/standard/81230.html</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://github.com/delaramglp/aidocs"
+class="uri">https://github.com/delaramglp/aidocs</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="https://www.iso.org/sites/directives/current/consolidated/index.xhtml"
+class="uri">https://www.iso.org/sites/directives/current/consolidated/index.xhtml</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.opmw.org/model/p-plan/"
+class="uri">https://www.opmw.org/model/p-plan/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The PROV concepts of agents and entities are different
+from ALTAI and AIMS. In PROV, an entity is an artefact such as an input
+to an activity, and an agent is what is referred to as an entity within
+ALTAI, AIMS, and the general use of the words.<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>NeurIPS 2022 ethics guidelines <a
+href="https://neurips.cc/public/EthicsGuidelines"
+class="uri">https://neurips.cc/public/EthicsGuidelines</a><a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
