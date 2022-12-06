@@ -10761,9 +10761,9 @@
 <https://harshp.com/hobbies/books/748> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "748"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
@@ -12182,13 +12182,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "846"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "John D. Barrow"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Book of Universes: Exploring the Limits of the Cosmos"@en ;
+    schema:review """A nice book describing how different solutions to a theoretical equation led to the modelling of how universes work and what may happen with the one we live in."""@en ;
     schema:url "https://harshp.com/hobbies/books/846"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/847> a schema:Book, hpcom:RenderedItem ;
@@ -12329,3 +12331,19 @@
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Happy Valley"@en ;
     schema:url "https://harshp.com/hobbies/books/856"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/857> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "857"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2022-12-01T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Children of Memory"@en ;
+    schema:review """A follow-up to three previous books, this was a book with high expectations to start with. Though parts of it felt not that interesting, the lingering thoughts after the book had been over were that of thoughtful hints of something wonderful. For starters, the book has crows/corvids in the follow up to spiders, ants, octopuses, fungii... That's amazing. And then there is something new and alien, which though not mind blowing, really does end up with a fun read. I hope there are more books in this series, and that they are filled more with details."""@en ;
+    schema:isPartOf list:scifi, list:aliens ;
+    schema:url "https://harshp.com/hobbies/books/857"^^xsd:anyURI .

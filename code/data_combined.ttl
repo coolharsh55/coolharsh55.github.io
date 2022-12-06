@@ -14430,7 +14430,8 @@ book:748 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "748"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16015,11 +16016,15 @@ book:846 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "846"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "John D. Barrow"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Book of Universes: Exploring the Limits of the Cosmos"@en ;
+    schema:review "A nice book describing how different solutions to a theoretical equation led to the modelling of how universes work and what may happen with the one we live in."@en ;
     schema:url "https://harshp.com/hobbies/books/846"^^xsd:anyURI .
 
 book:847 a hpcom:RenderedItem,
@@ -16144,6 +16149,24 @@ book:856 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "The Happy Valley"@en ;
     schema:url "https://harshp.com/hobbies/books/856"^^xsd:anyURI .
+
+book:857 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "857"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:aliens,
+        list:scifi ;
+    schema:name "Children of Memory"@en ;
+    schema:review "A follow-up to three previous books, this was a book with high expectations to start with. Though parts of it felt not that interesting, the lingering thoughts after the book had been over were that of thoughtful hints of something wonderful. For starters, the book has crows/corvids in the follow up to spiders, ants, octopuses, fungii... That's amazing. And then there is something new and alien, which though not mind blowing, really does end up with a fun read. I hope there are more books in this series, and that they are filled more with details."@en ;
+    schema:url "https://harshp.com/hobbies/books/857"^^xsd:anyURI .
 
 book:86 a hpcom:Book,
         hpcom:BookReading,
@@ -24462,11 +24485,6 @@ hptag:video-games a hpcom:RenderedItem,
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
 
-list:aliens a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "aliens"@en ;
-    schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
-
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "knowledge-graph" ;
@@ -24503,6 +24521,11 @@ hptag:visa a hpcom:RenderedItem,
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "GNIB Appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
+
+list:aliens a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "aliens"@en ;
+    schema:name "Fantastic Perspectives on Aliens and Alien Intelligence"@en .
 
 list:storytelling a hpcom:RenderedItem,
         book:lists ;
