@@ -10762,14 +10762,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "748"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-09T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Shards of Earth"@en ;
+    schema:review """I'm constantly expecting that I'm going to stop being amazed with the next book I pick from Tchaikovsky, and this was no exception, and I keep surprising myself by being immersed into the book and enjoying it a lot. This time its a space opera with some nice differences while still feeling the same-ness to a lot of other things I've read. I immediately purchased the second book in the series when I was nearly complete with this one."""@en ;
     schema:url "https://harshp.com/hobbies/books/748"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/749> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10922,9 +10923,9 @@
 <https://harshp.com/hobbies/books/759> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "759"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Carlo Rovelli"^^xsd:string ;
@@ -12347,3 +12348,17 @@
     schema:review """A follow-up to three previous books, this was a book with high expectations to start with. Though parts of it felt not that interesting, the lingering thoughts after the book had been over were that of thoughtful hints of something wonderful. For starters, the book has crows/corvids in the follow up to spiders, ants, octopuses, fungii... That's amazing. And then there is something new and alien, which though not mind blowing, really does end up with a fun read. I hope there are more books in this series, and that they are filled more with details."""@en ;
     schema:isPartOf list:scifi, list:aliens ;
     schema:url "https://harshp.com/hobbies/books/857"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/858> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "858"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Eyes of the Void"@en ;
+    schema:url "https://harshp.com/hobbies/books/858"^^xsd:anyURI .

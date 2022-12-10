@@ -14431,12 +14431,16 @@ book:748 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "748"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-09T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Shards of Earth"@en ;
+    schema:review "I'm constantly expecting that I'm going to stop being amazed with the next book I pick from Tchaikovsky, and this was no exception, and I keep surprising myself by being immersed into the book and enjoying it a lot. This time its a space opera with some nice differences while still feeling the same-ness to a lot of other things I've read. I immediately purchased the second book in the series when I was nearly complete with this one."@en ;
     schema:url "https://harshp.com/hobbies/books/748"^^xsd:anyURI .
 
 book:749 a hpcom:Book,
@@ -14606,7 +14610,8 @@ book:759 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "759"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Carlo Rovelli"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -16167,6 +16172,18 @@ book:857 a hpcom:RenderedItem,
     schema:name "Children of Memory"@en ;
     schema:review "A follow-up to three previous books, this was a book with high expectations to start with. Though parts of it felt not that interesting, the lingering thoughts after the book had been over were that of thoughtful hints of something wonderful. For starters, the book has crows/corvids in the follow up to spiders, ants, octopuses, fungii... That's amazing. And then there is something new and alien, which though not mind blowing, really does end up with a fun read. I hope there are more books in this series, and that they are filled more with details."@en ;
     schema:url "https://harshp.com/hobbies/books/857"^^xsd:anyURI .
+
+book:858 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "858"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Eyes of the Void"@en ;
+    schema:url "https://harshp.com/hobbies/books/858"^^xsd:anyURI .
 
 book:86 a hpcom:Book,
         hpcom:BookReading,
