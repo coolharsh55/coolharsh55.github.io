@@ -14611,11 +14611,15 @@ book:759 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "759"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Carlo Rovelli"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Helgoland: The World of Quantum Theory"@en ;
+    schema:review "There's no illusions that this book is written by someone who can explain quantum physics in the manner of a nice lecture. Unfortunately, this is exactly what the book comes off as. Excellent start, some hand waving of concepts that should have chapters dedicated to explanation, and then complete derailment towards things that are relevant but not on the topic. When the book is this thin, every page has to offer more. All this said, the book did offer new perspectives, but didn't make good descriptions out of them."@en ;
     schema:url "https://harshp.com/hobbies/books/759"^^xsd:anyURI .
 
 book:76 a hpcom:Book,
@@ -16177,7 +16181,7 @@ book:858 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "858"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -24840,15 +24844,15 @@ list:scifi a hpcom:RenderedItem,
 hpcom:BookNonFiction a hpcom:BookGenre ;
     rdfs:label "non-fiction"@en .
 
+hpcom:book-to-read a hpcom:BookStatus ;
+    rdfs:label "to read"@en .
+
 hpcom:Rating4 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😁good (4/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI .
-
-hpcom:book-to-read a hpcom:BookStatus ;
-    rdfs:label "to read"@en .
 
 hpcom:Tag a owl:Class ;
     rdfs:label "Tag"@en ;
