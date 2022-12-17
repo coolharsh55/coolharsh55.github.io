@@ -1146,6 +1146,21 @@
     schema:name "Year in Review - 2018"@en ;
     schema:url "https://harshp.com/blog/personal/year-in-review-2018"^^xsd:anyURI .
 
+<https://harshp.com/blog/philosophy/joys-new-things-routine-chores> a <https://harshp.com/blog>,
+        hpcom:RenderedItem ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/blog/philosophy/joys-new-things-routine-chores.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:blog,
+        hptag:chores,
+        hptag:joy,
+        hptag:life ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2022-12-15T11:00:00"^^xsd:dateTime ;
+    schema:description "Why do we feel good when using new things in mundane chores?"@en ;
+    schema:name "The Joys of Using New Things in Routine Chores"@en ;
+    schema:url "https://harshp.com/blog/philosophy/joys-new-things-routine-chores"^^xsd:anyURI .
+
 <https://harshp.com/blog/privacy/an-introspection-on-chatbots-ai-the-future-of-privacy> a <https://harshp.com/blog>,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
@@ -23095,6 +23110,11 @@ hptag:checklist a hpcom:RenderedItem,
     schema:name "checklist"@en ;
     schema:url "https://harshp.com/tags/checklist"^^xsd:anyURI .
 
+hptag:chores a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "chores"@en ;
+    schema:url "https://harshp.com/tags/chores"^^xsd:anyURI .
+
 hptag:code a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "code" ;
@@ -23229,6 +23249,11 @@ hptag:journey a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "journey" ;
     schema:url "https://harshp.com/tags/journey"^^xsd:anyURI .
+
+hptag:joy a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "joy"@en ;
+    schema:url "https://harshp.com/tags/joy"^^xsd:anyURI .
 
 hptag:language a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24155,11 +24180,6 @@ hptag:interoperability a hpcom:RenderedItem,
     schema:name "interoperability"@en ;
     schema:url "https://harshp.com/tags/interoperability"^^xsd:anyURI .
 
-hptag:life a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "life" ;
-    schema:url "https://harshp.com/tags/life"^^xsd:anyURI .
-
 hptag:morning a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "morning" ;
@@ -24282,6 +24302,11 @@ hptag:gadgets a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "gadgets" ;
     schema:url "https://harshp.com/tags/gadgets"^^xsd:anyURI .
+
+hptag:life a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "life" ;
+    schema:url "https://harshp.com/tags/life"^^xsd:anyURI .
 
 hptag:productivity a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24789,17 +24814,17 @@ hptag:semantic-web a hpcom:RenderedItem,
     schema:name "semantic-web" ;
     schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
-hptag:blog a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "blog" ;
-    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
-
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙁bad (2/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
+
+hptag:blog a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "blog" ;
+    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;
