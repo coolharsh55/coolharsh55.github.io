@@ -9893,7 +9893,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "687"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "P. Djèlí Clark"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10281,17 +10281,18 @@
 
 <https://harshp.com/hobbies/books/715> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "715"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2022-12-24T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "1983"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Shame"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:TCD, list:language ;
+    schema:review """A beatifully constructed prose that describes an observation of a culture's obsession with shame - and all that follows. I enjoyed the book right from the start, with all its weird pacings which go from intricate detailed expositions of a single picture to paragraphs that move time in decades. Perhaps I liked this so much because I could visualise the characters and the descriptions and could relate to them. Perhaps this was why I was not much impressed with Quichotte despite it containing the same beautifully written narrations."""@en ;
     schema:url "https://harshp.com/hobbies/books/715"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/716> a schema:Book, hpcom:RenderedItem ;
@@ -10981,13 +10982,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "763"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-22T06:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Kim Stanley Robinson"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Aurora"@en ;
+    schema:review """An interesting book if only for its narrations about an AI that is comprehending human language and what it means to 'accurately' interpret linguistic phrases. The rest of it was interesting at the start - a generational spaceship that is going to colonise a star systel - but it went nowhere and was disappointing. The bits about overestimating space travel, and that the biomes we need cannot function properly in space was interesting, as was the need for social organisaiton. But it all went more into drama and social commentary - overused at times - especially disappointing with no 'ending' that could be of interest. No doubt the author has a great grasp on the practicalities of space travel and how to wrench stories from them, but this is not my interest."""@en ;
+    schema:isPartOf list:AI ;
     schema:url "https://harshp.com/hobbies/books/763"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/764> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11198,13 +11202,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "778"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-31T08:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Andrzej Sapkowski "^^xsd:string ;
     schema:dateCreated "2007"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Last Wish"@en ;
+    schema:review """Having liked Witcher 3 immensely, and having watched the (bad) adaptation by Netflix, I was intrigued as to what the books offered. I enjoyed the short stories, and the links to what I had played and seen. I might give the other books a try if they also contain similar interesting experiences - especially since now there's a new Witcher 3 HD release that I plan to replay."""@en ;
     schema:url "https://harshp.com/hobbies/books/778"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/779> a hpcom:RenderedItem, hpcom:BookReading,
@@ -12352,14 +12358,31 @@
 
 <https://harshp.com/hobbies/books/858> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "858"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2022-12-21T12:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Eyes of the Void"@en ;
+    schema:review """The second or middle part of a trilogy, this was the stereotypical filler-material book with not much actual progress as compared to how much of the world the first book introduced. Some more adventures, some more characters, a lot of teasing about information that you hope will be revealed but never is. And so one must wait for the third book. That said, I did not feel bored or annoyed at any point in the story. In terms of episodic content, it was a good book. I just wished for more details and things to be presented because the first book was quite good in terms of how much new things and world descriptions it contained."""@en ;
     schema:url "https://harshp.com/hobbies/books/858"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/859> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "859"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2022-12-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:author "Ashish Khetan"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Undercover: My Journey into the Darkness of Hindutva "@en ;
+    schema:review """I was not prepared for this book. It is raw, honest, detailed, and factual. There were times when I felt overwhelmed from what was in the book and comparing it to how little I knew or was exposed to. That there were investigations and court cases to such an extent, and that they were all somehow 'managed' was a revelation. I always believed that there was mischief, but reading the book I've come to the realisation that the reality is much more sinister and there is evil which believes itself righteous. The book also helped understand a lot of the current political landscape in terms of the key people and their (political) governance models. By the end I was feeling hopeless, lost, sad, upset, angry, frustrated, and in chaos. But this is also progress - because I went from ignorance to awareness."""@en ;
+    schema:isPartOf list:books-changed-life ;
+    schema:url "https://harshp.com/hobbies/books/859"^^xsd:anyURI .
