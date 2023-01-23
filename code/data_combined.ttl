@@ -12367,12 +12367,16 @@ book:628 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "628"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-01-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Connie Willis"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Time is the Fire: The Best of Connie Willis"@en ;
+    schema:review "An excellent collection of short stories that really show the breadth and versatility and quality of Connie Willis in being one of the reknowned writers. Enjoyable collection, even though a lot of them are not hard sci-fi. The background and explanations following the stories also made for an intersting read in to the origins of the stories."@en ;
     schema:url "https://harshp.com/hobbies/books/628"^^xsd:anyURI .
 
 book:629 a hpcom:Book,
@@ -13634,11 +13638,15 @@ book:7 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "7"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-01-19T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Richard Dawkins"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9781787631212"^^xsd:string ;
     schema:name "Outgrowing God: A Beginner’s Guide"@en ;
+    schema:review "A concise set of notes that really acts like an introduction on how to structure the mind in a logical and argument driven framework for understanding and escaping the dogma of religion. As I found later, much of it is a summarisation of The God Delusion - itself a much better explained and explored work."@en ;
     schema:url "https://harshp.com/hobbies/books/7"^^xsd:anyURI .
 
 book:70 a hpcom:Book,
@@ -15258,12 +15266,17 @@ book:796 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "796"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-01-23T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Richard Dawkins"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:books-changed-life,
+        list:educational ;
     schema:name "The God Delusion"@en ;
+    schema:review "Wow. Some books expand the mind, or as Dawkins correctly puts it - they expand the 'consciousness' because it forever changes the perception and ability to think about things. This is one such book. It really hammers down on religion, even though a lot of it (most?) is Abrahamic ones, the arguments and the logical questions are utilities for any and all religions. This is a great book to consider why we must question everything, and why things don't make sense when we put them in a consistent logical framework. And this is what religion is explained as - and why and where and how it ruins our ability to progress. Really influential book, and which has permanently set me on a path to finalising my mind. The only bits I would have liked to be included was an exploration of religions which don't have a written book, but instead rely on the moral policing by society itself. This is what I saw and experienced growing up in India. Its still religion, but there is no single word of God to debate against. The book does give the tools that are universal in arguments, but it would have been nice to see them used for exploring such social structures as well."@en ;
     schema:url "https://harshp.com/hobbies/books/796"^^xsd:anyURI .
 
 book:797 a hpcom:Book,
@@ -16161,10 +16174,10 @@ book:852 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "852"^^xsd:int ;
     hpcom:book_status hpcom:book-to-read ;
-    schema:author "Neil Richards"^^xsd:string ;
-    schema:dateCreated "2022"^^xsd:int ;
+    schema:author "Daniel J. Solove"^^xsd:string ;
+    schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:name "Why Privacy Matters"@en ;
+    schema:name "Understanding Privacy"@en ;
     schema:url "https://harshp.com/hobbies/books/852"^^xsd:anyURI .
 
 book:853 a hpcom:RenderedItem,
@@ -16269,6 +16282,68 @@ book:86 a hpcom:Book,
     schema:isbn "9780465028023"^^xsd:string ;
     schema:name "The Happiness Hypothesis: Finding Modern Truth in Ancient Wisdom"@en ;
     schema:url "https://harshp.com/hobbies/books/86"^^xsd:anyURI .
+
+book:860 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "860"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Marisa G Franco"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Platonic: How the Science of Attachment Can Help You Make And Keep Friends"@en ;
+    schema:url "https://harshp.com/hobbies/books/860"^^xsd:anyURI .
+
+book:861 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "861"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Jamie Susskind"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Digital Republic: How to Govern and Take Back Control Technology"@en ;
+    schema:url "https://harshp.com/hobbies/books/861"^^xsd:anyURI .
+
+book:862 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "862"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Nancy Fraser"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Cannibal Capitalism"@en ;
+    schema:url "https://harshp.com/hobbies/books/862"^^xsd:anyURI .
+
+book:863 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "863"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Glyn Moody"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Walled Culture"@en ;
+    schema:url "https://harshp.com/hobbies/books/863"^^xsd:anyURI .
+
+book:864 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "864"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Helen Nissembaum"^^xsd:string ;
+    schema:dateCreated "2009"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Privacy in Context"@en ;
+    schema:url "https://harshp.com/hobbies/books/864"^^xsd:anyURI .
+
+book:865 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "865"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Bruce Schneier"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Data and Goliath"@en ;
+    schema:url "https://harshp.com/hobbies/books/865"^^xsd:anyURI .
 
 book:87 a hpcom:Book,
         hpcom:BookReading,
@@ -24801,15 +24876,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:books-changed-life a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "books-changed-life"@en ;
-    schema:name "Books that changed my life"@en .
-
 hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
+
+list:books-changed-life a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "books-changed-life"@en ;
+    schema:name "Books that changed my life"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24825,11 +24900,6 @@ hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
     rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
 
-list:educational a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "educational"@en ;
-    schema:name "Educational and Illuminating"@en .
-
 list:fantasy a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "fantasy"@en ;
@@ -24837,6 +24907,11 @@ list:fantasy a hpcom:RenderedItem,
 
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
+
+list:educational a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "educational"@en ;
+    schema:name "Educational and Illuminating"@en .
 
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
