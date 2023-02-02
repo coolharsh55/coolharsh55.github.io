@@ -12825,7 +12825,7 @@ book:654 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "654"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "P. L. Deshpande [ पु. ल. देशपांडे ]"^^xsd:string ;
     schema:dateCreated "1960"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -19808,7 +19808,13 @@ list:owned_unread a hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/057-Comparison-3-key-AI-documents"^^xsd:anyURI ] ;
+            schema:url "https://harshp.com/research/publications/057-Comparison-3-key-AI-documents"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "TARA" ;
+            schema:url "http://hdl.handle.net/2262/101927"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url ""^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
     hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -23953,9 +23959,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -24246,6 +24249,9 @@ hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
