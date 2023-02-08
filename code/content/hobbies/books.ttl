@@ -9417,11 +9417,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "654"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-02-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "P. L. Deshpande [ पु. ल. देशपांडे ]"^^xsd:string ;
     schema:dateCreated "1960"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Apurvai [अपूर्वाई]"@en ;
+    schema:isPartOf list:humour, list:cork ;
+    schema:review """Classic Pu. La. Deshpande book with the humour coming out of a common man visiting a foreign country and the things that happen with a change in culture and perspective. The language is elucidative and offers a funny and witty outlook into situations. One of the greats in Marathi literature."""@en ;
     schema:url "https://harshp.com/hobbies/books/654"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/655> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10192,7 +10197,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "708"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Siddhartha Mukherjee"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -12429,13 +12434,14 @@
         schema:Book ;
     hpcom:book_id "861"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-02-02T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Jamie Susskind"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Digital Republic: How to Govern and Take Back Control Technology"@en ;
+    schema:review """A comprehensive book about what 'republican' means in the political context (not the American one), and how it applies to the rising digital internet economy. There's a lot of interesting concepts, and even though I knew a lot of the events and situations mentioned, the specific perspective of how they relate to things such as self-determination and governance of systems was interesting and thought-provoking."""@en ;
     schema:url "https://harshp.com/hobbies/books/861"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/862> a hpcom:RenderedItem,
