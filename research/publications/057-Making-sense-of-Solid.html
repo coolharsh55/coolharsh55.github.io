@@ -13,11 +13,11 @@
     <meta name="schema:datePublished" content="item.schema_datePublished">
     <meta name="schema:keywords" content="data-governance,GDPR,ISO,semantic-web,Solid,">
     <meta name="schema:author" content="https://harshp.com/me">
-    <meta name="schema:identifier" content="https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/057-Making-sense-of-Solid">
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@coolharsh55">
     <meta name="twitter:creator" content="@coolharsh55">
-    <meta property="og:url" content="">
+    <meta property="og:url" content="https://doi.org/10.3390/info14020114">
     <meta property="og:title" content="Making Sense of Solid for Data Governance and GDPR">
     <meta property="og:description" content="This article explores Solid as a new technology, and provides a framework to describe its implementations and use-cases using cloud-technology terminology. It also explores GDPR&#39;s application and identifies existing issues and solutions that also apply to Solid.">
     <link rel="stylesheet" href="/css/sitebase.css" />
@@ -27,30 +27,34 @@
         <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
 | <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
     <main>
-    <article typeof="https://harshp.com/code/vocab#DraftPaper https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid">
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/057-Making-sense-of-Solid">
         <h1 property="schema:name schema:headline">Making Sense of Solid for Data Governance and GDPR</h1>
 <div id="description">
 	<small>
-	<time datetime="2022-11-19T00:00:00">2022-11-19T00:00:00</time>
-    <i>Workshop</i>
+	<time datetime="2023-02-13T00:00:00">2023-02-13T00:00:00</time>
+    <i>Journal</i>
     <br/>
-    <span class='note'>published</span>
-    published    <br/>
+    MDPI Information
+    <br/>
     &#9997;<i>
     <u>Harshvardhan J. Pandit</u>*
     </i>
     <br/>
+    <a href="https://doi.org/10.3390/info14020114">publication</a>
         &#x1f513;copies:
-        <a href="https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid">harshp.com</a>
-        , <a href="https://osf.io/m29hn/">OSF</a>
-        , <a href="&lt;https://harshp.com/research/publications/057-Making-sense-of-Solid&gt;">published version</a>
+        <a href="http://doras.dcu.ie/28077/">DORAS</a>
+        , <a href="https://harshp.com/research/publications/drafts/057-Making-sense-of-Solid">harshp.com</a>
+        , <a href="https://doi.org/10.31219/osf.io/m29hn">OSF</a>
+        , <a href="https://zenodo.org/record/7641620">Zenodo</a>
     <br/>
     This article explores Solid as a new technology, and provides a framework to describe its implementations and use-cases using cloud-technology terminology. It also explores GDPR&#39;s application and identifies existing issues and solutions that also apply to Solid.
     </small>
 </div>
         <div id="content" property="schema:articleBody">
-        <h2>Abstract</h2>
-<p>A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: (1) Background: place the question addressed in a broad context and highlight the purpose of the study; (2) Methods: describe briefly the main methods or treatments applied; (3) Results: summarize the article's main findings; (4) Conclusions: indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.</p>
+        <link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<div id="abstract"><p><strong>Abstract:</strong> Solid is a new radical paradigm based on decentralising control of data from central organisations to individuals that seeks to empower individuals to have active control of who and how their data is being used. In order to realise this vision, the use-cases and implementations of Solid also require to be consistent with the relevant privacy and data protection regulations such as the GDPR. However, to do so first requires prior understanding of all actors, roles, and processes involved in a use-case, which then need to be aligned with GDPR's concepts to identify relevant obligations, and then investigate their compliance. To assist with this process, we describe Solid as a variation of `cloud technology' and and adapt the existing standardised terminologies and paradigms from ISO/IEC standards. We then investigate the applicability of GDPR's requirements to Solid-based implementations, along with an exploration of how existing issues arising from GDPR enforcement also apply to Solid. Finally, we outline the path forward through specific extensions to Solid's specifications that mitigates known issues and enables the realisation of its benefits.</p>
 
 <h2 id="sec:introduction">Introduction</h2>
 <p>Solid<a href="#fn1" class="footnote-ref" id="fnref1"
@@ -63,24 +67,22 @@ role="doc-biblioref">[1]</a></span>. The Solid specifications <span
 class="citation" data-cites="SolidTechnicalReports"><a
 href="#ref-SolidTechnicalReports" role="doc-biblioref">[2]</a></span>
 define the implementation of Pods as an architecture containing identity
-management, access control, and communication. Individuals using the Pod
-control how and when apps can access data by granting or revoking access
-at any time. By controlling access to their data within Pods,
-individuals also gain the ability to (re-)use it elsewhere for competing
-services or for other features – which are not possible through
-conventional methods where data is locked and controlled by service
-providers.</p>
+management, access control, and communication. . By controlling access
+to their data within Pods, individuals also gain the ability to (re-)use
+it elsewhere for competing services or for other features – which not
+possible through conventional methods where data is locked and
+controlled by service providers.</p>
 <p>Solid was initiated in 2016 and is led by WWW-inventor Tim
 Berners-Lee <span class="citation"
 data-cites="mansourDemonstrationSolidPlatform2016"><a
 href="#ref-mansourDemonstrationSolidPlatform2016"
 role="doc-biblioref">[1]</a></span>. It has gained interest due to its
-radical approach to move away from centralisation, lock-ins, and
-privacy. Solid represents a realisation of the data sovereignty
-philosophy where individuals ‘control’ their data and how it is used.
-Since this involves use of personal data, the existing laws regarding
-data, privacy, and data protection, such as EU’s General Data Protection
-Regulation (GDPR) <span class="citation" data-cites="Regulation_GDPR"><a
+radical approach to move away from centralisation lock-ins and privacy.
+Solid represents a realisation of the data sovereignty philosophy where
+individuals ‘control’ their data and how it is used. Since this involves
+use of personal data, the existing laws regarding data, privacy, and
+data protection, such as EU’s General Data Protection Regulation (GDPR)
+<span class="citation" data-cites="Regulation_GDPR"><a
 href="#ref-Regulation_GDPR" role="doc-biblioref">[3]</a></span> also
 apply to Solid. However, the radical deviation of Solid’s
 implementations from conventional methods where data is collected and
@@ -102,20 +104,19 @@ interact with the data stored in it. This also requires understanding
 the possible variations that may emerge as a result of applying existing
 practices for service provision by market actors, or as part of Solid’s
 organic push towards re-implementing conventional models. Through these,
-we should be able to answer who will implement and provide the various
-resources required by Solid and apps, how will users be involved in
-these processes, and who retains what degree of control. After
-establishing the basics of who does what in an implementation, the
-use-case must be interpreted through the investigative lens of GDPR,
-where the roles of controllers, processors, data subjects, and
-third-parties must be assigned to entities in a use-case. Then, the
+we who will implement and provide the various resources required by
+Solid and apps, how will users be involved in these processes, and who
+retains what degree of control. After establishing the basics of who
+does what in an implementation, the use-case must be interpreted through
+the investigative lens of GDPR, where the roles of controllers,
+processors, data subjects, and third-parties must be use-case. Then, the
 obligations associated with each entity must be assessed for
 applicability and fulfilment in order to determine compliance. Finally,
 for ensuring progress and benefits, we need to explore practical
 implications arising from Solid implementations by exploring how
 existing issues also apply to Solid-based use-cases, and identify
-specific paths for improvements and problem mitigation through
-developments involving Solid itself.</p>
+specific paths for improvements and mitigation through developments
+involving Solid itself.</p>
 <p>To enable these processes for Solid, we explore the primary questions
 as follows. To assist with understanding Solid, we summarise its
 specifications and relevant work in Section <a href="#sec:background"
@@ -148,15 +149,14 @@ data-reference="sec:path-forward">8</a>)</p></li>
 in understanding and applying GDPR (and other legal) concepts to their
 use-cases and thereby inform future technical and legal developments in
 the use of Solid. The intention of this article is to also highlight the
-risks involved in use of Solid. While there is no necessity or
-obligation for the Solid community to fix identified issues, especially
-where they are broader and universal in the context of web and
-applications. However, we hope that in highlighting them, Solid’s vision
-of using decentralisation and machine-readable information to empower
-users in controlling their data can benefit from identification of
-potential paths to mitigate known issues and innovate on better privacy
-mechanisms through developments within, using, and led by Solid
-itself.</p>
+risks involved in use of Solid. here is no necessity or obligation for
+the Solid community to fix identified issues, especially where they are
+broader and universal in the context of web and applications. However,
+we hope that in highlighting them, Solid’s vision of using
+decentralisation and machine-readable information to empower users in
+controlling their data can benefit from identification of potential
+paths to mitigate known issues and innovate on better privacy mechanisms
+through developments within, using, and led by Solid itself.</p>
 <h2 id="sec:background">Background Information and Relevant Work
 regarding Solid</h2>
 <h3 id="what-is-solid">What is Solid?</h3>
@@ -184,15 +184,15 @@ class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 showcases existing applications and development tools.</p>
 <p>In Solid, users and applications are represented as <em>Agents</em>
 whose identity is represented by a URL that also provides information
-(e.g. profile, metadata) and is used in records and authorisations. Apps
-request access using pre-defined methods, to which users can grant
-access and also revoke it later. Access to data within Solid
-specifications is determined based on: (1) data in question; (2)
-operation to be performed; and (3) entity requesting access - where the
-entity can be a process, an app, or user. These are expressed using
-<em>Access Request</em>, which are decided upon by the user, and the
-decision stored within registries as <em>Access Authorisations</em>
-<span class="citation" data-cites="SolidApplicationInteroperability"><a
+(e.g. profile, metadata) and is used authorisations. Apps request access
+using pre-defined methods, to which users can grant access and also
+revoke it later. Access to data within Solid specifications is
+determined based on: (1) data in question; (2) operation to be
+performed; and (3) entity requesting access - where the entity can be a
+process, an app, or user. These are expressed using <em>Access
+Request</em> which user decision that are stored as <em>Access
+Authorisations</em> <span class="citation"
+data-cites="SolidApplicationInteroperability"><a
 href="#ref-SolidApplicationInteroperability"
 role="doc-biblioref">[11]</a></span>. Details of access are provided to
 requestors (e.g. apps) as <em>Access Grants</em> with specifics of what
@@ -217,13 +217,12 @@ infrastructure) where either they or the users can choose providers for
 domains and servers, with choice of locations (as jurisdictions). In
 addition, Solid can also be self-hosted, e.g. by manually installing it
 on a user-controlled server.</p>
-<p>Notably, the Flemish government in Belgium has embarked on an
-abitious project whereby all citizens will be provided a Solid Pod for
-the storage and control over their government-issued documents, and
-where apps can request access to this data based on the user’s consent
-only after establishing legal agreements with the government-established
-Data Utility Company outlining permitted purposes and processing <span
-class="citation"
+<p>Notably, the Flemish government in Belgium has embarked on an project
+whereby all citizens will be provided a Solid Pod for storage and
+control over their government-issued documents apps can request access
+to based on the user’s consent only after establishing legal agreements
+with the government-established Data Utility Company outlining permitted
+purposes and processing <span class="citation"
 data-cites="FlemishDataUtility vandammeResearchAgendaPersonal2022"><a
 href="#ref-FlemishDataUtility" role="doc-biblioref">[12]</a>, <a
 href="#ref-vandammeResearchAgendaPersonal2022"
@@ -239,10 +238,9 @@ role="doc-biblioref">[15]</a></span>.</p>
 id="state-of-the-art-regarding-analysis-applications-and-explorations-of-solid">State
 of the Art regarding analysis, applications, and explorations of
 Solid</h3>
-<p>Researchers have proposed and explored the extension of Solid
-specifications to support policy management and its use in exercising
-more complex constraints over use of consent and data in Pods <span
-class="citation"
+<p>Researchers have explored the extension of Solid specifications to
+support policy management and its use in exercising more complex
+constraints over use of consent and data in Pods <span class="citation"
 data-cites="havurGreaterControlTransparency2020 estevesODRLProfileExpressing2021 debackerePolicyOrientedArchitectureEnforcing2022 estevesUsingODRLProfile2022"><a
 href="#ref-havurGreaterControlTransparency2020"
 role="doc-biblioref">[16]</a>–<a href="#ref-estevesUsingODRLProfile2022"
@@ -265,23 +263,21 @@ using ‘knowledge-graphs’ to achieve richer data utility <span
 class="citation" data-cites="dedeckerWhatPod2022"><a
 href="#ref-dedeckerWhatPod2022"
 role="doc-biblioref">[23]</a></span>.</p>
-<p>Solid Pods have been demonstrated to be practical in implementation
-of GDPR’s Right to Data Portability <span class="citation"
+<p>Solid Pods have been demonstrated to implement GDPR’s Right to Data
+Portability <span class="citation"
 data-cites="demulderPROV4ITDaTaTransparentDirect2021"><a
 href="#ref-demulderPROV4ITDaTaTransparentDirect2021"
 role="doc-biblioref">[24]</a></span> and Right of Access <span
 class="citation" data-cites="estevesAutomatingResponseGDPR2022"><a
 href="#ref-estevesAutomatingResponseGDPR2022"
-role="doc-biblioref">[25]</a></span>. The legal considerations arising
-from use of Solid have been explored in the context of use-cases (e.g.
-business to business) and applicability of GDPR’s obligations <span
-class="citation" data-cites="debotDataSharingPatterns2021"><a
+role="doc-biblioref">[25]</a></span>. legal considerations have been
+explored applicability of GDPR’s obligations <span class="citation"
+data-cites="debotDataSharingPatterns2021"><a
 href="#ref-debotDataSharingPatterns2021"
-role="doc-biblioref">[26]</a></span> which provide invaluable
-understanding of relevant questions to ask regarding Solid
-implementations. Similar explorations have also explored the purported
-value derived from decentralisation, its legality under GDPR, and the
-existence of issues <span class="citation"
+role="doc-biblioref">[26]</a></span> provide relevant questions to ask
+regarding Solid implementations. Similar explorations have also explored
+the purported value derived from decentralisation, its legality under
+GDPR, and the existence of issues <span class="citation"
 data-cites="janssenPersonalInformationManagement2020 janssenDecentralizedDataProcessing2021"><a
 href="#ref-janssenPersonalInformationManagement2020"
 role="doc-biblioref">[5]</a>, <a
@@ -319,7 +315,7 @@ resources can be servers, networks, software, applications, storage,
 etc. It defines <em>cloud services</em> as “One or more capabilities
 offered via cloud computing invoked using a defined interface”. This
 definition suits implementations where a Solid Pod is a form of cloud
-service that enables applications and (cloud) services to utilise stored
+service that enables applications and (cloud) services to utilise store
 data. Since the Solid specifications do not place limits on how storage
 and computing is built and provided, we can apply the full extent of
 existing cloud infrastructure and provision methods to describe possible
@@ -333,28 +329,31 @@ standards for security, handling of sensitive data, interoperability,
 portability, policy management, and data governance; or ENISA’s Cloud
 Computing Risk Assessment <span class="citation"
 data-cites="CloudComputingRisk"><a href="#ref-CloudComputingRisk"
-role="doc-biblioref">[30]</a></span> and cybersecurity resources.
-Another important example is the reuse of GDPR guidance on Controllers
-and Processors <span class="citation"
+role="doc-biblioref">[30]</a></span> cybersecurity GDPR guidance on
+Controllers and Processors <span class="citation"
 data-cites="EDPSGuidelinesConcepts2019"><a
 href="#ref-EDPSGuidelinesConcepts2019"
 role="doc-biblioref">[31]</a></span> that outlines requirements and
 responsibilities for use of cloud-based technologies through market
 providers.</p>
-<p>The analysis of use-cases first requires accurately representing the
-specifics in terms of actors, processes, and information flows. For
-Solid, we reuse the existing Cloud technology concepts adapted from
-ISO/IEC 22123-1:2021 Information technology — Cloud computing — Part 1:
-Vocabulary <span class="citation" data-cites="ISO-22123"><a
-href="#ref-ISO-22123" role="doc-biblioref">[32]</a></span> to provide a
-framework through which implementations of Solid as cloud technologies
-can be documented for common understanding. For this exercise, we first
-checked whether each term had relevance to Solid and the topic of this
-paper, and then rephrased their definitions to specify relevant
-descriptions of information associated with use of Solid Pods. The
-findings are summarised as a collection of entities in Fig <a
-href="#fig:cloud" data-reference-type="ref"
-data-reference="fig:cloud">[fig:cloud]</a>.</p>
+<p>use-cases first requires accurately representing the specifics in
+terms of actors, processes, and information flows. For Solid, we reuse
+the existing Cloud technology concepts adapted from ISO/IEC 22123-1:2021
+Information technology — Cloud computing — Part 1: Vocabulary <span
+class="citation" data-cites="ISO-22123"><a href="#ref-ISO-22123"
+role="doc-biblioref">[32]</a></span> to provide a framework through
+which implementations of Solid as cloud technologies can be documented
+for common understanding. For this exercise, we first checked whether
+each term had relevance to Solid and the topic of this paper, and then
+rephrased their definitions to specify relevant descriptions of
+information associated with use of Solid Pods. The findings are
+summarised as a collection of entities in Fig <a href="#fig-cloud"
+data-reference-type="ref" data-reference="fig-cloud">1</a>.</p>
+<figure id="fig-cloud">
+	<img src="img/057-cloud.png">
+<figcaption>Simplified representation of applying Cloud paradigms to
+provisioning Solid Pods</figcaption>
+</figure>
 <h3 id="actors">Actors</h3>
 <p><em>Actors</em> refer to entities that have specific roles within the
 Solid ecosystem. Currently Solid specifications only refer to
@@ -482,23 +481,20 @@ class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> for
 examples.</p></li>
 <li><p><em>Compute as a Service (CaaS)</em> - Providers provide
 dedicated computing environments controlled by the user (server or
-serverless) for process execution, e.g. to generate their own data or to
-enforce the requirement that data does not go outside controlled
-environments.</p></li>
+serverless) process execution, e.g. to their own data or to enforce
+controlled environments.</p></li>
 <li><p><em>Storage as a Service (STaaS)</em> - This is a hypothetical
-extension of current Solid specifications where different forms of
-storage are available as a service. For example, through dedicated SQL
-database, semantic-web triple-stores, binary or blob storages, or
+extension where different forms of storage as a service. For example,
+SQL database, semantic-web triple-stores, binary or blob storages, or
 dedicated media storage services such as for photos and videos.</p></li>
-<li><p><em>Data as a Service (DaaS)</em> - For Solid Pods, this could be
-a service between data and apps that provides data-value and
-data-utility. For example, when companies and applications do not need
-to centrally collect, store, and manage data, but instead utilise the
-availability of data within a Solid Pod directly by using it on demand.
-These may include operations over (raw) data, invoke specific queries to
-get answers, be limited to only data collection or storage, or also
-involve storing ephemeral and persistent outputs from
-processes.</p></li>
+<li><p><em>Data as a Service (DaaS)</em> - a service between data and
+apps that provides data-value and data-utility. For example, when
+companies and applications do not need to centrally collect, store, and
+manage data, but instead utilise the availability of data within a Solid
+Pod directly by using it on demand. These may include operations over
+(raw) data, invoke specific queries to get answers, be limited to only
+data collection or storage, or also involve storing ephemeral and
+persistent outputs from processes.</p></li>
 </ul>
 <p>The ISO/IEC cloud standards define <em>Portability</em> as “ability
 to migrate an application from one cloud service to another”. Applied to
@@ -679,10 +675,10 @@ and what limitations are imposed. In addition, the layers enable
 accurate analysis of cases where Pods may be provisioned with specific
 limitations on some of these functionalities which may result in
 restrictions on portability and interoperability of data and apps.</p>
-<p>We identified the following layers (see Fig <a href="#fig:layers"
-data-reference-type="ref" data-reference="fig:layers">[fig:layers]</a>)
-by distinguishing between implementations of Solid Pods and applications
-in terms of interactions with data: <em>data storage</em> as the bottom
+<p>We identified the following layers (see Fig <a href="#fig-layers"
+data-reference-type="ref" data-reference="fig-layers">2</a>) by
+distinguishing between implementations of Solid Pods and applications in
+terms of interactions with data: <em>data storage</em> as the bottom
 layer given Solid’s reliance on data storage as a central concept,
 followed by <em>data retrieval</em> to retrieve stored data,
 <em>computing</em> to (optionally) perform computations on it,
@@ -693,6 +689,11 @@ management processes by <em>actors</em>. Orthogonal to these are layers
 associated with <em>logging</em>, <em>policies</em>, <em>security</em>,
 and <em>identity</em> which have relevance to and are influenced from
 implementations of each layer.</p>
+<figure id="fig-layers">
+	<img src="img/057-layers.png">
+<figcaption>Representing Solid Pods as a collection of inter-related
+layers based on functionalities</figcaption>
+</figure>
 <h3 id="data-storage-layer">Data Storage Layer</h3>
 <h4 id="physical-and-virtual-views">Physical and Virtual Views</h4>
 <p>The Data Storage layer refers to the physical and virtual arrangement
@@ -1174,10 +1175,10 @@ roles, functions, and processes associated with Solid. This section uses
 these term to describe various possible use-cases for the implementation
 of Solid Pods and apps. The <em>use-cases</em> are a collection of
 different permutations and combinations for how Solid Pods can be
-implemented in terms of infrastructure. They are not exhaustive, since
-there can always be new paradigms and methods that change how
-implementations are deployed and/or function. For relevance, see prior
-descriptions <span class="citation"
+implemented in terms of . They are not exhaustive, since there can
+always be new paradigms and methods that change how implementations are
+deployed and/or function. For relevance, see prior descriptions <span
+class="citation"
 data-cites="buyleStreamliningGovernmentalProcesses2019 verbruggePersonalDataVault2021 demulderPROV4ITDaTaTransparentDirect2021 vandammeResearchAgendaPersonal2022 FlemishDataUtility"><a
 href="#ref-FlemishDataUtility" role="doc-biblioref">[12]</a>–<a
 href="#ref-verbruggePersonalDataVault2021"
@@ -1197,7 +1198,7 @@ use-cases in terms of freedoms and limitations on abilities and actors;
 (3) to explore issues of trust and security that arise from specific
 governance patterns; (4) to explore variations in responsibilities and
 accountability; and (5) to guide how legal compliance investigations
-should approach the use of Solid .</p>
+should approach the use of Solid.</p>
 <p>The use-cases are categorised based on specific topics they concern,
 i.e. as Infrastructure (Section <a href="#sec:uc-infra"
 data-reference-type="ref" data-reference="sec:uc-infra">5.1</a>), Apps
@@ -1233,14 +1234,13 @@ networking, domains). This could be a typical home-setup where the user
 runs the server within their home or a commercial setup where an
 organisation deploys servers from their premises. It provides a great
 degree of freedom in terms of choice of what hardware and software
-(including Solid implementations) are installed, including operating
-systems, firewalls, or any other applications and devices that are
-chosen by the users. At the same time, it also puts the onus of
-maintenance and responsibility of choosing technologies on the user as a
-(self-)provider.</p>
+(including Solid implementations) are installed, operating systems,
+firewalls, or any other applications and devices. At the same time, it
+also puts the onus of maintenance and responsibility of choosing
+technologies on the user as a (self-)provider.</p>
 <h4 id="uc-i2-solid-with-iaas">UC-I2: Solid with IaaS</h4>
 <p>Subsequent use-cases divulge from <em>UC-I1</em> by increasingly
-abstracting the management of resources. <em>US-I2</em> uses the IaaS
+abstracting the management of resources. <em>U-I2</em> uses the IaaS
 cloud paradigm where users provision infrastructure from a provider.
 Other than the management of provisioned resources, users retain the
 freedom and flexibility of choosing what software they install and use
@@ -1250,50 +1250,48 @@ resources in terms of features, compatibility, and management options.
 Communications with resources are typically made through APIs defined by
 the resource providers. In some cases, a IaaS provider may only support
 or allow provisioning resources within its cloud service offerings, or
-provide incentives such as lower costs for using the same providers.
-IaaS offerings typically also offer complete flexibility in choosing the
-locations of where each resource is located - for example, having server
-and storage in different locations.</p>
+provide incentives such as lower costs for using the same provider. IaaS
+offerings typically also offer complete flexibility in choosing
+locations each resource .</p>
 <h4 id="uc-i3-solid-as-paas">UC-I3: Solid as PaaS</h4>
 <p>Further abstracting the management of resources, utilising the PaaS
 cloud paradigm for Solid enables users to request a Pod as a
 <em>platform</em> where they receive a pre-configured infrastructure
-deployment where details and management of underlying resources such as
-servers, data storage disks, etc. are abstracted and hidden. Users may
-have the option to provision additional resources or change existing
-ones based on supported options. Providers may offer pre-configured
-choices of implementations based on Pod specifications, resource quotas
-(e.g. storage size), locations, and software (e.g. underlying operating
+where details and management of underlying resources such as servers,
+data storage disks, etc. are abstracted and hidden. Users may have the
+option to provision additional resources or change existing ones based
+on supported options. Providers may offer pre-configured choices of
+implementations based on Pod specifications, resource quotas (e.g.
+storage size), locations, and software (e.g. underlying operating
 system). In case of PaaS, users have lesser freedom since direct access
 to hardware is restricted and all interactions happen through a
 dedicated virtual environment or APIs. However, users get more
 convenience since they have to manage less resources.</p>
 <h4 id="uc-i4-solid-as-saas">UC-I4: Solid as SaaS</h4>
-<p>Applying the SaaS cloud paradigm for Solid would mean providing a
-Pod’s functionalities in the form of software that the users can access
-and manage, e.g. through apps on their devices or through a web browser.
-In this case, all the underlying resources (e.g. servers, storage) would
-be hidden and managed by the provider. This represents the least amount
-of freedom since users would not have any choice in how their Pods are
+<p>Applying the SaaS cloud paradigm for Solid mean providing a Pod’s
+functionalities in the form of software that the users can access and
+manage, e.g. through apps on their devices or through a web browser. In
+this case, all the underlying resources (e.g. servers, storage) would be
+hidden and managed by the provider. This represents the least amount of
+freedom since users would not have any choice in how their Pods are
 actually implemented, while also offering the most amount of convenience
 as the users get a complete system that is managed and maintained by the
 provider. However, it also represents more responsibilities for the
 providers in managing the resources, deciding how they should function
 together, addressing security, as well as following any specific policy
 or legal obligation arising from such decisions.</p>
-<p>The SaaS paradigm also enables capabilities such as integrating Solid
+<p>The SaaS paradigm also enables capabilities such as Solid
 specifications on top of existing products and services, such as that
 offered by NextCloud<a href="#fn13" class="footnote-ref" id="fnref13"
-role="doc-noteref"><sup>13</sup></a>, by using Solid as a thin-layer of
-APIs on top of the underlying native solutions. This approach can also
-be extended beyond SaaS to provide the resulting solution as PaaS or
-IaaS offerings. More importantly, if Solid specifications are
-constrained only to define how data is stored and accessed through URLs,
-along with some requirements on identities of users and apps, then the
-SaaS model enables any cloud-based storage provider (e.g. Dropbox,
-Google Drive, Microsoft OneDrive) to provide Solid-compatible solutions
-through their existing products and services that are popular and widely
-utilised.</p>
+role="doc-noteref"><sup>13</sup></a>, by Solid the underlying native .
+This approach can also be extended beyond SaaS to provide the resulting
+solution as PaaS or IaaS offerings. More importantly, if Solid
+specifications are constrained only to define how data is stored and
+accessed through URLs, along with some requirements on identities of
+users and apps, then the SaaS model enables any cloud-based storage
+provider (e.g. Dropbox, Google Drive, Microsoft OneDrive) to provide
+Solid-compatible solutions through their existing products and services
+that are popular and widely utilised.</p>
 <h4 id="uc-i5-solid-with-caas">UC-I5: Solid with CaaS</h4>
 <p>CaaS in combination with Solid enables the use of other use-cases
 with additional resource management for providing computing
@@ -1310,25 +1308,24 @@ can be an additional cloud-based service provisioned by providers or
 brokers that can be mutually used by users and apps.</p>
 <h4 id="uc-i6-solid-with-staas-or-daas">UC-I6: Solid with STaaS or
 DaaS</h4>
-<p>The data stored within Solid may contain specific value only through
-additional operations or interpretations. In such cases, rather than
-apps asking for the entirety of (raw) data and then processing it, Solid
-enables the use of STaaS or DaaS paradigms where apps can request
-specific information retrieval methods (e.g. SQL queries) or answers
-(e.g. via semantic reasoning) to be derived from data and provided in
-lieu of sharing data itself. This can be a more privacy-considerate
-model where apps never receive the actual data. The availability of
-information retrieval and question-answering mechanisms can be
-implemented as any of the other cloud paradigms (IaaS, PaaS, SaaS), with
-varying degrees of control possible on whether the users can control
-what data and features are exposed to apps.</p>
+<p>data within Solid contain value through additional operations or
+interpretations, rather than apps asking for the entirety of (raw) data
+and then processing it, Solid use STaaS or DaaS paradigms where apps
+request specific information retrieval methods (e.g. SQL queries) or
+answers (e.g. via semantic reasoning) to be derived from data and
+provided in lieu of sharing data itself. This can be a more
+privacy-considerate model where apps never receive the actual data. The
+availability of information retrieval and question-answering mechanisms
+can be implemented as any of the other cloud paradigms (IaaS, PaaS,
+SaaS), with varying degrees of control possible on whether the users can
+control what data and features are exposed to apps.</p>
 <p>The STaaS and DaaS functionalities also enable third-parties to
 provide additional services on top of Pod implementations by acting as
 information brokers between the users and the apps. For example, a
 STaaS/DaaS service provider can provide an API to calculate fitness
-metrics by retrieving data from a Pod, operating on it, and returning
-the derived information to an app. Separately, the STaaS/DaaS service
-can also be executed locally (i.e. within the Pod) through CaaS
+metrics by retrieving from a Pod, operating on it, and returning the
+derived information to an app. Separately, the STaaS/DaaS service can
+also be executed locally (i.e. within the Pod) through CaaS
 capabilities.</p>
 <h3 id="sec:uc-apps">Use-Cases based on App Management</h3>
 <p>These use-cases are based on different methods by which applications
@@ -1342,9 +1339,7 @@ in Solid where there are no mechanisms in place that require an app to
 declare necessary information (e.g. app provider, policies, legal
 compliance information) and which are checked before allowing the app to
 access data. Note that this refers to additional requirements as
-distinct from conformance to the Solid specifications which only require
-apps to utilise WebID profiles and exchange security tokens for data
-access requests.</p>
+distinct from conformance to the Solid specifications .</p>
 <h4 id="uc-a2-apps-follow-conformance-protocols">UC-A2: Apps follow
 Conformance Protocols</h4>
 <p>This use-case adds requirements for apps in terms of how they should
@@ -1387,17 +1382,17 @@ stores also feature oversight bodies that audit applications and remove
 applications that do not conform to policies or are found to have
 violated terms.</p>
 <p>Solid currently does not have an App store, but does maintain a
-curated list of apps on its website<a href="#fn15" class="footnote-ref"
-id="fnref15" role="doc-noteref"><sup>15</sup></a>. NextCloud’s
-implementation of Solid as an additional layer on top of its own
-services also provides some extent currently unknown) for usability of
-apps developed for NextCloud<a href="#fn16" class="footnote-ref"
-id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
+curated list of apps<a href="#fn15" class="footnote-ref" id="fnref15"
+role="doc-noteref"><sup>15</sup></a>. NextCloud’s implementation of
+Solid as an additional layer on top of its own services also provides
+some extent currently unknown) for usability of apps developed for
+NextCloud<a href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a>.</p>
 <h4 id="uc-a4-apps-are-vetted-or-certified">UC-A4: Apps are Vetted or
 Certified</h4>
 <p>Vetting or certification is the process by which an app is audited or
 assessed and provided a demonstrable and verifiable certificate or seal
-that it can produce as a trust mechanisms. Certification criteria can be
+that it can produce as a trust mechanism. Certification criteria can be
 based on standards - such as use of ISO certification agencies,
 established codes and guidelines, and legal compliance requirements -
 such as GDPR’s use of certifications and seals as a measure of
@@ -1412,7 +1407,8 @@ currently apps only have to have a verifiable identity attached to the
 certification is the use of legally enforceable agreements on what the
 app is permitted or restricted to do, which is the mechanism used by the
 Data Utility Company in the Flanders use-case <span class="citation"
-data-cites=""></span>.</p>
+data-cites="FlemishDataUtility"><a href="#ref-FlemishDataUtility"
+role="doc-biblioref">[12]</a></span>.</p>
 <h4 id="uc-a6-apps-are-installed-locally-in-a-pod">UC-A6: Apps are
 installed ‘locally’ in a Pod</h4>
 <p>Tangential to how apps are provisioned is the question of how apps
@@ -1449,7 +1445,7 @@ ecosystem</h4>
 specific apps to be allowed to be used or installed for a given Pod.
 This is different from the use of an App store where any app that
 satisfies the criteria for inclusion can be used, and instead represents
-the case where a Pod provider specifies the apps that can be used. Users
+the case where a Pod provider specifies apps that can be used. Users
 have no choice but to use only these apps, and nothing else can be used
 without the Provider’s support. Such measures can be enacted for
 purposes of ensuring rigid security, controlling data use, or to lock
@@ -1459,22 +1455,21 @@ restrictions.</p>
 Restrictions to Solid’s Functionalities</h3>
 <p>These use-cases represent additional extensions or restrictions that
 deviate from the current Solid specifications. These are mentioned as
-they have impact on how Solid Pods function, are provisioned, their
-portability and interoperability, and have important considerations on
+they impact how Solid Pods function, are provisioned, their portability
+and interoperability, and have important considerations on
 responsibilities of both providers and users, especially under GDPR.</p>
 <h4 id="uc-l1-limitations-on-data-andor-apps">UC-L1: Limitations on Data
 and/or Apps</h4>
 <p>A Pod or App provider may place limits on data or apps whereby the
 user cannot exercise control in terms of editing or deleting it. For
 example, a Pod provider may provision the pod with some pre-configured
-apps that the user cannot remove, or some pre-stored data that the user
-cannot modify. The user may have the option of adding and managing other
-additional data and apps. An extreme extension of this concept is the
-case where all data within the Pod is not within the user’s control, and
-where the Pod is effectively a storage-only solution. Less severe
-iterations are also possible, such as only allowing certain types of
-data to be stored in the Pod, or for the data to only be shared with
-certain apps.</p>
+apps that the user cannot remove may have the option of adding and
+managing other additional data and apps. An extreme extension of this
+concept is the case where all data within the Pod is not within the
+user’s control, and where the Pod is effectively a storage solution.
+Less severe iterations are also possible, such as only allowing certain
+types of data to be stored in the Pod, or for the data to only be shared
+with certain apps.</p>
 <h4 id="uc-l2-shared-pods-with-multiple-users">UC-L2: Shared Pods with
 Multiple Users</h4>
 <p>A Pod may have multiple users with or without separation of data
@@ -1512,7 +1507,7 @@ deciding how such separations should be implemented and managed. For
 example, if Pods are implemented on a single storage infrastructure with
 separation managed virtually through software, then a valid security
 concern is whether accessing one user’s data can accidentally retrieve
-another another user’s data.</p>
+another user’s data.</p>
 <h2 id="sec:GDPR">Applying GDPR to Solid</h2>
 <p>The GDPR <span class="citation" data-cites="Regulation_GDPR"><a
 href="#ref-Regulation_GDPR" role="doc-biblioref">[3]</a></span> is a
@@ -1529,8 +1524,8 @@ href="#ref-janssenDecentralizedDataProcessing2021"
 role="doc-biblioref">[6]</a>, <a
 href="#ref-debotDataSharingPatterns2021" role="doc-biblioref">[26]</a>,
 <a href="#ref-janssenPersonalDataStores2019"
-role="doc-biblioref">[37]</a></span>, which we use to focus on specifics
-for Solid’s implementations.</p>
+role="doc-biblioref">[37]</a></span>, which we use for Solid’s
+implementations.</p>
 <h3 id="lawfulness-fairness-transparency">Lawfulness, Fairness,
 Transparency</h3>
 <p>GDPR Art.5-1a stipulates that all processing must be “processed
@@ -1561,8 +1556,8 @@ concerns, and both require consent, they must collect such consent
 separately. Such conditions for the <em>validity</em> of consent are
 noted in Art.7, Rec.32, Rec.33, and Rec.43, along with the necessity to
 maintain records in Art.7 and Rec.42.</p>
-<p>In Solid, while there is a record of access been granted to an app
-for specific data, it is not sufficient to meet GDPR’s requirements for
+<p>In Solid, while there is a record access granted to an app for
+specific data, it is not sufficient to meet GDPR’s requirements for
 either valid consent or a valid record of consent. For example, Solid’s
 mechanisms and records do not specify who the Data Controller is, the
 purposes for use of that data, the categories of data (especially for
@@ -1596,19 +1591,19 @@ establishing the access control authorisation from an app request, nor
 to record subsequent accesses to the data being performed using specific
 legal bases.</p>
 <p>An important point to consider in terms of behaviour is that
-organisation’s may readily share data with other third-party
-organisations based on (assessed and validated) the third party’s
-legitimate interests or as part of a legal obligation (e.g. Banks and
-Know-Your-Customer). In the case of Solid, because the data is stored on
-a Pod and managed by a user - the responsibility of handling such
-requests also falls on the users. This represents an unexplored area of
-GDPR, such as for deciding what are the legal options for when Solid Pod
-users receive a request to access data but with the legal basis as
-legitimate interest or legal obligation instead of consent or contract.
-The answer may be simpler in cases where users are also data subjects,
-since this means they can exercise the right to object (Art.21) for
-legitimate interests, while handling legal obligation requests can be
-challenging regarding establishing the validity of such requests.</p>
+organisations may share data with third-party organisations based on
+(assessed and validated) the third party’s legitimate interests or as
+part of a legal obligation (e.g. Banks and Know-Your-Customer). In the
+case of Solid, because the data is stored on a Pod and managed by a user
+- the responsibility of handling such requests also falls on the users.
+This represents an unexplored area of GDPR, such as for deciding what
+are the legal options for when Solid Pod users receive a request to
+access data but with the legal basis as legitimate interest or legal
+obligation instead of consent or contract. The answer may be simpler in
+cases where users are also data subjects, since this means they can
+exercise the right to object (Art.21) for legitimate interests, while
+handling legal obligation requests can be challenging regarding
+establishing the validity of such requests.</p>
 <p>Fairness refers to the necessity for processing to be in line with
 reasonable expectations of data subjects and which does not have
 unjustified adverse effects on them. This principle provides data
@@ -1641,8 +1636,8 @@ recorded as part of the data requests also compounds the detrimental
 impact. This results in difficulties for assessing the transparency of
 data processing operations.</p>
 <h3 id="purpose-limitation">Purpose Limitation</h3>
-<p>GDPR’s Art.5-1b requries data be “collected for specified, explicit
-and legitimate purposes and not further processed in a manner that is
+<p>GDPR’s Art.5-1b data be “collected for specified, explicit and
+legitimate purposes and not further processed in a manner that is
 incompatible with those purposes”. This necessitates all data requests
 to be associated with a purpose that not only covers the initial
 justification, but also any subsequent additional uses of that data. The
@@ -1689,8 +1684,8 @@ is not currently supported by Solid’s specifications.</p>
 <h3 id="accuracy">Accuracy</h3>
 <p>The principle of accuracy in Art.5-1d requires Data Controllers to
 ensure data is “accurate and, where necessary, kept up to date”. Through
-Solid Pods, in theory, data subjects having (edit) access to their own
-data also gain the ability to rectify any inaccuracies or deficiencies
+Solid Pods, in theory, data subjects having () access to their own data
+also gain the ability to rectify any inaccuracies or deficiencies
 themselves. However, in practice this may be difficult in cases where
 data is obfuscated or not comprehensible by data subjects, or through
 lack of relevant tools, or because modifying such data may affect its
@@ -1764,16 +1759,16 @@ assessment and implementing risk management and mitigation processes in
 a systematic manner integrated with the processing (Art.32, Rec.75,
 Rec.76. Rec.77). The use of ‘security measures’ is a shortened common
 for referring to both technical and organisational measures under GDPR
-based on their intention to protect and safeguard data as well as
-impacts in the broadest sense.</p>
+based on their intention to protect and safeguard data impacts in the
+broadest sense.</p>
 <p>While the implementation of measures related to security are
 typically the responsibility of a Data Controller, for Solid this
 changes based on who controls the implementation of Pods, resources,
-data management, and apps. not the case since the storage is managed by
-the user. For example, if the user provisions a Pod using SaaS, they
-have no control over the underlying infrastructure, whereas if they
-provision it using IaaS, then they control the implementation resources.
-The integrity and confidentiality principle is important given that it
+data management, and apps the case the storage is managed by the user.
+For example, if the user provisions a Pod using SaaS, they have no
+control over the underlying infrastructure, whereas if they provision it
+using IaaS, then they control the implementation resources. The
+integrity and confidentiality principle is important given that it
 affects aspects such as backup, integrity controls, protection against
 attacks (e.g. hacking, DDoS), data breaches, maintaining logs, ensuring
 effectiveness for access control, etc. It is also important for
@@ -1798,20 +1793,20 @@ states - “The controller shall be responsible for, and be able to
 demonstrate compliance” with the other principles. Depending on the role
 (Controller or Processor), the accountability principle requires
 planning and operational management along with documentation of specific
-obligations from GDPR. For example, implementing policies for
-implementing ‘data protection by design and default’ (Art.25),
-appropriate contractual measures between Controllers and Processors
-(Art.29), ROPA records (Art.30), handling data breaches (Art.33,
-Art.34), Data Protection Impact Assessment (DPIA, Art.35), appointing a
-Data Protection Officer (Art.37–39), and utilising appropriate codes of
-conducts and certifications (Art.40–42). These obligations are required
-to be maintained and re-evaluated on an ongoing basis, and are typically
+obligations from GDPR. For example, implementing policies for ‘data
+protection by design and default’ (Art.25), appropriate contractual
+measures between Controllers and Processors (Art.29), ROPA records
+(Art.30), handling data breaches (Art.33, Art.34), Data Protection
+Impact Assessment (DPIA, Art.35), appointing a Data Protection Officer
+(Art.37–39), and utilising appropriate codes of conducts and
+certifications (Art.40–42). These obligations are required to be
+maintained and re-evaluated on an ongoing basis, and are typically
 integrated into an organisation’s management frameworks and policies.
 The records kept as part of these processes (e.g. ROPA) are utilised as
 the first avenues for inspections and audits into compliance
 practices.</p>
 <p>The Solid specifications provide rudimentary measures for supporting
-such records, through registries of access requests, but which do not
+such records through registries of access requests, but which do not
 satisfy the full extent of requirements required by GDPR (e.g. ROPA
 Art.30). This is an important deficiency in cases where the user (or
 provider) has to maintain records associated with (other) resource
@@ -1843,14 +1838,14 @@ implemented.</p>
 <p>The nuance between a controller and processor is an important one
 given the implications of additional obligations that come with being a
 controller. In most cases, even where a processor seems to be specifying
-the means for how processing takes place (e.g. use of a specific
-technolgy), it is essential to clarify that such operational decisions
-are permitted for a processor as long as limit their processing to what
-has been agreed in the contract with the controller <span
-class="citation" data-cites="EDPSGuidelinesConcepts2019"><a
+the means for how processing takes place (e.g. use of a specific ), it
+is essential to clarify that such operational decisions are permitted
+for a processor as long as limit their processing to what has been
+agreed in the contract with the controller <span class="citation"
+data-cites="EDPSGuidelinesConcepts2019"><a
 href="#ref-EDPSGuidelinesConcepts2019"
 role="doc-biblioref">[31]</a></span>. Therefore, merely determining the
-technological implementation of processing if not sufficient to become a
+technological implementation of processing not sufficient to become a
 controller if such implementations are backed by appropriate contractual
 terms, and where the processor is not the one that determines what data
 should be processed, its purposes, legal basis, etc. - which are to be
@@ -1885,18 +1880,18 @@ exemption cannot be valid and the user is considered a controller for
 processing of their own data.</p>
 <p>In Solid, the determination of who is the controller therefore is
 based on what entity determines how data should be used and how it
-should be processed. Where users control the implementation of pods and
-resources, they determine the means of storage (as a processing
-operation) - therefore they should be considered as controllers for the
-purposes of storing their information. Similarly, when users do not
-control the Pod infrastructure and do not have access to the underlying
-implementations, they should not be considered as controllers - but
-instead the Pod and resource providers who retain control should be
-specified as controllers. In this, we presume that Pod users are the
-data subjects, because if they are not, then based on their relationship
-to the data subject (e.g. parents) they may end up being
-(joint-)controllers irrespective of the control over underlying
-infrastructure.</p>
+should be processed.</p>
+<p>Where users control the implementation of pods and resources, they
+determine the means of storage (as a processing operation) - therefore
+they should be considered as controllers for the purposes of storing
+their information. Similarly, when users do not control the Pod
+infrastructure and do not have access to the underlying implementations,
+they should not be considered as controllers - but instead the Pod and
+resource providers who retain control should be specified as
+controllers. In this, we presume that Pod users are the data subjects,
+because if they are not, then based on their relationship to the data
+subject (e.g. parents) they may end up being (joint-)controllers
+irrespective of the control over underlying infrastructure.</p>
 <p>The issue of Pod-based controllers is entirely separate from the use
 of data by apps, which will have their own separate considerations for
 determining controller. Even if users (as data subjects) retain the
@@ -2153,7 +2148,7 @@ as a fair equivalent of consenting and withdrawal on its own. This is
 because of the following reasons:</p>
 <ul>
 <li><p><em>access control</em> only governs access to data, therefore
-the permission it governs is only restricted to access of that data. The
+the permission it governs is restricted to access of that data. The
 Solid specifications do not mention any requirement to interpret
 revocation of access to also restrict further processing of data by an
 app.</p></li>
@@ -2204,13 +2199,15 @@ href="#ref-mattePurposesIABEurope2020"
 role="doc-biblioref">[49]</a></span>) and where users are not aware of
 other uses of data because of the notice for consent also containing
 information about other legal bases <span class="citation"
-data-cites=""></span>. In Solid, since there is no concept of legal
-basis or consent, and all access requests are treated as a singular
-combined transaction, it is entirely possible for the consenting request
-to have specified that the data would be used for additional purposes
-through a separate legal basis, and which the users do not realise or
-misinterpret because of their understanding that Solid enables control
-of data <em>regardless</em> of legal basis.</p>
+data-cites="santosAreCookieBanners2020"><a
+href="#ref-santosAreCookieBanners2020"
+role="doc-biblioref">[47]</a></span>. In Solid, since there is no
+concept of legal basis or consent, and all access requests are treated
+as a singular combined transaction, it is entirely possible for the
+consenting request to have specified that the data would be used for
+additional purposes through a separate legal basis, and which the users
+do not realise or misinterpret because of their understanding that Solid
+enables control of data <em>regardless</em> of legal basis.</p>
 <h3 id="hidden-actors-exploitation">Hidden Actors Exploitation</h3>
 <p>Even where entities across both side, e.g. users and app developers,
 are well-behaved, their use of other third-party vendors and services
@@ -2266,11 +2263,11 @@ consented to them <span class="citation"
 data-cites="vealeImpossibleAsksCan2022"><a
 href="#ref-vealeImpossibleAsksCan2022"
 role="doc-biblioref">[45]</a></span>.</p>
-<p>Not knowing what data categories are involved and their sensitivity
-also has implications for the risk management and mitigation for all
-entities involved. If a Pod is provisioned using PaaS or SaaS, then the
-provider may be obliged to provide additional appropriate features if
-the use-case requires sensitive data (e.g. health data). Without such
+<p>Not knowing data categories involved and their sensitivity also has
+implications for the risk management and mitigation for all entities
+involved. If a Pod is provisioned using PaaS or SaaS, then the provider
+may be obliged to provide additional appropriate features if the
+use-case requires sensitive data (e.g. health data). Without such
 knowledge, providers only have to support the bare minimum security and
 risk features, and may put the responsibilities and burdens on to users
 to manage their own data related risks.</p>
@@ -2401,11 +2398,11 @@ concepts with legal relevance and interpretations. Similarly, Solid’s
 use of ‘Agent’ is ambiguous and lacks relating Pods, resources, data,
 and apps to legal roles such as Controllers, Processors, and Data
 Subjects - which are necessary to understand and establish
-responsibilities and accountability within use-cases. Similarly, Solid’s
-‘policies’ currently only contain rudimentary access control
-constraints, and lack the nuances and extent required for understanding
-and managing data practices based on legal (e.g. legal bases, purposes)
-and social norms (e.g. sensitivity, risks).</p>
+responsibilities and accountability within use-cases. Solid’s ‘policies’
+currently only contain rudimentary access control constraints, and lack
+the nuances and extent required for understanding and managing data
+practices based on legal (e.g. legal bases, purposes) and social norms
+(e.g. sensitivity, risks).</p>
 <p>To resolve this disparity, we strongly recommend the establishment of
 a consistent vocabulary for expressing Solid’s use-cases in terms of
 actors, roles, processes – and to use these to define obligations,
@@ -2650,15 +2647,15 @@ their providers are associated with its implementations. This enables
 assessing the resulting behaviour of Solid Pods in terms of what
 resources are involved, who are the entities associated with them, who
 has control, and who is accountable, and what freedoms and capabilities
-are exhibited by a Pod. We explored such implications of some use-cases
-by considering the different arrangement of entities and resources, and
-determined the resulting implications on data control retained by the
+are exhibited by a Pod. We explored implications of use-cases by
+considering the different arrangement of entities and resources, and
+determined the resulting implications on control retained by the
 individual. This article thus establishes a framework for investigating
 whether a given use-case or implementation does indeed fulfil Solid’s
 vision to empower individual through data sovereignty, or continues
 current practices and its problems by only marginally changing the data
 storage mechanism.</p>
-<p>We then investigation how GDPR applies to Solid by interpreting its
+<p>We then investigat how GDPR applies to Solid by interpreting its
 principles in terms of Solid’s concepts and implementations. Our
 analysis shows a clear and severe deficiency between Solid’s
 specifications and the concepts, compliance obligations, and enforcement
@@ -2670,19 +2667,18 @@ by legal processes. We also identified the necessity for further
 exploring the determination of controllers and processors based on the
 roles of entities within a Solid use-case regarding determination of
 purposes and retention of control. This is separate from the issue of
-apps’s being associated with controllers - which we highlight as a
-problem due to current lack of requirements for apps to declare who
-operates them. We have also highlighted the impacts arising from Solid
-in terms of exercising rights, cross-border data transfers, data
-breaches, and enforcement of GDPR’s principles.</p>
-<p>Finally, we found that there are severe problems present in
-conventional use-cases that have known GDPR compliance violations, and
-which are also applicable to Solid. Their severity was increased due to
-lack of certain processes within Solid which make it difficult if not
-impossible to apply known remedies. We discussed potential approaches
-that can resolve these problems, both using known and novel research and
-developments, with a specific focus on how Solid itself can be further
-developed or extended, and through use of both technical and
+apps being associated with controllers - which we highlight as a problem
+due to current lack of requirements for apps to declare who operates
+them. We have also highlighted the impacts arising from Solid in terms
+of exercising rights, cross-border data transfers, data breaches, and
+enforcement of GDPR’s principles.</p>
+<p>Finally, we found that severe problems present in conventional
+use-cases that have known GDPR compliance violations. Their severity was
+increased due to lack of certain processes within Solid which make it
+difficult if not impossible to apply known remedies. We discussed
+potential approaches that can resolve these problems, both using known
+and novel research and developments, with a specific focus on how Solid
+be further developed or extended, and through use of both technical and
 socio-technical innovations. To argue for their feasibility, we included
 relevant associations with existing efforts for each argument.</p>
 <p>Thus, through this article, we have presented our findings regarding
@@ -2701,12 +2697,13 @@ use of communities to mitigate burdens on individuals. Through these, we
 hope to have provided a path based on pragmatism and responsible
 development that can take Solid towards the realisation of its
 vision.</p>
-<h2>Funding Acknowledgements</h2>
-<p>This work has been made possible through a Short Term Scientific Mission (STSM) grant from COST ACTION CA19134 Distributed Knowledge Graphs (DKG) - funded by the Horizon 2020 Framework Programme of the European Union. The author (Harshvardhan J. Pandit) has received funding from the ADAPT SFI Centre for Digital Media Technology is funded by Science Foundation Ireland through the SFI Research Centres Programme and is co-funded under the European Regional Development Fund (ERDF) through Grant 13/RC/2106_P2.</p>
+
+<p><strong>Acknowledgements:</strong>This work has been made possible through a Short Term Scientific Mission (STSM) grant from COST ACTION CA19134 Ditributed Knowledge Graphs (DKG)---funded by the Horizon 2020 Framework Programme of the European Union. The author (Harshvardhan J. Pandit) has received funding from the ADAPT SFI Centre for Digital Media Technology is funded by Science Foundation Ireland through the SFI Research Centres Programme and is co-funded under the European Regional Development Fund (ERDF) through Grant #13/RC/2106_P2. The author expresses thanks to Ruben Verborgh, Esther De Loof, Pieter Colpaert, U.Gent, IMEC, SolidLab, Data Utility Company, and Beatriz Esteves for their support and assistance.</p>
+
 <h2 class="unnumbered" id="bibliography">References</h2>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body" role="list">
 <div id="ref-mansourDemonstrationSolidPlatform2016" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">E.
 Mansour <em>et al.</em>, <span>“A <span>Demonstration</span> of the
 <span>Solid Platform</span> for <span>Social Web
@@ -2717,13 +2714,12 @@ Web</span> - <span>WWW</span> ’16 <span>Companion</span></em>, 2016, pp.
 href="https://doi.org/10.1145/2872518.2890529">10.1145/2872518.2890529</a>.
 </div>
 </div>
-<div id="ref-SolidTechnicalReports" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-SolidTechnicalReports" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div
 class="csl-right-inline"><span>“Solid <span>Technical
 Reports</span>.”</span> https://solid.github.io/specification/. </div>
 </div>
-<div id="ref-Regulation_GDPR" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Regulation_GDPR" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[3] </div><div
 class="csl-right-inline"><span>“Regulation (<span>EU</span>) 2016/679 of
 the <span>European Parliament</span> and of the <span>Council</span> of
@@ -2734,14 +2730,14 @@ such data, and repealing <span>Directive</span> 95/46/<span>EC</span>
 Journal of the European Union</em>, vol. L119, May 2016. </div>
 </div>
 <div id="ref-edwardsDataSubjectsData2019" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">L.
 Edwards, M. Finck, M. Veale, and N. Zingales, <span>“Data subjects as
 data controllers: A <span>Fashion</span>(able) concept?”</span>
 <em>Internet Policy Review</em>, Jun. 2019. </div>
 </div>
 <div id="ref-janssenPersonalInformationManagement2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">H.
 Janssen, J. Cobbe, and J. Singh, <span>“Personal information management
 systems: A user-centric privacy utopia?”</span> <em>Internet Policy
@@ -2750,7 +2746,7 @@ href="https://doi.org/10.14763/2020.4.1536">10.14763/2020.4.1536</a>.
 </div>
 </div>
 <div id="ref-janssenDecentralizedDataProcessing2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[6] </div><div class="csl-right-inline">H.
 Janssen, J. Cobbe, C. Norval, and J. Singh, <span>“Decentralized data
 processing: Personal data stores and the <span>GDPR</span>,”</span>
@@ -2759,38 +2755,35 @@ Jan. 2021, doi: <a
 href="https://doi.org/10.1093/idpl/ipaa016">10.1093/idpl/ipaa016</a>.
 </div>
 </div>
-<div id="ref-SolidProtocol" class="csl-entry" role="doc-biblioentry">
+<div id="ref-SolidProtocol" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[7] </div><div
 class="csl-right-inline"><span>“Solid <span>Protocol</span>.”</span>
 https://solidproject.org/TR/protocol. </div>
 </div>
-<div id="ref-SolidWebIDProfile" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-SolidWebIDProfile" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[8] </div><div
 class="csl-right-inline"><span>“Solid <span>WebID
 Profile</span>.”</span> https://solid.github.io/webid-profile/. </div>
 </div>
-<div id="ref-WebAccessControl" class="csl-entry" role="doc-biblioentry">
+<div id="ref-WebAccessControl" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[9] </div><div
 class="csl-right-inline"><span>“Web <span>Access Control</span>.”</span>
 https://solid.github.io/web-access-control-spec/. </div>
 </div>
-<div id="ref-AccessControlPolicy" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-AccessControlPolicy" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[10] </div><div
 class="csl-right-inline"><span>“Access <span>Control Policy</span>
 (<span>ACP</span>).”</span> https://solidproject.org/TR/acp. </div>
 </div>
 <div id="ref-SolidApplicationInteroperability" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[11] </div><div
 class="csl-right-inline"><span>“Solid <span>Application
 Interoperability</span>.”</span>
 https://solid.github.io/data-interoperability-panel/specification/.
 </div>
 </div>
-<div id="ref-FlemishDataUtility" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-FlemishDataUtility" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[12] </div><div
 class="csl-right-inline"><span>“<span>The Flemish Data Utility
 Company</span>,”</span> <em>www.vlaanderen.be</em>.
@@ -2798,7 +2791,7 @@ https://www.vlaanderen.be/digitaal-vlaanderen/het-vlaams-datanutsbedrijf/the-fle
 </div>
 </div>
 <div id="ref-vandammeResearchAgendaPersonal2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[13] </div><div class="csl-right-inline">S.
 Van Damme, P. Mechant, E. Vlassenroot, M. Van Compernolle, R. Buyle, and
 D. Bauwens, <span>“Towards a <span>Research Agenda</span> for
@@ -2809,7 +2802,7 @@ href="https://doi.org/10.1007/978-3-031-15086-9_36">10.1007/978-3-031-15086-9_36
 </div>
 </div>
 <div id="ref-buyleStreamliningGovernmentalProcesses2019"
-class="csl-entry" role="doc-biblioentry">
+class="csl-entry" role="listitem">
 <div class="csl-left-margin">[14] </div><div class="csl-right-inline">R.
 Buyle <em>et al.</em>, <span>“Streamlining governmental processes by
 putting citizens in control of their personal data,”</span> in
@@ -2818,7 +2811,7 @@ putting citizens in control of their personal data,”</span> in
 <span>Challenges</span> in <span>Eurasia</span></em>, 2019. </div>
 </div>
 <div id="ref-verbruggePersonalDataVault2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[15] </div><div class="csl-right-inline">S.
 Verbrugge, F. Vannieuwenborg, M. Van der Wee, D. Colle, R. Taelman, and
 R. Verborgh, <span>“Towards a personal data vault society: An interplay
@@ -2831,7 +2824,7 @@ href="https://doi.org/10.1109/FITCE53297.2021.9588540">10.1109/FITCE53297.2021.9
 </div>
 </div>
 <div id="ref-havurGreaterControlTransparency2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[16] </div><div class="csl-right-inline">G.
 Havur, M. Sande, and S. Kirrane, <span>“Greater <span>Control</span> and
 <span>Transparency</span> in <span>Personal Data
@@ -2841,7 +2834,7 @@ Security</span> and <span>Privacy</span></em>, 2020, pp. 655–662, doi:
 <a href="https://doi.org/ggxswk">ggxswk</a>. </div>
 </div>
 <div id="ref-estevesODRLProfileExpressing2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[17] </div><div class="csl-right-inline">B.
 Esteves, H. J. Pandit, and V. Rodríguez-Doncel, <span>“<span>ODRL
 Profile</span> for <span>Expressing Consent</span> through
@@ -2852,7 +2845,7 @@ Workshops</span> (<span>EuroS PW</span>)</em>, 2021, pp. 298–306, doi:
 <a href="https://doi.org/gnck5x">gnck5x</a>. </div>
 </div>
 <div id="ref-debackerePolicyOrientedArchitectureEnforcing2022"
-class="csl-entry" role="doc-biblioentry">
+class="csl-entry" role="listitem">
 <div class="csl-left-margin">[18] </div><div class="csl-right-inline">L.
 Debackere, P. Colpaert, R. Taelman, and R. Verborgh, <span>“A
 <span>Policy-Oriented Architecture</span> for <span>Enforcing
@@ -2863,7 +2856,7 @@ href="https://doi.org/10.1145/3487553.3524630">10.1145/3487553.3524630</a>.
 </div>
 </div>
 <div id="ref-estevesUsingODRLProfile2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[19] </div><div class="csl-right-inline">B.
 Esteves, V. Rodríguez-Doncel, H. J. Pandit, N. Mondada, and P.
 McBennett, <span>“Using the <span>ODRL Profile</span> for <span>Access
@@ -2874,7 +2867,7 @@ href="https://doi.org/10.1007/978-3-031-11609-4_3">10.1007/978-3-031-11609-4_3</
 </div>
 </div>
 <div id="ref-akaichiSemanticTechnologyBased2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[20] </div><div class="csl-right-inline">I.
 Akaichi, <span>“Semantic <span>Technology</span> based <span>Usage
 Control</span> for <span>Decentralized Systems</span>.”</span>
@@ -2882,7 +2875,7 @@ Control</span> for <span>Decentralized Systems</span>.”</span>
 href="https://arxiv.org/abs/2206.04947">https://arxiv.org/abs/2206.04947</a></div>
 </div>
 <div id="ref-braunAttributebasedAccessControl2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[21] </div><div class="csl-right-inline">C.
 H.-J. Braun and T. Käfer, <span>“Attribute-based access control on solid
 pods using privacy-friendly credentials,”</span> in <em>Proceedings of
@@ -2892,7 +2885,7 @@ conference on semantic systems (<span>SEMANTiCS</span> 2022) ed.:
 <span>U</span>. <span>Şimşek</span></em>, 2022, p. 5. </div>
 </div>
 <div id="ref-jesus-azabalSOLIDPeaaSYour2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">M.
 Jesús-Azabal, J. Berrocal, S. Laso, J. M. Murillo, and J. Garcia-Alonso,
 <span>“<span>SOLID</span> and <span>PeaaS</span>: <span>Your
@@ -2902,14 +2895,13 @@ Engineering</span></em>, 2020, pp. 5–10, doi: <a
 href="https://doi.org/10.1007/978-3-030-65665-2_1">10.1007/978-3-030-65665-2_1</a>.
 </div>
 </div>
-<div id="ref-dedeckerWhatPod2022" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-dedeckerWhatPod2022" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[23] </div><div class="csl-right-inline">R.
 Dedecker, W. Slabbinck, J. Wright, P. Hochstenbach, P. Colpaert, and R.
 Verborgh, <span>“What’s in a <span>Pod</span>?”</span> Oct. 2022. </div>
 </div>
 <div id="ref-demulderPROV4ITDaTaTransparentDirect2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[24] </div><div class="csl-right-inline">G.
 De Mulder, B. De Meester, P. Heyvaert, R. Taelman, A. Dimou, and R.
 Verborgh, <span>“<span>PROV4ITDaTa</span>: <span>Transparent</span> and
@@ -2919,7 +2911,7 @@ Conference</span> 2021</em>, 2021, pp. 695–697, doi: <a
 href="https://doi.org/gmjqg6">gmjqg6</a>. </div>
 </div>
 <div id="ref-estevesAutomatingResponseGDPR2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[25] </div><div class="csl-right-inline">B.
 Esteves, V. Rodriguez-Doncel, and R. Longares, <span>“Automating the
 response to <span>GDPR</span>’s <span>Right</span> of
@@ -2928,7 +2920,7 @@ Conference</span> on <span>Legal Knowledge</span> and <span>Information
 Systems</span> (<span>JURIX</span> 2022)</em>, 2022, p. 6. </div>
 </div>
 <div id="ref-debotDataSharingPatterns2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[26] </div><div class="csl-right-inline">D.
 De Bot and T. Haegemans, <span>“Data <span>Sharing Patterns</span> as a
 <span>Tool</span> to <span>Tackle Legal Considerations</span> about
@@ -2938,7 +2930,7 @@ Research Report DGT_1</em>. <span>Digita</span>, pp. 1–25, Jan-2021.
 </div>
 </div>
 <div id="ref-espositoAssessingSolidProtocol2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[27] </div><div class="csl-right-inline">C.
 Esposito, O. Hartig, R. Horne, and C. Sun, <span>“Assessing the
 <span>Solid Protocol</span> in <span>Relation</span> to
@@ -2947,7 +2939,7 @@ Esposito, O. Hartig, R. Horne, and C. Sun, <span>“Assessing the
 href="https://arxiv.org/abs/2210.08270">https://arxiv.org/abs/2210.08270</a></div>
 </div>
 <div id="ref-TechDispatch3020Personal2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[28] </div><div
 class="csl-right-inline"><span>“<span>TechDispatch</span> #3/2020 -
 <span>Personal Information Management Systems</span> | <span>European
@@ -2955,7 +2947,7 @@ Data Protection Supervisor</span>.”</span>
 https://edps.europa.eu/data-protection/our-work/publications/techdispatch/techdispatch-32020-personal-information_en,
 2020. </div>
 </div>
-<div id="ref-ISO-17788" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ISO-17788" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[29] </div><div
 class="csl-right-inline">14:00-17:00,
 <span>“<span>ISO</span>/<span>IEC</span> 17788:2014
@@ -2964,8 +2956,7 @@ class="csl-right-inline">14:00-17:00,
 https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/06/05/60544.html.
 </div>
 </div>
-<div id="ref-CloudComputingRisk" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-CloudComputingRisk" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[30] </div><div
 class="csl-right-inline"><span>“Cloud <span>Computing Risk
 Assessment</span>,”</span> <em>ENISA</em>.
@@ -2973,7 +2964,7 @@ https://www.enisa.europa.eu/publications/cloud-computing-risk-assessment.
 </div>
 </div>
 <div id="ref-EDPSGuidelinesConcepts2019" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[31] </div><div
 class="csl-right-inline"><span>“<span>EDPS Guidelines</span> on the
 concepts of controller, processor and joint controllership under
@@ -2981,7 +2972,7 @@ concepts of controller, processor and joint controllership under
 <span>European Data Protection Supervisor (EDPS)</span>, Nov. 2019.
 </div>
 </div>
-<div id="ref-ISO-22123" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ISO-22123" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[32] </div><div
 class="csl-right-inline">14:00-17:00,
 <span>“<span>ISO</span>/<span>IEC</span> 22123-1:2021
@@ -2990,7 +2981,7 @@ class="csl-right-inline">14:00-17:00,
 https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/08/03/80350.html.
 </div>
 </div>
-<div id="ref-ISO-19944-1" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ISO-19944-1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[33] </div><div
 class="csl-right-inline">14:00-17:00,
 <span>“<span>ISO</span>/<span>IEC</span> 19944-1:2020 <span>Cloud</span>
@@ -3000,7 +2991,7 @@ categories and data use <span>Part</span> 1:
 https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/95/79573.html.
 </div>
 </div>
-<div id="ref-ISO29184" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ISO29184" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[34] </div><div
 class="csl-right-inline">ISO/IEC,
 <span>“<span>ISO</span>/<span>IEC</span> 29184:2020
@@ -3008,7 +2999,7 @@ class="csl-right-inline">ISO/IEC,
 notices and consent.”</span> <span>International Standards Organisation
 (ISO)</span>, Jun-2020. </div>
 </div>
-<div id="ref-ISO-7498" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ISO-7498" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[35] </div><div
 class="csl-right-inline">14:00-17:00,
 <span>“<span>ISO</span>/<span>IEC</span> 7498-1:1994
@@ -3019,7 +3010,7 @@ https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/02/02
 </div>
 </div>
 <div id="ref-verborghTriplePatternFragments2016" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[36] </div><div class="csl-right-inline">R.
 Verborgh <em>et al.</em>, <span>“Triple <span>Pattern Fragments</span>:
 <span>A</span> low-cost knowledge graph interface for the
@@ -3029,22 +3020,20 @@ href="https://doi.org/10.1016/j.websem.2016.03.003">10.1016/j.websem.2016.03.003
 </div>
 </div>
 <div id="ref-janssenPersonalDataStores2019" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[37] </div><div class="csl-right-inline">H.
 Janssen, J. Cobbe, C. Norval, and J. Singh, <span>“Personal <span>Data
 Stores</span> and the <span>GDPR</span>’s lawful grounds for processing
 personal data,”</span> in <em>Data <span>For Policy</span></em>, 2019,
 doi: <a href="https://doi.org/gj7g8j">gj7g8j</a>. </div>
 </div>
-<div id="ref-Guidelines0520202020" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-Guidelines0520202020" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[38] </div><div
 class="csl-right-inline"><span>“Guidelines 05/2020 on consent under
 <span>Regulation</span> 2016/679,”</span> <span>European Data Protection
 Board (EPDB)</span>, May 2020. </div>
 </div>
-<div id="ref-finckTheyWhoMust2020" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-finckTheyWhoMust2020" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[39] </div><div class="csl-right-inline">M.
 Finck and F. Pallas, <span>“They who must not be
 identifieddistinguishing personal from non-personal data under the
@@ -3053,7 +3042,7 @@ identifieddistinguishing personal from non-personal data under the
 href="https://doi.org/ggzp5p">ggzp5p</a>. </div>
 </div>
 <div id="ref-vealeAdtechRealTimeBidding2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[40] </div><div class="csl-right-inline">M.
 Veale and F. Z. Borgesius, <span>“Adtech and <span>Real-Time
 Bidding</span> under <span>European Data Protection Law</span>,”</span>
@@ -3063,7 +3052,7 @@ href="https://doi.org/10.1017/glj.2022.18">10.1017/glj.2022.18</a>.
 </div>
 </div>
 <div id="ref-harkousPolisisAutomatedAnalysis2018" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[41] </div><div class="csl-right-inline">H.
 Harkous, K. Fawaz, R. Lebret, F. Schaub, K. G. Shin, and K. Aberer,
 <span>“Polisis: <span>Automated</span> analysis and presentation of
@@ -3072,7 +3061,7 @@ Security Symposium</span> (<span>USENIX Security</span> 18)</em>, 2018,
 pp. 531–548. </div>
 </div>
 <div id="ref-kretschmerCookieBannersPrivacy2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[42] </div><div class="csl-right-inline">M.
 Kretschmer, J. Pennekamp, and K. Wehrle, <span>“Cookie
 <span>Banners</span> and <span>Privacy Policies</span>:
@@ -3081,8 +3070,7 @@ on the <span>Web</span>,”</span> <em>ACM Transactions on the Web</em>,
 vol. 15, no. 4, pp. 1–42, Jul. 2021, doi: <a
 href="https://doi.org/gmjqg4">gmjqg4</a>. </div>
 </div>
-<div id="ref-degelingWeValueYour2019" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-degelingWeValueYour2019" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[43] </div><div class="csl-right-inline">M.
 Degeling, C. Utz, C. Lentzsch, H. Hosseini, F. Schaub, and T. Holz,
 <span>“We <span>Value Your Privacy</span> ... <span>Now Take Some
@@ -3092,14 +3080,14 @@ Cookies</span>: <span>Measuring</span> the <span>GDPR</span>’s
 Security Symposium</span></em>, 2019, doi: <a
 href="https://doi.org/gfxgxm">gfxgxm</a>. </div>
 </div>
-<div id="ref-tosdr" class="csl-entry" role="doc-biblioentry">
+<div id="ref-tosdr" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[44] </div><div
 class="csl-right-inline"><span>“Terms of <span>Service</span>;
 <span>Didn</span>’t <span>Read</span>.”</span> https://tosdr.org/.
 </div>
 </div>
 <div id="ref-vealeImpossibleAsksCan2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[45] </div><div class="csl-right-inline">M.
 Veale, M. Nouwens, and C. Santos, <span>“Impossible <span>Asks</span>:
 <span>Can</span> the <span>Transparency</span> and <span>Consent
@@ -3110,7 +3098,7 @@ href="https://doi.org/10.26116/techreg.2022.002">10.26116/techreg.2022.002</a>.
 </div>
 </div>
 <div id="ref-tothDarkPatternsManipulation2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[46] </div><div class="csl-right-inline">M.
 Toth, N. Bielova, and V. Roca, <span>“On dark patterns and manipulation
 of website publishers by <span>CMPs</span>,”</span> <em>Proceedings on
@@ -3120,7 +3108,7 @@ href="https://doi.org/10.56553/popets-2022-0082">10.56553/popets-2022-0082</a>.
 </div>
 </div>
 <div id="ref-santosAreCookieBanners2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[47] </div><div class="csl-right-inline">C.
 Santos, N. Bielova, and C. Matte, <span>“Are cookie banners indeed
 compliant with the law? <span>Deciphering EU</span> legal requirements
@@ -3129,7 +3117,7 @@ banners,”</span> <em>Technology and Regulation</em>, pp. 91–135, Dec.
 2020, doi: <a href="https://doi.org/ghtr3n">ghtr3n</a>. </div>
 </div>
 <div id="ref-jesusConsentReceiptsUsable2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[48] </div><div class="csl-right-inline">V.
 Jesus and H. J. Pandit, <span>“Consent <span>Receipts</span> for a
 <span>Usable</span> and <span>Auditable Web</span> of <span>Personal
@@ -3139,22 +3127,21 @@ href="https://doi.org/10.1109/ACCESS.2022.3157850">10.1109/ACCESS.2022.3157850</
 </div>
 </div>
 <div id="ref-mattePurposesIABEurope2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[49] </div><div class="csl-right-inline">C.
 Matte, C. Santos, and N. Bielova, <span>“Purposes in <span>IAB
 Europe</span>’s <span>TCF</span>: Which legal basis and how are they
 used by advertisers?”</span> in <em>Annual <span>Privacy Forum</span>
 (<span>APF</span> 2020)</em>, 2020. </div>
 </div>
-<div id="ref-DataBrokersCall2014" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-DataBrokersCall2014" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[50] </div><div
 class="csl-right-inline"><span>“Data brokers: <span>A</span> call for
 transparency and accountability,”</span> <span>Federal Trade Commission
 (FTC)</span>, <span>Washington, USA</span>, 2014. </div>
 </div>
 <div id="ref-urbanMeasuringImpactGDPR2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[51] </div><div class="csl-right-inline">T.
 Urban, D. Tatang, M. Degeling, T. Holz, and N. Pohlmann,
 <span>“Measuring the <span>Impact</span> of the <span>GDPR</span> on
@@ -3163,15 +3150,14 @@ Urban, D. Tatang, M. Degeling, T. Holz, and N. Pohlmann,
 href="https://doi.org/ghd9kw">ghd9kw</a>. </div>
 </div>
 <div id="ref-laperdrixBrowserFingerprintingSurvey2020" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[52] </div><div class="csl-right-inline">P.
 Laperdrix, N. Bielova, B. Baudry, and G. Avoine, <span>“Browser
 <span>Fingerprinting</span>: <span>A Survey</span>,”</span> <em>ACM
 Transactions on the Web</em>, vol. 14, no. 2, pp. 1–33, Apr. 2020, doi:
 <a href="https://doi.org/ggxj9v">ggxj9v</a>. </div>
 </div>
-<div id="ref-krogerHowAppVendors2020" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-krogerHowAppVendors2020" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[53] </div><div class="csl-right-inline">J.
 L. Kröger, J. Lindemann, and D. Herrmann, <span>“How do app vendors
 respond to subject access requests? <span>A</span> longitudinal privacy
@@ -3182,7 +3168,7 @@ and <span>Security</span></em>, 2020, pp. 1–10, doi: <a
 href="https://doi.org/gg6z2g">gg6z2g</a>. </div>
 </div>
 <div id="ref-urbanStudySubjectData2019" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[54] </div><div class="csl-right-inline">T.
 Urban, D. Tatang, M. Degeling, T. Holz, and N. Pohlmann, <span>“A
 <span>Study</span> on <span>Subject Data Access</span> in <span>Online
@@ -3190,15 +3176,14 @@ Advertising After</span> the <span>GDPR</span>,”</span> in <em>Data
 <span>Privacy Management</span>, <span>Cryptocurrencies</span> and
 <span>Blockchain Technology</span></em>, 2019, pp. 61–79. </div>
 </div>
-<div id="ref-FourYearsGDPR2022" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-FourYearsGDPR2022" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[55] </div><div
 class="csl-right-inline"><span>“Four <span>Years Under</span> the
 <span>GDPR</span>: <span>How</span> to fix its enforcement.”</span>
 <span>AccessNow</span>, 2022. </div>
 </div>
 <div id="ref-schutzDataProtectionAuthorities2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[56] </div><div class="csl-right-inline">P.
 Schütz, <span>“Data <span>Protection Authorities</span> under the
 <span>EU General Data Protection Regulation</span>. <span>A</span> new
@@ -3206,14 +3191,14 @@ global benchmark (extended version).”</span> <span>Fraunhofer Institute
 for Systems and Innovation Research ISI</span>, Jan-2022. </div>
 </div>
 <div id="ref-nissenbaumContextualApproachPrivacy2011" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[57] </div><div class="csl-right-inline">H.
 Nissenbaum, <span>“A contextual approach to privacy online,”</span>
 <em>Daedalus</em>, vol. 140, no. 4, pp. 32–48, 2011, doi: <a
 href="https://doi.org/fjkb7c">fjkb7c</a>. </div>
 </div>
 <div id="ref-wilsonCrowdsourcingAnnotationsWebsites2016"
-class="csl-entry" role="doc-biblioentry">
+class="csl-entry" role="listitem">
 <div class="csl-left-margin">[58] </div><div class="csl-right-inline">S.
 Wilson <em>et al.</em>, <span>“Crowdsourcing <span>Annotations</span>
 for <span>Websites</span>’ <span>Privacy Policies</span>: <span>Can It
@@ -3223,7 +3208,7 @@ Web</span></em>, 2016, pp. 133–143, doi: <a
 href="https://doi.org/gfxvsd">gfxvsd</a>. </div>
 </div>
 <div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[59] </div><div class="csl-right-inline">H.
 J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
 <span>Data Privacy</span>,”</span> in <em>The 18th <span>International
@@ -3233,7 +3218,7 @@ and <span>Applications</span> of <span>Semantics</span>
 href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
 </div>
 <div id="ref-kurtevaConsentLensSemantics2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[60] </div><div class="csl-right-inline">A.
 Kurteva, T. R. Chhetri, H. J. Pandit, and A. Fensel, <span>“Consent
 through the lens of semantics: <span>State</span> of the art survey and
@@ -3242,7 +3227,7 @@ Preprint, pp. 1–27, Jan. 2021, doi: <a
 href="https://doi.org/gmsjzn">gmsjzn</a>. </div>
 </div>
 <div id="ref-tauginieneEthicalChallengesDynamic2021" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[61] </div><div class="csl-right-inline">L.
 Tauginienė, P. Hummer, A. Albert, A. Cigarini, and K. Vohland, <span>“<a
 href="https://doi.org/10.1007/978-3-030-58278-4_20">Ethical
@@ -3254,7 +3239,7 @@ Wagenknecht, Eds. <span>Cham</span>: <span>Springer International
 Publishing</span>, 2021, pp. 397–416. </div>
 </div>
 <div id="ref-panditProposalsResolvingConsenting2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[62] </div><div class="csl-right-inline">H.
 J. Pandit, <span>“Proposals for <span>Resolving Consenting Issues</span>
 with <span>Signals</span> and <span class="nocase">User-side

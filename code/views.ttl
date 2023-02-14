@@ -284,6 +284,7 @@ hpview:ResearchView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
                 ?publication schema:datePublished ?date .
+                FILTER NOT EXISTS { ?publication a hpcom:DraftPaper } .
             } ORDER By DESC(?date) LIMIT 5
         """ ;
     ];

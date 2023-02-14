@@ -1689,6 +1689,7 @@ hpview:ResearchView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a schema:ScholarlyArticle .
                 ?publication schema:datePublished ?date .
+                FILTER NOT EXISTS { ?publication a hpcom:DraftPaper } .
             } ORDER By DESC(?date) LIMIT 5
         """ ],
         [ a hpcom:SparqlQuery ;
@@ -19846,6 +19847,39 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publication <https://aics2022.mtu.ie/> ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/057-Making-sense-of-Solid> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/drafts/057-Making-sense-of-Solid"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/m29hn"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url "http://doras.dcu.ie/28077/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "Zenodo" ;
+            schema:url "https://zenodo.org/record/7641620"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/057-Making-sense-of-Solid.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:tag hptag:GDPR,
+        hptag:ISO,
+        hptag:Solid,
+        hptag:data-governance,
+        hptag:semantic-web ;
+    schema:datePublished "2023-02-13T00:00:00"^^xsd:dateTime ;
+    schema:description "This article explores Solid as a new technology, and provides a framework to describe its implementations and use-cases using cloud-technology terminology. It also explores GDPR's application and identifies existing issues and solutions that also apply to Solid."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "https://doi.org/10.3390/info14020114"^^xsd:anyURI ;
+    schema:name "Making Sense of Solid for Data Governance and GDPR"@en ;
+    schema:publisher <https://www.mdpi.com/journal/information> ;
+    schema:url "https://doi.org/10.3390/info14020114"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -19888,7 +19922,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "OSF" ;
-            schema:url "https://osf.io/m29hn/"^^xsd:anyURI ] ;
+            schema:url "https://osf.io/m29hn/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "published version" ;
+            schema:url "<https://harshp.com/research/publications/057-Making-sense-of-Solid>"^^xsd:anyURI ] ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/002-Making-sense-of-Solid.html" ;
@@ -19904,8 +19941,8 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder <http://example.com/ADAPT> ;
     schema:identifier ""^^xsd:anyURI ;
     schema:name "Making Sense of Solid for Data Governance and GDPR"@en ;
-    schema:publication <http://example.com/unpublished> ;
-    schema:status "inviting feedback"@en ;
+    schema:publication <http://example.com/published> ;
+    schema:status "published"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
@@ -20985,6 +21022,16 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "DCMI"@en ;
     schema:startDate "2021-10-04T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.dublincore.org/conferences/2021/"^^xsd:anyURI .
+
+<http://example.com/published> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "published"@en ;
+    schema:url "http://example.com/published" .
+
+<http://example.com/unpublished> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "unpublished work"@en ;
+    schema:url "http://example.com/unpublished" .
 
 <http://example.com/workshops/Consent2022> a hpcom:OrganisationEvent,
         schema:PublicationEvent ;
@@ -23660,11 +23707,6 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "Factoring Ethics in Technology, Policy Making and Regulation"@en ;
     schema:url "https://www.intechopen.com/" .
 
-<https://www.mdpi.com/journal/information> a schema:Periodical ;
-    schema:alternateName "Information" ;
-    schema:name "MDPI Information"@en ;
-    schema:url "https://www.mdpi.com/journal/information" .
-
 <https://www.scss.tcd.ie/owen.conlan/> a schema:Person ;
     schema:name "Owen Conlan" .
 
@@ -23793,11 +23835,6 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Semantic Systems"@en ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI .
-
-<http://example.com/unpublished> a schema:Publication ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:name "unpublished work"@en ;
-    schema:url "http://example.com/unpublished" .
 
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -24205,6 +24242,11 @@ hptag:work a hpcom:RenderedItem,
     schema:name "work" ;
     schema:url "https://harshp.com/tags/work"^^xsd:anyURI .
 
+<https://www.mdpi.com/journal/information> a schema:Periodical ;
+    schema:alternateName "Information" ;
+    schema:name "MDPI Information"@en ;
+    schema:url "https://www.mdpi.com/journal/information" .
+
 <https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
     schema:name "Delaram Golpayegani" ;
     schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
@@ -24285,11 +24327,6 @@ hptag:ROPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Register of Processing Activities"@en ;
     schema:url "https://harshp.com/tags/ROPA"^^xsd:anyURI .
-
-hptag:Solid a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Solid"@en ;
-    schema:url "https://harshp.com/tags/Solid"^^xsd:anyURI .
 
 hptag:academic a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24434,6 +24471,11 @@ hptag:ODP a hpcom:RenderedItem,
     schema:name "ODP"@en ;
     schema:url "https://harshp.com/tags/ODP"^^xsd:anyURI .
 
+hptag:Solid a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Solid"@en ;
+    schema:url "https://harshp.com/tags/Solid"^^xsd:anyURI .
+
 hptag:adventure a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "adventure" ;
@@ -24544,11 +24586,6 @@ hptag:AI a hpcom:RenderedItem,
     schema:name "AI"@en ;
     schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
 
-hptag:ISO a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ISO"@en ;
-    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
-
 hptag:ethics a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ethics" ;
@@ -24593,6 +24630,11 @@ list:visually-stunning a hpcom:RenderedItem,
     schema:name "PhD Research"@en ;
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
+
+hptag:ISO a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ISO"@en ;
+    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
 
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24777,11 +24819,6 @@ list:language a hpcom:RenderedItem,
     schema:identifier "language"@en ;
     schema:name "Beautiful Language"@en .
 
-hptag:data-governance a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "data-governance"@en ;
-    schema:url "https://harshp.com/tags/data-governance"^^xsd:anyURI .
-
 hptag:rant a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "rant" ;
@@ -24821,6 +24858,11 @@ hptag:academia a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "academia" ;
     schema:url "https://harshp.com/tags/academia"^^xsd:anyURI .
+
+hptag:data-governance a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "data-governance"@en ;
+    schema:url "https://harshp.com/tags/data-governance"^^xsd:anyURI .
 
 hptag:humor a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24893,15 +24935,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-hpcom:Workshop a hpcom:EventType ;
-    rdfs:label "Workshop"@en ;
-    rdfs:subClassOf schema:Event ;
-    schema:name "Workshop"@en .
-
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
+
+hpcom:Workshop a hpcom:EventType ;
+    rdfs:label "Workshop"@en ;
+    rdfs:subClassOf schema:Event ;
+    schema:name "Workshop"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24922,13 +24964,13 @@ list:fantasy a hpcom:RenderedItem,
     schema:identifier "fantasy"@en ;
     schema:name "Fantastic Fantasy"@en .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
@@ -24942,14 +24984,14 @@ hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
     rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 
+hpcom:View a owl:Class ;
+    rdfs:label "View"@en ;
+    rdfs:comment "Represents a specific representation or view of a resource"@en .
+
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
-hpcom:View a owl:Class ;
-    rdfs:label "View"@en ;
-    rdfs:comment "Represents a specific representation or view of a resource"@en .
 
 hpcom:ReviewingEvent a owl:Class ;
     rdfs:label "Reivewing Event" ;
