@@ -19945,6 +19945,34 @@ list:owned_unread a hpcom:RenderedItem,
     schema:status "published"@en ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/drafts/003-enforceable-privacy-signals> a hpcom:DraftPaper,
+        hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/drafts/003-enforceable-privacy-signals"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://osf.io/xvyf3"^^xsd:anyURI ] ;
+    hpcom:author_lead ( <http://example.com/CristianaSantos> <https://harshp.com/me> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/003-enforceable-privacy-signals.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed false ;
+    hpcom:tag hptag:GDPR,
+        hptag:consent,
+        hptag:privacy,
+        hptag:signal ;
+    schema:datePublished "2023-02-22T00:00:00"^^xsd:dateTime ;
+    schema:description "In this paper we discuss requirements that privacy signals must satisfy to be enforceable under the ePrivacy Regulation and enable its real-world application."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:name "How could the upcoming ePrivacy Regulation recognise enforceable privacy signals in the EU?"@en ;
+    schema:publication <http://example.com/published> ;
+    schema:status "inviting feedback"@en ;
+    schema:url ""^^xsd:anyURI .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
@@ -21022,11 +21050,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "DCMI"@en ;
     schema:startDate "2021-10-04T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.dublincore.org/conferences/2021/"^^xsd:anyURI .
-
-<http://example.com/published> a schema:Publication ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:name "published"@en ;
-    schema:url "http://example.com/published" .
 
 <http://example.com/unpublished> a schema:Publication ;
     hpcom:event_type hpcom:Workshop ;
@@ -23573,11 +23596,6 @@ hptag:security a hpcom:RenderedItem,
     schema:name "security" ;
     schema:url "https://harshp.com/tags/security"^^xsd:anyURI .
 
-hptag:signal a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "signal"@en ;
-    schema:url "https://harshp.com/tags/signal"^^xsd:anyURI .
-
 hptag:sleep a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "sleep"@en ;
@@ -23720,9 +23738,6 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "CEUR-WS" ;
     schema:url "http://ceur-ws.org/"^^xsd:anyURI .
 
-<http://example.com/CristianaSantos> a schema:Person ;
-    schema:name "Cristiana Santos" .
-
 <http://example.com/DavlidFilip> a schema:Person ;
     schema:name "David Filip" .
 
@@ -23835,6 +23850,11 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Semantic Systems"@en ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI .
+
+<http://example.com/published> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "published"@en ;
+    schema:url "http://example.com/published" .
 
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -23991,9 +24011,6 @@ hptag:workshop a hpcom:RenderedItem,
     schema:issn "978-1-64368-175-7" ;
     schema:name "Advances in Pattern-Based Ontology Engineering"@en ;
     schema:url "https://ebooks.iospress.nl/volume/advances-in-pattern-based-ontology-engineering" .
-
-hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Draft Paper"@en .
 
 hpcom:FileFormat a owl:Class ;
     rdfs:label "FileFormat"@en ;
@@ -24217,6 +24234,11 @@ hptag:server a hpcom:RenderedItem,
     schema:name "server" ;
     schema:url "https://harshp.com/tags/server"^^xsd:anyURI .
 
+hptag:signal a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "signal"@en ;
+    schema:url "https://harshp.com/tags/signal"^^xsd:anyURI .
+
 hptag:smartphone a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "smartphone"@en ;
@@ -24262,6 +24284,9 @@ hptag:work a hpcom:RenderedItem,
 <http://example.com/BeatrizEsteves> a schema:Person ;
     schema:name "Beatriz Esteves" .
 
+<http://example.com/CristianaSantos> a schema:Person ;
+    schema:name "Cristiana Santos" .
+
 <http://example.com/KanizFatema> a schema:Person ;
     schema:name "Kaniz Fatema" .
 
@@ -24295,6 +24320,9 @@ hpcom:BookGenre a owl:Class ;
 
 hpcom:BookStatus a owl:Class ;
     rdfs:label "Book Status"@en .
+
+hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Draft Paper"@en .
 
 hpcom:EventType a owl:Class ;
     rdfs:label "Event Type"@en .
@@ -24969,9 +24997,6 @@ list:educational a hpcom:RenderedItem,
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
 
@@ -24979,6 +25004,9 @@ hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
@@ -25019,6 +25047,11 @@ hptag:personal a hpcom:RenderedItem,
     schema:name "personal" ;
     schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
 
+hptag:story a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "story" ;
+    schema:url "https://harshp.com/tags/story"^^xsd:anyURI .
+
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -25028,11 +25061,6 @@ hptag:personal a hpcom:RenderedItem,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
-
-hptag:story a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "story" ;
-    schema:url "https://harshp.com/tags/story"^^xsd:anyURI .
 
 list:classics a hpcom:RenderedItem,
         book:lists ;
