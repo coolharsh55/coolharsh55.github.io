@@ -13490,7 +13490,7 @@ book:690 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "690"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -13801,12 +13801,17 @@ book:708 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "708"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-02-28T11:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Siddhartha Mukherjee"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:books-changed-life,
+        list:educational ;
     schema:name "The Gene: An Intimate History"@en ;
+    schema:review "This is an exceptional book that not only informs, but also educates and shapes the mind and perspective across many discplines. There's the history of the gene, including its scientific place in understanding the world as well as humans. But there's also a very well written account of how it led to the cultural changes, most prominently the eugenics movement and the Nazi's weaponisation of the gene and genetics. It explains how the gene was discovered, how its role was identified, and how we've come to where we are today. Along the way it also explains the philosophical and ethical concers, the advantages of technological leaps, and the implications of every misinterpretation and mistake on a fragile culture. In this it never wavers on the science - I learned a lot about biology and genetics. It reminded me of the time when I was 14 and had checked out a genetics book from the school library and how fascinating I had found all of it. It blew my mind. This book gave me the same feeling throughout my reading."@en ;
     schema:url "https://harshp.com/hobbies/books/708"^^xsd:anyURI .
 
 book:709 a hpcom:Book,
@@ -24963,15 +24968,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:books-changed-life a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "books-changed-life"@en ;
-    schema:name "Books that changed my life"@en .
-
 hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
+
+list:books-changed-life a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "books-changed-life"@en ;
+    schema:name "Books that changed my life"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
