@@ -4364,7 +4364,7 @@ book:2 a hpcom:Book,
     hpcom:book_id "2"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook,
         hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Greg Egan"^^xsd:string ;
     schema:dateCreated "1994"^^xsd:int ;
     schema:isbn "9780061054815"^^xsd:string ;
@@ -13490,12 +13490,16 @@ book:690 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "690"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-03-07T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Rosewater"@en ;
+    schema:review "This is a scifi story set in Nigeria, which provided a nice change of setting than the usual American or British ones. The culture, characters, background, and implications were different - which made for an interesting read. The story itself involves aliens, telekinesis, fungi, secret government departments, and more. So it felt like a mashup of X-files, Neuromancer, and Snow Crash. What was not good was the editing. The chapters went back and forth between timelines too much, and the story felt rushed and not well developed in the second half."@en ;
     schema:url "https://harshp.com/hobbies/books/690"^^xsd:anyURI .
 
 book:691 a hpcom:Book,
