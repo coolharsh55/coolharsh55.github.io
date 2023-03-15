@@ -19057,6 +19057,27 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "DCU CA4025 Application Domains 3 Course" ] ;
     schema:url "https://harshp.com/research/presentations#2023-DCU-CA4025"^^xsd:anyURI .
 
+<https://harshp.com/research/presentations#2023-ENDORSE-DPV> a schema:PresentationDigitalDocument ;
+    schema:about [ a hpcom:Link ;
+            schema:name "DPV" ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
+    schema:category "Talk"@en ;
+    schema:datePublished "2023-03-15T14:15:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/ENDORSE-DPV/ENDORSE2023-DPV.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PPTX" ;
+            schema:url "https://harshp.com/presentations/2023/ENDORSE-DPV/ENDORSE2023-DPV.pptx"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/ENDORSE-DPV/"^^xsd:anyURI ] ;
+    schema:identifier "2023-ENDORSE-DPV" ;
+    schema:name "Semantic Interoperability of Legal Compliance From GDPR to Data Spaces"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication <https://op.europa.eu/en/web/endorse-2023/> ;
+    schema:url "https://harshp.com/research/presentations#2023-ENDORSE-DPV"^^xsd:anyURI .
+
 <https://harshp.com/research/projects/paecg/deliverables> a hpcom:RenderedItem,
         <https://harshp.com/research/blog>,
         <https://harshp.com/research/projects/paecg> ;
@@ -23722,6 +23743,15 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "Encyclopedia of Business and Professional Ethics"@en ;
     schema:url "https://link.springer.com/referencework/10.1007/978-3-319-23514-1" .
 
+<https://op.europa.eu/en/web/endorse-2023/> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "ENDORSE 2023" ;
+    schema:endDate "2023-03-16T00:00:00"^^xsd:dateTime ;
+    schema:location "Virtual" ;
+    schema:name "European Data Conference on Reference Data and Semantics (ENDORSE)"@en ;
+    schema:startDate "2023-03-14T00:00:00"^^xsd:dateTime ;
+    schema:url "https://op.europa.eu/en/web/endorse-2023/"^^xsd:anyURI .
+
 <https://www.dcu.ie/> a schema:CollegeOrUniversity ;
     schema:address "Dublin, Ireland" ;
     schema:name "Dublin City University" ;
@@ -25031,13 +25061,13 @@ list:educational a hpcom:RenderedItem,
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
 
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
+
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
-
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
 
 hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
