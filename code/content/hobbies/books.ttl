@@ -25,11 +25,16 @@
     hpcom:book_id "2"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
     schema:author "Greg Egan"^^xsd:string ;
+    hpcom:date_book_read "2023-03-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:dateCreated "1994"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:isbn "9780061054815"^^xsd:string ;
     schema:name "Permutation City"@en ;
+    schema:review """Permutation City is the book about multiverses, cyberspaces, and post-AI consciousness - all rolled into a physics and mathematical construct. The sheer scope of imagination here is immense - and that's what makes this a pleasure to read. I like hard sci-fi that also manages to push the boundaries of several things at once - and Greg Egan is an interesting person to read about this. I'm compelled to buy all his books and read through them."""@en ;
     schema:url "https://harshp.com/hobbies/books/2"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/3> a hpcom:RenderedItem, hpcom:BookReading,
@@ -43,6 +48,7 @@
     schema:author "Jo Brown"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:isbn "9781780724379"^^xsd:string ;
+    schema:genre hpcom:BookNonFiction ;
     schema:name "Secrets of a Devon Wood: My Nature Journal"@en ;
     schema:review "Delightful illustrations. Worth being a collectible."@en ;
     schema:isPartOf list:visually-stunning ;
@@ -729,11 +735,16 @@
 <https://harshp.com/hobbies/books/60> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "60"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:author "David Graeber"^^xsd:string ;
+    hpcom:date_book_read "2023-03-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
     schema:isbn "9781501143311"^^xsd:string ;
     schema:name "Bullshit Jobs: A Theory"@en ;
+    schema:review """I found a copy of this book lying around in the labs where I was teaching. Curious enough, I flipped through some pages to know what the fuss is all about. The impression was that this was something interesting, so I ended up reading the book to know more. I thinl I'm not the target audience for this book. It postulates that there are some jobs that are bullshit or useless. While the argument does make sense, I think it lacks a rigid social analysis and methodological analysis. Because an important consideration is the people doing the job - which could be saving time, effort, and so on. So are the jobs bullshit or is the job culture bullshit? The book nevers gets into it."""@en ;
     schema:url "https://harshp.com/hobbies/books/60"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/61> a hpcom:RenderedItem, hpcom:BookReading,
@@ -7274,6 +7285,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780141014081"^^xsd:string ;
     schema:name "The Complete Maus"@en ;
+    hpcom:book_on_loan "DT" ;
     schema:isPartOf list:storytelling ;
     schema:isPartOf list:visually-stunning ;
     schema:url "https://harshp.com/hobbies/books/513"^^xsd:anyURI .
@@ -12505,3 +12517,31 @@
     schema:genre hpcom:BookNonFiction ;
     schema:name "Data and Goliath"@en ;
     schema:url "https://harshp.com/hobbies/books/865"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/867> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "867"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    hpcom:date_book_read "2023-03-21T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:author "Nicholas Carr"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:review """Interesting book that contains few thought-provoking articles, but then most of the other times its just some person rambling on a topic. Sometimes its things that don't seem sensible because I'd see biases and prejudices for a particular technology or company (mostly Apple) that taint the other writings."""@en;
+    schema:name "Utopia is Creepy; and other provocations"@en ;
+    schema:url "https://harshp.com/hobbies/books/867"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/868> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "868"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Salman Rushdie"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Victory City"@en ;
+    schema:url "https://harshp.com/hobbies/books/868"^^xsd:anyURI .
