@@ -17,7 +17,7 @@
     schema:isbn "9780718193669"^^xsd:string ;
     schema:name "Poor Economics"@en ;
     schema:isPartOf list:educational ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/1"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/2> a hpcom:RenderedItem, hpcom:BookReading,
@@ -184,7 +184,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:name "Consentability: Consent and its Limits"@en ;
     schema:isPartOf list:educational ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/12"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/13> a hpcom:RenderedItem, hpcom:BookReading,
@@ -334,7 +334,7 @@
     schema:dateCreated "2000"^^xsd:int ;
     schema:isbn "9780631205821"^^xsd:string ;
     schema:name "Meaning and Argument: An Introduction to Logic Through Language"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/25"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/26> a hpcom:RenderedItem, hpcom:BookReading,
@@ -381,7 +381,7 @@
     schema:isbn "9780375714498"^^xsd:string ;
     schema:name "Manufacturing Consent: The Political Economy of the Mass Media"@en ;
     schema:isPartOf list:educational ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/29"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/30> a hpcom:RenderedItem, hpcom:BookReading,
@@ -540,7 +540,7 @@
     schema:name "Guns, Germs, and Steel: The Fates of Human Societies"@en ;
     schema:genre hpcom:BookNonFiction ;
     schema:review """An interesting book with a more scientific premise of social progress, and understandable why it is so highly awarded. Though it did tend to go off more on the anthropological and sociological side, which made the book quite difficult to read (as in entertaining) but its typical of books of this type. The title is anecdoctal, so the initial impression was quite misleading that the book would offer a historical perspective on the three things - guns, germs, and steel."""@en ;
-    schema:isPartOf list:TCD, list:educational ;
+    schema:isPartOf list:DCU, list:educational ;
     schema:url "https://harshp.com/hobbies/books/43"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/44> a hpcom:RenderedItem, hpcom:BookReading,
@@ -585,7 +585,8 @@
 <https://harshp.com/hobbies/books/48> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "48"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Max Porter"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9780571340286"^^xsd:string ;
@@ -605,7 +606,7 @@
     schema:genre hpcom:BookNonFiction ;
     schema:isbn "9780525558613"^^xsd:string ;
     schema:name "Human Compatible: Artificial Intelligence and the Problem of Control"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/49"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/50> a hpcom:RenderedItem, hpcom:BookReading,
@@ -848,7 +849,7 @@
     schema:dateCreated "1979"^^xsd:int ;
     schema:isbn "9780465026562"^^xsd:string ;
     schema:name "Gödel, Escher, Bach: An Eternal Golden Braid"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/69"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/70> a hpcom:RenderedItem, hpcom:BookReading,
@@ -870,7 +871,7 @@
     schema:dateCreated "1945"^^xsd:int ;
     schema:isbn "9780671201586"^^xsd:string ;
     schema:name "A History of Western Philosophy"@en ;
-    schema:isPartOf list:TCD ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/71"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/72> a hpcom:RenderedItem, hpcom:BookReading,
@@ -4286,7 +4287,7 @@
     schema:genre hpcom:BookFiction ;
     schema:isbn "9780540027347"^^xsd:string ;
     schema:name "Harry Potter and the Cursed Child - Parts I and II"@en ;
-    schema:isPartOf list:TCD ;
+    hpcom:book_on_loan "BY";
     schema:url "https://harshp.com/hobbies/books/316"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/317> a hpcom:RenderedItem, hpcom:BookReading,
@@ -12537,11 +12538,79 @@
         schema:Book ;
     hpcom:book_id "868"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Salman Rushdie"^^xsd:string ;
+    schema:review """I didn't know a new book from Salman Rushdie had been published until I came across while walking through the book store. Bought it on an impulse - how could I resist. Looking forward to the mesmerising delight that is Rushdie's linguistic forte, I was quite surprised to discover that this was an incredibly clever and well-woven tale of modernity spun into the fabric of ancient Indian history. So much to easily miss, not notice, and realise that this is a really well written story. I missed the poetic language that evoke a love for reading, but the story itself being set in parallels to India mythologies was intriguing in itself. Still a good read - but I want to go get another Rushdie book to satiate my appetite for the language from Midnight's Children and Shame - which I immensely enjoyed."""@en ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Victory City"@en ;
     schema:url "https://harshp.com/hobbies/books/868"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/869> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "869"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Sheri S. Tepper"^^xsd:string ;
+    schema:dateCreated "1989"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Grass"@en ;
+    schema:url "https://harshp.com/hobbies/books/869"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/870> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "870"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Cormac McCarthy"^^xsd:string ;
+    schema:dateCreated "2005"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "No Country for Old Men"@en ;
+    schema:url "https://harshp.com/hobbies/books/870"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/871> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "871"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Cormac McCarthy"^^xsd:string ;
+    schema:dateCreated "1985"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Blood Meridian or the Evening Redness in the West"@en ;
+    schema:url "https://harshp.com/hobbies/books/871"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/872> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "872"^^xsd:int ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Cormac McCarthy"^^xsd:string ;
+    schema:dateCreated "2006"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Road"@en ;
+    schema:url "https://harshp.com/hobbies/books/872"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/873> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "873"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Shehan Karunatilaka"^^xsd:string ;
+    schema:dateCreated "2002"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "The Seven Moons of Maali Almeida"@en ;
+    schema:url "https://harshp.com/hobbies/books/873"^^xsd:anyURI .
