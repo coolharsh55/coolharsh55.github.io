@@ -16451,19 +16451,22 @@ book:87 a hpcom:Book,
 book:870 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "870"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "2005"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "No Country for Old Men"@en ;
+    schema:review "This was my first Cormac McCarthy book. The story is a violent thriller - which I like, and which reminded me of some books I used to read when I was younger. The story is told in the style of show rather than tell, with some acute observations and comments that feel poignant to read. I chose this book because I like the film and it has some intense characters that stay in memory. While reading I could visually recall scenes. While this speaks volumes about the film directors and actors, it also shows that the book is also a good story and experience in itself. Its rare that I like a book I read after I have watched and liked the film based on it. I have some more books by the same author, which I look forward to read."@en ;
     schema:url "https://harshp.com/hobbies/books/870"^^xsd:anyURI .
 
 book:871 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "871"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "1985"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
