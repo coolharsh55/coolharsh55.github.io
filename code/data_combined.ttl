@@ -15852,7 +15852,7 @@ book:828 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "828"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Nick Harkaway"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16466,11 +16466,16 @@ book:871 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "871"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-07T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "1985"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
+    schema:isPartOf list:cork ;
     schema:name "Blood Meridian or the Evening Redness in the West"@en ;
+    schema:review "This was a dense read. Too much was happening - which made sense when I later read that the book is a 'magnum opus'. But my main issue with reading was not the violence (which was a lot, and didn't feel drawn out or out of place), but that there was no single thread of the story that the reader is following, and things just seemed to happen. Yes, there is a central character, but it always felt as if watching a documentary recorded by someone else. Maybe that's because I'm not the target audience, I'm not American, and I don't know the history behind the three groups the story is about. Still - reading it was a good experience to pass the time. The writing is okay - its too 'prosaic', the story is good - and all of the book shows the 'reality' of how comparatively barbaric we were not so long ago even if we fantasise civilisation and honour in the westers evoked in cinema today. The Judge is as memorable a character as any, and I could see the book could easily have been named 'Dancing with the Devil'."@en ;
     schema:url "https://harshp.com/hobbies/books/871"^^xsd:anyURI .
 
 book:872 a hpcom:RenderedItem,
@@ -25129,11 +25134,6 @@ hptag:philosophy a hpcom:RenderedItem,
     schema:name "philosophy" ;
     schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 <https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
     schema:name "Declan O'Sullivan" .
 
@@ -25145,6 +25145,11 @@ book:lists a owl:Class,
             hpcom:renderWith hpview:BookListIndexView ] ;
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;
