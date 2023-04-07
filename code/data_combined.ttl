@@ -6570,6 +6570,7 @@ book:32 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "32"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Dan Simmons"^^xsd:string ;
     schema:dateCreated "2005"^^xsd:int ;
@@ -16499,6 +16500,18 @@ book:873 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "The Seven Moons of Maali Almeida"@en ;
     schema:url "https://harshp.com/hobbies/books/873"^^xsd:anyURI .
+
+book:874 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "874"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "China Miéville"^^xsd:string ;
+    schema:dateCreated "2007"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Un Lun Dun"@en ;
+    schema:url "https://harshp.com/hobbies/books/874"^^xsd:anyURI .
 
 book:88 a hpcom:Book,
         hpcom:BookReading,
