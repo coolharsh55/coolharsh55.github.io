@@ -54,102 +54,27 @@
         }
         #tags-block {
             display: block;
+            border: 1px dashed gray;
             max-width: 800px;
         }
     </style>
 
-    <div id="tags-block"><b>click to filter by:</b> <span class="tag-filter tag-selected">all</span><br/>
+    <p>This page lists ideas for projects, which can be adapted to various complexities e.g. 3rd or 4th year Undergraduate, Practicuum or Thesis for Masters, PhD research, or even funded projects.</p>
+
+    <div id="tags-block"><b>filter by:</b> <span class="tag-filter tag-selected">all tags</span><br/>
         <span id="tags"></span></div>
 
     <div id="index" style="display: block;"></div>
 
     <div class="project">
-        <h2>Consent Dashboard for the Browser</h2>
-        <p>#consent #GDPR #privacy #BrowserAddon #Javascript</p>
-    </div>
+    <h2>Consent Dashboard for the Browser</h2>
+    <p>#consent #GDPR #privacy #BrowserAddon #Javascript</p>
+</div>
 
-    <div class="project">
-        <h2>Privacy Policy Personalisation</h2>
-        <p>#GDPR #privacy #Python #Javascript</p>
-    </div>
-
-    <div class="project">
-        <h2>Privacy Policy Visualisation</h2>
-        <p>#GDPR #privacy #Python #Javascript</p>
-    </div>
-
-    <div class="project">
-        <h2>Analysis of GDPR Rights implementations in the Real-world</h2>
-        <p>#GDPR #rights</p>
-    </div>
-
-    <div class="project">
-        <h2>Demonstrating Potential for Inferred Personal Data </h2>
-        <p>#privacy #Python</p>
-    </div>
-
-    <div class="project">
-        <h2>Implementing ISO/IEC 29184 privacy notices</h2>
-        <p>#privacy #consent #JavaScript #BrowserAddon #GDPR</p>
-    </div>
-
-    <div class="project">
-        <h2>Accessibility-like requirements for Privacy</h2>
-        <p>#privacy #JavaScript #BrowserAddon</p>
-        <p>There are accessibility features that are meant to help people with
-            dis-abilities to see and view and hear and interpret and understand
-            information and interface. These features also end up making the system better for use for the majority of users by virtue of better design and control.
-            Can something similar be done for privacy based on vulnerability and special categories of data and inviduals?</p>
-    </div>
-
-    <div class="project">
+<div class="project">
         <h2>Consent/Preferences as heuristics</h2>
         <p>#consent #privacy #JavaScript</p>
         <p>Express consenting choices as rules or heuristics of the kind: only 1st party; only analytics; no third party ads; And see whether this affects consenting behaviours or notices</p>
-    </div>
-
-    <div class="project">
-        <h2>DPA Grace Periods (this is more lawyery)</h2>
-        <p>#GDPR</p>
-        <p>Who gives grace periods for enforcement - table of DPAs. DPC has one for 5 OCT 2020. Why grace periods so late after GDPR? e.g. 2016 published, 2018 enforcement, then grace periods after that. Do DPAs have authority to give grace periods? Rational of grace periods could be to clarify unknown ambiguity, for known or repeated implementation, grace periods legitimise illegal data processing. Legality of data processing conducted up to or before grace periods - have there been indication of cancel or stop that processing, e.g. to ask for consent again - has this been mentioned in the guidelines?</p>
-    </div>
-
-    <div class="project">
-        <h2>DPV labels for Apps</h2>
-        <p>#privacy #smartphones #RDF #Python #JavaScript #BrowserAddon</p>
-        <p>Provide more information within app store and smartphone devices instead of just tracking data categories. 
-        This info is based on DPV concepts. DPV label for app instead of ATT</p>
-    </div>
-
-    <div class="project">
-        <h2>Building a Registry of CCTV Notices and their Privacy Practices in Dublin</h2>
-        <p>#privacy #surveillance #dashboard #GDPR #BrowserAddon #Javascript</p>
-        <p>Tldr; Creating a browser signal that helps automate some of the interactions on notices and consent dialogues online.</p>
-        <p>Motivation: GDPR requires CCTVs to be accompanied with notices explaining who is operating them, what kind of data is collected and retained, what it is used for, any possible use of techniques such as facial recognition, etc [1]. It is difficult to identify such notices for CCTV, and to keep track of them all together. It would be useful for the general public, authorities, and other CCTV users to understand the contents of these notices, and how they operate under GDPR.</p>
-        <p>Implementation: You will learn how CCTV notices are used in real-life, what their information is, and the kinds of technologies involved (e.g. types of cameras). You will collect examples of real-life CCTV and their accompanying notices, store them in a database, and build a dashboard to provide convenient access to this information. The dashboard will enable users to see an overview of CCTV usage (data categories, purposes, controllers) and their locations (e.g. on a map). You will build a form or input provider for crowdsourcing this information. You will write your report based on this implementation and analysis of collected information (e.g. comment on data being collected, technologies involved, difficulty of obtaining this information).</p>
-        <p>What you will learn: (i) How CCTVs work in real-life, and their requirements under GDPR regarding privacy, transparency, and notices (ii) Information gathering and data modeling (iii) Building a dashboard based on functional and non-functional requirements (iv) Analysis of technologies regarding privacy risks and GDPR</p>
-        <p>References: <br/>
-        [1] https://www.dataprotection.ie/en/dpc-guidance/guidance-on-the-use-of-cctv </p>
-    </div>
-
-    <div class="project">
-        <h2>Browser extension for Documenting Legal Compliance Violations in Consent Dialogues</h2>
-        <p>#consent #GDPR Javascript #BrowserAddon #privacy #RDF</p>
-        <p>Motivation: The GDPR lays out specific requirements on how to request and collect consent - something most websites seem to get wrong. With limited human and technological resources, it is difficult for an investigation agency to manually inspect all the websites for compliance. Technologies can help solve this by automating the detection part, but need data to be effective in detection. Further, the technological findings need to be expressed using legal language and formal information in order for them to be used effectively in legal compliance. This project will assist in these tasks by creating a browser extension which will enable any individual to highlight problematic parts of a website and consent dialogue, and will automatically generate  documentation containing links to appropriate legal clauses i.e. which specific parts of GDPR it violates. </p>
-        <p>Implementation: The project will involve understanding the requirements of consent under GDPR, and evaluating how they are being violated on the internet at large. The project will create a browser extension - which requires knowledge of javascript and web development - to capture the problematic parts of a consent dialogue and tag it with common violations that are linked to specific requirements in GDPR.</p>
-        <p>This project intends to address these by identifying the different mechanisms used to collect consent, establish their relation to existing consent requirements, and compile likely violations of legal requirements. Initially, researcher(s) will visit websites, identify elements used for consent, record their use, and establish which consent requirements in GDPR are applicable to the design element. Later, the researcher(s) will analyse the collected data for commonality in design elements, and report on likely violations of the legal requirements. The primary articles guiding this work are [4] and [8].</p>
-        <p>References <br/>
-        [1] D. Machuletz and R. Böhme, “Multiple Purposes, Multiple Problems: A User Study of Consent Dialogs after GDPR,” arXiv:1908.10048 [cs] , Aug. 2019, Accessed: Sep. 02, 2019. [Online] . Available: http://arxiv.org/abs/1908.10048. <br/>
-        [2] C. Utz, M. Degeling, S. Fahl, F. Schaub, and T. Holz, “(Un)informed Consent: Studying GDPR Consent Notices in the Field,” in ACM SIGSAC Conference on Computer and Communications Security (CCS’19), London, United Kingdom, Nov. 2019, p. 18. <br/>
-        [3] I. Fouad, C. Santos, F. A. Kassar, N. Bielova, and S. Calzavara, “On Compliance of Cookie Purposes with the Purpose Specification Principle,” in IWPE, 2020, p. 9. <br/>
-        [4] S. Human and F. Cech, “A Human-centric Perspective on Digital Consenting: The Case of GAFAM,” presented at the Human Centred Intelligent Systems 2020, Split, Croatia, 2020, Accessed: Jun. 08, 2020. [Online] . Available: https://epub.wu.ac.at/7523/. <br/>
-        [5] C. Matte, N. Bielova, and C. Santos, “Do Cookie Banners Respect my Choice?,” in 41st IEEE Symposium on Security and Privacy, 2020, p. 19, [Online] . Available: http://www-sop.inria.fr/members/Nataliia.Bielova/papers/Matt-etal-20-SP.pdf. <br/>
-        [6] C. Matte, C. Santos, and N. Bielova, “Purposes in IAB Europe’s TCF: which legal basis and how are they used by advertisers?,” presented at the Annual Privacy Forum (APF 2020), Oct. 2020, Accessed: May 27, 2020. [Online] . Available: https://hal.inria.fr/hal-02566891. <br/>
-        [7] M. Nouwens, I. Liccardi, M. Veale, D. Karger, and L. Kagal, “Dark Patterns after the GDPR: Scraping Consent Pop-ups and Demonstrating their Influence,” Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, pp. 1–13, Apr. 2020, doi: 10/ggx9vq. <br/>
-        [8] C. Santos, N. Bielova, and C. Matte, “Are cookie banners indeed compliant with the law? Deciphering EU legal requirements on consent and technical means to verify compliance of cookie banners,” HAL, p. 75, Jun. 2020, [Online] . Available: https://hal.inria.fr/hal-02875447. <br/>
-        [9] “Guidance note on cookies and other tracking technologies,” Data Protection Commission, Ireland, Dublin, Ireland, Apr. 2020. Accessed: Jun. 08, 2020. [Online] . Available: https://www.dataprotection.ie/sites/default/files/uploads/2020-04/Guidance%20note%20on%20cookies%20and%20other%20tracking%20technologies.pdf. <br/>
-        [10] “Report by the Data Protection Commission on the use of cookies and other tracking technologies (revised),” Data Protection Commission, Ireland, Dublin, Ireland, Apr. 2020. Accessed: Jun. 08, 2020. [Online] . Available: https://www.dataprotection.ie/sites/default/files/uploads/2020-04/Data%20Protection%20Commission%20cookies%20sweep%20REVISED%2015%20April%202020%20v.01.pdf. </p>
-
     </div>
 
     <div class ="project">
@@ -164,19 +89,6 @@
             [3] G. Malgieri and B. Custers, “Pricing privacy – the right to know the value of your personal data,” Computer Law & Security Review, vol. 34, no. 2, pp. 289–303, Apr. 2018, doi: 10/gc7nbt. <br/>
         [4] C. Matte, C. Santos, and N. Bielova, “Purposes in IAB Europe’s TCF: which legal basis and how are they used by advertisers?,” presented at the Annual Privacy Forum (APF 2020), Oct. 2020, Accessed: May 27, 2020. [Online]. Available: https://hal.inria.fr/hal-02566891. </p>
 
-    </div>
-
-    <div class="project">
-        <h2>Annotated Privacy Information Dataset of Apps from iOS and Android App-Stores</h2>
-        <p>#smartphone #web-scraping #semantics #python #java #RDF</p>
-        <p>Tldr; Scrape the app’s information from app store and automatically annotate it with information relevant for privacy</p>
-        <p>Motivation: Apple’s iOS and Google’s Android are the dominant smartphone OSs, and through their respective App-Stores are responsible for providing the infrastructure and functionality to users for installing and managing applications on their devices. Increasingly, these companies are creating requirements for applications to declare information about their privacy practices, which not only include a privacy policy, but also information on what kinds of data the apps collect and how they use it [1]. Collecting this information in a machine-readable dataset can enable understanding current practices, pitfalls, and the privacy practices of apps - as well as tracking how they evolve with time.</p>
-        <p>Implementation: You will utilise a web-scraping [2] tool to parse the information from app-store pages. This can be written in any language of choice, though python offers a large collection of ready-to-use frameworks. The information extracted from these pages will be defined using the Data Privacy Vocabulary (DPV) [3], a metadata specification for declaring how data is used. The formal representation used for DPV is the Resource Description Framework (RDF), which you will become familiar with in order to read and write it for generating the dataset / corpus. The actual data will be stored and managed using a relational database and SQL, such that it can be extracted and exported to RDF to provide interoperability. </p>
-        <p>What you will learn: (i) How Apps utilise personal data; (ii) How to do web-scraping; (iii) How to work with concepts and semantics, e.g. when creating schemas; (iv) Creating and managing datasets as research resources; (v) What/Where more information is needed in App Stores</p>
-        <p>References: <br/>
-        [1] https://developer.apple.com/app-store/app-privacy-details/ <br/>
-        [2] https://en.wikipedia.org/wiki/Web_scraping <br/>
-        [3] http://w3.org/ns/dpv </p>
     </div>
 
     <div class="project">
@@ -197,16 +109,6 @@
         [2] https://globalprivacycontrol.github.io/gpc-spec/ <br/>
         [3] https://www.dataprotectioncontrol.org/spec/ <br/>
         [4] https://w3id.org/dpv</p>
-
-    </div>
-
-    <div class="project">
-        <h2>Programmatic Privacy Notices and Dialogues</h2>
-        <p>#privacy #consent #cookies #Browser #signals #internet #GDPR #Javascript</p>
-        <p>Tldr; Creating APIs for programmatically generating notices and dialogues, as those used for consent and cookies on websites, to be developed from metadata (e.g. JSON) to avoid known issues (e.g. dark patterns).</p>
-        <p>Motivation: Consent and cookie dialogues are a plague on the web - they’re there on every website, and most people click on the ‘Agree’ button without reading or understanding what they just agreed to. Even though this has been shown to violate data protection and privacy laws [1], enforcement takes time and is difficult to undertake at the scale of the web. It is difficult to create a singular solution that is acceptable to all parties (users, service providers, authorities), which makes it difficult to achieve common goals. This research explores how a web browser can provide a set of APIs to generate privacy notices and dialogues on user-side, with different methods or options offering various levels of controls to the websites and users to control their interactions.</p>
-        <p>Implementation: You will understand how current privacy notices and consent dialogues function in terms of information, content, legal requirements, and technical implementations. You will then identify different types of APIs that can automate the generation of different components (e.g. API for notice, for showing options, for giving consent). You will implement these using CSS and JS, and test them using browser addons.</p>
-        <p>What you will learn: (i) What are privacy notices and consent dialogues (ii); How to create and implement APIs based on different stakeholder requirements (iii) Legal and Privacy implications of your developed technologies (iv) Challenges associated with developing privacy solutions</p>
 
     </div>
 
@@ -253,31 +155,112 @@
         </p>
 
     </div>
+
     <div class="project">
-        <h2>Recording online agreement via browser extension</h2>
+        <h2>An Ad-blocker for Cookie and Consent Dialogues online</h2>
+        <p>#consent #GDPR #Javascript #BrowserAddon #RDF</p>
+        <p>Motivation: The GDPR’s extensive requirements for valid consent have filled the internet with consent dialogues that are a persistent annoyance to the web. The websites try to request consent because they are legally required to do so, and in the process use several deceptive and manipulative practices to force the individual to give consent. This project involves creating a browser extension similar to an ad-blocker that will block the consent-requests. The project will also study the effect of such blocking on the actions of the website. In principle, the websites are only supposed to collect and process data after consent. Therefore, the blocking of consent dialogues should result in no data collection.</p>
+        <p>Implementation: The project will involve understanding the requirements of how consent is requested on the internet and the mechanisms of consent dialogues on websites. The project will create a browser extension - which requires knowledge of javascript and web development - to capture the problematic parts of a consent dialogue and tag it with common violations that are linked to specific requirements in GDPR.</p>
+
+    </div>
+
+    <div class="project">
+        <h2>Extracting Structured Metadata from Consent Dialogues</h2>
 
         <p>
-            #privacy #privacy-policy #javascript #GDPR
+            #privacy #consent #NLP #ML
         </p>
 
         <p>
-            Agreeing with a privacy policy involves reading the policy legally, but few utilise the time or opportunity to do so. However, once clicked, the button conveys consent attached to the privacy policy and the person is not offered the opportunity or proof to record what they have agreed with. In this project, you will be creating a digital receipt to record the acceptance of a privacy policy by capturing the context in which the button was clicked as well as the privacy policy associated with it.
+            Consent dialogue boxes are everywhere on the web - with the information geared towards making it easy for users to comprehend how their personal data is being used. However, this information is presented in human-readable format with no way for machines to analyse it. The aim of this project is to extract this information and represent it as structured metadata to enable automation and analysis of privacy based approaches. For example, the statement "We use your address to deliver goods you buy on our website" can be represented by: address - personal data, deliver goods - purpose, use - processing.
         </p>
 
         <p>
-            The goal is to create a browser extension that can assist the person in recording their agreements and the related policies by saving them as a 'notice receipt' within the browser. The saved receipts can then be viewed and interacted with via a dashboard. The project will use existing vocabularies such as the DPV [1] and Notice Receipt Schema [2] to record the information.
+            The project goal is to use NLP techniques to identify such categories by using classifiers and ML similar to existing work regarding privacy policies [1][2][3]. The extracted information would then be represented using vocabularies such as DPV [4].
         </p>
 
         <p>
-            This project will provide exposure in front-end development in real-world websites, as well as an opportunity to work towards increased transparency and accountability in the online transactions of privacy. The project will also provide a learning experience with use of programming tools (e.g. git) and being involved in a research project.
-        </p>
-
-        <p>
-            [1] DPV <a href="http://w3.org/ns/dpv" title="http://w3.org/ns/dpv" class="http">http://w3.org/ns/dpv</a><br>
-            [2] OPN: Open Notice Receipt Schema <a href="http://ceur-ws.org/Vol-2451/paper-21.pdf" title="http://ceur-ws.org/Vol-2451/paper-21.pdf" class="http">http://ceur-ws.org/Vol-2451/paper-21.pdf</a>
+            [1] Usable Privacy Project<br>
+            [2] Pribot<br>
+            [3] CLAUDETTE<br>
+            [4] DPV
         </p>
 
     </div>
+
+        <div class="project">
+        <h2>Attaching Risk Factors to Consent Dialogues</h2>
+
+        <p>
+            #privacy #ethics #consent #javascript
+        </p>
+
+        <p>
+            The notion of informed consent in GDPR requires the individual to also be notified about potential risks associated with the processing of their personal data. However, consent dialogues contain only information associated with use of personal data and do not provide any information about the risks of sharing that information. The aim of this project is to attach risks with appropriate information within a consent dialogue to enable the user to make a balanced judgement about their consent and use of personal data. The project involves detecting categories of information within a consent dialogue and associating an existing corpus of privacy risks by visually annotating the consent dialogue.
+        </p>
+
+    </div>
+
+    privacy policy
+
+<div class="project">
+        <h2>Privacy Policy Personalisation</h2>
+        <p>#GDPR #privacy #Python #Javascript</p>
+
+        <p>Privacy policies are written in a way that makes it difficult to understand which conditions apply to the current user and what exactly is happening with the data. For example, using terms such as "may apply" is confusing. This project will research into ways to personalise the privacy policy or notice to the user to generate text for what is precisely happening for the user. For example, "you used X service, for which we do Y things" and "you have not used X service, therefore the following Y things do not happen in your case".
+    </div>
+
+    <div class="project">
+        <h2>Privacy Policy Visualisation</h2>
+        <p>#GDPR #privacy #Python #Javascript</p>
+        <p>This project will research different visual mediums and modalities to allow the user to comprehend and interact with options instead of textual policies which are difficult to read. Use of visual information can include icons, diagrams, graphical interfaces, or different types of controls.</p>
+    </div>
+
+    <div class="project">
+        <h2>Implementing ISO/IEC 29184 privacy notices</h2>
+        <p>#privacy #consent #JavaScript #BrowserAddon #GDPR</p>
+        <p>The ISO/IEC 29184 is a standard specifying content of privacy notices, how they should be presented, and how they can be used - including machine-readable versions. This project will implement the standard to create privacy notices that conform with the standard, assess how the standard addresses existing issues regarding consent and privacy notices, and provide reusable components for others to improve their notices.</p>
+    </div>
+
+    <div class="project">
+        <h2>Accessibility-like requirements for Privacy</h2>
+        <p>#privacy #JavaScript #BrowserAddon</p>
+        <p>There are accessibility features that are meant to help people with
+            dis-abilities to see and view and hear and interpret and understand
+            information and interface. These features also end up making the system better for use for the majority of users by virtue of better design and control.
+            Can something similar be done for privacy based on vulnerability and special categories of data and inviduals?</p>
+    </div>
+
+    <div class="project">
+        <h2>DPV labels for Apps</h2>
+        <p>#privacy #smartphones #RDF #Python #JavaScript #BrowserAddon</p>
+        <p>Provide more information within app store and smartphone devices instead of just tracking data categories. 
+        This info is based on DPV concepts. DPV label for app instead of ATT</p>
+    </div>
+
+    <div class="project">
+        <h2>Annotated Privacy Information Dataset of Apps from iOS and Android App-Stores</h2>
+        <p>#smartphone #web-scraping #semantics #python #java #RDF</p>
+        <p>Tldr; Scrape the app’s information from app store and automatically annotate it with information relevant for privacy</p>
+        <p>Motivation: Apple’s iOS and Google’s Android are the dominant smartphone OSs, and through their respective App-Stores are responsible for providing the infrastructure and functionality to users for installing and managing applications on their devices. Increasingly, these companies are creating requirements for applications to declare information about their privacy practices, which not only include a privacy policy, but also information on what kinds of data the apps collect and how they use it [1]. Collecting this information in a machine-readable dataset can enable understanding current practices, pitfalls, and the privacy practices of apps - as well as tracking how they evolve with time.</p>
+        <p>Implementation: You will utilise a web-scraping [2] tool to parse the information from app-store pages. This can be written in any language of choice, though python offers a large collection of ready-to-use frameworks. The information extracted from these pages will be defined using the Data Privacy Vocabulary (DPV) [3], a metadata specification for declaring how data is used. The formal representation used for DPV is the Resource Description Framework (RDF), which you will become familiar with in order to read and write it for generating the dataset / corpus. The actual data will be stored and managed using a relational database and SQL, such that it can be extracted and exported to RDF to provide interoperability. </p>
+        <p>What you will learn: (i) How Apps utilise personal data; (ii) How to do web-scraping; (iii) How to work with concepts and semantics, e.g. when creating schemas; (iv) Creating and managing datasets as research resources; (v) What/Where more information is needed in App Stores</p>
+        <p>References: <br/>
+        [1] https://developer.apple.com/app-store/app-privacy-details/ <br/>
+        [2] https://en.wikipedia.org/wiki/Web_scraping <br/>
+        [3] http://w3.org/ns/dpv </p>
+    </div>
+
+    <div class="project">
+        <h2>Programmatic Privacy Notices and Dialogues</h2>
+        <p>#privacy #consent #cookies #Browser #signals #internet #GDPR #Javascript</p>
+        <p>Tldr; Creating APIs for programmatically generating notices and dialogues, as those used for consent and cookies on websites, to be developed from metadata (e.g. JSON) to avoid known issues (e.g. dark patterns).</p>
+        <p>Motivation: Consent and cookie dialogues are a plague on the web - they’re there on every website, and most people click on the ‘Agree’ button without reading or understanding what they just agreed to. Even though this has been shown to violate data protection and privacy laws [1], enforcement takes time and is difficult to undertake at the scale of the web. It is difficult to create a singular solution that is acceptable to all parties (users, service providers, authorities), which makes it difficult to achieve common goals. This research explores how a web browser can provide a set of APIs to generate privacy notices and dialogues on user-side, with different methods or options offering various levels of controls to the websites and users to control their interactions.</p>
+        <p>Implementation: You will understand how current privacy notices and consent dialogues function in terms of information, content, legal requirements, and technical implementations. You will then identify different types of APIs that can automate the generation of different components (e.g. API for notice, for showing options, for giving consent). You will implement these using CSS and JS, and test them using browser addons.</p>
+        <p>What you will learn: (i) What are privacy notices and consent dialogues (ii); How to create and implement APIs based on different stakeholder requirements (iii) Legal and Privacy implications of your developed technologies (iv) Challenges associated with developing privacy solutions</p>
+
+    </div>
+
     <div class="project">
         <h2>Automated Privacy Policy Generation Using Metadata and Templates</h2>
         <p>#privacy #semantics #law #python #RDF #GDPR</p>
@@ -293,37 +276,6 @@
 
     </div>
 
-    <div class="project">
-        <h2>An Ad-blocker for Cookie and Consent Dialogues online</h2>
-        <p>#consent #GDPR #Javascript #BrowserAddon #RDF</p>
-        <p>Motivation: The GDPR’s extensive requirements for valid consent have filled the internet with consent dialogues that are a persistent annoyance to the web. The websites try to request consent because they are legally required to do so, and in the process use several deceptive and manipulative practices to force the individual to give consent. This project involves creating a browser extension similar to an ad-blocker that will block the consent-requests. The project will also study the effect of such blocking on the actions of the website. In principle, the websites are only supposed to collect and process data after consent. Therefore, the blocking of consent dialogues should result in no data collection.</p>
-        <p>Implementation: The project will involve understanding the requirements of how consent is requested on the internet and the mechanisms of consent dialogues on websites. The project will create a browser extension - which requires knowledge of javascript and web development - to capture the problematic parts of a consent dialogue and tag it with common violations that are linked to specific requirements in GDPR.</p>
-
-    </div>
-
-    <div class="project">
-        <h2>Developing schemas for data interoperability between Facebook and Twitter</h2>
-        <p>#GDPR #Facebook #Twitter #schemas #ontology #Java #Python #Javascript #RDF</p>
-        <p>Motivation: The GDPR has provided the Right to Data Portability - under which a user can request a copy of their provided data and can also request that data to be transferred from one service to another. This was intended to foster interoperability and data exchange between different services, thereby fostering more innovation through competition. However, to date there has been no significant progress in this effort. The Data Transfer project started by IT giants (Google, Facebook, Apple, Twitter, Microsoft) in 2018 has yet to bear fruit. With this as the backdrop, the aim of this project is to create a tool that will allow importing/exporting data - with Facebook and Twitter used as specific use-cases. </p>
-        <p>Implementation: The project involves creating ‘schemas’ for Facebook and Twitter, and developing a tool to convert data between them. This is based on utilising existing research efforts within the ADAPT Centre which use semantic web technologies (RDF, SPARQL, Mappings) to enable this work: see https://doi.org/10.5281/zenodo.4029338. Apart from developing the schemas, the project will also develop the tool that transforms data between ‘Facebook’ and ‘Twitter’ schemas, and create a data pipeline to automate this task and show its feasibility at large scales. The technologies involved in this are Java, Python, Javascript (web-development) with knowledge of Semantic Web and schemas an added bonus.</p>
-    </div>
-
-    <div class="project">
-        <h2>Assisting with Ethical Clearance in Universities</h2>
-
-        <p>
-            #ethics #javascript
-        </p>
-
-        <p>
-            Description: Modern organisations must take into account GDPR concerns when conducting data collection and in universities this role is taken by the Ethics committee and its sub-committees. This project will develop a new stand-alone web-based tool to help students completing Ethics/GDPR applications for their projects. It is planned to create a high usability web interface that simplifies the current form and known patterns of use, e.g. a simple survey, to guide students through the form generation process. The outcomes will be a transportable JSON object that expresses the student’s wishes in a machine-readable way for further stages in an approval workflow.
-        </p>
-
-        <p>
-            The project involves work on building a web dashboard for assisting researchers with documentation for data protection and ethical clearance, and will provide an opportunity to participate in real-world applications of technology in the areas of data protection and ethics. The chief task would be to build an information system that will allow users to receive suggestions and guidance for addressing risks regarding ethics and privacy. 
-        </p>
-
-    </div>
     <div class="project">
         <h2>Extracting Structured Metadata From Privacy Policies</h2>
 
@@ -348,53 +300,7 @@
         </p>
 
     </div>
-    <div class="project">
-        <h2>Extracting Structured Metadata from Consent Dialogues</h2>
 
-        <p>
-            #privacy #consent #NLP #ML
-        </p>
-
-        <p>
-            Consent dialogue boxes are everywhere on the web - with the information geared towards making it easy for users to comprehend how their personal data is being used. However, this information is presented in human-readable format with no way for machines to analyse it. The aim of this project is to extract this information and represent it as structured metadata to enable automation and analysis of privacy based approaches. For example, the statement "We use your address to deliver goods you buy on our website" can be represented by: address - personal data, deliver goods - purpose, use - processing.
-        </p>
-
-        <p>
-            The project goal is to use NLP techniques to identify such categories by using classifiers and ML similar to existing work regarding privacy policies [1][2][3]. The extracted information would then be represented using vocabularies such as DPV [4].
-        </p>
-
-        <p>
-            [1] Usable Privacy Project<br>
-            [2] Pribot<br>
-            [3] CLAUDETTE<br>
-            [4] DPV
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Categorising News by Topic</h2>
-
-        <p>
-            #news #NLP #ML
-        </p>
-
-        <p>
-            When a new product is launched, such as the latest Apple iPhone, the news is dominated by articles targetting one product. This project investigates combining such related news into one coherent summary or article for better presentation to the reader. It will use NLP to identify categories and topics in a news article, and combine related news article together in a corpus. It will then extract novel details from different articles and combine the results into a single summary.
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Finding Related News Articles For Issues on Privacy</h2>
-
-        <p>
-            #news #NLP #ML
-        </p>
-
-        <p>
-            Every issue raised about privacy has several related news articles which offer evidence or commentary on it. These are often isolated and collecting them requires significant effort and time. The aim of this project is to assist in the finding of relevant news article given a privacy issue. For example, given the topic 'cloud data storage', news article of relevance include those about 'data breaches', 'cloud security', 'legal obligations in a jurisdiction'. The identification requires creation of a taxonomy for privacy issues and using NLP to identify and categorise news articles based on concepts within the taxonomy.
-        </p>
-
-    </div>
     <div class="project">
         <h2>Scoring Privacy Policies For Transparency and Readability</h2>
 
@@ -407,73 +313,8 @@
         </p>
 
     </div>
-    <div class="project">
-        <h2>autoDIXIT: Generating Clues for DIXIT from Image Analysis</h2>
 
-        <p>
-            #ML #NLP #ImageAnalysis #python
-        </p>
-
-        <p>
-            DIXIT is a game where cards containing images are displayed to the players along with a clue and the players have to identify the correct card matching the clue. The aim of the project is to generate such clues for a given set of images using image analysis. This involves identification of the contents of an image, matching it with popular trivia such as a song or a movie, and generating the clue using NLP.
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Generating a Privacy Policy Corpus</h2>
-
-        <p>
-            #python #privacy #privacy-policy
-        </p>
-
-        <p>
-            The analysis of privacy on the web is highly dependant on the privacy policies made available on websites. However, such policies neither have a fixed address nor structure. Therefore, research involving them first needs to identify the privacy policies and collect them, which is a time-consuming task. This project will create a web crawler that identifies and saves privacy policies from websites. The crawler will generate a corpus of privacy policies from the web by identifying the URL of a privacy policy in a given website, extracting and cleaning its text, and saving it in an interoperable format for future use.
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Summarising Event Coverage from Tweets</h2>
-
-        <p>
-            #twitter #NLP #ML
-        </p>
-
-        <p>
-            It has become nearly customary to tweet when an event is going on. Such tweets provide coverage of the event and offer valuable crowd-sourced insights. The aim of the project is to collect and analyse tweets for a given event. An example could be a conference, where attendees tweet about the speakers, venue, food, coffee, and also their opinions. Therefore, the project will also involve identification and categorisation of the tweets along these topics. These tweets will then be summarised in a single article offering an overview of the event.
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Evaluating TRI over Tweets</h2>
-
-        <p>
-            #twitter #NLP #ML
-        </p>
-
-        <p>
-            Temporal Random Indexing (TRI) [1] is a technique that maps words into vectors (word spaces) along different time periods to enable analysis of how the meaning of words changes over time. This project will apply TRI to a selective corpus of tweets to identify how words and concepts change in use over a popular social platform. An application is identification of culturally relevant words or topics which spike in usage over a period by being associated with different contexts, such as the use of words in Twitter trends [2][3].
-        </p>
-
-        <p>
-            [1] "Analysing Word Meaning over Time by Exploiting Temporal Random Indexing" P. Basille, A. Caputo, and G. Semeraro. CLiC-it 2014 <a href="http://clic.humnet.unipi.it/proceedings/Proceedings-CLICit-2014.pdf%22%7D" title="http://clic.humnet.unipi.it/proceedings/Proceedings-CLICit-2014.pdf%22%7D" class="http">http://clic.humnet.unipi.it/proceedings/Proceedings-CLICit-2014.pdf%22%7D</a><br>
-            [2] <a href="https://trends24.in/" title="https://trends24.in/" class="https">https://trends24.in/</a><br>
-            [3] <a href="https://trendogate.com/" title="https://trendogate.com/" class="https">https://trendogate.com/</a>
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Unfolding summarised text to generate articles</h2>
-
-        <p>
-            #NLP #ML #python
-        </p>
-
-        <p>
-            Text analysis techniques can now summarise an article with satisfying efficiency. The advantages of summarised text are its short reading time and concentration of important details. This project investigates the creation of larger articles from a given summary by identifying the context of the article and retrieving additional information about it from the web. This requires the use of NLP to identify topics of relevance within the summary, and ML to retrieve relevant information based from an existing corpus or source such as news articles.
-        </p>
-
-    </div>
-    <div class="project">
+        <div class="project">
         <h2>Crumple: Folding Privacy Policies via Summaries</h2>
 
         <p>
@@ -485,58 +326,74 @@
         </p>
 
     </div>
+
+    GDPR
+
+<div class="project">
+        <h2>Analysis of GDPR Rights implementations in the Real-world</h2>
+        <p>#GDPR #rights</p>
+    </div>
+
+<div class="project">
+        <h2>Demonstrating Potential for Inferred Personal Data </h2>
+        <p>#privacy #Python</p>
+    </div>
+
     <div class="project">
-        <h2>Using AI to detect AI biases</h2>
+        <h2>DPA Grace Periods (this is more lawyery)</h2>
+        <p>#GDPR</p>
+        <p>Who gives grace periods for enforcement - table of DPAs. DPC has one for 5 OCT 2020. Why grace periods so late after GDPR? e.g. 2016 published, 2018 enforcement, then grace periods after that. Do DPAs have authority to give grace periods? Rational of grace periods could be to clarify unknown ambiguity, for known or repeated implementation, grace periods legitimise illegal data processing. Legality of data processing conducted up to or before grace periods - have there been indication of cancel or stop that processing, e.g. to ask for consent again - has this been mentioned in the guidelines?</p>
+    </div>
+
+    <div class="project">
+        <h2>Browser extension for Documenting Legal Compliance Violations in Consent Dialogues</h2>
+        <p>#consent #GDPR Javascript #BrowserAddon #privacy #RDF</p>
+        <p>Motivation: The GDPR lays out specific requirements on how to request and collect consent - something most websites seem to get wrong. With limited human and technological resources, it is difficult for an investigation agency to manually inspect all the websites for compliance. Technologies can help solve this by automating the detection part, but need data to be effective in detection. Further, the technological findings need to be expressed using legal language and formal information in order for them to be used effectively in legal compliance. This project will assist in these tasks by creating a browser extension which will enable any individual to highlight problematic parts of a website and consent dialogue, and will automatically generate  documentation containing links to appropriate legal clauses i.e. which specific parts of GDPR it violates. </p>
+        <p>Implementation: The project will involve understanding the requirements of consent under GDPR, and evaluating how they are being violated on the internet at large. The project will create a browser extension - which requires knowledge of javascript and web development - to capture the problematic parts of a consent dialogue and tag it with common violations that are linked to specific requirements in GDPR.</p>
+        <p>This project intends to address these by identifying the different mechanisms used to collect consent, establish their relation to existing consent requirements, and compile likely violations of legal requirements. Initially, researcher(s) will visit websites, identify elements used for consent, record their use, and establish which consent requirements in GDPR are applicable to the design element. Later, the researcher(s) will analyse the collected data for commonality in design elements, and report on likely violations of the legal requirements. The primary articles guiding this work are [4] and [8].</p>
+        <p>References <br/>
+        [1] D. Machuletz and R. Böhme, “Multiple Purposes, Multiple Problems: A User Study of Consent Dialogs after GDPR,” arXiv:1908.10048 [cs] , Aug. 2019, Accessed: Sep. 02, 2019. [Online] . Available: http://arxiv.org/abs/1908.10048. <br/>
+        [2] C. Utz, M. Degeling, S. Fahl, F. Schaub, and T. Holz, “(Un)informed Consent: Studying GDPR Consent Notices in the Field,” in ACM SIGSAC Conference on Computer and Communications Security (CCS’19), London, United Kingdom, Nov. 2019, p. 18. <br/>
+        [3] I. Fouad, C. Santos, F. A. Kassar, N. Bielova, and S. Calzavara, “On Compliance of Cookie Purposes with the Purpose Specification Principle,” in IWPE, 2020, p. 9. <br/>
+        [4] S. Human and F. Cech, “A Human-centric Perspective on Digital Consenting: The Case of GAFAM,” presented at the Human Centred Intelligent Systems 2020, Split, Croatia, 2020, Accessed: Jun. 08, 2020. [Online] . Available: https://epub.wu.ac.at/7523/. <br/>
+        [5] C. Matte, N. Bielova, and C. Santos, “Do Cookie Banners Respect my Choice?,” in 41st IEEE Symposium on Security and Privacy, 2020, p. 19, [Online] . Available: http://www-sop.inria.fr/members/Nataliia.Bielova/papers/Matt-etal-20-SP.pdf. <br/>
+        [6] C. Matte, C. Santos, and N. Bielova, “Purposes in IAB Europe’s TCF: which legal basis and how are they used by advertisers?,” presented at the Annual Privacy Forum (APF 2020), Oct. 2020, Accessed: May 27, 2020. [Online] . Available: https://hal.inria.fr/hal-02566891. <br/>
+        [7] M. Nouwens, I. Liccardi, M. Veale, D. Karger, and L. Kagal, “Dark Patterns after the GDPR: Scraping Consent Pop-ups and Demonstrating their Influence,” Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, pp. 1–13, Apr. 2020, doi: 10/ggx9vq. <br/>
+        [8] C. Santos, N. Bielova, and C. Matte, “Are cookie banners indeed compliant with the law? Deciphering EU legal requirements on consent and technical means to verify compliance of cookie banners,” HAL, p. 75, Jun. 2020, [Online] . Available: https://hal.inria.fr/hal-02875447. <br/>
+        [9] “Guidance note on cookies and other tracking technologies,” Data Protection Commission, Ireland, Dublin, Ireland, Apr. 2020. Accessed: Jun. 08, 2020. [Online] . Available: https://www.dataprotection.ie/sites/default/files/uploads/2020-04/Guidance%20note%20on%20cookies%20and%20other%20tracking%20technologies.pdf. <br/>
+        [10] “Report by the Data Protection Commission on the use of cookies and other tracking technologies (revised),” Data Protection Commission, Ireland, Dublin, Ireland, Apr. 2020. Accessed: Jun. 08, 2020. [Online] . Available: https://www.dataprotection.ie/sites/default/files/uploads/2020-04/Data%20Protection%20Commission%20cookies%20sweep%20REVISED%2015%20April%202020%20v.01.pdf. </p>
+
+    </div>
+
+    <div class="project">
+        <h2>Assisting with Ethical Clearance in Universities</h2>
 
         <p>
-            #ethics #ML #python
+            #ethics #javascript
         </p>
 
         <p>
-            Bias in the use of AI is a rising cause of concern and one of the major ethical hurdles in adoption of new technologies. While bias can occur in many forms, one specific form is skewing the outcome with a positive or negative bias - such as reducing the likelihood of women getting jobs because of their sex. While such biases are difficult to detect and address due to their invisibility and the complexities of a system, one possible answer would be to represent a system as a black box which takes an input and produces some output. This project investigates the approach of detecting biases in an algorithm by providing inputs and measuring the statistical likelihood of outcomes. The outcome of the project will be a tool for analysing system logs consisting of inputs and outputs and detecting potential biases encoded within them.
+            Description: Modern organisations must take into account GDPR concerns when conducting data collection and in universities this role is taken by the Ethics committee and its sub-committees. This project will develop a new stand-alone web-based tool to help students completing Ethics/GDPR applications for their projects. It is planned to create a high usability web interface that simplifies the current form and known patterns of use, e.g. a simple survey, to guide students through the form generation process. The outcomes will be a transportable JSON object that expresses the student’s wishes in a machine-readable way for further stages in an approval workflow.
+        </p>
+
+        <p>
+            The project involves work on building a web dashboard for assisting researchers with documentation for data protection and ethical clearance, and will provide an opportunity to participate in real-world applications of technology in the areas of data protection and ethics. The chief task would be to build an information system that will allow users to receive suggestions and guidance for addressing risks regarding ethics and privacy. 
         </p>
 
     </div>
+
     <div class="project">
-        <h2>Cookie Monster: Detecting Privacy-invasive cookies in browser</h2>
-
-        <p>
-            #privacy #javascript
-        </p>
-
-        <p>
-            Cookies are tiny little packets of data stored in the browser for a variety of reasons - from preserving your login session to saving your form data and shopping cart. However, they have also been used nefariously to track users across the web, and has given them a negative perception. Laws such as the ePrivacy directive and GDPR require such cookies to be transparent about their purpose, mainly through the cookie notice. However, the user does not have the technological capabilities nor expertise to inspect whether such notices are consistent with the use of cookies. This project will target user privacy in a browser by providing a way for users to analyse the different cookies stored and investigate their applications and purposes. This will involve building a browser extension that collects cookies and analyses them to identify known trackers and bad actors and produce a report in a dashboard for the user. 
-        </p>
-
+        <h2>Building a Registry of CCTV Notices and their Privacy Practices in Dublin</h2>
+        <p>#privacy #surveillance #dashboard #GDPR #BrowserAddon #Javascript</p>
+        <p>Tldr; Creating a browser signal that helps automate some of the interactions on notices and consent dialogues online.</p>
+        <p>Motivation: GDPR requires CCTVs to be accompanied with notices explaining who is operating them, what kind of data is collected and retained, what it is used for, any possible use of techniques such as facial recognition, etc [1]. It is difficult to identify such notices for CCTV, and to keep track of them all together. It would be useful for the general public, authorities, and other CCTV users to understand the contents of these notices, and how they operate under GDPR.</p>
+        <p>Implementation: You will learn how CCTV notices are used in real-life, what their information is, and the kinds of technologies involved (e.g. types of cameras). You will collect examples of real-life CCTV and their accompanying notices, store them in a database, and build a dashboard to provide convenient access to this information. The dashboard will enable users to see an overview of CCTV usage (data categories, purposes, controllers) and their locations (e.g. on a map). You will build a form or input provider for crowdsourcing this information. You will write your report based on this implementation and analysis of collected information (e.g. comment on data being collected, technologies involved, difficulty of obtaining this information).</p>
+        <p>What you will learn: (i) How CCTVs work in real-life, and their requirements under GDPR regarding privacy, transparency, and notices (ii) Information gathering and data modeling (iii) Building a dashboard based on functional and non-functional requirements (iv) Analysis of technologies regarding privacy risks and GDPR</p>
+        <p>References: <br/>
+        [1] https://www.dataprotection.ie/en/dpc-guidance/guidance-on-the-use-of-cctv </p>
     </div>
-    <div class="project">
-        <h2>Attaching Risk Factors to Consent Dialogues</h2>
 
-        <p>
-            #privacy #ethics #consent #javascript
-        </p>
-
-        <p>
-            The notion of informed consent in GDPR requires the individual to also be notified about potential risks associated with the processing of their personal data. However, consent dialogues contain only information associated with use of personal data and do not provide any information about the risks of sharing that information. The aim of this project is to attach risks with appropriate information within a consent dialogue to enable the user to make a balanced judgement about their consent and use of personal data. The project involves detecting categories of information within a consent dialogue and associating an existing corpus of privacy risks by visually annotating the consent dialogue.
-        </p>
-
-    </div>
-    <div class="project">
-        <h2>Python Engine for Prose Objects</h2>
-
-        <p>
-            #python
-        </p>
-
-        <p>
-            Prose Objects [1], part of the Common Accord project [2], are a form of templates for legal documents that provide a consistent and machine-readable representation for policies and contracts. The aim is assist in the creation of legal documents in a consistent manner. In this, a legal document is represented as a form, which can be populated using metadata defined externally, such as in a JSON file. This project involves the construction of a python engine for generating prose documents. This will involve reading metadata from files in JSON and Markdown format, and applying them to legal documents represented using template systems such as Jinja2.
-        </p>
-
-        <p>
-            [1] Prose Objects <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2925871" title="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2925871" class="https">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2925871</a><br>
-            [2] Common Accord <a href="http://www.commonaccord.org/" title="http://www.commonaccord.org/" class="http">http://www.commonaccord.org/</a>
-        </p>
-    </div>
+</div>
 
     <script type="text/javascript">
         var PROJECTS = {};  // Set of projects associated with tags
@@ -586,7 +443,7 @@
                     // document.getElementById('toc-'+project.getAttribute('id')).classList.add('hidden');
                 }
                 // retrieve selected projects
-                if (selected_tag === "all") {
+                if (selected_tag === "all tags") {
                     for (let project of divs) {
                         project.classList.remove('hidden');
                         document.getElementById('index').innerHTML = '';
@@ -601,7 +458,7 @@
                         let project_div = document.getElementById(project);
                         let project_id = project_div.getAttribute('id');
                         let project_nos = project_div.getAttribute('data-pnos');
-                        console.log(project_nos);
+                        // console.log(project_nos);
                         project_div.classList.remove('hidden');
                         let title = project_div.children[0].textContent.trim();
                         toc.innerHTML += '<span id="toc-'+project_id+'">#'+project_nos+' <a href="#'+project_id+'">'+title+'</a></span><br/>';
