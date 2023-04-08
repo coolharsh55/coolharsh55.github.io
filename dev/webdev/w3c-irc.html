@@ -46,13 +46,19 @@
     <li><a href="https://w3c.github.io/scribe/scribedoc.htm">scribedoc</a> <a href="https://w3c.github.io/scribe2/scribedoc.html">scribe2doc</a></li>
     <li><a href="https://www.w3.org/2001/12/zakim-irc-bot.html">zakim</a></li>
     <li><a href="https://www.w3.org/2002/03/RRSAgent">rrsagent</a></li>
+    <li><a href="https://w3c.github.io/GHURLBot/manual.html">ghurlbot</a></li>
 </ul>
 
 <h2>commands</h2>
 <pre><code>/invite zakim #dpvcg
 /invite rrsagent #dpvcg
+/invite ghurlbot
 
-ScribeNick: harsh
+Scribe: harsh
+
+repo: w3c/dpv
+ghurlbot, harsh is coolharsh55
+
 Meeting: DPVCG Meeting Call
 Chair: harsh
 Present: people
@@ -154,6 +160,25 @@ rrsagent, bye</code></pre>
             </tr>
         </tbody></table>
 </table>
+
+<h2>GitHub bot commands</h2>
+<ul>
+    <li><code>Issue: Foo is undefined</code> - create a new issue</li>
+    <li><code>action harsh: do something</code> - due in 2 weeks</li>
+    <li><code>close #15</code> - close issue</li>
+    <li><code>reopen #15</code> - reopen issue</li>
+    <li><code>ghurlbot, list open issues with label foo</code> - Instead of list, you can also say <code>find, look up, get, search, search for</code>. Using <code>for me</code> will return issues assigned to me or user.</li>
+    <li><code>ghurlbot, delay 20</code> - don't look up issues again until 20 lines later</li>
+</ul>
+
+<h2>scribe config</h2>
+<p>command: <code>perl scribe.perl [options] < log.txt > minutes.html</code></p>
+<p>options:</p>
+<ul>
+    <li><code>-implicitContinuations</code> - continue conversation over multiple lines without <code>...</code></li>
+    <li><code>-final</code> - make minutes final rather than draft</li>
+    <li><code>-emphasis</code> - convert ASCII combinations into symbols and formatting</li>
+</ul>
         </div>
     </article>
     </main>

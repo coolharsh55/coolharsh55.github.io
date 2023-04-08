@@ -14665,6 +14665,7 @@ book:757 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "757"^^xsd:int ;
+    hpcom:book_on_loan "DL" ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
@@ -14674,7 +14675,6 @@ book:757 a hpcom:Book,
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
     schema:name "Revenger"@en ;
     schema:review "A decent mix of cyberpunk and space pirates."@en ;
     schema:url "https://harshp.com/hobbies/books/757"^^xsd:anyURI .
@@ -15801,14 +15801,18 @@ book:825 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "825"^^xsd:int ;
+    hpcom:book_on_loan "DL" ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-02-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2005"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:TCD ;
     schema:name "Pushing Ice"@en ;
+    schema:review "Lots of ideas, little exploration of them, and some boring characters that get more focus than the other interesting stuff. Imagine if Big Brother took place within Rendezvous with Rama."@en ;
     schema:url "https://harshp.com/hobbies/books/825"^^xsd:anyURI .
 
 book:826 a hpcom:Book,
