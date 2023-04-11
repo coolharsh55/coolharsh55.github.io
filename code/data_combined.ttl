@@ -6574,6 +6574,7 @@ book:32 a hpcom:Book,
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Dan Simmons"^^xsd:string ;
     schema:dateCreated "2005"^^xsd:int ;
+    schema:isPartOf list:cork ;
     schema:isbn "9780380817931"^^xsd:string ;
     schema:name "Olympos"@en ;
     schema:url "https://harshp.com/hobbies/books/32"^^xsd:anyURI .
@@ -15857,13 +15858,16 @@ book:828 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "828"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-11T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Nick Harkaway"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
     schema:name "Gnomon"@en ;
+    schema:review "This is a difficult review. On the one hand, I enjoyed most of the themes in the book, and it is an excellent display in to the creativity Nick Harkaway has, reminiscient of Gone Away World. But on the other hand - its too dense, too big, and sometimes it feels as if it needs an editorial hand to condense the text into a page with borders. I did enjoy the story, but not the story telling."@en ;
     schema:url "https://harshp.com/hobbies/books/828"^^xsd:anyURI .
 
 book:829 a hpcom:Book,
@@ -16425,6 +16429,7 @@ book:868 a hpcom:RenderedItem,
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "Victory City"@en ;
     schema:review "I didn't know a new book from Salman Rushdie had been published until I came across while walking through the book store. Bought it on an impulse - how could I resist. Looking forward to the mesmerising delight that is Rushdie's linguistic forte, I was quite surprised to discover that this was an incredibly clever and well-woven tale of modernity spun into the fabric of ancient Indian history. So much to easily miss, not notice, and realise that this is a really well written story. I missed the poetic language that evoke a love for reading, but the story itself being set in parallels to India mythologies was intriguing in itself. Still a good read - but I want to go get another Rushdie book to satiate my appetite for the language from Midnight's Children and Shame - which I immensely enjoyed."@en ;
     schema:url "https://harshp.com/hobbies/books/868"^^xsd:anyURI .
@@ -16433,7 +16438,7 @@ book:869 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "869"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Sheri S. Tepper"^^xsd:string ;
     schema:dateCreated "1989"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16514,6 +16519,7 @@ book:874 a hpcom:RenderedItem,
     schema:dateCreated "2007"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "Un Lun Dun"@en ;
     schema:url "https://harshp.com/hobbies/books/874"^^xsd:anyURI .
 
@@ -25163,15 +25169,15 @@ book:lists a owl:Class,
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;

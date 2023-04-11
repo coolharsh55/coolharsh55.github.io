@@ -413,6 +413,7 @@
     schema:dateCreated "2005"^^xsd:int ;
     schema:isbn "9780380817931"^^xsd:string ;
     schema:name "Olympos"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/32"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/33> a hpcom:RenderedItem, hpcom:BookReading,
@@ -12002,14 +12003,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "828"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-11T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Nick Harkaway"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Gnomon"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """This is a difficult review. On the one hand, I enjoyed most of the themes in the book, and it is an excellent display in to the creativity Nick Harkaway has, reminiscient of Gone Away World. But on the other hand - its too dense, too big, and sometimes it feels as if it needs an editorial hand to condense the text into a page with borders. I did enjoy the story, but not the story telling."""@en ;
     schema:url "https://harshp.com/hobbies/books/828"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/829> a hpcom:RenderedItem,
@@ -12555,13 +12557,14 @@
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Victory City"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/868"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/869> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "869"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Sheri S. Tepper"^^xsd:string ;
@@ -12638,4 +12641,5 @@
     schema:dateCreated "2007"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Un Lun Dun"@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/874"^^xsd:anyURI .
