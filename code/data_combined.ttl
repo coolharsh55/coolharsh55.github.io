@@ -12430,6 +12430,7 @@ book:63 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "63"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Charles Bukowski"^^xsd:string ;
     schema:dateCreated "1982"^^xsd:int ;
@@ -16438,12 +16439,16 @@ book:869 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "869"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Sheri S. Tepper"^^xsd:string ;
     schema:dateCreated "1989"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Grass"@en ;
+    schema:review "This is a well-written book with characters that are multi-dimensional, a world and setting that is explored in depth, and a sci-fi narrative that has sociological ecological analogies. The only thing that felt out of place was the setting of social constructs based on aristrocatic fox hunting, though I understand how that setting made sense for the story. Enjoyable, though the novel is a bit long and takes its time to showcase the mysteries. I can imagine this as being an excellent TV series."@en ;
     schema:url "https://harshp.com/hobbies/books/869"^^xsd:anyURI .
 
 book:87 a hpcom:Book,
@@ -16491,6 +16496,7 @@ book:871 a hpcom:RenderedItem,
 book:872 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "872"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
@@ -16522,6 +16528,28 @@ book:874 a hpcom:RenderedItem,
     schema:isPartOf list:cork ;
     schema:name "Un Lun Dun"@en ;
     schema:url "https://harshp.com/hobbies/books/874"^^xsd:anyURI .
+
+book:875 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "875"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Cormac McCarthy"^^xsd:string ;
+    schema:dateCreated "1973"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Child of God"@en ;
+    schema:url "https://harshp.com/hobbies/books/875"^^xsd:anyURI .
+
+book:876 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "876"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Charles Bukowski"^^xsd:string ;
+    schema:dateCreated "1989"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Hollywood"@en ;
+    schema:url "https://harshp.com/hobbies/books/876"^^xsd:anyURI .
 
 book:88 a hpcom:Book,
         hpcom:BookReading,
