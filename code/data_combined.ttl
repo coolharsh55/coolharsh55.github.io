@@ -16533,7 +16533,7 @@ book:875 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "875"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "1973"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -16544,11 +16544,15 @@ book:876 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "876"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-18T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Charles Bukowski"^^xsd:string ;
     schema:dateCreated "1989"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Hollywood"@en ;
+    schema:review "As a book written by Bukowski this is funny and on point for debauchery being pulled every few pages - but somehow still pretty tame. Good way to pass the time, like on the bus. Some of the quotes are memorable and poignant."@en ;
     schema:url "https://harshp.com/hobbies/books/876"^^xsd:anyURI .
 
 book:88 a hpcom:Book,
