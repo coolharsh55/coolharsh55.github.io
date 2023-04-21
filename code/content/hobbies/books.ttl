@@ -12535,7 +12535,7 @@
     hpcom:book_id "867"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2023-03-21T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Nicholas Carr"^^xsd:string ;
@@ -12624,7 +12624,7 @@
     hpcom:book_id "873"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Shehan Karunatilaka"^^xsd:string ;
@@ -12651,13 +12651,15 @@
         schema:Book ;
     hpcom:book_id "875"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-19T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "1973"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Child of God"@en ;
+    schema:review """I can only guess what the author meant by stating that a deranged violent psychopath is a 'child of god', but the book does show how a child born in civilisation turns back upon the barbaric and unhinged beastial nature of everything that defines social morals. The language is sparse, and sometimes poignant in thinking and stating things. Interesting end to the novel, though I wished more was written about the character at different walks of life - especially as a child and young teen."""@en ;
     schema:url "https://harshp.com/hobbies/books/875"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/876> a hpcom:RenderedItem,

@@ -16408,7 +16408,7 @@ book:867 a hpcom:RenderedItem,
     hpcom:book_id "867"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2023-03-21T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Nicholas Carr"^^xsd:string ;
@@ -16508,7 +16508,7 @@ book:873 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "873"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Shehan Karunatilaka"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16533,11 +16533,15 @@ book:875 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "875"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-19T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "1973"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Child of God"@en ;
+    schema:review "I can only guess what the author meant by stating that a deranged violent psychopath is a 'child of god', but the book does show how a child born in civilisation turns back upon the barbaric and unhinged beastial nature of everything that defines social morals. The language is sparse, and sometimes poignant in thinking and stating things. Interesting end to the novel, though I wished more was written about the character at different walks of life - especially as a child and young teen."@en ;
     schema:url "https://harshp.com/hobbies/books/875"^^xsd:anyURI .
 
 book:876 a hpcom:RenderedItem,
@@ -25336,16 +25340,16 @@ hpcom:BookNonFiction a hpcom:BookGenre ;
 hpcom:book-to-read a hpcom:BookStatus ;
     rdfs:label "to read"@en .
 
+hpcom:Tag a owl:Class ;
+    rdfs:label "Tag"@en ;
+    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
+
 hpcom:Rating4 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😁good (4/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "4"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating4"^^xsd:anyURI .
-
-hpcom:Tag a owl:Class ;
-    rdfs:label "Tag"@en ;
-    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
 
 hpcom:Rating5 a hpcom:Rating,
         hpcom:RenderedItem ;
