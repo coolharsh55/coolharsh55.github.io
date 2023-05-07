@@ -841,6 +841,7 @@
 <https://harshp.com/hobbies/books/68> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "68"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Arundhati Roy"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
@@ -10136,6 +10137,7 @@
 <https://harshp.com/hobbies/books/702> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "702"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Chen Qiufan"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
@@ -11926,7 +11928,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "823"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Charles Stross"^^xsd:string ;
@@ -12610,27 +12612,29 @@
         schema:Book ;
     hpcom:book_id "872"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Cormac McCarthy"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Road"@en ;
+    schema:review """Hemingway type writing combined with post-apocalyptic society and the bare terror of human society falling apart. All of this makes for an interesting read. The writing is simple, but the story is intense. A good read."""@en ;
     schema:url "https://harshp.com/hobbies/books/872"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/873> a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "873"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-24T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Shehan Karunatilaka"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Seven Moons of Maali Almeida"@en ;
+    schema:review """This is a clever book written with prose that is witty and implies wisdom in places without throwing it in the face. It is set in the Sri Lankan conflict, and without the cultural knowledge of the situation a lot of references and subtle nuances would be lost. I enjoyed reading it, even if the story itself was not particularly to my liking - but the writing style was rich and enjoyable."""@en ;
     schema:url "https://harshp.com/hobbies/books/873"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/874> a hpcom:RenderedItem,
@@ -12676,3 +12680,83 @@
     schema:name "Hollywood"@en ;
     schema:review """As a book written by Bukowski this is funny and on point for debauchery being pulled every few pages - but somehow still pretty tame. Good way to pass the time, like on the bus. Some of the quotes are memorable and poignant."""@en ;
     schema:url "https://harshp.com/hobbies/books/876"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/877> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "877"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-04-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Lords of Uncreation"@en ;
+    schema:review """The two big questions with a final book in a series is always whether it delivers in the conclusion and whether it takes too long to get there. In this case, Tchaikovsky has managed to succeed on both answers. The book was interesting to read, and while I couldn't wait to understand the big reveal at the end, it was also interesting to see all the political battles being waged to get there. Felt more realistic than the alternative - that somehow everyone is idealistic and co-operates to save the universe. There were places where things felt stretched too thin and where it felt that episodic scenes were being played when we knew they wouldn't matter in the long run. But I still enjoyed reading through most of the book - and that's quite something. Thoroughly enjoyed the series."""@en ;
+    schema:url "https://harshp.com/hobbies/books/877"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/878> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "878"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Eleanor Catton"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Birnam Wood"@en ;
+    schema:url "https://harshp.com/hobbies/books/878"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/879> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "879"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Salman Rushdie"^^xsd:string ;
+    schema:dateCreated "1995"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Moor's Last Sigh"@en ;
+    schema:url "https://harshp.com/hobbies/books/879"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/880> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "880"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Paolo Bacigalupi"^^xsd:string ;
+    schema:dateCreated "2009"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "The Windup Girl"@en ;
+    schema:url "https://harshp.com/hobbies/books/880"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/881> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "881"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Bora Chung"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Cursed Bunny"@en ;
+    schema:url "https://harshp.com/hobbies/books/881"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/882> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "882"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Stanisław Lem"^^xsd:string ;
+    schema:dateCreated "1965"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "The Cyberiad"@en ;
+    schema:url "https://harshp.com/hobbies/books/882"^^xsd:anyURI .

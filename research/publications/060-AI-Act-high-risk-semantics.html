@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>To Be High-Risk, or Not To Be—Semantic Specifications and Implications of the AI Act’s High-Risk AI Applications and Harmonised Standards</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="To Be High-Risk, or Not To Be—Semantic Specifications and Implications of the AI Act’s High-Risk AI Applications and Harmonised Standards">
+    <meta name="schema:description" content="This article analyses the core concepts in EU Act&#39;s high-risk categorisation, and presents an open vocabulary to model AI risk. It also explores the implications of standardisation activities in connection with AI Act.">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="AI,AI-Act,ISO,risk,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/060-AI-Act-high-risk-semantics">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="To Be High-Risk, or Not To Be—Semantic Specifications and Implications of the AI Act’s High-Risk AI Applications and Harmonised Standards">
+    <meta property="og:description" content="This article analyses the core concepts in EU Act&#39;s high-risk categorisation, and presents an open vocabulary to model AI risk. It also explores the implications of standardisation activities in connection with AI Act.">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/060-AI-Act-high-risk-semantics">
+        <h1 property="schema:name schema:headline">To Be High-Risk, or Not To Be—Semantic Specifications and Implications of the AI Act’s High-Risk AI Applications and Harmonised Standards</h1>
+<div id="description">
+	<small>
+	<time datetime="2023-05-01T00:00:00">2023-05-01T00:00:00</time>
+    <i>Conference</i>
+    <br/>
+    Conference on Fairness, Accountability, and Transparency (FAccT)    <br/>
+    &#9997;<i>
+    Delaram Golpayegani*
+    ,
+    <u>Harshvardhan J. Pandit</u>
+    ,
+    Dave Lewis
+    </i>
+    <br/>
+        &#x1f513;copies:
+        <a href="https://harshp.com/research/publications/059-RQ-Decentralised-Personal-Data-Governance">harshp.com</a>
+        , <a href="http://hdl.handle.net/2262/102552">TARA</a>
+    <br/>
+    This article analyses the core concepts in EU Act&#39;s high-risk categorisation, and presents an open vocabulary to model AI risk. It also explores the implications of standardisation activities in connection with AI Act.
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+<p><strong>Abstract</strong> The EU's proposed AI Act sets out a risk-based regulatory framework to govern the potential harms emanating from use of AI systems. Within the AI Act's hierarchy of risks, the AI systems that are likely to incur \emph{``high-risk''} to health, safety, and fundamental rights are subject to the majority of the Act's provisions. To include uses of AI where fundamental rights are at stake, Annex III of the Act provides a list of applications wherein the conditions that shape high-risk AI are described. For high-risk AI systems, the AI Act places obligations on providers and users regarding use of AI systems and keeping appropriate documentation through the use of harmonised standards. In this paper, we analyse the clauses defining the criteria for high-risk AI in Annex III to simplify identification of potential high-risk uses of AI by making explicit the ``core concepts'' whose combination makes them high-risk.</p>
+<p>We use these core concepts to develop an open vocabulary for AI risks (VAIR) to represent and assist with AI risk assessments in a form that supports automation and integration. VAIR is intended to assist with identification and documentation of risks by providing a common vocabulary that facilitates knowledge sharing and interoperability between actors in the AI value chain. Given that the AI Act relies on harmonised standards for much of its compliance and enforcement regarding high-risk AI systems, we explore the implications of current international standardisation activities undertaken by ISO and emphasise the necessity of better risk and impact knowledge bases such as VAIR that can be integrated with audits and investigations to simplify the AI Act's application.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The EU AI Act <span class="citation" data-cites="aiact"><a
+href="#ref-aiact" role="doc-biblioref">[1]</a></span>, the first
+proposed legal regime for development and use of AI systems, sets out a
+risk-based approach and proposes binding requirements for those who
+provide and use “high-risk” AI systems that are likely to cause serious
+harms to health, safety, or fundamental rights of individuals. The AI
+Act applies the high-risk concept to AI systems used as products and
+safety components of products already covered by EU harmonisation
+legislation. Further, it defines specific uses of AI as being high-risk,
+with a list provided in Annex III and provisions for the European
+Commission to modify the list in future amendments. With any update to
+the high-risk list, AI providers, by whom the majority of compliance
+obligations should be satisfied, need to undertake an assessment to find
+out if their systems fall into the newly introduced areas.</p>
+<p>Considering the EU’s global influence on technology-related
+rulemaking, which has already manifested in the data protection area
+with the enforcement of the General Data Protection Regulation (GDPR)
+<span class="citation" data-cites="GDPR"><a href="#ref-GDPR"
+role="doc-biblioref"><strong>GDPR?</strong></a></span>, soon similar AI
+regulations are expected to be developed by governments worldwide.
+Reaching a global consensus on high-risk areas as defined by the AI Act
+is highly unlikely, which means there will likely be multiple diverging
+risk-based classifications in different jurisdictions. This represents
+legal uncertainties for stakeholders as an AI system could potentially
+be or not be high-risk based on the geopolitical contexts it is used in.
+For example, social credit scoring systems are banned in the EU (AI Act,
+Art. 5(1)(c)) while an implementation of this is being used in China
+<span class="citation" data-cites="socialcreditscoring2022"><a
+href="#ref-socialcreditscoring2022" role="doc-biblioref">[2]</a></span>.
+Following from these, stakeholders thus face a challenge in how to
+structure, document, and share information in the context of their AI
+systems or components such that this information assists with fulfilling
+different regulatory requirements without impeding rapid progress in
+global markets.</p>
+<p>Under the AI Act, high-risk AI systems have specific obligations
+regarding identification, management, and documentation of risks. To
+support implementation of such high-level legal requirements, the Act
+relies on harmonised standards created by European standardisation
+organisations. However, in reality, the Act and its effectiveness face
+the following issues at present:</p>
+<ul>
+<li><p>Lack of clarity and guidelines regarding determination of
+high-risk uses of AI listed in Annex III;</p></li>
+<li><p>Lack of standardised methods for representing and investigating
+risk management in use-cases involving AI;</p></li>
+<li><p>Lack of guidance on how risk documentation and knowledge should
+be provided between actors, especially where providers and users are not
+developers of an AI system or its components.</p></li>
+</ul>
+<p>To address these challenges, we analysed the AI Act, with a focus on
+Annex III, to create a simplified and structured framework that not only
+assists with discovering whether an AI use-case falls under the AI Act’s
+high-risk categorisation, but also helps with identification of relevant
+risks and their potential impacts. Finally, we analyse the state of the
+standards within ISO and CEN-CENELEC to understand the relevance of
+published and under-development AI standards to the AI Act’s high-risk
+AI requirements. In this research, we provide the following
+<strong>contributions</strong>:</p>
+<ul>
+<li><p>A simplified and structured framework for identification of
+potential high-risk uses of AI as per Annex III (Section <a
+href="#Annex III Analysis" data-reference-type="ref"
+data-reference="Annex III Analysis">3</a>);</p></li>
+<li><p>An open and interoperable vocabulary for representing,
+documenting, and sharing AI risk information and best practices (Section
+<a href="#vair" data-reference-type="ref"
+data-reference="vair">4</a>);</p></li>
+<li><p>An analysis of the scope of standardisation activities within ISO
+and CEN-CENELEC in regard to the AI Act’s provisions concerning
+high-risk AI (Section <a href="#harmonised standard"
+data-reference-type="ref"
+data-reference="harmonised standard">5</a>).</p></li>
+</ul>
+<h2 id="Background and Related Work">Background and Related Work</h2>
+<h3 id="ai act">The AI Act</h3>
+<p><strong>Legislation Development Process:</strong> Following the
+ordinary legislative process<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>, the AI Act was first
+proposed by the European Commission in April 2021<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> as
+a binding instrument to guard individuals in the European Union against
+AI-related harms. The proposal has to be approved by both the European
+Parliament and the Council of the European Union to be passed as EU
+legislation. At the end of its term in June 2022, the French presidency
+of the Council published a consolidated version<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
+The Council’s common position, the latest draft of the Act at the time
+of writing, was issued in November 2022 by the Czech presidency. During
+the first reading of the Act in the European parliament, more than 3000
+amendments were tabled by the responsible committees, namely the
+Committee on the Internal Market and the Committees on Consumer
+Protection and Civil Liberties, Justice and Home Affairs. Finalisation
+of the Parliament’s position, which is expected in the first semester of
+2023, will allow entering the trilogue phase, whereby the Commission,
+Parliament, and Council negotiate the AI Act behind closed doors to
+reach an agreement on the final text. 12 days after the publication of
+the Act in the Official Journal of the European Union, it will come into
+force (Art. 85(1)) and 36 months after, it will be applied (Art. 85(2)).
+<strong>In this paper, we adopt the Council’s common position on the AI
+Act.</strong></p>
+<p><strong>Structure and Content:</strong> The AI Act’s key feature is
+its risk-based structure where different legal regimes are established
+for governing AI systems according to their potential detrimental
+impacts on health, safety, and fundamental rights. These legal regimes
+cover four clusters of AI systems with (i) unacceptable (severe), (ii)
+high, (iii) limited, and (iv) minimal risks. Rather than providing a
+comprehensive overview of the Act’s content, we focus on the high-risk
+regime (described in Title III), which follows the new legislative
+framework (NLF)—a common EU product-related legal framework adopted in
+2008. According to Art. 6, an AI system classifies as
+<strong>high-risk</strong> if it is: (1) a product which requires
+third-party conformity assessment under at least one of the Union
+harmonisation legislations listed in Annex II; (2) used as a safety
+component of a product mentioned in the preceding point; or (3) used in
+the use-cases described in Annex III. Chapter 2 of Title III prescribes
+the essential requirements that a high-risk AI system should fulfil,
+including having a risk management system in place (Art. 9) and being
+accompanied by technical documentation (Art. 11). Legal provisions
+applied to high-risk AI providers, users, and other related actors such
+as importers and distributors are described in Chapter 3. Following the
+NLF, the Act introduces harmonised standards as instruments for
+providing detailed technical solutions for compliance with essential
+requirements. Owing to the presumption of conformity (Art. 40), AI
+providers can achieve compliance with the requirements through
+conformance to harmonised standards, without undergoing the costly and
+time-consuming process of requirements interpretation <span
+class="citation" data-cites="veale2021aiact"><a
+href="#ref-veale2021aiact" role="doc-biblioref">[3]</a></span>.</p>
+<h3 id="views-on-the-ai-acts-high-risk-ai-areas">Views on the AI Act’s
+High-Risk AI Areas</h3>
+<p>While there have been several comments and opinions published
+regarding the AI Act, we focus on the concerns raised regarding
+high-risk areas. In one of the first and highly-cited analyses of the
+Act, Veale and Borgesius <span class="citation"
+data-cites="veale2021aiact"><a href="#ref-veale2021aiact"
+role="doc-biblioref">[3]</a></span> bring up the insufficiency of Annex
+III high-risk areas in addressing applications where fundamental rights
+are at risk. De Cooman <span class="citation"
+data-cites="de2022humpty"><a href="#ref-de2022humpty"
+role="doc-biblioref">[4]</a></span> argues the AI Act’s deficiency in
+addressing the full range of risks associated with AI systems by
+referring to the potential harms of non-high-risk AI, i.e. AI systems
+with limited or minimal risk. The author also highlights the importance
+of culture and social tolerance in determining harmful applications of
+AI. In agreement with the aforementioned views, Ebers et al. <span
+class="citation" data-cites="ebers2021"><a href="#ref-ebers2021"
+role="doc-biblioref">[5]</a></span> reflect on the areas where the AI
+Act’s high-risk list falls short of: (i) the missing high-risk contexts
+of AI use, e.g. use of AI for housing purposes, and (ii) the ignored
+harms of AI to groups which in turn affect individuals, e.g.
+discrimination caused by AI systems used for predictive policing. The
+authors also suggest expanding the AI Act’s risk hierarchy to a more
+detailed and granular risk categorisation. We take up this suggestion
+and propose a vocabulary for AI risks in Section <a href="#vair"
+data-reference-type="ref" data-reference="vair">4</a>.</p>
+<p>According to AI Act’s Art.7, the Commission is granted the
+legislative power to amend the list of high-risk AI systems in Annex III
+and thereby introduce new criteria for high-risk AI based on perceived
+harms. However, this ability is restricted to only those areas already
+mentioned in Annex III. This limitation in adding new areas is
+criticised in <span class="citation" data-cites="ebers2021"><a
+href="#ref-ebers2021" role="doc-biblioref">[5]</a></span> and <span
+class="citation" data-cites="smuha2021eu"><a href="#ref-smuha2021eu"
+role="doc-biblioref">[6]</a></span>, where the authors highlight the
+necessity of extending the high-risk areas.</p>
+<h3 id="taxonomies">Taxonomies for Describing AI Systems and Their
+Risks</h3>
+<p>There are multiple generic taxonomies for describing harmful
+applications of AI. The <strong>AI, algorithmic, and automation
+incidents and controversies (AIAAIC)</strong> repository<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is
+an open-access dataset of more than 900 AI incidents covered by the
+media. The AIAAIC taxonomy provides a set of concepts for incident
+annotation, including categories of sectors, technologies, purposes, and
+impacts of AI on individuals, society, environment, and providers. The
+Partnership on AI’s <strong>AI incident database (AIID)</strong> <span
+class="citation" data-cites="mcgregor2021aiid"><a
+href="#ref-mcgregor2021aiid" role="doc-biblioref">[7]</a></span> is a
+crowd-sourced database of 24000 incidents. The creation of the taxonomy
+followed a bottom-up approach where the taxonomy is populated through
+incident annotation <span class="citation"
+data-cites="pittaras2022aiid"><a href="#ref-pittaras2022aiid"
+role="doc-biblioref">[8]</a></span>. <strong>AITopics</strong><a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> is the AAAI’s (Association for the
+Advancement of Artificial Intelligence) corpus of AI-related news
+stories, research articles, conferences, and journals. The scope of
+AITopics is not limited to AI incidents and therefore it indexes all
+types of AI-related news articles as well as scientific papers.
+Discovery, categorisation (determining the main focus), and
+summarisation of AI news featured in AITopics are automated <span
+class="citation" data-cites="eckroth3012newsfinder"><a
+href="#ref-eckroth3012newsfinder" role="doc-biblioref">[9]</a></span>.
+The <strong>OECD’s framework for classification of AI systems</strong>
+is a tool for assessing potential risks and benefits of AI use-cases by
+considering five high-level dimensions: people &amp; planet, economic
+context, data &amp; input, AI model, and task &amp; output. The
+framework incorporates taxonomies for its risk assessment criteria.
+Developing a common framework for reporting AI incidents is on the
+OECD’s agenda for future work <span class="citation"
+data-cites="2022oecdtaxonomy"><a href="#ref-2022oecdtaxonomy"
+role="doc-biblioref">[10]</a></span>. The <strong>AI risk ontology
+(AIRO)</strong> <span class="citation" data-cites="airo"><a
+href="#ref-airo" role="doc-biblioref">[11]</a></span> is an ontology for
+modelling AI systems and their associated risks. AIRO, which is built
+upon the AI Act and ISO 31000 family of risk management standards,
+includes instances of AI and risk concepts organised in a hierarchical
+manner. Table <a href="#tab:ai risk taxonomy" data-reference-type="ref"
+data-reference="tab:ai risk taxonomy">[tab:ai risk taxonomy]</a>
+provides an overview of the taxonomies provided by the above-mentioned
+work for describing AI systems and their associated risks.</p>
+<p>In addition to generic AI taxonomies, an active area of research is
+identification of taxonomies for risks associated with specific AI
+techniques or specific types of risks e.g. bias. Examples of these are:
+Weidinger et al.’s taxonomy of ethical and social risks of language
+models <span class="citation" data-cites="weidinger2022lmtaxonomy"><a
+href="#ref-weidinger2022lmtaxonomy"
+role="doc-biblioref">[12]</a></span>, the open loop’s taxonomy of
+potential harms associated with machine learning applications and
+automated decision-making systems <span class="citation"
+data-cites="andrade2021aiia"><a href="#ref-andrade2021aiia"
+role="doc-biblioref">[13]</a></span>, NIST’s taxonomy of adversarial
+machine learning <span class="citation"
+data-cites="nist2019amltaxonomy"><a href="#ref-nist2019amltaxonomy"
+role="doc-biblioref">[14]</a></span> and categories of AI Bias <span
+class="citation" data-cites="schwartz2022nistbias"><a
+href="#ref-schwartz2022nistbias" role="doc-biblioref">[15]</a></span>,
+Steimers and Schneider’s work on creating a taxonomy of risk sources
+that impact AI trustworthiness <span class="citation"
+data-cites="steimers2022risksources"><a
+href="#ref-steimers2022risksources"
+role="doc-biblioref">[16]</a></span>, and Roselli et al.’s work on
+classification of AI bias <span class="citation"
+data-cites="roselli2019managingbias"><a
+href="#ref-roselli2019managingbias"
+role="doc-biblioref">[17]</a></span>.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><strong>AIAAIC</strong></th>
+<th style="text-align: left;"><strong>AIID</strong></th>
+<th style="text-align: left;"><strong>AITopics</strong></th>
+<th style="text-align: left;"><strong>OECD taxonomy</strong></th>
+<th style="text-align: left;"><strong>AIRO</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Main resource</strong></td>
+<td style="text-align: left;">News articles</td>
+<td style="text-align: left;">News articles</td>
+<td style="text-align: left;">Web resources</td>
+<td style="text-align: left;">Related research</td>
+<td style="text-align: left;">AI Act, ISO 31000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Development
+methodology</strong></td>
+<td style="text-align: left;">Bottom-up, manual discovery &amp;
+annotation</td>
+<td style="text-align: left;">Bottom-up, manual discovery &amp;
+annotation</td>
+<td style="text-align: left;">Automated discovery &amp; annotation</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Top-down</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>AI taxonomies</strong></td>
+<td style="text-align: left;">Technology</td>
+<td style="text-align: left;">AI functions AI techniques Developer</td>
+<td style="text-align: left;">Technology</td>
+<td style="text-align: left;">Application area AI system task</td>
+<td style="text-align: left;">AI technique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Use of AI taxonomies</strong></td>
+<td style="text-align: left;">Sector Purpose</td>
+<td style="text-align: left;">Sector of deployment Nature of
+end-users</td>
+<td style="text-align: left;">Industry</td>
+<td style="text-align: left;">User Industrial sector Business
+function</td>
+<td style="text-align: left;">Purpose Stakeholder</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Risk and impact
+taxonomies</strong></td>
+<td style="text-align: left;">Transparency issue External impact
+Internal impact</td>
+<td style="text-align: left;">AI harm Materialisation of harm Sectors
+affected</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Impacted stakeholders Impact Redress</td>
+<td style="text-align: left;">Risk source Consequence Impact
+Control</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Annex III Analysis">Analysis and Semantification of the AI Act’s
+High-Risk AI Use-Cases</h2>
+<p>As shown in the previous section, taxonomies of AI risks are
+predominantly built through annotation of AI incidents. The information
+captured from incidents enables reverse causal inference to identify
+<em>why</em> an AI system caused harm (causes of effects). As the AI Act
+serves a precautionary role, it articulates <em>what</em> situations are
+likely to pose high risk to health, safety, and fundamental rights ; and
+lays down requirements to avoid incidents that are likely to result in
+harmful impacts from happening. Among the three main conditions for
+high-risk AI systems (discussed in Section <a href="#ai act"
+data-reference-type="ref" data-reference="ai act">2.1</a>), the uses of
+AI systems described in Annex III primarily refer to situations where
+fundamental rights are at stake while the main concerns with most of the
+systems that fall under the already regulated domains, listed in Annex
+II, are related to health and safety. To assist with identification of
+high-risk AI systems, we provide a structured and simplified framework
+by addressing the following practical aspects:</p>
+<ol>
+<li><p>What information is needed to make a decision about whether an
+application of AI is high-risk as per Annex III?</p></li>
+<li><p>When should the evaluation re-assessed?</p></li>
+<li><p>Who is responsible for making the decision, particularly in the
+case of general purpose AI?</p></li>
+</ol>
+<h3
+id="requirements-and-semantic-specifications-for-determining-high-risk-ai">Requirements
+and Semantic Specifications for Determining High-Risk AI</h3>
+<p>Annex III represents high-risk uses of AI under 8 areas by providing
+a brief description of the situations that are likely to harm
+individuals. For example, under the area of <em>migration, asylum and
+border control management</em> (Annex III, pt. 7) one of the AI
+applications qualified as high-risk is described as follows: <em>“AI
+systems intended to be used by competent public authorities or on their
+behalf to assess a risk, including a security risk, a risk of irregular
+immigration, or a health risk, posed by a natural person who intends to
+enter or has entered into the territory of a Member State”</em> (Annex
+III, pt. 7(b)).</p>
+<h4 id="criteria">High-Risk AI Criteria</h4>
+<p>Inspired by the GDPR’s criteria for determining the necessity of
+conducting a Data Protection Impact Assessment (DPIA) (GDPR, Art.
+35(3)), through an in-depth analysis of the descriptions of high-risk AI
+use-cases, we identified the following 5 concepts, which are expressed
+in various combinations by Annex III:</p>
+<ol>
+<li><p>In which <strong><em>domain</em></strong> is the AI system
+used?</p></li>
+<li><p>What is the <strong><em>purpose</em></strong> of the AI
+system?</p></li>
+<li><p>What is the <strong><em>capability</em></strong> of the AI
+system?</p></li>
+<li><p>Who is the <strong><em>user</em></strong> of the AI
+system?</p></li>
+<li><p>Who is the <strong><em>AI subject</em></strong>?</p></li>
+</ol>
+<p>In the above-mentioned questions, <em>domain</em> represents the area
+or sector the AI system is intended to be used in. The AI Act defines
+<em>intended purpose</em> as “the use for which an AI system is intended
+by the provider, including the specific context and conditions of
+use...” (Art. 3(12)); however to avoid complexities regarding context
+and conditions of use, we describe <em>purpose</em> as an objective that
+is intended to be accomplished by using an AI system. The AI system’s
+<em>capability</em> enables realisation of its purpose and reflects the
+technological capability; for example <em>biometric identification</em>
+is the capability used towards achieving the purpose of <em>remote
+identification of people</em>. <em>AI user</em>, as defined in Art.
+3(4), is “any natural or legal person, including a public authority,
+agency or other body, under whose authority the system is used”. <em>AI
+subject</em> refers to the person subjected to the use of AI; <em>a
+passenger entering a territory</em> is an example of an AI subject in an
+AI system used for <em>assessing the risk of irregular
+immigration</em>.</p>
+<h4 id="high-risk-ai-conditions">High-Risk AI Conditions</h4>
+<p>To specify the conditions where use of an AI system is classified as
+high-risk, we determined values of the identified concepts by answering
+the 5 questions for each clause in Annex III. Combinations of values,
+which can be treated as rules for high-risk uses, for Annex III’s
+high-risk applications are represented in Figure <a
+href="#fig:conditions" data-reference-type="ref"
+data-reference="fig:conditions">[fig:conditions]</a>. If an AI system
+meets at least one of the conditions, it is considered as high-risk
+<strong>unless</strong> (i) its provider demonstrates that “the output
+of the system purely accessory in respect of the relevant action or
+decision to be taken and is not therefore likely to lead to a
+significant risk to the health, safety or fundamental rights.” (Art. 6
+(3)), or (ii) it is put into service by a small-scale provider in the
+public or private sector for their own use to assess creditworthiness,
+determine credit score, health/life insurance risk assessment, or
+health/life insurance pricing (Annex III, pt. 5(a) and 5(b)).</p>
+<figure id="fig:conditions">
+    <img src="img/060-annexIII.png" alt="image" />
+    <figcaption>Describing Annex III high-risk conditions using the 5 concepts</figcaption>
+</figure>
+<p>An AI system determined as high-risk should fulfil the requirements
+recited in Title III Chapter 2, such as having a risk management system
+operationalised and documented (Art. 9), being accompanied by technical
+documentation whose content is subject to scrutiny in regard to
+conformity assessment (Art. 11), and demonstrating appropriate levels of
+accuracy, robustness and cybersecurity (Art. 15). Ensuring that such a
+system fulfils the high-risk AI requirements is the obligation of its
+provider or any actor described in Art. 23a (Art. 16(a)).</p>
+<h4 id="semantic-specifications">Semantic Specifications</h4>
+<p>We leverage semantic web technologies to provide a standardised way
+for representing, documenting, and sharing the 5 concepts, to enable
+automation in making the decision regarding whether or not a particular
+use of an AI system is qualified as high-risk, and to facilitate
+investigation and auditing of risk management. In semantic modelling of
+the concepts, we reused concepts and relations shown in Figure <a
+href="#fig:high-riskconcepts" data-reference-type="ref"
+data-reference="fig:high-riskconcepts">1</a> from AIRO. Providing a
+semantic representation of an AI use-case and semantification of
+high-risk rules require a vocabulary that represents instances of
+concepts in a hierarchical manner, e.g. different types of purposes for
+which AI might be used. To satisfy this requirement, we created a
+vocabulary for AI risks (see Section <a href="#vair"
+data-reference-type="ref" data-reference="vair">4</a>).</p>
+<figure id="fig:high-riskconcepts">
+    <img src="img/060-concepts.jpeg" />
+    <figcaption>Semantic model of the 5 concepts required for determining
+high-risk AI</figcaption>
+</figure>
+<p>To automate reasoning, we define high-risk rules as target sets using
+the shapes constraint language (SHACL)<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.
+Based on this, we developed a tool to assist in determining high-risk
+uses of AI (Figure <a href="#fig:tool" data-reference-type="ref"
+data-reference="fig:tool">2</a>). The tool asks the 5 questions,
+mentioned earlier, and provides a list of instances from which the user
+can select a value. Based on the user’s input, an RDF graph that
+describes the system in a machine-readable format is generated and then
+the graph is validated against the SHACL shapes to determine if
+conditions for high-risk AI are met. The output of the current version
+of the tool includes the result of the assessment (high-risk or not
+high-risk) and an assessment report. The tool is limited in
+identification of prohibited AI systems, therefore classification of the
+system into the prohibited category on the basis of Art. 5 conditions
+should be ruled out before using the tool. Future enhancements include
+providing suggestions and guidelines for different stakeholders
+regarding the next steps, for example providing information about legal
+requirements, relevant standards, and the additional details required to
+be maintained for conformity assessment.</p>
+<figure id="fig:tool">
+    <img src="img/060-tool.png" />
+    <figcaption>User interface of the tool developed for determining
+    high-risk AI</figcaption>
+</figure>
+<h3
+id="substantial-modifications-and-reviewing-the-high-risk-assessment">Substantial
+Modifications and Reviewing the High-Risk Assessment</h3>
+<p>Once classified as <em>high-risk/not high-risk</em> does not mean
+that the AI system will forever belong to the identified category. A key
+question for providers and users is when to revisit the decision
+regarding whether or not an AI system is high-risk. According to the AI
+Act, if an AI system undergoes <strong>“substantial
+modifications”</strong>, defined as changes that affect either the
+system’s conformity with the high-risk AI requirements or its intended
+<em>purpose</em> (Art. 3(23)), its life cycle will come to an end and
+the modified version is considered as a new system (Art. 3(1a)) and
+therefore requires a new assessment to determine if it is high-risk. An
+exception is made for substantial modifications in high-risk continuous
+learning systems (systems that continue to learn after being placed on
+the market or put into service) when the changes to the system and its
+performance are predicted, addressed, and documented in the initial
+conformity assessment (Art. 3(23)). It is not clear why foreseen
+substantial changes that are taken into account in conformity assessment
+of any high-risk AI system, regardless of its type, are not entitled to
+this exemption. Further, the line between <em>modification</em> and
+<em>substantial modification</em> is not clarified in the Act.
+Alternation of the intended <em>purpose</em> is explicitly indicated as
+substantial modification, yet it is not the only factor that affects the
+system’s conformity with the Act. Identification of cases of substantial
+modification is also needed for fulfilling record-keeping requirements
+as monitoring and recording of the factors that might result in
+substantial modifications in a high-risk AI system should be enabled
+through logging capabilities (Art. 12(2)(i)).</p>
+<p>We recommend considering changes to the 5 concepts used for
+determining high-risk AI, namely domain, purpose, capability, user, and
+AI subject as substantial modifications due to their profound impacts on
+almost all of the requirements. However, this list is not exhaustive as
+there are other modifications that potentially affect conformity with
+the essential requirements, such as the examples listed in Table <a
+href="#tab:substantialmodification" data-reference-type="ref"
+data-reference="tab:substantialmodification">[tab:substantialmodification]</a>.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Modification of</strong></th>
+<th style="text-align: left;"><strong>Affected Requirement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Risk management process</td>
+<td style="text-align: left;">Art. 9 Risk management system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Training, validation, or testing data
+sets</td>
+<td style="text-align: left;">Art. 10 Data and data governance</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log management tools</td>
+<td style="text-align: left;">Art. 12 Record-keeping</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected output</td>
+<td style="text-align: left;">Art. 13 Transparency and provision of
+information to users</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Machine learning algorithms (that might
+lead to accuracy degradation)</td>
+<td style="text-align: left;">Art. 15 Accuracy, robustness and
+cybersecurity</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Another trigger for re-assessment is the amendment of the high-risk
+areas, whose necessity is reviewed every 24 months after the regulation
+comes into force (Art. 84(1b)). The commission is granted the authority
+to add (Art. 7(1)) or remove (Art. 7(3)) high-risk applications listed
+in Annex III. It should be noted that only applications of AI listed
+under the 8 areas can be amended—denoting that the areas are not subject
+to amendments.</p>
+<h3 id="responsible-body-for-determination-of-high-risk-ai">Responsible
+Body for Determination of High-Risk AI</h3>
+<p>Self-assessment of an AI system to determine whether it is high-risk,
+and in turn ensuring its compliance with the AI Act, are essentially the
+responsibility of the AI system <em>provider</em> (Art. 16(a))—an entity
+who “develops an AI system or that has an AI system developed and places
+that system on the market or puts it into service” (Art. 3(2)). However,
+under particular conditions (listed in Art. 23a(1)) this responsibility
+is delegated to other entities; for instance if an AI user, the entity
+“under whose authority the system is used.” (Art. 3(4)), modifies a
+non-high-risk AI system in such a way that after the modification it
+qualifies as high-risk, e.g. by alternating the intended purpose, then
+the user is subject to the providers’ obligations listed in Art. 16.</p>
+<p>With the rise of <strong>general purpose AI systems</strong>, an
+important question is on whose shoulders the regulatory burdens should
+be. General purpose AI systems that <em>may be used</em> as a high-risk
+AI system or as its components should comply with high-risk AI
+requirements listed in Title III, Chapter 2 (Art. 4b(1)). According to
+Art. 4b(2), providers of such systems have to comply with some of the
+providers’ obligations, such as indicating their name and contact
+information (Art. 16(a)), ensuring the system undergoes conformity
+assessment procedures (Art. 16(e)), taking corrective actions when
+necessary (Art. 16(g)), affixing CE marking (Art. 16(i)), demonstrating
+conformity upon request (Art. 16(j)), drawing EU declaration of
+conformity (Art. 48), and establishing a post-market monitoring system
+(Art. 61). In addition, the general purpose AI providers should share
+necessary information required for compliance with the AI Act with
+<em>“other providers intending to put into service or place such systems
+on the Union market as high-risk AI systems or as components of
+high-risk AI systems”</em> (Art. 4b(5)), who are subject to obligations
+of high-risk AI providers according to Art. 23a(1)(e). However, if the
+provider of general purpose AI explicitly and genuinely excludes all
+high-risk uses, then the provider would be exempted from fulfilling the
+aforementioned requirements (Art. 4c). Considering the ongoing
+discussions in the European Parliament, stricter obligations are
+expected to be imposed upon general purpose AI systems and their
+providers in the final text of the AI Act.</p>
+<p>Determining the subject of the AI Act’s legal requirements is also
+important in identification of parties potentially liable for the
+incidents caused by an AI system. According to the proposed AI Liability
+Directive <span class="citation" data-cites="liabilitydirective"><a
+href="#ref-liabilitydirective" role="doc-biblioref">[18]</a></span>, the
+high-risk AI provider, or any other entity who is subject to the
+providers’ obligations, as well as AI users would potentially be liable
+for damages caused by the high-risk AI due to its non-compliance with
+the AI Act’s requirements. Further research is required to address the
+abundance of question marks regarding liability, given the complexities
+in the AI value chain especially when general purpose AI is used.</p>
+<h2 id="vair">VAIR: A Vocabulary of AI Risks</h2>
+<p>The high-level model of the 5 identified concepts is not sufficient
+for annotating AI use-cases, representing and documenting risk
+management, establishing rules for identification of high-risk AI, and
+sharing AI risk knowledge and best practices. These require enriching
+the model with instances of concepts represented formally and organised
+in hierarchies. State of the art regarding taxonomies for describing AI
+systems and their associated risks lacks structured representation of
+knowledge that can assist in discovering high-risk applications of AI,
+as shown in Table <a href="#tab:high-risk criteria in taxonomies"
+data-reference-type="ref"
+data-reference="tab:high-risk criteria in taxonomies">[tab:high-risk
+criteria in taxonomies]</a>.</p>
+<p>With multiple and changing high-risk classifications and the unknown
+land of AI risks which yet has to be explored, there is a need for an
+open, extensible, and machine-readable vocabulary. In this section, we
+represent the vocabulary of AI Risks (VAIR)—a formal taxonomy to
+represent hierarchies of AI and risk concepts.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Taxonomy</th>
+<th style="text-align: left;">1. domain</th>
+<th style="text-align: left;">2. purpose</th>
+<th style="text-align: left;">3. capability</th>
+<th style="text-align: left;">4. user</th>
+<th style="text-align: left;">5. AI subject</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AIAAIC</td>
+<td style="text-align: left;">Sector</td>
+<td style="text-align: left;">Purpose</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIID</td>
+<td style="text-align: left;">Sector of deployment</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">AI functions and applications</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AITopics</td>
+<td style="text-align: left;">Industry</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OECD taxonomy</td>
+<td style="text-align: left;">Industrial sector</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">AI system task</td>
+<td style="text-align: left;">User</td>
+<td style="text-align: left;">Impacted stakeholder</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AIRO</td>
+<td style="text-align: left;">Domain</td>
+<td style="text-align: left;">Purpose</td>
+<td style="text-align: left;">AI capability</td>
+<td style="text-align: left;">AI user</td>
+<td style="text-align: left;">AI subject</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="overview-of-vair">Overview of VAIR</h3>
+<p>VAIR provides semantic specifications for cataloguing AI risks in a
+FAIR (Findable, Accessible, Interoperable, Reusable) manner. It reuses
+core concepts of AIRO <span class="citation" data-cites="airo"><a
+href="#ref-airo" role="doc-biblioref">[11]</a></span> as its foundation
+and represents instances using the SKOS (Simple Knowledge Organization
+System) model<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>. In creation of VAIR, we considered
+rules suggested by Poveda-Villalón et al. <span class="citation"
+data-cites="poveda2020fair"><a href="#ref-poveda2020fair"
+role="doc-biblioref">[19]</a></span> to ensure its FAIRness. VAIR is
+published online as an open resource under the CC-By-4.0 licence at
+<span><a href="https://w3id.org/vair"
+class="uri">https://w3id.org/vair</a></span>. In the current iteration
+of development, the AI Act, ISO/IEC 22989:2022 on AI terminology<a
+href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a>, and the AI Watch’s AI taxonomy
+<span class="citation" data-cites="aiwatch3020"><a
+href="#ref-aiwatch3020" role="doc-biblioref">[20]</a></span> were used
+as primary resources for identification and interpretation of concepts.
+For the sake of simplicity, VAIR incorporates the following modules:</p>
+<ul>
+<li><p><strong>AI</strong>: contains taxonomies of <em>techniques</em>
+(number of instances in the taxonomy: 19), <em>capabilities</em> (30),
+<em>types</em> of AI (17), <em>components</em> (34), <em>life cycle
+phases</em> (13), <em>characteristics</em> (20) including
+trustworthiness characteristics, and <em>outputs</em> (6).</p></li>
+<li><p><strong>Use of AI</strong>: includes taxonomies for defining AI
+use-cases namely <em>purposes</em> (114) and <em>domains</em>
+(13).</p></li>
+<li><p><strong>Risk</strong>: contains <em>risk sources</em> (43),
+<em>consequences</em> (4), <em>impacts</em> (12), <em>controls</em>
+(18), and <em>impacted areas</em> (5) taxonomies.</p></li>
+<li><p><strong>Stakeholder</strong>: contains <em>stakeholder roles</em>
+(40) with a focus on taxonomies for <em>AI subjects</em> and <em>AI
+users</em>.</p></li>
+<li><p><strong>Document and standard</strong>: contains a list of
+technical <em>documents</em> (12) including those required for
+conformity assessments and <em>standards</em> (22) that can be used in
+implementation of the AI Act.</p></li>
+</ul>
+<h3 id="vair-applications-and-benefits">VAIR Applications and
+Benefits</h3>
+<p>VAIR contains the concepts required for specifying Annex III
+conditions (represented in Figure <a href="#fig:conditions"
+data-reference-type="ref"
+data-reference="fig:conditions">[fig:conditions]</a>) and therefore can
+be used for creating rules for determining high-risk AI and checking
+them for partial to full applicability to AI use-cases in a logical and
+automated manner. Using the vocabulary, detailed modelling of AI systems
+and of the information related to AI risk management, and generating
+machine-readable documentation would be possible. VAIR enables easy and
+free access to information regarding AI risks, impacts, and mitigation
+measures, and therefore can be served as a helpful resource in
+performing AI risk management and impact assessment tasks. Using VAIR
+alongside existing vocabularies that concern risk, such as the Data
+Privacy Vocabulary (DPV)<a href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>, facilitates integration of existing
+risk management and impact assessment practices when dealing with
+multiple EU regulations and conducting <em>shared impact
+assessments</em> <span class="citation" data-cites="pandit2022dpia"><a
+href="#ref-pandit2022dpia" role="doc-biblioref">[21]</a></span>. VAIR
+supports interoperability in the AI ecosystem by providing a
+standardised and formal way of describing AI risks. In addition, reuse
+and enhancement of the vocabulary over time by different stakeholders to
+include the risks that emerge over time and further extension of the
+vocabulary to create domain-specific taxonomies of AI risks would be
+possible. Organising information through class hierarchies enables
+specification of generic and more specific risks which helps in drawing
+the boundaries between general and domain-specific risks. This is
+helpful in addressing the liability pressure faced by providers for
+using general purpose AI by enabling the users to distinguish risks
+caused by use of a general AI system and risks associated with the
+context or purpose of the application.</p>
+<h3 id="vair-limitations-and-plans-for-enhancement">VAIR Limitations and
+Plans for Enhancement</h3>
+<p>VAIR is an ongoing effort to provide a reference AI risk taxonomy.
+The current iteration of VAIR reflects concepts from the AI Act, ISO/IEC
+22989, and AI Watch’s taxonomy. The reviewed taxonomies in Section <a
+href="#taxonomies" data-reference-type="ref"
+data-reference="taxonomies">2.3</a> are useful resources for extending
+VAIR, however, reusing them for population of the vocabulary requires
+further work to ensure the definition of their high-level concepts are
+consistent with the definitions in the vocabulary resolving any
+conflicts or inconsistencies that may arise from integrating the
+taxonomies.</p>
+<p>This version only includes <em>sub-class</em> relationship between
+concepts, providing <em>related</em> relations which can assist in
+identification of AI risk-related patterns such as technique-risk,
+domain-impacted stakeholder, and risk-mitigation is considered as future
+work. These patterns can form a primary checklist for AI risk management
+as a starting point for risk identification and mitigation. Different
+stakeholders have not been involved in creation of the vocabulary yet.
+Before this involvement, mechanisms for conflict resolution and
+governance as well as arrangements for extending the vocabulary should
+be established.</p>
+<h2 id="harmonised standard">Harmonised Standards and Conformity with
+the AI Act’s Obligations</h2>
+<p>The AI Act specifies the conditions for high-risk AI systems (Art.
+6), prescribes the requirements for those systems (Title III, Chapter
+2), and defines obligations for their providers (Title III, Chapter 3);
+but it does not indicate how the regulation should be implemented in
+practice, this is to ensure the Act’s flexibility and avoid
+over-regulation. However, to help high-risk AI providers, the Act
+suggests using <em>harmonised standards</em> as means for alleviating
+conformity tasks. Although compliance with these standards is not
+enforced <span class="citation"
+data-cites="mclachlan2022cybersecurity"><a
+href="#ref-mclachlan2022cybersecurity"
+role="doc-biblioref">[22]</a></span>, when a high-risk AI conforms to
+the harmonised standards, indexed in the Official Journal of the
+European Union, its conformity with the Title III, Chapter 2
+requirements is presumed (Art. 40(1)). In the draft standardisation
+request <span class="citation" data-cites="standardisationrequest"><a
+href="#ref-standardisationrequest" role="doc-biblioref">[23]</a></span>,
+the Commission has called upon CEN (European Committee for
+Standardisation) and CENELEC (European Committee for Electrotechnical
+Standardisation) to develop required harmonised standards. With a
+deadline in early 2025, CEN and CENELEC are delegated to create European
+standard(s) and/or European standardisation deliverable(s) in 10 areas,
+including AI risk management systems.</p>
+<p>Within this area, <strong>ISO/IEC 23894 “Artificial intelligence —
+Guidance on risk management”</strong><a href="#fn10"
+class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>,
+published in February 2023, is a dominant standard that aims to guide
+organisations in managing AI risks through integration of risk
+management tasks into AI development tasks or any activity that
+incorporate AI. Table <a href="#tab:riskmanagement"
+data-reference-type="ref"
+data-reference="tab:riskmanagement">[tab:riskmanagement]</a> shows the
+alignment of the AI Act’s risk management system steps (Art. 9(2)) with
+ISO/IEC 23894’s risk management process.</p>
+<p>Given that this standard is an extension of the ISO’s generic risk
+management standard (ISO 3100:2018<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a>), it is inherently
+non-prescriptive, therefore could not be used as a reference for AI risk
+management system certification. Additionally, it focuses on
+organisational risk <span class="citation" data-cites="jrcreport2023"><a
+href="#ref-jrcreport2023" role="doc-biblioref">[24]</a></span>, whilst
+fulfilment of the risk management requirements, referred to in Art. 9,
+requires addressing risks to external stakeholders’ health, safety, and
+fundamental rights. To address this concern, a new work item is proposed
+in CEN-CENELEC to create a checklist for AI risks management (CLAIRM),
+whose core is a non-exhaustive list of AI risks, risk sources, impacts,
+and suitable mitigation measures. In addition to a checklist of risk
+criteria, providing concrete guidelines as well as best practices is
+under consideration. Although CLAIRM might resolve the issue with the
+scope, the concern regarding certifiability remains valid.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>AI Act Art. 9 clause</strong></th>
+<th style="text-align: left;"><strong>ISO/IEC 23894</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(2a) identification and analysis of the
+known and foreseeable risks</td>
+<td style="text-align: left;">6.4.2 Risk identification .3 Risk
+analysis</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(2c) evaluation of other possibly arising
+risks</td>
+<td style="text-align: left;">6.4.4 Risk evaluation Monitoring and
+review</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(2d) adoption of suitable risk management
+measures</td>
+<td style="text-align: left;">6.5 Risk treatment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(1) AI risk management documentation</td>
+<td style="text-align: left;">6.7 Recording and reporting</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As AI risks are context-dependent, In addition to horizontal
+standards, <strong>vertical</strong> specifications, which lay down
+domain-specific guidelines, principles, and norms, are required to
+support providers of AI systems in different domains, in particular the
+Annex III areas. Relevant to biometrics (Annex III, pt. 1), ISO/IEC CD
+9868 “Remote biometric identification systems — Design, development, and
+audit”<a href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a>, wherein many of the AI Act’s
+requirements including risk management will be addressed, is in early
+stages of development. This future standard will touch upon technical
+solutions, development practices, and post-development monitoring and
+auditing.</p>
+<h3
+id="adequacy-of-european-standards-for-compliance-with-high-risk-ai-requirements">Adequacy
+of European Standards for Compliance with High-Risk AI Requirements</h3>
+<p>It is evident that presently there are not sufficient European
+standards to fulfil the Commission’s request. Since the publication of
+the AI Act’s proposal, the Joint Research Centre (JRC), the European
+Commission’s science and knowledge service, has provided two
+comprehensive analyses of the AI standardisation landscape to examine
+sufficiency and suitability of published and under-development AI
+standards for conformity to the Act’s requirements. In the first report
+<span class="citation" data-cites="jrcreport2021"><a
+href="#ref-jrcreport2021" role="doc-biblioref">[25]</a></span>,
+published in 2021, a high-level mapping of relevant standards, developed
+by international and European standardisation bodies, namely ISO/IEC,
+CEN-CENELEC, ITU-T, ETSI, and IEEE, to high-risk AI requirements is
+presented. To identify the most relevant standards to each requirement a
+metric, called suitability index (Si) is used to quantify adequacy of
+standards for supporting the Act’s requirements based on the following
+criteria: domain generality, compliance management, typology, and
+maturity. In the second report <span class="citation"
+data-cites="jrcreport2023"><a href="#ref-jrcreport2023"
+role="doc-biblioref">[24]</a></span>, published in 2023, the focus is on
+the alignment of the Act’s high-risk obligations with two families of
+IEEE Standards: 7000 series on ethical concerns and the Ethics
+Certification Program for Autonomous and Intelligent Systems (ECPAIS).
+Assessing the extent of alignment is carried out based on the four
+criteria mentioned above in addition to the criteria listed below: AI
+coverage, maturity and technical detail, gaps and complementarities, and
+relevant standards.</p>
+<h3
+id="overview-of-the-current-state-of-standardisation-in-isoiec-jtc-1sc-42">Overview
+of the Current State of Standardisation in ISO/IEC JTC 1/SC 42</h3>
+<p>To reflect the gap between the current state of AI standardisation at
+an international level and the desired state of EU harmonised standards
+required for compliance with the AI Act, we map standardisation
+activities undertaken by ISO/IEC JTC 1/SC 42 into the high-risk AI
+requirements. Table <a href="#tab:standards" data-reference-type="ref"
+data-reference="tab:standards">[tab:standards]</a> lists JTC 1/ SC 42
+published and under-development standards, their development stage,
+type, and coverage, alongside the AI Act’s requirements they address. It
+should be noted that the table excludes foundational AI standards
+including ISO/IEC 22989:2022 AI concepts and terminology, ISO/IEC
+23053:2022 framework for ML-based AI systems, and ISO/IEC TR 24372:2021
+overview of computational approaches for AI. Our analysis demonstrates
+the following challenges: (i) there is a lack of standards to address
+requirements regarding creation of documents, such as technical
+documentation (Art. 11) and instructions for use (Art. 13), as well as
+record-keeping (Art. 12), (ii) there is a paucity of organisational and
+certifiable standards as the only certifiable standard on the list is
+ISO/IEC 42001 on AI management systems. Therefore, a key issue with the
+future harmonised AI standards is how to benefit from the presumption of
+conformity and demonstrate conformance to non-certifiable standards,
+(iii) currently all of the reviewed ISO standards are behind paywalls
+and gaining access to harmonised standards would be a critical problem,
+especially for startups, SMEs, and research institutions.</p>
+<div class="table*">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Area</th>
+<th style="text-align: left;">AI Act</th>
+<th style="text-align: left;">Standard (ISO development stage as of
+April 2023)</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Determine high-risk AI</td>
+<td style="text-align: left;">Art. 6</td>
+<td style="text-align: left;">ISO/IEC TR 24030:2021 AI — Use cases
+(90.92)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI uses</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC DIS 5339 Guidance for AI
+applications (40.20)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI uses</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Risk management system for AI systems</td>
+<td style="text-align: left;">Art. 9</td>
+<td style="text-align: left;">ISO/IEC 23894 Guidance on risk
+management</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC TR 24027:2021 Bias in AI systems
+and AI aided decision making</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC TR 24368:2022 Overview of ethical
+and societal concerns</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC AWI 42005 AI system impact
+assessment (20.0)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC CD TR 5469 Functional safety and
+AI systems (30.60)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC CD TS 12791 Treatment of unwanted
+bias in classification and regression ML tasks (30.20)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">Machine learning</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Data governance and quality</td>
+<td style="text-align: left;">Art. 10</td>
+<td style="text-align: left;">ISO/IEC 20546:2019 Big data — Overview and
+vocabulary</td>
+<td style="text-align: left;">Foundational</td>
+<td style="text-align: left;">Big data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC TR 20547 series Big data reference
+architecture</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">Big data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC 24668:2022 Process management
+framework for big data analytics</td>
+<td style="text-align: left;">Organisational</td>
+<td style="text-align: left;">Big data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC FDIS 8183 Data life cycle
+framework (50.20)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC [CD/DIS] 5259 series Data quality
+for analytics and ML (different stages)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transparency</td>
+<td style="text-align: left;">Art.13</td>
+<td style="text-align: left;">ISO/IEC AWI 12792 Transparency taxonomy of
+AI systems (20.00)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI systems</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC AWI TS 6254 Objectives and
+approaches for explainability of ML models and AI systems (20.00)</td>
+<td style="text-align: left;">Guidance</td>
+<td style="text-align: left;">AI systems ML models</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Human oversight</td>
+<td style="text-align: left;">Art. 14</td>
+<td style="text-align: left;">ISO/IEC WD TS 8200 Controllability of
+automated AI systems (20.60)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">System quality</td>
+<td style="text-align: left;">Art. 15</td>
+<td style="text-align: left;">ISO/IEC TR 24028:2020 Overview of
+trustworthiness in AI</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC WD TS 25058 SQuaRE — Guidance for
+quality evaluation of AI systems (20.60)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC PRF TS 25059 SQuaRE — Quality
+model for AI systems (50.20)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC AWI TS 29119-11 Testing of AI
+systems (20.00)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC TS 4213:2022 Assessment of machine
+learning classification performance</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">Machine learning</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC TR 24029 Assessment of the
+robustness of neural networks</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">Neural networks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ISO/IEC AWI TS 17847 Verification and
+validation analysis of AI (20.00)</td>
+<td style="text-align: left;">Technical</td>
+<td style="text-align: left;">AI system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quality management system</td>
+<td style="text-align: left;">Art. 17</td>
+<td style="text-align: left;">ISO/IEC DIS 42001 Management system
+(40.60)</td>
+<td style="text-align: left;">Organisational</td>
+<td style="text-align: left;">Management system</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Within the EU AI Act’s multi-layered risk-based approach, high-risk
+AI is the key category on which the majority of obligations are
+incurred. In this paper, we provide a simplified framework for discovery
+of high-risk AI use-cases, referred to in Annex III, by identifying 5
+core concepts namely: domain, purpose, AI capability, AI user, and AI
+subject. We argued that these concepts can also be considered as the
+main factors whose alternation would result in substantial
+modifications. To enable automation and integration in AI risk
+management tasks and promote knowledge sharing and interoperability
+between AI stakeholders, we presented VAIR as a formal taxonomy for AI
+risk-related concepts. With further ongoing enhancements, VAIR would
+serve as a checklist for AI risk identification, evaluation, and
+management. Given the key role of harmonised standards in implementation
+of the AI Act, we analysed the implications of the Act’s use of
+standards and the adequacy of ISO/IEC JTC1/SC42 AI standards in
+addressing high-risk requirements.</p>
+<div class="acks">
+<p><strong>Funding:</strong> This project has received funding from the
+European Union’s Horizon 2020 research and innovation programme under
+the Marie Skłodowska-Curie grant agreement No 813497 (PROTECT ITN), as
+part of the ADAPT SFI Centre for Digital Media Technology is funded by
+Science Foundation Ireland through the SFI Research Centres Programme
+and is co-funded under the European Regional Development Fund (ERDF)
+through Grant#13/RC/2106_P2.</p>
+<p><strong>Thanks:</strong> We thank Víctor Rodríguez-Doncel for his
+support in development of the tool.</p>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-aiact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Proposal for a regulation of the
+european parliament and of the council laying down harmonised rules on
+artificial intelligence (artificial intelligence act) and amending
+certain union legislative acts) and amending certain union legislative
+acts.”</span> Council of the European Union, November 2022 [Online].
+Available: <a
+href="https://data.consilium.europa.eu/doc/document/ST-14954-2022-INIT/en/pdf">https://data.consilium.europa.eu/doc/document/ST-14954-2022-INIT/en/pdf</a></div>
+</div>
+<div id="ref-socialcreditscoring2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">X.
+Xu, G. Kostka, and X. Cao, <span>“Information control and public support
+for social credit systems in china,”</span> <em>The Journal of
+Politics</em>, vol. 84, no. 4, pp. 2230–2245, 2022. </div>
+</div>
+<div id="ref-veale2021aiact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M.
+Veale and F. Z. Borgesius, <span>“Demystifying the draft EU artificial
+intelligence act—analysing the good, the bad, and the unclear elements
+of the proposed approach,”</span> <em>Computer Law Review
+International</em>, vol. 22, no. 4, pp. 97–112, 2021. </div>
+</div>
+<div id="ref-de2022humpty" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J.
+De Cooman, <span>“Humpty dumpty and high-risk AI systems: The ratione
+materiae dimension of the proposal for an EU artificial intelligence
+act,”</span> <em>Mkt. &amp; Competition L. Rev.</em>, vol. 6, p. 49,
+2022. </div>
+</div>
+<div id="ref-ebers2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M.
+Ebers, V. R. S. Hoch, F. Rosenkranz, H. Ruschemeier, and B. Steinrötter,
+<span>“The european commission’s proposal for an artificial intelligence
+act—a critical assessment by members of the robotics and AI law society
+(RAILS),”</span> <em>J</em>, vol. 4, no. 4, pp. 589–603, 2021, doi: <a
+href="https://doi.org/10.3390/j4040043">10.3390/j4040043</a>. [Online].
+Available: <a
+href="https://www.mdpi.com/2571-8800/4/4/43">https://www.mdpi.com/2571-8800/4/4/43</a></div>
+</div>
+<div id="ref-smuha2021eu" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">N.
+A. Smuha <em>et al.</em>, <span>“How the EU can achieve legally
+trustworthy AI: A response to the european commission’s proposal for an
+artificial intelligence act,”</span> <em>Available at SSRN 3899991</em>,
+2021. </div>
+</div>
+<div id="ref-mcgregor2021aiid" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">S.
+McGregor, <span>“Preventing repeated real world <span>AI</span> failures
+by cataloging incidents: The <span>AI</span> incident database,”</span>
+in <em>Proceedings of the AAAI conference on artificial
+intelligence</em>, 2021, vol. 35, pp. 15458–15463. </div>
+</div>
+<div id="ref-pittaras2022aiid" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">N.
+Pittaras and S. McGregor, <span>“A taxonomic system for failure cause
+analysis of open source AI incidents,”</span> <em>arXiv preprint
+arXiv:2211.07280</em>, 2022. </div>
+</div>
+<div id="ref-eckroth3012newsfinder" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">J.
+Eckroth, L. Dong, R. G. Smith, and B. G. Buchanan, <span>“NewsFinder:
+Automating an AI news service,”</span> <em>AI Magazine</em>, vol. 33,
+no. 2, pp. 43–43, 2012. </div>
+</div>
+<div id="ref-2022oecdtaxonomy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div
+class="csl-right-inline">OECD, <span>“OECD framework for the
+classification of AI systems,”</span> 2022, doi: <a
+href="https://doi.org/10.1787/cb6d9eca-en">https://doi.org/10.1787/cb6d9eca-en</a>.
+[Online]. Available: <a
+href="https://www.oecd-ilibrary.org/content/paper/cb6d9eca-en">https://www.oecd-ilibrary.org/content/paper/cb6d9eca-en</a></div>
+</div>
+<div id="ref-airo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“AIRO: An ontology for
+representing AI risks based on the proposed EU AI act and ISO risk
+management standards,”</span> in <em>Towards a knowledge-aware AI:
+SEMANTiCS 2022—proceedings of the 18th international conference on
+semantic systems, 13-15 september 2022, vienna, austria</em>, 2022, vol.
+55, pp. 51–65. </div>
+</div>
+<div id="ref-weidinger2022lmtaxonomy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L.
+Weidinger <em>et al.</em>, <span>“Taxonomy of risks posed by language
+models,”</span> in <em>2022 ACM conference on fairness, accountability,
+and transparency</em>, 2022, pp. 214–229. </div>
+</div>
+<div id="ref-andrade2021aiia" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">N.
+N. G. de Andrade and V. Kontschieder, <span>“AI impact assessment: A
+policy prototyping experiment,”</span> 2021 [Online]. Available: <a
+href="https://openloop.org/wp-content/uploads/2021/01/AI_Impact_Assessment_A_Policy_Prototyping_Experiment.pdf">https://openloop.org/wp-content/uploads/2021/01/AI_Impact_Assessment_A_Policy_Prototyping_Experiment.pdf</a></div>
+</div>
+<div id="ref-nist2019amltaxonomy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">A.
+Oprea and A. Vassilev, <span>“Adversarial machine learning: A taxonomy
+and terminology of attacks and mitigations,”</span> <em>NIST AI</em>,
+vol. 100–2e2023 ipd, 2023 [Online]. Available: <a
+href="https://doi.org/10.6028/NIST.AI.100-2e2023.ipd">https://doi.org/10.6028/NIST.AI.100-2e2023.ipd</a></div>
+</div>
+<div id="ref-schwartz2022nistbias" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">R.
+Schwartz <em>et al.</em>, <span>“Towards a standard for identifying and
+managing bias in artificial intelligence,”</span> <em>NIST Special
+Publication</em>, vol. 1270, 2022 [Online]. Available: <a
+href="https://doi.org/10.6028/NIST.SP.1270">https://doi.org/10.6028/NIST.SP.1270</a></div>
+</div>
+<div id="ref-steimers2022risksources" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">A.
+Steimers and M. Schneider, <span>“Sources of risk of AI systems,”</span>
+<em>International Journal of Environmental Research and Public
+Health</em>, vol. 19, no. 6, p. 3641, 2022. </div>
+</div>
+<div id="ref-roselli2019managingbias" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">D.
+Roselli, J. Matthews, and N. Talagala, <span>“Managing bias in
+AI,”</span> in <em>Companion proceedings of the 2019 world wide web
+conference</em>, 2019, pp. 539–544. </div>
+</div>
+<div id="ref-liabilitydirective" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div
+class="csl-right-inline"><span>“Proposal for a directive of the european
+parliament and of the council on adapting non-contractual civil
+liability rules to artificial intelligence (AI liability
+directive).”</span> 2022 [Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52022PC0496">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52022PC0496</a></div>
+</div>
+<div id="ref-poveda2020fair" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M.
+Poveda-Villalón, P. Espinoza-Arias, D. Garijo, and O. Corcho,
+<span>“Coming to terms with FAIR ontologies,”</span> in <em>Knowledge
+engineering and knowledge management: 22nd international conference,
+EKAW 2020, bolzano, italy, september 16–20, 2020, proceedings 22</em>,
+2020, pp. 255–270. </div>
+</div>
+<div id="ref-aiwatch3020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">S.
+Samoili, M. L. Cobo, E. Gomez, G. De Prato, F. Martinez-Plumed, and B.
+Delipetrev, <span>“<span>AI</span> watch. Defining artificial
+intelligence. Towards an operational definition and taxonomy of
+artificial intelligence,”</span> Publications Office of the European
+Union, 2020 [Online]. Available: <a
+href="https://ai-watch.ec.europa.eu/publications/defining-artificial-intelligence-10_en">https://ai-watch.ec.europa.eu/publications/defining-artificial-intelligence-10_en</a></div>
+</div>
+<div id="ref-pandit2022dpia" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“A semantic specification for data protection impact
+assessments (DPIA),”</span> in <em>Towards a knowledge-aware AI:
+SEMANTiCS 2022—proceedings of the 18th international conference on
+semantic systems, 13-15 september 2022, vienna, austria</em>, IOS Press,
+2022, pp. 36–50. </div>
+</div>
+<div id="ref-mclachlan2022cybersecurity" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">S.
+McLachlan, B. Schafer, K. Dube, E. Kyrimi, and N. Fenton,
+<span>“Tempting the fate of the furious: Cyber security and autonomous
+cars,”</span> <em>International Review of Law, Computers &amp;
+Technology</em>, pp. 1–21, 2022. </div>
+</div>
+<div id="ref-standardisationrequest" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div
+class="csl-right-inline"><span>“Draft standardisation request to the
+european standardisation organisations in support of safe and
+trustworthy artificial intelligence.”</span> 2022 [Online]. Available:
+<a
+href="https://ec.europa.eu/docsroom/documents/52376">https://ec.europa.eu/docsroom/documents/52376</a></div>
+</div>
+<div id="ref-jrcreport2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div
+class="csl-right-inline">European Commission <em>et al.</em>, <span>“AI
+watch: Artificial intelligence standardisation landscape update.
+Analysis of IEEE standards in the context of the european AI
+regulation,”</span> Publications Office of the European Union,
+Luxembourg (Luxembourg), 2023 [Online]. Available: <a
+href="https://data.europa.eu/doi/10.2760/131984">https://data.europa.eu/doi/10.2760/131984</a></div>
+</div>
+<div id="ref-jrcreport2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div
+class="csl-right-inline">European Commission, Joint Research Centre, S.
+Nativi, and S. De Nigris, <span>“AI watch: AI standardisation landscape
+state of play and link to the EC proposal for an AI regulatory
+framework,”</span> Publications Office of the European Union, 2021
+[Online]. Available: <a
+href="https://data.europa.eu/doi/10.2760/376602">https://data.europa.eu/doi/10.2760/376602</a></div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a
+href="https://www.europarl.europa.eu/olp/en/ordinary-legislative-procedure/overview"
+class="uri">https://www.europarl.europa.eu/olp/en/ordinary-legislative-procedure/overview</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See the Commission’s proposal here: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52021PC0206"
+class="uri">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52021PC0206</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See the French presidency version here: <a
+href="https://artificialintelligenceact.eu/wp-content/uploads/2022/06/AIA-FRA-Consolidated-Version-15-June.pdf"
+class="uri">https://artificialintelligenceact.eu/wp-content/uploads/2022/06/AIA-FRA-Consolidated-Version-15-June.pdf</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.aiaaic.org/aiaaic-repository"
+class="uri">https://www.aiaaic.org/aiaaic-repository</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://aitopics.org/"
+class="uri">https://aitopics.org/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://www.w3.org/TR/shacl/"
+class="uri">https://www.w3.org/TR/shacl/</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a
+href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/"
+class="uri">https://www.w3.org/TR/2009/REC-skos-reference-20090818/</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://www.iso.org/standard/74296.html"
+class="uri">https://www.iso.org/standard/74296.html</a><a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://w3id.org/dpv"
+class="uri">https://w3id.org/dpv</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://www.iso.org/standard/77304.html"
+class="uri">https://www.iso.org/standard/77304.html</a><a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://www.iso.org/standard/65694.html"
+class="uri">https://www.iso.org/standard/65694.html</a><a
+href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://www.iso.org/standard/83613.html"
+class="uri">https://www.iso.org/standard/83613.html</a><a
+href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
