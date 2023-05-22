@@ -82,7 +82,7 @@ graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
 if FLAG_VALIDATE_CONSTRAINTS:
     from pyshacl import validate
     validation_constraints = Graph()
-    validation_constraints.parse ('shacl_constraints.ttl', format='turtle')
+    validation_constraints.parse('shacl_constraints.ttl', format='turtle')
     validation_results = validate(graph,
           shacl_graph=validation_constraints,
           ont_graph=None,
