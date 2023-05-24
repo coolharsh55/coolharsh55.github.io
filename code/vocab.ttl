@@ -190,6 +190,7 @@ hpcom:book_physical_copy a rdf:Property ; rdfs:label "physical copy"@en .
 hpcom:date_book_read a rdf:Property ; rdfs:label "book read"@en .
 
 # Book Status
+hpcom:Book a owl:Class ; rdfs:label "Book"@en ; rdfs:subClassOf schema:Book .
 hpcom:BookStatus a owl:Class ; rdfs:label "Book Status"@en .
 hpcom:book-read a hpcom:BookStatus ; rdfs:label "read"@en .
 hpcom:book-to-read a hpcom:BookStatus ; rdfs:label "to read"@en .
