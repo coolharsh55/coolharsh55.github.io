@@ -11288,11 +11288,15 @@ book:57 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "57"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-05-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     schema:isbn "9780385721677"^^xsd:string ;
     schema:name "Oryx and Crake"@en ;
+    schema:review "A brilliantly written book that has so many different themes and topics. From society to technology, personal relations and civilisations. Thoroughly enjoyed this. Looking forward to the other two books."@en ;
     schema:url "https://harshp.com/hobbies/books/57"^^xsd:anyURI .
 
 book:570 a hpcom:Book,
@@ -12418,7 +12422,7 @@ book:629 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "629"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "John Brunner"^^xsd:string ;
     schema:dateCreated "1968"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16420,7 +16424,7 @@ book:863 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "863"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Glyn Moody"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -24541,9 +24545,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -24996,6 +24997,9 @@ hptag:website a hpcom:RenderedItem,
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
