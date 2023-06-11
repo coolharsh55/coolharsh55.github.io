@@ -12424,12 +12424,16 @@ book:629 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "629"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-06-11T06:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "John Brunner"^^xsd:string ;
     schema:dateCreated "1968"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Stand on Zanzibar"@en ;
+    schema:review "This book is famous for being written in the 60s and 'predicting' a lot of the modern technologies that we have today. It certainly contains several of these to be impressive. The writing style is confusing (quite 60s) for today, and the plot is the typical geopolitical situation. Interesting book to read for a cult classic. A movie on this made in the 70s would have been quite cool to see today."@en ;
     schema:url "https://harshp.com/hobbies/books/629"^^xsd:anyURI .
 
 book:63 a hpcom:Book,
@@ -12500,7 +12504,7 @@ book:633 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "633"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Peter Watts"^^xsd:string ;
     schema:dateCreated "1999"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -15091,12 +15095,16 @@ book:782 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "782"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-06-11T15:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Yoko Ogawa"^^xsd:string ;
     schema:dateCreated "1994"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Memory Police"@en ;
+    schema:review "Set on an unnamed island, this book is reminiscient of 1984 and the Holocaust literature in that there is a 'Memory Police' who are authoritarian and force people to forget things by destroying those as well as using capture and interrogation to detect memories of those objects. While I understand the point of the novel, and the slow vanishing of the identity and the world, I could not enjoy the writing or the plot. There never was anything that interested me - other than waiting for why must things be forgotten. Sadly my curiosity was never quenched. To make things more disinteresting, all characters are passive. Only ever impacting through minor actions. It feels the sort of world that has given up and is awaiting its final descent."@en ;
     schema:url "https://harshp.com/hobbies/books/782"^^xsd:anyURI .
 
 book:783 a hpcom:Book,
@@ -16426,11 +16434,15 @@ book:863 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "863"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-06-11T11:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Glyn Moody"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Walled Culture"@en ;
+    schema:review "A short history of sorts regarding copyright and its effect on digital technology, this book was a refresher on several moments I had known but had forgotten about. Like the upload filter, Megaupload, Napster, and so on. Moments where the internet changed as I was growing up. The book didn't offer much of anything new other than these except to emphasise how the copyright movement has been affecting things for a long time and to not forget these. It would have been better to have researched some more materials and to have detailed in-depth analysis instead of a blog-style rehash of things."@en ;
     schema:url "https://harshp.com/hobbies/books/863"^^xsd:anyURI .
 
 book:864 a hpcom:Book,
@@ -20342,7 +20354,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/059-RQ-Decentralised-Personal-Data-Governance"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "TARA" ;
-            schema:url "http://hdl.handle.net/2262/102552"^^xsd:anyURI ] ;
+            schema:url "http://hdl.handle.net/2262/102552"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url "https://doras.dcu.ie/28330/"^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
     hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -24847,6 +24862,9 @@ hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -24999,9 +25017,6 @@ hptag:website a hpcom:RenderedItem,
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
