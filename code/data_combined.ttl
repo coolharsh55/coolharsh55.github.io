@@ -13640,7 +13640,7 @@ book:696 a hpcom:Book,
     hpcom:book_id "696"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_read_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2023-06-20T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Micaiah Johnson"^^xsd:string ;
@@ -20384,12 +20384,11 @@ list:owned_unread a hpcom:RenderedItem,
     schema:datePublished "2023-05-01T00:00:00"^^xsd:dateTime ;
     schema:description "This article analyses the core concepts in EU Act's high-risk categorisation, and presents an open vocabulary to model AI risk. It also explores the implications of standardisation activities in connection with AI Act."@en ;
     schema:funder <http://example.com/ADAPT> ;
-    schema:identifier ""^^xsd:anyURI ;
+    schema:identifier "https://doi.org/10.1145/3593013.3594050"^^xsd:anyURI ;
     schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
     schema:name "To Be High-Risk, or Not To Be—Semantic Specifications and Implications of the AI Act’s High-Risk AI Applications and Harmonised Standards"@en ;
     schema:publication <https://facctconference.org/2023/> ;
-    schema:status "to be presented" ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.1145/3593013.3594050"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
@@ -24574,6 +24573,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -24873,9 +24875,6 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
