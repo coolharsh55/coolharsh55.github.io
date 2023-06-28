@@ -848,7 +848,7 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "68"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Arundhati Roy"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:isbn "9780670089635"^^xsd:string ;
@@ -12213,7 +12213,7 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "841"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Adam Zeman"^^xsd:string ;
@@ -12765,13 +12765,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "881"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-06-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Bora Chung"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Cursed Bunny"@en ;
+    schema:review """Some of the stories in this collection are really good - they are provocative, uncomfortable, and really evocative. The others aren't interesting in various degrees. The cover is quite cool, and because the stories came with a different cultural emphasis I picked it up on a whim. Was a decent read. The stories I liked the most were The Head; The Embodiment; Cursed Bunny; Snare; and Goodbye, My Love."""@en ;
     schema:url "https://harshp.com/hobbies/books/881"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/882> a hpcom:RenderedItem,
