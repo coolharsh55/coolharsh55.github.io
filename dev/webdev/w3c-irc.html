@@ -11,7 +11,7 @@
     <meta name="schema:name" content="W3C IRC meeting logs guide">
     <meta name="schema:description" content="short guide for using W3C irc to create meeting logs">
     <meta name="schema:datePublished" content="item.schema_datePublished">
-    <meta name="schema:keywords" content="meeting,w3c,">
+    <meta name="schema:keywords" content="DPVCG,meeting,w3c,">
     <meta name="schema:author" content="https://harshp.com/me">
     <meta name="schema:identifier" content="https://harshp.com/dev/webdev/w3c-irc">
     <meta name="twitter:card" content="summary"/>
@@ -31,17 +31,18 @@
         <h1 property="schema:name schema:headline">W3C IRC meeting logs guide</h1>
         <div id="description">
             <span property='schema:description'>short guide for using W3C irc to create meeting logs</span><br/>
-            published: <time property="schema:datePublished" datetime="2021-02-03T14:24:00">2021-02-03T14:24:00</time>
-                <small>(updated: <time property="schema:dateModified" datetime="2021-07-28T14:00:00">2021-07-28T14:00:00</time>)</small>
+            published: <time property="schema:datePublished" datetime="2023-07-16T10:10:00">2023-07-16T10:10:00</time>
             <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
             <br/>
             is part of: <a href="https://harshp.com/dev/webdev" property="schema:isPartOf" resource="https://harshp.com/dev/webdev"><span property="rdfs:label">web development</span></a>
             <br/>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
             <a class="tag" href="https://harshp.com/tags/meeting" property="schema:about" resource="https://harshp.com/tags/meeting" typeof="rdfs:Resource"><span property="rdfs:label">meeting</span></a>
             <a class="tag" href="https://harshp.com/tags/w3c" property="schema:about" resource="https://harshp.com/tags/w3c" typeof="rdfs:Resource"><span property="rdfs:label">w3c</span></a>
         </div>
         <div id="content" property="schema:articleBody">
-        <h2>links</h2>
+        <p>This guide is written for the <a href="https://www.w3.org/groups/cg/dpvcg/">DPVCG</a> meeting minute generation, but should also be useful for other CG/WG taking minutes using W3C tools.</p>
+<h2>links</h2>
 <ul>
     <li><a href="https://w3c.github.io/scribe/scribedoc.htm">scribedoc</a> <a href="https://w3c.github.io/scribe2/scribedoc.html">scribe2doc</a></li>
     <li><a href="https://www.w3.org/2001/12/zakim-irc-bot.html">zakim</a></li>
@@ -50,8 +51,7 @@
 </ul>
 
 <h2>commands</h2>
-<pre><code>/invite zakim #dpvcg
-/invite rrsagent #dpvcg
+<pre><code>/invite rrsagent #dpvcg
 /invite ghurlbot
 
 Scribe: harsh
@@ -67,9 +67,16 @@ Regrets: otherpeople
 Date: DD MMM YYYY
 Agenda: url on public mailing list
 
-Topic: xx
+Meeting minutes: https://w3id.org/dpv/meetings
+purl for this meeting: https://w3id.org/dpv/meetings/meeting-2023-XX-XX
 
-zakim, bye
+Topic: xx
+Subtopic: yy
+
+ACTION: xx
+ISSUE: xx
+RESOLVED: xx
+
 rrsagent, publish minutes v2
 rrsagent, set logs world-visible
 rrsagent, bye</code></pre>
@@ -175,7 +182,7 @@ rrsagent, bye</code></pre>
 <p>command: <code>perl scribe.perl [options] < log.txt > minutes.html</code></p>
 <p>options:</p>
 <ul>
-    <li><code>-implicitContinuations</code> - continue conversation over multiple lines without <code>...</code></li>
+    <li><code>-implicitContinuations</code> - continue conversation over multiple lines without <code>...</code>; to still add general lines to the log use (<code>\</code>) backslash at the start of the line</li>
     <li><code>-final</code> - make minutes final rather than draft</li>
     <li><code>-emphasis</code> - convert ASCII combinations into symbols and formatting</li>
 </ul>
