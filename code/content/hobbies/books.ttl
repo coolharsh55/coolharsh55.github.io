@@ -10193,13 +10193,16 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "704"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-07-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Wireless"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """Charles Stross is a man of many ideas that go deep into the way society evolves with technology, and how that affects the very core of social constructs in terms of broad societal behaviours. This collection of short stories provides an interesting palate of stories that range from hard sci-fi to milder avenues delving into Lovecraftian lore and tributes to Asimov. All done with an excellent take on things and a story that demands the reader to be smart to keep up."""@en ;
     schema:url "https://harshp.com/hobbies/books/704"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/705> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10389,7 +10392,7 @@
 
 <https://harshp.com/hobbies/books/717> a schema:Book, hpcom:Book, hpcom:RenderedItem ;
     hpcom:book_id "717"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
