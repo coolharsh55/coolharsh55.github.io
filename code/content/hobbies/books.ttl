@@ -10392,16 +10392,17 @@
 
 <https://harshp.com/hobbies/books/717> a schema:Book, hpcom:Book, hpcom:RenderedItem ;
     hpcom:book_id "717"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2023-07-29T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Umberto Eco"^^xsd:string ;
     schema:dateCreated "1986"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Faith in Fakes"@en ;
+    schema:review """An in-depth visitation on a variety of topics all related to 'semiotics', Eco takes a dense deep dive into what is the meaning of things that we see and experience in culture. Focused in most cases on the American imperialist impact (consequence of globalisation - everything veers towards Americanism), the essays unpack a dense narrative that risks the key points been lost amidst sentences. Good read, but lots to unpack."""@en ;
     schema:url "https://harshp.com/hobbies/books/717"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/718> a hpcom:RenderedItem, hpcom:BookReading,
@@ -12763,7 +12764,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "880"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Paolo Bacigalupi"^^xsd:string ;
