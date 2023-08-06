@@ -13663,11 +13663,13 @@ book:697 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "697"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Marlon James"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "Black Leopard, Red Wolf"@en ;
     schema:url "https://harshp.com/hobbies/books/697"^^xsd:anyURI .
 
@@ -14022,7 +14024,7 @@ book:716 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "716"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Umberto Eco"^^xsd:string ;
     schema:dateCreated "1980"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -16727,12 +16729,16 @@ book:880 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "880"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-08-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Paolo Bacigalupi"^^xsd:string ;
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Windup Girl"@en ;
+    schema:review "As biofiction hard science fiction, I really enjoyed reading it right from the start. The novel setting - based in an isolationist Thailand but after a global climate upheavel that leaves much of the world in floods and chaos, while conventional energy sources have run out and the \"market\" has been overtaken by capitalist genetic multinationals. The detailing was excellent, and the insertion of philosophical narratives very subtle. It meant the reader could opt to ignore the underlying perspectives and focus on the book as entertainment alone. But this would be a loss - the themes of unchecked capitalism and its ever disturbing nature as a force as insidious as any plague are impervious to the story and characters. While I enjoyed this aspect of the book, the titular \"windup girl\" - a clone designed with genetic subservience and obedience that is ravaged by the society behind closed doors did not go down well with me. I understand what it was trying to achieve, but felt it at odds with the rest of the settings which were unique and interestingly fleshed out."@en ;
     schema:url "https://harshp.com/hobbies/books/880"^^xsd:anyURI .
 
 book:881 a hpcom:Book,
@@ -16804,6 +16810,51 @@ book:885 a hpcom:Book,
         hpcom:BookSciFi ;
     schema:name "The Lies of the Ajungo"@en ;
     schema:url "https://harshp.com/hobbies/books/885"^^xsd:anyURI .
+
+book:886 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "886"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Ivo Velitchkov, George Anadiotis"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Personal Knowledge Graphs: Connected thinking to boost productivity, creativity and discovery"@en ;
+    schema:url "https://harshp.com/hobbies/books/886"^^xsd:anyURI .
+
+book:887 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "887"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Stewart Shapiro"^^xsd:string ;
+    schema:dateCreated "2000"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Thinking About Mathematics: The Philosophy of Mathematics"@en ;
+    schema:url "https://harshp.com/hobbies/books/887"^^xsd:anyURI .
+
+book:888 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "888"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Stephen Baxter"^^xsd:string ;
+    schema:dateCreated "1994"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
+    schema:name "Ring"@en ;
+    schema:url "https://harshp.com/hobbies/books/888"^^xsd:anyURI .
+
+book:889 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "889"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Daniel Kahneman, Olivier Sibony, Cass Sunstein"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:cork ;
+    schema:name "Noise: A Flaw in Human Judgment"@en ;
+    schema:url "https://harshp.com/hobbies/books/889"^^xsd:anyURI .
 
 book:89 a hpcom:Book,
         hpcom:BookReading,
@@ -25529,15 +25580,15 @@ book:lists a owl:Class,
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
