@@ -1629,3 +1629,59 @@
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
     hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/061-SEMANTiCS-DGA> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Semantics for Implementing Data Reuse and Altruism under EU's Data Governance Act"@en ;
+    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
+    hpcom:author_other ( <http://example.com/VictorRodriguezDoncel> <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/>) ;
+    schema:description "This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers"@en ;
+    hpcom:tag hptag:DGA ;
+    hpcom:tag hptag:data-governance ;
+    hpcom:tag hptag:semantics ;
+    hpcom:tag hptag:ODRL ;
+    hpcom:tag hptag:DPV ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:datePublished "2023-08-15T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/061-SEMANTiCS-DGA"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "DORA" ; schema:url "http://hdl.handle.net/2262/100132"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.8301900"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://w3id.org/dgaterms"^^xsd:anyURI ] ;
+    # hpcom:supplementary [ a hpcom:Link ; schema:name "specification" ; schema:url "https://w3id.org/AIRO"^^xsd:anyURI ] ;
+    # hpcom:supplementary <https://harshp.com/research/presentations#2022-SEMANTiCS-AIRO> ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/061-SEMANTiCS-DGA.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/062-WOP-PLASMA> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
+    schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
+    hpcom:tag hptag:ODP ;
+    hpcom:tag hptag:Solid ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:DPV ;
+    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:datePublished "2023-08-30T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <http://example.com/workshops/WOP2023> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/062-WOP-PLASMA"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.8303101"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORA" ; schema:url "http://hdl.handle.net/2262/91662"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://w3id.org/plasma"^^xsd:anyURI ] ;
+    # hpcom:supplementary <https://harshp.com/research/presentations#2018-WOP-SHACL> ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:peer_reviewed true .

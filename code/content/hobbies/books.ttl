@@ -792,11 +792,17 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "63"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-08-18T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Charles Bukowski"^^xsd:string ;
     schema:dateCreated "1982"^^xsd:int ;
     schema:isbn "9780061177583"^^xsd:string ;
+    schema:genre hpcom:BookFiction ;
     schema:name "Ham on Rye"@en ;
+    schema:review """Bukowski has a style. An ugly degraded style. But that's also what we avoid thinking we look like in the mirror. In this case, Bukowski writes about childhood and how messed up growing typically is. I really liked reading this book, and seeing how the adult Henry Chinaski emerged from the younger version."""@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/63"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/64> a hpcom:RenderedItem, hpcom:BookReading,
@@ -9928,7 +9934,7 @@
 <https://harshp.com/hobbies/books/685> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "685"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
@@ -10380,16 +10386,17 @@
 
 <https://harshp.com/hobbies/books/716> a schema:Book, hpcom:Book, hpcom:RenderedItem ;
     hpcom:book_id "716"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2023-08-08T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Umberto Eco"^^xsd:string ;
     schema:dateCreated "1980"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Name of the Rose"@en ;
+    schema:review """Sherlock Holmes set in Medieval Italy with lots of excellent discussions and discourses on religion and philosophy. This was a really nice read, and I could see the emerging blossom that eventually became Foucault's Pendulum."""@en ;
     schema:url "https://harshp.com/hobbies/books/716"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/717> a schema:Book, hpcom:Book, hpcom:RenderedItem ;
@@ -11855,8 +11862,7 @@
 <https://harshp.com/hobbies/books/816> a hpcom:RenderedItem,
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "816"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -12225,13 +12231,15 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "841"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-08-12T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Adam Zeman"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Consciousness: A User's Guide"@en ;
+    schema:review """I picked up this book because of the title stating it is "a user's guide" - which to me implied that I would be receiving some sort of primer or framework. To a certain extent, the book does provide different concepts and theories from philosophy, neurology, biology, and physics to discuss consciousness. This knowledge spans and skips domains in so many ways that the book became quite dense and at times it felt that the subject wasn't been explored in as much detail as possible. For example, the notion of neurons and the brain being evolutionary key pieces to discuss how consciousness evolved is a great topic to understand what consciousness actually is or means. But it is quite quickly glossed over. Similarly, how the brain exhibits consciousnes versus what is the 'feeling' of being conscios is mentioned throughout the book, but the conclusion never offers enough insight to think about it further. Even as a book providing 'here's what we know' type of collections, it didn't really tickle my neurons. Good to skim through and pick at pages that interest."""@en ;
     schema:url "https://harshp.com/hobbies/books/841"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/842> a hpcom:RenderedItem,
@@ -12878,22 +12886,23 @@
 
 <https://harshp.com/hobbies/books/888> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "888"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2023-08-22T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Stephen Baxter"^^xsd:string ;
     schema:dateCreated "1994"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Ring"@en ;
+    schema:review """Baxter writes hard sci-fi. Excellent mashup of string theory, quantum physics, even astrophysics, and the end of the universe. And there's some multiverse in there. But the thing that I get annoyed with is the writing about the people. It really distracts from the actual plot - which for me is woven with science rather than "drama"."""@en ;
     schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/888"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/889> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "889"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -12905,3 +12914,31 @@
     schema:name "Noise: A Flaw in Human Judgment"@en ;
     schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/889"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/890> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "890"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Alastair Reynolds"^^xsd:string ;
+    schema:dateCreated "2006"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Zima Blue and other stories"@en ;
+    schema:url "https://harshp.com/hobbies/books/890"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/891> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "891"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Ann Leckie"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Translation State"@en ;
+    schema:url "https://harshp.com/hobbies/books/891"^^xsd:anyURI .

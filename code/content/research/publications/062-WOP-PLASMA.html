@@ -1,0 +1,816 @@
+<h2>Abstract</h2>
+<p>Currently, the Solid Protocol and its specifications lack the necessary vocabulary and processes for ensuring transparency and accountability in the use of data. In particular, to deal with the obligations and requirements required by regulations related to (personal) data protection and privacy. In addition, the lack of a guiding vocabulary leads to no common mechanism through which apps can request data and how Solid maintains information about its use. To address these, we propose PLASMA -- a policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem. We present how ontology design patterns using PLASMA can provide a common interface to create structured policies, records, and logs within the diverse Solid use cases, and thereby solve challenges regarding the management and governance of apps and their privacy considerations.</p>
+<h2 id="sec:intro">Introduction</h2>
+<p>Solid is an initiative led by Sir Tim Berners-Lee to decentralise the
+web and provide its users with greater choice when it comes to the usage
+of their (personal) data. Solid builds upon web standards such as the
+Linked Data Platform (LDP) <span class="citation"
+data-cites="ldp_2015"><a href="#ref-ldp_2015"
+role="doc-biblioref">[1]</a></span> or the Web Access Control (WAC)
+<span class="citation" data-cites="wac_2022"><a href="#ref-wac_2022"
+role="doc-biblioref">[2]</a></span> specifications and, according to its
+Protocol <span class="citation" data-cites="capadisli_solid_2022"><a
+href="#ref-capadisli_solid_2022" role="doc-biblioref">[3]</a></span>
+specification, relies on said standards to <em>“realise a space where
+individuals can maintain their autonomy, control their data and privacy,
+and choose applications and services to fulfil their needs”</em>. While
+it was designed with web’s ethical principles<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> in
+mind to share information in a secure and private way, Solid is
+currently lacking when it comes to its alignment with data protection
+regulatory efforts <span class="citation"
+data-cites="panditMakingSenseSolid2023"><a
+href="#ref-panditMakingSenseSolid2023"
+role="doc-biblioref">[4]</a></span>, such as the European Union’s
+General Data Protection Regulation (GDPR) <span class="citation"
+data-cites="noauthor_regulation_2018"><a
+href="#ref-noauthor_regulation_2018"
+role="doc-biblioref">[5]</a></span>.</p>
+<p>In particular, Solid lacks practical mechanisms through which GDPR’s
+principles of transparency and accountability can be implemented, which
+leads to no common mechanism for users or apps to represent or record
+information about privacy notices, agreements or giving/withdrawing
+consent and exercising of rights. Solid’s access control specifications
+only record what entity has been permitted to access which data, but not
+the purpose or intent behind that access, nor what will happen
+subsequently to that data once accessed. This leads to issues with
+regulatory compliance and user disenfranchisement arising from the lack
+of actionable ‘records’, and permits the continuation of existing issues
+such as the use of dark patterns and manipulations to obtain access.</p>
+<p>By taking this situation as a research challenge, we propose PLASMA –
+a Policy LAnguage for Solid’s Metadata-based Access control, which
+enables responsible and accountable practices to be incorporated into
+existing Solid infrastructure and workflows in a way that addresses the
+above-mentioned challenges. The work is based on the use of the Open
+Digital Rights Language (ODRL), a W3C standard for expressing policies,
+along with an additional taxonomy for defining the relevant concepts
+present in Solid’s ecosystem. Through this, PLASMA forms a ‘<em>policy
+layer</em>’ on top of the existing Solid implementations where users,
+apps, and Pod providers can express their relevant information in the
+form of policies, and based on which appropriate tools can be developed
+to enable functions such as informed consent, data use logs,
+machine-readable notices, preference management for users, and their
+management through dashboards. In addition to providing the vocabulary,
+a series of ontology design patterns (ODPs) can be defined to ensure
+apps declare necessary data before being allowed the use of data, and
+further to create conformity mechanisms based on this where communities
+can assess and curate collections of actors and apps to create
+environments of trust.</p>
+<p>The contributions of this work are based on the following research
+objectives:</p>
+<ol>
+<li><p>Creating a taxonomy of Solid’s entities and infrastructure to
+describe the actors and processes involved in the Solid
+ecosystem;</p></li>
+<li><p>Providing a metadata policy language (PLASMA), using the terms
+identified in RO1, to express information regarding legal roles and
+other compliance requirements in a jurisdiction-agnostic manner (while
+satisfying requirements from GDPR);</p></li>
+<li><p>Using PLASMA for defining a set of Solid-related ODPs regarding
+users and apps policies, data use logs and registries to provide easy
+access to data in Pods.</p></li>
+</ol>
+<p>This paper is organized as follows: Section <a href="#sec:background"
+data-reference-type="ref" data-reference="sec:background">2</a> provides
+background on Solid and describes relevant work in state of the art
+regarding Solid access control mechanisms and metadata expression,
+Section <a href="#sec:challenges" data-reference-type="ref"
+data-reference="sec:challenges">3</a> presents an overview of the
+challenges to be addressed to have a legally-aligned Solid ecosystem,
+Section <a href="#sec:plasma" data-reference-type="ref"
+data-reference="sec:plasma">4</a> presents the use of PLASMA as a
+metadata policy language and Section <a href="#sec:integration"
+data-reference-type="ref" data-reference="sec:integration">5</a> its
+integration in the ecosystem using ODPs, Section <a
+href="#sec:compliance" data-reference-type="ref"
+data-reference="sec:compliance">6</a> discusses the challenges of
+addressing legal compliance, and concluding statements are presented in
+Section <a href="#sec:conclusion" data-reference-type="ref"
+data-reference="sec:conclusion">7</a>.</p>
+<h2 id="sec:background">Background &amp; Related Work</h2>
+<p>The Solid Protocol specification <span class="citation"
+data-cites="capadisli_solid_2022"><a href="#ref-capadisli_solid_2022"
+role="doc-biblioref">[3]</a></span> contains a set of conditions that
+resource server developers must fulfil in order to enable Solid servers
+to send and retrieve data and that app developers must implement for a
+Solid app to perform operations on resources. In addition to this, a set
+of Solid specifications<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> build on top of the Protocol are
+being developed by the W3C Solid Community Group. In the context of this
+work, we focus on the specifications related to the authorization and
+application interoperability systems as the background for the
+development of PLASMA and present existing research on (i) the
+expression of machine-readable policies and auditing metadata in Solid,
+and (ii) the alignment of Solid with data protection requirements.</p>
+<p>Currently, Solid has two specifications to determine access
+authorizations to resources stored in Solid Pods – WAC<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and
+Access Control Policy (ACP)<a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a> <span class="citation"
+data-cites="acp_2022"><a href="#ref-acp_2022"
+role="doc-biblioref">[6]</a></span>. In WAC, IRIs are used to represent
+resources and agents, and authorization statements are stored within
+Access Control Lists (ACLs) defined per resource or inherited from the
+parent resource. In ACP, access grants are provided to certain resources
+and agents based on an <code>acp:Context</code> that describes the
+agent’s request for data and the access control resources (ACRs) that
+describe who is allowed or denied access to Pod resources using an
+<code>acp:Matcher</code>.</p>
+<p>Additionally, the Solid Application Interoperability<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>
+specification <span class="citation" data-cites="interop_2023"><a
+href="#ref-interop_2023" role="doc-biblioref">[7]</a></span> is being
+developed in order to have an interoperability layer in Solid that
+allows users and agents to access and manage data stored in a Solid Pod
+using distinct applications. However, these specifications do not take
+into consideration legal and practical requirements for the access and
+management of data nor do they provide a way for apps and users to
+express their data handling practices. Regarding auditing, Inrupt’s
+Enterprise Solid Server provides an auditing service<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+which relies on the W3C Activity Streams 2.0 Recommendation <span
+class="citation" data-cites="as_2017"><a href="#ref-as_2017"
+role="doc-biblioref">[8]</a></span> to document audit events in RDF.</p>
+<p>To this end, Esteves et al. <span class="citation"
+data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[9]</a></span> developed an ODRL profile for Access
+Control (OAC)<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> that allows the expression of
+machine-readable policies to express individual privacy preferences and
+apps’ policies, using data terms from the Data Privacy Vocabulary
+(DPV)<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a>. OAC was extended by Debackere et
+al. <span class="citation"
+data-cites="debackere_policy-oriented_2022"><a
+href="#ref-debackere_policy-oriented_2022"
+role="doc-biblioref">[10]</a></span> to include the efforts made in the
+Application Interoperability specification as part of a policy-based
+architecture for access control in Solid. DPV <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[11]</a></span> is a W3C community effort, that
+provides taxonomies for expressing machine-readable metadata about the
+processing of personal data based on legislative requirements, including
+legal entities, purposes for processing, legal basis, rights, personal
+data categories, and GDPR. In addition, previous work on policy-related
+ODPs has been published to describe personal data in privacy policies
+<span class="citation" data-cites="pandit_ontology_2018"><a
+href="#ref-pandit_ontology_2018" role="doc-biblioref">[12]</a></span>
+and linked data licenses <span class="citation"
+data-cites="rodriguez-doncel_license_2013"><a
+href="#ref-rodriguez-doncel_license_2013"
+role="doc-biblioref">[13]</a></span>.</p>
+<p>For alignment with data protection requirements, Pandit <span
+class="citation" data-cites="panditMakingSenseSolid2023"><a
+href="#ref-panditMakingSenseSolid2023"
+role="doc-biblioref">[4]</a></span> identifies actors and roles, and
+investigates GDPR issues applicable to the use of Solid transparency of
+information, consent, and exercising of data subject rights. Janssen et
+al. <span class="citation" data-cites="janssen_decentralized_2020"><a
+href="#ref-janssen_decentralized_2020"
+role="doc-biblioref">[14]</a></span> also provide an analysis of
+personal data stores, including Solid, as a ‘privacy-enhancing
+technology’ (PET) and discuss the uncertainties in the designation of
+GDPR responsibilities among the involved parties in personal data store
+systems, as well as the choice of a proper legal basis for processing
+personal data.</p>
+<p>Externally, ‘app stores’ such as those maintained by Apple and Google
+and ‘package repositories’ such as those maintained by Linux
+distributions also feature the use of metadata that developers must
+provide in order for their apps to be enlisted in their stores. These
+platforms also use this metadata for governing apps, identifying
+compatibility, and enforcing guidelines.</p>
+<h2 id="sec:challenges">Challenges and Hurdles to the Solid Vision</h2>
+<p>This section discusses the challenges of having a transparent,
+legally-aligned Solid ecosystem. The following issues were identified
+based on an analysis of the literature and the current state of Solid
+specifications:</p>
+<ol>
+<li><p><strong>Identity of Solid actors and their roles is
+unknown</strong> – Solid users are unaware of who are the entities
+proving their Pods or the apps they use.</p></li>
+<li><p><strong>No metadata about Solid infrastructure</strong> – Users
+do not have information on which Solid specification their Pod is
+running or which functionalities are installed within it.</p></li>
+<li><p><strong>Availability/Discovery of categories of data</strong> –
+To have granular access to data in Pods, based on their data category,
+Solid apps need to know if they exist and where are they stored in the
+Pod.</p></li>
+<li><p><strong>Pod and app providers do not provide information on their
+data handling practices</strong> – Pods and apps do not provide
+machine-readable privacy notices nor do they declare what data they need
+to function.</p></li>
+<li><p><strong>Users cannot express their privacy policies</strong> –
+Solid users do not have the tools to express their privacy preferences
+and requirements nor to manage incoming data requests or existing
+decisions for the use of data.</p></li>
+<li><p><strong>No logging or record-keeping</strong> – No provenance
+metadata is recorded for accountability in the Pods, e.g., users do not
+keep consent records, nor information regarding who has accessed their
+data, what they are doing with it, or changes to their data handling
+policies.</p></li>
+<li><p><strong>No legal compliance checks</strong> – Solid does not have
+tools for users to exercise their GDPR-related rights, such as
+withdrawing consent, nor does it provide authorities with the auditing
+information to perform investigations.</p></li>
+</ol>
+<p>While we claim that this is not an exhaustive list of all challenges
+that need to be overcome to have a legally-aware Solid ecosystem, the
+work on PLASMA that we present in the following sections can be used to
+address them.</p>
+<h2 id="sec:plasma">PLASMA: A Policy Language for Solid’s Metadata-based
+Access Control</h2>
+<figure id="fig:plasma-overview">
+<img src="img/062-plasma-overview.png" />
+<figcaption>Overview of the main concepts included in
+PLASMA.</figcaption>
+</figure>
+<p>As covered in the previous sections, there is a gap in the
+representation of information related to the entities, infrastructure
+and processes involved in the Solid ecosystem. While there are existing
+efforts at providing legal vocabularies <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[11]</a></span>, these are not directly applicable
+to Solid use cases. Therefore, through PLASMA, we first provide relevant
+taxonomies to describe the actors, artefacts, and processes that are
+necessary to describe the use of Solid Pods. This enables us to later
+align these with legal terms (in our case – the GDPR). For example, the
+entity the data belongs/refers to is called <em>owner</em> in Solid,
+whereas the equivalent term would be <em>data subject</em> under GDPR.
+In addition, we also identify concepts without direct equivalence in
+GDPR or those that can take one of multiple roles. Through this, PLASMA
+is able to express a variety of use cases using terms familiar to the
+Solid community while also providing their relevance in terms of legal
+concepts (from GDPR).</p>
+<p>In order to understand and study Solid-related terms and their
+current definitions, a review of the existing Solid technical documents
+was performed by the authors, in particular of the specifications
+related to the authorization workflow, described in Section <a
+href="#sec:background" data-reference-type="ref"
+data-reference="sec:background">2</a>. While these specifications
+provide a definition for concepts such as Pods, apps or agents in their
+documentation, only a handful of them is actually defined in a
+machine-readable manner: the <code>interop</code> specification provides
+a definition for <code>Application</code>, <code>Agent</code> and
+<code>Registry</code> and the <code>acp</code> vocabulary provides a
+<code>Policy</code> term. However, no concepts were found in the base
+Solid vocabularies to define what is a Pod, a Service, an Entity or
+Data. As such, we provide a definition for each of these concepts in the
+base vocabulary<a href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a> of PLASMA and link them with the
+existing concepts mentioned before, if available. Thus, PLASMA relies on
+these base terms as its core concepts to be expanded into distinct
+taxonomies for entities, policies, services, registries, and data –
+Figure <a href="#fig:plasma-overview" data-reference-type="ref"
+data-reference="fig:plasma-overview">1</a> provides an overview of these
+taxonomies. PLASMA is available at <a href="https://w3id.org/plasma"
+class="uri">https://w3id.org/plasma</a>, under the CC-By-4.0 licence,
+and reuses the available terms in the Solid vocabularies, in line with
+FAIR (Findable, Accessible, Interoperable, Reusable) principles. Each
+taxonomy is discussed below.</p>
+<h3 id="entities">Entities</h3>
+<p>Currently, Solid vocabularies do not provide terms to describe
+entities beyond the existing properties in the <code>acl</code> and
+<code>acp</code> vocabularies to describe access conditions for agents,
+client applications or identity issuers. In PLASMA, we provide the terms
+to describe the providers and/or developers of Solid Pods, apps,
+services, data, identity and other Solid-related infrastructure, as well
+as terms to describe different types of users – we define
+<code>AdminUser</code> as a “User of a Pod that has the administrative
+capability to make decisions about Data on a Pod” and
+<code>PodAdmin</code> as a “User of a Pod that has the administrative
+capability to make decisions about the Pod (separate from Data in a
+Pod), such as deleting the Pod, changing identity or other resource
+providers”, to potentiate the distinction between users with full
+control over data and users with full control over the Pod, a feature
+currently missing from the Solid specifications. Regarding the
+specification of agents, PLASMA goes beyond the current definition of
+Solid in which such entities can be real, e.g., people or parents on
+behalf of children, or virtual, e.g., software agents – PLASMA agents
+are virtual agents, so as to distinguish them from an entity which
+represents a real entity, i.e., those that can be held legally
+accountable. These concepts address the C1 challenge identified in
+Section <a href="#sec:challenges" data-reference-type="ref"
+data-reference="sec:challenges">3</a>.</p>
+<h3 id="infrastructure">Infrastructure</h3>
+<p>PLASMA provides terms to specify the Solid specifications that the
+Pod conforms to in terms of behaviour and implementation details, as
+well as the specific Solid platform that is installed within a Pod. In
+addition, in PLASMA we make a distinction between Solid apps and Solid
+services – an app requires human intervention to perform an action on
+data with the aim of providing specific purposes or functionalities,
+while a service is a functionality that may utilise or interact with
+data within a Pod and may not require human intervention, e.g., is
+executed in the background. Users can choose services to run on their
+Pods, with the services having their own developers and providers, e.g.,
+an identity verification service that checks the validity of
+certificates. As this is a new concept introduced by PLASMA, we provide
+a taxonomy of 11 Solid-related services, which can be further expanded
+to take into account new use cases. These concepts address the C2
+challenge identified in Section <a href="#sec:challenges"
+data-reference-type="ref" data-reference="sec:challenges">3</a>.</p>
+<h3 id="sec:pod-data">Pod-related Data</h3>
+<p>Since Solid’s overall purpose is to provide individuals with a data
+storage service for their data and the choice of which applications or
+services to use for a particular purpose, it should also contain
+(meta)data regarding its users, apps, services, logs or registries. In
+addition, the recording of this provenance data in the Pods can also be
+of assistance to external entities auditing Solid-related activities,
+e.g., data protection supervisory authorities in Europe might require
+access to said data to investigate a personal data breach. To this end,
+beyond modelling metadata about Pod management, users, apps or services,
+PLASMA allows the expression of logs – provenance records associated
+with Solid processes such as adding/updating a data resource in a Pod,
+the reporting of a policy negotiation where the user gave consent to an
+app’s request for data, or of an error on the identity verification of a
+user. Moreover, the maintenance of a set of registries, e.g., data, data
+schema, policy, app or user registries, as an indexed record used to
+provide information on the availability of data categories, supported
+schemas for data, apps, or services, relevant policies, or apps and
+users that have/had access to resources in the Pod. These concepts
+address the C6 and C3 challenges identified in Section <a
+href="#sec:challenges" data-reference-type="ref"
+data-reference="sec:challenges">3</a>, respectively.</p>
+<h3 id="sec:policies">Policies</h3>
+<p>In the context of PLASMA, policies are documents used to specify the
+requirements of users, apps and services regarding data handling
+practices over data stored or shared through Solid Pods. As such, PLASMA
+provides definitions for user policies, as well as for data requests,
+i.e., a request from an app, service, agent or user to access, use and
+perform other actions on Pod data. We envision integrating such requests
+in a manifest as defined by the W3C Web Application Manifest
+specification <span class="citation" data-cites="manifest_2023"><a
+href="#ref-manifest_2023" role="doc-biblioref">[15]</a></span>, which
+currently cannot be considered sufficient for an app’s or service’s
+manifest in the context of Solid Pods since it does include information
+on entities, their identity or data handling policies, which is needed
+to have accountability and check for legal compliance. PLASMA also
+provides different types of data agreements, a concept totally missing
+from the Solid specifications as they only refer to access
+authorizations between users and apps. An agreement can be governed by a
+contract between the user and the entity responsible for the app,
+service or Pod, or can be based on the user’s consent. Furthermore,
+current Solid specifications also miss the definition of notices – a
+document needed to provide context information about the entities,
+operations, or data involved in a particular process, e.g., notices can
+be specified to declare the providers and/or developers of apps and
+services or to describe data processing practices. In this context,
+PLASMA provides the terms to declare an <em>ex-ante</em> and
+<em>ex-past</em> notices, as well as privacy notices for apps, services,
+Pods and users. These concepts address the C4 and C5 challenges
+identified in Section <a href="#sec:challenges"
+data-reference-type="ref" data-reference="sec:challenges">3</a>.</p>
+<h2 id="sec:integration">Integrating PLASMA in the Solid Ecosystem
+through the Usage of Ontology Design Patterns</h2>
+<p>As previously discussed, the current Solid vision does not rely on a
+policy-based access control system, but on an access control list (WAC)
+or access grant (ACP) mechanism. In addition, it completely lacks the
+necessary information to perform an auditing activity on Pods, apps,
+services, entities and agents and a proper alignment with data
+protection regulatory requirements such as the ones brought on by the
+GDPR, which are necessary conditions for the lawful processing of
+personal data. In this section, we promote the usage of PLASMA and other
+identified semantic specifications to describe a set of ODPs for having
+commonly structured representations of policies, registries and logs in
+Solid, which can be used to establish responsibilities and promote
+transparency in personal data handling practices.</p>
+<h3 id="odps-for-specifying-legally-aware-policies-in-solid">ODPs for
+Specifying Legally-aware Policies in Solid</h3>
+<p>PLASMA defines a set of 3 types of user policies, a
+<code>UserPreference</code> – a soft rule that may not be satisfied, a
+<code>UserRequirement</code> – a hard rule that should always be
+satisfied, and a <code>UserOffer</code> – a policy offer from the user
+regarding the purposes, entities and actions that can/cannot be
+performed on the data, in addition to the ones specified to characterize
+<code>DataRequests</code> and <code>DataAgreements</code>, already
+discussed in Section <a href="#sec:policies" data-reference-type="ref"
+data-reference="sec:policies">4.4</a>. While a different ODP can be
+established for each type of policy, their main structure remains the
+same. For this reason and due to restrictions on the size of this
+publication, we present only the ODP for a data request policy<a
+href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>. The pattern for request policies
+aims to answer the following competency questions:</p>
+<ol>
+<li><p>What is the unique identifier of the policy?</p></li>
+<li><p>Who is the creator of the policy?</p></li>
+<li><p>When was the policy issued?</p></li>
+<li><p>Who is the assignee of the policy?</p></li>
+<li><p>What application/service is being used to access the
+data?</p></li>
+<li><p>What access mode is being requested?</p></li>
+<li><p>What personal data is being accessed?</p></li>
+<li><p>What is the purpose for accessing the data?</p></li>
+</ol>
+<p>Since neither WAC nor ACP provide the necessary terms to express
+access policies for specific categories of data, with restricted
+purposes for usage, or with temporal or spatial constraints, PLASMA
+promotes the integration of ODRL, which has a convenient extension
+mechanism, into the Solid architecture. Moreover, ODRL already provides
+the terms to specify offers as an <code>odrl:Offer</code>, requests as
+an <code>odrl:Request</code>, and agreements as an
+<code>odrl:Agreement</code> and an ODRL profile for Access Control (OAC)
+<span class="citation" data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[9]</a></span>, which invokes data
+protection-specific terms using DPV, that can also be integrated into
+the Solid ecosystem to express granular permissive and prohibitive
+policies related to the access to personal data stored in Solid Pods,
+with constraints over purposes, recipients or legal basis for
+processing. The DCMI Metadata Terms specification is also used to
+specify authorship of the policy, <code>dct:creator</code>, and its
+issuance date, <code>dct:issued</code>. A visualisation of the pattern
+is presented in Figure <a href="#fig:policy-odp"
+data-reference-type="ref" data-reference="fig:policy-odp">2</a>.</p>
+<figure id="fig:policy-odp">
+<img src="img/062-policy-odp.png" />
+<figcaption>Ontology Design Pattern for
+<code>DataRequest</code>s.</figcaption>
+</figure>
+<h3 id="odps-for-logging-and-registries">ODPs for Logging and
+Registries</h3>
+<p>In addition to pattern-based policies, as previously discussed in
+Section <a href="#sec:pod-data" data-reference-type="ref"
+data-reference="sec:pod-data">4.3</a>, PLASMA should be used to
+construct a variety of patterns for Solid logs and registries, to assist
+in the auditing of Pods, users, apps and services’ activities as well as
+to have easy access to data in Pods. Due to restrictions on the size of
+the publication, we present only an ODP for a data log and an ODP for a
+data registry, while other ODPs will be available at <a
+href="https://w3id.org/plasma/odps"
+class="uri">https://w3id.org/plasma/odps</a>. The pattern for a data log
+aims to answer the following competency questions:</p>
+<ol>
+<li><p>What type of action, e.g., create, update, erase, is being
+performed on the data?</p></li>
+<li><p>Who is the entity interacting with the data?</p></li>
+<li><p>Who is the entity publishing the log?</p></li>
+<li><p>When was the log issued?</p></li>
+<li><p>Where is the data being stored?</p></li>
+<li><p>What application/service is being used to generate the data, if
+any?</p></li>
+</ol>
+<p>The pattern for a data registry aims to answer the following
+competency questions:</p>
+<ol>
+<li><p>Who is maintaining the registry?</p></li>
+<li><p>When was the registry created/updated?</p></li>
+<li><p>What types of data are available?</p></li>
+<li><p>Where is a specific type of data being stored?</p></li>
+<li><p>What policy is associated with the data?</p></li>
+</ol>
+<p>Since Solid does not currently support any vocabularies to express
+logs, the ActivityStreams protocol<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a> can be used to
+describe such records. ActivityStreams supports the description of
+activity types, such as <code>Create</code>, <code>Add</code>,
+<code>Update</code> or <code>Delete</code>, and includes concepts to
+associate activities with the entity that performed them,
+<code>as:actor</code>, with applications/services that generated them,
+<code>as:generator</code>, or with the resources that they are connected
+with, <code>as:object</code>. In addition, data registries can be
+commonly structured as a DCAT<a href="#fn12" class="footnote-ref"
+id="fnref12" role="doc-noteref"><sup>12</sup></a> <code>Catalog</code>,
+where different datasets can be associated with the type of data they
+contain using DPV’s personal data categories extension (DPV-PD<a
+href="#fn13" class="footnote-ref" id="fnref13"
+role="doc-noteref"><sup>13</sup></a>) and associate them with their
+storage location using <code>foaf:page</code>. A visualisation of the
+<code>DataLog</code> and <code>DataRegistry</code> patterns is presented
+in Figure <a href="#fig:log-odp" data-reference-type="ref"
+data-reference="fig:log-odp">3</a>.</p>
+<figure id="fig:log-odp">
+<img src="img/062-log-odp.png" />
+<figcaption>Ontology Design Pattern for a <code>DataLog</code> and
+<code>DataRegistry</code>.</figcaption>
+</figure>
+<h2 id="sec:compliance">Conformance and Legal Compliance</h2>
+<p>Using PLASMA, an app (and its controlling entity) is able to provide
+information or links to information regarding policies for who is the
+entity, what are they doing with the data, towards what ends, and other
+relevant information. When this information is machine-readable, it is
+possible to automatically assess it towards some objective – such as to
+ensure that usage purposes are explicitly acknowledged as being of a
+certain type (e.g., scientific research) or that data will never travel
+outside a jurisdiction. Such declarations can serve as valuable tools in
+automating or reducing the effort required to approve apps and requests
+where the use of data and Pods occurs within environments such as
+clinical research.</p>
+<p>Using PLASMA as the basis, we also foresee the possibility to realise
+<em>community</em> or <em>collective</em> efforts, such as those
+envisioned by the MyData<a href="#fn14" class="footnote-ref"
+id="fnref14" role="doc-noteref"><sup>14</sup></a> movement, where apps
+must conform or satisfy requirements set forth by the collective and are
+only then allowed to approach the Pods and users. This is beneficial for
+apps as it reduces the number of individual notices and requests it has
+to manage, and also for users as they only receive requests that they
+know have been approved or vetted by the collective arrangement.
+Further, PLASMA also provides a way to use Solid Pods towards the new
+Data Governance Act (DGA) <span class="citation"
+data-cites="noauthor_regulation_2022"><a
+href="#ref-noauthor_regulation_2022"
+role="doc-biblioref">[16]</a></span> where the data could reside in the
+Pod with a usage policy and a Data Intermediary or Co-operative or
+Altruistic Organisation could periodically collect only the policies
+available on the Pod to create a common registry of available data and
+how it can be reused, without providing direct access to the data
+itself.</p>
+<p>In terms of legal compliance, more specifically the GDPR, PLASMA
+provides a forum for the provision and management of information
+comparable to the current privacy policies or notices where users can go
+and read details about how the service uses personal data and what are
+their options regarding it. It has been well studied and documented that
+such policies are hard for people to find, comprehend, and use due to
+their length and complex language and that users prefer not having to
+read them <span class="citation" data-cites="veale_adtech_2022"><a
+href="#ref-veale_adtech_2022" role="doc-biblioref">[17]</a></span>.
+Similarly, the privacy notices, such as for consent, have also been
+documented to suffer similar issues and malpractices <span
+class="citation" data-cites="toth_2022"><a href="#ref-toth_2022"
+role="doc-biblioref">[18]</a></span>. Without approaches such as PLASMA,
+the use of Solid will also suffer with these existing issues and
+additional ones that arise specifically from Solid’s lack of information
+or concrete guidance.</p>
+<p>In order to make effective use of PLASMA, we emphasise that
+additional research and developments are required for the various
+possibilities highlighted throughout this article. For example,
+currently, there are no semantic specifications for recording or
+constructing privacy notices. Since legal requirements are specific to a
+jurisdiction, such mechanisms would invariably be tied to the
+interpretation of a specific law. Given that we are witnessing a global
+convergence of data protection and privacy laws with the general
+concepts and structure first emphasised by the GDPR, it is now the
+appropriate time to create a common legal vocabulary.</p>
+<p>For this, we think that the DPV <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[11]</a></span> is a suitable candidate that could
+be expanded to be used with PLASMA to declare privacy notices, consent
+records, and other pertinent documentation that uses Solid-friendly
+terms while still being tied to legal requirements (e.g., GDPR). For
+example, using PLASMA, the use case can contain information that an
+actor is an App Developer, and with DPV they can assert that they are
+merely a Data Processor. Similarly, using PLASMA, the App can specify
+where to find its privacy notice, where the contents of that notice can
+be described using DPV. The use of ODPs, such as the ones described in
+Section <a href="#sec:integration" data-reference-type="ref"
+data-reference="sec:integration">5</a>, will ensure that the appropriate
+information based on its legal requirements, e.g., from GDPR’s Article
+13/14, is present in the Pod to be consulted. As such, the creation of
+patterns for the different types of policies, notices, logs and
+registries is of the utmost importance. We have undertaken this work
+within the DPVCG and are working towards developing machine-readable
+specifications based on standards of ISO/IEC 29184 Privacy Notices and
+ISO/IEC 27560 Consent Records, to help in addressing the C7 challenge
+identified in Section <a href="#sec:challenges"
+data-reference-type="ref" data-reference="sec:challenges">3</a>.</p>
+<h2 id="sec:conclusion">Conclusions</h2>
+<p>In this article, we first established the need to have common
+taxonomies to describe the entities, infrastructure and processes
+involved in the Solid ecosystem, in order to address current challenges
+that the Solid vision brings in terms of providing information about the
+identity of Pod, apps or other Solid-related services, information
+regarding their personal data handling practices or the generation and
+maintenance of logs related with important Solid processes, e.g.,
+updating a Pod data resource, moving to a different Pod provider, or
+deleting a given access authorization from the Pod. To this end, we
+propose the integration of PLASMA, a metadata policy language, into the
+Solid ecosystem, with the purpose of expressing information regarding
+legal roles, agreements, policies, registries of data and logs, taking
+into consideration legal requirements, first in a jurisdiction-agnostic
+manner and then, in particular, considering GDPR’s specific
+requirements. By integrating such a resource in Solid and providing
+guidelines on how to comply with it, we promote semantic
+interoperability in the terms used by users, Pods, apps, services and
+agents in order to help address the identified challenges to the Solid
+vision, while considering legal compliance with data protection
+laws.</p>
+<p>We believe that our work further advances the field of decentralized
+storage of personal data, relying on existing Semantic Web standards, by
+promoting its integration with legal and social requirements and
+therefore providing a more trustworthy and private-friendly environment
+for Web users to share their data and gather benefits from it. As future
+work, we highlight the need to (i) evaluate the coverage of PLASMA to
+deal with the variety of different workflows and use cases, (ii)
+integrate the usage of PLASMA, and of ODRL and DPV as well, into the
+design of Solid servers, applications and services, (iii) develop SHACL
+shapes to check for compliance with the PLASMA specification and the
+developed PLASMA ODPs, including the usage of DPV to comply with legal
+requirements, (iv) align PLASMA with existing standardization efforts
+for privacy notices and consent records and (v) further develop PLASMA’s
+patterns to cover different types of notices, logs and registries, while
+providing information on entities, policies, etc. as per GDPR’s
+requirements.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-ldp_2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">S.
+Speicher, J. Arwe, and A. Malhotra, <span>“<span>Linked Data Platform
+1.0</span>,”</span> <em>W3C Recommendation</em>, 2015 [Online].
+Available: <a
+href="http://www.w3.org/TR/ldp/">http://www.w3.org/TR/ldp/</a></div>
+</div>
+<div id="ref-wac_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">S.
+Capadisli and T. Berners-Lee, <span>“<span>Web Access Control Version
+1.0.0</span>,”</span> <em>W3C Candidate Recommendation</em>, 2022
+[Online]. Available: <a
+href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a></div>
+</div>
+<div id="ref-capadisli_solid_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S.
+Capadisli, T. Berners-Lee, R. Verborgh, and K. Kjernsmo,
+<span>“<span>Solid Protocol Version 0.10.0</span>,”</span> <em>W3C CG
+Draft Report</em>, 2022 [Online]. Available: <a
+href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></div>
+</div>
+<div id="ref-panditMakingSenseSolid2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“Making <span>Sense</span> of <span>Solid</span> for
+<span>Data Governance</span> and <span>GDPR</span>,”</span>
+<em>Information</em>, vol. 14, no. 2, p. 114, Feb. 2023, doi: <a
+href="https://doi.org/10.3390/info14020114">10.3390/info14020114</a>.
+</div>
+</div>
+<div id="ref-noauthor_regulation_2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation
+(<span>EU</span>) 2016/679 of the European Parliament and of the Council
+of 27 April 2016 on the protection of natural persons with regard to the
+processing of personal data and on the free movement of such data, and
+repealing Directive 95/46/<span>EC</span> (General Data Protection
+Regulation)</span>.”</span> 2018 [Online]. Available: <a
+href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-acp_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">M.
+Bosquet, <span>“<span>Access Control Policy</span>,”</span> <em>W3C CG
+Draft Report</em>, 2022 [Online]. Available: <a
+href="https://solidproject.org/TR/acp">https://solidproject.org/TR/acp</a></div>
+</div>
+<div id="ref-interop_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J.
+Bingham, E. Prud’hommeaux, and elf Pavlik, <span>“<span>Solid
+Application Interoperability</span>,”</span> <em>W3C CG Draft
+Report</em>, 2023 [Online]. Available: <a
+href="https://solid.github.io/data-interoperability-panel/specification/">https://solid.github.io/data-interoperability-panel/specification/</a></div>
+</div>
+<div id="ref-as_2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J.
+M. Snell and E. Prodromou, <span>“<span>Activity Streams
+2.0</span>,”</span> <em>W3C Recommendation</em>, 2017 [Online].
+Available: <a
+href="https://www.w3.org/TR/activitystreams-core/">https://www.w3.org/TR/activitystreams-core/</a></div>
+</div>
+<div id="ref-estevesODRLProfileExpressing2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">B.
+Esteves, H. J. Pandit, and V. Rodríguez-Doncel, <span>“<span>ODRL
+Profile</span> for <span>Expressing Consent</span> through
+<span>Granular Access Control Policies</span> in
+<span>Solid</span>,”</span> in <em>2021 EuroS&amp;PW</em>, 2021, pp.
+298–306. </div>
+</div>
+<div id="ref-debackere_policy-oriented_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">L.
+Debackere, P. Colpaert, R. Taelman, and R. Verborgh, <span>“<span
+class="nocase">A Policy-Oriented Architecture for Enforcing Consent in
+Solid</span>,”</span> 2022. </div>
+</div>
+<div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
+<span>Data Privacy</span>,”</span> in <em>ODBASE2019</em>, 2019, p. 17,
+doi: <a href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+<div id="ref-pandit_ontology_2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">H.
+J. Pandit, D. O’Sullivan, and D. Lewis, <span>“<span class="nocase">An
+Ontology Design Pattern for Describing Personal Data in Privacy
+Policies</span>,”</span> in <em>9th int. Workshop on ontology
+patterns</em>, 2018, pp. 29–39. </div>
+</div>
+<div id="ref-rodriguez-doncel_license_2013" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">V.
+Rodríguez-Doncel, M. C. Suárez-Figueroa, A. Gómez-Pérez, and M.
+Poveda-Villalón, <span>“<span>License Linked Data Resources
+Pattern</span>,”</span> in <em>4th int. Workshop on ontology
+patterns</em>, 2013. </div>
+</div>
+<div id="ref-janssen_decentralized_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">H.
+Janssen, J. Cobbe, C. Norval, and J. Singh, <span>“Decentralized data
+processing: Personal data stores and the <span>GDPR</span>,”</span>
+<em>International Data Privacy Law</em>, vol. 10, no. 4, pp. 356–384,
+2020. </div>
+</div>
+<div id="ref-manifest_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M.
+Cáceres <em>et al.</em>, <span>“<span>Web Application
+Manifest</span>,”</span> <em>W3C WG Draft Report</em>, 2023 [Online].
+Available: <a
+href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></div>
+</div>
+<div id="ref-noauthor_regulation_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[16] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation
+(<span>EU</span>) 2022/868 of the European Parliament and of the Council
+of 30 May 2022 on European data governance and amending Regulation
+(<span>EU</span>) 2018/1724 (Data Governance Act)</span>.”</span> 2022
+[Online]. Available: <a
+href="http://data.europa.eu/eli/reg/2022/868/oj/eng">http://data.europa.eu/eli/reg/2022/868/oj/eng</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-veale_adtech_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">M.
+Veale and F. Z. Borgesius, <span>“<span class="nocase">Adtech and
+Real-Time Bidding under European Data Protection Law</span>,”</span>
+<em>German Law Journal</em>, vol. 23, no. 2, pp. 226–256, 2022, doi: <a
+href="https://doi.org/10.1017/glj.2022.18">10.1017/glj.2022.18</a>.
+</div>
+</div>
+<div id="ref-toth_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">M.
+Toth, N. Bielova, and V. Roca, <span>“<span class="nocase">On dark
+patterns and manipulation of website publishers by CMPs</span>,”</span>
+in <em>PoPETs</em>, 2022, pp. 478–497, doi: <a
+href="https://doi.org/10.56553/popets-2022-0082">10.56553/popets-2022-0082</a>.
+</div>
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.w3.org/TR/ethical-web-principles/"
+class="uri">https://www.w3.org/TR/ethical-web-principles/</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://solidproject.org/TR/"
+class="uri">https://solidproject.org/TR/</a> provides an up-to-date list
+of Solid technical reports.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>WAC uses the ACL ontology to describe access
+authorizations to resources. Its namespace is <a
+href="http://www.w3.org/ns/auth/acl#"
+class="uri">http://www.w3.org/ns/auth/acl#</a> and preferred prefix is
+<code>acl</code>.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>ACP’s namespace is <a
+href="http://www.w3.org/ns/solid/acp#"
+class="uri">http://www.w3.org/ns/solid/acp#</a> and its preferred prefix
+is <code>acp</code>.<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The Solid Application Interoperability’s vocabulary
+namespace is <a href="http://www.w3.org/ns/solid/interop#"
+class="uri">http://www.w3.org/ns/solid/interop#</a> and its preferred
+prefix is <code>interop</code>.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a
+href="https://docs.inrupt.com/ess/latest/services/service-auditing/"
+class="uri">https://docs.inrupt.com/ess/latest/services/service-auditing/</a><a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>OAC’s namespace is <a href="https://w3id.org/oac#"
+class="uri">https://w3id.org/oac#</a> and its preferred prefix is
+<code>oac</code>.<a href="#fnref7" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>DPV’s namespace is <a href="https://w3id.org/dpv#"
+class="uri">https://w3id.org/dpv#</a> and its preferred prefix is
+<code>dpv</code>.<a href="#fnref8" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>PLASMA’s base vocabulary documentation can be checked at
+<a href="https://w3id.org/plasma#base"
+class="uri">https://w3id.org/plasma#base</a>.<a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Examples of usage and ODPs for user policies and
+agreements are available at <a href="https://w3id.org/plasma/odps"
+class="uri">https://w3id.org/plasma/odps</a>.<a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>ActivityStreams 2.0 Terms are published under the
+namespace <a href="https://www.w3.org/ns/activitystreams#"
+class="uri">https://www.w3.org/ns/activitystreams#</a>, with
+<code>‘as’</code> as its preferred prefix.<a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>The Data Catalog Vocabulary (DCAT) is published under
+the namespace <a href="http://www.w3.org/ns/dcat#"
+class="uri">http://www.w3.org/ns/dcat#</a>, with <code>‘dcat’</code> as
+its preferred prefix.<a href="#fnref12" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://w3id.org/dpv/dpv-pd"
+class="uri">https://w3id.org/dpv/dpv-pd</a><a href="#fnref13"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Information on the MyData movement available at <a
+href="https://www.mydata.org/"
+class="uri">https://www.mydata.org/</a>.<a href="#fnref14"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>

@@ -810,6 +810,34 @@
     schema:endDate "2023-06-15T00:00:00"^^xsd:dateTime ;
     schema:location "Chicago, USA" .
 
+<http://example.com/conferences/SEMANTiCS2023> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2023-eu.semantics.cc/"^^xsd:anyURI ;
+    schema:startDate "2023-09-20T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-09-22T00:00:00"^^xsd:dateTime ;
+    schema:location "Leipzip, Germany" .
+
+<http://example.com/conferences/ISWC2023> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Semantic Web Conference"@en ;
+    schema:alternateName "ISWC" ;
+    schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI ;
+    schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-11-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Athens, Greece" .
+
+<http://example.com/workshops/WOP2023> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Workshop on Ontology Design and Patterns"@en ;
+    schema:alternateName "WOP" ;
+    schema:url "https://odpa.github.io/workshop-on-ontology-design-and-patterns/2023/index.html"^^xsd:anyURI ;
+    schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-11-07T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/ISWC2023> ;
+    schema:location "Monterey, California, USA" .
+
 # events
 
 <http://example.com/events/DCMI2021> a schema:PublicationEvent ;

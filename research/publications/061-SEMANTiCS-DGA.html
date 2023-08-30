@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Semantics for Implementing Data Reuse and Altruism under EU&#39;s Data Governance Act</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Semantics for Implementing Data Reuse and Altruism under EU&#39;s Data Governance Act">
+    <meta name="schema:description" content="This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="data-governance,https://harshp.com/tags/DGA,DPV,ODRL,semantics,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/061-SEMANTiCS-DGA">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Semantics for Implementing Data Reuse and Altruism under EU&#39;s Data Governance Act">
+    <meta property="og:description" content="This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/061-SEMANTiCS-DGA">
+        <h1 property="schema:name schema:headline">Semantics for Implementing Data Reuse and Altruism under EU&#39;s Data Governance Act</h1>
+<div id="description">
+	<small>
+	<time datetime="2023-08-15T00:00:00">2023-08-15T00:00:00</time>
+    <i>Conference</i>
+    <br/>
+    International Conference on Semantic Systems (SEMANTiCS)    <br/>
+    &#9997;<i>
+    Beatriz Esteves*
+    ,
+    Victor Rodriguez Doncel
+    ,
+    <u>Harshvardhan J. Pandit</u>
+    ,
+    Dave Lewis
+    </i>
+    <br/>
+        &#x1f513;copies:
+        <a href="https://harshp.com/research/publications/061-SEMANTiCS-DGA">harshp.com</a>
+        , <a href="https://doi.org/10.5281/zenodo.8301900">zenodo</a>
+    	<br/>
+        &#128230;resources:
+        <a href="https://w3id.org/dgaterms">repo</a>
+    <br/>
+    This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <h2>Abstract</h2>
+<p><em>Purpose:</em> Following the impact of the GDPR on the regulation
+of the use of personal data of European citizens, the European
+Commission is now focused on implementing a common data strategy to
+promote the (re)use and sharing of data between citizens, companies and
+governments while maintaining it under the control of the entities that
+generated it. In this context, the Data Governance Act (DGA) emphasizes
+the altruistic reuse of data and the emergence of data intermediaries as
+trusted entities that do not have an interest in analysing the data
+itself and act only as enablers of the sharing of data between data
+holders and data users.</p>
+<p><em>Methodology:</em> In order to address DGA’s
+new requirements, this work investigates how to apply existing Semantic
+Web vocabularies to (1) generate machine-readable policies for the reuse
+of public data, (2) specify data altruism consent terms and (3) create
+uniform registers of data altruism organisations and intermediation
+services’ providers.</p>
+<p><em>Findings:</em> In addition to promoting
+machine-readability and interoperability, the use of the identified
+semantic vocabularies eases the modelling of data-sharing policies and
+consent forms across different use cases and provides a common semantic
+model to keep a public register of data intermediaries and altruism
+organisations, as well as records of their activities. Since these
+vocabularies are openly accessible and easily extendable, the modelling
+of new terms that cater to DGA-specific requirements is also
+facilitated.
+<p><em>Value:</em> The main results are an ad-hoc vocabulary
+with the new terms and examples of usage, which are available at <em><a
+href="https://w3id.org/dgaterms"
+class="uri">https://w3id.org/dgaterms</a></em>. In future research, this
+work can be used to automate the generation of documentation for the new
+DGA data-sharing entities and be extended to deal with requirements from
+other data-related regulations.</p>
+
+<h2 id="sec:intro">Introduction</h2>
+<p>In February 2020, following the impact of the General Data Protection
+Regulation (GDPR) <span class="citation"
+data-cites="noauthor_regulation_2018"><a
+href="#ref-noauthor_regulation_2018" role="doc-biblioref">[1]</a></span>
+in the specification of new data subject rights and in the
+implementation of new obligations on the entities processing personal
+data, the European Commission published a document establishing its
+<em>strategy for data</em>, including a package of new regulation
+proposals to legislate the usage of non-personal and public data, the
+activity of digital services and digital markets and the development of
+<em>common European data spaces</em> <span class="citation"
+data-cites="noauthor_communication_2020"><a
+href="#ref-noauthor_communication_2020"
+role="doc-biblioref">[2]</a></span>. While putting the data in the
+centre of this transformation, by making it available to all and
+facilitating its flow between sectors, the interests of data subjects
+and data holders will be kept by having clear data-sharing policies to
+govern the usage and access to data and trusted entities that enable
+said sharing while enforcing compliance with the new regulations.</p>
+<p>In particular, the Regulation of the European Parliament and of the
+Council on European data governance, the Data Governance Act (DGA), was
+proposed to improve the availability of public data, promote trust in
+data intermediation service providers and data altruism organisations as
+enablers of data-sharing between data holders and data users for
+purposes of general interest, and to establish a new supra-national
+authority charged with overseeing the activities of such entities, the
+European Data Innovation Board <span class="citation"
+data-cites="noauthor_regulation_2022"><a
+href="#ref-noauthor_regulation_2022"
+role="doc-biblioref">[3]</a></span>. The DGA, along with the proposed
+visions for an European Health Data Space <span class="citation"
+data-cites="noauthor_proposal_2022"><a
+href="#ref-noauthor_proposal_2022" role="doc-biblioref">[4]</a></span>
+and the Data Act <span class="citation"
+data-cites="noauthor_dataact_2022"><a href="#ref-noauthor_dataact_2022"
+role="doc-biblioref">[5]</a></span>, put an emphasis on the altruistic
+reuse of data – in the Health Data Spaces case to address the challenges
+of access and sharing to electronic health data – currently trapped
+within various institutions in the EU and unavailable to be used by all.
+The key challenges to be addressed to realise these visions are related
+to the:</p>
+<ol>
+<li><p><em>Availability / Discovery of datasets</em>: without the
+promotion and technical support for the development of common data
+spaces and trusted data sharing entities, data subjects and data holders
+will not have automated tools to share their data to be reused for
+common good purposes, nor solutions to support them in the exercising of
+their rights, and data users will not have tools to search for the data
+they seek.</p></li>
+<li><p><em>Establishment of conditions for usage and access to
+data</em>: without standards and metadata vocabularies to express
+interoperable, machine-readable policies, the establishment of
+conditions for usage and access to personal, non-personal and
+public-sector data, based not only on legal but also on ethical,
+organisational and social norms, will provoke interoperability issues
+between entities providing and seeking access to data.</p></li>
+<li><p><em>Production of Documentation</em>: without keeping records of
+their activities in a structured format, data intermediation service
+providers and data altruism organisations will rely on manual processes
+to produce documentation that demonstrates their accountable and
+responsible practices.</p></li>
+</ol>
+<p>Therefore, Semantic Web vocabularies, such as the W3C’s Data Privacy
+Vocabulary (DPV)<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>, Open Digital Rights Language
+(ODRL)<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> or Data Catalog Vocabulary (DCAT)<a
+href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>, have an important role to play in
+these processes as they are interoperable and form common standards that
+enable machine-readable tools to be used for the automation of tasks.
+DCAT and ODRL are W3C Recommendations to describe data catalogues
+published on the Web and to express usage rules over digital datasets,
+respectively. DPV is a W3C Community Group Report, which has recently
+published a stable version 1, aimed at providing a complete, open-access
+set of taxonomies to express machine-readable metadata about the use and
+processing of personal data, such as taxonomies for legal entities,
+purposes, types of processing activities, legal basis, types of data,
+rights or technical and organisational measures. By combining the usage
+of these standards and specifications to automate the discovery of
+datasets (Ch1), specify policies for the reuse and sharing of data
+(Ch2), and comply with legal obligations (Ch3), such as sending
+notifications to the competent authorities under the DGA, this work will
+enable organisations to gradually move from completely manual processes
+to ones based on utilising automation and technologies to assist in
+ensuring correctness and scalable architectures on the data-sharing
+services ecosystem.</p>
+<p>In order to address the identified challenges, we determined what
+reuse conditions are necessary to specify <em>how</em> to share data,
+<em>who</em> are the new involved stakeholders, and <em>what</em>
+documents are required to comply with the new law. Therefore, the
+following research objectives are presented as the basis of this
+work:</p>
+<ol>
+<li><p>Identify the stakeholders, information items and information
+flows relevant for the sharing of data compliant with the DGA.</p></li>
+<li><p>Identify terms missing from W3C’s specifications for representing
+data-sharing policies and consent terms.</p></li>
+<li><p>Generate registers of altruistic and data intermediary activities
+which can be queried by the competent authorities.</p></li>
+</ol>
+<p>Moreover, the principal contributions of this paper are summarised as
+follows:</p>
+<ol>
+<li><p>Identification of DGA entities and how data flows between
+them.</p></li>
+<li><p>Identification of Use Cases where the usage of semantic
+vocabularies will assist in the automation of tasks.</p></li>
+<li><p>Development of ad-hoc vocabulary for representing data-sharing
+policies, consent and permission terms and registries of
+activities.</p></li>
+<li><p>Demonstration of representation of DGA-related information using
+the mentioned semantic web technologies and the developed
+vocabulary.</p></li>
+</ol>
+<p>This paper is organized as follows: Section <a href="#sec:dga"
+data-reference-type="ref" data-reference="sec:dga">2</a> describes the
+entities and flows of data between entities defined by the DGA in which
+the usage of semantic technologies can promote the automation of tasks,
+while Section <a href="#sec:related" data-reference-type="ref"
+data-reference="sec:related">3</a> discusses the state of the art in
+semantic models for data governance. Section <a href="#sec:vocab"
+data-reference-type="ref" data-reference="sec:vocab">4</a> provides an
+identification of vocabulary terms that can be reused for the purposes
+of providing examples for policies for the reuse and sharing of data,
+querying registries of activities and specifying data altruism form
+terms. Section <a href="#sec:discussion" data-reference-type="ref"
+data-reference="sec:discussion">5</a> discusses the impact of our
+approach on compliance with DGA and its limitations and the last section
+presents conclusions and future lines of work.</p>
+<h2 id="sec:dga">Information Flows in the DGA</h2>
+<p>As the DGA promotes the availability and regulates the sharing of
+data, a set of information flows, related to the information that needs
+to be exchanged between data-sharing entities, can be described. In this
+context, an information flow specifies the information that has to be
+transmitted from one entity to another or that needs to be kept in a
+document, such as a record of activity or a public register, to fulfil a
+certain DGA requirement. Figure <a href="#fig:flow"
+data-reference-type="ref" data-reference="fig:flow">1</a> displays a
+diagram of the identified entities and information flows.</p>
+<figure id="fig:flow">
+    <img src="img/061-information-flows.png" />
+    <figcaption>Flows of information between DGA-specified stakeholders. The
+concepts surrounded by a black box represent (legal) entities and the
+ones surrounded by an orange box represent newly introduced documents,
+to be created and maintained by the identified entities. The direction
+of the arrows represents the direction of the information flow between
+entities. A simple description of each information flow is provided on
+the right side of the Figure.</figcaption>
+</figure>
+<p>The identified entities can be classified as a data holder, data
+subject, data user, data intermediation service provider – or data
+intermediary –, data altruism organisation, legal representative,
+national, or competent, authority, single information point provider,
+public sector body, or competent body. Information flows including the
+soon-to-be-created European Data Innovation Board and European
+Commission are also displayed in Figure <a href="#fig:flow"
+data-reference-type="ref" data-reference="fig:flow">1</a>. Their
+definitions are presented below:</p>
+<ul>
+<li><p>Individual whose personal data is being processed</p></li>
+<li><p>An entity who has the right to grant access to or to share
+certain personal data or non-personal data</p></li>
+<li><p>An entity who has the right to use personal or non-personal data
+for commercial or non-commercial purposes</p></li>
+<li><p>An entity who establishes commercial relationships for the data
+sharing between data subjects and data holders on the one hand and data
+users on the other</p></li>
+<li><p>An non-profit organisation that collects and shares data for
+altruistic purposes</p></li>
+<li><p>An entity or association of entities governed by public law
+formed by one or more State, regional or local authorities</p></li>
+<li><p>A representative of a legal entity designated to act on behalf of
+a data intermediation service provider or altruism organisation</p></li>
+<li><p>An entity designated by a public sector body to provide legal and
+technical support on the access and reuse of public sector data</p></li>
+<li><p>An entity who is responsible for receiving and transmitting
+requests for the re-use of public data</p></li>
+<li><p>Authorities in charge of supervising the activity of data
+intermediation service providers and data altruism organisations and
+maintaining a public register of said entities</p></li>
+<li><p>An authority tasked with overseeing the activities of data
+intermediaries and data altruism organisations</p></li>
+</ul>
+<p>For instance, the data intermediary shares the conditions for data
+access under an open or commercial licence with the data user (flow
+represented in Figure <a href="#fig:flow" data-reference-type="ref"
+data-reference="fig:flow">1</a> with a red arrow) and keeps a record of
+its activities (flow represented in Figure <a href="#fig:flow"
+data-reference-type="ref" data-reference="fig:flow">1</a> with the (K)
+arrow). This diagram is derived from an analysis of Chapters II (‘Re-use
+of certain categories of protected data held by public sector bodies’),
+III (‘Requirements applicable to data intermediation services’), IV
+(‘Data altruism’) and VI (‘European Data Innovation Board’) of the DGA.
+Each article in these chapters was manually studied to search for
+interactions between the identified entities and, when a flow of
+information was identified between more than one entity, the respective
+interaction was recorded in the diagram. In addition, requirements
+related to the production of compliance documentation are also recorded
+in the diagram as they require the recording of information which can be
+automated with the usage of semantic technologies.</p>
+<p>In the next three subsections, we focus on the information flows
+related to the conditions for the re-use of public data (subsection <a
+href="#sec:reuse_public_data" data-reference-type="ref"
+data-reference="sec:reuse_public_data">2.1</a>), with keeping registers
+of altruistic and intermediary activities (subsection <a
+href="#sec:registries" data-reference-type="ref"
+data-reference="sec:registries">2.2</a>), and with data altruism
+activities (subsection <a href="#sec:data_altruism"
+data-reference-type="ref" data-reference="sec:data_altruism">2.3</a>),
+where the usage of semantic technologies can best assist the involved
+entities in automating their flow-related tasks. For each example use
+case, a methodical study of the involved information flows, and
+respective items of information that need to be exchanged, was manually
+performed for each identified flow and systematised in the following
+subsections.</p>
+<h3 id="sec:reuse_public_data">Use Case U1: Conditions for the Reuse of
+Public Data</h3>
+<p>DGA’s Chapter II is dedicated to the ‘Re-use of certain categories of
+protected data held by public sector bodies’, including the
+specification of what categories of data it refers to (Article 3), the
+information conditions that public sector bodies need to document in
+order to provide such services (Article 5 and 6) and the description of
+single information point providers and how they are used by data users
+to search for and request datasets for re-use (Article 8 and 9). The
+information that public sector bodies need to provide, and a list of the
+DGA’s source articles where it is mentioned, is available in Table <a
+href="#tab:conditions_public_data" data-reference-type="ref"
+data-reference="tab:conditions_public_data">1</a>. This information,
+which can be specified with the assistance of a competent body (as
+represented by the (A) arrow in Figure <a href="#fig:flow"
+data-reference-type="ref" data-reference="fig:flow">1</a>), needs to be
+shared with the single information point provider (as represented by the
+(B) arrow in Figure <a href="#fig:flow" data-reference-type="ref"
+data-reference="fig:flow">1</a>), so that data users can search datasets
+((C) arrow) and send a request for re-use of data through the single
+information point ((D) arrow). Single information point providers must
+also maintain and make available a data asset list (represented by the
+(V) arrow), including information on available resources and the
+conditions for their re-use.</p>
+<div id="tab:conditions_public_data">
+<table>
+<caption>Information items about public sector bodies’
+services.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Article</strong></th>
+<th style="text-align: left;"><strong>Information items</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2.9</td>
+<td style="text-align: left;">Data user/categories of users</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.1</td>
+<td style="text-align: left;">Public sector body information</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.1</td>
+<td style="text-align: left;">Competent body information</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.2</td>
+<td style="text-align: left;">Categories of data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.2</td>
+<td style="text-align: left;">Purposes for usage and access</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.2, 5.3(a)</td>
+<td style="text-align: left;">Nature of data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.3(b), 5.3(c)</td>
+<td style="text-align: left;">Processing environment</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.5</td>
+<td style="text-align: left;">Measures to prevent re-identification of
+data holders/subjects</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.9</td>
+<td style="text-align: left;">Third party recipients</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6.2</td>
+<td style="text-align: left;">Fees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8.2</td>
+<td style="text-align: left;">Data format</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8.2</td>
+<td style="text-align: left;">Data size</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: left;">Procedure to request reuse</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="sec:registries">Use Case U2: Registers of Altruistic and
+Intermediation Activities</h3>
+<p>DGA’s Chapter III and IV is dedicated to the requirements applicable
+to entities who wish to provide data intermediation or data altruism
+services. As for the former, and as is defined in DGA’s Article 11, the
+entities who wish to provide data intermediation as a service need to
+notify their competent national authority of said intentions (as
+represented by the (F) arrow in Figure <a href="#fig:flow"
+data-reference-type="ref" data-reference="fig:flow">1</a>), which in
+turn must publish and maintain an updated public register of
+intermediaries (as represented by the (J) arrow). The conditions
+required to perform such service are depicted in Article 12, such as the
+requirement to appoint a legal representative if the data intermediation
+entity is not established in the EU (as represented by the (G) arrow),
+to provide information about the commercial terms of the service,
+including pricing, date and time of the creation of the data and its
+geolocation, the format of the data and which formats it can be
+converted, and about the tools and measures used by the intermediary to
+facilitate the exchange of data, to protect and ensure its
+interoperability, and to ease the exercising of data holders and data
+subjects’ rights, including the tools to obtain and withdraw permissions
+and consent, respectively. In addition to these conditions, the data
+intermediation service provider must also keep a log record of its
+activities (as represented by the (K) arrow), which in addition to the
+previously mentioned conditions, must also contain the entity-related
+information which is made available in the public register of
+intermediation providers, including name, public website, legal status,
+form, ownership structure, subsidiaries, registration number and address
+of the provider, as well as information regarding the type of provided
+service.</p>
+<p>As for the requirements to open activity as a data altruism
+organisation, and as is defined in DGA’s Article 19, the entities who
+wish to provide data altruism as a service need to submit an application
+to their competent national authority (can be the same authority as the
+one who regulates the national data intermediation service providers) of
+said intentions (as represented by the (M) arrow in Figure <a
+href="#fig:flow" data-reference-type="ref"
+data-reference="fig:flow">1</a>). If approved, the national authority
+must include information about the organisation on a public register of
+data altruism organisations (as represented by the (P) arrow). Such
+register includes information regarding the name, public website, legal
+status, form, registration number of the entity, and the entity’s, and
+its representative if applicable, contact details, as well as
+information regarding the altruistic purposes behind the activity of the
+organisation. Moreover, the organisation has to publish and update a
+uniform and structured record of data altruism activity (as represented
+by the (O) arrow), which is sent annually to the national authority for
+verification of compliance (as represented by the (M) and (N) arrows).
+This record must log the activity of the data altruism organisation and
+provide information regarding the nature and categories of data that it
+works with. In addition, such records need to keep logs regarding the
+users of data, their contact details, the date and duration of the
+processing, the altruistic purpose for which the data was used, the fees
+paid by data users or any other sources of income, the technical means
+used for the processing, as well as a summary of the results of said
+processing.</p>
+<h3 id="sec:data_altruism">Use Case U3: Allowing Data Altruism</h3>
+<p>DGA’s Article 25 discusses the implementation and development of a
+“European data altruism consent form”, which shall be developed by the
+European Commission (as represented by the (R) arrow in Figure <a
+href="#fig:flow" data-reference-type="ref"
+data-reference="fig:flow">1</a>), after consulting with GDPR’s watchdog
+European Data Protection Board, with the soon-to-be-created European
+Data Innovation Board and with other interested stakeholders. This form
+should be adopted by the data altruism organisations (as represented by
+the (S) arrow) to record both the consent given by data subjects to
+share their personal data and the permissions given by data holders to
+share their non-personal data. These forms should be kept in both a
+human and machine-readable format and, as such, are the focus of Use
+Case U3 as semantic technologies, such as ODRL and DPV, can be used to
+create an electronic rendition of these documents.</p>
+<h2 id="sec:related">Related Work</h2>
+<p>Jurisdictional data-related laws, such as the DGA or the Data Act,
+specify obligations and requirements based on the context, purpose, and
+entities involved in how the data is obtained, used, and shared. For a
+system to conduct, document, and verify compliance-related activities,
+such as the maintenance of public registers and records of activities,
+different types of information need to be represented: (i) the
+obligations and requirements; (ii) the personal, non-personal and public
+data and (iii) the data use. Previous work has been performed and
+published within the general fields of ‘regulation compliance’ and
+‘legal metadata expression using vocabularies’ <span class="citation"
+data-cites="oliveira19"><a href="#ref-oliveira19"
+role="doc-biblioref">[6]</a></span>, to specify how jurisdictional laws
+can be translated into semantic models for data governance. In the
+context of this work, we focus on the existing research and solutions,
+limited to addressing the requirements presented in the Use Cases
+specified in Section <a href="#sec:dga" data-reference-type="ref"
+data-reference="sec:dga">2</a>, and present the state of the art across
+the areas of (i) vocabularies to express policies and data
+activities-related metadata, and (ii) vocabularies to specify
+information about (personal) data and metadata processing, further
+described in the next two subsections.</p>
+<h3 id="sec:related_policies">Vocabularies to Express Policies and
+Metadata</h3>
+<p>A recent survey <span class="citation"
+data-cites="esteves_analysis_2022"><a href="#ref-esteves_analysis_2022"
+role="doc-biblioref">[7]</a></span> has been published where a set of
+vocabularies and policy languages are analysed in terms of their
+capacity to represent the information required to comply with the
+obligations and rights of GDPR-related entities. In particular, this
+survey concludes that ODRL is a mature resource, ready to be used for
+representing policies related to data protection law requirements, which
+is open source, supported by good documentation and continues to be
+developed and maintained by a W3C Community Group. The ODRL Information
+Model <span class="citation" data-cites="odrl1"><a href="#ref-odrl1"
+role="doc-biblioref">[8]</a></span> is a W3C Standard Recommendation
+that allows the expression of flexible and complex digital policies,
+including the possibility to represent permissions and prohibitions to
+perform certain actions over assets and further restrict said policies
+using constraints and duties. ODRL also supports the development of
+extensions, the so-called ODRL profiles<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>,
+that provide a way to add further terms for specific domains which are
+not present in the core ODRL vocabulary. Though other solutions, such as
+XACML <span class="citation" data-cites="parducci_extensible_2013"><a
+href="#ref-parducci_extensible_2013" role="doc-biblioref">[9]</a></span>
+or LegalRuleML <span class="citation"
+data-cites="palmirani_legalruleml_2021"><a
+href="#ref-palmirani_legalruleml_2021"
+role="doc-biblioref">[10]</a></span>, provide a richer expressivity and
+formal semantics to utilise such resources, ODRL has a convenient
+extension mechanism and has been proven to work as a policy language to
+deal with GDPR requirements <span class="citation"
+data-cites="esteves_odrl_2021 agarwal2018legislative"><a
+href="#ref-esteves_odrl_2021" role="doc-biblioref">[11]</a>, <a
+href="#ref-agarwal2018legislative" role="doc-biblioref">[12]</a></span>.
+Other general vocabularies, such as the W3C DCAT Recommendation <span
+class="citation" data-cites="albertoni_data_2020"><a
+href="#ref-albertoni_data_2020" role="doc-biblioref">[13]</a></span> or
+the DCMI Metadata Terms (DCT) specification <span class="citation"
+data-cites="noauthor_dcmi_nodate"><a href="#ref-noauthor_dcmi_nodate"
+role="doc-biblioref">[14]</a></span>, will also be used as they provide
+terms to describe metadata related with datasets including information
+about the entities who create and maintain data or temporal and spatial
+assertions regarding the usage and access to data.</p>
+<h3 id="sec:related_data">Legal Vocabularies to Specify Data and its
+Processing</h3>
+<p>A vocabulary specifying legal concepts is required for expressing
+policies aligned with data-related regulations and, in the case of this
+work, one that can easily complement and be integrated with ODRL, and
+the other previously mentioned vocabularies, to express examples related
+to the Use Cases specified in Section <a href="#sec:dga"
+data-reference-type="ref" data-reference="sec:dga">2</a>. While no work
+within the state of the art provides concepts to deal with DGA
+requirements, several vocabularies have been developed to cover GDPR
+concepts that can be reused. In particular, and as confirmed by the
+previously cited survey on data protection vocabularies <span
+class="citation" data-cites="esteves_analysis_2022"><a
+href="#ref-esteves_analysis_2022" role="doc-biblioref">[7]</a></span>,
+DPV’s <span class="citation" data-cites="panetto_creating_2019"><a
+href="#ref-panetto_creating_2019" role="doc-biblioref">[15]</a></span>
+set of taxonomies provides the most complete set of vocabularies to
+express information regarding data, entities, processing activities,
+purposes, legal basis, rights, risks and consequences, technical and
+organisational measures, rules or technologies. Moreover, there already
+exists published work that uses DPV to create a semantic model for the
+representation of information related to GDPR’s Register of Processing
+Activities <span class="citation" data-cites="ryan_dpcat_2022"><a
+href="#ref-ryan_dpcat_2022" role="doc-biblioref">[16]</a></span>. As
+such, DPV will be the base vocabulary upon which this work will be
+developed.</p>
+<h2 id="sec:vocab">Extending W3C vocabularies to cover DGA
+requirements</h2>
+<p>As covered by the previous sections, there is a gap in the
+representation of information brought by the DGA requirements, in
+particular, to specify conditions for the reuse of public data (further
+developed in Section <a href="#sec:vocab_policies"
+data-reference-type="ref" data-reference="sec:vocab_policies">4.1</a>),
+to populate public registers of data intermediation service providers
+and data altruism organisations and record their activities (further
+developed in Section <a href="#sec:vocab_registries"
+data-reference-type="ref" data-reference="sec:vocab_registries">4.2</a>)
+and to create a common data altruism form for data subjects’ consent and
+data holders’ permissions (further developed in Section <a
+href="#sec:vocab_altruism" data-reference-type="ref"
+data-reference="sec:vocab_altruism">4.3</a>). In the following
+subsections, we discuss terms of existing standards and specifications
+that can be used to represent some of the information items described in
+Section <a href="#sec:dga" data-reference-type="ref"
+data-reference="sec:dga">2</a> and define the terms that are missing in
+an open-source ad-hoc vocabulary, to cover the identified Use Cases. In
+addition, for each Use Case, we also provide examples to demonstrate
+their applicability.</p>
+<h3 id="sec:vocab_policies">Policies for the Reuse and Sharing of Public
+Data</h3>
+<p>As described in Section <a href="#sec:reuse_public_data"
+data-reference-type="ref"
+data-reference="sec:reuse_public_data">2.1</a>, public sector bodies
+need to provide single information point providers information regarding
+the data resources they own and the conditions for their usage, so that
+these providers can make available and maintain a searchable asset list,
+which data users can use to search and request datasets for re-use.
+Table <a href="#tab:conditions_public_data_vocabs"
+data-reference-type="ref"
+data-reference="tab:conditions_public_data_vocabs">2</a> contains the
+DPV, DCAT and DCT’s terms that can be reused to model some of the
+concepts identified in Table <a href="#tab:conditions_public_data"
+data-reference-type="ref"
+data-reference="tab:conditions_public_data">1</a>.</p>
+<div id="tab:conditions_public_data_vocabs">
+<table>
+<caption>Information items that need to be modelled to express the
+conditions of re-use of public sector bodies datasets and respective
+terms from existing vocabularies that can be reused.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Article</strong></th>
+<th style="text-align: left;"><strong>Information items</strong></th>
+<th style="text-align: left;"><strong>Terms from existing
+vocabularies</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">5.1</td>
+<td style="text-align: left;">Public sector body information</td>
+<td style="text-align: left;"><code>dpv:hasName</code>,
+<code>dpv:hasContact</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.1</td>
+<td style="text-align: left;">Competent body information</td>
+<td style="text-align: left;"><code>dpv:hasName</code>,
+<code>dpv:hasContact</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.2</td>
+<td style="text-align: left;">Categories of data</td>
+<td style="text-align: left;"><code>dpv:hasData</code>,
+<code>dpv:Data</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.2</td>
+<td style="text-align: left;">Purposes for usage and access</td>
+<td style="text-align: left;"><code>dpv:hasPurpose</code>,
+<code>dpv:Purpose</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.2, 5.3(a)</td>
+<td style="text-align: left;">Nature of data</td>
+<td style="text-align: left;"><code>dpv:hasData</code>,
+<code>dpv:AnonymisedData</code>,<code>dpv:PseudonymisedData</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.3(b), 5.3(c)</td>
+<td style="text-align: left;">Processing environment</td>
+<td style="text-align: left;"><code>dpv:ProcessingContext</code>,
+<code>dpv:hasLocation</code>, <code>dpv:WithinVirtualEnvironment</code>, <code>dpv:WithinPhysicalEnvironment</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.5</td>
+<td style="text-align: left;">Technical and operational measures to prevent re-identification of data holders/subjects</td>
+<td style="text-align: left;"><code>dpv:Deidentification</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5.9</td>
+<td style="text-align: left;">Third party recipients</td>
+<td style="text-align: left;"><code>dpv:ThirdParty</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8.2</td>
+<td style="text-align: left;">Data format</td>
+<td style="text-align: left;"><code>dcat:mediaType</code>,
+<code>dct:format</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8.2</td>
+<td style="text-align: left;">Data size</td>
+<td style="text-align: left;"><code>dct:extent</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In addition to these, to specify data users, public sector bodies,
+competent bodies and single information point providers, we added four
+new classes of entities (as subclasses of <code>dpv:LegalEntity</code>)
+to our vocabulary to represent these terms, <code>DataUser</code>,
+<code>PublicSectorBody</code>, <code>DataReuseCompetentBody</code>, and
+<code>SingleInformationPointProvider</code>, respectively. EU, national,
+regional, local and sectorial-level single information point providers
+are also modelled as subclasses of
+<code>SingleInformationPointProvider</code>s, as depicted in DGA’s
+Article 8. To be able to classify the nature of the data held by public
+sector bodies, as specified in Article 3.1, we also added four new
+subclasses of <code>dpv:Data</code>, <code>ConfidentialData</code>,
+<code>CommerciallyConfidentialData</code>,
+<code>StatisticallyConfidentialData</code> and
+<code>IntellectualProperty</code> to represent data protected through
+<code>CommercialConfidentialityAgreement</code>s or through
+<code>StatisticalConfidentialityAgreement</code>s and data protected by
+intellectual property rights.</p>
+<p>Moreover, the following legal basis for the transfer of public sector
+body-held data, as specified in Article 5, are also included in our
+vocabulary, as subclasses of <code>dpv:DataTransferLegalBasis</code>:
+<code>A5-9</code> for permissions to transfer, <code>A5-11</code> for
+model contractual clauses, and <code>A5-12</code> for adequacy
+decisions. <code>DataReusePolicy</code>, <code>DataTransferNotice</code>
+and <code>ThirdCountryDataRequestNotice</code> concepts were also added,
+as subclasses of DPV’s policy and notice concepts, to represent the
+conditions for reuse of data and the notice provided to the owners of
+said data. As there were no concepts identified to model the searchable
+asset list maintained by the
+<code>SingleInformationPointProvider</code>s and the procedure to
+request datasets, both concepts were modelled as
+<code>DataAssetList</code> and as <code>DataReuseRequestProcedure</code>
+and as subclasses of <code>dpv:OrganisationalMeasure</code>.</p>
+<div class="listing">
+<pre class="turtle"><code>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX dcat: &lt;http://www.w3.org/ns/dcat#&gt;
+PREFIX dct: &lt;http://purl.org/dc/terms/&gt;
+PREFIX odrl: &lt;http://www.w3.org/ns/odrl/2/&gt;
+PREFIX dpv: &lt;https://w3id.org/dpv#&gt;
+PREFIX dpv-pd: &lt;https://w3id.org/dpv/dpv-pd#&gt;
+PREFIX dpv-gdpr: &lt;https://w3id.org/dpv/dpv-gdpr#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+PREFIX ex: &lt;http://example.com/&gt;
+PREFIX : &lt;http://anon/dgaterms#&gt;
+
+ex:policy_001 a odrl:Offer, :DataReusePolicy ;
+    odrl:permission [
+        odrl:target ex:dataset_001 ; odrl:action :Reuse ;
+        odrl:assigner ex:publicsectorbodyX ;
+        odrl:constraint [
+            odrl:and [
+                odrl:leftOperand odrl:dateTime ;
+                odrl:operator odrl:lteq ;
+                odrl:rightOperand &quot;2023-12-31&quot;^^xsd:date ], [
+                odrl:leftOperand odrl:purpose ;
+                odrl:operator odrl:isA ;
+                odrl:rightOperand :ScientificResearch ] ] ] .
+ex:publicsectorbodyX a :PublicSectorBody ;
+    dpv:hasName &quot;Public Sector Body X&quot; ;
+    dpv:hasContact &quot;mailto:publicsectorbodyX@email.com&quot; ;
+    :hasCompetentBody [
+        a :DataReuseCompetentBody ; dpv:hasName &quot;Competent Body X&quot; ;
+        dpv:hasContact &quot;mailto:competentbodyX@email.com&quot; ] .</code></pre>
+</div>
+<p>To showcase the usage of existing and newly created terms, an example
+<code>DataReusePolicy</code> for reusing the
+<em>http://example.com/dataset_001</em> dataset, that can be used until
+the end of 2023 for the purpose of <code>ScientificResearch</code>, can
+be found in Listing <a href="#list:public_sector_body"
+data-reference-type="ref"
+data-reference="list:public_sector_body">[list:public_sector_body]</a><a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>. It is modelled as an ODRL offer as
+it proposes the terms of usage of the dataset, but does not grant any
+privileges to the data user. Said policy can be used by single
+information point providers to maintain an updated list of available
+assets and the conditions for their usage. Listing <a
+href="#list:data_asset_list" data-reference-type="ref"
+data-reference="list:data_asset_list">[list:data_asset_list]</a>
+provides an example of a <code>DataAssetList</code> published by a
+<code>SingleInformationPointProvider</code>, using the existing and the
+newly created terms. This list contains the previously mentioned
+dataset, <em>http://example.com/dataset_001</em>, with additional
+metadata regarding the category of data it contains, the policy that
+governs its usage, <em>http://example.com/policy_001</em>, the format
+and size of the data and the fees charged by the publisher of the
+dataset.</p>
+<div class="listing">
+<pre class="turtle"><code>ex:SIPPA_assets a :DataAssetList, dcat:Catalog ;
+    dct:description &quot;Asset list maintained by SIPPA&quot; ;
+    dct:created &quot;2022-12-10&quot;^^xsd:date ;
+    dct:publisher ex:SIPPA ; dcat:dataset ex:dataset_001 .
+ex:SIPPA a :SingleInformationPointProvider .
+ex:dataset_001 a dcat:Dataset ; dct:publisher ex:publicsectorbodyX ;
+    dpv:hasData :StatisticallyConfidentialData ;
+    dct:description &quot;Dataset with statistically confidential data&quot; ;
+    dct:created &quot;2022-12-04&quot;^^xsd:date ; 
+    odrl:hasPolicy ex:policy_001 ; :hasFee &quot;0€&quot;^^xsd:string ;
+    dcat:mediaType &lt;iana.org/assignments/media-types/text/csv&gt; ;
+    dct:extent &quot;5.6MB&quot;^^xsd:string .</code></pre>
+</div>
+<h3 id="sec:vocab_registries">Querying public registers of data
+intermediaries</h3>
+<p>As described in Section <a href="#sec:registries"
+data-reference-type="ref" data-reference="sec:registries">2.2</a>, data
+intermediation service providers and data altruism organisations need to
+submit information about their activity to a public register of such
+entities in order to have a centralised database of entities, which can
+be used by data users, data holders or data subjects to retrieve or
+publish data, for instance for altruistic purposes.</p>
+<p>Using the existing and the newly created terms, an example of a
+register of data intermediation service providers can be found in
+Listing <a href="#list:intermediary_register" data-reference-type="ref"
+data-reference="list:intermediary_register">[list:intermediary_register]</a>.
+Due to restrictions in the size of this publication, we do not provide
+an example of a public register of a data altruism organisation, as both
+types of public registers contain similar information and will have
+similar semantic representations. The register
+<code>ex:publicregistry_DI_PT</code> will have a complete list of
+intermediaries operating in Portugal. Beyond the stored metadata
+regarding the national authority <code>ex:nationalauthority_PT</code>
+and creation dates, the register has already a registered
+<code>DataCooperative</code> company: <code>ex:DISP_Y</code>.</p>
+<p>DPV’s <code>hasName</code>, <code>hasContact</code> and
+<code>hasAddress</code> and DCAT’s <code>landingPage</code> can be used
+to provide information about the providers of data intermediation or
+data altruism services, while DCT’s <code>description</code>,
+<code>created</code>, and <code>publisher</code>, can be used to
+describe metadata about the register, including its creation date and
+its publisher. In addition to these terms that can be reused from
+existing standards and specifications, to specify a data intermediation
+service provider (as a subclass of <code>dpv:LegalEntity</code>), or one
+of its types, we added four new classes of entities to our vocabulary to
+represent these terms, <code>DataIntermediationServiceProvider</code>,
+<code>DataCooperative</code>,
+<code>DataIntermediationServiceProviderForDataHolder</code>, and
+<code>DataIntermediationServiceProviderForDataSubject</code>. Moreover,
+data altruism organisations are modelled as a subclass of
+<code>dpv:NonProfitOrganisation</code>. Information related to the
+nature of the entity, as specified in Article 11.6(b), to represent the
+legal status, form, ownership structure, subsidiary and registration
+number of an entity, is out of the scope of this contribution as it
+refers to organisational details. However, as a future contribution,
+upper ontologies such as GIST <span class="citation"
+data-cites="semantic_arts_gist"><a href="#ref-semantic_arts_gist"
+role="doc-biblioref">[17]</a></span> or Schema.org <span
+class="citation" data-cites="schema_org"><a href="#ref-schema_org"
+role="doc-biblioref">[18]</a></span> can be explored, and if necessary
+extended, to include such concepts.</p>
+<div class="listing">
+<pre class="turtle"><code>ex:publicregistry_DI_PT a :RegisterOfDataIntermediationServiceProviders ;
+    dct:description &quot;Public register of intermediaries working in PT&quot; ;
+    dct:created &quot;2023-12-15&quot;^^xsd:date ; 
+    dct:modified &quot;2023-12-23&quot;^^xsd:date ;
+    dct:publisher ex:nationalauthority_PT ;
+    :hasDataIntermediationServiceProvider ex:DISP_Y .
+ex:nationalauthority_PT a :DataIntermediationAuthority ;
+    dpv:hasName &quot;Data Intermediation Authority of Portugal&quot; ;
+    dpv:hasContact &quot;mailto:nationalauthority_PT@email.com&quot; ;
+    dpv:hasJurisdiction &quot;PT&quot; .
+ex:DISP_Y a :DataCooperative ;
+    dpv:hasName &quot;Data Cooperative Y&quot; ; dpv:hasAddress &quot;Lisboa, Portugal&quot; ;
+    dct:description &quot;Provider of anonymised geolocation data&quot; ;
+    dcat:landingPage &lt;http://cooperativeA.com/&gt; ;
+    dct:date &quot;2023-12-23&quot;^^xsd:date .</code></pre>
+</div>
+<p>Furthermore, a <code>PublicRegister</code> class was also added to
+our vocabulary, and its respective subclasses
+<code>RegisterOfDataIntermediationServiceProviders</code> and
+<code>RegisterOfDataAltruismOrganisations</code> to represent public
+registers of data intermediaries and of altruistic organisations,
+respectively. By having the public register stored in RDF using the
+identified and developed semantic vocabularies, such register can then
+be easily queried, using a query language such as SPARQL to automate the
+retrieval of information regarding data intermediation service
+providers. An example of a query for data cooperatives is provided in
+Listing <a href="#list:sparql" data-reference-type="ref"
+data-reference="list:sparql">[list:sparql]</a>, which will return a list
+of data intermediation service providers that offer the services of data
+cooperatives, including their names and public websites.</p>
+<div class="listing">
+<pre class="sparql"><code>SELECT DISTINCT ?Provider ?Name ?Web WHERE {
+    ?Provider a :DataCooperative .
+    ?Provider dpv:hasName ?Name .
+    ?Provider dcat:landingPage ?Web . }</code></pre>
+</div>
+<p>Listing <a href="#list:activity_log" data-reference-type="ref"
+data-reference="list:activity_log">[list:activity_log]</a> provides an
+example of a register of data altruism activity, represented through the
+newly created concept <code>RegisterOfDataIAltruismActivity</code>.
+Activity logs should be associated with the entities using the data and
+can be recorded using DPV’s <code>hasPersonalDataHandling</code> to
+provide information about the processing of data, including its
+duration, purpose and (personal) data categories.</p>
+<div class="listing">
+<pre class="turtle"><code>ex:altruism_logs a :RegisterOfDataIAltruismActivity ;
+    dct:description &quot;Activity logs of the Data Altruism Organisation A&quot; ;
+    dct:created &quot;2023-11-04&quot;^^xsd:date ; 
+    dct:modified &quot;2023-11-13&quot;^^xsd:date ;
+    dct:publisher ex:altruism_A ; dcat:record ex:log_001 .
+ex:altruism_A a :DataAltruismOrganisation ;
+    dpv:hasName &quot;Data Altruism Organisation A&quot; ;
+    dpv:hasAddress &quot;Lisboa, Portugal&quot; ;
+    dcat:landingPage &lt;http://example.com/altruism_A&gt; .
+ex:log_001 a dcat:CatalogRecord ;
+    dct:created &quot;2023-11-13&quot;^^xsd:date ;
+    :hasDataUser ex:userZ ; :hasFee &quot;1000€&quot;^^xsd:string ;
+    dpv:hasPersonalDataHandling [
+        dct:description &quot;Download and reuse anonymised health records to improve healthcare&quot; ;
+        dpv:hasProcessing :Download, :Reuse ; dpv:hasDuration 6226453 ;
+        dpv:hasPurpose :DataAltruism, :ImproveHealthcare ;
+        dpv:hasPersonalData dpv-pd:HealthRecord ;
+        dpv:hasTechnicalMeasure dpv:Anonymisation ] .
+ex:userZ a :DataUser ; dpv:hasName &quot;Data User Z&quot; ;
+    dpv:hasContact &quot;mailto:user_z@email.com&quot; .</code></pre>
+</div>
+<h3 id="sec:vocab_altruism">Uniform, Machine-readable Data Altruism
+Form</h3>
+<p>As already proven by the examples provided in the former two
+subsections, the identified vocabularies, as well as the one we
+developed ourselves, can also be used to automate the production of
+consent forms for data subjects and permission forms for data holders.
+By relying on such technologies by design, the European data altruism
+forms will promote interoperability and can be reused throughout the EU.
+An example of a consent form, using the term,
+<code>EuropeanDataAltruismConsentForm</code>, by a data subject is
+provided in Listing <a href="#list:european_form_ds"
+data-reference-type="ref"
+data-reference="list:european_form_ds">[list:european_form_ds]</a>. In
+this example, we use an altruistic purpose for processing defined in our
+vocabulary. As such, we define <code>DataAltruism</code> as a subclass
+or <code>dpv:Purpose</code> and we specify seven new purposes that can
+be used in a data altruism setting: <code>ImproveHealthcare</code>,
+<code>CombatClimateChange</code>, <code>ImproveTransportMobility</code>
+(used in Listing <a href="#list:european_form_ds"
+data-reference-type="ref"
+data-reference="list:european_form_ds">[list:european_form_ds]</a>),
+<code>ProvideOfficialStatistics</code>,
+<code>ImprovePublicServices</code>, <code>ScientificResearch</code> and
+<code>PublicPolicyMaking</code>. Additional purposes, mentioned
+throughout the DGA, are also provided in the ad-hoc vocabulary.
+Similarly, in Listing <a href="#list:european_form_dh"
+data-reference-type="ref"
+data-reference="list:european_form_dh">[list:european_form_dh]</a>, we
+provide an example of a permission form of a data holder.</p>
+<div class="listing">
+<pre class="turtle"><code>ex:consentForm_001 a :EuropeanDataAltruismConsentForm ;
+    dpv:hasIdentifier &lt;http://example.com/consentForm_001&gt; ;
+    dpv:hasDataSubject ex:Anne ; dpv:isIndicatedBy ex:Anne ;
+    dpv:isIndicatedAtTime &quot;2022-12-14&quot; ;
+    dpv:hasPersonalDataHandling [
+        dpv:hasPurpose :DataAltruism, :ImproveTransportMobility ;
+        dpv:hasLegalBasis dpv-gdpr:A6-1-a ;
+        dpv:hasPersonalData dpv-pd:Location ;
+        dpv:hasProcessing dpv:Use, dpv:Store ;
+        dpv:hasDataController [
+            a dpv:DataController, :DataAltruismOrganisation ;
+            dpv:hasName &quot;Company A&quot; ] ] .</code></pre>
+</div>
+<div class="listing">
+<pre class="turtle"><code>ex:permissionForm_001 a dpv:Permission ;
+    dpv:hasIdentifier &lt;http://example.com/permissionForm_001&gt; ;
+    :hasDataHolder ex:dataHolderA ; dpv:isIndicatedBy ex:dataHolderA ;
+    dpv:isIndicatedAtTime &quot;2022-12-15&quot; ;
+    dpv:hasPersonalDataHandling [
+        dpv:hasPurpose :DataAltruism, :ProvideOfficialStatistics ;
+        dpv:hasLegalBasis :A2-6 ; dpv:hasData dpv:AnonymisedData ;
+        dpv:hasProcessing dpv:Use, dpv:Store ;
+        dpv:hasDataController [
+            a dpv:DataController, :DataAltruismOrganisation ;
+            dpv:hasName &quot;Company A&quot; ] ] .</code></pre>
+</div>
+<h2 id="sec:discussion">Discussion</h2>
+<p>A complete list of all defined terms is available at <em><a
+href="https://w3id.org/dgaterms"
+class="uri">https://w3id.org/dgaterms</a></em>, under an open and
+permissive licence. The analysis of how semantic technologies can be
+used to operationalise the DGA yields some promising applications,
+however, a number of hindrances can be identified. Among the advantages,
+the following ones should be carefully noted:</p>
+<ul>
+<li><p>Semantic technologies can help forge a common understanding of
+the provisions in the regulation.</p></li>
+<li><p>Machine-readable policies can be effectively represented in RDF,
+and executed with appropriate reasoners.</p></li>
+<li><p>Trust technologies certifying a data altruism consent expression
+provide legal certainty and encourage data reuse, in the very spirit of
+the DGA.</p></li>
+<li><p>Semantic Web technologies excel at publishing policies on the
+Web, with JSON-LD serializations easily consumed by Web developers. In
+addition, RDF can effectively act as a bridge between future expression
+languages.</p></li>
+<li><p>Data altruism may be rewarded in non-economic forms, encouraging
+in turn further data sharing.</p></li>
+</ul>
+<p>However, the following limitations can be identified:</p>
+<ul>
+<li><p>Most of the conditions declared in the policies will not be able
+to be automatically enforced and the declarative nature of the policies
+will hopelessly lead to data misuse.</p></li>
+<li><p>The agreement may not be such if no ontology gains hegemonic
+spread, if it is not sanctioned by a public authority, or if heavy
+discrepancies prevent reaching a consensus.</p></li>
+</ul>
+<h2 id="sec:conclusions">Conclusions and Future Work</h2>
+<p>While powerful, the European strategy for data brings many
+interoperability challenges that need to be surpassed if we are to
+implement common spaces to share data between individuals, companies and
+governments. As such, the effort we made in this work on analysing the
+requirements of the DGA and providing a common semantic model to record
+the activities of public sector bodies, data intermediation service
+providers and altruism organisations are a first step towards conquering
+this interoperability challenge. As proposed, we identified the
+stakeholders, information and requirements necessary to model the
+activities of the new data-sharing entities brought by the DGA and
+provided a semantic vocabulary, and examples of usage of such
+vocabulary, that can be used to automate the documentation tasks of
+these new entities. As for future work, the Data Act and Data Spaces
+proposals should be explored to improve the quality of this work and
+promote the interoperability envisioned by the common European data
+spaces.</p>
+<h2 class="unnumbered" id="acknowledgments">Acknowledgments</h2>
+<p>This work was funded partially by the project Knowledge Spaces:
+Técnicas y herramientas para la gestión de grafos de conocimientos para
+dar soporte a espacios de datos (Grant PID2020-118274RB-I00, funded by
+MCIN/AEI/ 10.13039/501100011033). This research has also been supported
+by the European Union’s Horizon 2020 research and innovation programme
+under the Marie Skłodowska-Curie grant agreement No 813497 (PROTECT) and
+by the ADAPT SFI Research Centre funded by Science Foundation Ireland
+and co-funded under the European Regional Development Fund (ERDF)
+through Grant#13/RC/2106_P2.</p>
+<p>This is ongoing work which has been contributed to the Data Privacy Vocabularies and Controls Community Group (DPVCG) as a proposal to integrate the DGA within its outputs.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-noauthor_regulation_2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation
+(<span>EU</span>) 2016/679 of the European Parliament and of the Council
+of 27 April 2016 on the protection of natural persons with regard to the
+processing of personal data and on the free movement of such data, and
+repealing Directive 95/46/<span>EC</span> (General Data Protection
+Regulation)</span>.”</span> 2018 [Online]. Available: <a
+href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-noauthor_communication_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Communication from
+the Commission to the European Parliament, the Council, the European
+Economic and Social Committee and the Committee of the Regions - A
+European strategy for data</span>.”</span> 2020 [Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX\%3A52020DC0066">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX\%3A52020DC0066</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-noauthor_regulation_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation
+(<span>EU</span>) 2022/868 of the European Parliament and of the Council
+of 30 May 2022 on European data governance and amending Regulation
+(<span>EU</span>) 2018/1724 (Data Governance Act)</span>.”</span> 2022
+[Online]. Available: <a
+href="http://data.europa.eu/eli/reg/2022/868/oj/eng">http://data.europa.eu/eli/reg/2022/868/oj/eng</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-noauthor_proposal_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Proposal for a
+Regulation of the European Parliament and of the Council on the European
+Health Data Space</span>.”</span> 2022 [Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX\%3A52022PC0197">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX\%3A52022PC0197</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-noauthor_dataact_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Proposal for a
+Regulation of the European Parliament and of the Council on harmonised
+rules on fair access to and use of data (Data Act)</span>.”</span> 2022
+[Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM\%3A2022\%3A68\%3AFIN">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM\%3A2022\%3A68\%3AFIN</a>.
+[Accessed: 12-Jan-2023]</div>
+</div>
+<div id="ref-oliveira19" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">C.
+M. de Oliveira Rodrigues, F. L. G. de Freitas, E. F. S. Barreiros, R. R.
+de Azevedo, and A. T. de Almeida Filho, <span>“<span
+class="nocase">Legal ontologies over time: A systematic mapping
+study</span>,”</span> <em>Expert Systems with Applications</em>, vol.
+130, pp. 12–30, 2019. </div>
+</div>
+<div id="ref-esteves_analysis_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B.
+Esteves and V. Rodríguez-Doncel, <span>“Analysis of ontologies and
+policy languages to represent information flows in
+<span>GDPR</span>,”</span> <em>Semantic Web Journal</em>, 2022. </div>
+</div>
+<div id="ref-odrl1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">R.
+Iannella and S. Villata, <span>“<span>ODRL Information Model
+2.2</span>,”</span> <em>W3C Recommendation</em>, 2018. </div>
+</div>
+<div id="ref-parducci_extensible_2013" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">B.
+Parducci, H. Lockhart, and E. Rissanen, <span>“<span
+class="nocase">eXtensible</span> access control markup language
+(<span>XACML</span>) version 3.0.”</span> 2013 [Online]. Available: <a
+href="http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html">http://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html</a></div>
+</div>
+<div id="ref-palmirani_legalruleml_2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M.
+Palmirani, G. Governatori, T. Athan, H. Boley, A. Paschke, and A. Wyner,
+<span>“<span>LegalRuleML</span> core specification version 1.0.
+<span>OASIS</span> standard.”</span> 2021 [Online]. Available: <a
+href="https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html">https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html</a></div>
+</div>
+<div id="ref-esteves_odrl_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">B.
+Esteves, H. J. Pandit, and V. Rodríguez-Doncel, <span>“<span>ODRL</span>
+profile for expressing consent through granular access control policies
+in solid,”</span> in <em>2021 <span>IEEE</span> european symposium on
+security and privacy workshops (<span>EuroS</span>
+<span>PW</span>)</em>, 2021, pp. 298–306, doi: <a
+href="https://doi.org/10.1109/EuroSPW54576.2021.00038">10.1109/EuroSPW54576.2021.00038</a>.
+</div>
+</div>
+<div id="ref-agarwal2018legislative" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">S.
+Agarwal, S. Steyskal, F. Antunovic, and S. Kirrane, <span>“<span
+class="nocase">Legislative compliance assessment: framework, model and
+GDPR instantiation</span>,”</span> in <em>Annual privacy forum</em>,
+2018, pp. 131–149. </div>
+</div>
+<div id="ref-albertoni_data_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">R.
+Albertoni, D. Browning, S. Cox, A. G. Beltran, A. Perego, and P.
+Winstanley, <span>“Data catalog vocabulary (<span>DCAT</span>) - version
+2.”</span> 2020 [Online]. Available: <a
+href="https://www.w3.org/TR/vocab-dcat-2/">https://www.w3.org/TR/vocab-dcat-2/</a></div>
+</div>
+<div id="ref-noauthor_dcmi_nodate" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div
+class="csl-right-inline"><span>“<span>DCMI</span> metadata
+terms,”</span> 2008. [Online]. Available: <a
+href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a>.
+[Accessed: 01-Feb-2023]</div>
+</div>
+<div id="ref-panetto_creating_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating a vocabulary for data
+privacy: The first-year report of data privacy vocabularies and controls
+community group (<span>DPVCG</span>),”</span> in <em>On the move to
+meaningful internet systems: <span>OTM</span> 2019 conferences</em>,
+2019, vol. 11877, pp. 714–730, doi: <a
+href="https://doi.org/10.1007/978-3-030-33246-4_44">10.1007/978-3-030-33246-4_44</a>
+[Online]. Available: <a
+href="http://link.springer.com/10.1007/978-3-030-33246-4_44">http://link.springer.com/10.1007/978-3-030-33246-4_44</a>.
+[Accessed: 26-Jun-2020]</div>
+</div>
+<div id="ref-ryan_dpcat_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">P.
+Ryan, R. Brennan, and H. J. Pandit, <span>“<span>DPCat</span>:
+Specification for an interoperable and machine-readable data processing
+catalogue based on <span>GDPR</span>,”</span> <em>Information</em>, vol.
+13, no. 5, 2022, doi: <a
+href="https://doi.org/10.3390/info13050244">10.3390/info13050244</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/13/5/244">https://www.mdpi.com/2078-2489/13/5/244</a>.
+[Accessed: 05-Jul-2023]</div>
+</div>
+<div id="ref-semantic_arts_gist" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div
+class="csl-right-inline"><span>“Gist ontology v12.0.0,”</span> 2023.
+[Online]. Available: <a
+href="https://w3id.org/semanticarts/ontology/gistCore">https://w3id.org/semanticarts/ontology/gistCore</a>.
+[Accessed: 09-Jul-2023]</div>
+</div>
+<div id="ref-schema_org" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div
+class="csl-right-inline"><span>“Schema.org v22.0,”</span> 2023.
+[Online]. Available: <a
+href="https://schema.org/">https://schema.org/</a>. [Accessed:
+09-Jul-2023]</div>
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://w3id.org/dpv"
+class="uri">https://w3id.org/dpv</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.w3.org/TR/odrl-model/"
+class="uri">https://www.w3.org/TR/odrl-model/</a>, <a
+href="https://www.w3.org/TR/odrl-vocab/"
+class="uri">https://www.w3.org/TR/odrl-vocab/</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.w3.org/TR/vocab-dcat-2/"
+class="uri">https://www.w3.org/TR/vocab-dcat-2/</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>ODRL Profile Best Practices - <a
+href="https://w3c.github.io/odrl/profile-bp/"
+class="uri">https://w3c.github.io/odrl/profile-bp/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The prefixes and namespaces described in Listing <a
+href="#list:public_sector_body" data-reference-type="ref"
+data-reference="list:public_sector_body">[list:public_sector_body]</a>
+are valid for all Listings.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
