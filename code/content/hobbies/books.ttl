@@ -12902,17 +12902,18 @@
 
 <https://harshp.com/hobbies/books/889> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "889"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2023-08-31T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Daniel Kahneman, Olivier Sibony, Cass Sunstein"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Noise: A Flaw in Human Judgment"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """Noise is a book about statistical noise - and it is a mandatory read for anyone dealing with any sort of decision making, pattern finding, or even simple data analytics. What was surprising was that I picked up the book thinking it would be about the noise in our thinking and actions (which it is), but in addition I also got lots of relevance to the use of AI - such as the argument that algorithms can make decisions better than humans, but how do we justify this and what should be the parameters to even discuss this. In addition, and more importantly, it talked about what we can learn from the way we are developing AI to improve our own (humankind) processes and abilities to make decisions. Excellent book, and the last sections are a nice bonus as they provide a summary of relevant concepts."""@en ; 
+    schema:isPartOf list:educational ;
     schema:url "https://harshp.com/hobbies/books/889"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/890> a schema:Book, hpcom:RenderedItem ;
@@ -12931,7 +12932,7 @@
 
 <https://harshp.com/hobbies/books/891> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "891"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;

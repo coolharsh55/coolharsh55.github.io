@@ -16858,12 +16858,16 @@ book:889 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "889"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-08-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Daniel Kahneman, Olivier Sibony, Cass Sunstein"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
-    schema:isPartOf list:cork ;
+    schema:isPartOf list:educational ;
     schema:name "Noise: A Flaw in Human Judgment"@en ;
+    schema:review "Noise is a book about statistical noise - and it is a mandatory read for anyone dealing with any sort of decision making, pattern finding, or even simple data analytics. What was surprising was that I picked up the book thinking it would be about the noise in our thinking and actions (which it is), but in addition I also got lots of relevance to the use of AI - such as the argument that algorithms can make decisions better than humans, but how do we justify this and what should be the parameters to even discuss this. In addition, and more importantly, it talked about what we can learn from the way we are developing AI to improve our own (humankind) processes and abilities to make decisions. Excellent book, and the last sections are a nice bonus as they provide a summary of relevant concepts."@en ;
     schema:url "https://harshp.com/hobbies/books/889"^^xsd:anyURI .
 
 book:89 a hpcom:Book,
@@ -16893,7 +16897,7 @@ book:891 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "891"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Ann Leckie"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -20529,8 +20533,8 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
     schema:url ""^^xsd:anyURI .
 
-<https://harshp.com/research/publications/062-WOP-PLASMA> a hpcom:RenderedItem,
-        hpcom:ShortPaper,
+<https://harshp.com/research/publications/062-WOP-PLASMA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
@@ -25711,15 +25715,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:books-changed-life a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "books-changed-life"@en ;
-    schema:name "Books that changed my life"@en .
-
 list:cork a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "cork"@en ;
     schema:name "Books in Cork"@en .
+
+list:books-changed-life a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "books-changed-life"@en ;
+    schema:name "Books that changed my life"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25757,12 +25761,12 @@ hpcom:SparqlQuery a owl:Class ;
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 hpcom:View a owl:Class ;
     rdfs:label "View"@en ;
     rdfs:comment "Represents a specific representation or view of a resource"@en .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
