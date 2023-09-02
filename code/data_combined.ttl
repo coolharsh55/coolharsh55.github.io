@@ -16897,12 +16897,16 @@ book:891 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "891"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-08-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Ann Leckie"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Translation State"@en ;
+    schema:review "This is the fifth book in the Imperial Radch universe. A standalone 'sequel' to the Ancillary trilogy, it continues the wonder of aliens, genders, and technology - all wrapped up in drama of the highest quality that makes for a fine space opera. The ending might leave a milder taste for some, but it has a lot going on underneath that keeps those interested in hard science still intrigued. I waited for a while to buy this, until I finally came across it in a local bookshop and then I bought it immediately. I read this book within a day - and suffered from withdrawal because I enjoyed reading all of it and it ended quite soon."@en ;
     schema:url "https://harshp.com/hobbies/books/891"^^xsd:anyURI .
 
 book:9 a hpcom:Book,
@@ -20414,6 +20418,7 @@ list:owned_unread a hpcom:RenderedItem,
             hpcom:contentFile "https://harshp.com/code/content/research/publications/058-Making-sense-of-Solid.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:tag hptag:GDPR,
         hptag:ISO,
         hptag:Solid,
@@ -20689,7 +20694,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:agent "Delaram Golpayegani" ;
     schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
     schema:name "Risk Management for AI Governance"@en ;
-    schema:roleName "Mentor" ;
+    schema:roleName "Co-Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:subjectOf "PhD research" .
 
@@ -20795,6 +20800,16 @@ list:owned_unread a hpcom:RenderedItem,
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
     schema:subjectOf "4th year project" .
+
+<https://harshp.com/research/supervision/2023-GDPR-AI-Semantics> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Tytti Rintamäki" ;
+    schema:endDate "2027-06-30T00:00:00"^^xsd:dateTime ;
+    schema:name "Harmonised Semantic Model of EU AI and Data Protection Regulations"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-07-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf "PhD research" .
 
 <https://harshp.com/stories/apple-sauce-in-cranberry-juice> a hpcom:RenderedItem,
         <https://harshp.com/stories> ;
@@ -22657,24 +22672,24 @@ hpview:StoryView a hpcom:View ;
     schema:publication <https://facctconference.org/2023/> ;
     schema:url "https://harshp.com/research/presentations#2023-FAccT-AIAct"^^xsd:anyURI .
 
-<https://harshp.com/research/presentations#2023-TrustDeKW-DRQ> a schema:PresentationDigitalDocument ;
+<https://harshp.com/research/presentations#2023-TrusDeKW-DRQ> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/059-RQ-Decentralised-Personal-Data-Governance> ;
     schema:category "Research Presentation"@en ;
     schema:datePublished "2023-06-14T18:00:00"^^xsd:dateTime ;
     schema:encoding [ a schema:DigitalDocument ;
             schema:encodingFormat "PDF" ;
-            schema:url "https://harshp.com/presentations/2023/TrustDeKW-DRQ/TrustDeKW2023-DecentralisedRQ.pdf"^^xsd:anyURI ],
+            schema:url "https://harshp.com/presentations/2023/TrusDeKW-DRQ/TrusDeKW2023-DecentralisedRQ.pdf"^^xsd:anyURI ],
         [ a schema:DigitalDocument ;
             schema:encodingFormat "PPTX" ;
-            schema:url "https://harshp.com/presentations/2023/TrustDeKW-DRQ/TrustDeKW2023-DecentralisedRQ.pptx"^^xsd:anyURI ],
+            schema:url "https://harshp.com/presentations/2023/TrusDeKW-DRQ/TrusDeKW2023-DecentralisedRQ.pptx"^^xsd:anyURI ],
         [ a schema:DigitalDocument ;
             schema:encodingFormat "HTML" ;
-            schema:url "https://harshp.com/presentations/2023/TrustDeKW-DRQ/"^^xsd:anyURI ] ;
-    schema:identifier "2023-TrustDeKW-DRQ" ;
+            schema:url "https://harshp.com/presentations/2023/TrusDeKW-DRQ/"^^xsd:anyURI ] ;
+    schema:identifier "2023-TrusDeKW-DRQ" ;
     schema:name "Relevant Research Questions For Decentralised (Personal) Data Governance"@en ;
     schema:performer <http://example.com/AneliaKurteva> ;
     schema:publication <https://events.kmi.open.ac.uk/trusting-decentralised-knowledge-graphs-and-web-data/#eswc> ;
-    schema:url "https://harshp.com/research/presentations#2023-TrustDeKW-DRQ"^^xsd:anyURI .
+    schema:url "https://harshp.com/research/presentations#2023-TrusDeKW-DRQ"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/protect> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -23020,7 +23035,6 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/015-gdprtext.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "GDPRtEXT ontology" ;
             schema:url "https://w3id.org/GDPRtEXT/"^^xsd:anyURI ],
@@ -23430,7 +23444,6 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/028-gconsent-consent-ontology-gdpr.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:pinned true ;
     hpcom:publishing_attempt "JURIX 2018"@en ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "GConsent ontology" ;
@@ -23472,7 +23485,6 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/029-test-driven-approach-gdpr-compliance.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "code" ;
             schema:url "https://github.com/coolharsh55/GDPR-semantics-demo"^^xsd:anyURI ],
@@ -23936,7 +23948,7 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/059-RQ-Decentralised-Personal-Data-Governance.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:supplementary <https://harshp.com/research/presentations#2023-TrustDeKW-DRQ> ;
+    hpcom:supplementary <https://harshp.com/research/presentations#2023-TrusDeKW-DRQ> ;
     hpcom:tag hptag:Decentralisation,
         hptag:GDPR,
         hptag:data-governance,
@@ -23971,6 +23983,7 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/060-AI-Act-high-risk-semantics.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "specification" ;
             schema:url "https://w3id.org/VAIR"^^xsd:anyURI ],
@@ -24009,10 +24022,20 @@ hptag:ConsumerProtection a hpcom:RenderedItem,
     schema:name "consumer protection"@en ;
     schema:url "https://harshp.com/tags/ConsumerProtection"^^xsd:anyURI .
 
+hptag:DGA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DGA"@en ;
+    schema:url "https://harshp.com/tags/DGA"^^xsd:anyURI .
+
 hptag:DPIA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "DPIA"@en ;
     schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
+
+hptag:Decentralisation a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Decentralisation"@en ;
+    schema:url "https://harshp.com/tags/Decentralisation"^^xsd:anyURI .
 
 hptag:EU a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24853,6 +24876,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25160,9 +25186,6 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
