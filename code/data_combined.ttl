@@ -15707,7 +15707,7 @@ book:816 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "816"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Sunyi Dean"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -16913,12 +16913,29 @@ book:892 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "892"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-09-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Steven Levitsky & Daniel Ziblatt"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "How Democracies Die"@en ;
+    schema:review "The title is as catchy as a book on political science can get. In the current times where institutions get taken over by authoritatian politicians and systems get dismantled, it is scary to see this but not know what the future will hold. I have always wondered - how do I think about this? How do I know whether things are getting slightly worse or descending into bad times. Coming across this book unplanned meant it was an instant buy. The book itself is history wrapped around a framework for detecting when leaders are dismantling democracies - through questions and criterias. I found the framework useful, and easy enough to match with news articles and to discuss the interpretations. The book does mention several cases from history across the globe for when governments have descended into authoritarian takeovers - or 'good cases' where they have resisted. The part about preventing and resisting was illuminating. Though much of the book is US-centric and focuses on starting period of Trump era, it does take a broader global perspective. I think this book has been educational in priming my thoughts for how to think about democracy and threats to it. I am eager to understand how the framework works with the current Modi government as it has always worried me that the Indian democractical processes have been systematically dismantled."@en ;
     schema:url "https://harshp.com/hobbies/books/892"^^xsd:anyURI .
+
+book:893 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "893"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Kim Stanley Robinson"^^xsd:string ;
+    schema:dateCreated "2020"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Ministry for the Future"@en ;
+    schema:url "https://harshp.com/hobbies/books/893"^^xsd:anyURI .
 
 book:9 a hpcom:Book,
         hpcom:BookReading,
@@ -25871,14 +25888,14 @@ list:fantasy a hpcom:RenderedItem,
     schema:identifier "fantasy"@en ;
     schema:name "Fantastic Fantasy"@en .
 
+hpcom:SparqlQuery a owl:Class ;
+    rdfs:label "SparqlQuery"@en ;
+    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
+
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
-
-hpcom:SparqlQuery a owl:Class ;
-    rdfs:label "SparqlQuery"@en ;
-    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
