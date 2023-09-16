@@ -2203,6 +2203,23 @@ hpcom:view_template a rdf:Property ;
     schema:name "RDF Website Generator"@en ;
     schema:url "https://harshp.com/dev/harshp.com/rdf-website-generator"^^xsd:anyURI .
 
+<https://harshp.com/dev/harshp.com/website-plan-old> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/website-plan-old.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:harshp.com,
+        hptag:hosting,
+        hptag:website ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2023-09-16T19:20:00"^^xsd:dateTime ;
+    schema:datePublished "2023-09-16T19:20:00"^^xsd:dateTime ;
+    schema:description "Transcribing old notes regarding developing features for harshp.com"@en ;
+    schema:image "https://media.harshp.com/dev/website-plan-old.jpg" ;
+    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
+    schema:name "Old Website Update Ideas"@en ;
+    schema:url "https://harshp.com/dev/harshp.com/website-plan-old"^^xsd:anyURI .
+
 <https://harshp.com/dev/hdd_indexer/choosing-the-right-framework> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -24935,13 +24952,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
 hpcom:book-currently-reading a hpcom:BookStatus ;
     rdfs:label "currently reading"@en .
 
-<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "harshp.com"@en ;
-    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
-
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25087,20 +25097,10 @@ hptag:food a hpcom:RenderedItem,
     schema:name "food" ;
     schema:url "https://harshp.com/tags/food"^^xsd:anyURI .
 
-hptag:harshp.com a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "harshp.com" ;
-    schema:url "https://harshp.com/tags/harshp.com"^^xsd:anyURI .
-
 hptag:health a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "health" ;
     schema:url "https://harshp.com/tags/health"^^xsd:anyURI .
-
-hptag:hosting a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "hosting" ;
-    schema:url "https://harshp.com/tags/hosting"^^xsd:anyURI .
 
 hptag:humanities a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25243,6 +25243,13 @@ hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
 
+<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "harshp.com"@en ;
+    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
+
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25295,10 +25302,20 @@ hptag:friends a hpcom:RenderedItem,
     schema:name "friends" ;
     schema:url "https://harshp.com/tags/friends"^^xsd:anyURI .
 
+hptag:harshp.com a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "harshp.com" ;
+    schema:url "https://harshp.com/tags/harshp.com"^^xsd:anyURI .
+
 hptag:horror a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "horror" ;
     schema:url "https://harshp.com/tags/horror"^^xsd:anyURI .
+
+hptag:hosting a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "hosting" ;
+    schema:url "https://harshp.com/tags/hosting"^^xsd:anyURI .
 
 hptag:interoperability a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25334,11 +25351,6 @@ hptag:satire a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "satire" ;
     schema:url "https://harshp.com/tags/satire"^^xsd:anyURI .
-
-hptag:website a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "website" ;
-    schema:url "https://harshp.com/tags/website"^^xsd:anyURI .
 
 <https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
     schema:name "Delaram Golpayegani" ;
@@ -25454,6 +25466,11 @@ hptag:trains a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "trains" ;
     schema:url "https://harshp.com/tags/trains"^^xsd:anyURI .
+
+hptag:website a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "website" ;
+    schema:url "https://harshp.com/tags/website"^^xsd:anyURI .
 
 <https://www.scss.tcd.ie/Seamus.Lawless> a schema:Person ;
     schema:name "Séamus Lawless" .
