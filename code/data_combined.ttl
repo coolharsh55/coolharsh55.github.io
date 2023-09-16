@@ -13450,7 +13450,7 @@ book:685 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "685"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -15707,12 +15707,17 @@ book:816 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "816"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-09-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Sunyi Dean"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "The Book Eaters"@en ;
+    schema:review "A story about people who eat books for sustenance and absorb its knowledge? An alluring and attractive premise! I saw this book first while perusing a local bookstore, and it stuck in my mind despite signs of it not being a decent read. Later, when I came across it again - I decided to buy it. The start was good - there is some world building, some science, a lot of book eating goodness. But it fell apart quite quickly. The writing is weak, the characters were not really interestsing, and most importantly the book eating doesn't really go anywhere."@en ;
     schema:url "https://harshp.com/hobbies/books/816"^^xsd:anyURI .
 
 book:817 a hpcom:Book,
@@ -16885,12 +16890,16 @@ book:890 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "890"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Zima Blue and other stories"@en ;
+    schema:review "Zima Blue is part of the 'Love, Death, and Robots' anthology on Netflix. It is one of favourite things of all short stories - text or visual - I have come across. So when I found a book titled 'Zima Blue' and containing more short stories from the same author, it was an instant buy. The book contains another short story from the animated series - 'Beyond the Aquila Rift' which is also quite good. Most of the series deal with aspects of science and humanism. Even where I found the stories a bit slow or dull, there was enough science to keep going (e.g. the Merlin's Gun trilogy) or others that truly expanded the consciousness by introducing new ideas (e.g. Everlasting). But the main reason I bought the book was to read 'Zima Blue', and it happened to be the last story in the series. I started it on the bus back from work, and was so hooked and interested to finish reading it in one sitting that I stood on the pavement under an umbrella and finished reading it. This was a rewarding read."@en ;
     schema:url "https://harshp.com/hobbies/books/890"^^xsd:anyURI .
 
 book:891 a hpcom:RenderedItem,
@@ -20507,6 +20516,7 @@ list:owned_unread a hpcom:RenderedItem,
             hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "ISWC 2023" ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
             schema:url "https://w3id.org/plasma"^^xsd:anyURI ] ;
@@ -23904,6 +23914,7 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/054-AIRO-AI-Risk-AI-Act-ISO.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "Annual Privacy Forum 2022" ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
             schema:url "https://github.com/DelaramGlp/AIRO/"^^xsd:anyURI ],
@@ -23945,6 +23956,7 @@ hpview:StoryView a hpcom:View ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/057-Comparison-3-key-AI-documents.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "SEMANTiCS 2021" ;
     hpcom:supplementary <https://harshp.com/research/presentations#2023-AICS-Comparison3AI> ;
     hpcom:tag hptag:AI,
         hptag:AI-Act,
@@ -24904,6 +24916,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25211,9 +25226,6 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -25854,15 +25866,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25931,17 +25943,17 @@ hptag:personal a hpcom:RenderedItem,
     schema:name "personal" ;
     schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
 
+hptag:semantic-web a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "semantic-web" ;
+    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
+
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙁bad (2/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
-
-hptag:semantic-web a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "semantic-web" ;
-    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
 hptag:story a hpcom:RenderedItem,
         hpcom:Tag ;

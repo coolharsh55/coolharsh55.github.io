@@ -9935,7 +9935,7 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "685"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -11863,13 +11863,16 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "816"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-09-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Sunyi Dean"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Book Eaters"@en ;
+    schema:review """A story about people who eat books for sustenance and absorb its knowledge? An alluring and attractive premise! I saw this book first while perusing a local bookstore, and it stuck in my mind despite signs of it not being a decent read. Later, when I came across it again - I decided to buy it. The start was good - there is some world building, some science, a lot of book eating goodness. But it fell apart quite quickly. The writing is weak, the characters were not really interestsing, and most importantly the book eating doesn't really go anywhere."""@en ;
+    schema:isPartOf list:cork ;
     schema:url "https://harshp.com/hobbies/books/816"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/817> a hpcom:RenderedItem,
@@ -12918,16 +12921,17 @@
 
 <https://harshp.com/hobbies/books/890> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "890"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2023-09-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Zima Blue and other stories"@en ;
+    schema:review """Zima Blue is part of the 'Love, Death, and Robots' anthology on Netflix. It is one of favourite things of all short stories - text or visual - I have come across. So when I found a book titled 'Zima Blue' and containing more short stories from the same author, it was an instant buy. The book contains another short story from the animated series - 'Beyond the Aquila Rift' which is also quite good. Most of the series deal with aspects of science and humanism. Even where I found the stories a bit slow or dull, there was enough science to keep going (e.g. the Merlin's Gun trilogy) or others that truly expanded the consciousness by introducing new ideas (e.g. Everlasting). But the main reason I bought the book was to read 'Zima Blue', and it happened to be the last story in the series. I started it on the bus back from work, and was so hooked and interested to finish reading it in one sitting that I stood on the pavement under an umbrella and finished reading it. This was a rewarding read."""@en ;
     schema:url "https://harshp.com/hobbies/books/890"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/891> a schema:Book, hpcom:RenderedItem ;
