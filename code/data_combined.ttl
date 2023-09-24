@@ -396,6 +396,23 @@
     schema:name "Provenance Week 2018"@en ;
     schema:url "https://harshp.com/blog/events/provenance-week-2018"^^xsd:anyURI .
 
+<https://harshp.com/blog/food_drink/pizza-dublin> a <https://harshp.com/blog>,
+        hpcom:RenderedItem ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/blog/food_drink/pizza-dublin.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:blog,
+        hptag:food,
+        hptag:personal,
+        hptag:pizza ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2023-09-24T23:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-09-24T23:00:00"^^xsd:dateTime ;
+    schema:description "Pizza places in Dublin - a culinary investigation"@en ;
+    schema:image "https://media.harshp.com/hobbies/pizza/wall.jpeg" ;
+    schema:name "Pizza in Dublin"@en ;
+    schema:url "https://harshp.com/blog/food_drink/pizza-dublin"^^xsd:anyURI .
+
 <https://harshp.com/blog/food_drink/why-i-wont-eat-the-chemically-toxic-meat-in-india> a <https://harshp.com/blog>,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
@@ -24459,6 +24476,11 @@ hptag:personally a hpcom:RenderedItem,
     schema:name "personally" ;
     schema:url "https://harshp.com/tags/personally"^^xsd:anyURI .
 
+hptag:pizza a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "pizza"@en ;
+    schema:url "https://harshp.com/tags/pizza"^^xsd:anyURI .
+
 hptag:profiling a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "profiling"@en ;
@@ -25116,11 +25138,6 @@ hptag:experience a hpcom:RenderedItem,
     schema:name "experience" ;
     schema:url "https://harshp.com/tags/experience"^^xsd:anyURI .
 
-hptag:food a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "food" ;
-    schema:url "https://harshp.com/tags/food"^^xsd:anyURI .
-
 hptag:health a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "health" ;
@@ -25315,6 +25332,11 @@ hptag:filesystem a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "filesystem"@en ;
     schema:url "https://harshp.com/tags/filesystem"^^xsd:anyURI .
+
+hptag:food a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "food" ;
+    schema:url "https://harshp.com/tags/food"^^xsd:anyURI .
 
 hptag:friends a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25990,16 +26012,6 @@ hpcom:ReviewingEvent a owl:Class ;
     rdfs:label "Reivewing Event" ;
     rdfs:comment "Represents peer-review at some venue"@en .
 
-hptag:blog a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "blog" ;
-    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
-
-hptag:personal a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "personal" ;
-    schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
-
 hptag:semantic-web a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "semantic-web" ;
@@ -26011,6 +26023,16 @@ hpcom:Rating2 a hpcom:Rating,
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
+
+hptag:blog a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "blog" ;
+    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
+
+hptag:personal a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "personal" ;
+    schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
 
 hptag:story a hpcom:RenderedItem,
         hpcom:Tag ;
