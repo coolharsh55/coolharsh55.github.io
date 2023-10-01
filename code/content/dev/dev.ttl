@@ -11,20 +11,513 @@
         hpcom:renderWith hpview:DevIndexView ;
         ] .
 
-<https://harshp.com/dev/code_optimisation/nested-for-loops> a hpcom:RenderedItem,
+#---------------------------------------------------
+# HARSHP.COM
+#---------------------------------------------------
+
+<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "harshp.com"@en ;
+    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
+
+<https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/code_optimisation/nested-for-loops.html" ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/moving-from-AWS-to-LightSail.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:optimization,
-        hptag:programming ;
+    hpcom:tag hptag:harshp.com,
+        hptag:hosting,
+        hptag:website ;
     schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-07-08T07:36:58"^^xsd:dateTime ;
-    schema:datePublished "2017-06-23T14:25:00"^^xsd:dateTime ;
-    schema:description "resolve nested for loops by preventing repeated iterations"@en ;
-    schema:isPartOf <https://harshp.com/dev/code_optimisation> ;
-    schema:name "nested for loops"@en ;
-    schema:url "https://harshp.com/dev/code_optimisation/nested-for-loops"^^xsd:anyURI .
+    schema:dateModified "2019-06-17T13:44:00"^^xsd:dateTime ;
+    schema:datePublished "2019-06-17T13:18:00"^^xsd:dateTime ;
+    schema:description "A short post describing moving the website to Lightsail"@en ;
+    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
+    schema:name "Moving from AWS EC2 to Lightsail"@en ;
+    schema:url "https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail"^^xsd:anyURI .
+
+<https://harshp.com/dev/harshp.com/rdf-website-generator> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/rdf-website-generator.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:harshp.com,
+        hptag:hosting,
+        hptag:website ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2021-07-31T22:45:00"^^xsd:dateTime ;
+    schema:datePublished "2021-07-31T22:45:00"^^xsd:dateTime ;
+    schema:description "How harshp.com gets generated from RDF metadata"@en ;
+    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
+    schema:name "RDF Website Generator"@en ;
+    schema:url "https://harshp.com/dev/harshp.com/rdf-website-generator"^^xsd:anyURI .
+
+
+<https://harshp.com/dev/harshp.com/website-plan-old> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/website-plan-old.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:harshp.com,
+        hptag:hosting,
+        hptag:website ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2023-09-16T19:20:00"^^xsd:dateTime ;
+    schema:datePublished "2023-09-16T19:20:00"^^xsd:dateTime ;
+    schema:description "Transcribing old notes regarding developing features for harshp.com"@en ;
+    schema:image "https://media.harshp.com/dev/website-plan-old.jpg" ;
+    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
+    schema:name "Old Website Update Ideas"@en ;
+    schema:url "https://harshp.com/dev/harshp.com/website-plan-old"^^xsd:anyURI .
+
+#---------------------------------------------------
+# NEWS
+#---------------------------------------------------
+
+<https://harshp.com/dev/news_aggregator> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "news aggregator"@en ;
+    schema:url "https://harshp.com/dev/news_aggregator"^^xsd:anyURI .
+
+<https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/news_aggregator/repetition-in-news-aggregator.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:machine-learning,
+        hptag:news ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T15:44:18"^^xsd:dateTime ;
+    schema:datePublished "2014-06-07T14:30:49"^^xsd:dateTime ;
+    schema:description "service that organises news from different sources by topic"@en ;
+    schema:isPartOf <https://harshp.com/dev/news_aggregator> ;
+    schema:name "Repetition in News Aggregator"@en ;
+    schema:url "https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator"^^xsd:anyURI .
+
+#---------------------------------------------------
+# RANTS
+#---------------------------------------------------
+
+<https://harshp.com/dev/rants> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "Rants"@en ;
+    schema:url "https://harshp.com/dev/rants"^^xsd:anyURI .
+
+<https://harshp.com/dev/rants/ieee-7000> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/rants/ieee-7000-user-hostile.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:standardisation, hptag:ethics ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-01-01T23:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-01-01T23:00:00"^^xsd:dateTime ;
+    schema:description "Frustrating and annoying experience in trying to read a free standards document"@en ;
+    schema:isPartOf <https://harshp.com/dev/rants> ;
+    schema:name "Accessing IEEE 7000 standard is hostile to User"@en ;
+    schema:url "https://harshp.com/dev/rants/ieee-7000"^^xsd:anyURI .
+
+#---------------------------------------------------
+# PRINTING
+#---------------------------------------------------
+
+<https://harshp.com/dev/printing_notifications> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "printing notifications"@en ;
+    schema:url "https://harshp.com/dev/printing_notifications"^^xsd:anyURI .
+
+<https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/printing_notifications/notification-when-printing-actually-completes.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:bash,
+        hptag:script ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-07T22:22:52"^^xsd:dateTime ;
+    schema:datePublished "2017-07-07T22:12:38"^^xsd:dateTime ;
+    schema:description "a script to notify when the printer actually finishes the printing job"@en ;
+    schema:image "https://media.harshp.com/dev/printjob_status.png" ;
+    schema:isPartOf <https://harshp.com/dev/printing_notifications> ;
+    schema:name "Notification when printing *actually* completes"@en ;
+    schema:url "https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes"^^xsd:anyURI .
+
+#---------------------------------------------------
+# WEBDEV
+#---------------------------------------------------
+
+<https://harshp.com/dev/webdev> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "web development"@en ;
+    schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
+
+<https://harshp.com/dev/webdev/full-stack-website-guide> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/full-stack-website-guide.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:back-end,
+        hptag:front-end,
+        hptag:server,
+        hptag:web-dev,
+        hptag:website ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-05-18T14:09:10"^^xsd:dateTime ;
+    schema:datePublished "2017-05-17T20:11:00"^^xsd:dateTime ;
+    schema:description "An overview of everything that goes into making a full stack website"@en ;
+    schema:image "https://media.harshp.com/dev/fullstack.png" ;
+    schema:isPartOf <https://harshp.com/dev/webdev> ;
+    schema:name "Full Stack Website Guide"@en ;
+    schema:url "https://harshp.com/dev/webdev/full-stack-website-guide"^^xsd:anyURI .
+
+<https://harshp.com/dev/webdev/w3c-irc> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/w3c-irc.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:meeting,
+        hptag:w3c, hptag:DPVCG ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2021-07-28T14:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-07-16T10:10:00"^^xsd:dateTime ;
+    schema:description "short guide for using W3C irc to create meeting logs"@en ;
+    schema:isPartOf <https://harshp.com/dev/webdev> ;
+    schema:name "W3C IRC meeting logs guide"@en ;
+    schema:url "https://harshp.com/dev/webdev/w3c-irc"^^xsd:anyURI .
+
+<https://harshp.com/dev/webdev/pdf2slideshow> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/pdf2slideshow.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:presentation, hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2022-01-16T13:00:00"^^xsd:dateTime ;
+    schema:datePublished "2022-01-14T23:00:00"^^xsd:dateTime ;
+    schema:description "Creating a nifty script to convert PDF into HTML slideshow"@en ;
+    schema:isPartOf <https://harshp.com/dev/webdev> ;
+    schema:name "pdf2slideshow: Convert your PDFs to HTML Slideshows"@en ;
+    schema:url "https://harshp.com/dev/webdev/pdf2slideshow"^^xsd:anyURI .
+
+#---------------------------------------------------
+# INDIA TRAIN SCHEDULE
+#---------------------------------------------------
+
+<https://harshp.com/dev/train_schedule> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "Pune-Lonavala Train Schedule App"@en ;
+    schema:url "https://harshp.com/dev/train_schedule"^^xsd:anyURI .
+
+<https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:python,
+        hptag:script,
+        hptag:trains ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:17:37"^^xsd:dateTime ;
+    schema:datePublished "2015-09-17T15:05:46"^^xsd:dateTime ;
+    schema:description "checking if the time differences between each train run and station is the same"@en ;
+    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
+    schema:name "checking if time difference between stations are the same"@en ;
+    schema:url "https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same"^^xsd:anyURI .
+
+<https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/designing-data-models-for-trains-timings-and-station.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:python,
+        hptag:script,
+        hptag:trains ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:00:09"^^xsd:dateTime ;
+    schema:datePublished "2015-09-17T14:43:53"^^xsd:dateTime ;
+    schema:description "A model for updating train timetables"@en ;
+    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
+    schema:name "designing data models for trains, timings, and station"@en ;
+    schema:url "https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station"^^xsd:anyURI .
+
+<https://harshp.com/dev/train_schedule/handling-special-cases> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/handling-special-cases.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:python,
+        hptag:script,
+        hptag:trains ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:14:35"^^xsd:dateTime ;
+    schema:datePublished "2015-09-17T14:59:23"^^xsd:dateTime ;
+    schema:description "handling some of the special cases  in the train schedule"@en ;
+    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
+    schema:name "handling special cases"@en ;
+    schema:url "https://harshp.com/dev/train_schedule/handling-special-cases"^^xsd:anyURI .
+
+<https://harshp.com/dev/train_schedule/populating-train-schedule> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/populating-train-schedule.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:python,
+        hptag:script,
+        hptag:trains ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:08:49"^^xsd:dateTime ;
+    schema:datePublished "2015-09-17T14:58:12"^^xsd:dateTime ;
+    schema:description "Populating the train schedule and directions"@en ;
+    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
+    schema:name "populating train schedule"@en ;
+    schema:url "https://harshp.com/dev/train_schedule/populating-train-schedule"^^xsd:anyURI .
+
+#---------------------------------------------------
+# SEM-WEB
+#---------------------------------------------------
+
+<https://harshp.com/dev/semantic_web> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "Semantic Web"@en ;
+    schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/documenting-ontologies-using-widoco.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:documentation,
+        hptag:ontologies,
+        hptag:semantic-web ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-09-02T17:43:28"^^xsd:dateTime ;
+    schema:datePublished "2017-09-02T17:32:14"^^xsd:dateTime ;
+    schema:description "Widoco is a nifty utility to document OWL2 vocabularies"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Documenting ontologies using Widoco"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/primer-on-semantic-web-ontologies.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:ontologies,
+        hptag:semantic-web ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-08-18T19:25:32"^^xsd:dateTime ;
+    schema:datePublished "2017-08-18T17:51:39"^^xsd:dateTime ;
+    schema:description "A short description for RDF,RDFS, and OWL and their serialisation formats"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Primer on Semantic Web Ontologies"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/rdfowl-content-negotiation-using-nginx.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:content-negotiation,
+        hptag:semantic-web,
+        hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-09-29T15:26:39"^^xsd:dateTime ;
+    schema:datePublished "2017-08-19T17:59:56"^^xsd:dateTime ;
+    schema:description "Performing content-negotiation for RDF and OWL types with Nginx"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "RDF/OWL content-negotiation using NGINX"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/setting-up-fuseki> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-fuseki.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:database,
+        hptag:ontologies,
+        hptag:semantic-web,
+        hptag:triple-store ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-08-23T16:21:24"^^xsd:dateTime ;
+    schema:datePublished "2017-08-23T15:27:46"^^xsd:dateTime ;
+    schema:description "Getting Apache Fuseki up and running with minimal configuration"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Setting up Fuseki"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/setting-up-fuseki"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-openlink-virtuoso.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:database,
+        hptag:semantic-web,
+        hptag:triple-store ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-08-23T16:21:02"^^xsd:dateTime ;
+    schema:datePublished "2017-08-23T16:11:30"^^xsd:dateTime ;
+    schema:description "Setting up Virtuoso as a triple-store and serving with Nginx"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Setting up Openlink Virtuoso"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/setting-up-pubby> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-pubby.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:ontologies,
+        hptag:semantic-web,
+        hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-08-23T17:07:14"^^xsd:dateTime ;
+    schema:datePublished "2017-08-23T16:57:39"^^xsd:dateTime ;
+    schema:description "Using pubby to expose resources in a dataset"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Setting up Pubby"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/setting-up-pubby"^^xsd:anyURI .
+
+<https://harshp.com/dev/semantic_web/tools-for-semantic-web> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/tools-for-semantic-web.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:database,
+        hptag:ontologies,
+        hptag:programming,
+        hptag:semantic-web,
+        hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-09-02T19:13:11"^^xsd:dateTime ;
+    schema:datePublished "2017-08-18T19:20:03"^^xsd:dateTime ;
+    schema:description "A (WIP) list of tools and utilities for working with Semantic Web"@en ;
+    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
+    schema:name "Tools for Semantic Web"@en ;
+    schema:url "https://harshp.com/dev/semantic_web/tools-for-semantic-web"^^xsd:anyURI .
+
+#---------------------------------------------------
+# KINDLE
+#---------------------------------------------------
+
+<https://harshp.com/dev/klip> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "klip - Kindle Annotations"@en ;
+    schema:url "https://harshp.com/dev/klip"^^xsd:anyURI .
+
+<https://harshp.com/dev/klip/inheriting-klip> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/klip/inheriting-klip.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:kindle,
+        hptag:python ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-05-29T16:47:43"^^xsd:dateTime ;
+    schema:datePublished "2017-05-26T15:03:00"^^xsd:dateTime ;
+    schema:description "Inheriting the klip project, cleaning it up, and documenting it"@en ;
+    schema:isPartOf <https://harshp.com/dev/klip> ;
+    schema:name "Inheriting klip"@en ;
+    schema:url "https://harshp.com/dev/klip/inheriting-klip"^^xsd:anyURI .
+
+<https://harshp.com/dev/klip/previous-project-kindle-annotations> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/klip/previous-project-kindle-annotations.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:automation,
+        hptag:kindle,
+        hptag:python,
+        hptag:regex ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-05-26T15:09:05"^^xsd:dateTime ;
+    schema:datePublished "2017-05-26T14:28:00"^^xsd:dateTime ;
+    schema:description "The previous project of parsing kindle annotations"@en ;
+    schema:isPartOf <https://harshp.com/dev/klip> ;
+    schema:name "previous project - kindle annotations"@en ;
+    schema:url "https://harshp.com/dev/klip/previous-project-kindle-annotations"^^xsd:anyURI .
+
+#---------------------------------------------------
+# MEDIA MANAGEMENT
+#---------------------------------------------------
+
+<https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "HDD Indexer - sharing movies & files"@en ;
+    schema:url "https://harshp.com/dev/hdd_indexer"^^xsd:anyURI .
+
+<https://harshp.com/dev/hdd_indexer/choosing-the-right-framework> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/choosing-the-right-framework.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:movies,
+        hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:23:21"^^xsd:dateTime ;
+    schema:datePublished "2015-07-01T15:13:00"^^xsd:dateTime ;
+    schema:description "choosing the right framework for implementation"@en ;
+    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
+    schema:name "Choosing the right framework"@en ;
+    schema:url "https://harshp.com/dev/hdd_indexer/choosing-the-right-framework"^^xsd:anyURI .
+
+<https://harshp.com/dev/hdd_indexer/give-take-lists> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/give-take-lists.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:movies,
+        hptag:social ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:28:37"^^xsd:dateTime ;
+    schema:datePublished "2015-09-09T15:17:10"^^xsd:dateTime ;
+    schema:description "comparing movies with friends"@en ;
+    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
+    schema:name "give & take lists"@en ;
+    schema:url "https://harshp.com/dev/hdd_indexer/give-take-lists"^^xsd:anyURI .
+
+<https://harshp.com/dev/hdd_indexer/hdd-indexer-v01> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/hdd-indexer-v01.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:movies,
+        hptag:web-dev ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:24:43"^^xsd:dateTime ;
+    schema:datePublished "2015-07-29T15:13:41"^^xsd:dateTime ;
+    schema:description "First implementation"@en ;
+    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
+    schema:name "HDD-indexer v0.1"@en ;
+    schema:url "https://harshp.com/dev/hdd_indexer/hdd-indexer-v01"^^xsd:anyURI .
+
+<https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/imdbnator-like-this-but-classier.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:code,
+        hptag:movies ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-11-12T16:25:48"^^xsd:dateTime ;
+    schema:datePublished "2015-08-12T15:15:09"^^xsd:dateTime ;
+    schema:description "Found a website that already does something similar to HDD-indexer"@en ;
+    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
+    schema:name "imdbnator - like this, but classier"@en ;
+    schema:url "https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier"^^xsd:anyURI .
+
+#---------------------------------------------------
+# VISA GOVERNANCE
+#---------------------------------------------------
+
+<https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "GNIB Appointments"@en ;
+    schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
 
 <https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -196,432 +689,38 @@
     schema:name "Setting up notifications via Telegram"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/setting-up-notifications-via-telegram"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/moving-from-AWS-to-LightSail.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:harshp.com,
-        hptag:hosting,
-        hptag:website ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2019-06-17T13:44:00"^^xsd:dateTime ;
-    schema:datePublished "2019-06-17T13:18:00"^^xsd:dateTime ;
-    schema:description "A short post describing moving the website to Lightsail"@en ;
-    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
-    schema:name "Moving from AWS EC2 to Lightsail"@en ;
-    schema:url "https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail"^^xsd:anyURI .
-
-<https://harshp.com/dev/harshp.com/rdf-website-generator> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/rdf-website-generator.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:harshp.com,
-        hptag:hosting,
-        hptag:website ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2021-07-31T22:45:00"^^xsd:dateTime ;
-    schema:datePublished "2021-07-31T22:45:00"^^xsd:dateTime ;
-    schema:description "How harshp.com gets generated from RDF metadata"@en ;
-    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
-    schema:name "RDF Website Generator"@en ;
-    schema:url "https://harshp.com/dev/harshp.com/rdf-website-generator"^^xsd:anyURI .
-
-<https://harshp.com/dev/hdd_indexer/choosing-the-right-framework> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/choosing-the-right-framework.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:movies,
-        hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:23:21"^^xsd:dateTime ;
-    schema:datePublished "2015-07-01T15:13:00"^^xsd:dateTime ;
-    schema:description "choosing the right framework for implementation"@en ;
-    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
-    schema:name "Choosing the right framework"@en ;
-    schema:url "https://harshp.com/dev/hdd_indexer/choosing-the-right-framework"^^xsd:anyURI .
-
-<https://harshp.com/dev/hdd_indexer/give-take-lists> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/give-take-lists.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:movies,
-        hptag:social ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:28:37"^^xsd:dateTime ;
-    schema:datePublished "2015-09-09T15:17:10"^^xsd:dateTime ;
-    schema:description "comparing movies with friends"@en ;
-    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
-    schema:name "give & take lists"@en ;
-    schema:url "https://harshp.com/dev/hdd_indexer/give-take-lists"^^xsd:anyURI .
-
-<https://harshp.com/dev/hdd_indexer/hdd-indexer-v01> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/hdd-indexer-v01.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:movies,
-        hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:24:43"^^xsd:dateTime ;
-    schema:datePublished "2015-07-29T15:13:41"^^xsd:dateTime ;
-    schema:description "First implementation"@en ;
-    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
-    schema:name "HDD-indexer v0.1"@en ;
-    schema:url "https://harshp.com/dev/hdd_indexer/hdd-indexer-v01"^^xsd:anyURI .
-
-<https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/imdbnator-like-this-but-classier.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:code,
-        hptag:movies ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:25:48"^^xsd:dateTime ;
-    schema:datePublished "2015-08-12T15:15:09"^^xsd:dateTime ;
-    schema:description "Found a website that already does something similar to HDD-indexer"@en ;
-    schema:isPartOf <https://harshp.com/dev/hdd_indexer> ;
-    schema:name "imdbnator - like this, but classier"@en ;
-    schema:url "https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier"^^xsd:anyURI .
-
-<https://harshp.com/dev/klip/inheriting-klip> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/klip/inheriting-klip.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:kindle,
-        hptag:python ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-05-29T16:47:43"^^xsd:dateTime ;
-    schema:datePublished "2017-05-26T15:03:00"^^xsd:dateTime ;
-    schema:description "Inheriting the klip project, cleaning it up, and documenting it"@en ;
-    schema:isPartOf <https://harshp.com/dev/klip> ;
-    schema:name "Inheriting klip"@en ;
-    schema:url "https://harshp.com/dev/klip/inheriting-klip"^^xsd:anyURI .
-
-<https://harshp.com/dev/klip/previous-project-kindle-annotations> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/klip/previous-project-kindle-annotations.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:kindle,
-        hptag:python,
-        hptag:regex ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-05-26T15:09:05"^^xsd:dateTime ;
-    schema:datePublished "2017-05-26T14:28:00"^^xsd:dateTime ;
-    schema:description "The previous project of parsing kindle annotations"@en ;
-    schema:isPartOf <https://harshp.com/dev/klip> ;
-    schema:name "previous project - kindle annotations"@en ;
-    schema:url "https://harshp.com/dev/klip/previous-project-kindle-annotations"^^xsd:anyURI .
-
-<https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/news_aggregator/repetition-in-news-aggregator.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:machine-learning,
-        hptag:news ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T15:44:18"^^xsd:dateTime ;
-    schema:datePublished "2014-06-07T14:30:49"^^xsd:dateTime ;
-    schema:description "service that organises news from different sources by topic"@en ;
-    schema:isPartOf <https://harshp.com/dev/news_aggregator> ;
-    schema:name "Repetition in News Aggregator"@en ;
-    schema:url "https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator"^^xsd:anyURI .
-
-<https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/printing_notifications/notification-when-printing-actually-completes.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:bash,
-        hptag:script ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-07-07T22:22:52"^^xsd:dateTime ;
-    schema:datePublished "2017-07-07T22:12:38"^^xsd:dateTime ;
-    schema:description "a script to notify when the printer actually finishes the printing job"@en ;
-    schema:image "https://media.harshp.com/dev/printjob_status.png" ;
-    schema:isPartOf <https://harshp.com/dev/printing_notifications> ;
-    schema:name "Notification when printing *actually* completes"@en ;
-    schema:url "https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/documenting-ontologies-using-widoco.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:documentation,
-        hptag:ontologies,
-        hptag:semantic-web ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-09-02T17:43:28"^^xsd:dateTime ;
-    schema:datePublished "2017-09-02T17:32:14"^^xsd:dateTime ;
-    schema:description "Widoco is a nifty utility to document OWL2 vocabularies"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Documenting ontologies using Widoco"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/primer-on-semantic-web-ontologies.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:ontologies,
-        hptag:semantic-web ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-08-18T19:25:32"^^xsd:dateTime ;
-    schema:datePublished "2017-08-18T17:51:39"^^xsd:dateTime ;
-    schema:description "A short description for RDF,RDFS, and OWL and their serialisation formats"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Primer on Semantic Web Ontologies"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/rdfowl-content-negotiation-using-nginx.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:content-negotiation,
-        hptag:semantic-web,
-        hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-09-29T15:26:39"^^xsd:dateTime ;
-    schema:datePublished "2017-08-19T17:59:56"^^xsd:dateTime ;
-    schema:description "Performing content-negotiation for RDF and OWL types with Nginx"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "RDF/OWL content-negotiation using NGINX"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/setting-up-fuseki> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-fuseki.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:database,
-        hptag:ontologies,
-        hptag:semantic-web,
-        hptag:triple-store ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-08-23T16:21:24"^^xsd:dateTime ;
-    schema:datePublished "2017-08-23T15:27:46"^^xsd:dateTime ;
-    schema:description "Getting Apache Fuseki up and running with minimal configuration"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Setting up Fuseki"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/setting-up-fuseki"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-openlink-virtuoso.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:database,
-        hptag:semantic-web,
-        hptag:triple-store ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-08-23T16:21:02"^^xsd:dateTime ;
-    schema:datePublished "2017-08-23T16:11:30"^^xsd:dateTime ;
-    schema:description "Setting up Virtuoso as a triple-store and serving with Nginx"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Setting up Openlink Virtuoso"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/setting-up-pubby> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-pubby.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:ontologies,
-        hptag:semantic-web,
-        hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-08-23T17:07:14"^^xsd:dateTime ;
-    schema:datePublished "2017-08-23T16:57:39"^^xsd:dateTime ;
-    schema:description "Using pubby to expose resources in a dataset"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Setting up Pubby"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/setting-up-pubby"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web/tools-for-semantic-web> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/tools-for-semantic-web.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:database,
-        hptag:ontologies,
-        hptag:programming,
-        hptag:semantic-web,
-        hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-09-02T19:13:11"^^xsd:dateTime ;
-    schema:datePublished "2017-08-18T19:20:03"^^xsd:dateTime ;
-    schema:description "A (WIP) list of tools and utilities for working with Semantic Web"@en ;
-    schema:isPartOf <https://harshp.com/dev/semantic_web> ;
-    schema:name "Tools for Semantic Web"@en ;
-    schema:url "https://harshp.com/dev/semantic_web/tools-for-semantic-web"^^xsd:anyURI .
-
-<https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:python,
-        hptag:script,
-        hptag:trains ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:17:37"^^xsd:dateTime ;
-    schema:datePublished "2015-09-17T15:05:46"^^xsd:dateTime ;
-    schema:description "checking if the time differences between each train run and station is the same"@en ;
-    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
-    schema:name "checking if time difference between stations are the same"@en ;
-    schema:url "https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same"^^xsd:anyURI .
-
-<https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/designing-data-models-for-trains-timings-and-station.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:python,
-        hptag:script,
-        hptag:trains ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:00:09"^^xsd:dateTime ;
-    schema:datePublished "2015-09-17T14:43:53"^^xsd:dateTime ;
-    schema:description "A model for updating train timetables"@en ;
-    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
-    schema:name "designing data models for trains, timings, and station"@en ;
-    schema:url "https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station"^^xsd:anyURI .
-
-<https://harshp.com/dev/train_schedule/handling-special-cases> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/handling-special-cases.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:python,
-        hptag:script,
-        hptag:trains ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:14:35"^^xsd:dateTime ;
-    schema:datePublished "2015-09-17T14:59:23"^^xsd:dateTime ;
-    schema:description "handling some of the special cases  in the train schedule"@en ;
-    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
-    schema:name "handling special cases"@en ;
-    schema:url "https://harshp.com/dev/train_schedule/handling-special-cases"^^xsd:anyURI .
-
-<https://harshp.com/dev/train_schedule/populating-train-schedule> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/populating-train-schedule.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:automation,
-        hptag:python,
-        hptag:script,
-        hptag:trains ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-11-12T16:08:49"^^xsd:dateTime ;
-    schema:datePublished "2015-09-17T14:58:12"^^xsd:dateTime ;
-    schema:description "Populating the train schedule and directions"@en ;
-    schema:isPartOf <https://harshp.com/dev/train_schedule> ;
-    schema:name "populating train schedule"@en ;
-    schema:url "https://harshp.com/dev/train_schedule/populating-train-schedule"^^xsd:anyURI .
-
-<https://harshp.com/dev/webdev/full-stack-website-guide> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/full-stack-website-guide.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:back-end,
-        hptag:front-end,
-        hptag:server,
-        hptag:web-dev,
-        hptag:website ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2017-05-18T14:09:10"^^xsd:dateTime ;
-    schema:datePublished "2017-05-17T20:11:00"^^xsd:dateTime ;
-    schema:description "An overview of everything that goes into making a full stack website"@en ;
-    schema:image "https://media.harshp.com/dev/fullstack.png" ;
-    schema:isPartOf <https://harshp.com/dev/webdev> ;
-    schema:name "Full Stack Website Guide"@en ;
-    schema:url "https://harshp.com/dev/webdev/full-stack-website-guide"^^xsd:anyURI .
-
-<https://harshp.com/dev/webdev/w3c-irc> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/w3c-irc.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:meeting,
-        hptag:w3c, hptag:DPVCG ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2021-07-28T14:00:00"^^xsd:dateTime ;
-    schema:datePublished "2023-07-16T10:10:00"^^xsd:dateTime ;
-    schema:description "short guide for using W3C irc to create meeting logs"@en ;
-    schema:isPartOf <https://harshp.com/dev/webdev> ;
-    schema:name "W3C IRC meeting logs guide"@en ;
-    schema:url "https://harshp.com/dev/webdev/w3c-irc"^^xsd:anyURI .
+#---------------------------------------------------
+# CODE OPTIMISATION
+#---------------------------------------------------
 
 <https://harshp.com/dev/code_optimisation> a hpcom:RenderedItem, <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "code optimisation"@en ;
     schema:url "https://harshp.com/dev/code_optimisation"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "harshp.com"@en ;
-    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
+<https://harshp.com/dev/code_optimisation/nested-for-loops> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/code_optimisation/nested-for-loops.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:optimization,
+        hptag:programming ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2017-07-08T07:36:58"^^xsd:dateTime ;
+    schema:datePublished "2017-06-23T14:25:00"^^xsd:dateTime ;
+    schema:description "resolve nested for loops by preventing repeated iterations"@en ;
+    schema:isPartOf <https://harshp.com/dev/code_optimisation> ;
+    schema:name "nested for loops"@en ;
+    schema:url "https://harshp.com/dev/code_optimisation/nested-for-loops"^^xsd:anyURI .
 
-<https://harshp.com/dev/news_aggregator> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "news aggregator"@en ;
-    schema:url "https://harshp.com/dev/news_aggregator"^^xsd:anyURI .
-
-<https://harshp.com/dev/printing_notifications> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "printing notifications"@en ;
-    schema:url "https://harshp.com/dev/printing_notifications"^^xsd:anyURI .
-
-<https://harshp.com/dev/webdev> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "web development"@en ;
-    schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
-
-<https://harshp.com/dev/klip> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "klip - Kindle Annotations"@en ;
-    schema:url "https://harshp.com/dev/klip"^^xsd:anyURI .
+#---------------------------------------------------
+# DPV
+#---------------------------------------------------
 
 <https://harshp.com/dev/dpv> a hpcom:RenderedItem, <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "Data Privacy Vocabulary (DPV)"@en ;
     schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
-<https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "HDD Indexer - sharing movies & files"@en ;
-    schema:url "https://harshp.com/dev/hdd_indexer"^^xsd:anyURI .
-
-<https://harshp.com/dev/train_schedule> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "Pune-Lonavala Train Schedule App"@en ;
-    schema:url "https://harshp.com/dev/train_schedule"^^xsd:anyURI .
-
-<https://harshp.com/dev/semantic_web> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "Semantic Web"@en ;
-    schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
-
-<https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "GNIB Appointments"@en ;
-    schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
 
 <https://harshp.com/dev/dpv/dpv-x-2021-08-15> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -650,39 +749,6 @@
     schema:isPartOf <https://harshp.com/dev/dpv> ;
     schema:name "DPV v1 Checklist"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-v1-checklist"^^xsd:anyURI .
-
-<https://harshp.com/dev/rants> a hpcom:RenderedItem, <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
-    schema:name "Rants"@en ;
-    schema:url "https://harshp.com/dev/rants"^^xsd:anyURI .
-
-<https://harshp.com/dev/rants/ieee-7000> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/rants/ieee-7000-user-hostile.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:standardisation, hptag:ethics ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2022-01-01T23:00:00"^^xsd:dateTime ;
-    schema:datePublished "2022-01-01T23:00:00"^^xsd:dateTime ;
-    schema:description "Frustrating and annoying experience in trying to read a free standards document"@en ;
-    schema:isPartOf <https://harshp.com/dev/rants> ;
-    schema:name "Accessing IEEE 7000 standard is hostile to User"@en ;
-    schema:url "https://harshp.com/dev/rants/ieee-7000"^^xsd:anyURI .
-
-<https://harshp.com/dev/webdev/pdf2slideshow> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/webdev/pdf2slideshow.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:presentation, hptag:web-dev ;
-    schema:author <https://harshp.com/me> ;
-    schema:dateModified "2022-01-16T13:00:00"^^xsd:dateTime ;
-    schema:datePublished "2022-01-14T23:00:00"^^xsd:dateTime ;
-    schema:description "Creating a nifty script to convert PDF into HTML slideshow"@en ;
-    schema:isPartOf <https://harshp.com/dev/webdev> ;
-    schema:name "pdf2slideshow: Convert your PDFs to HTML Slideshows"@en ;
-    schema:url "https://harshp.com/dev/webdev/pdf2slideshow"^^xsd:anyURI .
 
 <https://harshp.com/dev/dpv/dpv-skos-analysis> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -759,19 +825,17 @@
     schema:name "Notes on reuse of EU Vocabularies for DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/notes-reuse-euvoc"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/website-plan-old> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/restructure-repo-docs-plan> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/website-plan-old.html" ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/restructure-repo-docs-plan.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:harshp.com,
-        hptag:hosting,
-        hptag:website ;
+    hpcom:tag hptag:DPV, hptag:DPVCG, hptag:semantic-web ;
     schema:author <https://harshp.com/me> ;
-    schema:dateModified "2023-09-16T19:20:00"^^xsd:dateTime ;
-    schema:datePublished "2023-09-16T19:20:00"^^xsd:dateTime ;
-    schema:description "Transcribing old notes regarding developing features for harshp.com"@en ;
-    schema:image "https://media.harshp.com/dev/website-plan-old.jpg" ;
-    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
-    schema:name "Old Website Update Ideas"@en ;
-    schema:url "https://harshp.com/dev/harshp.com/website-plan-old"^^xsd:anyURI .
+    schema:dateModified "2023-10-01T15:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-10-01T15:00:00"^^xsd:dateTime ;
+    schema:description "Plan to improve usefulness and maintainabiliy of DPV code and docs"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:subjectOf [ a hpcom:Link ; schema:name "Data Privacy Vocabulary (DPV)"; schema:url "https://www.w3.org/ns/dpv" ] ;
+    schema:name "Plan for Restructuring DPV docs and repo"@en ;
+    schema:url "https://harshp.com/dev/dpv/restructure-repo-docs-plan"^^xsd:anyURI .

@@ -43,7 +43,7 @@ logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
 logging.disable(logging.CRITICAL)
-FLAG_VALIDATE_CONSTRAINTS = True
+FLAG_VALIDATE_CONSTRAINTS = False
 
 # Namespaces used in the RDF files
 # RDF-ORM can also auto-detect them
@@ -59,24 +59,24 @@ graph.parse ('content/site.ttl', format='turtle')
 graph.parse ('content/tags.ttl', format='turtle')
 graph.parse ('../me.ttl', format='turtle')
 # blog, hobbies, dev
-graph.parse ('content/blog/blog.ttl', format='turtle')
-graph.parse ('content/poems/poems.ttl', format='turtle')
-graph.parse ('content/stories/stories.ttl', format='turtle')
+# graph.parse ('content/blog/blog.ttl', format='turtle')
+# graph.parse ('content/poems/poems.ttl', format='turtle')
+# graph.parse ('content/stories/stories.ttl', format='turtle')
 graph.parse ('content/dev/dev.ttl', format='turtle')
-graph.parse ('content/research/blog/research_blog.ttl', format='turtle')
-graph.parse ('content/hobbies/books.ttl', format='turtle')
-graph.parse ('content/hobbies/book_lists.ttl', format='turtle')
-graph.parse ('content/hobbies/tea.ttl', format='turtle')
-# research
-graph.parse ('content/research/research.ttl', format='turtle')
-graph.parse ('content/research/publications/publications.ttl', format='turtle')
-graph.parse ('content/research/publications/drafts/drafts.ttl', format='turtle')
-graph.parse ('content/research/presentations/presentations.ttl', format='turtle')
-graph.parse ('content/research/publications/authors.ttl', format='turtle')
-graph.parse ('content/research/publications/venues.ttl', format='turtle')
-graph.parse ('content/research/supervision/supervision.ttl', format='turtle')
-graph.parse ('content/research/projects/risky/risky.ttl', format='turtle')
-graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
+# graph.parse ('content/research/blog/research_blog.ttl', format='turtle')
+# graph.parse ('content/hobbies/books.ttl', format='turtle')
+# graph.parse ('content/hobbies/book_lists.ttl', format='turtle')
+# graph.parse ('content/hobbies/tea.ttl', format='turtle')
+# # research
+# graph.parse ('content/research/research.ttl', format='turtle')
+# graph.parse ('content/research/publications/publications.ttl', format='turtle')
+# graph.parse ('content/research/publications/drafts/drafts.ttl', format='turtle')
+# graph.parse ('content/research/presentations/presentations.ttl', format='turtle')
+# graph.parse ('content/research/publications/authors.ttl', format='turtle')
+# graph.parse ('content/research/publications/venues.ttl', format='turtle')
+# graph.parse ('content/research/supervision/supervision.ttl', format='turtle')
+# graph.parse ('content/research/projects/risky/risky.ttl', format='turtle')
+# graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
 
 # validate using PySHACL
 if FLAG_VALIDATE_CONSTRAINTS:

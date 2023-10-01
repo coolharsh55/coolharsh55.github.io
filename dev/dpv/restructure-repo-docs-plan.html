@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Plan for Restructuring DPV docs and repo</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Plan for Restructuring DPV docs and repo">
+    <meta name="schema:description" content="Plan to improve usefulness and maintainabiliy of DPV code and docs">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/restructure-repo-docs-plan">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/restructure-repo-docs-plan">
+    <meta property="og:title" content="Plan for Restructuring DPV docs and repo">
+    <meta property="og:description" content="Plan to improve usefulness and maintainabiliy of DPV code and docs">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/restructure-repo-docs-plan">
+        <h1 property="schema:name schema:headline">Plan for Restructuring DPV docs and repo</h1>
+        <div id="description">
+            <span property='schema:description'>Plan to improve usefulness and maintainabiliy of DPV code and docs</span><br/>
+            published: <time property="schema:datePublished" datetime="2023-10-01T15:00:00">2023-10-01T15:00:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            is about: <a href="https://www.w3.org/ns/dpv" property="schema:about"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" type="text/css" href="/css/toc.css">
+<div id="toc"></div>
+
+<section id="issues">
+    <h2>Issues in Current Implementations</h2>
+    <h3>Repo</h3>
+    <p>The <a href="https://github.com/w3c/dpv">current repo</a> is structured as follows:</p>
+    <ul>
+        <li><code>dpv</code> - the main dpv spec</li>
+        <li>folders for specific extensions: <code>dpv-dga</code>, <code>dpv-gdpr</code>, <code>dpv-legal</code>, <code>dpv-nace</code>, <code>dpv-owl</code>, <code>dpv-pd</code>, <code>dpv-skos</code>, <code>dpv-tech</code>, <code>rights</code>, <code>risk</code></li>
+        <li>folders for <code>examples</code>, <code>guides</code> and <code>use-cases</code></li>
+        <li><code>primer</code></li>
+        <li>folder to store <code>meetings</code> notes and generation code</li>
+        <li><code>releases</code></li>
+        <li>folder to store common <code>diagrams</code></li>
+        <li>folder with <code>documentation-generator</code> code</li>
+        <li><code>w3id_config</code> - containing the <a href="https://w3id.org/">W3ID</a> config for providing permanent URLs for DPV documents and resources</li>
+        <li>Files: <code>README.md</code>, <code>contributing.md</code> - for contribution guidelines, <code>contributors.json</code> - to list all contributors, <code>LICENSE.md</code>, <code>w3c.json</code> - for w3c operational metadata</li>
+    </ul>
+    <p>In this, each of the <code>dpv</code> and extensions folder has a 'sub-structure' within them as follows:</p>
+    <ul>
+        <li>files for that specification</li>
+        <li><code>modules</code> folder containing individual files for each 'module' or 'part' of the vocabulary e.g. <i>legal bases</i> in DPV</li>
+    </ul>
+    <p>The DPV-SKOS and DPV-OWL folders repeat inside them all the DPV and extension folders in their respective serialisations.</p>
+
+    <h3>Documentation</h3>
+
+    <h3>Documentation Generation</h3>
+
+    <h3>Exporting and Publishing Releases</h3>
+
+    <h3>Mappings and Alignments</h3>
+</section>
+
+<section id="changes-repo">
+    <h2>Changes to Repo</h2>
+    <h3>Layout</h3>
+
+    <h3>Serialisations in same folder</h3>
+
+    <h3>Consolidated Knowledge Bases</h3>
+</section>
+
+<section id="changes-docs">
+    <h2>Changes to Documentation</h2>
+
+    <h3>DPV spec - overview and modular pages</h3>
+
+    <h3>Extensions - new and reused core concepts</h3>
+
+</section>
+
+<section id="changes-docgen">
+    <h2>Changes to Documentation Generation</h2>
+
+    <h3>Downloading Data CSVs</h3>
+
+    <h3>RDF convertor for RDFS/SKOS serialisation</h3>
+
+    <h3>OWL serialisation from RDFS/SKOS</h3>
+
+    <h3>HTML generation</h3>
+
+    <h3>Special cases - Locations and Mappings</h3>
+</section>
+
+<section id="changes-releases">
+    <h2>Changes to Exports and Releases</h2>
+
+    <h3>Maintaining Versions</h3>
+    - ask TCD/ADAPT for server?
+    - w3id for each version?
+    - published as w3 report?
+
+    <h3>Formats: RDF, JSON, CSV</h3>
+
+    <h3>Archival</h3>
+</section>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
