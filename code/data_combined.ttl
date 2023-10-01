@@ -16788,7 +16788,7 @@ book:879 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "879"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "1995"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -17009,12 +17009,16 @@ book:893 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "893"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-09-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kim Stanley Robinson"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Ministry for the Future"@en ;
+    schema:review "If nothing else, - read Chapter 1 of this book. Tell me if doesn't affect you. So off to a great start about what climate change is going to do to human society, and the havoc it will have on everything. I do not recall another book that had me so personally invested in feeling the frustrations of the plot. Climate change is real, it is happening NOW, and yet we sit idly by. The book takes today as what we would do, and turns it into fiction - what will happen when we get disaster after disaster - and still shows that we wouldn't do much except short term band-aid solutions. The frustration of getting governments and companies to move, to stop producing carbon, to innovate for the betterment of the world and society - I felt all of that. The book is hard science-fiction, but I would categorise it more as 'hard policy fiction'. The stuff about pulling carbon out of the atmosphere, spreading particulates to reflect sun back, stopping glaciers from melting into the sea is cool. But the more interesting stuff is the reluctance from banks and companies to stop making quick profits - and how economics carrots and sticks can be used to induce a change for the better. In this case, through a 'carbon coin' - not a new idea, but certainly an important concept for the story. Blockchain makes an appearance too - and it was awkward because there were no details whatsoever about its implementation, but that's okay since there were other things to follow up on. It is difficult to understand this book - yes it is not 'realistic' in that it expects a lot of cooperation from agencies that we know today do not work that way. But it is also fiction, and the author chose not to just wave their hands and produce solutions. They showed that it is frustrating, but there are ways out of the quagmire we are in - and that is worth something. Let's call this a pragmatic utopian vision."@en ;
     schema:url "https://harshp.com/hobbies/books/893"^^xsd:anyURI .
 
 book:9 a hpcom:Book,
@@ -20540,41 +20544,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info14020114"^^xsd:anyURI .
 
-<https://harshp.com/research/publications/061-SEMANTiCS-DGA> a hpcom:FullPaper,
-        hpcom:RenderedItem,
-        schema:ScholarlyArticle ;
-    hpcom:archived_version [ a hpcom:Link ;
-            schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/061-SEMANTiCS-DGA"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "DORAS" ;
-            schema:url "https://doras.dcu.ie/28955/"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "zenodo" ;
-            schema:url "https://doi.org/10.5281/zenodo.8301900"^^xsd:anyURI ] ;
-    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
-    hpcom:author_other ( <http://example.com/VictorRodriguezDoncel> <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/061-SEMANTiCS-DGA.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:peer_reviewed true ;
-    hpcom:supplementary [ a hpcom:Link ;
-            schema:name "repo" ;
-            schema:url "https://w3id.org/dgaterms"^^xsd:anyURI ] ;
-    hpcom:tag hptag:DGA,
-        hptag:DPV,
-        hptag:ODRL,
-        hptag:data-governance,
-        hptag:semantics ;
-    schema:datePublished "2023-08-15T00:00:00"^^xsd:dateTime ;
-    schema:description "This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers"@en ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:identifier "https://doi.org/10.3233/SSW230015"^^xsd:anyURI ;
-    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
-    schema:name "Semantics for Implementing Data Reuse and Altruism under EU's Data Governance Act"@en ;
-    schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
-    schema:url "https://doi.org/10.3233/SSW230015"^^xsd:anyURI .
-
 <https://harshp.com/research/publications/062-WOP-PLASMA> a hpcom:FullPaper,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
@@ -21769,15 +21738,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI .
 
-<http://example.com/conferences/SEMANTiCS2023> a schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "SEMANTiCS" ;
-    schema:endDate "2023-09-22T00:00:00"^^xsd:dateTime ;
-    schema:location "Leipzip, Germany" ;
-    schema:name "International Conference on Semantic Systems"@en ;
-    schema:startDate "2023-09-20T00:00:00"^^xsd:dateTime ;
-    schema:url "https://2023-eu.semantics.cc/"^^xsd:anyURI .
-
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
     schema:alternateName "UMAP" ;
@@ -22783,6 +22743,25 @@ hpview:StoryView a hpcom:View ;
     schema:performer <https://harshp.com/me> ;
     schema:publication <https://facctconference.org/2023/> ;
     schema:url "https://harshp.com/research/presentations#2023-FAccT-AIAct"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2023-SEMANTiCS-DGA> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/061-SEMANTiCS-DGA> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2023-09-21T12:15:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/SEMANTiCS-DGA/SEMANTiCS2023_DGA.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/SEMANTiCS-DGA/"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF/Zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.8301900"^^xsd:anyURI ] ;
+    schema:identifier "2023-SEMANTiCS-DGA" ;
+    schema:name "Semantics for Implementing Data Reuse and Altruism under EU's Data Governance Act"@en ;
+    schema:performer <http://example.com/BeatrizEsteves> ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
+    schema:url "https://harshp.com/research/presentations#2023-SEMANTiCS-DGA"^^xsd:anyURI .
 
 <https://harshp.com/research/presentations#2023-TrusDeKW-DRQ> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/059-RQ-Decentralised-Personal-Data-Governance> ;
@@ -24116,6 +24095,42 @@ hpview:StoryView a hpcom:View ;
     schema:publication <https://facctconference.org/2023/> ;
     schema:url "https://doi.org/10.1145/3593013.3594050"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/061-SEMANTiCS-DGA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/061-SEMANTiCS-DGA"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url "https://doras.dcu.ie/28955/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.8301900"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
+    hpcom:author_other ( <http://example.com/VictorRodriguezDoncel> <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/061-SEMANTiCS-DGA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://w3id.org/dgaterms"^^xsd:anyURI ],
+        <https://harshp.com/research/presentations#2023-SEMANTiCS-DGA> ;
+    hpcom:tag hptag:DGA,
+        hptag:DPV,
+        hptag:ODRL,
+        hptag:data-governance,
+        hptag:semantics ;
+    schema:datePublished "2023-08-15T00:00:00"^^xsd:dateTime ;
+    schema:description "This work investigates how to apply existing Semantic Web vocabularies to (1) generate machine-readable policies for the reuse of public data, (2) specify data altruism consent terms and (3) create uniform registers of data altruism organisations and intermediation services’ providers"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "https://doi.org/10.3233/SSW230015"^^xsd:anyURI ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:name "Semantics for Implementing Data Reuse and Altruism under EU's Data Governance Act"@en ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
+    schema:url "https://doi.org/10.3233/SSW230015"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ] ;
@@ -24791,6 +24806,15 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Semantic Systems"@en ;
     schema:startDate "2021-09-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://2021-eu.semantics.cc/"^^xsd:anyURI .
+
+<http://example.com/conferences/SEMANTiCS2023> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:endDate "2023-09-22T00:00:00"^^xsd:dateTime ;
+    schema:location "Leipzip, Germany" ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:startDate "2023-09-20T00:00:00"^^xsd:dateTime ;
+    schema:url "https://2023-eu.semantics.cc/"^^xsd:anyURI .
 
 <http://example.com/published> a schema:Publication ;
     hpcom:event_type hpcom:Workshop ;
@@ -25526,9 +25550,6 @@ hptag:website a hpcom:RenderedItem,
     schema:name "Trinity College Dublin" ;
     schema:url "https://www.tcd.ie/"^^xsd:anyURI .
 
-<http://example.com/BeatrizEsteves> a schema:Person ;
-    schema:name "Beatriz Esteves" .
-
 <http://example.com/PaulRyan> a schema:Person ;
     schema:name "Paul Ryan" .
 
@@ -25620,6 +25641,9 @@ hptag:weather a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
+
+<http://example.com/BeatrizEsteves> a schema:Person ;
+    schema:name "Beatriz Esteves" .
 
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;

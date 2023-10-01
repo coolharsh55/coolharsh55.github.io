@@ -14,22 +14,22 @@
       <a href="{{book.iri}}">{{name}}</a> - <small><i>{{book.schema_author}} ({{book.schema_dateCreated}})</i></small> <br/>
         <small>
         {% if book.schema_genre is sequence %}{% for genre in book.schema_genre|sort(attribute='iri') %}
-            {{genre}}{{', ' if not loop.last}}{% endfor %}
+            {{genre}}{{', ' if not loop.last}}{% endfor %};
         {% else %}
-            {{ book.schema_genre }}
+            {{ book.schema_genre }};
         {% endif %}
+        {% if book.hpcom_book_owned_medium is sequence %}
+            {%  for medium in book.hpcom_book_owned_medium %}{% if medium == HPCOM.PhysicalBook %}owned as 📚 ;{% elif medium == HPCOM.EBook %}owned as 💾 ;{% endif %}{% endfor %}
+            {% else %}
+                {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %}
+            {% endif %}
         {% if book.hpcom_date_book_read %}
-            ; read in {% if book.hpcom_date_book_read is sequence and book.hpcom_date_book_read is not string %}{{book.hpcom_date_book_read|max|year}}{% else %}{{book.hpcom_date_book_read|year}}{% endif %} in 
+            read in {% if book.hpcom_date_book_read is sequence and book.hpcom_date_book_read is not string %}{{book.hpcom_date_book_read|max|year}}{% else %}{{book.hpcom_date_book_read|year}}{% endif %} in 
             {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} 
             medium ; 
-            {% if book.hpcom_book_owned_medium is sequence %}
-                {%  for medium in book.hpcom_book_owned_medium %}{% if medium == HPCOM.PhysicalBook %}owned as 📚 ;{% elif medium == HPCOM.EBook %}owned as 💾 ;{% endif %}{% endfor %}
-                {% else %}
-                    {% if rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.PhysicalBook) %}owned as 📚 ;{% elif rdf_check_object(book, 'hpcom_book_owned_medium', HPCOM.EBook) %}owned as 💾 ;{% endif %}
-                {% endif %}
             {% if book.schema_aggregatedRating %} it was {{book.schema_aggregatedRating}}{% endif %}
          {% else %}
-            ; unread
+            unread
          {% endif %}
         </small>
     </li>
