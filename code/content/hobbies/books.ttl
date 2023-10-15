@@ -12768,13 +12768,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "879"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Salman Rushdie"^^xsd:string ;
     schema:dateCreated "1995"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Moor's Last Sigh"@en ;
+    schema:review """Its the language. Rushdie has this sense of weaving a tapestry with words, doesn't really matter what the story is, it always comes out as something extraordinary. The story itself is also clever - rooting itself into several easy to miss historical events that requires a keen observation to recognise. This is a nice accompaniment to Midnight's Children and Shame, and now Victory City - as they really show the same country and culture but with a focus on different narratives. Delightful to read."""@en ;
+    schema:isPartOf list:DCU ;
     schema:url "https://harshp.com/hobbies/books/879"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/880> a hpcom:RenderedItem,
@@ -13112,7 +13115,7 @@
 
 <https://harshp.com/hobbies/books/903> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "903"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
