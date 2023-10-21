@@ -1,15 +1,25 @@
 <link rel="stylesheet" type="text/css" href="/css/toc.css">
 <div id="toc"></div>
 
-<section id="issues">
-    <h2>Issues in Current Implementations</h2>
-    <h3>Repo</h3>
-    <p>The <a href="https://github.com/w3c/dpv">current repo</a> has several issues that arise from the way data is structured:</p>
-    <ol>
-        
-    </ol>
-    <p>The DPV-SKOS and DPV-OWL folders repeat inside them all the DPV and extension folders in their respective serialisations, e.g. DPV-PD is a folder at root, and DPV-OWL also has a folder for DPV-PD.</p>
+<p>links: <a href="https://github.com/w3c/dpv">current repo</a>, <a href="https://github.com/w3c/dpv/issues">issues</a>, <a href="https://github.com/w3c/dpv/releases">releases</a>, <a href="https://w3id.org/dpv">DPV spec</a>.</p>
 
+<h2>RDF generation: 002 scripts</h2>
+<ol>
+
+<p>This page provides a list to manage the <a href="https://github.com/w3c/dpv/milestone/3">Major Changes</a> being implemented for DPV (content, repo, documentation).</p>
+
+<h2>Change default serialisation to RDFS+SKOS</h2>
+<p>see <a href="https://github.com/w3c/dpv/issues/113">ISSUE#113</a></p>
+<p>This requires changes to the `002` scripts to generate
+
+<p>Keep all serialisations in same folder: see <a href="https://github.com/w3c/dpv/issues/118">ISSUE#118</a></p>
+
+
+<!-- NOTES -->
+
+<p>SHACL tests to detect missing metadata, mostly arising from typos in relations (e.g. parent concept) sometimes seem not to work - any implementation going ahead could have some 'unit test' to check for regressions.</p>
+
+<p>OWL serialisation can possibly be generated from RDFS+SKOS e.g. using SPARQL CONSTRUCT queries. An important question is whether there will be ANY instances in OWL e.g. for statuses which are a fixed set, but which in RDFS+SKOS can be extended using the SKOS hierarchy. Another important question is whether there are any OWL axioms to import - I currently am not aware of any, and haven't received any from implementing projects e.g. TRAPEZE. But I think this can be added ex-post the generation e.g. using rdflib.</p>
     <h3>Documentation</h3>
 
     <h3>Documentation Generation</h3>
