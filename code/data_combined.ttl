@@ -15641,7 +15641,7 @@ book:806 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "806"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Ari Ezra Waldman"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -17136,11 +17136,15 @@ book:901 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "901"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-17T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Cory Doctorow"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "The Internet Con"@en ;
+    schema:review "Got this off kickstarter - the author at the time had mentioned that Amazon Audible required a really shit deal of signing over stuff and not being able to have a DRM free experience. The book is a really good 'manifesto' for what has gone wrong with the internet and digital services through rampant abuse of copyright and IP. Much of it is about interoperability - so we all can do what we want to do with stuff. I was surprised to read that the solution is really a better alignment of laws (rather than replacement or overhaul which are exhuberant and expensive) with the intention of 'interoperability' so that we get more competition and better innovation from the grassroot upwards. The book was poignant, restricted in its argument (which is a good thing), and offered a good purview of history to understand why we arrived here and what kind of backsteps we need to get out of the sinkhole. This also made me buy 2 other books from Doctorow, and to support a third on Kickstarter."@en ;
     schema:url "https://harshp.com/hobbies/books/901"^^xsd:anyURI .
 
 book:902 a hpcom:RenderedItem,
@@ -17159,11 +17163,15 @@ book:903 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "903"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-16T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Lawrence M. Krauss"^^xsd:string ;
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "A Universe from nothing"@en ;
+    schema:review "This is a mixed-bag for me - on one hand the topic is interesting (dare I say 'universal') and the physics is explained in a readily accessible way; on the other hand there is much ado about 'nothing'. I get that the intention of the author is to point out how a universe can arise from 'nothingness' in the sense of energy and mass, and why this doesn't need an intelligent creator - pointing to a similar aha moment in biology when evolution was discovered. But if its intention was to give a metaphysical consideration, it merely touches upon the subject (and I'm the already convinced) rather than have a clearer and cleaner picture. I still liked reading about the aspects of how 'nothing' in space is being still pondered upon in terms of physics - dark matter and dark energy."@en ;
     schema:url "https://harshp.com/hobbies/books/903"^^xsd:anyURI .
 
 book:904 a hpcom:RenderedItem,
