@@ -9674,7 +9674,6 @@ book:483 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "483"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2019-06-16T00:00:00"^^xsd:dateTime ;
@@ -17185,6 +17184,61 @@ book:904 a hpcom:RenderedItem,
     schema:name "Technofeudalism: What Killed Capitalism"@en ;
     schema:url "https://harshp.com/hobbies/books/904"^^xsd:anyURI .
 
+book:905 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "905"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Sydney Padua"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Thrilling Adventures of Lovelace and Babbage"@en ;
+    schema:url "https://harshp.com/hobbies/books/905"^^xsd:anyURI .
+
+book:906 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "906"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Margaret Atwood"^^xsd:string ;
+    schema:dateCreated "2000"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Blind Assasin"@en ;
+    schema:url "https://harshp.com/hobbies/books/906"^^xsd:anyURI .
+
+book:907 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "907"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Margaret Atwood"^^xsd:string ;
+    schema:dateCreated "1988"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Cat's Eye"@en ;
+    schema:url "https://harshp.com/hobbies/books/907"^^xsd:anyURI .
+
+book:908 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "908"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Alejandro Zambra"^^xsd:string ;
+    schema:dateCreated "2010"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Private Lives of Trees"@en ;
+    schema:url "https://harshp.com/hobbies/books/908"^^xsd:anyURI .
+
+book:909 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "909"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Fernanda Melchor"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Paradais"@en ;
+    schema:url "https://harshp.com/hobbies/books/909"^^xsd:anyURI .
+
 book:91 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
@@ -17196,6 +17250,41 @@ book:91 a hpcom:Book,
     schema:isbn "9780029021903"^^xsd:string ;
     schema:name "The Birth and Death of Meaning: An Interdisciplinary Perspective on the Problem of Man"@en ;
     schema:url "https://harshp.com/hobbies/books/91"^^xsd:anyURI .
+
+book:910 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "910"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Iain Banks"^^xsd:string ;
+    schema:dateCreated "2004"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Algebraist"@en ;
+    schema:url "https://harshp.com/hobbies/books/910"^^xsd:anyURI .
+
+book:911 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "911"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Mieko Kanai"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Mild Vertigo"@en ;
+    schema:url "https://harshp.com/hobbies/books/911"^^xsd:anyURI .
+
+book:912 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "912"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Chuck Palahniuk"^^xsd:string ;
+    schema:dateCreated "2003"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Diary"@en ;
+    schema:url "https://harshp.com/hobbies/books/912"^^xsd:anyURI .
 
 book:92 a hpcom:Book,
         hpcom:BookReading,
@@ -25173,9 +25262,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25456,6 +25542,9 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
