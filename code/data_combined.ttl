@@ -15640,11 +15640,18 @@ book:806 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "806"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-27T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Ari Ezra Waldman"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:DCU,
+        list:books-changed-life,
+        list:educational ;
     schema:name "Industry Unbound: The Inside Story of Privacy, Data, and Corporate Power"@en ;
+    schema:review "An immensely well written narrative about the disparity between statements made by companies regarding privacy, the reputation and known intentions of privacy professionals, and the disproportionate gap between statement and action. The book is based on interviews with actual practioners in the industry and offers an excellent and necessary perspective on the 'other side'. Bottom line - there is a distinct lack of operational culture and people with needed roles don't have any say or power to make the changes. Regulations are superficial because they are drafted outside-in and promote checkboxes and internal responsibility - which as the book evidently and abundantly shows - is a repeated pattern of not working as intended. This book has been influential in making my research more informed and aware of the challenges in this area."@en ;
     schema:url "https://harshp.com/hobbies/books/806"^^xsd:anyURI .
 
 book:807 a hpcom:Book,
@@ -17177,7 +17184,7 @@ book:904 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "904"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Yanis Varoufakis"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -17221,18 +17228,22 @@ book:908 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "908"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Alejandro Zambra"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "The Private Lives of Trees"@en ;
+    schema:review "A short book (novella) that chronicles a slice of life in the day of a father putting his step-daughter to sleep while awaiting for his wife to return. The stream of consciousness style narration of events that run within this time frame are nothing significant or worthy of theatre, but instead reflect the thoughts and simple-minded awareness that each of us has when we unknowlingly think of our past and what it has led to in our present. An easy to miss style of writing that is poignant that doesn't rely on hidden meanings."@en ;
     schema:url "https://harshp.com/hobbies/books/908"^^xsd:anyURI .
 
 book:909 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "909"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Fernanda Melchor"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -17285,6 +17296,28 @@ book:912 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "Diary"@en ;
     schema:url "https://harshp.com/hobbies/books/912"^^xsd:anyURI .
+
+book:913 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "913"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Lucy Cooke"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Bitch: What does it mean to be female?"@en ;
+    schema:url "https://harshp.com/hobbies/books/913"^^xsd:anyURI .
+
+book:914 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "914"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Brian Cox and Jeff Forshaw"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Black Holes: The key to understanding the universe"@en ;
+    schema:url "https://harshp.com/hobbies/books/914"^^xsd:anyURI .
 
 book:92 a hpcom:Book,
         hpcom:BookReading,
@@ -25543,9 +25576,6 @@ hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25720,6 +25750,9 @@ hptag:sci-fi a hpcom:RenderedItem,
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26212,15 +26245,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:books-changed-life a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "books-changed-life"@en ;
-    schema:name "Books that changed my life"@en .
-
 list:cork a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "cork"@en ;
     schema:name "Books in Cork"@en .
+
+list:books-changed-life a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "books-changed-life"@en ;
+    schema:name "Books that changed my life"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26250,17 +26283,17 @@ hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
     rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
 
-list:educational a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "educational"@en ;
-    schema:name "Educational and Illuminating"@en .
-
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
 
 hpcom:View a owl:Class ;
     rdfs:label "View"@en ;
     rdfs:comment "Represents a specific representation or view of a resource"@en .
+
+list:educational a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "educational"@en ;
+    schema:name "Educational and Illuminating"@en .
 
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .

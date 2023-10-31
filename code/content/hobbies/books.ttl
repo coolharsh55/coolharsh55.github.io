@@ -11725,14 +11725,16 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "806"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-10-27T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Ari Ezra Waldman"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Industry Unbound: The Inside Story of Privacy, Data, and Corporate Power"@en ;
+    schema:review """An immensely well written narrative about the disparity between statements made by companies regarding privacy, the reputation and known intentions of privacy professionals, and the disproportionate gap between statement and action. The book is based on interviews with actual practioners in the industry and offers an excellent and necessary perspective on the 'other side'. Bottom line - there is a distinct lack of operational culture and people with needed roles don't have any say or power to make the changes. Regulations are superficial because they are drafted outside-in and promote checkboxes and internal responsibility - which as the book evidently and abundantly shows - is a repeated pattern of not working as intended. This book has been influential in making my research more informed and aware of the challenges in this area."""@en ;
+    schema:isPartOf list:DCU, list:educational, list:books-changed-life ;
     schema:url "https://harshp.com/hobbies/books/806"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/807> a hpcom:RenderedItem, hpcom:BookReading,
@@ -13132,7 +13134,7 @@
 
 <https://harshp.com/hobbies/books/904> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "904"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -13188,21 +13190,22 @@
 
 <https://harshp.com/hobbies/books/908> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "908"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2023-10-28T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Alejandro Zambra"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Private Lives of Trees"@en ;
+    schema:review """A short book (novella) that chronicles a slice of life in the day of a father putting his step-daughter to sleep while awaiting for his wife to return. The stream of consciousness style narration of events that run within this time frame are nothing significant or worthy of theatre, but instead reflect the thoughts and simple-minded awareness that each of us has when we unknowlingly think of our past and what it has led to in our present. An easy to miss style of writing that is poignant that doesn't rely on hidden meanings."""@en ;
     schema:url "https://harshp.com/hobbies/books/908"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/909> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "909"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -13255,3 +13258,31 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Diary"@en ;
     schema:url "https://harshp.com/hobbies/books/912"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/913> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "913"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Lucy Cooke"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Bitch: What does it mean to be female?"@en ;
+    schema:url "https://harshp.com/hobbies/books/913"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/914> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "914"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Brian Cox and Jeff Forshaw"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Black Holes: The key to understanding the universe"@en ;
+    schema:url "https://harshp.com/hobbies/books/914"^^xsd:anyURI .
