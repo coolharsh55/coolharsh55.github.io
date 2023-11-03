@@ -17184,11 +17184,16 @@ book:904 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "904"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Yanis Varoufakis"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "Technofeudalism: What Killed Capitalism"@en ;
+    schema:review "A book that tells about the history of economics, capital, technology, the internet, and the rise of cloud - in a way that is easy to explore, understand, and think about. Whilst I have no qualifications to make statements regarding the validity of the conclusion in terms of alternative models - I acknoledge the vastly important existence of such debates and that I have learned, through this book, the proper tools with which to think about it. It is easy to state that power is concentrated in cloud, but difficult to explain how historiacally this changes things and more importantly what we need to understand about the way money works to understand the implications of a 'virtual capital'. Technofeudalism is what the concept is called where we are locked in a cloud serfdom, unable to escape, and stuck paying 'value rents' to the lords. Reading this soon after The Internet Con was a good follow-up because I could see a lot of its solutions as being necessary and pragmatic in the face of what this book explores."@en ;
     schema:url "https://harshp.com/hobbies/books/904"^^xsd:anyURI .
 
 book:905 a hpcom:RenderedItem,
@@ -17301,11 +17306,16 @@ book:913 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "913"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-02T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Lucy Cooke"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:educational ;
     schema:name "Bitch: What does it mean to be female?"@en ;
+    schema:review "The equivalent of a jaw dropping tour de force documentary. I literally went \"WOW!\", \"that's amazing\", or \"that's so cool\" - so many times even while on the same page. This book is dense with amazing knowledge that does a really good job of highlighting how limiting the science has been because of prudish attitudes and male centric perspectives. I was delighted to read and learn how diversity - including female - leads to better understanding, and that nature is feminist and has amazing fluidity and variety only if we are careful in looking."@en ;
     schema:url "https://harshp.com/hobbies/books/913"^^xsd:anyURI .
 
 book:914 a hpcom:RenderedItem,
@@ -17318,6 +17328,17 @@ book:914 a hpcom:RenderedItem,
     schema:genre hpcom:BookNonFiction ;
     schema:name "Black Holes: The key to understanding the universe"@en ;
     schema:url "https://harshp.com/hobbies/books/914"^^xsd:anyURI .
+
+book:915 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "915"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Evie Woods"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Lost Bookshop"@en ;
+    schema:url "https://harshp.com/hobbies/books/915"^^xsd:anyURI .
 
 book:92 a hpcom:Book,
         hpcom:BookReading,
@@ -25295,6 +25316,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25750,9 +25774,6 @@ hptag:sci-fi a hpcom:RenderedItem,
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26290,13 +26311,13 @@ hpcom:View a owl:Class ;
     rdfs:label "View"@en ;
     rdfs:comment "Represents a specific representation or view of a resource"@en .
 
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
+
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
-
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
 
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
