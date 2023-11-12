@@ -43,7 +43,7 @@ logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
 logging.disable(logging.CRITICAL)
-FLAG_VALIDATE_CONSTRAINTS = True
+FLAG_VALIDATE_CONSTRAINTS = False
 
 # Namespaces used in the RDF files
 # RDF-ORM can also auto-detect them
