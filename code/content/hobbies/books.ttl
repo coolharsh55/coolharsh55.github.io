@@ -12373,6 +12373,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "851"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -12531,8 +12532,7 @@
 <https://harshp.com/hobbies/books/862> a hpcom:RenderedItem,
         schema:Book, hpcom:Book ;
     hpcom:book_id "862"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
@@ -13310,3 +13310,59 @@
     schema:isPartOf list:DCU ;
     schema:review """Picked this up because I like books, ergo I like bookshops, and 'book hunting' is something that resonates with me. The story is about a lost bookshop and how it shapes the lives of three characters. Its set in Dublin, featuring someone who is doing a PhD, there's mention of Trinity and Ha'Penny and other local areas - so of course I picked it up and gave it a go. Was an okay book, enjoyable as a sort of sheepish TV movie that I wouldn't otherwise go for. The bibliophilia is what enticed me."""@en ;
     schema:url "https://harshp.com/hobbies/books/915"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/916> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "916"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    # hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Cory Doctorow"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Lost Cause"@en ;
+    schema:url "https://harshp.com/hobbies/books/916"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/917> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "917"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "R. Trebor Scholz"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Own this!: How platform cooperatives help workers build a democratic Internet"@en ;
+    schema:url "https://harshp.com/hobbies/books/917"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/918> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "918"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Matteo Pasquinelli"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Eye of the Master"@en ;
+    schema:url "https://harshp.com/hobbies/books/918"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/919> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "919"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Andrea Komlosy"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Work: The Last 1,000 Years"@en ;
+    schema:url "https://harshp.com/hobbies/books/919"^^xsd:anyURI .
