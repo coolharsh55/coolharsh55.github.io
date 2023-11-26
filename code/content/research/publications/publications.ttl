@@ -1680,9 +1680,9 @@
     schema:funder <http://example.com/ADAPT> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/062-WOP-PLASMA"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.8303101"^^xsd:anyURI ] ;
-    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "http://hdl.handle.net/2262/91662"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/28977/"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://w3id.org/plasma"^^xsd:anyURI ] ;
-    # hpcom:supplementary <https://harshp.com/research/presentations#2018-WOP-SHACL> ;
+    hpcom:supplementary <https://harshp.com/research/presentations#2023-WOP-PLASMA> ;
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
@@ -1690,3 +1690,29 @@
     ] ;
     hpcom:publishing_attempt "ISWC 2023";
     hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> a schema:ScholarlyArticle, hpcom:ShortPaper, hpcom:RenderedItem ;
+    schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
+    schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:security ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:data-breach ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/PaulRyan> <http://example.com/GeorgPKrog> <http://example.com/MartinCrane> <http://example.com/RobBrennan> ) ;
+    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/JURIX2023> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ; 
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/94371"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/record/4315607"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/dpv-ropa"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2020-JURIX-DPV-ROPA> ;
+    hpcom:peer_reviewed true ;
+    schema:status "to be presented"@en ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/063-towards-semantic-specification-GDPR-data-breach.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .
