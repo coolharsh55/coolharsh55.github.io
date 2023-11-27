@@ -1,0 +1,410 @@
+<p><strong>Abstract:</strong> Data breaches and other security incidents are an emerging challenge in the digital era. The General Data Protection Regulation (GDPR) requires conducting an impact assessment to understand the effects of the breach, and to then notify authorities and affected individuals in certain cases.
+Communication of this information typically takes place via conventional mediums such as emails and forms on the websites of authorities, and is a manual process.
+To assist in developing tools to support data breach investigations, and to enable automated systems for assisting with breach assessments and GDPR compliance, we present a machine-readable specification for the representation and documentation of information related to data breaches and their communications. 
+The specification uses current requirements from the GDPR obligations and authoritative guidelines.
+To represent information, it extends the Data Privacy Vocabulary (DPV) by introducing new concepts required for data breach relevant information.</p>
+<p><strong>Keywords:</strong>GDPR, data breach, cybersecurity, semantics</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The General Data Protection Regulation (GDPR) requires data breach
+notifications to be sent to authorities and data subjects based on an
+assessment of the breach’s impact on rights and freedoms. Conducting
+such assessments is difficult in practice due to lack of knowledge
+regarding what risks exist and how to associate them with the factual
+information available regarding a breach. Further, reporting the breach
+also involves additional information not explicitly required by the GDPR
+- for example the Irish Data Protection Commission’s data breach
+reporting form provides a specific list for ‘nature of the breach’ which
+includes events such as ‘processing error’ and ‘unauthorised access to
+personal data’ via different mediums. Other authorities’ websites have
+similar forms that provide a different set of information. With
+increased cybersecurity reporting requirements through laws such as the
+Network and Information Security Directive (NIS2, 2023) and Digital
+Operational Resilience Act (DORA, 2023), the process of reporting
+security incidents such as data breaches will require more information
+and communications amongst a larger pool of parties. Relying on
+conventional documentation and communication measures therefore
+represents a barrier to effective compliance.</p>
+<p>We present a specification to define information regarding data
+breaches in a machine-readable form (by using semantic web standards
+such as RDF) so as to address these challenge and enable the development
+of interoperable tools for assisting organisations and authorities in
+their data breach requirements. In this, we reuse and extend the Data
+Privacy Vocabulary (DPV) <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[1]</a></span> which enables machine-readable
+representation of information related to GDPR, and has been used for
+documenting Register of Processing Activities (ROPA) <span
+class="citation" data-cites="ryanDPCatSpecificationInteroperable2022"><a
+href="#ref-ryanDPCatSpecificationInteroperable2022"
+role="doc-biblioref">[2]</a></span> and Data Protection Impact
+Assessments (DPIA) <span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span>. Our contributions provide the
+necessary concepts to represent information about data breaches,
+documentation pertaining to reporting of data breaches, and
+notifications communicated regarding data breaches. The resulting
+specification<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> is being published by the W3C Data
+Privacy Vocabularies and Community Group (DPVCG) to provide data breach
+concepts and guidance as well as in the continued refinement of the risk
+and impact assessments.</p>
+<h2 id="background-and-state-of-the-art">Background and State of the
+Art</h2>
+<p>GDPR Article 4-12 defines a ‘personal data breach’ as "a breach of
+security leading to the accidental or unlawful destruction, loss,
+alteration, unauthorised disclosure of, or access to, personal data
+transmitted, stored or otherwise processed." The European Data
+Protection Board (EDPB), in its Guidelines 9/2022 on personal data
+breach notification <span class="citation"
+data-cites="Guidelines2022Personal"><a
+href="#ref-Guidelines2022Personal" role="doc-biblioref">[4]</a></span>
+interpret this definition to formulate three categories where personal
+data is unlawfully or accidentally breached. These categories are:
+‘Confidentiality breach’ for disclosure or access; ‘Integrity breach’
+for alteration; and ‘Availability breach’ for loss of access or
+destruction. Thus, a data breach under GDPR spans a broader spectrum of
+processing activities over personal data than the conventional use of
+the term which is limited to unauthorised access. Further information on
+the requirements for handling data breaches are found in GDPR’s Articles
+33 (notifying authority), 34 (notifying data subject), 39 (DPOs), and 55
+(authorities). To assist with these obligations, data protection
+authorities such as the Irish Data Protection Commission (DPC) have
+issued guidelines <span class="citation"
+data-cites="PracticalGuidePersonal"><a
+href="#ref-PracticalGuidePersonal" role="doc-biblioref">[5]</a></span>
+and developed a form on their website for convenient reporting of data
+breach.</p>
+<p>The novelty of data breach obligations under the GDPR has attracted
+interest from diverse stakeholders. Schlackl et al. <span
+class="citation"
+data-cites="schlacklAntecedentsConsequencesData2022a"><a
+href="#ref-schlacklAntecedentsConsequencesData2022a"
+role="doc-biblioref">[6]</a></span> have analysed the causes and
+consequences of data breaches, and found that data breaches are caused
+by and affect a wide variety of domains, including internal
+organisational processes. Their analysis provides the necessary
+background information on how to link a data breach assessment to
+internal organisational processes, and how to represent the causes and
+consequences related to a data breach. We utilise these as the knowledge
+for enrichment of DPV’s risk assessment concepts, and for use within the
+data breach reports and impact assessments. The DEFeND H2020 project
+utilises machine-readable information in its “privacy by design platform
+for GDPR compliance”, which includes modules associated with data breach
+monitoring and notifications to data subjects <span class="citation"
+data-cites="pirasDEFeNDArchitecturePrivacy2019"><a
+href="#ref-pirasDEFeNDArchitecturePrivacy2019"
+role="doc-biblioref">[7]</a></span>, but does not provide details
+regarding the implementation of these features.</p>
+<p>Efforts to consolidate knowledge regarding data breaches has led to
+the creation of a “Global Data Breach Database” <span class="citation"
+data-cites="netoDevelopingGlobalData2021"><a
+href="#ref-netoDevelopingGlobalData2021"
+role="doc-biblioref">[8]</a></span> which lists the data breaches known
+to have occurred based on publicly available information. However, the
+database is rather limited in terms of available information, and its
+information is also not available in a machine-readable form for
+automated ingestion and analysis. Several initiatives exist that model
+security information in a machine-readable form, such as VERIS<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>, MISP<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>,
+and MITRE - whose taxonomies such as Common Vulerabilities and Exposures
+(CVE) <span class="citation" data-cites="CVECommonVulnerabilities"><a
+href="#ref-CVECommonVulnerabilities" role="doc-biblioref">[9]</a></span>
+are widely utilised to represent security related information. Our
+specification is complimentary to these as it concerns keeping records
+and communicating regarding data breach incidents based on regulatory
+requirements as outlined in GDPR.</p>
+<h2 id="data-breach-specification">Data Breach Specification</h2>
+<p>Based on the requirements of the GDPR and its interpretation within
+the state of the art as presented in Section 2, we define the following
+requirements for information to be provided by the specification:</p>
+<ol>
+<li><p>Information about the existence of a Data Breach i.e. whether it
+has occurred, is occurring, or has been mitigated. We term this as
+information about the ‘lifecycle’ of the breach – represented in Section
+3.1.</p></li>
+<li><p>Information about the Data Breach itself i.e. when and where did
+it occur, its cause, affected systems, data, and data subjects –
+represented in Section 3.2.</p></li>
+<li><p>Investigation of the Data Breach i.e. detection report, what has
+been affected, who has it been notified to and when – represented in
+Section 3.3.</p></li>
+<li><p>Notifications i.e. communication between entities, e.g.
+Controller to DPA, specifying information available at that point in
+time – represented in Section 3.4.</p></li>
+<li><p>Impact Assessment i.e. assessing risks to rights and freedoms of
+individuals at that point in time – represented in Section 3.5.</p></li>
+</ol>
+<h3 id="data-breach-lifecycle">Data Breach Lifecycle</h3>
+<p>A data breach incident starts when a breach is suspected or detected,
+and ends with a final report detailing impacts and mitigation measures
+taken. In addition to these, organisational processes may involve
+unclear or ambiguous information, for example - where sufficient
+information is not available to state whether a breach exists, or where
+a breach is suspected but not yet confirmed. We created the following
+stages by extending <code>dpv:Status</code> as
+<em>DataBreachStatus</em>: <code>DataBreachSuspected</code> represents
+the case where a data breach is suspected and requires discovery and
+validity of this suspicion to confirm its existence.
+<code>DataBreachDetected</code> represents the case where a data breach
+has been detected and requires determining whether it has concluded or
+is ongoing, and to ascertain its cause, nature, and effect (GDPR Article
+33). <code>DataBreachOngoing</code> represents the case where a data
+breach is currently in progress and requires identifying measures to
+stop the breach. <code>DataBreachHalted</code> and
+<code>DataBreachConcluded</code> represent cases where a data breach has
+stopped of its own accord and without any mitigations - with ’halted’
+indicating a likelihood of being resumed.
+<code>DataBreachTerminated</code> represents the case where a data
+breach has been stopped through mitigation measures taken in response
+and where does not have a likelihood of resuming.
+<code>DataBreachMitigated</code> represents the case where potential
+similar data breaches have been prevented from recurring through the use
+of mitigation measures.</p>
+<h3 id="data-breach-event">Data Breach Event</h3>
+<p>The data breach ‘<em>event</em>’ represents the occurrence of the
+breach, and for which documentation is required to be maintained in
+terms of temporal properties i.e. when the breach started and ended - as
+its duration. This is indicated using the DCMI Metadata Terms<a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>. The ‘<em>cause</em>’ of a breach is
+the event which led to the breach taking place. It is represented using
+the concept <code>Threat</code> and is associated with the breach using
+<code>causedByThreat</code> relation. An example of a source of data
+breach is where an employee left their office computer unattended
+without locking it. The lack of security in securing office machines is
+a vulnerability, represented using the concept
+<code>Vulnerability</code> and associated using the relation
+<code>hasVulnerability</code>. Vulnerabilities represent a weakness or
+limitation that was exploited in order to create the source event which
+then leads to the data breach. Vulnerabilities are not necessary for a
+source to realise, for example an accident can occur without a
+vulnerability. The ’<em>source</em>’ of a breach is the actor or
+non-actor source that caused the breach to take place through
+intentional or unintentional means, and regardless of malicious intent
+or accidents. It is represented by <code>ThreatSource</code> and
+associated using <code>hasThreatSource</code>. The ‘<em>type</em>’ of a
+data breach is based on EDPB’s categorisations as
+‘<em>confidentiality</em>’, ‘<em>integrity</em>’, and
+‘<em>availability</em>’ based on the effect of the breach .</p>
+<h3 id="data-breach-reports">Data Breach Reports</h3>
+<p><code>DataBreachReport</code> represents documentation of
+information, with further subclasses to represent different reporting
+requirements e.g. when breach is detected and is being investigated, and
+is classified based on reporting requirements under GDPR as -
+preliminary, ongoing, and concluded. A preliminary investigation report
+provides details to be reported within 72 hours of the breach being
+detected, and is followed up by zero or more ongoing investigation
+reports, and a final conclusion report. In reporting data breaches,
+authorities specifically ask for the involved Controllers and Processors
+which are specified using the relations
+<code>dpv:hasDataController</code> and <code>dpv:hasDataProcessor</code>
+respectively. In addition, authorities also ask about ‘cross-border’
+breaches, which is represented using <code>dpv:hasJurisdiction</code>
+and the relevant EU member states.</p>
+<h3 id="data-breach-notifications">Data Breach Notifications</h3>
+<p><em>DataBreachNotice</em> represents information being communicated
+between entities, with specific notices defined for information sent to
+an Authority, a Controller, a Processor, or a Data Subject. Metadata
+about the notices is represented using DCMI Metadata Terms and
+Schema.org vocabularies, e.g. <code>dct:medium</code>,
+<code>dct:format</code>, <code>schema:Message</code> to describe an
+email being sent. To indicate whether some notifications are being
+planned, are ongoing, or have been completed -
+<code>dpv:ActivityStatus</code> is to be used.</p>
+<h3 id="data-breach-impact-assessment">Data Breach Impact
+Assessment</h3>
+<p>A Data Breach Impact Assessment (DBIA) is similar to a Data
+Protection Impact Assessment (DPIA) in that it is undertaken to assess
+the risks and impacts to data subjects, where the DPIA is intended to
+address a planned process and the DBIA relates to a data breach that has
+taken place. A DBIA is essential in order to determine whether to notify
+authorities and data subjects regarding the breach, and to plan the
+necessary measures to handle the breach. If the DBIA indicates that the
+breach is likely to result in a risk to the rights and freedoms of
+individuals - then the authorities have to be notified. If the DBIA
+indicates a high risk to the rights and freedoms of individuals - then
+both the authorities and data subjects have to be notified.</p>
+<p>A DBIA is based on the information available at a given time.
+Therefore, it can be undertaken at any stage in the breach handling
+process - from preliminary where fewer information is known to final
+where all information is available. to represent a DBIA, the DPV concept
+<code>dpv:ImpactAssessment</code> is extended as
+<code>DataBreachImpactAssessment</code>. DCMI terms are used to
+represent relevant metadata similar to the breach reports (e.g.
+temporal, provenance).</p>
+<p>A Data Breach Impact Assessment (DBIA) contains three categories of
+information:</p>
+<ol>
+<li><p>Information about the Breach: Type of breach; Nature,
+sensitivity, and volume of personal data; Special characteristics of the
+individual; Special characteristics of the data controller; Number of
+affected individuals.</p></li>
+<li><p>Risk Assessment: risks and impacts to rights and freedoms, risk
+levels, likelihoods, severity of consequences, and specific risks (e.g.
+ease of identification).</p></li>
+<li><p>Outcomes: activities to be undertaken based on the
+assessment</p></li>
+</ol>
+<p>The information about the breach in terms of what data or individuals
+have been affected is the same as that present in a Data Breach Report,
+and therefore can be included through a link to the report itself or
+explicitly added to the assessment in a manner similar to that of the
+report. Information about the risk assessment includes the specifics of
+what risks are applicable, the consequences and impacts arising from it,
+their severity and likelihood, and the impacted stakeholders - including
+impacts to the rights and freedoms.</p>
+<p>Additionally, breach reporting requires information on applicability
+of specific risks - such as (re-)identification of individuals through
+breached data. To associate these risks, the existing DPV risk
+assessment terms are used e.g. wih <code>dpv:hasRisk</code> and
+<code>dpv:hasImpact</code>. Where such risks are absent, they are
+explicitly declared as <code>dpv:NotApplicable</code>. To specify the
+severity and likelihood, we reuse <em>dpv:hasSeverity</em> and
+<em>dpv:hasLikelihood</em>. Further information about risk and impact
+assessment concepts can be seen in the semantic specification for DPIA
+<span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span> which also uses DPV and provides the
+necessary concepts which are required in a DPIA and are the same within
+a DBIA.</p>
+<h2 id="conclusion-and-future-directions">Conclusion and Future
+Directions</h2>
+<p>In this article, we introduced a semantic specification for
+representing information about data breaches based on the requirements
+of the GDPR. The specification provides a machine-readable vocabulary to
+represent information regarding the data breach event, how it was
+detected, the consequent analysis of its impact on systems, data, and
+data subjects, and its communication to other entities. Through these,
+we hope to enable efficient tools and processes to handle obligations
+regarding data breaches, and to make communicating about breaches to be
+in line with existing cybersecurity methods which already use
+interoperable taxonomies and automated tooling.</p>
+<p>The specification is a preliminary work that establishes the
+framework of information required and requires analysing guidelines and
+reporting mechanisms by EU data protection authorities to create a
+common pan-EU data breach reporting framework. Through this, consistent
+and interoperable tools can be developed to assist stakeholders such as
+DPOs and authorities in tasks such as information validation, and to
+provide assistance in impact assessments by creating communal ’knowledge
+graphs’ to identify relevant risks and impacts similar to existing
+security initiatives such as MITRE and VERIS. Finally, as data breaches
+are also security incidents, the specification can also be extended for
+use with other regulatory requirements such as NIS2 and DORA.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
+<span>Data Privacy</span>,”</span> in <em>The 18th <span>International
+Conference</span> on <span>Ontologies</span>, <span>DataBases</span>,
+and <span>Applications</span> of <span>Semantics</span>
+(<span>ODBASE2019</span>)</em>, 2019, p. 17, doi: <a
+href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+<div id="ref-ryanDPCatSpecificationInteroperable2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P.
+Ryan, R. Brennan, and H. J. Pandit, <span>“<span>DPCat</span>:
+<span>Specification</span> for an <span>Interoperable</span> and
+<span>Machine-Readable Data Processing Catalogue Based</span> on
+<span>GDPR</span>,”</span> <em>Information</em>, vol. 13, no. 5, p. 244,
+May 2022 [Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/13/5/244">https://www.mdpi.com/2078-2489/13/5/244</a>.
+[Accessed: 10-May-2022]</div>
+</div>
+<div id="ref-panditSemanticSpecificationData2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“A <span>Semantic Specification</span> for <span>Data
+Protection Impact Assessments</span> (<span>DPIA</span>),”</span>
+<em>Towards a Knowledge-Aware AI</em>, pp. 36–50, 2022 [Online].
+Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/SSW220007">https://ebooks.iospress.nl/doi/10.3233/SSW220007</a>.
+[Accessed: 20-Sep-2022]</div>
+</div>
+<div id="ref-Guidelines2022Personal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline"><span>“Guidelines 9/2022 on personal data
+breach notification under <span>GDPR</span> | <span>European Data
+Protection Board</span>.”</span> [Online]. Available: <a
+href="https://edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-92022-personal-data-breach-notification-under_en">https://edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-92022-personal-data-breach-notification-under_en</a>.
+[Accessed: 17-Sep-2023]</div>
+</div>
+<div id="ref-PracticalGuidePersonal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><span>“A <span>Practical Guide</span> to
+<span>Personal Data Breach Notifications</span> under the
+<span>GDPR</span> | <span>Data Protection Commission</span>,”</span>
+<em>A Practical Guide to Personal Data Breach Notifications under the
+GDPR | Data Protection Commission</em>. [Online]. Available: <a
+href="https://www.dataprotection.ie/dpc-guidance/breach-notification-practical-guide">https://www.dataprotection.ie/dpc-guidance/breach-notification-practical-guide</a>.
+[Accessed: 17-Sep-2023]</div>
+</div>
+<div id="ref-schlacklAntecedentsConsequencesData2022a" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">F.
+Schlackl, N. Link, and H. Hoehle, <span>“Antecedents and consequences of
+data breaches: <span>A</span> systematic review,”</span> <em>Information
+&amp; Management</em>, vol. 59, no. 4, p. 103638, Jun. 2022 [Online].
+Available: <a
+href="https://www.sciencedirect.com/science/article/pii/S0378720622000507">https://www.sciencedirect.com/science/article/pii/S0378720622000507</a>.
+[Accessed: 17-Sep-2023]</div>
+</div>
+<div id="ref-pirasDEFeNDArchitecturePrivacy2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">L.
+Piras <em>et al.</em>, <span>“<span>DEFeND Architecture</span>: <span>A
+Privacy</span> by <span>Design Platform</span> for <span>GDPR
+Compliance</span>,”</span> in <em>Trust, <span>Privacy</span> and
+<span>Security</span> in <span>Digital Business</span></em>, 2019, pp.
+78–93, doi: <a
+href="https://doi.org/10.1007/978-3-030-27813-7_6">10.1007/978-3-030-27813-7_6</a>.
+</div>
+</div>
+<div id="ref-netoDevelopingGlobalData2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">N.
+N. Neto, S. Madnick, A. M. G. D. Paula, and N. M. Borges,
+<span>“Developing a <span>Global Data Breach Database</span> and the
+<span>Challenges Encountered</span>,”</span> <em>Journal of Data and
+Information Quality</em>, vol. 13, no. 1, pp. 3:1–3:33, Jan. 2021
+[Online]. Available: <a
+href="https://dl.acm.org/doi/10.1145/3439873">https://dl.acm.org/doi/10.1145/3439873</a>.
+[Accessed: 17-Sep-2023]</div>
+</div>
+<div id="ref-CVECommonVulnerabilities" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline"><span>“<span>CVE</span> - <span>Common
+Vulnerabilities</span> and <span>Exposures</span>.”</span> [Online].
+Available: <a href="https://cve.mitre.org/">https://cve.mitre.org/</a>.
+[Accessed: 17-Sep-2023]</div>
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://w3id.org/dpv/guides/data-breach"
+class="uri">https://w3id.org/dpv/guides/data-breach</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://verisframework.org/"
+class="uri">https://verisframework.org/</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.misp-project.org/index.html"
+class="uri">https://www.misp-project.org/index.html</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a
+href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+class="uri">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
