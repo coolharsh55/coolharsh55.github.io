@@ -9951,12 +9951,16 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "686"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-08T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "MaddAddam"@en ;
+    schema:review """A meh story, like eating a lettuce that fell out from an amazing sandwich. The entire book tells a mopping story about some people who just happen to know each other across the previous two books, and after humanity has been wiped out. Their biggest problems are two - yes just TWO - crazy Mad Max style villains who don't actually do a lot. There was the big back story of the titular Maddaddam, but even that turned out to be more of a gossip episode and a shoulder shrug rather than the amazing sci-fi bomb that dropped in Book 1 or the hippie nature-loving commune that survived in Book 2. Disappointed in the book - and also in the realisation that I was not the audience for this book."""@en ;
     schema:url "https://harshp.com/hobbies/books/686"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/687> a hpcom:RenderedItem, hpcom:BookReading,
@@ -13105,16 +13109,17 @@
 
 <https://harshp.com/hobbies/books/902> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "902"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2023-11-28T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "City of Last Chances"@en ;
+    schema:review """A fantasy book by Tchaikovsky with adult themes makes for a melancholic but interesting read. There is magic - with rules, there are demons, races, gray shaded characters, and to top it all there is the political discourse about fascism, colonialism, and anarchy. I was waiting for the big payoff - and there were certainly some interesting twists and turns, but it didn't feel there was a particular highlight as the book came to an end. There is meant to be a sequel releasing soon while I will read, but that is more because I admire Tchaikovsky's imagination and prolific writing more than the book itself."""@en ;
     schema:url "https://harshp.com/hobbies/books/902"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/903> a schema:Book, hpcom:RenderedItem ;
@@ -13251,16 +13256,17 @@
 
 <https://harshp.com/hobbies/books/912> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "912"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2023-12-04T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Diary"@en ;
+    schema:review """A(nother) shock-horror novel by Palahniuk that offers more disgusting, revolting, and profane ideas in an entertaining package. The story itself didn't make much sense - in being realistic, but this would be a good movie or TV show you watch for the 'vibe'."""@en ;
     schema:url "https://harshp.com/hobbies/books/912"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/913> a schema:Book, hpcom:RenderedItem ;
@@ -13366,3 +13372,45 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Work: The Last 1,000 Years"@en ;
     schema:url "https://harshp.com/hobbies/books/919"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/920> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "920"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2007"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Halting State"@en ;
+    schema:url "https://harshp.com/hobbies/books/920"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/921> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "921"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2006"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Glasshouse"@en ;
+    schema:url "https://harshp.com/hobbies/books/921"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/922> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "922"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Tade Thompson"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Rosewater Insurrection"@en ;
+    schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
