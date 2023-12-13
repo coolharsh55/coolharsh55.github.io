@@ -1277,10 +1277,12 @@
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/pay-or-surveillance-ads.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:blog,
-        hptag:chores,
-        hptag:joy,
-        hptag:life ;
+    hpcom:tag hptag:MetaCompany,
+        hptag:ads,
+        hptag:blog,
+        hptag:economics,
+        hptag:privacy,
+        hptag:surveillance ;
     schema:author <https://harshp.com/me> ;
     schema:datePublished "2023-11-12T22:15:00"^^xsd:dateTime ;
     schema:description "Meta's new pay or consent to surveillance ads should not be legal - my thoughts illustrate why based on social premises alone without getting into legal explanations"@en ;
@@ -13549,12 +13551,16 @@ book:686 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "686"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-08T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "MaddAddam"@en ;
+    schema:review "A meh story, like eating a lettuce that fell out from an amazing sandwich. The entire book tells a mopping story about some people who just happen to know each other across the previous two books, and after humanity has been wiped out. Their biggest problems are two - yes just TWO - crazy Mad Max style villains who don't actually do a lot. There was the big back story of the titular Maddaddam, but even that turned out to be more of a gossip episode and a shoulder shrug rather than the amazing sci-fi bomb that dropped in Book 1 or the hippie nature-loving commune that survived in Book 2. Disappointed in the book - and also in the realisation that I was not the audience for this book."@en ;
     schema:url "https://harshp.com/hobbies/books/686"^^xsd:anyURI .
 
 book:687 a hpcom:Book,
@@ -16391,7 +16397,8 @@ book:851 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "851"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:EBook,
+        hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Mireille Hildebrandt"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
@@ -16551,6 +16558,7 @@ book:862 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "862"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Nancy Fraser"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
@@ -17172,12 +17180,16 @@ book:902 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "902"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "City of Last Chances"@en ;
+    schema:review "A fantasy book by Tchaikovsky with adult themes makes for a melancholic but interesting read. There is magic - with rules, there are demons, races, gray shaded characters, and to top it all there is the political discourse about fascism, colonialism, and anarchy. I was waiting for the big payoff - and there were certainly some interesting twists and turns, but it didn't feel there was a particular highlight as the book came to an end. There is meant to be a sequel releasing soon while I will read, but that is more because I admire Tchaikovsky's imagination and prolific writing more than the book itself."@en ;
     schema:url "https://harshp.com/hobbies/books/902"^^xsd:anyURI .
 
 book:903 a hpcom:RenderedItem,
@@ -17263,11 +17275,16 @@ book:909 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "909"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Fernanda Melchor"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
+    schema:isPartOf list:cork ;
     schema:name "Paradais"@en ;
+    schema:review "A new voice with an interesting way of writing and describing what is essentially two almost adults wrecking havoc on their own lives. Enjoyed reading this, even if it could be considered off putting, I enjoyed it in the same vein as Palahniuk would be considered enjoyable. Looking forward to reading more from the author in the future."@en ;
     schema:url "https://harshp.com/hobbies/books/909"^^xsd:anyURI .
 
 book:91 a hpcom:Book,
@@ -17309,12 +17326,16 @@ book:912 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "912"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-04T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Chuck Palahniuk"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Diary"@en ;
+    schema:review "A(nother) shock-horror novel by Palahniuk that offers more disgusting, revolting, and profane ideas in an entertaining package. The story itself didn't make much sense - in being realistic, but this would be a good movie or TV show you watch for the 'vibe'."@en ;
     schema:url "https://harshp.com/hobbies/books/912"^^xsd:anyURI .
 
 book:913 a hpcom:RenderedItem,
@@ -17337,23 +17358,77 @@ book:914 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "914"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Brian Cox and Jeff Forshaw"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:DCU ;
     schema:name "Black Holes: The key to understanding the universe"@en ;
+    schema:review "Black holes are fascinating - pushing the boundary between reality, science, and imagination. Based on this premise I picked this book upon coming across it in the book shop. Famous name for making science easy and online reviews complaining the book is not beginner friendly were positive reasons to buy it. I have read through several physics books at this point - and unfortunately this book is indeed severely dense at places by assuming people 'just get it' when described and whipping up equations that would be at home in a physics textbook. I much rather prefer the explanatory discourse that walks us through things to me scientific thinking more 'accessible' rather than text that says 'look how cool science is' with complex things."@en ;
     schema:url "https://harshp.com/hobbies/books/914"^^xsd:anyURI .
 
 book:915 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "915"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-11-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Evie Woods"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
+    schema:isPartOf list:DCU ;
     schema:name "The Lost Bookshop"@en ;
+    schema:review "Picked this up because I like books, ergo I like bookshops, and 'book hunting' is something that resonates with me. The story is about a lost bookshop and how it shapes the lives of three characters. Its set in Dublin, featuring someone who is doing a PhD, there's mention of Trinity and Ha'Penny and other local areas - so of course I picked it up and gave it a go. Was an okay book, enjoyable as a sort of sheepish TV movie that I wouldn't otherwise go for. The bibliophilia is what enticed me."@en ;
     schema:url "https://harshp.com/hobbies/books/915"^^xsd:anyURI .
+
+book:916 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "916"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Cory Doctorow"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Lost Cause"@en ;
+    schema:url "https://harshp.com/hobbies/books/916"^^xsd:anyURI .
+
+book:917 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "917"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "R. Trebor Scholz"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Own this!: How platform cooperatives help workers build a democratic Internet"@en ;
+    schema:url "https://harshp.com/hobbies/books/917"^^xsd:anyURI .
+
+book:918 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "918"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Matteo Pasquinelli"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Eye of the Master"@en ;
+    schema:url "https://harshp.com/hobbies/books/918"^^xsd:anyURI .
+
+book:919 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "919"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Andrea Komlosy"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Work: The Last 1,000 Years"@en ;
+    schema:url "https://harshp.com/hobbies/books/919"^^xsd:anyURI .
 
 book:92 a hpcom:Book,
         hpcom:BookReading,
@@ -17366,6 +17441,41 @@ book:92 a hpcom:Book,
     schema:isbn "9780140449235"^^xsd:string ;
     schema:name "Beyond Good and Evil"@en ;
     schema:url "https://harshp.com/hobbies/books/92"^^xsd:anyURI .
+
+book:920 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "920"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2007"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Halting State"@en ;
+    schema:url "https://harshp.com/hobbies/books/920"^^xsd:anyURI .
+
+book:921 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "921"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Charles Stross"^^xsd:string ;
+    schema:dateCreated "2006"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Glasshouse"@en ;
+    schema:url "https://harshp.com/hobbies/books/921"^^xsd:anyURI .
+
+book:922 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "922"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Tade Thompson"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Rosewater Insurrection"@en ;
+    schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
 
 book:93 a hpcom:Book,
         hpcom:BookReading,
@@ -19951,6 +20061,28 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "TCD WITIDTM_2022 Course" ] ;
     schema:url "https://harshp.com/research/presentations#2022-WITIDTM"^^xsd:anyURI .
 
+<https://harshp.com/research/presentations#2023-DCU-CA349> a schema:PresentationDigitalDocument ;
+    schema:about [ a hpcom:Link ;
+            schema:name "IT Architecure - DCU" ;
+            schema:url "https://www101.dcu.ie/registry/module_contents_no_mod.php?function=2&subcode=CA349"^^xsd:anyURI ] ;
+    schema:category "Guest Lecture"@en ;
+    schema:datePublished "2023-11-13T12:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/DCU-CA349/DCU-CA349-GDPR.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "KEY" ;
+            schema:url "https://harshp.com/presentations/2023/DCU-CA349/DCU-CA349-GDPR.key"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/DCU-CA349/"^^xsd:anyURI ] ;
+    schema:identifier "2023-DCU-CA349" ;
+    schema:name "GDPR and Cloud"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication [ a schema:EducationEvent ;
+            schema:name "DCU CA349 IT Architecture" ] ;
+    schema:url "https://harshp.com/research/presentations#2023-DCU-CA349"^^xsd:anyURI .
+
 <https://harshp.com/research/presentations#2023-DCU-CA4025> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
             schema:name "CA4025 Application Domains 3 Guest Lecture" ;
@@ -20015,6 +20147,28 @@ list:owned_unread a hpcom:RenderedItem,
     schema:performer <https://harshp.com/me> ;
     schema:publication <https://op.europa.eu/en/web/endorse-2023/> ;
     schema:url "https://harshp.com/research/presentations#2023-ENDORSE-DPV"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2023-LegumeLegacy-OpenScience> a schema:PresentationDigitalDocument ;
+    schema:about [ a hpcom:Link ;
+            schema:name "Open Science" ;
+            schema:url "https://en.wikipedia.org/wiki/Open_science"^^xsd:anyURI ] ;
+    schema:category "Guest Lecture"@en ;
+    schema:datePublished "2023-11-22T09:30:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/LegumeLegacy-OpenScience/LegumeLegacy-OpenScience.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "Canva" ;
+            schema:url "https://www.canva.com/design/DAF01bejU40/XrBuHwpPaj3HHsMguqtclA/view"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/LegumeLegacy-OpenScience/"^^xsd:anyURI ] ;
+    schema:identifier "2023-LegumeLegacy-OpenScience" ;
+    schema:name "Open Science & Data Management"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication [ a schema:EducationEvent ;
+            schema:name "LegumeLegacy ITN Training" ] ;
+    schema:url "https://harshp.com/research/presentations#2023-LegumeLegacy-OpenScience"^^xsd:anyURI .
 
 <https://harshp.com/research/presentations#2023-TCD-KE> a schema:PresentationDigitalDocument ;
     schema:about [ a hpcom:Link ;
@@ -20856,36 +21010,62 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info14020114"^^xsd:anyURI .
 
-<https://harshp.com/research/publications/062-WOP-PLASMA> a hpcom:FullPaper,
+<https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> a hpcom:RenderedItem,
+        hpcom:ShortPaper,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/PaulRyan> <http://example.com/GeorgPKrog> <http://example.com/MartinCrane> <http://example.com/RobBrennan> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/063-towards-semantic-specification-GDPR-data-breach.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:tag hptag:GDPR,
+        hptag:data-breach,
+        hptag:security,
+        hptag:semantic-web ;
+    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
+    schema:publication <http://example.com/conferences/JURIX2023> ;
+    schema:status "to be presented"@en ;
+    schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV> a hpcom:FullPaper,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/062-WOP-PLASMA"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "zenodo" ;
-            schema:url "https://doi.org/10.5281/zenodo.8303101"^^xsd:anyURI ] ;
-    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
-    hpcom:author_other <https://harshp.com/me> ;
+            schema:url "https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV"^^xsd:anyURI ] ;
+    hpcom:author_lead ( <https://harshp.com/me> <http://example.com/BeatrizEsteves> ) ;
     hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:publishing_attempt "ISWC 2023" ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
-            schema:url "https://w3id.org/plasma"^^xsd:anyURI ] ;
-    hpcom:tag hptag:DPV,
-        hptag:ODP,
-        hptag:Solid,
+            schema:url "https://w3id.org/duodrl/repo"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "demo code" ;
+            schema:url "https://w3id.org/duodrl/demo"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "demo app" ;
+            schema:url "https://w3id.org/duodrl/app"^^xsd:anyURI ] ;
+    hpcom:tag hptag:GDPR,
+        hptag:ODRL,
+        hptag:health,
         hptag:semantic-web ;
-    schema:datePublished "2023-08-30T00:00:00"^^xsd:dateTime ;
-    schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
-    schema:funder <http://example.com/ADAPT> ;
+    schema:datePublished "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:description "The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts."@en ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> ) ;
     schema:identifier ""^^xsd:anyURI ;
-    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
-    schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
-    schema:publication <http://example.com/workshops/WOP2023> ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project;"@en ;
+    schema:name "Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV"@en ;
+    schema:publisher <http://www.semantic-web-journal.net/> ;
+    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
@@ -21870,9 +22050,6 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/FajarEkaputra> a schema:Person ;
     schema:name "Fajar Ekaputra" .
 
-<http://example.com/GeorgPKrog> a schema:Person ;
-    schema:name "Georg Philip Krog" .
-
 <http://example.com/HannahDevinney> a schema:Person ;
     schema:name "Hannah Devinney" .
 
@@ -21884,6 +22061,9 @@ list:owned_unread a hpcom:RenderedItem,
 
 <http://example.com/MandanKazzazi> a schema:Person ;
     schema:name "Mandan Kazzazi" .
+
+<http://example.com/MartinCrane> a schema:Person ;
+    schema:name "Martin Crane" .
 
 <http://example.com/MartinDegeling> a schema:Person ;
     schema:name "Martin Degeling" .
@@ -22050,6 +22230,16 @@ list:owned_unread a hpcom:RenderedItem,
     schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI .
 
+<http://example.com/conferences/JURIX2023> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "JURIX" ;
+    schema:endDate "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:location "Maastricht, Netherlands" ;
+    schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
+    schema:startDate "2023-12-18T00:00:00"^^xsd:dateTime ;
+    schema:url "https://jurix23.maastrichtlawtech.eu/"^^xsd:anyURI .
+
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
     schema:alternateName "UMAP" ;
@@ -22129,26 +22319,9 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "ESWC 2018 Satellite Events"@en ;
     schema:superEvent <http://example.com/conferences/ESWC2018> .
 
-<http://example.com/workshops/WOP2023> a schema:PublicationEvent ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:alternateName "WOP" ;
-    schema:endDate "2023-11-07T00:00:00"^^xsd:dateTime ;
-    schema:location "Monterey, California, USA" ;
-    schema:name "Workshop on Ontology Design and Patterns"@en ;
-    schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
-    schema:superEvent <http://example.com/conferences/ISWC2023> ;
-    schema:url "https://odpa.github.io/workshop-on-ontology-design-and-patterns/2023/index.html"^^xsd:anyURI .
-
 <http://publish.ucc.ie/researchprofiles/D005/aoriordan> a schema:Person ;
     schema:name "Adrian O'Riordan" ;
     schema:url "http://publish.ucc.ie/researchprofiles/D005/aoriordan"^^xsd:anyURI .
-
-<http://www.semantic-web-journal.net/> a hpcom:ReviewingEvent,
-        schema:Periodical ;
-    schema:alternateName "SWJ" ;
-    schema:issn "1570-0844" ;
-    schema:name "Semantic Web Journal"@en ;
-    schema:url "http://www.semantic-web-journal.net/" .
 
 hpview:BlogIndexView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
@@ -23093,6 +23266,25 @@ hpview:StoryView a hpcom:View ;
     schema:performer <http://example.com/AneliaKurteva> ;
     schema:publication <https://events.kmi.open.ac.uk/trusting-decentralised-knowledge-graphs-and-web-data/#eswc> ;
     schema:url "https://harshp.com/research/presentations#2023-TrusDeKW-DRQ"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2023-WOP-PLASMA> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/062-WOP-PLASMA> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2023-11-06T12:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/WOP-PLASMA/WOP23_PLASMA_slides.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/WOP-PLASMA/"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF (zenodo)" ;
+            schema:url "https://zenodo.org/doi/10.5281/zenodo.8303101"^^xsd:anyURI ] ;
+    schema:identifier "2023-WOP-PLASMA" ;
+    schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
+    schema:performer <http://example.com/BeatrizEsteves> ;
+    schema:publication <http://example.com/workshops/WOP2023> ;
+    schema:url "https://harshp.com/research/presentations#2023-WOP-PLASMA"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/protect> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -24443,6 +24635,42 @@ hpview:StoryView a hpcom:View ;
     schema:publication <http://example.com/conferences/SEMANTiCS2023> ;
     schema:url "https://doi.org/10.3233/SSW230015"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/062-WOP-PLASMA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/062-WOP-PLASMA"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://doi.org/10.5281/zenodo.8303101"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url "https://doras.dcu.ie/28977/"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/BeatrizEsteves> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "ISWC 2023" ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://w3id.org/plasma"^^xsd:anyURI ],
+        <https://harshp.com/research/presentations#2023-WOP-PLASMA> ;
+    hpcom:tag hptag:DPV,
+        hptag:ODP,
+        hptag:Solid,
+        hptag:semantic-web ;
+    schema:datePublished "2023-08-30T00:00:00"^^xsd:dateTime ;
+    schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
+    schema:publication <http://example.com/workshops/WOP2023> ;
+    schema:url ""^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ] ;
@@ -24508,6 +24736,11 @@ hptag:LotR a hpcom:RenderedItem,
     schema:name "LotR" ;
     schema:url "https://harshp.com/tags/LotR"^^xsd:anyURI .
 
+hptag:MetaCompany a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Meta (company)"@en ;
+    schema:url "https://harshp.com/tags/MetaCompany"^^xsd:anyURI .
+
 hptag:Portal2 a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Portal2" ;
@@ -24548,6 +24781,11 @@ hptag:accountability a hpcom:RenderedItem,
     schema:name "accountability"@en ;
     schema:url "https://harshp.com/tags/accountability"^^xsd:anyURI .
 
+hptag:ads a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ads"@en ;
+    schema:url "https://harshp.com/tags/ads"^^xsd:anyURI .
+
 hptag:age a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "age" ;
@@ -24583,6 +24821,11 @@ hptag:checklist a hpcom:RenderedItem,
     schema:name "checklist"@en ;
     schema:url "https://harshp.com/tags/checklist"^^xsd:anyURI .
 
+hptag:chores a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "chores"@en ;
+    schema:url "https://harshp.com/tags/chores"^^xsd:anyURI .
+
 hptag:code a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "code" ;
@@ -24613,6 +24856,11 @@ hptag:dark-patterns a hpcom:RenderedItem,
     schema:name "dark-patterns"@en ;
     schema:url "https://harshp.com/tags/dark-patterns"^^xsd:anyURI .
 
+hptag:data-breach a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "data-breach"@en ;
+    schema:url "https://harshp.com/tags/data-breach"^^xsd:anyURI .
+
 hptag:data-value a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "data-value"@en ;
@@ -24637,6 +24885,11 @@ hptag:dreams a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "dreams" ;
     schema:url "https://harshp.com/tags/dreams"^^xsd:anyURI .
+
+hptag:economics a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "economics"@en ;
+    schema:url "https://harshp.com/tags/economics"^^xsd:anyURI .
 
 hptag:experimental a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24717,6 +24970,11 @@ hptag:journey a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "journey" ;
     schema:url "https://harshp.com/tags/journey"^^xsd:anyURI .
+
+hptag:joy a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "joy"@en ;
+    schema:url "https://harshp.com/tags/joy"^^xsd:anyURI .
 
 hptag:language a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -24843,11 +25101,6 @@ hptag:research a hpcom:RenderedItem,
     schema:name "research" ;
     schema:url "https://harshp.com/tags/research"^^xsd:anyURI .
 
-hptag:security a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "security" ;
-    schema:url "https://harshp.com/tags/security"^^xsd:anyURI .
-
 hptag:sleep a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "sleep"@en ;
@@ -24877,6 +25130,11 @@ hptag:sun a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "sun" ;
     schema:url "https://harshp.com/tags/sun"^^xsd:anyURI .
+
+hptag:surveillance a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "surveillance"@en ;
+    schema:url "https://harshp.com/tags/surveillance"^^xsd:anyURI .
 
 hptag:survey a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25004,6 +25262,9 @@ hptag:workshop a hpcom:RenderedItem,
 
 <http://example.com/GaryMunnelly> a schema:Person ;
     schema:name "Gary Munnelly" .
+
+<http://example.com/GeorgPKrog> a schema:Person ;
+    schema:name "Georg Philip Krog" .
 
 <http://example.com/JavierFernandez> a schema:Person ;
     schema:name "Javier Fernandez" .
@@ -25265,6 +25526,23 @@ hptag:workshop a hpcom:RenderedItem,
     schema:superEvent <http://example.com/conferences/ADBIS2018> ;
     schema:url "https://www.iit.cnr.it/telerise2018/"^^xsd:anyURI .
 
+<http://example.com/workshops/WOP2023> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:alternateName "WOP" ;
+    schema:endDate "2023-11-07T00:00:00"^^xsd:dateTime ;
+    schema:location "Monterey, California, USA" ;
+    schema:name "Workshop on Ontology Design and Patterns"@en ;
+    schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/ISWC2023> ;
+    schema:url "https://odpa.github.io/workshop-on-ontology-design-and-patterns/2023/index.html"^^xsd:anyURI .
+
+<http://www.semantic-web-journal.net/> a hpcom:ReviewingEvent,
+        schema:Periodical ;
+    schema:alternateName "SWJ" ;
+    schema:issn "1570-0844" ;
+    schema:name "Semantic Web Journal"@en ;
+    schema:url "http://www.semantic-web-journal.net/" .
+
 <http://www.unipune.ac.in/> a schema:CollegeOrUniversity ;
     schema:address "Pune, India" ;
     schema:name "Pune University" ;
@@ -25434,11 +25712,6 @@ hptag:NLP a hpcom:RenderedItem,
     schema:name "NLP"@en ;
     schema:url "https://harshp.com/tags/NLP"^^xsd:anyURI .
 
-hptag:ODRL a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ODRL"@en ;
-    schema:url "https://harshp.com/tags/ODRL"^^xsd:anyURI .
-
 hptag:SHACL a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "SHACL"@en ;
@@ -25454,11 +25727,6 @@ hptag:bash a hpcom:RenderedItem,
     schema:name "bash" ;
     schema:url "https://harshp.com/tags/bash"^^xsd:anyURI .
 
-hptag:chores a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "chores"@en ;
-    schema:url "https://harshp.com/tags/chores"^^xsd:anyURI .
-
 hptag:event a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "event" ;
@@ -25469,20 +25737,10 @@ hptag:experience a hpcom:RenderedItem,
     schema:name "experience" ;
     schema:url "https://harshp.com/tags/experience"^^xsd:anyURI .
 
-hptag:health a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "health" ;
-    schema:url "https://harshp.com/tags/health"^^xsd:anyURI .
-
 hptag:humanities a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "humanities"@en ;
     schema:url "https://harshp.com/tags/humanities"^^xsd:anyURI .
-
-hptag:joy a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "joy"@en ;
-    schema:url "https://harshp.com/tags/joy"^^xsd:anyURI .
 
 hptag:kindle a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25513,6 +25771,11 @@ hptag:reverse-engineering a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "reverse-engineering" ;
     schema:url "https://harshp.com/tags/reverse-engineering"^^xsd:anyURI .
+
+hptag:security a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "security" ;
+    schema:url "https://harshp.com/tags/security"^^xsd:anyURI .
 
 hptag:server a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25644,6 +25907,11 @@ hptag:GPC a hpcom:RenderedItem,
     schema:name "GPC"@en ;
     schema:url "https://harshp.com/tags/GPC"^^xsd:anyURI .
 
+hptag:ODRL a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ODRL"@en ;
+    schema:url "https://harshp.com/tags/ODRL"^^xsd:anyURI .
+
 hptag:ROPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Register of Processing Activities"@en ;
@@ -25683,6 +25951,11 @@ hptag:harshp.com a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "harshp.com" ;
     schema:url "https://harshp.com/tags/harshp.com"^^xsd:anyURI .
+
+hptag:health a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "health" ;
+    schema:url "https://harshp.com/tags/health"^^xsd:anyURI .
 
 hptag:horror a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -25740,9 +26013,6 @@ hptag:sci-fi a hpcom:RenderedItem,
 
 <http://example.com/EnsarHadziselimovic> a schema:Person ;
     schema:name "Ensar Hadziselimovic" .
-
-<http://example.com/RobBrennan> a schema:Person ;
-    schema:name "Rob Brennan" .
 
 <http://example.com/VitorJesus> a schema:Person ;
     schema:name "Vitor Jesus" .
@@ -25824,6 +26094,11 @@ hptag:gadgets a hpcom:RenderedItem,
     schema:name "gadgets" ;
     schema:url "https://harshp.com/tags/gadgets"^^xsd:anyURI .
 
+hptag:life a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "life" ;
+    schema:url "https://harshp.com/tags/life"^^xsd:anyURI .
+
 hptag:productivity a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "productivity" ;
@@ -25857,8 +26132,8 @@ hptag:website a hpcom:RenderedItem,
     schema:name "Trinity College Dublin" ;
     schema:url "https://www.tcd.ie/"^^xsd:anyURI .
 
-<http://example.com/PaulRyan> a schema:Person ;
-    schema:name "Paul Ryan" .
+<http://example.com/RobBrennan> a schema:Person ;
+    schema:name "Rob Brennan" .
 
 <http://example.com/conferences/ESWC2018> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -25929,11 +26204,6 @@ hptag:ethics a hpcom:RenderedItem,
     schema:name "ethics" ;
     schema:url "https://harshp.com/tags/ethics"^^xsd:anyURI .
 
-hptag:life a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "life" ;
-    schema:url "https://harshp.com/tags/life"^^xsd:anyURI .
-
 hptag:ontologies a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ontologies" ;
@@ -25954,8 +26224,8 @@ hptag:weather a hpcom:RenderedItem,
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
 
-<http://example.com/BeatrizEsteves> a schema:Person ;
-    schema:name "Beatriz Esteves" .
+<http://example.com/PaulRyan> a schema:Person ;
+    schema:name "Paul Ryan" .
 
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
@@ -26040,6 +26310,9 @@ hptag:script a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
+
+<http://example.com/BeatrizEsteves> a schema:Person ;
+    schema:name "Beatriz Esteves" .
 
 list:thriller a hpcom:RenderedItem,
         book:lists ;
@@ -26228,6 +26501,16 @@ hptag:drama a hpcom:RenderedItem,
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
 
+hptag:article a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "article" ;
+    schema:url "https://harshp.com/tags/article"^^xsd:anyURI .
+
+hptag:philosophy a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "philosophy" ;
+    schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
+
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
@@ -26254,16 +26537,6 @@ hptag:drama a hpcom:RenderedItem,
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI .
 
-hptag:article a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "article" ;
-    schema:url "https://harshp.com/tags/article"^^xsd:anyURI .
-
-hptag:philosophy a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "philosophy" ;
-    schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
-
 <https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
     schema:name "Declan O'Sullivan" .
 
@@ -26281,15 +26554,15 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26334,24 +26607,24 @@ list:educational a hpcom:RenderedItem,
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
 
-hptag:GDPR a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "GDPR"@en ;
-    schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
 
+hptag:GDPR a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "GDPR"@en ;
+    schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
+
 hpcom:ReviewingEvent a owl:Class ;
     rdfs:label "Reivewing Event" ;
     rdfs:comment "Represents peer-review at some venue"@en .
 
-hptag:semantic-web a hpcom:RenderedItem,
+hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;
-    schema:name "semantic-web" ;
-    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
+    schema:name "personal" ;
+    schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
 
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
@@ -26360,15 +26633,15 @@ hpcom:Rating2 a hpcom:Rating,
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
-hptag:personal a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "personal" ;
-    schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
-
 hptag:blog a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "blog" ;
     schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
+
+hptag:semantic-web a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "semantic-web" ;
+    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
 hptag:story a hpcom:RenderedItem,
         hpcom:Tag ;

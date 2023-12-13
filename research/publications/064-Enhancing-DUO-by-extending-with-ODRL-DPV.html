@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV">
+    <meta name="schema:description" content="The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts.">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="GDPR,health,ODRL,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV">
+    <meta property="og:description" content="The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts.">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV">
+        <h1 property="schema:name schema:headline">Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV</h1>
+<div id="description">
+	<small>
+	<time datetime="2024-01-01T00:00:00">2024-01-01T00:00:00</time>
+    <i>Journal</i>
+    <br/>
+    <span class='note'>in-press</span>
+    Semantic Web Journal
+    <br/>
+    &#9997;<i>
+    <u>Harshvardhan J. Pandit</u>*    , Beatriz Esteves*    </i>
+    <br/>
+        &#x1f513;copies:
+        <a href="https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV">harshp.com</a>
+    	<br/>
+        &#128230;resources:
+        <a href="https://w3id.org/duodrl/app">demo app</a>
+        , <a href="https://w3id.org/duodrl/demo">demo code</a>
+        , <a href="https://w3id.org/duodrl/repo">repo</a>
+    <br/>
+    The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts.
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <p><strong>Abstract:</strong> The Global Alliance for Genomics and Health is an international consortium that is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. DUO concepts, which are encoded using OWL, only contain the textual descriptions of the conditions for data use they represent, and do not specify the intended permissions, prohibitions, and obligations explicitly - -which limits their usefulness.
+We present an exploration of how the Open Digital Rights Language (ODRL) can be used to explicitly represent the information inherent in DUO concepts to create policies that are then used to represent conditions under which datasets are available for use, conditions in requests to use them, and to generate agreements based on a compatibility matching between the two.
+We also address a current limitation of DUO regarding specifying information relevant to privacy and data protection law by using the Data Privacy Vocabulary (DPV) which supports expressing legal concepts in a jurisdiction-agnostic manner as well as for specific laws like the GDPR.
+Our work supports the existing socio-technical governance processes involving use of DUO by providing a complementary rather than replacement approach.
+To support this and improve DUO, we provide a description of how our system can be deployed with a proof of concept demonstration that uses ODRL rules for all DUO concepts, and uses them to generate agreements through matching of requests to data offers. All resources described in this article are available at: <a href="https://w3id.org/duodrl/repo">https://w3id.org/duodrl/repo</a></p>
+<p><strong>Keywords:</strong> health data, biomedical ontologies, policy, regulatory compliance, GDPR</p>
+
+<h2 id="sec:intro">Introduction</h2>
+<h3 id="sec:intro-background">Background &amp; Motivation</h3>
+<p>The sharing of health-related data holds great promise for enhancing
+research and applying advanced computational and statistical techniques
+for progress in medicine. At the same time, such sharing and use of
+health-related data is required to be regulated at legal and
+institutional levels given its sensitive nature and the ability to have
+significant impacts. The current landscape consists of institutions such
+as hospitals assessing each data use request through a dedicated
+committee that is responsible for the evaluation and decision-making
+regarding the release of data under their custody. To assist in this
+process, the Global Alliance for Genomics and Health<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+(GA4GH) was formed as an international consortium for developing
+standards and responsibly sharing genomics data. Of its various
+initiatives addressing different components and processes involved in
+data sharing, it has developed a machine-readable ontology called Data
+Use Ontology<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> (DUO) <span class="citation"
+data-cites="lawsonDataUseOntology2021 rehmGA4GHInternationalPolicies2021"><a
+href="#ref-lawsonDataUseOntology2021" role="doc-biblioref">[1]</a>, <a
+href="#ref-rehmGA4GHInternationalPolicies2021"
+role="doc-biblioref">[2]</a></span> for expressing “Data Use
+Limitations” (DUL) – conditions and constraints expressed by data
+providers and adhered by requestors.</p>
+<p>DUO is an OWL ontology based on (and part of) Open Biological and
+Biomedical Ontology<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> (OBO). Through the use of OBO upper
+ontologies and guidelines, DUO offers (semantic) interoperability with a
+variety of biomedical ontologies part of the OBO family. The intended
+use of DUO is to annotate datasets with DUL codes to indicate usage
+conditions, express data use requests, and identify or discover
+compatible datasets automatically by comparing the request with
+dataset-specific DULs. More information about DUO is provided in
+Section.<a href="#sec:sota-duo" data-reference-type="ref"
+data-reference="sec:sota-duo">2.1</a>.</p>
+<p>DUO concepts specify the DULs as human-readable text within their
+description (using the <code>obo:IAO_0000115</code> relation), which
+restricts their usefulness to humans or explicitly encoded systems that
+can only function on known concepts. In addition, DUO concepts are not
+linked to relevant legal concepts, which creates confusion and ambiguity
+as to the implications of using these in a system or jurisdiction such
+as the EU where the General Data Protection Regulation (GDPR) <span
+class="citation" data-cites="Regulation_GDPR"><a
+href="#ref-Regulation_GDPR" role="doc-biblioref">[3]</a></span>
+introduces additional accountability and compliance requirements which
+must be identified and applied. The existing documentation notes that
+the applicability of laws is the responsibility of the adopter, and that
+DUO terms have not been considered for implications under the GDPR.
+However, compatibility with existing regulations is an important and
+mandatory requirement that each adopter and data user must fulfil, and
+where the lack of support from the specification risks harming the
+interoperability through fragmentation in approaches. Additionally, the
+EU envisions a ‘Health Data Space’<a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a> where
+machine-readability and automation will play an important role in
+facilitating the exchange of data without prejudice to existing
+regulations such as the GDPR.</p>
+<h3 id="sec:intro-research-question">Research Objectives and
+Contributions</h3>
+<p>Our argument is that <em>true machine-readability</em> requires the
+information intended to be conveyed through DUO concepts about the
+specific permissions, prohibitions, constraints, requirements, and so on
+to be (also) represented as machine-readable <em>rules</em> that utilise
+semantic concepts. With this, the DULs inherent in the descriptions of
+each DUO concept are made explicit through formal representation as a
+set of <em>rules</em> that can be attached and used alongside the data
+as a <em>sticky policy</em>.</p>
+<p>For assessing whether a data use request is compatible with the
+dataset DULs, both data provider’s and requestor’s conditions for data
+use are expressed as policies, and are compared to evaluate whether the
+intended use is permissible. While DUO is already being used in this
+manner, such as within the Data Use Oversight System<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>
+(DUOS), this is done by checking hierarchical compatibility between
+request concepts and data use conditions through subclass relations
+between concepts. This approach is limited in ability and expressiveness
+for specifying rules and their use in automated systems as not all
+relevant information can be explicitly represented.</p>
+<p>More importantly, to automate this process, a set of requirements
+should be taken into consideration when choosing a vocabulary to express
+dataset usage conditions, such as: (i) the expressiveness for defining
+specifics of rules and policies, i.e., the specification of actions,
+purposes, or other constraints as concepts that can be independently
+expressed and assessed, and their combinations to represent different
+categories of policies; (ii) the ability to associate and check their
+conformance and compliance with legal requirements; and (iii) the
+ability to specify requirements in machine-readable form and use them to
+assess correctness and completeness of information. Such solutions have
+existed for a while now – for example, Answer Set Programming (ASP) and
+logic-based semantic reasoners have been utilised in a variety of
+domains – including for representing information and using it for
+checking legal compliance for GDPR (see Section.<a
+href="#sec:sota-legal" data-reference-type="ref"
+data-reference="sec:sota-legal">2.2</a>).</p>
+<p>With the above motivation, we present an approach for representing
+the inherent information and rules in DUO concepts explicitly in RDF
+through use of the Open Digital Rights Language<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+(ODRL) <span class="citation"
+data-cites="iannellaODRLVocabularyExpression2018"><a
+href="#ref-iannellaODRLVocabularyExpression2018"
+role="doc-biblioref">[4]</a></span> it is the W3C standard developed
+explicitly to model rules and policies and also concerns the intended
+requirements for which DUO was created. We specifically chose ODRL
+because: (i) it uses RDF and is machine-readable; (ii) it provides
+concepts modelling the domain-specific and legally-relevant terms to
+represent constraints – e.g. spatial and temporal, and types of policies
+- e.g. offers, requests and agreements, along with the flexibility to
+use them in similar manner as the conventional contents and structures
+of legal agreements; (iii) the use of ODRL can be validated<a
+href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> and a formal semantics
+specification<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a> is being actively developed by the
+W3C ODRL Community Group (ODRL CG) <a href="#fn9" class="footnote-ref"
+id="fnref9" role="doc-noteref"><sup>9</sup></a> to ensure correctness
+and consistency on the deployments of services that use ODRL; (iv) the
+specification provides the ability to develop extensions through ODRL
+profiles<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>; and</p>
+<p>In addition to these, we also consider ODRL the most suitable
+candidate for representing DUO concepts as it can be used without
+requiring any of the existing DUO-based data use or request governance
+processes to make radical and incompatible changes. That is, the
+existing practices and processes by which DUO codes are added as
+annotations to datasets and are used to request access to them can
+continue without hindrance, and DUO stakeholders can choose which
+aspects of our ODRL solution they want to adopt within their
+practices.</p>
+<p>ODRL, by modelling terms regarding rights and licensing, also offers
+a compatible segue for DUO to be linked with relevant legal concepts,
+for which we use the Data Privacy Vocabulary<a href="#fn11"
+class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>
+(DPV) <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[5]</a></span>, an output of the W3C Data Privacy
+Vocabularies and Controls Community Group<a href="#fn12"
+class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a><a
+href="#fn13" class="footnote-ref" id="fnref13"
+role="doc-noteref"><sup>13</sup></a> (DPVCG). DPV provides an extensive
+vocabulary of concepts, can be expanded or specialised for
+jurisdictional requirements, provides legal bases and rights – including
+from GDPR, is open and accessible, and can be easily integrated into
+DUO’s use-cases.</p>
+<p>The contributions of this work are summarised through the following
+research objectives:</p>
+<ol>
+<li>Specifying DUO concepts and conditions for data use as
+machine-readable policies using ODRL</li>
+<li>Developing an algorithm for consolidating data use conditions
+into a single ODRL policy</li>
+<li>Developing an algorithm for identifying compatible datasets with
+data use requests based on ODRL policies</li>
+<li>Enabling expression of legal concepts and restrictions with(in)
+ODRL policies for DUO concepts using DPV</li>
+<li>Elucidating relevance of DUO concepts and associated ODRL+DPV
+policies for GDPR obligations</li>
+</ol>
+<p>In addition to these, a late contribution is the preliminary analysis
+of two articles providing improvements to DUO that were published while
+this article was under review. We provide a summary of these recent
+developments, compare it with the work presented in this paper, and
+discuss the continued relevance and benefits of our contributions.</p>
+<p>The rest of this article presents: an overview of DUO and its
+applications in Section.<a href="#sec:sota-duo"
+data-reference-type="ref" data-reference="sec:sota-duo">2.1</a>,
+relevant work in state of the art regarding machine-readable policies
+for GDPR in Section.<a href="#sec:sota-legal" data-reference-type="ref"
+data-reference="sec:sota-legal">2.2</a>, our use of ODRL to represent
+DUO concepts and perform matching with requests in Section.<a
+href="#sec:odrl" data-reference-type="ref"
+data-reference="sec:odrl">3</a>, expression of legal concepts using DPV
+in Section.<a href="#sec:dpv" data-reference-type="ref"
+data-reference="sec:dpv">4</a>, a demonstration through proof-of-concept
+in Section.<a href="#sec:demo" data-reference-type="ref"
+data-reference="sec:demo">5</a>, a discussion on integrating this work
+into existing DUO-based workflows in Section.<a href="#sec:discussion"
+data-reference-type="ref" data-reference="sec:discussion">6</a>, the
+late contribution containing analysis of recent work in Section <a
+href="#sec:DUC" data-reference-type="ref"
+data-reference="sec:DUC">7</a>, and concluding statements in Section.<a
+href="#sec:conclusion" data-reference-type="ref"
+data-reference="sec:conclusion">8</a>.</p>
+<h2 id="sec:sota">Relevant Work and State of the Art</h2>
+<h3 id="sec:sota-duo">Data Use Ontology (DUO) and Aligned Efforts</h3>
+<p>DUO concepts are structured across three taxonomies. The <em>Data Use
+Permission</em> taxonomy, with base class <code>obo:DUO_0000001</code>,
+represents permissions for purposes regarding data use. The <em>Data Use
+Modifier</em> taxonomy, with base class <code>obo:DUO_0000017</code>,
+represents ’modifiers’ or conditions to be applied in addition to
+permissions. The <em>Investigation</em> taxonomy, with base class
+<code>obo:OBI_0000066</code> from the Ontology for Biomedical
+Investigations<a href="#fn14" class="footnote-ref" id="fnref14"
+role="doc-noteref"><sup>14</sup></a> (OBI), represents ’investigations’
+or planned processes for which the data is requested for use. Along with
+these, the concept <code>obo:DUO_0000010</code> represents the relation
+<em>is_restricted_to</em> which is used to restrict or scope specific
+concepts to some context, for example with domain as
+<code>obo:DUO_0000022</code> representing limitation on use within a
+geographic region, and range as <code>obo:GAZ_00000448</code> from the
+Gazetteer<a href="#fn15" class="footnote-ref" id="fnref15"
+role="doc-noteref"><sup>15</sup></a> (places) ontology.</p>
+<p>DUO is the result of earlier efforts to create codes regarding data
+use, and use them as machine-readable information towards automation.
+The first iteration was based on Consent Codes <span class="citation"
+data-cites="dykeConsentCodesUpholding2016"><a
+href="#ref-dykeConsentCodesUpholding2016"
+role="doc-biblioref">[6]</a></span> which provided concepts representing
+permission to use data. The second iteration adopted some terms from the
+Automatable Discovery and Access Matrix<a href="#fn16"
+class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+(ADA-M) <span class="citation"
+data-cites="woolleyResponsibleSharingBiomedical2018"><a
+href="#ref-woolleyResponsibleSharingBiomedical2018"
+role="doc-biblioref">[7]</a></span> framework which has similar aims and
+concepts. The use of DUO as intended towards collection of consent for
+dataset sharing and reuse is specified in the ‘Machine-readable Consent
+Guidance’<a href="#fn17" class="footnote-ref" id="fnref17"
+role="doc-noteref"><sup>17</sup></a>. A brief outline and summary of DUO
+and its use to streamline access to biomedical datasets is presented in
+<span class="citation" data-cites="lawsonDataUseOntology2021"><a
+href="#ref-lawsonDataUseOntology2021"
+role="doc-biblioref">[1]</a></span>, and a list of GA4GH initiatives and
+standards along with the relevance of DUO within those is presented in
+<span class="citation"
+data-cites="rehmGA4GHInternationalPolicies2021"><a
+href="#ref-rehmGA4GHInternationalPolicies2021"
+role="doc-biblioref">[2]</a></span>.</p>
+<p>The Data Use Oversight System<a href="#fn18" class="footnote-ref"
+id="fnref18" role="doc-noteref"><sup>18</sup></a> (DUOS) is a platform
+based on DUO that provides semi-automated data access management for use
+of datasets. It uses DUO annotations for adding new datasets and data
+access requests, which are then matched using an algorithm based on
+hierarchical compatibility i.e. permitted conditions identified based on
+establishing subclass relations between request and dataset DUO codes.
+The output of the matching process is then used as part of a review by a
+‘Data Access Committee’ (DAC). An evaluation of DUOS’s automation
+process found it to be comparable to decision-making by human data
+access committees <span class="citation"
+data-cites="cabiliEmpiricalValidationAutomated2021"><a
+href="#ref-cabiliEmpiricalValidationAutomated2021"
+role="doc-biblioref">[8]</a></span>. DUOS is currently being implemented
+in an ongoing large-scale pilot <span class="citation"
+data-cites="schatzInvertingModelGenomics2022"><a
+href="#ref-schatzInvertingModelGenomics2022"
+role="doc-biblioref">[9]</a></span>.</p>
+<p>Other uses of DUO include specification of informed consent for
+health and genomics research in Africa <span class="citation"
+data-cites="nembawareFrameworkTieredInformed2019"><a
+href="#ref-nembawareFrameworkTieredInformed2019"
+role="doc-biblioref">[10]</a></span>, along with ADA-M for representing
+consent for health data sharing in a blockchain <span class="citation"
+data-cites="jaimanConsentModelBlockchainBased2020"><a
+href="#ref-jaimanConsentModelBlockchainBased2020"
+role="doc-biblioref">[11]</a></span>, and in CTRL <span class="citation"
+data-cites="haasCTRLOnlineDynamic2021"><a
+href="#ref-haasCTRLOnlineDynamic2021"
+role="doc-biblioref">[12]</a></span> - an online platform that uses DUO
+to provide dynamic consent interfaces and tools for large-scale genomics
+research programs. Potential uses of DUO are described in the Data Tags
+Suite (DATS) <span class="citation"
+data-cites="alterDataTagsSuite2020"><a
+href="#ref-alterDataTagsSuite2020" role="doc-biblioref">[13]</a></span>
+where DUO is a candidate vocabulary in its framework for discovering
+data access based on metadata, and as part of a roadmap for accessing 1
+million human genomes across EU infrastructures <span class="citation"
+data-cites="saundersLeveragingEuropeanInfrastructures2019"><a
+href="#ref-saundersLeveragingEuropeanInfrastructures2019"
+role="doc-biblioref">[14]</a></span>. We found only one article that
+provided a machine-readable metadata representation of information using
+DUO - which used SWRL<a href="#fn19" class="footnote-ref" id="fnref19"
+role="doc-noteref"><sup>19</sup></a> to express the rules <span
+class="citation" data-cites="amithExpressingExecutingInformed2022"><a
+href="#ref-amithExpressingExecutingInformed2022"
+role="doc-biblioref">[15]</a></span>. Further overview of DUO and its
+relevant approaches amongst other rights and licensing initiatives,
+approaches, and tools for health data sharing is provided by Grabus and
+Greenberg <span class="citation"
+data-cites="grabusLandscapeRightsLicensing2019"><a
+href="#ref-grabusLandscapeRightsLicensing2019"
+role="doc-biblioref">[16]</a></span>.</p>
+<p>Of note in these identified articles and other resources is that we
+did not find a clear example or workflow for how the machine-readability
+of DUO should be associated with datasets, expressed as part of a
+request, or how the matching algorithm should function. The article
+presenting DATS <span class="citation"
+data-cites="alterDataTagsSuite2020"><a
+href="#ref-alterDataTagsSuite2020" role="doc-biblioref">[13]</a></span>
+also refers to this difficulty in establishing the permissions and
+prohibitions when using DUO, and mentions ODRL as an alternative model
+providing clearer expression of permissions and prohibitions. The DUOS
+framework offers the best (available) description of how DUO can be
+applied, but does not offer much guidance on how the matching is
+performed between datasets and requests annotated with DUO concepts.
+From these, we establish the necessity of providing <em>RO1</em>,
+<em>RO2</em>, and <em>RO3</em>.</p>
+<h3 id="sec:sota-legal">Expression of Machine-readable Information and
+Policies for GDPR</h3>
+<p>Given that health data is personal data, it is subject to regulations
+such as the GDPR as well as other domain and sector-specific laws such
+as Health Insurance Portability and Accountability Act<a href="#fn20"
+class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
+(HIPAA). By also annotating datasets with machine-readable metadata that
+relates to such laws, automation can also be used to assist stakeholders
+in identifying and meeting their compliance requirements <span
+class="citation" data-cites="wenningComplianceUsingMetadata2018"><a
+href="#ref-wenningComplianceUsingMetadata2018"
+role="doc-biblioref">[17]</a></span>.</p>
+<p>In this, the state of the art consists of substantial research and
+development in modelling and using legal ontologies (see survey by
+Rodrigues et al. <span class="citation"
+data-cites="rodriguesLegalOntologiesTime2019"><a
+href="#ref-rodriguesLegalOntologiesTime2019"
+role="doc-biblioref">[18]</a></span>). Of note regarding the matching of
+DUO dataset annotations is the policy checking algorithm for GDPR
+developed by SPECIAL h3020 project <span class="citation"
+data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span> which offers a fast matching
+algorithm based on subsumption between OWL2 concepts with logical
+consistency and correctness guarantees. In principle, this is similar to
+DUOS’s matching algorithm where the concepts to be matched in a policy
+are pre-determined.</p>
+<p>While ODRL, being a standard for expressing policies, provides
+concepts with legal interpretation (e.g. <em>Asset</em> or
+<em>Party</em>), it deviates from or does not contain terms such as
+<em>Controller</em> or <em>Legal Basis</em> which carry important
+obligations under regulations such as the GDPR. Vos et al. address this
+by extending ODRL as a ‘Regulatory Compliance Profile’ which is used for
+expressing policies associated with GDPR <span class="citation"
+data-cites="vosODRLPolicyModelling2019"><a
+href="#ref-vosODRLPolicyModelling2019"
+role="doc-biblioref">[20]</a></span>. In this, the relevant concepts in
+ODRL are extended with those from GDPR to construct ODRL rules
+reflecting GDPR’s compliance requirements. In approaches providing a
+vocabulary for use regarding GDPR, GDPRtEXT <span class="citation"
+data-cites="panditGDPRtEXTGDPRLinked2018"><a
+href="#ref-panditGDPRtEXTGDPRLinked2018"
+role="doc-biblioref">[21]</a></span> provides a vocabulary of concepts,
+and GConsent <span class="citation"
+data-cites="panditGConsentConsentOntology2019"><a
+href="#ref-panditGConsentConsentOntology2019"
+role="doc-biblioref">[22]</a></span> provides an OWL2 modelling of
+consent information. While these approaches are illuminating in how to
+describe GDPR’s requirements, their use would restrict the created
+policies to be operationally limited for application under GDPR.</p>
+<p>In contrast to these, the Data Privacy Vocabulary (DPV) <span
+class="citation" data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[5]</a></span> provides a taxonomy of concepts
+which can be used as jurisdiction-agnostic terms with an extension for
+specific concepts from GDPR<a href="#fn21" class="footnote-ref"
+id="fnref21" role="doc-noteref"><sup>21</sup></a> such as its legal
+bases and rights. DPV is, to our knowledge, the most comprehensive
+vocabulary for modelling concepts associated with privacy and data
+protection laws. It also offers different semantic serialisations (i.e.
+SKOS, RDFS, OWL) which facilitate integration into use cases.</p>
+<p>Two recent surveys provide an overview of existing efforts that have
+utilised semantic web technologies to address GDPR compliance. The
+first, by Kurteva et al. <span class="citation"
+data-cites="kurtevaConsentLensSemantics2021"><a
+href="#ref-kurtevaConsentLensSemantics2021"
+role="doc-biblioref">[23]</a></span>, describes the approaches
+associated with consent, and the second, by Esteves and Rodrigues-Doncel
+<span class="citation"
+data-cites="estevesAnalysisOntologiesPolicy2022"><a
+href="#ref-estevesAnalysisOntologiesPolicy2022"
+role="doc-biblioref">[24]</a></span>, analyses ontologies and policy
+languages for modelling information flows. Both highlight the variety of
+approaches available, and offer opinionated suggestions regarding the
+use of ODRL and DPV – which we have incorporated in our choice of
+implementations<a href="#fn22" class="footnote-ref" id="fnref22"
+role="doc-noteref"><sup>22</sup></a>. Based on these identified works
+and existing surveys, we chose ODRL and DPV to create
+jurisdiction-agnostic policies that can be specialised for GDPR, thus
+addressing <em>RO4</em> and <em>RO5</em>.</p>
+<h2 id="sec:odrl">Rewriting DUO using ODRL</h2>
+<p>As presented in Section.<a href="#sec:sota-duo"
+data-reference-type="ref" data-reference="sec:sota-duo">2.1</a>, DUO
+concepts are structured across three taxonomies with textual
+descriptions of the DULs they represent. The goals of this work, in
+terms of research objective <em>RO1</em> is to analyse this implicit
+information and express it explicitly using ODRL, with the additional
+goal of keeping compatibility with existing uses and workflows that use
+DUO so as to not cause large disruptions to GA4GH’s current and future
+activities.</p>
+<p>We consider DUO’s primary attractiveness to be the ease with which
+its concepts can be easily constructed from input mechanisms (such as a
+form) and simply ‘tagged’ onto a dataset as an annotation. In this, the
+textual clauses used to describe the concepts are based on well-defined
+clauses from consent forms<sup>18</sup>. The role of ODRL, therefore, is
+not to replace DUO, but to provide additional machine-readable
+information for each DUO concept that provides explicit conditions
+currently inherent in the textual clauses i.e. as conditions that can be
+checked, verified, and consumed in an automated manner to perform tasks
+associated with validation of dataset policies, querying to discover
+suitable datasets, and to aid in matching requests with available data
+and its usage conditions. We also considered the contextual cases for
+representing additional conditions or information requirements such as
+records-keeping by institutions or for legal compliance, for which ODRL
+is also suitable as highlighted in our motivation.</p>
+<p>Our methodology in this was to first
+analyse<span>deleted</span><span>d</span> DUO concepts and textual
+information to identify their relevant representation as ODRL concepts.
+We then constructed rules expressing identified conditions and expressed
+them using ODRL along with identifying three categories of ‘policies’
+from GA4GH’s cases reflecting data usage, data request, and an agreement
+based on compatibility between the two. We then constructed a matching
+algorithm that utilised developed ODRL policies to compare a request
+policy with a dataset’s policy to determine compatibility and to create
+an agreement where both were found to be compatible.</p>
+<h3 id="sec:odrl-overview">Identifying ODRL equivalents for DUO
+concepts</h3>
+<p>For each concept in DUO, we first sought to identify the constraints
+or conditions by interpreting the textual description and identifying
+whether it related to a permission, prohibition, or obligation, and the
+specific context of how those are to be applied. In doing this, we
+observed duplicity and overlap between DUO’s data use permissions and
+modifiers as both contained <em>purpose-based conditions</em> without a
+clear distinction between their semantics and interpretation, and
+regarding permission or prohibition of that purpose as an indication of
+<em>consent</em>. For example, <code>DUO_0000011</code> represents
+permission and <code>DUO_0000044</code> represents prohibition for
+“population origins or ancestry research”, with the former being a data
+use permission and the latter a data use modifier.</p>
+<p>We suggest restructuring the taxonomies in DUO to address this by
+considering a single purpose-based taxonomy specifying research concepts
+that either have variants for permission and prohibition (i.e. two
+distinct concepts), or to explicitly provide a data use modifier concept
+representing permission or prohibition that is applied over a specified
+research purpose. This is based on DUOS’s data collection input forms
+and ADA-M’s concepts where each research purpose can be individually
+consented (or restricted) to, with possible implications arising from
+lack of any permission or prohibition. For example, the DUO concept for
+code <code>HMB</code> should be expressed in terms of it being a
+<em>permission</em> for <em>purpose</em> of type <em>HMB</em> which is
+also not a purpose of type <em>POA</em>. In this manner, the concept
+(<em>HMB</em>) is better expressed and applied by exposing its
+underlying concepts (<em>purpose</em>) and rules over it
+(<em>permission</em>). See Section <a href="#sec:odrl-offer"
+data-reference-type="ref" data-reference="sec:odrl-offer">3.3</a> for
+more examples of using semantic concepts to represent implicit
+information in DUO codes, and DPV <span class="citation"
+data-cites="panditCreatingVocabularyData2019"><a
+href="#ref-panditCreatingVocabularyData2019"
+role="doc-biblioref">[5]</a></span> for additional taxonomies and
+concepts available to further specify relevant information.</p>
+<p>After analysing DUO’s concepts and identifying inherent conditions,
+we formulated the relevant ODRL rules for expressing those conditions.
+Where this was not possible because of ODRL lacking the required
+concept, we created proposed extensions of its concepts to enable rule
+expressions. For each concept, we constructed an <code>odrl:Set</code>
+instance representing the specific rules (see Section.<a
+href="#sec:odrl-set" data-reference-type="ref"
+data-reference="sec:odrl-set">3.2</a>), and consolidated these rules
+into an <code>odrl:Offer</code> representing a collective singular
+policy for a dataset (see Section.<a href="#sec:odrl-offer"
+data-reference-type="ref" data-reference="sec:odrl-offer">3.3</a>). A
+complete collection of the interpretations made for each DUO concept is
+presented in Table <a href="#table:DUO_ODRL_overview"
+data-reference-type="ref"
+data-reference="table:DUO_ODRL_overview">1</a>.</p>
+<p>We faced challenges in interpreting specific phrases such as “<em>is
+limited to</em>” which imply that usage is permitted only within that
+specific scope. If this interpretation is correct, then DUO should
+clarify how potential conflicts should be resolved, for example between
+rules expressing exclusive limitations and other permissive expressions
+(e.g. “<em>is allowed for</em>”). Our suggestion is to take advantage of
+ODRL’s ability to express these rules as code through which it can
+explicitly express the underlying concepts and how they are applied to
+create permissions, prohibitions, and obligations, and then using
+existing methods for ODRL <span class="citation"
+data-cites="pellegriniAutomatedRightsClearance2018 vosODRLPolicyModelling2019"><a
+href="#ref-vosODRLPolicyModelling2019" role="doc-biblioref">[20]</a>, <a
+href="#ref-pellegriniAutomatedRightsClearance2018"
+role="doc-biblioref">[25]</a></span> and OWL <span class="citation"
+data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span> to reason over them.</p>
+<p>Currently, DUO concepts are limited to representing conditions for
+data use, with suggestions referring to external ontologies for
+additional concepts required for expressing scope or restrictions. For
+example, <code>DUO_0000007</code> represents permission for
+disease-specific research, with the recommendation to use the MONDO
+ontology<a href="#fn23" class="footnote-ref" id="fnref23"
+role="doc-noteref"><sup>23</sup></a> for specifying diseases. Other
+specific concepts mentioned in the textual descriptions but not modelled
+explicitly include codes inherited from predecessors, such as
+<em>CC</em> for Clinical Care Use, or <em>GRU</em> for General Research
+Use. Expressing ODRL rules requires these concepts to be explicitly
+defined e.g. as <em>Disease</em> for the disease-specific research, upon
+which permissions or prohibitions are then expressed.</p>
+<div id="table:DUO_ODRL_overview">
+<table>
+<caption>Interpretation of conditions inherent in DUO concept
+descriptions as ODRL rules</caption>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Code</th>
+<th>Rule Type</th>
+<th>Constraint</th>
+<th>Placeholder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DUO0000001</code></td>
+<td colspan="4"><strong>Data Use Permission</strong></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000042</code></td>
+<td>GRU</td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:GRU</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000006</code></td>
+<td><code>HMB</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:HMB</code> and not <code>:POA</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000007</code></td>
+<td><code>DS</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:DS</code> and mondo<code>:0000001</code></td>
+<td><code>:TemplateDisease</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000004</code></td>
+<td><code>NRES</code>
+<td><i>Permission</i></td>
+<td>Purpose is odrl<code>:Purpose</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000011</code></td>
+<td><code>POA</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:POA</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000011</code></td>
+<td><code>POA</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is not <code>:POA</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000017</code></td>
+<td colspan="4"><strong>Data Use Modifier</strong></td>
+Modified</strong></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000043</code></td>
+<td><code>CC</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:CC</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000020</code></td>
+<td><code>COL</code>
+<td><i>Duty</i></td>
+<td>Action is <code>:CollaborateWithStudyPI</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000021</code></td>
+<td><code>IRB</code>
+<td><i>Duty</i></td>
+<td>Action is <code>:ProvideEthicalApproval</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000016</code></td>
+<td><code>GSO</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:GS</code> or <code>:GSG</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000016</code></td>
+<td><code>GSO</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is <code>:GS</code> and not <code>:GSG</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000022</code></td>
+<td><code>GS</code>
+<td><i>Permission</i></td>
+<td>Spatial is equal to specified
+<code>:Location</code></td>
+<td><code>:TemplateLocation</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000022</code></td>
+<td><code>GS</code>
+<td><i>Prohibition</i></td>
+<td>Spatial is not equal to specified
+<code>:Location</code></td>
+<td><code>:TemplateLocation</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000028</code></td>
+<td><code>IS</code>
+<td><i>Permission</i></td>
+<td>Assignee is <code>:ApprovedInstitution</code></td>
+<td><code>:TemplateInstitution</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000028</code></td>
+<td><code>IS</code>
+<td><i>Prohibition</i></td>
+<td>Assignee is not <code>:ApprovedInstitution</code></td>
+<td><code>:TemplateInstitution</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000015</code></td>
+<td><code>NMDS</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is <code>:MDS</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000018</code></td>
+<td><code>NPUNCU</code>
+<td><i>Permission</i></td>
+<td>Assignee is <code>:NonProfitOrganisation</code> and
+Purpose is <code>:NCU</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000018</code></td>
+<td><code>NPUNCU</code>
+<td><i>Prohibition</i></td>
+<td>Assignee is <code>:ForProfitOrganisation</code> and
+Purpose is <code>:NCU</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000018</code></td>
+<td><code>NPUNCU</code>
+<td><i>Prohibition</i></td>
+<td>Assignee is <code>:NonProfitOrganisation</code> and
+Purpose is not <code>:NCU</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000046</code></td>
+<td><code>NCU</code>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:NCU</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000046</code></td>
+<td><code>NCU</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is not <code>:NCU</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000045</code></td>
+<td><code>NPU</code>
+<td><i>Permission</i></td>
+<td>Assignee is <code>:NonProfitOrganisation</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000045</code></td>
+<td><code>NPU</code>
+<td><i>Prohibition</i></td>
+<td>Assignee is <code>:ForProfitOrganisation</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000044</code></td>
+<td><code>NPOA</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is <code>:POA</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000027</code></td>
+<td><code>PS</code>
+<td><i>Permission</i></td>
+<td>Project is <code>:ApprovedProject</code></td>
+<td><code>:TemplateProject</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000027</code></td>
+<td><code>PS</code>
+<td><i>Prohibition</i></td>
+<td>Project is not <code>:ApprovedProject</code></td>
+<td><code>:TemplateProject</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000024</code></td>
+<td><code>MOR</code>
+<td><i>Duty</i></td>
+<td>Action is odrl<code>:distribute</code>
+<code>:ResultsOfStudies</code> with odrl<code>:dateTime</code></td>
+<td><code>:TemplateDateTime</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000019</code></td>
+<td><code>PUB</code>
+<td><i>Duty</i></td>
+<td>Action is odrl<code>:distribute</code>
+<code>:ResultsOfStudies</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000012</code></td>
+<td><code>RS</code>
+<td><i>Permission</i></td>
+<td>Purpose is specified <code>:Research</code></td>
+<td><code>:TemplateResearch</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000012</code></td>
+<td><code>RS</code>
+<td><i>Prohibition</i></td>
+<td>Purpose is not specified <code>:Research</code></td>
+<td><code>:TemplateResearch</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000029</code></td>
+<td><code>RTN</code>
+<td><i>Duty</i></td>
+<td>Action is
+<code>:ReturnDerivedOrEnrichedData</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000025</code></td>
+<td><code>TS</code>
+<td><i>Permission</i></td>
+<td>Time is less than specified
+<code>:TemplateDateTime</code></td>
+<td><code>:TemplateDateTime</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000026</code></td>
+<td><code>US</code>
+<td><i>Permission</i></td>
+<td>Assignee is <code>:ApprovedUser</code></td>
+<td><code>:TemplateUser</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000026</code></td>
+<td><code>US</code>
+<td><i>Prohibition</i></td>
+<td>Assignee is not <code>:ApprovedUser</code></td>
+<td><code>:TemplateUser</code></td>
+</tr>
+<tr class="odd">
+<td><code>OBI0000066</code></td>
+<td colspan="4"><strong>Data Use
+Permission</strong></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000034</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:AgeCategoryResearch</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000034</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Age is specified <code>:Age</code></td>
+<td><code>:TemplateAgeCategory</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000033</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:POA</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000037</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:HMB</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000040</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:DS</code> and <code>mondo:0000001</code></td>
+<td><code>:TemplateDisease</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000039</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:DrugDevelopment</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000038</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:GS</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000035</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:GenderCategoryResearch</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000035</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Gender is specified <code>:Gender</code></td>
+<td><code>:TemplateGender</code></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000031</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:MDS</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000032</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:PopulationGroupResearch</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>DUO0000032</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Population is specified <code>:Population</code></td>
+<td><code>:TemplatePopulation</code></td>
+</tr>
+<tr class="even">
+<td><code>DUO0000036</code></td>
+<td></td>
+<td><i>Permission</i></td>
+<td>Purpose is <code>:ResearchControl</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For our implementation, we identified and collected such ‘missing
+terms’ into an ad-hoc vocabulary to permit ODRL rules to be expressed
+correctly for each DUO concept. We recommend DUO to adopt these or to
+create a similar vocabulary for explicitly providing the concepts and
+their descriptions separate from the data use conditions in which they
+are used. This also has the added advantage of providing better
+documentation of information represented by those concepts. For e.g. by
+modelling <em>IRB</em> as a concept representing Ethics Review Board
+approval, it is possible to add information about what processes and
+requirements are needed in such reviews. It also permits further rules
+pertaining to ethics approvals to be semantically associated with a base
+concept, e.g. to indicate it must be carried out prior to data use, or
+periodically, or before publishing any outcomes.</p>
+<p>For data use requests (specified as <em>investigations</em> in DUO),
+we again found duplicity with concepts in data use permission and data
+modifiers. For example, <code>DUO_0000040</code> represents a request
+and <code>DUO_0000007</code> represents a permission for research for
+specific diseases. Semantically, both refer to the same concept
+regarding ‘research for specific diseases’, with the distinction of one
+being a request and the other being a permission. Similar to the earlier
+suggestion on the reorganisation of DUO’s taxonomies to be based on
+research purposes, we also recommend applying the same approach for
+consistency in concepts used for requesting use of data. Doing so
+permits clarity, reduces disambiguity, and assists in matching as the
+same concept would be associated with a dataset using
+<code>odrl:Offer</code> and a request using <code>odrl:Request</code>
+(see Section. <a href="#sec:odrl-request" data-reference-type="ref"
+data-reference="sec:odrl-request">3.4</a>).</p>
+<p>Apart from the expression of conditions for data use and requests to
+use that data, DUO concepts also have applications in <em>recording</em>
+the outcomes of matching processes where access has been granted. This
+is an important and yet unexplored area in the currently identified uses
+of DUO, especially since any sharing of data would be expected to be
+accompanied by information about the entities involved, provenance
+associated with the grant process, and details regarding how the
+conditions have been met at the time or later in the future. We present
+how ODRL is useful in representing this information as instances of
+<code>odrl:Agreement</code> (see Section. <a href="#sec:odrl-agreement"
+data-reference-type="ref" data-reference="sec:odrl-agreement">3.5</a>)
+which can contain all the above information, and also be used in
+automated approaches that can periodically check if the pending
+conditions for an agreement have been met, e.g. fulfilment of publishing
+results.</p>
+<h3 id="sec:odrl-set">Data use restrictions as
+<code>odrl:Set</code></h3>
+<p>Each DUO restriction is represented as an instance of
+<code>odrl:Set</code>, which must contain at least one permission,
+prohibition, or duty, and one resource (here a dataset) to be a valid
+ODRL policy. Its use does not grant any access or privileges, and only
+represents a collection or <em>set</em> or rules that are indicated as
+being applicable over the resource.</p>
+<p>Interpreting the textual descriptions accompanying each DUO concept,
+we used <code>odrl:permission</code> when the condition granted access
+to data, <code>odrl:prohibition</code> when it denied access, and
+<code>odrl:duty</code> when it specified obligations to be fulfilled. We
+included DUO’s textual descriptions using <code>rdfs:comment</code> for
+convenience, and indicated association with the DUO concept using
+<code>dct:source</code>.</p>
+<p>It was challenging for us to construct a valid policy which required
+specifying the resource (dataset), because DUO concepts only represent
+abstract conditions that don’t relate to a specific dataset. DUO also
+does not specify how to indicate or identify values associated with
+conditions such as specific diseases or temporal duration. To ensure
+ODRL policies are always valid, and to clearly indicate how to later
+apply or <em>instantiate</em> them for a dataset, we created the class
+<code>TemplateQuery</code> whose instances represent a placeholder to be
+substituted with the actual value(s) retrieved by executing a SPARQL
+query associated with it through the property
+<code>sparqlExpression</code>. In Table.<a
+href="#table:DUO_ODRL_overview" data-reference-type="ref"
+data-reference="table:DUO_ODRL_overview">1</a> these are indicated as
+<em>Placeholder</em>. Examples of this can be seen in Listing <a
+href="#list:request" data-reference-type="ref"
+data-reference="list:request">[list:request]</a> for a
+<code>odrl:Set</code> representing a DUO permission which is then used
+in a request. The placeholders are used to indicate datasets and
+assignees which are not known ahead of time, and which are substituted
+with actual instances in real policies by using the SPARQL queries
+associated with each placeholder.</p>
+<p>Another challenge we faced was for indication of scoped restrictions
+e.g. specifying the location when use is limited to a geographic
+location. DUO contains the property <code>obo:DUO_0000010</code> that
+describes the relation <code>is_restricted_to</code> which we interpret
+as intending to be used to specify the specific values or instances,
+e.g. diseases or locations, in restrictions. However, DUO concept
+descriptions only state “this should be coupled with an ontology term
+describing the (concept) the restriction applies to”, and we could not
+find an example showing how it should be used in this manner. Further,
+ODRL requires all constraints to be specified directly over the
+<em>Asset</em> (i.e. dataset). Therefore even if this property were
+available, its use would complicate the expression of rules in ODRL.</p>
+<p>We discussed possible solutions to this, and identified four
+potential avenues: (i) use of OWL class expressions<a href="#fn24"
+class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>;
+(ii) use of SHACL shapes to indicate a constraint; (iii) creating a new
+ODRL mechanism that takes property paths as <em>Operand</em>; and (iv)
+declaring the concept directly as an instance of the scoping concept
+(e.g. for disease-specific restriction, the concept would be an instance
+of the appropriate DUO class as well as the disease class). Each of
+these have a bearing on how a condition is expressed, and on the
+performance and capability of matching processes for comparing two
+policies. For example, use of (i) would require executing an OWL2
+reasoner prior to the matching process, and (ii) would require a SHACL
+validator. In our implementation, we used (iv) by declaring the concept
+as an instance of both DUO and scoping classes as it was the simplest
+method, did not require any additional tools or changes to ODRL, and
+could be replaced trivially with a different method in the future.
+However, we explicitly indicate this issue as requiring further
+investigation. The <code>odrl:Set</code> defined to represent DUO’s
+concept on “population origins or ancestry research only” is presented
+in Listing <a href="#list:set" data-reference-type="ref"
+data-reference="list:set">[list:set]</a>.</p>
+<div class="listing">
+<pre class="turtle"><code>:DUO_0000011 a odrl:Set ;
+    rdfs:label &quot;DUO_0000011&quot; ;
+    rdfs:comment &quot;This data use permission indicates 
+        that use of the data is limited to the study of 
+        population origins or ancestry (POA - population 
+        origins or ancestry research only)&quot; ;
+    dct:source obo:DUO_0000011 ;
+    odrl:permission [
+        odrl:action odrl:use ;
+        odrl:target :TemplateDataset ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand :POA ] ] ;
+    odrl:prohibition [
+        odrl:action odrl:use ;
+        odrl:target :TemplateDataset ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator :isNotA ;
+            odrl:rightOperand :POA ] ] .</code></pre>
+</div>
+<h3 id="sec:odrl-offer">Dataset policies as <code>odrl:Offer</code></h3>
+<p>When using DUO concepts to annotate datasets, each dataset can
+contain multiple DUO concepts that must be interpreted in combination as
+an offer for using that dataset. This is expressed in ODRL as an
+instance of <code>odrl:Offer</code> containing the union of all
+<code>odrl:Set</code> instances associated with DUO concepts for a given
+dataset. In doing this, the <code>Offer</code> represents a single
+policy for that dataset that can be used in matching requests, or
+embedded as metadata to form a <em>sticky policy</em>. When creating
+offers, each individual rule retrieved from the merged set policies is
+maintained (as an individual rule) to facilitate the matching process
+with rules from data use requests. This also facilitates potential
+annotations for rules, such as specifying their provenance or adding
+additional information for their interpretation within that offer. An
+example <code>odrl:Offer</code>, which merges <code>:DUO_0000042</code>,
+<code>:DUO_0000025</code> and <code>:DUO_0000020</code>, is presented in
+Listing <a href="#list:offer" data-reference-type="ref"
+data-reference="list:offer">[list:offer]</a>.</p>
+<p>The construction of the <code>odrl:Offer</code> instance uses the
+following algorithm:</p>
+<ol>
+<li>For a given dataset, retrieve all DUO data use permissions and
+modifier concepts it was tagged with.</li>
+<li>For each DUO concept retrieved, fetch its relevant
+<code>odrl:Set</code> policy by using the <code>dct:source</code>
+association.</li>
+<li>If a retrieved policy uses an instance of a
+<code>:TemplateQuery</code>, execute its associated SPARQL query, and
+replace the instance with retrieved value(s).</li>
+<li>Create an instance of <code>odrl:Offer</code> containing all
+extracted rules<a href="#fn25" class="footnote-ref" id="fnref25"
+role="doc-noteref"><sup>25</sup></a>.</li>
+<li>Add provenance information or other additional documentation,
+e.g. <code>dct:dateSubmitted</code> for when the dataset was added to a
+system.</li>
+</ol>
+<div class="listing">
+<pre class="turtle"><code>:Offer a odrl:Offer ;
+    rdfs:label &quot;Offer to use dataset for GRU within time limits&quot; ;
+    odrl:target &lt;https://example.com/Dataset&gt; ;
+    odrl:action odrl:use ;
+    dct:source :DUO_0000042, :DUO_0000025, :DUO_0000020 ;
+    dct:dateSubmitted &quot;2022-04-30&quot;^^xsd:date ;
+    odrl:permission [
+        odrl:duty [ odrl:action :CollaborateWithStudyPI ] ] ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand odrl:elapsedTime ;
+            odrl:operator odrl:lteq ;
+            odrl:rightOperand &quot;2022-12-31&quot;^^xsd:date ] ] ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand :GRU ] ] .</code></pre>
+</div>
+<h3 id="sec:odrl-request">Data use requests as
+<code>odrl:Request</code></h3>
+<p>To represent data use requests, termed as investigations within DUO,
+instances of <code>odrl:Request</code> are used along with permissions
+for specific research purposes. In this, the DUO concepts representing
+requests for use are defined as instances of <code>odrl:Set</code>,
+similar to Section.<a href="#sec:odrl-set" data-reference-type="ref"
+data-reference="sec:odrl-set">3.2</a>, and are combined together to
+create a single request, similar to Section.<a href="#sec:odrl-offer"
+data-reference-type="ref" data-reference="sec:odrl-offer">3.3</a>. A
+request for genetic studies (<code>:DUO_0000038</code>), and the
+respective <code>odrl:Set</code> which was used to generate it, is
+presented in Listing <a href="#list:request" data-reference-type="ref"
+data-reference="list:request">[list:request]</a>.</p>
+<div class="listing">
+<pre class="turtle"><code>:DUO_0000038 a odrl:Set ;
+    rdfs:label &quot;DUO_0000038&quot; ;
+    rdfs:comment &quot;Request for biomedical research 
+        concerning genetics (i.e., the study of genes, 
+        genetic variations and heredity)&quot; ;
+    dct:source obo:DUO_0000038 ;
+    odrl:permission [
+        odrl:action odrl:use ;
+        odrl:target :TemplateDataset ;
+        odrl:assignee :TemplateAssignee ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand :GS ] ] .
+:Request_for_GS a odrl:Request ;
+    rdfs:label &quot;A request for GS (DUO_0000038)&quot; ;
+    rdfs:comment &quot;Request for biomedical research 
+        concerning genetics (i.e., the study of genes, 
+        genetic variations and heredity)&quot; ;
+    dct:source :DUO_0000038 ;
+    dct:dateSubmitted &quot;2022-05-01&quot;^^xsd:date ;
+    odrl:permission [
+        odrl:action odrl:use ;
+        odrl:target :TemplateDataset ;
+        odrl:assignee &lt;https://example.com/SomeRequestor&gt; ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand :GS ] ] .</code></pre>
+</div>
+<h3 id="sec:odrl-agreement">Data use decisions as
+<code>odrl:Agreement</code></h3>
+<p>Instances of <code>odrl:Agreement</code> are recorded outcomes of
+decisions resulting from matching processes where access to the data has
+been granted or denied. In this, the ODRL terms assist in specifying who
+has granted or denied the access (<code>odrl:assigner</code>), to whom
+(<code>odrl:assignee</code>), for what resources
+(<code>odrl:Asset</code>), and the conditions over it
+(<code>odrl:Rule</code>). The rules mentioned in an agreement are the
+same specific rules and obligations as that specified for a dataset
+(i.e. from <code>odrl:Offer</code>) and in a request (i.e.
+<code>odrl:Request</code>). Through these rules, an agreement references
+the specific DUO concepts part of the agreement. An example
+representation of a data use decision as an <code>odrl:Agreement</code>
+between a data depositor and a data requestor for the purpose of genetic
+studies is presented in Listing <a href="#list:agreement"
+data-reference-type="ref"
+data-reference="list:agreement">[list:agreement]</a>.</p>
+<p>The following algorithm is used to create the
+<code>odrl:Agreement</code> instance:</p>
+<ol>
+<li>Retrieve the <code>odrl:Request</code> and dataset’s
+<code>odrl:Offer</code>.</li>
+<li>Match the <code>odrl:Offer</code> with the
+<code>odrl:Request</code> (the algorithm is defined in Section.<a
+href="#sec:matching" data-reference-type="ref"
+data-reference="sec:matching">3.6</a>).</li>
+<li>Record the result where <code>odrl:target</code> property
+specifies the dataset, and <code>odrl:assignee</code> and
+<code>odrl:assigner</code> identify the data provider and the requestor
+respectively.</li>
+<li>If the matching result shows a compatibility between the request
+and the offer, then access is expressed as permissible by using a
+permission with a constraint on the requested purpose for access, as
+well as any other additional constraints, e.g., spatial, temporal, or
+duties on the <code>odrl:assigner</code>. If the access is denied,
+similar information is added to policy as a prohibition.</li>
+<li><code>dct:references</code> is used to associate the agreement
+with the <code>odrl:Offer</code> and <code>odrl:Request</code> that are
+being matched.</li>
+<li>Provenance and other relevant information, e.g.,
+<code>dct:dateAccepted</code> is added to document the agreement’s
+creation and acceptance amongst the parties.</li>
+</ol>
+<div class="listing">
+<pre class="turtle"><code>:Agreement a odrl:Agreement ;
+    dct:references &lt;https://example.com/Offer&gt;, 
+        &lt;https://example.com/Request_for_GS&gt; ;
+    dct:dateAccepted &quot;2022-05-31&quot;^^xsd:date ;
+    odrl:permission [
+        odrl:action odrl:use ;
+        odrl:target &lt;https://example.com/Dataset&gt; ;
+        odrl:assignee &lt;https://example.com/SomeDepositor&gt; ;
+        odrl:assigner &lt;https://example.com/SomeRequestor&gt; ;
+        odrl:constraint [
+            odrl:leftOperand odrl:purpose ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand :GS ] ] .</code></pre>
+</div>
+<p>In the matching algorithm, we only considered the case where a
+request is matched with a dataset’s offer. In a practical situation,
+there may be a single broad request that could have potential matches
+with several datasets, and it may be undesirable to run the matching
+against all possible combinations of requests and datasets. To select
+relevant datasets, a filtering mechanism can be used, such as based on
+the request’s specified purpose, and the dataset’s policies could be
+indexed in a database to enable efficient retrieval and matching. We
+note these as candidates for future improvements in the progression of
+this work.</p>
+<p>Note that ODRL defines <code>odrl:Agreement</code> as the granting or
+acknowledgement of a rule between the parties. This definition is
+agnostic to the contents of that agreement, which means that the
+agreement could be a permission granting access to a dataset, or one
+that prohibits or denies it. While the above example uses the agreement
+to represent a use case where access was granted, this definition makes
+it clear that they can also be used to record instances where the
+request was denied.</p>
+<h3 id="sec:matching">Matching algorithm using ODRL for identifying
+compatible datasets for a request</h3>
+<p>The matching algorithm in DUO is based on comparing and identifying
+compatibility between a dataset’s data use conditions with data use
+requests. In our ODRL implementation, this is done by comparing the
+dataset’s <em>odrl:Offer</em> with an <em>odrl:Request</em>. Given two
+sets of concepts representing an offer and a request, the matching
+algorithm can utilise two different and incompatible notions for how
+access is determined. The first, which is the more common semantic
+interpretation, is based on considering classes as sets and determining
+access based on set membership. For a class <span
+class="math inline"><em>P</em></span> and its subclass <span
+class="math inline"><em>C</em></span>, a request for accessing <span
+class="math inline"><em>P</em></span> would also permit use of <span
+class="math inline"><em>C</em></span> since a member of <span
+class="math inline"><em>C</em></span> is always a member of <span
+class="math inline"><em>P</em></span>. But a request for <span
+class="math inline"><em>C</em></span> would not permit use of <span
+class="math inline"><em>P</em></span> as not all members of <span
+class="math inline"><em>P</em></span> are members of <span
+class="math inline"><em>C</em></span>. This approach has been used in
+matching policies for GDPR compliance <span class="citation"
+data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span> and for granting access to
+resources in Solid <span class="citation"
+data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[26]</a></span>.</p>
+<p>The second approach, which is what DUO describes in its
+documentation, is based on identifying applicability of a concept based
+on its specificity. For a class <span
+class="math inline"><em>P</em></span> and its subclass <span
+class="math inline"><em>C</em></span>, a request for accessing <span
+class="math inline"><em>P</em></span> would not grant access to <span
+class="math inline"><em>C</em></span> since it is more specific, but a
+request for accessing <span class="math inline"><em>C</em></span> would
+grant use of <span class="math inline"><em>P</em></span> as it is less
+specific. Using subsumption as a criterion, the first approach grants
+access when the data policy subsumes the request policy, whereas the
+second approach grants access when the request policy subsumes the data
+policy. Thus, both of the former mentioned approaches (i.e., <span
+class="citation" data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span> and <span class="citation"
+data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[26]</a></span>) can be reused here by
+<em>reversing</em> the direction of subsumption.</p>
+<p>Another consideration for the matching algorithm is the resolution of
+permissions and prohibitions in terms of their order of evaluation and
+conflicts. It is possible to interpret a policy in several incompatible
+ways, such as first checking for permissions and granting access at the
+first satisfied permission, i.e., a permissive model, and its opposite
+where prohibitions are first checked and access is denied for first
+satisfied prohibition, i.e., a prohibitive model. When a conflict occurs
+for a permission and a prohibition over the same resource, the
+resolution would be based on the precedence of one over the other. In
+DUO, the matching algorithm is prohibitive since prohibitions take
+precedence over permissions. This means that if a request either does
+not satisfy a permission or satisfies a prohibition, the request is
+denied. The policies are considered compatible only when all permissions
+are satisfied and all prohibitions remain unsatisfied.</p>
+<p>Based on these considerations, our matching algorithm consists of
+checking for subsumption or satisfiability between
+<code>odrl:Offer</code> and <code>odrl:Request</code> instances. We
+adapted it from a prior implementation that also utilised ODRL in a
+matching algorithm for granting access <span class="citation"
+data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[26]</a></span>. The algorithm simply checks
+whether the dataset policy conditions are satisfied by the request
+policy in case of permission, or violated in case of prohibition. If any
+prohibitions are found, the result is that conditions are
+non-compatible. If no prohibitions are found and all permissions are
+satisfied, then the result is that the conditions are compatible. Note
+that here the matching only asserts the compatibility of the dataset
+usage policy and request, whose result is then used to make a decision
+on whether to grant or refuse access.</p>
+<pre><code>for prohibition ← odrl:Offer do
+    if odrl:assignee ∈ offer:prohibition then
+        if offer:assignee ≡ request:assignee then decision ← DENY
+    for constraint ← prohibition do
+        if odr:spatial ∈ constraint then
+            if offer:spatial ∩ request:spatial ≠ ∅ then decision ← DENY 
+            else if duodrl:Project ← constraint then
+                if request:project ∩ offer:project ≠ ∅ then decision ← DENY
+            else if odrl:dateTime ← constraint then
+                if timeNow < moratoriumDate then decision ← DENY
+            else if offer:purpose ∩ request:purpose ≠ ∅ then decision ← DENY
+for permission ← odrl: offer do
+    if odrl:assignee ∈ offer:permission then
+        if offer:assignee ̸≡ request: assignee then decision ← DENY
+    for constraint ← permission do
+        if odrl:dateTime ∈ constraint then
+            if timeNow > timeLimit then decision ← DENY 
+        else if request:purpose ∈ groupResearchPurposes then
+            if request:purpose ⊄ offer:purpose 
+                ∨ request:group ⊄ offer:group then decision ← DENY
+        else if request:purpose ⊄ offer:purpose then decision ← DENY
+if ∄DENY then decision ← GRANT</code></pre>
+<p>Algorithm <a href="#alg:matching" data-reference-type="ref"
+data-reference="alg:matching">[alg:matching]</a> provides a pseudo-code
+representing the steps to be performed for policy matching. Please note
+that the algorithm only represents a broad indication of actions and
+that the DUO documentation lacks specifics for correctly interpreting
+aspects of semantics. Given that this interpretation has a significant
+impact on the decision-making within DUO’s processes and that DUO only
+specifies interpretation of hierarchical concepts only for purposes but
+not others (e.g. location, users, projects) – we explicitly identify
+this as a topic that requires further consideration and investigation in
+terms of better understanding and expressing the interpretation of DUO’s
+conditions in approval decision-making processes. To remedy this lack of
+information, except for the purposes in DUO’s concepts, we followed
+existing implementations for legally relevant interpretation of
+hierarchical concepts <span class="citation"
+data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span> where a narrower concept or a
+sub-class cannot be considered compatible with a request for a broader
+concept or parent-class. For example, a permission for city as a
+location cannot be satisfied by a request for a region containing that
+city.</p>
+<p>The algorithm reflects DUO’s prohibitive interpretation in matching
+where the offer’s prohibitions are checked and ensured to be satisfied
+before any permissions are checked. The prohibition checking will deny
+the request if any of the following constraints in the offer are
+incompatible with the request:</p>
+<ol>
+<li>offer assignee matches<a href="#fn26" class="footnote-ref"
+id="fnref26" role="doc-noteref"><sup>26</sup></a> (<span
+class="math inline">≡</span>) the request;</li>
+<li>offer has a spatial constraint matching or not satisfying (<span
+class="math inline"> ∩  ≠ ∅</span>) the request;</li>
+<li>request has a project matching (<span
+class="math inline"> ∩  ≠ ∅</span>) the project in offer;</li>
+<li>there is a moratorium with a date in the future; and</li>
+<li>request has a purpose matching (<span
+class="math inline"> ∩  ≠ ∅</span>) the purpose in offer.</li>
+</ol>
+<p>If no prohibitions are found, the permissions are checked next. The
+permission checking will deny the request if any of the following
+constraints in the offer are incompatible with the request:</p>
+<ol>
+<li>offer assignee does not match (<span
+class="math inline">≢</span>) the assignee of the request;</li>
+<li>offer time limit on use has lapsed;</li>
+<li>offer has a group-related research purpose, e.g.,
+<code>PopulationGroupResearch</code>, <code>AgeCategoryResearch</code>
+or <code>GenderCategoryResearch</code> and the request purpose does not
+match (<span class="math inline">⊈</span>) it or the request purpose
+matches it but the group does not (<span class="math inline">⊈</span>),
+e.g. the <code>PopulationGroup</code>, <code>Age</code> or
+<code>Gender</code> in the request are different from the one in the
+offer; and</li>
+<li>offer purpose does not match (<span class="math inline">⊈</span>)
+request purpose, e.g., DUO’s general research use purpose
+<code>GRU</code> in a request does not match a health, medical or
+biomedical research purpose <code>HMB</code> in an offer as
+<code>GRU</code> is a superclass of <code>HMB</code>.</li>
+</ol>
+<p>These steps are checked for all prohibitions and permissions of the
+dataset’s offer and if all permissions and prohibitions are satisfied
+without violations, access to the dataset can be granted. The
+proof-of-concept demonstration described in Section <a href="#sec:demo"
+data-reference-type="ref" data-reference="sec:demo">5</a> uses these
+steps to match an offer with a request policies.</p>
+<div id="table:matching-examples">
+<table>
+<caption>Examples demonstrating the matching process</caption>
+<thead>
+<tr class="header">
+<th><strong>DUO term</strong></th>
+<th><strong>Constraint</strong></th>
+<th><strong>Offer</strong></th>
+<th><strong>Rule</strong></th>
+<th><strong>Request</strong></th>
+<th><strong>Decision</strong></th>
+<th><strong>Reason</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GS</td>
+<td>Location</td>
+<td>Spain</td>
+<td>Permission</td>
+<td>Europe</td>
+<td>DENY</td>
+<td><em>Europe <span
+class="math inline">⊈</span> Spain</em></td>
+</tr>
+<tr class="even">
+<td>GS</td>
+<td>Location</td>
+<td>Europe</td>
+<td>Permission</td>
+<td>Spain</td>
+<td>GRANT</td>
+<td><em>Spain <span
+class="math inline">⊆</span> Europe</em></td>
+</tr>
+<tr class="odd">
+<td>GS</td>
+<td>Location</td>
+<td>Spain</td>
+<td>Prohibition</td>
+<td>Europe</td>
+<td>DENY</td>
+<td><em>Europe <span
+class="math inline">∩</span> Spain <span
+class="math inline"> ≠ ∅</span></em></td>
+</tr>
+<tr class="even">
+<td>GS</td>
+<td>Location</td>
+<td>Europe</td>
+<td>Prohibition</td>
+<td>Spain</td>
+<td>DENY</td>
+<td><em>Spain <span
+class="math inline">∩</span> Europe <span
+class="math inline"> ≠ ∅</span></em></td>
+</tr>
+<tr class="odd">
+<td>GS</td>
+<td>Location</td>
+<td>UK</td>
+<td>Prohibition</td>
+<td>Spain</td>
+<td>GRANT</td>
+<td><em>Spain <span
+class="math inline">∩</span> UK <span
+class="math inline"> = ∅</span></em></td>
+</tr>
+<tr class="even">
+<td>GRU</td>
+<td>Purpose</td>
+<td>HMB</td>
+<td>Permission</td>
+<td>DS-Cancer</td>
+<td>GRANT</td>
+<td><em>DS-Cancer <span
+class="math inline">⊆</span> HMB</em></td>
+</tr>
+<tr class="odd">
+<td>GRU</td>
+<td>Purpose</td>
+<td>DS-Cancer</td>
+<td>Prohibition</td>
+<td>HMB</td>
+<td>DENY</td>
+<td><em>HMB <span class="math inline">∩</span>
+DS-Cancer <span class="math inline"> ≠ ∅</span></em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table <a href="#table:matching-examples" data-reference-type="ref"
+data-reference="table:matching-examples">2</a> presents examples of how
+the matching process works for permissions and prohibitions in offer
+with constraints for location and purpose. In a semantic web
+implementation, the processes for checking equivalence (<span
+class="math inline">≡</span>), intersection (<span
+class="math inline">∩</span>), and subset (<span
+class="math inline">⊆</span>) require additional considerations beyond
+simply using <code>owl:sameAs</code> or <code>rdfs:subClassOf</code>
+inferences. For example, to compare <em>location Spain</em> with a
+request for <em>location Europe</em> using subset (<span
+class="math inline">⊆</span>) for permissions or intersection (<span
+class="math inline">∩</span>) for prohibition requires both locations to
+be expressed in a manner where such ‘hierarchical’ or ‘set-based’
+interpretations are possible. In this case, the matching requires
+interpreting <em>Spain</em> is a <em>narrower concept</em> or a
+<em>subset</em> of <em>Europe</em> – which can be indicated using
+various relations such as <code>rdfs:subClassOf</code>,
+<code>skos:broader</code>, <code>dct:isPartOf</code>, or even a property
+such as <code>ex:inContinent</code>. Further complications arise when
+legal jurisdictions are to be represented, such as <em>EU</em> which
+<em>Spain</em> is a member of.</p>
+<p>Therefore, an implementation of the matching process has to be
+cognisant of such cases and be careful when implementing the
+equivalence, intersection, and subset processes using conventional
+semantic web interpretations (e.g. <code>rdf:type</code> and
+<code>rdfs:subClassOf</code>). We strongly recommend using a
+standardised vocabulary such as the DPV when declaring both offer and
+request terms so as to ensure the matching process is accurate and
+produces the expected correct result. To support consistent application
+and interpretation of the standardised vocabulary, a specification is
+needed that clarifies the expression of concepts and their
+interpretation within the matching process – for example to indicate
+that any location term in an offer or request <em>MUST</em> be an
+instance of <code>Purpose</code> and <em>MUST</em> be related to at
+least one concept in the purpose vocabulary using <code>rdf:type</code>
+or <code>rdfs:subClassOf</code>. Using such a specification, the
+matching process can then function by relying on these assertions to
+interpret the constraints.</p>
+<h2 id="sec:dpv">Expressing Legal Compliance Concepts using DPV</h2>
+<p>The DUO concepts and terms used are different from those as used in
+legal compliance tasks. By using ODRL concepts, the terms involved are
+expressed in a language that has legal interpretation (e.g.
+<em>Asset</em> or <em>Party</em>). The ODRL vocabulary also contains
+additional terms which may be used with DUO for specific legal
+interpretations, such as <em>ConsentingParty</em>,
+<em>InformedParty</em>, and <em>obtainConsent</em>. While these terms
+are sufficient for a policy to have legal interpretations, they are
+insufficient to incorporate the specifics of laws such as GDPR which
+assign specific roles to parties and require use of specific legal basis
+in processing of data. At the same time, if the terms are made specific
+only for a single law such as the GDPR, the usefulness and applicability
+of the resulting policies would be restricted to only that law without a
+clear recourse for adopting other laws and jurisdictions. To address
+this gap, we utilised the Data Privacy Vocabulary (DPV) which provides
+terms that are intended to be jurisdiction-agnostic and can be used
+without being restricted to a specific law.</p>
+<p>To utilise DPV, we first performed an alignment between its concepts
+and ODRL where DPV concepts that have an overlap with ODRL concepts are
+defined as their subclasses (e.g. <code>dpv:Entity</code> is the
+subclass of <code>odrl:Party</code>). This utilised the approach from
+existing work regarding extending ODRL concepts for GDPR <span
+class="citation" data-cites="vosODRLPolicyModelling2019"><a
+href="#ref-vosODRLPolicyModelling2019"
+role="doc-biblioref">[20]</a></span>. Where DPV concepts had no direct
+equivalent in ODRL, such as for legal basis, we used them directly
+within ODRL rules as instances of the relevant concepts (e.g.
+<code>dpv:hasLegalBasis</code> as <code>odrl:LeftOperand</code>). Table
+<a href="#table:odrl-dpv" data-reference-type="ref"
+data-reference="table:odrl-dpv">3</a> describes the performed
+alignment<a href="#fn27" class="footnote-ref" id="fnref27"
+role="doc-noteref"><sup>27</sup></a> between ODRL and DPV concepts to
+define DUO concepts.</p>
+<div id="table:odrl-dpv">
+<table>
+<caption>Alignment between DPV and ODRL for use in policies expressing
+DUO concepts</caption>
+<thead>
+<tr class="header">
+<th>DPV Concept</th>
+<th>ODRL Concept</th>
+<th style="text-align: center;">Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dpv:Entity</td>
+<td>odrl:Party</td>
+<td style="text-align: center;">subclass</td>
+</tr>
+<tr class="even">
+<td>dpv:Purpose</td>
+<td>odrl:Purpose</td>
+<td style="text-align: center;">subclass</td>
+</tr>
+<tr class="odd">
+<td>dpv:Processing</td>
+<td>odrl:Action</td>
+<td style="text-align: center;">subclass</td>
+</tr>
+<tr class="even">
+<td>dpv:PersonalData</td>
+<td>odrl:Asset</td>
+<td style="text-align: center;">subclass</td>
+</tr>
+<tr class="odd">
+<td>dpv:LegalAgreement</td>
+<td>odrl:Policy</td>
+<td style="text-align: center;">subclass</td>
+</tr>
+<tr class="even">
+<td>dpv:hasTechnicalOrganisationalMeasure</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="odd">
+<td>dpv:hasLocation</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="even">
+<td>dpv:hasJurisdiction</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="odd">
+<td>dpv:hasApplicableLaw</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="even">
+<td>dpv:hasLegalBasis</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="odd">
+<td>dpv:hasRecipient</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="even">
+<td>dpv:hasRight</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+<tr class="odd">
+<td>dpv:hasRisk</td>
+<td>odrl:LeftOperand</td>
+<td style="text-align: center;">instance</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Using DPV enables modelling rules regarding restrictions on legal
+basis (e.g. consent), explicit acknowledgement of roles (e.g. data
+controllers), limitations on third-party recipients, and indicating the
+applicability of a specific law using <code>dpv:hasApplicableLaw</code>.
+The DPV’s “technical and organisational measures”, which consist of
+concepts such as data security and impact assessments, can be used to
+further enrich DUO’s data use modifiers and create a clear delineation
+between research purposes, measures required, and limitations or
+conditions of use.</p>
+<p>To explicitly specify GDPR as the applicable law and utilise its
+legal bases and rights, we utilised the DPV-GDPR<a href="#fn28"
+class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>
+extension which provides these concepts. Through this separation
+(between DPV and DPV-GDPR), the policies can be declared in a
+jurisdiction-agnostic manner using DPV, and made specific to a law such
+as the GDPR by checking additional contextual information such as the
+locations of patients whose data is involved, or that of the requesting
+party. The separation also provides a clear path for applying other
+jurisdictional laws and concepts on top of DPV by creating extensions of
+its concepts similar to DPV-GDPR. Listing <a href="#list:dpv"
+data-reference-type="ref" data-reference="list:dpv">[list:dpv]</a>
+includes two ODRL offer policies that use DPV and DPV-GDPR to invoke
+jurisdiction-agnostic data protection and GDPR-specific terms,
+respectively.</p>
+<div class="listing">
+<pre class="turtle"><code>PREFIX dpv: &lt;https://w3id.org/dpv#&gt;
+PREFIX dpv-legal: &lt;https://www.w3id.org/dpv/dpv-legal#&gt;
+PREFIX dpv-gdpr: &lt;https://w3id.org/dpv/dpv-gdpr#&gt;
+:Offer1 a odrl:Offer ;
+    rdfs:label &quot;Offer to use dataset using Consent, and requiring an Impact Assessment&quot; ;
+    odrl:target &lt;https://example.com/Dataset&gt; ;
+    odrl:action dpv:Use ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand dpv:hasLegalBasis ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:Consent ] ] ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand dpv:hasOrganisationalMeasure ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:ImpactAssessment ] ] ;
+:Offer2 a odrl:Offer ;
+    rdfs:label &quot;Offer to use dataset using GDPR&#39;s Explicit Consent, and requiring a DPIA&quot; ;
+    odrl:target &lt;https://example.com/Dataset&gt; ;
+    odrl:action dpv:Use ;
+    dpv:hasApplicableLaw dpv-legal:EU-GDPR ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand dpv:hasLegalBasis ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv-gdpr:A6-1-a-explicit-consent ] ] ;
+    odrl:permission [
+        odrl:constraint [ 
+            odrl:leftOperand dpv:hasOrganisationalMeasure ;
+            odrl:operator odrl:isA ;
+            odrl:rightOperand dpv:DPIA ] ] ;</code></pre>
+</div>
+<p>DUO states the interpretation and applicability of GDPR’s
+requirements is the responsibility of the adopter. This follows from the
+complexities of determining their applicability before any request is
+known, or because of the differences between stakeholder jurisdictions.
+To assist with this process, we recommend adding or providing relevant
+methods that are necessary to identify the applicability of the GDPR (or
+other laws). For example, GDPR is applicable (to simplify the condition)
+when an organisation operates within the EU or processes the personal
+data of people in the EU. This translates to knowing the locations of
+people whose data is being offered for use as well as the requesting
+entity location.</p>
+<p>Using DPV, both of these can be expressed using the appropriate
+Entity concepts and <em>dpv:hasLocation</em>. This enables expressing
+using ODRL further data use limitations such as data being available
+only when the request acknowledges the applicability of the GDPR, or
+permitting use only within GDPR-governed jurisdictions, and checking
+these as permissions or prohibitions to be satisfied when matching a
+request with a dataset by using a matching algorithm as in Section <a
+href="#sec:matching" data-reference-type="ref"
+data-reference="sec:matching">3.6</a> along with an encoding of GDPR’s
+requirements such as those from Vos et al. <span class="citation"
+data-cites="vosODRLPolicyModelling2019"><a
+href="#ref-vosODRLPolicyModelling2019"
+role="doc-biblioref">[20]</a></span>. The DPV-LEGAL<a href="#fn29"
+class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>
+extension providing Jurisdictions, Laws, and Authorities for DPV is
+helpful in representing these conditions.</p>
+<h2 id="sec:demo">Demonstration and Evaluation Using a
+Proof-of-Concept</h2>
+<p>In this section, we describe the implementation of a User Interface
+to generate dataset policies and a prototype implementation of the
+matching algorithm is available at <a
+href="https://w3id.org/duodrl/demo/"
+class="uri">https://w3id.org/duodrl/demo/</a>. The prototype can be
+installed and used locally and an online demonstration is available at
+<a href="https://w3id.org/duodrl/app/"
+class="uri">https://w3id.org/duodrl/app/</a>.</p>
+<p>Figure <a href="#fig:editor-all" data-reference-type="ref"
+data-reference="fig:editor-all">[fig:editor-all]</a> shows two examples
+of the developed UI to edit <code>odrl:Offer</code> policies, which
+relies on both ODRL and the ad-hoc vocabulary created to cover missing
+terms<a href="#fn30" class="footnote-ref" id="fnref30"
+role="doc-noteref"><sup>30</sup></a>. The first example (a) uses only
+the DUO concepts, and the second example (b) includes both DUO and DPV
+to construct <code>odrl:Offer</code>.</p>
+<p>Upon selecting the relevant DUO concept in the UI, the application
+retrieves the associated <code>odrl:Set</code> instance representing
+data use permissions and data use modifiers as ODRL policies, combines
+them, and displays them on screen. The code and data used in this are
+available online at <a href="https://w3id.org/duodrl/repo"
+class="uri">https://w3id.org/duodrl/repo</a>. The matching algorithm
+used here was adapted from prior work in utilising ODRL for GDPR-based
+policy matching <span class="citation"
+data-cites="estevesODRLProfileExpressing2021"><a
+href="#ref-estevesODRLProfileExpressing2021"
+role="doc-biblioref">[26]</a></span>. We modified it as per the
+requirements elicited in Section <a href="#sec:odrl"
+data-reference-type="ref" data-reference="sec:odrl">3</a>.</p>
+<div id="fig:editor-all" style="text-align: center;">
+    <div style="display: flex;">
+        <figure style="float: left;">
+            <img src="img/064-editor.png">
+            <figcaption>from DUO concepts</figcaption>
+        </figure>
+        <figure style="float: left;">
+            <img src="img/064-dpv-editor.png">
+            <figcaption>from DUO and DPV concepts</figcaption>
+        </figure>
+    </div>
+    <span><i>Proof-of-concept implementation showing generation of <code>odrl:Offer</code> policies</i></span>
+</div>
+<p>For the matching process, the conditions represented in an
+<code>odrl:Request</code> instance should be compatible with those
+specified in the <code>odrl:Offer</code> instance associated with a
+dataset. This means the permissions and prohibitions from the offer
+instance should be satisfiable by the request. Once this is determined
+to be valid, the policies are considered compatible and access can be
+authorised. For data discovery, a request policy must be compared with
+the policies of every dataset. This process can be made faster and more
+convenient through pre-computations and optimisations – though we did
+not do these in our implementation as it is intended to only be a
+proof-of-concept.</p>
+<p>The data discovery algorithm starts by checking if there is a
+specific rule within a dataset’s policy for the purposes stated in the
+<code>odrl:Request</code> – if a permission is found for a purpose <span
+class="math inline"><em>P</em></span> then access to the dataset can be
+granted and if a prohibition is found then access is rejected. A similar
+exercise is then performed to check for additional restrictions related
+to other constraints (described on Table <a
+href="#table:DUO_ODRL_overview" data-reference-type="ref"
+data-reference="table:DUO_ODRL_overview">1</a>), e.g. restrictions on
+the type of assignee of the offer, or on the location or time of data
+use, and in case a prohibition is found then access to the dataset is
+denied and in case a permission is found access can be granted.</p>
+<p>In the event additional duties are imposed for dataset use, such as
+agreeing to collaborate with the primary study investigator or providing
+documentation of ethical approval, these are included in the
+<code>odrl:Agreement</code> that establishes the final conditions for
+dataset use. If there are conflicting policies, resulting from the
+merging of different DUO permissions and modifiers, by default, the
+prohibition takes precedence, similar to the default behaviour of the
+algorithm for the case where no permission or prohibition is specified
+for a particular purpose. In such cases, access is denied.</p>
+<p>To record the result of the matching algorithm, an
+<code>odrl:Agreement</code> is created with a permissive or prohibitive
+rule to indicate the case where <code>odrl:Request</code> is allowed or
+denied. This agreement policy also includes the date where the agreement
+was created and/or reached, using the <code>dct:dateAccepted</code>
+property, and the <code>dct:references</code> property to indicate the
+identifiers of the <code>odrl:Offer</code> and <code>odrl:Request</code>
+used to reach the result of the matching agreement. The depositor of the
+dataset is added as the <code>odrl:assignee</code> and the requestor as
+the <code>odrl:assigner</code> of the agreement. When the request is
+allowed/denied due to a particular purpose, this purpose is recorded as
+a constraint of the permission/prohibition in the agreement. If further
+constraints are specified in the associated <code>odrl:Offer</code> and
+are allowed/denied, these are also included in the
+permission/prohibition of said agreement. In addition to this, if the
+agreement in question has a permissive result, any duties that might be
+present in the related <code>odrl:Offer</code> are copied to the
+agreement as duties to be fulfilled for the allowed access to the
+dataset. In this manner, the <code>odrl:Agreement</code> instance
+represents and can be used to create suitable legal documents to
+document and communicate the agreement based on the issued request. The
+computational cost to generate such an agreement is not in the scope of
+analysis of this work as it is highly dependent on the use case and on
+the interpretation of the DUO concepts/rules, which DUO does not
+explicitly provide, hence reflect the authors’ own interpretation of
+such concepts. Therefore, this work focuses on representing the
+information in an explicit manner through the usage of ODRL policies,
+which can be made more efficient by using existing reasoning approaches,
+such as by converting it to specific OWL forms that permit efficient
+reasoning <span class="citation"
+data-cites="bonattiRealtimeReasoningOWL22020"><a
+href="#ref-bonattiRealtimeReasoningOWL22020"
+role="doc-biblioref">[19]</a></span>.</p>
+<h2 id="sec:discussion">Discussion on Integration into Existing
+DUO-based Workflows</h2>
+<p>DUO represents one facet of GA4GH’s ambition to facilitate
+responsible genomics data sharing for health and medicine-related
+research. It plays an important part given that its role is to increase
+automation in data discovery and assist in ensuring data use is
+permitted with accountability and oversight. Its use is thus part of a
+workflow consisting of different components, processes, and stakeholders
+who have differing requirements for how they use DUO. Any changes
+proposed to the way in which DUO is modelled, is applied for dataset
+discovery, or is used in automation for identifying compatibility with
+requests may have consequences on these existing workflows. While better
+design and performance are valid technological goals, they should be
+evaluated within the lens of socio-technical applications they are a
+part of. This section therefore discusses the influence and impact of
+our work on existing DUO-based workflows and offers suggestions on how
+this work can be best utilised.</p>
+<h3 id="sec:discussion-design">Design of DUO concepts</h3>
+<p>As we outlined in Section.<a href="#sec:odrl-overview"
+data-reference-type="ref" data-reference="sec:odrl-overview">3.1</a>,
+the concepts within DUO have duplicity in semantics, and do not present
+the conditions they represent as explicit machine-readable code. This
+has an impact on the ability to use these for the expression of policies
+and the implementation of automation in dataset discovery and request
+matching processes, as well as the inability to further use this
+information in other processes such as to keep records and create
+documentation. In addition, the structuring of concepts requires clarity
+on their intended role without overlap (i.e. permissions, modifiers, and
+investigations), and should have separation of concerns (i.e. purposes
+from modifiers). Through this, the use of concepts becomes clearer and
+consistent, and provides the ability to introduce additional conditions
+and constraints without impact on existing concepts. We recommend
+following the ODRL model and concepts in terms of representing rules
+(permission, prohibition, duty), and constraints (purposes, scopes)
+separately from one another.</p>
+<p>For further refinement of DUO terms and their interpretation, the
+textual descriptions provided should utilise controlled natural language
+(see survey on <span class="citation"
+data-cites="kuhnSurveyClassificationControlled2014"><a
+href="#ref-kuhnSurveyClassificationControlled2014"
+role="doc-biblioref">[27]</a></span> for variety of approaches) that
+match the expression of rules (as in ODRL) so as to provide a reduced
+level of ambiguity and high-degree of specificity in the terms used.
+Through these, the descriptions can be made self-sufficient in terms of
+describing how they should be applied, or when (i.e. before or after
+data has been released), which can benefit the non-technical processes
+and stakeholders in understanding and using them. In addition, the
+specificity of descriptions will also assist approaches such as ours in
+constructing machine-readable rules that match the exact intention of
+that concept.</p>
+<p>By specifying policies in ODRL (or other similar policy-based
+semantic models), DUO gains additional potential where policies may
+encompass other requirements (e.g. legal), or have information about the
+provenance of the data access committees and other relevant processes.
+This would aid in maintaining documentation, using validation and other
+forms of automation to ensure it is complete and correct, and perform
+follow-up actions periodically or as contextually required. In all of
+these, the benefits do not require everyone to adopt a large amount of
+technical debt, and adopters of DUO can choose the extent of what and
+how they wish to utilise our suggestions - such as adopting just the
+ODRL rules, or its matching algorithm, or also the connection to legal
+compliance using DPV. Our primary contribution is in demonstrating their
+usefulness and providing a path for their development and adoption.</p>
+<h3 id="integration-into-existing-implementations">Integration into
+Existing Implementations</h3>
+<p>We acknowledge that some of our proposed changes may break backwards
+or existing compatibility with DUO utilising systems, and therefore
+suggest any adopter to perform an assessment regarding whether the gains
+obtained from such changes outweigh the cost of making these changes. In
+our opinion, our changes do offer more advantages than disadvantages in
+the longer term, and therefore they should be adopted gradually if not
+immediately. We recommend the adoption of equivalent ODRL policies for
+DUO concepts and the (re-)structuring of existing taxonomies and
+concepts as the first steps. After this, systems such as DUOS can take
+advantage of the increased availability of machine-readable data to
+enhance their data discovery and matching algorithms.</p>
+<p>We also acknowledge the value of DUO concepts in being simple for
+stakeholders to understand and utilise, and their basis in ‘textual
+clauses’ such as those offered in informed consent or data
+donation/release forms. With this in mind, our modelling of ODRL
+policies ensures that there is no immediate need to replace the use of
+DUO concepts since the ODRL policies are complementary to these i.e. the
+ODRL policy is linked to DUO concepts rather than replacing them
+entirely. Thus, stakeholders who lack or have limited technical
+expertise can continue to utilise DUO concepts as they have, with
+machine-based implementations taking advantage of the increased clarity
+and specificity of ODRL rules associated with those DUO concepts. An
+important advantage this provides, that is not possible in the current
+DUO-based implementations, is from the underlying constraints or
+conditions being made explicit, thereby providing a larger avenue for
+where further research into the use of automation and logic-based
+reasoning can be investigated to scale the approach to larger and more
+diverse use-cases than is currently feasible with DUO.</p>
+<p>It also offers the possibility to encode as machine-readable metadata
+what is currently external information i.e. (i) who: the data is about,
+requested access, was granted access; or (ii) follow-up duties once data
+has been released: checking whether it has been fulfilled, documenting
+fulfilment or violation; (iii) legal obligations associated with data
+use. All these information and factors are what DUO-utilising systems
+currently utilise (such as DUOS) and will do so in any practical
+use-case in the future. By providing a clear path for adopters to
+express this information, the use of DUO can be made more systematic and
+consistent – thereby also increasing the potential cooperation between
+adopters and facilitating cross-boundary data requests and access as
+envisioned by GA4GH as well as the EU’s Health Data Space ambitions.</p>
+<h3 id="assisting-with-legal-compliance">Assisting with Legal
+Compliance</h3>
+<p>Currently, DUO or GA4GH do not provide information on how the use of
+its efforts relates to legal interpretation and obligations, though they
+have ongoing discussions for the same. This is a particularly
+challenging task given the global scope of the work which encompasses
+different jurisdictions and their laws, and that laws such as GDPR are
+fairly recent in terms of how their obligations are understood to be
+applied. We suggest the use of domain-agnostic vocabularies such as ODRL
+and DPV to first provide a clear indication of how DUO and DUO-based
+systems relate to specific concepts within legal terminology. By using
+these within ODRL policies, DUO can provide what is effectively a
+digital contract.</p>
+<p>Further specific jurisdictional applications can then be introduced
+as an extension of these. For example, the DPV-GDPR extension provides a
+convenient way to specify GDPR’s legal bases and rights alongside DPV.
+This reduces the burden on adopters who do not want to express this
+information or do not want to express any jurisdiction-specific
+information. For example, a data depositor who only stipulates use of
+data should be based on consent without explicitly defining the
+conditions for that valid consent can be expressed as a policy using
+ODRL and DPV. The oversight committee or an ethics board can then
+evaluate this further based on their knowledge of the valid consenting
+requirements, and add additional restrictions or obligations to follow a
+specific regulation such as the GDPR before permitting use of that data
+by using DPV-GDPR.</p>
+<p>This freedom also offers benefits for systems like DUOS that can
+explicitly denote datasets as requiring GDPR-level consenting or its
+applicability by adding relevant metadata to the dataset policy. Doing
+so assists the matching process to also check for legal obligations and
+compatibility, such as by requiring specific information about the
+requester (e.g. a Data Protection Officer), or requiring additional
+legal bases and safeguards for transfer of that data (e.g. outside EU).
+Through this, DUO and its applications can gain a wider legal
+applicability across the globe and also have the means and mechanisms to
+address specific interpretations of the law. And given that all this
+information would be machine-readable and shareable with the dataset, it
+can be used by both provider and requesting entity for automation in
+identifying and checking the fulfilment of legal obligations based on
+utilising the existing state of the art.</p>
+<h2 id="sec:DUC">Analysis of Recent Developments</h2>
+<p>Two articles <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023 jeansonGettingYourDUCs2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a>, <a href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> relevant to DUO were made available
+online during the reviewing of this article. To better position our
+work, we provide an informative preliminary analysis of their
+contributions and discuss the (continued) relevance of our work given
+these new developments.</p>
+<h3 id="summary-of-new-articles">Summary of New Articles</h3>
+<p>The two articles <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023 jeansonGettingYourDUCs2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a>, <a href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> together represent improvements to
+the way information is expressed and encoded as rules based on DUO
+terms. The first <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a></span> presents <em>Common Conditions of
+Use Elements</em> (CCE) – a controlled vocabulary representing
+<em>concepts</em> for use in data sharing policies. The second <span
+class="citation" data-cites="jeansonGettingYourDUCs2023"><a
+href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> presents <em>Digital Use
+Conditions</em> (DUC) – a policy expression mechanism to specify
+<em>rules</em> regarding conditions for sharing and reuse of
+datasets.</p>
+<p>Where DUO terms singularly represent both concepts and rules, CCE and
+DUC distinguish between information and rules, which provides
+flexibility in their use, enables granularity in their respective uses,
+and provides a mechanism to extend them via <em>profiles</em> to suit
+specific use-cases and requirements. An online tool demonstrating this
+is provided at <a href="https://ducejprd.le.ac.uk/"
+class="uri">https://ducejprd.le.ac.uk/</a>.</p>
+<p>The CCE vocabulary consists of 20 concepts that were identified from
+an analysis of requirements and conducted user studies. Its motivation
+is to provide “<em>flexible ontologies that can capture complex and
+conditional permissions in data in a manner that enables logical
+computer-based reasoning</em>” <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a></span>. The article describes four
+requirements for CCE concepts:</p>
+<ol>
+<li>atomic i.e. each term should represent a single <em>concept</em>
+as opposed to representing a complex or combination of several
+concepts;</li>
+<li>no directionality i.e. the term by itself should not specify
+whether its usage means data reuse or sharing is allowed, forbidden, or
+obligatory;</li>
+<li>generalised i.e. the term should be a modular category without
+any customisation, conditionality, or dependencies; and</li>
+<li>the term should be “widely applicable and relevant”.</li>
+</ol>
+<p>The DUC specification <span class="citation"
+data-cites="jeansonGettingYourDUCs2023"><a
+href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> defines the expression of policies
+where each policy contains an optional header section providing metadata
+regarding the policy and a necessary core section containing one or more
+statements. The header section also provides references to the datasets
+associated with the policy, and information on the interpretation of
+‘unstated conditions’ as either ‘forbidden’ or as ‘permitted’. Each DUC
+statement contains four components:</p>
+<ol>
+<li>a condition term, which is a CCE concept;</li>
+<li>a rule, which is one of <em>Obligatory, Permitted,
+Forbidden</em>, and <em>No Requirement</em>;</li>
+<li>a scope, which is either ‘<em>Whole of asset</em>’ by default or
+‘<em>Part of asset</em>’; and</li>
+<li>optionally a condition parameter with an optional value.</li>
+</ol>
+<p>An example mentioned in the article <span class="citation"
+data-cites="jeansonGettingYourDUCs2023"><a
+href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> of a DUC statement is
+<em>Country</em> (condition) with <em>Permitted</em> (rule) for
+<em>Whole of Asset</em> (scope) with <em>UK</em> (parameter). Another
+example mentioned is <em>Time limit</em> (condition) with
+<em>Obligatory</em> (rule) for <em>Whole of Asset</em> (scope) with
+<em>Month</em> (parameter) as <em>12</em> (value). Additional examples
+are available within the online tool documentation<a href="#fn31"
+class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>.
+In addition to concepts, DUC statements can also contain free text
+descriptions to represent concepts, rules, scopes, and parameters. The
+serialisation of DUC policies is expressed using JSON in both the
+article and the tool website and documentation.</p>
+<p>The article <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a></span> provides a mapping between the 20
+CCE concepts and DUO terms and indicates whether the CCE term is exactly
+equivalent to a DUO term, or requires additional use of rules (e.g.
+obligations using DUC) to be considered equivalent, or is a combination
+of multiple rules (e.g. permission with one concept and ‘forbidden’ with
+another) to match a DUO term, or has no corresponding term in DUO.</p>
+<h3 id="comparisons-with-work-presented-in-this-article">Comparisons
+with Work presented in this article</h3>
+<p>The advancements presented in <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023 jeansonGettingYourDUCs2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a>, <a href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> address similar motivations as
+those we discussed in Sections <a href="#sec:intro-research-question"
+data-reference-type="ref"
+data-reference="sec:intro-research-question">1.2</a> and <a
+href="#sec:sota" data-reference-type="ref"
+data-reference="sec:sota">2</a> regarding making information inherent
+within DUO terms explicit and machine-readable form. The key difference
+in the approaches is that while we focused on the reuse of existing
+approaches (ODRL as a standard for rules and DPV for vocabulary), the
+CCE/DUC approach creates a new vocabulary (CCE) and rule expression
+mechanism (DUC). In this section, we compare the two approaches based
+primarily on the distinctions between DUC and ODRL for expressing rules
+and policies, and between CCE and DPV for providing vocabularies.</p>
+<p>Without a formal specification, it is difficult to compare DUC with
+ODRL. The way DUC is described and used in the examples and within the
+tool provides the perception that DUC can be a simplified subset of
+ODRL. This is because the structure of a DUC statement can be expressed
+in the form of RDF triples which can be grouped together within an ODRL
+rule. In this, the DUC <em>concept</em> is mapped to ODRL’s
+<em>action</em>, DUC <em>rule</em> to ODRL’s <em>Rule</em>, DUC
+<em>scope</em> to ODRL’s <em>target</em>, and DUC parameter and value as
+ODRL <em>leftOperand</em> and <em>rightOperand</em>, respectively. For
+example, the two examples of DUC statements stated earlier are
+equivalent to the ODRL rules presented in Listing <a
+href="#list:appendix-DUC-ODRL" data-reference-type="ref"
+data-reference="list:appendix-DUC-ODRL">[list:appendix-DUC-ODRL]</a>.</p>
+<p>In this mapping, DUC concepts being mapped to <em>odrl:action</em> is
+inaccurate regarding the context of information as some of these
+concepts do not represent actual <em>actions</em>. For example, while
+concepts such as <em>Collaboration</em> and <em>Research Use</em> can be
+considered actions, others such as <em>Time Period</em> and
+<em>Regulatory Jurisdiction</em> are not compatible with the definition
+of an action. This can be reconciled by treating these concepts as a
+<em>constraint</em> rather than <em>action</em>, or by treating all
+concepts as a <em>rightOperand</em> in a constraint with the
+<em>leftOperand</em> being their defining context, such as
+<em>Purpose</em> for <em>Research Use</em>.</p>
+<p>The DUC rules map exactly to ODRL rules as follows: DUC Obligatory is
+an ODRL Obligation, DUC Permitted is an ODRL Permission, DUC Forbidden
+is an ODRL Prohibition, and DUC No Requirement does not have an ODRL
+equivalent. Of these, the mapping of ‘No Requirement’ is problematic
+since it is not possible to interpret “no requirement” in a deontic
+sense by itself. In DUC while the header can specify a default
+interpretation which is equivalent to an ODRL permission or prohibition,
+ODRL does not support such interpretation frameworks and the article
+also does not mention such use of the DUC header. Further, an example
+from policies specified in <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a></span> mentions “Collaboration with No
+Requirement” with the interpretation that “The collaboration is
+evaluated when appropriate”. We find this interpretation to be unclear
+in terms of whether collaboration is permitted, or prohibited, or its
+interpretation is <em>deferred</em> and cannot be clearly stated. In the
+last case, it may be possible to express this in ODRL as a Permission
+with a Duty to obtain prior approval to express that collaboration is a
+possibility. In any case, we highlight the need to provide clarity
+regarding the implications of such rules as this is necessary in request
+matching algorithms.</p>
+<div class="listing">
+<p><span id="list:appendix-DUC-ODRL"
+label="list:appendix-DUC-ODRL"></span></p>
+<pre class="turtle"><code># DUC statement: Country with Permitted for Whole of Asset for UK
+ex:Policy odrl:permission [
+    odrl:target :WholeAsset ; # using DUC terminology
+    odrl:constraint [
+        # odrl:spatial or dpv:hasJurisdiction offer specific interpretation of &quot;location&quot;
+        odrl:leftOperand dpv:hasLocation ; 
+        odrl:operator odrl:eq ;
+        odrl:rightOperand :UK ] ].
+
+# DUC statement: Time limit with Obligatory for Whole of Asset for Month as 12
+ex:Policy odrl:obligation [
+    odrl:target :WholeAsset ; # using DUC terminology
+    odrl:constraint [
+        odrl:leftOperand odrl:dateTime ;
+        odrl:operator odrl:eq ;
+        odrl:rightOperand &quot;P12M&quot;^^xsd:duration ] ]. # can also use Time ontology here</code></pre>
+</div>
+<p>The CCE vocabulary, which contains 20 concepts, specifies the
+<em>atomicity</em> of its concepts as a core requirement. However, we
+find that the concepts can be further generalised and structured into a
+taxonomy based on their implied context – such as DPV’s distinction
+between purposes, processing, or technical measures – as terms that have
+<em>legal meaning</em>. For example, we utilised the DPV concepts which
+match the terminology of regulations and GDPR by expressing DUO concepts
+as purposes, processing operations over data, location of operations,
+entities, and technical measures to safeguard data. With DPV we provided
+a rich taxonomy for each of these concepts, and also gained the ability
+to express jurisdictional concepts such as GDPR-defined explicit consent
+instead of just ‘consent’.</p>
+<div id="table:appendix-DUC-DPV">
+<table>
+<caption><i>Mapping of CCE Terms to DPV/ODRL concepts</i></caption>
+<thead style="border-top: 1px solid var(--background-dark);">
+<tr class="header">
+<th><strong>CCE Term</strong></th>
+<th><strong>DUO Term</strong></th>
+<th><strong>DPV/ODRL Mapping</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Use As Control</td>
+<td>Research Control</td>
+<td><code>dpv:Purpose</code></td>
+</tr>
+<tr class="even">
+<td>Clinical Research Use</td>
+<td>Biomedical Research</td>
+<td><code>dpv:Purpose</code></td>
+</tr>
+<tr class="odd">
+<td>Disease Specific Use</td>
+<td>Disease Category Research</td>
+<td><code>dpv:Purpose</code></td>
+</tr>
+<tr class="even">
+<td>Geographical Area + Permitted</td>
+<td>Geographical restriction</td>
+<td><code>dpv:Location</code></td>
+</tr>
+<tr class="odd">
+<td>Research Use + Permitted</td>
+<td>General research</td>
+<td><code>dpv:Purpose</code></td>
+</tr>
+<tr class="even">
+<td>Clinical Care Use + Permitted</td>
+<td>Clinical Care Use</td>
+<td><code>dpv:Purpose</code></td>
+</tr>
+<tr class="odd">
+<td>Return Of Results + Obligated</td>
+<td>Return to database or resource</td>
+<td><code>dpv:Data</code> + <code>dpv:Recipient</code> +
+odrl:Obligation</td>
+</tr>
+<tr class="even">
+<td>Collaboration + Obligated</td>
+<td>Collaboration required</td>
+<td><code>dpv:Purpose</code> + odrl:Obligation</td>
+</tr>
+<tr class="odd">
+<td>Time Period + Obligated</td>
+<td>Time limit on use</td>
+<td><code>dpv:Duration</code> + odrl:Obligation</td>
+</tr>
+<tr class="even">
+<td>Publication Moratorium + Obligated</td>
+<td>Publication moratorium</td>
+<td><code>dpv:Purpose</code> + <code>dpv:Duration</code> +
+odrl:Obligation</td>
+</tr>
+<tr class="odd">
+<td>Publication + Obligated</td>
+<td>Publication required</td>
+<td><code>dpv:Purpose</code> + odrl:Obligation</td>
+</tr>
+<tr class="even">
+<td>User Authentication + Obligated</td>
+<td>User specific restriction</td>
+<td><code>dpv:TechnicalMeasure</code> +
+odrl:Obligation</td>
+</tr>
+<tr class="odd">
+<td>Ethics Approval + Obligated</td>
+<td>Ethics approval required</td>
+<td><code>dpv:OrganisationalMeasure</code> +
+Obnligation</td>
+</tr>
+<tr class="even">
+<td>(Commercial Entity + Permitted) AND
+(Profit Motivated Use + Forbidden)</td>
+<td>Non-commercial use only</td>
+<td><code>dpv:Purpose</code> + odrl:Rule</td>
+</tr>
+<tr class="odd">
+<td>Fees</td>
+<td>None</td>
+<td>odrl:compensate</td>
+</tr>
+<tr class="even">
+<td>Regulatory Jurisdiction</td>
+<td>None</td>
+<td><code>dpv:Jurisdiction</code></td>
+</tr>
+<tr class="odd">
+<td>Return Of Incidental Findings</td>
+<td>None</td>
+<td><code>dpv:Data</code> + <code>dpv:Recipient</code></td>
+</tr>
+<tr class="even">
+<td>(Re-)Identification Of Individuals Without
+Involvement Of The Resource Provider</td>
+<td>None</td>
+<td><code>dpv:Processing</code> + <code>dpv:isImplementedBy</code> +
+<code>dpv:Entity</code> + odrl:Constraint</td>
+</tr>
+<tr class="odd">
+<td>(Re-)Identification Of Individuals
+Mediated By The Resource Provider</td>
+<td>None</td>
+<td><code>dpv:Processing</code> + <code>dpv:isImplementedBy</code> +
+<code>dpv:Entity</code> + odrl:Constraint</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In comparison, CCE concepts are still similar to DUO concepts in that
+they contain hidden implicit information (e.g. Clinical Care Use and
+Research Use are both Purposes), are not ‘complete’ in terms of
+balancing the concepts (e.g. Commercial Entity is defined but
+Non-Commercial Entity is not), and have not incorporated GDPR
+requirements sufficiently (e.g. CCE concepts do not address information
+security). In contrast, our use of ODRL and DPV addresses each of these
+limitations. For example, Section <a href="#sec:dpv"
+data-reference-type="ref" data-reference="sec:dpv">4</a> shows the use
+of GDPR terminology within an ODRL policy. A mapping of CCE terms to DUO
+concepts is provided in <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a></span>.</p>
+<p>Comparing it with our mapping of DUO concepts to DPV/ODRL concepts in
+Table. <a href="#table:DUO_ODRL_overview" data-reference-type="ref"
+data-reference="table:DUO_ODRL_overview">1</a>, there are similarities
+in the approach and analysis in that both express DUO concepts as a
+combination of <em>Concept + Rule</em>. In continuation of this, we
+provide a mapping of DUC terms with relevant DPV/ODRL concepts in Table.
+<a href="#table:appendix-DUC-DPV" data-reference-type="ref"
+data-reference="table:appendix-DUC-DPV">4</a>. In this, we focused on
+identifying the core DPV concepts for each CCE term and how it is
+applied with an ODRL rule (where relevant). From this, we can state that
+the work presented in this article is compatible with the development of
+CCE terms and that the use of DPV/ODRL terms to represent policies and
+matching processes based on DUO concepts is therefore also applicable to
+the use of CCE and DUC.</p>
+<h3 id="concluding-remarks">Concluding Remarks</h3>
+<p>Given that ODRL is an established standard, is extensible through the
+<em>profiles</em> mechanism, and is also under active development – we
+posit that utilising ODRL and reorienting DUC as a “syntactic sugar”
+over ODRL can be a better alternative than the development and
+maintenance of a completely separate rules language. The benefits of
+basing DUC on ODRL also include access to ODRL’s distinction between
+policies representing offers, requests, and agreements – as demonstrated
+in Section <a href="#sec:odrl" data-reference-type="ref"
+data-reference="sec:odrl">3</a> – which is not mentioned in either
+CCE/DUC articles. The use of ODRL as we have demonstrated in this
+article also provides the necessary clarity and alignment with legal
+compliance (via DPV) – which is necessary for health data reuse, and
+which the CCE/DUC approach only addresses at a superficial level.
+Further, we have demonstrated (in Section <a href="#sec:matching"
+data-reference-type="ref" data-reference="sec:matching">3.6</a>) how our
+approach leads to a matching process that supports all three stages of
+Offer, Request, and Agreement – in a manner that can be automated for
+checking completeness (e.g. using SHACL) and correctness (e.g. using
+reasoners). Neither of the CCE/DUC articles demonstrate how their
+developments improve (or even clarify) the matching process first
+mentioned by DUO. Finally, with CCE being the vocabulary for DUC
+concepts, we find it limited in comparison to DPV based on the lack of a
+structured taxonomy for organising the concepts, fewer terms, no
+representation of jurisdictional or GDPR-specific concepts, and lack of
+an extension mechanism.</p>
+<p>Based on these, our preliminary analysis concludes that while the
+work presented in <span class="citation"
+data-cites="delcarmensanchezgonzalezCommonConditionsUse2023 jeansonGettingYourDUCs2023"><a
+href="#ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+role="doc-biblioref">[28]</a>, <a href="#ref-jeansonGettingYourDUCs2023"
+role="doc-biblioref">[29]</a></span> is an advancement over DUO
+regarding separation of information from rule expression, we believe
+several limitations still exist regarding the modelling of this
+information. Specifically, the issues regarding how CCE concepts are
+structured and their limited vocabulary, the development of DUC as yet
+another rule language without compatibility with existing standards such
+as ODRL, and difficulty in extending this language beyond its current
+capabilities – such as to other health use-cases. We find the
+contributions provided in this article are still of relevance and have
+valid contributions that can be applied to further develop DUO, CCE, and
+DUC while maintaining the existing adoptions.</p>
+<h2 id="sec:conclusion">Conclusion</h2>
+<p>The Data Use Ontology (DUO) is an important initiative to enable
+wider data sharing towards the goal of progressing health and medical
+research. Its design and application are driven by the workflows and
+use-cases present in a socio-technical system consisting of a data
+repository, utilising a data access committee or approval board, and
+maintaining compatibility with textual clauses and machine-readable
+metadata.</p>
+<p>We provide an argument for why the design of DUO concepts should be
+enhanced in terms of making its data use conditions explicit – also as
+machine-readable data and to utilise these in the matching of data use
+policies and requests. For this, we have demonstrated the applicability,
+suitability, and potential of ODRL as a standardised language to express
+all facets of DUO’s applications. We provide: (i) ODRL rules for each
+DUO concept; (ii) Integration of DUO concepts into an ODRL policy for a
+dataset; (iii) ODRL policy representing a data use request; and (iv)
+Demonstrating their use in checking for compatibility between dataset
+and request policies. Through these, we provide a better mechanism for
+the use of machine-readable information and its use in the automation of
+tasks regarding matching requests with offers and creating documentation
+as compared to the current DUO implementation.</p>
+<p>In addition to the above, we also demonstrated how the use of DPV
+within ODRL policies enables connection with privacy and data protection
+laws without making it specific to a particular jurisdiction. For cases
+where a specific law is needed, the DPV concepts can be easily extended,
+which we showed for GDPR. Along with the descriptions of our research,
+we also provided links to resources and a demonstration of its
+implementation to assist adopters of DUO in assessing and using our
+work.</p>
+<p>Importantly, rather than suggesting a radical new method of doing
+things, we started with the goal of constructing a mechanism that
+complements DUO rather than replacing it. As we’ve shown, using ODRL and
+DPV alongside DUO is feasible, and can be done with minimum disruption.
+Through this, we hope to have our work influence and improve existing
+DUO-related efforts, and in doing this to bring DUO and the GA4GH closer
+towards implementing the EU’s Health Data Space vision.</p>
+<h3 class="unnumbered" id="acknowledgements">Acknowledgements</h3>
+<p><strong>Funding:</strong> Harshvardhan J. Pandit has received funding
+from the Irish Research Council Government of Ireland Postdoctoral
+Fellowship Grant#GOIPD/2020/790. The ADAPT SFI Centre for Digital Media
+Technology is funded by Science Foundation Ireland through the SFI
+Research Centres Programme and is co-funded under the European Regional
+Development Fund (ERDF) through Grant#13/RC/2106_P2. Beatriz Esteves has
+received funding from European Union’s Horizon 2020 research and
+innovation programme under the Marie Skłodowska-Curie grant agreement No
+813497 (PROTECT).<br />
+<strong>Thanks:</strong> We thank Víctor Rodríguez-Doncel for valuable
+insight and inputs regarding the use of ODRL. We also thank the
+reviewers - both named (Jaime Delgado, Arianna Rossi, Visara Urovi) and
+anonymous - for assisting us in refining this work and its
+presentation.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-lawsonDataUseOntology2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">J.
+Lawson <em>et al.</em>, <span>“The <span>Data Use Ontology</span> to
+streamline responsible access to human biomedical datasets,”</span>
+<em>Cell Genomics</em>, vol. 1, no. 2, p. 100028, Nov. 2021, doi: <a
+href="https://doi.org/10.1016/j.xgen.2021.100028">10.1016/j.xgen.2021.100028</a>.
+</div>
+</div>
+<div id="ref-rehmGA4GHInternationalPolicies2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">H.
+L. Rehm <em>et al.</em>, <span>“<span>GA4GH</span>:
+<span>International</span> policies and standards for data sharing
+across genomic research and healthcare,”</span> <em>Cell Genomics</em>,
+vol. 1, no. 2, p. 100029, Nov. 2021, doi: <a
+href="https://doi.org/10.1016/j.xgen.2021.100029">10.1016/j.xgen.2021.100029</a>.
+</div>
+</div>
+<div id="ref-Regulation_GDPR" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline"><span>“Regulation (<span>EU</span>) 2016/679 of
+the <span>European Parliament</span> and of the <span>Council</span> of
+27 <span>April</span> 2016 on the protection of natural persons with
+regard to the processing of personal data and on the free movement of
+such data, and repealing <span>Directive</span> 95/46/<span>EC</span>
+(<span>General Data Protection Regulation</span>),”</span> <em>Official
+Journal of the European Union</em>, vol. L119, May 2016 [Online].
+Available: <a
+href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC</a></div>
+</div>
+<div id="ref-iannellaODRLVocabularyExpression2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">R.
+Iannella, M. Steidl, S. Myles, and V. Rodriguez-Doncel,
+<span>“<span>ODRL Vocabulary</span> &amp; <span>Expression</span>
+2.2.”</span> Feb-2018 [Online]. Available: <a
+href="https://www.w3.org/TR/odrl-vocab/">https://www.w3.org/TR/odrl-vocab/</a>.
+[Accessed: 28-Apr-2022]</div>
+</div>
+<div id="ref-panditCreatingVocabularyData2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating <span>A Vocabulary</span> for
+<span>Data Privacy</span>,”</span> in <em>The 18th <span>International
+Conference</span> on <span>Ontologies</span>, <span>DataBases</span>,
+and <span>Applications</span> of <span>Semantics</span>
+(<span>ODBASE2019</span>)</em>, 2019, p. 17, doi: <a
+href="https://doi.org/ggwx7x">ggwx7x</a>. </div>
+</div>
+<div id="ref-dykeConsentCodesUpholding2016" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">S.
+O. M. Dyke <em>et al.</em>, <span>“Consent <span>Codes</span>:
+<span>Upholding Standard Data Use Conditions</span>,”</span> <em>PLOS
+Genetics</em>, vol. 12, no. 1, p. e1005772, Jan. 2016, doi: <a
+href="https://doi.org/10.1371/journal.pgen.1005772">10.1371/journal.pgen.1005772</a>.
+</div>
+</div>
+<div id="ref-woolleyResponsibleSharingBiomedical2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J.
+P. Woolley <em>et al.</em>, <span>“Responsible sharing of biomedical
+data and biospecimens via the <span>‘<span>Automatable Discovery</span>
+and <span>Access Matrix</span>’</span> (<span>ADA-M</span>),”</span>
+<em>npj Genomic Medicine</em>, vol. 3, no. 1, pp. 1–6, Jul. 2018, doi:
+<a href="https://doi.org/gg2mpc">gg2mpc</a>. </div>
+</div>
+<div id="ref-cabiliEmpiricalValidationAutomated2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">M.
+N. Cabili <em>et al.</em>, <span>“Empirical validation of an automated
+approach to data use oversight,”</span> <em>Cell Genomics</em>, vol. 1,
+no. 2, p. 100031, Nov. 2021, doi: <a
+href="https://doi.org/10.1016/j.xgen.2021.100031">10.1016/j.xgen.2021.100031</a>.
+</div>
+</div>
+<div id="ref-schatzInvertingModelGenomics2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">M.
+C. Schatz <em>et al.</em>, <span>“Inverting the model of genomics data
+sharing with the <span>NHGRI Genomic Data Science Analysis</span>,
+<span>Visualization</span>, and <span class="nocase">Informatics
+Lab-space</span>,”</span> <em>Cell Genomics</em>, vol. 2, no. 1, p.
+100085, Jan. 2022, doi: <a
+href="https://doi.org/10.1016/j.xgen.2021.100085">10.1016/j.xgen.2021.100085</a>.
+</div>
+</div>
+<div id="ref-nembawareFrameworkTieredInformed2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">V.
+Nembaware <em>et al.</em>, <span>“A framework for tiered informed
+consent for health genomic research in <span>Africa</span>,”</span>
+<em>Nature Genetics</em>, vol. 51, no. 11, pp. 1566–1571, Nov. 2019,
+doi: <a
+href="https://doi.org/10.1038/s41588-019-0520-x">10.1038/s41588-019-0520-x</a>.
+</div>
+</div>
+<div id="ref-jaimanConsentModelBlockchainBased2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">V.
+Jaiman and V. Urovi, <span>“A <span>Consent Model</span> for
+<span>Blockchain-Based Health Data Sharing Platforms</span>,”</span>
+<em>IEEE Access</em>, vol. 8, pp. 143734–143745, 2020, doi: <a
+href="https://doi.org/10.1109/ACCESS.2020.3014565">10.1109/ACCESS.2020.3014565</a>.
+</div>
+</div>
+<div id="ref-haasCTRLOnlineDynamic2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">M.
+A. Haas <em>et al.</em>, <span>“<span>‘<span>CTRL</span>’</span>: An
+online, <span>Dynamic Consent</span> and participant engagement platform
+working towards solving the complexities of consent in genomic
+research,”</span> <em>European Journal of Human Genetics</em>, vol. 29,
+no. 4, pp. 687–698, Apr. 2021, doi: <a
+href="https://doi.org/10.1038/s41431-020-00782-w">10.1038/s41431-020-00782-w</a>.
+</div>
+</div>
+<div id="ref-alterDataTagsSuite2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">G.
+Alter, A. Gonzalez-Beltran, L. Ohno-Machado, and P. Rocca-Serra,
+<span>“The <span>Data Tags Suite</span> (<span>DATS</span>) model for
+discovering data access and use requirements,”</span>
+<em>GigaScience</em>, vol. 9, no. 2, p. giz165, Feb. 2020, doi: <a
+href="https://doi.org/10.1093/gigascience/giz165">10.1093/gigascience/giz165</a>.
+</div>
+</div>
+<div id="ref-saundersLeveragingEuropeanInfrastructures2019"
+class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">G.
+Saunders <em>et al.</em>, <span>“Leveraging <span>European</span>
+infrastructures to access 1 million human genomes by 2022,”</span>
+<em>Nature Reviews Genetics</em>, vol. 20, no. 11, pp. 693–701, Nov.
+2019, doi: <a
+href="https://doi.org/10.1038/s41576-019-0156-9">10.1038/s41576-019-0156-9</a>.
+</div>
+</div>
+<div id="ref-amithExpressingExecutingInformed2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M.
+Amith, M. R. Harris, C. Stansbury, K. Ford, F. J. Manion, and C. Tao,
+<span>“Expressing and <span>Executing Informed Consent Permissions Using
+SWRL</span>: <span>The All</span> of <span>Us Use Case</span>,”</span>
+<em>AMIA Annual Symposium Proceedings</em>, vol. 2021, pp. 197–206, Feb.
+2022 [Online]. Available: <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8861693/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8861693/</a>.
+[Accessed: 28-Apr-2022]</div>
+</div>
+<div id="ref-grabusLandscapeRightsLicensing2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">S.
+Grabus and J. Greenberg, <span>“The <span>Landscape</span> of
+<span>Rights</span> and <span>Licensing Initiatives</span> for
+<span>Data Sharing</span>,”</span> <em>Data Science Journal</em>, vol.
+18, no. 1, p. 29, Jul. 2019, doi: <a
+href="https://doi.org/10.5334/dsj-2019-029">10.5334/dsj-2019-029</a>.
+</div>
+</div>
+<div id="ref-wenningComplianceUsingMetadata2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">R.
+Wenning and S. Kirrane, <span>“Compliance <span>Using
+Metadata</span>,”</span> in <em>Semantic <span>Applications</span>:
+<span>Methodology</span>, <span>Technology</span>, <span>Corporate
+Use</span></em>, T. Hoppe, B. Humm, and A. Reibold, Eds. <span>Berlin,
+Heidelberg</span>: <span>Springer Berlin Heidelberg</span>, 2018, pp.
+31–45 [Online]. Available: <a
+href="https://doi.org/10.1007/978-3-662-55433-3_3">https://doi.org/10.1007/978-3-662-55433-3_3</a>.
+[Accessed: 31-May-2019]</div>
+</div>
+<div id="ref-rodriguesLegalOntologiesTime2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C.
+M. de O. Rodrigues, F. L. G. de Freitas, E. F. S. Barreiros, R. R. de
+Azevedo, and A. T. de Almeida Filho, <span>“Legal ontologies over time:
+<span>A</span> systematic mapping study,”</span> <em>Expert Systems with
+Applications</em>, vol. 130, pp. 12–30, Sep. 2019, doi: <a
+href="https://doi.org/gf223z">gf223z</a>. </div>
+</div>
+<div id="ref-bonattiRealtimeReasoningOWL22020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">P.
+A. Bonatti, L. Ioffredo, I. M. Petrova, L. Sauro, and I. R. Siahaan,
+<span>“Real-time reasoning in <span>OWL2</span> for <span>GDPR</span>
+compliance,”</span> <em>Artificial Intelligence</em>, vol. 289, p.
+103389, Dec. 2020, doi: <a
+href="https://doi.org/10.1016/j.artint.2020.103389">10.1016/j.artint.2020.103389</a>.
+</div>
+</div>
+<div id="ref-vosODRLPolicyModelling2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">M.
+D. Vos, S. Kirrane, J. Padget, and K. Satoh, <span>“<span>ODRL</span>
+policy modelling and compliance checking,”</span> in <em>3rd
+<span>International Joint Conference</span> on <span>Rules</span> and
+<span>Reasoning</span> (<span>RuleML</span>+<span>RR</span> 2019)</em>,
+2019, p. 16 [Online]. Available: <a
+href="https://doi.org/10.1007/978-3-030-31095-0_3">https://doi.org/10.1007/978-3-030-31095-0_3</a></div>
+</div>
+<div id="ref-panditGDPRtEXTGDPRLinked2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">H.
+J. Pandit, K. Fatema, D. O’Sullivan, and D. Lewis,
+<span>“<span>GDPRtEXT</span> - <span>GDPR</span> as a <span>Linked Data
+Resource</span>,”</span> in <em>European <span>Semantic Web
+Conference</span></em>, 2018, pp. 481–495, doi: <a
+href="https://doi.org/c3n4">c3n4</a>. </div>
+</div>
+<div id="ref-panditGConsentConsentOntology2019" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">H.
+J. Pandit, C. Debruyne, D. O’Sullivan, and D. Lewis,
+<span>“<span>GConsent</span> - <span>A Consent Ontology Based</span> on
+the <span>GDPR</span>,”</span> in <em>The <span>Semantic
+Web</span></em>, 2019, pp. 270–282, doi: <a
+href="https://doi.org/10.1007/978-3-030-21348-0\_18">10.1007/978-3-030-21348-0\_18</a>.
+</div>
+</div>
+<div id="ref-kurtevaConsentLensSemantics2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A.
+Kurteva, T. R. Chhetri, H. J. Pandit, and A. Fensel, <span>“Consent
+through the lens of semantics: <span>State</span> of the art survey and
+best practices,”</span> <em>Semantic Web</em>, vol. Preprint, no.
+Preprint, pp. 1–27, Jan. 2021, doi: <a
+href="https://doi.org/gmsjzn">gmsjzn</a>. </div>
+</div>
+<div id="ref-estevesAnalysisOntologiesPolicy2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">B.
+Esteves and V. Rodriguez-Doncel, <span>“Analysis of
+<span>Ontologies</span> and <span>Policy Languages</span> to
+<span>Represent Information Flows</span> in <span>GDPR</span>,”</span>
+<em>Semantic Web J.</em>, vol. Forthcoming, 2022. </div>
+</div>
+<div id="ref-pellegriniAutomatedRightsClearance2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">T.
+Pellegrini, V. Mireles, S. Steyskal, O. Panasiuk, A. Fensel, and S.
+Kirrane, <span>“<a
+href="https://doi.org/10.1007/978-3-662-55433-3\_14">Automated
+<span>Rights Clearance Using Semantic Web Technologies</span>: <span>The
+DALICC Framework</span></a>,”</span> in <em>Semantic
+<span>Applications</span></em>, T. Hoppe, B. Humm, and A. Reibold, Eds.
+<span>Berlin, Heidelberg</span>: <span>Springer Berlin
+Heidelberg</span>, 2018, pp. 203–218. </div>
+</div>
+<div id="ref-estevesODRLProfileExpressing2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">B.
+Esteves, H. J. Pandit, and V. Rodríguez-Doncel, <span>“<span>ODRL
+Profile</span> for <span>Expressing Consent</span> through
+<span>Granular Access Control Policies</span> in
+<span>Solid</span>,”</span> in <em>2021 <span>IEEE European
+Symposium</span> on <span>Security</span> and <span>Privacy
+Workshops</span> (<span>EuroS PW</span>)</em>, 2021, pp. 298–306, doi:
+<a href="https://doi.org/gnck5x">gnck5x</a>. </div>
+</div>
+<div id="ref-kuhnSurveyClassificationControlled2014" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">T.
+Kuhn, <span>“A <span>Survey</span> and <span>Classification</span> of
+<span>Controlled Natural Languages</span>,”</span> <em>Computational
+Linguistics</em>, vol. 40, no. 1, pp. 121–170, Mar. 2014, doi: <a
+href="https://doi.org/gf6grx">gf6grx</a>. </div>
+</div>
+<div id="ref-delcarmensanchezgonzalezCommonConditionsUse2023"
+class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">M.
+del Carmen Sanchez Gonzalez <em>et al.</em>, <span>“Common
+<span>Conditions</span> of <span>Use Elements</span>. <span>Atomic
+Concepts</span> for <span>Consistent</span> and <span>Effective
+Information Governance</span>.”</span> <em>Scientific Data (in peer
+review)</em>, Jul. 2023 [Online]. Available: <a
+href="https://zenodo.org/record/8200079">https://zenodo.org/record/8200079</a>.
+[Accessed: 14-Aug-2023]</div>
+</div>
+<div id="ref-jeansonGettingYourDUCs2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">F.
+Jeanson <em>et al.</em>, <span>“Getting <span>Your DUCs</span> in a
+<span>Row</span> - <span>Standardising</span> the
+<span>Representation</span> of <span>Digital Use
+Conditions</span>,”</span> Jul. 2023 [Online]. Available: <a
+href="https://zenodo.org/record/8200044">https://zenodo.org/record/8200044</a>.
+[Accessed: 14-Aug-2023]</div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.ga4gh.org/"
+class="uri">https://www.ga4gh.org/</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn2"><p><a href="http://purl.obolibrary.org/obo/duo"
+class="uri">http://purl.obolibrary.org/obo/duo</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><p><a href="https://obofoundry.org/"
+class="uri">https://obofoundry.org/</a> The prefix <code>obo</code> has
+the IRI <code>http://purl.obolibrary.org/obo/</code><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn4"><p><a
+href="https://ec.europa.eu/health/ehealth-digital-health-and-care/european-health-data-space_en"
+class="uri">https://ec.europa.eu/health/ehealth-digital-health-and-care/european-health-data-space_en</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn5"><p><a href="https://duos.broadinstitute.org/"
+class="uri">https://duos.broadinstitute.org/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn6"><p><a href="https://www.w3.org/TR/odrl-vocab/"
+class="uri">https://www.w3.org/TR/odrl-vocab/</a> The prefix
+<code>odrl</code> has the IRI
+<code>http://www.w3.org/ns/odrl/2/</code><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn7"><p>Implementation of a ODRL validator using SHACL available
+at <a href="https://odrlapi.appspot.com/"
+class="uri">https://odrlapi.appspot.com/</a><a href="#fnref7"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn8"><p>ODRL Formal Semantics CG report available at <a
+href="https://w3c.github.io/odrl/formal-semantics/"
+class="uri">https://w3c.github.io/odrl/formal-semantics/</a>.<a
+href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn9"><p>Note: The author (Beatriz Esteves) is a contributing
+member of the ODRL CG’s work on the development of a formal semantics
+specification.<a href="#fnref9" class="footnote-back"
+role="doc-backlink">↩︎</a></li>
+<li id="fn10"><p>ODRL Profile Best Practices CG report available at <a
+href="https://w3c.github.io/odrl/profile-bp/"
+class="uri">https://w3c.github.io/odrl/profile-bp/</a>.<a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn11"><p><a href="https://w3id.org/dpv"
+class="uri">https://w3id.org/dpv</a> The prefix <code>dpv</code> has the
+IRI <code>https://w3id.org/dpv#</code><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn12"><p>https://www.w3.org/community/dpvcg/<a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn13"><p>Note: Both authors are active contributing members to
+DPV<a href="#fnref13" class="footnote-back"
+role="doc-backlink">↩︎</a></li>
+<li id="fn14"><p><a href="http://obi-ontology.org/"
+class="uri">http://obi-ontology.org/</a><a href="#fnref14"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn15"><p><a href="https://environmentontology.github.io/gaz/"
+class="uri">https://environmentontology.github.io/gaz/</a><a
+href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn16"><p><a
+href="https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/"
+class="uri">https://www.ga4gh.org/genomic-data-toolkit/regulatory-ethics-toolkit/</a><a
+href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn17"><p><a
+href="https://www.ga4gh.org/wp-content/uploads/Machine-readable-Consent-Guidance_6JUL2020-1.pdf"
+class="uri">https://www.ga4gh.org/wp-content/uploads/Machine-readable-Consent-Guidance_6JUL2020-1.pdf</a><a
+href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn18"><p><a href="https://duos.broadinstitute.org/"
+class="uri">https://duos.broadinstitute.org/</a><a href="#fnref18"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn19"><p><a href="https://www.w3.org/Submission/SWRL/"
+class="uri">https://www.w3.org/Submission/SWRL/</a><a href="#fnref19"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn20"><p><a
+href="https://www.govinfo.gov/link/plaw/104/public/191?link-type=html"
+class="uri">https://www.govinfo.gov/link/plaw/104/public/191?link-type=html</a><a
+href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn21"><p>DPV-GDPR: GDPR Extension for DPV <a
+href="https://w3id.org/dpv/dpv-gdpr"
+class="uri">https://w3id.org/dpv/dpv-gdpr</a><a href="#fnref21"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn22"><p>It would be prudent to point out that while both
+authors of this paper are also authors on the cited surveys, the
+justification offered here is that these prior efforts provide clear
+evidence on the strengths of choices made in our implementations.<a
+href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn23"><p><a href="https://obofoundry.org/ontology/mondo"
+class="uri">https://obofoundry.org/ontology/mondo</a><a href="#fnref23"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn24"><p>A short and informative summary provided by Protégé <a
+href="https://protegeproject.github.io/protege/class-expression-syntax/"
+class="uri">https://protegeproject.github.io/protege/class-expression-syntax/</a><a
+href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn25"><p>Note: each rule is still associated with DUO concepts
+using <code>dct:source</code> to indicate which concepts are being used
+in the policy<a href="#fnref25" class="footnote-back"
+role="doc-backlink">↩︎</a></li>
+<li id="fn26"><p>Permissions and prohibitions for complex legal
+structures such as subsidiaries or group of companies cannot be
+accurately represented using equality (<span
+class="math inline">=</span>) or subset (<span
+class="math inline">⊆</span>) relations. We, therefore, use the
+equivalence relation (<span class="math inline">≡</span>) to indicate
+the request entity should satisfy the legal interpretation of equality –
+defining which is outside the scope of this article.<a href="#fnref26"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn27"><p>We intentionally restricted the alignment to only
+concepts required for using DUO so as to not introduce additional
+external interpretations.<a href="#fnref27" class="footnote-back"
+role="doc-backlink">↩︎</a></li>
+<li id="fn28"><p><a href="https://w3id.org/dpv/dpv-gdpr"
+class="uri">https://w3id.org/dpv/dpv-gdpr</a><a href="#fnref28"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn29"><p><a href="https://w3id.org/dpv/dpv-legal"
+class="uri">https://w3id.org/dpv/dpv-legal</a><a href="#fnref29"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn30"><p>Ad-hoc vocabulary available at <a
+href="https://w3id.org/duodrl"
+class="uri">https://w3id.org/duodrl</a>.<a href="#fnref30"
+class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn31"><p><a
+href="https://ducejprd.le.ac.uk/assets/documents/Examples_of_DUC_profiles.pdf"
+class="uri">https://ducejprd.le.ac.uk/assets/documents/Examples_of_DUC_profiles.pdf</a><a
+href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
+</section>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

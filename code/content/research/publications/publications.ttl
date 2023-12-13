@@ -1716,3 +1716,31 @@
         hpcom:contentFile "https://harshp.com/code/content/research/publications/063-towards-semantic-specification-GDPR-data-breach.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
         ] .
+
+<https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV"@en ;
+    schema:description "The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts."@en ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:ODRL ;
+    hpcom:tag hptag:health ;
+    hpcom:author_lead (<https://harshp.com/me> <http://example.com/BeatrizEsteves>) ;
+    schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project;"@en ;
+    schema:datePublished "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publisher <http://www.semantic-web-journal.net/> ;
+    schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> );
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/96593"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.4732357"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://w3id.org/duodrl/repo"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "demo code" ; schema:url "https://w3id.org/duodrl/demo"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "demo app" ; schema:url "https://w3id.org/duodrl/app"^^xsd:anyURI ] ;
+    schema:status "in-press"@en ;
+    hpcom:peer_reviewed true .
