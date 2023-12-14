@@ -17446,12 +17446,17 @@ book:920 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "920"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2007"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "Halting State"@en ;
+    schema:review "This book is difficult to read because I kept losing track of who I was supposed to be reading about. It has a lot of second person narrative and the characters keep switching around. But - the concepts are pretty cool and my hunch of picking up the book based solely on Charles Stross displayed on the front cover turned out to be rewarding. Stross has really cool intelligent ideas - this time around it is about online gaming + metaverse + national security. Lots to unpack. But the characters and the setting puts a lid on what could have been an amazing global story. One of the cooler things I will remember from this book is 'intra-game profile interoperability' which is where your characters can be moved or imported/reused across different games all connected by common platforms."@en ;
     schema:url "https://harshp.com/hobbies/books/920"^^xsd:anyURI .
 
 book:921 a hpcom:RenderedItem,
@@ -17469,6 +17474,7 @@ book:921 a hpcom:RenderedItem,
 book:922 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "922"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
@@ -17476,6 +17482,62 @@ book:922 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "The Rosewater Insurrection"@en ;
     schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
+
+book:923 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "923"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Hannu Rajaniemi"^^xsd:string ;
+    schema:dateCreated "2010"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Quantum Thief"@en ;
+    schema:url "https://harshp.com/hobbies/books/923"^^xsd:anyURI .
+
+book:924 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "924"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Irene Vallejo"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Papyrus: The Invention of Books in the Ancient World"@en ;
+    schema:url "https://harshp.com/hobbies/books/924"^^xsd:anyURI .
+
+book:925 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "925"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Ed Yong"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "I Contain Multitudes: The Microbes Within Us and a Grander View of Life"@en ;
+    schema:url "https://harshp.com/hobbies/books/925"^^xsd:anyURI .
+
+book:926 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "926"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Yanis Varoufakis"^^xsd:string ;
+    schema:dateCreated "2020"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Another Now: Dispatches from an Alternative Present"@en ;
+    schema:url "https://harshp.com/hobbies/books/926"^^xsd:anyURI .
+
+book:927 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "927"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "House of Open Wounds"@en ;
+    schema:url "https://harshp.com/hobbies/books/927"^^xsd:anyURI .
 
 book:93 a hpcom:Book,
         hpcom:BookReading,
@@ -21015,7 +21077,10 @@ list:owned_unread a hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ] ;
+            schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:author_other ( <http://example.com/PaulRyan> <http://example.com/GeorgPKrog> <http://example.com/MartinCrane> <http://example.com/RobBrennan> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -21038,6 +21103,9 @@ list:owned_unread a hpcom:RenderedItem,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://zenodo.org/doi/10.5281/zenodo.10382092"^^xsd:anyURI ],
+        [ a hpcom:Link ;
             schema:name "harshp.com" ;
             schema:url "https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV"^^xsd:anyURI ] ;
     hpcom:author_lead ( <https://harshp.com/me> <http://example.com/BeatrizEsteves> ) ;
@@ -26559,11 +26627,6 @@ list:books-changed-life a hpcom:RenderedItem,
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "consent" ;
@@ -26578,6 +26641,11 @@ hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
