@@ -17480,6 +17480,7 @@ book:922 a hpcom:RenderedItem,
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "The Rosewater Insurrection"@en ;
     schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
 
@@ -17487,12 +17488,17 @@ book:923 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "923"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "The Quantum Thief"@en ;
+    schema:review "This was enjoyable with its rich dense fully formed world built using post-human quantum technologies with its own politics and social economy, including philosophical implications such as 'immortality as communism' and 'privacy enforced by global techno-suits'. The story itself covers tropes from heists, classical detective, political turmoil, class warfare, and so much more. I ordered the two sequels right as I finished this. Excellent book, and a lot to unpack and enjoy. The way technology is described in action is cool. Less exposition and explanations and a lot of show but don't tell means I had to think (hard) on several things and what they could mean and how they could be developed and used. A clever and intelligent story that also rewards shallow reading just as much as a detailed introspection. This is up there with Accelerando and Neuromancer."@en ;
     schema:url "https://harshp.com/hobbies/books/923"^^xsd:anyURI .
 
 book:924 a hpcom:RenderedItem,
@@ -17503,6 +17509,7 @@ book:924 a hpcom:RenderedItem,
     schema:author "Irene Vallejo"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:cork ;
     schema:name "Papyrus: The Invention of Books in the Ancient World"@en ;
     schema:url "https://harshp.com/hobbies/books/924"^^xsd:anyURI .
 
@@ -17510,10 +17517,11 @@ book:925 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "925"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Ed Yong"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
+    schema:isPartOf list:cork ;
     schema:name "I Contain Multitudes: The Microbes Within Us and a Grander View of Life"@en ;
     schema:url "https://harshp.com/hobbies/books/925"^^xsd:anyURI .
 
@@ -17524,6 +17532,7 @@ book:926 a hpcom:RenderedItem,
     schema:author "Yanis Varoufakis"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
+    schema:isPartOf list:cork ;
     schema:name "Another Now: Dispatches from an Alternative Present"@en ;
     schema:url "https://harshp.com/hobbies/books/926"^^xsd:anyURI .
 
@@ -17536,6 +17545,7 @@ book:927 a hpcom:RenderedItem,
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:cork ;
     schema:name "House of Open Wounds"@en ;
     schema:url "https://harshp.com/hobbies/books/927"^^xsd:anyURI .
 
@@ -26642,11 +26652,6 @@ hpcom:Workshop a hpcom:EventType ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
     rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
@@ -26655,6 +26660,11 @@ list:fantasy a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "fantasy"@en ;
     schema:name "Fantastic Fantasy"@en .
+
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
 
 hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
