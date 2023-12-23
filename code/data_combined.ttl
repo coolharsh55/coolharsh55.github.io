@@ -17463,7 +17463,7 @@ book:921 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "921"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -17540,13 +17540,16 @@ book:927 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "927"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
     schema:name "House of Open Wounds"@en ;
+    schema:review "The more you read, the less the changes that a book makes you go 'wow, hang on, how does that work?' and eager to read more which opens even more questions. This is one such book. The topic under consideration is magic - all kinds of magic from divine to infernal. There are so many clever and admirable inclusions of aspects such as gods, worshipers, their relation and association, and the use of magic through 'decanted' artefacts. Think 'The Matrix' bottling up humans, except in this case its magic from objects, people, even 'gods'. And then there is the question of the all too apparent fascist country that want everything to be 'perfection' - basically a rejection of anything other than what the 'committee' decides. Too real, too close for comfort, and a constant acknowledgement of the world I live in which makes for a serious and melancholic reading. And yet - I enjoyed all of it. The stories, the settings - the world is massive that I would gladly read a whole lot more books about it, to the various philosophical provocations that got raised in my mind. I consider this an enlightening book because it expands the consciousness into new ways of thinking about something I didn't know about. Sure, all of it is about 'magic', but you could just as well replace it with other things to see how it helps be a foggy reflection of the actual world and people. Excellent read."@en ;
     schema:url "https://harshp.com/hobbies/books/927"^^xsd:anyURI .
 
 book:93 a hpcom:Book,
@@ -21101,12 +21104,12 @@ list:owned_unread a hpcom:RenderedItem,
         hptag:data-breach,
         hptag:security,
         hptag:semantic-web ;
-    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-01-02T00:00:00"^^xsd:dateTime ;
     schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
     schema:publication <http://example.com/conferences/JURIX2023> ;
-    schema:status "to be presented"@en ;
+    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV> a hpcom:FullPaper,
@@ -21136,7 +21139,7 @@ list:owned_unread a hpcom:RenderedItem,
         hptag:ODRL,
         hptag:health,
         hptag:semantic-web ;
-    schema:datePublished "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-01-03T00:00:00"^^xsd:dateTime ;
     schema:description "The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts."@en ;
     schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> ) ;
     schema:identifier ""^^xsd:anyURI ;
@@ -24740,13 +24743,14 @@ hpview:StoryView a hpcom:View ;
         hptag:ODP,
         hptag:Solid,
         hptag:semantic-web ;
-    schema:datePublished "2023-08-30T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-01-01T00:00:00"^^xsd:dateTime ;
     schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:identifier ""^^xsd:anyURI ;
     schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
     schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
     schema:publication <http://example.com/workshops/WOP2023> ;
+    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
@@ -25677,9 +25681,6 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25955,6 +25956,9 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
