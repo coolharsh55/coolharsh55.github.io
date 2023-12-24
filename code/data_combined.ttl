@@ -670,6 +670,20 @@
     schema:name "Roads and Rains"@en ;
     schema:url "https://harshp.com/blog/humour/roads-and-rains"^^xsd:anyURI .
 
+<https://harshp.com/blog/humour/schrodingers-paper> a <https://harshp.com/blog>,
+        hpcom:RenderedItem ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/blog/humour/schrodingers-paper.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:academia,
+        hptag:blog,
+        hptag:publications ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2023-12-24T12:15:00"^^xsd:dateTime ;
+    schema:description "Publishing a paper in academia is a lot like Schrödinger's cat where its both published and unpublished"@en ;
+    schema:name "Schrödinger's Paper"@en ;
+    schema:url "https://harshp.com/blog/humour/schrodingers-paper"^^xsd:anyURI .
+
 <https://harshp.com/blog/humour/the-moon-plan> a <https://harshp.com/blog>,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
@@ -21104,12 +21118,11 @@ list:owned_unread a hpcom:RenderedItem,
         hptag:data-breach,
         hptag:security,
         hptag:semantic-web ;
-    schema:datePublished "2024-01-02T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
     schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
     schema:publication <http://example.com/conferences/JURIX2023> ;
-    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV> a hpcom:FullPaper,
@@ -21139,14 +21152,13 @@ list:owned_unread a hpcom:RenderedItem,
         hptag:ODRL,
         hptag:health,
         hptag:semantic-web ;
-    schema:datePublished "2024-01-03T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-12-07T00:00:00"^^xsd:dateTime ;
     schema:description "The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts."@en ;
     schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> ) ;
     schema:identifier ""^^xsd:anyURI ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project;"@en ;
     schema:name "Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV"@en ;
     schema:publisher <http://www.semantic-web-journal.net/> ;
-    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
@@ -24743,14 +24755,13 @@ hpview:StoryView a hpcom:View ;
         hptag:ODP,
         hptag:Solid,
         hptag:semantic-web ;
-    schema:datePublished "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:identifier ""^^xsd:anyURI ;
     schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
     schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
     schema:publication <http://example.com/workshops/WOP2023> ;
-    schema:status "in-press"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
@@ -25836,11 +25847,6 @@ hptag:programming a hpcom:RenderedItem,
     schema:name "programming" ;
     schema:url "https://harshp.com/tags/programming"^^xsd:anyURI .
 
-hptag:publications a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "publications" ;
-    schema:url "https://harshp.com/tags/publications"^^xsd:anyURI .
-
 hptag:reproducibility a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "reproducibility"@en ;
@@ -26068,6 +26074,11 @@ hptag:presentation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "presentation" ;
     schema:url "https://harshp.com/tags/presentation"^^xsd:anyURI .
+
+hptag:publications a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "publications" ;
+    schema:url "https://harshp.com/tags/publications"^^xsd:anyURI .
 
 hptag:recommender-system a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26560,15 +26571,15 @@ hptag:rant a hpcom:RenderedItem,
     schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
     schema:url "https://privacy-as-expected.org/"^^xsd:anyURI .
 
-hptag:academia a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "academia" ;
-    schema:url "https://harshp.com/tags/academia"^^xsd:anyURI .
-
 hptag:humor a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "humor" ;
     schema:url "https://harshp.com/tags/humor"^^xsd:anyURI .
+
+hptag:academia a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "academia" ;
+    schema:url "https://harshp.com/tags/academia"^^xsd:anyURI .
 
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
@@ -26715,15 +26726,15 @@ hpcom:Rating2 a hpcom:Rating,
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
-hptag:blog a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "blog" ;
-    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
-
 hptag:semantic-web a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "semantic-web" ;
     schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
+
+hptag:blog a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "blog" ;
+    schema:url "https://harshp.com/tags/blog"^^xsd:anyURI .
 
 hptag:story a hpcom:RenderedItem,
         hpcom:Tag ;

@@ -12,7 +12,7 @@
     {% endif %}
     {# venue #}
     {% if item.schema_publication %}
-    {{item.schema_publication}}{% if item.schema_publication.schema_alternateName %} ({{item.schema_publication.schema_alternateName}}){% endif %}
+    {{item.schema_publication}}{% if item.schema_publication.schema_alternateName %} ({{item.schema_publication.schema_alternateName}}){% else %}<span class='note' style="color: red;">in-press</span>{% endif %}
     {% if item.schema_publication.schema_superEvent %}
     - co-located with {{item.schema_publication.schema_superEvent}}{% if item.schema_publication.schema_superEvent.schema_alternateName %} ({{item.schema_publication.schema_superEvent.schema_alternateName}}){% endif %}
     {% endif %}

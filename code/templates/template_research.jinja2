@@ -126,6 +126,11 @@
                 {% endif %}
                 <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
                 <i>{{publication|publication_type}}</i>
+                {% if publication.schema_url %}
+                    <a href="{{publication.schema_url}}">formal publication</a>
+                {% else %}
+                    <span class='note' style="color: red;">in-press</span>
+                {% endif %}
                 {# publication type filter #}
                 <br/>
                 {% if publication.schema_publication %}
@@ -168,6 +173,11 @@
                 {% endif %}
                 <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
                 <i>{{publication|publication_type}}</i>
+                {% if publication.schema_url %}
+                    <a href="{{publication.schema_url}}">formal publication</a>
+                {% else %}
+                    <span class='note' style="color: red;">in-press</span>
+                {% endif %}
                 {# publication type filter #}
                 <br/>
                 {% if publication.schema_publication %}
