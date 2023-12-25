@@ -13391,16 +13391,18 @@
 
 <https://harshp.com/hobbies/books/921> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "921"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2023-12-25T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Glasshouse"@en ;
+    schema:isPartOf list:cork, list:scifi, list:books-changed-life ;
+    schema:review """Awesome book - compelling story with a thriller backdrop, post-digital age where humanity has trancended body and FTL, and some very cool and smart and realitic use of weapons. What I did not expect was the immense body of work related to gender, identity, misogyny, opression, democracy, rights and freedoms, and how truly barbaric we would seem to people in the future merely because we followed the shitty norms instead of getting up and making things better. Entertaining, educating, and something that will stick in my mind as a reference."""@en ;
     schema:url "https://harshp.com/hobbies/books/921"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/922> a schema:Book, hpcom:RenderedItem ;

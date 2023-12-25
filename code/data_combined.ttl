@@ -17477,12 +17477,19 @@ book:921 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "921"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Charles Stross"^^xsd:string ;
     schema:dateCreated "2006"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
+    schema:isPartOf list:books-changed-life,
+        list:cork,
+        list:scifi ;
     schema:name "Glasshouse"@en ;
+    schema:review "Awesome book - compelling story with a thriller backdrop, post-digital age where humanity has trancended body and FTL, and some very cool and smart and realitic use of weapons. What I did not expect was the immense body of work related to gender, identity, misogyny, opression, democracy, rights and freedoms, and how truly barbaric we would seem to people in the future merely because we followed the shitty norms instead of getting up and making things better. Entertaining, educating, and something that will stick in my mind as a reference."@en ;
     schema:url "https://harshp.com/hobbies/books/921"^^xsd:anyURI .
 
 book:922 a hpcom:RenderedItem,
@@ -25692,6 +25699,9 @@ hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -25962,9 +25972,6 @@ hpcom:EventType a owl:Class ;
 hpcom:Renderer a owl:Class ;
     rdfs:label "Renderer"@en ;
     rdfs:comment "Represents the method of rendering a view over content"@en .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26647,11 +26654,6 @@ hptag:privacy a hpcom:RenderedItem,
     schema:name "privacy" ;
     schema:url "https://harshp.com/tags/privacy"^^xsd:anyURI .
 
-list:books-changed-life a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "books-changed-life"@en ;
-    schema:name "Books that changed my life"@en .
-
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "consent" ;
@@ -26666,6 +26668,11 @@ hpcom:Workshop a hpcom:EventType ;
     rdfs:label "Workshop"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Workshop"@en .
+
+list:books-changed-life a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "books-changed-life"@en ;
+    schema:name "Books that changed my life"@en .
 
 hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
