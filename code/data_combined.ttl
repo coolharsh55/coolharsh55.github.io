@@ -16181,12 +16181,16 @@ book:836 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "836"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-01-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Nnedi Okorafor"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Binti: Home"@en ;
+    schema:review "Whilst I did like the novelty of the first novella, the issues around story telling and an almost extravagant focus on the central character made it seem to be written as a Young Adult fiction. This one exceeds these issues by doubling down on lack of details or exposition and focusing entirely on trying to make things stand out while not offering the benefit of either having things be interesting or familiar. The result is a boresome book."@en ;
     schema:url "https://harshp.com/hobbies/books/836"^^xsd:anyURI .
 
 book:837 a hpcom:Book,
@@ -16194,12 +16198,16 @@ book:837 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "837"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-01-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Nnedi Okorafor"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Binti: The Night Masquerade"@en ;
+    schema:review "I did not want to read this because I barely liked the first book and didn't like the second book, but I had purchased the third one - so I went through it expecting to not like it. Despite these low expectations, I still found it uninteresting, cliche, and apart from the 'interesting' aspect of being rooted in a different culture (tribal from Afria) there was nothing else that I found interesting."@en ;
     schema:url "https://harshp.com/hobbies/books/837"^^xsd:anyURI .
 
 book:838 a hpcom:Book,
@@ -17526,7 +17534,7 @@ book:924 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "924"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Irene Vallejo"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -17538,12 +17546,16 @@ book:925 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "925"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2023-12-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Ed Yong"^^xsd:string ;
     schema:dateCreated "2016"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:isPartOf list:cork ;
     schema:name "I Contain Multitudes: The Microbes Within Us and a Grander View of Life"@en ;
+    schema:review "Interesting book about how life is abundant of examples of a shared existence with microbes from the smallest to the largest. And the necessity of their existence in shaping the processes of living. The title implies a human-centric narration, but the book has more content about others - plants, animals, and microbes - which made for an interesting and educational reading. Lots of cool examples - like watching a good documentary on TV without knowing what's coming up."@en ;
     schema:url "https://harshp.com/hobbies/books/925"^^xsd:anyURI .
 
 book:926 a hpcom:RenderedItem,
@@ -21106,32 +21118,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info14020114"^^xsd:anyURI .
 
-<https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> a hpcom:RenderedItem,
-        hpcom:ShortPaper,
-        schema:ScholarlyArticle ;
-    hpcom:archived_version [ a hpcom:Link ;
-            schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "zenodo" ;
-            schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
-    hpcom:author_lead <https://harshp.com/me> ;
-    hpcom:author_other ( <http://example.com/PaulRyan> <http://example.com/GeorgPKrog> <http://example.com/MartinCrane> <http://example.com/RobBrennan> ) ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/063-towards-semantic-specification-GDPR-data-breach.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:peer_reviewed true ;
-    hpcom:tag hptag:GDPR,
-        hptag:data-breach,
-        hptag:security,
-        hptag:semantic-web ;
-    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
-    schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
-    schema:publication <http://example.com/conferences/JURIX2023> ;
-    schema:url ""^^xsd:anyURI .
-
 <https://harshp.com/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV> a hpcom:FullPaper,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
@@ -22330,16 +22316,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI .
 
-<http://example.com/conferences/JURIX2023> a hpcom:ReviewingEvent,
-        schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "JURIX" ;
-    schema:endDate "2023-12-20T00:00:00"^^xsd:dateTime ;
-    schema:location "Maastricht, Netherlands" ;
-    schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
-    schema:startDate "2023-12-18T00:00:00"^^xsd:dateTime ;
-    schema:url "https://jurix23.maastrichtlawtech.eu/"^^xsd:anyURI .
-
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
     schema:alternateName "UMAP" ;
@@ -23328,6 +23304,25 @@ hpview:StoryView a hpcom:View ;
     schema:performer <https://harshp.com/me> ;
     schema:publication <https://facctconference.org/2023/> ;
     schema:url "https://harshp.com/research/presentations#2023-FAccT-AIAct"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2023-JURIX-Data-Breach> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2023/JURIX-Data-Breach/JURIX_Data-Breach_2023.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "PPTX" ;
+            schema:url "https://harshp.com/presentations/2023/JURIX-Data-Breach/JURIX_Data-Breach_2023.pptx"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2023/JURIX-Data-Breach/"^^xsd:anyURI ] ;
+    schema:identifier "2023-JURIX-Data-Breach" ;
+    schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
+    schema:performer <http://example.com/PaulRyan> ;
+    schema:publication <http://example.com/conferences/JURIX2023> ;
+    schema:url "https://harshp.com/research/presentations#2023-JURIX-Data-Breach"^^xsd:anyURI .
 
 <https://harshp.com/research/presentations#2023-SEMANTiCS-DGA> a schema:PresentationDigitalDocument ;
     schema:about <https://harshp.com/research/publications/061-SEMANTiCS-DGA> ;
@@ -24771,6 +24766,36 @@ hpview:StoryView a hpcom:View ;
     schema:publication <http://example.com/workshops/WOP2023> ;
     schema:url ""^^xsd:anyURI .
 
+<https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> a hpcom:RenderedItem,
+        hpcom:ShortPaper,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "DORAS" ;
+            schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "zenodo" ;
+            schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/PaulRyan> <http://example.com/GeorgPKrog> <http://example.com/MartinCrane> <http://example.com/RobBrennan> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/063-towards-semantic-specification-GDPR-data-breach.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary <https://harshp.com/research/presentations#2023-JURIX-Data-Breach> ;
+    hpcom:tag hptag:GDPR,
+        hptag:data-breach,
+        hptag:security,
+        hptag:semantic-web ;
+    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
+    schema:publication <http://example.com/conferences/JURIX2023> ;
+    schema:url "https://doi.org/10.3233/FAIA230956"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ] ;
@@ -25440,6 +25465,16 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Legal Knowledge and Information Systems​"@en ;
     schema:startDate "2020-12-09T00:00:00"^^xsd:dateTime ;
     schema:url "https://jurix2020.law.muni.cz/"^^xsd:anyURI .
+
+<http://example.com/conferences/JURIX2023> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "JURIX" ;
+    schema:endDate "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:location "Maastricht, Netherlands" ;
+    schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
+    schema:startDate "2023-12-18T00:00:00"^^xsd:dateTime ;
+    schema:url "https://jurix23.maastrichtlawtech.eu/"^^xsd:anyURI .
 
 <http://example.com/conferences/ODBASE2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -26324,9 +26359,6 @@ hptag:weather a hpcom:RenderedItem,
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
 
-<http://example.com/PaulRyan> a schema:Person ;
-    schema:name "Paul Ryan" .
-
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "visually-stunning"@en ;
@@ -26361,6 +26393,9 @@ hptag:travel a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
+
+<http://example.com/PaulRyan> a schema:Person ;
+    schema:name "Paul Ryan" .
 
 <https://harshp.com/dev/dpv> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26726,13 +26761,6 @@ hptag:personal a hpcom:RenderedItem,
     schema:name "personal" ;
     schema:url "https://harshp.com/tags/personal"^^xsd:anyURI .
 
-hpcom:Rating2 a hpcom:Rating,
-        hpcom:RenderedItem ;
-    rdfs:label "🙁bad (2/5)"@en ;
-    rdfs:subClassOf schema:Rating ;
-    schema:ratingValue "2"^^xsd:int ;
-    schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
-
 hptag:semantic-web a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "semantic-web" ;
@@ -26747,6 +26775,13 @@ hptag:story a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "story" ;
     schema:url "https://harshp.com/tags/story"^^xsd:anyURI .
+
+hpcom:Rating2 a hpcom:Rating,
+        hpcom:RenderedItem ;
+    rdfs:label "🙁bad (2/5)"@en ;
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "2"^^xsd:int ;
+    schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
