@@ -42,7 +42,7 @@ import logging
 logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
-logging.disable(logging.CRITICAL)
+logging.disable(logging.DEBUG)
 FLAG_VALIDATE_CONSTRAINTS = True
 
 # Namespaces used in the RDF files
@@ -80,6 +80,7 @@ graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
 
 # validate using PySHACL
 if FLAG_VALIDATE_CONSTRAINTS:
+    logging.info("Validating data...")
     from pyshacl import validate
     validation_constraints = Graph()
     validation_constraints.parse('shacl_constraints.ttl', format='turtle')
@@ -96,10 +97,15 @@ if FLAG_VALIDATE_CONSTRAINTS:
           debug=False)
     conforms, results_graph, results_text = validation_results
     if conforms is False:
+        logging.info("Validation FAILED")
         print(results_text)
         import sys
         sys.exit()
+    else:
+        logging.info("Validation PASSED")
     graph.serialize('data_combined.ttl', format='turtle')
+else:
+    logging.info("Validation SKIPPED")
 
 # create data graph through ORM
 data = DataGraph()

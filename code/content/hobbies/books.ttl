@@ -6390,7 +6390,6 @@
         hpcom:BookSciFi ;
     schema:isbn "9781101904220"^^xsd:string ;
     schema:name "Dark Matter"@en ;
-    hpcom:book_on_loan "borrowed - DT" ;
     schema:url "https://harshp.com/hobbies/books/452"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/453> a hpcom:RenderedItem, hpcom:BookReading,
@@ -7721,7 +7720,7 @@
 <https://harshp.com/hobbies/books/541> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "541"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:EBook, hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2019-12-19T00:00:00"^^xsd:dateTime ;
@@ -7789,7 +7788,7 @@
 <https://harshp.com/hobbies/books/545> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "545"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_owned_medium hpcom:EBook, hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2019-12-29T00:00:00"^^xsd:dateTime ;
@@ -9010,7 +9009,6 @@
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-read ;
-    hpcom:book_on_loan "NJP" ;
     hpcom:date_book_read "2021-05-25T13:30:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Kazuo Ishiguro"^^xsd:string ;
@@ -9999,6 +9997,7 @@
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "689"^^xsd:int ;
     hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     schema:author "V.E. Schwab"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -10876,7 +10875,7 @@
 <https://harshp.com/hobbies/books/749> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book, hpcom:Book ;
     hpcom:book_id "749"^^xsd:int ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-to-read ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
@@ -13159,11 +13158,10 @@
 
 <https://harshp.com/hobbies/books/905> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "905"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Sydney Padua"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
@@ -13187,16 +13185,17 @@
 
 <https://harshp.com/hobbies/books/907> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "907"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2024-02-02T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "1988"^^xsd:int ;
-    # schema:isbn ""^^xsd:string ;
     schema:name "Cat's Eye"@en ;
+    schema:review """This book is unusual because it focuses on the rare topic of female friendships and dynamics - and largely does not trivialise their importance in the story by including men. At the same time, it isn't fantasy but a keen observation of childhood and what social relationships do to a child's mind and how it lasts much much longer than we think without realising what and why we do what we do. Atwood is a master craftsmen - from science fiction to dystopian societies - she has a keen grasp on what it means to be a part of society. And in this case, the reflections are upon what one does and experiences in the 'formative years' and its visceral impact into the adulthood lives. Good read, though a tad depressing because of the realities of the story and experience."""@en ;
+    hpcom:book_on_loan "GWY";
     schema:url "https://harshp.com/hobbies/books/907"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/908> a schema:Book, hpcom:RenderedItem ;
@@ -13232,16 +13231,16 @@
 
 <https://harshp.com/hobbies/books/910> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "910"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2024-01-26T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Iain Banks"^^xsd:string ;
     schema:dateCreated "2004"^^xsd:int ;
-    # schema:isbn ""^^xsd:string ;
     schema:name "The Algebraist"@en ;
+    schema:review """The title of the book made me think this is something to do with maths. It isn't - not really. But the story itself is based on some mathematical concepts. There's a galactic civilisation, portals, respecting light-speed, alien cultures, and then there is the hunt for treasure. This is an adventure book that made me wish there was more material about the world and its technologies and its development and use. There's a scene where the villain (trying not to spoil things here) describes what feels like an unnecessary sexual action - which is jarring because it is not expected and is at odds with the level of details not found in the rest of the novel. Other than that, interesting read."""@en ;
     schema:url "https://harshp.com/hobbies/books/910"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/911> a schema:Book, hpcom:RenderedItem ;
@@ -13442,17 +13441,17 @@
 
 <https://harshp.com/hobbies/books/924> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "924"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-01-19T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+     hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Irene Vallejo"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Papyrus: The Invention of Books in the Ancient World"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """A book about books! That was the first thought when I saw the book in a bookshop, and being intrigued I bought it. Papyrus promises a history of how the first book was invented. However, I found it to be much much more about how the first libraries were set up rather than the history of how books actually were invented. So while interested, I wanted less of Mediteranian history and more about writing and the need to record, and cave paintings, stone inscriptions, and papyrus - the titular game changer when it came to writing. The book has very little on this. Still interesting because there is a rich history of libraries and books being the medium through which people sought knowledge and education."""@en;
     schema:url "https://harshp.com/hobbies/books/924"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/925> a schema:Book, hpcom:RenderedItem ;
@@ -13500,3 +13499,68 @@
     schema:name "House of Open Wounds"@en ;
     schema:review """The more you read, the less the changes that a book makes you go 'wow, hang on, how does that work?' and eager to read more which opens even more questions. This is one such book. The topic under consideration is magic - all kinds of magic from divine to infernal. There are so many clever and admirable inclusions of aspects such as gods, worshipers, their relation and association, and the use of magic through 'decanted' artefacts. Think 'The Matrix' bottling up humans, except in this case its magic from objects, people, even 'gods'. And then there is the question of the all too apparent fascist country that want everything to be 'perfection' - basically a rejection of anything other than what the 'committee' decides. Too real, too close for comfort, and a constant acknowledgement of the world I live in which makes for a serious and melancholic reading. And yet - I enjoyed all of it. The stories, the settings - the world is massive that I would gladly read a whole lot more books about it, to the various philosophical provocations that got raised in my mind. I consider this an enlightening book because it expands the consciousness into new ways of thinking about something I didn't know about. Sure, all of it is about 'magic', but you could just as well replace it with other things to see how it helps be a foggy reflection of the actual world and people. Excellent read."""@en ;
     schema:url "https://harshp.com/hobbies/books/927"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/928> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "928"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Stanisław Lem"^^xsd:string ;
+    schema:dateCreated "1964"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Mortal Engines"@en ;
+    schema:url "https://harshp.com/hobbies/books/928"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/929> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "929"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Stanisław Lem"^^xsd:string ;
+    schema:dateCreated "1971"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "The Star Diaries"@en ;
+    schema:url "https://harshp.com/hobbies/books/929"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/930> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "930"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Yukio Mishima"^^xsd:string ;
+    schema:dateCreated "1962"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Beautiful Star"@en ;
+    schema:url "https://harshp.com/hobbies/books/930"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/931> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "931"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Stanisław Lem"^^xsd:string ;
+    schema:dateCreated "1968"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "His Master's Voice"@en ;
+    schema:url "https://harshp.com/hobbies/books/931"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/932> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "932"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Anu Bradford"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Digital Empires: The Global Battle to Regulate Technology"@en ;
+    schema:url "https://harshp.com/hobbies/books/932"^^xsd:anyURI .
