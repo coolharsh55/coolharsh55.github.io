@@ -42,8 +42,8 @@ import logging
 logging.basicConfig(
     level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
-logging.disable(logging.DEBUG)
-FLAG_VALIDATE_CONSTRAINTS = True
+# logging.disable(logging.DEBUG)
+FLAG_VALIDATE_CONSTRAINTS = False
 
 # Namespaces used in the RDF files
 # RDF-ORM can also auto-detect them
@@ -66,6 +66,7 @@ graph.parse ('content/dev/dev.ttl', format='turtle')
 graph.parse ('content/research/blog/research_blog.ttl', format='turtle')
 graph.parse ('content/hobbies/books.ttl', format='turtle')
 graph.parse ('content/hobbies/book_lists.ttl', format='turtle')
+graph.parse ('content/hobbies/games.ttl', format='turtle')
 graph.parse ('content/hobbies/tea.ttl', format='turtle')
 # research
 graph.parse ('content/research/research.ttl', format='turtle')

@@ -125,6 +125,7 @@ class DataGraph(object):
         self.graph = None
 
     def _get_iri_from_prefix(self, name):
+        DEBUG(name)
         prefix, name = name.split('_')
         prefixes = list(self.graph.namespace_manager.namespaces())
         prefixes = [x[1] for x in prefixes if x[0] == prefix]

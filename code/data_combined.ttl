@@ -1,3 +1,4 @@
+@prefix : <https://harshp.com/hobbies/games/> .
 @prefix book: <https://harshp.com/hobbies/books/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix hpcom: <https://harshp.com/code/vocab#> .
@@ -1600,6 +1601,29 @@ hpview:DevPostView a hpcom:View ;
 
 hpview:FileCopyView a hpcom:View ;
     hpcom:view_renderer hpcom:FileCopy .
+
+hpview:GameIndexView a hpcom:View ;
+    hpcom:sparql [ a hpcom:SparqlQuery ;
+            rdfs:label "currently_playing" ;
+            hpcom:queryString """
+            SELECT ?game ?title WHERE {
+                ?game a hpcom:VideoGame ;
+                ?game schema:name ?title .
+                ?game hpcom:game_status hpcom:game-currently-playing .
+            }
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "played" ;
+            hpcom:queryString """
+            SELECT ?game ?title ?year WHERE {
+                ?game a hpcom:VideoGame ;
+                ?game schema:name ?title .
+                ?game hpcom:date_game_played ?year .
+            }
+        """ ] ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_target <https://harshp.com/hobbies/games> ;
+    hpcom:view_template "https://harshp.com/code/templates/template_hobbies_games.jinja2" .
 
 hpview:PoemView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
@@ -17866,6 +17890,38 @@ list:owned_unread a hpcom:RenderedItem,
     schema:identifier "owned_digital"@en ;
     schema:name "Owned Unread Books"@en .
 
+:doom-1993 a hpcom:RenderedItem,
+        hpcom:VideoGame,
+        schema:VideoGame ;
+    hpcom:date_game_played "2002"^^xsd:int ;
+    hpcom:game_id "doom-1993" ;
+    hpcom:game_owned_platform hpcom:MS-DOS ;
+    hpcom:game_played_platform hpcom:MS-DOS ;
+    hpcom:game_status hpcom:game-played ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:dateCreated "1993"^^xsd:int ;
+    schema:genre hpcom:FPS,
+        hpcom:SinglePlayer ;
+    schema:name "Doom"@en ;
+    schema:publisher "id"^^xsd:string ;
+    schema:url "https://harshp.com/hobbies/games/doom-1993"^^xsd:anyURI .
+
+:tyranny-2016 a hpcom:RenderedItem,
+        hpcom:VideoGame,
+        schema:VideoGame ;
+    hpcom:date_game_played "2023"^^xsd:int ;
+    hpcom:game_id "tyranny-2016" ;
+    hpcom:game_owned_platform hpcom:Linux ;
+    hpcom:game_played_platform hpcom:Linux ;
+    hpcom:game_status hpcom:game-currently-playing ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:RPG,
+        hpcom:SinglePlayer ;
+    schema:name "Tyranny"@en ;
+    schema:publisher "Obsidian"^^xsd:string ;
+    schema:url "https://harshp.com/hobbies/games/tyranny-2016"^^xsd:anyURI .
+
 <https://harshp.com/hobbies/tea> a owl:Class,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
@@ -26783,26 +26839,26 @@ list:books-changed-life a hpcom:RenderedItem,
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
 
-hpcom:Jinja2 a hpcom:Renderer ;
-    rdfs:label "Jinaj2"@en ;
-    rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
-
 list:fantasy a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "fantasy"@en ;
     schema:name "Fantastic Fantasy"@en .
+
+hpcom:Jinja2 a hpcom:Renderer ;
+    rdfs:label "Jinaj2"@en ;
+    rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
 
 list:cork a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "cork"@en ;
     schema:name "Books in Cork"@en .
 
+<https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
+    schema:name "Dave Lewis" .
+
 hpcom:SparqlQuery a owl:Class ;
     rdfs:label "SparqlQuery"@en ;
     rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
-
-<https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
-    schema:name "Dave Lewis" .
 
 hpcom:View a owl:Class ;
     rdfs:label "View"@en ;

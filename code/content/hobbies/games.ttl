@@ -7,7 +7,33 @@
 @prefix schema: <https://schema.org/> .
 
 @prefix hpcom: <https://harshp.com/code/vocab#> .
-@prefix hpview: <https://harshp.com/code/views#> .
+@prefix schema: <https://schema.org/> .
+@prefix list: <https://harshp.com/hobbies/games/lists/> .
 
-@base <https://harshp.com/> .
+@prefix : <https://harshp.com/hobbies/games/> .
 
+<https://harshp.com/hobbies/games/doom-1993> a hpcom:RenderedItem, schema:VideoGame, hpcom:VideoGame ;
+    hpcom:game_id "doom-1993" ;
+    hpcom:game_owned_platform hpcom:MS-DOS ;
+    hpcom:game_played_platform hpcom:MS-DOS ;
+    hpcom:game_status hpcom:game-played ;
+    hpcom:date_game_played "2002"^^xsd:int ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:publisher "id"^^xsd:string ;
+    schema:dateCreated "1993"^^xsd:int ;
+    schema:genre hpcom:FPS, hpcom:SinglePlayer ;
+    schema:name "Doom"@en ;
+    schema:url "https://harshp.com/hobbies/games/doom-1993"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/games/tyranny-2016> a hpcom:RenderedItem, schema:VideoGame, hpcom:VideoGame ;
+    hpcom:game_id "tyranny-2016" ;
+    hpcom:game_owned_platform hpcom:Linux ;
+    hpcom:game_played_platform hpcom:Linux ;
+    hpcom:game_status hpcom:game-currently-playing ;
+    hpcom:date_game_played "2023"^^xsd:int ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    schema:publisher "Obsidian"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:RPG, hpcom:SinglePlayer ;
+    schema:name "Tyranny"@en ;
+    schema:url "https://harshp.com/hobbies/games/tyranny-2016"^^xsd:anyURI .
