@@ -13158,16 +13158,18 @@
 
 <https://harshp.com/hobbies/books/905> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "905"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2024-02-03T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Sydney Padua"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Thrilling Adventures of Lovelace and Babbage"@en ;
     hpcom:book_on_loan "DT";
+    schema:review """A really fun adventure based on the fictional reality where Lovelace and Babbage use tech to do stuff. The art style was cool and detailed, and there was enough variety to keep things moving. That someone made this book is a nice thing, and it was not expensive at all."""@en ;
     schema:url "https://harshp.com/hobbies/books/905"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/906> a schema:Book, hpcom:RenderedItem ;
@@ -13505,7 +13507,7 @@
         schema:Book ;
     hpcom:book_id "928"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
@@ -13531,13 +13533,15 @@
         schema:Book ;
     hpcom:book_id "930"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-02-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Yukio Mishima"^^xsd:string ;
     schema:dateCreated "1962"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Beautiful Star"@en ;
+    schema:review """I picked up the book, turned it around to read the blurb on the back cover - instant purchase! The premise is quirky and weird - four family members from different planets! The book itself is a nicely pieced together bundle of perpectives and clever observations on humanity. I could read it both ways - that these people were really aliens, or were so alienated that they prefered not to call Earth home anymore. The story does falter a bit, but it is still quite visual and interesting. The end absolutely made me sit up and pay attention to what I was reading - so theres's an extra +1 because of that. I didn't know the author was so well known - but now that I do I think about reading more."""@en ;
     schema:url "https://harshp.com/hobbies/books/930"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/931> a hpcom:RenderedItem,
