@@ -10113,13 +10113,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "697"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    hpcom:date_book_read "2024-05-05T00:00:00"^^xsd:dateTime ;
     schema:author "Marlon James"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Black Leopard, Red Wolf"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """Vicious, gory, disturbing tribal stories where people can morph into animals and completely uppend any notion of civilisation. I was okay with the violent aspects of the story, but the writing style and the overuse of descriptions did not make it easy to understand what was going on. The story itself wasn't interesting to me."""@en ;
     schema:url "https://harshp.com/hobbies/books/697"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/698> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10877,7 +10880,7 @@
     hpcom:book_id "749"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Neil Stephenson"^^xsd:string ;
@@ -13413,17 +13416,17 @@
 
 <https://harshp.com/hobbies/books/922> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "922"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-05-10T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Rosewater Insurrection"@en ;
-    schema:isPartOf list:cork ;
+    schema:review """Reading it as a sequel - this gets more into the 'powers' and 'politics' of the situation. Good beach reading. I was more interested in the fungal alien - so that was enough to pass the time."""@en ;
     schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/923> a schema:Book, hpcom:RenderedItem ;
@@ -13507,13 +13510,14 @@
         schema:Book ;
     hpcom:book_id "928"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-03-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1964"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Mortal Engines"@en ;
+    schema:review """Fantasy tales written with science! Fantastic stuff. What a niche!"""@en ;
     schema:url "https://harshp.com/hobbies/books/928"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/929> a hpcom:RenderedItem,
@@ -13548,13 +13552,15 @@
         schema:Book ;
     hpcom:book_id "931"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1968"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "His Master's Voice"@en ;
+    schema:review """Interesting book which goes through the human side of things were we to find an alien signal. The perspectives and arguments that are explored in the book are good reading. In what I now consider the classic Lem style - the book goes through our arrogance in not understanding the limitations of our own collective consciousness."""@en ;
     schema:url "https://harshp.com/hobbies/books/931"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/932> a hpcom:RenderedItem,
@@ -13574,11 +13580,27 @@
         schema:Book ;
     hpcom:book_id "933"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-03-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Ulises A. Mejias & Nick Couldry"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Data Grab: The New Colonialism of Big Tech and How to Fight Back"@en ;
+    schema:review """The book might be a more gentler introduction for people who don't know what has been happening with the capitalist tech industry filled to the brim with surveillance advertising. But otherwise it was a lot of repeated narratives and information. What was interesting at the start was the promise of solutions - but they were far too simplified and not explored in detail at all."""@en ;
     schema:url "https://harshp.com/hobbies/books/933"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/934> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "934"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Kirsten Beyer"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Star Trek Voyager: A Pocket Full of Lies"@en ;
+    schema:url "https://harshp.com/hobbies/books/934"^^xsd:anyURI .
