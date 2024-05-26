@@ -10879,14 +10879,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "749"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Neil Stephenson"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Termination Shock"@en ;
+    schema:review """Where is the action? Where is the well-researched hard science fiction? Beyond some hodgy-podgy climate change scheme, this novel is not what I would expect from a Stephenson book at all. Disappointing to spend 700 pages to have very little payoff."""@en ;
     schema:url "https://harshp.com/hobbies/books/749"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/750> a hpcom:RenderedItem, hpcom:BookReading,
@@ -13524,13 +13525,15 @@
         schema:Book ;
     hpcom:book_id "929"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1971"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Star Diaries"@en ;
+    schema:review """The first story is one of the most entertaining time-travel stories I have read so far. Very clever and witty. And in classic Lem fashion - manages to also communicate the cynical take on human incompetence and genius at the same time. The collection as a whole is quite diverse - and as the afterword states these stories were written across the years and reflect the changing perspective of Lem in writing about things. Enjoyed most of them, though some stories were quite stretched in some places and I wonder if things go lost in translation."""@en ;
     schema:url "https://harshp.com/hobbies/books/929"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/930> a hpcom:RenderedItem,
@@ -13604,3 +13607,31 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Star Trek Voyager: A Pocket Full of Lies"@en ;
     schema:url "https://harshp.com/hobbies/books/934"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/935> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "935"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Hannu Rajaniemi"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Fractal Prince"@en ;
+    schema:url "https://harshp.com/hobbies/books/935"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/936> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "936"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Hannu Rajaniemi"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "The Causal Angel"@en ;
+    schema:url "https://harshp.com/hobbies/books/936"^^xsd:anyURI .
