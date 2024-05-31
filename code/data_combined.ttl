@@ -20,6 +20,72 @@
     schema:name "blog"@en ;
     schema:url "https://harshp.com/blog"^^xsd:anyURI .
 
+hpcom:Book a rdfs:Class ;
+    rdfs:label "Book"@en ;
+    rdfs:subClassOf schema:Book .
+
+hpcom:BookGenre a rdfs:Class ;
+    rdfs:label "Book Genre"@en .
+
+hpcom:BookReading a rdfs:Class ;
+    rdfs:label "Book for Reading"@en ;
+    rdfs:subClassOf schema:Book .
+
+hpcom:BookStatus a rdfs:Class ;
+    rdfs:label "Book Status"@en .
+
+hpcom:Content a rdfs:Class ;
+    rdfs:label "Content"@en ;
+    rdfs:comment "Represents content associated with an IRI/Entity"@en .
+
+hpcom:EventType a rdfs:Class ;
+    rdfs:label "Event Type"@en .
+
+hpcom:FileFormat a rdfs:Class ;
+    rdfs:label "FileFormat"@en ;
+    rdfs:comment "Represents formats for content"@en .
+
+hpcom:Link a rdfs:Class ;
+    rdfs:label "Link"@en .
+
+hpcom:Platform a rdfs:Class ;
+    rdfs:label "Platform"@en .
+
+hpcom:Rating a rdfs:Class ;
+    rdfs:label "Rating"@en .
+
+hpcom:RenderedItem a rdfs:Class ;
+    rdfs:label "RenderedItem"@en ;
+    rdfs:comment "Represents the set of items that are rendered on the website."@en .
+
+hpcom:Renderer a rdfs:Class ;
+    rdfs:label "Renderer"@en ;
+    rdfs:comment "Represents the method of rendering a view over content"@en .
+
+hpcom:ReviewingEvent a rdfs:Class ;
+    rdfs:label "Reivewing Event" ;
+    rdfs:comment "Represents peer-review at some venue"@en .
+
+hpcom:SparqlQuery a rdfs:Class ;
+    rdfs:label "SparqlQuery"@en ;
+    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
+
+hpcom:Tag a rdfs:Class ;
+    rdfs:label "Tag"@en ;
+    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
+
+hpcom:VideoGame a rdfs:Class ;
+    rdfs:label "Video Game"@en ;
+    rdfs:subClassOf schema:VideoGame .
+
+hpcom:VideoGameGenre a rdfs:Class ;
+    rdfs:label "Video Game Genre"@en ;
+    rdfs:subClassOf schema:Genre .
+
+hpcom:View a rdfs:Class ;
+    rdfs:label "View"@en ;
+    rdfs:comment "Represents a specific representation or view of a resource"@en .
+
 <https://harshp.com/dev> a rdfs:Class,
         hpcom:RenderedItem ;
     rdfs:label "Dev Blog"@en ;
@@ -33,6 +99,11 @@
         hpcom:RenderedItem ;
     schema:name "Books"@en ;
     schema:url "https://harshp.com/hobbies/books"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/games> a rdfs:Class,
+        hpcom:RenderedItem ;
+    schema:name "Video Games"@en ;
+    schema:url "https://harshp.com/hobbies/games"^^xsd:anyURI .
 
 <https://harshp.com/poems> a rdfs:Class,
         hpcom:RenderedItem ;
@@ -1607,7 +1678,7 @@ hpview:GameIndexView a hpcom:View ;
             rdfs:label "currently_playing" ;
             hpcom:queryString """
             SELECT ?game ?title WHERE {
-                ?game a hpcom:VideoGame ;
+                ?game a hpcom:VideoGame .
                 ?game schema:name ?title .
                 ?game hpcom:game_status hpcom:game-currently-playing .
             }
@@ -1616,7 +1687,7 @@ hpview:GameIndexView a hpcom:View ;
             rdfs:label "played" ;
             hpcom:queryString """
             SELECT ?game ?title ?year WHERE {
-                ?game a hpcom:VideoGame ;
+                ?game a hpcom:VideoGame .
                 ?game schema:name ?title .
                 ?game hpcom:date_game_played ?year .
             }
@@ -1891,9 +1962,24 @@ hpcom:contentFormat a rdf:Property ;
 hpcom:date_book_read a rdf:Property ;
     rdfs:label "book read"@en .
 
+hpcom:date_game_played a rdf:Property ;
+    rdfs:label "date game played"@en .
+
 hpcom:event_type a rdf:Property ;
     rdfs:label "event type"@en ;
     rdfs:range hpcom:EventType .
+
+hpcom:game_id a rdf:Property ;
+    rdfs:label "game id"@en .
+
+hpcom:game_owned_platform a rdf:Property ;
+    rdfs:label "game owned platform"@en .
+
+hpcom:game_played_platform a rdf:Property ;
+    rdfs:label "game played platform"@en .
+
+hpcom:game_status a rdf:Property ;
+    rdfs:label "game status"@en .
 
 hpcom:peer_reviewed a rdf:Property ;
     rdfs:label "peer_reviewed"@en ;
@@ -13791,13 +13877,16 @@ book:697 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "697"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Marlon James"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
     schema:name "Black Leopard, Red Wolf"@en ;
+    schema:review "Vicious, gory, disturbing tribal stories where people can morph into animals and completely uppend any notion of civilisation. I was okay with the violent aspects of the story, but the writing style and the overuse of descriptions did not make it easy to understand what was going on. The story itself wasn't interesting to me."@en ;
     schema:url "https://harshp.com/hobbies/books/697"^^xsd:anyURI .
 
 book:698 a hpcom:Book,
@@ -14709,12 +14798,16 @@ book:749 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "749"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Neil Stephenson"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Termination Shock"@en ;
+    schema:review "Where is the action? Where is the well-researched hard science fiction? Beyond some hodgy-podgy climate change scheme, this novel is not what I would expect from a Stephenson book at all. Disappointing to spend 700 pages to have very little payoff."@en ;
     schema:url "https://harshp.com/hobbies/books/749"^^xsd:anyURI .
 
 book:75 a hpcom:Book,
@@ -17274,20 +17367,25 @@ book:904 a hpcom:RenderedItem,
 book:905 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "905"^^xsd:int ;
+    hpcom:book_on_loan "DT" ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-02-03T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Sydney Padua"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Thrilling Adventures of Lovelace and Babbage"@en ;
+    schema:review "A really fun adventure based on the fictional reality where Lovelace and Babbage use tech to do stuff. The art style was cool and detailed, and there was enough variety to keep things moving. That someone made this book is a nice thing, and it was not expensive at all."@en ;
     schema:url "https://harshp.com/hobbies/books/905"^^xsd:anyURI .
 
 book:906 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "906"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2000"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
@@ -17540,13 +17638,16 @@ book:922 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "922"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Tade Thompson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
-    schema:isPartOf list:cork ;
     schema:name "The Rosewater Insurrection"@en ;
+    schema:review "Reading it as a sequel - this gets more into the 'powers' and 'politics' of the situation. Good beach reading. I was more interested in the fungal alien - so that was enough to pass the time."@en ;
     schema:url "https://harshp.com/hobbies/books/922"^^xsd:anyURI .
 
 book:923 a hpcom:RenderedItem,
@@ -17628,24 +17729,31 @@ book:928 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "928"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-03-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1964"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Mortal Engines"@en ;
+    schema:review "Fantasy tales written with science! Fantastic stuff. What a niche!"@en ;
     schema:url "https://harshp.com/hobbies/books/928"^^xsd:anyURI .
 
 book:929 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "929"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-25T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1971"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Star Diaries"@en ;
+    schema:review "The first story is one of the most entertaining time-travel stories I have read so far. Very clever and witty. And in classic Lem fashion - manages to also communicate the cynical take on human incompetence and genius at the same time. The collection as a whole is quite diverse - and as the afterword states these stories were written across the years and reflect the changing perspective of Lem in writing about things. Enjoyed most of them, though some stories were quite stretched in some places and I wonder if things go lost in translation."@en ;
     schema:url "https://harshp.com/hobbies/books/929"^^xsd:anyURI .
 
 book:93 a hpcom:Book,
@@ -17664,36 +17772,103 @@ book:930 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "930"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-02-05T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Yukio Mishima"^^xsd:string ;
     schema:dateCreated "1962"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Beautiful Star"@en ;
+    schema:review "I picked up the book, turned it around to read the blurb on the back cover - instant purchase! The premise is quirky and weird - four family members from different planets! The book itself is a nicely pieced together bundle of perpectives and clever observations on humanity. I could read it both ways - that these people were really aliens, or were so alienated that they prefered not to call Earth home anymore. The story does falter a bit, but it is still quite visual and interesting. The end absolutely made me sit up and pay attention to what I was reading - so theres's an extra +1 because of that. I didn't know the author was so well known - but now that I do I think about reading more."@en ;
     schema:url "https://harshp.com/hobbies/books/930"^^xsd:anyURI .
 
 book:931 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "931"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stanisław Lem"^^xsd:string ;
     schema:dateCreated "1968"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "His Master's Voice"@en ;
+    schema:review "Interesting book which goes through the human side of things were we to find an alien signal. The perspectives and arguments that are explored in the book are good reading. In what I now consider the classic Lem style - the book goes through our arrogance in not understanding the limitations of our own collective consciousness."@en ;
     schema:url "https://harshp.com/hobbies/books/931"^^xsd:anyURI .
 
 book:932 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "932"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-to-read ;
     schema:author "Anu Bradford"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Digital Empires: The Global Battle to Regulate Technology"@en ;
     schema:url "https://harshp.com/hobbies/books/932"^^xsd:anyURI .
+
+book:933 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "933"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-03-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    schema:author "Ulises A. Mejias & Nick Couldry"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Data Grab: The New Colonialism of Big Tech and How to Fight Back"@en ;
+    schema:review "The book might be a more gentler introduction for people who don't know what has been happening with the capitalist tech industry filled to the brim with surveillance advertising. But otherwise it was a lot of repeated narratives and information. What was interesting at the start was the promise of solutions - but they were far too simplified and not explored in detail at all."@en ;
+    schema:url "https://harshp.com/hobbies/books/933"^^xsd:anyURI .
+
+book:934 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "934"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-31T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:author "Kirsten Beyer"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Star Trek Voyager: A Pocket Full of Lies"@en ;
+    schema:review "Second best thing to watching a Star Trek episode. The perks of having rewatched Voyager several times is that I could picture the characters saying the lines, and with the appropriate mannerisms and styles. The writing itself is a bit lacking, but the story does seem like a typical episode on the show. However, this was one of my lesser liked typical episodes - where there is a conflict, there is a lot of science thrown around but not the main goal, and it is too focused on one particular character (Janeway). Still an okay read."@en ;
+    schema:url "https://harshp.com/hobbies/books/934"^^xsd:anyURI .
+
+book:935 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "935"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-05-29T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:author "Hannu Rajaniemi"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Fractal Prince"@en ;
+    schema:review "Loads of technologies just thrown at you, with no details or descriptions to understand what they are or what they do. So the end result is everything looks like it makes sense, even seems rooted in physics because when you search those term they all have Wikipedia pages. But there is no knowledge given for how they work within the story. This is more fairy tale sci-fi rather than hard sci-fi. Which is okay, because it achieves its goal of being entertaining and enjoyable. The second book in the series, the new stuff here was how 1001 arabian nights got adapted into the metaverse. Pretty cool stuff. Looking forward to reading the third book."@en ;
+    schema:url "https://harshp.com/hobbies/books/935"^^xsd:anyURI .
+
+book:936 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "936"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Hannu Rajaniemi"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Causal Angel"@en ;
+    schema:url "https://harshp.com/hobbies/books/936"^^xsd:anyURI .
 
 book:94 a hpcom:Book,
         hpcom:BookReading,
@@ -21275,14 +21450,14 @@ list:owned_unread a hpcom:RenderedItem,
         hptag:ODRL,
         hptag:health,
         hptag:semantic-web ;
-    schema:datePublished "2023-12-07T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-02-14T00:00:00"^^xsd:dateTime ;
     schema:description "The Global Alliance for Genomics and Health is developing the Data Use Ontology (DUO) as a standard providing machine-readable codes for automation in data discovery and responsible sharing of genomics data. We demonstrate the advantages of using ODRL as a standard for formal representation of policies and DPV for taxonomies and legal/jurisdictional concepts."@en ;
     schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> ) ;
-    schema:identifier ""^^xsd:anyURI ;
+    schema:identifier "https://doi.org/10.3233/SW-243583"^^xsd:anyURI ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs; Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project;"@en ;
     schema:name "Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV"@en ;
     schema:publisher <http://www.semantic-web-journal.net/> ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.3233/SW-243583"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
@@ -22674,6 +22849,12 @@ hpview:StoryView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_target <https://harshp.com/stories> ;
     hpcom:view_template "https://harshp.com/code/templates/template_stories_post.jinja2" .
+
+hpcom:FPS a hpcom:VideoGameGenre ;
+    rdfs:label "FPS" .
+
+hpcom:RPG a hpcom:VideoGameGenre ;
+    rdfs:label "RPG" .
 
 <https://harshp.com/contact> a hpcom:RenderedItem ;
     schema:name "Contact Me"@en ;
@@ -24890,11 +25071,11 @@ hpview:StoryView a hpcom:View ;
     schema:datePublished "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
     schema:funder <http://example.com/ADAPT> ;
-    schema:identifier ""^^xsd:anyURI ;
+    schema:identifier "https://ceur-ws.org/Vol-3636/"^^xsd:anyURI ;
     schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
     schema:name "Using Patterns to Manage Governance of Solid Apps"@en ;
     schema:publication <http://example.com/workshops/WOP2023> ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://ceur-ws.org/Vol-3636/"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach> a hpcom:RenderedItem,
         hpcom:ShortPaper,
@@ -24919,7 +25100,7 @@ hpview:StoryView a hpcom:View ;
         hptag:data-breach,
         hptag:security,
         hptag:semantic-web ;
-    schema:datePublished "2023-12-20T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2023-12-07T00:00:00"^^xsd:dateTime ;
     schema:description "A machine-readable specification for the representation and documentation of information related to data breaches and their communications"@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Towards a Semantic Specification for GDPR Data Breach Reporting"@en ;
@@ -25852,17 +26033,25 @@ hptag:workshop a hpcom:RenderedItem,
     schema:startDate "2023-06-12T00:00:00"^^xsd:dateTime ;
     schema:url "https://facctconference.org/2023/"^^xsd:anyURI .
 
-hpcom:FileFormat a owl:Class ;
-    rdfs:label "FileFormat"@en ;
-    rdfs:comment "Represents formats for content"@en .
+hpcom:Linux a hpcom:Platform ;
+    rdfs:label "Linux" .
+
+hpcom:MS-DOS a hpcom:Platform ;
+    rdfs:label "MS-DOS" .
 
 hpcom:Report rdfs:subClassOf schema:Report,
         schema:ScholarlyArticle ;
     schema:name "Report"@en .
 
+hpcom:SinglePlayer a hpcom:VideoGameGenre ;
+    rdfs:label "Single Player" .
+
 hpcom:Thesis rdfs:subClassOf schema:ScholarlyArticle,
         schema:Thesis ;
     schema:name "Thesis"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/klip> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26119,21 +26308,8 @@ hptag:work a hpcom:RenderedItem,
     schema:startDate "2018-10-08T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2018.semanticweb.org/"^^xsd:anyURI .
 
-hpcom:BookGenre a owl:Class ;
-    rdfs:label "Book Genre"@en .
-
-hpcom:BookStatus a owl:Class ;
-    rdfs:label "Book Status"@en .
-
 hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Draft Paper"@en .
-
-hpcom:EventType a owl:Class ;
-    rdfs:label "Event Type"@en .
-
-hpcom:Renderer a owl:Class ;
-    rdfs:label "Renderer"@en ;
-    rdfs:comment "Represents the method of rendering a view over content"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -26322,9 +26498,6 @@ hptag:sci-fi a hpcom:RenderedItem,
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -26434,9 +26607,6 @@ hpview:GenericJinja2View a hpcom:View ;
 
 hpcom:BookChapter rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Book Chapter"@en .
-
-hpcom:Rating a owl:Class ;
-    rdfs:label "Rating"@en .
 
 hpcom:Rating1 a hpcom:Rating,
         hpcom:RenderedItem ;
@@ -26839,6 +27009,11 @@ list:books-changed-life a hpcom:RenderedItem,
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
 
+list:cork a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "cork"@en ;
+    schema:name "Books in Cork"@en .
+
 list:fantasy a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "fantasy"@en ;
@@ -26848,21 +27023,8 @@ hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
     rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
 
-list:cork a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "cork"@en ;
-    schema:name "Books in Cork"@en .
-
 <https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
     schema:name "Dave Lewis" .
-
-hpcom:SparqlQuery a owl:Class ;
-    rdfs:label "SparqlQuery"@en ;
-    rdfs:comment "Reperesents a SPARQL Query used to retrieve information"@en .
-
-hpcom:View a owl:Class ;
-    rdfs:label "View"@en ;
-    rdfs:comment "Represents a specific representation or view of a resource"@en .
 
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
@@ -26881,10 +27043,6 @@ hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
-hpcom:ReviewingEvent a owl:Class ;
-    rdfs:label "Reivewing Event" ;
-    rdfs:comment "Represents peer-review at some venue"@en .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26949,10 +27107,6 @@ hpcom:book-to-read a hpcom:BookStatus ;
 hpcom:BookNonFiction a hpcom:BookGenre ;
     rdfs:label "non-fiction"@en .
 
-hpcom:Tag a owl:Class ;
-    rdfs:label "Tag"@en ;
-    rdfs:comment "Represents a keyword that can be associated with a resource"@en .
-
 hpcom:Rating4 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "😁good (4/5)"@en ;
@@ -26974,19 +27128,12 @@ hpcom:Rating3 a hpcom:Rating,
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
 
-hpcom:Link a owl:Class ;
-    rdfs:label "Link"@en .
-
 hpcom:BookSciFi a hpcom:BookGenre ;
     rdfs:label "sci-fi"@en .
 
 hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
-
-hpcom:Content a owl:Class ;
-    rdfs:label "Content"@en ;
-    rdfs:comment "Represents content associated with an IRI/Entity"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
@@ -27028,16 +27175,4 @@ hpcom:PhysicalBook a hpcom:BookMedium ;
 
 hpcom:book-read a hpcom:BookStatus ;
     rdfs:label "read"@en .
-
-hpcom:BookReading a owl:Class ;
-    rdfs:label "Book for Reading"@en ;
-    rdfs:subClassOf schema:Book .
-
-hpcom:Book a owl:Class ;
-    rdfs:label "Book"@en ;
-    rdfs:subClassOf schema:Book .
-
-hpcom:RenderedItem a owl:Class ;
-    rdfs:label "RenderedItem"@en ;
-    rdfs:comment "Represents the set of items that are rendered on the website."@en .
 
