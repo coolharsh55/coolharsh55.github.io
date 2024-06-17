@@ -1742,3 +1742,60 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "demo code" ; schema:url "https://w3id.org/duodrl/demo"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "demo app" ; schema:url "https://w3id.org/duodrl/app"^^xsd:anyURI ] ;
     hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act"@en ;
+    schema:description "AI Cards is a novel holistic framework for representing intended uses of AI systems by encompassing information regarding technical specifications, context of use, and risk management, both in human- and machine-readable formats."@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:risk ;
+    hpcom:tag hptag:ISO ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <http://example.com/OtherAuthors> <https://harshp.com/me> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:datePublished "2024-09-01T00:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:funder <http://example.com/ADAPT> ; 
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/dpv-ropa"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-AICards> ;
+    hpcom:publishing_attempt "FAccT"@en ;
+    hpcom:peer_reviewed true ;
+    #hpcom:content [
+    #    a hpcom:Content ;
+    #    hpcom:contentFile "https://harshp.com/code/content/research/publications/065-AI-Cards-Risk-Documentation-AI-Act.html" ;
+    #    hpcom:contentFileFormat hpcom:formatHTML ;
+    #    ] .
+    schema:status "to be presented"@en .
+
+<https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
+    schema:description "We compare requirements regarding consent between ISO/IEC TS 27560:2023, ISO/IEC 29184:2020 Privacy Notices, and the GDPR and use the DPV to create interoperable consent records and receipts, and implementation of DGA machine-readable consent forms."@en ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:ISO ;
+    hpcom:tag hptag:DGA ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/JanLindquist> <http://example.com/GeorgPKrog> ) ;
+    schema:datePublished "2024-09-02T00:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ; 
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/063-towards-semantic-specification-GDPR-data-breach"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/coolharsh55/dpv-ropa"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-27560-ConsentRecords> ;
+    hpcom:peer_reviewed true ;
+    #hpcom:content [
+    #    a hpcom:Content ;
+    #    hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
+    #    hpcom:contentFileFormat hpcom:formatHTML ;
+    #    ] .
+    schema:status "to be presented"@en .

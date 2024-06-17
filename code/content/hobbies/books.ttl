@@ -8710,7 +8710,8 @@
 <https://harshp.com/hobbies/books/603> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "603"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Mary Doria Russell"^^xsd:string ;
     schema:dateCreated "1996"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -9118,12 +9119,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "630"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-06-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Cory Doctorow"^^xsd:string ;
     schema:dateCreated "2020"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Attack Surface"@en ;
+    schema:review """Novelisation of American authoritarian dystopia where people use tech to degrade democracy and force people to do stuff. Based on the real world - in the sense that things are not far fetched and probably closer to what happens. Story was okay. Tech stuff was okay - a bit overexposed but still fit the story. Its depressing to read this and think that's how the world functions."""@en ;
     schema:url "https://harshp.com/hobbies/books/630"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/631> a hpcom:RenderedItem, hpcom:BookReading,
@@ -9996,13 +10001,17 @@
 <https://harshp.com/hobbies/books/689> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "689"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    hpcom:date_book_read "2024-06-04T00:00:00"^^xsd:dateTime ;
     schema:author "V.E. Schwab"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "A Darker Shade of Magic"@en ;
+    schema:review """Seems to be a YA novel - but I didn't know that until I had already started reading much of it and because there was apparent torture mentioned. The world building is good, but then it just stops. The end of the novel is inconsistent - things just happen. Hand waving and apparently clever seeming plot devices move things forward. Good guys win. Bad guys lose. Boring."""@en ;
     schema:url "https://harshp.com/hobbies/books/689"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/690> a hpcom:RenderedItem, hpcom:BookReading,
@@ -10668,16 +10677,17 @@
 
 <https://harshp.com/hobbies/books/734> a schema:Book, hpcom:Book, hpcom:RenderedItem ;
     hpcom:book_id "734"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-06-16T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:EBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:EBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Gene Wolfe"^^xsd:string ;
     schema:dateCreated "1980"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Shadow of the Torturer"@en ;
+    schema:review """If Neil Gaiman mentions a book to be in his top 3 scifi (the other two being Neuromancer and Left Hand of Darkness) & fantasy books, you pay attention and you read it. This book is a gentle fantasy - there is excellent world building, the language is fantastic, the pacing just right. I didn't feel bored - even if there is no real fantasy stuff happening until quite late in the book. A lot of stuff just went over my head - nothing was explained in a clear manner. The sequels are supposed to be more forthcoming in terms of explanations - but I don't want to read more books just to figure this out."""@en ;
     schema:url "https://harshp.com/hobbies/books/734"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/735> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11344,13 +11354,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "781"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-06-06-12T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Philip K. Dick"^^xsd:string ;
     schema:dateCreated "1974"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Flow My Tears, The Policeman Said"@en ;
+    schema:review """There's always something in PKD books that pulls me right into the world and into the psyche of it. The old style writing, the stark nakedness of humanity, and the absurd coming out of it all. This one is a world swap story - someone wakes up in another world where nobody has heard of them. Nothing much more fancy as in sci-fi happens (until the every end).  But the way things get there is such an entertaining story."""@en ;
     schema:url "https://harshp.com/hobbies/books/781"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/782> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11690,13 +11702,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "803"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-06-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Stephen Baxter"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "Proxima"@en ;
+    schema:review """Fantastic story about going to a new world and the alien life there. Initially the premise really threw me off - there is alien life, possibly the first that mankind has come across, and some prisoners have been sent to colonise with a really expensive spaceship instead of a team of scientist who can really explore? Weird. Nonsense. The in-world explanation of this never made sense to me. Once I ignored that, the rest of the story was quite enjoyable. Lots of sparse situations and a good focus on the sci-fi aspects and the aliens. Not everything was answered - there's a sequel to this."""@en ;
     schema:url "https://harshp.com/hobbies/books/803"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/804> a hpcom:RenderedItem, hpcom:BookReading,
@@ -13178,16 +13192,17 @@
 
 <https://harshp.com/hobbies/books/906> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "906"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-06-12T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Margaret Atwood"^^xsd:string ;
     schema:dateCreated "2000"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
-    schema:name "The Blind Assasin"@en ;
+    schema:name "The Blind Assassin"@en ;
+    schema:review """The language used here is nice - phrases that are poetic and contemplative. But the story itself isn't appealing. Its too slow, too much caught up into these specific lives that don't interest me. And the pacing is super slow. Would have been a nicer book had it been half its size. Though I can see the appreciation with the Booker - the writing and the embedding of stories within stories within stories is quite clever."""@en ;
     schema:url "https://harshp.com/hobbies/books/906"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/907> a schema:Book, hpcom:RenderedItem ;
@@ -13570,7 +13585,7 @@
         schema:Book ;
     hpcom:book_id "932"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Anu Bradford"^^xsd:string ;
@@ -13637,3 +13652,18 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "The Causal Angel"@en ;
     schema:url "https://harshp.com/hobbies/books/936"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/937> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "937"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2024-06-14T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Stephen Baxter"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Ultima"@en ;
+    schema:review """I bought this sequel immediately after finishing Proxima. The story ended without answers about the aliens, the space-connecting hatches, and the apparent nature of hatches as changing universes or travelling across them. This book promised the answers. And it did deliver them. I didn't really like the historical spacefarers - they seemed to distract from the story itself which was about these world hopping hatch building aliens. I wanted more of that. The ending (spoilers) deals with the end of universes and the nature of multiple universes (parallel, yes) and how one theory for how they end can be made."""@en ;
+    schema:url "https://harshp.com/hobbies/books/937"^^xsd:anyURI .
