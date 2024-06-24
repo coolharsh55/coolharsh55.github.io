@@ -12148,12 +12148,16 @@ book:603 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "603"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-06-22T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Mary Doria Russell"^^xsd:string ;
     schema:dateCreated "1996"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Sparrow"@en ;
+    schema:review "This is an amazing book that really shows how science fiction can build great stories with complex characters and philosophical arguments. Its so good that you can forget about the science fiction part just like Gullivers travels didn't need a planet with aliens to imagine tiny and giant people. The book is about religion - and god - and how this leads to a priest going to an alien planet thinking this is a divine calling only to have the entire world shattered utterly. The writing is excellent - the narration and details keep flowing without too much techno-exposition. The philosophy is covered exceptionally well - with nothing thrown in your face or explained in long monologues. The book is a good screenplay in itself. It had me going 'Wow!' so many times because it was deeply relevant to how one things about religion and faith and what it means to believe. Its difficult to tell why this is such a good book without spoiling the story and the ending - but yes, its very human despite talking about aliens, and its worth it. Fantastic read."@en ;
     schema:url "https://harshp.com/hobbies/books/603"^^xsd:anyURI .
 
 book:604 a hpcom:Book,
@@ -17889,7 +17893,7 @@ book:936 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "936"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -21562,6 +21566,9 @@ list:owned_unread a hpcom:RenderedItem,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA"^^xsd:anyURI ],
+        [ a hpcom:Link ;
             schema:name "arXiv" ;
             schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ],
         [ a hpcom:Link ;
@@ -21569,6 +21576,9 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:author_other ( <http://example.com/JanLindquist> <http://example.com/GeorgPKrog> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
     hpcom:tag hptag:DGA,
         hptag:GDPR,
