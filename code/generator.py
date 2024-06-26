@@ -40,9 +40,9 @@ from jinja2 import Environment
 # logging configuration for debugging to console
 import logging
 logging.basicConfig(
-    level=logging.DEBUG, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
+    level=logging.INFO, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
 DEBUG = logging.debug
-# logging.disable(logging.DEBUG)
+logging.disable(logging.DEBUG)
 FLAG_VALIDATE_CONSTRAINTS = True
 
 # Namespaces used in the RDF files
