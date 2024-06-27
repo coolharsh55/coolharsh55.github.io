@@ -10923,7 +10923,7 @@
     hpcom:book_id "751"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Terry Miles"^^xsd:string ;
@@ -13645,16 +13645,17 @@
 
 <https://harshp.com/hobbies/books/936> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "936"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2024-06-26T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Causal Angel"@en ;
+    schema:review """The third book in the series - it coninues throwing advanced physics concepts (while making up many more) in an entertaining way. Enjoyed it thoroughly even if there were some hiccups to understand what exactly was happening (in terms of the technologies being used). This link: http://lewyland.blogspot.com/2015/10/hannu-rajaniemis-quantum-thief-trilogy.html came in handy for later recapping the sheer breadth of creativity in the series."""@en ;
     schema:url "https://harshp.com/hobbies/books/936"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/937> a schema:Book, hpcom:RenderedItem ;

@@ -14858,7 +14858,7 @@ book:751 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "751"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Terry Miles"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -17893,12 +17893,16 @@ book:936 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "936"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-06-26T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Causal Angel"@en ;
+    schema:review "The third book in the series - it coninues throwing advanced physics concepts (while making up many more) in an entertaining way. Enjoyed it thoroughly even if there were some hiccups to understand what exactly was happening (in terms of the technologies being used). This link: http://lewyland.blogspot.com/2015/10/hannu-rajaniemis-quantum-thief-trilogy.html came in handy for later recapping the sheer breadth of creativity in the series."@en ;
     schema:url "https://harshp.com/hobbies/books/936"^^xsd:anyURI .
 
 book:937 a hpcom:RenderedItem,
@@ -21549,6 +21553,9 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "harshp.com" ;
             schema:url "https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act"^^xsd:anyURI ],
         [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2406.18211"^^xsd:anyURI ],
+        [ a hpcom:Link ;
             schema:name "OSF" ;
             schema:url "https://osf.io/6dxgt"^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
@@ -21558,6 +21565,9 @@ list:owned_unread a hpcom:RenderedItem,
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
     hpcom:publishing_attempt "FAccT"@en ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/delaramGlp/aicards"^^xsd:anyURI ] ;
     hpcom:tag hptag:AI-Act,
         hptag:ISO,
         hptag:risk,
