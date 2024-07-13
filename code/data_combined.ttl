@@ -148,6 +148,9 @@ hpcom:View a rdfs:Class ;
     schema:startDate "2018-12-06T00:00:00"^^xsd:dateTime ;
     schema:url "http://aics2018.scss.tcd.ie/"^^xsd:anyURI .
 
+<http://example.com/OtherAuthors> a schema:Person ;
+    schema:name "Other Author(s)" .
+
 <http://example.com/conferences/ESWC2021> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -9204,7 +9207,7 @@ book:45 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "45"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Jan Carson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9781781620465"^^xsd:string ;
@@ -14858,12 +14861,16 @@ book:751 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "751"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Terry Miles"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Rabbits"@en ;
+    schema:review "The start was fantastic - more Stephen King and Murakami than cliche. Lots of interesting stuff happening, enough mystery being built up, and a seemingly otherworldly phenomenon at play. The characters are cardboard level 2-dimensional. Badly written, cliche, and just obtuse. And then the second half makes it all seem boring - there is no payoff, it doesn't make any sense for why things in the first half happened, and the end seems like a deux-ex machina hand wavy good ending meant to placate people. Quickly went from I like this to I detest wasting my time with this."@en ;
     schema:url "https://harshp.com/hobbies/books/751"^^xsd:anyURI .
 
 book:752 a hpcom:Book,
@@ -17502,11 +17509,15 @@ book:911 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "911"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-06T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Mieko Kanai"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
     schema:name "Mild Vertigo"@en ;
+    schema:review "This book is a modern character study on the mediocre life of a Japanese housewife. Excellent writing and an amazing way of present the 'wall of text' or 'stream of consciousness' approach where sentences never end and an entire story is told. Nothing spectacular happens - which is how life goes by most of the time."@en ;
     schema:url "https://harshp.com/hobbies/books/911"^^xsd:anyURI .
 
 book:912 a hpcom:RenderedItem,
@@ -17960,13 +17971,88 @@ book:940 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "940"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Alasdair Gray"^^xsd:string ;
     schema:dateCreated "1992"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Poor Things"@en ;
+    schema:review "I saw the movie first - it was spectacular. Stunning visuals, splendid acting, good screenplay, and the story had enough elements of science and fantasy to intrigue the mind. So I decided to read the book - thinking it would be a mere expanded version of the film - so I will be reading the same story but in more detail. Turns out the book is quite different from the film. The broader story is the same - but in the book there is an important question at the end ... What actually happened!? Really enjoyed the writing, the illustrations, the way in which Bell Baxter learns about the world and provides a medium for the author to present expose of religion, politics, society, feminism, and so much more. And the question at the end - What actually happened!? was nice too."@en ;
     schema:url "https://harshp.com/hobbies/books/940"^^xsd:anyURI .
+
+book:941 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "941"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-12T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    schema:author "Neil Gaiman"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Norse Mythology"@en ;
+    schema:review "The Norse Mythology is an amazing source of wacky stories about gods and michiefs. An author of the caliber of Neil Gaiman writing about them is exciting. Unfortunately, the book is norse mythology written for 7 year olds. The stories are short - too short. There is no amount of additional detail. It is as if you go to random internet articles and get the gist of what norse mythology's top 10 stories are. Also upsetting was the co-incidence of Neil Gaiman being exposed in a sexual scandar at the time I started reading. So what was bad about the book only added depth to the negativity of the situation."@en ;
+    schema:url "https://harshp.com/hobbies/books/941"^^xsd:anyURI .
+
+book:942 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "942"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Dan Simmons"^^xsd:string ;
+    schema:dateCreated "1996"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Endymion"@en ;
+    schema:url "https://harshp.com/hobbies/books/942"^^xsd:anyURI .
+
+book:943 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "943"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Days of Shattered Faith"@en ;
+    schema:url "https://harshp.com/hobbies/books/943"^^xsd:anyURI .
+
+book:944 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "944"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Alien Clay"@en ;
+    schema:url "https://harshp.com/hobbies/books/944"^^xsd:anyURI .
+
+book:945 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "945"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Service Model"@en ;
+    schema:url "https://harshp.com/hobbies/books/945"^^xsd:anyURI .
+
+book:946 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "946"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "John Scalzi"^^xsd:string ;
+    schema:dateCreated "2006"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Android's Dream"@en ;
+    schema:url "https://harshp.com/hobbies/books/946"^^xsd:anyURI .
 
 book:95 a hpcom:Book,
         hpcom:BookReading,
@@ -21559,7 +21645,7 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "OSF" ;
             schema:url "https://osf.io/6dxgt"^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
-    hpcom:author_other ( <http://example.com/OtherAuthors> <https://harshp.com/me> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:author_other ( <http://example.com/IsabelleHupont> <http://example.com/CeciliaPanigutti> <https://harshp.com/me> <http://example.com/SvenSchade> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/065-AI-Cards-Risk-Documentation-AI-Act.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
@@ -22576,6 +22662,9 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/BudBruegger> a schema:Person ;
     schema:name "Bud Bruegger" .
 
+<http://example.com/CeciliaPanigutti> a schema:Person ;
+    schema:name "Cecilia Panigutti" .
+
 <http://example.com/DamienGraux> a schema:Person ;
     schema:name "Damien Graux" .
 
@@ -22600,6 +22689,9 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/IreneKamara> a schema:Person ;
     schema:name "Irene Kamara" .
 
+<http://example.com/IsabelleHupont> a schema:Person ;
+    schema:name "Isabelle Hupont" .
+
 <http://example.com/JanLindquist> a schema:Person ;
     schema:name "Jan Lindquist" .
 
@@ -22618,9 +22710,6 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/NicolasMondada> a schema:Person ;
     schema:name "Nicolas Mondada" .
 
-<http://example.com/OtherAuthors> a schema:Person ;
-    schema:name "Other Author(s)" .
-
 <http://example.com/PatMcBennett> a schema:Person ;
     schema:name "Pat McBennett" .
 
@@ -22638,6 +22727,9 @@ list:owned_unread a hpcom:RenderedItem,
 
 <http://example.com/SimonSteyskal> a schema:Person ;
     schema:name "Simon Steyskal" .
+
+<http://example.com/SvenSchade> a schema:Person ;
+    schema:name "Sven Schade" .
 
 <http://example.com/TekRajChhetri> a schema:Person ;
     schema:name "Tek Raj Chhetri" .
