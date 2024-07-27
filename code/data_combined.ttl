@@ -245,6 +245,17 @@ hpcom:View a rdfs:Class ;
     schema:superEvent <http://example.com/conferences/ISWC2022> ;
     schema:url "https://mepdaw2022.ai.wu.ac.at/"^^xsd:anyURI .
 
+<http://example.com/workshops/NXDG> a hpcom:OrganisationEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:alternateName "NXDG" ;
+    schema:endDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:location "Amsterdam, Netherlands" ;
+    schema:name "Workshop on Next Generation Data Governance"@en ;
+    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/SEMANTiCS2024> ;
+    schema:url "https://w3id.org/nxdg/2024"^^xsd:anyURI .
+
 <http://example.com/workshops/TERECOM2018> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -1773,6 +1784,44 @@ hpview:ResearchView a hpcom:View ;
                 ?role schema:endDate ?end_date .
                 FILTER(?end_date < ?today) . 
             } ORDER By DESC(?date)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "awarded_projects" ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?date WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project schema:startDate ?date .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            } ORDER By DESC(?date)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "awarded_projects_budget_total" ;
+            hpcom:queryString """
+            SELECT (SUM(?pbudget) as ?budget) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:project_budget ?pbudget .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            }
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "awarded_projects_budget_control_total" ;
+            hpcom:queryString """
+            SELECT (SUM(?pbudget) as ?budget) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:project_budget_control ?pbudget .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            }
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "awarded_projects_total" ;
+            hpcom:queryString """
+            SELECT (COUNT(?project) as ?total) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:funding_credit true .
+            }
         """ ],
         [ a hpcom:SparqlQuery ;
             rdfs:label "current_supervision" ;
@@ -9207,11 +9256,16 @@ book:45 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "45"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-24T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jan Carson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9781781620465"^^xsd:string ;
     schema:name "The Fire Starters"@en ;
+    schema:review "What starts off as a conventional conflict drama set in Belfast just after the troubles turns into an intensely personal conflict ravaged by magical realism. Shades of Midnight's Children shining through, the novel doesn't delve in to the horrors or the implications of the society around the story - but focuses with great precision on the analogous mindset of the two main characters whose children are weird - in both a magical and real way. Excellent writing, good pacing, and just the right amount of intensity."@en ;
     schema:url "https://harshp.com/hobbies/books/45"^^xsd:anyURI .
 
 book:450 a hpcom:Book,
@@ -15284,7 +15338,7 @@ book:777 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "777"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "James S. A. Corey"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -17948,7 +18002,7 @@ book:939 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "939"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Ann Leckie"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18053,6 +18107,18 @@ book:946 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "The Android's Dream"@en ;
     schema:url "https://harshp.com/hobbies/books/946"^^xsd:anyURI .
+
+book:947 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "947"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "James Clear"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"@en ;
+    schema:url "https://harshp.com/hobbies/books/947"^^xsd:anyURI .
 
 book:95 a hpcom:Book,
         hpcom:BookReading,
@@ -20775,6 +20841,222 @@ list:owned_unread a hpcom:RenderedItem,
             schema:name "TCD Know. & Data Engg. Course" ] ;
     schema:url "https://harshp.com/research/presentations#2023-TCD-KE"^^xsd:anyURI .
 
+<https://harshp.com/research/projects/adra-e> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "ADRA-E" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "3998708"^^xsd:int ;
+    hpcom:project_budget_award "3998708"^^xsd:int ;
+    hpcom:project_budget_control "237250"^^xsd:int ;
+    hpcom:project_type "EU Horizon, CSA, Consortium"@en ;
+    schema:description "The EU-funded Adra-e project will work to boost Europe’s excellent research centres, innovative start-ups, a world-leading position in robotics and competitive manufacturing and services sectors. With a consortium composed of leading industry and research organisations in all three domains, the project will create the conditions for an inclusive, sustainable, effective, multilayered and coherent European ADR ecosystem."@en ;
+    schema:endDate "2025-06-30T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-CL4-2021-HUMAN-01"@en ;
+                    schema:url "https://cordis.europa.eu/project/id/101070336"^^xsd:anyURI ] ;
+            schema:identifier "101070336"^^xsd:string ;
+            schema:recipient "ADRA-E Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2025-06-30T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2023-11-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "AI, Data and Robotics ecosystem"@en ;
+    schema:startDate "2022-07-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://adra-e.eu/"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/cost-dkg-stsm> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "COST-DKG-STSM" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "2200"^^xsd:int ;
+    hpcom:project_budget_award "2200"^^xsd:int ;
+    hpcom:project_budget_control "2200"^^xsd:int ;
+    hpcom:project_type "Research Visit"@en ;
+    schema:description "The primary goal of this STSM is to explore the requirements and limitations of a &quot;machine-readable privacy policy&quot; for use within Distributed Knowledge Graphs (DKG) as a decentralised model of data governance with Prof. Dr. Ruben Verborgh at IMEC in Gent University"@en ;
+    schema:endDate "2022-10-25T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name ""@en ;
+                    schema:url "https://www.cost.eu/actions/CA19134/"^^xsd:anyURI ] ;
+            schema:identifier "STSM-05"^^xsd:string ;
+            schema:recipient <https://harshp.com/me> ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2022-10-25T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2022-10-17T00:00:00"^^xsd:dateTime ] ;
+    schema:name "COST Distributed Knowledge Graphs - Exchange Visit"@en ;
+    schema:startDate "2022-10-17T00:00:00"^^xsd:dateTime ;
+    schema:url "https://harshp.com/research/projects/cost-dkg-stsm"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/edu4standards> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "Edu4Standards" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "2994601"^^xsd:int ;
+    hpcom:project_budget_award "2994601"^^xsd:int ;
+    hpcom:project_budget_control "135621"^^xsd:int ;
+    hpcom:project_type "EU Horizon, CSA, Consortium"@en ;
+    schema:description "The EU-funded Edu4Standards.EU project emerges, aiming to specify required standardisation skills, analyse educational gaps and develop an innovative teaching concept on standardisation. Specifically, it aims to produce 5 000 experts annually by 2027. Outputs include teaching modules, academic standardisation days and an EU roadmap for standardisation on education."@en ;
+    schema:endDate "2026-12-31T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-CL4-2023-HUMAN-01"@en ;
+                    schema:url "https://cordis.europa.eu/project/id/101135705"^^xsd:anyURI ] ;
+            schema:identifier "101135705"^^xsd:string ;
+            schema:recipient "Edu4Standards Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2026-12-31T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "Education for Standardisation in the EU"@en ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://www.edu4standards.eu/"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/empower-idelity> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "Fidelity-DataGov" ;
+    hpcom:competitive_funding false ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/empower-fidelity/index.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "460000"^^xsd:int ;
+    hpcom:project_budget_award "260000"^^xsd:int ;
+    hpcom:project_budget_control "260000"^^xsd:int ;
+    hpcom:project_type "Industry Co-Fund"@en ;
+    schema:description "The key research question being explored is how to actively manage data governance requirements at source to facilitate a more effective way to share data across functions with regard to the ethical use of data and enable more consumer insights to be generated."@en ;
+    schema:endDate "2026-04-01T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:FundingAgency ;
+                            schema:name "Science Foundation Ireland (SFI)"@en ;
+                            schema:url "https://sfi.ie/"^^xsd:anyURI ] ;
+                    schema:identifier "N/A"^^xsd:string ;
+                    schema:name "SFI EMPOWER Industry Co-Fund"@en ;
+                    schema:url "https://empower-datagovernance.ie/"^^xsd:anyURI ] ;
+            schema:identifier "N/A"^^xsd:string ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2026-04-01T00:00:00"^^xsd:dateTime ;
+            schema:memeber <https://harshp.com/me> ;
+            schema:roleName "Project Lead"@en ;
+            schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "Data Governance and the ethical use of data sharing"@en ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://harshp.com/research/projects/empower-fidelity"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/harness> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "HARNESS" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "3464611"^^xsd:int ;
+    hpcom:project_budget_award "3464611"^^xsd:int ;
+    hpcom:project_budget_control "572976"^^xsd:int ;
+    hpcom:project_type "EU Horizon, MSCA Doctoral Network, Consortium"@en ;
+    schema:description "The objective of HARNESS is to train a multidisciplinary cohort of 13 PhD students in an international Doctoral Network, specialising in ethics, law, and technology."@en ;
+    schema:endDate "2027-12-31T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-MSCA-2023-DN-01-01"@en ;
+                    schema:url "https://example.com"^^xsd:anyURI ] ;
+            schema:identifier "N/A"^^xsd:string ;
+            schema:recipient "HARNESS Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2027-12-31T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2025-01-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "Harnessing AI and Data-Intensive Technologies"@en ;
+    schema:startDate "2025-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://example.com"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/hsbooster> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "HSBooster.eu" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "2000000"^^xsd:int ;
+    hpcom:project_budget_award "2000000"^^xsd:int ;
+    hpcom:project_budget_control "303640"^^xsd:int ;
+    hpcom:project_type "EU Horizon, CSA, Consortium"@en ;
+    schema:description "The EU funded HSbooster.eu project will enhance the standardisation impact of projects funded by H2020 and Horizon Europe by designing and implementing a booster initiative to offer automated, proactive and premium services that enhance standardisation results from European-led initiatives. Over a 24-month period, the HSbooster.eu project will provide services to cover more than 1 000 R&I projects and provide a training academy to nurture the next generation of standardisation experts."@en ;
+    schema:endDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-WIDERA-2021-ERA-01"@en ;
+                    schema:url "https://cordis.europa.eu/project/id/101058391"^^xsd:anyURI ] ;
+            schema:identifier "101058391"^^xsd:string ;
+            schema:recipient "HSBooster.eu Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2025-03-31T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2022-10-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "Standardisation Booster for H2020 & HE research results"@en ;
+    schema:startDate "2022-04-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://www.hsbooster.eu/"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/hse-dpia> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "HSE-DPIA" ;
+    hpcom:competitive_funding false ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/projects/hse-dpia/index.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "100000"^^xsd:int ;
+    hpcom:project_budget_award "100000"^^xsd:int ;
+    hpcom:project_budget_control "100000"^^xsd:int ;
+    hpcom:project_type "Industry"@en ;
+    schema:description "The project seeks to establish and develop a DPIA and Data Sharing Agreement in a very complex governance arrangement for the HSE with the State Claims Agency."@en ;
+    schema:endDate "2025-04-01T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:FundingAgency ;
+                            schema:name "Health Service Executive (HSE)"@en ;
+                            schema:url "https://hse.ie/"^^xsd:anyURI ] ;
+                    schema:identifier "N/A"^^xsd:string ;
+                    schema:name "Industry"@en ;
+                    schema:url "https://hse.ie/"^^xsd:anyURI ] ;
+            schema:identifier "N/A"^^xsd:string ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2025-04-01T00:00:00"^^xsd:dateTime ;
+            schema:memeber <https://harshp.com/me> ;
+            schema:roleName "Project Lead"@en ;
+            schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "DPIA, Data Sharing Agreement and Data Policies for HSE Incident Management"@en ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://harshp.com/research/projects/hse-dpia"^^xsd:anyURI .
+
 <https://harshp.com/research/projects/paecg/deliverables> a hpcom:RenderedItem,
         <https://harshp.com/research/blog>,
         <https://harshp.com/research/projects/paecg> ;
@@ -20821,6 +21103,36 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "resources"@en ;
     schema:subjectOf <https://harshp.com/research/projects/paecg> ;
     schema:url "https://harshp.com/research/projects/paecg/resources"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/recitals> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "RECITALS" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "3935331"^^xsd:int ;
+    hpcom:project_budget_award "3935331"^^xsd:int ;
+    hpcom:project_budget_control "357125"^^xsd:int ;
+    hpcom:project_type "EU Horizon, IA, Consortium"@en ;
+    schema:description "RECITALS aims to build an open-source platform that integrates into a common framework a wide variety of techniques and services for privacy-preserving data sharing and identity management."@en ;
+    schema:endDate "2027-12-31T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-CL3-2023-CS-01-02"@en ;
+                    schema:url "https://example.com/"^^xsd:anyURI ] ;
+            schema:identifier "N/A"^^xsd:string ;
+            schema:recipient "RECITALS Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2027-12-31T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2025-01-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "An open-source platform for Resilient Secure Digital identities"@en ;
+    schema:startDate "2025-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://example.com/"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/risky/blog001_intro> a hpcom:RenderedItem,
         <https://harshp.com/research/blog>,
@@ -20889,6 +21201,36 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "resources"@en ;
     schema:subjectOf <https://harshp.com/research/projects/risky> ;
     schema:url "https://harshp.com/research/projects/risky/resources"^^xsd:anyURI .
+
+<https://harshp.com/research/projects/standict26> a hpcom:RenderedItem,
+        <https://harshp.com/research/projects>,
+        schema:Project ;
+    hpcom:acronym "StandICT'26" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "4500000"^^xsd:int ;
+    hpcom:project_budget_award "4500000"^^xsd:int ;
+    hpcom:project_budget_control "371156"^^xsd:int ;
+    hpcom:project_type "EU Horizon, CSA, Consortium"@en ;
+    schema:description "The EU-funded StandICT.eu 2026 project aims to enhance the European ICT standardisation ecosystem through development of a fellowship programme, monitor ICT standards, and increase the influence of expert work."@en ;
+    schema:endDate "2025-12-31T00:00:00"^^xsd:dateTime ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:Organization ;
+                            schema:name "European Union (EU)"@en ;
+                            schema:url "https://europa.eu/"^^xsd:anyURI ] ;
+                    schema:name "HORIZON-CL4-2022-RESILIENCE-01"@en ;
+                    schema:url "https://cordis.europa.eu/project/id/101091933"^^xsd:anyURI ] ;
+            schema:identifier "101091933"^^xsd:string ;
+            schema:recipient "StandICT'26 Consortium"@en ] ;
+    schema:member [ a schema:Role ;
+            schema:endDate "2025-12-31T00:00:00"^^xsd:dateTime ;
+            schema:member <https://harshp.com/me> ;
+            schema:roleName "Principal Investigator"@en ;
+            schema:startDate "2023-11-01T00:00:00"^^xsd:dateTime ] ;
+    schema:name "ICT Standardisation Observatory and Support Facility in Europe"@en ;
+    schema:startDate "2023-01-01T00:00:00"^^xsd:dateTime ;
+    schema:url "https://www.standict26.eu/"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/001-kwest-semantically-tagged-virtual-fs> a hpcom:RenderedItem,
         hpcom:Report,
@@ -21695,6 +22037,47 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
     schema:publication <http://example.com/conferences/APF2024> ;
+    schema:status "to be presented"@en ;
+    schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/067-DPV-2.0> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/067-DPV-2.0"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://osf.io/ma9ue"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/BeatrizEsteves> <http://example.com/GeorgPKrog> <http://example.com/PaulRyan> <https://www.scss.tcd.ie/personnel/golpayes> <http://example.com/JulianFlake> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "website" ;
+            schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
+    hpcom:tag hptag:DGA,
+        hptag:DPV,
+        hptag:DPVCG,
+        hptag:GDPR,
+        hptag:ISO,
+        hptag:consent ;
+    schema:datePublished "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:description "This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU's DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Data Privacy Vocabulary (DPV) —  Version 2.0"@en ;
+    schema:publication <http://example.com/conferences/ISWC2024> ;
     schema:status "to be presented"@en ;
     schema:url ""^^xsd:anyURI .
 
@@ -22695,6 +23078,9 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/JanLindquist> a schema:Person ;
     schema:name "Jan Lindquist" .
 
+<http://example.com/JulianFlake> a schema:Person ;
+    schema:name "Julian Flake" .
+
 <http://example.com/KevinKoidl> a schema:Person ;
     schema:name "Kevin Koidl" .
 
@@ -22871,6 +23257,25 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI .
+
+<http://example.com/conferences/ISWC2024> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "ISWC" ;
+    schema:endDate "2024-11-15T00:00:00"^^xsd:dateTime ;
+    schema:location "Maryland, USA" ;
+    schema:name "International Semantic Web Conference"@en ;
+    schema:startDate "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:url "https://iswc2024.semanticweb.org/"^^xsd:anyURI .
+
+<http://example.com/conferences/SEMANTiCS2024> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:endDate "2024-09-19T00:00:00"^^xsd:dateTime ;
+    schema:location "Amsterdam, Netherlands" ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:url "https://2024-eu.semantics.cc/"^^xsd:anyURI .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -23946,15 +24351,22 @@ hpcom:RPG a hpcom:VideoGameGenre ;
 <https://harshp.com/research/projects/protect> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
-    schema:description "Protecting Personal Data Amidst Big Data Innovation"@en ;
+    hpcom:acronym "PROTECT" ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "3701255"^^xsd:int ;
+    hpcom:project_budget_award "3701255"^^xsd:int ;
+    hpcom:project_budget_control "0"^^xsd:int ;
+    hpcom:project_type "EU Horizon, MSCA Doctoral Network, Consortium"@en ;
+    schema:description "The EU-funded PROTECT project will develop new ways of empowering users of digital services to understand the risks they take when they go online and to offer new ways to enable companies to incorporate data protection into digital services. The project will grow a new generation of 14 early stage researchers who will integrate and apply arguments, analyses and tools from across the fields of law, ethics and knowledge engineering."@en ;
     schema:endDate "2023-07-31T00:00:00"^^xsd:dateTime ;
     schema:funding [ a schema:MonetaryGrant ;
             schema:funder [ a schema:FundingScheme ;
                     schema:funder [ a schema:Organization ;
                             schema:name "European Union (EU)"@en ;
                             schema:url "https://europa.eu/"^^xsd:anyURI ] ;
-                    schema:name "Horizion 2020"@en ;
-                    schema:url "https://ec.europa.eu/programmes/horizon2020"^^xsd:anyURI ] ;
+                    schema:name "H2020-MSCA-ITN-2018"@en ;
+                    schema:url "https://cordis.europa.eu/project/id/813497"^^xsd:anyURI ] ;
             schema:identifier "813497"^^xsd:string ;
             schema:recipient "PROTECT Consortium"@en ] ;
     schema:member [ a schema:Role ;
@@ -23962,7 +24374,7 @@ hpcom:RPG a hpcom:VideoGameGenre ;
             schema:member <https://harshp.com/me> ;
             schema:roleName "Research Assistant (RA)"@en ;
             schema:startDate "2020-03-01T00:00:00"^^xsd:dateTime ] ;
-    schema:name "PROTECT"@en ;
+    schema:name "Protecting Personal Data Amidst Big Data Innovation"@en ;
     schema:startDate "2019-08-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://protect-network.eu/"^^xsd:anyURI .
 
@@ -26403,11 +26815,6 @@ hptag:CCPA a hpcom:RenderedItem,
     schema:name "CCPA"@en ;
     schema:url "https://harshp.com/tags/CCPA"^^xsd:anyURI .
 
-hptag:DGA a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DGA"@en ;
-    schema:url "https://harshp.com/tags/DGA"^^xsd:anyURI .
-
 hptag:Java a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Java"@en ;
@@ -26532,9 +26939,6 @@ hptag:work a hpcom:RenderedItem,
 <http://example.com/CristianaSantos> a schema:Person ;
     schema:name "Cristiana Santos" .
 
-<http://example.com/GeorgPKrog> a schema:Person ;
-    schema:name "Georg Philip Krog" .
-
 <http://example.com/KanizFatema> a schema:Person ;
     schema:name "Kaniz Fatema" .
 
@@ -26569,9 +26973,6 @@ hptag:work a hpcom:RenderedItem,
 hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Draft Paper"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -26585,6 +26986,11 @@ hpcom:book-currently-reading a hpcom:BookStatus ;
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "web development"@en ;
     schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
+
+hptag:DGA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DGA"@en ;
+    schema:url "https://harshp.com/tags/DGA"^^xsd:anyURI .
 
 hptag:Facebook a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26704,6 +27110,9 @@ hptag:sci-fi a hpcom:RenderedItem,
 <http://example.com/EnsarHadziselimovic> a schema:Person ;
     schema:name "Ensar Hadziselimovic" .
 
+<http://example.com/GeorgPKrog> a schema:Person ;
+    schema:name "Georg Philip Krog" .
+
 <http://example.com/VitorJesus> a schema:Person ;
     schema:name "Vitor Jesus" .
 
@@ -26822,10 +27231,6 @@ hptag:website a hpcom:RenderedItem,
 <https://www.scss.tcd.ie/Seamus.Lawless> a schema:Person ;
     schema:name "Séamus Lawless" .
 
-<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
-    schema:name "Delaram Golpayegani" ;
-    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
-
 <https://www.tcd.ie/> a schema:CollegeOrUniversity ;
     schema:address "Dublin, Ireland" ;
     schema:name "Trinity College Dublin" ;
@@ -26876,14 +27281,8 @@ hpcom:Rating1 a hpcom:Rating,
     schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
 
-<https://harshp.com/research/projects> a owl:Class,
-        hpcom:RenderedItem ;
-    rdfs:subClassOf <https://harshp.com/research>,
-        schema:Blog ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:ResearchProjectIndexView ] ;
-    schema:name "research projects"@en ;
-    schema:url "https://harshp.com/research/projects"^^xsd:anyURI .
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -26920,6 +27319,10 @@ hptag:weather a hpcom:RenderedItem,
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
 
+<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
+    schema:name "Delaram Golpayegani" ;
+    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
+
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "visually-stunning"@en ;
@@ -26928,15 +27331,30 @@ list:visually-stunning a hpcom:RenderedItem,
 <https://harshp.com/research/projects/phd> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
-    schema:description "Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance"@en ;
+    hpcom:acronym "PhD" ;
+    hpcom:competitive_funding false ;
+    hpcom:funding_credit false ;
+    hpcom:project_budget "115000"^^xsd:int ;
+    hpcom:project_budget_award "11500"^^xsd:int ;
+    hpcom:project_budget_control "74000"^^xsd:int ;
+    hpcom:project_type "PhD Fellowship"@en ;
+    schema:description "My PhD research which produced: GDPRtEXT - a linked data representation of the text of GDPR and a glossary of concepts relevant for its compliance, GDPRov - an OWL2 ontology based on PROV-O for modelling activities associated with personal data and consent in ex-ante (planning) and ex-post (execution) phases, and GConsent - an OWL2 ontology for representing information regarding consent, along with minor contributions describing application of semantic web technologies in the form of querying and validation of information using the SPARQL and SHACL standards."@en ;
     schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
-    schema:funder <http://example.com/ADAPT> ;
+    schema:funding [ a schema:MonetaryGrant ;
+            schema:funder [ a schema:FundingScheme ;
+                    schema:funder [ a schema:FundingAgency ;
+                            schema:name "Science Foundation Ireland (SFI)"@en ;
+                            schema:url "https://sfi.ie/"^^xsd:anyURI ] ;
+                    schema:name "SFI Research Centres"@en ;
+                    schema:url "https://sfi.ie/"^^xsd:anyURI ] ;
+            schema:identifier "#13/RC/2106"^^xsd:string ;
+            schema:recipient "ADAPT SFI Research Centre"@en ] ;
     schema:member [ a schema:Role ;
             schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
             schema:member <https://harshp.com/me> ;
             schema:roleName "researcher"@en ;
             schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ] ;
-    schema:name "PhD Research"@en ;
+    schema:name "Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance"@en ;
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
 
@@ -26954,9 +27372,6 @@ hptag:travel a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
-
-<http://example.com/PaulRyan> a schema:Person ;
-    schema:name "Paul Ryan" .
 
 <https://harshp.com/dev/dpv> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -27002,8 +27417,8 @@ hptag:script a hpcom:RenderedItem,
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
 
-<http://example.com/BeatrizEsteves> a schema:Person ;
-    schema:name "Beatriz Esteves" .
+<http://example.com/PaulRyan> a schema:Person ;
+    schema:name "Paul Ryan" .
 
 list:thriller a hpcom:RenderedItem,
         book:lists ;
@@ -27015,19 +27430,12 @@ hptag:automation a hpcom:RenderedItem,
     schema:name "automation" ;
     schema:url "https://harshp.com/tags/automation"^^xsd:anyURI .
 
+<http://example.com/BeatrizEsteves> a schema:Person ;
+    schema:name "Beatriz Esteves" .
+
 <https://chrdebru.github.io/> a schema:Person ;
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
-
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
-
-hptag:ISO a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ISO"@en ;
-    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
 
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27071,10 +27479,20 @@ list:storytelling a hpcom:RenderedItem,
     schema:identifier "storytelling"@en ;
     schema:name "Great Storytelling"@en .
 
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
+
 hptag:GNIB a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GNIB" ;
     schema:url "https://harshp.com/tags/GNIB"^^xsd:anyURI .
+
+hptag:ISO a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ISO"@en ;
+    schema:url "https://harshp.com/tags/ISO"^^xsd:anyURI .
 
 hptag:movies a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27134,11 +27552,6 @@ list:language a hpcom:RenderedItem,
     schema:identifier "language"@en ;
     schema:name "Beautiful Language"@en .
 
-hptag:DPV a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
-
 hptag:rant a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "rant" ;
@@ -27147,9 +27560,16 @@ hptag:rant a hpcom:RenderedItem,
 <https://harshp.com/research/projects/paecg> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
+    hpcom:acronym "PaE:CG" ;
+    hpcom:competitive_funding true ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/projects/paecg/index.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "224069"^^xsd:int ;
+    hpcom:project_budget_award "147886"^^xsd:int ;
+    hpcom:project_budget_control "49939"^^xsd:int ;
+    hpcom:project_type "EU Horizon, Cascading NGI, Consortium"@en ;
     schema:description "An end-to-end solution for managing consent online"@en ;
     schema:endDate "2021-06-13T00:00:00"^^xsd:dateTime ;
     schema:funding [ a schema:MonetaryGrant ;
@@ -27164,9 +27584,9 @@ hptag:rant a hpcom:RenderedItem,
                     schema:identifier "825618"^^xsd:string ;
                     schema:name "NGI TRUST"@en ;
                     schema:url "https://ngi.eu/ngi-projects/ngi-trust/"^^xsd:anyURI ] ;
-            schema:identifier "TBD"^^xsd:string ] ;
+            schema:identifier "3.40"^^xsd:string ] ;
     schema:member [ a schema:Role ;
-            schema:endDate "2021-06-30T00:00:00"^^xsd:dateTime ;
+            schema:endDate "2021-06-13T00:00:00"^^xsd:dateTime ;
             schema:memeber <https://harshp.com/me> ;
             schema:roleName "Project Lead"@en ;
             schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ] ;
@@ -27174,10 +27594,24 @@ hptag:rant a hpcom:RenderedItem,
     schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
     schema:url "https://privacy-as-expected.org/"^^xsd:anyURI .
 
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
+
 hptag:humor a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "humor" ;
     schema:url "https://harshp.com/tags/humor"^^xsd:anyURI .
+
+<https://harshp.com/research/projects> a owl:Class,
+        hpcom:RenderedItem ;
+    rdfs:subClassOf <https://harshp.com/research>,
+        schema:Blog ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:ResearchProjectIndexView ] ;
+    schema:name "research projects"@en ;
+    schema:url "https://harshp.com/research/projects"^^xsd:anyURI .
 
 hptag:academia a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27210,10 +27644,17 @@ hptag:philosophy a hpcom:RenderedItem,
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
+    hpcom:acronym "RISKY" ;
+    hpcom:competitive_funding true ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/projects/risky/index.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
-    schema:description "Exploring Privacy Risks of Technologies using Knowledge Graphs"@en ;
+    hpcom:funding_credit true ;
+    hpcom:project_budget "91910"^^xsd:int ;
+    hpcom:project_budget_award "91910"^^xsd:int ;
+    hpcom:project_budget_control "91910"^^xsd:int ;
+    hpcom:project_type "Postdoctoral Fellowship"@en ;
+    schema:description "The RISKY project aims to enable exploration of privacy risks and its mitigations by storing information within a knowledge graph. This information consists of direct and indirect relationships between concepts associated with technologies, privacy risks, and their mitigations."@en ;
     schema:endDate "2022-09-30T00:00:00"^^xsd:dateTime ;
     schema:funding [ a schema:MonetaryGrant ;
             schema:funder [ a schema:FundingScheme ;
@@ -27229,7 +27670,7 @@ hptag:philosophy a hpcom:RenderedItem,
             schema:member <https://harshp.com/me> ;
             schema:roleName "Principal Investigator (PI)"@en ;
             schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ] ;
-    schema:name "Risky"@en ;
+    schema:name "Exploring Privacy Risks of Technologies using Knowledge Graphs"@en ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI .
 
@@ -27255,15 +27696,15 @@ hptag:emotional a hpcom:RenderedItem,
     schema:name "emotional" ;
     schema:url "https://harshp.com/tags/emotional"^^xsd:anyURI .
 
-hpcom:Workshop a hpcom:EventType ;
-    rdfs:label "Workshop"@en ;
-    rdfs:subClassOf schema:Event ;
-    schema:name "Workshop"@en .
-
 list:books-changed-life a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "books-changed-life"@en ;
     schema:name "Books that changed my life"@en .
+
+hpcom:Workshop a hpcom:EventType ;
+    rdfs:label "Workshop"@en ;
+    rdfs:subClassOf schema:Event ;
+    schema:name "Workshop"@en .
 
 hptag:consent a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27295,15 +27736,15 @@ list:educational a hpcom:RenderedItem,
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
 
-hpcom:Conference a hpcom:EventType ;
-    rdfs:label "Conference"@en ;
-    rdfs:subClassOf schema:Event ;
-    schema:name "Conference"@en .
-
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
+
+hpcom:Conference a hpcom:EventType ;
+    rdfs:label "Conference"@en ;
+    rdfs:subClassOf schema:Event ;
+    schema:name "Conference"@en .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;

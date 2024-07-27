@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+<https://harshp.com/research/projects/cost-dkg-stsm> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
+    schema:name "COST Distributed Knowledge Graphs - Exchange Visit"@en ;
+    hpcom:acronym "COST-DKG-STSM" ;
+    hpcom:project_type "Research Visit"@en ;
+    hpcom:project_budget "2200"^^xsd:int ;
+    hpcom:project_budget_award "2200"^^xsd:int ;
+    hpcom:project_budget_control "2200"^^xsd:int ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit true ;
+    schema:description "The primary goal of this STSM is to explore the requirements and limitations of a &quot;machine-readable privacy policy&quot; for use within Distributed Knowledge Graphs (DKG) as a decentralised model of data governance with Prof. Dr. Ruben Verborgh at IMEC in Gent University"@en ;
+    schema:url "https://harshp.com/research/projects/cost-dkg-stsm"^^xsd:anyURI ;
+    schema:startDate "2022-10-17T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-10-25T00:00:00"^^xsd:dateTime ;
+    schema:member [
+        a schema:Role ;
+        schema:member <https://harshp.com/me> ;
+        schema:startDate "2022-10-17T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2022-10-25T00:00:00"^^xsd:dateTime ;
+        schema:roleName "Principal Investigator"@en ;
+    ] ;
+    schema:funding [
+        a schema:MonetaryGrant ;
+        schema:recipient <https://harshp.com/me> ;
+        schema:identifier "STSM-05"^^xsd:string ;
+        schema:funder [
+            a schema:FundingScheme ;
+            schema:name ""@en ;
+            schema:url "https://www.cost.eu/actions/CA19134/"^^xsd:anyURI ;
+            schema:funder [
+                a schema:Organization ;
+                schema:name "European Union (EU)"@en ;
+                schema:url "https://europa.eu/"^^xsd:anyURI ;
+            ] ;
+        ] ;
+    ] .

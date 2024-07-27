@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+<https://harshp.com/research/projects/protect> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
+    schema:name "Protecting Personal Data Amidst Big Data Innovation"@en ;
+    hpcom:acronym "PROTECT" ;
+    hpcom:project_type "EU Horizon, MSCA Doctoral Network, Consortium"@en ;
+    hpcom:project_budget "3701255"^^xsd:int ;
+    hpcom:project_budget_award "3701255"^^xsd:int ;
+    hpcom:project_budget_control "0"^^xsd:int ;
+    hpcom:competitive_funding true ;
+    hpcom:funding_credit false ;
+    schema:description "The EU-funded PROTECT project will develop new ways of empowering users of digital services to understand the risks they take when they go online and to offer new ways to enable companies to incorporate data protection into digital services. The project will grow a new generation of 14 early stage researchers who will integrate and apply arguments, analyses and tools from across the fields of law, ethics and knowledge engineering."@en ;
+    schema:url "https://protect-network.eu/"^^xsd:anyURI ;
+    schema:startDate "2019-08-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-07-31T00:00:00"^^xsd:dateTime ;
+    schema:member [
+        a schema:Role ;
+        schema:member <https://harshp.com/me> ;
+        schema:startDate "2020-03-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2020-08-31T00:00:00"^^xsd:dateTime ;
+        schema:roleName "Research Assistant (RA)"@en ;
+    ] ;
+    schema:funding [
+        a schema:MonetaryGrant ;
+        schema:recipient "PROTECT Consortium"@en ;
+        schema:identifier "813497"^^xsd:string ;
+        schema:funder [
+            a schema:FundingScheme ;
+            schema:name "H2020-MSCA-ITN-2018"@en ;
+            schema:url "https://cordis.europa.eu/project/id/813497"^^xsd:anyURI ;
+            schema:funder [
+                a schema:Organization ;
+                schema:name "European Union (EU)"@en ;
+                schema:url "https://europa.eu/"^^xsd:anyURI ;
+            ] ;
+        ] ;
+    ] .

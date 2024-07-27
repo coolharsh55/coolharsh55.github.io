@@ -883,3 +883,31 @@
     schema:startDate "2024-09-04T00:00:00"^^xsd:dateTime ;
     schema:endDate "2024-09-05T00:00:00"^^xsd:dateTime ;
     schema:location "Karlstad, Sweden" .
+
+<http://example.com/conferences/ISWC2024> a schema:PublicationEvent, hpcom:ReviewingEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Semantic Web Conference"@en ;
+    schema:alternateName "ISWC" ;
+    schema:url "https://iswc2024.semanticweb.org/"^^xsd:anyURI ;
+    schema:startDate "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-11-15T00:00:00"^^xsd:dateTime ;
+    schema:location "Maryland, USA" .
+
+<http://example.com/conferences/SEMANTiCS2024> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2024-eu.semantics.cc/"^^xsd:anyURI ;
+    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-09-19T00:00:00"^^xsd:dateTime ;
+    schema:location "Amsterdam, Netherlands" .
+
+<http://example.com/workshops/NXDG> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Workshop on Next Generation Data Governance"@en ;
+    schema:alternateName "NXDG" ;
+    schema:url "https://w3id.org/nxdg/2024"^^xsd:anyURI ;
+    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/SEMANTiCS2024> ;
+    schema:location "Amsterdam, Netherlands" .

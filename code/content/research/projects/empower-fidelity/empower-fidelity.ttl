@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
+
+<https://harshp.com/research/projects/empower-idelity> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
+    schema:name "Data Governance and the ethical use of data sharing"@en ;
+    hpcom:acronym "Fidelity-DataGov" ;
+    hpcom:project_type "Industry Co-Fund"@en ;
+    hpcom:project_budget "460000"^^xsd:int ;
+    hpcom:project_budget_award "260000"^^xsd:int ;
+    hpcom:project_budget_control "260000"^^xsd:int ;
+    hpcom:competitive_funding false ;
+    hpcom:funding_credit true ;
+    schema:description "The key research question being explored is how to actively manage data governance requirements at source to facilitate a more effective way to share data across functions with regard to the ethical use of data and enable more consumer insights to be generated."@en ;
+    schema:url "https://harshp.com/research/projects/empower-fidelity"^^xsd:anyURI ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2026-04-01T00:00:00"^^xsd:dateTime ;
+    schema:member [
+        a schema:Role ;
+        schema:memeber <https://harshp.com/me> ;
+        schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+        schema:endDate "2026-04-01T00:00:00"^^xsd:dateTime ;
+        schema:roleName "Project Lead"@en ;
+    ] ;
+    schema:funding [
+        a schema:MonetaryGrant ;
+        schema:identifier "N/A"^^xsd:string ;
+        schema:funder [
+            a schema:FundingScheme ;
+            schema:name "SFI EMPOWER Industry Co-Fund"@en ;
+            schema:url "https://empower-datagovernance.ie/"^^xsd:anyURI ;
+            schema:identifier "N/A"^^xsd:string ;
+            schema:funder [
+                a schema:FundingAgency ;
+                schema:name "Science Foundation Ireland (SFI)"@en ;
+                schema:url "https://sfi.ie/"^^xsd:anyURI ;
+            ] ;
+        ] ;
+    ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/projects/empower-fidelity/index.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] .

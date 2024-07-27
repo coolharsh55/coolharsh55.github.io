@@ -76,8 +76,21 @@ graph.parse ('content/research/presentations/presentations.ttl', format='turtle'
 graph.parse ('content/research/publications/authors.ttl', format='turtle')
 graph.parse ('content/research/publications/venues.ttl', format='turtle')
 graph.parse ('content/research/supervision/supervision.ttl', format='turtle')
+# projects
+graph.parse ('content/research/projects/phd/phd.ttl', format='turtle')
+graph.parse ('content/research/projects/protect/protect.ttl', format='turtle')
 graph.parse ('content/research/projects/risky/risky.ttl', format='turtle')
 graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
+graph.parse ('content/research/projects/cost-dkg-stsm/cost-dkg-stsm.ttl', format='turtle')
+graph.parse ('content/research/projects/hsbooster/hsbooster.ttl', format='turtle')
+graph.parse ('content/research/projects/standict26/standict26.ttl', format='turtle')
+graph.parse ('content/research/projects/adra-e/adra-e.ttl', format='turtle')
+graph.parse ('content/research/projects/edu4standards/edu4standards.ttl', format='turtle')
+graph.parse ('content/research/projects/hse-dpia/hse-dpia.ttl', format='turtle')
+graph.parse ('content/research/projects/empower-fidelity/empower-fidelity.ttl', format='turtle')
+graph.parse ('content/research/projects/harness/harness.ttl', format='turtle')
+graph.parse ('content/research/projects/recitals/recitals.ttl', format='turtle')
+# graph.parse ('content/research/funding-proposals.ttl', format='turtle')
 
 # validate using PySHACL
 if FLAG_VALIDATE_CONSTRAINTS:
@@ -341,10 +354,23 @@ def publication_type(publication):
     return s
 
 
+def in_past(timestamp):
+    now = datetime.datetime.now()
+    timestamp = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S')
+    return timestamp < now
+
+
+def format_amount(amount):
+    amount = int(amount)
+    return '{:0,}'.format(amount)
+
+
 JINJA2_FILTERS = {
     'html_view': html_view,
     'publication_type': publication_type,
     'year': lambda x: x[:4],
+    'in_past': in_past,
+    'format_amount': format_amount,
 }
 
 

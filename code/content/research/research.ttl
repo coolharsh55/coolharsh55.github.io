@@ -19,49 +19,6 @@
         hpcom:renderWith hpview:ResearchProjectIndexView ;
     ] .
 
-<https://harshp.com/research/projects/phd> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
-    schema:name "PhD Research"@en ;
-    schema:description "Representing Activities associated with Processing of Personal Data and Consent using Semantic Web for GDPR Compliance"@en ;
-    schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI ;
-    schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
-    schema:member [
-        a schema:Role ;
-        schema:member <https://harshp.com/me> ;
-        schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
-        schema:endDate "2020-02-29T00:00:00"^^xsd:dateTime ;
-        schema:roleName "researcher"@en ;
-    ];
-    schema:funder <http://example.com/ADAPT> .
-
-<https://harshp.com/research/projects/protect> a <https://harshp.com/research/projects>, hpcom:RenderedItem, schema:Project ;
-    schema:name "PROTECT"@en ;
-    schema:description "Protecting Personal Data Amidst Big Data Innovation"@en ;
-    schema:url "https://protect-network.eu/"^^xsd:anyURI ;
-    schema:startDate "2019-08-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2023-07-31T00:00:00"^^xsd:dateTime ;
-    schema:member [
-        a schema:Role ;
-        schema:member <https://harshp.com/me> ;
-        schema:startDate "2020-03-01T00:00:00"^^xsd:dateTime ;
-        schema:endDate "2020-08-31T00:00:00"^^xsd:dateTime ;
-        schema:roleName "Research Assistant (RA)"@en ;
-    ] ;
-    schema:funding [
-        a schema:MonetaryGrant ;
-        schema:recipient "PROTECT Consortium"@en ;
-        schema:identifier "813497"^^xsd:string ;
-        schema:funder [
-            a schema:FundingScheme ;
-            schema:name "Horizion 2020"@en ;
-            schema:url "https://ec.europa.eu/programmes/horizon2020"^^xsd:anyURI ;
-            schema:funder [
-                a schema:Organization ;
-                schema:name "European Union (EU)"@en ;
-                schema:url "https://europa.eu/"^^xsd:anyURI ;
-            ] ;
-        ] ;
-    ] .
 
 # Activities / Groups
 # all projects

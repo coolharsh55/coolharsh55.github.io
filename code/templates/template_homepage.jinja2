@@ -2,17 +2,28 @@
 {% block pagetitle %}harshp.com{% endblock pagetitle %}
 {% block title_body %}Hello World!{% endblock title_body %}
 {% block desc %}{% endblock desc %}
+{% block pageCSS %}<style type="text/css">
+    h1 {
+        font-famili: Spectral;
+        font: 2rem;
+        font-style: italic;
+        font-weight: bold;
+        font-variant: normal;
+    }
+</style>
+{% endblock pageCSS %}
 {% block content %}
-    <p>I am <u>Harshvardhan J. Pandit</u>, and this is my personal website. I read a lot, find productive ways to be unproductive, and aim to do more than I possibly can.</p>
+    <p>I am <u>Harshvardhan J. Pandit</u>, and this is my personal website. I read a lot, find productive ways to be unproductive, and aim to do more than I possibly can as an apiring <a href="/polymathy">polymath</a></p>
     <p>On this site, you can find:</p>
-    <ol>
-        <li><a href="/posts">list of all posts by date</a></li>
-        <li><a href="/research">my research activities</a> including <a href="/research/publications">publications</a> (and <a href="/research/publications/drafts">drafts</a> inviting feedback and collaboration), <a href="/research/projects">projects</a>, <a href="/research/presentations">presentations</a>, research supervision, peer-reviewing, activity and event organisation, groups and memberships</li>
-        <li><a href="/research/blog">my research blog</a> where I write about academic matters concerning my research, and distinct from my personal blog</li>
-        <li><a href="/blog">my blog</a> where I write personal opinions and articles</li>
-        <li><a href="/dev">my development projects</a> where I play around with technologies and theories</li>
-        <li><a href="/hobbies">my hobbies</a>: which currently include <a href="/hobbies/books">reading books</a>, playing games, watching movies, creative writing such as <a href="/stories">stories</a> and <a href="/poems">poetry</a></li>
-        <li>fascination with food, in particular cheese, <a href="/hobbies/tea">tea</a>, coffee, and cuisines
-        <li>my quest to be a <a href="/polymathy">polymath</a> through autodidactism</li>
-    </ol>
+    <ul class="list-index">
+        <li><a href="/research"><strong>my research activities</strong></a> <br/>
+            <a href="/research/publications">publications</a> (and <a href="/research/publications/drafts">drafts</a> inviting feedback and collaboration), <a href="/research/projects">projects</a>, <a href="/research/presentations">presentations</a>, research supervision, peer-reviewing, activity and event organisation, groups and memberships, and <a href="/research/blog">my research blog</a></li>
+        <li><a href="/blog"><strong>my personal blog</strong></a> <br/>
+            which has personal opinions and articles about my life, the world, places I visit, food I eat, philosophical thoughts, politics, society, and many other things</li>
+        <li><a href="/dev"><strong>my developer's blog</strong></a> <br/>
+            which has ideas, thoughts, and logs regarding developing and applying technologies to projects, as well as notes from what I have learned regarding development of technologies</li>
+        <li><a href="/hobbies"><strong>my hobbies</strong></a>: <br/>
+            where I maintain lists about <a href="/hobbies/books">reading books</a>, <a href="/hobbies/games">playing games</a>, <a href="/hobbies/movies">watching movies</a>, my creative writing in the form of <a href="/stories">stories</a> and <a href="/poems">poetry</a>, my <a href="/hobbies/food">food blog</a> - in particular my lists regarding <a href="/hobbies/food/tea">tea</a>, <a href="/hobbies/food/coffee">coffee</a>, <a href="/hobbies/food/cheese">cheese</a>, and <a href="/hobbies/food/pasta">pasta</a></li>
+    </ul>
+    <p><a href="/posts"><small>list of all posts by date</small></a></p>
 {% endblock content %}

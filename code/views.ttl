@@ -175,6 +175,52 @@ hpview:ResearchView a hpcom:View ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
+        rdfs:label "awarded_projects" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?date WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project schema:startDate ?date .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            } ORDER By DESC(?date)
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "awarded_projects_budget_total" ;
+        hpcom:queryString """
+            SELECT (SUM(?pbudget) as ?budget) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:project_budget ?pbudget .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            }
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "awarded_projects_budget_control_total" ;
+        hpcom:queryString """
+            SELECT (SUM(?pbudget) as ?budget) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:project_budget_control ?pbudget .
+                ?project hpcom:project_budget_control ?budget_control .
+                FILTER(?budget_control > 0) .
+            }
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "awarded_projects_total" ;
+        hpcom:queryString """
+            SELECT (COUNT(?project) as ?total) WHERE {
+                ?project a <https://harshp.com/research/projects> .
+                ?project hpcom:funding_credit true .
+            }
+        """ ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
         rdfs:label "current_supervision" ;
         hpcom:queryString """
             SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {

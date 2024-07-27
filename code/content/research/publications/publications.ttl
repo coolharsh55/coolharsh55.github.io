@@ -1801,3 +1801,35 @@
         hpcom:contentFileFormat hpcom:formatHTML ;
         ] ;
     schema:status "to be presented"@en .
+
+<https://harshp.com/research/publications/067-DPV-2.0> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Data Privacy Vocabulary (DPV) —  Version 2.0"@en ;
+    schema:description "This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU's DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe."@en ;
+    hpcom:tag hptag:DPV ;
+    hpcom:tag hptag:DPVCG ;
+    hpcom:tag hptag:consent ;
+    hpcom:tag hptag:ISO ;
+    hpcom:tag hptag:DGA ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/BeatrizEsteves> <http://example.com/GeorgPKrog> <http://example.com/PaulRyan> <https://www.scss.tcd.ie/personnel/golpayes> <http://example.com/JulianFlake> ) ;
+    schema:datePublished "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/ISWC2024> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ; 
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/067-DPV-2.0"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "website" ; schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-27560-ConsentRecords> ;
+    hpcom:peer_reviewed true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] ;
+    schema:status "to be presented"@en .

@@ -11,28 +11,28 @@
 <p>You can see more information about my:</p>
 <ul>
     <li><a href="#interests">research interests</a></li>
-    <li><a href="/research/publications">publications</a></li>
-    <li><a href="/research/publications/drafts">draft publications</a> for feedback and collaboration</li>
-    <li><a href="/research/projects">past and present research projects</a></li>
+    <li><a href="#publications">published and draft publications</a></li>
+    <li><a href="#projects">projects</a> - <a href="#projects-ongoing">ongoing</a>, <a href="#projects-past">past</a>, and <a href="#funding-history">funding history</a></li>
     <li><a href="#activities">research activities, group memberships</a></li>
     <li><a href="#organisation">events and conference organisation</a></li>
     <li><a href="#peer-review">participation in peer-review</a></li>
     <li><a href="#supervision">supervision and mentoring</a></li>
     <li><a href="#teaching">teaching, lectures, seminars</a></li>
+    <li><a href="/research/blog">my research blog</a></li>
 </ul>
 </section>
 
 <section id="interests">
 <h2>Research Interests</h2>
     <ul class="list-index">
+        <li><a href="https://digital-strategy.ec.europa.eu/en/policies/europes-digital-decade">EU's Data &amp; AI Regulations</a> <br/>
+            My research interest revolves around quantification of the requirements and concepts of laws such as GDPR, Data Governance Act (DGA), Data Act, AI Act, and many others - so that these laws can be better interpreted and applied, and their compliance requirements can be expressed and evaluated using automation in technologies.
+            </li>
         <li><a href="https://en.wikipedia.org/wiki/Privacy">Privacy</a> <br/>
             I'm interested in the exploration of issues regarding privacy, especially those related to use of technology and data protection. My primary motivation in this area is to facilitate discovery and consolidation of existing work in identification and mitigation of risks, and applying existing knowledge to future technologies and innovations.
             </li>
         <li><a href="https://en.wikipedia.org/wiki/Consent">Consent</a> <br/>
             Consent is a broad mechanism for agreement in the society, and is also an essential aspect of freedom based on choice. My primary interest regarding consent relates to its connection with privacy and data protection issues, where it is used as the legal justification for collecting and using personal data. My research revolves around quantification and representation of information regarding consent towards identifying and mitigating issues regarding transparency, accountability, and comprehension.
-            </li>
-        <li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">General Data Protection Regulation (GDPR)</a> <br/>
-            The GDPR and other recent data protection/privacy laws such as the <a href="https://en.wikipedia.org/wiki/California_Consumer_Privacy_Act">CCPA</a> provide  legal regulation of collecting, using, sharing personal data based upon the principles of privacy and data protection. My research interest revolves around quantification of the requirements and concepts of such laws and its representation for evaluating compliance of processes and activities involving personal data.
             </li>
         <li><a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a> and <a href="https://en.wikipedia.org/wiki/Data_model">Data Modeling</a> <br/>
             The Semantic Web standards, particularly <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, provide a way for modeling and querying information based on the web infrastructure, permits creation of schemas and ontologies to represent concepts and relationships. My interest lies in using these for the representation, documentation, and modeling of information from other research interests.
@@ -49,13 +49,13 @@
     <p>
 </section>
 <section id="projects">
-<h2>Projects</h2>
+<h2>Projects (<i>{{current_projects|length + past_projects|length}}</i>)</h2>
 {% if current_projects %}
-<h3>Ongoing Projects</h3>
+<h3 id="projects-ongoing">Ongoing Projects (<i>{{current_projects|length}}</i>)</h3>
 <ol class='list-index'>
 {% for item, role in current_projects %}
     <li>
-        <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
+        <a href="{{ item.iri }}"><b>({{item.hpcom_acronym}}) {{ item.schema_name }}</b></a> <br/>
         {{ item.schema_description }} <br/>
         (<time datetime="{{ item.schema_member.schema_startDate}}">{{ item.schema_member.schema_startDate}}</time> - {% if item.schema_member.schema_endDate %}<time datetime="{{ item.schema_member.schema_endDate}}">{{ item.schema_member.schema_endDate}}</time>{% else %}ongoing{% endif %})
     {% if item.schema_member is sequence %}
@@ -83,12 +83,12 @@
 {% endfor %}
 </ol>
 {% endif %}
-<h3>Past Projects</h3>
+<h3 id="projects-past">Past Projects (<i>{{past_projects|length}}</i>)</h3>
 <a href="/research/projects">see complete list of projects</a>
 <ul>
 {% for item, name in past_projects %}
     <li>
-        <a href="{{ item.iri }}"><b>{{ item.schema_name }}</b></a> <br/>
+        <a href="{{ item.iri }}"><b>({{item.hpcom_acronym}}) {{ item.schema_name }}</b></a> <br/>
         {{ item.schema_description }} <br/>
         (<time datetime="{{ item.schema_member.schema_startDate}}">{{ item.schema_member.schema_startDate}}</time> - <time datetime="{{ item.schema_member.schema_endDate}}">{{ item.schema_member.schema_endDate}}</time>)
         
@@ -104,6 +104,39 @@
     </li>
 {% endfor %}
 </ul>
+<h3 id="funding-history">Funding History</h3>
+<table>
+    <thead>
+        <th>Project</th>
+        <th>Type</th>
+        <th>Start/End</th>
+        <th>Total Budget</th>
+        <th>My Award</th>
+        <th>Funding Credit</th>
+    </thead>
+    <tbody>
+    {% for project, date in awarded_projects %}
+        <tr {% if not project.schema_endDate|in_past %}style="font-weight: bold;"{% endif %}>
+            <td>{{ project.hpcom_acronym }}</td>
+            <td><small>{{ project.hpcom_project_type }}</small></td>
+            <td>{{ project.schema_startDate|year }}-{{ project.schema_endDate|year }}</td>
+            <td>{{ project.hpcom_project_budget|format_amount }}</td>
+            <td>{{ project.hpcom_project_budget_control|format_amount }}</td>
+            <td>{% if project.hpcom_funding_credit == "true" %}&check;{% else %}&cross;{% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+        <tr>
+            <td colspan="2"></td>
+            <td>Total</td>
+            <td>{{awarded_projects_budget_total[0][0]|format_amount}}</td>
+            <td>{{awarded_projects_budget_control_total[0][0]|format_amount}}</td>
+            <td>{{awarded_projects_total[0][0]}}</td>
+        </tr>
+    <tfoot>
+        
+    </tfoot>
+</table>
 </section>
 
 <section id="publications">
@@ -229,6 +262,10 @@
         ISO/IEC has committees and working groups that work on development of standards, with the Working Group 5 in Sub-Committee 27 responsible for privacy technologies. 
         I participate as a (domain) 'expert' in WG5 since <time datetime="2020-08-01">2020-08-01</time> through membership in the<a href="https://www.nsai.ie/">National Standards Association of Ireland (NSAI)</a>. My specific interests include the <a href="https://www.iso.org/standard/80392.html">ISO/IEC 27560</a> standard currently under development for 'consent record information structure'.
         </li>
+    <li>
+        <a href="https://standards.ieee.org/ieee/7012/7192/"><b>IEEE P7012</b></a><br/>
+        The standard identifies/addresses the manner in which personal privacy terms are declared and offered (e.g. on websites) and how they can be read and agreed to by automated agents.
+        </li>
 </ul>
 <h3>Past</h3>
 <ul>
@@ -312,10 +349,10 @@
 <h3>Teaching</h3>
 <ul>
     <li><u>CA691 Data Governance</u>: 
-        (2023) - Masters: MA in Data Protection and Privacy (MDPP), EM in Law, Data &amp; Artificial Intelligence (EMILDAI). Dublin City University</li>
+        (2024) - Masters: MA in Data Protection and Privacy (MDPP), EM in Law, Data &amp; Artificial Intelligence (EMILDAI). Dublin City University</li>
     <li><u>CA292 Project Management</u>: 
         (2023) - Undergraduate: Computing for Business Year 2. Dublin City University</li>
-    <li><u>CA269 Programming 3: Object-Oriented Programming</u>: (2023, 2022) - Undergraduate: Computer Science (CASE) Year 2, Data Science (DS) Year 2. Dublin City University</li>
+    <li><u>CA269 Programming 3: Object-Oriented Programming</u>: (2023, 2024) - Undergraduate: Computer Science (CASE) Year 2, Data Science (DS) Year 2. Dublin City University</li>
     <li><u>CS3014 Concurrent System I</u>: 
         (2018) - Undergraduate:: Integrated Computer Science (ICS) Year 3. Trinity College Dublin</li>
     </ul>

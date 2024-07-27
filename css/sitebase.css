@@ -1,11 +1,30 @@
-@import "https://media.harshp.com/fonts/inter.css";
+@font-face {
+    font-family: 'Spectral';
+    src: url('https://media.harshp.com/fonts/Spectral-Regular.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Spectral';
+    font-style: italic;
+    src: url('https://media.harshp.com/fonts/Spectral-Italic.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    src: url('https://media.harshp.com/fonts/Spectral-Bold.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    font-style: italic;
+    src: url('https://media.harshp.com/fonts/Spectral-MediumItalic.ttf'); /*URL to font*/
+}
 :root {
      --background: #F0F0F0; 
      --link: #412234;
      --text: #0E0B16;
      --text-link: #310A31;
      --background-dark: #01110A;
-     font-family: 'Inter', sans-serif;
+     font-family: 'Spectral', sans-serif;
 }
 @media screen {
      body {
@@ -45,7 +64,6 @@
      }
      h1, h2, h3 {
           color: var(--background-dark);
-          font-variant: small-caps; text-transform: none;
           border-bottom: 1px dashed var(--background-dark);
      }
      h1 {

@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Data Privacy Vocabulary (DPV) —  Version 2.0</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Data Privacy Vocabulary (DPV) —  Version 2.0">
+    <meta name="schema:description" content="This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU&#39;s DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe.">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="consent,DGA,DPV,DPVCG,GDPR,ISO,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/067-DPV-2.0">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Data Privacy Vocabulary (DPV) —  Version 2.0">
+    <meta property="og:description" content="This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU&#39;s DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe.">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/067-DPV-2.0">
+        <h1 property="schema:name schema:headline">Data Privacy Vocabulary (DPV) —  Version 2.0</h1>
+<div id="description">
+	<small>
+	<time datetime="2024-11-11T00:00:00">2024-11-11T00:00:00</time>
+    <i>Conference</i>
+    <br/>
+    <span class='note'>to be presented</span>
+    International Semantic Web Conference (ISWC)    <br/>
+    &#9997;<i>
+    <u>Harshvardhan J. Pandit</u>*
+    ,
+    Beatriz Esteves
+    ,
+    Georg Philip Krog
+    ,
+    Paul Ryan
+    ,
+    Delaram Golpayegani
+    ,
+    Julian Flake
+    </i>
+    <br/>
+    Description: This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU&#39;s DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe.
+    <br/>
+        &#x1f513;open-access archives:
+        <a href="https://arxiv.org/abs/2405.04528">arXiv</a>
+        , <a href="https://harshp.com/research/publications/067-DPV-2.0">harshp.com</a>
+        , <a href="https://osf.io/ma9ue">OSF</a>
+        , <a href="https://osf.io/preprints/osf/3utx8">OSF</a>
+    	<br/>
+        &#128230;resources:
+        <a href="https://github.com/w3c/dpv">repo</a>
+        , <a href="https://w3id.org/dpv">website</a>
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract</strong> The Data Privacy Vocabulary (DPV), developed by the W3C Data Privacy Vocabularies and Controls Community Group (DPVCG), enables the creation of machine-readable, interoperable, and standards-based representations for describing the processing of personal data. The group has also published extensions to the DPV to describe specific applications to support legislative requirements such as the EU's GDPR. The DPV fills a crucial niche in the state of the art by providing a vocabulary that can be embedded and used alongside other existing standards such as W3C ODRL, and which can be customised and extended for adapting to specifics of use-cases or domains. This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU's DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe.</p>
+
+<h2 id="sec:intro">Introduction</h2>
+<p>The modern technological landscape consists of ubiquitous digital
+devices and services which generate vast amounts of data, which includes
+sensitive information that raises privacy concerns, as well as requires
+the protection of data from misuse and cybersecurity threats.
+Regulations across the globe have been developed or updated to meet this
+challenge, most notably the European Union’s (EU) General Data
+Protection Regulation (GDPR) <span class="citation" data-cites="GDPR"><a
+href="#ref-GDPR" role="doc-biblioref">[1]</a></span> in 2016, which
+requires specific activities to be carried out based on defined norms
+and requirements, and require documenting governance processes for
+compliance.</p>
+<p>‘Regulatory Technology’ (RegTech) has also evolved to provide
+information management capabilities and automation of tasks to support
+evolving regulations. However, a key barrier to their effective use is
+their proprietary nature, non-interoperable information, and lack of
+standards. As a result, the RegTech landscape for privacy and data
+protection is fragmented and siloed and lacks any meaningful ‘metadata’
+and ‘semantics’ through which information can be reused, e.g., for
+processes not envisioned by a tool provider.</p>
+<p>Based on this background, the SPECIAL H2020 project established the
+W3C Data Privacy Vocabularies and Controls Community Group<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+(DPVCG) in 2018, which developed the Data Privacy Vocabulary<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> (DPV) <span class="citation"
+data-cites="panetto_creating_2019"><a href="#ref-panetto_creating_2019"
+role="doc-biblioref">[2]</a></span> as a machine-readable interoperable
+vocabulary for the exchange of legally relevant ‘metadata’. Since then,
+DPV has continued being a state of the art resource that is iteratively
+updated to match the evolving landscape of regulations and compliance
+requirements. It has seen high adoption in academic, industrial, and
+mixed settings, and has been referenced in standards.</p>
+<p>The DPV 1.0 focused on providing a vocabulary for describing personal
+data activities based on the GDPR. Since then, the world has evolved at
+a rapid pace with new innovations and regulations – in particular those
+related to ‘increasing sharing of data’ such as the EU’s Data Governance
+Act (DGA) <span class="citation" data-cites="DGA"><a href="#ref-DGA"
+role="doc-biblioref">[3]</a></span>, as well as for ‘regulating AI’,
+such as the EU’s Artificial Intelligence Act (AI Act) <span
+class="citation" data-cites="AIAct"><a href="#ref-AIAct"
+role="doc-biblioref">[4]</a></span>. To reflect these developments as
+well as others in domains such as cybersecurity, the DPVCG has updated
+the DPV and made it capable of representing a wide variety of legally
+relevant information for ‘AI and digital regulations’. In this article,
+we present the design and development of DPV – version 2.</p>
+<p>The rest of the article is structured as follows: Section <a
+href="#sec:req" data-reference-type="ref" data-reference="sec:req">2</a>
+describes the requirements which guided the development of DPV, Section
+<a href="#sec:related" data-reference-type="ref"
+data-reference="sec:related">3</a> compares DPV with related work,
+Section <a href="#sec:adoption" data-reference-type="ref"
+data-reference="sec:adoption">4</a> describes the known adoptions,
+Section <a href="#sec:overview" data-reference-type="ref"
+data-reference="sec:overview">5</a> provides an overview of DPV, Section
+<a href="#sec:design" data-reference-type="ref"
+data-reference="sec:design">6</a> describes the methodology and design
+principles used, and Section <a href="#sec:conclusion"
+data-reference-type="ref" data-reference="sec:conclusion">7</a>
+concludes the article with a discussion on future work.</p>
+<h2 id="sec:req">Requirements for a Legal Vocabulary</h2>
+<h3 id="information-and-knowledge-modelling">Information and Knowledge
+Modelling</h3>
+<p>DPV 1.0 was concerned with modelling the purposes, processing
+operations, legal bases, personal data categories, technical and
+organisational measures, and the roles of entities based on the GDPR,
+and to fill specific gaps <span class="citation"
+data-cites="panetto_creating_2019"><a href="#ref-panetto_creating_2019"
+role="doc-biblioref">[2]</a></span>: (1) there were no ontologies to
+describe and exchange information about activities involving personal
+data; (2) there were no agreed upon vocabularies or taxonomies for
+representing practical applications and uses of personal data, e.g.,
+different purposes such as <em>Service Provision</em>, or <em>Legal
+Bases</em> such as <em>Consent</em>; and (3) there were no vocabularies
+that align the terminology and requirements of regulations for
+developing and using machine-readable information.</p>
+<p>Based on these, DPV 1.0 was developed to provide:</p>
+<ol>
+<li><p>a formal ontology that defines concepts and
+relationships;</p></li>
+<li><p>a (hierarchical) taxonomy that provides <em>instances</em> or
+<em>specialisations</em> of the ontological concepts to reflect
+practical uses and applications; and</p></li>
+<li><p>a legally relevant modelling of information to support
+documentation needs for compliance and exchange of information between
+stakeholders.</p></li>
+</ol>
+<p>For DPV 2.0, the evolving landscape of law and technologies and the
+initial adoption of DPV led the DPVCG to reconsider the scope of DPV.
+This resulted in the following additional requirements:</p>
+<ol>
+<li><p>supporting multiple jurisdictions and laws (e.g., EU — GDPR, US —
+CCPA);</p></li>
+<li><p>supporting risk management (e.g., based on ISO 31000
+series);</p></li>
+<li><p>representing use of services and technologies, e.g., cloud
+services;</p></li>
+<li><p>describing how AI (as a technology) is used;</p></li>
+<li><p>providing guidance on use of DPV to meet specific legal
+requirements; and</p></li>
+<li><p>providing documentation, examples, and guidance for increasing
+adoption.</p></li>
+</ol>
+<h3 id="legal-and-semantic-extensibility">Legal and Semantic
+Extensibility</h3>
+<p>Due to the nature of legal frameworks, concepts in DPV must
+constantly be assessed and possibly modified to support changes in laws
+and case law. Unlike conventional ontologies, the <em>meaning</em> and
+<em>semantics</em> of concepts in DPV relies on legal norms and
+interpretations which differ across jurisdictions and change with laws
+and rulings. The design of DPV therefore requires the possibility for it
+to be used in a ‘jurisdiction-independent’ manner while also having a
+mechanism to explicitly assert a specific law, or how its concept
+applies. For example, ‘consent’ is a generic concept, whereas ‘consent
+according to GDPR’ is a jurisdiction and regulation-specific concept.
+Such <em>legal customisability</em> is an important part of DPV’s
+interoperability as it enables different stakeholders to express common
+requirements (e.g., consent) which can be explicitly asserted or
+interpreted in relevant contexts (e.g., regulation based on
+location).</p>
+<p>Semantic interoperability is a cornerstone of DPV given its emphasis
+on representation and exchange of information between stakeholders.
+Compared to conventional ontologies, concepts in DPV must be extensible
+to support practical requirements which do not align neatly with design
+considerations of only providing classes and properties. For example, a
+concept ‘Email’ that represents personal data associated with emails
+cannot be simply modelled as a class as it may be needed as an
+<em>instance</em> to state emails are collected. At the same time, it
+may also need to be extended to specifically refer to aspects such as
+<em>Email Address</em>, <em>Email Contents</em>, or <em>Attachments</em>
+which also can be used as <em>instances</em> or be further specialised.
+This fits the SKOS modelling style better and also matches with how
+information is used by non semantic-web folks (e.g., to fill in forms),
+but does not fit well with semantic reasoning processes which largely
+use OWL (with Abox and Tbox assertions). DPV thus needs to satisfy both
+styles of using concepts as extensible instances and having support for
+OWL reasoning.</p>
+<h3 id="stakeholder-interoperability">Stakeholder Interoperability</h3>
+<p>It is not possible for DPV to provide all relevant concepts in its
+ontology/taxonomy given the almost infinite potential concepts (e.g.,
+for personal data). Instead, DPV’s community opted to provide the ‘most
+important’ and ‘most commonly required’ concepts, while requiring that
+DPV support stakeholders in extending DPV internally for reflecting the
+peculiarities of their own use-cases. For example, DPV can provide the
+purpose ‘Marketing’ which a company can extend to describe ‘Summer Sale
+Offers’.</p>
+<p>Following from this, DPV’s mission to provide interoperability across
+stakeholders relies on the ‘common’ concept present in the DPV taxonomy
+as the basis for establishing shared understanding even if each
+stakeholder ends up creating their own unique or individual ontological
+representation. In the above example, <em>Summer Sale Offers</em> may be
+incomprehensible to another stakeholder, but the use of DPV enables both
+entities to correctly interpret that this is a form of
+<em>Marketing</em> — and thus be able to identify requirements and
+obligations for legal compliance associated with this concept.</p>
+<h2 id="sec:related">Comparison with Related Work</h2>
+<p>DPV fills an unique and necessary niche within the state of the art
+by providing concepts to represent legally relevant information related
+to the processing of personal data and use of technologies. Here we only
+describe related works that have a comparable adoption, or are
+standards, or are outputs of larger projects.</p>
+<p>The Open Digital Rights Language (ODRL) <span class="citation"
+data-cites="ianella2007open"><a href="#ref-ianella2007open"
+role="doc-biblioref">[5]</a></span> is a W3C standard for modelling
+policies and agreements which can dictate the permissions, prohibitions,
+and duties associated with use of data or resources. The ODRL vocabulary
+also provides specific concepts such as ‘obtain consent’ to support
+commonly used agreements. While there is some overlap between DPV and
+ODRL, they are complimentary in their objectives and uses. ODRL focuses
+solely on providing a language for representation of policies and does
+not focus on specific legal requirements or jurisdictions. DPV’s
+concepts can thus provide the necessary legal and jurisdictional
+relevant information within ODRL policies. This has been explored and
+demonstrated by existing work <span class="citation"
+data-cites="esteves_odrl_2021"><a href="#ref-esteves_odrl_2021"
+role="doc-biblioref">[6]</a></span>. The DPVCG intends to establish
+close collaboration with the ODRL CG through its common members by
+aligning concepts between DPV and ODRL, and providing guidance for using
+DPV as an ODRL profile. DPV has also been mentioned by the International
+Data Spaces Association (IDSA) as a vocabulary of interest to support
+the implementation of GDPR and regulations in their policies based on
+ODRL <span class="citation" data-cites="bader2020international"><a
+href="#ref-bader2020international"
+role="doc-biblioref">[7]</a></span>.</p>
+<p>LegalRuleML<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> is an OASIS standard providing a
+‘rule interchange language’ that enables modelling and reasoning tasks
+based on legal arguments. Similar to ODRL, it focuses on providing a
+language for expression of ‘rules’ and does not provide any taxonomies
+or model regulations. Similar to ODRL, DPV is also complimentary to
+LegalRuleML as a vocabulary that can be used to support representation
+of legal information. There is existing work that has explored the use
+of LegalRuleML for modelling requirements from the text of GDPR <span
+class="citation" data-cites="robaldo2020dapreco"><a
+href="#ref-robaldo2020dapreco" role="doc-biblioref">[8]</a></span>,
+though it has not been maintained nor been extended to support practical
+requirements related to implementing GDPR.</p>
+<p>Gist<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> is a ‘minimalist upper ontology for
+the enterprise’ which provides business concepts with a focus on
+minimising ambiguity. The Financial Industry Business Ontology<a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> (FIBO) models concepts relevant in
+financial business applications, such as contracts and financial
+transactions. Both Gist and FIBO represent ‘industrial ontologies’ and
+have been developed over a significant portion of time with the
+involvement of corporate stakeholders. While neither support specific
+legal requirements or jurisdictions, Gist provides concepts relevant for
+modelling details about an organisation and FIBO provides modelling of
+contracts and contract-related processes — which DPV does not contain.
+Work is underway in DPVCG to study the FIBO contract concepts and
+identify how DPV can support contracts related to personal data
+processing.</p>
+<h2 id="sec:adoption">Adoption of DPV 1.0</h2>
+<h3 id="sec:adoption-citations">Analysis of Citations</h3>
+<p>In this Section, the adoption of DPVCG’s outputs is evaluated through
+a citation analysis performed over the DPV 1.0 publication <span
+class="citation" data-cites="panetto_creating_2019"><a
+href="#ref-panetto_creating_2019" role="doc-biblioref">[2]</a></span>.
+In this context, 81 publications that cite DPV were found through the
+Google Scholar service. The gathered results underwent a review and were
+included in this analysis if deemed pertinent. Duplicated publications,
+publications without an open-access version and in languages other than
+English were excluded from this analysis, resulting in 76 publications
+to be reviewed. Table <a href="#tab:citation" data-reference-type="ref"
+data-reference="tab:citation">1</a> presents the results of the
+performed publication evaluation. The publications were evaluated in
+relation to their use of DPV: publications that reference DPV as a state
+of the art resource are signalled in the <strong>Mention</strong>
+column, that use DPV towards an application or use case in the
+<strong>Use</strong> column, and that extend DPV in the
+<strong>Ext.</strong> column. Publications that contributed their
+extensions back to DPV (<strong>Contrib.</strong> column) are also
+marked in Table <a href="#tab:citation" data-reference-type="ref"
+data-reference="tab:citation">1</a>, as well as if the work is applied
+to a certain domain or sector (<strong>Domain</strong> column). The
+<strong>Effort</strong> column denotes the amount of work (speculated)
+to update the implementation to DPV 2.0, where <code>++</code> denotes
+more work as implementations use a pre-1.0 version and will need to
+update the IRIs, <code>+</code> denotes minor efforts to check changed
+concepts in DPV 2.0, and <code>-</code> denotes no changes. DPV 2.0 is
+largely compatible with DPV 1.0, which means most implementations using
+DPV 1.0 can update with minimal changes.</p>
+<div id="tab:citation">
+<table>
+<caption>Citation analysis of academic publications that reference DPV
+1.0 <span class="citation" data-cites="panetto_creating_2019"><a
+href="#ref-panetto_creating_2019"
+role="doc-biblioref">[2]</a></span>.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Work</strong></th>
+<th style="text-align: center;"><strong>Year</strong></th>
+<th style="text-align: center;"><strong>Mention</strong></th>
+<th style="text-align: center;"><strong>Use</strong></th>
+<th style="text-align: center;"><strong>Ext.</strong></th>
+<th style="text-align: center;"><strong>Contrib.</strong></th>
+<th style="text-align: center;"><strong>Domain</strong></th>
+<th style="text-align: center;"><strong>Effort</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="calvaresi_agentbased_2020"><a
+href="#ref-calvaresi_agentbased_2020"
+role="doc-biblioref">[9]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="lieber_ecodalo_2020"><a href="#ref-lieber_ecodalo_2020"
+role="doc-biblioref">[10]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="bonatti_machine_2020 matulevicius_method_2020 thalhath_metaprofiles_2020"><a
+href="#ref-bonatti_machine_2020" role="doc-biblioref">[11]</a>–<a
+href="#ref-thalhath_metaprofiles_2020"
+role="doc-biblioref">[13]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="calvaresi_personal_2020 krasnashchok_towards_2020 leone_role_2020 ryan_design_2020"><a
+href="#ref-calvaresi_personal_2020" role="doc-biblioref">[14]</a>–<a
+href="#ref-ryan_design_2020" role="doc-biblioref">[17]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">++</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="calbimonte_decentralized_2020"><a
+href="#ref-calbimonte_decentralized_2020"
+role="doc-biblioref">[18]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">++</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="debruyne_justtime_2020 pandit_representing_2020 ryan_common_2020"><a
+href="#ref-debruyne_justtime_2020" role="doc-biblioref">[19]</a>–<a
+href="#ref-ryan_common_2020" role="doc-biblioref">[21]</a></span></td>
+<td style="text-align: center;">2020</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">++</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="esteves_challenges_2021 mcdonald_evaluation_2021 flesch_investigating_2021"><a
+href="#ref-esteves_challenges_2021" role="doc-biblioref">[22]</a>–<a
+href="#ref-flesch_investigating_2021"
+role="doc-biblioref">[24]</a></span></td>
+<td style="text-align: center;">2021</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="grunewald_tira_2021 bonatti_representing_2021 sion_overview_2021 pandit_chapter_2021 hamed_enhancing_2021"><a
+href="#ref-grunewald_tira_2021" role="doc-biblioref">[25]</a>–<a
+href="#ref-hamed_enhancing_2021"
+role="doc-biblioref">[29]</a></span></td>
+<td style="text-align: center;">2021</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="ryan_gdpr_2021 esteves_odrl_2021 ekaputra_semanticenabled_2021 ryan_building_2021 leone_legal_2021"><a
+href="#ref-esteves_odrl_2021" role="doc-biblioref">[6]</a>, <a
+href="#ref-ryan_gdpr_2021" role="doc-biblioref">[30]</a>–<a
+href="#ref-leone_legal_2021" role="doc-biblioref">[33]</a></span></td>
+<td style="text-align: center;">2021</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">++</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="garcia_towards_2021"><a href="#ref-garcia_towards_2021"
+role="doc-biblioref">[34]</a></span></td>
+<td style="text-align: center;">2021</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Smart products</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="hickey_gdpr_2021"><a href="#ref-hickey_gdpr_2021"
+role="doc-biblioref">[35]</a></span></td>
+<td style="text-align: center;">2021</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="human_data_2022 jesus_consent_2022 human_advanced_2022 sangaroonsilp_mining_2022 pandit_proposals_2022 rasmusen_increasing_2022 esteves_semantifying_2022"><a
+href="#ref-human_data_2022" role="doc-biblioref">[36]</a>–<a
+href="#ref-esteves_semantifying_2022"
+role="doc-biblioref">[42]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="esteves_analysis_2022"><a href="#ref-esteves_analysis_2022"
+role="doc-biblioref">[43]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="ryan_support_2022 ryan_dpcat_2022 pandit_semantic_2022 esteves_fostering_2022"><a
+href="#ref-ryan_support_2022" role="doc-biblioref">[44]</a>–<a
+href="#ref-esteves_fostering_2022"
+role="doc-biblioref">[47]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="becker_secondary_2022"><a href="#ref-becker_secondary_2022"
+role="doc-biblioref">[48]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="esteves_using_2022 debackere_policyoriented_2022 debackere_enforcing_2022 gambarelli_privaframe_2022 kurteva_making_2022"><a
+href="#ref-esteves_using_2022" role="doc-biblioref">[49]</a>–<a
+href="#ref-kurteva_making_2022"
+role="doc-biblioref">[53]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="becher_contra_2022"><a href="#ref-becher_contra_2022"
+role="doc-biblioref">[54]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">IoT</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="hernandez_tikd_2022"><a href="#ref-hernandez_tikd_2022"
+role="doc-biblioref">[55]</a></span></td>
+<td style="text-align: center;">2022</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="pandit_making_2023 bushati_what_2023 breteler_flint_2023 kurteva_relevant_2023 asgarinia_who_2023"><a
+href="#ref-pandit_making_2023" role="doc-biblioref">[56]</a>–<a
+href="#ref-asgarinia_who_2023" role="doc-biblioref">[60]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="gambarelli_is_2023 grunewald_enabling_2023 bailly_prototyping_2023 tang_helping_2023 esteves_towards_2023 esteves_using_2023 taheri_compliance_2023"><a
+href="#ref-gambarelli_is_2023" role="doc-biblioref">[61]</a>–<a
+href="#ref-taheri_compliance_2023"
+role="doc-biblioref">[67]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="sun_citizencentric_2023 navarrogallinad_evaluating_2023 florea_is_2023 gallinad_usable_2023"><a
+href="#ref-sun_citizencentric_2023" role="doc-biblioref">[68]</a>–<a
+href="#ref-gallinad_usable_2023"
+role="doc-biblioref">[71]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="kurteva_smashhitcore_2023"><a
+href="#ref-kurteva_smashhitcore_2023"
+role="doc-biblioref">[72]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Smart cities</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="gupta_oppo_2023 zichichi_decentralized_2023"><a
+href="#ref-gupta_oppo_2023" role="doc-biblioref">[73]</a>, <a
+href="#ref-zichichi_decentralized_2023"
+role="doc-biblioref">[74]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="esteves_semantics_2023 pandit_towards_2023"><a
+href="#ref-esteves_semantics_2023" role="doc-biblioref">[75]</a>, <a
+href="#ref-pandit_towards_2023"
+role="doc-biblioref">[76]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="raza_semantic_2023"><a href="#ref-raza_semantic_2023"
+role="doc-biblioref">[77]</a></span></td>
+<td style="text-align: center;">2023</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="pandit_enhancing_2024"><a href="#ref-pandit_enhancing_2024"
+role="doc-biblioref">[78]</a></span></td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Health</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="herwanto_leveraging_2024"><a
+href="#ref-herwanto_leveraging_2024"
+role="doc-biblioref">[79]</a></span></td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="citation"
+data-cites="golpayeganiAIROOntologyRepresenting2022 golpayeganiBeHighRiskNot2023 golpayeganiAICardsApplied2024"><a
+href="#ref-golpayeganiAIROOntologyRepresenting2022"
+role="doc-biblioref">[80]</a>–<a
+href="#ref-golpayeganiAICardsApplied2024"
+role="doc-biblioref">[82]</a></span></td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">WIP</td>
+<td style="text-align: center;">EU AI Act</td>
+<td style="text-align: center;">++</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="citation"
+data-cites="panditImplementingISOIEC2024"><a
+href="#ref-panditImplementingISOIEC2024"
+role="doc-biblioref">[83]</a></span></td>
+<td style="text-align: center;">2024</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In this context, DPV’s specifications were compared against other
+state of the art vocabularies in the data protection domain regarding
+their ability to represent information related to GDPR rights and
+duties <span class="citation" data-cites="esteves_analysis_2022"><a
+href="#ref-esteves_analysis_2022" role="doc-biblioref">[43]</a></span>,
+their machine-readability, maintenance, accessibility, GDPR support and
+existence of compliance tools <span class="citation"
+data-cites="asgarinia_who_2023"><a href="#ref-asgarinia_who_2023"
+role="doc-biblioref">[60]</a></span>, and their capacity to aid with
+data interoperability and adhere to the FAIR principles <span
+class="citation" data-cites="thalhath_metaprofiles_2020"><a
+href="#ref-thalhath_metaprofiles_2020"
+role="doc-biblioref">[13]</a></span>. In all mentioned surveys, DPV
+obtained a higher score compared with other existing solutions. When it
+comes to extensions performed over DPV, most were contributed back to
+DPV to be integrated into DPVCG’s outputs. Concerning work on GDPR
+requirements, there were proposed extensions focusing on consent <span
+class="citation"
+data-cites="pandit_representing_2020 debruyne_justtime_2020"><a
+href="#ref-debruyne_justtime_2020" role="doc-biblioref">[19]</a>, <a
+href="#ref-pandit_representing_2020"
+role="doc-biblioref">[20]</a></span>, in particular related to the
+processing of electronic health record data <span class="citation"
+data-cites="raza_semantic_2023"><a href="#ref-raza_semantic_2023"
+role="doc-biblioref">[77]</a></span>, as well as on building semantic
+models to represent records of processing activities <span
+class="citation"
+data-cites="ryan_common_2020 ryan_support_2022 ryan_dpcat_2022 ryan_building_2021"><a
+href="#ref-ryan_common_2020" role="doc-biblioref">[21]</a>, <a
+href="#ref-ryan_building_2021" role="doc-biblioref">[32]</a>, <a
+href="#ref-ryan_support_2022" role="doc-biblioref">[44]</a>, <a
+href="#ref-ryan_dpcat_2022" role="doc-biblioref">[45]</a></span>, data
+protection impact assessments <span class="citation"
+data-cites="pandit_semantic_2022"><a href="#ref-pandit_semantic_2022"
+role="doc-biblioref">[46]</a></span>, data breaches’ reports <span
+class="citation" data-cites="pandit_towards_2023"><a
+href="#ref-pandit_towards_2023" role="doc-biblioref">[76]</a></span>,
+and international data transfer notices <span class="citation"
+data-cites="hickey_gdpr_2021"><a href="#ref-hickey_gdpr_2021"
+role="doc-biblioref">[35]</a></span>. Moreover, extensions focusing on
+GDPR’s data subject rights and exemptions to these rights <span
+class="citation" data-cites="esteves_fostering_2022"><a
+href="#ref-esteves_fostering_2022" role="doc-biblioref">[47]</a></span>
+and on DGA requirements <span class="citation"
+data-cites="esteves_semantics_2023 esteves_towards_2023"><a
+href="#ref-esteves_towards_2023" role="doc-biblioref">[65]</a>, <a
+href="#ref-esteves_semantics_2023" role="doc-biblioref">[75]</a></span>
+were also contributed back to DPVCG’s outputs.</p>
+<p>In terms of applications to specific use cases, there is a body of
+work focusing on providing tools for auditing and GDPR compliance
+evaluation <span class="citation"
+data-cites="ryan_design_2020 ryan_gdpr_2021 taheri_compliance_2023"><a
+href="#ref-ryan_design_2020" role="doc-biblioref">[17]</a>, <a
+href="#ref-ryan_gdpr_2021" role="doc-biblioref">[30]</a>, <a
+href="#ref-taheri_compliance_2023" role="doc-biblioref">[67]</a></span>,
+on data minimisation <span class="citation"
+data-cites="garcia_towards_2021"><a href="#ref-garcia_towards_2021"
+role="doc-biblioref">[34]</a></span>, as well as on the documentation
+and annotation of privacy policies <span class="citation"
+data-cites="leone_role_2020 leone_legal_2021 krasnashchok_towards_2020 gupta_oppo_2023"><a
+href="#ref-krasnashchok_towards_2020" role="doc-biblioref">[15]</a>, <a
+href="#ref-leone_role_2020" role="doc-biblioref">[16]</a>, <a
+href="#ref-leone_legal_2021" role="doc-biblioref">[33]</a>, <a
+href="#ref-gupta_oppo_2023" role="doc-biblioref">[73]</a></span> and
+privacy preferences <span class="citation"
+data-cites="becher_contra_2022"><a href="#ref-becher_contra_2022"
+role="doc-biblioref">[54]</a></span>. Moreover, ML models were trained
+with DPV’s taxonomies to identify personal data processing activities in
+code repositories <span class="citation"
+data-cites="tang_helping_2023 herwanto_leveraging_2024"><a
+href="#ref-tang_helping_2023" role="doc-biblioref">[64]</a>, <a
+href="#ref-herwanto_leveraging_2024"
+role="doc-biblioref">[79]</a></span> and textual datasets <span
+class="citation"
+data-cites="gambarelli_privaframe_2022 gambarelli_is_2023"><a
+href="#ref-gambarelli_privaframe_2022" role="doc-biblioref">[52]</a>, <a
+href="#ref-gambarelli_is_2023" role="doc-biblioref">[61]</a></span>.
+DPV’s outputs were also used to model access and usage control
+policies <span class="citation"
+data-cites="calvaresi_personal_2020 calbimonte_decentralized_2020 ekaputra_semanticenabled_2021 zichichi_decentralized_2023"><a
+href="#ref-calvaresi_personal_2020" role="doc-biblioref">[14]</a>, <a
+href="#ref-calbimonte_decentralized_2020" role="doc-biblioref">[18]</a>,
+<a href="#ref-ekaputra_semanticenabled_2021"
+role="doc-biblioref">[31]</a>, <a
+href="#ref-zichichi_decentralized_2023"
+role="doc-biblioref">[74]</a></span>, and in particular applied to
+Solid <span class="citation"
+data-cites="esteves_odrl_2021 esteves_using_2022 debackere_policyoriented_2022 debackere_enforcing_2022 florea_is_2023 bailly_prototyping_2023 esteves_using_2023"><a
+href="#ref-esteves_odrl_2021" role="doc-biblioref">[6]</a>, <a
+href="#ref-esteves_using_2022" role="doc-biblioref">[49]</a>–<a
+href="#ref-debackere_enforcing_2022" role="doc-biblioref">[51]</a>, <a
+href="#ref-bailly_prototyping_2023" role="doc-biblioref">[63]</a>, <a
+href="#ref-esteves_using_2023" role="doc-biblioref">[66]</a>, <a
+href="#ref-florea_is_2023" role="doc-biblioref">[70]</a></span> and
+health data-sharing use cases <span class="citation"
+data-cites="sun_citizencentric_2023 pandit_enhancing_2024"><a
+href="#ref-sun_citizencentric_2023" role="doc-biblioref">[68]</a>, <a
+href="#ref-pandit_enhancing_2024" role="doc-biblioref">[78]</a></span>,
+as well as to describe consent records and contracts for sensor
+data <span class="citation"
+data-cites="kurteva_smashhitcore_2023 kurteva_making_2022"><a
+href="#ref-kurteva_making_2022" role="doc-biblioref">[53]</a>, <a
+href="#ref-kurteva_smashhitcore_2023"
+role="doc-biblioref">[72]</a></span>. In the context of data spaces, DPV
+was used to provide descriptions of health data handling
+activities <span class="citation" data-cites="hernandez_tikd_2022"><a
+href="#ref-hernandez_tikd_2022" role="doc-biblioref">[55]</a></span> and
+to create user-centric privacy interfaces <span class="citation"
+data-cites="grunewald_enabling_2023 navarrogallinad_evaluating_2023 gallinad_usable_2023"><a
+href="#ref-grunewald_enabling_2023" role="doc-biblioref">[62]</a>, <a
+href="#ref-navarrogallinad_evaluating_2023"
+role="doc-biblioref">[69]</a>, <a href="#ref-gallinad_usable_2023"
+role="doc-biblioref">[71]</a></span>.</p>
+<h3 id="sec:adoption-project">Projects and Industrial use of DPV</h3>
+<p>DPV and DPVCG are outputs of the SPECIAL H2020 project and were
+actively developed and used within the project. In addition to this, DPV
+was also used in TRAPEZE, MOSAICrOWN, smashHit, FAIRVASC, and PROTECT
+ITN projects funded under the EU’s H2020 programme which involved both
+academic and commercial partners. In addition, SPECIAL and TRAPEZE also
+included a Data Protection Authority who provided legal expertise in
+implementation and design of ontologies. TRAPEZE actively contributed
+back to the DPV and was instrumental in identifying the design structure
+where both RDFS+SKOS and OWL serialisations were developed, and
+supported development of a multilingual documentation framework to be
+implemented in future versions.</p>
+<p>In addition to the use of DPV in industrial context in the above
+projects, companies that actively utilise DPV include Signatu<a
+href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> — which develops legal compliance
+solutions, JLINC<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> which develops digital data
+agreements, and Inrupt<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a> which develops Solid specifications
+and implementations. The DPVCG has received contributions from these
+companies, with Signatu being an active contributor by providing legal
+expertise and requirements for industrial applications.</p>
+<h3 id="sec:adoption-standards">Use of DPV in Standards</h3>
+<p>ISO/IEC TS 27560:2023 is a Technical Specification (TS) describing a
+‘consent record information structure’, which defines the specific
+information to be maintained in consent records. DPV’s consent modelling
+played a significant part in the development of this standard based on
+sharing the knowledge<a href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a> of legal and semantic requirements
+regarding consent records and receipts. The annex of 27560:2023 provides
+examples of consent records and receipts using JSON-LD where DPV is
+explicitly referenced in the document and its concepts are used as to
+define the schema (e.g., <em>hasPurpose</em> and instances (e.g.,
+<em>Service Provision</em>).</p>
+<p>The IEEE P7012 Working Group is developing a specification to define
+how “personal privacy terms are proffered and how they can be read and
+agreed to by machines”. It explicitly references DPV as the vocabulary
+to describe activities regarding processing of personal data in an
+interoperable manner.</p>
+<h2 id="sec:overview">Data Privacy Vocabulary 2.0</h2>
+<h3 id="overview">Overview</h3>
+<p>The motivation of the Data Privacy Vocabulary (DPV) is to provide a
+‘data model’ or a ‘taxonomy’ of concepts that act as a vocabulary for
+the interoperable representation and exchange of information about
+personal data and its processing. For this, the DPV specification
+represents an abstract model of concepts and relationships that can be
+implemented and applied using technologies appropriate to the use-case’s
+requirements.</p>
+<figure>
+    <img src="img/067-overview-dpv-2.0.png">
+    <figcaption>Overview of concepts in DPV and their extensions</figcaption>
+</figure>
+<p>The core concepts in DPV, as shown in Figure <a href="#fig:dpv"
+data-reference-type="ref" data-reference="fig:dpv">[fig:dpv]</a>, are
+broadly as follows:</p>
+<ul>
+<li><p><strong>Purpose</strong>: end-goal for why personal data is
+processed, e.g., Service Provision</p></li>
+<li><p><strong>Processing</strong>: representing operations over
+personal data, e.g., Collect, Store</p></li>
+<li><p><strong>Personal Data</strong>: categories of personal data
+involved</p></li>
+<li><p><strong>Legal Basis</strong>: justification in law for performing
+this activity</p></li>
+<li><p><strong>Legal Roles</strong>: Data Controller, Data Subject,
+etc.</p></li>
+<li><p><strong>Technical and Organisational Measures</strong>:
+safeguarding activities</p></li>
+<li><p><strong>Processing Context</strong>: storage conditions,
+automation, scale and scope</p></li>
+<li><p><strong>Context</strong>: concepts other than the above, e.g.,
+Necessity, Duration, Frequency.</p></li>
+<li><p><strong>Rights</strong>: legally recognised rights associated
+with activities</p></li>
+<li><p><strong>Risk and Risk Mitigation</strong>: managing risks,
+consequences, and impacts</p></li>
+</ul>
+<p>Each of these ‘core concepts’ are expanded into taxonomies to reflect
+their application in use-cases. The taxonomies also provide ‘knowledge’
+by asserting categorisation based on the core concepts. For example,
+<em>Personal Data</em> is a core concept which is specialised into
+<em>Sensitive Personal Data</em>, and the taxonomy expanding upon
+personal data contains some instances asserted as being sensitive. An
+adopter therefore not only gets a taxonomy of personal data, but is also
+able to utilise the categorisation of it into sensitive personal
+data.</p>
+<p>Extensions are a collection of concepts provided in a separate
+namespace. They are used to represent specific concepts in jurisdictions
+and regulations, for example <em>Consent</em> is present in the ‘main’
+or ‘core’ DPV, and is expanded upon in the <em>EU-GDPR</em> extension to
+represent the specific requirements for consent under GDPR. Extensions
+are also used to provide a large group of concepts for a specific topic
+as their inclusion in the main vocabulary would not be practical or
+would introduce ambiguities between concepts. For example, the
+<em>Personal Data</em> extension provides a taxonomy of personal data
+categories, which were taken out of the main vocabulary due to ambiguity
+and confusion in concepts such as <em>Location</em> being used for both
+personal data and data storage location.</p>
+<p>A list of ongoing work in DPVCG is as follows:</p>
+<ul>
+<li><p>Data Privacy Specification (DPV) – <a href="https://w3id.org/dpv"
+class="uri">https://w3id.org/dpv</a></p></li>
+<li><p>Personal Data Concepts extension (PD) – <a
+href="https://w3id.org/dpv/pd"
+class="uri">https://w3id.org/dpv/pd</a></p></li>
+<li><p>Location concepts extension (LOC) – <a
+href="https://w3id.org/dpv/loc"
+class="uri">https://w3id.org/dpv/loc</a></p></li>
+<li><p>Legal concepts extension (LEGAL) – <a
+href="https://w3id.org/dpv/legal"
+class="uri">https://w3id.org/dpv/legal</a></p></li>
+<li><p>EU GDPR concepts (EU-GDPR) – <a
+href="https://w3id.org/dpv/legal/eu/gdpr"
+class="uri">https://w3id.org/dpv/legal/eu/gdpr</a></p></li>
+<li><p>EU DGA concepts (EU-DGA) – <a
+href="https://w3id.org/dpv/legal/eu/dga"
+class="uri">https://w3id.org/dpv/legal/eu/dga</a></p></li>
+<li><p>EU AI Act concepts (EU-AIAct) – <a
+href="https://w3id.org/dpv/legal/eu/aiact"
+class="uri">https://w3id.org/dpv/legal/eu/aiact</a></p></li>
+<li><p>Legal Concepts for Ireland, Germany, United Kingdom, USA – <a
+href="https://w3id.org/dpv/legal/IE"
+class="uri">https://w3id.org/dpv/legal/IE</a> (Replace <em>IE</em> with
+ISO 3166-1 code, e.g., IE/DE/GB/US)</p></li>
+<li><p>Risk Management Concepts (RISK) – <a
+href="https://w3id.org/dpv/risk"
+class="uri">https://w3id.org/dpv/risk</a></p></li>
+<li><p>Technology Concepts (TECH) – <a href="https://w3id.org/dpv/tech"
+class="uri">https://w3id.org/dpv/tech</a></p></li>
+<li><p>AI Technology Concepts (AI) – <a href="https://w3id.org/dpv/ai"
+class="uri">https://w3id.org/dpv/ai</a></p></li>
+<li><p>Justifications – <a href="https://w3id.org/dpv/justifications"
+class="uri">https://w3id.org/dpv/justifications</a></p></li>
+</ul>
+<p>To assist newcomers in understanding the structure of DPV and how its
+concepts are organised — a <em>Primer</em><a href="#fn10"
+class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>
+document has been developed. In addition, the documentation is
+continually refined to provide illustrative guidance and examples<a
+href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>, and a searchable index<a
+href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a> of concepts is also provided. The
+below example shows the use of DPV in implementing consent records as
+used in ISO/IEC TS 27560:2023 Privacy technologies — Consent record
+information structure <span class="citation"
+data-cites="panditImplementingISOIEC2024"><a
+href="#ref-panditImplementingISOIEC2024"
+role="doc-biblioref">[83]</a></span>, where this work was recently also
+presented to the EU Commission:</p>
+<pre class="turtle" data-fontsize="\footnotesize"><code>@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dpv: &lt;https://w3id.org/dpv#&gt; .
+@prefix loc: &lt;https://w3id.org/dpv/loc#&gt; .
+@prefix eu-gdpr: &lt;https://w3id.org/dpv/legal/eu/gdpr#&gt; .
+@prefix : &lt;https://example.com/&gt; .
+
+:63ded36f-4acd-4f3c-991e-6cb636698523 a dpv:ConsentRecord ;
+    dct:hasVersion &quot;ISO-27560&quot; ;
+    dpv:hasIdentifier &quot;63ded36f-4acd-4f3c-991e-6cb636698523&quot; ;
+    dpv:hasDataSubject &quot;96121fde-199f-4848-8942-4436e270513a&quot; ;
+    dpv:hasNotice &lt;https://example.com/notice&gt; ;
+    dpv:hasProcess [
+        a dpv:Process ;
+        dct:title &quot;Send Newsletters with Seasonal Offers&quot;@en ;
+        dpv:hasPurpose dpv:Marketing ;
+        dpv:hasLegalBasis dpv:Consent, eu-gdpr:A6-1-a ;
+        dpv:hasPersonalData pd:Email ;
+        dpv:hasDataController ex:Acme ;
+        dpv:hasProcessing dpv:Collect, dpv:Store ;
+        dpv:hasStorageCondition [ 
+            dpv:hasLocation loc:IE ;
+            dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ;
+        ] ;
+        dpv:hasJurisdiction loc:EU ;
+        dpv:hasRecipient :Beta, :Epsilon ;
+    ] ;
+    dpv:hasConsentStatus dpv:ConsentGiven ;
+    dct:hasPart [
+        a dpv:ConsentGiven, dpv:ExplicitlyExpressedConsent ;
+        dpv:isIndicatedAtTime &quot;2021-05-28T12:24:00&quot;^^xsd:dateTime ;
+        dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ;
+        dpv:hasEntity &quot;96121fde-199f-4848-8942-4436e270513a&quot;
+    ] .</code></pre>
+<h3 id="major-changes-in-2.0">Major Changes in 2.0</h3>
+<p>DPV 2.0 and all its extensions contain 2394 concepts (with 2198
+classes and 196 properties), with 1017 concepts added and 805 concepts
+removed as compare to DPV 1.0. In DPV 1.0, only DPV, Personal Data (PD),
+and the EU-GDPR extension were provided as ‘complete’, with the others
+specified to be in <em>draft</em> mode. In DPV 2.0, DPV along with all
+of its extensions of PD, LOC (locations), LEGAL (including
+jurisdictional laws such as EU GDPR), RISK, TECH, AI, and Justifications
+have been provided as finalised resources. A detailed changelog<a
+href="#fn13" class="footnote-ref" id="fnref13"
+role="doc-noteref"><sup>13</sup></a> has been provided expanding on
+information in this section, including added/removed concepts in DPV and
+extensions.</p>
+<p><strong>Change in scope:</strong> The scope of concepts in DPV 1.0
+was limited to ‘processing of personal data’. In DPV 2.0, the scope was
+expanded to include ‘any data or technology’ to have the same semantic
+structure for management of both personal and non-personal data and
+technologies (including AI). This enables DPV to support regulations
+such as the Data Governance Act (DGA) which motivates ‘reuse of personal
+and non-personal data’ and the AI Act where existing DPV concepts such
+as <em>Purpose</em>, <em>Rights</em>, and <em>Risk</em> can be reused.
+While the scope of the DPVCG is still limited to personal data (and
+associated technologies), the expansion of scope for concepts enables
+the DPV to be utilised for a much broader range of use-cases and
+regulations. More importantly, it provides a common mechanism for
+representing information about activities in the so called ‘AI and Data’
+regulations, and makes alignments with existing standards such as ODRL
+easier to manage. The expansion of scope is backwards compatible with
+DPV 1.0 as it does not change the application and interpretation of
+concepts.</p>
+<p><strong>Change in semantics:</strong> DPV 1.0 was provided with three
+different semantics: a custom extension of SKOS as the ‘default’ along
+with RDFS+SKOS and OWL2 variants — each with a distinct namespace. In
+DPV 2.0, the custom SKOS extension has been removed and replaced with
+RDFS+SKOS as the default with an OWL2 variant — each with a distinct
+namespace. This change is largely backwards-compatible as both DPV 1.0
+and 2.0 use <code>skos:Concept</code> with the IRI for DPV 1.0 default
+and RDFS+SKOS redirected to DPV 2.0 RDFS+SKOS namespace, and that for
+DPV 1.0 OWL2 to DPV 2.0 OWL2 namespace.</p>
+<p><strong>Versioned IRIs:</strong> DPV 1.0 utilised unversioned IRIs
+(e.g., <code>w3id.org/dpv</code> — which is not considered best
+practice. DPV 2.0 introduces versioned IRIs to enable distinguishing
+between versions and choosing a specific version to use regardless of
+future changes. The versioned IRI for DPV 1.0 is
+<code>w3id.org/dpv/1.0</code> and that for DPV 2.0 is
+<code>w3id.org/dpv/2.0</code>. Extension namespaces are constructed by
+suffixing the versioned DPV namespace, e.g.,
+<code>w3id.org/dpv/2.0/pd</code>. The unversioned IRIs redirect to the
+latest DPV version.</p>
+<p><strong>Change in extensions:</strong> In addition to introduction of
+new extensions, DPV 2.0 also changes the namespaces and management of
+extensions. In DPV 1.0, the <code>dpv-pd</code>, <code>dpv-legal</code>,
+<code>dpv-gdpr</code>, <code>dpv-nace</code>, and <code>dpv-tech</code>
+extensions used the prefix <code>dpv-</code> in their folder structure
+and namespaces whereas <code>risk</code> and <code>rights</code> did
+not. In DPV 2.0, extensions are defined without the prefix for
+consistency.</p>
+<p>The <code>dpv-legal</code> extension in DPV 1.0 was a <em>draft</em>
+providing legal concepts (laws, authorities) and locations based on ISO
+3166-1 codes<a href="#fn14" class="footnote-ref" id="fnref14"
+role="doc-noteref"><sup>14</sup></a>. In DPV 2.0 it has been split into
+<code>legal</code> and <code>loc</code> (locations) extensions for
+separation of concerns. Both legal and location extensions are provided
+as completed in DPV 2.0. Further, the location concepts have been
+aligned with EU Vocabularies<a href="#fn15" class="footnote-ref"
+id="fnref15" role="doc-noteref"><sup>15</sup></a> as an example of
+connecting DPV locations to external vocabularies.</p>
+<p>The namespaces and organisation of legal concepts in DPV 2.0 has been
+redesigned to distinguish between jurisdictions and laws by using the
+ISO 3166-1 codes to create a structured path. For example, the namespace
+for EU-GDPR extension is <code>w3id.org/dpv/legal/eu/gdpr</code> — which
+reflects that it is a legal extension associated with EU jurisdiction
+and models the GDPR regulation. This mechanism also enables laws with
+the same name in other jurisdictions to be declared without conflicts
+e.g. UK’s GDPR would be under the namespace <code>/legal/gb/gdpr</code>.
+And it keeps all laws associated with a specific jursidiction within the
+same path, e.g., DGA, NIS2, and AI Act are represented within the
+<code>/legal/eu</code> namespace as EU laws. The <em>draft</em> EU
+Rights extension in DPV 1.0 providing concepts from EU Charter of
+Fundamental Rights has been moved to <code>/legal/eu/rights</code>
+namespace in DPV 2.0 following this reorganisation.</p>
+<p>The extension <code>dpv-nace</code> modelled the NACE<a href="#fn16"
+class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+2.0 taxonomy of economic activities provided by the EU as RDFS concepts
+for use with OWL vocabularies as the EU uses SKOS to declare NACE
+concepts. The extension has been removed in DPV 2.0 as NACE has recently
+been updated to version 2.1, and the extension did not provide any
+meaningful benefit and increased maintenance cost. To the best of our
+knowledge, the extension was not being used, and the recommendation is
+to use the authoritative NACE taxonomy going ahead.</p>
+<p>The expected impact of these changes for DPV-GDPR and DPV-PD in DPV
+1.0 is minimal as their unversioned IRIs are redirected to DPV 2.0 which
+contains the same concepts. For draft extensions in DPV 1.0, there are
+breaking changes — most severely in the case of legal/location concepts
+due to their separation into two extensions. In case an adopter has been
+using these draft extensions without being aware of impending changes,
+we estimate a minimal effort to use the new (and improved) DPV 2.0
+extensions instead. In any case, with the versioned IRIs the adopters
+can continue use of DPV 1.0 if desired.</p>
+<p><strong>Changes in DPV Concepts:</strong> Of the 911 concepts in DPV
+2.0, 311 are new additions and 56 concepts were removed as compared to
+DPV 1.0. The removed concepts represent refinements<a href="#fn17"
+class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+and moving concepts to an extension, e.g., harms and other impacts were
+moved to the RISK extension.</p>
+<h2 id="sec:design">Methodology &amp; Design Principles</h2>
+<h3 id="management-by-dpvcg">Management by DPVCG</h3>
+<p>The DPVCG used the W3C infrastructure to manage development of DPV,
+which consisted of the mailing list, task management, and namespace
+management (<em>w3.org</em>). After the migration of W3C to GitHub,
+DPVCG utilised the provided repository<a href="#fn18"
+class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+for version control, task management, discussions, and contributions. In
+its meetings, the group utilised spreadsheets (using Google Sheets for
+collaboration) to support the (lack of) technical knowledge of members
+and ease of discussion, commenting, and sharing. Formal discussions and
+approvals were undertaken via the mailing list and meetings.</p>
+<h3 id="ontology-engineering-process">Ontology Engineering Process</h3>
+<p>The DPVCG consists of experts from multiple disciplines — computer
+science, law, sociology, authorities, and others. The primary role of
+its members is to discuss and reach consensus on the scope and
+information to be represented in DPV. Ontology engineers are then
+responsible for providing the appropriate modelling of concepts and
+organisation of DPV as a semantic web resource. While the DPVCG did not
+formally establish an ontology engineering methodology, practices that
+were adopted and evolved in the community reflect commonly utilised
+engineering methodologies of NeOn <span class="citation"
+data-cites="suarez2011neon"><a href="#ref-suarez2011neon"
+role="doc-biblioref">[84]</a></span> and LOT <span class="citation"
+data-cites="poveda2022lot"><a href="#ref-poveda2022lot"
+role="doc-biblioref">[85]</a></span>.</p>
+<p>The development process generally contained a member of the group
+proposing addition or modification of a concept, with information shared
+potentially via the mailing list and/or GitHub repo<a href="#fn19"
+class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>,
+and discussions and decisions within the meetings. Domain experts
+offered their advice on the information being modelled and what aspects
+of this should be considered, which were then formalised and shared as
+proposals. The group then discussed and voted to resolve the proposal,
+with minutes of the meeting reflecting the discussions and
+resolutions.</p>
+<p>Compared to formal ontology engineering methods, this ad-hoc approach
+lacked the explicit documentation of requirements, competency questions,
+and use-cases — which would have been expensive to maintain given the
+limited (regular) participation of volunteers. However, given the
+stability of the group and continued iteration and adoption of DPV, the
+group has identified this as an important step to undertake in the
+future.</p>
+<p>The data in spreadsheets was structured to support ontology/taxonomy
+creation while still being comprehensible to the non-semantic web
+members. For generating the RDF serialisations, a custom documentation
+generator was developed which downloaded the spreadsheets, extracted the
+concepts and serialised them into multiple RDF formats, and generated
+the corresponding HTMLs. Existing tools such as WIDOCO <span
+class="citation" data-cites="garijo2017widoco"><a
+href="#ref-garijo2017widoco" role="doc-biblioref">[86]</a></span> were
+not used due to their limitation in control of outputs — for example DPV
+has taxonomies of concepts for purposes, personal data, etc. which would
+be all grouped together in a giant list in WIDOCO outputs, and which in
+DPV outputs are grouped separately to support adopters seeing related
+concepts grouped together. WIDOCO also did not support the dual
+RDFS+SKOS and OWL modelling outputs of DPV, or the ReSpec template<a
+href="#fn20" class="footnote-ref" id="fnref20"
+role="doc-noteref"><sup>20</sup></a> common in W3C outputs.</p>
+<p>DPV follows best practices and guidelines established within the
+semantic web community. Namely, the W3C Best Practices for Publishing
+Linked Data<a href="#fn21" class="footnote-ref" id="fnref21"
+role="doc-noteref"><sup>21</sup></a>, WIDOCO best practices <span
+class="citation" data-cites="garijo2017widoco"><a
+href="#ref-garijo2017widoco" role="doc-biblioref">[86]</a></span> with
+OOPS!<a href="#fn22" class="footnote-ref" id="fnref22"
+role="doc-noteref"><sup>22</sup></a> and FOOPS!<a href="#fn23"
+class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
+for evaluation, W3ID<a href="#fn24" class="footnote-ref" id="fnref24"
+role="doc-noteref"><sup>24</sup></a> for permanent IRIs, GitHub<a
+href="#fn25" class="footnote-ref" id="fnref25"
+role="doc-noteref"><sup>25</sup></a> for version control and
+collaboration, and Zenodo<a href="#fn26" class="footnote-ref"
+id="fnref26" role="doc-noteref"><sup>26</sup></a> for archival.</p>
+<h3 id="implications-of-using-skos-and-owl">Implications of Using SKOS
+and OWL</h3>
+<p>As described in the requirements in Section <a href="#sec:req"
+data-reference-type="ref" data-reference="sec:req">2</a>, use-cases
+utilising DPV involve cases where its concepts are used as instances
+(taxonomy) or as a schema that is instantiated (ontology). Initially,
+DPV was only provided as an OWL2 ontology. This was expanded upon in DPV
+1.0 which used custom SKOS extensions to define the ‘base’ vocabulary
+with serialisations in RDFS+SKOS and OWL2 with the goal of supporting
+both categories of use-cases. In DPV 2.0, the custom SKOS extension was
+removed in favour of using RDFS+SKOS as standards for the default
+serialisation and providing an alternative serialisation for OWL2.</p>
+<p>The RDFS+SKOS serialisation defines concepts as instances of
+<code>rdfs:Class</code> and <code>skos:Concept</code>. To create a
+hierarchical taxonomy, the concepts are represented as instances of a
+top-concept (e.g., <code>dpv:Marketing</code> as an instance of
+<code>dpv:Purpose</code>) and <code>skos:broader/narrower</code> is used
+to define the relation between instances. In OWL2, concepts are defined
+as <code>owl:Class</code> and the hierarchy is defined using
+<code>rdfs:subClassOf</code>. The justification for why DPV is provided
+with two different semantics is illustrated in Figure <a
+href="#fig:semantic-implications" data-reference-type="ref"
+data-reference="fig:semantic-implications">[fig:semantic-implications]</a>.</p>
+<figure>
+    <img src="img/067-semantic_implications.png">
+    <figcaption>Semantic implications of using DPV with RDFS+SKOS and OWL semantics</figcaption>
+</figure>
+<p>The Figure compares the implementation of RDFS+SKOS and OWL2 for an
+use-case that uses the purpose taxonomy from DPV. The use-case involves
+three steps of documentation (not shown in the figure) where the
+organisation first records that its planned purpose is ‘Direct
+Marketing’, and then later it creates ‘CampaignA’ as a specific form of
+direct marketing, and even later creates ‘CampaignB’ as a specific part
+of ‘CampaignA’ direct marketing.</p>
+<p>In RDFS+SKOS, both <code>dpv:DirectMarketing</code> and
+<code>ex:CampaignA</code> are both defined as an instance of
+<code>dpv:Purpose</code>, and associated with each other using
+<code>skos:broader</code>. Using these as the object with property
+<code>dpv:hasPurpose</code> is correct as its range is (instances of)
+<code>dpv:Purpose</code>. Later, when <code>ex:CampaignB</code> is
+introduced, it does not require changes to DPV or the use-case graph
+(e.g., to convert instances into classes) as the new concept is also
+defined as an instance of <code>dpv:Purpose</code> and can be used with
+the property.</p>
+<p>In OWL2, all DPV concepts are defined as instances of
+<code>owl:Class</code> and associated with each other using
+<code>rdfs:subClassOf</code>. The use-case concepts can now be declared
+as either subclasses of DPV concepts or as instances. In either case,
+DPV concepts cannot be directly used with the property
+<code>dpv:hasPurpose</code> as they are not instances of
+<code>dpv:Purpose</code> (shown in red). If the use-case creates
+instances — as shown where <code>ex:CampaignA</code> is created as an
+instance of <code>dpv:DirectMarketing</code> — then the use-case concept
+can be correctly used with <code>dpv:hasPurpose</code>. However, when
+<code>ex:CampaignB</code> is later introduced, it cannot be subclass of
+<code>ex:CampaignA</code> as ‘subclass of instance’ is undefined<a
+href="#fn27" class="footnote-ref" id="fnref27"
+role="doc-noteref"><sup>27</sup></a> in OWL2. The relation between the
+two use-case concepts thus must be defined using either SKOS (thereby
+mixing SKOS and OWL2) or by using or creating another property, e.g.,
+<code>dct:hasPart</code>. At this point, the use-case should reengineer
+its ontology by creating a class representing <code>ex:CampaignA</code>
+and creating the necessary subclass and instances to represent the
+relationship with <code>ex:CampaignB</code>. This however does not solve
+the issue with directly using DPV concepts as instances.</p>
+<p>Thus, the RDFS+SKOS model is suitable for when DPV is to be used as a
+controlled taxonomy with a ‘lightweight ontology’ that supports
+extending the taxonomy in use-cases. Conversely, the OWL2 model is
+better suited for cases where formal reasoning is needed, and where
+sufficient ontology engineering capabilities exist to address changes in
+use-cases. By providing both serialisations, DPV enables the adopters to
+choose the most suitable serialisation that supports their use-case
+and/or existing implementations, and retains semantic interoperability
+based on converting between SKOS and OWL2<a href="#fn28"
+class="footnote-ref" id="fnref28"
+role="doc-noteref"><sup>28</sup></a>.</p>
+<h2 id="sec:conclusion">Conclusion &amp; Future Work</h2>
+<p>The Data Privacy Vocabulary (DPV), in its second iteration, thus
+provides a significantly richer, extended, and state of the art resource
+which fills an important niche in the current landscape regarding
+expression of information associated with personal data processing and
+the use of technologies. This article highlighted the motivation for its
+development, described its methodology and design processes, and
+showcased its value evidenced through adoption across academia,
+industry, and standards.</p>
+<p>DPV version 2 represents a significant milestone in the development
+of a vocabulary to support legally relevant processes across multiple
+regulations and jurisdictions, as well as recent advances in AI and data
+sharing regulations such as through EU’s DGA and AI Act, and in
+architectures such as Solid and IDSA. The DPVCG, in continuing to
+develop the DPV, welcomes more participation and contributions to
+support its vision of providing an interoperable vocabulary that
+provides value and supports making legal compliance processes more
+efficient and aligned for all stakeholders.</p>
+<p>The DPVCG plans to refine its TECH and AI extensions based on
+existing works <span class="citation"
+data-cites="golpayeganiAIROOntologyRepresenting2022 golpayeganiAICardsApplied2024"><a
+href="#ref-golpayeganiAIROOntologyRepresenting2022"
+role="doc-biblioref">[80]</a>, <a
+href="#ref-golpayeganiAICardsApplied2024"
+role="doc-biblioref">[82]</a></span> providing taxonomies for AI
+techniques, capabilities, lifecycle stages, risks and risk sources, and
+to enable stakeholders to express specific use-cases (e.g., involving
+generative AI) in a manner that supports requirements for EU AI Act and
+ISO standards <span class="citation"
+data-cites="golpayeganiAICardsApplied2024"><a
+href="#ref-golpayeganiAICardsApplied2024"
+role="doc-biblioref">[82]</a></span>. The DPVCG is also continuing its
+efforts to develop vocabularies to represent key ‘data and AI
+regulations’ notably in EU the Digital Services Act (DSA), Data Markets
+Act (DMA), Data Act, and Data Spaces, and modelling laws in other
+jurisdictions, e.g., Ireland, USA, and UK.</p>
+<p>To support the application of DPV in regulatory environments, the
+DPVCG is developing guides based on existing work that utilises DPV to
+support GDPR implementations. These include Records of Processing
+Activities (ROPA) <span class="citation" data-cites="ryan_dpcat_2022"><a
+href="#ref-ryan_dpcat_2022" role="doc-biblioref">[45]</a></span>, Data
+Protection Impact Assessment (DPIA) <span class="citation"
+data-cites="pandit_semantic_2022"><a href="#ref-pandit_semantic_2022"
+role="doc-biblioref">[46]</a></span>, Data Breaches <span
+class="citation" data-cites="pandit_towards_2023"><a
+href="#ref-pandit_towards_2023" role="doc-biblioref">[76]</a></span>,
+and Rights management. To support the implementation of decentralised
+and user-centric applications of DPV, such as those envisioned in the
+IDSA, IEEE P7012 and Solid, the DPVCG is developing vocabularies and
+guides — for example implementation of ISO Standards for (semantic)
+privacy notices. In addition, the DPV is also looking to incorporate the
+Standard Data Protection Model<a href="#fn29" class="footnote-ref"
+id="fnref29" role="doc-noteref"><sup>29</sup></a> provided by the German
+data protection authority regarding implementation of concrete technical
+and organisational measures.</p>
+<h4 class="unnumbered" id="resource-availability-statement">Resource
+Availability Statement:</h4>
+<p>The source and releases for the DPV are available via GitHub: <a
+href="https://github.com/w3c/dpv"
+class="uri">https://github.com/w3c/dpv</a> and have been deposited in
+Zenodo for long-term archival: <a
+href="https://doi.org/10.5281/zenodo.12505840"
+class="uri">https://doi.org/10.5281/zenodo.12505840</a>.</p>
+<h4 class="unnumbered" id="acknowledgements-of-funding">Acknowledgements
+of Funding</h4>
+<p>The DPVCG was established as part of the SPECIAL H2020 Project, which
+received funding from the European Union’s Horizon 2020 research and
+innovation programme under Grant#731601 from 2017 to 2019. Harshvardhan
+J. Pandit was funded to work on DPV from 2020 to 2022 by the Irish
+Research Council’s Government of Ireland Postdoctoral Fellowship
+Grant#GOIPD/2020/790. The ADAPT SFI Centre for Digital Media Technology
+is funded by Science Foundation Ireland through the SFI Research Centres
+Programme and is co-funded under the European Regional Development Fund
+(ERDF) through Grant#13/RC/2106 (2018 to 2020) and Grant#13/RC/2106_P2
+(2021 onwards). The contributions of Piero Bonatti and Luigi Sauro to
+the DPVCG have been funded by the European Union’s Horizon 2020 research
+and innovation programme under grant agreement N. 731601 (SPECIAL) until
+2019, and under Grant#883464 (TRAPEZE) from 2020 until 2023. The
+contributions of Beatriz Esteves and Delaram Golpayegani have received
+funding through the PROTECT ITN Project from the European Union’s
+Horizon 2020 research and innovation programme under the Marie
+Skłodowska-Curie Grant#813497. Beatriz is also funded by SolidLab
+Vlaanderen (Flemish Government, EWI and RRF project VV023/10). The
+contributions of Julian Flake have received funding from the German
+Federal Ministry of Education and Research (BMBF) grant#16KIS1298
+(AI-NET PROTECT), from the European Union’s Horizon Europe Framework
+Programme grant#101129822 (TITAN) and from the European Union’s Digital
+Europe Programme grant#101123471 (EDGE-Skills).</p>
+<p>For the purpose of Open Access the authors have applied a CC-BY
+public copyright licence to any Author Accepted Manuscript version
+arising from this submission.</p>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-GDPR" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">European Commission, <span>“Regulation (EU)
+2016/679 of the european parliament and of the council of 27 april 2016
+on the protection of natural persons with regard to the processing of
+personal data and on the free movement of such data, and repealing
+directive 95/46/EC (GENERAL DATA PROTECTION REGULATION) (text with EEA
+relevance).”</span> 2016 [Online]. Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-panetto_creating_2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">H.
+J. Pandit <em>et al.</em>, <span>“Creating a <span>Vocabulary</span> for
+<span>Data</span> <span>Privacy</span>: <span>The</span>
+<span>First</span>-<span>Year</span> <span>Report</span> of
+<span>Data</span> <span>Privacy</span> <span>Vocabularies</span> and
+<span>Controls</span> <span>Community</span> <span>Group</span>
+(<span>DPVCG</span>),”</span> in <em>On the <span>Move</span> to
+<span>Meaningful</span> <span>Internet</span> <span>Systems</span>:
+<span>OTM</span> 2019 <span>Conferences</span></em>, 2019, vol. 11877,
+pp. 714–730, doi: <a
+href="https://doi.org/10.1007/978-3-030-33246-4_44">10.1007/978-3-030-33246-4_44</a>
+[Online]. Available: <a
+href="http://link.springer.com/10.1007/978-3-030-33246-4_44">http://link.springer.com/10.1007/978-3-030-33246-4_44</a>.
+[Accessed: 26-Jun-2020]</div>
+</div>
+<div id="ref-DGA" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">European Commission, <span>“Regulation (EU)
+2022/868 of the european parliament and of the council of 30 may 2022 on
+european data governance and amending regulation (EU) 2018/1724 (DATA
+GOVERNANCE ACT) (text with EEA relevance).”</span> 2022 [Online].
+Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R0868">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R0868</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-AIAct" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">European Commission, <span>“Proposal for a
+regulation of the european parliament and of the council laying down
+harmonised rules on aertificial intelligence (ARTIFICIAL INTELLIGENCE
+ACT) and amending certain union legislative acts.”</span> 2021 [Online].
+Available: <a
+href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex:52021PC0206">https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex:52021PC0206</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-ianella2007open" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R.
+Ianella, <span>“Open digital rights language (ODRL),”</span> <em>Open
+Content Licensing: Cultivating the Creative Commons</em>, 2007. </div>
+</div>
+<div id="ref-esteves_odrl_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">B.
+Esteves, H. J. Pandit, and V. Rodríguez-Doncel, <span>“<span>ODRL</span>
+<span>Profile</span> for <span>Expressing</span> <span>Consent</span>
+through <span>Granular</span> <span>Access</span> <span>Control</span>
+<span>Policies</span> in <span>Solid</span>,”</span> in <em>2021
+<span>IEEE</span> <span>European</span> <span>Symposium</span> on
+<span>Security</span> and <span>Privacy</span> <span>Workshops</span>
+(<span>EuroS</span> <span>PW</span>)</em>, 2021, pp. 298–306, doi: <a
+href="https://doi.org/10.1109/EuroSPW54576.2021.00038">10.1109/EuroSPW54576.2021.00038</a>.
+</div>
+</div>
+<div id="ref-bader2020international" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">S.
+Bader <em>et al.</em>, <span>“The international data spaces information
+model–an ontology for sovereign exchange of digital content,”</span> in
+<em>International semantic web conference</em>, 2020, pp. 176–192.
+</div>
+</div>
+<div id="ref-robaldo2020dapreco" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">L.
+Robaldo, C. Bartolini, and G. Lenzini, <span>“The DAPRECO knowledge
+base: Representing the GDPR in LegalRuleML,”</span> in <em>Proceedings
+of the twelfth language resources and evaluation conference</em>, 2020,
+pp. 5688–5697. </div>
+</div>
+<div id="ref-calvaresi_agentbased_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">D.
+Calvaresi, M. Schumacher, and J.-P. Calbimonte, <span>“Agent-based
+<span>Modeling</span> for <span>Ontology</span>-driven
+<span>Analysis</span> of <span>Patient</span>
+<span>Trajectories</span>,”</span> <em>Journal of Medical Systems</em>,
+vol. 44, no. 9, p. 158, 2020, doi: <a
+href="https://doi.org/10.1007/s10916-020-01620-8">10.1007/s10916-020-01620-8</a>.
+[Online]. Available: <a
+href="https://doi.org/10.1007/s10916-020-01620-8">https://doi.org/10.1007/s10916-020-01620-8</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-lieber_ecodalo_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">S.
+Lieber, B. De Meester, R. Verborgh, and A. Dimou,
+<span>“<span>EcoDaLo</span>: <span>Federating</span>
+<span>Advertisement</span> <span>Targeting</span> with
+<span>Linked</span> <span>Data</span>,”</span> in <em>Semantic
+<span>Systems</span>. <span>In</span> the <span>Era</span> of
+<span>Knowledge</span> <span>Graphs</span></em>, 2020, pp. 87–103, doi:
+<a
+href="https://doi.org/10.1007/978-3-030-59833-4_6">10.1007/978-3-030-59833-4_6</a>.
+</div>
+</div>
+<div id="ref-bonatti_machine_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">P.
+A. Bonatti, S. Kirrane, I. M. Petrova, and L. Sauro, <span>“Machine
+<span>Understandable</span> <span>Policies</span> and <span>GDPR</span>
+<span>Compliance</span> <span>Checking</span>,”</span> <em>KI -
+Künstliche Intelligenz</em>, vol. 34, no. 3, pp. 303–315, 2020, doi: <a
+href="https://doi.org/10.1007/s13218-020-00677-4">10.1007/s13218-020-00677-4</a>.
+[Online]. Available: <a
+href="https://doi.org/10.1007/s13218-020-00677-4">https://doi.org/10.1007/s13218-020-00677-4</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-matulevicius_method_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">R.
+Matulevičius, J. Tom, K. Kala, and E. Sing, <span>“A <span>Method</span>
+for <span>Managing</span> <span>GDPR</span> <span>Compliance</span> in
+<span>Business</span> <span>Processes</span>,”</span> in <em>Advanced
+<span>Information</span> <span>Systems</span>
+<span>Engineering</span></em>, 2020, pp. 100–112, doi: <a
+href="https://doi.org/10.1007/978-3-030-58135-0_9">10.1007/978-3-030-58135-0_9</a>.
+</div>
+</div>
+<div id="ref-thalhath_metaprofiles_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">N.
+Thalhath, M. Nagamori, and T. Sakaguchi,
+<span>“<span>MetaProfiles</span> - <span>A</span> <span>Mechanism</span>
+to <span>Express</span> <span>Metadata</span> <span>Schema</span>,
+<span>Privacy</span>, <span>Rights</span> and <span>Provenance</span>
+for <span>Data</span> <span>Interoperability</span>,”</span> in
+<em>Digital <span>Libraries</span> at <span>Times</span> of
+<span>Massive</span> <span>Societal</span> <span>Transition</span></em>,
+2020, pp. 364–370, doi: <a
+href="https://doi.org/10.1007/978-3-030-64452-9_34">10.1007/978-3-030-64452-9_34</a>.
+</div>
+</div>
+<div id="ref-calvaresi_personal_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">D.
+Calvaresi, M. Schumacher, and J.-P. Calbimonte, <span>“Personal
+<span>Data</span> <span>Privacy</span> <span>Semantics</span>
+in <span>Multi</span>-<span>Agent</span> <span>Systems</span>
+<span>Interactions</span>,”</span> in <em>Advances in
+<span>Practical</span> <span>Applications</span> of <span>Agents</span>,
+<span>Multi</span>-<span>Agent</span> <span>Systems</span>, and
+<span>Trustworthiness</span>. <span>The</span> <span>PAAMS</span>
+<span>Collection</span></em>, 2020, pp. 55–67, doi: <a
+href="https://doi.org/10.1007/978-3-030-49778-1_5">10.1007/978-3-030-49778-1_5</a>.
+</div>
+</div>
+<div id="ref-krasnashchok_towards_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K.
+Krasnashchok, M. Mustapha, A. Al Bassit, and S. Skhiri, <span>“Towards
+<span>Privacy</span> <span>Policy</span> <span>Conceptual</span>
+<span>Modeling</span>,”</span> in <em>Conceptual
+<span>Modeling</span></em>, 2020, pp. 429–438, doi: <a
+href="https://doi.org/10.1007/978-3-030-62522-1_32">10.1007/978-3-030-62522-1_32</a>.
+</div>
+</div>
+<div id="ref-leone_role_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">V.
+Leone and L. Di Caro, <span>“The <span>Role</span> of
+<span>Vocabulary</span> <span>Mediation</span> to <span>Discover</span>
+and <span>Represent</span> <span>Relevant</span>
+<span>Information</span> in <span>Privacy</span>
+<span>Policies</span>,”</span> in <em>Legal <span>Knowledge</span> and
+<span>Information</span> <span>Systems</span></em>, IOS Press, 2020, pp.
+73–82 [Online]. Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/FAIA200851">https://ebooks.iospress.nl/doi/10.3233/FAIA200851</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-ryan_design_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">P.
+Ryan, M. Crane, and R. Brennan, <span>“Design <span>Challenges</span>
+for <span>GDPR</span> <span>RegTech</span>,”</span> 2020, pp. 787–795
+[Online]. Available: <a
+href="https://www.scitepress.org/Link.aspx?doi=10.5220/0009464507870795">https://www.scitepress.org/Link.aspx?doi=10.5220/0009464507870795</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-calbimonte_decentralized_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[18] </div><div
+class="csl-right-inline">J.-P. Calbimonte, D. Calvaresi, and M.
+Schumacher, <span>“Decentralized <span>Management</span> of
+<span>Patient</span> <span>Proﬁles</span> and <span>Trajectories</span>
+through <span>Semantic</span> <span>Web</span>
+<span>Agents</span>,”</span> in <em>Proceedings of the
+<span>Third</span> <span>International</span> <span>Workshop</span> on
+<span>Semantic</span> <span>Web</span> <span>Meets</span>
+<span>Health</span> <span>Data</span> <span>Management</span>
+(<span>SWH</span> 2020) co-located with the 19th
+<span>International</span> <span>Semantic</span> <span>Web</span>
+<span>Conference</span> (<span>ISWC</span> 2020)</em>, 2020 [Online].
+Available: <a
+href="https://ceur-ws.org/Vol-2759/paper2.pdf">https://ceur-ws.org/Vol-2759/paper2.pdf</a></div>
+</div>
+<div id="ref-debruyne_justtime_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">C.
+Debruyne, H. J. Pandit, D. Lewis, and D. O’Sullivan,
+<span>“<span>‘<span>Just</span>-in-time’</span> generation of datasets
+by considering structured representations of given consent for
+<span>GDPR</span> compliance,”</span> <em>Knowledge and Information
+Systems</em>, vol. 62, no. 9, pp. 3615–3640, 2020, doi: <a
+href="https://doi.org/10.1007/s10115-020-01468-x">10.1007/s10115-020-01468-x</a>.
+[Online]. Available: <a
+href="https://doi.org/10.1007/s10115-020-01468-x">https://doi.org/10.1007/s10115-020-01468-x</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-pandit_representing_2020" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“Representing <span>Activities</span> associated with
+<span>Processing</span> of <span>Personal</span> <span>Data</span> and
+<span>Consent</span> using <span>Semantic</span> <span>Web</span> for
+<span>GDPR</span> <span>Compliance</span>,”</span> {PhD} thesis, Trinity
+College Dublin, 2020 [Online]. Available: <a
+href="http://hdl.handle.net/2262/92446">http://hdl.handle.net/2262/92446</a></div>
+</div>
+<div id="ref-ryan_common_2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">P.
+Ryan, H. J. Pandit, and R. Brennan, <span>“A <span>Common</span>
+<span>Semantic</span> <span>Model</span> of the <span>GDPR</span>
+<span>Register</span> of <span>Processing</span>
+<span>Activities</span>,”</span> <em>Legal Knowledge and Information
+Systems</em>, pp. 251–254, 2020, doi: <a
+href="https://doi.org/10.3233/FAIA200876">10.3233/FAIA200876</a>.
+[Online]. Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/FAIA200876">https://ebooks.iospress.nl/doi/10.3233/FAIA200876</a>.
+[Accessed: 12-Jul-2022]</div>
+</div>
+<div id="ref-esteves_challenges_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">B.
+Esteves, <span>“Challenges in the <span>Digital</span>
+<span>Representation</span> of <span>Privacy</span>
+<span>Terms</span>,”</span> in <em><span>AI</span>
+<span>Approaches</span> to the <span>Complexity</span> of
+<span>Legal</span> <span>Systems</span>
+<span>XI</span>-<span>XII</span></em>, vol. 13048, V. Rodríguez-Doncel,
+M. Palmirani, M. Araszkiewicz, P. Casanovas, U. Pagallo, and G. Sartor,
+Eds. Cham: Springer International Publishing, 2021, pp. 313–327
+[Online]. Available: <a
+href="https://doi.org/10.1007/978-3-030-89811-3_22">https://doi.org/10.1007/978-3-030-89811-3_22</a></div>
+</div>
+<div id="ref-mcdonald_evaluation_2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">N.
+McDonald <em>et al.</em>, <span>“Evaluation of an
+<span>Access</span>-<span>Risk</span>-<span>Knowledge</span>
+(<span>ARK</span>) <span>Platform</span> for <span>Governance</span> of
+<span>Risk</span> and <span>Change</span> in <span>Complex</span>
+<span>Socio</span>-<span>Technical</span> <span>Systems</span>,”</span>
+<em>International Journal of Environmental Research and Public
+Health</em>, vol. 18, no. 23, p. 12572, 2021, doi: <a
+href="https://doi.org/10.3390/ijerph182312572">10.3390/ijerph182312572</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/1660-4601/18/23/12572">https://www.mdpi.com/1660-4601/18/23/12572</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-flesch_investigating_2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">B.
+Flesch, <span>“Investigating the suitability of blockchain for managing
+patients consent in clinical trials,”</span> Master’s thesis, Trinity
+College Dublin, 2021 [Online]. Available: <a
+href="https://publications.scss.tcd.ie/theses/diss/2021/TCD-SCSS-DISSERTATION-2021-046.pdf">https://publications.scss.tcd.ie/theses/diss/2021/TCD-SCSS-DISSERTATION-2021-046.pdf</a></div>
+</div>
+<div id="ref-grunewald_tira_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">E.
+Grünewald, P. Wille, F. Pallas, M. C. Borges, and M.-R. Ulbricht,
+<span>“<span>TIRA</span>: <span>An</span> <span>OpenAPI</span>
+<span>Extension</span> and <span>Toolbox</span> for <span>GDPR</span>
+<span>Transparency</span> in <span>RESTful</span>
+<span>Architectures</span>,”</span> in <em>2021 <span>IEEE</span>
+<span>European</span> <span>Symposium</span> on <span>Security</span>
+and <span>Privacy</span> <span>Workshops</span>
+(<span>EuroS</span>&amp;<span>PW</span>)</em>, 2021, pp. 312–319, doi:
+<a
+href="https://doi.org/10.1109/EuroSPW54576.2021.00039">10.1109/EuroSPW54576.2021.00039</a>
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/document/9583685">https://ieeexplore.ieee.org/document/9583685</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-bonatti_representing_2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">P.
+A. Bonatti, L. Sauro, and J. Langens, <span>“Representing
+<span>Consent</span> and <span>Policies</span> for
+<span>Compliance</span>,”</span> in <em>2021 <span>IEEE</span>
+<span>European</span> <span>Symposium</span> on <span>Security</span>
+and <span>Privacy</span> <span>Workshops</span>
+(<span>EuroS</span>&amp;<span>PW</span>)</em>, 2021, pp. 283–291, doi:
+<a
+href="https://doi.org/10.1109/EuroSPW54576.2021.00036">10.1109/EuroSPW54576.2021.00036</a>
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/abstract/document/9583722">https://ieeexplore.ieee.org/abstract/document/9583722</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-sion_overview_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">L.
+Sion, D. V. Landuyt, and W. Joosen, <span>“An <span>Overview</span> of
+<span>Runtime</span> <span>Data</span> <span>Protection</span>
+<span>Enforcement</span> <span>Approaches</span>,”</span> in <em>2021
+<span>IEEE</span> <span>European</span> <span>Symposium</span> on
+<span>Security</span> and <span>Privacy</span> <span>Workshops</span>
+(<span>EuroS</span>&amp;<span>PW</span>)</em>, 2021, pp. 351–358, doi:
+<a
+href="https://doi.org/10.1109/EuroSPW54576.2021.00044">10.1109/EuroSPW54576.2021.00044</a>
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/document/9583679">https://ieeexplore.ieee.org/document/9583679</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-pandit_chapter_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">H.
+J. Pandit, D. O’Sullivan, and D. Lewis, <span>“<span>A</span>
+<span>Design</span> <span>Pattern</span> <span>Describing</span>
+<span>Use</span> of <span>Personal</span> <span>Data</span> in
+<span>Privacy</span> <span>Policies</span>,”</span> in <em>Advances in
+<span>Pattern</span>-<span>Based</span> <span>Ontology</span>
+<span>Engineering</span></em>, IOS Press, 2021, pp. 107–119 [Online].
+Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/SSW210009">https://ebooks.iospress.nl/doi/10.3233/SSW210009</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-hamed_enhancing_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">R.
+G. Hamed, <span>“Enhancing the <span>Transparency</span> of
+<span>Personal</span> <span>Data</span> <span>Access</span> through
+<span>Semantic</span> <span>Web</span>
+<span>Technologies</span>,”</span> {PhD} thesis, Trinity College Dublin,
+2021 [Online]. Available: <a
+href="http://www.tara.tcd.ie/bitstream/handle/2262/96722/PhDThesis-RoghaiyeGachpazHamed-15338853-final%20version.pdf?sequence=1">http://www.tara.tcd.ie/bitstream/handle/2262/96722/PhDThesis-RoghaiyeGachpazHamed-15338853-final%20version.pdf?sequence=1</a></div>
+</div>
+<div id="ref-ryan_gdpr_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">P.
+Ryan, M. Crane, and R. Brennan, <span>“<span>GDPR</span>
+<span>Compliance</span> <span>Tools</span>: <span>Best</span>
+<span>Practice</span> from <span>RegTech</span>,”</span> in
+<em>Enterprise <span>Information</span> <span>Systems</span></em>, 2021,
+pp. 905–929, doi: <a
+href="https://doi.org/10.1007/978-3-030-75418-1_41">10.1007/978-3-030-75418-1_41</a>.
+</div>
+</div>
+<div id="ref-ekaputra_semanticenabled_2021" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline">F.
+J. Ekaputra <em>et al.</em>, <span>“Semantic-enabled architecture for
+auditable privacy-preserving data analysis,”</span> <em>Semantic
+Web</em>, vol. Preprint, no. Preprint, pp. 1–34, 2021, doi: <a
+href="https://doi.org/10.3233/SW-212883">10.3233/SW-212883</a>.
+[Online]. Available: <a
+href="https://content.iospress.com/articles/semantic-web/sw212883">https://content.iospress.com/articles/semantic-web/sw212883</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-ryan_building_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">P.
+Ryan, H. Pandit, and R. Brennan, <span>“Building a <span>Data</span>
+<span>Processing</span> <span>Activities</span> <span>Catalog</span>:
+<span>Representing</span> <span>Heterogeneous</span>
+<span>Compliance</span>-<span>Related</span> <span>Information</span>
+for <span>GDPR</span> <span>Using</span>
+<span>DCAT</span>-<span>AP</span> and <span>DPV</span>,”</span> in
+<em>Further with <span>Knowledge</span> <span>Graphs</span></em>, IOS
+Press, 2021, pp. 169–182 [Online]. Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/SSW210043">https://ebooks.iospress.nl/doi/10.3233/SSW210043</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-leone_legal_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[33] </div><div class="csl-right-inline">V.
+&lt;1990&gt;. Leone, <span>“Legal knowledge extraction in the data
+protection domain based on <span>Ontology</span> <span>Design</span>
+<span>Patterns</span>,”</span> Doctoral {Thesis}, Alma Mater Studiorum -
+Università di Bologna, 2021 [Online]. Available: <a
+href="http://amsdottorato.unibo.it/9747/">http://amsdottorato.unibo.it/9747/</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-garcia_towards_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[34] </div><div class="csl-right-inline">K.
+García, Z. Zihlmann, S. Mayer, A. Tamò-Larrieux, and J. Hooss,
+<span>“Towards <span>Privacy</span>-<span>Friendly</span>
+<span>Smart</span> <span>Products</span>,”</span> in <em>2021 18th
+<span>International</span> <span>Conference</span> on
+<span>Privacy</span>, <span>Security</span> and <span>Trust</span>
+(<span>PST</span>)</em>, 2021, pp. 1–7, doi: <a
+href="https://doi.org/10.1109/PST52912.2021.9647826">10.1109/PST52912.2021.9647826</a>
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/document/9647826">https://ieeexplore.ieee.org/document/9647826</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-hickey_gdpr_2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[35] </div><div class="csl-right-inline">D.
+Hickey and R. Brennan, <span>“A <span>GDPR</span>
+<span>International</span> <span>Transfer</span> <span>Compliance</span>
+<span>Framework</span> <span>Based</span> on an <span>Extended</span>
+<span>Data</span> <span>Privacy</span> <span>Vocabulary</span>
+(<span>DPV</span>),”</span> in <em>Legal <span>Knowledge</span> and
+<span>Information</span> <span>Systems</span></em>, IOS Press, 2021, pp.
+161–170 [Online]. Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/FAIA210332">https://ebooks.iospress.nl/doi/10.3233/FAIA210332</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-human_data_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[36] </div><div class="csl-right-inline">S.
+Human <em>et al.</em>, <span>“Data <span>Protection</span> and
+<span>Consenting</span> <span>Communication</span>
+<span>Mechanisms</span>: <span>Current</span> <span>Open</span>
+<span>Proposals</span> and <span>Challenges</span>,”</span> in <em>2022
+<span>IEEE</span> <span>European</span> <span>Symposium</span> on
+<span>Security</span> and <span>Privacy</span> <span>Workshops</span>
+(<span>EuroS</span>&amp;<span>PW</span>)</em>, 2022, pp. 231–239, doi:
+<a
+href="https://doi.org/10.1109/EuroSPW55150.2022.00029">10.1109/EuroSPW55150.2022.00029</a>
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/abstract/document/9799369">https://ieeexplore.ieee.org/abstract/document/9799369</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-jesus_consent_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[37] </div><div class="csl-right-inline">V.
+Jesus and H. J. Pandit, <span>“Consent <span>Receipts</span> for a
+<span>Usable</span> and <span>Auditable</span> <span>Web</span> of
+<span>Personal</span> <span>Data</span>,”</span> <em>IEEE Access</em>,
+vol. 10, pp. 28545–28563, 2022, doi: <a
+href="https://doi.org/10.1109/ACCESS.2022.3157850">10.1109/ACCESS.2022.3157850</a>.
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/abstract/document/9730898">https://ieeexplore.ieee.org/abstract/document/9730898</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-human_advanced_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[38] </div><div class="csl-right-inline">S.
+Human, <span>“Advanced <span>Data</span> <span>Protection</span>
+<span>Control</span> (<span>ADPC</span>): <span>An</span>
+<span>Interdisciplinary</span> <span>Overview</span>.”</span> arXiv,
+2022 [Online]. Available: <a
+href="http://arxiv.org/abs/2209.09724">http://arxiv.org/abs/2209.09724</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-sangaroonsilp_mining_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[39] </div><div class="csl-right-inline">P.
+Sangaroonsilp, H. K. Dam, M. Choetkiertikul, C. Ragkhitwetsagul, and A.
+Ghose, <span>“Mining and <span>Classifying</span> <span>Privacy</span>
+and <span>Data</span> <span>Protection</span> <span>Requirements</span>
+in <span>Issue</span> <span>Reports</span>.”</span> arXiv, 2022
+[Online]. Available: <a
+href="http://arxiv.org/abs/2112.13994">http://arxiv.org/abs/2112.13994</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-pandit_proposals_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[40] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“Proposals for <span>Resolving</span>
+<span>Consenting</span> <span>Issues</span> with <span>Signals</span>
+and <span>User</span>-side <span>Dialogues</span>.”</span> arXiv, 2022
+[Online]. Available: <a
+href="http://arxiv.org/abs/2208.05786">http://arxiv.org/abs/2208.05786</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-rasmusen_increasing_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[41] </div><div class="csl-right-inline">S.
+C. Rasmusen, <span>“Increasing <span>Trust</span> and
+<span>Engagement</span> in the <span>Age</span> of <span>GDPR</span>:
+<span>A</span> <span>Digital</span> <span>Contracting</span>
+<span>Tool</span> <span>Supported</span> by <span>Knowledge</span>
+<span>Graphs</span>,”</span> Master’s thesis, University of Innsbruck,
+2022. </div>
+</div>
+<div id="ref-esteves_semantifying_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[42] </div><div class="csl-right-inline">B.
+Esteves and V. Rodríguez-Doncel, <span>“Semantifying the
+<span>Governance</span> of <span>Data</span> in
+<span>Europe</span>,”</span> in <em>18th <span>International</span>
+<span>Conference</span> on <span>Semantic</span> <span>Systems</span> -
+<span>CEUR</span> <span>Workshop</span> <span>Proceedings</span></em>,
+2022, vol. 3235 [Online]. Available: <a
+href="https://ceur-ws.org/Vol-3235/paper17.pdf">https://ceur-ws.org/Vol-3235/paper17.pdf</a></div>
+</div>
+<div id="ref-esteves_analysis_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[43] </div><div class="csl-right-inline">B.
+Esteves and V. Rodríguez-Doncel, <span>“Analysis of
+<span>Ontologies</span> and <span>Policy</span> <span>Languages</span>
+to <span>Represent</span> <span>Information</span> <span>Flows</span> in
+<span>GDPR</span>,”</span> <em>Semantic Web Journal</em>, 2022, doi: <a
+href="https://doi.org/10.3233/SW-223009">10.3233/SW-223009</a>. </div>
+</div>
+<div id="ref-ryan_support_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[44] </div><div class="csl-right-inline">P.
+Ryan and R. Brennan, <span>“Support for <span>Enhanced</span>
+<span>GDPR</span> <span>Accountability</span> with the
+<span>Common</span> <span>Semantic</span> <span>Model</span> for
+<span>ROPA</span> (<span>CSM</span>-<span>ROPA</span>),”</span> <em>SN
+Computer Science</em>, vol. 3, no. 3, p. 224, 2022, doi: <a
+href="https://doi.org/10.1007/s42979-022-01099-9">10.1007/s42979-022-01099-9</a>.
+[Online]. Available: <a
+href="https://doi.org/10.1007/s42979-022-01099-9">https://doi.org/10.1007/s42979-022-01099-9</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-ryan_dpcat_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[45] </div><div class="csl-right-inline">P.
+Ryan, R. Brennan, and H. J. Pandit, <span>“<span>DPCat</span>:
+<span>Specification</span> for an <span>Interoperable</span> and
+<span>Machine</span>-<span>Readable</span> <span>Data</span>
+<span>Processing</span> <span>Catalogue</span> <span>Based</span> on
+<span>GDPR</span>,”</span> <em>Information</em>, vol. 13, no. 5, p. 244,
+2022, doi: <a
+href="https://doi.org/10.3390/info13050244">10.3390/info13050244</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/13/5/244">https://www.mdpi.com/2078-2489/13/5/244</a>.
+[Accessed: 05-Jul-2023]</div>
+</div>
+<div id="ref-pandit_semantic_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[46] </div><div class="csl-right-inline">H.
+Pandit, <span>“A <span>Semantic</span> <span>Specification</span> for
+<span>Data</span> <span>Protection</span> <span>Impact</span>
+<span>Assessments</span> (<span>DPIA</span>),”</span> 2022, doi: <a
+href="https://doi.org/10.5281/zenodo.6783203">10.5281/zenodo.6783203</a>
+[Online]. Available: <a
+href="http://www.tara.tcd.ie/handle/2262/100126">http://www.tara.tcd.ie/handle/2262/100126</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-esteves_fostering_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[47] </div><div class="csl-right-inline">B.
+Esteves, H. Asgarinia, A. C. Penedo, B. Mutiro, and D. Lewis,
+<span>“Fostering trust with transparency in the data economy era: An
+integrated ethical, legal, and knowledge engineering approach,”</span>
+in <em>Proceedings of the 1st <span>International</span>
+<span>Workshop</span> on <span>Data</span> <span>Economy</span></em>,
+2022, pp. 57–63, doi: <a
+href="https://doi.org/10.1145/3565011.3569061">10.1145/3565011.3569061</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3565011.3569061">https://doi.org/10.1145/3565011.3569061</a>.
+[Accessed: 05-Jul-2023]</div>
+</div>
+<div id="ref-becker_secondary_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[48] </div><div class="csl-right-inline">R.
+Becker <em>et al.</em>, <span>“Secondary <span>Use</span> of
+<span>Personal</span> <span>Health</span> <span>Data</span>:
+<span>When</span> <span>Is</span> <span>It</span>
+<span>‘<span>Further</span> <span>Processing</span>’</span>
+<span>Under</span> the <span>GDPR</span>, and <span>What</span>
+<span>Are</span> the <span>Implications</span> for <span>Data</span>
+<span>Controllers</span>?”</span> <em>European Journal of Health
+Law</em>, vol. 30, no. 2, pp. 129–157, 2022, doi: <a
+href="https://doi.org/10.1163/15718093-bja10094">10.1163/15718093-bja10094</a>.
+[Online]. Available: <a
+href="https://brill.com/view/journals/ejhl/30/2/article-p129_1.xml">https://brill.com/view/journals/ejhl/30/2/article-p129_1.xml</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-esteves_using_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[49] </div><div class="csl-right-inline">B.
+Esteves, V. Rodríguez-Doncel, H. J. Pandit, N. Mondada, and P.
+McBennett, <span>“Using the <span>ODRL</span> <span>Profile</span> for
+<span>Access</span> <span>Control</span> for <span>Solid</span>
+<span>Pod</span> <span>Resource</span> <span>Governance</span>,”</span>
+in <em>The <span>Semantic</span> <span>Web</span>: <span>ESWC</span>
+2022 <span>Satellite</span> <span>Events</span></em>, 2022, pp. 16–20,
+doi: <a
+href="https://doi.org/10.1007/978-3-031-11609-4_3">10.1007/978-3-031-11609-4_3</a>.
+</div>
+</div>
+<div id="ref-debackere_policyoriented_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[50] </div><div class="csl-right-inline">L.
+Debackere, P. Colpaert, R. Taelman, and R. Verborgh, <span>“A
+<span>Policy</span>-<span>Oriented</span> <span>Architecture</span> for
+<span>Enforcing</span> <span>Consent</span> in
+<span>Solid</span>,”</span> in <em>Companion <span>Proceedings</span> of
+the <span>Web</span> <span>Conference</span> 2022</em>, 2022, pp.
+516–524, doi: <a
+href="https://doi.org/10.1145/3487553.3524630">10.1145/3487553.3524630</a>
+[Online]. Available: <a
+href="https://dl.acm.org/doi/10.1145/3487553.3524630">https://dl.acm.org/doi/10.1145/3487553.3524630</a>.
+[Accessed: 09-May-2023]</div>
+</div>
+<div id="ref-debackere_enforcing_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[51] </div><div class="csl-right-inline">L.
+Debackere, <span>“Enforcing <span>Data</span> <span>Protection</span> in
+<span>Solid</span>: <span>A</span>
+<span>Policy</span>-<span>Oriented</span>
+<span>Framework</span>,”</span> Master’s thesis, Ghent University, 2022.
+</div>
+</div>
+<div id="ref-gambarelli_privaframe_2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[52] </div><div class="csl-right-inline">G.
+Gambarelli and A. Gangemi, <span>“<span>PRIVAFRAME</span>:
+<span>A</span> <span>Frame</span>-<span>Based</span>
+<span>Knowledge</span> <span>Graph</span> for <span>Sensitive</span>
+<span>Personal</span> <span>Data</span>,”</span> <em>Big Data and
+Cognitive Computing</em>, vol. 6, no. 3, p. 90, 2022, doi: <a
+href="https://doi.org/10.3390/bdcc6030090">10.3390/bdcc6030090</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2504-2289/6/3/90">https://www.mdpi.com/2504-2289/6/3/90</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-kurteva_making_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[53] </div><div class="csl-right-inline">A.
+M. Kurteva, <span>“Making <span>Sense</span> of <span>Consent</span>
+with <span>Knowledge</span> <span>Graphs</span>,”</span> Master’s
+thesis, 2022. </div>
+</div>
+<div id="ref-becher_contra_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[54] </div><div class="csl-right-inline">S.
+Becher and A. Gerl, <span>“<span>ConTra</span> <span>Preference</span>
+<span>Language</span>: <span>Privacy</span> <span>Preference</span>
+<span>Unification</span> via <span>Privacy</span>
+<span>Interfaces</span>,”</span> <em>Sensors</em>, vol. 22, no. 14, p.
+5428, 2022, doi: <a
+href="https://doi.org/10.3390/s22145428">10.3390/s22145428</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/1424-8220/22/14/5428">https://www.mdpi.com/1424-8220/22/14/5428</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-hernandez_tikd_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[55] </div><div class="csl-right-inline">J.
+Hernandez, L. McKenna, and R. Brennan, <span>“<span>TIKD</span>:
+<span>A</span> <span>Trusted</span> <span>Integrated</span>
+<span>Knowledge</span> <span>Dataspace</span> for <span>Sensitive</span>
+<span>Data</span> <span>Sharing</span> and
+<span>Collaboration</span>,”</span> in <em>Data <span>Spaces</span> :
+<span>Design</span>, <span>Deployment</span> and <span>Future</span>
+<span>Directions</span></em>, E. Curry, S. Scerri, and T. Tuikka, Eds.
+Cham: Springer International Publishing, 2022, pp. 265–291 [Online].
+Available: <a
+href="https://doi.org/10.1007/978-3-030-98636-0_13">https://doi.org/10.1007/978-3-030-98636-0_13</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-pandit_making_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[56] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“Making <span>Sense</span> of <span>Solid</span> for
+<span>Data</span> <span>Governance</span> and <span>GDPR</span>,”</span>
+<em>Information</em>, vol. 14, no. 2, 2023, doi: <a
+href="https://doi.org/10.3390/info14020114">10.3390/info14020114</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/14/2/114">https://www.mdpi.com/2078-2489/14/2/114</a>.
+[Accessed: 07-Jun-2023]</div>
+</div>
+<div id="ref-bushati_what_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[57] </div><div class="csl-right-inline">G.
+Bushati, S. C. Rasmusen, A. Kurteva, A. Vats, P. Nako, and A. Fensel,
+<span>“What is in your cookie box? <span>Explaining</span> ingredients
+of web cookies with knowledge graphs,”</span> <em>Semantic Web</em>,
+vol. Preprint, no. Preprint, pp. 1–17, 2023, doi: <a
+href="https://doi.org/10.3233/SW-233435">10.3233/SW-233435</a>.
+[Online]. Available: <a
+href="https://content.iospress.com/articles/semantic-web/sw233435">https://content.iospress.com/articles/semantic-web/sw233435</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-breteler_flint_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[58] </div><div class="csl-right-inline">J.
+Breteler, T. van Gessel, G. Biagioni, and R. van Doesburg, <span>“The
+<span>FLINT</span> <span>Ontology</span>: <span>An</span>
+<span>Actor</span>-<span>Based</span> <span>Model</span> of
+<span>Legal</span> <span>Relations</span>,”</span> in <em>Knowledge
+<span>Graphs</span>: <span>Semantics</span>, <span>Machine</span>
+<span>Learning</span>, and <span>Languages</span></em>, IOS Press, 2023,
+pp. 227–234 [Online]. Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/SSW230016">https://ebooks.iospress.nl/doi/10.3233/SSW230016</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-kurteva_relevant_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[59] </div><div class="csl-right-inline">A.
+Kurteva and H. J. Pandit, <span>“Relevant <span>Research</span>
+<span>Questions</span> <span>For</span> <span>Decentralised</span>
+(<span>Personal</span>) <span>Data</span>
+<span>Governance</span>,”</span> in <em>Trusting
+<span>Decentralised</span> <span>Knowledge</span> <span>Graphs</span>
+and <span>Web</span> <span>Data</span> (<span>TrusDeKW</span>)
+<span>Workshop</span> at <span>ESWC</span> 2023</em>, 2023, vol. 3443
+[Online]. Available: <a
+href="https://ceur-ws.org/Vol-3443/ESWC_2023_TrusDeKW_paper_7584.pdf">https://ceur-ws.org/Vol-3443/ESWC_2023_TrusDeKW_paper_7584.pdf</a></div>
+</div>
+<div id="ref-asgarinia_who_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[60] </div><div class="csl-right-inline">H.
+Asgarinia, A. Chomczyk Penedo, B. Esteves, and D. Lewis,
+<span>“<span>‘<span>Who</span> <span>Should</span> <span>I</span>
+<span>Trust</span> with <span>My</span> <span>Data</span>?’</span>
+<span>Ethical</span> and <span>Legal</span> <span>Challenges</span> for
+<span>Innovation</span> in <span>New</span> <span>Decentralized</span>
+<span>Data</span> <span>Management</span>
+<span>Technologies</span>,”</span> <em>Information</em>, vol. 14, no. 7,
+p. 351, 2023, doi: <a
+href="https://doi.org/10.3390/info14070351">10.3390/info14070351</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/14/7/351">https://www.mdpi.com/2078-2489/14/7/351</a>.
+[Accessed: 06-Jul-2023]</div>
+</div>
+<div id="ref-gambarelli_is_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[61] </div><div class="csl-right-inline">G.
+Gambarelli, A. Gangemi, and R. Tripodi, <span>“Is <span>Your</span>
+<span>Model</span> <span>Sensitive</span>? <span>SPEDAC</span>:
+<span>A</span> <span>New</span> <span>Resource</span> for the
+<span>Automatic</span> <span>Classification</span> of
+<span>Sensitive</span> <span>Personal</span> <span>Data</span>,”</span>
+<em>IEEE Access</em>, vol. 11, pp. 10864–10880, 2023, doi: <a
+href="https://doi.org/10.1109/ACCESS.2023.3240089">10.1109/ACCESS.2023.3240089</a>.
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/abstract/document/10031607">https://ieeexplore.ieee.org/abstract/document/10031607</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-grunewald_enabling_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[62] </div><div class="csl-right-inline">E.
+Grünewald, J. M. Halkenhäußer, N. Leschke, J. Washington, C. Paupini,
+and F. Pallas, <span>“Enabling <span>Versatile</span>
+<span>Privacy</span> <span>Interfaces</span> <span>Using</span>
+<span>Machine</span>-<span>Readable</span> <span>Transparency</span>
+<span>Information</span>,”</span> in <em>Privacy <span>Symposium</span>
+2023</em>, 2023, pp. 119–137, doi: <a
+href="https://doi.org/10.1007/978-3-031-44939-0_7">10.1007/978-3-031-44939-0_7</a>.
+</div>
+</div>
+<div id="ref-bailly_prototyping_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[63] </div><div class="csl-right-inline">H.
+Bailly, A. Papanna, and R. Brennan, <span>“Prototyping an
+<span>End</span>-<span>User</span> <span>User</span>
+<span>Interface</span> for the<span>Solid</span>
+<span>Application</span> <span>Interoperability</span>
+<span>Specification</span> <span>Under</span> <span>GDPR</span>,”</span>
+in <em>The <span>Semantic</span> <span>Web</span></em>, 2023, pp.
+557–573, doi: <a
+href="https://doi.org/10.1007/978-3-031-33455-9_33">10.1007/978-3-031-33455-9_33</a>.
+</div>
+</div>
+<div id="ref-tang_helping_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[64] </div><div class="csl-right-inline">F.
+Tang, &amp;#216, B. M. Stvold, and M. Bruntink, <span>“Helping
+<span>Code</span> <span>Reviewer</span> <span>Prioritize</span>:
+<span>Pinpointing</span> <span>Personal</span> <span>Data</span> and
+<span>Its</span> <span>Processing</span>,”</span> in <em>New
+<span>Trends</span> in <span>Intelligent</span> <span>Software</span>
+<span>Methodologies</span>, <span>Tools</span> and
+<span>Techniques</span></em>, IOS Press, 2023, pp. 109–124 [Online].
+Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/FAIA230228">https://ebooks.iospress.nl/doi/10.3233/FAIA230228</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-esteves_towards_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[65] </div><div class="csl-right-inline">B.
+Esteves, <span>“Towards an <span>Architecture</span> for
+<span>Data</span> <span>Altruism</span> in <span>Solid</span>,”</span>
+in <em><span>ISWC</span> 2023 <span>Posters</span> and
+<span>Demos</span>: 22nd <span>International</span>
+<span>Semantic</span> <span>Web</span> <span>Conference</span></em>,
+2023 [Online]. Available: <a
+href="https://ceur-ws.org/Vol-3632/ISWC2023_paper_491.pdf">https://ceur-ws.org/Vol-3632/ISWC2023_paper_491.pdf</a></div>
+</div>
+<div id="ref-esteves_using_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[66] </div><div class="csl-right-inline">B.
+Esteves and H. J. Pandit, <span>“Using <span>Patterns</span> to
+<span>Manage</span> <span>Governance</span> of <span>Solid</span>
+<span>Apps</span>,”</span> in <em>14th <span>Workshop</span> on
+<span>Ontology</span> <span>Design</span> and <span>Patterns</span>
+(<span>WOP</span> 2023@<span>ISWC</span> 2023)</em>, 2023 [Online].
+Available: <a
+href="https://ceur-ws.org/Vol-3636/paper5.pdf">https://ceur-ws.org/Vol-3636/paper5.pdf</a></div>
+</div>
+<div id="ref-taheri_compliance_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[67] </div><div class="csl-right-inline">Y.
+Taheri, G. Bourgne, and J.-G. Ganascia, <span>“A <span>Compliance</span>
+<span>Mechanism</span> for <span>Planning</span> in <span>Privacy</span>
+<span>Domain</span> <span>Using</span> <span>Policies</span>,”</span> in
+<em>New <span>Frontiers</span> in <span>Artificial</span>
+<span>Intelligence</span></em>, 2023, pp. 77–92, doi: <a
+href="https://doi.org/10.1007/978-3-031-36190-6_6">10.1007/978-3-031-36190-6_6</a>.
+</div>
+</div>
+<div id="ref-sun_citizencentric_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[68] </div><div class="csl-right-inline">C.
+Sun, M. Gallofré Ocaña, J. van Soest, and M. Dumontier, <span>“<span
+class="nocase">ciTIzen</span>-centric <span>DAta</span> <span
+class="nocase">pLatform</span> (<span>TIDAL</span>):
+<span>Sharing</span> distributed personal data in a privacy-preserving
+manner for health research,”</span> <em>Semantic Web</em>, vol. 14, no.
+5, pp. 977–996, 2023, doi: <a
+href="https://doi.org/10.3233/SW-223220">10.3233/SW-223220</a>.
+[Online]. Available: <a
+href="https://content.iospress.com/articles/semantic-web/sw223220">https://content.iospress.com/articles/semantic-web/sw223220</a>.
+[Accessed: 07-Jun-2023]</div>
+</div>
+<div id="ref-navarrogallinad_evaluating_2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[69] </div><div class="csl-right-inline">A.
+Navarro-Gallinad, F. Orlandi, J. Scott, M. Little, and D. O’Sullivan,
+<span>“Evaluating the usability of a semantic environmental health data
+framework: <span>Approach</span> and study,”</span> <em>Semantic
+Web</em>, vol. 14, no. 5, pp. 787–810, 2023, doi: <a
+href="https://doi.org/10.3233/SW-223212">10.3233/SW-223212</a>.
+[Online]. Available: <a
+href="https://content.iospress.com/articles/semantic-web/sw223212">https://content.iospress.com/articles/semantic-web/sw223212</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-florea_is_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[70] </div><div class="csl-right-inline">M.
+Florea and B. Esteves, <span>“Is <span>Automated</span>
+<span>Consent</span> in <span>Solid</span>
+<span>GDPR</span>-<span>Compliant</span>? <span>An</span>
+<span>Approach</span> for <span>Obtaining</span> <span>Valid</span>
+<span>Consent</span> with the <span>Solid</span>
+<span>Protocol</span>,”</span> <em>Information</em>, vol. 14, no. 12, p.
+631, 2023, doi: <a
+href="https://doi.org/10.3390/info14120631">10.3390/info14120631</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/2078-2489/14/12/631">https://www.mdpi.com/2078-2489/14/12/631</a>.
+[Accessed: 30-Nov-2023]</div>
+</div>
+<div id="ref-gallinad_usable_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[71] </div><div class="csl-right-inline">A.
+N. Gallinad, <span>“A <span>Usable</span> <span>Knowledge</span>
+<span>Graph</span> <span>Framework</span> for <span>Linking</span>
+<span>Health</span> <span>Events</span> with <span>Environmental</span>
+<span>Data</span>,”</span> {PhD} thesis, Trinity College Dublin, 2023.
+</div>
+</div>
+<div id="ref-kurteva_smashhitcore_2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[72] </div><div class="csl-right-inline">A.
+Kurteva <em>et al.</em>, <span>“The <span
+class="nocase">smashHitCore</span> <span>Ontology</span> for
+<span>GDPR</span>-<span>Compliant</span> <span>Sensor</span>
+<span>Data</span> <span>Sharing</span> in <span>Smart</span>
+<span>Cities</span>,”</span> <em>Sensors</em>, vol. 23, no. 13, p. 6188,
+2023, doi: <a
+href="https://doi.org/10.3390/s23136188">10.3390/s23136188</a>.
+[Online]. Available: <a
+href="https://www.mdpi.com/1424-8220/23/13/6188">https://www.mdpi.com/1424-8220/23/13/6188</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-gupta_oppo_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[73] </div><div class="csl-right-inline">S.
+D. Gupta and T. Hahmann, <span>“<span>OPPO</span>: <span>An</span>
+<span>Ontology</span> for <span>Describing</span>
+<span>Fine</span>-<span>Grained</span> <span>Data</span>
+<span>Practices</span> in <span>Privacy</span> <span>Policies</span> of
+<span>Online</span> <span>Social</span> <span>Networks</span>.”</span>
+arXiv, 2023 [Online]. Available: <a
+href="http://arxiv.org/abs/2309.15971">http://arxiv.org/abs/2309.15971</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-zichichi_decentralized_2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[74] </div><div class="csl-right-inline">M.
+&lt;1995&gt;. Zichichi, <span>“Decentralized systems for the protection
+and portability of personal data,”</span> Doctoral {Thesis}, Alma Mater
+Studiorum - Università di Bologna, 2023 [Online]. Available: <a
+href="http://amsdottorato.unibo.it/10662/">http://amsdottorato.unibo.it/10662/</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-esteves_semantics_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[75] </div><div class="csl-right-inline">B.
+Esteves, V. Rodríguez-Doncel, H. J. Pandit, and D. Lewis,
+<span>“Semantics for <span>Implementing</span> <span>Data</span>
+<span>Reuse</span> and <span>Altruism</span> <span>Under</span>
+<span>EU</span>’s <span>Data</span> <span>Governance</span>
+<span>Act</span>,”</span> in <em>Knowledge <span>Graphs</span>:
+<span>Semantics</span>, <span>Machine</span> <span>Learning</span>, and
+<span>Languages</span></em>, IOS Press, 2023, pp. 210–226 [Online].
+Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/SSW230015">https://ebooks.iospress.nl/doi/10.3233/SSW230015</a>.
+[Accessed: 01-Oct-2023]</div>
+</div>
+<div id="ref-pandit_towards_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[76] </div><div class="csl-right-inline">H.
+J. Pandit, P. Ryan, G. P. Krog, M. Crane, and R. Brennan, <span>“Towards
+a <span>Semantic</span> <span>Specification</span> for <span>GDPR</span>
+<span>Data</span> <span>Breach</span> <span>Reporting</span>,”</span> in
+<em>Legal <span>Knowledge</span> and <span>Information</span>
+<span>Systems</span></em>, IOS Press, 2023, pp. 131–136 [Online].
+Available: <a
+href="https://ebooks.iospress.nl/doi/10.3233/FAIA230956">https://ebooks.iospress.nl/doi/10.3233/FAIA230956</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-raza_semantic_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[77] </div><div class="csl-right-inline">H.
+Raza and M. Ahmed, <span>“The <span>Semantic</span> data sharing
+platform using <span>Blockchain</span>: <span>A</span> <span>GDPR</span>
+perspective.”</span> 2023. </div>
+</div>
+<div id="ref-pandit_enhancing_2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[78] </div><div class="csl-right-inline">H.
+J. Pandit and B. Esteves, <span>“Enhancing <span>Data</span>
+<span>Use</span> <span>Ontology</span> (<span>DUO</span>) for
+<span>Health</span>-<span>Data</span> <span>Sharing</span> by
+<span>Extending</span> it with <span>ODRL</span> and
+<span>DPV</span>,”</span> <em>Semantic Web Journal</em>, 2024, doi: <a
+href="https://doi.org/10.3233/SW-243583">10.3233/SW-243583</a>. </div>
+</div>
+<div id="ref-herwanto_leveraging_2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[79] </div><div class="csl-right-inline">G.
+B. Herwanto, G. Quirchmayr, and A. M. Tjoa, <span>“Leveraging
+<span>NLP</span> <span>Techniques</span> for <span>Privacy</span>
+<span>Requirements</span> <span>Engineering</span> in <span>User</span>
+<span>Stories</span>,”</span> <em>IEEE Access</em>, vol. 12, pp.
+22167–22189, 2024, doi: <a
+href="https://doi.org/10.1109/ACCESS.2024.3364533">10.1109/ACCESS.2024.3364533</a>.
+[Online]. Available: <a
+href="https://ieeexplore.ieee.org/document/10430095">https://ieeexplore.ieee.org/document/10430095</a>.
+[Accessed: 17-Apr-2024]</div>
+</div>
+<div id="ref-golpayeganiAIROOntologyRepresenting2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[80] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“<span>AIRO</span>:
+<span>An Ontology</span> for <span>Representing AI Risks Based</span> on
+the <span>Proposed EU AI Act</span> and <span>ISO Risk Management
+Standards</span>,”</span> in <em>Towards a <span>Knowledge-Aware
+AI</span></em>, 2022, pp. 51–65, doi: <a
+href="https://doi.org/10.3233/SSW220008">10.3233/SSW220008</a>. </div>
+</div>
+<div id="ref-golpayeganiBeHighRiskNot2023" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[81] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“To <span>Be
+High-Risk</span>, or <span>Not To Be</span>—<span>Semantic
+Specifications</span> and <span>Implications</span> of the <span>AI
+Act</span>’s <span>High-Risk AI Applications</span> and <span>Harmonised
+Standards</span>,”</span> in <em>Proceedings of the 2023 <span>ACM
+Conference</span> on <span>Fairness</span>, <span>Accountability</span>,
+and <span>Transparency</span></em>, 2023, pp. 905–915, doi: <a
+href="https://doi.org/10.1145/3593013.3594050">10.1145/3593013.3594050</a>.
+</div>
+</div>
+<div id="ref-golpayeganiAICardsApplied2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[82] </div><div class="csl-right-inline">D.
+Golpayegani <em>et al.</em>, <span>“<span>AI Cards</span>:
+<span>Towards</span> an <span>Applied Framework</span> for
+<span>Machine-Readable AI</span> and <span>Risk Documentation
+Inspired</span> by the <span>EU AI Act</span>,”</span> in <em>Annual
+<span>Privacy Forum</span></em>, 2024, doi: <a
+href="https://doi.org/10.48550/arXiv.2406.18211">10.48550/arXiv.2406.18211</a>
+[Online]. Available: <a
+href="https://arxiv.org/abs/2406.18211">https://arxiv.org/abs/2406.18211</a>.
+[Accessed: 08-Jul-2024]</div>
+</div>
+<div id="ref-panditImplementingISOIEC2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[83] </div><div class="csl-right-inline">H.
+J. Pandit, J. Lindquist, and G. P. Krog, <span>“Implementing
+<span>ISO</span>/<span>IEC TS</span> 27560:2023 <span>Consent
+Records</span> and <span>Receipts</span> for <span>GDPR</span> and
+<span>DGA</span>,”</span> in <em>Annual <span>Privacy Forum</span></em>,
+2024, doi: <a
+href="https://doi.org/10.48550/arXiv.2405.04528">10.48550/arXiv.2405.04528</a>
+[Online]. Available: <a
+href="https://arxiv.org/abs/2405.04528">https://arxiv.org/abs/2405.04528</a>.
+[Accessed: 08-Jul-2024]</div>
+</div>
+<div id="ref-suarez2011neon" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[84] </div><div class="csl-right-inline">M.
+C. Suárez-Figueroa, A. Gómez-Pérez, and M. Fernández-López, <span>“The
+NeOn methodology for ontology engineering,”</span> in <em>Ontology
+engineering in a networked world</em>, Springer, 2011, pp. 9–34. </div>
+</div>
+<div id="ref-poveda2022lot" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[85] </div><div class="csl-right-inline">M.
+Poveda-Villalón, A. Fernández-Izquierdo, M. Fernández-López, and R.
+Garcı́a-Castro, <span>“LOT: An industrial oriented ontology engineering
+framework,”</span> <em>Engineering Applications of Artificial
+Intelligence</em>, vol. 111, p. 104755, 2022. </div>
+</div>
+<div id="ref-garijo2017widoco" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[86] </div><div class="csl-right-inline">D.
+Garijo, <span>“WIDOCO: A wizard for documenting ontologies,”</span> in
+<em>The semantic web–ISWC 2017: 16th international semantic web
+conference, vienna, austria, october 21-25, 2017, proceedings, part II
+16</em>, 2017, pp. 94–102. </div>
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.w3.org/groups/cg/dpvcg/"
+class="uri">https://www.w3.org/groups/cg/dpvcg/</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://w3id.org/dpv"
+class="uri">https://w3id.org/dpv</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/1.0.0/os/legalruleml-core-spec-1.0.0-os.html"
+class="uri">https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/1.0.0/os/legalruleml-core-spec-1.0.0-os.html</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.semanticarts.com/gist/"
+class="uri">https://www.semanticarts.com/gist/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://spec.edmcouncil.org/fibo/"
+class="uri">https://spec.edmcouncil.org/fibo/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://signatu.com/"
+class="uri">https://signatu.com/</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://www.jlinc.com/"
+class="uri">https://www.jlinc.com/</a><a href="#fnref7"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a
+href="https://www.inrupt.com/blog/the-benefits-of-dynamic-user-consent"
+class="uri">https://www.inrupt.com/blog/the-benefits-of-dynamic-user-consent</a><a
+href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Harshvardhan J. Pandit was an active contributor to the
+development of ISO/IEC TS 27560:2023 through the National Standards
+Authority of Ireland (NSAI)<a href="#fnref9" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://w3id.org/dpv/primer"
+class="uri">https://w3id.org/dpv/primer</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://w3id.org/dpv/2.0/examples"
+class="uri">https://w3id.org/dpv/2.0/examples</a><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://w3id.org/dpv/2.0/search"
+class="uri">https://w3id.org/dpv/2.0/search</a><a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://w3id.org/dpv/2.0/changelog"
+class="uri">https://w3id.org/dpv/2.0/changelog</a><a href="#fnref13"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a
+href="https://www.iso.org/iso-3166-country-codes.html"
+class="uri">https://www.iso.org/iso-3166-country-codes.html</a><a
+href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><a
+href="https://op.europa.eu/en/web/eu-vocabularies/concept/-/resource?uri=http://publications.europa.eu/resource/authority/country/"
+class="uri">https://op.europa.eu/en/web/eu-vocabularies/concept/-/resource?uri=http://publications.europa.eu/resource/authority/country/</a><a
+href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://ec.europa.eu/eurostat/web/nace"
+class="uri">https://ec.europa.eu/eurostat/web/nace</a><a href="#fnref16"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>E.g. the ‘Automation’ and ‘Human Involvement’ concepts
+underwent a major revision based on recent developments and the
+publication of ISO/IEC 22989:2022 AI concepts and terminology standard
+<a href="https://www.iso.org/standard/74296.html"
+class="uri">https://www.iso.org/standard/74296.html</a><a
+href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://github.com/w3c/dpv/"
+class="uri">https://github.com/w3c/dpv/</a><a href="#fnref18"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://github.com/w3c/dpv/issues"
+class="uri">https://github.com/w3c/dpv/issues</a><a href="#fnref19"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://respec.org/docs/"
+class="uri">https://respec.org/docs/</a><a href="#fnref20"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Best Practices for Publishing Linked Data (2014) <a
+href="https://www.w3.org/TR/ld-bp/"
+class="uri">https://www.w3.org/TR/ld-bp/</a><a href="#fnref21"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p><a href="https://oops.linkeddata.es/"
+class="uri">https://oops.linkeddata.es/</a><a href="#fnref22"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p><a href="https://foops.linkeddata.es/"
+class="uri">https://foops.linkeddata.es/</a> — DPV’s score has false
+negatives regarding use of SKOS annotations, this has been reported to
+the maintainers<a href="#fnref23" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p><a href="https://w3id.org/"
+class="uri">https://w3id.org/</a><a href="#fnref24"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p><a href="https://github.com/w3c/dpv"
+class="uri">https://github.com/w3c/dpv</a><a href="#fnref25"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p><a href="https://doi.org/10.5281/zenodo.12505840"
+class="uri">https://doi.org/10.5281/zenodo.12505840</a><a
+href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>It might be tempting to use punning here — but it would
+not be correct. Punning enables use of the same concept as class and
+instance in separate contexts whereas we have a concept as class and
+instance in the same context — which is undefined.<a href="#fnref27"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p>Using OWL and SKOS (2008) <a
+href="https://www.w3.org/2006/07/SWD/SKOS/skos-and-owl/master.html"
+class="uri">https://www.w3.org/2006/07/SWD/SKOS/skos-and-owl/master.html</a><a
+href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p><a
+href="https://www.bfdi.bund.de/EN/Fachthemen/Inhalte/Technik/SDM.html"
+class="uri">https://www.bfdi.bund.de/EN/Fachthemen/Inhalte/Technik/SDM.html</a><a
+href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

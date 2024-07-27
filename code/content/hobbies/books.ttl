@@ -557,11 +557,16 @@
 <https://harshp.com/hobbies/books/45> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "45"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-24T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Jan Carson"^^xsd:string ;
     schema:dateCreated "2019"^^xsd:int ;
     schema:isbn "9781781620465"^^xsd:string ;
     schema:name "The Fire Starters"@en ;
+    schema:review """What starts off as a conventional conflict drama set in Belfast just after the troubles turns into an intensely personal conflict ravaged by magical realism. Shades of Midnight's Children shining through, the novel doesn't delve in to the horrors or the implications of the society around the story - but focuses with great precision on the analogous mindset of the two main characters whose children are weird - in both a magical and real way. Excellent writing, good pacing, and just the right amount of intensity."""@en ;
     schema:url "https://harshp.com/hobbies/books/45"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/46> a hpcom:RenderedItem, hpcom:BookReading,
@@ -11305,7 +11310,7 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "777"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "James S. A. Corey"^^xsd:string ;
@@ -13691,7 +13696,7 @@
 
 <https://harshp.com/hobbies/books/939> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "939"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -13802,3 +13807,17 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "The Android's Dream"@en ;
     schema:url "https://harshp.com/hobbies/books/946"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/947> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "947"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James Clear"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"@en ;
+    schema:url "https://harshp.com/hobbies/books/947"^^xsd:anyURI .
