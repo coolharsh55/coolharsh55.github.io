@@ -9,11 +9,38 @@
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix hptag: <https://harshp.com/tags/> .
 
-# Supervision
+# 3rd Year Projects
+
+<https://harshp.com/research/supervision/2023-Policy-Summariser>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Terms and Conditions Summariser"@en ;
+    schema:agent "Asim Abdullah and Lateef Sanusi" ;
+    schema:subjectOf hpcom:ProjectY3 ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-04-15T00:00:00"^^xsd:dateTime .
+
+# 4th Year Projects
+
+<https://harshp.com/research/supervision/2023-ADPC>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Implementing Advanced Data Protection Control (ADPC)"@en ;
+    schema:agent "Ben Moonan and Zane Grey" ;
+    schema:subjectOf hpcom:ProjectY4 ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-04-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-ADPC>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Implementing Advanced Data Protection Control (ADPC)"@en ;
+    schema:agent "Ben Moonan and Zane Grey" ;
+    schema:subjectOf hpcom:ProjectY4 ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-04-15T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2020-highlight-risk-consent>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Highlighting risks in consent dialogues"@en ;
     schema:agent "Hasan Opiev" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime ;
@@ -22,152 +49,75 @@
         hpcom:contentFile "https://harshp.com/code/content/research/supervision/2020-highlight-risk-consent.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] .
+
 <https://harshp.com/research/supervision/2020-consent-annotation-tool>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Annotation tool for issues in consent dialogues"@en ;
     schema:agent "Brian Lynch" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2020-consent-adblocker>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Granular removal of consent dialogue elements using ad-blockers"@en ;
     schema:agent "Rohan Taneja" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2021-05-01T00:00:00"^^xsd:dateTime .
-<https://harshp.com/research/supervision/2020-dataportability-schema-mappings>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Implementing semantics for interoperable data portability"@en ;
-    schema:agent "Claire Farrell" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2021-07-01T00:00:00"^^xsd:dateTime .
 
 <https://harshp.com/research/supervision/2019-browser-extension-consent>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Recording online consent via a browser extension"@en ;
     schema:agent "Dhruv Sachdev" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
-<https://harshp.com/research/supervision/2019-contextual-integrity-gdpr>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Representing and Evaluating the Flow of Information in Privacy Policies Based on the Theory of Contextual Integrity (for GDPR)"@en ;
-    schema:agent "Derrick Amponsa" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2019-privacy-policy-generator>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "A Generator for Annotated Privacy Policies"@en ;
     schema:agent "Eoin Leahy" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2019-privacy-policy-visualisation>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Data Protection Process Browser Widget (for privacy policy visualisation)"@en ;
     schema:agent "Darragh Masterson" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
-<https://harshp.com/research/supervision/2019-AI-ethics-canvas>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Artificial Intelligence Ethics Canvas: A Tool for Ethical and Socially Responsible AI"@en ;
-    schema:agent "Ankita Kalra" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2019-ethics-clearance>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Automating ethics clearance application"@en ;
     schema:agent "Mason Smith" ;
-    schema:subjectOf "4th year intership" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-05-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2019-10-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2018-privacy-policy-visualisation>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Data Protection Process Browser Widget: A Visualization Tool for Interacting with Privacy Policies"@en ;
     schema:agent "James Cox" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Mentor" ;
     schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2019-05-01T00:00:00"^^xsd:dateTime .
-<https://harshp.com/research/supervision/2018-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Ethics Canvas website development"@en ;
-    schema:agent "Ankita Kalra" ;
-    schema:subjectOf "4th year internship" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2019-05-01T00:00:00"^^xsd:dateTime .
+
 <https://harshp.com/research/supervision/2017-ethics-canvas-website-2>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Ethics Canvas website development"@en ;
     schema:agent "Andrew Knox" ;
-    schema:subjectOf "4th year internship" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2017-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2018-05-01T00:00:00"^^xsd:dateTime .
-<https://harshp.com/research/supervision/2017-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Ethics Canvas website development"@en ;
-    schema:agent "Andreas Burburan" ;
-    schema:subjectOf "internship" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2017-05-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2017-10-01T00:00:00"^^xsd:dateTime .
-
-
-<https://harshp.com/research/supervision/2020-ODRL-profile-AI-accountability> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Modelling normative statements in AI ethics policy documents using ODRL"@en ;
-    schema:agent "Vidisha Dalvi" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2020-11-01T00:00:00"^^xsd:dateTime .
-
-<https://harshp.com/research/supervision/2020-AI-stakeholders-ontology> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "AI Stakeholders Ontology"@en ;
-    schema:agent "Arthit Suriyawongkul" ;
-    schema:subjectOf "PhD research" ;
-    schema:roleName "Mentor" ;
-    schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2020-10-31T00:00:00"^^xsd:dateTime .
-
-<https://harshp.com/research/supervision/2020-AI-risk-ontology> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Risk Management for AI Governance"@en ;
-    schema:agent "Delaram Golpayegani" ;
-    schema:subjectOf "PhD research" ;
-    schema:roleName "Co-Supervisor" ;
-    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
-
-<https://harshp.com/research/supervision/2023-GDPR-AI-Semantics> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Harmonised Semantic Model of EU AI and Data Protection Regulations"@en ;
-    schema:agent "Tytti Rintamäki" ;
-    schema:subjectOf "PhD research" ;
-    schema:roleName "Supervisor" ;
-    schema:startDate "2023-07-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2027-06-30T00:00:00"^^xsd:dateTime .
-
-<https://harshp.com/research/supervision/2021-AI-risk-impact-assessment>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Impact Assessment framework for AI Risks"@en ;
-    schema:agent "Vishal Ruhil" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2022-03-31T00:00:00"^^xsd:dateTime .
-
-<https://harshp.com/research/supervision/2021-app-store-privacy-label>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
-    schema:name "Privacy Label for Smartphone App Stores"@en ;
-    schema:agent "Akul Rastogi" ;
-    schema:subjectOf "MSc project" ;
-    schema:roleName "Assistant Supervisor" ;
-    schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:endDate "2022-01-31T00:00:00"^^xsd:dateTime .
 
 <https://harshp.com/research/supervision/2021-privacy-policy-from-metadata>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Automating Privacy Policy generation using Metadata"@en ;
     schema:agent "Raj Desai" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2022-05-01T00:00:00"^^xsd:dateTime .
@@ -175,7 +125,205 @@
 <https://harshp.com/research/supervision/2021-ios-app-store-privacy-data-analysis>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
     schema:name "Analysis of iOS App Store Privacy Labels"@en ;
     schema:agent "Nicholas Lawlor" ;
-    schema:subjectOf "4th year project" ;
+    schema:subjectOf hpcom:ProjectY4 ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
     schema:endDate "2022-05-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2018-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Ethics Canvas website development"@en ;
+    schema:agent "Ankita Kalra" ;
+    schema:subjectOf hpcom:ProjectY4 ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2019-05-01T00:00:00"^^xsd:dateTime .
+
+# MSc Projects
+
+<https://harshp.com/research/supervision/2020-dataportability-schema-mappings>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Implementing semantics for interoperable data portability"@en ;
+    schema:agent "Claire Farrell" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2021-07-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2019-contextual-integrity-gdpr>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Representing and Evaluating the Flow of Information in Privacy Policies Based on the Theory of Contextual Integrity (for GDPR)"@en ;
+    schema:agent "Derrick Amponsa" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2019-AI-ethics-canvas>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Artificial Intelligence Ethics Canvas: A Tool for Ethical and Socially Responsible AI"@en ;
+    schema:agent "Ankita Kalra" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-05-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2020-ODRL-profile-AI-accountability> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Modelling normative statements in AI ethics policy documents using ODRL"@en ;
+    schema:agent "Vidisha Dalvi" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2020-11-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2021-AI-risk-impact-assessment>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Impact Assessment framework for AI Risks"@en ;
+    schema:agent "Vishal Ruhil" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-03-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2021-app-store-privacy-label>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Privacy Label for Smartphone App Stores"@en ;
+    schema:agent "Akul Rastogi" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2022-01-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-consent-records>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Browser Extension for Managing Cookies and Consent Records"@en ;
+    schema:agent "Apurva Shirbhate and Thilak Shanmugasundaram" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-cookie-management>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Analysis of Cookie Management in Web Browsers"@en ;
+    schema:agent "Nikhil Kumar and Ridhima Chhabra" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-ios-privacy-labels>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Analysis of Privacy Labels in iOS Apps"@en ;
+    schema:agent "Saiesha Gowdar and Zaid Surma" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-GDPR-CCPA-comparison>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Privacy Risk Assessments in California and the European Union: A Comparative Evaluation of Data Protection Regula- tions in Light of Emerging Technologies"@en ;
+    schema:agent "Christopher S. Griesenhofer" ;
+    schema:subjectOf hpcom:ProjectMSc ;
+    schema:roleName "Co-Supervisor" ;
+    schema:startDate "2024-03-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
+
+# Internships
+
+<https://harshp.com/research/supervision/2017-ethics-canvas-website>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Ethics Canvas website development"@en ;
+    schema:agent "Andreas Burburan" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Assistant Supervisor" ;
+    schema:startDate "2017-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2017-10-01T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-ML-GDPR-1>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Interpreting GDPR for ML Workflows, Data Sheets, and Model Cards"@en ;
+    schema:agent "Fatima Atmani" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-08-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-ML-GDPR-2>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Interpreting GDPR for ML Workflows, Data Sheets, and Model Cards"@en ;
+    schema:agent "Lydia Naggayi" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2023-08-15T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-AI-Act-High-Risk-Health>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Understanding Risk Assessment in AI Act's High Risk cases regarding Health"@en ;
+    schema:agent "Ana Garduno" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-AI-Act-High-Risk-Law-Data-Breach>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Understanding Risk Assessment in AI Act's High Risk cases regarding Law Enforcement"@en ;
+    schema:agent "Victor Juarez" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-GDPR-Data-Breach>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Analysing GDPR's Data Breach Reporting Mechanisms"@en ;
+    schema:agent "Alex Jarju" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-05-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-AI-cards>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Browser interface for generating AI Cards"@en ;
+    schema:agent "Hephzibah Bode-Favours" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-06-30T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-ethics-application>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Ethics application support system"@en ;
+    schema:agent "Oluwaseun Aderibigbe" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-06-30T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2024-bias-data-sheets>  a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Reporting Bias in Data Sheets for Health Datasets (funded by HRB)"@en ;
+    schema:agent "Marjia Siddik" ;
+    schema:subjectOf hpcom:ProjectInternship ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-06-04T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime .
+
+# PhD
+
+<https://harshp.com/research/supervision/2023-GDPR-AI-Semantics> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Harmonised Semantic Model of EU AI and Data Protection Regulations"@en ;
+    schema:agent "Tytti Rintamäki" ;
+    schema:subjectOf hpcom:ProjectPhD ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-07-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2027-06-30T00:00:00"^^xsd:dateTime .
+
+#<https://harshp.com/research/supervision/2020-AI-stakeholders-ontology> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+#    schema:name "AI Stakeholders Ontology"@en ;
+#    schema:agent "Arthit Suriyawongkul" ;
+#    schema:subjectOf hpcom:ProjectPhD ;
+#    schema:roleName "Mentor" ;
+#    schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
+#    schema:endDate "2020-10-31T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2020-AI-risk-ontology> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "Semantic Frameworks to Support the EU AI Act’s Risk Management and Documentation"@en ;
+    schema:agent "Delaram Golpayegani" ;
+    schema:subjectOf hpcom:ProjectPhD ;
+    schema:roleName "Co-Supervisor" ;
+    schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-09-30T00:00:00"^^xsd:dateTime .
+
+<https://harshp.com/research/supervision/2023-GDPR-Accountability-ROPA> a schema:Role, hpcom:SupervisionRole, hpcom:RenderedItem ;
+    schema:name "ERoPA: A Machine-Readable Approach to the Record of Processing Activities (RoPA) for GDPR Compliance" ;
+    schema:agent "Paul Ryan" ;
+    schema:subjectOf hpcom:ProjectPhD ;
+    schema:roleName "Co-Supervisor" ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2024-10-31T00:00:00"^^xsd:dateTime .

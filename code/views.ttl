@@ -221,20 +221,17 @@ hpview:ResearchView a hpcom:View ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
-        rdfs:label "current_supervision" ;
+        rdfs:label "current_supervision_phd" ;
         hpcom:queryString """
-            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
                 ?project a hpcom:SupervisionRole .
-                ?project schema:name ?name .
-                ?project schema:agent ?agent .
-                ?project schema:subjectOf ?course .
+                ?project schema:subjectOf hpcom:ProjectPhD .
                 ?project schema:startDate ?date_start .
                 ?project schema:endDate ?date_end .
-                ?project schema:roleName ?role .
+                FILTER(?date_end > ?today) . 
                 BIND(YEAR(?date_start) as ?year_start) .
                 BIND(YEAR(?date_end) as ?year_end) .
-                FILTER(?date_end > ?today) . 
-            }
+            } ORDER BY DESC(?date_end) ASC(?agent)
         """ ;
         hpcom:queryParam [
             hpcom:queryParamLabel "today" ;
@@ -243,20 +240,131 @@ hpview:ResearchView a hpcom:View ;
     ] ;
     hpcom:sparql [
         a hpcom:SparqlQuery ;
-        rdfs:label "past_supervision" ;
+        rdfs:label "current_supervision_msc" ;
         hpcom:queryString """
-            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
                 ?project a hpcom:SupervisionRole .
-                ?project schema:name ?name .
-                ?project schema:agent ?agent .
-                ?project schema:subjectOf ?course .
+                ?project schema:subjectOf hpcom:ProjectMSc .
                 ?project schema:startDate ?date_start .
                 ?project schema:endDate ?date_end .
-                ?project schema:roleName ?role .
+                FILTER(?date_end > ?today) . 
                 BIND(YEAR(?date_start) as ?year_start) .
                 BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "current_supervision_undergrad" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                { ?project schema:subjectOf hpcom:ProjectY4 } UNION { ?project schema:subjectOf hpcom:ProjectY4 } .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end > ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "current_supervision_internship" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectInternship .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end > ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_supervision_phd" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectPhD .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
                 FILTER(?date_end < ?today) . 
-            }
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_supervision_msc" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectMSc .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_supervision_undergrad" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                { ?project schema:subjectOf hpcom:ProjectY4 } UNION { ?project schema:subjectOf hpcom:ProjectY4 } .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ;
+        hpcom:queryParam [
+            hpcom:queryParamLabel "today" ;
+            hpcom:queryParamValue "date-today" ;
+        ] ;
+    ] ;
+    hpcom:sparql [
+        a hpcom:SparqlQuery ;
+        rdfs:label "past_supervision_internship" ;
+        hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectInternship .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
         """ ;
         hpcom:queryParam [
             hpcom:queryParamLabel "today" ;

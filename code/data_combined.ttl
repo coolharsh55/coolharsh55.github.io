@@ -51,6 +51,21 @@ hpcom:Link a rdfs:Class ;
 hpcom:Platform a rdfs:Class ;
     rdfs:label "Platform"@en .
 
+hpcom:ProjectInternship a rdfs:Class ;
+    rdfs:label "Internship"@en .
+
+hpcom:ProjectMSc a rdfs:Class ;
+    rdfs:label "MSc Project"@en .
+
+hpcom:ProjectPhD a rdfs:Class ;
+    rdfs:label "PhD"@en .
+
+hpcom:ProjectY3 a rdfs:Class ;
+    rdfs:label "Year 3 Project"@en .
+
+hpcom:ProjectY4 a rdfs:Class ;
+    rdfs:label "Year 4 Project"@en .
+
 hpcom:Rating a rdfs:Class ;
     rdfs:label "Rating"@en .
 
@@ -1824,40 +1839,124 @@ hpview:ResearchView a hpcom:View ;
             }
         """ ],
         [ a hpcom:SparqlQuery ;
-            rdfs:label "current_supervision" ;
+            rdfs:label "current_supervision_phd" ;
             hpcom:queryParam [ hpcom:queryParamLabel "today" ;
                     hpcom:queryParamValue "date-today" ] ;
             hpcom:queryString """
-            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
                 ?project a hpcom:SupervisionRole .
-                ?project schema:name ?name .
-                ?project schema:agent ?agent .
-                ?project schema:subjectOf ?course .
+                ?project schema:subjectOf hpcom:ProjectPhD .
                 ?project schema:startDate ?date_start .
                 ?project schema:endDate ?date_end .
-                ?project schema:roleName ?role .
+                FILTER(?date_end > ?today) . 
                 BIND(YEAR(?date_start) as ?year_start) .
                 BIND(YEAR(?date_end) as ?year_end) .
-                FILTER(?date_end > ?today) . 
-            }
+            } ORDER BY DESC(?date_end) ASC(?agent)
         """ ],
         [ a hpcom:SparqlQuery ;
-            rdfs:label "past_supervision" ;
+            rdfs:label "current_supervision_msc" ;
             hpcom:queryParam [ hpcom:queryParamLabel "today" ;
                     hpcom:queryParamValue "date-today" ] ;
             hpcom:queryString """
-            SELECT DISTINCT ?project ?name ?course ?agent ?year_start ?year_end ?role WHERE {
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
                 ?project a hpcom:SupervisionRole .
-                ?project schema:name ?name .
-                ?project schema:agent ?agent .
-                ?project schema:subjectOf ?course .
+                ?project schema:subjectOf hpcom:ProjectMSc .
                 ?project schema:startDate ?date_start .
                 ?project schema:endDate ?date_end .
-                ?project schema:roleName ?role .
+                FILTER(?date_end > ?today) . 
                 BIND(YEAR(?date_start) as ?year_start) .
                 BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "current_supervision_undergrad" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                { ?project schema:subjectOf hpcom:ProjectY4 } UNION { ?project schema:subjectOf hpcom:ProjectY4 } .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end > ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "current_supervision_internship" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectInternship .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end > ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "past_supervision_phd" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectPhD .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
                 FILTER(?date_end < ?today) . 
-            }
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "past_supervision_msc" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectMSc .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "past_supervision_undergrad" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                { ?project schema:subjectOf hpcom:ProjectY4 } UNION { ?project schema:subjectOf hpcom:ProjectY4 } .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
+        """ ],
+        [ a hpcom:SparqlQuery ;
+            rdfs:label "past_supervision_internship" ;
+            hpcom:queryParam [ hpcom:queryParamLabel "today" ;
+                    hpcom:queryParamValue "date-today" ] ;
+            hpcom:queryString """
+            SELECT DISTINCT ?project ?year_start ?year_end WHERE {
+                ?project a hpcom:SupervisionRole .
+                ?project schema:subjectOf hpcom:ProjectInternship .
+                ?project schema:startDate ?date_start .
+                ?project schema:endDate ?date_end .
+                FILTER(?date_end < ?today) . 
+                BIND(YEAR(?date_start) as ?year_start) .
+                BIND(YEAR(?date_end) as ?year_end) .
+            } ORDER BY DESC(?date_end) ASC(?agent)
         """ ],
         [ a hpcom:SparqlQuery ;
             rdfs:label "reviewing_conferences" ;
@@ -22182,7 +22281,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Ethics Canvas website development"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2017-05-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "internship" .
+    schema:subjectOf hpcom:ProjectInternship .
 
 <https://harshp.com/research/supervision/2017-ethics-canvas-website-2> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22192,7 +22291,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Ethics Canvas website development"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2017-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year internship" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2018-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22202,7 +22301,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Ethics Canvas website development"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year internship" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2018-privacy-policy-visualisation> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22212,7 +22311,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Data Protection Process Browser Widget: A Visualization Tool for Interacting with Privacy Policies"@en ;
     schema:roleName "Mentor" ;
     schema:startDate "2018-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2019-AI-ethics-canvas> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22222,7 +22321,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Artificial Intelligence Ethics Canvas: A Tool for Ethical and Socially Responsible AI"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2019-browser-extension-consent> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22232,7 +22331,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Recording online consent via a browser extension"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2019-contextual-integrity-gdpr> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22242,7 +22341,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Representing and Evaluating the Flow of Information in Privacy Policies Based on the Theory of Contextual Integrity (for GDPR)"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2019-ethics-clearance> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22252,7 +22351,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Automating ethics clearance application"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-05-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year intership" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2019-privacy-policy-generator> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22262,7 +22361,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "A Generator for Annotated Privacy Policies"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2019-privacy-policy-visualisation> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22272,27 +22371,17 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Data Protection Process Browser Widget (for privacy policy visualisation)"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2020-AI-risk-ontology> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
         schema:Role ;
     schema:agent "Delaram Golpayegani" ;
-    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
-    schema:name "Risk Management for AI Governance"@en ;
+    schema:endDate "2024-09-30T00:00:00"^^xsd:dateTime ;
+    schema:name "Semantic Frameworks to Support the EU AI Act’s Risk Management and Documentation"@en ;
     schema:roleName "Co-Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "PhD research" .
-
-<https://harshp.com/research/supervision/2020-AI-stakeholders-ontology> a hpcom:RenderedItem,
-        hpcom:SupervisionRole,
-        schema:Role ;
-    schema:agent "Arthit Suriyawongkul" ;
-    schema:endDate "2020-10-31T00:00:00"^^xsd:dateTime ;
-    schema:name "AI Stakeholders Ontology"@en ;
-    schema:roleName "Mentor" ;
-    schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "PhD research" .
+    schema:subjectOf hpcom:ProjectPhD .
 
 <https://harshp.com/research/supervision/2020-ODRL-profile-AI-accountability> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22302,7 +22391,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Modelling normative statements in AI ethics policy documents using ODRL"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-04-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2020-consent-adblocker> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22312,7 +22401,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Granular removal of consent dialogue elements using ad-blockers"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2020-consent-annotation-tool> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22322,7 +22411,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Annotation tool for issues in consent dialogues"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2020-dataportability-schema-mappings> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22332,7 +22421,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Implementing semantics for interoperable data portability"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2020-highlight-risk-consent> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22345,7 +22434,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Highlighting risks in consent dialogues"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2021-AI-risk-impact-assessment> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22355,7 +22444,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Impact Assessment framework for AI Risks"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2021-app-store-privacy-label> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22365,7 +22454,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Privacy Label for Smartphone App Stores"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "MSc project" .
+    schema:subjectOf hpcom:ProjectMSc .
 
 <https://harshp.com/research/supervision/2021-ios-app-store-privacy-data-analysis> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22375,7 +22464,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Analysis of iOS App Store Privacy Labels"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2021-privacy-policy-from-metadata> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22385,7 +22474,17 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Automating Privacy Policy generation using Metadata"@en ;
     schema:roleName "Assistant Supervisor" ;
     schema:startDate "2021-10-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "4th year project" .
+    schema:subjectOf hpcom:ProjectY4 .
+
+<https://harshp.com/research/supervision/2023-ADPC> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Ben Moonan and Zane Grey" ;
+    schema:endDate "2024-04-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Implementing Advanced Data Protection Control (ADPC)"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectY4 .
 
 <https://harshp.com/research/supervision/2023-GDPR-AI-Semantics> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -22395,7 +22494,147 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Harmonised Semantic Model of EU AI and Data Protection Regulations"@en ;
     schema:roleName "Supervisor" ;
     schema:startDate "2023-07-01T00:00:00"^^xsd:dateTime ;
-    schema:subjectOf "PhD research" .
+    schema:subjectOf hpcom:ProjectPhD .
+
+<https://harshp.com/research/supervision/2023-GDPR-Accountability-ROPA> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Paul Ryan" ;
+    schema:endDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+    schema:name "ERoPA: A Machine-Readable Approach to the Record of Processing Activities (RoPA) for GDPR Compliance" ;
+    schema:roleName "Co-Supervisor" ;
+    schema:startDate "2024-01-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectPhD .
+
+<https://harshp.com/research/supervision/2023-ML-GDPR-1> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Fatima Atmani" ;
+    schema:endDate "2023-08-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Interpreting GDPR for ML Workflows, Data Sheets, and Model Cards"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2023-ML-GDPR-2> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Lydia Naggayi" ;
+    schema:endDate "2023-08-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Interpreting GDPR for ML Workflows, Data Sheets, and Model Cards"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2023-Policy-Summariser> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Asim Abdullah and Lateef Sanusi" ;
+    schema:endDate "2024-04-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Terms and Conditions Summariser"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectY3 .
+
+<https://harshp.com/research/supervision/2023-consent-records> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Apurva Shirbhate and Thilak Shanmugasundaram" ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Browser Extension for Managing Cookies and Consent Records"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectMSc .
+
+<https://harshp.com/research/supervision/2023-cookie-management> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Nikhil Kumar and Ridhima Chhabra" ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Analysis of Cookie Management in Web Browsers"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectMSc .
+
+<https://harshp.com/research/supervision/2023-ios-privacy-labels> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Saiesha Gowdar and Zaid Surma" ;
+    schema:endDate "2024-08-15T00:00:00"^^xsd:dateTime ;
+    schema:name "Analysis of Privacy Labels in iOS Apps"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2023-10-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectMSc .
+
+<https://harshp.com/research/supervision/2024-AI-Act-High-Risk-Health> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Ana Garduno" ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    schema:name "Understanding Risk Assessment in AI Act's High Risk cases regarding Health"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2024-AI-Act-High-Risk-Law-Data-Breach> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Victor Juarez" ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    schema:name "Understanding Risk Assessment in AI Act's High Risk cases regarding Law Enforcement"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2024-AI-cards> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Hephzibah Bode-Favours" ;
+    schema:endDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    schema:name "Browser interface for generating AI Cards"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2024-GDPR-CCPA-comparison> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Christopher S. Griesenhofer" ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    schema:name "Privacy Risk Assessments in California and the European Union: A Comparative Evaluation of Data Protection Regula- tions in Light of Emerging Technologies"@en ;
+    schema:roleName "Co-Supervisor" ;
+    schema:startDate "2024-03-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectMSc .
+
+<https://harshp.com/research/supervision/2024-GDPR-Data-Breach> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Alex Jarju" ;
+    schema:endDate "2024-05-31T00:00:00"^^xsd:dateTime ;
+    schema:name "Analysing GDPR's Data Breach Reporting Mechanisms"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2024-bias-data-sheets> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Marjia Siddik" ;
+    schema:endDate "2024-08-31T00:00:00"^^xsd:dateTime ;
+    schema:name "Reporting Bias in Data Sheets for Health Datasets (funded by HRB)"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-06-04T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
+
+<https://harshp.com/research/supervision/2024-ethics-application> a hpcom:RenderedItem,
+        hpcom:SupervisionRole,
+        schema:Role ;
+    schema:agent "Oluwaseun Aderibigbe" ;
+    schema:endDate "2024-06-30T00:00:00"^^xsd:dateTime ;
+    schema:name "Ethics application support system"@en ;
+    schema:roleName "Supervisor" ;
+    schema:startDate "2024-05-01T00:00:00"^^xsd:dateTime ;
+    schema:subjectOf hpcom:ProjectInternship .
 
 <https://harshp.com/stories/apple-sauce-in-cranberry-juice> a hpcom:RenderedItem,
         <https://harshp.com/stories> ;

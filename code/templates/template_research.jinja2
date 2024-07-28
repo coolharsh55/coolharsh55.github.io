@@ -329,20 +329,79 @@
 <section id="supervision">
 <h2>Supervision / Mentoring</h2>
 <p>I maintain a blog post for <a href="https://harshp.com/research/blog/student-project-ideas">project ideas</a> relevant to my research interests, updated annually.</p>
-<h4>Current/Ongoing</h4>
+<h3>Current/Ongoing</h3>
+    <h4>PhD Supervision ({{current_supervision_phd|length}})</h4>
     <ul>
-        {% for project, name, course, agent, year_start, year_end, role  in current_supervision|sort(attribute='5,1') %}
-        <li><a href="{{project.iri}}">{{name}}</a> - {{agent}}, {{course}} <br/>
-            <i>{{role}}</i> {{year_start}}-{{year_end}} </li>
+        {% for project, year_start, year_end in current_supervision_phd %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
         {% endfor %}
     </ul>
+    {% if current_supervision_msc %}<h4>MSc Supervision ({{current_supervision_msc|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in current_supervision_msc %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if current_supervision_undergrad %}<h4>Undergraduate Supervision ({{current_supervision_undergrad|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in current_supervision_undergrad %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if current_supervision_internship %}<h4>Internship Supervision ({{current_supervision_internship|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in current_supervision_internship %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 <h4>Past</h4>
+    {% if past_supervision_phd %}<h4>PhD Supervision ({{past_supervision_phd|length}})</h4>
     <ul>
-        {% for project, name, course, agent, year_start, year_end, role  in past_supervision|sort(attribute='1')|sort(attribute='5', reverse=True) %}
-        <li><a href="{{project.iri}}">{{name}}</a> - {{agent}}, {{course}} <br/>
-            <i>{{role}}</i> {{year_start}}-{{year_end}} </li>
+        {% for project, year_start, year_end in past_supervision_phd %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
         {% endfor %}
     </ul>
+    {% endif %}
+    {% if past_supervision_msc %}<h4>MSc Supervision ({{past_supervision_msc|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in past_supervision_msc %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if past_supervision_undergrad %}<h4>Undergraduate Supervision ({{past_supervision_undergrad|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in past_supervision_undergrad %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if past_supervision_internship %}<h4>Internship Supervision ({{past_supervision_internship|length}})</h4>
+    <ul>
+        {% for project, year_start, year_end in past_supervision_internship %}
+        <li><a href="{{project.iri}}">{{project}}</a>
+            <br/>
+            <i>{{project.schema_agent}}</i> ({{year_start}}-{{year_end}})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </section>
 <section id="teaching">
 <h2>Teaching, Knowledge Dissemination</h2>
