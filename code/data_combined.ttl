@@ -15437,12 +15437,16 @@ book:777 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "777"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-07-29T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "James S. A. Corey"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Leviathan Wakes"@en ;
+    schema:review "This is a tightly edited, sharp, and consistent book that starts off as a conventional realistic near-future sci-fi concerning the politics in a solar system where planets have been colonised. and quickly turns in to a good space opera with a hook for future titles. Excellent world building, setup, characters that aren't shallow, and the reading is enjoyable. I think I will be reading the entire series if the second book is as entertaining as this one. And also the TV series would be something to look forward to."@en ;
     schema:url "https://harshp.com/hobbies/books/777"^^xsd:anyURI .
 
 book:778 a hpcom:Book,
@@ -18218,6 +18222,18 @@ book:947 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"@en ;
     schema:url "https://harshp.com/hobbies/books/947"^^xsd:anyURI .
+
+book:948 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "948"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Caliban's War"@en ;
+    schema:url "https://harshp.com/hobbies/books/948"^^xsd:anyURI .
 
 book:95 a hpcom:Book,
         hpcom:BookReading,
@@ -27398,6 +27414,9 @@ hptag:sci-fi a hpcom:RenderedItem,
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -27519,9 +27538,6 @@ hpcom:Rating1 a hpcom:Rating,
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
-
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
 
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
