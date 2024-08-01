@@ -18181,6 +18181,7 @@ book:943 a hpcom:RenderedItem,
 book:944 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "944"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
@@ -18192,6 +18193,7 @@ book:944 a hpcom:RenderedItem,
 book:945 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "945"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
@@ -18235,6 +18237,17 @@ book:948 a hpcom:RenderedItem,
     schema:name "Caliban's War"@en ;
     schema:url "https://harshp.com/hobbies/books/948"^^xsd:anyURI .
 
+book:949 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "949"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Grace Blakeley "^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Vulture Capitalism: Corporate Crimes, Backdoor Bailouts and the Death of Freedom"@en ;
+    schema:url "https://harshp.com/hobbies/books/949"^^xsd:anyURI .
+
 book:95 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
@@ -18246,6 +18259,64 @@ book:95 a hpcom:Book,
     schema:isbn "9780544456259"^^xsd:string ;
     schema:name "Peak: Secrets from the New Science of Expertise"@en ;
     schema:url "https://harshp.com/hobbies/books/95"^^xsd:anyURI .
+
+book:950 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "950"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Iain M. Banks"^^xsd:string ;
+    schema:dateCreated "1897"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Consider Phlebas"@en ;
+    schema:url "https://harshp.com/hobbies/books/950"^^xsd:anyURI .
+
+book:951 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "951"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Alison Pouliot"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Meetings with Remarkable Mushrooms: Forays with Fungi across Hemispheres"@en ;
+    schema:url "https://harshp.com/hobbies/books/951"^^xsd:anyURI .
+
+book:952 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "952"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Iain M. Banks"^^xsd:string ;
+    schema:dateCreated "1996"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Excession"@en ;
+    schema:url "https://harshp.com/hobbies/books/952"^^xsd:anyURI .
+
+book:953 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "953"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Keanu Reeves and China Miéville"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "The Book of Elsewhere"@en ;
+    schema:url "https://harshp.com/hobbies/books/953"^^xsd:anyURI .
+
+book:954 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "954"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Thomas Halliday"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Otherlands: A Journey Through Earth's Extinct Worlds"@en ;
+    schema:url "https://harshp.com/hobbies/books/954"^^xsd:anyURI .
 
 book:96 a hpcom:Book,
         hpcom:BookReading,
@@ -27414,9 +27485,6 @@ hptag:sci-fi a hpcom:RenderedItem,
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -27577,6 +27645,9 @@ hptag:weather a hpcom:RenderedItem,
 <https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
     schema:name "Delaram Golpayegani" ;
     schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
@@ -28085,12 +28156,12 @@ hpcom:Rating3 a hpcom:Rating,
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
 
-hpcom:BookSciFi a hpcom:BookGenre ;
-    rdfs:label "sci-fi"@en .
-
 hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
+
+hpcom:BookSciFi a hpcom:BookGenre ;
+    rdfs:label "sci-fi"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
