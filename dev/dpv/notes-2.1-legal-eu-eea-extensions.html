@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Adding EU/EEA jurisdiction extensions to DPV 2.1-dev</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Adding EU/EEA jurisdiction extensions to DPV 2.1-dev">
+    <meta name="schema:description" content="Adding extensions for each EU/EEA member in legal extensions for DPV 2.1-dev">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions">
+    <meta property="og:title" content="Adding EU/EEA jurisdiction extensions to DPV 2.1-dev">
+    <meta property="og:description" content="Adding extensions for each EU/EEA member in legal extensions for DPV 2.1-dev">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions">
+        <h1 property="schema:name schema:headline">Adding EU/EEA jurisdiction extensions to DPV 2.1-dev</h1>
+        <div id="description">
+            <span property='schema:description'>Adding extensions for each EU/EEA member in legal extensions for DPV 2.1-dev</span><br/>
+            published: <time property="schema:datePublished" datetime="2024-08-02T14:00:00">2024-08-02T14:00:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <ol type="1">
+<li>data collection</li>
+</ol>
+<ul>
+<li>added concepts in the spreadsheet - each spreadsheet represents a
+distinct jurisdiction. We use ISO 3166-2 codes for countries with prefix
+‘legal’, so Ireland becomes ‘legal-ie’.</li>
+<li>in the spreadsheet, we add the concepts for laws and authorities -
+the columns/schema must match the other existing laws and authorities
+schema. Otherwise we will need to define and use a custom schema when
+parsing the CSV.</li>
+</ul>
+<ol start="2" type="1">
+<li>add spreadsheets to 100.py script for downloading csv</li>
+</ol>
+<ul>
+<li>identify which google sheets are new/relevant in
+<code>DPV_FILES</code> dictionary, in this case they are under
+‘laws-authorities’. If this is a new google sheet, then we will need to
+create a new entry</li>
+<li>add in the entries from the names of the spreadsheet
+e.g. ‘legal-ie’</li>
+<li>run 100.py with arguments <code>--ds=laws-authorities</code></li>
+</ul>
+<ol start="3" type="1">
+<li>configure new extensions in vocab_management.py</li>
+</ol>
+<ul>
+<li>in <code>CSVFILES</code> add in the entries for each spreadsheet,
+e.g. for Ireland</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;legal-ie&#39;</span>: {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ie&#39;</span>: {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;laws&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>IMPORT_CSV_PATH<span class="sc">}</span><span class="ss">/legal-ie.csv&#39;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>},</span></code></pre></div>
+<ul>
+<li>in <code>RDF_VOCABS</code> add the metadata for the vocabulary for
+each extension, e.g. for Ireland</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;legal-ie&#39;</span>: {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;vocab&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>IMPORT_PATH<span class="sc">}</span><span class="ss">/legal/ie/legal-ie.ttl&#39;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;template&#39;</span>: <span class="st">&#39;template_legal_jurisdiction.jinja2&#39;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;export&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>EXPORT_PATH<span class="sc">}</span><span class="ss">/legal/ie&#39;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;modules&#39;</span>: {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;legal&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>IMPORT_PATH<span class="sc">}</span><span class="ss">/legal/ie/legal-ie.ttl&#39;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;metadata&#39;</span>: {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dct:title&quot;</span>: <span class="st">&quot;Legal Concepts for Ireland (IE)&quot;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dct:description&quot;</span>: <span class="st">&quot;Extension to the Data Privacy Vocabulary (DPV) providing concepts for representing legal information for Ireland as jurisdiction&quot;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dct:created&quot;</span>: <span class="st">&quot;2024-01-01&quot;</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dct:modified&quot;</span>: DPV_PUBLISH_DATE,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dct:creator&quot;</span>: <span class="st">&quot;Harshvardhan J. Pandit&quot;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;schema:version&quot;</span>: DPV_VERSION,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;profile:isProfileOf&quot;</span>: <span class="st">&quot;dpv&quot;</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;iri&#39;</span>: <span class="st">&#39;https://w3id.org/dpv/legal/ie&#39;</span>, <span class="op">&lt;--</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;bibo:status&quot;</span>: <span class="st">&quot;published&quot;</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>},</span></code></pre></div>
+<ul>
+<li>in adding these, if there is a dependency between the entries, then
+the dependant ones must be later in the list - in this case the entry
+for Ireland and other EU/EEA member states are dependent on the entry
+for EU because they all refer to GDPR, therefore <code>legal-eu</code>
+must occur earlier than <code>legal-ie</code> and other EU/EEA entries
+in the list</li>
+<li>in <code>RDF_STRUCTURE</code> add metadata regarding whether any
+modules are present and where to store them, e.g. for Ireland</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;legal-ie&#39;</span>: {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;main&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>EXPORT_RDF_PATH<span class="sc">}</span><span class="ss">/legal/ie&#39;</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;modules&#39;</span>: <span class="ss">f&#39;</span><span class="sc">{</span>EXPORT_RDF_PATH<span class="sc">}</span><span class="ss">/legal/ie/modules&#39;</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>},</span></code></pre></div>
+<ul>
+<li>in <code>RDF_COLLATIONS</code>, add entries for each jurisdiction
+which will collate their laws and authorities in the ‘legal’ extension
+page, e.g. for Ireland</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f&#39;</span><span class="sc">{</span>EXPORT_RDF_PATH<span class="sc">}</span><span class="ss">/legal/ie/legal-ie.ttl&#39;</span>,</span></code></pre></div>
+<ol start="4" type="1">
+<li><p>Generate RDF using 200.py</p></li>
+<li><p>Generate HTML using 300.py</p></li>
+</ol>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
