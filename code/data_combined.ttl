@@ -18093,7 +18093,7 @@ book:938 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "938"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18299,12 +18299,17 @@ book:953 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "953"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-08-04T00:00:00"^^xsd:dateTime ;
+    hpcom:list list:cork ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Keanu Reeves and China Miéville"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Book of Elsewhere"@en ;
+    schema:review "A new book by China Miéville! Wow. So stoked. Wait - he's the second author? And the first is KEANU REEVES? What is going on? How did this happen? - That was pretty much what was going on when the book was first announced. I didn't read the blurb, stayed away from spoilers, and got the book as soon as I could. I started reading it - and it was difficult to get into. The narrative and styles changed a lot. A LOT. I couldn't make sense of what was happening - whether what I was thinking was indeed what was intended to be thought. But knowing there must be a payoff ahead, I persevered. The story itself is about an immortal being who keeps coming back to life after being killed. Cliche! What's the Mieville angle? Well, it is that the entire affair is quite dark and melancholy - think about a person who has endured for over 70,000 years and just can't be interested any more. The writing is sharp - the narration excellent - and the way the weirder elements are brought out is first rate - what makes Miéville special. At several times I couldn't wait to find out which way things go - desprately hoping there are no silly deux-ex machina endings or that there isn't another love triumphs everything or this is what makes us human type of endings. Good - there weeren't any of this. I really enjoyed reading all of it. Only after finishing it did I discover that this is based on the comic series BRZRKR by Keanu Reeves - so I'm going to go read that next. I hope China Miéville keeps writing more stuff, he's really really great at it."@en ;
     schema:url "https://harshp.com/hobbies/books/953"^^xsd:anyURI .
 
 book:954 a hpcom:RenderedItem,
@@ -21758,7 +21763,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder ( <https://harshp.com/research/projects/risky> <https://harshp.com/research/projects/paecg> <http://example.com/ADAPT> ) ;
     schema:identifier "https://doi.org/10.5281/zenodo.4444925"^^xsd:anyURI ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
-    schema:name "Comparison of notice requirements for consent between ISO/IEC 29184:2020 and GDPR "@en ;
+    schema:name "Comparison of notice requirements for consent between ISO/IEC 29184:2020 and GDPR"@en ;
     schema:publisher <https://www.henrystewartpublications.com/jdpp> ;
     schema:url "https://www.henrystewartpublications.com/jdpp/v4"^^xsd:anyURI .
 
@@ -22193,7 +22198,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act"@en ;
     schema:publication <http://example.com/conferences/APF2024> ;
     schema:status "to be presented"@en ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.1007/978-3-031-68024-3_3"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> a hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -22224,7 +22229,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
     schema:publication <http://example.com/conferences/APF2024> ;
     schema:status "to be presented"@en ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.1007/978-3-031-68024-3_12"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/067-DPV-2.0> a hpcom:FullPaper,
         hpcom:RenderedItem,
