@@ -12882,7 +12882,7 @@
     hpcom:book_id "884"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Justin Cronin"^^xsd:string ;
@@ -13684,22 +13684,23 @@
 
 <https://harshp.com/hobbies/books/938> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "938"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    hpcom:date_book_read "2024-08-11T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Hannu Rajaniemi"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Summerland"@en ;
+    schema:review """Coming hot off the Quantum Thief trilogy which was heavy on epic physics and quantum technologies - this was a book I was looking forward with high expectations. Unfortunately, the imply but don't tell much style doesn't work when talking about the afterlife - the more the world and underlying physics is hinted at the more there are questions raised. The story was not really compelling or interesting - maybe it is for people interested in British cultural settings. To me, this was a book that could have been so much more because the ideas are cool, but the execution is utterly not."""@en ;
     schema:url "https://harshp.com/hobbies/books/938"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/939> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "939"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_read_medium hpcom:PhysicalBook ;
@@ -13708,6 +13709,7 @@
     schema:dateCreated "2024"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Lake of Souls"@en ;
+    schema:review """This book contains a few independent stoties, and a few stories from the Raadchair and Raven Tower universe. I really liked the stories set in the existing novels. The independent ones were okay - but I really enjoyed reading more about the crazy world of the gods, and the tea-addicted Raadchai. Would have given this a rating of 5 quite easily had the entire book been about these stories. Good stuff overall."""@en ;
     schema:url "https://harshp.com/hobbies/books/939"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/940> a schema:Book, hpcom:RenderedItem ;
@@ -13868,16 +13870,17 @@
 
 <https://harshp.com/hobbies/books/951> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "951"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-08-09T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Alison Pouliot"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Meetings with Remarkable Mushrooms: Forays with Fungi across Hemispheres"@en ;
+    schema:review  """A book about mushrooms, with pics, and lots of details about history? Yes, please - picked this up straight away and was not disappointed. Expectations were low - a cautious approach to see whether this would be a repeat of what I know or something truly new and interesting. There are lots of nice details and a bit of history, including the role of women in mushroom foraging and forming the early knowledge about fungi. But the book is otherwise too sparse on details - I would have been happy with twice the length. Also, the pics are not that central - a couple of center shots in between chapters and most of them in low quality monochrome printing. I was expecting pictures spread around the text."""@en ;
     schema:url "https://harshp.com/hobbies/books/951"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/952> a schema:Book, hpcom:RenderedItem ;
@@ -13923,3 +13926,17 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Otherlands: A Journey Through Earth's Extinct Worlds"@en ;
     schema:url "https://harshp.com/hobbies/books/954"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/955> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "955"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Ethan Mollick"^^xsd:string ;
+    schema:dateCreated "2024"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Co-Intelligence: Living and Working with AI"@en ;
+    schema:url "https://harshp.com/hobbies/books/955"^^xsd:anyURI .
