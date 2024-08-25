@@ -12881,14 +12881,15 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "884"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-08-19T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Justin Cronin"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "The Ferryman"@en ;
+    schema:review """The Ferryman starts off with a fantastic premise and a hook that makes you want to latch on seeking the mystery promised at every other page. There is a society where there are no children - instead teens are dropped off by a ferry where the implication is that somehow they were created at that stage. The society is a panopticon utopia situated on an island. Amidst all this are shades of something horribly wrong, implications that the freedom is an illusion. The 'help' who serve the utopia are humans who are treated as a poorer class. One would think that after all of this, the ending would be something just as intricate and that there would be a commentary on why things were the way they are. Instead, we get this hand-wavy cliche absolutely not well done. Good book that may get passed as acceptable and even be considered as good for other casual readers - but this was not satisfying for me."""@en ;
     schema:url "https://harshp.com/hobbies/books/884"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/885> a hpcom:RenderedItem,
@@ -13786,7 +13787,7 @@
 
 <https://harshp.com/hobbies/books/945> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "945"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2024-07-10T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
