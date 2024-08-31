@@ -18224,7 +18224,7 @@ book:944 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "944"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18236,12 +18236,16 @@ book:945 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "945"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-08-29T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Service Model"@en ;
+    schema:review "The premise of this novel is that there is a robot butler - a service model - who seemingly accidentally murders his employer and is thus out of employment. Set in the dystopian future where nothing works and humanity seems to be on the verge of extinction, the society is proliferated with robots and robotic systems which continue to function and achieve whatever tasks they have been programmed to do - even if there are no humans or resource around. The story reminded me more of Lem's works rather than any other Tchaikovsky novel. The programmer in me was delighted to see logic-based exposition of thinking in the robot's rather than their simplification and humanisation. What comes across is a tale of one robot's adventure to find 'purpose' in as much sense as the programming can make of the word. The novel is lengthy - and sparse at times where you think it will go in a particular direction but it doesn't. Overall, I'm quite pleased with the reading and I think I enjoyed the world and the journey. The ending - without spoilers - was better than some over the top gigantic reveal or happy ending. I liked that it made sense and didn't break the world."@en ;
     schema:url "https://harshp.com/hobbies/books/945"^^xsd:anyURI .
 
 book:946 a hpcom:RenderedItem,
@@ -18283,7 +18287,7 @@ book:949 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "949"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Grace Blakeley "^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -18373,11 +18377,15 @@ book:955 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "955"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-08-27T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating2 ;
     schema:author "Ethan Mollick"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Co-Intelligence: Living and Working with AI"@en ;
+    schema:review "I had high hopes for this book as it promised different perspectives on how AI can be used in different modes and modalities - from supporting us to working on behalf of us. Instead, its a high-level abstract explanation of the concept, with lots of (acknowledged) ChatGPT copy-paste materials, and not enough science or technical details or even political/sociological issues such as risks and careful considerations. A coffee table book."@en ;
     schema:url "https://harshp.com/hobbies/books/955"^^xsd:anyURI .
 
 book:96 a hpcom:Book,
@@ -22248,10 +22256,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "arXiv" ;
-            schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ],
+            schema:url "https://doi.org/10.48550/arXiv.2405.04528"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "OSF" ;
-            schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
+            schema:url "https://doi.org/10.31219/osf.io/3utx8"^^xsd:anyURI ] ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:author_other ( <http://example.com/JanLindquist> <http://example.com/GeorgPKrog> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -22279,13 +22287,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/067-DPV-2.0"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "OSF" ;
-            schema:url "https://osf.io/ma9ue"^^xsd:anyURI ],
+            schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "arXiv" ;
-            schema:url "https://arxiv.org/abs/2405.04528"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "OSF" ;
-            schema:url "https://osf.io/preprints/osf/3utx8"^^xsd:anyURI ] ;
+            schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:author_other ( <http://example.com/BeatrizEsteves> <http://example.com/GeorgPKrog> <http://example.com/PaulRyan> <https://www.scss.tcd.ie/personnel/golpayes> <http://example.com/JulianFlake> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -28183,17 +28188,17 @@ hptag:semantic-web a hpcom:RenderedItem,
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
 
+list:classics a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "classics"@en ;
+    schema:name "Classics"@en .
+
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;
     rdfs:label "🙁bad (2/5)"@en ;
     rdfs:subClassOf schema:Rating ;
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
-
-list:classics a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "classics"@en ;
-    schema:name "Classics"@en .
 
 list:DCU a hpcom:RenderedItem,
         book:lists ;

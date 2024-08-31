@@ -790,34 +790,31 @@ expertise and requirements for industrial applications.</p>
 ‘consent record information structure’, which defines the specific
 information to be maintained in consent records. DPV’s consent modelling
 played a significant part in the development of this standard based on
-sharing the knowledge<a href="#fn9" class="footnote-ref" id="fnref9"
-role="doc-noteref"><sup>9</sup></a> of legal and semantic requirements
-regarding consent records and receipts. The annex of 27560:2023 provides
-examples of consent records and receipts using JSON-LD where DPV is
-explicitly referenced in the document and its concepts are used as to
-define the schema (e.g., <em>hasPurpose</em> and instances (e.g.,
-<em>Service Provision</em>).</p>
+sharing the knowledge of legal and semantic requirements regarding
+consent records and receipts. The annex of 27560:2023 provides examples
+of consent records and receipts using JSON-LD where DPV is explicitly
+referenced in the document and its concepts are used as to define the
+schema (e.g., <em>hasPurpose</em> and instances (e.g., <em>Service
+Provision</em>).</p>
 <p>The IEEE P7012 Working Group is developing a specification to define
 how “personal privacy terms are proffered and how they can be read and
 agreed to by machines”. It explicitly references DPV as the vocabulary
 to describe activities regarding processing of personal data in an
 interoperable manner.</p>
 <h2 id="sec:overview">Data Privacy Vocabulary 2.0</h2>
-<h3 id="overview">Overview</h3>
+<figure>
+    <img src="img/067-overview-dpv-2.0.png">
+    <figcaption>Overview of concepts in DPV and their extensions</figcaption>
+</figure>
 <p>The motivation of the Data Privacy Vocabulary (DPV) is to provide a
 ‘data model’ or a ‘taxonomy’ of concepts that act as a vocabulary for
 the interoperable representation and exchange of information about
 personal data and its processing. For this, the DPV specification
 represents an abstract model of concepts and relationships that can be
 implemented and applied using technologies appropriate to the use-case’s
-requirements.</p>
-<figure>
-    <img src="img/067-overview-dpv-2.0.png">
-    <figcaption>Overview of concepts in DPV and their extensions</figcaption>
-</figure>
-<p>The core concepts in DPV, as shown in Figure <a href="#fig:dpv"
-data-reference-type="ref" data-reference="fig:dpv">[fig:dpv]</a>, are
-broadly as follows:</p>
+requirements. The core concepts in DPV, as shown in Figure <a
+href="#fig:dpv" data-reference-type="ref"
+data-reference="fig:dpv">[fig:dpv]</a>, are broadly as follows:</p>
 <ul>
 <li><p><strong>Purpose</strong>: end-goal for why personal data is
 processed, e.g., Service Provision</p></li>
@@ -834,12 +831,15 @@ safeguarding activities</p></li>
 <li><p><strong>Processing Context</strong>: storage conditions,
 automation, scale and scope</p></li>
 <li><p><strong>Context</strong>: concepts other than the above, e.g.,
-Necessity, Duration, Frequency.</p></li>
+necessity, duration</p></li>
 <li><p><strong>Rights</strong>: legally recognised rights associated
 with activities</p></li>
 <li><p><strong>Risk and Risk Mitigation</strong>: managing risks,
 consequences, and impacts</p></li>
 </ul>
+<div class="figure*">
+
+</div>
 <p>Each of these ‘core concepts’ are expanded into taxonomies to reflect
 their application in use-cases. The taxonomies also provide ‘knowledge’
 by asserting categorisation based on the core concepts. For example,
@@ -849,6 +849,51 @@ personal data contains some instances asserted as being sensitive. An
 adopter therefore not only gets a taxonomy of personal data, but is also
 able to utilise the categorisation of it into sensitive personal
 data.</p>
+<p>To assist newcomers in understanding the structure of DPV and how its
+concepts are organised — a <em>Primer</em><a href="#fn9"
+class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>
+document has been developed. In addition, the documentation is
+continually refined to provide illustrative guidance and examples<a
+href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>, and a searchable index<a
+href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a> of concepts is also provided. The
+below example shows the use of DPV in implementing consent records as
+used in ISO/IEC TS 27560:2023 Privacy technologies — Consent record
+information structure <span class="citation"
+data-cites="panditImplementingISOIEC2024"><a
+href="#ref-panditImplementingISOIEC2024"
+role="doc-biblioref">[83]</a></span>, where this work was recently also
+presented to the EU Commission:</p>
+<pre class="turtle" data-fontsize="\footnotesize"><code>@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dpv: &lt;https://w3id.org/dpv#&gt; .
+@prefix loc: &lt;https://w3id.org/dpv/loc#&gt; .
+@prefix eu-gdpr: &lt;https://w3id.org/dpv/legal/eu/gdpr#&gt; .
+@prefix : &lt;https://example.com/&gt; .
+:63ded36f-4acd-4f3c-991e-6cb636698523 a dpv:ConsentRecord ;
+    dct:hasVersion &quot;ISO-27560&quot; ;
+    dpv:hasIdentifier &quot;63ded36f-4acd-4f3c-991e-6cb636698523&quot; ;
+    dpv:hasDataSubject &quot;96121fde-199f-4848-8942-4436e270513a&quot; ;
+    dpv:hasNotice &lt;https://example.com/notice&gt; ;
+    dpv:hasProcess [
+        a dpv:Process ;
+        dct:title &quot;Send Newsletters with Seasonal Offers&quot;@en ;
+        dpv:hasPurpose dpv:Marketing ;
+        dpv:hasLegalBasis dpv:Consent, eu-gdpr:A6-1-a ;
+        dpv:hasPersonalData pd:Email ;
+        dpv:hasDataController ex:Acme ;
+        dpv:hasProcessing dpv:Collect, dpv:Store ;
+        dpv:hasStorageCondition [ 
+            dpv:hasLocation loc:IE ;
+            dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ; ] ;
+        dpv:hasJurisdiction loc:EU ;
+        dpv:hasRecipient :Beta, :Epsilon ; ] ;
+    dpv:hasConsentStatus dpv:ConsentGiven ;
+    dct:hasPart [
+        a dpv:ConsentGiven, dpv:ExplicitlyExpressedConsent ;
+        dpv:isIndicatedAtTime &quot;2021-05-28T12:24:00&quot;^^xsd:dateTime ;
+        dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ;
+        dpv:hasEntity &quot;96121fde-199f-4848-8942-4436e270513a&quot; ] .</code></pre>
 <p>Extensions are a collection of concepts provided in a separate
 namespace. They are used to represent specific concepts in jurisdictions
 and regulations, for example <em>Consent</em> is present in the ‘main’
@@ -897,55 +942,6 @@ class="uri">https://w3id.org/dpv/ai</a></p></li>
 <li><p>Justifications – <a href="https://w3id.org/dpv/justifications"
 class="uri">https://w3id.org/dpv/justifications</a></p></li>
 </ul>
-<p>To assist newcomers in understanding the structure of DPV and how its
-concepts are organised — a <em>Primer</em><a href="#fn10"
-class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>
-document has been developed. In addition, the documentation is
-continually refined to provide illustrative guidance and examples<a
-href="#fn11" class="footnote-ref" id="fnref11"
-role="doc-noteref"><sup>11</sup></a>, and a searchable index<a
-href="#fn12" class="footnote-ref" id="fnref12"
-role="doc-noteref"><sup>12</sup></a> of concepts is also provided. The
-below example shows the use of DPV in implementing consent records as
-used in ISO/IEC TS 27560:2023 Privacy technologies — Consent record
-information structure <span class="citation"
-data-cites="panditImplementingISOIEC2024"><a
-href="#ref-panditImplementingISOIEC2024"
-role="doc-biblioref">[83]</a></span>, where this work was recently also
-presented to the EU Commission:</p>
-<pre class="turtle" data-fontsize="\footnotesize"><code>@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
-@prefix dpv: &lt;https://w3id.org/dpv#&gt; .
-@prefix loc: &lt;https://w3id.org/dpv/loc#&gt; .
-@prefix eu-gdpr: &lt;https://w3id.org/dpv/legal/eu/gdpr#&gt; .
-@prefix : &lt;https://example.com/&gt; .
-
-:63ded36f-4acd-4f3c-991e-6cb636698523 a dpv:ConsentRecord ;
-    dct:hasVersion &quot;ISO-27560&quot; ;
-    dpv:hasIdentifier &quot;63ded36f-4acd-4f3c-991e-6cb636698523&quot; ;
-    dpv:hasDataSubject &quot;96121fde-199f-4848-8942-4436e270513a&quot; ;
-    dpv:hasNotice &lt;https://example.com/notice&gt; ;
-    dpv:hasProcess [
-        a dpv:Process ;
-        dct:title &quot;Send Newsletters with Seasonal Offers&quot;@en ;
-        dpv:hasPurpose dpv:Marketing ;
-        dpv:hasLegalBasis dpv:Consent, eu-gdpr:A6-1-a ;
-        dpv:hasPersonalData pd:Email ;
-        dpv:hasDataController ex:Acme ;
-        dpv:hasProcessing dpv:Collect, dpv:Store ;
-        dpv:hasStorageCondition [ 
-            dpv:hasLocation loc:IE ;
-            dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ;
-        ] ;
-        dpv:hasJurisdiction loc:EU ;
-        dpv:hasRecipient :Beta, :Epsilon ;
-    ] ;
-    dpv:hasConsentStatus dpv:ConsentGiven ;
-    dct:hasPart [
-        a dpv:ConsentGiven, dpv:ExplicitlyExpressedConsent ;
-        dpv:isIndicatedAtTime &quot;2021-05-28T12:24:00&quot;^^xsd:dateTime ;
-        dpv:hasDuration &quot;P1Y&quot;^^xsd:duration ;
-        dpv:hasEntity &quot;96121fde-199f-4848-8942-4436e270513a&quot;
-    ] .</code></pre>
 <h3 id="major-changes-in-2.0">Major Changes in 2.0</h3>
 <p>DPV 2.0 and all its extensions contain 2394 concepts (with 2198
 classes and 196 properties), with 1017 concepts added and 805 concepts
@@ -955,8 +951,8 @@ specified to be in <em>draft</em> mode. In DPV 2.0, DPV along with all
 of its extensions of PD, LOC (locations), LEGAL (including
 jurisdictional laws such as EU GDPR), RISK, TECH, AI, and Justifications
 have been provided as finalised resources. A detailed changelog<a
-href="#fn13" class="footnote-ref" id="fnref13"
-role="doc-noteref"><sup>13</sup></a> has been provided expanding on
+href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a> has been provided expanding on
 information in this section, including added/removed concepts in DPV and
 extensions.</p>
 <p><strong>Change in scope:</strong> The scope of concepts in DPV 1.0
@@ -1005,14 +1001,13 @@ not. In DPV 2.0, extensions are defined without the prefix for
 consistency.</p>
 <p>The <code>dpv-legal</code> extension in DPV 1.0 was a <em>draft</em>
 providing legal concepts (laws, authorities) and locations based on ISO
-3166-1 codes<a href="#fn14" class="footnote-ref" id="fnref14"
-role="doc-noteref"><sup>14</sup></a>. In DPV 2.0 it has been split into
-<code>legal</code> and <code>loc</code> (locations) extensions for
-separation of concerns. Both legal and location extensions are provided
-as completed in DPV 2.0. Further, the location concepts have been
-aligned with EU Vocabularies<a href="#fn15" class="footnote-ref"
-id="fnref15" role="doc-noteref"><sup>15</sup></a> as an example of
-connecting DPV locations to external vocabularies.</p>
+3166-1 codes. In DPV 2.0 it has been split into <code>legal</code> and
+<code>loc</code> (locations) extensions for separation of concerns. Both
+legal and location extensions are provided as completed in DPV 2.0.
+Further, the location concepts have been aligned with EU Vocabularies<a
+href="#fn13" class="footnote-ref" id="fnref13"
+role="doc-noteref"><sup>13</sup></a> as an example of connecting DPV
+locations to external vocabularies.</p>
 <p>The namespaces and organisation of legal concepts in DPV 2.0 has been
 redesigned to distinguish between jurisdictions and laws by using the
 ISO 3166-1 codes to create a structured path. For example, the namespace
@@ -1027,8 +1022,8 @@ same path, e.g., DGA, NIS2, and AI Act are represented within the
 Rights extension in DPV 1.0 providing concepts from EU Charter of
 Fundamental Rights has been moved to <code>/legal/eu/rights</code>
 namespace in DPV 2.0 following this reorganisation.</p>
-<p>The extension <code>dpv-nace</code> modelled the NACE<a href="#fn16"
-class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
+<p>The extension <code>dpv-nace</code> modelled the NACE<a href="#fn14"
+class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>
 2.0 taxonomy of economic activities provided by the EU as RDFS concepts
 for use with OWL vocabularies as the EU uses SKOS to declare NACE
 concepts. The extension has been removed in DPV 2.0 as NACE has recently
@@ -1047,17 +1042,16 @@ extensions instead. In any case, with the versioned IRIs the adopters
 can continue use of DPV 1.0 if desired.</p>
 <p><strong>Changes in DPV Concepts:</strong> Of the 911 concepts in DPV
 2.0, 311 are new additions and 56 concepts were removed as compared to
-DPV 1.0. The removed concepts represent refinements<a href="#fn17"
-class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
-and moving concepts to an extension, e.g., harms and other impacts were
-moved to the RISK extension.</p>
+DPV 1.0. The removed concepts represent refinements and moving concepts
+to an extension, e.g., harms and other impacts were moved to the RISK
+extension.</p>
 <h2 id="sec:design">Methodology &amp; Design Principles</h2>
 <h3 id="management-by-dpvcg">Management by DPVCG</h3>
 <p>The DPVCG used the W3C infrastructure to manage development of DPV,
 which consisted of the mailing list, task management, and namespace
 management (<em>w3.org</em>). After the migration of W3C to GitHub,
-DPVCG utilised the provided repository<a href="#fn18"
-class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>
+DPVCG utilised the provided repository<a href="#fn15"
+class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
 for version control, task management, discussions, and contributions. In
 its meetings, the group utilised spreadsheets (using Google Sheets for
 collaboration) to support the (lack of) technical knowledge of members
@@ -1079,14 +1073,12 @@ data-cites="poveda2022lot"><a href="#ref-poveda2022lot"
 role="doc-biblioref">[85]</a></span>.</p>
 <p>The development process generally contained a member of the group
 proposing addition or modification of a concept, with information shared
-potentially via the mailing list and/or GitHub repo<a href="#fn19"
-class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>,
-and discussions and decisions within the meetings. Domain experts
-offered their advice on the information being modelled and what aspects
-of this should be considered, which were then formalised and shared as
-proposals. The group then discussed and voted to resolve the proposal,
-with minutes of the meeting reflecting the discussions and
-resolutions.</p>
+potentially via the mailing list and/or GitHub repo, and discussions and
+decisions within the meetings. Domain experts offered their advice on
+the information being modelled and what aspects of this should be
+considered, which were then formalised and shared as proposals. The
+group then discussed and voted to resolve the proposal, with minutes of
+the meeting reflecting the discussions and resolutions.</p>
 <p>Compared to formal ontology engineering methods, this ad-hoc approach
 lacked the explicit documentation of requirements, competency questions,
 and use-cases — which would have been expensive to maintain given the
@@ -1097,34 +1089,29 @@ future.</p>
 <p>The data in spreadsheets was structured to support ontology/taxonomy
 creation while still being comprehensible to the non-semantic web
 members. For generating the RDF serialisations, a custom documentation
-generator was developed which downloaded the spreadsheets, extracted the
-concepts and serialised them into multiple RDF formats, and generated
-the corresponding HTMLs. Existing tools such as WIDOCO <span
-class="citation" data-cites="garijo2017widoco"><a
-href="#ref-garijo2017widoco" role="doc-biblioref">[86]</a></span> were
-not used due to their limitation in control of outputs — for example DPV
-has taxonomies of concepts for purposes, personal data, etc. which would
-be all grouped together in a giant list in WIDOCO outputs, and which in
-DPV outputs are grouped separately to support adopters seeing related
-concepts grouped together. WIDOCO also did not support the dual
-RDFS+SKOS and OWL modelling outputs of DPV, or the ReSpec template<a
-href="#fn20" class="footnote-ref" id="fnref20"
-role="doc-noteref"><sup>20</sup></a> common in W3C outputs.</p>
+generator was developed which downloaded the spreadsheets and serialised
+them into multiple RDF formats, and generated the corresponding HTMLs.
+Existing tools such as WIDOCO <span class="citation"
+data-cites="garijo2017widoco"><a href="#ref-garijo2017widoco"
+role="doc-biblioref">[86]</a></span> were not used due to their
+limitation in control of outputs — for example DPV has multiple
+taxonomies which would be all grouped together in a giant list in WIDOCO
+outputs, and which in DPV outputs are grouped separately to support
+adopters seeing related concepts grouped together. WIDOCO also did not
+support the dual RDFS+SKOS and OWL modelling outputs of DPV, or the
+ReSpec template<a href="#fn16" class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a> common in W3C outputs.</p>
 <p>DPV follows best practices and guidelines established within the
 semantic web community. Namely, the W3C Best Practices for Publishing
-Linked Data<a href="#fn21" class="footnote-ref" id="fnref21"
-role="doc-noteref"><sup>21</sup></a>, WIDOCO best practices <span
-class="citation" data-cites="garijo2017widoco"><a
-href="#ref-garijo2017widoco" role="doc-biblioref">[86]</a></span> with
-OOPS!<a href="#fn22" class="footnote-ref" id="fnref22"
-role="doc-noteref"><sup>22</sup></a> and FOOPS!<a href="#fn23"
-class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>
-for evaluation, W3ID<a href="#fn24" class="footnote-ref" id="fnref24"
-role="doc-noteref"><sup>24</sup></a> for permanent IRIs, GitHub<a
-href="#fn25" class="footnote-ref" id="fnref25"
-role="doc-noteref"><sup>25</sup></a> for version control and
-collaboration, and Zenodo<a href="#fn26" class="footnote-ref"
-id="fnref26" role="doc-noteref"><sup>26</sup></a> for archival.</p>
+Linked Data (2014) WIDOCO best practices <span class="citation"
+data-cites="garijo2017widoco"><a href="#ref-garijo2017widoco"
+role="doc-biblioref">[86]</a></span> with OOPS!<a href="#fn17"
+class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+and FOOPS!<a href="#fn18" class="footnote-ref" id="fnref18"
+role="doc-noteref"><sup>18</sup></a> for evaluation, W3ID<a href="#fn19"
+class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>
+for permanent IRIs, GitHub for version control and collaboration, and
+Zenodo for archival.</p>
 <h3 id="implications-of-using-skos-and-owl">Implications of Using SKOS
 and OWL</h3>
 <p>As described in the requirements in Section <a href="#sec:req"
@@ -1181,10 +1168,10 @@ instance of <code>dpv:DirectMarketing</code> — then the use-case concept
 can be correctly used with <code>dpv:hasPurpose</code>. However, when
 <code>ex:CampaignB</code> is later introduced, it cannot be subclass of
 <code>ex:CampaignA</code> as ‘subclass of instance’ is undefined<a
-href="#fn27" class="footnote-ref" id="fnref27"
-role="doc-noteref"><sup>27</sup></a> in OWL2. The relation between the
+href="#fn20" class="footnote-ref" id="fnref20"
+role="doc-noteref"><sup>20</sup></a> in OWL2. The relation between the
 two use-case concepts thus must be defined using either SKOS (thereby
-mixing SKOS and OWL2) or by using or creating another property, e.g.,
+mixing SKOS and OWL2) or using another property, e.g.,
 <code>dct:hasPart</code>. At this point, the use-case should reengineer
 its ontology by creating a class representing <code>ex:CampaignA</code>
 and creating the necessary subclass and instances to represent the
@@ -1198,9 +1185,9 @@ sufficient ontology engineering capabilities exist to address changes in
 use-cases. By providing both serialisations, DPV enables the adopters to
 choose the most suitable serialisation that supports their use-case
 and/or existing implementations, and retains semantic interoperability
-based on converting between SKOS and OWL2<a href="#fn28"
-class="footnote-ref" id="fnref28"
-role="doc-noteref"><sup>28</sup></a>.</p>
+based on converting between SKOS and OWL2<a href="#fn21"
+class="footnote-ref" id="fnref21"
+role="doc-noteref"><sup>21</sup></a></p>
 <h2 id="sec:conclusion">Conclusion &amp; Future Work</h2>
 <p>The Data Privacy Vocabulary (DPV), in its second iteration, thus
 provides a significantly richer, extended, and state of the art resource
@@ -1252,8 +1239,8 @@ and user-centric applications of DPV, such as those envisioned in the
 IDSA, IEEE P7012 and Solid, the DPVCG is developing vocabularies and
 guides — for example implementation of ISO Standards for (semantic)
 privacy notices. In addition, the DPV is also looking to incorporate the
-Standard Data Protection Model<a href="#fn29" class="footnote-ref"
-id="fnref29" role="doc-noteref"><sup>29</sup></a> provided by the German
+Standard Data Protection Model<a href="#fn22" class="footnote-ref"
+id="fnref22" role="doc-noteref"><sup>22</sup></a> provided by the German
 data protection authority regarding implementation of concrete technical
 and organisational measures.</p>
 <h4 class="unnumbered" id="resource-availability-statement">Resource
@@ -1264,34 +1251,28 @@ class="uri">https://github.com/w3c/dpv</a> and have been deposited in
 Zenodo for long-term archival: <a
 href="https://doi.org/10.5281/zenodo.12505840"
 class="uri">https://doi.org/10.5281/zenodo.12505840</a>.</p>
-<h4 class="unnumbered" id="acknowledgements-of-funding">Acknowledgements
-of Funding</h4>
-<p>The DPVCG was established as part of the SPECIAL H2020 Project, which
-received funding from the European Union’s Horizon 2020 research and
-innovation programme under Grant#731601 from 2017 to 2019. Harshvardhan
-J. Pandit was funded to work on DPV from 2020 to 2022 by the Irish
-Research Council’s Government of Ireland Postdoctoral Fellowship
+<p><strong>Acknowledgements of Funding</strong> The DPVCG was
+established as part of the SPECIAL H2020 Project funded by the European
+Union’s Horizon 2020 programme under Grant#731601 (2017-2019).
+Harshvardhan J. Pandit was funded (2020-2022) by the Irish Research
+Council’s Government of Ireland Postdoctoral Fellowship
 Grant#GOIPD/2020/790. The ADAPT SFI Centre for Digital Media Technology
 is funded by Science Foundation Ireland through the SFI Research Centres
 Programme and is co-funded under the European Regional Development Fund
-(ERDF) through Grant#13/RC/2106 (2018 to 2020) and Grant#13/RC/2106_P2
-(2021 onwards). The contributions of Piero Bonatti and Luigi Sauro to
-the DPVCG have been funded by the European Union’s Horizon 2020 research
-and innovation programme under grant agreement N. 731601 (SPECIAL) until
-2019, and under Grant#883464 (TRAPEZE) from 2020 until 2023. The
-contributions of Beatriz Esteves and Delaram Golpayegani have received
-funding through the PROTECT ITN Project from the European Union’s
-Horizon 2020 research and innovation programme under the Marie
-Skłodowska-Curie Grant#813497. Beatriz is also funded by SolidLab
-Vlaanderen (Flemish Government, EWI and RRF project VV023/10). The
-contributions of Julian Flake have received funding from the German
-Federal Ministry of Education and Research (BMBF) grant#16KIS1298
-(AI-NET PROTECT), from the European Union’s Horizon Europe Framework
-Programme grant#101129822 (TITAN) and from the European Union’s Digital
-Europe Programme grant#101123471 (EDGE-Skills).</p>
-<p>For the purpose of Open Access the authors have applied a CC-BY
-public copyright licence to any Author Accepted Manuscript version
-arising from this submission.</p>
+(ERDF) through Grant#13/RC/2106 (2018-2020) and Grant#13/RC/2106_P2
+(2021 onwards). Piero Bonatti and Luigi Sauro were funded by the
+European Union’s Horizon 2020 programme under Grant#731601 (2017-2019),
+and under TRAPEZE Grant#883464 (2020-2023). Beatriz Esteves and Delaram
+Golpayegani were funded by European Union’s Horizon 2020 programme’s
+Marie Skłodowska-Curie Grant#813497 PROTECT ITN Project. Beatriz is also
+funded by SolidLab Vlaanderen (Flemish Government, EWI and RRF project
+VV023/10). Julian Flake received funding from the German Federal
+Ministry of Education and Research (BMBF) grant#16KIS1298 (AI-NET
+PROTECT), from the European Union’s Horizon Europe Framework Programme
+grant#101129822 (TITAN) and from the European Union’s Digital Europe
+Programme grant#101123471 (EDGE-Skills). For the purpose of Open Access
+the authors have applied a CC-BY public copyright licence to any Author
+Accepted Manuscript arising from this submission.</p>
 <h2 class="unnumbered" id="bibliography">References</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0"
 role="list">
@@ -2297,81 +2278,49 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 href="https://www.inrupt.com/blog/the-benefits-of-dynamic-user-consent"
 class="uri">https://www.inrupt.com/blog/the-benefits-of-dynamic-user-consent</a><a
 href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Harshvardhan J. Pandit was an active contributor to the
-development of ISO/IEC TS 27560:2023 through the National Standards
-Authority of Ireland (NSAI)<a href="#fnref9" class="footnote-back"
+<li id="fn9"><p><a href="https://w3id.org/dpv/primer"
+class="uri">https://w3id.org/dpv/primer</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://w3id.org/dpv/2.0/examples"
+class="uri">https://w3id.org/dpv/2.0/examples</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://w3id.org/dpv/2.0/search"
+class="uri">https://w3id.org/dpv/2.0/search</a><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://w3id.org/dpv/2.0/changelog"
+class="uri">https://w3id.org/dpv/2.0/changelog</a><a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://op.europa.eu/s/zQhL"
+class="uri">https://op.europa.eu/s/zQhL</a><a href="#fnref13"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://ec.europa.eu/eurostat/web/nace"
+class="uri">https://ec.europa.eu/eurostat/web/nace</a><a href="#fnref14"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><a href="https://github.com/w3c/dpv/"
+class="uri">https://github.com/w3c/dpv/</a><a href="#fnref15"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://respec.org/docs/"
+class="uri">https://respec.org/docs/</a><a href="#fnref16"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://oops.linkeddata.es/"
+class="uri">https://oops.linkeddata.es/</a><a href="#fnref17"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://foops.linkeddata.es/"
+class="uri">https://foops.linkeddata.es/</a><a href="#fnref18"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://w3id.org/"
+class="uri">https://w3id.org/</a><a href="#fnref19"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>It might be tempting to use punning here — but it would
+not be correct as we have a concept as class and instance in the same
+context — which is undefined.<a href="#fnref20" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p><a href="https://w3id.org/dpv/primer"
-class="uri">https://w3id.org/dpv/primer</a><a href="#fnref10"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p><a href="https://w3id.org/dpv/2.0/examples"
-class="uri">https://w3id.org/dpv/2.0/examples</a><a href="#fnref11"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p><a href="https://w3id.org/dpv/2.0/search"
-class="uri">https://w3id.org/dpv/2.0/search</a><a href="#fnref12"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p><a href="https://w3id.org/dpv/2.0/changelog"
-class="uri">https://w3id.org/dpv/2.0/changelog</a><a href="#fnref13"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p><a
-href="https://www.iso.org/iso-3166-country-codes.html"
-class="uri">https://www.iso.org/iso-3166-country-codes.html</a><a
-href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p><a
-href="https://op.europa.eu/en/web/eu-vocabularies/concept/-/resource?uri=http://publications.europa.eu/resource/authority/country/"
-class="uri">https://op.europa.eu/en/web/eu-vocabularies/concept/-/resource?uri=http://publications.europa.eu/resource/authority/country/</a><a
-href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p><a href="https://ec.europa.eu/eurostat/web/nace"
-class="uri">https://ec.europa.eu/eurostat/web/nace</a><a href="#fnref16"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p>E.g. the ‘Automation’ and ‘Human Involvement’ concepts
-underwent a major revision based on recent developments and the
-publication of ISO/IEC 22989:2022 AI concepts and terminology standard
-<a href="https://www.iso.org/standard/74296.html"
-class="uri">https://www.iso.org/standard/74296.html</a><a
-href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p><a href="https://github.com/w3c/dpv/"
-class="uri">https://github.com/w3c/dpv/</a><a href="#fnref18"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19"><p><a href="https://github.com/w3c/dpv/issues"
-class="uri">https://github.com/w3c/dpv/issues</a><a href="#fnref19"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20"><p><a href="https://respec.org/docs/"
-class="uri">https://respec.org/docs/</a><a href="#fnref20"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21"><p>Best Practices for Publishing Linked Data (2014) <a
-href="https://www.w3.org/TR/ld-bp/"
-class="uri">https://www.w3.org/TR/ld-bp/</a><a href="#fnref21"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22"><p><a href="https://oops.linkeddata.es/"
-class="uri">https://oops.linkeddata.es/</a><a href="#fnref22"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23"><p><a href="https://foops.linkeddata.es/"
-class="uri">https://foops.linkeddata.es/</a> — DPV’s score has false
-negatives regarding use of SKOS annotations, this has been reported to
-the maintainers<a href="#fnref23" class="footnote-back"
+<li id="fn21"><p>Using OWL and SKOS - Sean Bechhofer and Alistair Miles,
+W3C (2008)<a href="#fnref21" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn24"><p><a href="https://w3id.org/"
-class="uri">https://w3id.org/</a><a href="#fnref24"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25"><p><a href="https://github.com/w3c/dpv"
-class="uri">https://github.com/w3c/dpv</a><a href="#fnref25"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26"><p><a href="https://doi.org/10.5281/zenodo.12505840"
-class="uri">https://doi.org/10.5281/zenodo.12505840</a><a
-href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn27"><p>It might be tempting to use punning here — but it would
-not be correct. Punning enables use of the same concept as class and
-instance in separate contexts whereas we have a concept as class and
-instance in the same context — which is undefined.<a href="#fnref27"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn28"><p>Using OWL and SKOS (2008) <a
-href="https://www.w3.org/2006/07/SWD/SKOS/skos-and-owl/master.html"
-class="uri">https://www.w3.org/2006/07/SWD/SKOS/skos-and-owl/master.html</a><a
-href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn29"><p><a
+<li id="fn22"><p><a
 href="https://www.bfdi.bund.de/EN/Fachthemen/Inhalte/Technik/SDM.html"
 class="uri">https://www.bfdi.bund.de/EN/Fachthemen/Inhalte/Technik/SDM.html</a><a
-href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
