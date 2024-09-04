@@ -18224,12 +18224,16 @@ book:944 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "944"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-09-01T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Alien Clay"@en ;
+    schema:review "This book is about political prisoners being sent to an alient planet with an ecology so uniquely distinct from the gradual evolution of species on Earth that makes it fascinating reading - for the parts where the future dystpian fascism is shown to directly affect science (even if seemingly heavy handed) and the sheer creativity of how to dream an alien life that is free from the frustrating anthromorphic tendency of humans to see humanity in everything. Reading this reminded me a lot of Lem's works because of alien-ness of the alien ecology being beyond human comprehen, and Proxima by Baxter for its depiction of alien life being composed of modular components instead of organ-based cellular clusters as we have on Earth. I didn't find a single dull moment in the book - the start and end were both enthralling."@en ;
     schema:url "https://harshp.com/hobbies/books/944"^^xsd:anyURI .
 
 book:945 a hpcom:RenderedItem,
@@ -18275,12 +18279,16 @@ book:948 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "948"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:Ebook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-09-04T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "James S. A. Corey"^^xsd:string ;
     schema:dateCreated "2012"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Caliban's War"@en ;
+    schema:review "Good space drama involving the same crew as the last novel, and some additional characters - just enough to show a different facet of life and politics in the expanse, and softly advancing the plot about the alien horror. If you look closely, you can even see the stereotypes and cliches and the hand wavy manner of getting out of tricky situations. Onwards to Book 3"@en ;
     schema:url "https://harshp.com/hobbies/books/948"^^xsd:anyURI .
 
 book:949 a hpcom:RenderedItem,
@@ -18387,6 +18395,18 @@ book:955 a hpcom:RenderedItem,
     schema:name "Co-Intelligence: Living and Working with AI"@en ;
     schema:review "I had high hopes for this book as it promised different perspectives on how AI can be used in different modes and modalities - from supporting us to working on behalf of us. Instead, its a high-level abstract explanation of the concept, with lots of (acknowledged) ChatGPT copy-paste materials, and not enough science or technical details or even political/sociological issues such as risks and careful considerations. A coffee table book."@en ;
     schema:url "https://harshp.com/hobbies/books/955"^^xsd:anyURI .
+
+book:956 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "956"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:Ebook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2013"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Abaddon's Gate"@en ;
+    schema:url "https://harshp.com/hobbies/books/956"^^xsd:anyURI .
 
 book:96 a hpcom:Book,
         hpcom:BookReading,
@@ -21112,7 +21132,7 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/presentations/2024/DUO-ODRL-DPV/"^^xsd:anyURI ] ;
     schema:identifier "2024-DUO-ODRL-DPV" ;
     schema:name "Enhancing Data Use Ontology (DUO) for Health-Data Sharing by Extending it with ODRL and DPV"@en ;
-    schema:performer ( <https://harshp.com/me> <http://example.com/BeatrizEsteves> ) ;
+    schema:performer <https://harshp.com/me> ;
     schema:publication "DUC/CCE Group" ;
     schema:url "https://harshp.com/research/presentations#2024-DUO-ODRL-DPV"^^xsd:anyURI .
 
@@ -22212,72 +22232,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Making Sense of Solid for Data Governance and GDPR"@en ;
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info14020114"^^xsd:anyURI .
-
-<https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act> a hpcom:FullPaper,
-        hpcom:RenderedItem,
-        schema:ScholarlyArticle ;
-    hpcom:archived_version [ a hpcom:Link ;
-            schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "arXiv" ;
-            schema:url "https://doi.org/10.48550/arXiv.2406.18211"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "OSF" ;
-            schema:url "https://osf.io/6dxgt"^^xsd:anyURI ] ;
-    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
-    hpcom:author_other ( <http://example.com/IsabelleHupont> <http://example.com/CeciliaPanigutti> <https://harshp.com/me> <http://example.com/SvenSchade> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/065-AI-Cards-Risk-Documentation-AI-Act.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:peer_reviewed true ;
-    hpcom:publishing_attempt "FAccT"@en ;
-    hpcom:supplementary [ a hpcom:Link ;
-            schema:name "repo" ;
-            schema:url "https://github.com/delaramGlp/aicards"^^xsd:anyURI ] ;
-    hpcom:tag hptag:AI-Act,
-        hptag:ISO,
-        hptag:risk,
-        hptag:semantic-web ;
-    schema:datePublished "2024-09-01T00:00:00"^^xsd:dateTime ;
-    schema:description "AI Cards is a novel holistic framework for representing intended uses of AI systems by encompassing information regarding technical specifications, context of use, and risk management, both in human- and machine-readable formats."@en ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
-    schema:name "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act"@en ;
-    schema:publication <http://example.com/conferences/APF2024> ;
-    schema:status "to be presented"@en ;
-    schema:url "https://doi.org/10.1007/978-3-031-68024-3_3"^^xsd:anyURI .
-
-<https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> a hpcom:FullPaper,
-        hpcom:RenderedItem,
-        schema:ScholarlyArticle ;
-    hpcom:archived_version [ a hpcom:Link ;
-            schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "arXiv" ;
-            schema:url "https://doi.org/10.48550/arXiv.2405.04528"^^xsd:anyURI ],
-        [ a hpcom:Link ;
-            schema:name "OSF" ;
-            schema:url "https://doi.org/10.31219/osf.io/3utx8"^^xsd:anyURI ] ;
-    hpcom:author_lead <https://harshp.com/me> ;
-    hpcom:author_other ( <http://example.com/JanLindquist> <http://example.com/GeorgPKrog> ) ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
-            hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:peer_reviewed true ;
-    hpcom:tag hptag:DGA,
-        hptag:GDPR,
-        hptag:ISO,
-        hptag:consent,
-        hptag:semantic-web ;
-    schema:datePublished "2024-09-02T00:00:00"^^xsd:dateTime ;
-    schema:description "We compare requirements regarding consent between ISO/IEC TS 27560:2023, ISO/IEC 29184:2020 Privacy Notices, and the GDPR and use the DPV to create interoperable consent records and receipts, and implementation of DGA machine-readable consent forms."@en ;
-    schema:funder <http://example.com/ADAPT> ;
-    schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
-    schema:publication <http://example.com/conferences/APF2024> ;
-    schema:status "to be presented"@en ;
-    schema:url "https://doi.org/10.1007/978-3-031-68024-3_12"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/067-DPV-2.0> a hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -24724,6 +24678,38 @@ hpcom:RPG a hpcom:VideoGameGenre ;
     schema:publication <http://example.com/workshops/WOP2023> ;
     schema:url "https://harshp.com/research/presentations#2023-WOP-PLASMA"^^xsd:anyURI .
 
+<https://harshp.com/research/presentations#2024-APF-27560> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2024-09-04T10:00:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2024/APF-27560/APF2024.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2024/APF-27560/"^^xsd:anyURI ] ;
+    schema:identifier "2024-APF-27560" ;
+    schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:url "https://harshp.com/research/presentations#2024-APF-27560"^^xsd:anyURI .
+
+<https://harshp.com/research/presentations#2024-APF-AI-Cards> a schema:PresentationDigitalDocument ;
+    schema:about <https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act> ;
+    schema:category "Research Presentation"@en ;
+    schema:datePublished "2024-09-04T12:50:00"^^xsd:dateTime ;
+    schema:encoding [ a schema:DigitalDocument ;
+            schema:encodingFormat "PDF" ;
+            schema:url "https://harshp.com/presentations/2024/APF-AI-Cards/APF2024-AICards.pdf"^^xsd:anyURI ],
+        [ a schema:DigitalDocument ;
+            schema:encodingFormat "HTML" ;
+            schema:url "https://harshp.com/presentations/2024/APF-AI-Cards/"^^xsd:anyURI ] ;
+    schema:identifier "2024-APF-AI-Cards" ;
+    schema:name "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act"@en ;
+    schema:performer <https://harshp.com/me> ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:url "https://harshp.com/research/presentations#2024-APF-AI-Cards"^^xsd:anyURI .
+
 <https://harshp.com/research/projects/protect> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
@@ -26182,6 +26168,77 @@ hpcom:RPG a hpcom:VideoGameGenre ;
     schema:publisher <http://www.semantic-web-journal.net/> ;
     schema:url "https://doi.org/10.3233/SW-243583"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/065-AI-Cards-Risk-Documentation-AI-Act"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2406.18211"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://osf.io/6dxgt"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <http://example.com/IsabelleHupont> <http://example.com/CeciliaPanigutti> <https://harshp.com/me> <http://example.com/SvenSchade> <https://www.scss.tcd.ie/declan.osullivan/> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/065-AI-Cards-Risk-Documentation-AI-Act.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "FAccT"@en ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/delaramGlp/aicards"^^xsd:anyURI ],
+        <https://harshp.com/research/presentations#2024-APF-AI-Cards> ;
+    hpcom:tag hptag:AI-Act,
+        hptag:ISO,
+        hptag:risk,
+        hptag:semantic-web ;
+    schema:datePublished "2024-09-01T00:00:00"^^xsd:dateTime ;
+    schema:description "AI Cards is a novel holistic framework for representing intended uses of AI systems by encompassing information regarding technical specifications, context of use, and risk management, both in human- and machine-readable formats."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:name "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act"@en ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:status "to be presented"@en ;
+    schema:url "https://doi.org/10.1007/978-3-031-68024-3_3"^^xsd:anyURI .
+
+<https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2405.04528"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/3utx8"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other ( <http://example.com/JanLindquist> <http://example.com/GeorgPKrog> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ],
+        <https://harshp.com/research/presentations#2024-APF-27560> ;
+    hpcom:tag hptag:DGA,
+        hptag:GDPR,
+        hptag:ISO,
+        hptag:consent,
+        hptag:semantic-web ;
+    schema:datePublished "2024-09-02T00:00:00"^^xsd:dateTime ;
+    schema:description "We compare requirements regarding consent between ISO/IEC TS 27560:2023, ISO/IEC 29184:2020 Privacy Notices, and the GDPR and use the DPV to create interoperable consent records and receipts, and implementation of DGA machine-readable consent forms."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
+    schema:publication <http://example.com/conferences/APF2024> ;
+    schema:status "to be presented"@en ;
+    schema:url "https://doi.org/10.1007/978-3-031-68024-3_12"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:renderWith hpview:ResearchDraftPublicationsIndexView ] ;
@@ -26777,16 +26834,6 @@ hptag:workshop a hpcom:RenderedItem,
 
 <http://example.com/WesselReijers> a schema:Person ;
     schema:name "Wessel Reijers" .
-
-<http://example.com/conferences/APF2024> a hpcom:ReviewingEvent,
-        schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "APF" ;
-    schema:endDate "2024-09-05T00:00:00"^^xsd:dateTime ;
-    schema:location "Karlstad, Sweden" ;
-    schema:name "Annual Privacy Forum"@en ;
-    schema:startDate "2024-09-04T00:00:00"^^xsd:dateTime ;
-    schema:url "https://www.enisa.europa.eu/events/annual-privacy-forum-2024"^^xsd:anyURI .
 
 <http://example.com/conferences/EURAS2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -27528,6 +27575,16 @@ hptag:sci-fi a hpcom:RenderedItem,
 <http://example.com/VitorJesus> a schema:Person ;
     schema:name "Vitor Jesus" .
 
+<http://example.com/conferences/APF2024> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "APF" ;
+    schema:endDate "2024-09-05T00:00:00"^^xsd:dateTime ;
+    schema:location "Karlstad, Sweden" ;
+    schema:name "Annual Privacy Forum"@en ;
+    schema:startDate "2024-09-04T00:00:00"^^xsd:dateTime ;
+    schema:url "https://www.enisa.europa.eu/events/annual-privacy-forum-2024"^^xsd:anyURI .
+
 <http://example.com/conferences/ESWC2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -27835,6 +27892,9 @@ hptag:automation a hpcom:RenderedItem,
     schema:name "automation" ;
     schema:url "https://harshp.com/tags/automation"^^xsd:anyURI .
 
+<http://example.com/BeatrizEsteves> a schema:Person ;
+    schema:name "Beatriz Esteves" .
+
 <https://chrdebru.github.io/> a schema:Person ;
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
@@ -27870,9 +27930,6 @@ hptag:visa a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "visa" ;
     schema:url "https://harshp.com/tags/visa"^^xsd:anyURI .
-
-<http://example.com/BeatrizEsteves> a schema:Person ;
-    schema:name "Beatriz Esteves" .
 
 <https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -28242,12 +28299,12 @@ hpcom:Rating3 a hpcom:Rating,
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
 
-hpcom:BookSciFi a hpcom:BookGenre ;
-    rdfs:label "sci-fi"@en .
-
 hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
+
+hpcom:BookSciFi a hpcom:BookGenre ;
+    rdfs:label "sci-fi"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
