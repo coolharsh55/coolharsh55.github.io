@@ -20276,6 +20276,25 @@ list:owned_unread a hpcom:RenderedItem,
     hpcom:content [ hpcom:renderWith hpview:GenericJinja2View ;
             hpcom:view_template "https://harshp.com/code/templates/template_polymathy.jinja2"^^xsd:anyURI ] .
 
+<https://harshp.com/research/blog/APF-2024> a hpcom:RenderedItem,
+        <https://harshp.com/research/blog> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/blog/APF-2024.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:AI-Act,
+        hptag:GDPR,
+        hptag:academic,
+        hptag:conference,
+        hptag:consent ;
+    schema:author <https://harshp.com/me> ;
+    schema:datePublished "2024-09-07T14:15:00"^^xsd:dateTime ;
+    schema:description "Notes from the Annual Privacy Forum 2024"@en ;
+    schema:name "Annual Privacy Forum 2024"@en ;
+    schema:subjectOf [ a hptag:Event ;
+            schema:name "Annual Privacy Forum" ;
+            schema:url "https://privacyforum.eu/"^^xsd:anyURI ] ;
+    schema:url "https://harshp.com/research/blog/APF-2024"^^xsd:anyURI .
+
 <https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations> a hpcom:RenderedItem,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
@@ -22268,7 +22287,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Data Privacy Vocabulary (DPV) —  Version 2.0"@en ;
     schema:publication <http://example.com/conferences/ISWC2024> ;
-    schema:status "to be presented"@en ;
     schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
@@ -26096,6 +26114,8 @@ hpcom:RPG a hpcom:VideoGameGenre ;
         hptag:ODP,
         hptag:Solid,
         hptag:semantic-web ;
+    hpcom:won_award [ a hpcom:Award ;
+            schema:name "Best Paper" ] ;
     schema:datePublished "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:description "A policy language to describe the entities, infrastructure, legal roles, policies, notices, and records to understand and establish responsibilities and accountability within the Solid ecosystem"@en ;
     schema:funder <http://example.com/ADAPT> ;
@@ -26234,12 +26254,13 @@ hpcom:RPG a hpcom:VideoGameGenre ;
         hptag:ISO,
         hptag:consent,
         hptag:semantic-web ;
+    hpcom:won_award [ a hpcom:Award ;
+            schema:name "Best Paper" ] ;
     schema:datePublished "2024-09-02T00:00:00"^^xsd:dateTime ;
     schema:description "We compare requirements regarding consent between ISO/IEC TS 27560:2023, ISO/IEC 29184:2020 Privacy Notices, and the GDPR and use the DPV to create interoperable consent records and receipts, and implementation of DGA machine-readable consent forms."@en ;
     schema:funder <http://example.com/ADAPT> ;
     schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
     schema:publication <http://example.com/conferences/APF2024> ;
-    schema:status "to be presented"@en ;
     schema:url "https://doi.org/10.1007/978-3-031-68024-3_12"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
@@ -27474,11 +27495,6 @@ hptag:ROPA a hpcom:RenderedItem,
     schema:name "Register of Processing Activities"@en ;
     schema:url "https://harshp.com/tags/ROPA"^^xsd:anyURI .
 
-hptag:academic a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "academic" ;
-    schema:url "https://harshp.com/tags/academic"^^xsd:anyURI .
-
 hptag:book a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "book" ;
@@ -27645,15 +27661,15 @@ hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Pune-Lonavala Train Schedule App"@en ;
     schema:url "https://harshp.com/dev/train_schedule"^^xsd:anyURI .
 
-hptag:AI-Act a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI-Act"@en ;
-    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
-
 hptag:Android a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Android" ;
     schema:url "https://harshp.com/tags/Android"^^xsd:anyURI .
+
+hptag:academic a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "academic" ;
+    schema:url "https://harshp.com/tags/academic"^^xsd:anyURI .
 
 hptag:adventure a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27756,6 +27772,11 @@ hpcom:Rating1 a hpcom:Rating,
 hpcom:book-currently-reading a hpcom:BookStatus ;
     rdfs:label "currently reading"@en .
 
+hptag:AI-Act a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI-Act"@en ;
+    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
+
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ODP"@en ;
@@ -27857,11 +27878,6 @@ list:humour a hpcom:RenderedItem,
     schema:identifier "humour"@en ;
     schema:name "Funny and Humorous"@en .
 
-hptag:conference a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "conference" ;
-    schema:url "https://harshp.com/tags/conference"^^xsd:anyURI .
-
 hptag:flash-fiction a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "flash-fiction" ;
@@ -27894,6 +27910,11 @@ hptag:automation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "automation" ;
     schema:url "https://harshp.com/tags/automation"^^xsd:anyURI .
+
+hptag:conference a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "conference" ;
+    schema:url "https://harshp.com/tags/conference"^^xsd:anyURI .
 
 <http://example.com/BeatrizEsteves> a schema:Person ;
     schema:name "Beatriz Esteves" .
@@ -28208,15 +28229,15 @@ list:educational a hpcom:RenderedItem,
 hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Full Paper"@en .
 
-hptag:GDPR a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "GDPR"@en ;
-    schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
-
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
+
+hptag:GDPR a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "GDPR"@en ;
+    schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28302,12 +28323,12 @@ hpcom:Rating3 a hpcom:Rating,
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
 
+hpcom:BookSciFi a hpcom:BookGenre ;
+    rdfs:label "sci-fi"@en .
+
 hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
-
-hpcom:BookSciFi a hpcom:BookGenre ;
-    rdfs:label "sci-fi"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;

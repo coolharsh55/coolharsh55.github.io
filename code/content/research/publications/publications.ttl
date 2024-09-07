@@ -1688,6 +1688,7 @@
         hpcom:contentFile "https://harshp.com/code/content/research/publications/062-WOP-PLASMA.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
+    hpcom:won_award [ a hpcom:Award ; schema:name "Best Paper" ] ;
     hpcom:publishing_attempt "ISWC 2023";
     hpcom:peer_reviewed true .
 
@@ -1795,12 +1796,12 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-27560> ;
     hpcom:peer_reviewed true ;
+    hpcom:won_award [ a hpcom:Award ; schema:name "Best Paper" ] ;
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
-        ] ;
-    schema:status "to be presented"@en .
+        ] .
 
 <https://harshp.com/research/publications/067-DPV-2.0> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
     schema:name "Data Privacy Vocabulary (DPV) —  Version 2.0"@en ;
@@ -1830,5 +1831,4 @@
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
-        ] ;
-    schema:status "to be presented"@en .
+        ] .

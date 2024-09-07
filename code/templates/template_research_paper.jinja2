@@ -54,6 +54,7 @@
     <br/>
     Description: {{item.schema_description}}
     <br/>
+    {% if item.hpcom_won_award %}<span class="paper-award" style="padding-left: 2px; padding-right: 2px;">🏆 {{ item.hpcom_won_award }}</span><br/>{% endif %}
     {% if item.schema_url %}
     <a href="{{item.schema_url}}">published version</a>
     {% endif %}

@@ -154,6 +154,7 @@
     <li>
         <a href="{{publication.iri}}">{{publication}}</a> <br/>
             
+                {% if publication.hpcom_won_award %}<span class="paper-award" style="padding-left: 2px; padding-right: 2px;">🏆</span>{% endif %}
                 {% if publication.schema_status %}
                 <span class='note'>{{ publication.schema_status }}</span>
                 {% endif %}
@@ -201,6 +202,7 @@
     <li>
         <a href="{{publication.iri}}">{{publication}}</a> <br/>
             
+                {% if publication.hpcom_won_award %}<span class="paper-award" style="padding-left: 2px; padding-right: 2px;">🏆</span>{% endif %}
                 {% if publication.schema_status %}
                 <span class='note'>{{ publication.schema_status }}</span>
                 {% endif %}

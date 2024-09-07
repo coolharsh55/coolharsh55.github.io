@@ -1,0 +1,788 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<h2>Introduction</h2>
+<p>The <a href="https://privacyforum.eu/">Annual Privacy Forum</a> is an event organised by the <a href="https://www.enisa.europa.eu/">ENISA</a> (EU Commission's Network and Information Security Agency) and is an academic conference that invites talks related to privacy, data protection, cybersecurity, and associated topics. It is a prestigious event due to its close collaboration and involvement of policy makers as stakeholders, and it is typical to see several data protection authorities, standardisation experts, consumer organisations, and other stakeholders at the event. The event itself was organised across two days from 4th to 5th September, and the <a href="https://www.edps.europa.eu/data-protection/technology-monitoring/ipen/ipen-event-human-oversight-automated-making_en">IPEN</a> event was held on 3rd September before the conference (as is tradition).</p>
+<p>The 2024 edition was held at <a href="https://www.kau.se/en">Karlstad University</a> in Karlstad, Sweden, and was co-organised by the EU Commission's <a href="https://commission.europa.eu/about-european-commission/departments-and-executive-agencies/communications-networks-content-and-technology_en">DG CNECT</a> - the Directorate-General for Communications Networks, Content and Technology (the section that looks after GDPR, AI Act, etc.) In total, there were (approx.) 62 submissions, of which 12 were accepted for presentation - giving us an acceptance rate of (approx.) 19.5%. The proceedings are <a href="https://link.springer.com/book/10.1007/978-3-031-68024-3">available online</a>. The next year, APF will (tentatively) be held at Goethe University in Frankfurt with the same approximate deadlines for submissions.</p>
+<p>My involvement in the APF this year was to present two papers: <a href="APF-27560-paper">Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA</a> where I was a lead author, and <a href="APF-AICards-paper">AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act</a> where I was a co-author. In addition, I also had the chance to 'expose' the audience to the <a href="https://doi.org/10.31219/osf.io/6qhzj">preprint of a paper</a> recently completed which compared the DPIA guidelines from all 30 EU/EEA DPAs and aligned them with the AI Act to show that GDPR is applicable in most cases. Below are my notes which I took during the event, including certain statements or resources which I found to be interesting.</p>
+<p>I was quite pleased to attend the event as also in attendance was the EDPS, and members from the EU Parliament's legal team, ENISA, Data Protection Authorities from Germany (ULD), Poland, Italy, Spain, and Sweden. This meant that the work that I presented was visible to them - and indeed in conversations with them later all three papers mentioned by me were stated to be of interest.</p>
+
+<h2>Favourite Talks</h2>
+<p>My favourite talks at the event (not including my own, haha) were:</p>
+<ol>
+    <li><a href="orgd0d88b7">Implications of age assurance on privacy and data protection: a systemic threat model - AEPD</a><br/>
+    This was a paper presented by the Spanish DPA on developing a systematic approach to understanding the threats of privacy and data protection. My favourite bits in this were that its a DPA following a really cool research approach to their compliance and enforcement knowledge, and that they extended the state of the art to create a new threat taxonomy.</li>
+    <li><a href="org9e4fc18">Privacy Technologies in Practice: Incentives and Barriers - @LiinaKamm</a><br/>
+    This was a talk that nicely outlined the different PETs that can be utilised and what are the considerations that we should have when adopting them. It also included 'consent receipt' which I had presented in the previous day.</li>
+    <li><a href="org37b082b">How to Drill Into Silos: Creating a Free-to-Use Dataset of Data Subject Access Packages</a><br/>
+    I liked this talk because it exposed the currently weak nature of Art.20 Data Portability compliance - namely not useful at all because of the unstructured mess that is returned. What I also learned was how Art.20 data is often also related to the other data e.g. Art.15 - which is something I hadn't thought about. The cool part of this work was the creation of a free/open dataset for requests by specific providers for use in research.</li>
+</ol>
+
+<h2 id="org991dae9">IPEN 2024-09-03</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>theme: Human Oversight of Automated Decision-Making systems</li>
+<li><b>Introductory talk by @WojciechWiewiórowski</b> 
+<ul class="org-ul">
+<li>we don't call them problems but call then challenges because they lead to
+solutions by the people who design and implement information systems</li>
+<li>automation in making important decisions about health, safety, and
+fundamental rights</li>
+<li>human in the loop does not mean everything is okay</li>
+<li>it will be pointless to scrutinise every single decision - instead we have
+to identify those decisions which need further introspection to understand
+what is happening or what must be understood</li>
+</ul></li>
+<li><b>Keynote: "<i>Expectations vs. reality: What we expect human oversight to be and
+what it really is</i>" by @BenGreen</b>
+<ul class="org-ul">
+<li>paper: "The flaws of policies requiring human oversight of human algorithms"
+in Computer Law &amp; Security review 2022</li>
+<li>Approaches to human oversight:
+<ol class="org-ol">
+<li>restrict solely automated decisions - make human decision making
+mandatory e.g. GDPR</li>
+<li>require human discretion - human decision makers have ability to override
+the automated decision</li>
+<li>require meaningful human input - humans can override the system,
+understand the algorithm e.g. XAI, and human should not rely heavily on
+algorithms, such as in the AI Act</li>
+</ol></li>
+<li>Assumption of Human Oversight Policies
+<ol class="org-ol">
+<li>people won't rely on automated systems</li>
+<li>people will follow the 'good' recommendations and override 'bad'
+recommendations - assuming people will know when to follow the
+recommendation and when to ignore/override recommendation</li>
+<li>explanations and interpretability improves human oversight - assuming
+that people will understand what action to take with the
+advice/explanation</li>
+<li>overseers will have agency to ignore the automated system - assuming that
+there is an ability to do so</li>
+</ol></li>
+<li>if we don't ensure the policies provide the benefits as expected, then we
+don't get the benefits and the system turns into an obfuscated automated
+system that has underlying issues</li>
+<li>Assumption 1:
+<ul class="org-ul">
+<li>people including experts are susceptible to automated bias</li>
+<li>people defer to automated systems</li>
+</ul></li>
+<li>Assumption 2
+<ul class="org-ul">
+<li>people are bad at judging the quality of outputs and determining when to
+override the outputs</li>
+<li>human judgements are typically incorrect and can introduce racial biases</li>
+</ul></li>
+<li>Assumption 3:
+<ul class="org-ul">
+<li>explanations and interpretability do not improve human oversight, but
+instead up up increasing trust in algorithms regardless of the quality of
+the algorithm</li>
+<li>explanations likely to make people accept incorrect advice - which can
+cause people to be more dependent on the system</li>
+<li>algorithmic transparency reduce people's ability to detect and correct
+model errors</li>
+</ul></li>
+<li>frontline works face institiutional pressure to follow the recommendations
+of the system - and it might be more work for decision makers to ignore the
+recommendation e.g. there is paperwork</li>
+<li>human oversight policy from automated systems and their developers/providers
+to human operators</li>
+<li>implications: we need to think broadly how we are going to approach the
+design and implementations of automated systems</li>
+<li>lessons for regulating automated systems
+<ul class="org-ul">
+<li>design and training can improve human oversight but cannot solve these
+issues - this is not a solution</li>
+<li>not using human oversight to justify harmful and flawed automated
+systems - many policies call for human oversight which legitimises use of
+problematic systems i.e. if a system is prone to errors and issues on its
+own, then it is also problematic to use with human oversight</li>
+<li>require pre-deployment testing of proposed human oversight mechanisms - to
+analyse and understand whether it can work with and produce decisions that
+we find acceptable</li>
+<li>shift accountability from overseers toward policymakers and developers</li>
+</ul></li>
+</ul></li>
+<li><b>Panel: "Human oversight in the GDPR and the AI Act" with @ClaesGranmar
+@BenWagner moderated by @DanieleNardi</b>
+<ul class="org-ul">
+<li>Argument by @ClaesGranmar
+<ul class="org-ul">
+<li>GDPR covers only one right - data protection and privacy whereas the AI
+Act covers all rights</li>
+<li>Law creates realities, which then become human standards and habits, and
+we don't realise it and take it for granted</li>
+<li>It is human tendency to push the liability to the system - even if it is
+an ineffective system someone must be liable and be held accountable from
+the legal perspective. This is why the AI Act addresses the providers and
+deployers.</li>
+<li>There are no good reasons for why we should not have rules for AI systems
+regarding health, safety, and fundamental rights</li>
+<li>GDPR is more ex-post-facto whereas AI Act is ex-ante in the sense that
+GDPR requires processing of personal data whereas the AI Act is a product
+safety regulation and treats the process of certifying and monitoring</li>
+</ul></li>
+<li>Argument by @BenWagner
+<ul class="org-ul">
+<li>what is creating problems is the legal frameworks rather than institutions
+and policies</li>
+<li>Under the GDPR and other regulatory systems there is an impetus to claim
+that it isn't an automated system to escape the obligations</li>
+<li>The protections that are received should be the same whether its automated
+or manual. The presumption of automation should be present throughout the
+legal framework.</li>
+<li>This avoids problems with systems that seem to be manual but are actually
+automated - which we found in our research</li>
+</ul></li>
+<li>Moderated question: What do we do with what we have and the legal
+instruments that we have? @ClaesGranmar - the answer is proportionality of
+the law</li>
+<li>Audience question: got rejected at border control because of dark skin -
+whom to approach if the government is the one who is discriminating (in
+creation of AI systems) - moderator: go to ICO as this would be a case of
+using biometrics for decision making; but the human in the loop in this case
+works; not sure if there is a solution to the human in the loop</li>
+</ul></li>
+<li><b>Panel: "Capacity Building" with @SarahSterz, @LeilaMethnani with moderator
+@IsabelBarberá</b>
+<ul class="org-ul">
+<li>@SarahSterz - Center for Perspicuous Computing
+<ul class="org-ul">
+<li>Art.14 AI Act says human oversight must be effective, but it doesn't state
+what is considered effective - creating a framework for when human
+oversight is effective</li>
+<li>working definition of human oversight: supervision of a system by at least
+one natural person typically with authority to influence its operations or
+effects</li>
+<li>framework:
+<ul class="org-ul">
+<li>epistemic access: human should understand the situation and fundamental
+risks and can interact with the system to mitigate risks - understand
+system, how it works, outputs, etc.</li>
+<li>self-control - can decide path of action and follow through</li>
+<li>causal power - power to establish causal connection</li>
+<li>with these three things the human can mitigate fundamental risks
+reliably</li>
+<li>the first three are moral responsibility</li>
+<li>fitting intentions - has a fitting intention for their role i.e. the
+person wants to mitigate the risks</li>
+</ul></li>
+<li>factors to facilitate and inhibit human oversight - technican design,
+individual factors, environment</li>
+<li>two issues in AI Act that this work helps with:
+<ul class="org-ul">
+<li>Art.14(4) lacks structure</li>
+<li>Art.14 does not provide definition of effectiveness</li>
+</ul></li>
+</ul></li>
+<li>@LeilaMethnani
+<ul class="org-ul">
+<li>automated decision making used daily e.g. spotify playlists, spam
+detection and filtering</li>
+<li>High-risk makes the difference</li>
+<li>many questions about Art.14 - what is effective?</li>
+<li>It states "oversight
+measures" should match the risks and context - what about non-forseeable risks?</li>
+<li>AI sustems should be provided in a way that allows the overseer to
+understand its capabilities and limitations</li>
+<li>Human in the loop - RLHF is presented as human oversight - paper:
+Lindstrom, Adam Dahlgren et al "AI Alignment through Reinforcement
+Learning from Human Feedback?" arXiv</li>
+<li>Meaningful Human Control - track relevant reasons behind decisions an
+trace back to an individual along the chain</li>
+<li>Variable Automany for MHC (above) - involves transfer of control between
+human and machine - which aspects of autonomy can be adjusted? By whom?
+How? Continous or discrete? Why? Pre-emptive, corrective, or just because. When?</li>
+<li>The oversigh measures should match rhethe risks and context</li>
+<li>Paper: Methnani L. et al. 2021 Let me Take Over: Variable Autonomy for
+Meaningful Human Control in Frontiers Artificial Intelligence</li>
+<li>Efficient transfer of control is an open problem</li>
+<li>XAI is a double edged sword - different methods of explaining may lead to
+mailicious use of XAI</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Paper: AI Act for Working Programmers -
+<a href="https://doi.org/10.48550/arXiv.2408.01449">https://doi.org/10.48550/arXiv.2408.01449</a></li>
+</ul></li>
+<li><b>Panel: "Power to the people! Creating conditions for more effective human
+oversight" with @SimoneFischerHübner, @JahnaOtterbacher, @JohannLaux moderated
+by @VitorBernardo</b>
+<ul class="org-ul">
+<li>argument by @SimoneWurster
+<ul class="org-ul">
+<li>Humans overly trust AI, which is a problem because decision makers may
+lack awareness of AI risks. Therefore education to decision makers on AI
+limitations is important</li>
+<li class="off"><code>[&#xa0;]</code> Alaqra et al. (2023) Structural and functional explanations for
+informing lay and expert users: the case of functional encryption -
+functional explanations for PETs needed for comprehensibility with
+complementing structural explanations for establishing
+trust. Multi-layered policy.</li>
+<li>AI &amp; Automation for usable privacy decisions: privacy permissions, privacy
+preferences, consent, rejection &#x2013; comparison. Manual, semi-automated,
+fully automated. - Victor Morel IWPE
+<ul class="org-ul">
+<li>GDPR issues for full automation except to reject consent</li>
+<li>semi-automated as privacy nudges have ethical issues</li>
+</ul></li>
+</ul></li>
+<li>argument by @JahnaOtterbacher
+<ul class="org-ul">
+<li>Artificial Intelligence in Everyday Life: Educating the public through an
+open, distance-learning course - published paper 8 ECTS course involving
+explaining AI to someone younger and then seeing how the explanation
+changes after education</li>
+<li>modular oversight framework where users are developers - Modular Oversight
+Methodology: A framework to aid ethical alignment of algorithmic
+creations. Design Science (in press)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdca3ed1" class="outline-2">
+<h2 id="orgdca3ed1">APF Day 1 2024-09-03</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="APF-27560-paper" class="outline-3">
+<h3 id="org08763e4"><span class="section-number-3">5.1.</span> My Paper: Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA</h3>
+<figure>
+    <img src="https://media.harshp.com/blog/APF2024-best-paper-certificate.jpg">
+    <figcaption>A big positive and motivation was that our paper on implementing consent records and receipts won the <strong>Best Paper Award</strong>!</figcaption>
+</figure>
+<ul>
+    <li>This was the first paper presentation of the day - so starting the conference was a highlight for me as it means you have the attention of the entire audience.</li>
+    <li>The presentation went smoothly where I presented for 20mins including together with my co-author Jan Lindquist, and then we have 5mins for the Q&A.</li>
+    <li>The paper is <a href="https://doi.org/10.1007/978-3-031-68024-3_12">available online</a> as open access and the slides are <a href="https://harshp.com/presentations/2024/APF-27560/APF-27560.pdf">available online</a> as well.</li>
+</ul>
+</div>
+<div id="outline-container-org6cfdac7" class="outline-3">
+<h3 id="org6cfdac7"><span class="section-number-3">5.2.</span> Pay-or-Tracking Walls instead of Cookie Banners</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>assess whether websites keep their privacy promise and offer pay options
+safeguarding privacy</li>
+<li>what do websites promise users who purchase the pay option?</li>
+<li><code>[&#xa0;]</code> tracking ref. Karaj et al 2019, Mayer and Mitchell 2012</li>
+<li>tracker - not essential third party service - requires consent due to ePD</li>
+<li>distinction between trackers and essential third party services</li>
+<li>discrepancy between promise and reality for cost-free decisions to refuse
+consent or opt out</li>
+<li><code>[&#xa0;]</code> findings in related work: inappropriate tracking permissions in TCF consent
+string Morel et al, Tracking embedded in top publishers Mulle-Tribbensee et al
+2024, Rasaii et al - no third parties embedded in multi-website provider</li>
+<li><code>[&#xa0;]</code> Empirical study: 341 websites from Morel et al 2023, visit website, extract
+promise - manual retrieval and go through first layer of dialogue, measure
+tracking using Ghostery Insights and checking tracker names and categories,
+check if the tracking starts before making the choice, then whether tracking
+starts after accept, and if tracking is still present after pay option</li>
+<li>manually review the list to distinguish between tracker and third party
+essential service using Ghostery essential category, and using list by CNIL of
+privacy friendly site analytics services</li>
+<li>results: 292 websites identified after refinement, most from Germany (92%),
+category of website e.g. news, type of pay-wall - whether own pay option
+(36.6%) or multi-platform provider (63.4%)</li>
+<li>some technical problems using the pay option - e.g. option worked only 1-2
+days after purchasing, or suggesting that accept tracking then log in</li>
+<li>tracking before and after making the choice</li>
+<li>70 formulations for privacy promises e.g. without tracking and cookies,
+without ad tracking, etc.</li>
+<li>cluster them into "no tracking" (65.4%) and "no ad tracking" (34.6%)</li>
+<li>then whether tracker was detected in the option, and then conclude whether
+promise is kept (67.1%) or not kept (32.9%)</li>
+<li>80% of websites still embedded tracking in pay option: 1 or 2 trackers</li>
+<li>no difference across country or industry</li>
+<li>difference in whether website used own pay option or multi-provider - 60.7%
+own pay did not keep promise, multi-website break promise 16.8%</li>
+<li>potential reason of this - multi-website provider use daily crawls to detect
+and control the  trackers</li>
+<li>conclusion: 80% of websites could meet privacy commitments by removing just 1
+or 2 trackers, ongoing tracker control or continous checking helps perform
+better - multi-website provider</li>
+<li>regulatory suggestions: support/mandate ongoing tracker detection, and
+support/initiate standardised privacy label as external validation</li>
+<li>reported to multi-website provider representing 185 websites, reporting BVDW
+german association for digital economy which is DE advertising federation
+which resulted in asking individual websites</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0d88b7" class="outline-3">
+<h3 id="orgd0d88b7"><span class="section-number-3">5.4.</span> Implications of age assurance on privacy and data protection: a systemic threat model - AEPD</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>age assurance: determine age or age range with different levels of conditions
+or certainty e.g. online age gate</li>
+<li>age estimation: probabilitic, age verification: deterministic</li>
+<li>purpose is guaranteeing children's protection and a safer internet - but also
+raises concerns about privacy and data protection</li>
+<li>CRIA - child rights impact assessment; protect from consumer, contact,
+conduct, and content risks while balancing rights and freedoms through the
+DPIA (CRIA is about child's risks, DPIA is about rights and freedoms)</li>
+<li>privacy threat modelling frameworks provide a structured approach to
+identifying and assessing privacy threats</li>
+<li>contributions:
+<ul class="org-ul">
+<li>systematic analysis of age assurance solutions</li>
+<li>proposed threat models to identify threats based on GDPR and rights</li>
+<li>discuss threat models to offer practical and evidence based guidance</li>
+</ul></li>
+<li>literature review: papers, patents, technical documentation - 8 solutions and
+4 prototypes
+<ul class="org-ul">
+<li>3 architectures:
+<ul class="org-ul">
+<li>direct interaction between user and provider who ensures age without
+involving specialised providers</li>
+<li>tokenised approaches relying on third party providres who can be acting as
+a proxy or as synchronous agents (user gets token to provide)</li>
+</ul></li>
+</ul></li>
+<li>LINDDUN privacy threat model framework is valuable to support effective DPIA</li>
+<li>proposed LIINE3DU framework - more details will be published by AEPD later
+<ul class="org-ul">
+<li>Linking, Identifying, Inaccuracy, Non-repudiation, Exclusion, Detecting
+(LIINED) +  Data Breach, Data Disclosure, Unawareness and Unintervenability</li>
+<li>LIINE3 = data subject rights and freedoms</li>
+<li>DU - organisation's risk management and data processing design - Not GDPR
+compliant if applicable</li>
+</ul></li>
+<li>This work is focused only on privacy and data protection threats</li>
+<li>identified 18 different threats</li>
+<li>created recommendations for providers based on common mistakes and
+vulnerabilities</li>
+<li>common vulnerabilities:
+<ul class="org-ul">
+<li>use of unique identifiers</li>
+<li>used date of birth or specific age even when not required</li>
+<li>exchange of tokens used excess of information</li>
+<li>data retained for longer than necessary</li>
+<li>involvment of children in assurnace processes - but only users above the age
+threshold should be involved in age assurance</li>
+<li>incentives for fraud</li>
+<li>existence of only alternative to assure age, often complex, and difficult to
+use</li>
+</ul></li>
+<li>concerns for estimation based approaches</li>
+<li>concerns for verification based approaches</li>
+<li>some threats cannot be avoided with available architectures</li>
+<li>industry and researchers should explore how to:
+<ul class="org-ul">
+<li>perform age assurance process on users' local devices</li>
+<li>consider decentralised and user-empowering solutions such as EUDI wallets</li>
+<li>rely on selective disclosure and zero-knowledge proofs</li>
+</ul></li>
+<li>regulators, policymakers, and standards bodies to focus on harmonising terms,
+nomenclature, technical solutions, and co-operating with industry and NGOs to
+establish global certification schemes, codes of conduct, and regular auditing</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8541a56" class="outline-3">
+<h3 id="org8541a56"><span class="section-number-3">5.5.</span> Data Governance and Neutral Data Intermediation: Legal Properties and Potential Semantic Constraints</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Emanuela Podda Uni. Milano</li>
+<li><code>[&#xa0;]</code> Ref. Creating value and protecting data - Vial 2023, Approach to meet
+compliance with regulatory and legal provisions - Otto 2011
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Normative: rule-making approach multi-layered and multi-regulatory legal system -
+Viljoen 2021.</li>
+<li><code>[&#xa0;]</code> Co-regulatory approach: accountability - Black 2001</li>
+<li><code>[&#xa0;]</code> Role and Resonsibilities: liability allocation - Floridi 2018</li>
+</ul></li>
+<li>Data Governance is composed of different and emergent components, which in
+turn are composed of other interactinos taking place at different levels
+<ul class="org-ul">
+<li>macro - overaching legal system</li>
+<li>meso - corporate</li>
+<li>micro - individual</li>
+</ul></li>
+<li>types of intermediation
+<ul class="org-ul">
+<li>access to meta-data vs access to raw-level data</li>
+<li>active or passive</li>
+<li>undertaking data sharing - active intermediation</li>
+<li>facilitating data sharing - passive intermediation - has no access to data</li>
+</ul></li>
+<li>intermediation must be provided by a separate legal entity - which is a
+semantic constraint</li>
+<li>Rec.33 neutrality is a key element in enhancing trust - but is this enough?</li>
+<li>cloud federation scenario that promotes rebalancing between cetralised data in
+cloud infrastructure and distributed processed at edge</li>
+<li>proposed future work - to create a regulation combining DGA with DSA</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org100b1c1" class="outline-3">
+<h3 id="org100b1c1"><span class="section-number-3">5.6.</span> Threat Modelling</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> STRIDE</li>
+<li><code>[&#xa0;]</code> MITRE ATTACK</li>
+<li><code>[&#xa0;]</code> LINDDUN</li>
+<li><code>[&#xa0;]</code> MITRE PANOPTICON</li>
+<li>Threat modelling to structured DPIA</li>
+<li>Bringing privacy back into engineering</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedc44f7" class="outline-3">
+<h3 id="orgedc44f7"><span class="section-number-3">5.7.</span> Another Data Dilemma in Smart Cities: the GDPR’s Joint Controllership Tightrope within Public-Private Collaborations</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>Barbara Lazarotto and Pablo Rodrigo Trigo Kramcsak - VUB</li>
+<li>GDPR allows multiple legal bases based on wording of Art.6 "at least one of
+  the following applies..."</li>
+<li>multiple legal basis is a problem - lack of clarity on how this works</li>
+<li>my comment during Q&A: multiple legal bases does not mean we can combine any
+  two legal bases and use them - some of them lead to nonsense like using
+  Legitimate Interest which is purely opt-out and Consent which is purely opt-in
+  together which creates a Schrodinger's legal basis which both is active and
+  isn't depending on whether the data subject has consented or
+  objected. Instead, multiple legal bases allow for Member States to create
+  specific legislations e.g. for public bodies to act in official capacity or
+  for private bodies to be required to do something. However, for private bodies
+  who have relationships with data subjects, contract would be the legal basis
+  in addition to the legal obligation or the official authority of the
+  controller being used in a joint controller relationship.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9794e2f" class="outline-3">
+<h3 id="org9794e2f"><span class="section-number-3">5.8.</span> The lawfulness of re-identification under data protection law</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>Teodora Curelariu and Alexandre Lodie</li>
+<li>why research in re-identification is important for improving privacy and data protection?</li>
+<li>doctrine:
+<ul class="org-ul">
+<li>objective: anonymised data where reasonably likely means to re-identify are
+not considered</li>
+<li><code>[&#xa0;]</code> relative: reasonably likely means used to re-identify are considered -
+prevails in EU Law C-582/14 Breyer - IP Address are personal data</li>
+<li><code>[&#xa0;]</code> Case T-557/20 SRB vs EDPS - personal data are not always personal based on
+whether entity is likely to re-identify; which means pseudonymised data can
+be considered as anonymised data based on ability to re-identify</li>
+</ul></li>
+<li>implications: entities that cannot re-identify can freely share the data, thus
+exposing personal data
+<ul class="org-ul">
+<li>if data is considered anonymous, then data can be freely transferred across
+EU borders</li>
+</ul></li>
+<li>can re-identification for research purposes be lawful under GDPR?
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Norwegian DPA: entity performing re-identification must be considered controller</li>
+<li>researchers re-identifying data are controllers and must have a legal basis
+e.g. to find security vulnerabilities</li>
+<li>scientific purpose by itself is not a legal basis</li>
+<li><code>[&#xa0;]</code> CNIL guidelines on data processed for scientific processes which states
+there are strict legal basis: consent from subject, public interest, or
+legitimate interest</li>
+<li><code>[&#xa0;]</code> UK DPA 2018 prohibits re-identification without consent except for research</li>
+<li>Rec.45 states countries should have specific rules for research purposes</li>
+</ul></li>
+</ul>
+</div>
+<div id="APF-AICards-paper">
+<h3>My Paper: AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act</h3>
+<ul>
+    <li>This paper was led by Delaram, who is doing her PhD on this topic. It was a collaboration with the EU Commission's Joint Research Centre (JRC) - and I clarified that the views expressed in the paper are those of the researchers and do not reflect the views of the Commission.</li>
+    <li>The paper is available <a href="https://doi.org/10.1007/978-3-031-68024-3_3">online</a> as Open Access and the slides are avialable <a href="https://harshp.com/presentations/2024/APF-AI-Cards/APF2024-AICards.pdf">online</a> as well.</li>
+    <li>The paper describes creation of a human-intended summarised visual overview of the risk management documentation based on the AI Act and the available ISO standards at that point in time.</li>
+    <li>The work generated a lot of interest due to the AI Act being a core topic at the event, and because of the practicality of the work.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org31d42c2" class="outline-2">
+<h2 id="org31d42c2">APF Day 2 2024-09-04</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org1e0b2a4" class="outline-3">
+<h3 id="org1e0b2a4"><span class="section-number-3">6.1.</span> Keynote: Privacy and Identity - @JaapHenkHogman</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>eIDAS 2.0
+<ul class="org-ul">
+<li>EUDI</li>
+<li>app on smartphone</li>
+<li>used by Member states - Architecture Reference Framework 1.40 May 2024</li>
+<li>attributes, certificates, documents: a personal data store</li>
+</ul></li>
+<li>Apple/Google issuing IDs is a fundamental threat to the social structure of
+governance</li>
+<li>attribute attestations - claims based authentication
+<ul class="org-ul">
+<li>issuer I claims that Person P has Value V for Attribute A</li>
+<li>selective disclosure - only reveal required attributes</li>
+<li>self-sovereignty: decide what attestations to get, and from whom</li>
+<li>decouple getting and using an attribute (issuer unlinkability) - present
+issuer from learning when and where you use an attribute - significant issue
+in social logins</li>
+<li>decouple successive uses of an attribute - multi-show unlinkability -
+prevent profiling be relying parties using attestation signature as
+persistent identifier</li>
+<li>still guarentee security of attributes - increased by binding to a trusted
+hardware element</li>
+</ul></li>
+<li>problem 1: attribute attestations in eIDAS 2.0 are lame
+<ul class="org-ul">
+<li>a set of signed salted hashes</li>
+<li>can do selective disclosure</li>
+<li>issue: decouple getting and using an attribute - issuer knows signature,
+signature is revealed to relying party ; when relying parties collude with
+issuers, users can be profiled</li>
+<li>issue: decouple selective uses of an attribute</li>
+<li>solution: issue many attestions with different salts</li>
+</ul></li>
+<li>better to use attribute based credentials based on zero knowledge proofs which
+don't reveal the signature abut prove you have it - which gives true
+unlinkability between issuer and relying party
+<ul class="org-ul">
+<li>issue: not using "state approved" cryptographic primitives</li>
+<li>issue: not implemented in current secure trusted hardware components - which
+is important because we want to make sure the credentials cannot be copied
+to another device which requires hardware level support</li>
+</ul></li>
+<li>more issues
+<ul class="org-ul">
+<li>assumes people have smartphones that can run the wallet - which creates
+inclusion problems and creates single point of failure</li>
+<li>risk of over identification - authenticated attributes supply will lead to
+increased demand where these are asked for more than is necessary and
+mandatory acceptance on large platforms</li>
+<li>under-representation - some entities decide what attributes are designed in
+the system and what values are available e.g. age ranges or gender</li>
+<li>privacy: requirement in the regulation that you should be able to revoke
+attributes and wallet fast - which means the attributes have to be checked
+(for validity) often</li>
+<li>wallet issuer will know when and where the wallet was used</li>
+<li>wallet also proposed for digital euro</li>
+</ul></li>
+<li>mixing high and low security use cases
+<ul class="org-ul">
+<li>NL has bonus cards and passports - which have different security levels</li>
+<li>but the regulation asserts that both these should be part of the same wallet</li>
+<li>people may not understand that the device is used for low and high security
+contexts which can create issues such as phishing attacks</li>
+</ul></li>
+<li>preventing over-authentication
+<ul class="org-ul">
+<li>encode what attributes the relying part is requesting should be included in
+the request to prevent over-authentication</li>
+<li>e.g. I need to verify someone is an adult, give me DOB, but instead the
+attribute that should be allowed is the is-adult</li>
+<li>issuer can specify a disclosure policy - but this is simplistic - no
+discloure, disclosure, and a group disclosure - which assumes the issuer can
+see all the uses of its attributes</li>
+</ul></li>
+<li>general observations
+<ul class="org-ul">
+<li>technical specifications developed without oversight or academic or civil
+society participation - which is an issue as the technical specifications
+determine real security/privacy properties</li>
+<li>problem with standardisation  - costs time and money, influence depends on
+level of participation, more stakeholders e.g. NGOs should be involved but
+they don't have resources to do this</li>
+<li>consultation open till SEP-09 on implementing regulations</li>
+</ul></li>
+<li>don't make vague implementing regulations, but create one clearly defined
+standard and make that mandatory</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e4fc18" class="outline-3">
+<h3 id="org9e4fc18"><span class="section-number-3">6.2.</span> Privacy Technologies in Practice: Incentives and Barriers - @LiinaKamm</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Cybernetica is a SME in Estonia that is research focused</li>
+<li>architects of the e-Estonia ecosystem which is the interoperable database and
+system used by Estonia</li>
+<li><code>[&#xa0;]</code> PETs categorisations (<i>add to DPV</i>)
+    <ul class="org-ul">
+<li>data protection during analysis
+<li>pseudonymisation</li>
+<li>anonymisation</li>
+<li>restricted query interfaces</li>
+<li>analyst sandboxes</li>
+<li>differential privacy</li>
+<li>federated learning</li>
+<li>data synthesis</li>
+<li>trusted execution environments</li>
+<li>homomorphic cryptography</li>
+<li>secure multi-party computation</li>
+</ul></li>
+<li><code>[&#xa0;]</code> anonymous communication: secure messaging, mixnets, onion routing</li>
+<li><code>[&#xa0;]</code> transparency: documentation, logging, notification of stakeholders, layered
+privacy notices, just-in-time notices, consent receipts</li>
+<li>intervenability: privacy and data processing panels and self service, dynamic
+consent management</li>
+<li>privacy engineering in system lifecycle: in new systems, privacy engineering
+and PETs should already be incorporated at problem statement and requirements
+stage, and in existing systems it should be added during system redesigns</li>
+<li>what motivates use of PETs: efficiency, regulation, liability, emergency, we
+care about privacy</li>
+<li>US Census bureau switched to using differential privacy since 2020</li>
+<li>Scottish Govt. wants to create a natinoal data exchange platform that requires
+using PETs like multi-party computation - Challenge 10.4, deadline SEP-10</li>
+<li>PET concept and roadmap for e-Government in Estonia
+<ul class="org-ul">
+<li>in beginning of 2023, Estonia conducted a research project that explores if
+we already have interoperability, how do we enhance it with PETs</li>
+<li>how could the Estonian govt. take up PETs and which fields</li>
+<li>interviews with 18 state agents</li>
+</ul></li>
+<li>prerequisites for uptake of PETs
+<ul class="org-ul">
+<li>increase data quality</li>
+<li>cleaning datasets</li>
+<li>creating infrastructure for processing big data</li>
+<li>clarifying rules for data management and handling during crisis or emergency</li>
+<li>raise awareness of privacy and PETs</li>
+<li>creating a smart customer, teaching how to choose the right PET</li>
+</ul></li>
+<li>secure data spaces e.g. proving attributes and/or properties: e.g. proving
+age, or to get the subsidy based on distance driven</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org373d1ab" class="outline-3">
+<h3 id="org373d1ab"><span class="section-number-3">6.3.</span> 10 considerations on the use of synthetic data - Giuseppe D'Acquisto</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Garante / Italian DPA</li>
+<li>synthetic data are mentioned in Art.10 of the AI Act regarding mitigation of
+biased outcomes and in Art.59 as enabler for further processing</li>
+<li>in US, mentioned in the executive order as a PET</li>
+<li>synthetic data may create "adverse selection"</li>
+<li>training synthetic data generators is a processing of personal data; which
+means it needs an appropriate legal basis under the GDPR - even including the
+assessment of the legitimate interest where relevant; another factor is the
+context of use - e.g. if the synthetic data is to be used for scientific
+research the conditions are possibly less stringent. This step should not be
+skipped by Controllers.</li>
+<li>synthetic data can be so well generated that they are "true personal data" -
+which means the synthetic data ends up reproduced as personal data e.g. a
+facial generation or generating a phoen number. And therefore this is also the
+processing of personal data. The nature of personal data does not depend on
+the artificiality of generation, but on the nature and implication of that
+data. If synthetic data has a low percentage of some of it being personal
+data, then it may still be an issue if the corups is billions of samples</li>
+<li>individual's rights must be preserved with synthetic data - primarily the
+right to object and to opt out ; but also to consider that using PETs like
+differential privacy can end up with private but useless data</li>
+<li>synthetic data capture well a median world, but they are not suited for new
+discoveries e.g. unforseen new personal data. If there is a strong outlier in
+the real world then it would not be reproduced in synthetic data.</li>
+<li>synthetic data can create model collapse - e.g. if there is an inference
+created based on synthetic data, and then this inference is used for other
+inferencing, then the iterations increasingly become conformative and do not
+reflect the reality as the distribution is increasingly normalised</li>
+<li>synthetic data generation is a transformation of personal data - whether these
+transformed data are personal or not does not depend on what the output looks
+but on how much original information is kept in the transformation.</li>
+<li>its not difficult to use synthetic data in a malicious way, but it is
+difficult to discover wrongdoers. This requires more regulatory oversight and
+attention.</li>
+<li>its all about regulating stochasticity - the issue is not new about whether we
+need more complex mathematical model for simulation or do we resort to
+synthetic data in a simple sense ; there is a risk of bias and discrimination</li>
+<li>the use of synthetic data does not mean prohibiting the use of personal data,
+but extracting the value</li>
+<li>"If you torture the data long enough, it will confess to anything" - Ronald
+Coase</li>
+<li>Garante is organising G7 meeting of DPAs and synethetic data, and some output
+or guidance is expected from the event. Synthetic data is also on the agenda
+of the EDPB and ENISA.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd78d289" class="outline-3">
+<h3 id="orgd78d289"><span class="section-number-3">6.4.</span> Panel: Capacity Building</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>moderator: Marit Hansen (ULD)</li>
+<li>panelist: Christoffer Karsberg (MSB/NCC-SE)</li>
+<li>panelist: Simone Fischer-Hübner (CyberCampus/CyberNode Sweden)</li>
+<li>panelist: Caroline Olstedt Carlström (Forum för Dataskydd/Cirio)</li>
+<li>panelist: Magnus Bergström (IMY)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org37b082b" class="outline-3">
+<h3 id="org37b082b"><span class="section-number-3">6.5.</span> How to Drill Into Silos: Creating a Free-to-Use Dataset of Data Subject Access Packages</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>DSAR is difficult</li>
+<li>E.g. Facebook DSAR request - received a zip file which contains a folder
+structure with folders and files</li>
+<li>in practice resulting formats of DSARs as per A.15 and A.20 are similar -
+i.e. Subject Access Request Package (SARP) (electronic copy of personal data)</li>
+<li>there is a lack of SARP datasets which limits research</li>
+<li>Contribution 1: initial SARP dataset</li>
+<li>goals:
+<ol class="org-ol">
+<li>public and free to use dataset of SARPS</li>
+<li>machine-readable data</li>
+<li>detailed data</li>
+<li>realisitic data</li>
+<li>controlled data</li>
+<li>two dimentional analysis of dataset - no time in this study</li>
+<li>method to create dataset</li>
+</ol></li>
+<li>1 and 3 should be research only accounts</li>
+<li>2 and 5 have provided data - since we cannot know observed or inferred data</li>
+<li>4 is from targeting gatekeepers from DMA</li>
+<li>initial dataset
+<ul class="org-ul">
+<li>two subjects, five controllers (Google, Amazon, Facebook, Apple, LinkedIn)</li>
+<li>LinkedIn provides two SARPs for each request: first within minutes, and
+another one within hours</li>
+<li>Apple failed in first try in one case</li>
+</ul></li>
+<li>findings
+<ul class="org-ul">
+<li>Amazon gives ads shown only for Amazon Music but not for Prime Videos</li>
+<li>Amazon - Information on targeting audience is only given to Subject A</li>
+</ul></li>
+<li>Contribution 2: creating SARP
+<ol class="org-ol">
+<li>selection of controllers</li>
+<li>create account</li>
+<li>usage period</li>
+<li>access request</li>
+<li>pre-processing</li>
+<li>publication</li>
+</ol></li>
+<li>issues such as authentication error lead to repeating steps</li>
+<li>SARPs enable
+<ul class="org-ul">
+<li>privacy dashboards - cross-controller visualisation of SARPs</li>
+<li>Mapping SARPs towards data portability</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd247870" class="outline-3">
+<h3 id="orgd247870"><span class="section-number-3">6.6.</span> Access Your Data&#x2026; If You Can: An Analysis of Dark Patterns Against the Right of Access on Popular Websites</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li>@AlexanderLobel</li>
+<li>Right of Access</li>
+<li>DSAR: Do operators use the control they have over their own websites to tire
+users from exercising the right?</li>
+<li>Using dark patterns</li>
+<li>Analysed Top 500 Tranco list, inclusion criteria = 166 websites</li>
+<li>created independent open coding based on common search protocol and created
+supporting screencasts to find and submit an access request</li>
+<li>recorded feelings on whether they felt this was a dark pattern</li>
+<li>findings: analysis of request mechanisms, whether information could be found</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
