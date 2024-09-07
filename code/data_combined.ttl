@@ -206,6 +206,16 @@ hpcom:View a rdfs:Class ;
     schema:startDate "2020-09-09T15:00:00"^^xsd:dateTime ;
     schema:url "https://2020-eu.semantics.cc/"^^xsd:anyURI .
 
+<http://example.com/published> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "published"@en ;
+    schema:url "http://example.com/published" .
+
+<http://example.com/unpublished> a schema:Publication ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "unpublished work"@en ;
+    schema:url "http://example.com/unpublished" .
+
 <http://example.com/workshops/CKG2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
@@ -22318,7 +22328,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:identifier ""^^xsd:anyURI ;
     schema:inSupportOf "RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
     schema:name "Proposals for Resolving Consenting Issues with Signals and User-side Dialogues"@en ;
-    schema:publication <http://example.com/unpublished> ;
+    schema:publication <http://example.com/working-draft> ;
     schema:status "inviting feedback"@en ;
     schema:url ""^^xsd:anyURI .
 
@@ -22350,7 +22360,7 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder <http://example.com/ADAPT> ;
     schema:identifier ""^^xsd:anyURI ;
     schema:name "Making Sense of Solid for Data Governance and GDPR"@en ;
-    schema:publication <http://example.com/published> ;
+    schema:publication <http://example.com/working-draft> ;
     schema:status "published"@en ;
     schema:url ""^^xsd:anyURI .
 
@@ -22378,9 +22388,37 @@ list:owned_unread a hpcom:RenderedItem,
     schema:funder <http://example.com/ADAPT> ;
     schema:identifier ""^^xsd:anyURI ;
     schema:name "How could the upcoming ePrivacy Regulation recognise enforceable privacy signals in the EU?"@en ;
-    schema:publication <http://example.com/published> ;
+    schema:publication <http://example.com/working-draft> ;
     schema:status "inviting feedback"@en ;
     schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/drafts/004-high-risk-GDPR-DPIA-AI-Act> a hpcom:DraftPaper,
+        hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/drafts/004-high-risk-GDPR-DPIA-AI-Act"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/6qhzj"^^xsd:anyURI ] ;
+    hpcom:author_lead ( <http://example.com/CristianaSantos> <https://harshp.com/me> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/004-high-risk-GDPR-DPIA-AI-Act.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed false ;
+    hpcom:tag hptag:AI-Act,
+        hptag:DPIA,
+        hptag:GDPR,
+        hptag:risk ;
+    schema:datePublished "2024-09-03T00:00:00"^^xsd:dateTime ;
+    schema:description "In this paper we analysed DPIA requirements from all 30 EU/EEA DPAs and found variance. We then aligned the DPIA required conditions with Annex III High-Risk cases in the AI Act and found that there is a large overlap between GDPR and AI Act."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "10.31219/osf.io/6qhzj"^^xsd:anyURI ;
+    schema:name "High-Risk Categorisations in GDPR vs AI Act: Overlaps and Implications"@en ;
+    schema:publication <http://example.com/working-draft> ;
+    schema:status "under review"@en ;
+    schema:url "https://doi.org/10.31219/osf.io/6qhzj"^^xsd:anyURI .
 
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -23660,11 +23698,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "DCMI"@en ;
     schema:startDate "2021-10-04T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.dublincore.org/conferences/2021/"^^xsd:anyURI .
-
-<http://example.com/unpublished> a schema:Publication ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:name "unpublished work"@en ;
-    schema:url "http://example.com/unpublished" .
 
 <http://example.com/workshops/Consent2022> a hpcom:OrganisationEvent,
         schema:PublicationEvent ;
@@ -26283,11 +26316,6 @@ hptag:ConsumerProtection a hpcom:RenderedItem,
     schema:name "consumer protection"@en ;
     schema:url "https://harshp.com/tags/ConsumerProtection"^^xsd:anyURI .
 
-hptag:DPIA a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPIA"@en ;
-    schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
-
 hptag:Decentralisation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Decentralisation"@en ;
@@ -26973,11 +27001,6 @@ hptag:workshop a hpcom:RenderedItem,
     schema:startDate "2023-09-20T00:00:00"^^xsd:dateTime ;
     schema:url "https://2023-eu.semantics.cc/"^^xsd:anyURI .
 
-<http://example.com/published> a schema:Publication ;
-    hpcom:event_type hpcom:Workshop ;
-    schema:name "published"@en ;
-    schema:url "http://example.com/published" .
-
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:endDate "2018-04-24"^^xsd:anyURI ;
@@ -27298,6 +27321,11 @@ hptag:CCPA a hpcom:RenderedItem,
     schema:name "CCPA"@en ;
     schema:url "https://harshp.com/tags/CCPA"^^xsd:anyURI .
 
+hptag:DPIA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPIA"@en ;
+    schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
+
 hptag:Java a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Java"@en ;
@@ -27419,9 +27447,6 @@ hptag:work a hpcom:RenderedItem,
 <http://example.com/AseemGogte> a schema:Person ;
     schema:name "Aseem Gogte" .
 
-<http://example.com/CristianaSantos> a schema:Person ;
-    schema:name "Cristiana Santos" .
-
 <http://example.com/KanizFatema> a schema:Person ;
     schema:name "Kaniz Fatema" .
 
@@ -27452,9 +27477,6 @@ hptag:work a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2018-10-08T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2018.semanticweb.org/"^^xsd:anyURI .
-
-hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Draft Paper"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -27585,6 +27607,9 @@ hptag:sci-fi a hpcom:RenderedItem,
     schema:name "sci-fi" ;
     schema:url "https://harshp.com/tags/sci-fi"^^xsd:anyURI .
 
+<http://example.com/CristianaSantos> a schema:Person ;
+    schema:name "Cristiana Santos" .
+
 <http://example.com/EnsarHadziselimovic> a schema:Person ;
     schema:name "Ensar Hadziselimovic" .
 
@@ -27624,6 +27649,11 @@ hptag:sci-fi a hpcom:RenderedItem,
     schema:startDate "2019-09-09T00:00:00"^^xsd:dateTime ;
     schema:url "https://2019.semantics.cc/"^^xsd:anyURI .
 
+<http://example.com/working-draft> a schema:Publication ;
+    hpcom:event_type "" ;
+    schema:name "working draft"@en ;
+    schema:url "http://example.com/working-draft" .
+
 <http://example.com/workshops/PrivOn2017> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:alternateName "PrivOn" ;
@@ -27643,6 +27673,9 @@ hptag:sci-fi a hpcom:RenderedItem,
     schema:startDate "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:superEvent <http://example.com/conferences/ISWC2018> ;
     schema:url "http://ontologydesignpatterns.org/wiki/WOP:2018"^^xsd:anyURI .
+
+hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Draft Paper"@en .
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
@@ -27772,11 +27805,6 @@ hpcom:Rating1 a hpcom:Rating,
 hpcom:book-currently-reading a hpcom:BookStatus ;
     rdfs:label "currently reading"@en .
 
-hptag:AI-Act a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI-Act"@en ;
-    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
-
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ODP"@en ;
@@ -27855,6 +27883,11 @@ hptag:AI a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "AI"@en ;
     schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
+
+hptag:AI-Act a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI-Act"@en ;
+    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
 
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27987,11 +28020,6 @@ hptag:movies a hpcom:RenderedItem,
     schema:name "movies" ;
     schema:url "https://harshp.com/tags/movies"^^xsd:anyURI .
 
-hptag:risk a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "risk" ;
-    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
-
 hptag:semantics a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "semantics"@en ;
@@ -28021,6 +28049,11 @@ hptag:nature a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "nature" ;
     schema:url "https://harshp.com/tags/nature"^^xsd:anyURI .
+
+hptag:risk a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "risk" ;
+    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
 
 hpview:DevProjectView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
@@ -28259,6 +28292,11 @@ hptag:semantic-web a hpcom:RenderedItem,
     schema:name "semantic-web" ;
     schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
+list:classics a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "classics"@en ;
+    schema:name "Classics"@en .
+
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -28268,11 +28306,6 @@ hptag:semantic-web a hpcom:RenderedItem,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
-
-list:classics a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "classics"@en ;
-    schema:name "Classics"@en .
 
 hpcom:Rating2 a hpcom:Rating,
         hpcom:RenderedItem ;

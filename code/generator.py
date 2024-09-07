@@ -365,12 +365,17 @@ def format_amount(amount):
     return '{:0,}'.format(amount)
 
 
+def publication_is_draft(publication):
+    return HPCOM.DraftPaper in (URIRef(t.iri) for t in publication.rdf_type)
+
+
 JINJA2_FILTERS = {
     'html_view': html_view,
     'publication_type': publication_type,
     'year': lambda x: x[:4],
     'in_past': in_past,
     'format_amount': format_amount,
+    'publication_is_draft': publication_is_draft,
 }
 
 
