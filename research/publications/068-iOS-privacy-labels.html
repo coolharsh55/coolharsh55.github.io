@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Examining the Integrity of Apple&#39;s Privacy Labels: GDPR Compliance and Unnecessary Data Collection in iOS Apps</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Examining the Integrity of Apple&#39;s Privacy Labels: GDPR Compliance and Unnecessary Data Collection in iOS Apps">
+    <meta name="schema:description" content="This study examines the effectiveness of Apple&#39;s iOS 14 privacy labels in promoting transparency around app data collection practices under GDPR, revealing widespread unnecessary data collection, inconsistencies between stated permissions and actual practices, and highlighting the need for stricter regulatory oversight and clearer privacy notices.">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="GDPR,iOS,privacy,Privacy-Labels,smartphone,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/068-iOS-privacy-labels">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://doi.org/10.3390/info15090551">
+    <meta property="og:title" content="Examining the Integrity of Apple&#39;s Privacy Labels: GDPR Compliance and Unnecessary Data Collection in iOS Apps">
+    <meta property="og:description" content="This study examines the effectiveness of Apple&#39;s iOS 14 privacy labels in promoting transparency around app data collection practices under GDPR, revealing widespread unnecessary data collection, inconsistencies between stated permissions and actual practices, and highlighting the need for stricter regulatory oversight and clearer privacy notices.">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/068-iOS-privacy-labels">
+        <h1 property="schema:name schema:headline">Examining the Integrity of Apple&#39;s Privacy Labels: GDPR Compliance and Unnecessary Data Collection in iOS Apps</h1>
+<div id="description">
+	<small>
+	<time datetime="2024-09-09T00:00:00">2024-09-09T00:00:00</time>
+    <i>Journal</i>
+    <br/>
+    MDPI Information
+    <br/>
+    &#9997;<i>
+    Zaid Ahmad Surma*    , Saiesha Gowdar*    ,
+    <u>Harshvardhan J. Pandit</u>
+    </i>
+    <br/>
+    Description: This study examines the effectiveness of Apple&#39;s iOS 14 privacy labels in promoting transparency around app data collection practices under GDPR, revealing widespread unnecessary data collection, inconsistencies between stated permissions and actual practices, and highlighting the need for stricter regulatory oversight and clearer privacy notices.
+    <br/>
+    <a href="https://doi.org/10.3390/info15090551">published version</a>
+        &#x1f513;open-access archives:
+        <a href="https://harshp.com/research/publications/068-iOS-privacy-labels">harshp.com</a>
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract</strong> This study investigates the effectiveness of Apple's privacy labels, introduced in iOS 14, in promoting transparency around app data collection practices with respect to the GDPR. Specifically, we address two key research questions: (1) What  special categories of personal data, as regulated by the GDPR, are collected and used by apps, and for which purposes?; and (2) What disparities exist between app-stated permissions and the apparent unnecessary data gathering across various categories in the iOS App Store? By analyzing a comprehensive dataset of 541,662 iOS apps, we identify common practices related to prevalent use of sensitive and special categories of personal data, revealing widespread instances of unnecessary data collection, misuse, and potential GDPR violations. Furthermore, our analysis uncovers significant inconsistencies between the permissions stated by apps and the actual data they gather, highlighting a critical gap in user privacy protection within the iOS ecosystem. These findings underscore the need for stricter regulatory oversight of app stores and the necessity of effective privacy notices to build accountability, trust and ensure transparency. The study offers actionable insights for regulators, app developers, and users towards creating secure and transparent digital ecosystems</p>
+
+<h3 id="introduction">Introduction</h2>
+<p>Privacy has become a major problem for society in modern times due to
+the pervasiveness of technology in our daily lives. While cellphones and
+associated apps have significantly improved communication and
+convenience, they have also given rise to serious concerns regarding the
+security of personal data. When people use a variety of apps, each
+requesting access to their personal information, the opaqueness of the
+regulations governing data usage is a serious worry. Privacy regulations
+are more important than ever since people are demanding more
+transparency and control over their personal data. Nevertheless,
+consumers frequently find it difficult to completely understand these
+activities due to the complex nature of typical privacy regulations.
+Privacy labels surfaced as a possible remedy in reaction to these
+issues. Privacy nutrition labels were first introduced by Kelley et al.
+<span class="citation" data-cites="kelley1"><a href="#ref-kelley1"
+role="doc-biblioref">[1]</a></span> with the goal of providing a clear
+and succinct summary of privacy policies to improve users’ visual
+comprehension.</p>
+<p>Apple introduced Apple Privacy Labels in the App Store in 2020, and
+Google released Data Safety Sections in the Google Play Store soon
+after. All software products available on the App Store now have privacy
+labels, even desktop applications. However, for the sake of this paper,
+we will only be discussing mobile apps. Apple divides data into fourteen
+categories, each with a unique name and icon, to make it easier for
+developers to summarize how an app handles private, sensitive data.
+These data types combine related or comparable pieces of information;
+for instance, the Identifiers category includes User ID and Device ID
+<span class="citation" data-cites="balash8"><a href="#ref-balash8"
+role="doc-biblioref">[2]</a></span>. Next, the privacy labels page
+groups the app’s data practices into three primary categories, each of
+which is displayed on a distinct card according to how it is used: "data
+used to track you," "data linked to you," and "data not linked to you"
+<span class="citation" data-cites="Scoccia6"><a href="#ref-Scoccia6"
+role="doc-biblioref">[3]</a></span>.</p>
+<p>These labels are intended to make it easier for end users to
+understand how apps handle data <span class="citation"
+data-cites="Kollnig5"><a href="#ref-Kollnig5"
+role="doc-biblioref">[4]</a></span>; they provide an alternative to
+wading through lengthy privacy rules that are rarely read. But just as
+they frequently do with privacy policies, there’s a worry that users may
+ignore these new, potentially simplified privacy labels. This could
+result in a false sense of security or a lack of awareness regarding the
+impact on their privacy, which varies greatly from person to person.
+Furthermore, it is possible that developers may fail to disclose their
+true data practices if the labels comply with GDPR.</p>
+<p>The EU General Data Protection Regulation (GDPR), in Article 9,
+defines special categories of data, which require
+higher protection due to their sensitive nature. These categories
+include data revealing racial or ethnic origin, political opinions,
+religious or philosophical beliefs, trade union membership, genetic
+data, biometric data for the purpose of uniquely identifying a natural
+person, data concerning health, or data concerning a natural person’s
+sex life or sexual orientation. The GDPR prohibits the processing of
+these categories unless one of the exceptions are fulfilled - such as
+asking for explicit consent. The GDPR, in Article 35, also requires
+conducting a Data Protection Impact Assessment (DPIA) to assess the
+risks to the ’rights and freedoms’ of individuals that the processing of
+such data may produce.</p>
+<p>Additionally, from the perspective of individuals, certain categories
+are considered particularly sensitive. These include data related to
+photos and videos, finance, and navigation. Photos and videos can reveal
+a lot about a person’s private life, finance data includes sensitive
+information about an individual’s economic activities and status, and
+navigation data can track a person’s location and movements. The
+importance of protecting such sensitive data highlights the need for
+effective privacy labels and regulations to ensure that users are fully
+aware of how their data is being collected and used.</p>
+<p>The labels also bring up new research concerns, like examining the
+effectiveness, usefulness, and usability of the labels in real-world
+settings and the discrepancy between the privacy choices that mobile app
+users have access to in permission managers and the disclosures made on
+the labels. However, there hasn’t been much research done to determine
+how well people’s privacy concerns and inquiries are addressed by the
+content of the present mobile app privacy labels.</p>
+<p>In light of the aforementioned findings, the following research
+questions have been identified and are examined in this paper:</p>
+<ol>
+<li><p>What sensitive categories of personal data as might be understood
+by individuals, and special categories as regulated by the GDPR, are
+collected and used by apps, and for which purposes?</p></li>
+<li><p>What disparities exist between app-stated permissions and the
+apparent unnecessary data gathering across various app categories in the
+iOS App Store?</p></li>
+</ol>
+<h3 id="background">Background</h2>
+<p>Privacy labels on Apple’s App Store <span class="citation"
+data-cites="apple2020"><a href="#ref-apple2020"
+role="doc-biblioref">[5]</a></span> provide users with clear information
+about the data collected by apps, including fourteen distinct types of
+data such as identifiers, location data, contact info, user content, and
+financial information. These data types, each represented with a unique
+name and icon, help users understand what personal information an app
+might collect. Data collected by apps is categorized into three main
+groups to clarify how personal information is handled (figure 1):</p>
+<p>Data Used to Track You: This includes data used for tracking user or
+device data across different companies for targeted advertising, such as
+browsing history or app usage patterns.</p>
+<p>Data Linked to You: This involves data that can be directly tied to
+the user’s identity, including account, device, or contact details like
+email addresses and phone numbers.</p>
+<p>Data Not Linked to You: Covers anonymized data where user identity
+references have been removed, such as anonymized usage statistics.</p>
+<p>Each category is designed to highlight the varying privacy risks
+associated with different types of data usage. The privacy labels also
+indicate the purpose behind data collection, which can range from
+analytics and app functionality to product personalization and
+advertising. Users can find detailed information about the collected
+data and its purposes by accessing the "details" section on the privacy
+labels page.</p>
+<figure>
+<img src="img/068-data-privacy-labels.jpg" />
+<figcaption>An example of Apple’s App Store privacy labels</figcaption>
+</figure>
+<p>With the introduction of iOS 14.5, Apple requires app developers to
+seek user consent for tracking through the App Tracking Transparency
+(ATT) framework, ensuring users have control over their privacy
+settings. Special Categories of Data Under GDPR Article 9 Under the
+General Data Protection Regulation (GDPR) Article 9 <span
+class="citation" data-cites="dpc2024"><a href="#ref-dpc2024"
+role="doc-biblioref">[6]</a></span>, certain personal data are
+classified as "special categories" due to their sensitive nature,
+requiring enhanced protection. These include data on racial or ethnic
+origin, political opinions, religious beliefs, genetic and biometric
+data, health information, and data concerning sexual orientation.
+Processing such data is generally prohibited unless explicit consent is
+obtained or it is necessary for substantial public interest.</p>
+<p>In contrast, "sensitive data" refers to personal data that, while not
+classified as special under GDPR, still requires protection due to its
+nature, such as financial data or contact details. The regulatory
+requirements for this data vary depending on the jurisdiction.</p>
+<p>Special categories under GDPR are strictly regulated due to their
+potential impact on individual rights and freedoms, whereas sensitive
+data, though important, does not fall under these stringent GDPR
+conditions unless it relates to the defined special categories. This
+distinction underlines that while all GDPR special categories are
+sensitive, not all sensitive data is categorized as special under
+GDPR.</p>
+<h3 id="literature-review-state-of-the-art">Literature Review &amp;
+State of the Art</h2>
+<p>We cover four primary themes in this section’s discussion of material
+pertinent to our study: literature about iOS privacy labels, iOS and
+Android label comparisons, whether or not privacy labels are helpful to
+users and why low popularity apps have missing privacy labels.</p>
+<h3 id="ios-privacy-labels">iOS Privacy Labels</h3>
+<p>Understanding privacy labels is essential for users to make informed
+decisions. The four-level hierarchy of privacy labels provides a
+structured way to interpret the information presented. Users can start
+by checking the top-level Privacy Types to determine if an app collects
+any user data. If an app falls under the "No Data Collected" category,
+it means the app does not collect any user data<span class="citation"
+data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span>. However, Numerous iOS applications
+continue to collect machine data that could be used to track users,
+according to Kollnig et al. (2022).According to the survey<span
+class="citation" data-cites="Kollnig5"><a href="#ref-Kollnig5"
+role="doc-biblioref">[4]</a></span>, 22.2% of apps said they didn’t
+gather user data, a claim that is frequently refuted by more
+investigation. Analysis revealed a disparity between stated and actual
+practices: 68.6% of these apps transferred data to a monitoring site
+upon first start, and 80.2%of these apps contained at least one tracker
+library. These apps, on average, had fewer tracking libraries and made
+less contact with tracking businesses than those that acknowledged
+collecting data; this indicates a notable lack of transparency in
+privacy procedures. Paper<span class="citation" data-cites="balash8"><a
+href="#ref-balash8" role="doc-biblioref">[2]</a></span> also observed
+that on average there were 37450 newly added apps and 38,053 removed
+apps per week. During the end of the collection period, 60.5% of apps
+had a privacy label and the remaining 39.5% of apps didn’t have privacy
+labels. The author has considered the apps that have privacy labels and
+noticed that they track user data, which has increased by 3,733 apps on
+average each week for a total increase of 47,658 apps.</p>
+<p>The number of apps that link data to users’ identities increased by
+9,169 apps on average each week for a total increase of 103,886 apps.
+But most new apps use the Data Not Collected Privacy Type. These
+increased on average 12,597 apps per week for a total increase of
+125,333 apps <span class="citation" data-cites="balash8"><a
+href="#ref-balash8" role="doc-biblioref">[2]</a></span>. Users have a
+difficult time finding apps that are truly concerned about their
+privacy, as seen by the limited percentage of these apps that were
+featured in the App Store charts. The discrepancy between apps’ stated
+permissions and their actual data collection practices offers a critical
+entry point for our research on unnecessary data gathering across
+various iOS App Store categories. This gap not only raises questions
+about the integrity of app privacy disclosures but also underscores the
+importance of scrutinising the privacy practices of apps that claim not
+to collect data, revealing a crucial area for deeper investigation and
+analysis in the quest for genuine transparency and user protection in
+digital environments.</p>
+<p>It is found that among free applications, 40.55% are used for
+developer advertising, 78.92% are used for collecting data and 36.41%
+are used for third-party advertising. Free applications perform 2.72
+usage of linked data, which are anonymized whereas paid application
+performs 0.43 usage of linked data (Scoccia et al. 2022)<span
+class="citation" data-cites="Scoccia6"><a href="#ref-Scoccia6"
+role="doc-biblioref">[3]</a></span>. Therefore, it can be said that paid
+applications have a better ratio than free applications on the Apple
+store.The result section from paper<span class="citation"
+data-cites="Li7"><a href="#ref-Li7" role="doc-biblioref">[8]</a></span>
+shows that 51.6% of iOS applications do not have any privacy labels as
+of 2021. Though 35.5% of applications have already generated privacy
+labels, just 2.7% of iOS applications have developed privacy labels
+without the features of app updates (Li et al. 2022). Even, the changing
+rates appear to be slower over time. The overall low level of adoption
+in terms of privacy labels makes this label system comparatively less
+useful for customers (users). The fact that "half of the iOS
+applications have only view labels" underscores a critical problem in
+how app developers approach the transparency and disclosure of their
+data collection practices. This situation is further compounded by
+developers’ passive attitude towards privacy <span class="citation"
+data-cites="LiTianshi9"><a href="#ref-LiTianshi9"
+role="doc-biblioref">[9]</a></span> and a lack of awareness or
+misconceptions about how to create effective privacy labels<span
+class="citation" data-cites="Li7"><a href="#ref-Li7"
+role="doc-biblioref">[8]</a></span>. Such attitudes and
+misunderstandings can lead to inadequate compliance with privacy
+regulations, including the General Data Protection Regulation (GDPR),
+which is especially critical when it comes to handling sensitive data
+categories.</p>
+<h3
+id="how-developers-talk-about-personal-data-and-what-it-means-for-user-privacy-a-case-study-of-a-developer-forum-on-reddit">How
+Developers Talk About Personal Data and What It Means for User Privacy:
+A Case Study of a Developer Forum on Reddit</h3>
+<p><span class="citation" data-cites="LiTianshi9"><a
+href="#ref-LiTianshi9" role="doc-biblioref">[9]</a></span> examines the
+discussions of personal data by Android developers on the /r/androiddev
+forum on Reddit, exploring how these discussions relate to user privacy.
+The paper employs qualitative analysis of 207 threads (4,772 unique
+posts) to develop a typology of personal data discussions and identify
+when privacy concerns arise. The research highlights that developers
+rarely discuss privacy concerns in the context of specific app designs
+or implementation problems unless prompted by external events like new
+privacy regulations or OS updates. When privacy is discussed, developers
+often view these issues as burdensome, citing high costs with little
+personal benefit.</p>
+<p><span class="citation" data-cites="LiTianshi9"><a
+href="#ref-LiTianshi9" role="doc-biblioref">[9]</a></span> suggest that
+privacy-related discussions are reactive rather than proactive among
+developers, who tend to address privacy concerns only when they are
+forced to do so by external factors. Risky data practices, such as
+sharing data with third parties or transferring data off the device, are
+frequently mentioned without corresponding discussions on privacy
+implications. The study concludes by offering recommendations for
+improving privacy practices, such as better communication of privacy
+rationales by Android OS and app stores, and encouraging more
+privacy-focused discussions in developer forums.</p>
+<p>This research contributes to understanding the challenges developers
+face regarding privacy and highlights the need for better tools,
+guidance, and community practices to support more privacy-conscious app
+development. The study underscores the importance of proactive privacy
+discussions and offers actionable suggestions for enhancing privacy
+practices within the Android development community.</p>
+<h3 id="comparison-of-privacy-labels-in-ios-and-google-store">Comparison
+of privacy labels in iOS and Google Store</h3>
+<p>There has been research that helps us to compare privacy labels in
+the Apple App Store and Google Play Store. Since these two are different
+platforms, privacy label policies also differ. A comparison between
+these two platforms can help the users understand how both platforms
+handle data collection and privacy practices. The comparison can also
+help users understand which platform can help users prioritise their
+privacy better</p>
+<p>In the research papers <span class="citation"
+data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span> and <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span>, the authors analysed the privacy
+labels on the Apple App Store and Google Play Store to understand how
+mobile apps handle user privacy. Research Paper <span class="citation"
+data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span>compares the privacy labels on both
+platforms however research paper <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> deep dives into the practices that
+are reported in privacy labels along with privacy labels comparison on
+both platforms. Since both the research papers are based on a comparison
+of privacy labels on both platforms it is observed that the paper <span
+class="citation" data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> provides more detailed insights
+based on app popularity, age rating, and price as well. Since the
+authors were performing the comparison between both platforms, it was
+essential first to identify the apps that were present on both
+platforms. In paper<span class="citation" data-cites="Rodriguez4"><a
+href="#ref-Rodriguez4" role="doc-biblioref">[7]</a></span> the authors
+were able to compare only 822 apps that are present on both the
+platforms and the findings showed us that there were mismatches in terms
+of data types collected on both IOS and Apple IOS App Store. The precise
+location is collected more on IOS and platforms and less on Android
+platforms. The approximate location is collected more by Android than
+IOS. This tends to explain that IOS is more oriented towards the precise
+location and Android is oriented towards the approximate location.
+Another mismatch can be seen regarding device ID and user ID. When it
+comes to Device ID Android collects it more than IOS and when it comes
+to user ID then IOS collects more than Android.</p>
+<p>The below figure shows the difference between data types that are
+collected for both platforms in the research paper<span class="citation"
+data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span>.</p>
+<figure>
+<img src="img/068-data-collection.png" />
+<figcaption> The number of data items collected in privacy labels based
+on 100k apps.<span class="citation" data-cites="Rodriguez4"><a
+href="#ref-Rodriguez4" role="doc-biblioref">[7]</a></span></figcaption>
+</figure>
+<p>As we can see in the above figure 2. there is a big gap between
+precise location, coarse location, User ID, and Device ID. Also, when it
+comes to sensitive info iOS has only 7 apps that match the disclosing
+while the other 16 differ. In the research paper <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> the authors have filtered out the
+data and performed a comparison analysis on 100k apps. The authors found
+that while comparing the Apple privacy labels with Google Play store
+privacy labels 60% of the cross-listed apps had at least one
+inconsistency. We further say that inconsistencies are highest for
+Sensitive Information, Browsing History, and Emails or Text Messages
+data types <span class="citation" data-cites="Khandelwal10"><a
+href="#ref-Khandelwal10" role="doc-biblioref">[10]</a></span>. The
+authors have also identified inconsistency where developers are
+reporting data collection for two different purposes. In an app called
+Twitch TV, the purpose of data type purchase history on Google Play
+Store is App Functionality. On the IOS App Store, it is mentioned as
+Analytics and Personalization purposes.</p>
+<p>The overall conclusion in paper 8 suggests that Apple’s privacy label
+does not distinguish between data collection and sharing. Apple’s
+privacy label is more explicit about data practices like link ability,
+third-party advertising, and tracking. In contrast, data safety sections
+lack these details but do inform the users about the safety of their
+data (Data Encryption) and the choices that they have with developers
+(Data Deletion Option) <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span>. In terms of security practices on
+Google Play Store, the authors revealed that 23% of apps do not provide
+any details of their security practices [10] and 65% of apps encrypt the
+data they collect or share while in transit<span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span>.it was also found that 42% declare
+data collection on the Google Play Store, while 58% do so on the iOS
+platform.In terms of popularity we have noticed that for the Google play
+store, 76% of the high-popularity apps have privacy labels while for
+low-popular apps, only 42% have privacy labels. The app KineMaster -
+Video Editor, a video editing application with over 400 M+ downloads on
+Google Play Store, claims not to collect any data in the Play Store, but
+on the App Store, it asserts the collection of sensitive data such as
+Location and Identifiers <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span>. In terms of price it was noticed
+that in Google Play Store 68% of the paid apps have labels, whereas, for
+free apps, only 46% have labels when it comes to Apple IOS App Store
+similar trend is observed where paid apps have numbers of privacy labels
+as compared to free apps <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span>. Here we can conclude that apart
+from data privacy label comparison, the paper <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> has deep-dived into more granular
+details as compared to the paper <span class="citation"
+data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span>. Both the research papers have shown
+the data practices done on both platforms, however, the authors have not
+covered the part whether the data practices that are disclosed by both
+platforms are in line with GDPR. Also, the research papers<span
+class="citation" data-cites="Rodriguez4"><a href="#ref-Rodriguez4"
+role="doc-biblioref">[7]</a></span>and <span class="citation"
+data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> do not provide any findings that
+can help us identify whether any of the apps are performing unnecessary
+data collection.</p>
+<h3 id="do-privacy-labels-help-users">Do privacy labels help users?</h3>
+<p>It is very important to understand whether privacy labels can answer
+the questions users have. The main purpose that privacy labels were
+introduced is to let the users know the app’s data practices. For the
+same, a research paper was published by Shikun Zhang and Norman Sadeh
+from Carnegie Mellon University <span class="citation"
+data-cites="Zhang3"><a href="#ref-Zhang3"
+role="doc-biblioref">[11]</a></span> in 2023 to analyse if the privacy
+labels can resolve users’ privacy questions. The authors have used a
+corpus of questions that were published in a research paper <span
+class="citation" data-cites="ravichander11"><a href="#ref-ravichander11"
+role="doc-biblioref">[12]</a></span> combining computational and legal
+perspectives. The authors first tried to understand the nature of those
+questions and transformed them into themes and ended by having 18 themes
+and 67 codes. The study aims to evaluate whether the questions asked by
+users regarding privacy can be answered using the privacy labels on
+Google Play Store and Apple IOS App Store. The authors analysed each
+code to determine if questions under each sub-theme could be answered
+using the privacy labels provided by Google or Apple. The authors in the
+research paper <span class="citation" data-cites="Zhang3"><a
+href="#ref-Zhang3" role="doc-biblioref">[11]</a></span> found that the
+most common questions asked by the users were in relation to data
+collection. Other themes comprised app security, data sharing, data
+selling, permissions, and app-specific privacy features. it was found
+that approximately 40% of question themes could be answered by the
+labels. Google Play labels provided more coverage, addressing additional
+data types and security-related questions as compared to iOS labels.
+However, iOS labels provided more information regarding data selling
+practices. Several question themes, such as permissions, data retention,
+external access, account requirements, and cookies policy, were not
+addressed by either iOS or Google Play labels. These themes represent
+areas where users’ privacy concerns may not be adequately addressed by
+current label designs. The findings provide insights into potential
+improvements needed in label design to better align with users’ mental
+models and address their privacy concerns effectively. Based on this
+study we saw only 40% of the question themes could be answered by
+current privacy labels which shows us that there is still room for
+improvement. The research paper <span class="citation"
+data-cites="Zhang3"><a href="#ref-Zhang3"
+role="doc-biblioref">[11]</a></span> indicates that there are
+significant gaps in addressing user’s privacy concerns. And thus we will
+try to figure out if we can figure out the solution for this gap by
+understanding the user perception. In our research, we will be exploring
+the formats of privacy labels across different apps and can identify the
+inconsistencies. As a part of our research, we will also be doing
+campaigns/surveys that will help us understand the user perception and
+raise awareness among users in terms of understanding privacy labels,
+and empower users to make more informed decisions about their app
+usage.</p>
+<h3 id="why-low-popularity-apps-have-privacy-labels-missing">Why low
+popularity apps have privacy labels missing?</h3>
+<p>One striking observation revealed in a research paper <span
+class="citation" data-cites="Khandelwal10"><a href="#ref-Khandelwal10"
+role="doc-biblioref">[10]</a></span> shows us that for apps with high
+popularity, 76% of them had privacy labels however for apps with low
+popularity only 42% of them had privacy labels. While the popular apps
+provide robust privacy disclosure, a disparity exists where the apps
+with less popularity lack privacy label disclosures. The research paper
+<span class="citation" data-cites="Khandelwal10"><a
+href="#ref-Khandelwal10" role="doc-biblioref">[10]</a></span>, makes it
+clear that for less popular apps, half of the apps had privacy labels
+missing. It brings out the need to analyse the factors that are
+influencing privacy labelling practices with apps having less
+popularity. The research paper <span class="citation"
+data-cites="SBargh12"><a href="#ref-SBargh12"
+role="doc-biblioref">[13]</a></span> published in 2022 helps us to
+understand the challenges faced by small enterprise businesses about
+privacy labels. The authors conducted 3 interviews with 3 SMEs from
+sectors of retail, culture, and media. Two sessions were arranged for
+each SME where the objective of the 1st session was to introduce the
+SMEs to online SERIOUS tools which can help them create a sensible
+SERIOUS privacy label. The second session was based on an interview with
+each SME where the questions were based on the first session, use of
+privacy labels, and Facilitation of the privacy label deployment.</p>
+<p>The results of the second session highlighted some points. The first
+one showed the authors that since the participants belonged to different
+sectors, so should they use separate privacy labels. The second point
+that was brought to light is that these SMEs don’t have in-house
+capacity for privacy label generation and thus use online third parties.
+Also, it was noticed that the SMEs don’t have a specific person who is
+responsible for handling privacy labels. The authors have recommended
+the need for having the privacy labels of upstream service providers is
+to develop automated systems, tools, and architectures that help
+estimate the privacy practices/labels based on the operational
+behaviours of the corresponding services <span class="citation"
+data-cites="SBargh12"><a href="#ref-SBargh12"
+role="doc-biblioref">[13]</a></span>. The authors have also mentioned
+that the privacy labels and the tools that can be used to develop
+privacy labels have to be adopted by both label-issuing enterprises and
+label-consuming parties. The authors have also expressed the need for
+further research about the possible ways that can be used to enhance
+label adoption by label-issuing enterprises.</p>
+<p>This research paper shows us that there is still a need for better
+privacy labels which can be used by the app owners in order to disclose
+the privacy labels. SMEs need to offer transparency to each privacy
+practice for SMEs providing online services and applications. Moreover,
+it is needed to introduce a trusted party (third party) to monitor and
+supervise ongoing processes.</p>
+<h3 id="how-usable-are-ios-privacy-labels">How Usable Are iOS Privacy
+Labels?</h3>
+<p>The literature survey <span class="citation" data-cites="Zhang15"><a
+href="#ref-Zhang15" role="doc-biblioref">[14]</a></span> provides a
+comprehensive analysis of the usability and effectiveness of Apple’s iOS
+app privacy labels, introduced with iOS 14, within the broader landscape
+of privacy communication. These labels were designed as a more
+accessible alternative to traditional privacy policies, which are often
+criticized for their length, complexity, and general lack of engagement
+from users. The study situates itself within the "Notice and Choice"
+framework of U.S. privacy law, which traditionally relies on users being
+informed and making choices based on detailed privacy policies.</p>
+<p>The survey begins by reviewing key literature on privacy notices,
+identifying essential criteria for effective privacy communication:
+readability, comprehensibility, salience, relevance, and actionability.
+It highlights the shortcomings of traditional privacy policies and
+explores the emergence of alternative approaches, such as standardized
+and simplified notices, which aim to make privacy information more
+digestible and actionable for users.</p>
+<p><span class="citation" data-cites="Zhang15"><a href="#ref-Zhang15"
+role="doc-biblioref">[14]</a></span> then focuses specifically on the
+concept of privacy labels, which are intended to function similarly to
+nutrition labels on food products, offering a concise summary of how an
+app handles user data. The authors in <span class="citation"
+data-cites="Zhang15"><a href="#ref-Zhang15"
+role="doc-biblioref">[14]</a></span> discuss the theoretical potential
+of these labels to improve user understanding and control over their
+privacy, particularly in the mobile app ecosystem, where privacy
+concerns are especially pertinent.</p>
+<p>To evaluate the real-world effectiveness of iOS privacy labels, the
+authors conducted an empirical study involving in-depth interviews with
+24 iPhone users. The findings reveal a range of user experiences, with
+many participants expressing confusion and frustration with the labels.
+Despite their intended purpose, the labels often failed to clearly
+communicate the necessary information or to empower users to make
+informed privacy decisions. Common issues included misunderstandings of
+the labels’ content, perceived inconsistencies with app behaviors, and a
+general lack of actionable guidance.</p>
+<p>The survey concludes by offering recommendations for enhancing the
+design and implementation of privacy labels. These include using clearer
+and more straightforward language, better integrating the labels with
+app permission settings, and refining the visual and interactive aspects
+of the labels to make them more user-friendly. The paper’s findings
+contribute to the ongoing discussion on improving privacy notice design,
+particularly in the context of mobile applications, and highlight the
+persistent challenges in creating privacy tools that effectively bridge
+the gap between technical information and user understanding.</p>
+<h3
+id="helping-mobile-application-developers-create-accurate-privacy-labels">Helping
+Mobile Application Developers Create Accurate Privacy Labels</h3>
+<p>The paper <span class="citation" data-cites="Gardner16"><a
+href="#ref-Gardner16" role="doc-biblioref">[15]</a></span> explores the
+complex challenge of ensuring that mobile application developers can
+produce accurate privacy labels, a requirement introduced by Apple in
+December 2020. These privacy labels are designed to inform users about
+the data collection and sharing practices of apps they use. However,
+many developers struggle to complete these labels accurately due to a
+lack of expertise in privacy regulations and the complexities introduced
+by third-party Software Development Kits (SDKs) and libraries, which are
+often integral to app development.</p>
+<p>The authors identify several key obstacles that developers face when
+attempting to create these privacy labels. One significant issue is the
+difficulty in understanding the data collection behaviors of third-party
+components within their apps. These components can introduce data
+practices that developers might not be fully aware of, leading to
+inaccuracies in the privacy labels. Additionally, developers often lack
+the necessary privacy expertise to correctly interpret and implement the
+requirements for these labels, resulting in widespread inaccuracies that
+could have legal, regulatory, and reputational consequences.</p>
+<p>To address these challenges, the authors developed and evaluated a
+tool called Privacy Label Wiz (PLW). PLW is an enhanced version of an
+earlier tool, Privacy Flash Pro, and is designed to help iOS developers
+create more accurate privacy labels by integrating static code analysis
+with interactive user prompts. The tool scans the app’s codebase to
+identify potential data collection practices and then guides the
+developer through a series of questions and prompts to clarify and
+confirm these practices. This process is intended to help developers
+better understand their apps’ data flows and ensure that the privacy
+labels they produce accurately reflect these practices.</p>
+<p>The paper <span class="citation" data-cites="Gardner16"><a
+href="#ref-Gardner16" role="doc-biblioref">[15]</a></span> details the
+iterative development process of PLW, which involves gathering feedback
+from semi-structured interviews with developers. These interviews
+provided valuable insights into the difficulties developers face and
+informed several key design decisions for PLW. For example, the tool was
+designed to integrate seamlessly into the developers’ existing
+workflows, minimizing disruption and making it easier for developers to
+use it effectively. The authors also discuss the tool’s evaluation,
+which showed that PLW could significantly improve the accuracy of the
+privacy labels generated by developers.</p>
+<p>In addition to describing the tool and its development, the paper
+makes several broader contributions to privacy engineering. It
+highlights the need for tools that are tailored to the specific
+challenges developers face when working with privacy regulations and
+underscores the importance of aligning these tools with typical software
+development practices. The paper concludes with suggestions for future
+work, including further refinement of tools like PLW and expanding
+support for other mobile platforms beyond iOS.</p>
+<p>Overall, the study emphasizes the importance of providing developers
+with the right tools and resources to help them navigate the
+complexities of privacy regulations, thereby improving the accuracy of
+privacy labels and enhancing user trust in mobile applications.</p>
+<h3 id="keeping-privacy-labels-honest">Keeping Privacy Labels
+Honest</h3>
+<p>Paper <span class="citation" data-cites="Koch17"><a
+href="#ref-Koch17" role="doc-biblioref">[16]</a></span> explores the
+effectiveness and reliability of Apple’s privacy labels, which were
+introduced in December 2020. These labels require app developers to
+disclose the types of data their apps collect and the purposes for which
+the data is used. The study primarily investigates whether these privacy
+labels accurately reflect the data collection practices of the apps and
+whether developers comply with these self-declared labels. The authors
+conducted an exploratory statistical analysis of 11,074 apps across 22
+categories from the German App Store. They found that a significant
+number of apps either did not provide privacy labels or self-declared
+that they did not collect any data. A subset of 1,687 apps was selected
+for a "no-touch" traffic collection study. This involved analyzing the
+data transmitted by these apps to determine if it matched the
+information disclosed in their privacy labels. The study revealed that
+at least 276 of these apps violated their privacy labels by transmitting
+data without declaring it. The paper <span class="citation"
+data-cites="Koch17"><a href="#ref-Koch17"
+role="doc-biblioref">[16]</a></span> also assessed the apps’ compliance
+with the General Data Protection Regulation (GDPR), particularly
+regarding the display of privacy consent forms. Numerous potential
+violations of GDPR were identified. The authors developed infrastructure
+for large-scale iPhone traffic interception and a system for
+automatically detecting privacy-label violations through traffic
+analysis. <span class="citation" data-cites="Koch17"><a
+href="#ref-Koch17" role="doc-biblioref">[16]</a></span> concluded that
+Apple’s privacy labels are often inaccurate, with many apps transmitting
+data not disclosed in their labels. The findings suggest that there is
+no validation of these labels during the Apple App Store approval
+process, leading to potential privacy violations and non-compliance with
+GDPR. The paper emphasizes the need for more rigorous enforcement and
+verification of privacy labels to protect users’ data effectively. This
+study provides a critical evaluation of the effectiveness of privacy
+labels and highlights significant gaps in their implementation and
+enforcement.</p>
+<h3
+id="atlas-automatically-detecting-discrepancies-between-privacy-policies-and-privacy-labels">ATLAS:
+Automatically Detecting Discrepancies Between Privacy Policies and
+Privacy Labels</h3>
+<p><span class="citation" data-cites="Jain18"><a href="#ref-Jain18"
+role="doc-biblioref">[17]</a></span> introduces a novel tool, ATLAS
+(Automated Privacy Label Analysis System), which is designed to identify
+discrepancies between privacy policies and privacy labels in iOS apps
+using advanced natural language processing (NLP) techniques. The study
+reveals a concerning finding 88% of the apps analyzed with both
+available privacy policies and labels exhibit at least one discrepancy,
+with an average of 5.32 potential issues per app. These discrepancies
+often involve the types of data collected, the purposes for data use,
+and data-sharing practices, pointing to significant gaps between what
+apps disclose in their privacy labels and what is outlined in their
+privacy policies.</p>
+<p>ATLAS serves as a critical resource for developers, regulators, and
+researchers, providing a way to automatically detect and address these
+inconsistencies, thereby improving privacy transparency and compliance
+in the mobile app ecosystem. The study highlights the potential of ATLAS
+to enhance user trust by ensuring that privacy labels accurately reflect
+the practices detailed in privacy policies, thus supporting regulatory
+efforts to protect user privacy.</p>
+<p>In conclusion, <span class="citation" data-cites="Jain18"><a
+href="#ref-Jain18" role="doc-biblioref">[17]</a></span> underscores the
+importance of addressing the identified discrepancies to improve the
+accuracy of privacy disclosures in mobile apps. The researchers suggest
+that ATLAS could be further developed to cover more platforms and
+languages, potentially broadening its impact. They also call for
+stronger regulatory oversight to ensure that privacy labels are not just
+a formality but a true reflection of an app’s data practices. The
+authors believe that by using tools like ATLAS, the industry can move
+towards greater transparency and accountability, ultimately fostering a
+more privacy-respecting digital environment.</p>
+<h3 id="study-design">Study Design</h2>
+<p>The main aim of our study is to explore how iOS apps on the Apple App
+Store handle special data, sensitive data, providing insights that can
+aid regulators, app store management, and users in making
+better-informed decisions.The study consist of 541,662 apps published on
+iOS app store as of November 2023. The goal of this study is to analyse
+Privacy labels to identify any limitation it poses .</p>
+<p>Initially, we conducted a literature review to identify existing
+research papers on privacy labels. Although we found relevant studies,
+none of them included attached data. This led us to contact other
+academics who were also collecting data from the Apple App Store. These
+academics provided us with data in JSON format, collected in November
+2023, encompassing privacy information for 541,662 iOS apps. Each app’s
+privacy details are stored in separate JSON files, specifying the
+categories of data collected. To promote further research, we will
+upload this data to GitHub in the interest of reproducibility and
+further reuse of the data.</p>
+<p>The JSON files we received comprised 561,422 individual JSON files
+for each app. We developed a Python function to extract information from
+these JSON files and convert it into a structured format suitable for
+analysis, combining respective fields such as data linked to you, data
+not linked to you, and data tracking you. This process involved parsing
+each JSON file to identify various privacy-related aspects, such as the
+types of data collected (e.g., location, contact info), the purposes of
+data collection (e.g., analytics, app functionality), and the categories
+of data usage (e.g., data used to track you, data linked to you, data
+not linked to you). We then used binary encoding to indicate the
+presence or absence of specific data types and purposes within each
+app’s privacy label. For instance, if an app collected location data, it
+was encoded as ’1’; otherwise, it was encoded as ’0’. Similarly, data
+used for analytics was encoded as ’1’ if applicable. The encoded data
+was then stored in a .csv file for further analysis.</p>
+<p>The choice of binary encoding was driven by its simplicity and
+clarity, which aids in straightforward statistical analyses and
+visualizations, and ensures consistency across the dataset, making
+comparisons between different apps and categories feasible.
+Additionally, this method enhances analytical flexibility, allowing for
+various analytical techniques such as frequency analysis,
+cross-tabulations, and visual representations. This comprehensive
+approach enables a thorough examination of data practices. Lastly, the
+encoded data in .csv file was stored in an SQLite database, which
+facilitated efficient querying and management, helping aggregate data
+and extract meaningful insights regarding privacy practices across
+different app categories.</p>
+<p>The collected and structured data was then analysed by identifying
+specific queries through analysis of the literature and performing a
+requirements analysis. In this exercise, we analysed the information
+available to us in the app store and the privacy label, and formulated
+questions whose answers would illuminate the state of data collection
+and privacy within the app’s use of data and the impact on privacy. To
+ensure the questions were diverse and reflected a well-grounded approach
+in research, we compared them with existing literature that analysed iOS
+apps to identify which questions were repeated (as in prior work had
+also investigated them) and which were novel. For the questions that
+were repeated, we sought to validate existing analysis in terms of
+findings, and for novel ones we attempted to formulate theories as to
+their reason for occurrences and impacts.</p>
+<h3 id="analysis-results">Analysis &amp; Results</h2>
+<p>The results of our analysis are shown in this section, arranged in
+accordance with the relevant research question.</p>
+<table>
+<caption>The table above provides information about the
+dataset.</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Category</strong></span></th>
+<th style="text-align: right;"><span><strong>Count</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Data linked to you</td>
+<td style="text-align: right;">123,984</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data not linked to you</td>
+<td style="text-align: right;">136,630</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data used to track you</td>
+<td style="text-align: right;">62,638</td>
+</tr>
+<tr>
+<td style="text-align: left;">No privacy label</td>
+<td style="text-align: right;">83,618</td>
+</tr>
+<tr>
+<td style="text-align: left;">No data collected</td>
+<td style="text-align: right;">134,792</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;">541,662</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rq1-use-of-sensitive-and-special-categories">RQ1: Use of
+Sensitive and Special Categories</h3>
+<h4 id="data-linked-to-you-using-sensitive-and-special-categories">‘Data
+Linked to You’ using Sensitive and Special Categories</h4>
+<p>Based on GDPR, we have analyzed that Medical and Health and Fitness
+categories contain special categories of personal data, while Finance,
+Photo and Video, and Navigation categories contain sensitive categories
+of personal data. Here is a detailed breakdown of the data usage within
+these categories:</p>
+<p><strong>Medical:</strong> In this category, data linked to users is
+distributed across various purposes, with the majority (83.4%) being
+used for developer advertising. This significant portion, amounting to
+109,917 apps, highlights the emphasis on supporting in-app
+advertisements and marketing efforts by developers. Additionally, 9.6%
+(12,610 apps) of the data ensures app functionality, crucial for the
+app’s operational effectiveness. Analytics data accounts for 3.3% (4,373
+apps), used to understand user interaction and improve the app
+experience. Minor portions are dedicated to other purposes (1.0%, 1,340
+apps), product personalization (2.3%, 3,089 apps), and third-party
+advertising (0.4%, 463 apps), ensuring a tailored user experience and
+supporting external marketing.</p>
+<table>
+<caption>Special category distribution in data linked to you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Category</strong></span></th>
+<th style="text-align: left;"><span><strong>Medical</strong></span></th>
+<th style="text-align: left;"><span><strong>Health
+and Fitness</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Analytics</td>
+<td style="text-align: left;">% (4,373)</td>
+<td style="text-align: left;">% (26,242)</td>
+</tr>
+<tr>
+<td style="text-align: left;">App Functionality</td>
+<td style="text-align: left;">% (12,610)</td>
+<td style="text-align: left;">% (65,535)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Developer Advertising</td>
+<td style="text-align: left;">% (109,917)</td>
+<td style="text-align: left;">% (11,588)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Purposes</td>
+<td style="text-align: left;">% (1,340)</td>
+<td style="text-align: left;">% (2,290)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Product Personalization</td>
+<td style="text-align: left;">% (3,089)</td>
+<td style="text-align: left;">% (15,149)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Third-Party Advertising</td>
+<td style="text-align: left;">% (463)</td>
+<td style="text-align: left;">% (2,609)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"><strong>131,792</strong></td>
+<td style="text-align: left;"><strong>123,413</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Health and Fitness:</strong> In contrast, the Health and
+Fitness category demonstrates a more balanced data distribution. App
+functionality is the largest segment, comprising 53.1% (65,535 apps) of
+the data, emphasizing the importance of maintaining a smooth and
+effective service. Analytics data makes up 21.3% (26,242 apps), crucial
+for monitoring and enhancing user interaction and performance. Product
+personalization, accounting for 12.3% (15,149 apps), plays a significant
+role in tailoring the user experience. Developer advertising constitutes
+9.4% (11,588 apps), and other purposes take up 1.9% (2,290 apps).
+Third-party advertising is relatively minimal, at 2.1% (2,609 apps),
+indicating a lesser focus on external marketing compared to internal app
+functionality and personalization efforts.</p>
+<p>In comparison to these special categories, the sensitive categories
+of Finance, Photo and Video, and Navigation exhibit different patterns
+of data usage.</p>
+<p><strong>Finance:</strong> In the Finance category, data linked to
+users is distributed as follows: 47.87% (46,201 apps) ensures app
+functionality, highlighting the critical need for operational
+effectiveness. Developer advertising constitutes 13.26% (12,789 apps),
+supporting in-app advertisements and marketing efforts. Analytics data
+accounts for 19.25% (18,580 apps), used to understand user interaction
+and improve the app experience. Other purposes cover 3.83% (3,700 apps),
+while product personalization takes up 13.86% (13,379 apps) to tailor
+the user experience. Third-party advertising represents a smaller
+portion at 1.93% (1,861 apps).</p>
+<p><strong>Photo and Video:</strong> In this category, the data
+distribution is as follows: App functionality comprises 34.97% (3,048
+apps), essential for the app’s smooth operation. Developer advertising
+accounts for 7.33% (639 apps), and analytics make up 26.54% (2,313 apps)
+to enhance user interaction. Other purposes represent 2.93% (255 apps),
+while product personalization is 9.66% (842 apps). Third-party
+advertising constitutes a significant portion at 18.56% (1,618 apps),
+indicating a strong emphasis on external marketing.</p>
+<p><strong>Navigation:</strong> In the Navigation category, data usage
+is primarily focused on app functionality, which makes up 51.56% (4,519
+apps), reflecting the importance of operational efficiency. Developer
+advertising accounts for 6.32% (554 apps), and analytics constitute
+18.74% (1,643 apps) for performance enhancement. Other purposes cover
+3.62% (317 apps), while product personalization represents 12.29% (1,077
+apps). Third-party advertising is relatively small at 7.47% (655
+apps).</p>
+<table>
+<caption>Sensitive category distribution in data linked to you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Category</strong></span></th>
+<th style="text-align: left;"><span><strong>Finance</strong></span></th>
+<th style="text-align: left;"><span><strong>Photo
+and Video</strong></span></th>
+<th style="text-align: left;"><span><strong>Navigation</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Analytics</td>
+<td style="text-align: left;">% (18,580)</td>
+<td style="text-align: left;">% (2,313)</td>
+<td style="text-align: left;">% (1,643)</td>
+</tr>
+<tr>
+<td style="text-align: left;">App Functionality</td>
+<td style="text-align: left;">% (46,201)</td>
+<td style="text-align: left;">% (3,048)</td>
+<td style="text-align: left;">% (4,519)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Developer Advertising</td>
+<td style="text-align: left;">% (12,789)</td>
+<td style="text-align: left;">% (639)</td>
+<td style="text-align: left;">% (554)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Purposes</td>
+<td style="text-align: left;">% (3,700)</td>
+<td style="text-align: left;">% (255)</td>
+<td style="text-align: left;">% (317)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Product Personalization</td>
+<td style="text-align: left;">% (13,379)</td>
+<td style="text-align: left;">% (842)</td>
+<td style="text-align: left;">% (1,077)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Third-Party Advertising</td>
+<td style="text-align: left;">% (1,861)</td>
+<td style="text-align: left;">% (1,618)</td>
+<td style="text-align: left;">% (655)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"><strong>96,510</strong></td>
+<td style="text-align: left;"><strong>8,715</strong></td>
+<td style="text-align: left;"><strong>8,765</strong></td>
+</tr>
+</tbody>
+</table>
+<p>In summary, while both special categories (Medical and Health and
+Fitness) and sensitive categories (Finance, Photo and Video, and
+Navigation) prioritize app functionality and developer advertising,
+their focus and distribution patterns vary. The Medical category is
+heavily skewed towards advertising, with minimal emphasis on
+personalization and other purposes. The Health and Fitness category
+balances its data usage across functionality, analytics, and
+personalization, with a smaller proportion dedicated to advertising. In
+contrast, the sensitive categories like Finance, Photo and Video, and
+Navigation exhibit a more varied distribution, reflecting different
+operational, marketing, and user engagement strategies employed by apps
+in these categories. These differences highlight the distinct approaches
+taken by apps in managing and utilizing user data to meet their specific
+operational and marketing objectives.</p>
+<p>In the landscape of iOS app categories, Medical and Health and
+Fitness apps stand out for their notably high data collection practices.
+These categories gather significantly more data compared to other app
+categories such as Finance, Navigation, and Photo and Video. This trend
+suggests a strong emphasis on analytics, app functionality, and
+advertising, leading to privacy concerns among users. The findings
+reveal that Medical and Health and Fitness apps collect significantly
+more data—almost 10-15 times more than Navigation and Photo and Video
+apps. Such extensive data collection raises serious privacy concerns,
+underlining the need for app developers to adopt transparent data usage
+policies and enhance user consent mechanisms. Users are advised to
+exercise caution with permissions and settings when using these apps due
+to their high data collection rates.</p>
+<h4
+id="data-not-linked-to-you-using-sensitive-and-special-categories">‘Data
+Not Linked to You’ using Sensitive and Special Categories</h4>
+<p>Based on GDPR, we have analyzed that Medical and Health and Fitness
+categories contain special categories of personal data, while Finance,
+Photo and Video, and Navigation categories contain sensitive categories
+of personal data. Here is a detailed breakdown of the data usage within
+these categories:</p>
+<table>
+<caption>Special category distribution in data not linked to you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Category</strong></span></th>
+<th style="text-align: left;"><span><strong>Medical</strong></span></th>
+<th style="text-align: left;"><span><strong>Health
+and Fitness</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Analytics</td>
+<td style="text-align: left;">% (4,505)</td>
+<td style="text-align: left;">% (11,641)</td>
+</tr>
+<tr>
+<td style="text-align: left;">App Functionality</td>
+<td style="text-align: left;">% (6,042)</td>
+<td style="text-align: left;">% (16,631)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Developer Advertising</td>
+<td style="text-align: left;">% (264)</td>
+<td style="text-align: left;">% (1,173)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Purposes</td>
+<td style="text-align: left;">% (728)</td>
+<td style="text-align: left;">% (1,454)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Product Personalization</td>
+<td style="text-align: left;">% (980)</td>
+<td style="text-align: left;">% (3,110)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Third-Party Advertising</td>
+<td style="text-align: left;">% (312)</td>
+<td style="text-align: left;">% (1,670)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"><strong>12,831</strong></td>
+<td style="text-align: left;"><strong>35,679</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Medical Category:</strong> In the Medical category, data not
+linked to users is distributed across various purposes. The majority
+(47.09%) is used for app functionality, amounting to 6,042 apps.
+Analytics data accounts for 35.10% (4,505 apps), used to understand user
+interaction and improve the app experience. Minor portions are dedicated
+to other purposes (5.67%, 728 apps), product personalization (7.64%, 980
+apps), and third-party advertising (2.43%, 312 apps). Developer
+advertising constitutes the smallest portion (2.06%, 264 apps). The
+total apps are 12,831, with app functionality being the highest count at
+6,042.</p>
+<p><strong>Health and Fitness category:</strong> In the Health and
+Fitness category, data not linked to users is distributed with app
+functionality taking the largest share at 46.61% (16,631 apps).
+Analytics data accounts for 32.63% (11,641 apps), used for monitoring
+and enhancing user interaction. Product personalization makes up 8.72%
+(3,110 apps), and developer advertising constitutes 3.29% (1,173 apps).
+Other purposes cover 4.08% (1,454 apps), and third-party advertising
+represents 4.68% (1,670 apps). The total apps are 35,679, with app
+functionality being the highest count at 16,631.</p>
+<p>In comparison to these special categories, the sensitive categories
+of Finance, Photo and Video, and Navigation show following patterns:</p>
+<p><strong>Finance Category:</strong> In the Finance category, data not
+linked to users is distributed as follows: 45.09% (13,681 apps) ensures
+app functionality, highlighting the critical need for operational
+effectiveness. Analytics data constitutes 32.23% (9,780 apps), used to
+understand user interaction and improve the app experience. Developer
+advertising accounts for 3.20% (972 apps), while other purposes cover
+9.01% (2,732 apps). Product personalization takes up 7.05% (2,140 apps),
+and third-party advertising represents a smaller portion at 3.42% (1,037
+apps). The total apps are 30,342, with app functionality being the
+highest count at 13,681.</p>
+<p><strong>Photo and Video:</strong> In the Photo and Video category,
+the data distribution is as follows: App functionality comprises 31.61%
+(3,579 apps) of the total. Analytics data makes up 37.26% (4,218 apps),
+highlighting its importance in understanding user behavior. Developer
+advertising accounts for 5.16% (584 apps), while other purposes cover
+3.19% (361 apps). Product personalization represents 6.00% (679 apps),
+and third-party advertising constitutes 16.79% (1,900 apps). The total
+apps are 11,321, with analytics being the highest count at 4,218.</p>
+<p><strong>Navigation:</strong> In the Navigation category, data not
+linked to users is mainly focused on app functionality, which makes up
+45.61% (3,149 apps). Analytics data represents 33.14% (2,288 apps),
+crucial for improving app performance. Developer advertising accounts
+for 2.74% (189 apps), and other purposes cover 4.01% (277 apps). Product
+personalization constitutes 6.68% (461 apps), while third-party
+advertising represents 7.82% (540 apps). The total apps are 6,904, with
+app functionality being the highest count at 3,149.</p>
+<table>
+<caption>Sensitive category distribution in data not linked to you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Category</strong></span></th>
+<th style="text-align: left;"><span><strong>Finance</strong></span></th>
+<th style="text-align: left;"><span><strong>Photo
+and Video</strong></span></th>
+<th style="text-align: left;"><span><strong>Navigation</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Analytics</td>
+<td style="text-align: left;">% (9,780)</td>
+<td style="text-align: left;">% (4,218)</td>
+<td style="text-align: left;">% (2,288)</td>
+</tr>
+<tr>
+<td style="text-align: left;">App Functionality</td>
+<td style="text-align: left;">% (13,681)</td>
+<td style="text-align: left;">% (3,579)</td>
+<td style="text-align: left;">% (3,149)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Developer Advertising</td>
+<td style="text-align: left;">% (972)</td>
+<td style="text-align: left;">% (584)</td>
+<td style="text-align: left;">% (189)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Purposes</td>
+<td style="text-align: left;">% (2,732)</td>
+<td style="text-align: left;">% (361)</td>
+<td style="text-align: left;">% (277)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Product Personalization</td>
+<td style="text-align: left;">% (2,140)</td>
+<td style="text-align: left;">% (679)</td>
+<td style="text-align: left;">% (461)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Third-Party Advertising</td>
+<td style="text-align: left;">% (1,037)</td>
+<td style="text-align: left;">% (1,900)</td>
+<td style="text-align: left;">% (540)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: left;"><strong>30,342</strong></td>
+<td style="text-align: left;"><strong>11,321</strong></td>
+<td style="text-align: left;"><strong>6,904</strong></td>
+</tr>
+</tbody>
+</table>
+<p>While both special categories (Medical and Health and Fitness) and
+sensitive categories (Finance, Photo and Video, and Navigation)
+prioritize app functionality and developer advertising, their focus and
+distribution patterns vary. The Medical category is more focused on app
+functionality and analytics, with minimal emphasis on advertising and
+other purposes. The Health and Fitness category balances its data usage
+across functionality, analytics, and personalization, with a smaller
+proportion dedicated to advertising. In contrast, the sensitive
+categories like Finance, Photo and Video, and Navigation exhibit a more
+varied distribution, reflecting different operational, marketing, and
+user engagement strategies employed by apps in these categories. These
+differences highlight the distinct approaches taken by apps in managing
+and utilizing user data to meet their specific operational and marketing
+objectives.</p>
+<h4
+id="data-used-to-track-you-using-sensitive-and-special-categories">‘Data
+Used to Track You’ using Sensitive and Special Categories</h4>
+<p>Based on GDPR, we have analyzed the data used to track users across
+various categories. Here is a detailed breakdown of the data usage
+within these categories:</p>
+<p><strong>Medical Category:</strong> In the Medical category, data used
+to track users is distributed across various purposes. Identifiers make
+up the largest portion with 27.18% (296 apps). Usage data follows
+closely with 26.91% (293 apps), crucial for understanding user
+interaction. Diagnostics data accounts for 11.84% (129 apps), while
+contact information constitutes 10.28% (112 apps). Location data is
+10.19% (111 apps), and other data types make up 3.95% (43 apps). Minor
+portions are dedicated to user content (2.30%, 25 apps), purchases
+(2.02%, 22 apps), search history (1.28%, 14 apps), sensitive information
+(1.10%, 12 apps), browsing history (0.92%, 10 apps), financial
+information (0.83%, 9 apps), health and fitness (0.64%, 7 apps), and
+contacts (0.55%, 6 apps). The total apps are 1,089.</p>
+<p><strong>Health and Fitness Category:</strong> In the Health and
+Fitness category, identifiers represent the largest segment at 30.14%
+(1,502 apps), followed by usage data at 28.27% (1,409 apps). Diagnostics
+data constitutes 11.44% (570 apps), and contact information accounts for
+10.96% (546 apps). Location data makes up 9.37% (467 apps), while
+purchases are 3.97% (198 apps). Other data types represent 1.59% (79
+apps), user content is 1.34% (67 apps), health and fitness data is 0.82%
+(41 apps), sensitive information is 0.60% (30 apps), search history is
+0.58% (29 apps), browsing history is 0.46% (23 apps), financial
+information is 0.26% (13 apps), and contacts are 0.20% (10 apps). The
+total apps are 4,984.</p>
+<div id="table:special_category_distribution">
+<table>
+<caption>Special category distribution in data used to track you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Data</strong></span></th>
+<th style="text-align: center;"><span><strong>Health and Fitness</strong></span></th>
+<th style="text-align: center;"><span><strong>Medical</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Identifiers</td>
+<td style="text-align: center;">30.14% (1,502)</td>
+<td style="text-align: center;">27.18% (296)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Usage Data</td>
+<td style="text-align: center;">28.27% (1,409)</td>
+<td style="text-align: center;">26.92% (293)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Diagnostics</td>
+<td style="text-align: center;">11.44% (570)</td>
+<td style="text-align: center;">11.84% (129)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Contact Info</td>
+<td style="text-align: center;">10.96% (546)</td>
+<td style="text-align: center;">10.28% (112)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Location</td>
+<td style="text-align: center;">9.37% (467)</td>
+<td style="text-align: center;">10.19% (111)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Data</td>
+<td style="text-align: center;">1.59% (79)</td>
+<td style="text-align: center;">3.95% (43)</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Content</td>
+<td style="text-align: center;">1.34% (67)</td>
+<td style="text-align: center;">2.30% (25)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Purchases</td>
+<td style="text-align: center;">3.97% (198)</td>
+<td style="text-align: center;">2.02% (22)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Search History</td>
+<td style="text-align: center;">0.58% (29)</td>
+<td style="text-align: center;">1.29% (14)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sensitive Info</td>
+<td style="text-align: center;">0.60% (30)</td>
+<td style="text-align: center;">1.10% (12)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Browsing History</td>
+<td style="text-align: center;">0.46% (23)</td>
+<td style="text-align: center;">0.92% (10)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Financial Info</td>
+<td style="text-align: center;">0.26% (13)</td>
+<td style="text-align: center;">0.83% (9)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Health &amp; Fitness</td>
+<td style="text-align: center;">0.82% (41)</td>
+<td style="text-align: center;">0.64% (7)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Contacts</td>
+<td style="text-align: center;">0.20% (10)</td>
+<td style="text-align: center;">0.55% (6)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;"><strong>4,984</strong></td>
+<td style="text-align: center;"><strong>1,089</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Photo and Video:</strong> In the Photo and Video category,
+identifiers constitute the largest portion at 36.04% (973 apps). Usage
+data follows with 34.48% (931 apps). Diagnostics data makes up 12.07%
+(326 apps), and location data is 9.26% (250 apps). Purchases are 2.89%
+(78 apps), other data types account for 2.22% (60 apps), contact
+information is 1.59% (43 apps), and user content is 0.74% (20 apps).
+Browsing history constitutes 0.41% (11 apps), contacts are 0.15% (4
+apps), search history is 0.11% (3 apps), sensitive information is 0.04%
+(1 apps), while financial information and health and fitness data are
+not tracked (0 apps). The total apps are 2,700.</p>
+<p><strong>Finance Category:</strong> In the Finance category,
+identifiers represent the largest segment at 30.36% (857 apps), followed
+by usage data at 29.86% (843 apps). Diagnostics data makes up 11.19%
+(316 apps), and location data is 10.55% (298 apps). Contact information
+constitutes 8.96% (253 apps), user content is 2.16% (61 apps), and other
+data types are 2.05% (58 apps). Financial information represents 1.77%
+(50 apps), purchases are 1.31% (37 apps), browsing history is 0.60% (17
+apps), contacts are 0.60% (17 apps), search history is 0.46% (13 apps),
+sensitive information is 0.07% (2 apps), and health and fitness data is
+minimal at 0.04% (1 apps). The total apps are 2,823.</p>
+<p><strong>Navigation Category:</strong> In the additional Navigation
+category, identifiers make up the largest portion with 28.65% (310
+apps). Usage data follows with 25.23% (273 apps), and location data is
+20.89% (226 apps). Diagnostics data constitutes 11.37% (123 apps), while
+contact information represents 5.82% (63 apps). Other data types make up
+3.42% (37 apps), purchases are 1.38% (15 apps), search history is 1.20%
+(13 apps), and user content is 0.92% (10 apps). Browsing history,
+contacts, and financial information each constitute 0.37% (4 apps), and
+health and fitness and sensitive information data are not tracked (0
+apps). The total apps are 1,082.</p>
+<div id="table:special_category_distribution_photo_finance_navigation">
+<table>
+<caption>Sensitive category distribution in data used to track you with
+percentage breakdown</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span><strong>Data</strong></span></th>
+<th style="text-align: center;"><span><strong>Photo
+and Video</strong></span></th>
+<th style="text-align: center;"><span><strong>Finance</strong></span></th>
+<th style="text-align: center;"><span><strong>Navigation</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Identifiers</td>
+<td style="text-align: center;">36.04% (973)</td>
+<td style="text-align: center;">30.36% (857)</td>
+<td style="text-align: center;">28.65% (310)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Usage Data</td>
+<td style="text-align: center;">34.48% (931)</td>
+<td style="text-align: center;">29.86% (843)</td>
+<td style="text-align: center;">25.23% (273)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Diagnostics</td>
+<td style="text-align: center;">12.07% (326)</td>
+<td style="text-align: center;">11.19% (316)</td>
+<td style="text-align: center;">11.37% (123)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Location</td>
+<td style="text-align: center;">9.26% (250)</td>
+<td style="text-align: center;">10.56% (298)</td>
+<td style="text-align: center;">20.89% (226)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Purchases</td>
+<td style="text-align: center;">2.89% (78)</td>
+<td style="text-align: center;">1.31% (37)</td>
+<td style="text-align: center;">1.39% (15)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other Data</td>
+<td style="text-align: center;">2.22% (60)</td>
+<td style="text-align: center;">2.05% (58)</td>
+<td style="text-align: center;">3.42% (37)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Contact Info</td>
+<td style="text-align: center;">1.59% (43)</td>
+<td style="text-align: center;">8.96% (253)</td>
+<td style="text-align: center;">5.82% (63)</td>
+</tr>
+<tr>
+<td style="text-align: left;">User Content</td>
+<td style="text-align: center;">0.74% (20)</td>
+<td style="text-align: center;">2.16% (61)</td>
+<td style="text-align: center;">0.92% (10)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Browsing History</td>
+<td style="text-align: center;">0.41% (11)</td>
+<td style="text-align: center;">0.60% (17)</td>
+<td style="text-align: center;">0.37% (4)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Contacts</td>
+<td style="text-align: center;">0.15% (4)</td>
+<td style="text-align: center;">0.60% (17)</td>
+<td style="text-align: center;">0.37% (4)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Search History</td>
+<td style="text-align: center;">0.11% (3)</td>
+<td style="text-align: center;">0.46% (13)</td>
+<td style="text-align: center;">1.20% (13)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sensitive Info</td>
+<td style="text-align: center;">0.04% (1)</td>
+<td style="text-align: center;">0.07% (2)</td>
+<td style="text-align: center;">0% (0)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Financial Info</td>
+<td style="text-align: center;">0% (0)</td>
+<td style="text-align: center;">1.77% (50)</td>
+<td style="text-align: center;">0.37% (4)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Health &amp; Fitness</td>
+<td style="text-align: center;">0% (0)</td>
+<td style="text-align: center;">0.04% (1)</td>
+<td style="text-align: center;">0% (0)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;"><strong>2700</strong></td>
+<td style="text-align: center;"><strong>2823</strong></td>
+<td style="text-align: center;"><strong>1082</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The analysis reveals distinct patterns in data usage for tracking
+users across different categories. In the special categories, the
+Medical category primarily uses identifiers and usage data, reflecting a
+focus on personal identification and user interaction. Similarly, the
+Health and Fitness category is dominated by identifiers and usage data,
+with additional emphasis on diagnostics and contact information to
+monitor and enhance user experience. In the sensitive categories,
+Finance relies heavily on identifiers and usage data, essential for
+secure and efficient financial transactions, with significant roles for
+diagnostics and location data to ensure operational efficiency. The
+Photo and Video category also sees identifiers and usage data as
+predominant, highlighting the need for user identification and
+interaction tracking, while diagnostics and location data support app
+performance and user engagement. The additional Finance category mirrors
+this distribution, with identifiers and usage data as the largest
+segments, crucial for secure financial operations and user experience
+monitoring. These differences highlight the distinct approaches taken by
+apps in managing and utilizing user data to meet their specific
+operational and marketing objectives.</p>
+<h3
+id="rq2-disparity-between-app-stated-permissions-and-apparent-unnecessary-data-gathering">RQ2:
+Disparity Between App-Stated Permissions and Apparent Unnecessary Data
+Gathering</h3>
+<p>To address RQ2, we began by analyzing a comprehensive set of app
+categories available on the iOS App Store. Our study encompasses a total
+of 25 distinct app categories, including Books, Music, Travel, Social
+Networking, Shopping, Games, Entertainment, Reference, Medical,
+Lifestyle, Sports, Finance, Education, Business, News, Navigation,
+Health and Fitness, Photo and Video, Utilities, Productivity, Food and
+Drink, Graphics and Design, Weather, Magazines and Newspapers, and
+Developer Tools. This broad classification enables us to explore data
+tracking practices across a wide array of application types, providing a
+thorough examination of how different categories justify or do not
+justify their data collection practices. By considering such a diverse
+range of app categories, we aim to gain a nuanced understanding of data
+tracking trends and justifications within the mobile app ecosystem.</p>
+<p>Categories such as Sports, Education, Books, Medical, Business, News,
+Utilities, Reference, Productivity, Graphics and Design, Magazines and
+Newspapers, and Developer Tools typically do not require location
+tracking to deliver their core functionalities. Therefore, we
+specifically examined the data tracking practices for apps within these
+categories using the dataset from the iOS App Store’s "Data Used to
+Track You" feature. The rationale behind excluding location tracking for
+these categories is that their primary functions are not inherently
+dependent on geographic information. For instance, an app designed for
+productivity or reference purposes does not need to access a user’s
+location to offer its services effectively. By focusing on these
+categories, we aimed to identify and understand the types of data that
+are being collected and assessed whether such practices align with the
+actual needs of the app’s functionality.</p>
+<p>Additionally, we also investigated categories such as Travel, Social
+Networking, Entertainment, Navigation, Health and Fitness, Photo and
+Video, and Weather. Although location tracking may seem justifiable for
+some of these categories, we assessed them to determine whether it was
+indeed necessary or overextended. Our analysis aimed to reveal the
+extent and nature of data tracking within these categories to understand
+better how often location data is collected and whether its use aligns
+with the intended functionality of the apps.</p>
+<h4 id="justification-for-tracking">Justification for Tracking</h4>
+<p><strong>Books:</strong> The justified data tracking includes usage
+data, identifiers, purchases, and diagnostics. However, the unjustified
+tracking includes location (18.83%), contact info (8.83%), other data
+(3.83%), browsing history (2%), sensitive info (0.17%), and financial
+info (0.17%). The high percentage of location tracking is especially
+concerning, as book apps typically do not need location data to function
+effectively.</p>
+<p><strong>Music:</strong> The justified data tracking consists of usage
+data, identifiers, user content, purchases, and diagnostics. However,
+the high percentages of location (38.17%) and contact info (5.52%)
+tracking are unjustified, given that music apps generally do not need
+such data. Additionally, other data (3.27%), browsing history (1.52%),
+search history (1.31%), contacts (0.15%), financial info (0.07%), and
+sensitive info (0.07%) also appear to be tracked unnecessarily.</p>
+<p><strong>Games:</strong> The justified data tracking consists of usage
+data, identifiers, contact info, user content, purchases, diagnostics,
+and location. However, the tracking of location (33.69%), other data
+(16%), browsing history (0.68%), search history (0.40%), financial info
+(0.24%), contacts (0.09%), sensitive info (0.06%), and health &amp;
+fitness (0.04%) is largely unjustified for game apps.</p>
+<p><strong>Reference:</strong> The justified data tracking consists of
+usage data, identifiers, contact info, user content, purchases, and
+diagnostics. However, tracking location (40.35%), other data (3.53%),
+browsing history (1.56%), search history (1.14%), sensitive info
+(0.31%), and contacts (0.21%) is unwarranted.</p>
+<p><strong>Medical:</strong> The justified data tracking includes health
+&amp; fitness, location, contacts, identifiers, usage data, diagnostics,
+and sensitive info. Unjustified tracking includes location (19.51%),
+other data (7.56%), user content (4.39%), browsing history (1.76%), and
+financial info (1.58%).</p>
+<p><strong>Lifestyle:</strong> The justified data tracking consists of
+usage data, identifiers, contact info, purchases, and diagnostics.
+Unjustified tracking involves location (21.50%), other data (3.48%),
+browsing history (2.48%), search history (2.31%), financial info
+(1.23%), sensitive info (0.66%), contacts (0.63%), and health &amp;
+fitness (0.11%).</p>
+<p><strong>Sports:</strong> The justified data tracking includes usage
+data, identifiers, contact info, purchases, diagnostics, and health
+&amp; fitness. Unjustified tracking includes location (28.38%), other
+data (3.54%), browsing history (2.97%), search history (0.95%),
+financial info (0.32%), sensitive info (0.32%), and contacts
+(0.19%).</p>
+<p><strong>Finance:</strong> The justified data tracking consists of
+financial info, usage data, identifiers, contact info, purchases, and
+diagnostics. Unjustified tracking involves location (19.91%), other data
+(3.87%), browsing history (1.14%), contacts (1.14%), search history
+(0.87%), sensitive info (0.13%), and health &amp; fitness (0.07%).</p>
+<p><strong>Education:</strong> The justified data tracking includes
+usage data, identifiers, contact info, purchases, diagnostics, other
+data, and health &amp; fitness. Unjustified tracking includes location
+(28.25%), other data (6.30%), browsing history (1.40%), search history
+(0.75%), financial info (0.25%), contacts (0.22%), and sensitive info
+(0.10%).</p>
+<p><strong>Business:</strong> The justified data tracking consists of
+usage data, identifiers, contact info, purchases, diagnostics, and other
+data. Unjustified tracking involves location (26.39%), other data
+(5.46%), search history (2.89%), browsing history (2.48%), financial
+info (1.26%), contacts (0.95%), sensitive info (0.41%), and health &amp;
+fitness (0.18%).</p>
+<p><strong>News:</strong> The justified data tracking includes usage
+data, identifiers, contact info, and other data. Unjustified tracking
+includes location (24.54%), browsing history (2.67%), other data
+(2.33%), search history (1.39%), contacts (0.54%), financial info
+(0.10%), and sensitive info (0.05%).</p>
+<p><strong>Utilities:</strong> The justified data tracking includes
+usage data, identifiers, diagnostics, other data, and contacts.
+Unjustified tracking includes location (22.37%), other data (4.95%),
+financial info (0.67%), and search history (0.67%).</p>
+<p><strong>Productivity:</strong> The justified data tracking consists
+of usage data, identifiers, diagnostics, other data, and contacts.
+Unjustified tracking involves location (24.59%), other data (4.31%),
+purchases (3.25%), browsing history (1.06%), search history (0.69%),
+financial info (0.37%), sensitive info (0.37%), and health &amp; fitness
+(0.11%).</p>
+<p><strong>Graphics and Design:</strong> The justified data tracking
+consist of usage data, identifiers, diagnostics, user content, and
+location. Unjustified tracking involves location (13.08%), purchases
+(6.27%), other data (5.72%), user content (1.36%), search history
+(0.54%), and financial info (0.27%).</p>
+<p><strong>Magazines and Newspaper:</strong> The justified data tracking
+includes location, usage data, identifiers, diagnostics, and user
+content. However, unjustified tracking involves location (13.81%),
+purchases (6.67%), search history (3.81%), user content (1.90%), other
+data (0.95%), and browsing history (0.48%).</p>
+<p><strong>Developer tools:</strong> The justified data tracking
+consists of usage data, identifiers, diagnostics, user content, and
+contacts. However, unjustified tracking involves location (14.89%),
+other data (4.26%), search history (2.13%), user content (2.13%), and
+contacts (2.13%).</p>
+<p><strong>Travel:</strong> The justified data tracking includes
+location, usage data, identifiers, purchases, contact info, user
+content, and diagnostics. Despite this, other data (3.82%), search
+history (2.57%), browsing history (1.45%), contacts (1.18%), and
+sensitive info (0.20%) are tracked beyond what is typically needed for
+travel-related functionality.</p>
+<p><strong>Social Networking:</strong> The justified data tracking
+consists of location, contact info, identifiers, user content, search
+history, usage data, purchases, diagnostics, and contacts. However, the
+presence of other data (5.25%), financial info (0.91%), sensitive info
+(0.76%), browsing history (0.76%), and health &amp; fitness (0.23%)
+tracking is concerning and seems unnecessary.</p>
+<p><strong>Shopping:</strong> The justified data tracking includes
+location, contact info, identifiers, user content, search history, usage
+data, purchases, financial info, and diagnostics. Unjustified tracking
+includes contacts (5.18%), browsing history (2.22%), other data (2.06%),
+sensitive info (0.32%), and health &amp; fitness (0.04%), which are not
+essential for shopping apps.</p>
+<p><strong>Entertainment:</strong> The justified data tracking includes
+usage data, identifiers, contact info, user content, purchases,
+diagnostics, and location. The tracking of other data (3.92%), browsing
+history (2.76%), search history (1.31%), financial info (0.46%),
+contacts (0.23%), sensitive info (0.12%), and health &amp; fitness
+(0.04%) appears to be unnecessary.</p>
+<p><strong>Navigation:</strong> The justified data tracking consists of
+location, usage data, identifiers, and diagnostics. Unjustified tracking
+involves other data (7.52%), search history (2.64%), financial info
+(0.81%), and contacts (0.81%).</p>
+<p><strong>Health and Fitness:</strong> The justified data tracking
+include health &amp; fitness, usage data, identifiers, diagnostics,
+location, and sensitive info. Unjustified tracking includes financial
+info (0.53%), other data (3.21%), contacts (0.41%), and search history
+(1.18%).</p>
+<p><strong>Photo and Video:</strong> The justified data tracking
+consists of usage data, identifiers, diagnostics, user content, and
+location. Unjustified tracking involves other data (4.28%), contacts
+(0.29%), search history (0.21%), and sensitive info (0.07%).</p>
+<p><strong>Food and Drink:</strong> The justified data tracking includes
+purchases, usage data, location, identifiers, and diagnostics.
+Unjustified tracking includes other data (1.48%), browsing history
+(3.67%), contacts (0.19%), and sensitive info (0.15%).</p>
+<p><strong>Weather:</strong> The justified data tracking includes
+location, usage data, identifiers, diagnostics, and user content.
+Unjustified tracking includes other data (2.60%), purchases (2.60%),
+contacts (2.02%), search history (0.58%), and browsing history
+(0.58%).</p>
+<p><strong>Stickers:</strong> We noticed that nothing is being tracked
+for stickers app categories.</p>
+<h4 id="high-incidence-of-location-tracking">High Incidence of Location
+Tracking</h4>
+<ul>
+<li><p><strong>Categories with High Incidence:</strong> Sports,
+education, books, medical, business, news, utilities, reference,
+productivity, graphics and design, magazines and newspapers, and
+developer tools.</p></li>
+<li><p><strong>Observation:</strong> In these categories, location
+tracking seems largely unjustified as the core functionalities of these
+apps typically do not require location data.</p></li>
+</ul>
+<h4 id="tracking-using-other-information">Tracking using ‘Other
+Information’</h4>
+<ul>
+<li><p><strong>Categories Affected:</strong> In categories such as
+travel, social networking, entertainment, navigation, health and
+fitness, photo and video, and weather, "other information" is the most
+frequently tracked data type.</p></li>
+<li><p><strong>Concern:</strong> The term "other information" is vague
+and non-specific, raising concerns about the transparency and necessity
+of the data being collected.</p></li>
+</ul>
+<h3 id="identified-issues-in-privacy-labels-and-app-listings">Identified
+Issues in Privacy Labels and App Listings</h3>
+<h4 id="missing-privacy-policy-url">Missing privacy Policy URL</h4>
+<p>Out of a total of 541,662 iOS apps analyzed, 237 apps were identified
+to have a significant gap in their privacy labels. Specifically, these
+237 apps are categorized under "data linked to you" and "data tracking
+you," yet they lack the mandatory privacy policy URLs. This omission
+raises several critical concerns regarding user privacy and compliance
+with regulatory standards.</p>
+<h4 id="missing-privacy-labels">Missing privacy labels</h4>
+<p>Among the 541,662 iOS apps that were examined, 83,618 were found to
+have no privacy labels at all. This significant discrepancy suggests
+that user data management procedures lack openness and compliance on a
+widespread basis. To promote openness and build user trust, privacy
+labels are crucial for telling consumers about the data that apps
+collect and how it is used.</p>
+<h3 id="user-survey-on-app-usage-and-privacy-concerns">User Survey on
+App Usage and Privacy Concerns</h2>
+<p>To identify how our analyis of the privacy labels correponded to
+actual use of apps by individuals, we created a user survey to identify
+which apps are commonly used by people and what privacy concerns that
+have. Through this survey, we hoped to identify which of our analysed
+privacy labels - and their shortcomings - had the most impact on
+individuals, and which of the identified privacy concerns were
+legitimate and could be addressed by the privacy label.</p>
+<p>This study focused on people between the ages of 20 and 35 to
+identify app usage trends and privacy issues among Irish app users. This
+particular age range was selected to provide important insights into the
+habits and privacy concerns of this digitally active demographic of
+young adults who are frequently early adopters of technology and digital
+trends. Fifty individuals in this age range who lived in Ireland
+participated in the study to precisely document the preferences and
+behaviors specific to this demographic. Online questionnaires were used
+to gather data, and to successfully reach and engage the intended
+audience, the surveys were distributed via social media platforms.
+Quantitative techniques were used in the response analysis to enable a
+thorough investigation of common app usage patterns and major privacy
+issues among those taking part.</p>
+<p>A number of the respondents’ primary privacy concerns are highlighted
+in the poll responses. The following lists the main privacy issues in
+brief:</p>
+<p><strong>Most Used Categories of Apps</strong></p>
+<figure>
+<img src="img/068-popular-apps.png" />
+<figcaption>Most Used Categories of Apps</figcaption>
+</figure>
+<p>The survey reveals the most frequently used categories of apps among
+respondents: Social Media: 63.6% of respondents primarily use social
+media apps, such as Facebook, Instagram, Twitter, and
+Snapchat.Entertainment:17.1% favor entertainment apps, including
+streaming services and gaming apps.Shopping:7.3% of respondents
+predominantly use shopping apps. News and Information, Health and
+Fitness, Travel and Navigation: Each of these categories is used by 2.4%
+of respondents, indicating a lower frequency of use compared to other
+app categories.</p>
+<figure>
+<img src="img/068-privacy-concerns.png" />
+<figcaption>Concern About Privacy</figcaption>
+</figure>
+<p><strong>Concern About Privacy</strong> The degree of concern about
+privacy among app users is as follows: Very Concerned: 48.8% of
+respondents are very concerned about their personal information’s
+privacy. Somewhat Concerned: 46.3% express some concern, showing that a
+significant majority hold reservations about privacy. Other Levels of
+Concern: A minority are slightly concerned, neutral, or not concerned,
+underlining that privacy remains a predominant issue for most.</p>
+<figure>
+<img src="img/068-familiarity.png" />
+<figcaption>Familiarity with Privacy Labels</figcaption>
+</figure>
+<p><strong>Familiarity with Privacy Labels</strong> Respondents’
+familiarity with privacy labels in the iOS App Store is categorized as
+follows: Very Familiar: 39% are well-acquainted with the privacy
+labels.Heard of Them but dont know much: 43.9% have heard of them but
+lack detailed knowledge.Not Familiar: 17.1% are not familiar with
+privacy labels, suggesting a need for increased awareness and
+educational efforts. Many respondents have expressed significant
+concerns about the privacy of their personal information while using
+apps. Specifically, they are worried about how their data is collected,
+stored, and used. Key concerns include the types of data being
+collected, the potential for this data to be shared with third parties,
+and how securely the data is stored to prevent access or breaches.
+Additionally, there is apprehension regarding whether apps track users’
+activities across other applications and services, and whether these
+practices comply with existing privacy regulations. To address these
+concerns, respondents are seeking greater transparency about privacy
+practices and more control over their data through app settings. This
+indicates a strong desire for assurances that apps are adhering to legal
+and ethical standards in handling personal information.</p>
+<p><strong>Detailed App Analysis</strong> In response to the survey, we
+conducted a detailed analysis of the three most frequently mentioned
+apps by our respondents, which collectively represent 55% of the total
+usage among participants: Leap Top Up, TFI Live, and AIB. Here’s a brief
+overview of each app: Leap Top Up is an application that allows users to
+manage their Leap Card, a smart card used for public transportation
+across Ireland. It provides functionalities such as easy top-ups and
+balance checks without tracking user data, catering to privacy-conscious
+consumers. TFI Live, operated by Transport for Ireland, offers real-time
+bus route information and uses a user’s location to provide relevant
+route directions, but it does not engage in continuous location
+tracking. This approach prioritizes user privacy and challenges the
+conventional norms of location-based services. Lastly, the AIB app from
+Allied Irish Banks delivers a comprehensive suite of mobile banking
+services, including balance checks, fund transfers, and bill payments.
+It is specifically designed to protect user data and ensure transaction
+security without tracking user activities, thus building trust among its
+users. These apps demonstrate how various sectors are increasingly
+considering user privacy in their service offerings.</p>
+<h3 id="conclusion-future-work">Conclusion &amp; Future Work</h2>
+<p>This work analysed a large corpus of iOS apps (n=541,662) and
+identified the prevalence of sensitive and special categories of
+personal data being used based on the application of the GDPR. Our work
+shows how a large amount of apps use such sensitive/special categories
+and in many cases do so without a sufficient apparent justification for
+why the app needs to use that information. Our work also shows the
+prevalence of using these categories to track individuals without any
+transparent information - in contravention of the requirements from
+GDPR.</p>
+<p>The study identifies significant flaws in the implementation of iOS
+privacy labels, revealing substantial data collection under the guise of
+app functionality and data analytics, with the health and fitness
+category posing particular concerns due to high levels of data
+collection linked and unlinked to users. Such excessive data gathering
+poses a grave risk if breached, potentially leading to misuse of
+sensitive health information, identity theft, fraud, and unwanted
+exposure of private data, as underscored by the 2018 MyFitnessPal breach
+compromising 150 million accounts. Users must proactively safeguard
+their data by managing app permissions, reviewing privacy labels before
+downloading apps, and disabling the "Allow Apps to Request to Track"
+option in privacy settings. Additionally, the study observed unjustified
+location tracking in categories such as sports, education, and business.
+The TFI Live app serves as a positive example of delivering
+location-based services without intrusive tracking, suggesting many apps
+engage in unnecessary data collection practices. This calls for Apple’s
+App Store to bolster its app review process, ensuring developers provide
+compelling justifications for location tracking, with regular audits to
+ensure compliance with privacy standards.</p>
+<p>Our research advances the state of the art by providing an empirical
+analysis of data collection practices across app categories, confirming
+and extending the findings of previous work by Scoccia et al.
+(2022)<span class="citation" data-cites="Scoccia6"><a
+href="#ref-Scoccia6" role="doc-biblioref">[3]</a></span>. We highlight
+inconsistencies in privacy labels and user behavior regarding privacy
+settings, emphasizing the need for improved transparency and user
+vigilance. In conclusion, our study underscores the urgent need for
+better privacy practices in the app ecosystem, offering insights and
+recommendations to create a more secure and privacy-conscious
+environment, ultimately aiming to enhance user trust and protect
+sensitive information from potential breaches and misuse.</p>
+<p><strong>Future Work</strong> This study has identified numerous areas
+that should be the focus of future research. First and foremost,
+longitudinal studies are required to assess how privacy label efficacy
+changes over time and impact developer practices and user behavior.
+Furthermore, broadening the scope of the investigation to encompass a
+greater number of app categories would offer a more thorough
+understanding of data-gathering procedures used throughout the App
+Store. Examining different privacy label designs and user education
+techniques could improve knowledge and control over app permissions. The
+effects of improved app review procedures and regulatory modifications
+on privacy label accuracy and developer compliance should also be
+investigated in future studies. Lastly, researching how well-publicized
+data breaches affect user privacy settings and trust could provide
+information about how to increase security and transparency.</p>
+<div class="thebibliography">
+<p><span>00</span> Regulation (EU) 2016/679 of the European Parliament
+and of the Council of 27 April 2016 on the protection of natural persons
+with regard to the processing of personal data and on the free movement
+of such data, and repealing Directive 95/46/EC (General Data Protection
+Regulation) (2016) OJ L 119/1</p>
+<p>P. G. Kelley, J. Bresee, L. F. Cranor, and R. W. Reeder, "A
+’Nutrition Label’ for Privacy," in Proceedings of the 5th Symposium on
+Usable Privacy and Security (SOUPS ’09), Association for Computing
+Machinery, New York, NY, USA, 2009, Article 4, 12 pages.
+https://doi.org/10.1145/1572532.1572538</p>
+<p>Y. Xiao, Z. Li, Y. Qin, J. Guan, X. Bai, X. Liao, and L. Xing,
+"Lalaine: Measuring and Characterizing Non-Compliance of Apple Privacy
+Labels at Scale," arXiv preprint arXiv:2206.06274, 2022. [Online].
+Available: https://doi.org/10.48550/arXiv.2206.06274</p>
+<p>S. Zhang and N. Sadeh, "Do Privacy Labels Answer Users’ Privacy
+Questions?," 2023. [Online].
+Available:http://dx.doi.org/10.14722/usec.2023.232482</p>
+<p>D. Rodriguez, A. Jain, J. M. D. Alamo, and N. Sadeh, "Comparing
+Privacy Label Disclosures of Apps Published in both the App Store and
+Google Play Stores," in 2023 IEEE Eur. Symp. Sec. Priv. Workshops
+(EuroS&amp;PW), Delft, Netherlands, 2023, pp. 150-157[Online].
+Available: https://doi.org/10.1109/EuroSPW59978.2023.00022</p>
+<p>K. Kollnig, A. Shuba, M. Van Kleek, R. Binns, and N. Shadbolt,
+"Goodbye tracking? Impact of iOS app tracking transparency and privacy
+labels," in Proc. 2022 ACM Conf. Fairness, Accountability, and
+Transparency, Jun. 2022, pp. 508-520. [Online]. Available:
+https://arxiv.org/pdf/2204.03556.pdf</p>
+<p>G. L. Scoccia, M. Autili, G. Stilo, and P. Inverardi, "An empirical
+study of privacy labels on the Apple iOS mobile app store," in Proc. 9th
+IEEE/ACM Int. Conf. Mobile Softw. Eng. Syst., May 2022, pp. 114-124.
+[Online]. Available: https://dl.acm.org/doi/pdf/10.1145/3524613.3527813
+Y. Li, D. Chen, T. Li, Y. Agarwal, L. F. Cranor, and J. I. Hong,
+"Understanding iOS privacy nutrition labels: An exploratory large-scale
+analysis of app store data," in CHI Conf. Hum. Factors Comput. Syst.
+Ext. Abs., Apr. 2022, pp. 1-7. [Online]. Available:
+https://dl.acm.org/doi/pdf/10.1145/3491101.3519739</p>
+<p>D. Balash, M. M. Ali, X. Wu, C. Kanich, and A. Aviv, "Longitudinal
+Analysis of Privacy Labels in the Apple App Store," 2022. [Online].
+Available: https://doi.org/10.48550/arXiv.2206.02658</p>
+<p>T. Li, E. Louie, L. Dabbish, and J. I. Hong, "How Developers Talk
+About Personal Data and What It Means for User Privacy: A Case Study of
+a Developer Forum on Reddit," in Proc. ACM Hum.-Comput. Interact., vol.
+4, no. CSCW3, Jan. 2021, pp. 1–28. https://doi.org/10.1145/3432919</p>
+<p>R. Khandelwal, A. Nayak, P. Chung, and K. Fawaz, "Comparing Privacy
+Labels of Applications in Android and iOS," in Proceedings of the 22nd
+Workshop on Privacy in the Electronic Society (WPES ’23), New York, NY,
+USA: Association for Computing Machinery, 2023, pp. 61–73 [Online].
+Available:.https://doi.org/10.1145/3603216.3624967</p>
+<p>A. Ravichander, A. W. Black, S. Wilson, T. Norton, and N. Sadeh,
+"Question answering for privacy policies: Combining computational and
+legal perspectives," in Proceedings of the 2019 Conference on Empirical
+Methods in Natural Language Processing and the 9th International Joint
+Conference on Natural Language Processing (EMNLP-IJCNLP), Hong Kong,
+China, Nov. 2019, pp. 4949–4959. [Online].
+Available:https://doi.org/10.18653/v1/D19-1500</p>
+<p>S. M. Bargh, M. van de Mosselaar, P. Rutten, and S. Choenni, "On
+using privacy labels for visualizing the privacy practice of SMEs:
+challenges and research directions," in Proc. DG.O 2022: The 23rd Ann.
+Int. Conf. Digit. Gov. Res., Jun. 2022, pp. 166-175. [Online].
+Available: https://dl.acm.org/doi/pdf/10.1145/3543434.3543480</p>
+<p>Data Protection Commission, “Special Category Data,” 2024. [Online].
+Available:
+https://www.dataprotection.ie/en/organisations/know-your-obligations/lawful-processing/special-category-data.
+[Accessed: Jul. 26, 2024].</p>
+<p>Apple Inc., “App privacy details on the App Store,” 2020. [Online].
+Available: https://developer.apple.com/app-store/app-privacy-details/.
+[Accessed: Jul. 26, 2024].</p>
+<p>Zhang, S.; Feng, Y.; Yao, Y.; Cranor, L.F.; Sadeh, N. How Usable Are
+iOS App Privacy Labels? Proceedings on Privacy Enhancing Technologies
+2022, 204–228. https://doi.org/10.56553/popets-2022-0106.</p>
+<p>Gardner, J.; Feng, Y.; Reiman, K.; Lin, Z.; Jain, A.; Sadeh, N.
+Helping Mobile Application Developers Create Accurate Privacy Labels. In
+Proceedings of the 2022 IEEE European Symposium on Security and Privacy
+Workshops (EuroS&amp;PW), Genoa, Italy, 6-10 June 2022; pp. 212-230.
+doi:10.1109/EuroSPW55150.2022.00028.</p>
+<p>Koch, S.; Wessels, M.; Altpeter, B.; Olvermann, M.; Johns, M. Keeping
+Privacy Labels Honest. *Proceedings of the Privacy Enhancing
+Technologies* **2022**, *2022*, 486-506. Available online:
+[https://api.semanticscholar.org/CorpusID:251384903].</p>
+<p>Jain, A.; Rodriguez, D.; del Alamo, J.; Sadeh, N. ATLAS:
+Automatically Detecting Discrepancies Between Privacy Policies and
+Privacy Labels. In *Proceedings of the 2023 IEEE European Symposium on
+Security and Privacy Workshops (EuroS&amp;PW)*, Delft, Netherlands,
+2023; pp. 94-107. doi:
+[10.1109/EuroSPW59978.2023.00016](https://doi.ieeecomputersociety.org/10.1109/EuroSPW59978.2023.00016).</p>
+</div>
+<h3 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-kelley1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P.
+G. Kelley, J. Bresee, L. F. Cranor, and R. W. Reeder, <span>“A
+"nutrition label" for privacy,”</span> in <em>Proceedings of the 5th
+symposium on usable privacy and security</em>, 2009, doi: <a
+href="https://doi.org/10.1145/1572532.1572538">10.1145/1572532.1572538</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/1572532.1572538">https://doi.org/10.1145/1572532.1572538</a></div>
+</div>
+<div id="ref-balash8" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D.
+G. Balash, M. M. Ali, X. Wu, C. Kanich, and A. J. Aviv,
+<span>“Longitudinal analysis of privacy labels in the apple app
+store.”</span> 2023 [Online]. Available: <a
+href="https://arxiv.org/abs/2206.02658">https://arxiv.org/abs/2206.02658</a></div>
+</div>
+<div id="ref-Scoccia6" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">G.
+L. Scoccia, M. Autili, G. Stilo, and P. Inverardi, <span>“An empirical
+study of privacy labels on the apple iOS mobile app store,”</span> in
+<em>Proceedings of the 9th IEEE/ACM international conference on mobile
+software engineering and systems</em>, 2022, pp. 114–124, doi: <a
+href="https://doi.org/10.1145/3524613.3527813">10.1145/3524613.3527813</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3524613.3527813">https://doi.org/10.1145/3524613.3527813</a></div>
+</div>
+<div id="ref-Kollnig5" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">K.
+Kollnig, A. Shuba, M. Van Kleek, R. Binns, and N. Shadbolt,
+<span>“Goodbye tracking? Impact of iOS app tracking transparency and
+privacy labels,”</span> in <em>Proceedings of the 2022 ACM conference on
+fairness, accountability, and transparency</em>, 2022, pp. 508–520, doi:
+<a
+href="https://doi.org/10.1145/3531146.3533116">10.1145/3531146.3533116</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3531146.3533116">https://doi.org/10.1145/3531146.3533116</a></div>
+</div>
+<div id="ref-apple2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">A.
+Inc., <span>“App privacy details on the app store.”</span> <a
+href="https://developer.apple.com/app-store/app-privacy-details/"
+class="uri">https://developer.apple.com/app-store/app-privacy-details/</a>,
+2020. </div>
+</div>
+<div id="ref-dpc2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div
+class="csl-right-inline">Data Protection Commission, <span>“Special
+category data,”</span> 2024. </div>
+</div>
+<div id="ref-Rodriguez4" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">D.
+Rodriguez, A. Jain, J. M. D. Alamo, and N. Sadeh, <span>“Comparing
+privacy label disclosures of apps published in both the app store and
+google play stores,”</span> in <em>2023 IEEE european symposium on
+security and privacy workshops (EuroS&amp;PW)</em>, 2023, pp. 150–157,
+doi: <a
+href="https://doi.org/10.1109/EuroSPW59978.2023.00022">10.1109/EuroSPW59978.2023.00022</a>.
+</div>
+</div>
+<div id="ref-Li7" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">Y.
+Li, D. Chen, T. Li, Y. Agarwal, L. F. Cranor, and J. I. Hong,
+<span>“Understanding iOS privacy nutrition labels: An exploratory
+large-scale analysis of app store data,”</span> in <em>Extended
+abstracts of the 2022 CHI conference on human factors in computing
+systems</em>, 2022, doi: <a
+href="https://doi.org/10.1145/3491101.3519739">10.1145/3491101.3519739</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3491101.3519739">https://doi.org/10.1145/3491101.3519739</a></div>
+</div>
+<div id="ref-LiTianshi9" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">T.
+Li, E. Louie, L. Dabbish, and J. I. Hong, <span>“How developers talk
+about personal data and what it means for user privacy: A case study of
+a developer forum on reddit,”</span> <em>Proc. ACM Hum.-Comput.
+Interact.</em>, vol. 4, no. CSCW3, Jan. 2021, doi: <a
+href="https://doi.org/10.1145/3432919">10.1145/3432919</a>. [Online].
+Available: <a
+href="https://doi.org/10.1145/3432919">https://doi.org/10.1145/3432919</a></div>
+</div>
+<div id="ref-Khandelwal10" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">R.
+Khandelwal, A. Nayak, P. Chung, and K. Fawaz, <span>“Comparing privacy
+labels of applications in android and iOS,”</span> in <em>Proceedings of
+the 22nd workshop on privacy in the electronic society</em>, 2023, pp.
+61–73, doi: <a
+href="https://doi.org/10.1145/3603216.3624967">10.1145/3603216.3624967</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3603216.3624967">https://doi.org/10.1145/3603216.3624967</a></div>
+</div>
+<div id="ref-Zhang3" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">S.
+Zhang and N. Sadeh, <span>“Do privacy labels answer users’ privacy
+questions?”</span> 2023, doi: <a
+href="https://doi.org/10.14722/usec.2023.232482">10.14722/usec.2023.232482</a>.
+</div>
+</div>
+<div id="ref-ravichander11" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A.
+Ravichander, A. W. Black, S. Wilson, T. Norton, and N. Sadeh,
+<span>“Question answering for privacy policies: Combining computational
+and legal perspectives,”</span> in <em>Proceedings of the 2019
+conference on empirical methods in natural language processing and the
+9th international joint conference on natural language processing
+(EMNLP-IJCNLP)</em>, 2019, pp. 4947–4958, doi: <a
+href="https://doi.org/10.18653/v1/D19-1500">10.18653/v1/D19-1500</a>
+[Online]. Available: <a
+href="https://aclanthology.org/D19-1500">https://aclanthology.org/D19-1500</a></div>
+</div>
+<div id="ref-SBargh12" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">M.
+S. Bargh, M. van de Mosselaar, P. Rutten, and S. Choenni, <span>“On
+using privacy labels for visualizing the privacy practice of SMEs:
+Challenges and research directions,”</span> in <em>Proceedings of the
+23rd annual international conference on digital government
+research</em>, 2022, pp. 166–175, doi: <a
+href="https://doi.org/10.1145/3543434.3543480">10.1145/3543434.3543480</a>
+[Online]. Available: <a
+href="https://doi.org/10.1145/3543434.3543480">https://doi.org/10.1145/3543434.3543480</a></div>
+</div>
+<div id="ref-Zhang15" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">S.
+Zhang, Y. Feng, Y. Yao, L. F. Cranor, and N. Sadeh, <span>“How usable
+are iOS app privacy labels?”</span> in <em>Proceedings on privacy
+enhancing technologies</em>, 2022, pp. 204–228, doi: <a
+href="https://doi.org/10.56553/popets-2022-0106">10.56553/popets-2022-0106</a>
+[Online]. Available: <a
+href="https://petsymposium.org/popets/2022/popets-2022-0106.php">https://petsymposium.org/popets/2022/popets-2022-0106.php</a></div>
+</div>
+<div id="ref-Gardner16" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">J.
+Gardner, Y. Feng, K. Reiman, Z. Lin, A. Jain, and N. Sadeh,
+<span>“Helping mobile application developers create accurate privacy
+labels,”</span> in <em>2022 IEEE european symposium on security and
+privacy workshops (EuroS&amp;PW)</em>, 2022, pp. 212–230, doi: <a
+href="https://doi.org/10.1109/EuroSPW55150.2022.00028">10.1109/EuroSPW55150.2022.00028</a>.
+</div>
+</div>
+<div id="ref-Koch17" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">S.
+Koch, M. Wessels, B. Altpeter, M. Olvermann, and M. Johns,
+<span>“Keeping privacy labels honest,”</span> <em>Proc. Priv. Enhancing
+Technol.</em>, vol. 2022, pp. 486–506, 2022 [Online]. Available: <a
+href="https://api.semanticscholar.org/CorpusID:251384903">https://api.semanticscholar.org/CorpusID:251384903</a></div>
+</div>
+<div id="ref-Jain18" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">A.
+Jain, D. Rodriguez, J. M. del Alamo, and N. Sadeh, <span>“ATLAS:
+Automatically detecting discrepancies between privacy policies and
+privacy labels,”</span> in <em>2023 IEEE european symposium on security
+and privacy workshops (EuroS&amp;amp;PW)</em>, 2023, pp. 94–107, doi: <a
+href="https://doi.org/10.1109/EuroSPW59978.2023.00016">10.1109/EuroSPW59978.2023.00016</a>
+[Online]. Available: <a
+href="https://doi.ieeecomputersociety.org/10.1109/EuroSPW59978.2023.00016">https://doi.ieeecomputersociety.org/10.1109/EuroSPW59978.2023.00016</a></div>
+</div>
+</div>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

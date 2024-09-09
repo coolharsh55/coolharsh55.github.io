@@ -13860,7 +13860,7 @@
 
 <https://harshp.com/hobbies/books/950> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "950"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -13948,14 +13948,29 @@
 
 <https://harshp.com/hobbies/books/956> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "956"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    hpcom:book_owned_medium hpcom:Ebook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2024-09-08T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "James S. A. Corey"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Abaddon's Gate"@en ;
+    schema:review """This series has books that are just enough 'drama' with just enough plot points and sci-fi nerdiness that it makes for a compelling screenplay. I see the appeal of writing book after book that delivers on characters that have personalities, plot twists and occurences which seem plausible because humans will be humans, and a big overarching mystery that slowly unravels across the books. The best part is that I don't mind reading the human stuff most of the times in anticipation of the more sciency stuff. Onwards to book 4."""@en ;
     schema:url "https://harshp.com/hobbies/books/956"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/957> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "957"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    # hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2014"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Cibola Burn"@en ;
+    schema:url "https://harshp.com/hobbies/books/957"^^xsd:anyURI .

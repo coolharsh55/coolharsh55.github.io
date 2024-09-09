@@ -1832,3 +1832,32 @@
         hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
         ] .
+
+<https://harshp.com/research/publications/068-iOS-privacy-labels> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Examining the Integrity of Apple's Privacy Labels: GDPR Compliance and Unnecessary Data Collection in iOS Apps"@en ;
+    schema:description "This study examines the effectiveness of Apple's iOS 14 privacy labels in promoting transparency around app data collection practices under GDPR, revealing widespread unnecessary data collection, inconsistencies between stated permissions and actual practices, and highlighting the need for stricter regulatory oversight and clearer privacy notices."@en ;
+    hpcom:tag hptag:iOS ;
+    hpcom:tag hptag:privacy ;
+    hpcom:tag hptag:Privacy-Labels ;
+    hpcom:tag hptag:smartphone ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:author_lead (<http://example.com/ZaidAhmadSurma> <http://example.com/SaieshaGowdar>) ;
+    hpcom:author_other <https://harshp.com/me> ;
+    schema:datePublished "2024-09-09T00:00:00"^^xsd:dateTime ;
+    schema:publisher <https://www.mdpi.com/journal/information> ;
+    schema:url "https://doi.org/10.3390/info15090551"^^xsd:anyURI ;
+    # schema:funder <http://example.com/ADAPT> ; 
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/068-iOS-privacy-labels"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "website" ; schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-27560-ConsentRecords> ;
+    hpcom:peer_reviewed true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/068-iOS-privacy-labels.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .
