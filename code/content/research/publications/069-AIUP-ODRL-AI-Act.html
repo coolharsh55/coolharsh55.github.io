@@ -1,0 +1,300 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract</strong>The upcoming EU AI Act requires providers of high-risk AI systems to define and communicate the system's intended purpose -- a key and complex concept upon which many of the Act's obligations rely. To assist with expressing the intended purposes and uses, along with precluded uses as regulated by the AI Act, we extend the Open Digital Rights Language (ODRL) with a profile to express the <strong>AI Use Policy (AIUP)</strong>.   
+This open approach to declaring use policies enables explicit and transparent expression of the conditions under which an AI system can be used, benefiting AI application markets beyond the immediate needs of high-risk AI compliance in the EU. 
+AIUP is available online at <a href="https://w3id.org/aiup">https://w3id.org/aiup</a> under the CC-BY-4.0 license.</p>
+<div class="keywords">
+<p>AI Act ,ODRL ,AI use policy ,AI risk management ,regulatory
+enforcement ,trustworthy AI</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>Within the EU AI Act <span class="citation" data-cites="aiact"><a
+href="#ref-aiact" role="doc-biblioref">[1]</a></span> there is a strong
+emphasis on <em>intended purpose</em> – a legal term-of-art described as
+the use of the system specified by the provider, which should include
+information regarding context and conditions of use (AI Act, Art. 3).
+Given its importance in assessment of risk level under the Act <span
+class="citation" data-cites="hupont2023usecasecards"><a
+href="#ref-hupont2023usecasecards" role="doc-biblioref">[2]</a></span>,
+and in turn in ensuring safe and trustworthy use of AI, intended purpose
+of an AI system should be communicated to its deployers in a transparent
+manner. In this paper, we aim to simplify the specification of this key
+concept by adopting a policy-based approach. As such, we propose to
+extend the W3C’s recommendation on Open Digital Rights Language (ODRL)<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> to fulfil the representation of
+intended purpose through an AI Use Policy (AIUP) profile. AIUP serves as
+a mechanism for expressing AI intended and precluded uses as well as
+conditions of use by modelling them as permissions, prohibitions, and
+duties within a policy.</p>
+<h2 id="related-work">Related Work</h2>
+<p>ODRL has been leveraged for legal compliance and policy enforcement,
+particularly in EU GDPR compliance tasks such as automated checking of
+consent permissions <span class="citation"
+data-cites="esteves2021odrl"><a href="#ref-esteves2021odrl"
+role="doc-biblioref">[3]</a></span>, expressing legal obligations <span
+class="citation" data-cites="agarwal2018legislative"><a
+href="#ref-agarwal2018legislative" role="doc-biblioref">[4]</a></span>,
+and modelling the obligations in terms of permissions and prohibitions
+regarding executing business processes <span class="citation"
+data-cites="de2019odrl"><a href="#ref-de2019odrl"
+role="doc-biblioref">[5]</a></span>. In the context of data governance,
+ODRL was extended for expressing policies related to access control over
+data stored in Solid Pods <span class="citation"
+data-cites="esteves2021odrl"><a href="#ref-esteves2021odrl"
+role="doc-biblioref">[3]</a></span>, utilised for modelling policies
+associated with responsible use of genomics data <span class="citation"
+data-cites="pandit2023duo"><a href="#ref-pandit2023duo"
+role="doc-biblioref">[6]</a></span>, and used in expressing data spaces’
+usage and access control policies <span class="citation"
+data-cites="dam2023policy akaichi2024interoperable"><a
+href="#ref-dam2023policy" role="doc-biblioref">[7]</a>, <a
+href="#ref-akaichi2024interoperable"
+role="doc-biblioref">[8]</a></span>.</p>
+<h2 id="aiup">AIUP</h2>
+<h3 id="aiup-requirements">AIUP Requirements</h3>
+<p>AIUP is intended to be used by AI providers and deployers to
+communicate and negotiate the conditions under which an AI system
+can/cannot be used. The competency questions, which shape the
+requirements of the policy profile, are extracted from the AI Act and
+listed in the following:</p>
+<ul>
+<li><p>CQ1. What is the intended use(s) of the AI system? (Art. 13 and
+Annex IV(1a))</p></li>
+<li><p>CQ2. What is the precluded use(s)<a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> of
+the AI system? (Recital 72)</p></li>
+<li><p>CQ3. To use the system as intended, what human oversight
+measure(s) should be implemented by the deployer? (Art. 14
+(3)(b))</p></li>
+<li><p>CQ4. What is the reporting obligation(s) of the deployer? (Art.
+26(5))</p></li>
+</ul>
+<p>To express intended and precluded uses, we utilise the 5 concepts
+identified in our previous work <span class="citation"
+data-cites="golpayegani2023high"><a href="#ref-golpayegani2023high"
+role="doc-biblioref">[9]</a></span> that are <code>domain</code>,
+<code>purpose</code>, <code>AI capability</code>,
+<code>AI deployer</code>, and <code>AI subject</code>. To further
+capture the context of use, we also include
+<code>locality of use</code>.</p>
+<h3 id="aiup-overview">AIUP Overview</h3>
+<p>An overview of the AIUP’s profile is illustrated in Figure <a
+href="#fig:&lt;odrl&gt;" data-reference-type="ref"
+data-reference="fig:&lt;odrl&gt;">1</a>. Expressing intended and
+precluded uses of an AI system or component within a policy are enabled
+by employing <code>odrl:permission</code> and
+<code>odrl:prohibition</code> rules respectively. For expressing the
+conditions of use, i.e., obligations that should be fulfilled by a party
+in order to use a system or component, the <code>odrl:duty</code>
+property should be employed. The vocabulary used in AIUP is defined in
+alignment with the AI Risk Ontology (AIRO) <span class="citation"
+data-cites="golpayegani2022airo"><a href="#ref-golpayegani2022airo"
+role="doc-biblioref">[10]</a></span> and the Data Privacy Vocabulary
+(DPV) <span class="citation" data-cites="pandit2024dpv"><a
+href="#ref-pandit2024dpv" role="doc-biblioref">[11]</a></span>. The
+development follows the ODRL V2.2 Profile Best Practices<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>,
+which requires the terms to be defined in the policy namespace (in this
+case aiup) with <code>skos:exactMatch</code> to link the proposed terms
+to existing vocabularies.</p>
+<figure id="fig:&lt;odrl&gt;">
+  <img src="img/069-aiup.png">
+<figcaption>AIUP core classes and properties.</figcaption>
+</figure>
+<p>AIUP introduces 3 types of <code>aiup:UsePolicy</code>, that are
+<code>aiup:UseOffer</code>, <code>aiup:UseRequest</code>, and
+<code>aiup:UseAgreement</code>. These enable expressing offers,
+requests, and agreements from/between AI providers and deployers. To
+address the ambiguities around the function of <code>odrl:isA</code> in
+the inclusion of “sub-class of” relations, we introduce semantic
+equality (<code>aiup:seq</code>) that indicates presence of either
+“instance of” or “sub-class of” relations. AIUP allows describing use
+policies for AI components, such as general-purpose AI models, by
+specifying general concepts of <code>aiup:AIComponent</code>,
+<code>aiup:Provider</code>, and <code>aiup:Deployer</code>. However, it
+leaves out the inclusion of more specific elements required for
+expressing component use policies for future work. AIUP is made
+available online at <a href="https://w3id.org/aiup"
+class="uri">https://w3id.org/aiup</a> under the CC-BY-4.0 license.</p>
+<h3 id="aiup-example">AIUP Example</h3>
+<p>As an example scenario, we consider a policy for an online student
+proctoring system called Proctify, previously described in <span
+class="citation" data-cites="golpayegani2024aicards"><a
+href="#ref-golpayegani2024aicards" role="doc-biblioref">[12]</a></span>.
+The conditions of deploying Proctify, as an <code>aiup:UseOffer</code>
+policy, are presented in Listing <a href="#lst:&lt;aiup-offer&gt;"
+data-reference-type="ref"
+data-reference="lst:&lt;aiup-offer&gt;">[lst:&lt;aiup-offer&gt;]</a>.
+For brevity, we only include 3 constraints for describing the intended
+domain, purpose, and AI subjects. The offer indicates that the deployer
+should provide training to end-users of the system as a control measure
+to address the risk of over-reliance on the system’s output.</p>
+<div class="listing">
+<pre class="turtle"><code>@prefix odrl: &lt;https://www.w3.org/ns/odrl/2/&gt; .
+@prefix aiup: &lt;https://w3id.org/aiup#&gt; .
+@prefix vair: &lt;http://w3id.org/vair#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix ex: &lt;http://example.org/&gt; .
+ 
+ex:proctify-offer-01 a aiup:UseOffer ;
+  odrl:uid ex:proctify-offer-01 ;
+  odrl:profile aiup: ;
+  rdfs:comment &quot;Offer for using Proctify&quot;@en ; 
+  odrl:permission [
+      a odrl:Permission ;
+      odrl:assigner ex:aiedux ;
+      odrl:target ex:proctify ; 
+      odrl:action aiup:Deploy ;
+      odrl:constraint [
+      odrl:and  [ 
+              odrl:leftOperand aiup:Domain ;
+              odrl:operator aiup:seq ;
+              odrl:rightOperand vair:Education  ] ,   
+       [ 
+              odrl:leftOperand aiup:Purpose ;
+              odrl:operator aiup:seq ;
+              odrl:rightOperand vair:DetectCheating  ] ,
+       [ 
+              odrl:leftOperand aiup:AISubject ;
+              odrl:operator aiup:seq ;
+              odrl:rightOperand vair:Student  ]  ] ;
+      odrl:duty [
+          dct:title &quot;User training to address over-reliance&quot; ;
+          odrl:action aiup:ImplementControl ;
+          odrl:constraint [
+              odrl:leftOperand aiup:Control  ;
+              odrl:operator aiup:seq ;
+              odrl:rightOperand vair:Training  ]  ]  ] .     </code></pre>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this paper, we proposed AIUP as a novel technical solution for
+declaring AI use policies in an open, machine-readable, and
+interoperable format based on the evolving requirements of the AI value
+chain, particularly the obligations of the EU AI Act. The AIUP profile
+supports modelling and comparison of use policies related to AI systems
+and their components. It further assists AI auditors and authorities in
+investigation of non-compliance and ascertaining liable parties when
+investigating claims concerning AI.</p>
+<div class="acknowledgments">
+<p>This project has received funding from the EU’s Horizon 2020 research
+and innovation programme under the Marie Skłodowska-Curie grant
+agreement No 813497 (PROTECT ITN) and from Science Foundation Ireland
+under Grant#13/RC/2106_P2 at the ADAPT SFI Research Centre. Beatriz
+Esteves is funded by SolidLab Vlaanderen (Flemish Government, EWI and
+RRF project VV023/10). Harshvardhan Pandit has received funding under
+the SFI EMPOWER program.</p>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-aiact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Regulation <span>(EU)</span> 2024/1689
+of the european parliament and of the council of 13 june 2024 laying
+down harmonised rules on artificial intelligence and amending
+regulations <span>(EC)</span> no 300/2008, <span>(EU)</span> no
+167/2013, <span>(EU)</span> no 168/2013, <span>(EU)</span> 2018/858,
+<span>(EU)</span> 2018/1139 and <span>(EU)</span> 2019/2144 and
+directives 2014/90/<span>EU</span>, <span>(EU)</span> 2016/797 and
+<span>(EU)</span> 2020/1828 (artificial intelligence act),”</span>
+<em>Official Journal of the European Union</em>. 2024 [Online].
+Available: <a
+href="http://data.europa.eu/eli/reg/2024/1689/oj">http://data.europa.eu/eli/reg/2024/1689/oj</a></div>
+</div>
+<div id="ref-hupont2023usecasecards" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">I.
+Hupont, D. Fernández-Llorca, S. Baldassarri, and E. Gómez, <span>“Use
+case cards: A use case reporting framework inspired by the european
+<span>AI</span> act,”</span> <em>Ethics and Information Technology</em>,
+vol. 26, no. 2, 2024. </div>
+</div>
+<div id="ref-esteves2021odrl" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">B.
+Esteves, H. J. Pandit, and V. Rodrı́guez-Doncel, <span>“<span>ODRL</span>
+profile for expressing consent through granular access control policies
+in solid,”</span> in <em>2021 IEEE european symposium on security and
+privacy workshops (EuroS&amp;PW)</em>, 2021, pp. 298–306. </div>
+</div>
+<div id="ref-agarwal2018legislative" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S.
+Agarwal, S. Steyskal, F. Antunovic, and S. Kirrane, <span>“Legislative
+compliance assessment: Framework, model and <span>GDPR</span>
+instantiation,”</span> in <em>Privacy technologies and policy</em>,
+2018, pp. 131–149. </div>
+</div>
+<div id="ref-de2019odrl" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M.
+De Vos, S. Kirrane, J. Padget, and K. Satoh, <span>“<span>ODRL</span>
+policy modelling and compliance checking,”</span> in <em>Rules and
+reasoning</em>, 2019, pp. 36–51. </div>
+</div>
+<div id="ref-pandit2023duo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">H.
+J. Pandit and B. Esteves, <span>“Enhancing data use ontology
+<span>(DUO)</span> for health-data sharing by extending it with
+<span>ODRL</span> and <span>DPV</span>,”</span> <em>Semantic Web
+Journal</em>, 2024. </div>
+</div>
+<div id="ref-dam2023policy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T.
+Dam, A. Krimbacher, and S. Neumaier, <span>“Policy patterns for usage
+control in data spaces,”</span> <em>arXiv preprint
+arXiv:2309.11289</em>, 2023. </div>
+</div>
+<div id="ref-akaichi2024interoperable" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">I.
+Akaichi <em>et al.</em>, <span>“Interoperable and continuous usage
+control enforcement in dataspaces,”</span> in <em>The second
+international workshop on semantics in dataspaces, co-located with the
+extended semantic web conference</em>, 2024. </div>
+</div>
+<div id="ref-golpayegani2023high" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“To be high-risk, or not
+to be–semantic specifications and implications of the <span>AI</span>
+act’s high-risk <span>AI</span> applications and harmonised
+standards,”</span> in <em>Proceedings of the 2023 ACM conference on
+fairness, accountability, and transparency</em>, 2023, pp. 905–915.
+</div>
+</div>
+<div id="ref-golpayegani2022airo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“<span>AIRO</span>: An
+ontology for representing <span>AI</span> risks based on the proposed
+<span>EU</span> <span>AI Act</span> and <span>ISO</span> risk management
+standards,”</span> in <em>Towards a knowledge-aware
+<span>AI</span></em>, 2022, vol. 55, pp. 51–65. </div>
+</div>
+<div id="ref-pandit2024dpv" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">H.
+J. Pandit, B. Esteves, G. P. Krog, P. Ryan, D. Golpayegani, and J.
+Flake, <span>“Data privacy vocabulary (<span>DPV</span>)–version
+2,”</span> <em>arXiv preprint arXiv:2404.13426</em>, 2024. </div>
+</div>
+<div id="ref-golpayegani2024aicards" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">D.
+Golpayegani <em>et al.</em>, <span>“<span>AI</span> cards: Towards an
+applied framework for machine-readable <span>AI</span> and risk
+documentation inspired by the <span>EU AI</span> act,”</span> in
+<em>Privacy technologies and policy</em>, 2024, pp. 48–72. </div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.w3.org/ns/odrl/2/"
+class="uri">https://www.w3.org/ns/odrl/2/</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Refers to the uses of an AI system that are prohibited
+by the provider.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://w3c.github.io/odrl/profile-bp/"
+class="uri">https://w3c.github.io/odrl/profile-bp/</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

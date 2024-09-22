@@ -13798,8 +13798,8 @@ book:681 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "681"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2008"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18328,12 +18328,16 @@ book:950 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "950"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-09-13T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Iain M. Banks"^^xsd:string ;
     schema:dateCreated "1897"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Consider Phlebas"@en ;
+    schema:review "This book is the first novel in the Culture series - which I had the mistaken was a typical space opera. What it is instead is a giant box of ideas that span across so many directions that each tiny aspect would have made a cool novel on its own. In this case, the book is a unusual in that it isn't an epic at all - instead it is incredibly punishing by the end because it turns out that nothing really mattered all along. The drama, fights, attitudes - it all were placed on the wrong side of a story. Instead of the 'good guys' we have a main character who is instead not from the good guys. Instead of the 'hero saves the day' ending we get something that realistically shows how tiny and insignificant things can be when the scales are as huge as a galactic civilisation. Didn't really 'enjoy' this book as in 'entertainment', but it was interesting to see the world building in any case." ;
     schema:url "https://harshp.com/hobbies/books/950"^^xsd:anyURI .
 
 book:951 a hpcom:RenderedItem,
@@ -18355,12 +18359,16 @@ book:952 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "952"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-09-20T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Iain M. Banks"^^xsd:string ;
     schema:dateCreated "1996"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Excession"@en ;
+    schema:review "This is a fantastic book for so many reasons, but my favourite is that it concerns 'Minds' - which are AI superintelligences that typically house and run huge ships as a body. There are some humans involved in the story, but they are part of the larger story of a Mind. There is politics and civilisation level threats and manouvers - and its the Minds doing the heavy-lifting. Rather than assign human attributes to machines, the story brilliantly shows how human attributes are inscrutinable in a transcended superintelligence. And to top off all this is a physics-bending phenomenon which is the titular 'excession'. This was fun reading. I will continue to read more Culture novels because of the rewarding world-building and the diversity of story materials as well as the distinct philosophical optimism."@en ;
     schema:url "https://harshp.com/hobbies/books/952"^^xsd:anyURI .
 
 book:953 a hpcom:RenderedItem,
@@ -18433,6 +18441,30 @@ book:957 a hpcom:RenderedItem,
         hpcom:BookSciFi ;
     schema:name "Cibola Burn"@en ;
     schema:url "https://harshp.com/hobbies/books/957"^^xsd:anyURI .
+
+book:958 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "958"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Greg Egan"^^xsd:string ;
+    schema:dateCreated "1995"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Axiomatic"@en ;
+    schema:url "https://harshp.com/hobbies/books/958"^^xsd:anyURI .
+
+book:959 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "959"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Stephen Baxter"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Creation Node"@en ;
+    schema:url "https://harshp.com/hobbies/books/959"^^xsd:anyURI .
 
 book:96 a hpcom:Book,
         hpcom:BookReading,
@@ -22338,6 +22370,37 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info15090551"^^xsd:anyURI .
 
+<https://harshp.com/research/publications/069-AIUP-ODRL-AI-Act> a hpcom:RenderedItem,
+        hpcom:ShortPaper,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/069-AIUP-ODRL-AI-Act"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <http://example.com/BeatrizEsteves> <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/069-AIUP-ODRL-AI-Act.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:publishing_attempt "SEMANTiCS (full paper)"@en ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/delaramGlp/aiup/"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "poster" ;
+            schema:url "https://harshp.com/presentations/2024/SEMANTiCS/SEMANTiCS2024_AIUP.png"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI,
+        hptag:AI-Act,
+        hptag:ODRL,
+        hptag:semantic-web ;
+    schema:datePublished "2024-09-13T00:00:00"^^xsd:dateTime ;
+    schema:description "Expressing AI Use Policies for the AI Act as an extension/profile of the W3C ODRL standard."@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project"@en ;
+    schema:name "AIUP: an ODRL Profile for Expressing AI Use Policies to Support the EU AI Act"@en ;
+    schema:publication <http://example.com/conferences/SEMANTiCS2024> ;
+    schema:url "https://ceur-ws.org/Vol-3759/paper17.pdf"^^xsd:anyURI .
+
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -23698,15 +23761,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2024-11-11T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2024.semanticweb.org/"^^xsd:anyURI .
-
-<http://example.com/conferences/SEMANTiCS2024> a schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "SEMANTiCS" ;
-    schema:endDate "2024-09-19T00:00:00"^^xsd:dateTime ;
-    schema:location "Amsterdam, Netherlands" ;
-    schema:name "International Conference on Semantic Systems"@en ;
-    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
-    schema:url "https://2024-eu.semantics.cc/"^^xsd:anyURI .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -27046,6 +27100,15 @@ hptag:workshop a hpcom:RenderedItem,
     schema:startDate "2023-09-20T00:00:00"^^xsd:dateTime ;
     schema:url "https://2023-eu.semantics.cc/"^^xsd:anyURI .
 
+<http://example.com/conferences/SEMANTiCS2024> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:endDate "2024-09-19T00:00:00"^^xsd:dateTime ;
+    schema:location "Amsterdam, Netherlands" ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:startDate "2024-09-17T00:00:00"^^xsd:dateTime ;
+    schema:url "https://2024-eu.semantics.cc/"^^xsd:anyURI .
+
 <http://example.com/workshops/BlackMirror2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:endDate "2018-04-24"^^xsd:anyURI ;
@@ -27547,11 +27610,6 @@ hptag:GPC a hpcom:RenderedItem,
     schema:name "GPC"@en ;
     schema:url "https://harshp.com/tags/GPC"^^xsd:anyURI .
 
-hptag:ODRL a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "ODRL"@en ;
-    schema:url "https://harshp.com/tags/ODRL"^^xsd:anyURI .
-
 hptag:ROPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Register of Processing Activities"@en ;
@@ -27749,6 +27807,11 @@ hptag:Android a hpcom:RenderedItem,
     schema:name "Android" ;
     schema:url "https://harshp.com/tags/Android"^^xsd:anyURI .
 
+hptag:ODRL a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "ODRL"@en ;
+    schema:url "https://harshp.com/tags/ODRL"^^xsd:anyURI .
+
 hptag:academic a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "academic" ;
@@ -27887,10 +27950,6 @@ hptag:weather a hpcom:RenderedItem,
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
 
-<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
-    schema:name "Delaram Golpayegani" ;
-    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
-
 hpcom:book-currently-reading a hpcom:BookStatus ;
     rdfs:label "currently reading"@en .
 
@@ -27929,16 +27988,6 @@ list:visually-stunning a hpcom:RenderedItem,
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
 
-hptag:AI a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI"@en ;
-    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
-
-hptag:AI-Act a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI-Act"@en ;
-    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
-
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "social" ;
@@ -27948,6 +27997,10 @@ hptag:travel a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
+
+<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
+    schema:name "Delaram Golpayegani" ;
+    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
 
 <https://harshp.com/dev/semantic_web> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -27960,6 +28013,16 @@ list:humour a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "humour"@en ;
     schema:name "Funny and Humorous"@en .
+
+hptag:AI a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI"@en ;
+    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
+
+hptag:AI-Act a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI-Act"@en ;
+    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
 
 hptag:flash-fiction a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27999,9 +28062,6 @@ hptag:conference a hpcom:RenderedItem,
     schema:name "conference" ;
     schema:url "https://harshp.com/tags/conference"^^xsd:anyURI .
 
-<http://example.com/BeatrizEsteves> a schema:Person ;
-    schema:name "Beatriz Esteves" .
-
 <https://chrdebru.github.io/> a schema:Person ;
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
@@ -28037,6 +28097,9 @@ hptag:visa a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "visa" ;
     schema:url "https://harshp.com/tags/visa"^^xsd:anyURI .
+
+<http://example.com/BeatrizEsteves> a schema:Person ;
+    schema:name "Beatriz Esteves" .
 
 <https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -28189,9 +28252,6 @@ hptag:academia a hpcom:RenderedItem,
     schema:name "academia" ;
     schema:url "https://harshp.com/tags/academia"^^xsd:anyURI .
 
-hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Short Paper"@en .
-
 hptag:DPV a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "DPV"@en ;
@@ -28201,6 +28261,9 @@ hptag:data-governance a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "data-governance"@en ;
     schema:url "https://harshp.com/tags/data-governance"^^xsd:anyURI .
+
+hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Short Paper"@en .
 
 hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28347,6 +28410,13 @@ list:classics a hpcom:RenderedItem,
     schema:identifier "classics"@en ;
     schema:name "Classics"@en .
 
+hpcom:Rating2 a hpcom:Rating,
+        hpcom:RenderedItem ;
+    rdfs:label "🙁bad (2/5)"@en ;
+    rdfs:subClassOf schema:Rating ;
+    schema:ratingValue "2"^^xsd:int ;
+    schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
+
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -28356,13 +28426,6 @@ list:classics a hpcom:RenderedItem,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
-
-hpcom:Rating2 a hpcom:Rating,
-        hpcom:RenderedItem ;
-    rdfs:label "🙁bad (2/5)"@en ;
-    rdfs:subClassOf schema:Rating ;
-    schema:ratingValue "2"^^xsd:int ;
-    schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
 list:DCU a hpcom:RenderedItem,
         book:lists ;
@@ -28448,9 +28511,9 @@ hpcom:EBook a hpcom:BookMedium ;
 hpcom:BookFiction a hpcom:BookGenre ;
     rdfs:label "fiction"@en .
 
-hpcom:PhysicalBook a hpcom:BookMedium ;
-    rdfs:label "📚physical"@en .
-
 hpcom:book-read a hpcom:BookStatus ;
     rdfs:label "read"@en .
+
+hpcom:PhysicalBook a hpcom:BookMedium ;
+    rdfs:label "📚physical"@en .
 
