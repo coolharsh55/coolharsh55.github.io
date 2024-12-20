@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation">
+    <meta name="schema:description" content="A dataset documentation framework for AI risk assessments, particularly bias, that promotes transparency and ensures alignment with regulatory requirements and can be expressed in a machine-readable format">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="AI,data-governance,risk,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/research/publications/073-Datasheets-AI-Bias">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation">
+    <meta property="og:description" content="A dataset documentation framework for AI risk assessments, particularly bias, that promotes transparency and ensures alignment with regulatory requirements and can be expressed in a machine-readable format">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/research">research</a> | <a href="/research/publications">publications</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#FullPaper https://harshp.com/code/vocab#RenderedItem https://schema.org/ScholarlyArticle " resource="https://harshp.com/research/publications/073-Datasheets-AI-Bias">
+        <h1 property="schema:name schema:headline">Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation</h1>
+<div id="description">
+	<small>
+	<time datetime="2024-12-09T00:00:00">2024-12-09T00:00:00</time>
+    <i>Conference</i>
+    <br/>
+    Irish Conference on Artificial Intelligence and Cognitive Science (AICS)    <br/>
+    &#9997;<i>
+    Marjia Siddik*
+    ,
+    <u>Harshvardhan J. Pandit</u>
+    </i>
+    <br/>
+    Description: A dataset documentation framework for AI risk assessments, particularly bias, that promotes transparency and ensures alignment with regulatory requirements and can be expressed in a machine-readable format
+    <br/>
+    <span class='note' style="color: red;">(in-press)</span>
+        &#x1f513;open-access archives:
+        <a href="https://harshp.com/research/publications/073-Datasheets-AI-Bias">harshp.com</a>
+    	<br/>
+        &#128230;resources:
+        <a href="https://github.com/marjiasdk/Healthcare-AI-Datasheet">repo</a>
+        , <a href="https://harshp.com/presentations/2024/AICS/AICS_Datasheets_AI_Healthcare_Bias_2024.pdf">poster</a>
+    </small>
+</div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract:</strong> The use of AI in healthcare has the potential to improve patient care, optimize clinical workflows, and enhance decision-making. However, bias, data incompleteness, and inaccuracies in training datasets can lead to unfair outcomes and amplify existing disparities. This research investigates the current state of dataset documentation practices, focusing on their ability to address these challenges and support ethical AI development. We identify shortcomings in existing documentation methods, which limit the recognition and mitigation of bias, incompleteness, and other issues in datasets. We propose the ‘Healthcare AI Datasheet’ to address these gaps, a dataset documentation framework that promotes transparency and ensures alignment with regulatory requirements. Additionally, we demonstrate how it can be expressed in a machine-readable format, facilitating its integration with datasets and enabling automated risk assessments. The findings emphasise the importance of dataset documentation in fostering responsible AI development.</p>
+<p><strong>Keywords:</strong> AI in Healthcare, Dataset Documentation, Data Transparency, Bias Mitigation, Ethical AI, GDPR, EU AI Act, Risk Assessment</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>AI has the potential to enhance diagnostics, treatment planning,
+patient monitoring, and overall care delivery <span class="citation"
+data-cites="topol2019high"><a href="#ref-topol2019high"
+role="doc-biblioref">[1]</a></span>. By utilising medical records and
+other data collected over time, AI can make healthcare more efficient,
+personalized, and accessible <span class="citation"
+data-cites="shah2019artificial"><a href="#ref-shah2019artificial"
+role="doc-biblioref">[2]</a></span>. However, its deployment also
+introduces ethical and legal challenges, particularly due to the use of
+sensitive data and the risk of harms. Prominent amongst known issues are
+biases <span class="citation" data-cites="obermeyer2016predicting"><a
+href="#ref-obermeyer2016predicting" role="doc-biblioref">[3]</a></span>
+which exacerbate existing health disparities and create unequal
+treatment outcomes. Such biases can arise from training datasets,
+algorithmic practices, and incorrect deployments, and act to compromise
+the effectiveness, thereby threatening patient safety and undermining
+trust in healthcare systems <span class="citation"
+data-cites="obermeyer2019dissecting"><a
+href="#ref-obermeyer2019dissecting" role="doc-biblioref">[4]</a></span>.
+As a result, the use of AI poses challenges to the fairness and
+integrity of healthcare delivery, particularly when it relies on
+unrepresentative datasets <span class="citation"
+data-cites="obermeyer2019dissecting"><a
+href="#ref-obermeyer2019dissecting" role="doc-biblioref">[4]</a></span>,
+flawed data collection <span class="citation"
+data-cites="char2018implementing"><a href="#ref-char2018implementing"
+role="doc-biblioref">[5]</a></span>, and reflects existing societal
+prejudices <span class="citation" data-cites="mehrabi2021survey"><a
+href="#ref-mehrabi2021survey" role="doc-biblioref">[6]</a></span>. These
+issues can lead to AI models that perform poorly for certain demographic
+groups, amplifying health disparities and compromising patient care
+<span class="citation" data-cites="benjamin2019assessing"><a
+href="#ref-benjamin2019assessing"
+role="doc-biblioref">[7]</a></span>.</p>
+<p>Beyond bias, other concerns include data incompleteness <span
+class="citation" data-cites="vayena2018machine"><a
+href="#ref-vayena2018machine" role="doc-biblioref">[8]</a></span>,
+inaccuracies <span class="citation" data-cites="rajkomar2018ensuring"><a
+href="#ref-rajkomar2018ensuring" role="doc-biblioref">[9]</a></span>,
+and outdated information <span class="citation"
+data-cites="jiang2017artificial"><a href="#ref-jiang2017artificial"
+role="doc-biblioref">[10]</a></span>, all of which can undermine the
+effectiveness and reliability of AI systems. To assess whether such
+issues exist in the development and use of AI, it is essential to have
+comprehensive documentation regarding the origins, composition,
+limitations, and other contexts for how the AI system was developed - in
+particular the data used to train it <span class="citation"
+data-cites="gebru2021datasheets"><a href="#ref-gebru2021datasheets"
+role="doc-biblioref">[11]</a></span>. Without this information, AI
+systems cannot be reliably assessed for suitability of use, and can
+inadvertently cause harm or fail to deliver effective care <span
+class="citation" data-cites="paullada2021data"><a
+href="#ref-paullada2021data" role="doc-biblioref">[12]</a></span>.</p>
+<p>With data and AI enriched healthcare poised to significantly progress
+in the next decade based on legal advancements such as the EU Health
+Data Space regulation, it is important for uses of data and AI in
+healthcare to adhere to existing regulatory frameworks such as General
+Data Protection Regulation (GDPR) <span class="citation"
+data-cites="gdpr"><a href="#ref-gdpr"
+role="doc-biblioref">[13]</a></span> and the Artificial Intelligence Act
+(AI Act) <span class="citation" data-cites="aiact"><a href="#ref-aiact"
+role="doc-biblioref">[14]</a></span>. Which means that dataset
+documentation practices should also incorporate information to support
+compliance with GDPR and AI Act so that issues such as bias and
+potential harms can be evaluated and enforced through legal mechanisms.
+At the same time, healthare is highly dependant on local contexts, where
+different regions and countries have differing frameworks and
+legislations for how the data gets generated and utilised in health
+research. Ireland recently published its Health Information Bill <span
+class="citation" data-cites="healthBill2024"><a
+href="#ref-healthBill2024" role="doc-biblioref">[15]</a></span> in 2023
+which enables the reuse of data for healthcare research. In such cases,
+it is also vital to evaluate whether dataset documentation practices are
+sufficient to support such initiatives.</p>
+<p>This study therefore investigates the question: <em>"How can dataset
+documentation support mitigation of bias and promote ethical AI in
+healthcare systems?"</em> and explores the answer through the following
+objectives:</p>
+<ol>
+<li><p>Identify categories of bias which should be documented (Section
+2.1).</p></li>
+<li><p>Identify legal considerations which should be documented for
+datasets (Section 2.2).</p></li>
+<li><p>Evaluate existing dataset documentation practices regarding
+representation of identified bias categories and legal considerations
+(Section 2.3).</p></li>
+<li><p>Develop a machine-readable dataset documentation method that
+incorporates identified requirements and fills in gaps in current
+practices (Section 3).</p></li>
+<li><p>Discuss how the solution will work within the Irish healthcare
+context (Section 4).</p></li>
+</ol>
+<h2 id="literature-review">Literature Review</h2>
+<h3 id="categorisation-of-bias">Categorisation of Bias</h3>
+<p>Bias in AI refers to the tendency of AI systems to produce results
+that reflect societal inequities, which is especially concerning in
+healthcare, where biased AI tools can have serious consequences. AI
+models trained on non-diverse datasets often fail to generalize across
+populations, potentially worsening healthcare disparities. For example,
+Celi et al. <span class="citation" data-cites="celi2022sources"><a
+href="#ref-celi2022sources" role="doc-biblioref">[16]</a></span>
+observed that many AI datasets come from high-income countries like the
+US and China, reducing their relevance in low- and middle-income
+countries with distinct healthcare challenges. Despite the importance of
+mitigating these biases, existing dataset documentation practices often
+overlook these disparities, revealing major shortcomings in current
+frameworks <span class="citation" data-cites="russo2024leveraging"><a
+href="#ref-russo2024leveraging"
+role="doc-biblioref">[17]</a></span>.</p>
+<p>Several types of bias impact healthcare AI, leading to inequitable
+outcomes. <em>Sample bias</em> occurs when training data does not
+adequately represent the target population, resulting in skewed
+predictions. Annotator bias emerges when individuals labeling the data
+introduce their prejudices, further distorting AI outputs. <em>Temporal
+bias</em> arises from changes in data patterns over time, impacting AI
+model relevance <span class="citation"
+data-cites="gaonkar2020ethical"><a href="#ref-gaonkar2020ethical"
+role="doc-biblioref">[18]</a></span>. For example, <em>gender bias</em>
+in diagnostic AI, such as chest X-ray interpretation, has shown to skew
+results based on biological differences that arise over time <span
+class="citation" data-cites="ganz2021assessing"><a
+href="#ref-ganz2021assessing" role="doc-biblioref">[19]</a></span>.
+Unfortunately, current documentation rarely addresses these biases
+comprehensively, pointing to the need for improved strategies.</p>
+<p>Biases such as <em>data-driven</em> and <em>algorithmic bias</em>
+also contribute to healthcare inequality. Data-driven bias occurs when
+certain demographics are over-represented, while algorithmic bias
+reinforces patterns favoring majority groups <span class="citation"
+data-cites="ganz2021assessing"><a href="#ref-ganz2021assessing"
+role="doc-biblioref">[19]</a></span>. <em>Human bias</em> introduced by
+researchers or clinicians adds further complexity to fairness <span
+class="citation" data-cites="ganz2021assessing"><a
+href="#ref-ganz2021assessing" role="doc-biblioref">[19]</a></span>. If
+dataset documentation practices do not distinguish between these
+different kinds of bias, or only report on specific ones (e.g. gender
+bias) - then it risks creating a false sense of security by assuming
+biases have been identified and addressed. Further, by not incorporating
+the information required to identify and address such biases, the
+dataset documentation also limits its usefulness.</p>
+<p>Based on these, we identify a gap in current practices that needs to
+be address by having dataset documentation <em>distinguish between the
+different categories of bias and should record that aids in identifying
+and addressing them</em>. This addresses <strong>RO1</strong>.</p>
+<h3 id="legal-frameworks-governing-bias">Legal Frameworks Governing
+Bias</h3>
+<p>The development and deployment of data-based AI systems in healthcare
+requires strict adherence to laws to ensure fairness, accountability,
+and transparency. Laws such as GDPR and AI Act require conducting impact
+assessments to protect human rights and prevent harms based on a
+risk-based approach where certain data and technologies are considered
+as <em>high-risk</em> based on their sensitivity and potential risks. If
+dataset documentation approaches do not incorporate such requirements,
+or do not provide sufficient information to support implementing them,
+it leads to legal uncertainties, risks, and makes assessing
+<em>liability</em> difficult - which is a vital incentive to ensure
+safety and security in technology.</p>
+<p>The GDPR, which regulates processing of personal data, establishes
+specific categories, which includes health, of data as being
+<em>special</em> (Article 9) - meaning they are more sensitive and merit
+a higher degree of consideration in risk management (Article 32) and
+impact assessments (Article 35). GDPR also establishes accountability
+based on the role of ‘<em>Controller</em>’ where an entity determines
+the ‘means and purposes’ of processing data, where processing covers any
+collection, storage, use, sharing, and erasure of personal data.
+Further, the GDPR also establishes rights (Articles 12-23) associated
+with data - such as the requirement to provide notices, ability to
+opt-out of automated decision making, right to be forgotten,
+rectification, and erasure. When datasets constitute personal data (as
+defined by GDPR Article 4), their collection and use, as well as
+potentially the AI systems developed using them are likely to be subject
+to the GDPR. Without sufficient information, users of data miss out on
+the <em>safety net</em> provided by the GDPR in terms of safety and
+security obligations when reusing data, and end up creating
+complications and potential liabilities for themselves as they do not
+have documented evidence of the dataset’s quality and GDPR
+compliance.</p>
+<p>The AI Act, a recent development, establishes risk levels for use of
+AI, and has obligations regarding transparency, human oversight, and
+data management. Similar to the GDPR, documented evidence is vital for
+obligations under the AI Act to assess and demonstrate that data, or AI
+developed using data, is compliant with safety and reliability
+standards. More specific to Ireland, the Health Information Bill (2023)
+establishes the creation and sharing of digital health records and
+provides a framework for the reuse data for scientific research and
+public benefit. In this, it requires specific documented assessments of
+data and uses of AI similar to the obligations of GDPR to ensure
+appropriate practices regarding security and safety.</p>
+<p>From this, we establish that dataset documentation practices should
+incorporate <em>information to support legal obligations regarding
+transparency and accountability - most specifically the provenance and
+legal categorisation of data, risk and impact assessments, and
+involvement of entities in specific legal roles</em> This addresses
+<strong>RO2</strong>.</p>
+<h3 id="sota:documentation">Current Dataset Documentation Practices</h3>
+<p>Comprehensive documentation practices in the machine learning
+community often receive limited attention beyond immediate technical
+information, and no standardised processes exist to ensure transparency,
+accountability, reproducibility, interoperability, and quality -
+especially in contexts such as healthcare where non-reporting of issues
+such as bias can cause harms <span class="citation"
+data-cites="gebru2021datasheets"><a href="#ref-gebru2021datasheets"
+role="doc-biblioref">[11]</a></span>. To address this, several proposals
+have been published, of which we focus on notable ones that are widely
+known or are in the scope of our work.</p>
+<p>‘Datasheets for Datasets’ <span class="citation"
+data-cites="gebru2021datasheets"><a href="#ref-gebru2021datasheets"
+role="doc-biblioref">[11]</a></span>is a seminal work that defines
+information requirements to record motivation, composition, and usage
+aspects to enhance transparency and reproducibility. While it
+acknowledges regulations such as GDPR and issues such as bias, it does
+not provide for recording specific risks such as different categories of
+biases and does not align its information with regulatory requirements.
+‘Dataset Nutrition Label’ <span class="citation"
+data-cites="chmielinski2022dataset"><a
+href="#ref-chmielinski2022dataset" role="doc-biblioref">[20]</a></span>,
+developed by the Data Nutrition Project, aims to “enhance context,
+contents, and legibility” by “providing at-a-glance information”. It
+contains information required for bias identification but does not
+address measures for mitigation or specifying further risks or
+regulatory requirements.</p>
+<p>‘Open Datasheets’ <span class="citation"
+data-cites="roman2023open heger2022understanding"><a
+href="#ref-roman2023open" role="doc-biblioref">[21]</a>, <a
+href="#ref-heger2022understanding" role="doc-biblioref">[22]</a></span>
+provide a machine-readable format designed to improve dataset
+discoverability and usability, but does not expand upon risk assessment
+and regulatory information. ‘Data Statements for NLP’ <span
+class="citation" data-cites="bender2018data"><a
+href="#ref-bender2018data" role="doc-biblioref">[23]</a></span> enables
+recording information with the goal of supporting bias mitigations, but
+does not account for different risks or regulations. Tools such as
+DataDoc Analyzer <span class="citation" data-cites="giner2023datadoc"><a
+href="#ref-giner2023datadoc" role="doc-biblioref">[24]</a></span> and
+MetaReader <span class="citation" data-cites="jannah2014metareader"><a
+href="#ref-jannah2014metareader" role="doc-biblioref">[25]</a></span>
+support ensuring completeness and bias identification based on existing
+approaches, but do not explore expanding their information
+requirements.</p>
+<p>These existing approaches<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a> show a necessity to
+document information regarding datasets so as to inform and support the
+‘data value chain’ in addressing risks - such as biases - and avoiding
+harms. However, they have limitations in terms of acknowledging
+different risks beyond a few bias categories (e.g. gender or sex), do
+not support systematic risk assessments, and more critically are not
+aligned with regulatory requirements - which makes their enforcement and
+use in accountability difficult. In the context of healthcare, we could
+not find any specific approach which adapts or explores the specific
+collection and (re-)use of data in a clinical or medical research
+context. Further, healthcare settings typically have additional policies
+and guidelines established within the institution, consortium, or as
+sectorial regulations - which can only be supported in dataset
+documentation practices if they are extensible. Additionally, the
+information required to be documented can come from different entities -
+including inter-organisational units - which necessitates
+standardisation and interoperability to ensure its effectiveness. We
+could not find any approaches which tackled these aspects.</p>
+<p>From this analysis, we determined that the use of data for AI in
+healthcare settings requires a solution that addresses existing gaps
+regarding expanded bias categorisations, risk assessments, and
+compliance with regulations. This addresses <strong>RO3</strong>.</p>
+<h2 id="developing-an-improved-machine-readable-datasheet">Developing an
+Improved Machine-Readable Datasheet</h2>
+<p>Based on the analysis of the state of the art, we identified the need
+to create an improved dataset documentation approach that supports
+information requirements regarding bias categorisation and risk
+assessment, and is aligned with the GDPR (<strong>RO4</strong>). We also
+identified the need for structured machine-readable representations to
+support maintaining and providing datasheets alongside the data. For
+this, we selected the ‘Datasheets for Datasets’ <span class="citation"
+data-cites="gebru2021datasheets"><a href="#ref-gebru2021datasheets"
+role="doc-biblioref">[11]</a></span> approach as a baseline given its
+existing prevalence and impact, and extended it to incorporate our
+additional requirements. Our proposed datasheet is <strong>available
+online</strong><a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> with an example schema.</p>
+<h3 id="methodology">Methodology</h3>
+<p>We first identified and analysed the information that could be
+recorded from using existing approaches for datasheet documentation and
+found three gaps (bias categories, risk assessment, regulations), for
+which we then developed specific requirements to document information.
+Through an iterative process, we developed a structured datasheet by
+starting with 18 identified information fields from the ‘Datasheets for
+Datasets’ <span class="citation" data-cites="gebru2021datasheets"><a
+href="#ref-gebru2021datasheets" role="doc-biblioref">[11]</a></span>
+approach, and extended it to over 50 fields in the final iterations. The
+additional fields were developed based on requirements to document
+information associated with identified categories of bias - such as
+temporal characteristics and demographics, risk assessment information -
+such as provenance of data, completeness, existing or potential
+measures, and regulatory information - such as applicable laws and
+impact assessments. In addition to this, we also made explicit the
+information fields associated with purposes for which the dataset was
+created, and its intended uses, and usage restrictions - which can aid
+the process of determining suitable data reuses and avoid misuses. For
+existing fields, we focused on specificity where vague fields were
+refined for clarity (e.g. usage restrictions and data
+characteristics).</p>
+<p>In order to evaluate the effectiveness of developed information
+requirements, we sought to identify existing datasets on popular
+platforms such as Kaggle and Hugging Face whose documentation contained
+this information. We could not identify a suitable dataset as most
+datasets did not contain even the preliminary information required by
+existing dataset documentation practices, and going through their
+associated publications and reports would have required exorbitant
+amounts of time<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>. Therefore, we undertook manual
+exercises to create documentation for hypothetical datasets based on
+different scenarios such that all information fields would be populated.
+Through this process, we identified several refinements based on
+ambiguity in information (e.g. date format), necessity to provide a
+controlled vocabulary (e.g. to express likelihood), and additional
+fields (e.g. usage prohibitions derived from risk assessments).</p>
+<p>We then developed a JSON based structure to represent the datasheet
+in a machine-readable format. We chose JSON as it is a popular data
+format that is natively supported in all major programming languages, is
+easily communicated on the web, and enables a structured schemas that
+can be validated for completeness, correctness, and compliance. We also
+chose JSON as it is easy to learn and iterate prototypes for a
+developing schema. For future interoperability and standardisation, we
+recommend using existing standards such as DCAT<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+with ODRL<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> for expressing usage policies and
+DPV <span class="citation"
+data-cites="pandit2024dataprivacyvocabularydpv"><a
+href="#ref-pandit2024dataprivacyvocabularydpv"
+role="doc-biblioref">[26]</a></span> to represent regulatory
+information.</p>
+<h3 id="datasheet:fields">Description of Information Fields</h3>
+<p>There are 55 information fields broadly categorised in 10 sections as
+follows.<br />
+<strong>Metadata</strong> These fields contain information describing
+the dataset in terms of its title, version, publisher, and
+license.<br />
+<strong>Purpose</strong> These fields describe the purposes for which
+the dataset was created (e.g. clinical research), what was the intended
+benefit (e.g. improve diagnostic accuracy), and the intended
+beneficiaries (e.g. healthcare providers, patients).<br />
+<strong>Source Information</strong> These fields describe the source and
+origin of data, and whether the collection process had (ethical)
+approval (e.g. from organisation) and its funding sources.<br />
+<strong>Temporal Information</strong> These fields describe temporal
+aspects of the data in the dataset, such as which period it covers (e.g.
+2019-2023) and last updated (e.g. December 2023).<br />
+<strong>Demographic Information</strong> These fields describe
+demographic information for individuals whose data is present, such as
+age and age ranges (e.g. 18-65), gender, and ethnicity, as well as
+fields to indicate the <em>likelihood</em> of specific kinds of bias due
+to the demographic distributions.<br />
+<strong>Data Characteristics</strong> These fields describe the media
+type for data (e.g. images), and also indicate whether the data is
+<em>incomplete</em> along with the missing elements and reasons.<br />
+<strong>Bias Mitigation Methods</strong> These fields describe bias
+mitigation methods that have already been applied as well as suggested
+measures to adopters.<br />
+<strong>Personal Data</strong> These fields describe whether the data
+constitutes as <em>personal</em> (e.g. non-anonymized patient records),
+specific categories of personal data (e.g. name, age), its sensitity
+(e.g. low), and for (partially-)anonymised data - which anonymisation
+techniques were used and its risk of reidentification.<br />
+<strong>Risk and Compliance</strong> These fields provide a way to
+indicate the risk levels (separately for generic and legal),
+jurisdiction and applicable laws (e.g. EU and GDPR), existence of impact
+assessments (e.g. a GDPR DPIA), and suggested mitigation measures (e.g.
+auditing security risks prior to data reuse).<br />
+<strong>Usage Restriction</strong> These fields define limitations and
+constraints on the (re-)use of the dataset, such as through access
+restrictions (e.g. only use within organisation), specific permissions
+(e.g. only used for cancer research) or prohibitions (e.g. no third
+party sharing), and obligations (e.g. reciprocity to share results back
+with data provider).</p>
+<h3 id="comparison-with-existing-approaches">Comparison with Existing
+Approaches</h3>
+<p>Table <a href="#table:comparison" data-reference-type="ref"
+data-reference="table:comparison">1</a> compares our developed Datasheet
+approach with existing established approaches from Section <a
+href="#sota:documentation" data-reference-type="ref"
+data-reference="sota:documentation">2.3</a> - namely the Datasheets for
+Datasets <span class="citation" data-cites="gebru2021datasheets"><a
+href="#ref-gebru2021datasheets" role="doc-biblioref">[11]</a></span>,
+Dataset Nutrition Labels <span class="citation"
+data-cites="chmielinski2022dataset"><a
+href="#ref-chmielinski2022dataset" role="doc-biblioref">[20]</a></span>,
+and Data Statements for NLP <span class="citation"
+data-cites="bender2018data"><a href="#ref-bender2018data"
+role="doc-biblioref">[23]</a></span>. Due to spatial limitations of this
+article, we only provide a summary overview of this comparison, with the
+full analysis available online<a href="#fn6" class="footnote-ref"
+id="fnref6" role="doc-noteref"><sup>6</sup></a>. In the table, the rows
+represent the information in sections (as described in Section <a
+href="#datasheet:fields" data-reference-type="ref"
+data-reference="datasheet:fields">3.2</a>, and the values represent
+whether the information is present (<span class="math inline">•</span>),
+has some fields missing (<span class="math inline">∘</span>), or is not
+present (). The last two rows consider whether the approach requires
+structured information (e.g. a consistent vocabulary) and is
+interoperable by being machine-readable (e.g. using JSON).</p>
+<div id="table:comparison">
+<table>
+<caption>Comparative analysis of our proposed Datasheet with existing
+documentation approaches</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Category</strong></th>
+<th style="text-align: left;"><strong>This Approach</strong></th>
+<th style="text-align: left;"><strong>Datasheets for Datasets <span
+class="citation" data-cites="gebru2021datasheets"><a
+href="#ref-gebru2021datasheets"
+role="doc-biblioref">[11]</a></span></strong></th>
+<th style="text-align: left;"><strong>Dataset Nutrition Label <span
+class="citation" data-cites="chmielinski2022dataset"><a
+href="#ref-chmielinski2022dataset"
+role="doc-biblioref">[20]</a></span></strong></th>
+<th style="text-align: left;"><strong>Data Statements for NLP <span
+class="citation" data-cites="bender2018data"><a
+href="#ref-bender2018data"
+role="doc-biblioref">[23]</a></span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Metadata</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Purpose</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Source Information</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Temporal Information</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Demographics</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Characteristics</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bias Mitigations</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Personal Data</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Risk and Compliance</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Usage Restriction</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Machine-readable</strong></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">•</span></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Interoperability</strong></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="math inline">∘</span></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="table:comparison" data-label="table:comparison"></span></p>
+<p>From this comparison, we see how the proposed advances the state of
+the art by highlighting important gaps in current approaches and
+providing our solution as the path forward. Most prominently, we address
+the crucial issue of missing information in dataset documentation
+practices regarding data characteristics and temporal information which
+is necessary to identify and mitigate commonly found biases. We also
+addressed risk and (legal) compliance more thoroughly which enables
+existing legal mechanisms and obligations to be used to support and
+enforce accountability and prevent harms that may arise from data
+collection and (re-)use. Finally, we also address the lack of providing
+documentation as structured information and ensuring it is interoperable
+and machine-readable. In this, our approach does not provide the best
+possible solution as it does not propose a standardised or
+standards-based representation of information - though it does show why
+this is required and how it can be achieved (e.g. using semantic web
+standards of DCAT, ODRL, and DPV as mentioned in Section 3.2) which are
+promising areas for future work.</p>
+<p>Though not visible from the overview table, the legal and ethical
+risks documented in the extended datasheet set it apart from existing
+approaches in a crucial and important manner. For example, our approach
+explicitly considers potential legal risks for re-identification risks
+and data sensitivity which are essential considerations when dealing
+with sensitive healthcare data, especially under regulations like GDPR.
+These risks are often only briefly touched upon in existing frameworks
+but are critical to be documented as having been considered for ensuring
+legal and policy compliance. In healthcare contexts, the sensitivity of
+patient data combined with the severe consequences of non-compliance can
+result in harm to patients, privacy violations, and legal repercussions.
+Therefore, our datasheets specifically support the higher level of
+scrutiny required in health and biomedical research to ensure patient
+safety and regulatory compliance by providing information fields that
+must be documented alongside the dataset.</p>
+<p>Another important distinguishing factor is the demographic
+information section which goes beyond simple demographic documentation
+by requiring both information of distributions reflected in the dataset
+and also how such distributions may introduce bias into AI models. We
+feel this is a more comprehensive and in-depth approach that is also
+pragmatic for the healthcare context as compared to frameworks like
+Datasheets for Datasets which do not assess potential demographic bias
+in this way. In our datasheets, as the fields for distributions are
+explicit, the onus of identifying potential risks starts from the
+creation of the dataset, and any missing value (e.g. gender distribution
+unknown) becomes a risk in itself. To address this, we also provide a
+mitigations field which can enable a data provider to recommend that
+before using the dataset, an assessment of the bias should be carried
+out to eliminate or reduce potential issues.</p>
+<h2 id="application-in-irish-healthcare-context">Application in Irish
+Healthcare Context</h2>
+<p>The Irish healthcare system has been slow to adopt universal
+healthcare and has struggled with inconsistent data management practices
+across hospitals and clinics, influenced by historical resistance from
+the Catholic Church and private medical practitioners <span
+class="citation" data-cites="wren2019european"><a
+href="#ref-wren2019european" role="doc-biblioref">[27]</a></span>. This
+has led to fragmented reforms and slow legislative and infrastructural
+progress, creating challenges in healthcare data infrastructure, and
+impacting the implementation of effective AI systems. Gaps in leadership
+and strategy in health information management have also slowed the
+development of a connected system, hindering the fairness and
+effectiveness of AI systems <span class="citation"
+data-cites="craig2018understanding"><a
+href="#ref-craig2018understanding"
+role="doc-biblioref">[28]</a></span>.</p>
+<p>Despite initiatives like IHIs and ePrescribing, investment in health
+information systems and ICT remains low in Ireland <span
+class="citation" data-cites="walsh2021developments"><a
+href="#ref-walsh2021developments" role="doc-biblioref">[29]</a></span>.
+Efforts such as the DQI framework seek to improve data quality, ensuring
+it is complete and reliable for creating fair AI systems <span
+class="citation" data-cites="hickey2021data"><a
+href="#ref-hickey2021data" role="doc-biblioref">[30]</a></span>. While
+improving infrastructure is pivotal for reliable healthcare data,
+unaddressed biases could lead to legal and ethical issues, such as
+discrimination or violations of regulations like the GDPR. The two-tier
+healthcare model further complicates universal data-sharing standards as
+each organsiation relies on its own methods and data management
+practices.</p>
+<p>While measures like the Health Identifiers Act 2014 and the
+establishment of Health Information and Quality Authority (HIQA) aimed
+to improve health data governance, the absence of well-defined and
+regulated dataset documentation practices continues to be a challenge.
+Areas such as data governance, legal uncertainties, and the development
+of central platforms to support health data research remain
+underexplored, making it difficult to create a unified system for
+equitable healthcare access <span class="citation"
+data-cites="walsh2021developments"><a href="#ref-walsh2021developments"
+role="doc-biblioref">[29]</a></span>. The lack of centralised policies
+that mandate uniform data practices hinders the development of unified
+datasets, which are critical for the implementation of fair and
+effective healthcare AI systems.</p>
+<p>The Health Information Bill <span class="citation"
+data-cites="healthBill2024"><a href="#ref-healthBill2024"
+role="doc-biblioref">[15]</a></span> (HIB) aims to resolve some of these
+challenges by creating a legal obligation for the state to set up
+specific healthcare research infrastructures and facilitate the reuse of
+data for research. It is expected to tie in to the European Health Data
+Spaces regulation which is currently under the legislative process and
+is expected to be finalised in 2025. More prominently, the HIB addresses
+the current healthcare system’s lack of coordination and disconnect
+between data management processes among organisations. While not
+explicitly addressing AI, the HIB does provide a legal framework for the
+reuse of healthcare data for research purposes and in conjunction with
+the recently published AI Act will guide the use of AI in healthcare for
+the near future.</p>
+<p>Our developed datasheet provides a necessary and timely approach to
+address both the technical and legal challenges by establishing a
+structured and uniform approach to dataset documentation that is aligned
+with legal requirements from GDPR and which will support the
+requirements of Irish and European regulations regarding risk and impact
+assessments. Through this work, we have shown that the current prevalent
+dataset documentation practices are not sufficient for the current legal
+landscaope in Ireland and also do not support the practicalities of
+intra-organisational interactions which require documented information
+to avoid uncertainties and liabilities.</p>
+<p>By promoting transparent, accountable, and bias-conscious dataset
+documentation, our datasheet can serve as an important tool in helping
+Ireland’s healthcare sector prepare for these regulations and cultivate
+a practice of risk assessment across the data and AI lifecycles.
+Additionally, it supports the existing documentation requirements in
+current and upcoming regulations as well as policy frameworks such as
+HIQA’s guidelines. The possibility of representing the information in
+machine-readable form also opens up opportunities to automate the
+processes associated with creating the datasheets up to date with
+changes in AI systems, and to automate risk assessments by using
+datasheets as inputs that are passed along to stakeholders downstream
+within the AI value chain. Therefore, we recommend further developing
+and requiring the use of datasheet documentation practices along with
+supporting infrastructure and policies based on our work to enable and
+promote the ethical and legal reuse of data using AI across the Irish
+healthcare system. This completes our (<strong>RO5</strong>).</p>
+<h2 id="conclusion-future-work">Conclusion &amp; Future Work</h2>
+<p>Our research highlights the importance of comprehensive dataset
+documentation in mitigating biases and promoting ethical AI in
+healthcare. Existing frameworks, such as Datasheets for Datasets and
+Dataset Nutrition Labels, often lack a specific focus on bias
+mitigation, particularly in the healthcare context. To address these
+gaps, we developed the Healthcare AI Datasheet, which incorporates
+detailed demographic information, data collection methods, and explicit
+bias mitigation strategies. This approach enhances transparency,
+accountability, and fairness in AI development, ensuring that systems
+reflect diverse populations and contribute to reducing healthcare
+disparities. Additionally, the machine-readable version of the datasheet
+facilitates integration into AI workflows, promoting responsible and
+ethical practices. By thoroughly documenting dataset characteristics and
+potential biases, healthcare providers can make more informed decisions
+when deploying AI systems, ensuring more equitable care. This is
+especially vital in preventing biased datasets from leading to
+misdiagnoses or unequal treatment outcomes.</p>
+<p>While the Healthcare AI Datasheet represents notable progress, it has
+limitations. Its primary focus on healthcare datasets may restrict its
+broader applicability to other domains. Furthermore, its effectiveness
+relies on the accuracy and completeness of the information provided by
+dataset creators, which can introduce variability. Future research
+should prioritize real-world testing across healthcare settings to
+validate its effectiveness and refine its components. Implementing the
+datasheet in ongoing AI projects will help assess its ability to
+mitigate bias and improve compliance with regulations such as GDPR and
+the EU AI Act. Expanding its evaluation to AI systems deployed in other
+sectors could reveal its broader applicability and effectiveness.
+Additionally, refining the machine-readable version for better
+integration with diverse AI systems and exploring its use beyond
+healthcare could further enhance its impact, providing a scalable
+solution for ethical AI development across industries.</p>
+<p>For the Irish healthcare context, there is a push for implementing a
+national framework that enables the wider sharing and reuse of
+healthcare data - especially for secondary purposes - and which is
+aligned with the future implementation of European Health Data Spaces
+(EHDS). We believe our approach for creating datasheets based on GDPR
+will facilitate this approach, and therefore would benefit from its
+application and refinement through use in real-world use-cases such as
+in hospitals and other clinical research settings.</p>
+<div class="acknowledgments">
+<p>This work was funded by the Health Research Board (HRB) through the
+Summer Student Scholarships (SS) scheme awarded to Marjia Siddik. The
+ADAPT SFI Centre for Digital Media Technology is funded by Science
+Foundation Ireland through the SFI Research Centres Programme and is
+co-funded under the European Regional Development Fund (ERDF) through
+Grant#13/RC/2106_P2.</p>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-topol2019high" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">E.
+J. Topol, <span>“High-performance medicine: The convergence of human and
+artificial intelligence,”</span> <em>Nature medicine</em>, vol. 25, no.
+1, pp. 44–56, 2019. </div>
+</div>
+<div id="ref-shah2019artificial" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P.
+Shah <em>et al.</em>, <span>“Artificial intelligence and machine
+learning in clinical development: A translational perspective,”</span>
+<em>NPJ digital medicine</em>, vol. 2, no. 1, p. 69, 2019. </div>
+</div>
+<div id="ref-obermeyer2016predicting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Z.
+Obermeyer and E. J. Emanuel, <span>“Predicting the future—big data,
+machine learning, and clinical medicine,”</span> <em>New England Journal
+of Medicine</em>, vol. 375, no. 13, pp. 1216–1219, 2016. </div>
+</div>
+<div id="ref-obermeyer2019dissecting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Z.
+Obermeyer, B. Powers, C. Vogeli, and S. Mullainathan, <span>“Dissecting
+racial bias in an algorithm used to manage the health of
+populations,”</span> <em>Science</em>, vol. 366, no. 6464, pp. 447–453,
+2019. </div>
+</div>
+<div id="ref-char2018implementing" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">D.
+S. Char, N. H. Shah, and D. Magnus, <span>“Implementing machine learning
+in health care—addressing ethical challenges,”</span> <em>New England
+Journal of Medicine</em>, vol. 378, no. 11, pp. 981–983, 2018. </div>
+</div>
+<div id="ref-mehrabi2021survey" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">N.
+Mehrabi, F. Morstatter, N. Saxena, K. Lerman, and A. Galstyan, <span>“A
+survey on bias and fairness in machine learning,”</span> <em>ACM
+computing surveys (CSUR)</em>, vol. 54, no. 6, pp. 1–35, 2021. </div>
+</div>
+<div id="ref-benjamin2019assessing" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">R.
+Benjamin, <span>“Assessing risk, automating racism,”</span>
+<em>Science</em>, vol. 366, no. 6464, pp. 421–422, 2019. </div>
+</div>
+<div id="ref-vayena2018machine" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">E.
+Vayena, A. Blasimme, and I. G. Cohen, <span>“Machine learning in
+medicine: Addressing ethical challenges,”</span> <em>PLoS medicine</em>,
+vol. 15, no. 11, p. e1002689, 2018. </div>
+</div>
+<div id="ref-rajkomar2018ensuring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A.
+Rajkomar, M. Hardt, M. D. Howell, G. Corrado, and M. H. Chin,
+<span>“Ensuring fairness in machine learning to advance health
+equity,”</span> <em>Annals of internal medicine</em>, vol. 169, no. 12,
+pp. 866–872, 2018. </div>
+</div>
+<div id="ref-jiang2017artificial" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">F.
+Jiang <em>et al.</em>, <span>“Artificial intelligence in healthcare:
+Past, present and future,”</span> <em>Stroke and vascular
+neurology</em>, vol. 2, no. 4, 2017. </div>
+</div>
+<div id="ref-gebru2021datasheets" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">T.
+Gebru <em>et al.</em>, <span>“Datasheets for datasets,”</span>
+<em>Communications of the ACM</em>, vol. 64, no. 12, pp. 86–92, 2021.
+</div>
+</div>
+<div id="ref-paullada2021data" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A.
+Paullada, I. D. Raji, E. M. Bender, E. Denton, and A. Hanna, <span>“Data
+and its (dis) contents: A survey of dataset development and use in
+machine learning research,”</span> <em>Patterns</em>, vol. 2, no. 11,
+2021. </div>
+</div>
+<div id="ref-gdpr" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div
+class="csl-right-inline"><span>“Regulation (EU) 2016/679 of the european
+parliament and of the council of 27 april 2016 on the protection of
+natural persons with regard to the processing of personal data and on
+the free movement of such data, and repealing directive 95/46/EC
+(general data protection regulation),”</span> <em>Official Journal of
+the European Union</em>, vol. L119, 2016 [Online]. Available: <a
+href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC">http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L:2016:119:TOC</a></div>
+</div>
+<div id="ref-aiact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div
+class="csl-right-inline"><span>“Regulation (EU) 2024/1689 of the
+european parliament and of the council of 13 june 2024 laying down
+harmonised rules on artificial intelligence and amending regulations
+(EC) no 300/2008, (EU) no 167/2013, (EU) no 168/2013, (EU) 2018/858,
+(EU) 2018/1139 and (EU) 2019/2144 and directives 2014/90/EU, (EU)
+2016/797 and (EU) 2020/1828 (artificial intelligence act),”</span>
+<em>Official Journal of the European Union</em>, vol. L, 2024 [Online].
+Available: <a
+href="http://data.europa.eu/eli/reg/2024/1689/oj">http://data.europa.eu/eli/reg/2024/1689/oj</a></div>
+</div>
+<div id="ref-healthBill2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">G.
+of Ireland, <span>“Health information bill,”</span> <em>Oireachtas (No.
+61 of 2024)</em>, 2024 [Online]. Available: <a
+href="https://www.oireachtas.ie/en/bills/bill/2024/61/">https://www.oireachtas.ie/en/bills/bill/2024/61/</a></div>
+</div>
+<div id="ref-celi2022sources" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">L.
+A. Celi <em>et al.</em>, <span>“Sources of bias in artificial
+intelligence that perpetuate healthcare disparities—a global
+review,”</span> <em>PLOS Digital Health</em>, vol. 1, no. 3, p.
+e0000022, 2022. </div>
+</div>
+<div id="ref-russo2024leveraging" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">M.
+Russo and M.-E. Vidal, <span>“Leveraging ontologies to document bias in
+data,”</span> <em>arXiv preprint arXiv:2407.00509</em>, 2024. </div>
+</div>
+<div id="ref-gaonkar2020ethical" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">B.
+Gaonkar, K. Cook, and L. Macyszyn, <span>“Ethical issues arising due to
+bias in training AI algorithms in healthcare and data sharing as a
+potential solution,”</span> <em>The AI Ethics Journal</em>, vol. 1, no.
+1, 2020. </div>
+</div>
+<div id="ref-ganz2021assessing" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M.
+Ganz, S. H. Holm, and A. Feragen, <span>“Assessing bias in medical
+ai,”</span> in <em>Workshop on interpretable ML in healthcare at
+international connference on machine learning (ICML)</em>, 2021. </div>
+</div>
+<div id="ref-chmielinski2022dataset" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">K.
+S. Chmielinski <em>et al.</em>, <span>“The dataset nutrition label (2nd
+gen): Leveraging context to mitigate harms in artificial
+intelligence,”</span> <em>arXiv preprint arXiv:2201.03954</em>, 2022.
+</div>
+</div>
+<div id="ref-roman2023open" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">A.
+C. Roman <em>et al.</em>, <span>“Open datasheets: Machine-readable
+documentation for open datasets and responsible ai assessments,”</span>
+<em>arXiv preprint arXiv:2312.06153</em>, 2023. </div>
+</div>
+<div id="ref-heger2022understanding" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">A.
+K. Heger, L. B. Marquis, M. Vorvoreanu, H. Wallach, and J. Wortman
+Vaughan, <span>“Understanding machine learning practitioners’ data
+documentation perceptions, needs, challenges, and desiderata,”</span>
+<em>Proceedings of the ACM on Human-Computer Interaction</em>, vol. 6,
+no. CSCW2, pp. 1–29, 2022. </div>
+</div>
+<div id="ref-bender2018data" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">E.
+M. Bender and B. Friedman, <span>“Data statements for natural language
+processing: Toward mitigating system bias and enabling better
+science,”</span> <em>Transactions of the Association for Computational
+Linguistics</em>, vol. 6, pp. 587–604, 2018. </div>
+</div>
+<div id="ref-giner2023datadoc" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">J.
+Giner-Miguelez, A. Gómez, and J. Cabot, <span>“Datadoc analyzer: A tool
+for analyzing the documentation of scientific datasets,”</span> in
+<em>Proceedings of the 32nd ACM international conference on information
+and knowledge management</em>, 2023, pp. 5046–5050. </div>
+</div>
+<div id="ref-jannah2014metareader" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">H.
+M. Jannah, <span>“MetaReader: A dataset meta-exploration and
+documentation tool.”</span> 2014. </div>
+</div>
+<div id="ref-pandit2024dataprivacyvocabularydpv" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">H.
+J. Pandit, B. Esteves, G. P. Krog, P. Ryan, D. Golpayegani, and J.
+Flake, <span>“Data privacy vocabulary (DPV) – version 2,”</span> <em>The
+23rd International Semantic Web Conference (ISWC) (in-press)</em>, 2024
+[Online]. Available: <a
+href="https://arxiv.org/abs/2404.13426">https://arxiv.org/abs/2404.13426</a></div>
+</div>
+<div id="ref-wren2019european" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div
+class="csl-right-inline">M.-A. Wren and S. Connolly, <span>“A european
+late starter: Lessons from the history of reform in irish health
+care,”</span> <em>Health Economics, Policy and Law</em>, vol. 14, no. 3,
+pp. 355–373, 2019. </div>
+</div>
+<div id="ref-craig2018understanding" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">S.
+Craig and N. Kodate, <span>“Understanding the state of health
+information in ireland: A qualitative study using a socio-technical
+approach,”</span> <em>International journal of medical informatics</em>,
+vol. 114, pp. 1–5, 2018. </div>
+</div>
+<div id="ref-walsh2021developments" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">B.
+Walsh, C. Mac Domhnaill, and G. Mohan, <span>“Developments in healthcare
+information systems in ireland and internationally,”</span> <em>Dublin:
+The Economic and Social Research Institute</em>, 2021. </div>
+</div>
+<div id="ref-hickey2021data" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">D.
+Hickey, R. O’Connor, P. McCormack, P. Kearney, R. Rosti, and R. Brennan,
+<span>“The data quality index: Improving data quality in irish
+healthcare records,”</span> 2021. </div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Due to spacial limitations, an overview of existing
+approaches is provided later as part of our proposed approach.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a
+href="https://github.com/marjiasdk/Healthcare-AI-Datasheet"
+class="uri">https://github.com/marjiasdk/Healthcare-AI-Datasheet</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The lack of findability mechanisms based on
+machine-readable data also contributed to these difficulties.<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://www.w3.org/TR/vocab-dcat/"
+class="uri">https://www.w3.org/TR/vocab-dcat/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://www.w3.org/TR/odrl-model/"
+class="uri">https://www.w3.org/TR/odrl-model/</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a
+href="https://github.com/marjiasdk/Healthcare-AI-Datasheet/blob/main/comparison-sota.csv"
+class="uri">https://github.com/marjiasdk/Healthcare-AI-Datasheet/blob/main/comparison-sota.csv</a><a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

@@ -900,7 +900,6 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "DPV ontology" ; schema:url "https://www.w3.org/ns/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "github.com/dpvcg/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary <https://harshp.com/research/presentations#2019-ODBASE-DPV> ;
-    hpcom:pinned true ;
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/032-creating-vocabulary-data-privacy.html" ;
@@ -1577,7 +1576,6 @@
         hpcom:contentFile "https://harshp.com/code/content/research/publications/058-Making-sense-of-Solid.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
-    hpcom:pinned true ;
     hpcom:peer_reviewed true .
 
 <https://harshp.com/research/publications/059-RQ-Decentralised-Personal-Data-Governance> a schema:ScholarlyArticle, hpcom:ExtendedAbstract, hpcom:RenderedItem ;
@@ -1729,6 +1727,7 @@
     schema:datePublished "2024-02-14T00:00:00"^^xsd:dateTime ;
     schema:identifier "https://doi.org/10.3233/SW-243583"^^xsd:anyURI ;
     schema:url "https://doi.org/10.3233/SW-243583"^^xsd:anyURI ;
+    hpcom:pinned true ;
     schema:publisher <http://www.semantic-web-journal.net/> ;
     schema:funder ( <https://harshp.com/research/projects/risky> <http://example.com/ADAPT> );
     #hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/96593"^^xsd:anyURI ] ;
@@ -1796,6 +1795,7 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary <https://harshp.com/research/presentations#2024-APF-27560> ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:won_award [ a hpcom:Award ; schema:name "Best Paper" ] ;
     hpcom:content [
         a hpcom:Content ;
@@ -1814,9 +1814,10 @@
     hpcom:tag hptag:GDPR ;
     hpcom:author_lead <https://harshp.com/me> ;
     hpcom:author_other ( <http://example.com/BeatrizEsteves> <http://example.com/GeorgPKrog> <http://example.com/PaulRyan> <https://www.scss.tcd.ie/personnel/golpayes> <http://example.com/JulianFlake> ) ;
-    schema:datePublished "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-11-27T00:00:00"^^xsd:dateTime ;
     schema:publication <http://example.com/conferences/ISWC2024> ;
-    schema:url ""^^xsd:anyURI ;
+    schema:url "https://doi.org/10.1007/978-3-031-77847-6_10"^^xsd:anyURI ;
+    schema:identifier "10.1007/978-3-031-77847-6_10" ;
     schema:funder <http://example.com/ADAPT> ; 
     hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/067-DPV-2.0"^^xsd:anyURI ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
@@ -1827,6 +1828,7 @@
     hpcom:supplementary [ a hpcom:Link ; schema:name "website" ; schema:url "https://w3id.org/dpv"^^xsd:anyURI ] ;
     hpcom:supplementary <https://harshp.com/research/presentations#2024-ISWC-DPV> ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
@@ -1899,8 +1901,8 @@
     hpcom:author_lead <http://example.com/BeatrizEsteves> ;
     hpcom:author_other ( <https://harshp.com/me>  <http://example.com/GeorgPKrog> <http://example.com/PaulRyan> );
     schema:datePublished "2024-12-12T00:00:00"^^xsd:dateTime ;
-    schema:identifier ""^^xsd:anyURI ;
-    schema:url ""^^xsd:anyURI ;
+    schema:identifier "https://doi.org/10.3233/FAIA241254"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.3233/FAIA241254"^^xsd:anyURI ;
     schema:publication <http://example.com/conferences/JURIX2024> ;
     schema:funder <http://example.com/ADAPT> ;
     #hpcom:archived_version [ a hpcom:Link ; schema:name "DORA" ; schema:url "http://hdl.handle.net/2262/96593"^^xsd:anyURI ] ;
@@ -1937,3 +1939,113 @@
     ] ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/071-review-future-direction-ICT-standards"^^xsd:anyURI ] ;
     hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/072-AICat> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "AICat: An AI Cataloguing Approach to Support the EU AI Act"@en ;
+    schema:description "An extension of DCAT for representing catalogues of AI systems that provides consistency, machine-readability, searchability, and interoperability in managing open metadata regarding AI systems, particularly beyond the immediate needs of high-risk AI compliance in the EU"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:DCAT ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:datePublished "2024-12-10T00:00:00"^^xsd:dateTime ;
+    schema:publication <https://aics2024.ucd.ie/> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ; 
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/072-AICat"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/DelaramGlp/aicat"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "website" ; schema:url "https://w3id.org/aicat"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-AICat> ;
+    hpcom:peer_reviewed true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/072-AICat.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .
+
+<https://harshp.com/research/publications/073-Datasheets-AI-Bias> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation"@en ;
+    schema:description "A dataset documentation framework for AI risk assessments, particularly bias, that promotes transparency and ensures alignment with regulatory requirements and can be expressed in a machine-readable format"@en ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:risk ;
+    hpcom:tag hptag:data-governance ;
+    hpcom:author_lead <http://example.com/MarjiaSiddik> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    schema:datePublished "2024-12-09T00:00:00"^^xsd:dateTime ;
+    schema:publication <https://aics2024.ucd.ie/> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/IEHRB> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/073-Datasheets-AI-Bias"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "poster" ; schema:url "https://harshp.com/presentations/2024/AICS/AICS_Datasheets_AI_Healthcare_Bias_2024.pdf"^^xsd:anyURI ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/073-Datasheets-AI-Bias.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .
+
+<https://harshp.com/research/publications/074-FRIA-Tool-DPIA> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Towards An Automated AI Act FRIA Tool That Can Reuse GDPR's DPIA"@en ;
+    schema:description "Interpreting the FRIA as a 5-step process where automated tools can apply for each step and how a DPIA can be reused in it"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:DPIA ;
+    hpcom:tag hptag:FRIA ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other <http://example.com/TyttiRintamaki> ;
+    schema:datePublished "2024-12-11T08:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/CLAIRvoyant2024> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/074-FRIA-Tool-DPIA"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-CLAIRVoyant-FRIA-Tool-DPIA> ;
+    hpcom:peer_reviewed true ;
+    schema:status "Presented at Workshop, finalising revised version" ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/074-FRIA-Tool-DPIA.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .
+
+<https://harshp.com/research/publications/075-FRIA-Ontology> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Developing an Ontology for AI Act Fundamental Rights Impact Assessments"@en ;
+    schema:description "An ontology for creation and management of FRIA and use of automated tool in its various steps"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:GDPR ;
+    hpcom:tag hptag:DPIA ;
+    hpcom:tag hptag:FRIA ;
+    hpcom:tag hptag:semantic-web ;
+    hpcom:author_lead <http://example.com/TyttiRintamaki> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    schema:datePublished "2024-12-11T09:00:00"^^xsd:dateTime ;
+    schema:publication <http://example.com/conferences/CLAIRvoyant2024> ;
+    schema:url ""^^xsd:anyURI ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/075-FRIA-Ontology"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/ma9ue"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "DORAS" ; schema:url "https://doras.dcu.ie/29298/"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://zenodo.org/doi/10.5281/zenodo.10381927"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2404.13426"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2024-CLAIRVoyant-FRIA-Ontology> ;
+    hpcom:peer_reviewed true ;
+    schema:status "Presented at Workshop, finalising revised version" ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/075-FRIA-Ontology.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+        ] .

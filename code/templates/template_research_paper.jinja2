@@ -7,12 +7,9 @@
 	<time datetime="{{item.schema_datePublished}}">{{item.schema_datePublished}}</time>
     <i>{{item|publication_type}}</i>
     <br/>
-	{% if item.schema_status %}
-    <span class='note'>{{ item.schema_status }}</span>
-    {% endif %}
     {# venue #}
     {% if item.schema_publication %}
-    {{item.schema_publication}}{% if item.schema_publication.schema_alternateName %} ({{item.schema_publication.schema_alternateName}}){% elif not item|publication_is_draft %}<span class='note' style="color: red;">in-press</span>{% endif %}
+    {{item.schema_publication}}{% if item.schema_publication.schema_alternateName %} ({{item.schema_publication.schema_alternateName}}){% endif %}
     {% if item.schema_publication.schema_superEvent %}
     - co-located with {{item.schema_publication.schema_superEvent}}{% if item.schema_publication.schema_superEvent.schema_alternateName %} ({{item.schema_publication.schema_superEvent.schema_alternateName}}){% endif %}
     {% endif %}
@@ -55,8 +52,13 @@
     Description: {{item.schema_description}}
     <br/>
     {% if item.hpcom_won_award %}<span class="paper-award" style="padding-left: 2px; padding-right: 2px;">🏆 {{ item.hpcom_won_award }}</span><br/>{% endif %}
+    {% if item.schema_status %}
+    <span class='note' style="color: red;">{{ item.schema_status }}</span>
+    {% endif %}
     {% if item.schema_url %}
     <a href="{{item.schema_url}}">published version</a>
+    {% else %}
+    <span class='note' style="color: red;">(in-press)</span>
     {% endif %}
     {# pre-prints #}
     {% if item.hpcom_archived_version %}

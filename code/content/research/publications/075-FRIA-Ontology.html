@@ -1,0 +1,894 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract:</strong> The recently published EU Artificial Intelligence Act (AI Act) is a landmark regulation that regulates the use of AI technologies. One of its novel requirements is the obligation to conduct a Fundamental Rights Impact Assessment (FRIA), where organisations in the role of deployers must assess the risks of their AI system regarding health, safety, and fundamental rights. Another novelty in the AI Act is the requirement to create a questionnaire and an automated tool to support organisations in their FRIA obligations. Such automated tools will require a machine-readable form of information involved within the FRIA process, and additionally also require machine-readable  documentation to enable further compliance tools to be created. In this article, we present our novel representation of the FRIA as an ontology based on semantic web standards. Our work builds upon the existing state of the art, notably the Data Privacy Vocabulary (DPV), where similar works have been established to create tools for GDPR's Data Protection Impact Assessments (DPIA) and other obligations. Through our ontology, we enable the creation and management of FRIA, and the use of automated tool in its various steps.</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The European Union’s recently published Artificial Intelligence Act
+(AI Act) <span class="citation" data-cites="EU_AIAct"><a
+href="#ref-EU_AIAct" role="doc-biblioref">[1]</a></span> is the first of
+its kind regulation that governs AI systems with a particular focus on
+harms to health, safety, and fundamental rights. A key and novel
+requirement established in AI Act Article 27 is the Fundamental Rights
+Impact Assessment (FRIA) which requires deployers of AI systems to
+assess the risks and impacts of their AI systems on fundamental human
+rights. The FRIA is a structured process following existing procedures
+for impact assessments, and was developed based on the similar procedure
+under the General Data Protection Regulation (GDPR) <span
+class="citation" data-cites="EU_GDPR"><a href="#ref-EU_GDPR"
+role="doc-biblioref">[2]</a></span> for Data Protection Impact
+Assessments (DPIA). As development of AI technologies has progressed
+rapidly within the last decade, and the AI Act itself is a new legal
+framework, conducting and using a FRIA poses significant challenges not
+only regarding legal compliance, but also from the perspectives of data
+governance to identify and maintain relevant information and information
+systems to develop tools that can support and enhance these
+processes.</p>
+<p>The current conventional method for implementing FRIA is to identify
+obligations linked to specific clauses in the AI Act and find the steps
+needed to complete them. For organisations, such tasks are primarily
+human-oriented activities that utilise word processor software (e.g. MS
+Word) and document formats (e.g. PDF) that contain unstructured
+information and are not suitable for developing automated procedures and
+tooling. Further, organisations commonly have several departments or
+organisational units that can contain different technologies and
+practices, making a combined legal assessment of the organisation as a
+whole a challenging and complicated affair. The AI Act in Article 27-5
+foresees such challenges and requires the AI Office, the EU body
+responsible for the implementation of the AI Act, to create a
+‘questionnaire’ to support organisations in meeting the obligations for
+a FRIA. The AI Act, in the same article, also states that such a
+questionnaire should be provided with an automated tool - though it does
+not clarify what automation or support mean in this context.</p>
+<p>Based on prior work regarding the use of knowledge engineering and
+information systems to support and enhance the DPIA process and its use
+for complying with the GDPR <span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span>, we identify the need for a formal
+representation of the FRIA process that can aid the creation of
+questionnaires and automated tools and support the documentation
+involved by providing a consistent, structured, and interoperable
+approach. By developing an ontology for FRIA, this paper thus aims to
+bridge the gap between the high-level legal requirements of the AI Act
+and the technical, procedural steps necessary for effective compliance,
+risk management, and governance of AI systems.</p>
+<p>We use the following research question to guide our work: “<em>How
+can we represent the FRIA as an organisational process through a
+standards-based, machine-readable, and interoperable ontology?</em>”.
+Here, standards refers to the W3C semantic web standards of RDF for
+representing information in a machine-readable format, and RDFS and OWL
+to create an ontological representation. The contribution of this
+article is thus an OWL ontology that enables the operational
+implementation of a FRIA within an organisation to meet the AI Act’s
+obligations.</p>
+<h2 id="rationale">Rationale</h2>
+<p>To develop the ontology, we follow the Linked Open Terms (LOT)
+ontology engineering methodology <span class="citation"
+data-cites="poveda2022lot"><a href="#ref-poveda2022lot"
+role="doc-biblioref">[4]</a></span> which has been used successfully in
+several projects, and is based on the NeOn ontology engineering
+methodology which has been used in the creation of similar legally
+relevant ontologies including for GDPR’s DPIA <span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span>. The first step in LOT is the
+development of an ontology requirements specification that outlines “why
+the ontology is being built and to identify and define the requirements
+the ontology should fulfil”. For this, LOT recommends the use of
+competency questions which are a well established practice in the
+ontology engineering community. We reused the template provided by LOT
+to generate the ontology requirements specification, which is presented
+in Table 1.</p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <caption>FRIA Ontology</caption>
+  <thead>
+    <tr>
+      <th colspan="8"></th>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>1. Purpose</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="8">The purpose of this ontology is to model the FRIA as an information process.</td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>2. Scope</strong></th>
+    </tr>
+    <tr>
+      <td colspan="8">The scope of this ontology is limited to modelling the FRIA as defined in AI Act Article 27.</td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>3. Implementation Language</strong></th>
+    </tr>
+    <tr>
+      <td colspan="8">W3C semantic web standards - OWL, RDFS, SKOS</td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>4. Intended End-Users</strong></th>
+    </tr>
+    <tr>
+      <td colspan="8">Organisations who create and use FRIA i.e. deployers of the AI systems and AI Act authorities</td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>5. Intended Uses</strong></th>
+    </tr>
+    <tr>
+      <td colspan="8">
+        Use 1. To document obligations regarding FRIA. <br>
+        Use 2. To document outcomes of FRIA. <br>
+        Use 3. To notify authorities regarding FRIA.
+      </td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>6. Ontology Requirements</strong></th>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>a. Non-Functional Requirements</strong></th>
+    </tr>
+    <tr>
+      <td colspan="8">
+        NFR 1. Interoperability: The ontology must extend existing legal compliance ontologies (e.g. DPV) <br>
+        NFR 2. Scalability: The ontology should be adaptable/extensible for future developments. <br>
+        NFR 3. Usability: The ontology should support use by legal and non-legal stakeholders.
+      </td>
+    </tr>
+    <tr>
+      <th colspan="8"><strong>b. Functional Requirements: Groups of Competency Questions</strong></th>
+    </tr>
+    <tr>
+      <th colspan="4"><strong>CQG1. Related to AI Act obligations</strong></th>
+      <th colspan="4"><strong>CQG2. Related to Organisational Governance</strong></th>
+    </tr>
+    <tr>
+      <td colspan="4" style="width: 7.25cm;">
+        CQ1. When was the FRIA conducted? <br>
+        CQ2. What is the Intended Purpose of the AI system? <br>
+        CQ3. What are the risks, consequences, impacts? <br>
+        CQ4. What are the mitigation measures?
+      </td>
+      <td colspan="4" style="width: 7.25cm;">
+        CQ5. What is the outcome of the FRIA process? <br>
+        CQ6. What fundamental rights are affected? <br>
+        CQ7. What authorities are notified for the FRIA? <br>
+        CQ8. What documentation/tools were used for FRIA?
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="state-of-the-art">State of the Art</h2>
+<p>Within ontology engineering methodologies based on semantic web,
+including LOT, the reuse of existing ontologies is heavily recommended.
+Therefore, following the requirements specification, we explore the
+state of the art to identify relevant resources and assess the extent to
+which they can be reused to implement our FRIA ontology. In this, we
+divide the existing literature in two categories: first, existing
+ontologies that directly and explicitly address FRIA, or if not, then
+the AI Act; and second, ontologies that address similar mechanisms such
+as DPIA under GDPR, or impact assessments based on established
+procedures such as ISO standards.</p>
+<h3 id="existing-ontologies-for-fria-and-ai-act">Existing Ontologies for
+FRIA and AI Act</h3>
+<p>Given the recency of the AI Act in terms of development and
+finalisation, few approaches have emerged that provide ontologies
+modelling it. Golpayegani et al. were one of the first approaches to
+model the requirements of the AI Act as an ontology through the AI Risk
+Ontology (AIRO) <span class="citation"
+data-cites="golpayegani2022airo"><a href="#ref-golpayegani2022airo"
+role="doc-biblioref">[5]</a></span> - an OWL2 ontology based on an early
+draft version of the AI Act. AIRO provides a risk management ontology
+based on the requirements of the AI Act and ISO standards, and acts as
+the upper ontology for Vocabulary of AI Risks (VAIR) <span
+class="citation" data-cites="golpayegani2023high"><a
+href="#ref-golpayegani2023high" role="doc-biblioref">[6]</a></span>.
+Golpayegani et al. have demonstrated the use of AIRO and VAIR to model
+the high-risk use-cases defined in AI Act Annex III as a logical group
+of semantic concepts and showed that logical reasoning or validation
+approaches such as SHACL can be used to determine whether the use-case
+is high-risk under the AI Act <span class="citation"
+data-cites="golpayegani2023high"><a href="#ref-golpayegani2023high"
+role="doc-biblioref">[6]</a></span>. Golpayegani et al. have also
+developed the AI Card <span class="citation"
+data-cites="golpayeganiAICardsApplied2024"><a
+href="#ref-golpayeganiAICardsApplied2024"
+role="doc-biblioref">[7]</a></span> as a visual approach for documenting
+the AI system through the use of AIRO and VAIR as its machine-readable
+representation. AIRO and VAIR provide concepts required in the AI Act
+such as stakeholders, AI processes, and risk management, but do not
+contain a modelling of the FRIA.</p>
+<p>Hernandez et al. developed the Trustworthy AI Requirements Ontology
+(TAIR) <span class="citation" data-cites="hernandez2024open"><a
+href="#ref-hernandez2024open" role="doc-biblioref">[8]</a></span> which
+models the clauses of the AI Act and of relevant ISO standards as a
+series of requirements and compares them to identify where such
+standards would be useful for compliance with the AI Act. This work
+addresses the requirement for using ‘Harmonised Standards’ in the AI
+Act, and includes concepts regarding impact assessments and risk
+management, albeit these are based on a draft version of the AI Act.</p>
+<p>Though not providing an ontology or directly addressing the final AI
+Act requirements, these works provide an exploration of the FRIA
+requirements by identifying information involved in conducting a FRIA:
+the FRIA template produced in the ALIGNER h3020 project <span
+class="citation" data-cites="FundamentalRightsImpact"><a
+href="#ref-FundamentalRightsImpact" role="doc-biblioref">[9]</a></span>,
+an analysis of the FRIA requirements in AI Act by Mantelero <span
+class="citation" data-cites="manteleroFundamentalRightsImpact2024"><a
+href="#ref-manteleroFundamentalRightsImpact2024"
+role="doc-biblioref">[10]</a></span>, the rights impact assessments for
+algorithmic systems by Gerards et. al <span class="citation"
+data-cites="gerardsFundamentalRightsAlgorithms2022"><a
+href="#ref-gerardsFundamentalRightsAlgorithms2022"
+role="doc-biblioref">[11]</a></span>, the algorithmic impact assessment
+published by the Govt. of Canada <span class="citation"
+data-cites="governmentofcanadaAlgorithmicImpactAssessment2024"><a
+href="#ref-governmentofcanadaAlgorithmicImpactAssessment2024"
+role="doc-biblioref">[12]</a></span>, a quantified risk score for impact
+on fundamental rights by Inverardi et. al. <span class="citation"
+data-cites="inverardiFundamentalRightsAI2024"><a
+href="#ref-inverardiFundamentalRightsAI2024"
+role="doc-biblioref">[13]</a></span>, a method for assessing the
+severity of impacts on fundamental rights by Malgieri and Santos <span
+class="citation" data-cites="malgieriAssessingSeverityImpacts2024"><a
+href="#ref-malgieriAssessingSeverityImpacts2024"
+role="doc-biblioref">[14]</a></span>, and an interpretation of the draft
+AI Act’s FRIA requirements by Janssen et. al <span class="citation"
+data-cites="janssenPracticalFundamentalRights2022"><a
+href="#ref-janssenPracticalFundamentalRights2022"
+role="doc-biblioref">[15]</a></span></p>
+<h3
+id="existing-ontologies-for-dpia-gdpr-and-impact-assessments">Existing
+Ontologies for DPIA, GDPR, and Impact Assessments</h3>
+<p>In comparison to the AI Act, the GDPR has been in effect for 6 years,
+and has been addressed through several surveys on compliance approaches
+and developed ontologies <span class="citation"
+data-cites="esteves2024analysis kurteva2024consent zaguir2024challenges"><a
+href="#ref-esteves2024analysis" role="doc-biblioref">[16]</a>–<a
+href="#ref-zaguir2024challenges" role="doc-biblioref">[18]</a></span>.
+Notable approaches in these include the ontology of privacy requirements
+by Gharib et al. <span class="citation"
+data-cites="gharib2020ontology"><a href="#ref-gharib2020ontology"
+role="doc-biblioref">[19]</a></span>, The core ontology for privacy
+requirements (CoPri), <span class="citation"
+data-cites="gharib2021copri"><a href="#ref-gharib2021copri"
+role="doc-biblioref">[20]</a></span> which provides a framework for
+modelling legal processes and requirements, Privacy Ontology for Legal
+Reasoning (PrOnto) <span class="citation"
+data-cites="palmirani2018pronto"><a href="#ref-palmirani2018pronto"
+role="doc-biblioref">[21]</a></span> which provides concepts with the
+aim of modelling legal norms and assessing them through deontic
+reasoning, and the Data Privacy Vocabulary (DPV) <span class="citation"
+data-cites="panditDataPrivacyVocabulary2024"><a
+href="#ref-panditDataPrivacyVocabulary2024"
+role="doc-biblioref">[22]</a></span> which is an output of the W3C Data
+Privacy Vocabularies and Controls Community Group (DPVCG), and provides
+an extensible collection of vocabularies for modelling legal concepts
+associated with data and technologies.</p>
+<p>Of these, only the DPV has the community and infrastructure
+supporting the continuos development and refinement of the resource, and
+is also the only resource that had modelled GDPR which has been expanded
+to also model the AI Act using the same core concepts <span
+class="citation" data-cites="panditDataPrivacyVocabulary2024"><a
+href="#ref-panditDataPrivacyVocabulary2024"
+role="doc-biblioref">[22]</a></span>. The DPV is also the only resource
+we know of that provides rich taxonomies to represent real-world
+concepts associated with the ontological concepts e.g. for purposes and
+data categories. The DPV features a TECH extension which provides
+concepts for modelling the technology lifecycle, stakeholders, and
+documentation, the RISK extension for modelling risk assessments, and
+the AI extension which extends these to provide AI-specific concepts. In
+DPV, the legal concepts derived from specific regulations are provided
+in a separate namespace from these other ‘core’ vocabularies, and DPV
+provides such legal extensions for EU GDPR and the EU AI Act. The DPV’s
+GDPR extension provides concepts modelling the DPIA process based on
+<span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span>. At the moment, the DPVCG is
+integrating AIRO <span class="citation"
+data-cites="golpayegani2022airo"><a href="#ref-golpayegani2022airo"
+role="doc-biblioref">[5]</a></span> and VAIR <span class="citation"
+data-cites="golpayegani2023high"><a href="#ref-golpayegani2023high"
+role="doc-biblioref">[6]</a></span> in to the AI and AI Act
+extensions.</p>
+<h2 id="fria-ontology">FRIA Ontology</h2>
+<p>Our objective is to develop an ontology to model the FRIA as defined
+in the AI Act Article 27 as an information process through which
+stakeholders such as deployers and authorities can create automated
+technological tools to support the compliance activities. For ensuring
+our ontology is interoperable and extensible, we utilise semantic web
+standards such as RDF to represent it, SKOS to create a vocabulary or
+thesauri, and RDFS and OWL2 for knowledge representation. We follow the
+Linked Open Terms (LOT) <span class="citation"
+data-cites="poveda2022lot"><a href="#ref-poveda2022lot"
+role="doc-biblioref">[4]</a></span> as the methodology for ontology
+engineering, which strongly recommends reusing existing ontologies where
+relevant. For this, from Section 3, we identified AIRO <span
+class="citation" data-cites="golpayegani2022airo"><a
+href="#ref-golpayegani2022airo" role="doc-biblioref">[5]</a></span> and
+VAIR <span class="citation" data-cites="golpayegani2023high"><a
+href="#ref-golpayegani2023high" role="doc-biblioref">[6]</a></span> as
+the most relevant ontologies for the AI Act, and the DPV <span
+class="citation" data-cites="panditDataPrivacyVocabulary2024"><a
+href="#ref-panditDataPrivacyVocabulary2024"
+role="doc-biblioref">[22]</a></span> as a useful resource for practical
+use of legal concepts. Since AIRO and VAIR are being integrated for the
+upcoming DPV version 2.1, we aim to support this integration by
+identifying the concepts not present in these existing ontologies.</p>
+<p>DPV is provided with RDFS+SKOS semantics as the ‘default
+serialisation’, with a separate namespace used for OWL2 semantics to
+support the use of concepts beyond the strict requirements of logical
+constraints when using OWL2. Following this, we provide the concepts
+necessary to model the FRIA in this article which can then be expanded
+as more information is available to represent real-world constraints and
+logical assertions using OWL2 or another method.</p>
+<p>The concept for Fundamental Rights Impact Assessments (FRIA) already
+exists within the main DPV as <code>dpv:FRIA</code>, and is extended as
+<code>eu-aiact:FRIA</code> in AI Act extension to represent the FRIA as
+defined within the AI Act. This concept represents the FRIA as both an
+activity and as an artefact (e.g. a document). Therefore, in our FRIA
+ontology, we create separate explicit concepts for modelling the
+information and steps involved in the DPIA process by expanding this
+central concept.</p>
+<p>Based on the interpretation of the FRIA in AI Act Article 27, and by
+using existing work interpreting the DPIA in GDPR as a series of steps
+that are represented through an ontology <span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span>, we identified the following groups
+of concepts for our ontology:</p>
+<ol>
+<li><p><strong>FRIA Metadata:</strong> concepts representing relevant
+metadata regarding the FRIA such as when it was conducted, by whom, for
+which AI systems, etc.;</p></li>
+<li><p><strong>FRIA Necessity:</strong> concepts representing the step
+where a necessity for conducting a FRIA is identified as per AI Act
+Article 27-1;</p></li>
+<li><p><strong>FRIA Inputs:</strong> concepts representing the inputs
+required in a FRIA as per AI Act Article 27-1, and the reuse of a DPIA
+as per AI Act Article 27-4;</p></li>
+<li><p><strong>FRIA Outcomes:</strong> concepts representing the
+outcomes identified from conducting a FRIA as per AI Act Article
+27-1;</p></li>
+<li><p><strong>FRIA Notifications:</strong> concepts representing the
+step where a FRIA to be communicated to an authority as per AI Act
+Article 27-3;</p></li>
+<li><p><strong>FRIA Automated Tools:</strong> the use of questionnaire
+and/or automated tools as per AI Act Article 27-5.</p></li>
+</ol>
+<p>We use the following namespaces and prefixes in describing our
+proposed ontology:</p>
+<ul>
+<li><p>Our proposed ontology: <em>https://example.com/FRIA#</em> with
+prefix <code>fria:</code>.</p></li>
+<li><p>DCMI Metadata Terms: <code>http://purl.org/dc/terms/</code> with
+prefix <code>dct</code>.</p></li>
+<li><p>DPV: <em>https://w3id.org/dpv#</em> with prefix
+<code>dpv:</code>.</p></li>
+<li><p>DPV TECH extension: <em>https://w3id.org/dpv/tech#</em> with
+prefix <code>tech:</code>.</p></li>
+<li><p>DPV RISK extension: <em>https://w3id.org/dpv/risk#</em> with
+prefix <code>risk:</code>.</p></li>
+<li><p>DPV AI extension: <em>https://w3id.org/dpv/ai#</em> with prefix
+<code>ai:</code>.</p></li>
+<li><p>DPV EU AI Act extension:
+<em>https://w3id.org/dpv/legal/eu/aiact#</em> with prefix
+<code>eu-aiact:</code>.</p></li>
+</ul>
+<h3 id="metadata-for-fria">Metadata for FRIA</h3>
+<p>A FRIA, as a documentation requirement under the AI Act, is expected
+to be regularly updated as per Article 27-2 “the deployer shall take the
+necessary steps to update the information”. Therefore it is necessary to
+indicate temporal information and provenance associated with the FRIA.
+For these, we reuse prior work establishing the reuse of DCMI terms for
+GDPR’s DPIA <span class="citation"
+data-cites="panditSemanticSpecificationData2022"><a
+href="#ref-panditSemanticSpecificationData2022"
+role="doc-biblioref">[3]</a></span> regarding temporal information
+(<code>dct:created</code>, <code>dct:modified</code>,
+<code>dct:dateSubmitted</code>, <code>dct:dateAccepted</code>,
+<code>dct:temporal</code>, <code>dct:valid</code>), conformance e.g.
+codes of conduct (<code>dct:conformsTo</code>), descriptions
+(<code>dct:title</code>, <code>dct:description</code>), identifier or
+version (<code>dct:identifier</code>, <code>dct:isVersionOf</code>), and
+subject or scope (<code>dct:subject</code>, and
+<code>dct:coverage</code>).</p>
+<p>To record provenance, we suggest reusing <code>dct:publisher</code>
+to record the organisation responsible for conducting the FRIA,
+<code>dct:contributor</code> to denote the personnel and entities
+involved, and <code>dct:provenance</code> to refere to a log of changes.
+Additionally, <code>dct:creator</code> can record the specific entity or
+tool used to ‘create’ the resource - which is relevant as the AI Act
+Article 27-5 explicitly provides for the use of automated tools in the
+FRIA process.</p>
+<h3 id="concepts-to-represent-necessity-of-fria">Concepts to represent
+necessity of FRIA</h3>
+<p>AI Act Article 27-1 describes the conditions under which a FRIA is
+necessary. An organisation therefore has the obligation to first assess
+whether it must conduct a FRIA. We represent this process through the
+concept <code>fria:FRIANecessityAssessment</code> which extends the
+existing <code>eu-aiact:FRIA</code> concept and can be associated with a
+FRIA using the relation <code>dpv:hasAssessment</code>. To represent the
+specific outputs of this process, we create the concepts
+<code>fria:FRIANecessityStatus</code> which is associated with the
+assessment using the relation <code>dpv:hasStatus</code>. To represent
+specific outcomes, we create the instances
+<code>fria:FRIARequired</code> and
+<code>fria:FRIANotRequired</code>.</p>
+<h3 id="concepts-to-represent-inputs-of-fria">Concepts to represent
+inputs of FRIA</h3>
+<p>We represent the process of carrying out the FRIA as the concept
+<code>fria:FRIAProcedure</code> which extends the existing
+<code>eu-aiact:FRIA</code> concept and can be associated with a FRIA
+using the relation <code>dpv:hasAssessment</code>. AI Act Article 27-1
+describes the information which must be included when conducting a FRIA,
+which we interpret as follows:</p>
+<ol>
+<li><p>Article 27-1a description of the deployer’s processes:
+represented by extending <code>dpv:Process</code> as the concept
+<code>fria:AIProcess</code>, and associated using the relation
+<code>dpv:hasProcess</code>. This follows the DPV’s modelling of similar
+processes for GDPR where a <code>dpv:Process</code> provides a way to
+combine other concepts such as purposes, data, technologies, and
+entities in specific roles.</p></li>
+<li><p>Article 27-1a intended purpose: represented by the existing
+<em>eu-aiact:IntendedPurpose</em> whose parent is <em>dpv:Purpose</em>,
+and is assocaited using the relation <code>dpv:hasPurpose</code>. Note
+that the AI Act’s intended purpose is a broad concept that goes beyond
+DPV’s modelling of purpose as referring to the objective or goal,
+whereas intended purpose includes details such as the AI technique and
+data involved. Therefore, we suggest also modelling
+<code>eu-aiact:IntendedPurpose</code> as the subclass of
+<code>dpv:Process</code>.</p></li>
+<li><p>Article 27-1b period of time: represented using
+<em>dpv:Duration</em> and associated using the relation
+<code>dpv:hasDuration</code>. DPV provides enumerated concepts for
+different durations such as endless, fixed, temporal, until event, and
+until time.</p></li>
+<li><p>Article 27-1b frequency: represented using <em>dpv:Frequency</em>
+and associated using the relation <code>dpv:hasFrequency</code>. DPV
+provides enumerated concepts for different frequencies such as
+continous, often, singular, and sporadic.</p></li>
+<li><p>Article 27-1b intended to be used: represented as
+<em>fria:IntendedUse</em>, where we interpret this concept to be
+different from <em>aiact:IntendedPurpose</em> as the ‘purpose’ is a
+declaration of why the AI system is needed or to be used, and ‘use’ is
+the contextual application of that purpose in specific scenarios or
+‘deployments’. The same AI system with one intended purpose can thus
+have different intended uses in separate scenarios e.g. through variance
+in input and output data (including decisions produced), human subjects
+involved, hardware and software being used. DPV already contains the
+concept <code>tech:IntendedUse</code>, which should be the parent of
+this concept.</p></li>
+<li><p>Article 27-1c categories of natural persons and groups: which can
+be represented using the existing concept <code>dpv:DataSubject</code>
+provided in DPV with a taxonomy of categories such as tourists, adults,
+minors. Though, data subject in DPV is currently defined as per the GDPR
+in terms of natural persons whose data is being processed, which is not
+compatible with our intended concept here. AIRO has
+<code>AISubject</code> which is defined as natural persons subjected to
+the use of AI which is more in line with what we want to model.
+Therefore, to avoid duplication of these categories under AISubject, and
+to avoid backwards incompatible changes to DPV as it is being actively
+used, we propose either changing the definition of data subject to
+include ‘data and AI subjects’ - following a similar change made in DPV
+2.0 where the term remains the same <code>dpv:DataSubject</code> but its
+use now encompasses any data or technology including AI. Or, to create a
+new concept called <code>dpv:HumanSubject</code> as the parent of
+<code>dpv:DataSubject</code> and <code>airo:AISubject</code>, and move
+the taxonomy of data and AI subjects under it.</p></li>
+<li><p>Article 27-1c likely to be affected by its use in the specific
+context: where likely is represented by <code>dpv:Likelihood</code> and
+associated using <code>dpv:hasLikelihood</code>. Affected is interpreted
+as referring to a <code>dpv:Consequence</code> taking place with its
+subcategory <code>dpv:Impact</code> - which are associated using
+<code>dpv:hasConsequence</code> and <code>dpv:hasImpact</code>
+respectively. The entity or thing being affected is associated using
+<code>dpv:hasConsequenceOn</code> and <code>dpv:hasImpactOn</code>
+respectively. In DPV, consequence is the general term for referring to
+events such as failure of equipment, and impact is the preferred term
+for referring to entities being (significantly) affected such as through
+physical harm or loss of resources.</p></li>
+<li><p>Article 27-1d risks of harm: are represented by using
+<code>dpv:Risk</code> for the risk, with the concept
+<code>risk:Harm</code> to refer to harm. The RISK extension provides
+further concepts for modelling different categories of harms e.g.
+<code>risk:PhysicalHarm</code>. It also models these concepts as
+<code>dpv:</code> to enable their use in different roles across
+use-cases e.g. <code>risk:Harm</code> as a risk source, risk,
+consequence, or impact through the use of relevant relations.</p></li>
+<li><p>Article 27-1e human oversight measures: represented using
+<code>dpv:HumanInvolvementForOversight</code> along with other
+<code>dpv:HumanInvolvementConcepts</code>. DPV also provides additional
+taxonomies to represent whether the entity can perform some activity
+(<code>dpv:EntityPermissiveInvolvement</code>) such as correcting
+outputs or cannot perform an activity
+(<code>dpv:EntityNonPermissiveInvolvement</code>) such as not being able
+to opt out.</p></li>
+<li><p>Article 27-1e instructions for use: this is represented using
+<code>eu-aiact:InstructionsForUse</code> which extends from
+<code>tech:Documentation</code>.</p></li>
+<li><p>Article 27-1f measures to be taken in the case of the
+materialisation of those risks: this is represented using
+<code>dpv:RiskMitigationMeasure</code>, where the specific measures
+mentioned in this clause include - arrangements for internal governance
+and complaint mechanism, represented by
+<code>dpv:GovernanceProcedures</code> and its more specific form
+<code>dpv:IncidentManagementProcedures</code> and
+<code>dpv:IncidentReportingCommunication</code>.</p></li>
+</ol>
+<p>In addition to these, Article 27-2 mentions the FRIA can “rely on
+previously conducted fundamental rights impact assessments or existing
+impact assessments carried out by provider”, which we interpret as the
+case where previous FRIA are used as inputs. Therefore, we suggest
+reusing <code>dpv:hasData</code> to indicate when existing FRIA act as
+inputs to the current FRIA process.</p>
+<p>Similarly, Article 27-4 refers to the FRIA ‘complementing a DPIA’
+where the DPIA covers some obligations related to the FRIA. As before,
+we also interpret this case as providing for a DPIA to be reused within
+the FRIA process, which can be expressed by using the relevant DPV
+concepts to represent DPIA and associating it with a FRIA through the
+relation <code>dpv:hasData</code>.</p>
+<p>In the above, we have modelled our concepts based on the necessity to
+document the information as required within the AI Act. An alternative
+method to document these obligations is through the use of the PROV-O
+ontology <span class="citation" data-cites="lebo2013prov"><a
+href="#ref-lebo2013prov" role="doc-biblioref">[23]</a></span> where each
+step is an activity with specific inputs and outputs, and where the
+provenance of activities and input/output artefacts is to be maintained
+as logs.</p>
+<h3 id="concepts-to-represent-outcomes-of-fria">Concepts to represent
+outcomes of FRIA</h3>
+<p>AI Act’s Article 27-1 states the FRIA’s objective is to produce an
+“assessment of the impact on fundamental rights that the use of (AI)
+system may produce”, which in the simplest interpretation implies a
+boolean categorisation as to whether there is or isn’t an impact on
+fundamental rights. We therefore represent the process of determining
+the outcome of a FRIA process as the concept
+<code>fria:FRIAOutcome</code>, which extends the existing
+<code>eu-aiact:FRIA</code> concept and can be associated with a FRIA
+using the relation <code>dpv:hasAssessment</code>. And to represent the
+outcomes, we model these as statuses through the concept
+<code>fria:FRIAOutcomeStatus</code> which can be associated by using the
+relation <code>dpv:hasStatus</code>.</p>
+<p>We also create instances to represent the specific outcomes possible
+as per Article 27:</p>
+<ol>
+<li><p><code>fria:FRIAOutcomeUnacceptableRisk</code>: FRIA outcome
+status indicating that there is an unacceptable risk to fundamental
+rights, implying the AI system should not be used.</p></li>
+<li><p><code>fria:FRIAOutcomeHighResidualRisk</code>: FRIA outcome
+status indicating high residual risk to fundamental rights which are not
+acceptable for continuation.</p></li>
+<li><p><code>fria:FRIAOutcomeRisksAcceptable</code>: FRIA outcome status
+indicating residual risks to fundamental rights remain and are
+acceptable for continuation.</p></li>
+<li><p><code>fria:FRIAOutcomeRisksMitigated</code>: FRIA outcome status
+indicating (all) risks to fundamental rights have been mitigated and it
+is safe for continuation.</p></li>
+</ol>
+<p>As part of the FRIA procedure and the outcome process, it is
+essential to identify the relevant fundamental rights which might be
+impacted. Therefore, we reuse the DPV’s extension modelling the EU
+Charter of Fundamental Rights and Freedoms where each article within the
+charter is represented as an instance of <code>dpv:Right</code>. To
+represent which right is impacted, we reuse the concept
+<code>risk:ImpactToRights</code> along with the relevant instance of
+fundamental right, and associate it by using the relation
+<code>dpv:hasImpact</code>.</p>
+<p>To enable the granular investigation of impact on rights as required
+in the FRIA process, we identify the need to to create impact concepts
+for each right in a manner that allows directly stating that right has
+been impacted e.g. <em>Impact on Right of Non-Discrimination</em>. We
+also argue that it would be useful to further represent such impacts at
+an even more granular level by creating concepts representing impacts on
+specific <em>requirements</em> within the right e.g. to state there has
+been an impact on this right due to discrimination based on a specific
+category such as sex, race, gender, etc. as mentioned in Article 21 of
+the Charter. We propose such concepts be added to the DPV’s extension
+modelling fundamental rights so that they can be readily used with the
+rest of DPV’s risk and impact assessment concepts.</p>
+<h3 id="concepts-to-represent-notification-of-fria">Concepts to
+represent notification of FRIA</h3>
+<p>AI Act Article 27-3 states that upon completion of a FRIA, a deployer
+“shall notify the market surveillance authority of its results”. We
+represent this step as the concept
+<code>fria:FRIANotificationAssessment</code>, which extends the existing
+<code>eu-aiact:FRIA</code> concept and can be associated with a FRIA
+using the relation <code>dpv:hasAssessment</code>. This steps requires
+an assessment of whether the notification is required to be sent, or if
+there is an exception as Article 27-3 also states “In the case referred
+to in Article 46(1), deployers may be exempt from that obligation to
+notify”.</p>
+<p>To represent whether a notification is needed and has been
+communicated, or is exempt, we create the concept
+<code>fria:FRIANotificationStatus</code> which extends
+<code>dpv:Status</code> and its instances:</p>
+<ol>
+<li><p><code>fria:FRIANotificationNeeded</code> for when a notification
+has been identified as being needed, and requires further assessment for
+whether it is required to be sent or is exempt;</p></li>
+<li><p><code>fria:FRIANotificationNotSent</code> for when a FRIA
+notification is identified as being required but it not sent
+yet;</p></li>
+<li><p><code>fria:FRIANotificationSent</code> for when the notification
+is sent; and</p></li>
+<li><p><code>fria:FRIANotificationExempt</code> for which the obligation
+to notify is exempt as per Article 46-1. As each market surveillance
+authority will have the ability to create exemptions, we also note the
+possibility to expand this concept for different jurisdictions based on
+the DPV’s modular legal framework.</p></li>
+</ol>
+<p>DPV contains several notices for obligations under GDPR such as for
+privacy notice, data breach reporting, rights exercise notices - and
+also provide guidance on modelling the information and metadata
+involved. We therefore reuse this method of using ‘notices’ to indicate
+communication of information between entities, and represent information
+in a FRIA notification the concept <code>fria:FRIANotice</code> by
+extending <code>dpv:Notice</code>, which can be associated using
+<code>dpv:hasNotice</code>.</p>
+<h3 id="fria-questionnaire-and-automated-tool">FRIA Questionnaire and
+Automated Tool</h3>
+<p>AI Act Article 27-5 states the existence of a questionnaire based on
+a template that the deployers can use to complete the FRIA obligations,
+such as in Article 27-3 for communicating the FRIA to market
+surveillance authorities by submitting the filled out questionnaire
+template. The AI Act Article 27-5 further states that the questionnaire,
+“including through an automated tool”, is intended “to facilitate
+deployers in complying with their obligations under this Article” -
+which means that the FRIA questionnaire and documentation in some part
+can be based on automated tools.</p>
+<p>To represent these processes, we find two interpretations based on
+the word ‘template’ having two meanings. First interpretation consists
+of three artefacts - a template questionnaire used to create a
+questionnaire, which is then used by deployers to create a filled out
+questionnaire. The second interpretation consists of two artefacts - a
+questionnaire is used by the deployer to create a filled out
+questionnaire. We follow it is the second interpretation, and represent
+it through the concepts <em>fria:FRIAQuestionnaire</em> to represent the
+template questionnaire that is given to be filled out by the deployer,
+and extend it as <em>aiact:FRIACompletedQuestionnaire</em> to represent
+the filled out questionnaire which the deployer can send in their notice
+to the market surveillance authority.</p>
+<p>To represent the involvement of tools as per Article 27-5, we create
+the conecpt <em>aiact:FRIATool</em> which extends
+<code>dpv:Technology</code>. This enables the reuse of DPV TECH
+extension concepts regarding the modality (e.g. service, product),
+stakeholders (e.g. developer, user), and other relevant data to be
+modelled using existing concepts. The tool can be represented as being
+used in relevant steps of the FRIA by associating it with the
+<code>dpv:isImplementedUsingTechnology</code> relation.</p>
+<p>We do not think it is necessary to explicitly define the tool as
+being automated given the purpose of the ontology is to create
+information systems which by definition use automation in some form.
+That being said, automated here can be interpreted to have different
+meanings within the context of “to facilitate deployers in complying
+with their obligations under this Article in a simplified manner”. The
+tool can be used to determine necessity, to assist in collecting and
+organising input information, to determine - manually or through
+reasoning - whether there is an impact on rights, and to support
+notification to authority <em>aiact:FRIANotificationProcedure</em>.</p>
+<h2 id="conclusion-future-work">Conclusion &amp; Future Work</h2>
+<p>Our work represents the first ontology for modelling the Fundamental
+Rights Impact Assessments (FRIA) under the AI Act in terms of the
+information involved as well as the procedure for conducting FRIA
+itself. As we utilised well-established standards in the legal domain -
+namely the semantic web standards - our ontology enables the use of
+machine-readable information that is interoperable, extensible, and
+well-structured by default. Through this, we enable the creation of
+automated tools to assist with the FRIA processes that can use our
+ontology to structure and use information in a consistent manner across
+use-cases. By being a semantic web ontology, our approach permits using
+existing standards for information retrieval such as SPARQL, and for
+SHACL for validation. It also facilitates use of logical semantic
+reasoning to infer additional information - such as specific risks and
+impacts, and to ensure completeness and correctness of information.</p>
+<p>We developed our ontology by utilising and extending the Data Privacy
+Vocabulary (DPV), which is a state of the art resource that is
+continuously developed, and provides a modular approach to representing
+legal concepts across jurisdictions. This enables the development of
+practical tools that not only address the FRIA, but are also compatible
+with the existing and potential uses of DPV in legal processes
+associated with compliance, documentation, and communication. Our future
+work therefore consists of integrating our proposed concepts in DPV by
+participating within the W3C Data Privacy Vocabularies and Controls
+Community Group (DPVCG), developing a prototype FRIA questionnaire and
+automated tool that uses and maintains information based on our ontology
+and DPV, and performing experiments to understand its utility for
+different stakeholders such as organisations, auditors, market
+surveillance authorities, and the AI Office.</p>
+<div class="acknowledgments">
+<p>This work was funded by the ADAPT SFI Centre for Digital Media
+Technology, which is funded by Science Foundation Ireland through the
+SFI Research Centres Programme and is co-funded under the European
+Regional Development Fund (ERDF) through Grant#13/RC/2106_P2.
+Harshvardhan J. Pandit is the current chair of the W3C Data Privacy
+Vocabularies and Controls Community Group (DPVCG) and the
+editor/maintainer of Data Privacy Vocabulary (DPV).</p>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-EU_AIAct" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“Regulation 2024/1689 <span>Of The
+European Parliament And Of The Council</span> of 13 <span>June</span>
+2024 laying down harmonised rules on <span>Artificial
+Intelligence</span> (<span>Artificial Intelligence Act</span>).”</span>
+Jul-2024. </div>
+</div>
+<div id="ref-EU_GDPR" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline"><span>“Regulation (<span>EU</span>) 2016/679 of
+the <span>European Parliament</span> and of the <span>Council</span> of
+27 <span>April</span> 2016 on the protection of natural persons with
+regard to the processing of personal data and on the free movement of
+such data, and repealing <span>Directive</span> 95/46/<span>EC</span>
+(<span>General Data Protection Regulation</span>),”</span> <em>Official
+Journal of the European Union</em>, vol. L119, May 2016. </div>
+</div>
+<div id="ref-panditSemanticSpecificationData2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">H.
+J. Pandit, <span>“A <span>Semantic Specification</span> for <span>Data
+Protection Impact Assessments</span> (<span>DPIA</span>),”</span>
+<em>Towards a Knowledge-Aware AI</em>, pp. 36–50, 2022, doi: <a
+href="https://doi.org/10.3233/SSW220007">10.3233/SSW220007</a>. </div>
+</div>
+<div id="ref-poveda2022lot" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">M.
+Poveda-Villalón, A. Fernández-Izquierdo, M. Fernández-López, and R.
+Garcı́a-Castro, <span>“LOT: An industrial oriented ontology engineering
+framework,”</span> <em>Engineering Applications of Artificial
+Intelligence</em>, vol. 111, p. 104755, 2022. </div>
+</div>
+<div id="ref-golpayegani2022airo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“Airo: An ontology for
+representing ai risks based on the proposed eu ai act and iso risk
+management standards,”</span> in <em>Towards a knowledge-aware AI</em>,
+IOS Press, 2022, pp. 51–65. </div>
+</div>
+<div id="ref-golpayegani2023high" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“To be high-risk, or not
+to be—semantic specifications and implications of the AI act’s high-risk
+AI applications and harmonised standards,”</span> in <em>Proceedings of
+the 2023 ACM conference on fairness, accountability, and
+transparency</em>, 2023, pp. 905–915. </div>
+</div>
+<div id="ref-golpayeganiAICardsApplied2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">D.
+Golpayegani <em>et al.</em>, <span>“<span>AI Cards</span>:
+<span>Towards</span> an <span>Applied Framework</span> for
+<span>Machine-Readable AI</span> and <span>Risk Documentation
+Inspired</span> by the <span>EU AI Act</span>,”</span> in <em>Privacy
+<span>Technologies</span> and <span>Policy</span></em>, 2024, vol.
+14831, pp. 48–72, doi: <a
+href="https://doi.org/10.1007/978-3-031-68024-3_3">10.1007/978-3-031-68024-3_3</a>.
+</div>
+</div>
+<div id="ref-hernandez2024open" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J.
+Hernandez, D. Golpayegani, and D. Lewis, <span>“An open knowledge
+graph-based approach for mapping concepts and requirements between the
+EU AI act and international standards,”</span> <em>arXiv preprint
+arXiv:2408.11925</em>, 2024. </div>
+</div>
+<div id="ref-FundamentalRightsImpact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline"><span>“<span>Fundamental Rights Impact
+Assessment (FRIA) <span></span> aligner</span>.”</span>
+https://aligner-h3020.eu/fundamental-rights-impact-assessment-fria/,
+2021. </div>
+</div>
+<div id="ref-manteleroFundamentalRightsImpact2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">A.
+Mantelero, <span>“The <span>Fundamental Rights Impact Assessment</span>
+(<span>FRIA</span>) in the <span>AI Act</span>: <span>Roots</span>,
+legal obligations and key elements for a model template,”</span>
+<em>Computer Law &amp; Security Review</em>, vol. 54, p. 106020, Sep.
+2024, doi: <a
+href="https://doi.org/10.1016/j.clsr.2024.106020">10.1016/j.clsr.2024.106020</a>.
+</div>
+</div>
+<div id="ref-gerardsFundamentalRightsAlgorithms2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">J.
+Gerards, M. T. Schaefer, A. Vankan, and I. Muis, <span>“Fundamental
+<span>Rights</span> and <span>Algorithms Impact
+Assessment</span>.”</span> 2022. </div>
+</div>
+<div id="ref-governmentofcanadaAlgorithmicImpactAssessment2024"
+class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div
+class="csl-right-inline">Government of Canada, <span>“Algorithmic
+<span>Impact Assessment</span> tool.”</span> May-2024. </div>
+</div>
+<div id="ref-inverardiFundamentalRightsAI2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">N.
+Inverardi <em>et al.</em>, <span>“Fundamental <span>Rights</span> and
+<span>AI Impact Assessment</span>: A proposal for a new quantitative
+approach,”</span> in <em>2024 <span>International Joint
+Conference</span> on <span>Neural Networks</span>
+(<span>IJCNN</span>)</em>, 2024, pp. 1–8, doi: <a
+href="https://doi.org/10.1109/IJCNN60899.2024.10650347">10.1109/IJCNN60899.2024.10650347</a>.
+</div>
+</div>
+<div id="ref-malgieriAssessingSeverityImpacts2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">G.
+Malgieri and C. Santos, <span>“<a
+href="https://doi.org/10.2139/ssrn.4875937">Assessing the
+(<span>Severity</span> of) <span>Impacts</span> on <span>Fundamental
+Rights</span></a>.”</span> Social Science Research Network, Rochester,
+NY, Jun-2024. </div>
+</div>
+<div id="ref-janssenPracticalFundamentalRights2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">H.
+Janssen, M. Seng Ah Lee, and J. Singh, <span>“Practical fundamental
+rights impact assessments,”</span> <em>International Journal of Law and
+Information Technology</em>, vol. 30, no. 2, pp. 200–232, Jun. 2022,
+doi: <a
+href="https://doi.org/10.1093/ijlit/eaac018">10.1093/ijlit/eaac018</a>.
+</div>
+</div>
+<div id="ref-esteves2024analysis" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">B.
+Esteves and V. Rodrı́guez-Doncel, <span>“Analysis of ontologies and
+policy languages to represent information flows in GDPR,”</span>
+<em>Semantic Web</em>, vol. 15, no. 3, pp. 709–743, 2024. </div>
+</div>
+<div id="ref-kurteva2024consent" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">A.
+Kurteva, T. R. Chhetri, H. J. Pandit, and A. Fensel, <span>“Consent
+through the lens of semantics: State of the art survey and best
+practices,”</span> <em>Semantic Web</em>, vol. 15, no. 3, pp. 647–673,
+2024. </div>
+</div>
+<div id="ref-zaguir2024challenges" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">N.
+A. Zaguir, G. H. Magalhães, and M. M. Spinola, <span>“Challenges and
+enablers for GDPR compliance: Systematic literature review and future
+research directions,”</span> <em>IEEE Access</em>, 2024. </div>
+</div>
+<div id="ref-gharib2020ontology" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M.
+Gharib, P. Giorgini, and J. Mylopoulos, <span>“An ontology for privacy
+requirements via a systematic literature review,”</span> <em>Journal on
+Data Semantics</em>, vol. 9, pp. 123–149, 2020. </div>
+</div>
+<div id="ref-gharib2021copri" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">M.
+Gharib, P. Giorgini, and J. Mylopoulos, <span>“COPri v. 2—a core
+ontology for privacy requirements,”</span> <em>Data &amp; Knowledge
+Engineering</em>, vol. 133, p. 101888, 2021. </div>
+</div>
+<div id="ref-palmirani2018pronto" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">M.
+Palmirani, M. Martoni, A. Rossi, C. Bartolini, and L. Robaldo,
+<span>“Pronto: Privacy ontology for legal reasoning,”</span> in
+<em>Electronic government and the information systems perspective: 7th
+international conference, EGOVIS 2018, regensburg, germany, september
+3–5, 2018, proceedings 7</em>, 2018, pp. 139–152. </div>
+</div>
+<div id="ref-panditDataPrivacyVocabulary2024" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">H.
+J. Pandit, B. Esteves, G. P. Krog, P. Ryan, D. Golpayegani, and J.
+Flake, <span>“Data <span>Privacy Vocabulary</span> (<span>DPV</span>) –
+<span>Version</span> 2.”</span> arXiv, Apr-2024 [Online]. Available: <a
+href="https://arxiv.org/abs/2404.13426">https://arxiv.org/abs/2404.13426</a>.
+[Accessed: 01-May-2024]</div>
+</div>
+<div id="ref-lebo2013prov" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">T.
+Lebo <em>et al.</em>, <span>“Prov-o: The prov ontology,”</span> <em>W3C
+recommendation</em>, vol. 30, 2013. </div>
+</div>
+</div>

@@ -1,0 +1,1890 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract:</strong> Decentralised data governance has emerged
+as an alternative model in response to the challenges of managing data
+and privacy in conventional centralised models. ‘Personal Data Stores’
+(PDS) are at the forefront of this movement and provide forms of control
+over storage and management of data to the individual with the goal of
+empowering them. In this article, we argue how PDS, while being
+important technological innovations, are challenging to implement in the
+current regulatory landscape as the interpretation of responsibilities
+under the GDPR is woefully inadequate for decentralised systems. This
+represents a challenge to the decentralisation movement and makes it
+difficult to empower and protect individuals under the GDPR (data
+subjects) using PDS. A thorough understanding of the technological and
+legal situation and therefore an interdisciplinary approach is essential
+to make policymakers aware of any efforts that still need to be made to
+realise the decentralisation paradigm’s goal. We therefore build upon
+research investigating GDPR compliance in decentralised data storage and
+management but do so through an interdisciplinary lens applied to an
+emerging application, Solid, that provides technical specifications for
+implementing it as the leading PDS implementation. By taking an
+interdisciplinary approach, we consider the interaction between the
+legal definitions from the GDPR and the implications of established case
+law with Solid’s technical specifications and its possible
+implementations. We conclude with recommendations regarding the division
+of responsibilities for policymakers, authorities, market participants
+and technical developers to simultaneously protect and empower those
+involved in the use of PDS, particularly through Solid. Furthermore, the
+role of decentralised systems such as Solid is discussed, as well as the
+current unclear regulatory landscape surrounding it in the context of
+implementing the Data Governance Act (DGA). The implications for further
+AI development and within data spaces are also considered.</p>
+<p><strong>Keywords:</strong> Decentralisation, Personal Data Stores,
+Solid, GDPR compliance, Empowerment and Data Protection.</p>
+
+<h2>Introduction</h2>
+<p>The conventional model that emerged with the proliferation and
+ubiquity of the internet consists of a centralised data governance
+structure where organisations collect, store, use, and share increasing
+amounts of personal data from individuals data within a single opaque
+technical infrastructure to provide services and to further their own
+interests. In response to this, decentralisation has emerged as an
+alternative governance solution. Power through, for example, forms of
+control and decision-making is thereby spread across a network of
+participants rather than relying on a single central authority. The
+best-known initial example of decentralising power was peer-to-peer
+(P2P) which was a network for sharing files and information, most
+famously used by Napster in 1999 and led to the creation of BitTorrent
+and other decentralised internet-based protocols in 2001.[<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>]
+Since that time, decentralised services have emerged in various models
+and modalities – such as for syncing files across devices, using ‘cloud’
+servers to process information, and recently in Bitcoin and its
+underlying blockchain technology.[<a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a>] Following that
+development and taking into account the GDPR’s focus on an individual’s
+ability to exercise a form of control over their personal data
+processing, legal scholars also began to focus on the benefits of
+‘Personal Information Management Systems’ (PIMS) or ‘Personal Data
+Stores’ (PDS) as technologies meant to provide individuals with access
+control [<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>] and transparency over their
+personal data. Processing data across multiple storage locations,
+managed by individuals, is thereby considered an alternative to the
+current context of centralised data processing.[<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>]
+Even the European Commission recognised the importance of PIMS and PDS
+in its recent Data Strategy[<a href="#fn5" class="footnote-ref"
+id="fnref5" role="doc-noteref"><sup>5</sup></a>], and in the creation of
+regulations such as the Data Governance Act (DGA)[<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>]
+and Data Act[<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>] which take into account
+decentralisation to manage control over information, and to provide the
+individual with an easier way of managing this control through roles
+such as ‘data intermediaries’ and responsibilities to support
+individuals in decision making regarding their data – such as regarding
+consent.</p>
+<p>Although PIMS and PDS represent important technological innovations,
+we argue that the legal landscape in the European Union (notably GDPR
+and its division of responsibilities) is insufficiently equipped to
+follow the evolving decentralisation paradigm. The legal landscape has a
+significant impact on the functioning of PDS services function within
+the market and on their societal and individual effects. For example,
+only those actors who have a clear comprehension of their
+responsibilities as either a controller or processor under the GDPR are
+able to put in place necessary processes and safeguards and indicate to
+the data subjects what responsibilities they should expect from such
+services. Only with such transparency and accountability can data
+subjects using PDS be simultaneously protected and empowered – otherwise
+there will be neither protection nor empowerment as responsibilities
+remain unclear both legally and in implementations. A thorough
+understanding of the technological and legal situation is thus essential
+to make policymakers aware of the efforts that still need to be made to
+evolve the interpretation of regulations such as the GDPR towards
+decentralised and individual-empowering paradigms.[<a href="#fn8"
+class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a>]</p>
+<p>In this article we address the challenge of a decentralised system to
+practically implement the GDPR and empower individuals by focusing on
+the leading PDS solution – called Social Linked Data (Solid). We choose
+Solid in particular as it is the only PDS that has a sufficiently
+advanced technical specification and has been deployed in practice by
+both government and industry actors, and enjoys significant attention in
+academic research. Moreover, the data are stored in a format following
+the principles of Linked Data[<a href="#fn9" class="footnote-ref"
+id="fnref9" role="doc-noteref"><sup>9</sup></a>] that applications using
+data understand, and so that the context, business logic and implicit
+assumptions around the data are immediately clear. This facilitates the
+extraction of value and knowledge. In this context, the concept of Solid
+can also be seen to play a role within the overarching narrative of data
+spaces. It could be argued that the Solid technical specifications serve
+a role within the context of data spaces, defining the decentralised
+manner in which data is stored and accessed with forms of control for
+data providers. In this respect, the Solid technical specifications may
+be seen as a foundation for the technical development of data spaces.
+Although there is no universally accepted definition of a data space, it
+can be most accurately described as an environment, delineated by a
+governance framework and underlying technical infrastructure, that
+adheres to specific design principles. The objective is to facilitate
+secure and reliable data transactions between organisations that are
+participating in that particular data space.[<a href="#fn10"
+class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>]</p>
+<p>By investigating Solid, our arguments also provide knowledge and
+direction to other PDS implementations regarding how to approach and
+implement the concepts and requirements from the GDPR. To assist the
+reader in understanding Solid, we first introduce Solid and its
+different configurations within Section II which highlights the novelty
+of Solid in implementing PDS using ‘linked data’ to store, manage
+access, and authorise applications as compared to other PDS approaches
+that are limited to applications on individuals' devices that store and
+process data. In addition, in line with the vision of Tim Berners-Lee[<a
+href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>], we also interpret the use of PDS
+and Solid implementations with existing cloud infrastructures (as
+defined by NIST)[<a href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a>] to better understand and interpret
+how the underlying technical systems will be provisioned and used, and
+as a result how the GDPR should be interpreted and applied to these.
+Through this, we offer clarity regarding implication of GDPR’s
+obligations and rights for users and organisations, and more importantly
+enable enforcement agencies and policymakers to better understand how
+they can investigate uses of Solid or similar PDS technologies and to
+provide timely guidelines regarding the division of responsibilities in
+such decentralised ecosystems in order to optimally protect and empower
+data subjects using PDS.</p>
+<p>The rest of the paper is structured as follows: Section II introduces
+Solid and the key adoptions of its technical specifications. Section III
+elaborates on the determination of controllers as per GDPR and
+established case law. In Section IV we interpret Solid’s technical
+specifications and implementations for GDPR, and present in Section V
+the analysis for determining controllership. In Section VI we discuss
+the implications of this work on the use of PDS in line of recent
+regulations – namely the Data Governance Act (DGA) and the development
+of AI. Finally, Section VII discusses the practical implications of our
+findings and concludes the article by providing recommendations for
+policymakers and researchers in the field.</p>
+<h2>Solid and key adoptions of Solid specifications</h2>
+<p>While PDS represent a broad conceptual framework for how
+decentralised systems can facilitate individual control and management
+over personal data, we focus specifically on the Solid Project, led by
+Web inventor Tim Berners-Lee, that uses the PDS paradigm to realise its
+goal of empowering users regarding their personal data.[<a href="#fn13"
+class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>]
+Solid is a set of open technical specifications currently being worked
+on within the W3C[<a href="#fn14" class="footnote-ref" id="fnref14"
+role="doc-noteref"><sup>14</sup></a>] for implementing a personal data
+store called a ’Pod’ that stores the personal data, and uses access
+control mechanisms through which users can control who (e.g.
+applications) can access which data (e.g. a file at a specific path).
+Moreover, the data are stored in a format following the principles of
+Linked Data[9] that applications understand. In this respect, Solid aims
+at decoupling the abundance of centralised data, applications and
+identities on the Web and standardise (e.g., via shared ontologies,
+vocabularies, or schemas) the interactions between those decoupled
+elements.[<a href="#fn15" class="footnote-ref" id="fnref15"
+role="doc-noteref"><sup>15</sup></a>] This decoupling is consistent with
+the observation that modern data-driven supply chains are increasingly
+comprised of services provided in a modular fashion.[<a href="#fn16"
+class="footnote-ref" id="fnref16"
+role="doc-noteref"><sup>16</sup></a>]</p>
+<p>Our choice of using Solid as the exemplar PDS in a legal analysis is
+based on the following reasons: First, it is one of the few PDS
+technologies that have been developed and have already been put on the
+market (see Fig.1). Second, it consists of commercial and research
+variations, both involving prominent and high-profile researchers.
+Third, it is the first PDS to have been provided to citizens by a
+government (namely the Flemish Government’s Athumi project).[<a
+href="#fn17" class="footnote-ref" id="fnref17"
+role="doc-noteref"><sup>17</sup></a>] Fourth, apart from PDS
+technologies focusing on the user, Solid aims to transform the current
+style of data governance and application interoperability to one based
+on Web Standards to automate governance using machine-readable
+information.</p>
+<figure>
+    <img src="../img/draft-005-usecases.png">
+    <figcaption><strong>Fig. 1.</strong> A brief overview of key adoptions of Solid
+the specification[<a href="#fn18" class="footnote-ref" id="fnref18"
+role="doc-noteref"><sup>18</sup></a>], namely My Citizen[<a href="#fn19"
+class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>],
+BBC Together[<a href="#fn20" class="footnote-ref" id="fnref20"
+role="doc-noteref"><sup>20</sup></a>][<a href="#fn21"
+class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>],
+Karamel.[<a href="#fn22" class="footnote-ref" id="fnref22"
+role="doc-noteref"><sup>22</sup></a>], Linckr
+[https://www.linckr.com/technologie], and Solid CRS
+[https://github.com/netwerk-digitaal-erfgoed/solid-crs]</figcaption>
+</figure>
+<h2>Determination of Controllers under GDPR</h2>
+<p>GDPR Art. 4 (7) defines a ’controller’ as an actor who alone or
+jointly with others (as ’joint controllers’, GDPR Art. 26 (1)),
+determines the purposes and means of the processing of personal data,
+and can be any legal persons such as commercial actors and public
+authorities, or even natural persons. Actors which meet these criteria
+assume the role of controller(s), and are accountable for ensuring and
+demonstrating compliance with the GDPR (GDPR Art. 5 (2)). Analogous to
+this role are ’processors’ (GDPR Art. 4 (8)), who process personal data
+under the instruction of controllers. The concepts of ”controller” and
+”processor” are functional and autonomous concepts that assign
+responsibilities according to their factual roles in use-cases and are
+interpreted according to EU data protection law.[<a href="#fn23"
+class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>]
+Since how such roles are determined forms one of the key criteria for
+establishing accountabilities and liabilities in GDPR investigations, we
+first establish a ’boundary criteria’ based on existing case law and
+doctrine related to “determining” the ”purpose” and ”means” of
+processing through which controllers are defined under the GDPR.</p>
+<p>Before delving deeper into the qualification of an actor as a
+controller, it is necessary to understand the implications of this role
+as the controller bears the greatest degree of responsibility.
+Controllers must demonstrate compliance with the principles relating to
+processing of personal data (e.g., deciding on the lawful bases of the
+processing) (GDPR Art. 5 and 6), they must inform data subjects as well
+as (re)act on the exercise of data subjects’ rights (GDPR Art. 12-23).
+Likewise, controllers need to implement appropriate technical and
+organisational measures (GDPR Art. 24), maintain a record of the
+processing activities (GDPR Art. 30), notify authorities and data
+subjects when a data breach occurs (GDPR Art. 33 and 34), and perform
+data protection impact assessments when processing may pose high risk to
+the rights and freedoms of natural persons (GDPR Art. 35). When multiple
+controllers qualify together as joint controllers, they need to
+determine their respective responsibilities under the GDPR, especially
+regarding transparency and the exercise of data subject rights (GDPR
+Art. 26). Determining who acts as a controller within the Solid
+ecosystem is thus important for the allocation of multiple
+responsibilities under the GDPR, hence ensuring a high level of data
+protection (protecting data subjects using PDS).</p>
+<p>The definition of ‘controller’ in GDPR is based on three elements:
+“determine,” “purposes” and “means” (GDPR Art. 4 (7)).[23] These
+elements have been further clarified in case law over the years, albeit
+always in a specific context. We apply these elements in the discussion
+that follows at a more abstract level as ‘boundary criteria’, always
+keeping in mind that the specific context at stake may lead to other
+elements playing a decisive role. ’Determining influence’ over purposes
+and means is approached functionally and refers primarily to the factual
+influence a controller has over the processing.[<a href="#fn24"
+class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>,
+<a href="#fn25" class="footnote-ref" id="fnref25"
+role="doc-noteref"><sup>25</sup></a>, <a href="#fn26"
+class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>,
+<a href="#fn27" class="footnote-ref" id="fnref27"
+role="doc-noteref"><sup>27</sup></a>] Controllers need not process the
+data or even have access to it or knowledge that data is being processed
+to bring about this de facto influence. [19, 20, 21, <a href="#fn28"
+class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>,
+<a href="#fn29" class="footnote-ref" id="fnref29"
+role="doc-noteref"><sup>29</sup></a>] The decision on the purpose of
+processing concerns the ‘why’ of the processing.[19, 21] The controller
+determines to what end a certain processing operation takes place.[18]
+Under article 5(1)(b), these purposes must be “explicit (sufficiently
+unambiguous), specified (sufficiently defined) and legitimate (compliant
+with the law)”, and the data may not be processed in a way incompatible
+with the purpose.[8, <a href="#fn30" class="footnote-ref" id="fnref30"
+role="doc-noteref"><sup>30</sup></a>] The means of the processing
+consist of the ‘how’ and are conducted via decisions by the controller
+on the essential means of the processing.[18] While controllers
+determine the essential means linked to the purpose and scope of the
+processing, both controllers and processors can determine the
+non-essential means. Essential means include determining which type of
+data and more specifically which categories of data will be processed to
+achieve a certain purpose; who has access to the data for that purpose;
+for how long the data is processed; how and where data is stored; and
+what security measures are needed depending on the specific context to
+achieve a certain purpose in line with the obligations under the
+GDPR.[18] These mainly refer to the concrete ability of actors to
+protect the personal data of data subjects and take (preventive) actions
+against possible breaches.[<a href="#fn31" class="footnote-ref"
+id="fnref31" role="doc-noteref"><sup>31</sup></a>] Further, a broad
+discretion to undertake other processing activities (creating derived
+data and manipulating the data) can be considered selecting the means to
+process data.[<a href="#fn32" class="footnote-ref" id="fnref32"
+role="doc-noteref"><sup>32</sup></a>] The non-essential means can be
+decided by either the controller or the processor and relate to the more
+practical implementation aspects of processing, thus complementing the
+essential means.[<a href="#fn33" class="footnote-ref" id="fnref33"
+role="doc-noteref"><sup>33</sup></a>]</p>
+<p>Different actors can potentially qualify individually as controllers
+or together as joint controllers based on their involvement in
+determining specific aspects of processing. For joint controllers,
+obligations are carried out by all actors that jointly determine the
+purpose and means of processing, which do not need to be divided
+equally[18] and can be based on prior established arrangements.[18, 21]
+The joint controller relationship may be close, with all aspects
+concerning the determination of goals and means being shared equally
+(complementary decisions), or loose, with only one or even part of one
+element being shared (converging decision).[18] Further, decisions of
+all actors should be necessary for the processing in a way that has
+tangible consequences for determining the purposes and means of the
+processing. In other words, the processing would not be possible without
+the participation of each party, the processing of each party is thereby
+inextricably linked.[18].</p>
+<p>The notion of (joint) controllership has been broadened in case law,
+including previous cases where actors were established as controllers
+without giving written instructions to another actor but based solely on
+their factual influence on the processing.[20] Joint compliance with
+certain policies of another actor also led to a qualification of joint
+controllership in this respect, although it is not necessary for the
+determination of purposes and means that written guidelines are
+available.[<a href="#fn34" class="footnote-ref" id="fnref34"
+role="doc-noteref"><sup>34</sup></a>] The combination of an increasingly
+complex supply chain and the provision of services in a modular manner
+with regard to data processing has given rise to questions as to whether
+having an economic interest [<a href="#fn35" class="footnote-ref"
+id="fnref35" role="doc-noteref"><sup>35</sup></a>] or a particular role
+within the ’chain of processing’ [<a href="#fn36" class="footnote-ref"
+id="fnref36" role="doc-noteref"><sup>36</sup></a>][<a href="#fn37"
+class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a>]
+is sufficient to jointly determine the purpose of processing. However, a
+mere commercial advantage is not enough. However, a mere commercial
+advantage is not enough.[18] Similarly, regarding the provision of
+certain ‘means’ (e.g., platforms, standardised tools, and
+infrastructure), the European Court of Justice (ECJ) ruled that actors
+jointly determine means by using technology of another actor to process
+data, when the technology provider also processes data through that
+technology to pursue its own (business) interests.[23, 24, <a
+href="#fn38" class="footnote-ref" id="fnref38"
+role="doc-noteref"><sup>38</sup></a>, <a href="#fn39"
+class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a>]
+Further, the selection or configuration of technologies that influences
+the processing of data can also lead to joint controllership.[23, <a
+href="#fn40" class="footnote-ref" id="fnref40"
+role="doc-noteref"><sup>40</sup></a>] However, the influence exerted
+must relate to the processing of personal data itself and not just be a
+prior step (e.g. if an actor determines parameters of a particular
+application during its development).[<a href="#fn41"
+class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a>]
+Where the provider of a certain technology makes the technology
+available without further influence on how the technology and settings
+were used for the concrete processing activities, the provider qualifies
+as a processor.[<a href="#fn42" class="footnote-ref" id="fnref42"
+role="doc-noteref"><sup>42</sup></a>, <a href="#fn43"
+class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a>]
+The problem with this interpretation is that cloud service providers
+today are sometimes the only ones with the technical expertise required
+to use the technology (e.g. the way data is collected, handled and
+transmitted).[<a href="#fn44" class="footnote-ref" id="fnref44"
+role="doc-noteref"><sup>44</sup></a>] The fact that they are able to
+protect personal data and take action against potential breaches as well
+as impose proprietary data retention policies to customers using their
+technology, may also play a role in this regard.[27] Regulatory
+frameworks that impose obligations on certain technology providers
+regarding the management of certain technical resources or means may
+also be an indication of their factual influence in that regard. Yet,
+such distinctions remain a fine line in practice which become clearer
+slowly through case law and DPA decisions. For example, the French DPA
+CNIL established that Discord, a chat software provider offering
+customers the opportunity to set up and manage their own server based on
+their implementation of the software, was still subject to obligations
+as a controller.[<a href="#fn45" class="footnote-ref" id="fnref45"
+role="doc-noteref"><sup>45</sup></a>]</p>
+<p>In summary, the qualification of controllers and joint controllers
+depends on the determination of purposes and essential means by
+exercising factual (not formal) influence on the type of data being
+processed, on who has access to data and for how long and so on.[<a
+href="#fn46" class="footnote-ref" id="fnref46"
+role="doc-noteref"><sup>46</sup></a>] Likewise, the ability to use
+technical settings to exercise influence on the way data is processed,
+for example by using a particular technology to pursue specific (self)
+interests during the processing may lead to qualification as a
+controller. However, the ever more complex supply chain regarding data
+processing means that more and more several parties exert factual
+influence or pursue their own interests via the use of a particular
+technology.</p>
+<h2>Solid as per GDPR’s Definition of Processing</h2>
+<p>Solid is a set of technical specifications that has as its main
+objective to decouple applications from the data they use as well as
+from the identification solutions they provide. Solid adds a layer, so
+to speak, to the existing Web with standard authentication and
+authorisation as well as standardised data sharing. Users are thereby
+also offered means to manage their own data in Pods - which is a
+decentralised storage system comparable to hosting their own web server.
+Solid Pods enable users to decide who has access to the data through a
+permissions-based ‘access control’ system. This mechanism enables the
+construction of ‘Web applications’ that request authorisation to access,
+modify, or utilize the data stored within the Solid Pod. As Solid Pods
+are implemented over the internet, they also have servers and providers
+as the underlying technologies and actors. As Solid Pods are implemented
+over the internet, they also have servers and providers as the
+underlying technologies and actors. In order to gain a deeper
+understanding of how Solid specifications and Pods are implemented and
+to align their use with the concepts set out in GDPR, we draw upon
+recent work that establishes interpreting Solid as a form of 'cloud
+technology' (in accordance with the definitions set out by the
+International Organization for Standardization (ISO) and the National
+Institute of Standards and Technology (NIST)).[12,<a href="#fn47"
+class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a>]
+This approach enables us to conduct a comprehensive analysis of the
+GDPR[<a href="#fn48" class="footnote-ref" id="fnref48"
+role="doc-noteref"><sup>48</sup></a>] and to apply existing guidance
+regarding the utilisation of cloud-based services under the GDPR.[<a
+href="#fn49" class="footnote-ref" id="fnref49"
+role="doc-noteref"><sup>49</sup></a>] Based on these, we present our
+analysis in several parts, as visually illustrated in Figure 2,
+pertaining to infrastructure and data storage within Pods, using data
+within Pods, and transfers of data outside Pods.</p>
+<figure>
+    <img src="../img/draft-005-dataflow.png">
+    <figcaption><strong>Fig. 2.</strong> Data Flow and actors within Solid
+ecosystem</figcaption>
+</figure>
+
+<h3>Actors within the Solid Ecosystem</h3>
+<p>Solid itself is a set of specifications that must be implemented and
+can involve multiple actors for the provision of resources associated
+with storage, identity, web domains, etc. While the Solid specifications
+do not formally describe all the roles defined below [<a href="#fn50"
+class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a>],
+we use them based on prior work to provide a consistent terminology
+aligned with existing cloud technologies that can be interpreted for
+GDPR.[48] These roles are:</p>
+<ul>
+<li><p>A <em>Provider</em> is an actor that makes resources available
+(e.g., Data Provider, Infrastructure Provider, ...).</p></li>
+<li><p>A <em>Pod Provider</em> is a specific “Provider” that is
+responsible for providing the ‘Pod’ i.e. as a decentralised data storage
+service, either directly or through an intermediary actor.</p></li>
+<li><p>A <em>Data Subject</em> is the natural person who is the subject
+of the personal data (GDPR Art. 4 (1)) stored within the Solid
+Pod.</p></li>
+<li><p>A <em>Pod User</em> is an actor that uses a Pod and can be
+different from the Data Subject. Unless otherwise stated, however, the
+hypothesis is that the Pod User is also the Data Subject as we focus on
+the scenarios involving data subjects using their own Solid
+Pods.</p></li>
+<li><p>A <em>Third Party</em> refers to an actor in the sense of GDPR
+Art. 4 (10) i.e. where it is not the controller or processor or data
+subject in the context of a Solid Pod.</p></li>
+<li><p>An <em>Application</em> is a system representing an actor that
+reads, writes, erases, or performs other processing operations on data
+in the Pod, most commonly for the purpose of offering a specific service
+to the Pod User.</p></li>
+</ul>
+<p>By interpreting these roles with cloud technology provision methods
+(e.g. IaaS, PaaS, and SaaS), we gain a better understanding of the
+capabilities and control available to each actor. For example, Pod
+Providers have the capacity to affect processing operations through
+controlled resources (in the form of decentralised data storage services
+such as by using immutable data storage or the imposition of operational
+restrictions) even if they do not manage access control over the data in
+the Pod. Therefore, for Solid Pods, it is also essential to understand
+who controls the resources since these are separate from the Pod User’s
+access controls (so-called permissions according to the technical
+specifications). In these, an important distinction is how the Solid
+specification allows for multiple roles of Data Subjects, Pod Users and
+Pod Providers for the same Pod, depending on the factual situation. A
+Data Subject can be the Pod User and Provider at the same time, e.g., an
+individual implementing the Solid specifications on their own server to
+create decentralised data storage for themselves. A Data Subject might
+also be the Pod User but not the Provider of the Pod, e.g., where a Pod
+has been provided to the customer by their bank (as Pod Provider) for
+storing statements. Similarly, a Data Subject might be neither the Pod
+User nor the Pod Provider if only their personal data is stored in it,
+but they are not given access or any form of access control over such
+data. This is the case, for example, if an organisation stores the data
+subject’s personal data in a Pod without providing them control over it
+or restricting the control they have over it (e.g. they can only ‘read’
+data). In this list of actors, we have not included ‘agent’ which is a
+technical concept defined within the Solid specifications and represents
+software acting as an automated or virtual agent, because such actors
+cannot assume legal roles under law. We therefore consider agents to be
+associated with or acting on behalf of one of the actors listed
+here.</p>
+<h3>Limits of the current permission-based system to manage data in
+the Pod</h3>
+<p>Solid specifications[<a href="#fn51" class="footnote-ref"
+id="fnref51" role="doc-noteref"><sup>51</sup></a>] provide Pod Users
+with the ability to set permissions which determine which actors such as
+Applications have the capability to read, write (and modify), or erase
+data within the Pod. Even though Pod Users can grant permissions to
+other actors, the Solid specifications do not yet provide the ability to
+associate such permissions with a ’purpose’ to specify ’why’ the data is
+being read, written, or modified. Though the concept ’Access Need’[<a
+href="#fn52" class="footnote-ref" id="fnref52"
+role="doc-noteref"><sup>52</sup></a>] is provided with permissions to
+describe why some data is required by an actor seeking access to certain
+data in the Pod, it does not cover the spectrum of all operations beyond
+reading, writing, and modifying data within a Pod. Therefore, from a
+purely technical perspective, it is not possible on the one hand, as a
+Pod User, to express for what purposes certain data can be processed. On
+the other hand, it is also not possible for an actor such as an
+Application to express why it wants to process personal data within a
+Pod. The permissions are too broad for this. In that regard, <em>ex
+post</em> auditing or investigating whether data was used for those
+purposes is less enlightening at the moment. Consequently, given the
+current situation, there must be some other mechanism (outside the Pod),
+such as a contract, consent agreement or privacy policy, that provides
+information on the purpose and legal basis of the activities. Given
+Solid's emphasis on existing Web standards, this information can be
+provided in an interoperable manner (following Linked Data principles)
+by extending the existing protocols – though no such approach exists at
+the moment. From a GDPR perspective, these mechanisms which determine
+control over data are thus important indications in helping determine
+who the controller ultimately is by looking closely at how these
+mechanisms support the ‘determination’ and ‘means’ of ‘purposes’.</p>
+<h3>Infrastructure of Pods following existing cloud-models</h3>
+<p>Following existing well-established models for provisioning cloud
+technologies, we extrapolate similar models for providers of Solid Pods
+and associated resources where actors have varying degrees of freedom to
+control the resources.[45] For example, a Pod can be obtained from an
+Infrastructure as a Service (IaaS) provider[<a href="#fn53"
+class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a>]
+where Pod Users are responsible for installation and management of
+software to operate the Pod (in this case the Data Subject can be the
+Pod User as well as Pod Provider). Similarly, when a Pod is obtained
+from Platform as a Service (PaaS), the Pod User is still responsible for
+installation and management of applications. Lastly, Software as a
+Service (SaaS) implies that Pod Users have lesser freedoms to manage
+underlying resources - which are instead managed by the Pod Provider to
+provide convenience of use. Access to the service is often possible via
+the internet in this respect.[<a href="#fn54" class="footnote-ref"
+id="fnref54" role="doc-noteref"><sup>54</sup></a>] For example, similar
+to accessing the BBC iPlayer via the internet or via an application, BBC
+(UK) has announced provisioning Pods to store their service-related data
+where the BBC remains the Pod Provider and the Pod Users (data subjects)
+are provided with access control over the data through Solid’s
+permissions system.[<a href="#fn55" class="footnote-ref" id="fnref55"
+role="doc-noteref"><sup>55</sup></a>] Similar to the case of Discord as
+set out in Section III, however, Inrupt here provides infrastructure
+software[<a href="#fn56" class="footnote-ref" id="fnref56"
+role="doc-noteref"><sup>56</sup></a>] that allows BBC to set up and
+manage their own Pod server based on their implementation of that
+software. In this case, under GDPR interpretations, Inrupt may also have
+certain obligations as a controller or joint controller towards the Pod
+User if they are effectively so qualified because the concrete context
+shows, for example though unlikely, where they sufficiently control how
+the technical means are utilised to manage access to the data and
+specify or restrict how the data can be processed - in other words, that
+they have a say in determining the purposes and essential means of
+processing (this interpretation follows the recent interpretation by the
+CJEU regarding technical specifications determining the role of
+controller.[<a href="#fn57" class="footnote-ref" id="fnref57"
+role="doc-noteref"><sup>57</sup></a>]</p>
+<p>Following the criteria established regarding processing means and
+purposes in Section III, the specifics of how a Pod is provisioned, who
+has control over which resources, and who manages the operations over
+data are important considerations for identifying controllers. Cloud
+providers often shift responsibilities to their business users in
+existing agreements. In reality, however, it can be argued that cloud
+providers in practice can also exercise significant control over the
+purposes and essential means of processing.[31] Therefore, depending on
+the situation at stake, they may also bear responsibilities and qualify
+as a controller or joint controller together with the user of the cloud
+service. In case the user of a cloud service is a Data Subject, the
+existing models of cloud providers, consisting of IaaS and PaaS
+providers, typically have processor agreements with their users. On the
+other hand, SaaS providers which have direct control over their
+resources typically have agreements as a controller and assume the GDPR
+obligations arising from that role. In the case where Data Subjects
+themselves set up their Pod and thus only rely on an IaaS or a PaaS,
+this leads to interesting questions regarding the ability of Data
+Subjects to have a say in determining the purposes and means of
+processing for various processing operations. Furthermore, given the
+emphasis placed on data sovereignty and forms of control over subsequent
+data usage in Data Spaces, this question becomes increasingly tangible
+and relevant.</p>
+<h3>Data Storage in Solid Pods</h3>
+<p>For data to be stored within Pods, the data must come from a source
+(e.g., the Data Subjects themselves can upload a file, a Data Provider
+can send a file to the Pod, or an Application or Pod Provider can write
+data to the Pod). Further, this data can be a copy of existing data
+(i.e., transferred to the Pod), it can be newly provided or generated
+data, or even data inferred from existing data.</p>
+<p>However, with regard to the processing operation "storage", several
+situations can arise that have an impact on the qualification as a
+controller. When a Data Provider writes and thus stores data into a Pod,
+it is not (alone) in a position to determine the purpose of and means
+for further processing of this data in the Pod. That is, party A may
+upload something and intend party B to read it for a well-defined
+purpose, but instead party B ends up reading it for a different purpose
+and a controller to controller relationship arises. Moreover, the Data
+Provider may use techniques such as obfuscation or encryption that limit
+or prohibits subsequent use of the data by other actors. From a GDPR
+perspective, ‘storage of personal data’ is a processing operation, and
+therefore the determination and means of storing data are also relevant
+for assuming the role of a controller. Therefore, in Solid pods, along
+with understanding capability of actors regarding adding or modifying
+data, it is also important to consider the factual impact of these
+actions in permitting or prohibiting other actors from using that
+data.</p>
+<h3>Using Data in Solid Pods</h3>
+<p>Data stored in Pods can be accessed by authorised actors as defined
+by the permission mechanism. To do this, the Solid specification
+requires requests to be made via HTTP using WebID - a web domain-based
+form of identifier. Authorised actors can then read, write (capacity to
+modify existing data or infer new data to be stored in the Pod), or
+delete the data in a Pod, depending on the operations permitted by the
+permission mechanism. These operations correspond to several processing
+categories as defined in GDPR Art. 4 (2) such as collect, obtain,
+retrieve, transfer or use (read), erase, modify, or store (write and
+erase). Notably absent from this list are operations regarding derived,
+inferred, or other transformations over data, which are essential to
+understand whether an actor is only reading existing data or also
+deriving and thus storing new data - and if it is within its remit as a
+controller or processor. In other words, essential to determine whether
+an actor determines the purposes and means of processing and thus has
+the capacity and obligation to protect Data Subjects using PDS. However,
+the granularity of operations in the Solid specification, specifically
+read and write, is currently too broad for interpreting GDPR’s
+requirements accurately. Similarly, the concept of ‘access’ and
+‘read/write’ in Solid is far too vague for interpreting implications of
+GDPR when the data is being transformed (e.g. in another format or
+structure) or is being stored in an encrypted form that can only be
+correctly understood by a particular actor. In such cases, though the
+data resides within the Pod, only the particular actor who knows its
+structure or can decrypt it can utilise it. Thus, though Pod Users can
+control the permission for using data, in reality a large amount of
+control is still possibly retained by Applications regarding the
+processing of data in a Solid Pod.</p>
+<h3>Data Use, Sharing, and Transfers outside Solid Pods</h3>
+<p>The Solid specification is restricted to considerations only
+regarding the access and storage of data within a Pod. However, there
+can be several instances where data is used, transferred, shared, or
+otherwise exists outside the Pod. For example, an actor may read data
+from the Pod and keep a copy on its own servers. Copying data outside
+the Pod may in the future even be required to meet, for example, legal
+(e.g., in the public sector) or contractual requirements. Data existing
+outside the Pod possibly relates to two conditions - first where an
+actor provides data outside the Pod for storage within the Pod, and
+second where the actor such as an Application is copying data or even
+inferring new data outside the Pod and may or may not store it
+externally. The current Solid specifications do not define the concept
+of ’data source’ or provide a way to track provenance of data as it is
+added, copied, or removed from the Pod. The permissions only represent
+the ability to read, write, or modify data within the Pod without
+providing any obligation or capabilities for expressing or controlling
+activities outside the Pod. This means that a Pod User’s control over
+data as expressed through Solid’s permissions is limited only to
+processing taking place within the Pod.</p>
+<p>The specific limitation of considering operations only within the Pod
+and the lack of control over external data leads to potential loopholes.
+For example, an Application can obtain data from the Pod, generate
+additional data based on it, delete the obtained data, and still retain
+the additional generated data without violating any of the Solid’s
+currently provided permissions. This has important implications for
+GDPR, as the role of Solid as a technical specification does not cover
+all potential processing sufficiently and necessitates separation of
+processing of data within and outside a Pod. Nevertheless, the question
+of whether there is a copy of the data outside the Pod, who controls
+said data, and to what ends it is used, are important considerations
+regarding the determination of controllership under the GDPR and
+consequently also considering the simultaneously empowering and
+protecting Data Subjects using PDS. Encapsulating a “trust envelope” in
+the data, which describes additional context such as history and destiny
+of the data, can be a first step towards a solution. Indeed, data is
+stored in Pods through the use of data models (such as RDF) to add
+semantics to those data. Data is thereby encoded in an overarching
+design that makes searching, understanding and using data from Pods
+easier. The interrelationships between data in a dataset thereby become
+understandable to computers. Consequently, so does the meaning of the
+data. Using such an envelope can create mutual trust between the
+provider and user of the data and has an impact on data leaving Solid
+Pods.[<a href="#fn58" class="footnote-ref" id="fnref58"
+role="doc-noteref"><sup>58</sup></a>]</p>
+<h2>Identifying Controllers within the Solid Ecosystem</h2>
+<p>Based on the legal and technical analysis of Solid, we now present
+our arguments regarding the identification of controllership for actors
+within use-cases associated with the Solid ecosystem. Where Pods contain
+personal data, different actors in the ecosystem could qualify as
+(joint) controllers or processors based on the broad interpretations of
+personal data[<a href="#fn59" class="footnote-ref" id="fnref59"
+role="doc-noteref"><sup>59</sup></a>, <a href="#fn60"
+class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a>,
+<a href="#fn61" class="footnote-ref" id="fnref61"
+role="doc-noteref"><sup>61</sup></a>, <a href="#fn62"
+class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a>],
+as well as processing and controllers (as shown above). In addition,
+through the potential merging of personal and non-personal data in a
+Solid Pod, the entire data can be considered personal data where they
+are inextricably [<a href="#fn63" class="footnote-ref" id="fnref63"
+role="doc-noteref"><sup>63</sup></a>] linked to a Data Subject through
+the Pod. Even different Pods can be linked to the same Data Subject via
+their associated identifier (e.g., webID) which potentially qualifies
+the data in all those Pods as an interconnected set of personal data
+too.</p>
+<h3>Control over the Processing</h3>
+<p>Based on Figure 2, we examine below which actor for each possible
+processing operation in the Solid ecosystem (collection, storage,
+use/deletion/sharing) could potentially qualify as a controller or
+processor by following the current legal doctrine and case law. Although
+case law is always context-specific, we look at the general criteria
+established in such case law and seek parallels with the Solid ecosystem
+with the aim of formulating a preliminary legal analysis. As mentioned
+before, we draw on existing work that establishes the terminology and
+relevance of GDPR by considering Solid as a cloud technology. The actors
+involved in the ecosystem should qualify as a (joint) controller or
+processor within the meaning of GDPR in such a way that sufficient data
+protection compliance is ensured in practice. Only in this way can Solid
+be effective in simultaneously protecting and empowering Data Subjects
+and provide incentives to establish a market economy based on legal
+certainty. Too much fragmented responsibility can lead to ambiguities
+that are exploited, causing actors to take insufficient measures to
+ensure data protection and Data Subject’s rights.</p>
+<p>As shown above, Solid’s role as a set of technical specifications
+does not adequately cover all possible processing operations, which
+makes it necessary to separate the processing of data within a Pod from
+that which may occur outside the Pod. From a GDPR perspective, whether a
+copy of the data exists outside the Pod, who has control over it and for
+what purposes it is used are nevertheless important considerations
+regarding responsibilities. However, full disclosure compels us to add
+that the analysis below does not consider such situations where an actor
+keeps a particular copy of the data in its own storage systems and
+further processes that data for its own purposes as this already has
+interpretations for GDPR. In our view, Pod Providers and Pod Users have
+no possibility to determine the means, let alone the purposes, of
+further processing performed on this data in those situations.
+Therefore, an actor who transfers, copies, or stores personal data
+elsewhere for their own purposes is considered a controller for these
+processing activities. Keeping this in mind, the situation of using,
+sharing, and transferring data outside Solid pods will not be further
+analysed for identifying controllers within the Solid ecosystem.</p>
+<h3>Initial collection of Data into the Pod</h3>
+<p>Prior to managing personal data in a Pod, personal data must be
+collected or generated by an actor to be subsequently stored in the Pod
+(see Figure 2). This could be the Data Subject or a Pod User manually
+uploading data, or a Data Provider, Third Party or an Application
+writing it to the Pod. When an actor writes data into a Pod, it is not
+solely in a position to determine the purpose of and means for further
+processing operations of that data in the Pod. However, the actor can be
+seen as a controller for the processing operation of collecting data
+into the Pod.</p>
+<p>Mechanisms such as use of undocumented formats, schemas, encryption,
+or obfuscation techniques can be used by the actor to limit or prohibit
+the further access and (re-)use of that data by other actors. Further,
+actors such as Applications may store operational data required to
+provide services within the Pod, and thus have legitimate reasons to
+limit further access to that data. It should therefore be considered
+that actors who employ such limitation methods are independently
+determining the purposes and means of further processing by retaining
+the ability to use that data whilst prohibiting others from doing the
+same.[18] Therefore, in such cases the actor with factual control over
+the ability to make effective use of that data should be considered the
+controller for further processing operations. However, it is important
+to note that as of now the Solid specifications do not provide a way to
+classify or categorise such data as being functionally separate from the
+other data stored in the Pod.[51]</p>
+<p>Such practices, however, run directly counter to Solid’s goals of
+providing data storage with access control to individuals. They
+additionally prevent the reuse of data by other actors, thereby limiting
+its interoperability and the value of the data. While the controller
+responsibilities can be a deterrent for actors to not write data into
+the Pod in an impeding way, interoperability obligations may also play a
+role here if the data is meant to be provided to the Data Subject as
+part of right to data portability (GDPR Art. 20) where data must be
+provided in a format that allows reuse.[<a href="#fn64"
+class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a>]
+The Article 29 Data Protection Working Party even clarified in this
+regard that not only the use of an interoperable data format is
+important, but also the additional use of sufficient metadata to
+preserve the meaning of the information exchanged.[64] Interoperability
+obligations may potentially be tightened in the future in additional
+legislation[<a href="#fn65" class="footnote-ref" id="fnref65"
+role="doc-noteref"><sup>65</sup></a>] as they are part of the European
+Union’s broader objective of encouraging interoperable and modular data
+sharing. In doing so, the EU also seeks to control data-related services
+that are now vertically integrated in the current market and thus could
+be provided in a more interoperable and modular way (e.g. artificial
+intelligence and analytics in the Digital Markets Act). The Data Act
+also provides provisions to allow switching between interoperable cloud
+services. Similarly, organisations that provide Solid Pods or establish
+a data-sharing ecosystem based on Solid Pods, such as the Athumi
+(Flemish data utility company), may begin to exclude providers from the
+ecosystem when they identify such practices.</p>
+<p>Without such clarity in data management within a Solid Pod, the
+usefulness of Pods towards achieving its stated goals of empowering
+individuals cannot be achieved as the effective control of data remains
+with the Applications. The situation may end up becoming similar
+to how smartphones – which are considered personal devices as the
+individuals own them – have several applications but whose data cannot
+be accessed nor used by the individuals who own the device and operate
+it. Under GDPR, such smartphone device manufacturers [ref]
+and applications [ref] may be considered
+controllers when they have effective de-facto
+control over the data and use it for their own purposes
+even where such data is stored on systems owned by the data
+subject. Similarly, we posit that for Solid, Applications which
+have similar control over the management of data also qualify for being
+controllers regardless of whether the user can or cannot access and
+manage the same data.</p>
+<h3>Storage of Data in the Pod</h3>
+<p>To determine the purposes and means of processing for the way data is
+stored, it is necessary to first understand the implementation of
+storage within a Pod – for example, restrictions on what the Pod Users
+can and cannot do regarding the Pod and data within a Pod similar to
+cloud service models such as IaaS, PaaS and SaaS.</p>
+<p>A Pod Provider purchasing infrastructure services often determines
+the data accessibility, length of conservation as well as the operating,
+updating, and configuring of the leased computer resources for e.g.,
+security.[21,<a href="#fn66" class="footnote-ref" id="fnref66"
+role="doc-noteref"><sup>66</sup></a>, 71] Still, an Infrastructure
+Provider can impose specific storage or retrieval limitations. The
+question then is to what extent this impacts the means of processing and
+if it is sufficient to qualify as a joint controller with the Pod
+Provider for the processing operation of storage. The concrete ability
+of an Infrastructure Provider to protect the personal data of Data
+Subjects and take (preventive) actions against possible breaches might
+point towards a determination of the essential means. An indication here
+may also be power asymmetries and the question of the extent to which
+the contractual terms between the two actors can be freely determined
+(implying that the Infrastructure Provider has more power than reflected
+in the contract and goes beyond simply implementing the essential means
+identified by the Pod Provider).[<a href="#fn67" class="footnote-ref"
+id="fnref67" role="doc-noteref"><sup>67</sup></a>, 31] Authorities (such
+as DPA’s in the EU) should keep an eye on these contractual terms in the
+future. They may even publish guidelines for drafting such terms, just
+as recommendations for the use of cloud services by the public sector
+have been published in the past. Further, the Infrastructure Provider
+can process data such as for telemetry without the Pod Provider’s
+knowledge, which makes the Infrastructure Provider the controller for
+processing of telemetry data.[49]</p>
+<p>Furthermore, a similar reasoning can apply to a Pod Provider who
+purchases platform services (for example in the form of an operating
+system) in addition to infrastructure, but is restricted by the
+conditions of the platform regarding the way in which data can be
+stored. Depending on the concrete impact of such conditions, it will
+become clear whether or not the platform has a factual influence on the
+processing methods.[49, 67, <a href="#fn68" class="footnote-ref"
+id="fnref68" role="doc-noteref"><sup>68</sup></a>] In the past, case law
+in this regard has indicated that jointly determining the purposes and
+means of processing can even be done without written guidelines or
+instructions from another actor, as organisational influence is
+sufficient[25], as is compliance with certain policies of another
+actor.[34]</p>
+<p>Current broad interpretations of the concept of joint controller
+hinder the predictability of the precise responsibilities in a Solid
+ecosystem and ultimately complicate the effective implementation of the
+GDPR in favour of privacy-enhancing technologies such as Solid Pods. On
+the one hand, platforms having factual influences on the processing’s
+purposes and means may take advantage of such ambiguities and pass on
+their obligations to other actors through, for example, external
+arrangements. On the other hand, the broad interpretation regarding
+controllership that emerged in previous case law in order to protect and
+empower Data Subjects can paradoxically have the opposite effect. For
+example, broad interpretations of controllership combined with some form
+of control over the storage of data in a Pod for Data Subjects through
+permission mechanisms, may in some cases even suggest that Data Subjects
+also have a say in determining the purposes and means of processing
+(storage) with that data. In that respect, the use of Solid Pods may
+have far-reaching implications for Data Subjects as additional
+obligations under the GDPR can deter Data Subjects from using or
+deploying their own Pod.</p>
+<p>Specifically in IaaS and PaaS situations[<a href="#fn69"
+class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a>],
+where the Data Subject (as a Pod User and a Pod Provider at the same
+time) purchases or rents cloud infrastructure or a certain platform,
+that Data Subject manages the technical functionalities of operating a
+Pod (the concrete software) itself. The question does arise whether the
+Data Subject can become the controller for the storage operation of
+their data within a Pod.[<a href="#fn70" class="footnote-ref"
+id="fnref70" role="doc-noteref"><sup>70</sup></a>] In such cases, since
+the Data Subject as a hypothetical controller would be storing only
+their own data, we believe this question remains without broader
+consequences as we would consider the Data Subject to know best how to
+store their own data. The question becomes more interesting if the Pod
+also contains information about their friends or family where it is
+unclear how the GDPR should apply and who should be the controller to
+protect the data protection rights of those friends and family. It is
+not clear who is then responsible for concretely striking a balance
+between those different interests, let alone how this can then be done.
+Regulation can help, as can taking into account the interests of those
+friends and family involved. In that regard, the concept of data
+intermediary, introduced under the Data Governance Act, provides an
+interesting avenue for further research into reconciling different
+interests in such contexts.[6] Depending on the specifics of a
+situation, the GDPR’s household exemption for processing personal data
+in a purely personal or household setting could apply (GDPR Art. 2 (2)
+(c)), meaning the Data Subject is exempt from the obligations of being a
+controller. Two conditions must be fulfilled for the household exemption
+to apply. Firstly, the dissemination of the data needs to be
+restricted.[<a href="#fn71" class="footnote-ref" id="fnref71"
+role="doc-noteref"><sup>71</sup></a>, <a href="#fn72"
+class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a>]
+Secondly, the processing of the data needs to stay within the private
+setting.[71, <a href="#fn73" class="footnote-ref"
+id="fnref73" role="doc-noteref"><sup>73</sup></a>, <a href="#fn74"
+class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a>,
+<a href="#fn75" class="footnote-ref" id="fnref75"
+role="doc-noteref"><sup>75</sup></a>] The household exemption is not
+applicable whenever a Data Subject would carry out commercial, political
+or charitable activities (which can be interpreted broadly).[<a
+href="#fn76" class="footnote-ref" id="fnref76"
+role="doc-noteref"><sup>76</sup></a>] In our view, whenever a Data
+Subject (as a Pod User as well as a Pod Provider) stores data in the Pod
+for purely personal use and does not share the data to an indefinite
+number of people, the household exemption should apply.[<a href="#fn77"
+class="footnote-ref" id="fnref77"
+role="doc-noteref"><sup>77</sup></a>]</p>
+<p>Or to consider this in an alternative form, the GDPR enables data
+subjects to avoid the responsibilities of a controller where they
+process their own data by providing a ‘household exemption’ – but in
+such cases if the Data Subject engages a processor then how should the
+resulting relationship between data subject-controller and processor be
+interpreted and what obligations should be fulfilled by whom is an
+unanswered question. This has an important bearing on the cases where
+Data Subjects manage their own Pods and where they may engage a
+processor to provide additional resources (storage space, compute
+capacity) or utilise Applications to manage their data (e.g. create a
+local search index). In such cases, a pragmatic outcome would be that
+the Data Subjects are not additionally burdened with the role of a
+controller, yet are nevertheless afforded protection under the GDPR with
+regard to the manner in which processors interact with their data.</p>
+<p>Where Data Subjects as Pod Users receive a Pod maintained by a Pod
+Provider (in this case a separate actor providing a consumer-oriented
+product and thus SaaS situation) [66, 68, <a href="#fn78"
+class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a>],
+they have little or no influence on the technical processes by which
+data is accessed, processed and transmitted, and which sub-processors
+were engaged.[46] The Pod Provider implements the Solid specification
+entirely as it sees fit and independently of the Pod User. The Pod
+Provider in this case qualifies as the controller. However, where Pod
+Providers use technologies from Third Parties to implement or supplement
+implementations of the Solid specifications[18], these
+Third Parties may also have an impact on the purposes and means of the
+processing.[66] For example, software used by the Pod
+Provider to manage storage or identity. The current broad interpretation
+of the term joint controller may even lead to the Pod Provider being
+classified as a joint controller with those Third Parties. In theory,
+controllers such as the Pod Providers, should always be involved in
+choosing the Third Parties that will process the data, e.g. by defining
+it in external arrangements, therefore determining the purposes and
+essential means of processing.[<a href="#fn79" class="footnote-ref"
+id="fnref79" role="doc-noteref"><sup>79</sup></a>] In practice, however,
+this is not always the case and there may be power asymmetries again
+exploiting the ambiguities in the broad case law regarding
+controllership. Although the actual capacity to determine purposes and
+means then lies with one actor, the associated responsibilities are
+often shifted to the party with the least bargaining power as explained
+under Section IV. Competent authorities should therefore also seek to
+publish guidelines for the emerging technologies of identity providers
+and other relevant resources, just as they have done in the past for the
+use of cloud technology.[46] In this way, it becomes clear to Data
+Subjects who the direct point of contact is (transparency) and the
+principle of accountability can be ensured. The division of
+responsibilities then also ideally follows the actual situation of
+actual influence.</p>
+<h3>Using Data in Solid Pods</h3>
+<p>As already mentioned above, Solid’s permissions enable Pod Users to
+selectively control which data can be accessed by which actor and for
+which operation (read, write, modify, delete - see Figure 2). In this
+respect, it is important to note that the Solid specification does not
+currently provide the ability to express or record ’why’ the actor
+requested or has access nor ’why’ the Pod User decided to provide it,
+whereas GDPR in its article 13 and 30 expects records to be maintained
+with purposes and legal bases. While Solid specifications do provide a
+limited description to be associated with permissions, termed ‘Access
+Need’, it does not suffice the legal requirements regarding clarity or
+specificity of a purpose or a legal basis.[45] Mechanisms such as
+notices and consent can be managed externally (e.g., by Third parties as
+pointed out already) to meet GDPR’s requirements. However, since they
+are not a part of the specification, we do not assume their existence as
+a given since Solid specifications do not refer to them.</p>
+<p>If Pod Users can determine via permissions who can process data in
+the Pod, the question also arises whether the Pod User (assuming that he
+is also the Data Subject) can be regarded as determining the purpose and
+means for the processing of his personal data within the Pod. In our
+opinion, Solid’s permissions are not sufficient to regard a Pod User as
+a controller or joint controller for the processing operations related
+to the ‘use’ of data. Currently, when a Pod User gains insight into the
+specific purpose of the processing, the Pod User can only decide on
+granting access or not, and likewise cannot counter-propose to these
+purposes. However, Solid is marketed under the clear motto of Pod Users
+having so-called “control” over the further processing operations of
+their data. As a result, the contractual situation may again differ from
+the actual situation, potentially shifting responsibilities under the
+GDPR. Combined with the current broad interpretation of the concept of
+(joint) controller, questions about possible implications of a
+hypothetical situation in which a Pod User (as a Data Subject) qualifies
+as a (joint) controller will increasingly arise.[<a href="#fn80"
+class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a>]
+In theory, a further evolution of Solid’s permissions could, for
+example, allow Pod Users to select and limit the specific purposes their
+data may be processed by actors. This could, given the broad
+interpretation of the concept of (joint) controller, lead to situations
+where actors such as Applications must depend on the Pod User to manage
+and provide data. In these situations, the question may arise whether a
+certain form of responsibility should be shared if it is limited, and
+whether the household exemption is compatible with such situations.
+Nevertheless, such implications would be contrary to the intention of
+the GDPR and its protection of the Data Subject against the processing
+of personal data that affects the exercise of fundamental rights.</p>
+<p>Lastly, we also briefly discuss the situation in which actors using
+data in the Pod, such as Applications, are not regarded as the sole
+controllers for the further processing operations. Similar to Pod
+Providers using Third Parties’ implementations, Applications can also
+jointly determine the purposes and means of the processing with other
+actors such as Infrastructure, Platform or Pod Providers. As already
+mentioned above, such actors might still exert a factual influence on
+the purposes and means of certain processing operations happening within
+a Pod. The concrete ability of actors to protect the personal data of
+data subjects and to take (preventive) measures against possible data
+breaches plays a role. An indication of this, for example, is the
+situation where certain Applications are not allowed on the Platform of
+the Provider or where Platform or Pod Providers make use of a technology
+of a Third Party and adjust the associated settings of that technology
+in such a way that their own interests can be pursued (e.g., via a
+Facebook like-button in Fashion ID). Moreover, practical implementations
+might require Pod Providers to set up a processing layer that performs
+aggregation or querying operations over the data in a Pod to supply the
+Application with just the data it needs. In this way, Pod Providers
+could also exert a factual influence on the essential means of
+processing and qualify as controllers since they then determine in what
+way and what data the Application gets to see. Again, we mention here
+that the current broad jurisprudence regarding controllership allows for
+ambiguities in situations with dispersed responsibilities. Ultimately,
+responsibilities are then shifted to other actors which does not always
+reflect reality in terms of actual impact on processing. Data Subjects
+using PDS are then not empowered and protected at the same time.</p>
+<h2>Further implications for Data Governance Act (DGA) and
+development of AI and Data Spaces</h2>
+<p>In light of the uncertainties and challenges associated with the use
+of Solid Pods in accordance with the GDPR, it seems prudent to extend
+similar inquiries to other forthcoming regulations and developments that
+may impact the utilisation of Solid Pods. In order to achieve this, we
+have selected the Data Governance Act (DGA)[6], which establishes a
+legal framework for the reuse of personal data and non-personal data. It
+is currently being implemented in various member states. Additionally,
+we also explore the implications of Data Spaces and AI Act as
+forthcoming regulations. All are of great importance to the ecosystem
+involving Solid Pods, as the DGA inter alia foresees the establishment
+of a decentralised system of entities designated as 'data
+intermediaries', which can be responsible for the storage and management
+of data as mentioned under article 10 of the DGA. In order to enhance
+trust and transparency in data sharing, the EU has proposed the
+introduction of neutral intermediaries with various obligations,
+including the facilitation of data interoperability and reuse.
+Furthermore, the DGA proposes the creation of a legal framework to
+facilitate 'data altruism', a concept whereby for example Data Subjects
+could donate their data for scientific research and other broad
+purposes. Data altruism must be considered within the broader context of
+data subject empowerment as it enables them to provide their data for an
+altruistic purpose without the burden of risk assessment, which instead
+is undertaken by data intermediaries. Similarly, in relation to AI, the
+majority of companies are currently required to allocate a significant
+proportion of their resources to the collection and management of data
+for the purpose of training their models. The competition is occurring
+in this context rather than in terms of the delivery of services and the
+further development of the specific AI model itself. In order to
+facilitate further advancement in the field of AI, it would be
+beneficial to encourage innovation and competition beyond the domain of
+data collection.[5] In this context, Solid Pods have the potential to
+transform the availability and management of data.[<a href="#fn81"
+class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a>]
+This is because companies can access and utilise data directly from the
+source (the Pod) rather than relying on their own internal collection
+processes. Furthermore, in the field of Data Spaces, Solid can be viewed
+as a catalyst for the technical implementation of Data Spaces. The
+proposed and prominent IDSA Data Spaces protocol, for instance,
+necessitates the deployment of established technologies and the
+utilisation of interoperable standards.[<a href="#fn82"
+class="footnote-ref" id="fnref82"
+role="doc-noteref"><sup>82</sup></a>][<a href="#fn83"
+class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a>]
+For instance, the IDSA considers the standards and architectural
+principles established by the World Wide Web Consortium (W3C), which
+serve as the foundation for the technical specifications of Solid.[<a
+href="#fn84" class="footnote-ref" id="fnref84"
+role="doc-noteref"><sup>84</sup></a>]</p>
+<p>First focusing on the DGA, the connection to Solid should be apparent
+as Solid Pods can be used under the DGA to manage access to data by both
+Data Subjects (who want to provide the data), by data intermediaries
+(who want to manage access over it), and data consumers (who want to use
+it). Pods could thus be employed by data intermediaries to facilitate
+data sharing between different parties by either providing such Pods to
+the data subjects, or by taking on a custodial role in managing existing
+Pods. It can be observed that intermediaries serve as an illustrative
+example of a legally qualified entity capable of offering and using Pods
+in a manner that seeks the benefits of data reuse without compromising
+the data subject’s rights as defined under the DGA. In that regard, Pods
+can also facilitate the collective management of data by, for example, a
+data cooperative acting as an intermediary, thereby representing the
+collective interests of a large number of data subjects.</p>
+<p>Solid Pods provide a robust technical foundation for the automation
+of permissions and access control mechanisms within the context of the
+DGA. Furthermore, it provides a unified set of protocols that enable
+requestors to access and manage data in a streamlined manner. Solid Pods
+also provide a convenient means for organisations to enable individuals
+to manage control over data generated by them without the burden of
+managing the collection and storage themselves – for example government
+departments, health organisations, and public services can store the
+individual’s personal data on Solid Pods (as is done by Athumi in
+Flanders, Belgium) and let the individuals decide when and with whom
+they want to share this data. The DGA also introduces the concept of
+data altruism whereby individuals can ‘donate’ their data for public
+benefit purposes. Solid Pods can serve as a way to automate these
+engagements and provide individuals with control mechanisms over their
+data. Moreover, data in Solid Pods are stored in a format that follows
+the principles of Linked Data, which immediately facilitates the
+comprehension of the context, business logic, and implicit assumptions
+associated with the data. In this context, the interoperability
+obligations of data intermediaries under article 12 of the DGA can
+result in Pod Providers, which may be considered data intermediaries,
+assuming a significant role with regard to the maintenance and
+availability of Linked Data within the Pod. Solid thus creates a
+tempting technological solution to the vision of the DGA.</p>
+<p>However, as we highlighted in this article, Solid in its current form
+has severe challenges when it comes to the GDPR due to the lack of
+interpretation in roles and responsibilities from the legal side, as
+well as a lack of sufficient technical safeguards and mechanisms to
+support the legal obligations. We posit that similar (technical)
+challenges exist for the use of Solid under the DGA, first because the
+DGA itself relies on the GDPR for the regulation of processing personal
+data, and second because the DGA introduces new obligations akin to
+‘duty of care’ on data intermediaries that go beyond the requirements of
+GDPR when it comes to controllers. For example, under the DGA, the data
+intermediary must support the data subjects in making consenting
+decisions regarding the use of their personal data – for which the
+intermediary must first perform a risk assessment in order to identify
+the benefits and risks associated with proposed processing. The
+necessary information to do such an assessment is currently not
+supported by Solid, and therefore it must be obtained and used external
+to the Pod – which is technologically ineffective and runs the risk of
+having the same existing problems such as dark patterns and misuses of
+information. A further issue is the lack of clarity surrounding the
+precise delineation of the definition of a data intermediary.[<a
+href="#fn85" class="footnote-ref" id="fnref85"
+role="doc-noteref"><sup>85</sup></a>] This impedes the identification of
+the specific entities that are responsible for implementing data
+interoperability obligations. As a result, the potential of Linked Data
+in Pods remains unexploited. In light of the forthcoming DGA
+implementations and the anticipated establishment of guidelines on the
+interpretation and enforcement of the DGA, we underscore the necessity
+for further clarity regarding the definition of a data intermediary as
+well as the incorporation of technological solutions, akin to those
+observed in the PDS, to facilitate the fulfilment of regulatory
+requirements.</p>
+<p>Second – as Solid Pods by definition are intended for data storage
+and management, and most commonly will involve personal data, it is
+envisioned that actors will want to utilise this data for providing AI
+services – whether beneficial such as personalised recommendations
+and conversational agents, or for nefarious purposes such as
+surveillance profiling. Similarly, in light of the EU's objective
+of establishing a novel data sharing ecosystem through Data Spaces, the
+management and availability of data while simultaneously protecting and
+empowering Data Subjects through for example Solid Pods becomes an even
+more crucial and tangible concern. From the perspective of the GDPR, the
+ambiguities regarding the interpretation of roles and responsibilities,
+as well as the lack of sufficient technical mechanisms to support legal
+obligations, present significant challenges to the envisioned
+transformation in the availability and management of data. This impedes
+the new focus on the advancement of new services, thereby constraining
+the full potential of AI developments and services for data spaces.</p>
+<p>In terms of technical mechanisms, the inability to control whether
+data stored in Solid Pod can be used for specific 'purposes' such as
+training an AI systems leaves Applications with only the need of a
+permission to "use" AI as currently defined in Solid specifications to
+access and use this data. A case in point is the recent announcement by
+Meta that it will commence using posts from users to train its AI
+services, which was immediately met with complaints alleging
+infringement of GDPR and rights [ref]. This action was possible only
+because Meta currently hosts all this data. In a decentralised system
+such as that utilising Solid, Meta does not host the data itself, but
+rather utilises it from the user's Pod. As it has already been granted
+access to the data in order to provide its services, it is able to start
+using this data for training purposes without any changes being made to
+the way in which it accesses the data. In contrast, if Solid Pods were
+to employ a purpose-based access control system, Meta would be required
+to declare its intention to utilise the data for a new purpose, thereby
+triggering a new set of permission requests to the user. This approach
+aligns with the principles of protection and empowerment inherent to
+Solid, while still facilitating data availability and up-to-date
+management. In addition, it also facilitates a ‘compliance-by-design’
+approach to the GDPR where purpose separation is a necessary legal
+obligation such as for consent.</p>
+<p>In view of the legal uncertainties, it is worth noting that a
+'fundamental rights impact assessment'[<a href="#fn86"
+class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a>]
+is a mandatory requirement for certain uses of an AI system that is
+categorised as ‘high-risk’, as stipulated by the AI Act article 27[<a
+href="#fn87" class="footnote-ref" id="fnref87"
+role="doc-noteref"><sup>87</sup></a>]. Similarly, the AI Act also
+establishes requirements for risk management (article 9), automatically
+maintaining logs (article 12), and transparency requirements (article
+13) which result in obligations on entities classified as ‘deployers’
+and ‘providers’ of AI systems. In the case of Solid Pods, the
+applicability of the AI Act depends on the manner in which AI is being
+used and whether it falls into one of the high-risk categories defined
+in the AI Act. Though like GDPR, the AI Act also defines a ‘personal
+exemption’ (recital 13), it is similarly unclear about how individuals
+using AI in a personal capacity can benefit from the obligations of the
+AI Act on actors providing services. It is therefore essential to
+consider the capabilities and limitations of data and its use by AI
+systems, for example via Solid Pods, in order to understand the risks
+and impacts involved.</p>
+<p>In light of the potential for overlap with the conducting of a Data
+Protection Impact Assessment (DPIA), the AI Act explicitly acknowledges
+the possibility to reuse a DPIA to conduct a Fundamental Rights Impact
+Assessment (FRIA) (article 27). Given that AI development involves
+multiple actors in the lifecycle, this is a way for one actor to provide
+another with risk assessment information – or a DPIA – to support the
+other actors in conducting their own risk assessments in the context of
+use or deployment. Under GDPR, it would appear that the party fulfilling
+the role of data controller in this context is best placed to undertake
+this task.[<a href="#fn88" class="footnote-ref" id="fnref88"
+role="doc-noteref"><sup>88</sup></a>, <a href="#fn89"
+class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a>]
+If the role of data controller is unclear, as we have shown is the case
+for Solid Pods, as a result, the uncertainty surrounding the division of
+responsibilities as set forth in the GDPR also has a further impact on
+the implementation of provisions potentially protecting Data Subjects
+under the AI Act. To avoid Data Subjects having to manage their own AI
+risks, and so that they are protected from any harmful or misuses of AI,
+we encourage a similar investigation be made into the use of AI in Solid
+Pods based on the assessment of technical capabilities with assignment
+of legal responsibilities that we have shown in this article.</p>
+<h2>Concluding Remarks and Recommendations</h2>
+<p>The present article focuses on the issue of the division of
+responsibilities and, in particular, on the designation of
+controllership under GDPR with regard to decentralised data governance
+systems. Indeed, a precise delineation of responsibilities guarantees
+that Data Subjects can be simultaneously protected and granted control
+over the storage and management of data in a leading personal data store
+(PDS) solution such as Solid. Moreover, the technical specifications on
+which Solid is based can also provide mechanisms to automate the
+fulfilment of legal obligations, thereby potentially facilitating a
+transformation in the availability and management of data, which is
+beneficial to Data Spaces and the further development of AI. This
+article therefore presents a case for implementing PDS in the form of
+Solid within the current regulatory landscape from a multidisciplinary
+perspective. Subsequently, the potential implications of such an
+implementation are considered in relation to forthcoming developments,
+including Data Spaces and AI, and to the introduction of new legislative
+measures, such as the DGA. Due to the broad interpretation of what
+determines who should be a controller as well as the flexibility and
+diversity with which Pods are set up and Solid specifications are
+implemented, a multitude of actors in the Solid ecosystem may qualify as
+controllers. Furthermore, modern data-driven supply chains are
+increasingly comprised of services provided in a modular fashion, which
+makes the flexibility and diversity even greater. This raises several
+issues as well as further questions to be explored in future research.
+It is only through a comprehensive and nuanced understanding of the
+technological and legal landscape by policymakers that the necessary
+efforts to evolve the interpretation of regulations such as the GDPR
+towards a decentralised and individual-empowering paradigm can be made.
+In the absence of these efforts, there is a risk of inadequate
+protection and empowerment, as responsibilities remain ambiguous, both
+in legal terms and in the context of technical implementations. The
+article thus concludes with a series of recommendations pertaining to
+the clarification of the delineation of responsibilities, which are also
+intended to underscore forthcoming developments and recent legislative
+changes. While the article suggests avenues for further research, it
+does not present a definitive solution to the full range of issues
+raised in this context. It can be concluded, therefore, that the
+protection and empowerment of stakeholders in the deployment of PDS
+represents an ongoing process.</p>
+<p>One issue with this broad interpretation is the ‘pulverization of
+control’.[71] Already in Fashion ID, the Advocate General
+wondered whether effective data protection can be enhanced if everyone
+is made responsible for ensuring it (ultimately meaning no one will in
+fact be responsible).[<a href="#fn90" class="footnote-ref" id="fnref90"
+role="doc-noteref"><sup>90</sup></a>] Legal certainty consequently
+impacts the proper functioning of an economic market. Different actors
+who want to offer a market commodity, such as a Pod, must be able to
+assess what obligations they must meet when they enter the market. If it
+is not exactly clear who within the Solid-based ecosystem is responsible
+for legally mandated obligations, it will hinder innovation and progress
+of the ecosystem. For instance, in view of the possibility of overlap
+between the conduct of a DPIA and a fundamental rights impact assessment
+under the AI Act, it would seem that the party assuming the role of data
+controller in this context is best positioned to undertake this task.
+Consequently, the uncertainty surrounding the division of
+responsibilities also has an impact on the implementation of provisions
+potentially protecting Data Subjects under the AI Act. Moreover, in the
+absence of clarity regarding the division of responsibilities, actors
+such as providers of Pods and Applications may be encouraged to design a
+system so as to give some control to the ‘accidental’ controllers. For
+example, these include Pod Providers purchasing a particular
+infrastructure or platform or even Pod Users purchasing software they
+have no real knowledge of, let alone the ability to make changes to
+it.[25] Exploited legal ambiguities hinder Data Subjects’ right to data
+protection as the parties who have the concrete ability to protect the
+personal data of Data Subjects and to take (preventive) measures against
+possible data breaches can avoid their responsibilities. The first
+crucial step towards a solution for these problems could be formulating
+explicit contractual terms and regulatory guidance that indicates the
+specific roles and obligations associated with each actor in such an
+ecosystem. Authorities (such as DPA’s) have already stressed the need
+for contractual terms for cloud services. Furthermore, subject to
+appropriate future research-based guidance, the market can draft and
+standardise “model contracts” for different Solid ecosystem requirements
+and use cases such as Data Spaces. In that regard, we could also ask
+whether Applications and actors that ensure the practical implementation
+of certain model contracts or standards could not be merged at a higher
+level into a common "EU App Store". This EU App Store would then reflect
+Applications and other actors that respect European data protection
+values. The advantages and disadvantages of such an EU App Store could
+be weighed against each other in future research. In a similar vein, the
+Flemish government already fulfils the role of gatekeeper through a
+limited liability company that monitors and records contracts before
+Applications are allowed to access citizens' Pods (issued by Flemish
+government).[<a href="#fn91" class="footnote-ref" id="fnref91"
+role="doc-noteref"><sup>91</sup></a>] Furthermore, in addition to
+fulfilling the obligations set forth in the DGA, Pod Providers that
+qualify as data intermediaries are granted a label upon demonstrating
+compliance with the aforementioned obligations. These obligations
+encompass, but are not limited to, the necessity to act in the best
+interests of Data Subjects. In this context, the competent authorities
+under the DGA may encourage Pod Providers qualifying as data
+intermediaries to engage exclusively with Applications and other actors
+that follow established model contracts. Secondly, as the current
+literature suggests, it may also be advisable to narrow the scope of the
+controllership and to impose a higher threshold for the level of
+influence over processing means. This could be combined with tighter
+obligations on data processors, for instance with regard to data
+protection by design.[66]</p>
+<p>A further issue with the concept of controllership as currently
+defined in CJEU rulings is that it could, in theory, result in Pod
+Users, as natural persons and thus Data Subjects, being designated as
+controllers themselves. This would have the effect of undermining the
+initial purpose of the data protection regulation and the uptake of
+Solid Pods, which are supposed to facilitate an enhanced availability
+and management of data. As no effective study has yet been conducted on
+what this might mean in practice for Data Subjects and their possible
+new types of responsibilities, this is a risky hypothesis to make.
+Complying with these obligations could imply a conflict between Data
+Subjects having certain rights as a Data Subject and their obligations
+and duties as a controller.[71, 74] The consequence of the development
+of broad interpretations of controllership in jurisprudence, to protect
+the Data Subject, is thus paradoxically a danger to Data Subjects in
+this context of privacy-enhancing technologies such as Pods. Even if
+Data Subjects are acting in good faith and doing their best, there is no
+certainty about their legal responsibilities, specifically in case they
+manage data of other natural persons in their Pod.[<a href="#fn92"
+class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a>]
+A widening of or an exemption similar to the household exemption when
+having access control over data processed in a Pod, may be a first step
+to relieve this tension. Further, making it more explicit about how
+different interests can be reconciled (e.g., one Data Subject vs. other
+natural persons) could make it easier for Data Subjects to manage data
+of other natural persons in their Pod. In that regard, the
+decentralisation paradigm of Solid is also attractive in considering
+potential data intermediaries under the Data Governance Act as potential
+resolvers of such conflicts in the Solid ecosystem. Nevertheless,
+additional research into economically viable business models for such
+data intermediaries is recommended.[<a href="#fn93" class="footnote-ref"
+id="fnref93" role="doc-noteref"><sup>93</sup></a>] In addition, one may
+wonder whether this would also mean that Data Subjects bear no
+responsibility at all when they make use of Pods, specifically when
+their Pod also contains personal data of other natural persons.[<a
+href="#fn94" class="footnote-ref" id="fnref94"
+role="doc-noteref"><sup>94</sup></a>] Possibly natural persons as Pod
+Users in this situation can only be identified as data controllers in a
+way that subjects them to new kinds of minimum obligations that do not
+compromise their rights as Data Subjects. We therefore conclude with a
+call for further research and regulatory guidance regarding these
+emerging questions in order to protect as well as empower Data Subjects
+using PDS. In view of the considerable emphasis placed on data
+sovereignty and the forms of control exercised over subsequent data
+usage in Data Spaces, this call becomes increasingly tangible and
+relevant.</p>
+<p>Regardless of regulatory guidance and technical mechanisms to
+automate the fulfilment of legal obligations, data protection literacy
+of the actors in the Solid ecosystem also plays a vital role in
+protecting and empowering Data Subjects using PDS. For example, Pod
+Providers require guidance on auditing infrastructure, resource
+providers, and Third Parties utilised in their solutions to have a clear
+overview of how, where, and by whom the data is being processed - and to
+understand the distribution of GDPR’s obligations and liabilities.
+Similarly, Pod Users (and Data Subjects) should be provided with
+effective data protection literacy to better understand rights and
+perhaps even obligations based on the specific infrastructure and
+governance of their Pods (e.g., self-managed Pod or provided as SaaS by
+a Pod Provider) when containing data of other natural persons. With
+regard to the DGA, further guidance could be provided towards data
+intermediaries regarding the availability of data as Linked Data. This
+would enhance the value and knowledge extraction from the data, as well
+as the potential to implement technical mechanisms in line with current
+regulations in the Pod.</p>
+<p>Lastly, at the technical level, some suggestions can also be made to
+ultimately achieve the objective of simultaneously protecting and
+empowering Data Subjects using PDS. It is evident that, in the absence
+of additional technical measures to oversee the usage of data within
+Solid Pods for particular 'purposes' in accordance with the GDPR, an
+Application is only obliged to obtain 'permission' in accordance with
+the current, less far-reaching, Solid specifications to access and make
+use of the data. These Solid specifications lack effective mechanisms
+(logging or data provenance mechanisms in combination with
+permission-based system) to support oversight of how, where, and by whom
+the data is being processed. In relation to the DGA, the data
+intermediary bears the responsibility of assisting data subjects in
+making informed consent decisions regarding the use of their personal
+data. Furthermore, they are obliged to conduct a risk assessment in
+order to identify the potential benefits and risks associated with the
+proposed processing. Nevertheless, the lack of technical mechanisms to
+oversee the processing renders the performance of such an assessment in
+a Solid ecosystem currently too complex and onerous. As a potential
+solution, a Pod should provide the necessary technical measures to track
+data transactions and allow Pod Users or auditors to inspect ongoing
+processing activities and apply access controls where required. While we
+have focused on the specifics of Solid and its permission-based system
+in our analysis, actors such as Applications can also rely on existing
+modalities such as consent dialogues and privacy policies on their
+websites to comply with their responsibilities as a controller under the
+GDPR. However, while we acknowledge the potential legality of such
+approaches, we also point towards the well-established misuse and abuse
+of these mechanisms to make it more difficult for individuals to
+understand and control access over their personal data, as well as to
+the unbridled surveillance and profiling. We therefore consider Solid’s
+mission to also extend towards creating better mechanisms that overcome
+such known issues and truly provide individuals with transparency and
+accountability as enshrined in the GDPR. This should be done at the
+specification level, to establish and enforce desired practices and good
+forms of governance. The potential for such exemplary models of
+governance can be drawn from developments within the field of Data
+Spaces. These concepts could be further discussed within organisations
+that are striving for a more consistent and comprehensive implementation
+of Data Spaces, such as the Data Spaces Support Centre.[<a href="#fn95"
+class="footnote-ref" id="fnref95"
+role="doc-noteref"><sup>95</sup></a>]</p>
+<p><strong>Acknowledgments.</strong> Michiel Fierens is supported by
+SolidLab Vlaanderen (Flemish Government, EWI and RRF project VV023/10).
+Harshvardhan J. Pandit is supported by the ADAPT SFI Centre for Digital
+Media Technology and is funded by Science Foundation Ireland through the
+SFI Research Centres Programme and is co-funded under the European
+Regional Development Fund (ERDF) through Grant #13/RC/2106 P2.</p>
+<p><strong>Disclosure of Interests.</strong> The authors have no
+competing interests to declare that are relevant to the content of this
+article.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<h2 class="unnumbered" id="bibliography">References</h2>
+<ol>
+<li><p>Schneider, N.: Decentralization: an incomplete ambition. Journal
+of Cultural Economy 12 (4), 265-285 (2019).<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><span id="moerel-l.-blockchain-data-protection-and-why-they-are-not-on-a-collision-course.-european-review-of-private-law-266-825-851-2018">
+Moerel, L.: Blockchain &amp; Data Protection … and Why They Are Not on a
+Collision Course. European Review of Private Law 26(6), 825-851
+(2018)</span>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><p>The term ’access control’ is used throughout the text
+instead of ’control’ given the ambiguity of the term ’control’ and its
+possible association with ownership of data or absolute control as well
+as its focus on the legal basis of consent for processing<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Janssen, H., Cobbe, J., Singh, J.: Personal
+information management systems: a user-centric privacy utopia. Internet
+Policy Review <strong>9</strong>(4), 2-3 (2020)<a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>European Commission. A European Data Strategy. COM
+(2020) 66 final (Brussels, 19 February 2020)<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Regulation (EU) 2022/868 of the European Parliament
+and of the Council of 30 May 2022 on European data governance and
+amending Regulation (EU) 2018/1724 (Data Governance Act). <a
+href="http://data.europa.eu/eli/reg/2022/868/oj">http://data.europa.eu/eli/reg/2022/868/oj</a>,
+last accessed 2024/08/20<a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Regulation (EU) 2023/2854 of the European Parliament
+and of the Council of 13 December 2023 on harmonized rules on fair
+access to and use of data and amending Regulation (EU) 2017/2394 (Data
+Act). http://data.europa.eu/eli/reg/2023/2854/oj, last accessed
+2024/08/20<a href="#fnref7" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Janssen, H., Cobbe, J., Norval, C., Singh, J.:
+Decentralized Data Processing: Personal Data Stores and the GDPR.
+International Data Privacy Law <strong>10</strong>(4), 356-384 (2020)<a
+href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Linked Data is a set of design principles for sharing
+machine-readable interlinked data on the Web, What Are Linked Data and
+Linked Open Data. <a
+href="https://www.ontotext.com/knowledgehub/fundamentals/linked-data-linked-open-data/">https://www.ontotext.com/knowledgehub/fundamentals/linked-data-linked-open-data/</a>,
+last accessed 2024/08/20<a href="#fnref9" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>European Commission. Commission Staff Working
+Document on Common European Data Spaces. SWD (2022) 45 final (Brussels,
+23 February 2022)<a href="#fnref10" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Socially Aware Cloud Storage. <a
+href="https://www.w3.org/DesignIssues/CloudStorage.html">https://www.w3.org/DesignIssues/CloudStorage.html</a>,
+last accessed 2024/08/20<a href="#fnref11" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Mell, P., Grance, T.: The NIST Definition of Cloud
+Computing. NIST SP 800-145 (2011), <a
+href="https://doi.org/10.6028/NIST.SP.800-145,%20last%20accessed%202024/01/31%20">https://doi.org/10.6028/NIST.SP.800-145,
+last accessed 2024/08/20</a><a href="#fnref12" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Other similar movements exist, MyData Homepage. <a
+href="https://www.mydata.org/">https://www.mydata.org/</a><a
+href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Organization that produces and maintains standards
+that define the World-Wide Web<a href="#fnref14" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>Silva, O.E.B.M., Souza T.F.B., Duda J.M.S., Barros
+B.S.R.; Nóbrega, G.M.: Você decide quem POD: empoderando a/o estudante
+de computação quanto à propriedade de seus dados. In: Simpósio
+Brasileiro De Educação Em Computação (EDUCOMP). Porto Alegre: Sociedade
+Brasileira de Computação (2024), 367-374. last accessed 2024/08/20<a
+href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>Langford, J., Poikola, A., Janssen, W., Lähteenoja,
+V., Rikken, M.: Understanding MyData Operators. MyData Global. (2022),
+https://mydata.org/publication/understanding-mydata-operators/, last
+accessed 2024/08/20<a href="#fnref16" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>SolidLab Flanders. <a
+href="https://solidlab.be/">https://solidlab.be/</a>, last accessed
+2024/08/20<a href="#fnref17" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>Verstraete, M., Verbrugge, S., Colle, D.: Solid:
+Enabler of Decentralized, Digital Platforms Ecosystems. In: 31st ITS
+European Conference. Gothenburg (2022). <a
+href="http://hdl.handle.net/1854/LU-8760525">http://hdl.handle.net/1854/LU-8760525</a>,
+last accessed 2024/08/20<a href="#fnref18" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>Digital Flanders. Enterprise-ready Solid Platform.
+https://www.vlaanderen.be/<a
+href="https://www.vlaanderen.be/digitaal-vlaanderen/het-vlaams-datanutsbedrijf/enterprise-ready-solid-platform">digitaal-vlaanderen/het-vlaams-datanutsbedrijf/enterprise-ready-solid-platform</a>,
+last accessed 2024/08/20<a href="#fnref19" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>BBC. Personal data stores: building and trialling
+trusted data services. <a
+href="https://www.bbc.co.uk/rd/blog/2021-09-personal-data-store-research">https://www.bbc.co.uk/rd/blog/2021-09-personal-data-store-research</a>,
+last accessed 2024/08/20<a href="#fnref20" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>BBC. Social TV and the future of data. <a
+href="https://www.bbc.co.">https://www.bbc.co.</a><a
+href="https://www.bbc.co.uk/rd/blog/2022-10-social-tv-and-personal-data">uk/rd/blog/2022-10-social-tv-and-personal-data</a>,
+last accessed 2024/08/20<a href="#fnref21" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>Karamel Homepage. <a
+href="https://karamel.career/">https://karamel.career/</a>, last
+accessed 2024/08/20<a href="#fnref22" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>European Data Protection Board.: Guidelines 07/2020
+on the Concepts of Controller and Processor in the GDPR. (2020)<a
+href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>Bygrave, L.A., Tosoni, L.: Article 4(7) Controller.
+In: Kuner, C. and others (eds.). The EU General Data Protection
+Regulation (GDPR): A Commentary. Oxford University Press, Oxford (2020).
+<a
+href="https://doi-org.kuleuven.e-bronnen.be/10.1093/oso/9780198826491.003.0013">https://doi-org.kuleuven.e-bronnen.be/10.1093/oso/9780198826491.003.0013</a>,
+last accessed 2024/08/20<a href="#fnref24" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>Case C-25/17 Jehovan Todistajat, ECLI:EU:C:2018:551
+(2018)<a href="#fnref25" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p>European Data Protection Board.: Concepts of
+Controller, Processor and Joint Controllership under Regulation (EU)
+2018/1725 (2019)<a href="#fnref26" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>Santos, C., Nouwens, M., Toth, M., Bielova, N.,
+Roca, V.: Consent Management Platforms Under the GDPR: Processors and/or
+Controllers?. In: Gruschka, N., Antunes, L.F.C., Rannenberg, K.,
+Drogkaris, P. (eds.) Privacy Technologies and Policy APF 2021. LNCS,
+vol. 12703, pp. 47-69. Springer International Publishing (2021).
+https://doi.org/10.1007/978-3-030-76663-4_3, last accessed 2024/08/20<a
+href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p>Case C-210/16 Wirtschaftsakademie
+Schleswig-Holstein, ECLI:EU:C:2018:388 (2018)<a href="#fnref28"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p>Case C-40/17 FashionID, ECLI:EU:C:2019:629 (2018)<a
+href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p>Article 29 Working Party.: Opinion 03/2013 on
+Purpose Limitation. WP203 (2013)<a href="#fnref30" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p>Fischer, .C.: Re-thinking the allocation of roles
+under the GDPR in the context of cloud computing. International Data
+Privacy Law <strong>14</strong>(1), 53-65 (2024)<a href="#fnref31"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p>Information Commissioner’s Office Enforcement
+Notice. <a
+href="https://ico.org.uk/media/action-weve-taken/enforcement-notices/%20">https://ico.org.uk/media/action-weve-taken/enforcement-notices/</a>
+<a
+href="https://ico.org.uk/media/action-weve-taken/enforcement-notices/2620027/emailmovers-limited-en.pdf">2620027/emailmovers-limited-en.pdf</a>,
+last accessed 2024/08/20<a href="#fnref32" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p>A company using an external hosting service may
+determine and supervise all the essential aspects of the processing such
+as the security objectives while its processor may determine
+non-essential aspects such as the specific software and security
+measures used to achieve the security objectives or the concrete methods
+used for the conservation of data<a href="#fnref33"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p>Belgian DPA. Decision DOS-2019-01377 relating to
+IAB’s Transparency and Consent Framework. <a
+href="https://edpb.europa.eu/system/files/2022-03/be_2022-02_decisionpublic_0.pdf">https://edpb.europa.eu/system/files/2022-03/be_2022-02_decisionpublic_0.pdf</a>,
+last accessed 2024/08/20<a href="#fnref34" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p>Ducuing, C., Schroers, J.: The Recent Case Law of the
+CJEU on (Joint) Controllership: Have We Lost the Purpose of ‘Purpose?.
+Computerrecht: Tijdschrift voor Informatica, Telecommunicatie en Recht
+<strong>2020</strong>(6), 7-8 (2020)<a href="#fnref35"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p>Rossello, S., Dewitte, P.: Exploring the Limits of
+Joint Control: The Case of COVID-19 Digital Proximity Tracing Solutions.
+JIPITEC <strong>12</strong>(3), 342-369 (2021)<a href="#fnref36"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p>E.g.: consider a user of a proximity tracing
+application who wants to protect his own health by downloading the
+application (mutual benefit potentially leading to a qualification of
+joint controllership)<a href="#fnref37" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p>Case C-131/12 Google Spain SL and Google Inc. v
+Agencia Española de Protección de Datos (AEPD) and Mario Costeja
+González, ECLI:EU:C:2014:317 (2014).<a href="#fnref38"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p>Blume, P.: Controller and Processor: Is There a Risk
+of Confusion?. International Data Privacy Law <strong>3</strong>(2),
+140-145 (2013)<a href="#fnref39" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn40"><p>The Court designated two controllers, Facebook as it
+determined the purposes and means, and the fan page administrators who
+participated in the processing by selecting certain parameters which was
+considered as an influence on the processing because of the statistical
+analysis of the target audience for management and promotional
+purposes.<a href="#fnref40" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn41"><p>Opinion of Advocate General Emiliou. Case C-683/21,
+ECLI:EU:C:2023:376 (2023)<a href="#fnref41" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn42"><p>Austrian DPA. Decision D155.027. <a
+href="https://www.dsb.gv.at/">https://www.dsb.gv.at/</a>, last accessed
+2024/08/20<a href="#fnref42" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn43"><p>French DPA (CNIL). <a
+href="https://www.cnil.fr/sites/default/files/atoms/files/med_google_analytics_anonymisee.pdf">https://www.cnil.fr/sites/default/files/atoms/files/med_google_analytics_anonymisee.pdf</a>,
+last accessed 2024/08/20, where a website (controller) used Google
+Analytics, provided by Google LLC (processor), to measure and track
+website use<a href="#fnref43" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn44"><p>Slovenian DPA. Decision 0612-23/2019/19
+Informacijski pooblaˇsˇcenec.
+https://gdprhub.eu/images/8/89/IP_%28Slovenia%29_-_0612-23-2019-19.pdf,
+last accessed 2024/08/20<a href="#fnref44" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn45"><p>French DPA (CNIL). Decision SAN-2022-020 concernant
+la société DISCORD INC. <a
+href="https://www.cnil.fr/en/discord-inc-fined-800-000-euros"><u>https://www.cnil.fr/en/discord-inc-fined-800-000-euros</u></a>,
+last accessed 2024/08/20<a href="#fnref45" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn46"><p>Opinion of Advocate General Emiliou, Case C-683/21,
+ECLI:EU:C:2023:376 (2023)<a href="#fnref46" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn47"><p>ISO/IEC 22123-1:2023. <a
+href="https://www.iso.org/standard/82758.html">https://www.iso.org/standard/82758.html</a>,
+last accessed 2024/08/20<a href="#fnref47" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn48"><p>Pandit, H.J.: Making Sense of Solid for Data
+Governance and GDPR. Information <strong>14</strong>(2), 114 (2023). <a
+href="https://doi.org/10.3390/info14020114">https://doi.org/10.3390/info14020114</a>,
+last accessed 2024/08/20<a href="#fnref48" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn49"><p>European Data Protection Board.: 2022 Coordinated
+Enforcement Action, Use of Cloud-Based Services by the Public Sector
+(2023)<a href="#fnref49" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn50"><p>For example, the specification talks about ’Pod
+Owners’, while we opt for other definitions given that the term ’Owner’
+is ambiguous and represents specific roles in the legal sense<a
+href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn51"><p>Web Access control. <a
+href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a>,
+last accessed 2024/08/20<a href="#fnref51" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn52"><p>Solid App Interoperability. <a
+href="https://solid.github.io/data-interoperability-panel/specification/">https://solid.github.io/data-interoperability-panel/specification/</a>,
+last accessed 2024/08/20<a href="#fnref52" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn53"><p>Running your own Solid server. <a
+href="https://solidproject.org//self-hosting/css">https://solidproject.org//self-hosting/css</a>,
+last accessed 2024/08/20<a href="#fnref53" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn54"><p>Bhowmik, S.: Cloud Computing. Cambridge University
+Press, Cambridge (2017)<a href="#fnref54" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn55"><p>Pod Providers, Solid. Get A Pod. <a
+href="https://solidproject.org/users/get-a-pod">https://solidproject.org/users/get-a-pod</a>,
+last accessed 2024/08/20<a href="#fnref55" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn56"><p>Provision of cloud-agnostic data infrastructure
+software enabling organizations to deploy and manage Solid-compliant
+server solutions through embodying a set of specifications, Enterprise
+Solid Server. <a
+href="https://www.inrupt.com/products/enterprise-solid-server">https://www.inrupt.com/products/enterprise-solid-server</a>,
+last accessed 2024/08/20<a href="#fnref56" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn57"><p>Case C-604/22 IAB Europe v
+Gegevensbeschermingsautoriteit, ECLI:EU:C:2024:214 (2024).<a
+href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn58"><p>No more raw data. Trust envelopes enable responsible
+data reuse. <a
+href="https://ruben.verborgh.org/blog/2023/11/10/no-more-raw-data/">https://ruben.verborgh.org/blog/2023/11/10/no-more-raw-data/</a>,
+last accessed 2024/08/20<a href="#fnref58" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn59"><p>Case C-582/14 Breyer, ECLI:EU:C:2016:779 (2016)<a
+href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn60"><p>Case C-434/16 Nowak, ECLI:EU:C:2017:994 (2017)<a
+href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn61"><p>Purtova, N.: The Law of Everything. Broad Concept of
+Personal Data and Future of EU Data Protection Law. Law, Innovation and
+Technology <strong>10</strong>(1), 40-81 (2018)<a href="#fnref61"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn62"><p>George, D., Reutimann, K., Tamo-Larrieux, A.: GDPR
+Bypass by Design? Transient Processing of Data under the GDPR.
+International Data Privacy Law <strong>9</strong>(4), 285-298 (2019)<a
+href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn63"><p>Situation whereby a dataset contains personal data
+as well as non-personal data and separating the two would either be
+impossible or considered by the controller to be economically
+inefficient or not technically feasible, European Commission. Guidance
+on the Regulation on a framework for the free flow of non-personal data
+in the European Union. COM/2019/250 final<a href="#fnref63"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn64"><p>Article 29 Working Party.: Guidelines on the right
+to data portability. WP 242 (2016)<a href="#fnref64"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn65"><p>See e.g., the establishment of a Semantic
+Interoperability Centre in 2007, Implementation Strategy. COM(2017)134,
+Interoperable Europe Act. COM(2022)720<a href="#fnref65"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn66"><p>Van Alsenoy, B.: Data Protection Law in the EU:
+Roles, Responsibilities and Liability. Intersentia (2019)<a
+href="#fnref66" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn67"><p>European Data Protection Supervisor.: Guidelines on
+the Use of Cloud Computing Services by the European Institutions and
+Bodies (2018)<a href="#fnref67" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn68"><p>Russo, B., Valle, L., Bonzagni, G., Locatello, D.,
+Pancaldi, M., Tosi, D.: Cloud Computing and the New EU General Data
+Protection Regulation. IEEE Cloud Computing <strong>5</strong>(4), 58-68
+(2018)<a href="#fnref68" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn69"><p>Van Remoortel, F.: Cloud Computing - Status and
+Impact of the GDPR. In: Chaumonts, D. and others (eds.). Data Protection
+&amp; Privacy. Anthemis, Limal (2017)<a href="#fnref69"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn70"><p>Hon, K., Hornle, J., Millard, C.: Data Protection
+Jurisdiction and Cloud Computing–When Are Cloud Users and Providers
+Subject to EU Data Protection Law? The Cloud of Unknowing. International
+Review of Law, Computers &amp; Technology <strong>26</strong>(2-3),
+129-164 (2012)<a href="#fnref70" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn71"><p>Finck, M.: Cobwebs of Control: The Two Imaginations
+of the Data Controller in EU Law. IDPL <strong>11</strong>(4) IDPL,
+333-347 (2021)<a href="#fnref71" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn72"><p>Case C-101/01 Lindqvist, ECLI:EU:C:2003:596 (2003).
+Concerned the creation of an internet page on a personal computer with
+information concerning colleagues without warning them, the webpage was
+published on the internet. The judges decided that the household
+exemption was not applicable to processing and publication of data on
+the internet as it was accessible to an indefinite number of people<a
+href="#fnref72" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn73"><p>Case C-212/13 Rynes, ECLI:EU:C:2014:2428 (2014).
+Concerned a CCTV located in a house but monitoring a part of the public
+space. The Court decided that this narrowly interpreted exemption was
+not applicable as it covered public space and was directed outward of
+the private setting. Additionally, the domestic purpose or intention for
+the use of CCTV, which was family protection, is not sufficient to
+ensure the applicability of such exemption<a href="#fnref73"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn74"><p>Chen, J., Edwards, L., Urquhart, L., McAuley, D..:
+Who Is Responsible for Data Processing in Smart Homes? Reconsidering
+Joint Controllership and the Household Exemption. International Data
+Privacy Law <strong>10</strong>(4), 279-293 (2020)<a href="#fnref74"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn75"><p>Another situation where the exemption does not apply
+is when users accept requests of online friends without discrimination
+as the data would then be available to a large number of persons<a
+href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn76"><p>Article 29 Working Party.: Opinion 5/2009 on online
+social networking. WP163 (2009)<a href="#fnref76" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn77"><p>Similar reasoning on processing own biometric data
+stored on the device, see French DPA (CNIL).: Biométrie dans les
+smartphones des particuliers : application du cadre de protection des
+données (2018). <a
+href="https://www.cnil.fr/fr/biometrie-dans-les-smartphones-des-particuliers-application-du-cadre-de-protection-des-donnees">https://www.cnil.fr/fr/biometrie-dans-les-smartphones-des-particuliers-application-du-cadre-de-protection-des-donnees</a>,
+last accessed 2024/08/20<a href="#fnref77" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn78"><p>Georgiopoulou, Z., Makri, E.-L., Lambrinoudakis, C.:
+GDPR Compliance: Proposed Technical and Organizational Measures for
+Cloud Provider. Information &amp; Computer Security
+<strong>28</strong>(5), 665-680 (2020)<a href="#fnref78"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn79"><p>Article 29 Working Party.: Opinion 05/2012 on Cloud
+Computing. WP 196 (2012).<a href="#fnref79" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn80"><p>Edwards, L., Finck, M., Veale, M., Zingales, N.:
+Data Subjects as Data Controllers: A Fashion (Able) Concept. Internet
+Policy Review (2019), https://policyreview.info/articles/news/data-</p>
+<p>subjects-data-controllers-fashionable-concept/1400, last accessed
+2024/08/20<a href="#fnref80" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn81"><p>Vidminas, V., Zhao R., Goel, N.: SocialGenPod:
+Privacy-Friendly Generative AI Social Web Applications with
+Decentralised Personal Data Stores. In: Companion Proceedings of the ACM
+Web Conference. USA (2024), 1067-1070. <a
+href="https://dl.acm.org/doi/10.1145/3589335.3651251">https://dl.acm.org/doi/10.1145/3589335.3651251</a>,
+last accessed 2024/08/20<a href="#fnref81" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn82"><p>Steinbuss, S. et al.: IDS Reference Architecture
+Model 4. Technical Report. International Data Spaces Association (2022),
+<a
+href="https://github.com/International-Data-Spaces-Association/IDS-RAM_4_0">https://github.com/International-Data-Spaces-Association/IDS-RAM_4_0</a>,
+last accessed 2024/08/20<a href="#fnref82" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn83"><p>DIN SPEC 27070:2020-03. Anforderungen und
+Referenzarchitektur eines Security Gateways zum Austausch von
+Industriedaten und Diensten. Beute Verlag GmbH, <a
+href="https://www.beuth.de/de/-/-/319111044">https://www.beuth.de/de/-/-/319111044</a>,
+last accessed 2024/08/20<a href="#fnref83" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn84"><p>Meckler, S., Dorsch, R., Henselmann, D., Harth, A.:
+The Web and Linked Data as a Solid Foundation for Dataspaces. In:
+Companion Proceedings of the ACM Web Conference. USA (2023).
+https://dl.acm.org/doi/fullHtml/10.1145/3543873.3587616, last accessed
+2024/08/20<a href="#fnref84" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn85"><p>Bobev, T., Dessers, V.K., Ducuing, C., Fierens, M.,
+Palumbo, A., Peeters, B., Stähler, L.: White Paper on the Definition of
+Data Intermediation Services. CiTiP Working Paper. (2023), <a
+href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4589987">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4589987</a>,
+last accessed 2024/08/20<a href="#fnref85" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn86"><p>Janssen, H., Seng Ah Lee, M., Sing, J.: Practical
+fundamental rights impact assessment. International Journal of Law and
+Information Technology <strong>30</strong>, 200-232 (2022).<a
+href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn87"><p>Regulation (EU) 2024/1689 of the European Parliament
+and of the Council of 13 June 2024 laying down harmonized rules on
+artificial intelligence and amending Regulations (EC) No 300/2008, (EU)
+No 167/2013, (EU) No 168/2013, (EU) 2018/858, (EU) 2018/1139 and (EU)
+2019/2144 and Directives 2014/90/EU, (EU) 2016/797 and (EU) 2020/1828
+(Artificial Intelligence Act). <a
+href="http://data.europa.eu/eli/reg/2024/1689/oj">http://data.europa.eu/eli/reg/2024/1689/oj</a>,
+last accessed 2024/08/20<a href="#fnref87" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn88"><p>Bieker, F., Hansen, M..: Data Protection in 2033:
+Playing Whac-A-Mole with Injustices? European Data Protection Law Review
+<strong>9</strong> (4), 404 (2023).<a href="#fnref88"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn89"><p>Calvi, A., Kotzinos, D.: Enhancing AI fairness
+through impact assessment in the European Union: a legal and computer
+science perspective. In: <a
+href="https://dl.acm.org/doi/proceedings/10.1145/3593013">FAccT '23:
+Proceedings of the 2023 ACM Conference on Fairness, Accountability, and
+Transparency</a>. USA (2023), 1229-1245.
+https://dl.acm.org/doi/10.1145/3593013.3594076.<a href="#fnref89"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn90"><p>Opinion of Advocate General Bobek. Case C-40/17
+Fashion ID, ECLI:EU:C:2018:1039 (2018)<a href="#fnref90"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn91"><p>Article 10 Decree establishing Flemish Data Utility
+Company 2 December 2022. <a
+href="https://codex.vlaanderen.be/PrintDocument.ashx?id=1037753&amp;datum=&amp;geannoteerd=false&amp;print=false">https://codex.vlaanderen.be/PrintDocument.ashx?id=1037753&amp;datum=&amp;geannoteerd=false&amp;print=false</a>,
+last accessed 2024/08/20, last accessed 2024/08/20<a href="#fnref91"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn92"><p>Millard, C.: At This Rate, Everyone Will Be a
+[Joint] Controller of Personal Data!. International Data Privacy Law
+<strong>9</strong>(4), 217-219 (2019)<a href="#fnref92"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn93"><p>Verstraete, M., Fierens, M., Verbrugge, S., Colle,
+D.: Assessing the economic viability of data intermediation services as
+defined in the DGA. In: 62nd FITCE International Congress Proceedings.
+Athens (2023). <a
+href="http://hdl.handle.net/1854/LU-01HD3GSC9YDZCVG2N0PYJKTVZ9">http://hdl.handle.net/1854/LU-01HD3GSC9YDZCVG2N0PYJKTVZ9</a>,
+last accessed 2024/08/20<a href="#fnref93" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn94"><p>For example, GDPR article 20(4) right to data
+portability already takes into account the rights and freedoms of
+others<a href="#fnref94" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn95"><p>Data Spaces Support Centre. Data Spaces Blueprint
+Version 1.0. Glossary, Conceptual Model and Buidling Blocks (2024), <a
+href="https://dssc.eu/space/BVE/357073006/Data+Spaces+Blueprint+v1.0">https://dssc.eu/space/BVE/357073006/Data+Spaces+Blueprint+v1.0</a>,
+last accessed 2024/08/20<a href="#fnref95" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

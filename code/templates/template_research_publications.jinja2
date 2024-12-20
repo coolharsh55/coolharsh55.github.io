@@ -37,12 +37,12 @@
             <time datetime="{{publication.schema_datePublished}}">{{publication.schema_datePublished}}</time>
             {% if not publication|publication_is_draft %}<span class="label">{{publication|publication_type}}</span>{% endif %}
         {% if publication.schema_status %}
-            <span class='note'>{{ publication.schema_status }}</span>
+            <span class='note' style="color: red;">{{ publication.schema_status }}</span>
         {% endif %}
         {% if publication.schema_url %}
             <a href="{{publication.schema_url}}">formal publication</a>
         {% elif not publication|publication_is_draft %}
-            <span class='note' style="color: red;">in-press</span>
+            <span class='note' style="color: red;">(in-press)</span>
         {% endif %}
         <br/>
         {# venue #}

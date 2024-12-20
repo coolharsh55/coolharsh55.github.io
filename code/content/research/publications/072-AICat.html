@@ -1,0 +1,1213 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<div id="toc"></div>
+
+<p><strong>Abstract:</strong> The European Union's Artificial Intelligence Act (AI Act) requires providers and deployers of high-risk AI applications to register their systems into the EU database, wherein the information should be represented and maintained in an easily-navigable and machine-readable manner. Given the uptake of open data and Semantic Web-based approaches for other EU repositories, in particular the use of the Data Catalogue vocabulary Application Profile (DCAT-AP), a similar solution for managing the EU database of high-risk AI systems is needed. This paper introduces <strong>AICat</strong>—an extension of DCAT for representing catalogues of AI systems that provides consistency, machine-readability, searchability, and interoperability in managing open metadata regarding AI systems. This open approach to cataloguing ensures transparency, traceability, and accountability in AI application markets beyond the immediate needs of high-risk AI compliance in the EU. AICat is available online at <a href="https://w3id.org/aicat">https://w3id.org/aicat</a> under the CC-BY-4.0 license.</p>
+<p><strong>Keywords:</strong> AI Act , DCAT , AI catalogues , regulatory enforcement , trustworthy AI</p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The European Union (EU) Artificial Intelligence Act (AI Act) <span
+class="citation" data-cites="aiact"><a href="#ref-aiact"
+role="doc-biblioref">[1]</a></span>, which entered into force on 1
+August 2024, stands as a landmark legal regime for development and use
+of AI. Within the AI Act, there is a high demand for Regulatory
+Technology (RegTech) solutions to serve the foundational and technical
+backbone required for implementation and enforcement of the Act <span
+class="citation" data-cites="fehlinger2023enabling"><a
+href="#ref-fehlinger2023enabling" role="doc-biblioref">[2]</a></span>.
+Drawing parallels with the EU digital regulations, notably the General
+Data Protection Regulation (GDPR) <span class="citation"
+data-cites="gdpr"><a href="#ref-gdpr"
+role="doc-biblioref">[3]</a></span>, and looking into the body of
+compliance and enforcement solutions proposed in regard to such
+regulations suggest adoption of Semantic Web for effective and scalable
+compliance and enforcement solutions.</p>
+<p>In the context of the AI Act, one area where the Semantic Web is
+anticipated to be used is the implementation of the <em>EU database of
+high-risk AI systems</em>. The database, which is to be established and
+managed by the European Commission in collaboration with Member States,
+is intended to encompass information regarding high-risk AI systems as
+declared by their providers and deployers. From the technical
+perspective, the AI Act requires the information contained within the
+database to be <em>“easily navigable”</em> and
+<em>“machine-readable”</em> (Art. 71 (4)), with different levels of
+accessibility, i.e. publicly and non-publicly accessible.</p>
+<p>To implement and manage the EU database, and any catalogues of
+AI-related resources, a layer of metadata is needed to facilitate
+cross-referencing, traceability, transparency, interoperability, and
+comparability. The current state of existing repositories of AI systems,
+models, and datasets shows that adoption of machine-readable metadata is
+limited (see <a href="#relatedwork" data-reference-type="ref+label"
+data-reference="relatedwork">2</a>). In this paper, we address this gap
+in AI repositories as well as the pressing need for the EU to establish
+the high-risk AI database by proposing <strong>AICat</strong> as a
+cataloguing approach. AICat extends the Data Catalog Vocabulary
+(DCAT) <span class="citation" data-cites="dcat-v3"><a
+href="#ref-dcat-v3" role="doc-biblioref">[4]</a></span>, enabling
+describing AI systems and components, including AI models and datasets,
+in catalogues through a consistent, standardised, and interoperable
+mechanism. This leads to the contributions of this work as:</p>
+<ol>
+<li><p>An in-depth analysis of the AI Act’s registration requirements
+for providers and deployers of high-risk AI systems,</p></li>
+<li><p><strong>AICat</strong>, an extension of DCAT that provides a
+mechanism for cataloguing AI systems and their incorporating components
+in registries of AI systems, including but not limited to the EU
+database of high-risk AI systems.</p></li>
+</ol>
+<h2 id="relatedwork">Related Work</h2>
+<p>With the proliferation of AI models, systems, and use cases, open AI
+repositories and commercial marketplaces have been created to facilitate
+the discovery and sharing of resources <span class="citation"
+data-cites="kumar2021marketplace"><a href="#ref-kumar2021marketplace"
+role="doc-biblioref">[5]</a></span>. This section investigates the
+literature to identify related studies that address registering and
+sharing metadata about AI systems and their risks, in particular within
+the EU database of high-risk AI systems, using Semantic Web
+technologies.</p>
+<p>Currently, there are a few well-known repositories that leverage
+metadata for describing resources. The <strong>Hugging Face
+Hub</strong><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> is a centralised repository of
+open-source models and datasets, wherein each model or dataset is
+accompanied with metadata describing them. This enables discovery,
+sharing, and filtering of resources available on Hugging Face’s Model
+and Data Hubs through the use of open JSON-based metadata. The Hub
+contains a repository of Spaces, i.e. ML demo apps, which, unlike the
+Model and Data Hub, do not support the inclusion of documented
+information and structured metadata. Similarly, <strong>Kaggle</strong>
+provides repositories of Datasets<a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a> and Models<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>,
+where datasets, models, and generative AI applications are indexed and
+documented using detailed Data and Model Cards. Using the Kaggle
+repository, datasets and models can be published, shared, tagged,
+searched, and sorted. Compared to Hugging Face Data Hub which supports
+indexing only open-source resources, Kaggle Datasets allows for sharing
+metadata about both proprietary and publicly available datasets. The
+<strong>AI-on-Demand (AIoD) platform</strong><a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is
+a European-funded project that serves as a community-driven hub for
+cataloguing AI-related solutions and components that contribute to the
+European ecosystem of AI excellence and trust. AIoD’s asset catalogue<a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> covers a wide range of resources
+including datasets, libraries, ML models, AI services, tools, use cases,
+and even tutorials. AIoD also provides JSON-based metadata for
+describing resources<a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a>.</p>
+<p><strong>Croissant</strong> <span class="citation"
+data-cites="croissant2024"><a href="#ref-croissant2024"
+role="doc-biblioref">[6]</a></span> is a framework developed by
+MLCommons—a non-profit open AI engineering consortium that enables
+expressing metadata for datasets with a focus on information that is
+essential in machine learning workflows. The Croissant vocabulary<a
+href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a> is an extension of
+<code>schema.org/Dataset</code> vocabulary for metadata of ML datasets,
+which is expressed in the JSON-LD format. The Croissant framework is
+supported by a user-friendly tool to assist non-technical users in
+creation and modification of metadata. Although it is not a dataset
+repository, it has been integrated with existing data repositories,
+including HuggingFace, adding a layer of metadata.</p>
+<p>While the information in the aforementioned registries is mostly
+presented in semi-structured formats such as JSON, none of them follow
+standardised approaches for data sharing or cataloguing. In regard to
+standardised approaches, the Data Catalog Vocabulary (DCAT) <span
+class="citation" data-cites="dcat-v3"><a href="#ref-dcat-v3"
+role="doc-biblioref">[4]</a></span>—the W3C’s recommended vocabulary for
+publishing data catalogues—and particularly its application profile for
+data portals in Europe (DCAT-AP) <span class="citation"
+data-cites="dcat-ap"><a href="#ref-dcat-ap"
+role="doc-biblioref">[7]</a></span> have been adopted by the European
+Commission to promote open, standardised, and interoperable data
+sharing, prominently in the European Data Portal (EDP)<a href="#fn8"
+class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>,
+which is the central point of access to open data provided by the EU’s
+public agencies <span class="citation" data-cites="fabin2019dcatap"><a
+href="#ref-fabin2019dcatap" role="doc-biblioref">[8]</a></span>.
+Recently, <strong>MLDCAT-AP</strong> <span class="citation"
+data-cites="mldcat-ap"><a href="#ref-mldcat-ap"
+role="doc-biblioref">[9]</a></span> has been proposed as an extension of
+DCAT-AP for including information about machine learning models in data
+catalogues. One of the distinguishing features of MLDCAT-AP is inclusion
+of information about <em>risks</em> associated with ML models.</p>
+<p>Of relevance to the contributions of this work is the <strong>Data
+Processing Catalogue (DPCat)</strong> <span class="citation"
+data-cites="ryan2022dpcat"><a href="#ref-ryan2022dpcat"
+role="doc-biblioref">[10]</a></span>, which is an extension of DCAT and
+DCAT-AP that enables representing, maintaining, and exchanging ROPA<a
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>-related information in the form of
+datasets and catalogues. DPCat further enables creating documentation to
+address the GDPR’s ROPA requirements.</p>
+<p><a href="#tab:&lt;ch2-repository-comparison&gt;"
+data-reference-type="ref+label"
+data-reference="tab:&lt;ch2-repository-comparison&gt;">1</a> shows a
+comparison of existing approaches for cataloguing AI, models, and
+datasets. Currently, providing metadata, typically in JSON format,
+regarding datasets and models is an established practice. However, there
+is little attention to cataloguing AI systems and consequently there is
+no standardised machine-readable vocabulary that supports cataloguing of
+AI systems as well as their incorporating components.</p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <caption>Comparison of AI cataloguing approaches (a black circle (&bull;) indicates the criterion is satisfied, while a blank circle (&#x25CB;) indicates that it is not)</caption>
+  <thead>
+    <tr>
+      <th><strong>Work</strong></th>
+      <th><strong>Scope</strong></th>
+      <th><strong>Format of metadata</strong></th>
+      <th><strong>Use of standardised vocabularies</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4"><strong>Repositories</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Hugging Face Data/Model Hub</strong></td>
+      <td>Dataset/Model</td>
+      <td>JSON</td>
+      <td>&#x25CB;</td>
+    </tr>
+    <tr>
+      <td><strong>Kaggle dataset/model repository</strong></td>
+      <td>Dataset/Model</td>
+      <td>HTML</td>
+      <td>&#x25CB;</td>
+    </tr>
+    <tr>
+      <td><strong>AI-on-Demand (AIoD) platform</strong></td>
+      <td>AI assets (dataset, model, services)</td>
+      <td>JSON</td>
+      <td>&#x25CB;</td>
+    </tr>
+    <tr>
+      <td colspan="4"><strong>Approaches</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Croissant</strong> [croissant2024]</td>
+      <td>Dataset</td>
+      <td>JSON-LD</td>
+      <td>&#x25CB;</td>
+    </tr>
+    <tr>
+      <td><strong>MLDCAT-AP</strong> [mldcat-ap]</td>
+      <td>ML models</td>
+      <td>JSON-LD</td>
+      <td>&#x2022;</td>
+    </tr>
+    <tr>
+      <td><strong>DPCat</strong> [ryan2022dpcat]</td>
+      <td>GDPR's ROPA</td>
+      <td>Turtle</td>
+      <td>&#x2022;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span id="tab:&lt;ch2-repository-comparison&gt;"
+data-label="tab:&lt;ch2-repository-comparison&gt;"></span></p>
+<h2 id="aiact_analysis">Analysis of the AI Act’s Registration
+Requirements</h2>
+<p>Under the AI Act, providers and deployers of Annex III high-risk AI
+systems and providers of non-high-risk Annex III systems, i.e. systems
+that meet the conditions of Annex III but are considered as
+non-high-risk by the provider, are required to register their systems
+into the EU database (Article 49). According to Article 71, the EU
+database should be set up and maintained by the European Commission, in
+collaboration with the Member States. It shall be <em>“accessible and
+publicly available”</em> (with some exceptions), provided in a <em>“user
+friendly manner”</em>, and should be <em>“easily navigable and
+machine-readable”</em>. The EU database aims to act as an instrument for
+the Commission and the Member States to facilitate monitoring the
+current uptake of Annex III AI systems—regardless of their associated
+risk category—within the EU market and to serve as a transparency
+measure for sharing information regarding such systems with the public
+(Article 71 and Recital 131). The EU database therefore is a key data
+interoperability point between the Commission, AI providers, AI
+deployers, and the public.</p>
+<p><a href="#tab:&lt;ch3-aiact-registration&gt;"
+data-reference-type="ref+label"
+data-reference="tab:&lt;ch3-aiact-registration&gt;">2</a> provides a
+summary of the registration provisions specified in Article 49. As shown
+in Table, the list of information elements that should be registered and
+their level of openness, i.e. publicly accessible or not, depends on the
+role of the registrant and the type of the system. In this, notably,
+submitting information regarding incorporating AI models, whether they
+are general-purpose or not, is not needed. However, information about
+general-purpose AI models should be made available to downstream AI
+providers that intend to use the model within their systems (Article
+53).</p>
+<p>Annex VIII, wherein the information to be submitted upon the
+registration of high-risk AI systems is outlined, was analysed to
+identify the <em>general</em> information that should be provided when
+registering an AI system into the EU database. Detailed information,
+such as the system’s logic, instructions for use, and summary of
+fundamental rights impact assessment are not included, due to their
+descriptive nature and the lack of guidelines. In addition, for the
+general description of the general-purpose AI model, the key information
+elements listed in Annex XII, Point 1, were included to enable
+representation of AI components. <a href="#tab:&lt;information-req&gt;"
+data-reference-type="ref+label"
+data-reference="tab:&lt;information-req&gt;">3</a> shows the key
+information elements extracted from Annex VIII and XII.</p>
+<div id="tab:&lt;ch3-aiact-registration&gt;">
+<table>
+<caption>Registration requirements for high-risk AI systems under the EU
+AI Act</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>AI Act Article</strong></th>
+<th style="text-align: left;"><strong>AI System</strong></th>
+<th style="text-align: left;"><strong>Where?</strong></th>
+<th style="text-align: left;"><strong>What Information?</strong></th>
+<th style="text-align: left;"><strong>Who?</strong></th>
+<th style="text-align: left;"><strong>When?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">49(1)</td>
+<td style="text-align: left;">High-risk as per Annex III, P. 3, 4, 5,
+8</td>
+<td style="text-align: left;">Public EU database</td>
+<td style="text-align: left;">Annex VIII (A)</td>
+<td style="text-align: left;">AI provider or authorised
+representative</td>
+<td style="text-align: left;">Before placing on the market or putting
+into service</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(1) &amp; (4)</td>
+<td style="text-align: left;">High-risk as per Annex III, P. 1, 6, and
+7</td>
+<td style="text-align: left;">Non-public EU database</td>
+<td style="text-align: left;">Annex VIII (A), points 1 to 10 (except 6,
+8, and 9)</td>
+<td style="text-align: left;">AI provider or authorised
+representative</td>
+<td style="text-align: left;">Before placing on the market or putting
+into service</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(2)</td>
+<td style="text-align: left;">Meets Annex III, P. 2, 3, 4, 5, 8
+conditions but non-high-risk as per assessment of the provider</td>
+<td style="text-align: left;">Public EU database</td>
+<td style="text-align: left;">Annex VIII (B)</td>
+<td style="text-align: left;">AI provider or authorised
+representative</td>
+<td style="text-align: left;">Before placing on the market or putting
+into service</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(2) &amp; (4)</td>
+<td style="text-align: left;">Meets Annex III, P. 1, 6, &amp; 7
+conditions but non-high-risk as per assessment of the provider</td>
+<td style="text-align: left;">Non-public EU database</td>
+<td style="text-align: left;">Annex VIII (B), points 1 to 5 &amp; points
+8 &amp; 9</td>
+<td style="text-align: left;">AI provider or authorised
+representative</td>
+<td style="text-align: left;">Before placing on the market or putting
+into service</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(3)</td>
+<td style="text-align: left;">High-risk as per Annex III, P. 3, 4, 5,
+8</td>
+<td style="text-align: left;">Public EU database</td>
+<td style="text-align: left;">Annex VIII (C)</td>
+<td style="text-align: left;">AI deployer (public authorities, Union
+institutions, bodies, offices, or agencies)</td>
+<td style="text-align: left;">Before putting into service or using</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(3) &amp; (4)</td>
+<td style="text-align: left;">High-risk as per Annex III, P. 1, 6, &amp;
+7</td>
+<td style="text-align: left;">Non-public EU database</td>
+<td style="text-align: left;">Annex VIII (C), points 1 to 3</td>
+<td style="text-align: left;">AI deployer (public authorities, Union
+institutions, bodies, offices, or agencies)</td>
+<td style="text-align: left;">Before putting into service or using</td>
+</tr>
+<tr>
+<td style="text-align: left;">49(5)</td>
+<td style="text-align: left;">High-risk as per Annex III, P. 2</td>
+<td style="text-align: left;">Register at national level</td>
+<td style="text-align: left;">Not mentioned</td>
+<td style="text-align: left;">Not mentioned</td>
+<td style="text-align: left;">Not mentioned</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:&lt;ch3-aiact-registration&gt;"
+data-label="tab:&lt;ch3-aiact-registration&gt;"></span></p>
+<div id="tab:&lt;information-req&gt;">
+<table>
+<caption>Key information elements to be registered into the EU
+database</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Annex</strong></th>
+<th style="text-align: left;"><strong>Clause</strong></th>
+<th style="text-align: left;"><strong>Requirement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A1, B1</td>
+<td style="text-align: left;">AI provider’s name</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A1, B1</td>
+<td style="text-align: left;">AI provider’s address</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A1, B1</td>
+<td style="text-align: left;">AI provider’s contact details</td>
+</tr>
+<tr>
+<td style="text-align: left;">VIII</td>
+<td style="text-align: left;">C1</td>
+<td style="text-align: left;">AI deployer’s name</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C1</td>
+<td style="text-align: left;">AI deployer’s address</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">C1</td>
+<td style="text-align: left;">AI deployer’s contact details</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A4, B4</td>
+<td style="text-align: left;">AI system’s trade name</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A4, B4</td>
+<td style="text-align: left;">AI system’s additional reference</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A5, B5</td>
+<td style="text-align: left;">AI system’s intended purpose</td>
+</tr>
+<tr>
+<td style="text-align: left;">VIII</td>
+<td style="text-align: left;">A7, B8</td>
+<td style="text-align: left;">AI system’s market status</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A10, B9</td>
+<td style="text-align: left;">Countries where system is available</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A6</td>
+<td style="text-align: left;">Data used by the system</td>
+</tr>
+<tr>
+<td style="text-align: left;">VIII</td>
+<td style="text-align: left;">A6</td>
+<td style="text-align: left;">Input data used by the system</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">A5, B5</td>
+<td style="text-align: left;">Component’s intended purpose</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">AI models used within the system</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1-1b</td>
+<td style="text-align: left;">Model’s use policy</td>
+</tr>
+<tr>
+<td style="text-align: left;">XII</td>
+<td style="text-align: left;">1-1c</td>
+<td style="text-align: left;">Model’s date of release</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1-1g</td>
+<td style="text-align: left;">Model’s input data</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1-1g</td>
+<td style="text-align: left;">Model’s output data</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1-1h</td>
+<td style="text-align: left;">Model’s license</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:&lt;information-req&gt;"
+data-label="tab:&lt;information-req&gt;"></span></p>
+<h2 id="section:&lt;ch5-aicat&gt;">AICat - a DCAT Extension for
+Cataloguing AI Systems</h2>
+<p>AICat is an application profile for specifying catalogues of AI
+systems that avails a thin layer of metadata to enhance interoperability
+and cross-referencing within the AI value chain. Building upon DCAT
+version 3, which supports cataloguing varying resources, AICat enables
+providing metadata about AI systems, models, and datasets. In addition
+to the resources that are already used by DCAT, AICat reuses existing
+concepts from our previous work, including the Data Privacy Vocabulary
+(DPV)<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> <span class="citation"
+data-cites="pandit2024dpv"><a href="#ref-pandit2024dpv"
+role="doc-biblioref">[11]</a></span>, its technology extension<a
+href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>, and the AI Risk Ontology (AIRO)<a
+href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a> <span class="citation"
+data-cites="golpayegani2022airo"><a href="#ref-golpayegani2022airo"
+role="doc-biblioref">[12]</a></span>.</p>
+<p>The key information elements identified from the AI Act’s
+registration obligations, discussed in <a href="#aiact_analysis"
+data-reference-type="ref+label" data-reference="aiact_analysis">3</a>,
+shape the functional requirements of AICat. These requirements, which
+are expressed in the form of competency questions following the
+methodology described in <span class="citation"
+data-cites="figueroa2009orsd"><a href="#ref-figueroa2009orsd"
+role="doc-biblioref">[13]</a></span>, are shown in <a
+href="#tab:&lt;ch5-aicat-orsd&gt;" data-reference-type="ref+label"
+data-reference="tab:&lt;ch5-aicat-orsd&gt;">[tab:&lt;ch5-aicat-orsd&gt;]</a>.</p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <caption>AICat profile requirements specification</caption>
+  <thead>
+    <tr>
+      <th colspan="3"><strong>AICat Requirements Specification Document</strong></th>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>1. Purpose</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3">The purpose of the AICat profile is to use DCAT and AIRO to describe catalogues of AI systems and their associated components, such as datasets and AI models.</td>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>2. Scope</strong></th>
+    </tr>
+    <tr>
+      <td colspan="3">The scope of AICat is limited to the <em>atomic</em> information that should be submitted upon the registration of high-risk AI systems into the EU database, outlined in Annex VIII. This means that descriptive information, for instance the system's logic and findings of the fundamental rights impact assessment, is not included in the scope.</td>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>3. Implementation Language</strong></th>
+    </tr>
+    <tr>
+      <td colspan="3">OWL, DCAT</td>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>4. Key Uses</strong></th>
+    </tr>
+    <tr>
+      <td colspan="3">
+        USE 1. Maintaining and managing metadata about AI systems, datasets, and models in interoperable and standardised catalogues. <br>
+        USE 2. Discovering and comparing AI solutions. <br>
+        USE 3. Cataloguing and sharing information about AI systems with the public in a transparent manner. This includes the use by the European Commission for sharing metadata of the high-risk AI systems indexed in the EU database.
+      </td>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>5. Ontology Requirements</strong></th>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>a. Non-Functional Requirements</strong></th>
+    </tr>
+    <tr>
+      <td colspan="3">
+        NFR 1. AICat shall be published online with standard documentation. <br>
+        NFR 2. AICat shall reuse concepts and relations from existing ontologies, including AIRO, to the fullest extent possible.
+      </td>
+    </tr>
+    <tr>
+      <th colspan="3"><strong>b. Functional Requirements: Groups of Competency Questions</strong></th>
+    </tr>
+    <tr>
+      <th><strong>CQG1. AI systems</strong></th>
+      <th><strong>CQG2. Datasets</strong></th>
+      <th><strong>CQG3. AI models</strong></th>
+    </tr>
+    <tr>
+      <td>
+        CQ1-1. What is the name of the system? <br>
+        CQ1-2. Who is the system's provider? <br>
+        CQ1-3. Who is the system's deployer? <br>
+        CQ1-4. What is the system's intended purpose? <br>
+        CQ1-5. What is the system's market availability status? <br>
+        CQ1-6. In which countries is the system made available? <br>
+        CQ1-7. What are the additional references to the system?
+      </td>
+      <td>
+        CQ2-1. Which datasets are used by the system? <br>
+        CQ2-2. What is the system's input data? <br>
+        CQ2-3. What is the dataset's use policy?
+      </td>
+      <td>
+        CQ3-1. Which models are used by the system? <br>
+        CQ3-2. What is the model's release data? <br>
+        CQ3-3. What is the model's input data? <br>
+        CQ3-4. What is the model's output data? <br>
+        CQ3-5. What is the model's license? <br>
+        CQ3-6. What is the model's use policy?
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aicat-overview">AICat Overview</h3>
+<p>AICat extends DCAT version 3 <span class="citation"
+data-cites="dcat-v3"><a href="#ref-dcat-v3"
+role="doc-biblioref">[4]</a></span>, since this version of DCAT supports
+cataloguing resources beyond datasets. By extending DCAT, AICat aims to
+scale the cataloguing to include AI systems and models to address the
+needs of the EU database. <a href="#tab:&lt;aicat-spec&gt;"
+data-reference-type="ref+label"
+data-reference="tab:&lt;aicat-spec&gt;">4</a> illustrates how the
+identified requirements are mapped into concepts from DCAT, AIRO, DPV,
+and DPV’s TECH extension (for prefixes refer to <a
+href="#lst:&lt;ch5-aicat-example&gt;" data-reference-type="ref+label"
+data-reference="lst:&lt;ch5-aicat-example&gt;">[lst:&lt;ch5-aicat-example&gt;]</a>).
+As shown in the Table, the <em>intended purpose</em> of a system is
+represented as a policy modelled using the AI Use Policy (AIUP)
+profile <span class="citation" data-cites="golpayegani2024aiup"><a
+href="#ref-golpayegani2024aiup" role="doc-biblioref">[14]</a></span>,
+which is an extension of the Open Digital Rights Language (ODRL) <span
+class="citation" data-cites="odrl"><a href="#ref-odrl"
+role="doc-biblioref">[15]</a></span>, for expressing AI use offers,
+requests, and agreements between multiple parties across the AI value
+chain.</p>
+<div id="tab:&lt;aicat-spec&gt;">
+<table>
+<caption>Specifications for representing AI systems and models in
+AICat</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>CQ</strong></th>
+<th style="text-align: left;"><strong>AI Act Annex</strong></th>
+<th style="text-align: left;"><strong>Requirement</strong></th>
+<th style="text-align: left;"><strong>Metadata Field</strong></th>
+<th style="text-align: left;"><strong>Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="5" style="text-align: left;">Information about <strong>AI
+system</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-1</td>
+<td style="text-align: left;">VIII, A4 &amp; B4</td>
+<td style="text-align: left;">AI system’s trade name</td>
+<td style="text-align: left;"><code>dct:title</code></td>
+<td style="text-align: left;"><code>rdfs:Literal</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-2</td>
+<td style="text-align: left;">VIII, A1 &amp; B1</td>
+<td style="text-align: left;">Provider’s information</td>
+<td style="text-align: left;"><code>airo:isProvidedBy</code></td>
+<td style="text-align: left;"><code>airo:AIProvider</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-3</td>
+<td style="text-align: left;">VIII, C1</td>
+<td style="text-align: left;">Deployer’s information</td>
+<td style="text-align: left;"><code>airo:isDeployedBy</code></td>
+<td style="text-align: left;"><code>airo:AIDeployer</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-4</td>
+<td style="text-align: left;">VIII, A5 &amp; B5</td>
+<td style="text-align: left;">AI system’s intended purpose</td>
+<td style="text-align: left;"><code>odrl:hasPolicy</code></td>
+<td style="text-align: left;"><code>aiup:UsePolicy</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-5</td>
+<td style="text-align: left;">VIII, A7 &amp; B8</td>
+<td style="text-align: left;">AI system’s market status</td>
+<td
+style="text-align: left;"><code>tech:hasMarketAvailab- ilityStatus</code></td>
+<td
+style="text-align: left;"><code>tech:MarketAva- ilabilityStatus</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-6</td>
+<td style="text-align: left;">VIII, A10 &amp; B9</td>
+<td style="text-align: left;">Countries where system is available</td>
+<td style="text-align: left;"><code>dpv:hasCountry</code></td>
+<td style="text-align: left;"><code>dpv:Country</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-7</td>
+<td style="text-align: left;">VIII, A4 &amp; B4</td>
+<td style="text-align: left;">AI system’s additional reference</td>
+<td style="text-align: left;"><code>dct:isReferencedBy</code></td>
+<td style="text-align: left;"><code>dcat:Resource</code></td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: left;">Information about
+<strong>components</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">2-3</td>
+<td style="text-align: left;">VIII, A5 &amp; B5</td>
+<td style="text-align: left;">Component’s intended purpose</td>
+<td style="text-align: left;"><code>odrl:hasPolicy</code></td>
+<td style="text-align: left;"><code>aiup:UsePolicy</code></td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: left;">Information about
+<strong>datasets</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">2-1</td>
+<td style="text-align: left;">VIII, A6</td>
+<td style="text-align: left;">Data used by the system or model</td>
+<td style="text-align: left;"><code>airo:hasTrainingData</code>,
+<code>airo:hasValidationData</code>,
+<code>airo:hasTestingData</code></td>
+<td style="text-align: left;"><code>airo:Data</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">2-2</td>
+<td style="text-align: left;">VIII, A6</td>
+<td style="text-align: left;">Input data used by the system</td>
+<td style="text-align: left;"><code>airo:hasInput</code></td>
+<td style="text-align: left;"><code>airo:Data</code></td>
+</tr>
+<tr>
+<td colspan="5" style="text-align: left;">Information about
+<strong>models</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-1</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">AI models used within the system</td>
+<td style="text-align: left;"><code>airo:hasModel</code></td>
+<td style="text-align: left;"><code>airo:AIModel</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-2</td>
+<td style="text-align: left;">XII, 1-1c</td>
+<td style="text-align: left;">Model’s date of release</td>
+<td style="text-align: left;"><code>dct:issued</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-3</td>
+<td style="text-align: left;">XII, 1-1g</td>
+<td style="text-align: left;">Model’s input data</td>
+<td style="text-align: left;"><code>airo:hasInput</code></td>
+<td style="text-align: left;"><code>airo:Data</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-4</td>
+<td style="text-align: left;">XII, 1-1g</td>
+<td style="text-align: left;">Model’s output data</td>
+<td style="text-align: left;"><code>airo:hasOutput</code></td>
+<td style="text-align: left;"><code>airo:Data</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-5</td>
+<td style="text-align: left;">XII, 1-1h</td>
+<td style="text-align: left;">Model’s license</td>
+<td style="text-align: left;"><code>airo:hasLicense</code></td>
+<td style="text-align: left;"><code>airo:License</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">3-6</td>
+<td style="text-align: left;">XII, 1-1b</td>
+<td style="text-align: left;">Model’s use policy</td>
+<td style="text-align: left;"><code>odrl:hasPolicy</code></td>
+<td style="text-align: left;"><code>aiup:UsePolicy</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span id="tab:&lt;aicat-spec&gt;"
+data-label="tab:&lt;aicat-spec&gt;"></span></p>
+<p><a href="#fig:&lt;ch5-aicat&gt;" data-reference-type="ref+label"
+data-reference="fig:&lt;ch5-aicat&gt;">1</a> depicts an overview of
+AICat’s information model. As illustrated in the Figure,
+<code>aicat:Catalog</code> is a sub-class of <code>dcat:Catalog</code>
+that provides a curated collection of metadata about AI systems, models,
+and datasets. AICat extends DCAT by introducing
+<code>airo:AISystem</code> and <code>airo:AIModel</code> as sub-classes
+of <code>dcat:Resource</code>, enabling inclusion of their metadata in
+an <code>aicat:Catalog</code>. Given that <code>airo:Data</code> is a
+sub-class of <code>dcat:Dataset</code>, cataloguing data is also
+supported by AICat. While the inclusion of AI systems was directly
+linked to the scope of the EU database, whose aim is to index AI
+systems, the inclusion of models and datasets was driven by the existing
+focus in the state of the art on cataloguing these AI components, as
+reviewed in <a href="#relatedwork" data-reference-type="ref+label"
+data-reference="relatedwork">2</a>.</p>
+<p><code>aicat:system</code>, <code>aicat:model</code>, and
+<code>dcat:dataset</code> are sub-properties of
+<code>dcat:resource</code> that allow linking the catalogue to the
+resources indexed therein. To enable modelling the relationships between
+the resources, for example to show which datasets used for training a
+model, <code>airo:hasTrainingData</code>,
+<code>airo:hasTestingData</code>, <code>airo:hasValidationData</code>,
+<code>airo:hasInput</code>, <code>airo:hasOutput</code>, and
+<code>airo:hasModel</code> are reused from AIRO.</p>
+<p>AICat’s documentation was generated using WIDOCO <span
+class="citation" data-cites="garijo2017widoco"><a
+href="#ref-garijo2017widoco" role="doc-biblioref">[16]</a></span> and is
+available online at <a href="https://w3id.org/aicat"
+class="uri">https://w3id.org/aicat</a> under the CC-BY-4.0 license.</p>
+<p>By following DCAT-AP <span class="citation" data-cites="dcat-ap"><a
+href="#ref-dcat-ap" role="doc-biblioref">[7]</a></span>, AICat can
+further distinguish between <em>mandatory</em>, <em>recommended</em>,
+<em>optional</em>, and <em>deprecated</em> elements based on the
+requirements of the AI Act. Even though implementing such normative
+profiles can easily be realised by defining the aforementioned property
+types for each of the information elements, in the context of the AI
+Act, identification of whether provision of an information element is
+mandatory, recommended, optional, or deprecated requires additional
+guidelines and codes of conduct.</p>
+<figure id="fig:&lt;ch5-aicat&gt;">
+<img src="img/072-aicat.png">
+<figcaption>An overview of the AICat Profile</figcaption>
+</figure>
+<p>AICat is introduced as a minimal extension of DCAT. This extension
+introduces the <code>aicat:Catalog</code> class and its relations with
+<code>airo:AISystem</code> and <code>airo:AIModel</code>, both added as
+new types of <code>dcat:Resource</code>. One of the key directions for
+improving AICat is using the Shapes Constraint Language (SHACL) <span
+class="citation" data-cites="shacl"><a href="#ref-shacl"
+role="doc-biblioref">[17]</a></span> to specify the level of necessity
+for information elements—which can be mandatory, recommended, or
+optional. <a href="#lst:&lt;ch5-aicat-shacl&gt;"
+data-reference-type="ref+label"
+data-reference="lst:&lt;ch5-aicat-shacl&gt;">[lst:&lt;ch5-aicat-shacl&gt;]</a>
+shows an example of a SHACL shape indicating that each AI system should
+have at least one provider. Currently, AICat does not define such a
+normative profile due to the absence of recommendations and guidelines
+in regard to the AI Act.</p>
+<div class="listing">
+<pre class="turtle"><code>@prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
+@prefix airo: &lt;https://w3id.org/airo#&gt; .
+:AIProviderShape a sh:NodeShape;
+    sh:targetClass airo:AISystem ;
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path airo:isProvidedBy;
+        sh:minCount 1 ] .</code></pre>
+</div>
+<h3 id="proof-of-concept-implementation">Proof-of-Concept
+Implementation</h3>
+<p>To illustrate an example of cataloguing, we use an example of an
+AI-based student proctoring system, described in <span class="citation"
+data-cites="panigutti2023role hupont2023usecasecards golpayegani2024AIcards"><a
+href="#ref-panigutti2023role" role="doc-biblioref">[18]</a>–<a
+href="#ref-golpayegani2024AIcards" role="doc-biblioref">[20]</a></span>.
+The system, which is called <em>Proctify</em>, is provided by
+<em>AIEduX</em> and intended to detect suspicious behaviour during
+online exams by analysing facial behaviour. The system incorporates a
+facial analysis toolkit, provided by a third party, to analyse a
+person’s facial information, including the head pose, gaze direction,
+and face landmarks’ positions. This extracted information is then
+provided as an input to a model, <em>SusBehavedModel</em>, which has
+been trained in-house by the system’s provider using
+<em>SusBehavedDataset</em>, to determine whether the student is
+displaying suspicious behaviour. <a
+href="#lst:&lt;ch5-aicat-example&gt;" data-reference-type="ref+label"
+data-reference="lst:&lt;ch5-aicat-example&gt;">[lst:&lt;ch5-aicat-example&gt;]</a>
+presents a summarised version of an <code>aicat:Catalog</code> that
+contains metadata about <em>Proctify</em> and its components. As shown
+in the Listing, the policies for using the AI system and its
+incorporating components are expressed using the AIUP profile.</p>
+<div class="listing">
+<pre class="turtle"><code>@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdfs: &lt;https://www.w3.org/TR/rdf12-schema/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; . 
+@prefix dcat: &lt;https://www.w3.org/TR/vocab-dcat-3/&gt; .
+@prefix dpv: &lt;https://w3id.org/dpv#&gt; .
+@prefix tech: &lt;https://w3id.org/dpv/tech#&gt; .
+@prefix airo: &lt;https://w3id.org/airo#&gt; .
+@prefix aiup: &lt;https://w3id.org/aiup#&gt; .
+@prefix aicat: &lt;https://w3id.org/aicat#&gt; .
+@prefix ex: &lt;http://example.com/proctify#&gt; .
+
+ex:aieduX-catalogue-01 a aicat:Catalog, dcat:Catalog  ;
+    dct:identifier &quot;aiedux-cat01&quot;^^xsd:string ;
+    dct:title &quot;AIEduX catalogue&quot;@en ;
+    dct:description &quot;AI systems and models provided by AIEduX&quot;@en ;
+    dct:created &quot;2024-05-05&quot;^^xsd:date ;
+    dcat:dataset ex:susbehaved_dataset ; 
+    aicat:model ex:susbehaved_model;
+    aicat:system  ex:proctify . 
+
+ex:susbehaved_dataset a dcat:Dataset, airo:Data ;
+   dct:identifier &quot;aiedux-d012&quot;^^xsd:string ;
+   dct:title &quot;SusBehavedDataSet&quot;@en ;
+   dct:description &quot;.. includes suspicious behaviour data..&quot;@en ;
+   odrl:hasPolicy ex:susbehaved_dataset_policy  .
+
+ex:susbehaved_model a dcat:Resource, airo:AIModel ;
+    dct:identifier &quot;aiedux-m022&quot;^^xsd:string ;
+    dct:title &quot;SusBehavedModel&quot;@en ;
+    dct:description &quot;.. determines suspicious behaviour ..&quot;@en ;
+    dct:issued &quot;2024-02-15&quot;^^xsd:date ; 
+    airo:hasTrainingData ex:susbehaved_dataset ;
+    odrl:hasPolicy ex:susbehavedmodel_policy . 
+    
+:proctify a dcat:Resource, airo:AISystem ;
+    airo:isProvidedBy ex:aiedux ;
+    dct:identifier &quot;aiedux-ai031&quot;^^xsd:string ; 
+    dct:title &quot;Proctify&quot;@en ;
+    dct:description &quot;An AI-based proctoring system...&quot;@en ;
+    tech:hasMarketAvailabilityStatus tech:MarketAvailable ;
+    dpv:hasCountry &lt;http://dbpedia.org/resource/Italy&gt; ;
+    dcat:contactPoint &lt;http://example.org/aieduX-AI031/contact&gt; ; 
+    airo:hasModel ex:susbehaved_model ;
+    odrl:hasPolicy ex:proctify_use_policy .   
+
+ ex:susbehaved_dataset_policy a aiup:UseOffer  .
+ ex:susbehavedmodel_policy a aiup:UseOffer .
+ ex:proctify_use_policy a aiup:UseOffer .</code></pre>
+</div>
+<h2 id="potential-benefits-of-aicat">Potential Benefits of AICat</h2>
+<p>In terms of potential benefits, through reusing widely-used W3C
+standardised vocabularies, the AICat enables expressing metadata
+regarding AI systems and AI components within catalogues, wherein common
+vocabularies and open linked data-based formats are used. Therefore, the
+AICat addresses the AI market needs for a consistent and interoperable
+mechanism for cataloguing AI solutions <span class="citation"
+data-cites="aiwatch2022publicsectorreport"><a
+href="#ref-aiwatch2022publicsectorreport"
+role="doc-biblioref">[21]</a></span>, in a way that enables federated
+search and comparison across AI, model, and data catalogues offered by
+different vendors—a crucial feature often required in AI procurement
+processes. In relation to this, the European Commission’s dataset of
+selected uses of AI in the public sector <span class="citation"
+data-cites="jrc-use-of-ai-dataset"><a href="#ref-jrc-use-of-ai-dataset"
+role="doc-biblioref">[22]</a></span> is a prominent resource, whose
+interoperability and searchability can be enhanced through adoption of a
+cataloguing mechanism such as AICat.</p>
+<p>At the organisational level, AICat could assist AI providers and
+deployers in providing structured catalogues of AI systems and
+components. At the European level, a similar approach to AICat is
+expected to be adopted for the implementation of the database of
+high-risk AI systems as required by Article 71 of the AI Act. Given that
+AICat ensures traceability while protecting privacy by providing
+metadata without revealing sensitive information within a database, it
+supports the implementation of the non-public section of the EU database
+and provides a structure for registration forms. AICat potentially
+addresses the gap in the European open data portal in providing FAIR
+(Findable, Accessible, Interoperable, and Reusable) information
+regarding existing AI systems and models provided or deployed by public
+organisations. AICat also has the potential to promote cross-border
+interoperability required by the recently-enforced Interoperable Europe
+Act <span class="citation" data-cites="eu-interoperabilityact"><a
+href="#ref-eu-interoperabilityact" role="doc-biblioref">[23]</a></span>,
+particularly in the implementation of the <em>Interoperable Europe
+portal</em>—the EU’s single point of entry for information related to
+cross-border interoperability of trans-European digital public services
+(Interoperable Europe Act, Article 8). In this, AICat can be employed to
+facilitate sharing information and best practices to support
+interoperability in public procurement of AI-based solutions.</p>
+<p>Compared to existing cataloguing approaches, reviewed in <a
+href="#relatedwork" data-reference-type="ref+label"
+data-reference="relatedwork">2</a>, AICat expands the scope of
+cataloguing to AI systems. From this literature review, MLDCAT-AP <span
+class="citation" data-cites="mldcat-ap"><a href="#ref-mldcat-ap"
+role="doc-biblioref">[9]</a></span> bears a close resemblance to AICat,
+especially in the use of DCAT. MLDCAT-AP has been supported by the
+European Commission’s Semantic Interoperability Community (SEMIC), and
+therefore it might be a candidate to be adopted in the implementation of
+the EU database. However, prior to this, it needs to be extended to
+include specifications of AI systems in the catalogue in alignment with
+the requirements of the AI Act. This can be realised by the integration
+of MLDCAT-AP and AICat. Another key feature of MLDCAT-AP, in comparison
+with AICat, is the inclusion of risk information in the catalogue. While
+AICat can support DCAT-based documentation of risks by reusing
+<code>airo:hasRisk</code>, in its current form it does not go beyond the
+general, non-descriptive information elements of Annex VIII, mainly due
+to the absence of related official guidelines.</p>
+<h2 id="conclusion-and-further-work">Conclusion and Further Work</h2>
+<p>In this paper, we proposed AICat as a novel technical solution for
+cataloguing AI systems in an open, machine-readable, and interoperable
+format based on the evolving requirements of the AI value chain,
+particularly the requirements of the EU AI Act. Using AICat facilitates
+discovery, integration, and sharing information associated with AI
+systems and components amongst the stakeholders involved in the AI value
+chain based on the existing proven mechanism of (open) data portals.</p>
+<p>By demonstrating this solution, we hope that similar open and
+interoperable approaches will be adopted in the implementation of the AI
+Act, in particular the creation of the EU database of high-risk AI
+systems as per Article 71. Our work also contributes to trustworthy and
+responsible use of AI by enabling creation of scalable and interoperable
+AI catalogues on the internet by using a unified and coherent
+vocabulary.</p>
+<div class="acknowledgments">
+<p>This project has received funding from the European Union’s Horizon
+2020 research and innovation programme under the Marie Skłodowska-Curie
+grant agreement No 813497 (PROTECT ITN). The ADAPT SFI Centre for
+Digital Media Technology is funded by Science Foundation Ireland through
+the SFI Research Centres Programme and is co-funded under the European
+Regional Development Fund (ERDF) through Grant#13/RC/2106_P2.</p>
+</div>
+<h2 class="unnumbered" id="bibliography">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-aiact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation (EU)
+2024/1689 of the European Parliament and of the Council of 13 June 2024
+laying down harmonised rules on artificial intelligence and amending
+Regulations (EC) No 300/2008, (EU) No 167/2013, (EU) No 168/2013, (EU)
+2018/858, (EU) 2018/1139 and (EU) 2019/2144 and Directives 2014/90/EU,
+(EU) 2016/797 and (EU) 2020/1828 (Artificial Intelligence
+Act)</span>,”</span> <em>Official Journal of the European Union</em>.
+12-Jun-2024 [Online]. Available: <a
+href="http://data.europa.eu/eli/reg/2024/1689/oj">http://data.europa.eu/eli/reg/2024/1689/oj</a></div>
+</div>
+<div id="ref-fehlinger2023enabling" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P.
+Fehlinger, <span>“Enabling the responsible use of technology at scale –
+why europe needs a regulatory technology innovation ecosystem,”</span>
+Sitra, 2023. </div>
+</div>
+<div id="ref-gdpr" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation (EU)
+2016/679 of the European Parliament and of the Council of 27 April 2016
+on the protection of natural persons with regard to the processing of
+personal data and on the free movement of such data, and repealing
+Directive 95/46/EC (General Data Protection Regulation)</span>,”</span>
+<em>Official Journal of the European Union</em>, vol. L119. 2016
+[Online]. Available: <a
+href="http://data.europa.eu/eli/reg/2016/679/oj">http://data.europa.eu/eli/reg/2016/679/oj</a></div>
+</div>
+<div id="ref-dcat-v3" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">R.
+Albertoni, D. Browning, S. J. D. Cox, A. G. Beltran, A. Perego, and P.
+Winstanley, <span>“<span>Data Catalog Vocabulary (DCAT)</span> - version
+3.”</span> 2024 [Online]. Available: <a
+href="https://www.w3.org/TR/vocab-dcat-3/">https://www.w3.org/TR/vocab-dcat-3/</a></div>
+</div>
+<div id="ref-kumar2021marketplace" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">A.
+Kumar, B. Finley, T. Braud, S. Tarkoma, and P. Hui, <span>“Sketching an
+<span>AI</span> marketplace: Tech, economic, and regulatory
+aspects,”</span> <em>IEEE Access</em>, vol. 9, pp. 13761–13774, 2021,
+doi: <a
+href="https://doi.org/10.1109/ACCESS.2021.3050929">10.1109/ACCESS.2021.3050929</a>.
+</div>
+</div>
+<div id="ref-croissant2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">M.
+Akhtar <em>et al.</em>, <span>“Croissant: A metadata format for
+<span>ML</span>-ready datasets,”</span> 2024, pp. 1–6, doi: <a
+href="https://doi.org/10.1145/3650203.3663326">10.1145/3650203.3663326</a>.
+</div>
+</div>
+<div id="ref-dcat-ap" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B.
+V. Nuffelen, <span>“<span>DCAT-AP 3.0</span>.”</span> 2024 [Online].
+Available: <a
+href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/">https://semiceu.github.io/DCAT-AP/releases/3.0.0/</a></div>
+</div>
+<div id="ref-fabin2019dcatap" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">F.
+Kirstein, B. Dittwald, S. Dutkowski, Y. Glikman, S. Schimmler, and M.
+Hauswirth, <span>“Linked data in the european data portal: A
+comprehensive platform for applying <span>DCAT-AP</span>,”</span> in
+<em>Electronic government</em>, 2019, pp. 192–204. </div>
+</div>
+<div id="ref-mldcat-ap" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A.
+Schiltz and E. Stani, <span>“<span>MLDCAT-AP</span>.”</span> 2024
+[Online]. Available: <a
+href="https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/">https://semiceu.github.io/MLDCAT-AP/releases/2.0.0/</a>.
+[Accessed: 13-Sep-2024]</div>
+</div>
+<div id="ref-ryan2022dpcat" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P.
+Ryan, R. Brennan, and H. J. Pandit, <span>“<span>DPCat</span>:
+Specification for an interoperable and machine-readable data processing
+catalogue based on <span>GDPR</span>,”</span> <em>Information</em>, vol.
+13, no. 5, 2022. </div>
+</div>
+<div id="ref-pandit2024dpv" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">H.
+J. Pandit, B. Esteves, G. P. Krog, P. Ryan, D. Golpayegani, and J.
+Flake, <span>“Data privacy vocabulary (<span>DPV</span>) – version
+2.0,”</span> in <em>The semantic web – ISWC 2024</em>, 2025, pp.
+171–193. </div>
+</div>
+<div id="ref-golpayegani2022airo" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">D.
+Golpayegani, H. J. Pandit, and D. Lewis, <span>“<span>AIRO</span>: An
+ontology for representing <span>AI</span> risks based on the proposed
+<span>EU</span> <span>AI Act</span> and <span>ISO</span> risk management
+standards,”</span> in <em>Towards a knowledge-aware
+<span>AI</span></em>, 2022, vol. 55, pp. 51–65. </div>
+</div>
+<div id="ref-figueroa2009orsd" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">M.
+C. Suárez-Figueroa, A. Gómez-Pérez, and B. Villazón-Terrazas, <span>“How
+to write and use the ontology requirements specification
+document,”</span> in <em>On the move to meaningful internet systems: OTM
+2009</em>, 2009, pp. 966–982. </div>
+</div>
+<div id="ref-golpayegani2024aiup" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">D.
+Golpayegani, B. Esteves, H. J. Pandit, and D. Lewis,
+<span>“<span>AIUP</span>: An <span>ODRL</span> profile for expressing
+<span>AI</span> use policies to support the <span>EU</span>
+<span>AI</span> act,”</span> in <em>Joint proceedings of posters, demos,
+workshops, and tutorials of the 20th international conference on
+semantic systems co-located with 20th international conference on
+semantic systems (SEMANTiCS 2024)</em>, 2024. </div>
+</div>
+<div id="ref-odrl" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">R.
+Iannella, M. Steidl, S. Myles, and V. Rodríguez-Doncel,
+<span>“<span>ODRL</span> version 2.2 ontology.”</span> 2017 [Online].
+Available: <a
+href="http://www.w3.org/ns/odrl/2/">http://www.w3.org/ns/odrl/2/</a></div>
+</div>
+<div id="ref-garijo2017widoco" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">D.
+Garijo, <span>“<span>WIDOCO</span>: A wizard for documenting
+ontologies,”</span> in <em>The semantic web – ISWC 2017</em>, 2017, pp.
+94–102. </div>
+</div>
+<div id="ref-shacl" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">H.
+Knublauch and D. Kontokostas, <span>“Shapes constraint language
+(<span>SHACL</span>).”</span> 2017 [Online]. Available: <a
+href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></div>
+</div>
+<div id="ref-panigutti2023role" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C.
+Panigutti <em>et al.</em>, <span>“The role of explainable
+<span>AI</span> in the context of the <span>AI</span> act,”</span> in
+<em>Proceedings of the 2023 ACM conference on fairness, accountability,
+and transparency</em>, 2023, pp. 1139–1150. </div>
+</div>
+<div id="ref-hupont2023usecasecards" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">I.
+Hupont, D. Fernández-Llorca, S. Baldassarri, and E. Gómez, <span>“Use
+case cards: A use case reporting framework inspired by the european
+<span>AI</span> act,”</span> <em>Ethics and Information Technology</em>,
+vol. 26, no. 2, 2024. </div>
+</div>
+<div id="ref-golpayegani2024AIcards" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">D.
+Golpayegani <em>et al.</em>, <span>“<span>AI</span> cards: Towards an
+applied framework for machine-readable <span>AI</span> and risk
+documentation inspired by the <span>EU</span> <span>AI</span>
+act,”</span> in <em>Privacy technologies and policy</em>, 2024, pp.
+48–72. </div>
+</div>
+<div id="ref-aiwatch2022publicsectorreport" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[21] </div><div
+class="csl-right-inline">European Commission <em>et al.</em>, <em><a
+href="https://doi.org/10.2760/288757"><span>AI</span> watch, road to the
+adoption of artificial intelligence by the public sector – a handbook
+for policymakers, public administrations and relevant
+stakeholders</a></em>. Publications Office of the European Union, 2022.
+</div>
+</div>
+<div id="ref-jrc-use-of-ai-dataset" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div
+class="csl-right-inline">European Commission and Joint Research Centre
+(JRC), <span>“Selected <span>AI</span> cases in the public sector
+(JRC129301).”</span> 2021 [Online]. Available: <a
+href="http://data.europa.eu/89h/7342ea15-fd4f-4184-9603-98bd87d8239a">http://data.europa.eu/89h/7342ea15-fd4f-4184-9603-98bd87d8239a</a>.
+[Accessed: 08-Sep-2024]</div>
+</div>
+<div id="ref-eu-interoperabilityact" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div
+class="csl-right-inline"><span>“<span class="nocase">Regulation
+<span>(EU)</span> 2024/903 of the European Parliament and of the Council
+of 13 March 2024 laying down measures for a high level of public sector
+interoperability across the Union (Interoperable Europe
+Act)</span>.”</span> European Commission, 2024 [Online]. Available: <a
+href="http://data.europa.eu/eli/reg/2024/903/oj">http://data.europa.eu/eli/reg/2024/903/oj</a></div>
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://huggingface.co/docs/hub/index"
+class="uri">https://huggingface.co/docs/hub/index</a><a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.kaggle.com/datasets"
+class="uri">https://www.kaggle.com/datasets</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.kaggle.com/models"
+class="uri">https://www.kaggle.com/models</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://aiod.eu/"
+class="uri">https://aiod.eu/</a><a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://www.ai4europe.eu/research/ai-catalog"
+class="uri">https://www.ai4europe.eu/research/ai-catalog</a><a
+href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://api.aiod.eu/redoc"
+class="uri">https://api.aiod.eu/redoc</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a
+href="https://docs.mlcommons.org/croissant/docs/croissant-spec.html"
+class="uri">https://docs.mlcommons.org/croissant/docs/croissant-spec.html</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://data.europa.eu/en"
+class="uri">https://data.europa.eu/en</a><a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Register of Processing Activities<a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://w3id.org/dpv/"
+class="uri">https://w3id.org/dpv/</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://w3id.org/dpv/tech"
+class="uri">https://w3id.org/dpv/tech</a><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://w3id.org/airo"
+class="uri">https://w3id.org/airo</a><a href="#fnref12"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>

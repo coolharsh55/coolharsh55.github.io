@@ -22402,7 +22402,6 @@ list:owned_unread a hpcom:RenderedItem,
             hpcom:contentFile "https://harshp.com/code/content/research/publications/058-Making-sense-of-Solid.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:pinned true ;
     hpcom:tag hptag:GDPR,
         hptag:ISO,
         hptag:Solid,
@@ -22492,10 +22491,10 @@ list:owned_unread a hpcom:RenderedItem,
     schema:datePublished "2024-12-12T00:00:00"^^xsd:dateTime ;
     schema:description "An approach to create a streamlined technological workflow for individuals to understand what rights exist, how and where to exercise them, and for organisations to effectively manage them."@en ;
     schema:funder <http://example.com/ADAPT> ;
-    schema:identifier ""^^xsd:anyURI ;
+    schema:identifier "https://doi.org/10.3233/FAIA241254"^^xsd:anyURI ;
     schema:name "How to Manage My Data? With Machine--Interpretable GDPR Rights!"@en ;
     schema:publication <http://example.com/conferences/JURIX2024> ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.3233/FAIA241254"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/071-review-future-direction-ICT-standards> a hpcom:FullPaper,
         hpcom:RenderedItem,
@@ -22520,6 +22519,117 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "Comprehensive Review and Future Research Directions on ICT Standardisation"@en ;
     schema:publisher <https://www.mdpi.com/journal/information> ;
     schema:url "https://doi.org/10.3390/info15110691"^^xsd:anyURI .
+
+<https://harshp.com/research/publications/072-AICat> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/072-AICat"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/072-AICat.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/DelaramGlp/aicat"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "website" ;
+            schema:url "https://w3id.org/aicat"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI-Act,
+        hptag:DCAT,
+        hptag:semantic-web ;
+    schema:datePublished "2024-12-10T00:00:00"^^xsd:dateTime ;
+    schema:description "An extension of DCAT for representing catalogues of AI systems that provides consistency, machine-readability, searchability, and interoperability in managing open metadata regarding AI systems, particularly beyond the immediate needs of high-risk AI compliance in the EU"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "AICat: An AI Cataloguing Approach to Support the EU AI Act"@en ;
+    schema:publication <https://aics2024.ucd.ie/> ;
+    schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/073-Datasheets-AI-Bias> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/073-Datasheets-AI-Bias"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/MarjiaSiddik> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/073-Datasheets-AI-Bias.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "poster" ;
+            schema:url "https://harshp.com/presentations/2024/AICS/AICS_Datasheets_AI_Healthcare_Bias_2024.pdf"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI,
+        hptag:data-governance,
+        hptag:risk ;
+    schema:datePublished "2024-12-09T00:00:00"^^xsd:dateTime ;
+    schema:description "A dataset documentation framework for AI risk assessments, particularly bias, that promotes transparency and ensures alignment with regulatory requirements and can be expressed in a machine-readable format"@en ;
+    schema:funder <http://example.com/IEHRB> ;
+    schema:name "Datasheets for Healthcare AI: A Framework for Transparency and Bias Mitigation"@en ;
+    schema:publication <https://aics2024.ucd.ie/> ;
+    schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/074-FRIA-Tool-DPIA> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/074-FRIA-Tool-DPIA"^^xsd:anyURI ] ;
+    hpcom:author_lead <https://harshp.com/me> ;
+    hpcom:author_other <http://example.com/TyttiRintamaki> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/074-FRIA-Tool-DPIA.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI-Act,
+        hptag:DPIA,
+        hptag:FRIA,
+        hptag:GDPR ;
+    schema:datePublished "2024-12-11T08:00:00"^^xsd:dateTime ;
+    schema:description "Interpreting the FRIA as a 5-step process where automated tools can apply for each step and how a DPIA can be reused in it"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Towards An Automated AI Act FRIA Tool That Can Reuse GDPR's DPIA"@en ;
+    schema:publication <http://example.com/conferences/CLAIRvoyant2024> ;
+    schema:status "Presented at Workshop, finalising revised version" ;
+    schema:url ""^^xsd:anyURI .
+
+<https://harshp.com/research/publications/075-FRIA-Ontology> a hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/075-FRIA-Ontology"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/TyttiRintamaki> ;
+    hpcom:author_other <https://harshp.com/me> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/075-FRIA-Ontology.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed true ;
+    hpcom:supplementary [ a hpcom:Link ;
+            schema:name "repo" ;
+            schema:url "https://github.com/marjiasdk/Healthcare-AI-Datasheet"^^xsd:anyURI ] ;
+    hpcom:tag hptag:AI-Act,
+        hptag:DPIA,
+        hptag:FRIA,
+        hptag:GDPR,
+        hptag:semantic-web ;
+    schema:datePublished "2024-12-11T09:00:00"^^xsd:dateTime ;
+    schema:description "An ontology for creation and management of FRIA and use of automated tool in its various steps"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:name "Developing an Ontology for AI Act Fundamental Rights Impact Assessments"@en ;
+    schema:publication <http://example.com/conferences/CLAIRvoyant2024> ;
+    schema:status "Presented at Workshop, finalising revised version" ;
+    schema:url ""^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts/001-Consent-Signal-User-Dialogue> a hpcom:DraftPaper,
         hpcom:FullPaper,
@@ -22641,6 +22751,33 @@ list:owned_unread a hpcom:RenderedItem,
     schema:publication <http://example.com/working-draft> ;
     schema:status "under review"@en ;
     schema:url "https://doi.org/10.31219/osf.io/6qhzj"^^xsd:anyURI .
+
+<https://harshp.com/research/publications/drafts/005-Solid-Use-Case> a hpcom:DraftPaper,
+        hpcom:FullPaper,
+        hpcom:RenderedItem,
+        schema:ScholarlyArticle ;
+    hpcom:archived_version [ a hpcom:Link ;
+            schema:name "harshp.com" ;
+            schema:url "https://harshp.com/research/publications/drafts/005-Solid-Use-Case"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "SSRN" ;
+            schema:url "https://dx.doi.org/10.2139/ssrn.4993170"^^xsd:anyURI ] ;
+    hpcom:author_lead <http://example.com/MichielFierens> ;
+    hpcom:author_other ( <https://harshp.com/me> <http://example.com/AureliaTamoLarrieux> <http://example.com/KimberlyGarcia> ) ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/005-Solid-Use-Case.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:peer_reviewed false ;
+    hpcom:tag hptag:GDPR,
+        hptag:Solid ;
+    schema:datePublished "2024-10-19T00:00:00"^^xsd:dateTime ;
+    schema:description "Investigating GDPR compliance in decentralised data storage and management through an interdisciplinary lens applied to Solid"@en ;
+    schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "https://dx.doi.org/10.2139/ssrn.4993170"^^xsd:anyURI ;
+    schema:name "A Solid Use Case To Empower And Protect Data Subjects"@en ;
+    schema:publication <http://example.com/working-draft> ;
+    schema:status "under review"@en ;
+    schema:url "https://dx.doi.org/10.2139/ssrn.4993170"^^xsd:anyURI .
 
 <https://harshp.com/research/supervision/2017-ethics-canvas-website> a hpcom:RenderedItem,
         hpcom:SupervisionRole,
@@ -23641,6 +23778,9 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/AriannaRossi> a schema:Person ;
     schema:name "Arianna Rossi" .
 
+<http://example.com/AureliaTamoLarrieux> a schema:Person ;
+    schema:name "Aurelia Tamò-Larrieux" .
+
 <http://example.com/BertBos> a schema:Person ;
     schema:name "Bert Bos" .
 
@@ -23692,14 +23832,23 @@ list:owned_unread a hpcom:RenderedItem,
 <http://example.com/KevinKoidl> a schema:Person ;
     schema:name "Kevin Koidl" .
 
+<http://example.com/KimberlyGarcia> a schema:Person ;
+    schema:name "Kimberly García" .
+
 <http://example.com/MandanKazzazi> a schema:Person ;
     schema:name "Mandan Kazzazi" .
+
+<http://example.com/MarjiaSiddik> a schema:Person ;
+    schema:name "Marjia Siddik" .
 
 <http://example.com/MartinCrane> a schema:Person ;
     schema:name "Martin Crane" .
 
 <http://example.com/MartinDegeling> a schema:Person ;
     schema:name "Martin Degeling" .
+
+<http://example.com/MichielFierens> a schema:Person ;
+    schema:name "Michiel Fierens" .
 
 <http://example.com/MohammedMahdi> a schema:Person ;
     schema:name "Mohammed Mahdi" .
@@ -23880,16 +24029,6 @@ list:owned_unread a hpcom:RenderedItem,
     schema:name "International Semantic Web Conference"@en ;
     schema:startDate "2023-11-06T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2023.semanticweb.org/"^^xsd:anyURI .
-
-<http://example.com/conferences/JURIX2024> a hpcom:ReviewingEvent,
-        schema:PublicationEvent ;
-    hpcom:event_type hpcom:Conference ;
-    schema:alternateName "JURIX" ;
-    schema:endDate "2024-12-23T00:00:00"^^xsd:dateTime ;
-    schema:location "Brno, Czech Republic" ;
-    schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
-    schema:startDate "2024-12-11T00:00:00"^^xsd:dateTime ;
-    schema:url "https://jurix2024.law.muni.cz/"^^xsd:anyURI .
 
 <http://example.com/conferences/UMAP2016> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -25878,7 +26017,6 @@ hpcom:RPG a hpcom:VideoGameGenre ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/032-creating-vocabulary-data-privacy.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
-    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "DPV ontology" ;
             schema:url "https://www.w3.org/ns/dpv"^^xsd:anyURI ],
@@ -26446,6 +26584,7 @@ hpcom:RPG a hpcom:VideoGameGenre ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/064-Enhancing-DUO-by-extending-with-ODRL-DPV.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
             schema:url "https://w3id.org/duodrl/repo"^^xsd:anyURI ],
@@ -26522,6 +26661,7 @@ hpcom:RPG a hpcom:VideoGameGenre ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
             schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ],
@@ -26558,6 +26698,7 @@ hpcom:RPG a hpcom:VideoGameGenre ;
             hpcom:contentFile "https://harshp.com/code/content/research/publications/067-DPV-2.0.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
     hpcom:peer_reviewed true ;
+    hpcom:pinned true ;
     hpcom:supplementary [ a hpcom:Link ;
             schema:name "repo" ;
             schema:url "https://github.com/w3c/dpv"^^xsd:anyURI ],
@@ -26571,12 +26712,13 @@ hpcom:RPG a hpcom:VideoGameGenre ;
         hptag:GDPR,
         hptag:ISO,
         hptag:consent ;
-    schema:datePublished "2024-11-11T00:00:00"^^xsd:dateTime ;
+    schema:datePublished "2024-11-27T00:00:00"^^xsd:dateTime ;
     schema:description "This article describes the version 2 iteration of the DPV in terms of its contents, methodology, current adoptions and uses, and future potential. It also describes the relevance and role of DPV in acting as a common vocabulary to support various regulatory (e.g., EU's DGA and AI Act) and community initiatives (e.g., Solid) emerging across the globe."@en ;
     schema:funder <http://example.com/ADAPT> ;
+    schema:identifier "10.1007/978-3-031-77847-6_10" ;
     schema:name "Data Privacy Vocabulary (DPV) —  Version 2.0"@en ;
     schema:publication <http://example.com/conferences/ISWC2024> ;
-    schema:url ""^^xsd:anyURI .
+    schema:url "https://doi.org/10.1007/978-3-031-77847-6_10"^^xsd:anyURI .
 
 <https://harshp.com/research/publications/drafts> a hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
@@ -26597,6 +26739,11 @@ hptag:ConsumerProtection a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "consumer protection"@en ;
     schema:url "https://harshp.com/tags/ConsumerProtection"^^xsd:anyURI .
+
+hptag:DCAT a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DCAT"@en ;
+    schema:url "https://harshp.com/tags/DCAT"^^xsd:anyURI .
 
 hptag:Decentralisation a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27166,8 +27313,22 @@ hptag:workshop a hpcom:RenderedItem,
 <http://example.com/PJWall> a schema:Person ;
     schema:name "P. J. Wall" .
 
+<http://example.com/TyttiRintamaki> a schema:Person ;
+    schema:name "Tytti Rintamaki" .
+
 <http://example.com/WesselReijers> a schema:Person ;
     schema:name "Wessel Reijers" .
+
+<http://example.com/conferences/CLAIRvoyant2024> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:alternateName "CLAIRvoyant" ;
+    schema:endDate "2024-12-11T17:00:00"^^xsd:dateTime ;
+    schema:location "Brno, Czech Republic" ;
+    schema:name "ConventicLE on Artificial Intelligence Regulation"@en ;
+    schema:startDate "2024-12-11T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/JURIX2024> ;
+    schema:url "https://sites.google.com/view/clairvoyant2024/"^^xsd:anyURI .
 
 <http://example.com/conferences/EURAS2018> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Conference ;
@@ -27254,6 +27415,16 @@ hptag:workshop a hpcom:RenderedItem,
     schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
     schema:startDate "2023-12-18T00:00:00"^^xsd:dateTime ;
     schema:url "https://jurix23.maastrichtlawtech.eu/"^^xsd:anyURI .
+
+<http://example.com/conferences/JURIX2024> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "JURIX" ;
+    schema:endDate "2024-12-23T00:00:00"^^xsd:dateTime ;
+    schema:location "Brno, Czech Republic" ;
+    schema:name "International Conference on Legal Knowledge and Information Systems"@en ;
+    schema:startDate "2024-12-11T00:00:00"^^xsd:dateTime ;
+    schema:url "https://jurix2024.law.muni.cz/"^^xsd:anyURI .
 
 <http://example.com/conferences/ODBASE2019> a hpcom:ReviewingEvent,
         schema:PublicationEvent ;
@@ -27480,6 +27651,16 @@ hptag:workshop a hpcom:RenderedItem,
     schema:startDate "2022-12-08T00:00:00"^^xsd:dateTime ;
     schema:url "https://aics2022.mtu.ie/"^^xsd:anyURI .
 
+<https://aics2024.ucd.ie/> a hpcom:ReviewingEvent,
+        schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:alternateName "AICS" ;
+    schema:endDate "2022-12-10T00:00:00"^^xsd:dateTime ;
+    schema:location "Dublin, Ireland" ;
+    schema:name "Irish Conference on Artificial Intelligence and Cognitive Science"@en ;
+    schema:startDate "2024-12-09T00:00:00"^^xsd:dateTime ;
+    schema:url "https://aics2024.ucd.ie/"^^xsd:anyURI .
+
 <https://ebooks.iospress.nl/volume/advances-in-pattern-based-ontology-engineering> a schema:Book ;
     schema:issn "978-1-64368-175-7" ;
     schema:name "Advances in Pattern-Based Ontology Engineering"@en ;
@@ -27622,10 +27803,10 @@ hptag:CCPA a hpcom:RenderedItem,
     schema:name "CCPA"@en ;
     schema:url "https://harshp.com/tags/CCPA"^^xsd:anyURI .
 
-hptag:DPIA a hpcom:RenderedItem,
+hptag:FRIA a hpcom:RenderedItem,
         hpcom:Tag ;
-    schema:name "DPIA"@en ;
-    schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
+    schema:name "FRIA"@en ;
+    schema:url "https://harshp.com/tags/FRIA"^^xsd:anyURI .
 
 hptag:Java a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27947,11 +28128,6 @@ hptag:standardisation a hpcom:RenderedItem,
     schema:startDate "2019-09-09T00:00:00"^^xsd:dateTime ;
     schema:url "https://2019.semantics.cc/"^^xsd:anyURI .
 
-<http://example.com/working-draft> a schema:Publication ;
-    hpcom:event_type "" ;
-    schema:name "working draft"@en ;
-    schema:url "http://example.com/working-draft" .
-
 <http://example.com/workshops/PrivOn2017> a schema:PublicationEvent ;
     hpcom:event_type hpcom:Workshop ;
     schema:alternateName "PrivOn" ;
@@ -27971,9 +28147,6 @@ hptag:standardisation a hpcom:RenderedItem,
     schema:startDate "2018-10-09T00:00:00"^^xsd:dateTime ;
     schema:superEvent <http://example.com/conferences/ISWC2018> ;
     schema:url "http://ontologydesignpatterns.org/wiki/WOP:2018"^^xsd:anyURI .
-
-hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Draft Paper"@en .
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
@@ -27996,6 +28169,11 @@ hptag:Android a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Android" ;
     schema:url "https://harshp.com/tags/Android"^^xsd:anyURI .
+
+hptag:DPIA a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPIA"@en ;
+    schema:url "https://harshp.com/tags/DPIA"^^xsd:anyURI .
 
 hptag:ODRL a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28100,11 +28278,19 @@ hptag:website a hpcom:RenderedItem,
     schema:startDate "2022-09-13T00:00:00"^^xsd:dateTime ;
     schema:url "https://2022-eu.semantics.cc"^^xsd:anyURI .
 
+<http://example.com/working-draft> a schema:Publication ;
+    hpcom:event_type "" ;
+    schema:name "working draft"@en ;
+    schema:url "http://example.com/working-draft" .
+
 hpview:GenericJinja2View a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 .
 
 hpcom:BookChapter rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Book Chapter"@en .
+
+hpcom:DraftPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Draft Paper"@en .
 
 hpcom:Rating1 a hpcom:Rating,
         hpcom:RenderedItem ;
@@ -28117,11 +28303,6 @@ hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ODP"@en ;
     schema:url "https://harshp.com/tags/ODP"^^xsd:anyURI .
-
-hptag:Solid a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Solid"@en ;
-    schema:url "https://harshp.com/tags/Solid"^^xsd:anyURI .
 
 hptag:ethics a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28186,6 +28367,11 @@ list:visually-stunning a hpcom:RenderedItem,
     schema:startDate "2016-03-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/phd-thesis"^^xsd:anyURI .
 
+hptag:Solid a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Solid"@en ;
+    schema:url "https://harshp.com/tags/Solid"^^xsd:anyURI .
+
 hptag:social a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "social" ;
@@ -28195,10 +28381,6 @@ hptag:travel a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
-
-<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
-    schema:name "Delaram Golpayegani" ;
-    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
 
 <https://harshp.com/dev/semantic_web> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -28211,16 +28393,6 @@ list:humour a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "humour"@en ;
     schema:name "Funny and Humorous"@en .
-
-hptag:AI a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI"@en ;
-    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
-
-hptag:AI-Act a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "AI-Act"@en ;
-    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
 
 hptag:flash-fiction a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28242,10 +28414,19 @@ hptag:script a hpcom:RenderedItem,
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
 
+<https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
+    schema:name "Delaram Golpayegani" ;
+    schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
+
 list:thriller a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "thriller"@en ;
     schema:name "Thrilling Thrillers"@en .
+
+hptag:AI a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI"@en ;
+    schema:url "https://harshp.com/tags/AI"^^xsd:anyURI .
 
 hptag:automation a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28313,6 +28494,11 @@ list:storytelling a hpcom:RenderedItem,
     schema:identifier "storytelling"@en ;
     schema:name "Great Storytelling"@en .
 
+hptag:AI-Act a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "AI-Act"@en ;
+    schema:url "https://harshp.com/tags/AI-Act"^^xsd:anyURI .
+
 hptag:GNIB a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GNIB" ;
@@ -28361,11 +28547,6 @@ hptag:nature a hpcom:RenderedItem,
     schema:name "nature" ;
     schema:url "https://harshp.com/tags/nature"^^xsd:anyURI .
 
-hptag:risk a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "risk" ;
-    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
-
 hpview:DevProjectView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
             rdfs:label "posts" ;
@@ -28393,6 +28574,11 @@ hptag:rant a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "rant" ;
     schema:url "https://harshp.com/tags/rant"^^xsd:anyURI .
+
+hptag:risk a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "risk" ;
+    schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/paecg> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -28450,11 +28636,6 @@ hptag:academia a hpcom:RenderedItem,
     schema:name "academia" ;
     schema:url "https://harshp.com/tags/academia"^^xsd:anyURI .
 
-hptag:data-governance a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "data-governance"@en ;
-    schema:url "https://harshp.com/tags/data-governance"^^xsd:anyURI .
-
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
 
@@ -28462,6 +28643,11 @@ hptag:DPV a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "DPV"@en ;
     schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
+
+hptag:data-governance a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "data-governance"@en ;
+    schema:url "https://harshp.com/tags/data-governance"^^xsd:anyURI .
 
 hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28562,26 +28748,26 @@ hpcom:Jinja2 a hpcom:Renderer ;
     rdfs:label "Jinaj2"@en ;
     rdfs:comment "Renders a view using Jinja2 to create HTML filese from a template"@en .
 
-<https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
-    schema:name "Dave Lewis" .
-
 list:educational a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "educational"@en ;
     schema:name "Educational and Illuminating"@en .
+
+<https://www.scss.tcd.ie/dave.lewis/> a schema:Person ;
+    schema:name "Dave Lewis" .
 
 hpcom:Conference a hpcom:EventType ;
     rdfs:label "Conference"@en ;
     rdfs:subClassOf schema:Event ;
     schema:name "Conference"@en .
 
-hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Full Paper"@en .
-
 hptag:GDPR a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "GDPR"@en ;
     schema:url "https://harshp.com/tags/GDPR"^^xsd:anyURI .
+
+hpcom:FullPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Full Paper"@en .
 
 hptag:personal a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28615,6 +28801,11 @@ hpcom:Rating2 a hpcom:Rating,
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating2"^^xsd:anyURI .
 
+list:DCU a hpcom:RenderedItem,
+        book:lists ;
+    schema:identifier "DCU"@en ;
+    schema:name "Books in DCU"@en .
+
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -28624,11 +28815,6 @@ hpcom:Rating2 a hpcom:Rating,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
-
-list:DCU a hpcom:RenderedItem,
-        book:lists ;
-    schema:identifier "DCU"@en ;
-    schema:name "Books in DCU"@en .
 
 hptag:poem a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28667,12 +28853,15 @@ hpcom:Rating3 a hpcom:Rating,
     schema:ratingValue "3"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating3"^^xsd:anyURI .
 
+hpcom:BookSciFi a hpcom:BookGenre ;
+    rdfs:label "sci-fi"@en .
+
 hpcom:formatHTML a hpcom:FileFormat ;
     rdfs:label "formatHTML"@en ;
     rdfs:comment "Represents the HTML format for content"@en .
 
-hpcom:BookSciFi a hpcom:BookGenre ;
-    rdfs:label "sci-fi"@en .
+hpcom:EBook a hpcom:BookMedium ;
+    rdfs:label "💾digital"@en .
 
 <https://harshp.com/me> a hpcom:RenderedItem,
         schema:Person ;
@@ -28702,9 +28891,6 @@ hpcom:BookSciFi a hpcom:BookGenre ;
             schema:name "India" ] ;
     schema:url "https://harshp.com/me"^^xsd:anyURI ;
     schema:worksFor <https://www.tcd.ie/> .
-
-hpcom:EBook a hpcom:BookMedium ;
-    rdfs:label "💾digital"@en .
 
 hpcom:BookFiction a hpcom:BookGenre ;
     rdfs:label "fiction"@en .
