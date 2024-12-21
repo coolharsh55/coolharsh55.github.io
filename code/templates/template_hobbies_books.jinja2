@@ -67,7 +67,7 @@
         {% endfor %}{% else %}
         {{ book.schema_genre }}
         {% endif %}
-        ; read in <time datetime="{{year}}">{{year}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; 
+        ; read in <time datetime="{{date}}">{{date}}</time> in {% if rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.PhysicalBook) %}📚{% elif rdf_check_object(book, 'hpcom_book_read_medium', HPCOM.EBook) %}💾{% endif %} medium ; 
         {% if book.hpcom_book_owned_medium %}owned in
             {% if book.hpcom_book_owned_medium is sequence %}
                     {%  for medium in book.hpcom_book_owned_medium|sort(attribute='iri') %}{{ medium }}{% endfor %}
