@@ -11378,7 +11378,7 @@
     hpcom:book_owned_medium hpcom:EBook ;
     hpcom:book_read_medium hpcom:EBook ;
     hpcom:book_status hpcom:book-read ;
-    hpcom:date_book_read "2024-06-06-12T00:00:00"^^xsd:dateTime ;
+    hpcom:date_book_read "2024-06-06T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Philip K. Dick"^^xsd:string ;
     schema:dateCreated "1974"^^xsd:int ;
@@ -14024,21 +14024,22 @@
 
 <https://harshp.com/hobbies/books/960> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "960"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2024-12-24T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Redemption Ark"@en ;
+    schema:review """A follow-up to the cruder but creative Revelation Space, this book followed a set of stereotypical characters down into space war with some crazy physics involved. Pushed the story forward, but felt so much like a slow moving filler that it was annoying at times. There were additional characters introduced whose portions simply served to remind that there is more interesting stuff waiting to happen, and hence diluted their existence within the story to providing a 'human angle'. Boring. What I found interesting was the pushing of boundaries when it came to physics and inter-planetary politics - that was cool. The bit at the end justifying the state of play (trying not to put spoilers here) was also cool but it came in too late and was too little. Let's see what books 3 and 4 hold in store."""@en ;
     schema:url "https://harshp.com/hobbies/books/960"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/961> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "961"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;

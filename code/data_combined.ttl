@@ -18522,19 +18522,23 @@ book:960 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "960"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2024-12-24T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2002"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Redemption Ark"@en ;
+    schema:review "A follow-up to the cruder but creative Revelation Space, this book followed a set of stereotypical characters down into space war with some crazy physics involved. Pushed the story forward, but felt so much like a slow moving filler that it was annoying at times. There were additional characters introduced whose portions simply served to remind that there is more interesting stuff waiting to happen, and hence diluted their existence within the story to providing a 'human angle'. Boring. What I found interesting was the pushing of boundaries when it came to physics and inter-planetary politics - that was cool. The bit at the end justifying the state of play (trying not to put spoilers here) was also cool but it came in too late and was too little. Let's see what books 3 and 4 hold in store."@en ;
     schema:url "https://harshp.com/hobbies/books/960"^^xsd:anyURI .
 
 book:961 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "961"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Alastair Reynolds"^^xsd:string ;
     schema:dateCreated "2003"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -22505,6 +22509,12 @@ list:owned_unread a hpcom:RenderedItem,
         hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2412.15451"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/kms9n"^^xsd:anyURI ],
+        [ a hpcom:Link ;
             schema:name "harshp.com" ;
             schema:url "https://harshp.com/research/publications/070-Machine-Actionable-Rights"^^xsd:anyURI ] ;
     hpcom:author_lead <http://example.com/BeatrizEsteves> ;
@@ -22557,7 +22567,10 @@ list:owned_unread a hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/072-AICat"^^xsd:anyURI ] ;
+            schema:url "https://harshp.com/research/publications/072-AICat"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/a5pd2"^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
     hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -22585,7 +22598,10 @@ list:owned_unread a hpcom:RenderedItem,
         schema:ScholarlyArticle ;
     hpcom:archived_version [ a hpcom:Link ;
             schema:name "harshp.com" ;
-            schema:url "https://harshp.com/research/publications/073-Datasheets-AI-Bias"^^xsd:anyURI ] ;
+            schema:url "https://harshp.com/research/publications/073-Datasheets-AI-Bias"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "OSF" ;
+            schema:url "https://doi.org/10.31219/osf.io/69ykb"^^xsd:anyURI ] ;
     hpcom:author_lead <http://example.com/MarjiaSiddik> ;
     hpcom:author_other <https://harshp.com/me> ;
     hpcom:content [ a hpcom:Content ;
