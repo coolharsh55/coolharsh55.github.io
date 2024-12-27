@@ -2555,6 +2555,26 @@ hpcom:view_template a rdf:Property ;
     schema:name "Moving from AWS EC2 to Lightsail"@en ;
     schema:url "https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail"^^xsd:anyURI .
 
+<https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPVCG,
+        hptag:analytics,
+        hptag:back-end,
+        hptag:front-end,
+        hptag:server,
+        hptag:web-dev,
+        hptag:website ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2024-12-27T20:15:00"^^xsd:dateTime ;
+    schema:datePublished "2024-12-27T20:15:00"^^xsd:dateTime ;
+    schema:description "Moving websites from GitHub pages to a Hetzner server with Caddy"@en ;
+    schema:isPartOf <https://harshp.com/dev/harshp.com> ;
+    schema:name "Moving from GitHub Pages to Hetzner and Caddy with Analytics"@en ;
+    schema:url "https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner"^^xsd:anyURI .
+
 <https://harshp.com/dev/harshp.com/rdf-website-generator> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -26894,15 +26914,15 @@ hptag:age a hpcom:RenderedItem,
     schema:name "age" ;
     schema:url "https://harshp.com/tags/age"^^xsd:anyURI .
 
+hptag:analytics a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "analytics"@en ;
+    schema:url "https://harshp.com/tags/analytics"^^xsd:anyURI .
+
 hptag:animals a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "animals" ;
     schema:url "https://harshp.com/tags/animals"^^xsd:anyURI .
-
-hptag:back-end a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "back-end" ;
-    schema:url "https://harshp.com/tags/back-end"^^xsd:anyURI .
 
 hptag:banking a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27013,11 +27033,6 @@ hptag:folk-stories a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "folk-stories"@en ;
     schema:url "https://harshp.com/tags/folk-stories"^^xsd:anyURI .
-
-hptag:front-end a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "front-end" ;
-    schema:url "https://harshp.com/tags/front-end"^^xsd:anyURI .
 
 hptag:gender-bias a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27882,6 +27897,11 @@ hptag:apps a hpcom:RenderedItem,
     schema:name "apps" ;
     schema:url "https://harshp.com/tags/apps"^^xsd:anyURI .
 
+hptag:back-end a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "back-end" ;
+    schema:url "https://harshp.com/tags/back-end"^^xsd:anyURI .
+
 hptag:bash a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "bash" ;
@@ -27896,6 +27916,11 @@ hptag:experience a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "experience" ;
     schema:url "https://harshp.com/tags/experience"^^xsd:anyURI .
+
+hptag:front-end a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "front-end" ;
+    schema:url "https://harshp.com/tags/front-end"^^xsd:anyURI .
 
 hptag:humanities a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -27936,11 +27961,6 @@ hptag:security a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "security" ;
     schema:url "https://harshp.com/tags/security"^^xsd:anyURI .
-
-hptag:server a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "server" ;
-    schema:url "https://harshp.com/tags/server"^^xsd:anyURI .
 
 hptag:signal a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28006,13 +28026,6 @@ hptag:work a hpcom:RenderedItem,
 
 hpcom:book-currently-reading a hpcom:BookStatus ;
     rdfs:label "currently reading"@en .
-
-<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "harshp.com"@en ;
-    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
 
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -28131,6 +28144,11 @@ hptag:sci-fi a hpcom:RenderedItem,
     schema:name "sci-fi" ;
     schema:url "https://harshp.com/tags/sci-fi"^^xsd:anyURI .
 
+hptag:server a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "server" ;
+    schema:url "https://harshp.com/tags/server"^^xsd:anyURI .
+
 hptag:smartphone a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "smartphone"@en ;
@@ -28208,6 +28226,13 @@ hptag:standardisation a hpcom:RenderedItem,
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
 
+<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "harshp.com"@en ;
+    schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
+
 <https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -28281,11 +28306,6 @@ hptag:trains a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "trains" ;
     schema:url "https://harshp.com/tags/trains"^^xsd:anyURI .
-
-hptag:website a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "website" ;
-    schema:url "https://harshp.com/tags/website"^^xsd:anyURI .
 
 <https://www.mdpi.com/journal/information> a schema:Periodical ;
     schema:alternateName "Information" ;
@@ -28385,6 +28405,11 @@ hptag:weather a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "weather" ;
     schema:url "https://harshp.com/tags/weather"^^xsd:anyURI .
+
+hptag:website a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "website" ;
+    schema:url "https://harshp.com/tags/website"^^xsd:anyURI .
 
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
@@ -28578,11 +28603,6 @@ hptag:video-games a hpcom:RenderedItem,
     schema:name "video-games" ;
     schema:url "https://harshp.com/tags/video-games"^^xsd:anyURI .
 
-hptag:web-dev a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "web-dev" ;
-    schema:url "https://harshp.com/tags/web-dev"^^xsd:anyURI .
-
 <http://example.com/BeatrizEsteves> a schema:Person ;
     schema:name "Beatriz Esteves" .
 
@@ -28601,6 +28621,11 @@ hptag:nature a hpcom:RenderedItem,
     schema:name "nature" ;
     schema:url "https://harshp.com/tags/nature"^^xsd:anyURI .
 
+hptag:web-dev a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "web-dev" ;
+    schema:url "https://harshp.com/tags/web-dev"^^xsd:anyURI .
+
 hpview:DevProjectView a hpcom:View ;
     hpcom:sparql [ a hpcom:SparqlQuery ;
             rdfs:label "posts" ;
@@ -28618,11 +28643,6 @@ list:language a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "language"@en ;
     schema:name "Beautiful Language"@en .
-
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 hptag:rant a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28670,6 +28690,11 @@ hptag:risk a hpcom:RenderedItem,
     schema:name "Privacy-as-Expected: Consent Gateway"@en ;
     schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
     schema:url "https://privacy-as-expected.org/"^^xsd:anyURI .
+
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 hptag:humor a hpcom:RenderedItem,
         hpcom:Tag ;

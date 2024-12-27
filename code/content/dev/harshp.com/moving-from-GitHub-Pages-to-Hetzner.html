@@ -1,0 +1,200 @@
+<p>Goal: to move the websites for <a href="dpvcg.org">dpvcg.org</a>, <a
+href="dev.dpvcg.org">dev.dpvcg.org</a>, and <a
+href="harshp.com">harshp.com</a> to a custom server running Linux, and
+setup automatic updates, and rudimentary analytics.</p>
+<h2 id="server-provider---hetzner">Server Provider - Hetzner</h2>
+<p>I went with a Hetzner CAX21 4vCPU - Ampere ARM64 with 8GB RAM 80GB
+SSD and 20TB bandwidth/month with IPv4 address for about €8/month
+running Debian 12. Painless setup - everything was easy. Hetzner asked
+for ssh keys and added them automatically to the server so I could
+directly ssh in once the server was ready (which it was in a
+minute).</p>
+<p>Hetzner created the Debian server in a barebones manner. So the first
+time I logged in, I was <code>root</code>. To avoid the usual security
+pitfalls, its better to first create a user for myself, and then give it
+<code>sudo</code> permissions so I can install and do other admin
+stuff:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adduser</span> harsh</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usermod</span> <span class="at">-aG</span> sudo harsh</span></code></pre></div>
+<h2 id="web-server---caddy">Web Server - Caddy</h2>
+<p>I’ve had experience with Apache2 and Nginx before. Apache2 is a beast
+- super powerful and all capable but very very verbose and complex to
+use and maintain. Also I’ve forgotten everything about how to use it -
+so it meant spending time relearning it. With Nginx, the configuration
+aspects are much easier, and there is a wide community who has built
+things with it. So that was the ‘safe choice’ option. But since this is
+an activity during the Christmas holidays, I decided to try out Caddy -
+intrigued by its premise of simplicity and bolts-included premise.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assuming sudo</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install caddy</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> start caddy</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> status caddy  <span class="co"># everything looks okay</span></span></code></pre></div>
+<p>Caddy config is much smaller and simpler than that of Nginx and
+Apache. Though the materials online can be tricky to figure out as there
+is a rather sparse availability of configs that do exactly what you want
+it to. But the approach of building config files has been made much
+nicer through commands that take care of most of the stuff.</p>
+<p>The basic config file preinstalled is at
+<code>/etc/caddy/Caddyfile</code>. To enable modular configs, we simply
+create a directory called <code>Caddyfile.d</code> and import configs
+from it.</p>
+<pre><code># /etc/config/caddy/Caddyfile
+import Caddyfile.d/*.caddyfile</code></pre>
+<p>Then in <code>Caddyfile.d</code> we add specific files for each
+config. I have three websites that need to be served - all are static
+files so there is no process running (so far), which means we don’t need
+a reverse proxy here, just the file server.</p>
+<pre><code># domain name
+harshp.com {
+    # root of website maps to following path
+    root * /usr/share/caddy/harshp.com
+    # this is for setting CORS options
+    @cors_preflight {
+                method OPTIONS
+        }
+        respond @cors_preflight 204
+        
+    header {
+        # this is where I store my media files
+        Access-Control-Allow-Origin https://media.harshp.com
+        Access-Control-Allow-Methods GET,POST,OPTIONS,HEAD,PATCH,PUT,DELETE
+        Access-Control-Allow-Headers User-Agent,Content-Type,X-Api-Key
+        Access-Control-Max-Age 86400
+    }
+    # saves space, is faster
+    encode gzip
+    # try url with .html prefix so we don&#39;t have to
+    try_files {path} {path}.html
+    # serve 404 using this file
+    handle_errors {
+       rewrite * 404.html
+       file_server
+    }
+    # don&#39;t expose the .git folder
+    file_server {
+        hide .git
+    }
+    # this is where the access logs go (including errors)
+    log {
+        output file /var/log/caddy/harshp.com.net-access.log
+    }
+}
+
+# subdomain www
+www.harshp.com {
+    # redirect it to full server
+    redir https://harshp.com{path}
+}</code></pre>
+<p>The config for <code>dev.dpvcg.org</code> requires some redirections
+based on path so that if we don’t specify a version number, it
+automatically goes to the latest version under development. To do this,
+Caddy config syntax is really simple:</p>
+<pre><code>dev.dpvcg.org {
+    root * /usr/share/caddy/dev.dpvcg.org
+        # redirect &lt;from&gt; &lt;to&gt;
+        redir /ai* 2.1-dev/{path}
+        redir /diagrams* 2.1-dev/{path}
+        redir /dpv* 2.1-dev/{path}
+        redir /examples* 2.1-dev/{path}
+        redir /justifications* 2.1-dev/{path}
+        redir /legal* 2.1-dev/{path}
+        redir /loc* 2.1-dev/{path}
+        redir /pd* 2.1-dev/{path}
+        redir /risk* 2.1-dev/{path}
+        redir /search.html* 2.1-dev/{path}
+        redir /sector* 2.1-dev/{path}
+        redir /tech* 2.1-dev/{path}
+    encode gzip
+    file_server {
+        hide .git
+    }
+    log {
+        output file /var/log/caddy/dev.dpvcg.org.net-access.log
+    }
+}</code></pre>
+<p>Other stuff I have yet to figure out is what to put in the config so
+that urls ending in a forward slash like <code>path/</code> are
+redirected to <code>path.html</code> instead because that’s what I have
+in my website. Maybe I should follow the general convention instead of
+doing <code>path/index.html</code> instead which Caddy supports by
+default.</p>
+<p>Yet other stuff that will be needed in the future is content
+negotiation so that we can request RDF formats specifically. There is a
+Caddy plugin called <code>caddy-conneg</code> that seems to provide
+this. But to install plugins in to Caddy, I have to effectively
+reinstall Caddy, or - a simpler way - to go to <a
+href="https://caddyserver.com/download?package=github.com%2Fmpilhlt%2Fcaddy-conneg">Caddy
+plugins page</a> and select the plugin and download a precompiled binary
+(caveat emptor). Then I replace the binary at
+<code>/usr/bin/caddy</code> with this, and we’re apparently good to go.
+Need to test if this works later.</p>
+<h2 id="serving-websites">Serving Websites</h2>
+<p>To serve static websites, they must first be synced on to the server.
+Currently, these websites are stored on GitHub, for example as <a
+href="https://github.com/coolharsh55/dpvcg.org">https://github.com/coolharsh55/dpvcg.org</a>,
+and using <code>git</code> we can clone it and keep it in sync on the
+server. To avoid having to do this manually every time there is an
+update (and then forgetting to sync it sometimes), its better to
+automate the local git repo so that it always stays in sync with the
+remote repo.</p>
+<p>To do this, first we need to clone the git repo locally. These
+folders require specific permissions as Caddy should also be able to
+read them in order to serve them. Instead of individuall managing
+permissions (for the local user, for the Caddy user), its better to
+create a shared group (lets call it <code>dev</code>) and use this to
+give access to things.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">groupadd</span> dev</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">usermod</span> <span class="at">-aG</span> dev harsh</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">usermod</span> <span class="at">-aG</span> dev caddy</span></code></pre></div>
+<p>Then we need to give access to this group for the folder where all
+files will be stored - we can either do this on a folder by folder
+basis, or we can give access to the parent folder. I opt for the parent
+folder approach since its convenient and easier to later add in more
+stuff. For Caddy, the default path for files to be served is
+<code>/usr/share/caddy</code>, so we use that:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> <span class="at">-R</span> harsh:dev /usr/share/caddy <span class="co"># make user and group owner</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 0755 /usr/share/caddy <span class="co"># enable all users to read, only me to modify</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>repo<span class="op">&gt;</span> /usr/share/caddy/<span class="op">&lt;</span>folder<span class="op">&gt;</span></span></code></pre></div>
+<p>Once this is done, we set up an automated script called every
+15minutes using <code>cron</code> to update all the folders at this path
+if they are git repos.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cron script to run git-repo-update.sh every 15 minutes</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span> <span class="co"># and then the below script</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">*/15</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> /usr/bin/bash /home/harsh/bin/git-repo-update.sh <span class="op">&gt;</span> /dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># /home/harsh/bin/git-repo-update.sh and then the below contents</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> subfolder <span class="kw">in</span> /usr/share/caddy/<span class="pp">*</span>/<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">&quot;</span><span class="va">$subfolder</span><span class="st">/.git&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">cd</span> /usr/share/caddy/<span class="st">&quot;</span><span class="va">$subfolder</span><span class="st">&quot;</span> <span class="kw">||</span> <span class="cf">continue</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">git</span> pull <span class="at">--rebase</span> <span class="op">&gt;</span> /dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<h2 id="analytics">Analytics</h2>
+<p><a href="https://matomo.org/">Matomo</a> is a full featured and
+privacy-conscious solution that can be self-hosted. However, it requires
+setting up a process (to run Matomo) and a database (to store analytics
+data), as well as integration in to each of the pages being served.
+Since some of the websites I’m serving are ‘mirrors’ sites and others
+are ‘official’ websites, the setup should be such that its minimal
+effort to move them. Therefore, I went with <a
+href="https://goaccess.io/">GoAccess</a> which is a lightweight app to
+analyse logs from servers - and which has built-in support for Caddy’s
+JSON log formats.</p>
+<p>The Caddy log files are stored by default (unless the config has a
+different path) at <code>/var/log/caddy</code>. So we simply need to
+point <code>goaccess</code> to the log file and generate an output HTML.
+GoAccess also has a ‘webserver’ mode where it analyses traffic in
+real-time, but I don’t need such level of detail for this. So instead, I
+set up a <code>cron</code> job where the analytics are run every
+15mins.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install goaccess</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> /home/harsh/bin/git-repo-update.sh <span class="co"># and then the below contents</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># within the for -&gt; if section, add the goaccess output</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">goaccess</span> /var/log/caddy/<span class="st">&quot;</span><span class="va">$subfolder</span><span class="st">&quot;</span>.net-access.log <span class="at">-o</span> ./analytics.html <span class="at">--log-format</span><span class="op">=</span>CADDY</span></code></pre></div>
