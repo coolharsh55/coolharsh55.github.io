@@ -13401,7 +13401,7 @@
     hpcom:book_status hpcom:book-to-read ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:EBook ;
     # hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Matteo Pasquinelli"^^xsd:string ;
@@ -14054,9 +14054,9 @@
 
 <https://harshp.com/hobbies/books/962> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "962"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2024-10-31T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating2 ;
+    hpcom:date_book_read "2025-01-02T08:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
@@ -14064,6 +14064,7 @@
     schema:dateCreated "2021"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Inhibitor Phase"@en ;
+    schema:review """Utterly disappointing. This is the last book (as of now) in the Revelation Space universe. As such, one expects there to be a large payoff in terms of finishing up things from previous books, and to provide sufficient details to consider the plot 'complete'. The book starts off with a banger - makes one think this is going to be a good book. But no. Then we meander about from one plot armor-ladden situation to the next, all the while introducing random new things that have neither a background nor are they ever clarified in the end. What started off as an amazing book with an excellent world-building (Revelation Space) ends with every book getting progressively worse until we reach this tome of disappointment. The only solace in all this is that this is a rather shorter book as compared to the earlier ones - so there was less pages to finish the disappointment with."""@en ;
     schema:url "https://harshp.com/hobbies/books/962"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/963> a schema:Book, hpcom:RenderedItem ;
@@ -14082,7 +14083,7 @@
 
 <https://harshp.com/hobbies/books/964> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "964"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
