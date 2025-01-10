@@ -18603,12 +18603,16 @@ book:964 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "964"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-01-07T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Iain M. Banks"^^xsd:string ;
     schema:dateCreated "2000"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Look to Windward"@en ;
+    schema:review "Clever book that is set in the Culture universe. It is always amazing to read more about the Culture - it is one of the few fully fleshed out worlds which don't have a hangover from the current times, and where there is truly 'science' and 'fiction'. In this case, the book is set after the events in 'Consider Phlebas', where the war and its effects continue to show a deep impact on the psyche - not human specifically but generally the absurdities that manifest in any sentient being. But this was not a serious or depressing book - it was quite interesting to see where the story was going and that there was an interesting story to experience no matter what. Waiting to read the next Culture book."@en ;
     schema:url "https://harshp.com/hobbies/books/964"^^xsd:anyURI .
 
 book:965 a hpcom:RenderedItem,
@@ -18648,6 +18652,29 @@ book:967 a hpcom:RenderedItem,
     schema:name "H. P. Lovecraft: The Complete Fiction"@en ;
     schema:review "A classic and a giant in literature, Lovecraft's unique stories led to the use of 'Lovecraftian' as a genre of Eldritch horrors in itself. Good read, though it is difficult to appreciate these fully now that they have had so much influence and imitation and adoption in modern literature. I think I would have liked a lot more details now."@en ;
     schema:url "https://harshp.com/hobbies/books/967"^^xsd:anyURI .
+
+book:968 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "968"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Blake Crouch"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Upgrade"@en ;
+    schema:url "https://harshp.com/hobbies/books/968"^^xsd:anyURI .
+
+book:969 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "969"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Oliver Burkeman"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Four Thousand Weeks"@en ;
+    schema:url "https://harshp.com/hobbies/books/969"^^xsd:anyURI .
 
 book:97 a hpcom:Book,
         hpcom:BookReading,
@@ -22598,7 +22625,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/072-AICat"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "OSF" ;
-            schema:url "https://doi.org/10.31219/osf.io/a5pd2"^^xsd:anyURI ] ;
+            schema:url "https://doi.org/10.31219/osf.io/a5pd2"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2501.04014"^^xsd:anyURI ] ;
     hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
     hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
     hpcom:content [ a hpcom:Content ;
@@ -28032,9 +28062,6 @@ hptag:work a hpcom:RenderedItem,
     schema:startDate "2018-10-08T00:00:00"^^xsd:dateTime ;
     schema:url "https://iswc2018.semanticweb.org/"^^xsd:anyURI .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/webdev> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -28233,6 +28260,9 @@ hptag:standardisation a hpcom:RenderedItem,
 
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
