@@ -16183,7 +16183,7 @@ book:814 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "814"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Eddie Robson"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18657,12 +18657,16 @@ book:968 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "968"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-01-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Blake Crouch"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Upgrade"@en ;
+    schema:review "Tell me if you've heard this before: a magic pill or drug or whatever that makes the person super smart, strong, or basically a superhuman, and then chaos ensues. That's the premise of this book. We have some (scientifically structured) gene editing that's been used by the black market to do stuff. The details are a nice touch, with several things clearly coming across as a well thought through plot structure. But the basic premise and the writing style still falls quite short of being an excellent book. This is great beach or plane material - read it while you're tired or don't want to think too much. Because if you do, you will see glaring plot holes and problems erupt everywhere. But if you don't, you get to enjoy a nice ride."@en ;
     schema:url "https://harshp.com/hobbies/books/968"^^xsd:anyURI .
 
 book:969 a hpcom:RenderedItem,
