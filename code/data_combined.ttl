@@ -16183,12 +16183,17 @@ book:814 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "814"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-01-17T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Eddie Robson"^^xsd:string ;
     schema:dateCreated "2022"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Drunk on All Your Strange New Worlds"@en ;
+    schema:review "Heads-up - this is the first book that I've read where misinformation plays some role. Or even where it is acknowledged and weaved into the plot. Just for that - kudos. The rest of the story and writing didn't really appeal to me. The premise is interesting - there are aliens who we have already established diplomatic contacts with, and who are here on earth to study the culture and society. They talk telepathically, and thus find books intriguing and useful, and also why they need translators. The story is a murder mystery. In itself, it would make for compelling reading were it not for the writing - that was not something that made me want to turn the pages. It isn't bad, it just isn't engaging. The story itself is also quite bare bones - the world does seem to have some thought put into it. Like filtering news based on some truthiness rating. But otherwise the world isn't quite as well explained or developed as it could have been. The same is also for the aliens - beyond the couple of items necessary to set the premise, nothing else is explored. That would have made the difference between an okay-ish book from a nice to have read book."@en ;
     schema:url "https://harshp.com/hobbies/books/814"^^xsd:anyURI .
 
 book:815 a hpcom:Book,
@@ -16771,7 +16776,8 @@ book:849 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "849"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Frederik Pohl"^^xsd:string ;
     schema:dateCreated "1984"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -22663,7 +22669,10 @@ list:owned_unread a hpcom:RenderedItem,
             schema:url "https://harshp.com/research/publications/073-Datasheets-AI-Bias"^^xsd:anyURI ],
         [ a hpcom:Link ;
             schema:name "OSF" ;
-            schema:url "https://doi.org/10.31219/osf.io/69ykb"^^xsd:anyURI ] ;
+            schema:url "https://doi.org/10.31219/osf.io/69ykb"^^xsd:anyURI ],
+        [ a hpcom:Link ;
+            schema:name "arXiv" ;
+            schema:url "https://doi.org/10.48550/arXiv.2501.05617"^^xsd:anyURI ] ;
     hpcom:author_lead <http://example.com/MarjiaSiddik> ;
     hpcom:author_other <https://harshp.com/me> ;
     hpcom:content [ a hpcom:Content ;
