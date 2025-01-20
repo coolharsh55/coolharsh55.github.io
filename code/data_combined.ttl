@@ -2983,6 +2983,18 @@ hpcom:view_template a rdf:Property ;
     hpcom:content [ hpcom:renderWith hpview:GenericJinja2View ;
             hpcom:view_template "https://harshp.com/code/templates/template_hobbies.jinja2"^^xsd:anyURI ] .
 
+book:070 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "70"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Nick Harkaway"^^xsd:string ;
+    schema:dateCreated "2013"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Angelmaker"@en ;
+    schema:url "https://harshp.com/hobbies/books/070"^^xsd:anyURI .
+
 book:1 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
