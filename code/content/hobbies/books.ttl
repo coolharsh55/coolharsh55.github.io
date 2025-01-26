@@ -8707,6 +8707,8 @@
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Greg Bear"^^xsd:string ;
     schema:dateCreated "1987"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Forge of God"@en ;
@@ -12393,8 +12395,8 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "849"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2025-01-21T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Frederik Pohl"^^xsd:string ;
@@ -14170,9 +14172,9 @@
     schema:name "Four Thousand Weeks"@en ;
     schema:url "https://harshp.com/hobbies/books/969"^^xsd:anyURI .
 
-<https://harshp.com/hobbies/books/070> a schema:Book, hpcom:RenderedItem ;
-    hpcom:book_id "070"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+<https://harshp.com/hobbies/books/970> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "970"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -14182,4 +14184,40 @@
     schema:dateCreated "2013"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Angelmaker"@en ;
-    schema:url "https://harshp.com/hobbies/books/070"^^xsd:anyURI .
+    schema:url "https://harshp.com/hobbies/books/970"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/971> a hpcom:RenderedItem, hpcom:BookReading,
+        schema:Book, hpcom:Book ;
+    hpcom:book_id "971"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Jostein Gaarder"^^xsd:string ;
+    schema:dateCreated "1991"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction; 
+    schema:name "Sophie's World"@en ;
+    schema:url "https://harshp.com/hobbies/books/971"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/972> a hpcom:RenderedItem, hpcom:BookReading,
+        schema:Book, hpcom:Book ;
+    hpcom:book_id "972"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Seth Godin"^^xsd:string ;
+    schema:dateCreated "2007"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction; 
+    schema:name "The Dip: The Extraordinary Benefits of Knowing When to Quit (and When to Stick)"@en ;
+    schema:url "https://harshp.com/hobbies/books/972"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/973> a hpcom:RenderedItem, hpcom:BookReading,
+        schema:Book, hpcom:Book ;
+    hpcom:book_id "973"^^xsd:int ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Brendan Heneghan"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction; 
+    schema:name "Secrets of the Ballot Box: How the Irish Voting System really works"@en ;
+    schema:url "https://harshp.com/hobbies/books/973"^^xsd:anyURI .

@@ -2983,18 +2983,6 @@ hpcom:view_template a rdf:Property ;
     hpcom:content [ hpcom:renderWith hpview:GenericJinja2View ;
             hpcom:view_template "https://harshp.com/code/templates/template_hobbies.jinja2"^^xsd:anyURI ] .
 
-book:070 a hpcom:RenderedItem,
-        schema:Book ;
-    hpcom:book_id "70"^^xsd:int ;
-    hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    schema:author "Nick Harkaway"^^xsd:string ;
-    schema:dateCreated "2013"^^xsd:int ;
-    schema:genre hpcom:BookFiction,
-        hpcom:BookSciFi ;
-    schema:name "Angelmaker"@en ;
-    schema:url "https://harshp.com/hobbies/books/070"^^xsd:anyURI .
-
 book:1 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
@@ -12364,6 +12352,8 @@ book:602 a hpcom:Book,
         hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "602"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     hpcom:book_status hpcom:book-to-read ;
     schema:author "Greg Bear"^^xsd:string ;
     schema:dateCreated "1987"^^xsd:int ;
@@ -16789,7 +16779,8 @@ book:849 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "849"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
     hpcom:date_book_read "2025-01-21T00:00:00"^^xsd:dateTime ;
     schema:aggregatedRating hpcom:Rating3 ;
     schema:author "Frederik Pohl"^^xsd:string ;
@@ -18712,6 +18703,57 @@ book:97 a hpcom:Book,
     schema:isbn "9780393352979"^^xsd:string ;
     schema:name "The Vital Question: Energy, Evolution, and the Origins of Complex Life"@en ;
     schema:url "https://harshp.com/hobbies/books/97"^^xsd:anyURI .
+
+book:970 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "970"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Nick Harkaway"^^xsd:string ;
+    schema:dateCreated "2013"^^xsd:int ;
+    schema:genre hpcom:BookFiction,
+        hpcom:BookSciFi ;
+    schema:name "Angelmaker"@en ;
+    schema:url "https://harshp.com/hobbies/books/970"^^xsd:anyURI .
+
+book:971 a hpcom:Book,
+        hpcom:BookReading,
+        hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "971"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Jostein Gaarder"^^xsd:string ;
+    schema:dateCreated "1991"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "Sophie's World"@en ;
+    schema:url "https://harshp.com/hobbies/books/971"^^xsd:anyURI .
+
+book:972 a hpcom:Book,
+        hpcom:BookReading,
+        hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "972"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Seth Godin"^^xsd:string ;
+    schema:dateCreated "2007"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "The Dip: The Extraordinary Benefits of Knowing When to Quit (and When to Stick)"@en ;
+    schema:url "https://harshp.com/hobbies/books/972"^^xsd:anyURI .
+
+book:973 a hpcom:Book,
+        hpcom:BookReading,
+        hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "973"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    schema:author "Brendan Heneghan"^^xsd:string ;
+    schema:dateCreated "2018"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Secrets of the Ballot Box: How the Irish Voting System really works"@en ;
+    schema:url "https://harshp.com/hobbies/books/973"^^xsd:anyURI .
 
 book:98 a hpcom:Book,
         hpcom:BookReading,
