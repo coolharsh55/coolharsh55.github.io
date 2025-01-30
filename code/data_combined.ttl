@@ -18708,12 +18708,16 @@ book:970 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "970"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-01-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating4 ;
     schema:author "Nick Harkaway"^^xsd:string ;
     schema:dateCreated "2013"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "Angelmaker"@en ;
+    schema:review "It is rare that I start reading a book and it immediately just 'clicks'. This was one of those rare experiences. The story and the language were fantastic - I was intrigued and when the plot didn't move quickly the british style of humour and character descriptions were entertaining. The only aspect which made me stop and wonder several times is the 'hardness' of science - I kept wanting more details as it seemed just a tad too far fetched and hand-wavy let's pretend this can be a thing type of an argument. But still, it wasn't a sore spot and the story was indeed enjoyable throughout. I'll be looking for more from this author - this was the third novel I've read where I enjoyed the story and the writing and thought both were creative."@en ;
     schema:url "https://harshp.com/hobbies/books/970"^^xsd:anyURI .
 
 book:971 a hpcom:Book,
@@ -18722,7 +18726,7 @@ book:971 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "971"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Jostein Gaarder"^^xsd:string ;
     schema:dateCreated "1991"^^xsd:int ;
     schema:genre hpcom:BookFiction ;
