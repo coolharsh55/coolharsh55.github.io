@@ -2275,6 +2275,22 @@ hpcom:view_template a rdf:Property ;
     schema:name "dpv-x 2021-08-15"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-x-2021-08-15"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/locations-01> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-01.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-02-09T00:45:00"^^xsd:dateTime ;
+    schema:datePublished "2025-02-09T00:45:00"^^xsd:dateTime ;
+    schema:description "Notes analysing location concepts for use with DPV"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Modelling Subjective Locations in DPV"@en ;
+    schema:url "https://harshp.com/dev/dpv/locations-01"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -18739,7 +18755,7 @@ book:972 a hpcom:Book,
         schema:Book ;
     hpcom:book_id "972"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Seth Godin"^^xsd:string ;
     schema:dateCreated "2007"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
@@ -28388,9 +28404,6 @@ hptag:standardisation a hpcom:RenderedItem,
 hpcom:ExtendedAbstract rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Extended Abstract"@en .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 <https://harshp.com/dev/harshp.com> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -28541,6 +28554,9 @@ hpcom:Rating1 a hpcom:Rating,
     schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
 
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
+
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ODP"@en ;
@@ -28689,13 +28705,6 @@ hptag:conference a hpcom:RenderedItem,
     schema:name "Christophe Debruyne" ;
     schema:url "https://chrdebru.github.io/"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 hptag:knowledge-graph a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "knowledge-graph" ;
@@ -28720,6 +28729,13 @@ hptag:visa a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "visa" ;
     schema:url "https://harshp.com/tags/visa"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 <https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
@@ -28856,11 +28872,6 @@ hptag:risk a hpcom:RenderedItem,
     schema:startDate "2020-09-14T00:00:00"^^xsd:dateTime ;
     schema:url "https://privacy-as-expected.org/"^^xsd:anyURI .
 
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
-
 hptag:humor a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "humor" ;
@@ -28875,6 +28886,11 @@ hptag:humor a hpcom:RenderedItem,
     schema:name "research projects"@en ;
     schema:url "https://harshp.com/research/projects"^^xsd:anyURI .
 
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
+
 hptag:academia a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "academia" ;
@@ -28882,11 +28898,6 @@ hptag:academia a hpcom:RenderedItem,
 
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
-
-hptag:DPV a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:data-governance a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28897,6 +28908,11 @@ hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
+
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 hptag:article a hpcom:RenderedItem,
         hpcom:Tag ;

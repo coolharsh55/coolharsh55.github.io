@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modelling Subjective Locations in DPV</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Modelling Subjective Locations in DPV">
+    <meta name="schema:description" content="Notes analysing location concepts for use with DPV">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/locations-01">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/locations-01">
+    <meta property="og:title" content="Modelling Subjective Locations in DPV">
+    <meta property="og:description" content="Notes analysing location concepts for use with DPV">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/locations-01">
+        <h1 property="schema:name schema:headline">Modelling Subjective Locations in DPV</h1>
+        <div id="description">
+            <span property='schema:description'>Notes analysing location concepts for use with DPV</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-02-09T00:45:00">2025-02-09T00:45:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+
+<p>These are the working notes for adding location concepts to DPV. See <a href="https://github.com/w3c/dpv/issues/209">issue#209</a> for tracking this work.</p>
+<section id="motivation">
+    <h2>Motivation</h2>
+    <p><a href="https://w3id.org/dpv">DPV</a>’s core goal at the onset of
+    the <a href="https://www.w3.org/groups/cg/dpvcg/">DPVCG</a> was
+    representing information about the processing of personal data. This
+    required the creation of <code>StorageLocation</code> as a concept to
+    state where data was being stored. Since then, the DPV has expanded
+    significantly, and the real-world necessity of expressing and using
+    locations has led to creation of several location related concepts.
+    These include concepts such as <code>Country</code> and
+    <code>City</code> which represent geo-physical locations which act as
+    jurisdictions. It also includes a new concept called
+    <code>LocationLocality</code> which is further expanded into more
+    concepts such as <code>WithinDevice</code> and
+    <code>RemoteLocation</code>. In DPV v2.1, the extension <a
+    href="https://w3id.org/dpv/loc">LOC</a> was added that provides a large
+    taxonomy of countries and regions based on the ISO 3166 standard.</p>
+    <p>These concepts reflect the need to represent real/physical locations
+    (specific countries and cities) as well as non-real/non-physical
+    locations such as within a device. However, a third category of
+    locations also exists between the two where <em>subjective labels</em>
+    such as <em>home</em> or <em>office</em> are used to indicate physical
+    locations that differ for each person, as well as virtual locations such
+    as <em>device</em> and <em>app</em> that differ for each context. Going
+    ahead, DPV should represent such concepts as these are relevant to
+    represent information in a manner that fits the context e.g. where a
+    particular device is said to be used at home, or that there is a CCTV
+    that is monitoring employees in an office.</p>
+</section>
+<section id="sota">
+    <h2>What exists? A Literature Review</h2>
+    <p><a href="https://developers.google.com/maps/documentation/places/web-service/supported_types">Google Places</a> has a taxonomy of location concepts for use with Google Maps. It includes concepts such as <i>cafe</i> and <i>park</i>, but does not specify them as public or private, or categorise them in any other way. The <a href="https://developers.google.com/maps/documentation/places/android-sdk/place-types">New Places Type</a> taxonomy has categorisations such as <i>Education</i> and <i>Health and Wellness</i> which have further granular concepts (1 level deep).</p>
+    <p><a href="https://wiki.openstreetmap.org/wiki/Map_features">OpenStreetMap</a> also has a taxonomy of location types which are similarly structured, though with a larger taxonomy. However, there is no indication of places as being public or private.</p>
+    <p><a href="https://schema.org">schema.org</a> has some location types, e.g. <a href="https://schema.org/Hotel">Hotel</a>, which are extensions of a common top concept called <a href="https://schema.org/Place">Place</a>. The taxonomy of places is a hierarchy with multiple levels, though the focus is on commercial activities and information such as addresses.</p>
+    <p>Sector-based financial classification schemes such as NAICS (e.g. <a href="https://www.naics.com/code-search/?trms=place&v=2022&styp=naics&qid=5f065b327f">search for places</a>) and ISIC (e.g. <a href="https://unstats.un.org/unsd/classifications/Econ/Structure">search for places</a>). However, these are economic activities and only some can be correlated to locations such as restaurants.</p>
+    <p>I could not find any taxonomy of virtual locations other than a few concepts that relate to technology-specific concepts such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria">browser storage (MDN)</a>, <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">iOS File Manager</a>, and <a href="https://developer.android.com/training/data-storage/">Android data storage</a>.</p>
+    <p>Regulations such as ePrivacy Directive has a definition for <i>location data</i>, and mentions <i>data stored in terminal equipment</i> which can be simplified to data stored on/in a device.</p>
+</section>
+<section id="proposal">
+    <h2>Proposal</h2>
+    <p>We create and provide a taxonomy of such <em>subjective
+    locations</em> which help represent information as it is used and
+    understood in the real world, especially that related to privacy. This
+    means also representing locations in the sense of whether it is
+    personal, private, or public (as suggested in the group) and to
+    categorise the subjective locations based on these where possible. The
+    challenge here is to have a criteria for what subjective locations are,
+    and which ones should be included - as there are potentially infinite
+    number of locations which can be created.</p>
+    <p>The location concepts should be based on the intended use of DPV’s
+    concepts, namely in a legal context to represent information that is
+    necessary to represent legal requirements, interpretation, or
+    compliance, and to support information that is relevant to the use of
+    data and technologies at a personal as well as organisational level.
+    Based on this, the above can be expressed as the following three categories:</p>
+    <ol>
+        <li>Locations that are legally relevant categorisations related to privacy e.g. <code>private</code> and <code>public</code></li>
+        <li>Locations that are physical and real but are subjectively described for the person or organisation e.g. <code>home</code> and <code>office</code></li>
+        <li>Locations that describe virtual places in context of technologies and how they operate with data e.g. <code>device storage</code>, <code>browser storage</code>, <code>within app</code></li>
+    </ol>
+    <p>To decide which concepts to represent, the first criteria should be the most important - if the legal interpretation requires expression of that category, then it should be defined as a concept in DPV. For example, since the law distinguishes between private and public spaces - these are necessary to be modelled as locations. Similarly, the ePrivacy Directive and some other laws distinguish between user storage - so these must also be represented as a concept. Finally, specific laws are modelled based on the specific locations such as workplaces and hospitals - therefore these should also be modelled. For the other concepts, their involvement must be based on whether they help express commonly used use-cases - such as storage on a device.</p>
+    <p>Once a sufficient list of concepts has been identified, they should be organised in a hierarchy such as that the top concepts represent broad locations and the lower parts of the hierarchy represent more specific concepts. For example, <code>Local</code> could be a concept representing storage that is 'local' in a real or virtual sense, with more specific locations as <code>OnDevice</code> and <code>ImmediatePhysicalArea</code>. By themselves, these concepts cannot be said to be private or public as there can be use of them as either. In contrast, <code>Home</code> is <code>Private</code> and <code>Personal</code> by definition.</p>
+</section>
+<section id="location-confidentiality">
+    <h2>Locations by Confidentiality</h2>
+    <p>The concept <code>LocationsByConfidentiality</code> represents categorisations based on the confidentiality of the location, with three categories as:</p>
+    <ol>
+        <li><code>PersonalPlace</code> - the space around or defined by an individual which defines their comfort, autonomy, privacy, and other attributes which relate to their 'person'.</li>
+        <li><code>PrivatePlace</code> - a place that is controlled privately, or that is not a public space.</li>
+        <li><code>PublicPlace</code> - a place which members of the public can access or are permitted to access, whether by right or by express or implied permission, or whether on payment or otherwise.</li>
+    </ol>
+    <p>In these, the definition of public place must be aligned with legal definitions which are broad. The concept also needs to be clarified from <code>PublicSpace</code> which is an open and accessible area to members of the public, and is a subset of <code>PublicPlace</code>. <code>PersonalPlace</code> is a subset of <code>PrivatePlace</code> by definition with the distinction being that private can be for an individual person, a group, or even an organisation, whereas personal is always restricted to the individual.</p>
+    <p>To avoid misinterpretation between places marked as public or private, it would be beneficial to prefix the names with <code>Public/Private</code>. For example, <code>PublicPark</code> is unambiguous as a public location as compared to just <code>Park</code>. Even though we may not model <code>Park</code> as a concept (and as a parent to public park), the prefix helps communicate and ensure that the concept is used to indicate public parks.</p>
+    <p>In some legal contexts, it is also essential to distinguish between areas within a private place which are publicly accessible - but are governed by the private entity. For example, a hotel lobby is a public place based on the above definition as any member of the public can access it. However, as a building, the hotel is a private place. Therefore, this represents a case where the same place has to be indicated as public and private - making both concepts intersecting rather than disjoint. For data protection laws like GDPR, a CCTV placed within a hotel lobby would count towards monitoring of a publicly accessible area (or public area). To indicate such cases more explicitly, the concept <code>PubliclyAccessiblePrivatePlace</code> should be defined by extending both private and public place concepts.</p>
+</section>
+<section id="location-spatial">
+    <h2>Locations by Existence</h2>
+    <p>The concept <code>LocationsByExistence</code> categorises locations based on whether they physically exist (<code>PhysicalLocation</code>) or not (<code>VirtualLocation</code>). Existing concepts such as city and country are kinds of physical locations, whereas within device is a kind of virtual location.</p>
+    <p>The concept <code>VirtualLocation</code> is expanded to express virtual locations associated with physical equipments and devices (<code>WithinDevice</code>) and those that are associated with applications and software (<code>WithinApplication</code>).</p>
+</section>
+
+<section id="location-misc">
+    <h2>Locations not considered</h2>
+    <p>The below concepts were identified in 'brainstorming' with ChatGPT, but were not considered in the above.</p>
+    <ol>
+        <li>Private locations such as personal office.</li>
+        <li>Personal locations such as personal vehicle (as a location?) and personal locker.</li>
+        <li>Public virtual locations such as public website and community forum.</li>
+        <li>Whether the location is indoor or outdoor.</li>
+        <li>Whether the location is commercial, residential, institutional, or recreational.</li>
+        <li>Whether the location is used as short-term, long-term, or temporary.</li>
+        <li>Public locations such as transportation (train station, bus station), parks (community park, national park).</li>
+        <li>Shared locations such as co-operatives and timeshares.</li>
+        <li>Public domain locations such as government owned and community owned.</li>
+        <li>Locations controlled regarding access such as exclusive access, restricted access, and open access.</li>
+        <li>Locations that are monitored (e.g. using CCTV,  but could also be by humans).</li>
+        <li>Locations that are regulated e.g. military bases and healthcare facilities.</li>
+        <li>The question of how to associate organisation taxonomy with location taxonomy e.g. hospital as an organisation category, and hospital as a location category.</li>
+        <li>As above, how to associate personal data category for location with the abstract concept of the location itself. For example, Office as a location concept is different from Office as the personal data for a person.</li>
+    </ol>
+</section>
+
+</body>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
