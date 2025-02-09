@@ -1,0 +1,55 @@
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+
+<p>The DPV's AI extension provides concepts associated with AI technologies, including the use of data in processes such as training and validation, types of techniques such as machine learning, risks such as data bias, and <i>AI technologies</i> such as models and AI systems. From a practical perspective, there is a need to represent concepts associated with training, which are currently missing from this extension. A simple approach is to add <i>training</i> as a process through which a trained model is produced. However, consider the following use-cases to understand why <i>training</i> as a concept needs to be expressed with a greater range of concepts in a taxonomy.</p>
+
+<p>ISO/IEC 22989:2022 (which is free to access) defines <i>training</i> as a "process to determine or to improve the parameters of a machine learning model, based on a machine learning algorithm by using training data". This means the concept <code>Training</code> can be expressed as a <code>dpv:Process</code> which takes some <code>tech:InputData</code> and produces a <code>ai:TrainedModel</code>. Expressing training in this manner also provides a way to associate more contextual information such as who performs the training (<code>dpv:isImplementedByEntity</code>), where it takes place (<code>dpv:hasLocation</code>), and whether it has a legal basis such as consent (<code>dpv:hasLegalBasis</code>).</p>
+
+<p>Training as a concept has implications in terms of privacy as it uses data to create or enhace an AI model. These implications exist due to the nature of data (e.g. <code>dpv:SensitiveData</code> or <code>new:ConfidentialData</code>), where the training takes place (e.g. <code>dpv:LocalLocation</code> or <code>dpv:RemoteLocation</code>), under whose control (e.g. training is <code>new:UserControlled</code>), and whether the trained model is shared (e.g. <code>new:ClosedWeightsModel</code> or <code>new:OpenWeightsModel</code>). When creating policies, writing contracts, or recording audit logs - stating how the training was taking place and what was permitted or prohibited is essential. Therefore, representing each of these cases as concepts (i.e. an interoperable vocabulary) is needed.</p>
+
+<p>Further, training itself can be differentiated based on:</p>
+<ol>
+    <li><code>new:TrainingByStrategy</code>
+        <ol type="a">
+            <li><code>new:SupervisedTraining</code> that uses <code>ai:SupervisedLearning</code> with <code>new:LabelledData</code> - where contextual information involves provenance of labelled data such as its source, who created the labels and its categorisation as sensitive etc.;</li>
+            <li><code>new:UnsupervisedTraining</code> that uses <code>ai:UnsupervisedLearning</code> with <code>new:UnlabelledData</code> - where contextual information involves provenance of unlabelled data such as its source;</li>
+            <li><code>new:ReinforcementTraining</code> that uses <code>ai:ReinforcementLearning</code> by using <code>new:Feedback</code> that act as <code>new:Reward</code> or <code>new:Punishment</code> - where contextual information involves the algorithm deciding the feedback;</li>
+            <li><code>new:SelfSupervisedLearning</code> that uses <code>new:UnlabelledData</code> - where contextual information involves provenance of unlabelled data.</li>
+        </ol>
+    </li>
+    <li><code>new:TrainingByAdapting</code>
+        <ol type="a">
+            <li><code>new:TransferLearning</code> reuse a trained model for a new task in another model;</li>
+            <li><code>new:FineTuning</code> where a trained model is refined using new data - in particular for a specific domain or use-case;</li>
+            <li><code>new:FewShotTraining</code> where a trained model is given a few labelled data points to learn from - where the sample is small and not specific enough to be considered fine tuning.</li>
+        </ol>        
+    </li>
+    <li><code>new:TrainingByFrequency</code>
+        <ol type="a">
+            <li><code>new:StaticTraining</code> where the model is trained once;</li>
+            <li><code>new:PeriodicTraining</code> where the model is trained periodically;</li>
+            <li><code>new:ContinousTraining</code> where the model is trained continuously e.g. as new data arrives;</li>
+            <li><code>new:IncrementalTraining</code> where the model is trained in increments that are small and do not cause a full or significant retraining;</li>
+            <li><code>new:FederatedTraining</code> where the model is trained in a federated manner e.g. locally on device;</li>
+        </ol>        
+    </li>
+</ol>
+<p>Other than training, AI models and systems are also augmented with other techniques which require data. For example, <code>new:RAG</code> i.e. Retrieval-Augmented Generation where <code>ai:InformationRetrieval</code> is used to provide context for generating outputs. These are also important to consider as the information generated or retrieved as part of such systems can be transmitted to another entity as part of the process.</p>
+<p>Information about the model in terms of its "open-ness" is also relevant for making decisions, and understanding the nature of the model and its implications towards privacy. For example, whether the trained model will be open and accessible to others, or it will be proprietary. An enumeration of these is as follows:</p>
+<ol>
+    <li><code>new:OpenWeights</code> - weights are publicly available</li>
+    <li><code>new:ClosedWeights</code> - weights are not publicly available</li>
+    <li><code>new:PartiallyOpenWeights</code> - weights are not publicly available but can be accessed in specific contexts</li>
+    <li><code>new:OpenSource</code> - it can be used, studied, modified, and shared as <a href="https://opensource.org/ai/open-source-ai-definition">defined by the OSI</a> which includes information on data used to train the model, source code, and parameters/weights</li>
+    <li><code>new:ClosedSource</code> - it is not open source</li>
+</ol>
+<p>Based on the above, the following potential use-cases can be envisioned:</p>
+<ol>
+    <li>A patient agrees to let their medical records be used by a hospital for training of AI models, including any retraining and fine-tuning, but only if the models are developed by the hospital and released as open source that benefit all researchers.</li>
+    <li>A user agrees for their contacts on their phone to be used to fine-tune a model but only if the training occurs locally (so no contacts are shared outside the device) and only if the model will be executed locally (on device).</li>
+    <li>A customer allows their purchase history to be used to train a model and for it to be used to recommend products but only if they can indicate whether the recommendations are useful or not (via reinforcement learning)</li>
+</ol>

@@ -656,7 +656,7 @@
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-01.html" ;
             hpcom:contentFileFormat hpcom:formatHTML ] ;
-    hpcom:tag hptag:DPV, hptag:semantic-web, hptag:DPVCG ;
+    hpcom:tag hptag:DPV, hptag:semantic-web, hptag:DPVCG, hptag:working-note ;
     schema:author <https://harshp.com/me> ;
     schema:dateModified "2025-02-09T00:45:00"^^xsd:dateTime ;
     schema:datePublished "2025-02-09T00:45:00"^^xsd:dateTime ;
@@ -664,6 +664,20 @@
     schema:isPartOf <https://harshp.com/dev/dpv> ;
     schema:name "Modelling Subjective Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-01"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv/ai-training> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/ai-training.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV, hptag:semantic-web, hptag:DPVCG, hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-02-09T22:55:00"^^xsd:dateTime ;
+    schema:datePublished "2025-02-09T22:55:00"^^xsd:dateTime ;
+    schema:description "Notes analysing AI training concepts for use with DPV"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Modelling AI Training in DPV"@en ;
+    schema:url "https://harshp.com/dev/dpv/ai-training"^^xsd:anyURI .
 
 <https://harshp.com/dev/rants> a hpcom:RenderedItem, <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
