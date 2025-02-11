@@ -18840,6 +18840,16 @@ book:977 a hpcom:RenderedItem,
     schema:name "Origins of Sex"@en ;
     schema:url "https://harshp.com/hobbies/books/977"^^xsd:anyURI .
 
+book:978 a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "978"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    schema:author "Stephen Fry"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Mythos: The Greek Myths Retold"@en ;
+    schema:url "https://harshp.com/hobbies/books/978"^^xsd:anyURI .
+
 book:98 a hpcom:Book,
         hpcom:BookReading,
         hpcom:RenderedItem,
@@ -28577,9 +28587,6 @@ hpcom:Rating1 a hpcom:Rating,
     schema:ratingValue "1"^^xsd:int ;
     schema:url "https://harshp.com/resources/Rating1"^^xsd:anyURI .
 
-hpcom:book-currently-reading a hpcom:BookStatus ;
-    rdfs:label "currently reading"@en .
-
 hptag:ODP a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "ODP"@en ;
@@ -28614,6 +28621,9 @@ hptag:website a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "website" ;
     schema:url "https://harshp.com/tags/website"^^xsd:anyURI .
+
+hpcom:book-currently-reading a hpcom:BookStatus ;
+    rdfs:label "currently reading"@en .
 
 list:visually-stunning a hpcom:RenderedItem,
         book:lists ;
