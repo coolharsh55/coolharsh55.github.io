@@ -1,0 +1,107 @@
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+
+<p>These are the working notes for adding location concepts to DPV. See <a href="https://github.com/w3c/dpv/issues/208">issue#208</a> for tracking this work.</p>
+
+<p>DPV contains the concept <code>Location</code> for representing a specific location, and the LOC extension which provides a taxonomy of locations representing countries and regions. Using these we can express information such as data is stored in a server located in Ireland, or that data subjects are from France. As the LOC extension defines hierarchies of locations (e.g. city is in region is in country) and memberships (e.g. Ireland, France are members of EU/EEA), it is trivial to check whether data storage or data subjects involved are in EU by checking whether the location concept has a <code>skos:broaderTransitive</code> property path to <code>loc:EU</code>.</p>
+
+<pre><code>loc:IE-D a dpv:Region ;
+  skos:broader loc:IE .
+loc:IE a dpv:Country ; 
+  skos:broader loc:EU .
+loc:EU a dpv:SupraNationalUnion ;
+  skos:narrower loc:IE .
+
+# inference through reasoning
+loc:IE-D skos:broaderTransitive loc:IE
+
+# SPARQL query
+ASK WHERE { ?location skos:broader+ loc:EU . }
+
+# SQL CTE query
+WITH RECURSIVE LocationPath AS (
+    SELECT id, broader FROM locations WHERE id=<lociri>
+        UNION ALL
+        SELECT locations.id, locations.broader FROM locations
+        ON locations.id=locations.broader
+) SELECT EXISTS (
+    SELECT 1 FROM LocationPath WHERE id=<lociri> LIMIT 1;
+)
+</code></pre>
+
+<p>In regulations such as the GDPR, it is essential to distinguish whethher a given location is <i>within the jurisdiction</i> or <i>external to the jurisdiction</i> as this triggers specific obligations and requirements - such as carrying out impact assessments or using specific legal measures (e.g. trade agreements). This is typically checked programmaticaly, e.g. as "if location is NOT in EU" which is then checked by looking up some listing of EU locations and seeing if the location is within it or not. Using DPV and LOC, this would mean checking the inverse of whether a location is in EU.</p>
+
+<pre><code># SPARQL query
+ASK WHERE { 
+    FILTER NOT EXISTS {
+        ?location skos:broader+ loc:EU . 
+    }
+}</code></pre>
+
+<p>However, currently it is not possible to represent conceptually that data is <i>being stored/transferred in a Non-EU location</i>. For example, we can represent <code>loc:US</code> to state data is being transferred to USA, but not that there is a non-EU data transfer. Having a concept such as <code>NonEU</code> is important to explicitly and accurately represent information relevant to legal requirements (such as having an adqeuacy decision) and for convenience as it avoids the necessity to run code to decide whether the location is outside EU.</p>
+
+<pre><code># with NonEU
+ex:somelocation a dpv:Location ;
+    skos:broader loc:NonEU, loc:US .
+# without NonEU requires query/code
+ex:somelocation a dpv:Location ;
+    skos:broader loc:US .
+ASK WHERE { 
+    FILTER NOT EXISTS {
+        ex:somelocation skos:broader+ loc:EU .
+    }
+}
+</code></pre>
+
+<p>However, having just the concept NonEU is still not sufficient as it requires explicitly denoting each location is NonEU every single time. Instead, we can modify the location taxonomy to denote all locations that are not in EU to be categorised as NonEU. Using this approach, it is now possible to programmatically check whether some location is declared as a non-EU location instead of checking whether it is part of EU. This results in simplified and explicit code which communicates the intent (checking for non-EU locations) more clearly and efficiently. And it avoids the requirement for having a <code>NOT</code> operator or negation relation to be used in combination with another concept. The format <code>NonX</code> is best suited for this type of concept it is clearly communicates that the location is <i>Not X</i>. And when adding it as an annotation e.g. declaring a country is not in EU it also reads intuitively well "location US is non-EU". </p>
+
+<pre><code>loc:US a dpv:Country ;
+    skos:broader loc:NonEU .
+ex:somelocation a dpv:Location ;
+    skos:broader loc:US . # US is NonEU is a fact as above
+ASK WHERE { ex:somelocation skos:broader+ loc:NonEU . }
+</code></pre>
+
+<p>The number of concepts produced as a result of adding such <code>NonX</code> concept can be rather high if we declare for each concept a relation for which other concept it is not part of. This is not efficient and also not required. Instead, we limit this to countries and supraunions as they are the broadest concepts where this is necessary. Specific cases where a region may want to distinguish locations as being within the region or outside it (e.g. for tax purposes) - but for now we do not have any such use-cases. Therefore the granularity of concepts should be for countries unless otherwise needed.</p>
+
+<p>Adding these concepts to the LOC extension will result in the extension becoming rather large. Instead, we should start with only those locations whose laws we model (also an incentive to add more laws/jurisdictions as DPV extensions). So if DPV models a particular law, and that law requires distinction for extraterritorial locations, then we add <code>NonX</code> concepts for that location in LOC. Currently, this only satisfies EU regulations, and therefore we start with adding <code>NonEU</code> concepts to LOC.</p>
+
+<p>We can also extend this argument to adding <code>NonX</code> concepts for each member state within EU/EEA - which can be at two levels as a <code>NonX</code> location for the country can be another country within the EU or outside it. When adding both <code>NonEU</code> and <code>NonX</code> for member states, there shouldn't be redundancy. For example `loc:US` as both `loc:NonEU` and `loc:IE` is redundant - we already know if it isn't in EU, it is not in Ireland. Therefore, we don't need to add <code>NonX</code> for EU/EEA member states for the moment, but we will need to add them when considering regulations where a country distinguishes between locations inside and outside the country.</p>
+
+<p>It is tempting to use <code>owl:disjointWith</code> here to declare that `X` and `NonX` are disjoint sets i.e. there can be no location that occurs within both. However, is this a universally true assertion? For example, in disputed territories it may be considered to be part of `X` in some contexts and part of `NonX` in others. Therefore, we should limit our assertions to <i>weak expressions</i> such as using SKOS which can be easily overriden without loss of semantics or without causing reasoning conflicts.</p>
+
+<p>It is also tempting to use <code>owl:complementOf</code> to declare that `X` and `NonX` combined together are all possible locations. However, this is not true, as our set is limited in nature, and does not include other locations which may not have been added to the LOC extension, or which are virtual locations such as devices (but which exist in the metaphysical sense and are relevant to be considered alongside geophysicla locations).</p>
+
+<p>Finally, in order to declare these concepts, we need to define new concepts and properties. These should be `loc:InvertedLocation` and `loc:isInvertedLocationOf` with the following definitions. For the moment, we keep the property unidirectional i.e. all locations are inverted locations of their inverses - but we don't need to model this explicitly as without it we have a simple way to filter these in HTML documents. We also don't need to add properties to separate 'real' locations from 'inverted' locations as the unidirectional property does that already.</p>
+
+<pre><code>loc:isInvertedLocationOf a rdf:Property ;
+  rdfs:subPropertyOf skos:related ;
+  dct:description "Relates two locations as being inverse of each 
+             other i.e. a location and a set of all other locations 
+             that do not include it"@en ;
+  dcam:domainIncludes dpv:Location ;
+  dcam:rangeIncludes dpv:InvertedLocation .
+loc:InvertedLocation a skos:Concept, rdfs:Class ;
+  rdfs:subClassOf dpv:Location ;
+  rdfs:label "An Inverted Location for a given location is the 
+              set of locations that do not include the given location"@en .
+</code></pre>
+
+<p>Example Usage:</p>
+
+<pre><code>loc:NonEU a loc:InvertedLocation ;
+  loc:isInvertedLocationOf loc:EU .
+  skos:narrower loc:US .
+
+loc:US a dpv:Country ;
+  skos:broader loc:NonEU .
+</code></pre>
+
+<p><strong>Changelog</strong></p>
+<ol>
+    <li>fixed incorrect use of <code>SupraNationalUnion</code> for <code>InvertedLocation</code> in example <a href="https://github.com/w3c/dpv/issues/208#issuecomment-2656451816">ack</a></li>
+</ol>
