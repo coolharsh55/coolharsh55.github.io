@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modelling Public/Private Locations in DPV</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Modelling Public/Private Locations in DPV">
+    <meta name="schema:description" content="Modelling public and private places for DPV locations">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,Working Note,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/locations-03">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/locations-03">
+    <meta property="og:title" content="Modelling Public/Private Locations in DPV">
+    <meta property="og:description" content="Modelling public and private places for DPV locations">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev " resource="https://harshp.com/dev/dpv/locations-03">
+        <h1 property="schema:name schema:headline">Modelling Public/Private Locations in DPV</h1>
+        <div id="description">
+            <span property='schema:description'>Modelling public and private places for DPV locations</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-02-15T12:54:00">2025-02-15T12:54:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/working-note" property="schema:about" resource="https://harshp.com/tags/working-note" typeof="rdfs:Resource"><span property="rdfs:label">Working Note</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+<p>See <a href="locations-01">previous working note</a> on this topic. These are the working notes for adding location concepts to DPV. See <a href="https://github.com/w3c/dpv/issues/209">issue#209</a> for tracking this work.</p>
+
+<p>In the <a href="https://w3id.org/dpv/meetings/meeting-2025-02-13.html">previous DPVCG meeting</a> we discussed public and private locations. An important consideration is how do we model the mixture of the two - such as private parks open to the public or lobbies of hotels where any member of the public can access the location which is private (i.e. privately owned). The previous working note provided the rationale for representing such 'mixed' locations due to the implications on privacy and the obligations under laws such as GDPR.</p>
+
+<p><a href="https://github.com/w3c/dpv/issues/209#issuecomment-2660726898">Arthit pointed out</a> the existence of <code>Privately Owned Public Space (POPS)</code> which also has a <a href="https://en.wikipedia.org/wiki/Privately_owned_public_space">Wikipedia article</a> and is defined as follows. The citation needed aspect is not ideal - it means we must further research this description and find a suitable source to ensure we are modelling the concept correctly.</p>
+
+<blockquote>While privately owned public space as a term of art refers specifically to private property required to be usable by the public under zoning or similar regulatory arrangements, the phrase in its broadest sense can refer to places, like shopping malls and hotel lobbies, that are privately owned and open to the public, even if they are not legally required to be open to the public.[citation needed]</blockquote>
+
+<p>Under GDPR, the most relevant guidance would be for CCTVs which are recording specific locations and which might cover private/public spaces. The <a href="https://www.dataprotection.ie/sites/default/files/uploads/2025-01/CCTV%20Guidance%20Data%20Controllers_November%202023%20EN.pdf">Irish Data Protection Commission's (DPC) Guidance for use of CCTV</a> provides the following descriptions: <i>"This guidance is intended to assist owners and occupiers of premises, in particular those that are workplaces or are otherwise accessible to the public, to understand their responsibilities and obligations regarding data protection when using CCTV"</i>. Further, it points to GDPR's DPIA requirements in Article 35-3c which states <i>"systematic
+monitoring of a publicly accessible area on a large scale"</i> where the phrase of importance is <code>Publicly Accessible Area</code> which is distinct from <code>Private Area</code> or <code>Public Space</code>. Example 1 in DPC's guidance on CCTV's concerns a shopkeeper who has a CCTV that covers the <i>"publicly accessible area of the shop ..., and the till area where staff are at risk of robbery"</i>. This implies that the shop area where customers browse and purchase goods fits the criteria for 'publicly accessible area' even though the shop itself is privately owned. Example 2 in the same document concerns a private warehouse that isn't accessible to the public and therefore does not fit the criteria above.</p>
+
+<p>The <a href="https://ai-act-law.eu/recital/19/">AI Act Recital 19</a> provides more specific clarifications on the concept of <code>Publicly Accessible Space</code> such as if there is a criteria/restriction then it is not a publicly accessible space, that offices/workplaces are similarly not included, the mixture or public and non-public spaces, and that online spaces are not covered. The below text is of interest for our context.</p>
+
+<blockquote>For the purposes of this Regulation the notion of ‘publicly accessible space’ should be understood as referring to any physical space that is accessible to an undetermined number of natural persons, and irrespective of whether the space in question is privately or publicly owned, irrespective of the activity for which the space may be used ... A space should also be classified as being publicly accessible if, regardless of potential capacity or security restrictions, access is subject to certain predetermined conditions which can be fulfilled by an undetermined number of persons, such as the purchase of a ticket or title of transport, prior registration or having a certain age. ... Some other spaces may comprise both publicly accessible and non-publicly accessible spaces, such as the hallway of a private residential building necessary to access a doctor’s office or an airport. 8Online spaces are not covered, as they are not physical spaces.</blockquote>
+
+<p>From the above, it seems that <code>Publicly Accessible Area</code> in GDPR and <code>Publicly Accessible Space</code> in AI Act are the same concept. It is puzzling as to why they use two different terms - <code>Space</code> and <code>Area</code> - which are bound to cause confusion and delay correct interpretations. Further, there are uses of <code>Space</code> and <code>Place</code>, where it might imply that space is broader (e.g. land) and place is narrower (e.g. park, building). Further, there may be implications of ownership e.g. <code>Public Place</code> is something 'owned' by the public. There inconsistent uses of the terms can cause misinterpretations and incorrect applications. To prevent these, it might be prudent to make the implication more explicit e.g. <code>Publicly Accessible Space</code> and <code>Publicly Owned Space</code> as specific kinds of <code>Public Space</code>.</p>
+
+<p>The same goes for private locations but privately accessible and owned have no different that is meaningful at this point unless we are talking about membership e.g. a worker accesses a warehouse as a privately accessible space - but any privately accessible space would by definition also be private owned. So the distinction is moot. Still it would be beneficial to define <code>Private Space</code> with a distinction on <code>Privately Owned Space</code> so as to distinguish between areas that are 'private' due to reasons other than those that are 'privately owned' - such as a private room that is owned by someone else but where currently it is the 'private domain' of its occupant.</p>
+
+<p>There are also uses of the term <i>"semi-public space</i>, such as described in <a href="https://protect-cities.eu/wp-content/uploads/2021/09/PRoTECT_D4.4_Final_v3.00.pdf">D4.4 Protection of public spaces: Manual for EU - PRoTECT project</a> as <i>"... some public spaces are semi-public spaces and are privately-owned or privately-operated spaces (e.g., train/ metro stations, shopping malls)"</i>. This use of <code>Semi-Public</code> seems compatible with the above use of <i>privately owned public space</i> but has the important distinction of public spaces operated by private entities (i.e. <code>Privately Operated Space</code>). This adds another dimension to public spaces as the distinction between who operates them - a public or a private entity. For example, the parks department uses CCTV's to monitor parks is quite different from the parks department contracting a private entity to monitor the parks. Same implications in another example - a train station being operated by a private entity but which itself is still a public place.</p>
+
+<p>Similarly for <code>Private Space</code>, another dimension is to consider the <i>nature of entity</i> to which the space is private, and the <i>operational context</i> for which the location exists. For example, a shop that is privately owned can have the owner as an individual or an organisation and where the shop as a private space is open to the public in the course of a commercial activity. In comparison, private space for an individual could refer to their home (which they own, or rent, or are currently staying at) as well as to the 'space surrounding them' which is considered their 'private sphere' (such as when someone comes within it to argue/fight). Such private space for individuals can be better distinguished as a <code>Personal Space</code> as it relates to a <i>specific person</i>. By extension, we also have <code>Communal Spaces</code> which extend to several persons but still are defined in the context of individuals (but now as a group).</p>
+
+<p>Based on the above, we have the following proposed modelling of locations that focus on providing <i>familiar terms</i> but which then aim to make <i>contextual interpretations</i> more explicit and promote explicit representation of facts/information:</p>
+
+<ol>
+    <li><code>PrivateSpace</code> - a space that is owned or controlled by a private entity and where access to members of the public is restricted.
+        <ol type="a">
+            <li><code>PersonalSpace</code> - a private space associated with an individual in a personal capacity - such as their home or the space around their physical person e.g. my home or my room.</li>
+            <li><code>PrivatelyOwnedPlace</code> - a place that is privately owned e.g. offices, malls.</li>
+            <li><code>SemiPrivateSpace</code> - a private space that acts as a shared space with other entities but which is still essentially private e.g. a semi-private hospital room shared with another patient.</li>
+            <li><code>PrivateCommunalSpace</code> - a space that is accessible to a group or a community within a private space and where members of the public do not have access to it e.g. society amenities such as gyms and pools.</li>
+        </ol>
+    </li>
+    <li><code>PublicSpace</code> - any space that is accessible to the public or is owned by the public (note: this is distinct from government ownership which can exclude public access from the place).
+        <ol type="a">
+            <li><code>PubliclyAccessibleSpace</code> - a space that is accessible to all members of the public e.g. parks, malls, train stations. (note: this concept should be expanded in EU-AIAct extension with the Recital 19 definition.)</li>
+            <li><code>PubliclyOwnedSpace</code> - a space that is owned by the public e.g. national parks, forests.</li>
+        </ol>
+    </li>
+    <li><code>SemiPublicSpace</code> - a space that is a hybrid space i.e it has both public and private components - such as by having part of it be a private space or which is operated privately.
+        <ol type="a">
+            <li><code>PrivatelyOwnedPublicPlace</code> - a space that is privately owned but which is accessible and usable by the public - whether freely or through a process which is open to all members of the public e.g. hotel lobby, shopping mall atriums. (note: this extends <code>PubliclyAccessibleSpace</code> and <code>PrivatelyOwnedPlace</code>.)</li>
+            <li><code>PrivatelyOperatedPublicPlace</code> - a space that is operated or managed by a private entity but which is accessible to the public e.g. a public bus station operated by a specific company. (note: this extends <code>PubliclyAccessibleSpace</code> and not <code>PublicSpace</code>.)</li>
+        </ol>
+    </li>
+</ol>
+
+<p>Based on the above categorisations, specific additional physical locations such as <code>Home</code>, <code>Office/Workplace</code>, <code>ShoppingMall</code>, <code>TrainStation</code>, <code>BusStation</code>, <code>School</code>, etc. can be modelled by combining different concepts. They can also be expanded in to a hierarchy to describe specific variations e.g. <code>PrivateSchool</code> as an extension of <code>School</code> and <code>PrivatelyOwnedPlace</code>.</p>
+
+<p>The above modelling also works for <code>VirtualLocation</code>, though it would need a different set of concepts that relate to <i>control</i> over the location. For example, a browser's cookie storage is technically a <code>WithinBrowser</code> location which is a <code>PrivatePlace</code>, but the website provider(s) have any real meaningful control in using it. So similar to how we distinguish between public space and who operates it to create <code>SemiPublicPlace</code>, or how we have <code>PrivatelyOwnedPublicSpace</code>, we should have similar categorisations for virtual locations based on notions of <i>private</i> and <i>control</i>. This follows in reasoning from laws such as ePrivacy Directive (ePD) which consider user devices as private spaces, and therefore place obligations on them.</p>
+
+<blockquote><strong>NOTE:</strong> No, the ePD does require consent if the app is doing its business as expected - it is only for deviating from this that consent is needed, and the criteria for valid consent is established in GDPR). Therefore what we are aiming to distinguish here is the notion of a private virtual location and who 'operates' it - the individual or another entity so that we can have meaningful distinction similar to what we have for publicly owned places and privately operated public spaces.</blockquote>
+
+<p>In any private sphere, there is a meaningful distinction between what is <i>private</i> and what is <i>external</i> to the private aspects. For example, if you are your home, a private location, a visitor coming to your home is an external actor who must be allowed to enter (otherwise they are committing a crime). Similarly, if a virtual location is a private place, then any external access to the location must be with some implied or established form of <i>enablement</i> or <i>permission</i>. In the case of web-browsers and software apps, enablement refers to the hardware and software enabling this type of access e.g. downloading external resources and executing them, and permission refers to the inclusion of the user in decision-making process (e.g. should location be shared with this app/website?).</p>
+
+<p>In the case of cookies, even though there might be some 'permission' to allow use of cookies, the end-result is much like the establishment of a 'private space within another private space' like we see in a shopping mall where the mall owners/operators allow setting up of a 'private shop' which is effectively a private area within a private area as the shop owners/operators control everything within the shop and the mall owners/operators have no say in it. The question thus becomes how to distinguish between a 'private virtual location' that is under the entity's control from a 'private virtual location within a private virtual location' that is not. One possibility is to model <code>PrivateVirtualLocation</code> and then to extend it as <code>ExternallyManagedVirtualLocation</code> which enables distinguishing when someone else is controlling a 'private space'.</p>
+
+<p>Using the above, we can represent how a user's device, though "virtual" and their "private location", has components that are "externally managed" and thus not under their control. This serves to represent information that decides privacy implications and thus further the aims of DPV. In this, it is important to note that being externally managed does not preclude the user or individual from exerting control over it - it only serves to state that another entity has influence or power over a private place. Much like the mall owner/operator, we too can 'kick out' the cookies or prevent them from being set up in the first place. But unfortunately we cannot dictate everything that goes on 'with/within' them and we certainly aren't profiting from 'leasing our space' (and personal data). But that's a problem for another time and another working note. For now we focus on how to represent locations to help represent such aspects.</p>
+
+<p><small>The thoughts around modelling private and externally managed locations in context of cookies have been shaped through numerous discussions thanks to Georg P. Krog and Mark Lizar, both within and outside of the activities of the DPVCG.</p>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

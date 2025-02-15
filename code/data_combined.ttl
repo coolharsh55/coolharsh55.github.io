@@ -2326,6 +2326,23 @@ hpcom:view_template a rdf:Property ;
     schema:name "Modelling Inverse Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-02"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/locations-03> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-03.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web,
+        hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-02-15T12:54:00"^^xsd:dateTime ;
+    schema:datePublished "2025-02-15T12:54:00"^^xsd:dateTime ;
+    schema:description "Modelling public and private places for DPV locations"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Modelling Public/Private Locations in DPV"@en ;
+    schema:url "https://harshp.com/dev/dpv/locations-03"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -28391,11 +28408,6 @@ hptag:standardisation a hpcom:RenderedItem,
     schema:name "standardisation"@en ;
     schema:url "https://harshp.com/tags/standardisation"^^xsd:anyURI .
 
-hptag:working-note a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Working Note"@en ;
-    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
-
 <http://example.com/CristianaSantos> a schema:Person ;
     schema:name "Cristiana Santos" .
 
@@ -28538,6 +28550,11 @@ hptag:trains a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "trains" ;
     schema:url "https://harshp.com/tags/trains"^^xsd:anyURI .
+
+hptag:working-note a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Working Note"@en ;
+    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
 
 <https://www.mdpi.com/journal/information> a schema:Periodical ;
     schema:alternateName "Information" ;
@@ -28867,13 +28884,6 @@ hpview:DevProjectView a hpcom:View ;
     hpcom:view_renderer hpcom:Jinja2 ;
     hpcom:view_template "https://harshp.com/code/templates/template_dev_project.jinja2" .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev> ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 list:language a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "language"@en ;
@@ -28888,6 +28898,13 @@ hptag:risk a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "risk" ;
     schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/paecg> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
@@ -28948,11 +28965,6 @@ hptag:academia a hpcom:RenderedItem,
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
 
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
-
 hptag:data-governance a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "data-governance"@en ;
@@ -28962,6 +28974,11 @@ hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
+
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 hptag:article a hpcom:RenderedItem,
         hpcom:Tag ;
