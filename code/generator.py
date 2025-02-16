@@ -420,10 +420,14 @@ def _view_jinja2(path, metadata=None):
     template_env.globals.update(JINJA2_FUNCS)
     template = template_env.get_template(template_file)
     if not path.endswith('html'):
-        path = f'{path}.html'
-    # DEBUG(metadata.keys())
-    # if 'item' in metadata:
-    #     DEBUG(metadata['item'])
+        if not os.path.isdir(path):
+            path = f'{path}.html'
+        else:
+            path = f'{path}/index.html'
+    DEBUG(metadata.keys())
+    DEBUG(metadata)
+    if 'item' in metadata:
+        DEBUG(metadata['item'])
     DEBUG(f'writing {metadata["item"].iri} to {path}')
     with open(path, 'w+') as fd:
         fd.write(template.render(
