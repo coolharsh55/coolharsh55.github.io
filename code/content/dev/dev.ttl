@@ -623,6 +623,11 @@
     schema:name "GNIB Appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
 
+<https://harshp.com/dev/system> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
+    schema:name "System"@en ;
+    schema:url "https://harshp.com/dev/system"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/dpv-x-2021-08-15> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -879,3 +884,20 @@
     schema:isPartOf <https://harshp.com/dev/harshp.com> ;
     schema:name "Moving from GitHub Pages to Hetzner and Caddy with Analytics"@en ;
     schema:url "https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner"^^xsd:anyURI .
+
+<https://harshp.com/dev/system/arch-packages> a hpcom:RenderedItem, hpcom:RollingPost,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/system/arch-packages.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:system,
+        hptag:arch-linux,
+        hptag:linux,
+        hptag:apps ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-02-15T15:45:00"^^xsd:dateTime ;
+    schema:datePublished "2025-02-15T15:45:00"^^xsd:dateTime ;
+    schema:description "Describing system migration to Arch"@en ;
+    schema:isPartOf <https://harshp.com/dev/system> ;
+    schema:name "System setup - EndeavourOS/Arch"@en ;
+    schema:url "https://harshp.com/dev/system/arch-packages"^^xsd:anyURI .

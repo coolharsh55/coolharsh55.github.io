@@ -14228,7 +14228,7 @@
 
 <https://harshp.com/hobbies/books/974> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "974"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hpcom:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -14284,14 +14284,15 @@
 
 <https://harshp.com/hobbies/books/978> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "978"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hpcom:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2025-02-15T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Stephen Fry"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Mythos: The Greek Myths Retold"@en ;
+    schema:review """The Greek mythology is fascinating not only because of its rich characterisation and drama, but also because at the heart of all stories is the core of a philosophy that makes describing humans an exercise in the interpretation of the divine. Greek gods - the mythos - are structured around the facets of human emotions, virtues, aspects, and so much more. I greatly respect Stephen Fry as a narrator, orator, and as a person who knows to focus on being decent above political correctness and style. This book is a fantastic recollection of the greek mythos - covering a lot in such a small space and making it enjoyable. I borrowed this book from our neighbour - and it has been fantastic reading it."""@en ;
     schema:url "https://harshp.com/hobbies/books/978"^^xsd:anyURI .

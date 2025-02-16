@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>System setup - EndeavourOS/Arch</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="System setup - EndeavourOS/Arch">
+    <meta name="schema:description" content="Describing system migration to Arch">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="apps,Arch Linux,Linux,system,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/system/arch-packages">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/system/arch-packages">
+    <meta property="og:title" content="System setup - EndeavourOS/Arch">
+    <meta property="og:description" content="Describing system migration to Arch">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/code/vocab#RollingPost https://harshp.com/dev " resource="https://harshp.com/dev/system/arch-packages">
+        <h1 property="schema:name schema:headline">System setup - EndeavourOS/Arch</h1>
+        <div id="description">
+            <span property='schema:description'>Describing system migration to Arch</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-02-15T15:45:00">2025-02-15T15:45:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/system" property="schema:isPartOf" resource="https://harshp.com/dev/system"><span property="rdfs:label">System</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/apps" property="schema:about" resource="https://harshp.com/tags/apps" typeof="rdfs:Resource"><span property="rdfs:label">apps</span></a>
+            <a class="tag" href="https://harshp.com/tags/arch-linux" property="schema:about" resource="https://harshp.com/tags/arch-linux" typeof="rdfs:Resource"><span property="rdfs:label">Arch Linux</span></a>
+            <a class="tag" href="https://harshp.com/tags/linux" property="schema:about" resource="https://harshp.com/tags/linux" typeof="rdfs:Resource"><span property="rdfs:label">Linux</span></a>
+            <a class="tag" href="https://harshp.com/tags/system" property="schema:about" resource="https://harshp.com/tags/system" typeof="rdfs:Resource"><span property="rdfs:label">system</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <p>I moved my earlier system which used Manjaro Linux to EndeavourOS. Both are "arch-based", but Manjaro was more like Ubuntu to Debian in that it controlled the packages and inserted additional stuff as its own packages. It is supposed to be beginner friendly, but I think over time it is better to figure out how stuff works and move to an actual arch distribution. I'm quite familiar with linux environments (though not <i>too familiar</i>), so when the system just refused to work correctly one particular update later, where I kept getting a blank screen after boot (graphics card problems?) - I thought it was the perfect time to switch. I had to install a lot of packages in an ad-hoc manner as I remembered I needed to use some software or utility. So I created this page to list all the packages that I'm installing.</p>
+
+<section>
+    <h2>Which flavour of linux?</h2>
+    <ul>
+        <li>Definitely settled on arch  - but not manjaro which holds back packages, has its own repos which cause issues with AUR, and in general doesn't seem well-liked to fit within the arch community. Of the arch distributions, endeavour and arco seemed the best fit. I went with endeavour as it looked simple and polished.</li>
+        <li>opensuse tumbleweed is a good contender for second choice</li>
+        <li>popOS is popular as a gaming friendly distro</li>
+        <li>not fedora, not ubuntu, not debian, gentoo? - haha, no</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which filesystem?</h2>
+    <ul>
+        <li>btrfs is a newer (relatively) fs that has great snapshot and backup capability</li>
+        <li>ext4 is the default, no issues, just works</li>
+        <li>ntfs if a drive is shared with windows and already exists, otherwise exFAT seems to be the choice to avoid permissions wrangling in linux (use ntfs-36 and ntfsfix otherwise)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which window manager?</h2>
+    <ul>
+        <li>i3 is the WM of choice - simple, no GUI to manage, everything is full screen or tiled, and keyboard navigations is breezy; also I have a setup built over the years that is too comfortable to change</li>
+        <li>xfce is the logical choice to have a simple wm complementing i3 for things not provided e.g. network manager, file browser, terminal; also good as a fallback desktop</li>
+        <li>kde plasma nice to have for ensuring everything works; also comes with additional things not in xfce like sddm (login manager), kwallet (password keychain) - which avoids having to install gnome</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which software?</h2>
+    <section>
+        <h3>System</h3>
+        <ul>
+            <li>i3 - wm + tools i3blocks, i3lock, i3status</li>
+            <li>xfce4 - wm group, select thunar, thunar-volman, xfce4-appfinder, xfce4-panel, xfce4-power-manager, xfce4-session, xfce4-settings, xfce4-terminal, xfconf, xfdesktop, xfwm4, xfwm4-themes</li>
+            <li>btrfs-assistant - snapshop management for btrfs</li>
+            <li>dmenu - i3 app launcher</li>
+            <li>gparted - manage fs / drives</li>
+            <li>network-manager-applet - network icon for manager for i3</li>
+            <li>ntfs-3g - in case not installed</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Apps</h3>
+        <ul>
+            <li>aspell - spellchecker; in case not installed</li>
+            <li>autojump - fuzzy cd to a dir</li>
+            <li>clipit or clipit-git - clipboard manager</li>
+            <li>cloudflare-warp-bin - use cloudflare as DNS</li>
+            <li>emacs - text editor + orgmode</li>
+            <li>firefox - web browser; if not installed</li>
+            <li>flameshot - screenshot tool</li>
+            <li>git - version control</li>
+            <li>github-cli - manage github repos and issues</li>
+            <li>hstr - fuzzy search cli history</li>
+            <li>insync - manage google drive</li>
+            <li>keepassxc - password manager</li>
+            <li>libreoffice-still - office suite stable branch</li>
+            <li>meld - diff viewer</li>
+            <li>nextcloud-client - manage nextcloud </li>
+            <li>noto-fonts - fonts</li>
+            <li>office-code-pro - fonts</li>
+            <li>okular - in case not installed</li>
+            <li>otf-font-awesome - fonts</li>
+            <li>pandoc - format converter + pandoc-crossref for papers</li>
+            <li>peazip - manage zip, tar, 7zip</li>
+            <li>pyenv - manage python versions + pyenv-virtualenv</li>
+            <li>spotify - music streaming</li>
+            <li>steam - gaming</li>
+            <li>stow - manage dotfiles</li>
+            <li>sublime-merge - git manager</li>
+            <li>sublime-text-4 - text editor</li>
+            <li>thunar-archive-plugin - zip manager for thunar </li>
+            <li>thunderbird - email manager</li>
+            <li>tmux - terminal multiplexer</li>
+            <li>vim - in case not installed</li>
+            <li>wget - in case not installed</li>
+            <li>xclip - clipboard management cli</li>
+            <li>zenity - cli dialogs</li>
+            <li>zotero or zotero-bin - reference manager</li>
+        </ul>
+    </section>
+</section>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>

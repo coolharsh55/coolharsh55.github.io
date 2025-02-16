@@ -1,0 +1,85 @@
+<p>I moved my earlier system which used Manjaro Linux to EndeavourOS. Both are "arch-based", but Manjaro was more like Ubuntu to Debian in that it controlled the packages and inserted additional stuff as its own packages. It is supposed to be beginner friendly, but I think over time it is better to figure out how stuff works and move to an actual arch distribution. I'm quite familiar with linux environments (though not <i>too familiar</i>), so when the system just refused to work correctly one particular update later, where I kept getting a blank screen after boot (graphics card problems?) - I thought it was the perfect time to switch. I had to install a lot of packages in an ad-hoc manner as I remembered I needed to use some software or utility. So I created this page to list all the packages that I'm installing.</p>
+
+<section>
+    <h2>Which flavour of linux?</h2>
+    <ul>
+        <li>Definitely settled on arch  - but not manjaro which holds back packages, has its own repos which cause issues with AUR, and in general doesn't seem well-liked to fit within the arch community. Of the arch distributions, endeavour and arco seemed the best fit. I went with endeavour as it looked simple and polished.</li>
+        <li>opensuse tumbleweed is a good contender for second choice</li>
+        <li>popOS is popular as a gaming friendly distro</li>
+        <li>not fedora, not ubuntu, not debian, gentoo? - haha, no</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which filesystem?</h2>
+    <ul>
+        <li>btrfs is a newer (relatively) fs that has great snapshot and backup capability</li>
+        <li>ext4 is the default, no issues, just works</li>
+        <li>ntfs if a drive is shared with windows and already exists, otherwise exFAT seems to be the choice to avoid permissions wrangling in linux (use ntfs-36 and ntfsfix otherwise)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which window manager?</h2>
+    <ul>
+        <li>i3 is the WM of choice - simple, no GUI to manage, everything is full screen or tiled, and keyboard navigations is breezy; also I have a setup built over the years that is too comfortable to change</li>
+        <li>xfce is the logical choice to have a simple wm complementing i3 for things not provided e.g. network manager, file browser, terminal; also good as a fallback desktop</li>
+        <li>kde plasma nice to have for ensuring everything works; also comes with additional things not in xfce like sddm (login manager), kwallet (password keychain) - which avoids having to install gnome</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Which software?</h2>
+    <section>
+        <h3>System</h3>
+        <ul>
+            <li>i3 - wm + tools i3blocks, i3lock, i3status</li>
+            <li>xfce4 - wm group, select thunar, thunar-volman, xfce4-appfinder, xfce4-panel, xfce4-power-manager, xfce4-session, xfce4-settings, xfce4-terminal, xfconf, xfdesktop, xfwm4, xfwm4-themes</li>
+            <li>btrfs-assistant - snapshop management for btrfs</li>
+            <li>dmenu - i3 app launcher</li>
+            <li>gparted - manage fs / drives</li>
+            <li>network-manager-applet - network icon for manager for i3</li>
+            <li>ntfs-3g - in case not installed</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Apps</h3>
+        <ul>
+            <li>aspell - spellchecker; in case not installed</li>
+            <li>autojump - fuzzy cd to a dir</li>
+            <li>clipit or clipit-git - clipboard manager</li>
+            <li>cloudflare-warp-bin - use cloudflare as DNS</li>
+            <li>emacs - text editor + orgmode</li>
+            <li>firefox - web browser; if not installed</li>
+            <li>flameshot - screenshot tool</li>
+            <li>git - version control</li>
+            <li>github-cli - manage github repos and issues</li>
+            <li>hstr - fuzzy search cli history</li>
+            <li>insync - manage google drive</li>
+            <li>keepassxc - password manager</li>
+            <li>libreoffice-still - office suite stable branch</li>
+            <li>meld - diff viewer</li>
+            <li>nextcloud-client - manage nextcloud </li>
+            <li>noto-fonts - fonts</li>
+            <li>office-code-pro - fonts</li>
+            <li>okular - in case not installed</li>
+            <li>otf-font-awesome - fonts</li>
+            <li>pandoc - format converter + pandoc-crossref for papers</li>
+            <li>peazip - manage zip, tar, 7zip</li>
+            <li>pyenv - manage python versions + pyenv-virtualenv</li>
+            <li>spotify - music streaming</li>
+            <li>steam - gaming</li>
+            <li>stow - manage dotfiles</li>
+            <li>sublime-merge - git manager</li>
+            <li>sublime-text-4 - text editor</li>
+            <li>thunar-archive-plugin - zip manager for thunar </li>
+            <li>thunderbird - email manager</li>
+            <li>tmux - terminal multiplexer</li>
+            <li>vim - in case not installed</li>
+            <li>wget - in case not installed</li>
+            <li>xclip - clipboard management cli</li>
+            <li>zenity - cli dialogs</li>
+            <li>zotero or zotero-bin - reference manager</li>
+        </ul>
+    </section>
+</section>

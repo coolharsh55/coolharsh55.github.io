@@ -2929,6 +2929,24 @@ hpcom:view_template a rdf:Property ;
     schema:name "Tools for Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web/tools-for-semantic-web"^^xsd:anyURI .
 
+<https://harshp.com/dev/system/arch-packages> a hpcom:RenderedItem,
+        hpcom:RollingPost,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/system/arch-packages.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:apps,
+        hptag:arch-linux,
+        hptag:linux,
+        hptag:system ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-02-15T15:45:00"^^xsd:dateTime ;
+    schema:datePublished "2025-02-15T15:45:00"^^xsd:dateTime ;
+    schema:description "Describing system migration to Arch"@en ;
+    schema:isPartOf <https://harshp.com/dev/system> ;
+    schema:name "System setup - EndeavourOS/Arch"@en ;
+    schema:url "https://harshp.com/dev/system/arch-packages"^^xsd:anyURI .
+
 <https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
@@ -18835,7 +18853,7 @@ book:974 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "974"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     schema:author "Robert J. Sawyer"^^xsd:string ;
     schema:dateCreated "2000"^^xsd:int ;
     schema:genre hpcom:BookFiction,
@@ -18881,11 +18899,15 @@ book:977 a hpcom:RenderedItem,
 book:978 a hpcom:RenderedItem,
         schema:Book ;
     hpcom:book_id "978"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-02-15T23:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
     schema:author "Stephen Fry"^^xsd:string ;
     schema:dateCreated "2017"^^xsd:int ;
     schema:genre hpcom:BookNonFiction ;
     schema:name "Mythos: The Greek Myths Retold"@en ;
+    schema:review "The Greek mythology is fascinating not only because of its rich characterisation and drama, but also because at the heart of all stories is the core of a philosophy that makes describing humans an exercise in the interpretation of the divine. Greek gods - the mythos - are structured around the facets of human emotions, virtues, aspects, and so much more. I greatly respect Stephen Fry as a narrator, orator, and as a person who knows to focus on being decent above political correctness and style. This book is a fantastic recollection of the greek mythos - covering a lot in such a small space and making it enjoyable. I borrowed this book from our neighbour - and it has been fantastic reading it."@en ;
     schema:url "https://harshp.com/hobbies/books/978"^^xsd:anyURI .
 
 book:98 a hpcom:Book,
@@ -24613,6 +24635,13 @@ hpcom:RPG a hpcom:VideoGameGenre ;
     schema:name "Rants"@en ;
     schema:url "https://harshp.com/dev/rants"^^xsd:anyURI .
 
+<https://harshp.com/dev/system> a hpcom:RenderedItem,
+        <https://harshp.com/dev> ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "System"@en ;
+    schema:url "https://harshp.com/dev/system"^^xsd:anyURI .
+
 <https://harshp.com/posts> a hpcom:RenderedItem ;
     schema:name "all posts"@en ;
     schema:url "https://harshp.com/posts"^^xsd:anyURI .
@@ -27171,6 +27200,11 @@ hptag:animals a hpcom:RenderedItem,
     schema:name "animals" ;
     schema:url "https://harshp.com/tags/animals"^^xsd:anyURI .
 
+hptag:arch-linux a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Arch Linux"@en ;
+    schema:url "https://harshp.com/tags/arch-linux"^^xsd:anyURI .
+
 hptag:banking a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "banking" ;
@@ -27341,6 +27375,11 @@ hptag:language a hpcom:RenderedItem,
     schema:name "language" ;
     schema:url "https://harshp.com/tags/language"^^xsd:anyURI .
 
+hptag:linux a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Linux"@en ;
+    schema:url "https://harshp.com/tags/linux"^^xsd:anyURI .
+
 hptag:location a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "location" ;
@@ -27500,6 +27539,11 @@ hptag:surveillance a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "surveillance"@en ;
     schema:url "https://harshp.com/tags/surveillance"^^xsd:anyURI .
+
+hptag:system a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "system"@en ;
+    schema:url "https://harshp.com/tags/system"^^xsd:anyURI .
 
 hptag:taxonomy a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28139,11 +28183,6 @@ hptag:SHACL a hpcom:RenderedItem,
     schema:name "SHACL"@en ;
     schema:url "https://harshp.com/tags/SHACL"^^xsd:anyURI .
 
-hptag:apps a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "apps" ;
-    schema:url "https://harshp.com/tags/apps"^^xsd:anyURI .
-
 hptag:back-end a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "back-end" ;
@@ -28297,6 +28336,11 @@ hptag:ROPA a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Register of Processing Activities"@en ;
     schema:url "https://harshp.com/tags/ROPA"^^xsd:anyURI .
+
+hptag:apps a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "apps" ;
+    schema:url "https://harshp.com/tags/apps"^^xsd:anyURI .
 
 hptag:book a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -28871,19 +28915,6 @@ hptag:web-dev a hpcom:RenderedItem,
     schema:name "web-dev" ;
     schema:url "https://harshp.com/tags/web-dev"^^xsd:anyURI .
 
-hpview:DevProjectView a hpcom:View ;
-    hpcom:sparql [ a hpcom:SparqlQuery ;
-            rdfs:label "posts" ;
-            hpcom:queryString """
-            SELECT ?post ?date WHERE {
-                ?post a <https://harshp.com/dev> .
-                ?post schema:isPartOf ?iri .
-                ?post schema:datePublished ?date .
-        } ORDER BY DESC(?date)
-        """ ] ;
-    hpcom:view_renderer hpcom:Jinja2 ;
-    hpcom:view_template "https://harshp.com/code/templates/template_dev_project.jinja2" .
-
 list:language a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "language"@en ;
@@ -28898,6 +28929,19 @@ hptag:risk a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "risk" ;
     schema:url "https://harshp.com/tags/risk"^^xsd:anyURI .
+
+hpview:DevProjectView a hpcom:View ;
+    hpcom:sparql [ a hpcom:SparqlQuery ;
+            rdfs:label "posts" ;
+            hpcom:queryString """
+            SELECT ?post ?date WHERE {
+                ?post a <https://harshp.com/dev> .
+                ?post schema:isPartOf ?iri .
+                ?post schema:datePublished ?date .
+        } ORDER BY DESC(?date)
+        """ ] ;
+    hpcom:view_renderer hpcom:Jinja2 ;
+    hpcom:view_template "https://harshp.com/code/templates/template_dev_project.jinja2" .
 
 <https://harshp.com/dev/dpv> a hpcom:RenderedItem,
         <https://harshp.com/dev> ;
