@@ -15,6 +15,12 @@ from rdform import DataGraph, RDFS_Resource
 from jinja2 import FileSystemLoader
 from jinja2 import Environment
 
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+_pyg_lexer = get_lexer_by_name("turtle", stripall=True)
+_pyg_formatter = HtmlFormatter(cssclass="source", noclasses=True)
+
 from config import logging, DEBUG, INFO
 
 from config import LOCAL_PATH
@@ -364,6 +370,14 @@ def render_item(item):
         path = _get_localised_path(content_file)
         with open(path, 'r') as fd:
             contents = fd.read()
+
+        if hasattr(item, 'hpcom_code_highlight'):
+            import re
+            pattern = re.compile(r'<highlight>(.*?)</highlight>', re.DOTALL)
+            contents = pattern.sub(
+                lambda match: highlight_turtle(match.group(1).strip()), 
+                contents)
+
     metadata['contents'] = contents
 
     if not contents and not template:
@@ -404,6 +418,10 @@ def render_item(item):
     if path.startswith('../code/vocab#'):
         path = path.replace('../code/vocab#', '../resources/')
     _resolve_view_and_write(view, path, metadata)
+
+
+def highlight_turtle(contents):
+    return highlight(contents.strip(), _pyg_lexer, _pyg_formatter)
 
 
 def find_missing_tags(data):

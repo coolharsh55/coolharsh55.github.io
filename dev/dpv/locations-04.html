@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Prototyping Subjective Locations in DPV</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Prototyping Subjective Locations in DPV">
+    <meta name="schema:description" content="Testing proposed concepts with specific use-cases and examples">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,Working Note,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/locations-04">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/locations-04">
+    <meta property="og:title" content="Prototyping Subjective Locations in DPV">
+    <meta property="og:description" content="Testing proposed concepts with specific use-cases and examples">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev https://schema.org/BlogPosting " resource="https://harshp.com/dev/dpv/locations-04">
+        <h1 property="schema:name schema:headline">Prototyping Subjective Locations in DPV</h1>
+        <div id="description">
+            <span property='schema:description'>Testing proposed concepts with specific use-cases and examples</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-02-23T17:30:00">2025-02-23T17:30:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/working-note" property="schema:about" resource="https://harshp.com/tags/working-note" typeof="rdfs:Resource"><span property="rdfs:label">Working Note</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+    ol.uc > li {
+        list-style: none;
+        counter-increment: number;
+    }
+    ol.uc > li::before {
+        content: "UC" counter(number);
+        position: relative;
+        font-weight: bold;
+        left: -5px;
+        margin: -20px;
+        margin-right: 10px;
+    }
+</style>
+
+<blockquote>
+    <p>In the <a href="locations-01">previous post</a>, I proposed subjective location concepts such as 'home' and 'work', and expanded that in <a href="locations-03">another previous post</a> for 'private' and 'public'. In this post, I continue that discussion by exploring the feasibility of those concepts with specific use-cases and examples.</p>
+</blockquote>
+
+<section>
+    <h2>Use-Cases</h2>
+    <ol class="uc">
+        <li>Specify location as <code>Home</code> which is a <code>Private</code> and <code>Personal</code> place, and which itself may have more information such as postal addresses.</li>
+        <li>Specify location as <code>Work</code> which is <code>Private</code> place, and which can have multiple offices all of which would come under it.</li>
+        <li>Specify location as <code>Device</code> where some information is stored in virtual folders within a specific device's storage, and which is managed by the <code>User</code>.</li>
+        <li>Specify location as <code>App</code> where some information is stored within a software and is managed by that software. Additionally, specify that the app's storage is within the device storage, but is not accessible to the user.</li>
+        <li>Specify location as <code>Browser</code> for <code>Cookies</code> which are set by visiting the internet by <code>Service Provider</code> and <code>Third Parties</code>. These are accessible to the user, but are set by the websites. Here the distinction is that the user can see and interact with the cookies, but they do not have control over the 'location' beyond this.</li>
+        <li>Specify location as asked by a <code>Browser</code> or <code>App</code> where the user can specify their <code>Current Location</code> or their <code>Local Area</code> or <code>City</code> or <code>Region</code> or <code>Country</code>.</li>
+        <li>Specify location as a shop which is open to the public and is monitored by a CCTV.</li>
+        <li>Specify location as a shopping mall which has common areas for sitting etc. and shops which are privately owned but can be visited by the public, and admin areas which are not open to the public.</li>
+    </ol>
+</section>
+
+<section>
+    <h2>UC1 &amp; UC2: Home and Work</h2>
+    <p>Assuming we have the top concepts from <a href="location-03">, we can have the following taxonomy:</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PersonalSpace</span> .
+
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Work</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateSpace</span> .
+</pre></div>
+
+
+    <p>And then use it in a process like this:</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#1 Direct use of location</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process has location Home</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process1</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> .
+
+<span style="color: #3D7B7B; font-style: italic">#2 Add postal address</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process has location Home with address x</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process2</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> ;
+        <span style="color: #00F; font-weight: bold">schema</span>:<span style="color: #008000; font-weight: bold">address</span> [
+            <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">schema</span>:<span style="color: #008000; font-weight: bold">PostalAddres</span> ; <span style="color: #3D7B7B; font-style: italic"># data goes here</span>
+        ] ;
+    ] .
+
+<span style="color: #3D7B7B; font-style: italic">#3 Multiple locations under one label</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process has location Work which includes x, y</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process3</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Work</span> ;
+        <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">narrower</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">OfficeX</span>, <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">OfficeY</span> ;
+    ] .
+</pre></div>
+
+</section>
+
+<section>
+    <h2>UC3 &amp; UC4: App and Device</h2>
+    <p>The app and device storages are <code>Virtual Locations</code> unlike cities and home/work which are <code>Physical Locations</code>. Therefore, to distinguish these, we have to create a taxonomy that reflects this distinction (we assume locations are physical unless otherwise noted, so we only create the concept for virtual location). Further, we have to distinguish between the 'app/device' and the 'storage' within these - as otherwise there is a conflict between the concepts from LOC and TECH extensions if both have the same label, and it would be confusing as to which is used when and where without any distinction. In theory, we can say an app (as a software) or a device (as a hardware) can also be location in addition to the technology concepts, but it gets complicated the more relations we introduce like this. Further, it is also useful to distinguish between a 'device' and 'device storage' as it allows additional metadata to be associated with the storage - such as whether it is encrypted, or there are specific protections like access control governing it.</p>
+    <p>However, we are not only thinking of the storages, as the app and devices are also operating environments where execution of processing operations and technologies can take place. Therefore, we want a concept that represents both - or allows us to state with distinction - that the app is used to run a process and/or store data.</p>
+    <p>Options considered to do this:</p>
+    <ol>
+        <li><code>App</code> - rejected as this is confusing with <code>tech:App</code></li>
+        <li><code>AppStorage</code> - not sufficient to denote processing takes place in app</li>
+        <li><code>AppLocation</code> - better, but might get confused with 'app location' as in 'location of the app'</li>
+        <li><code>WithinApp</code> - clearly states location is 'within the app' so if used with processing then it means it takes place within the app</li>
+        <li><code>InApp</code> - same as above, though from a grammatical pov, 'within' is better than 'in' as withhin specifically represents inclusion within a boundary whereas in has ambiguity e.g. 'in 2 days' can mean 'within 2 days' or 'after 2 days'</li>
+    </ol>
+    <p>Based on the above, and the choice betweenn <code>WithinApp</code> and <code>AppLocation</code>, I prefer <code>WithinApp</code> as it is intuitive to me and makes sense when using with data. We can further expand this to explicitly state the storage within the app, or for devices the trusted execution environment.</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinApp</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span> .
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinAppStorage</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinApp</span> .
+<span style="color: #3D7B7B; font-style: italic"># this replaces dpv:WithinDevice in future versions, see Misc. changes at the end</span>
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDevice</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span> .
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDeviceStorage</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDevice</span> .
+<span style="color: #3D7B7B; font-style: italic"># TEE = Trusted Execution Environment</span>
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDeviceTEE</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDevice</span> .
+</pre></div>
+
+    <p>Using it in practice:</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#1 direct use</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process takes place within app</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinApp</span> . 
+
+<span style="color: #3D7B7B; font-style: italic">#2 indicating app runs on device</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process takes place within app which is within device</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinApp</span> ;
+        <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinDevice</span> ;
+    ] .
+
+<span style="color: #3D7B7B; font-style: italic">#3 indicating app with local and remote locations</span>
+<span style="color: #3D7B7B; font-style: italic"># read as: Process takes place within app and on cloud in EU</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinApp</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">CloudLocation</span> ;
+        <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">EU</span> ;  <span style="color: #3D7B7B; font-style: italic"># located in EU</span>
+    ] .
+</pre></div>
+
+</section>
+
+<section>
+    <h2>UC5: Browser and Cookies</h2>
+    <p>As with the apps/devices, we distinguish between browsers as storage and processing environments. Further, even though browsers don't necessarily have storage 'within' them but use the underlying filesystem, it is practical to represent the storage as being used and managed by them, and then separately represent the possibility for the user to manage/access the location/resources.</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinBrowser</span>  <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span> .
+
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinBrowserStorage</span>  <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">Concept</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">VirtualLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">LocalLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinBrowser</span> .
+</pre></div>
+
+    <p>With this, the use of cookies or other types of technologies can be indicated to be stored within the browser. We don't directly model a cookie as a storage location as it is a form of storage technology, which is stored within the browser or on the user's device or within the app - as dictated by the context.</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">isImplementedUsingTechnology</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Cookie</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">WithinBrowserStorage</span> .
+</pre></div>
+
+    <p>This distinction is better as it places the emphasis to explicitly dictate whether a local storage is being used or not (cookies can also be temporary, or be transmitted as packets of data). Further, as regulations clearly distinguish between storage of the user (which can be indicated by using <code>loc:PersonalSpace</code> with the browser storage), this modelling is also consistent for any other forms of data storage beyond cookies - e.g. using other browser storage mechanisms, storing files on user device, etc. to the device.</p>
+    <p>If we did want to represent cookies as a location, then it would be confusing to label them e.g. <code>CookieStorage</code>, <code>CookieLocation</code>, <code>WithinCookie</code> are ambiguous or confusing.</p>
+</section>
+
+<section>
+    <h2>UC6: Granular Geo-Location</h2>
+    <p>The granularity of a subjective location from a geo-physical designated location (e.g. city, region, country) is a difficult to isolate categorisation. For our purposes, we want to say things such as "home is within this city" or "workplace in regions x and y". This is easy to express as:</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process2</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> ;
+        <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">IE-D</span> ; <span style="color: #3D7B7B; font-style: italic"># Dublin, Ireland</span>
+    ] .
+</pre></div>
+
+
+    <p>Using the same notations, we can also specify rooms within a home:</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Process</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">HouseRoom</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">HouseRoom</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span> ; 
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">House</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">House</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Location</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> ; <span style="color: #3D7B7B; font-style: italic"># vice-versa</span>
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">narrower</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">HouseRoom</span> .
+</pre></div>
+
+
+    <p>Since the SKOS broader/narrower relations are transitive, the granularity is automatically available as soon as the subjective concept hooks in to an objective/known geo-physical location. In the above location, the first instance of Home is stated to in the broad area of Dublin. Using the LOC knowledge base, we can find that the home's city is Dublin, region is Dublin, country is Ireland, and it is in EU.</p>
+</section>
+
+<section>
+    <h2>UC7 &amp; UC8: Hybrig Private+Public Areas</h2>
+    <p>The relations from SKOS broader/narrower also provide useful inference of private/public places, as if <code>place A</code> has as broader <code>place B</code>, then it inherits the private/public attribute from it, while also having the possibility to add or change it on its own.</p>
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic">#1 Private room in private home</span>
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ; <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PersonalSpace</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Room</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ; <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Home</span> .
+<span style="color: #3D7B7B; font-style: italic"># infer: ex:Room skos:broaderTransitive loc:PersonalSpace .</span>
+
+<span style="color: #3D7B7B; font-style: italic">#2 Publicly accessible area in shop</span>
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Shop</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ; <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivatelyOwnedPlace</span> .
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShopPublicArea</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ; 
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Shop</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PubliclyAccessibleSpace</span> .
+<span style="color: #3D7B7B; font-style: italic"># infer: loc:ShopPublicArea skos:broaderTransitive loc:PrivateSpace .</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">SecurityMonitoring</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasPurpose</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">EnforceSecurity</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasLocation</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShopPublicArea</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">isImplementedUsingTechnology</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">CCTV</span> .
+
+<span style="color: #3D7B7B; font-style: italic">#3 Shopping Mall with public and private areas</span>
+<span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShoppingMall</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ; <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivatelyOwnedPlace</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">ClothingShop</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">Shop</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShoppingMall</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">PublicSeating</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivatelyOwnedPublicPlace</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShoppingMall</span> .
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">SecurityOffice</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">SubjectiveLocation</span> ;
+    <span style="color: #00F; font-weight: bold">skos</span>:<span style="color: #008000; font-weight: bold">broader</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">PrivateSpace</span>, <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">ShoppingMall</span> .
+</pre></div>
+
+</section>
+
+<section>
+    <h2>Other Misc. Changes</h2>
+    <ol>
+        <li><code>dpv:PrivateLocation</code> and <code>dpv:PublicLocation</code> are narrower than <code>dpv:LocalLocation</code> - this is incorrect. There can be private/public locations that are not local. These should be moved outside the local taxonomy.</li>
+        <li>The entire <code>dpv:LocationLocality</code> concepts can be moved to LOC e.g. <code>dpv:WithinDevice</code> and <code>dpv:RemoteLocation</code> have an overlap with the new concepts in LOC. It would be better to first repeat them in LOC as subclasses of the DPV concepts, and then deprecate them in future iterations.</li>
+    </ol>
+</section>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
