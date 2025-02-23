@@ -9,6 +9,10 @@
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix hptag: <https://harshp.com/tags/> .
 
+<https://harshp.com/research> a rdfs:Class, hpcom:RenderedItem, schema:BlogPosting ;
+    schema:name "research"@en ;
+    schema:url "https://harshp.com/research"^^xsd:anyURI .
+
 # all projects
 <https://harshp.com/research/projects> a owl:Class, hpcom:RenderedItem ;
     rdfs:subClassOf schema:Blog, <https://harshp.com/research> ;

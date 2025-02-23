@@ -37,543 +37,155 @@ from rdform import DataGraph, RDFS_Resource
 from jinja2 import FileSystemLoader
 from jinja2 import Environment
 
-# logging configuration for debugging to console
-import logging
-logging.basicConfig(
-    level=logging.INFO, format='%(levelname)s - %(funcName)s :: %(lineno)d - %(message)s')
-DEBUG = logging.debug
-logging.disable(logging.DEBUG)
-FLAG_VALIDATE_CONSTRAINTS = True
+import tools
+from config import logging, DEBUG, INFO
 
-# Namespaces used in the RDF files
-# RDF-ORM can also auto-detect them
-SCHEMA = Namespace('https://schema.org/')
-HPCOM = Namespace('https://harshp.com/code/vocab#')
-HPVIEWS = Namespace('https://harshp.com/code/views#')
 
-# load data from files into graph
-graph = Graph()
-graph.parse ('vocab.ttl', format='turtle')
-graph.parse ('views.ttl', format='turtle')
-graph.parse ('content/site.ttl', format='turtle')
-graph.parse ('content/tags.ttl', format='turtle')
-graph.parse ('../me.ttl', format='turtle')
-# blog, hobbies, dev
-graph.parse ('content/blog/blog.ttl', format='turtle')
-graph.parse ('content/poems/poems.ttl', format='turtle')
-graph.parse ('content/stories/stories.ttl', format='turtle')
-graph.parse ('content/dev/dev.ttl', format='turtle')
-graph.parse ('content/research/blog/research_blog.ttl', format='turtle')
-graph.parse ('content/hobbies/books.ttl', format='turtle')
-graph.parse ('content/hobbies/book_lists.ttl', format='turtle')
-graph.parse ('content/hobbies/games.ttl', format='turtle')
-graph.parse ('content/hobbies/tea.ttl', format='turtle')
-# research
-graph.parse ('content/research/research.ttl', format='turtle')
-graph.parse ('content/research/publications/publications.ttl', format='turtle')
-graph.parse ('content/research/publications/drafts/drafts.ttl', format='turtle')
-graph.parse ('content/research/presentations/presentations.ttl', format='turtle')
-graph.parse ('content/research/publications/authors.ttl', format='turtle')
-graph.parse ('content/research/publications/venues.ttl', format='turtle')
-graph.parse ('content/research/supervision/supervision.ttl', format='turtle')
-# projects
-graph.parse ('content/research/projects/phd/phd.ttl', format='turtle')
-graph.parse ('content/research/projects/protect/protect.ttl', format='turtle')
-graph.parse ('content/research/projects/risky/risky.ttl', format='turtle')
-graph.parse ('content/research/projects/paecg/paecg.ttl', format='turtle')
-graph.parse ('content/research/projects/cost-dkg-stsm/cost-dkg-stsm.ttl', format='turtle')
-graph.parse ('content/research/projects/hsbooster/hsbooster.ttl', format='turtle')
-graph.parse ('content/research/projects/standict26/standict26.ttl', format='turtle')
-graph.parse ('content/research/projects/adra-e/adra-e.ttl', format='turtle')
-graph.parse ('content/research/projects/edu4standards/edu4standards.ttl', format='turtle')
-graph.parse ('content/research/projects/hse-dpia/hse-dpia.ttl', format='turtle')
-graph.parse ('content/research/projects/empower-fidelity/empower-fidelity.ttl', format='turtle')
-graph.parse ('content/research/projects/harness/harness.ttl', format='turtle')
-graph.parse ('content/research/projects/recitals/recitals.ttl', format='turtle')
-# graph.parse ('content/research/funding-proposals.ttl', format='turtle')
+def load_graphs(content_write):
+    def _load(graph, path):
+        try:
+            # TODO: check format by extension, it assumed as ttl now
+            graph.parse(path, format='turtle')
+        except Exception as E:
+            logging.error(f"Error occured for path {path}")
+            raise
 
-# validate using PySHACL
-if FLAG_VALIDATE_CONSTRAINTS:
-    logging.info("Validating data...")
-    from pyshacl import validate
-    validation_constraints = Graph()
-    validation_constraints.parse('shacl_constraints.ttl', format='turtle')
-    validation_results = validate(graph,
-          shacl_graph=validation_constraints,
-          ont_graph=None,
-          inference='rdfs',
-          abort_on_first=False,
-          allow_infos=False,
-          allow_warnings=False,
-          meta_shacl=False,
-          advanced=False,
-          js=False,
-          debug=False)
-    conforms, results_graph, results_text = validation_results
-    if conforms is False:
-        logging.info("Validation FAILED")
-        print(results_text)
-        import sys
-        sys.exit()
+    '''loads content files into RDF graph'''
+    from config import CONTENT
+    # load data from files into graph
+    graph = Graph()
+    contentlist = list(CONTENT.keys())
+    for content in content_write:
+        if content not in CONTENT:
+            raise AttributeError(f"No content called {content}")
+        contentlist.remove(content)
+        filelist = CONTENT[content]['files']
+        tools.CheckRW.add_write(CONTENT[content]['iripath'])
+        DEBUG(f"following files will be loaded for content {content}")
+        DEBUG(f"{filelist}")
+        for file in filelist:
+            _load(graph, file)
+    for content in contentlist:
+        filelist = CONTENT[content]['files']
+        tools.CheckRW.add_readonly(CONTENT[content]['iripath'])
+        DEBUG(f"following files will be loaded for content {content}")
+        DEBUG(f"{filelist}")
+        for file in filelist:
+            _load(graph, file)
+        
+    validate_constraints(graph)
+
+    # create data graph through ORM
+    data = DataGraph()
+    data.load(graph)
+    # This create a namespace mapping for the namespaces defined in graph
+    # E.g. 'rdfs' will be k="rdfs" v="Namespace(RDFS IRI)"
+    data.graph.ns = { k:v for k,v in data.graph.namespaces() }
+    tools._register('data', data)
+    INFO(f"Successfully loaded {len(graph)} triples")
+    return data
+
+
+def validate_constraints(graph):
+    '''validates RDf graph using SHACL'''
+    # validate using PySHACL
+    from config import FLAG_VALIDATE_CONSTRAINTS
+    # FIXME: manual override
+    FLAG_VALIDATE_CONSTRAINTS = False
+    if FLAG_VALIDATE_CONSTRAINTS:
+        logging.info("Validating data...")
+        from pyshacl import validate
+        validation_constraints = Graph()
+        validation_constraints.parse('shacl_constraints.ttl', format='turtle')
+        validation_results = validate(graph,
+              shacl_graph=validation_constraints,
+              ont_graph=None,
+              inference='rdfs',
+              abort_on_first=False,
+              allow_infos=False,
+              allow_warnings=False,
+              meta_shacl=False,
+              advanced=False,
+              js=False,
+              debug=False)
+        conforms, results_graph, results_text = validation_results
+        if conforms is False:
+            logging.error(results_text)
+            raise AssertionError("Validation of RDF graph FAILED")
+        else:
+            INFO("Validation PASSED")
+        graph.serialize('data_combined.ttl', format='turtle')
+        INFO("Graph serialised as 'data_combined.ttl'")
     else:
-        logging.info("Validation PASSED")
-    graph.serialize('data_combined.ttl', format='turtle')
-else:
-    logging.info("Validation SKIPPED")
-
-# create data graph through ORM
-data = DataGraph()
-data.load(graph)
-# This create a namespace mapping for the namespaces defined in graph
-# E.g. 'rdfs' will be k="rdfs" v="Namespace(RDFS IRI)"
-data.graph.ns = { k:v for k,v in data.graph.namespaces() }
-
-# rendered items are those that should be created into files
-# they are defined as hpcom:RenderedItem
-rendered_items = data.get_instances_of('hpcom_RenderedItem')
-
-# ########################
-# hyper-lazy testing shell
-# this provides a lazy way to load data and check some output
-
-# check for duplicate dates
-# set_published = dict()
-# for item in data.get_instances_of('schema_Book'):
-#     if not hasattr(item, 'hpcom_book_read'):
-#         continue
-#     date_published = str(item.hpcom_book_read)
-#     if date_published not in set_published:
-#         set_published[date_published] = item.schema_name
-#         continue
-#     print(item, item.rdf_type)
-#     print(f'same as: {set_published[date_published]}')
-# import sys
-# sys.exit()
-# ########################
-
-# Views define how the RDF data gets rendered into formats
-views = data.get_instances_of('hpcom_View')
-DEBUG(f'registered views: {views}')
-# RDFS Resource View is a generic view targeting rdfs:Resource
-# If all other views fail or are not found, it gets selected
-view_rdfs_resource = data.get_entity('hpview_RDFSResourceView')
-DEBUG(f'default view: {view_rdfs_resource}')
-RenderedItem = data.get_entity('hpcom_RenderedItem')
+        logging.info("Validation SKIPPED")
 
 
-def _is_schema_PresentationDigitalDocument(item):
-    if type(item.rdf_type) is RDFS_Resource:
-        type_iris = [item.rdf_type]
-    if type(item.rdf_type) is list:
-        type_iris = [URIRef(t.iri) for t in item.rdf_type]
-    else:
-        type_iris = [item.rdf_type]
-    # for cat in item.rdf_type:
-    #     DEBUG(f'{cat} {type(cat)} {type(HPCOM.FullPaper)}')
-    if SCHEMA.PresentationDigitalDocument in type_iris:
-        return True
-    return False
-
-# Tests that can be used within Jinja2 code
-JINJA2_TESTS = {
-    'RDFS_Resource': lambda x: type(x) is RDFS_Resource,
-    'BNode': lambda x: x.startswith('u'),
-    'schema_PresentationDigitalDocument': _is_schema_PresentationDigitalDocument,
-}
-
-# Path where rendered data is exported or to be stored
-LOCAL_PATH = '../'
+def get_rendered_items(data):
+    '''retrieve items from data graph that should be rendered'''
+    # rendered items are those that should be created into files
+    # they are defined as hpcom:RenderedItem
+    rendered_items = data.get_instances_of('hpcom_RenderedItem')
+    # Views define how the RDF data gets rendered into formats
+    views = data.get_instances_of('hpcom_View')
+    # DEBUG(f'registered views: {views}')
+    tools._register('views', views)
+    # RDFS Resource View is a generic view targeting rdfs:Resource
+    # If all other views fail or are not found, it gets selected
+    view_rdfs_resource = data.get_entity('hpview_RDFSResourceView')
+    tools._register('view_rdfs_resource', view_rdfs_resource)
+    # DEBUG(f'default view: {view_rdfs_resource}')
+    RenderedItem = data.get_entity('hpcom_RenderedItem')
+    tools._register('RenderedItem', RenderedItem)
+    INFO(f"Queued {len(rendered_items)} items to render")
+    return rendered_items
 
 
-def _get_localised_path(iri):
-    if not iri.startswith('https://harshp.com/'):
-        raise Exception(f'Path {iri} is not local to harshp.com')
-    return iri.replace('https://harshp.com/', LOCAL_PATH, 1)
-
-
-def _get_view(item):
-    """determine view to render this item with"""
-
-    def _find_view(item):
-        # DEBUG(item.iri)
-        for view in views:
-            if hasattr(view, 'hpcom_view_target'):
-                target = view.hpcom_view_target
-                # DEBUG(f'checking view {view} with target {target}')
-                # DEBUG(f'{target.iri}')
-                if target.iri == item.iri:
-                    return view
-    # a view can be defined in (order of checking)
-    # content object associated with it
-    # view declared as targeting this object
-    # view declared as targeting the classes of this object
-    # view declared as targeting the parent classes of this object
-    # view declared as targeting rdfs:Resource (generic fallback)
-
-    if hasattr(item, 'hpcom_renderWith'):
-        # DEBUG('item declared its own renderer')
-        return item.hpcom_renderWith
-
-    # checking content for associated view
-    if hasattr(item, 'hpcom_content'):
-        content = item.hpcom_content
-        # DEBUG(f'item has content {content}')
-        if hasattr(content, 'hpcom_renderWith'):
-            # DEBUG('item declared its own renderer')
-            return content.hpcom_renderWith
-
-    # object either has content with no view attached
-    # or object does not have content
-    # regardless, check if there is a view associated with iri
-    for view in views:
-        if hasattr(view, 'hpcom_view_target') and view.hpcom_view_target is item:
-            return view
-
-    # check view associated with classes of this object
-    for parent in item.rdf_type:
-        if parent is RenderedItem:
+def render_items(render_items):
+    from tools import _get_view, render_item
+    DEBUG('Retrieving Views and Renderers')
+    counter_rendered = 0
+    counter_skipped = 0
+    for item in rendered_items:
+        if tools.CheckRW.check_readonly(item.iri):
+            DEBUG(f'handling item: {item.iri} -- SKIPPED')
+            counter_skipped += 1
             continue
-        # DEBUG(f'find view for parent: {parent} {type(parent)}')
-        view = _find_view(parent)
-        if view is not None:
-            return view
-
-    # check views associated with parents of parents
-    ancestors = [p.rdf_type for p in item.rdf_type if hasattr(p, 'rdf_type')]
-    while ancestors:
-        ancestor = ancestors.pop()
-        if not ancestor:
-            break
-        if type(ancestor) is list:
-            temp = ancestor.pop()
-            for a in ancestor:
-                ancestors.insert(0, a)
-            ancestor = temp
-        view = _find_view(ancestor)
-        if view is not None:
-            return view
-
-    # all avenues exhausted
-    # return view for rdfs:resource
-    return view_rdfs_resource
+        DEBUG(f'render {item.iri}')
+        view = _get_view(item)
+        DEBUG(f'render with: {view}')
+        assert(view)
+        item.view = view
+        render_item(item)
+        counter_rendered += 1
+    INFO(f"Rendered {counter_rendered} items; skipped {counter_skipped} items")
 
 
-def prefix_this(item):
-    # DEBUG(f'item: {item} type: {type(item)}')
-    if type(item) is RDFS_Resource:
-        item = item.iri
-    elif type(item) is URIRef:
-        item = str(item)
-    if type(item) is str and item.startswith('http'):
-        iri = URIRef(item).n3(data.graph.namespace_manager)
-    else:
-        iri = item
-    if iri.count('_') > 0:
-        iri = iri.split('_', 1)[1]
-    # DEBUG(f'prefixed {item} to: {iri}')
-    return iri
+def _parse_arguments():
+    import argparse
+    parser = argparse.ArgumentParser()
+    # - `-d` will download and extract ALL files
+    parser.add_argument('-c', '--content', nargs='+', help="content to generate")
+    parser.add_argument('-A', '--allcontents', action='store_true', help="generate all contents")
+    args = parser.parse_args()
+    import sys
+    if len(sys.argv) < 2:
+        parser.print_usage()
+        return
+    if args.content:
+        content = ['site']
+        content += [x.strip() for x in args.content[0].split(',')]
+    if args.allcontents:
+        from config import CONTENT
+        content = CONTENT.keys()
+    INFO(f"generator input: {content}")
+    return content
 
-
-def _execute_sparql(query, bindings=None):
-    """execute given sparql query and return results
-    supplement query with given bindings"""
-    DEBUG(f'executing query: {query}')
-    results = data.graph.query(query, initBindings=bindings)
-    for row in results:
-        DEBUG(row)
-        # DEBUG(data.resolve_entities_to_objects(row))
-    DEBUG(f'query returned {len(results)} rows')
-    return [data.resolve_entities_to_objects(row) for row in results]
-
-
-def _view_filecopy(path, *args):
-    """simple writer --> will write contents to path
-    ensures folder structure exists before writing"""
-    with open(path, 'w') as fd:
-        DEBUG(f'writing file {path}')
-        fd.writelines(contents)
-    return
-
-
-JINAJ2_TEMPLATE_VARS = {
-    'RDF_DESC_PROP': ('rdf_type', 'schema_name', 'schema_url'),
-    'prefix_this': prefix_this,
-}
-
-
-def html_view(item):
-    if hasattr(item, 'schema_url'):
-        s = f'<a href="{item.schema_url}">{str(item)}</a>'
-    elif type(item) is RDFS_Resource:
-        s = f'<a href="{item.iri}">{str(item)}</a>'
-    elif type(item) is str and item.startswith('http'):
-        s = f'<a href="{item}">{str(item)}</a>'
-    else:
-        s = item
-        if s == "true":
-            s = "✅"
-        elif s == "false":
-            s = "❌"
-    # DEBUG(f'html for item {item} type{type(item)} is {s}')
-    return s
-
-def publication_type(publication):
-    type_iris = [URIRef(t.iri) for t in publication.rdf_type]
-    # for cat in publication.rdf_type:
-    #     DEBUG(f'{cat} {type(cat)} {type(HPCOM.FullPaper)}')
-    if HPCOM.Thesis in type_iris:
-        s = f'Thesis'
-    elif HPCOM.FullPaper in type_iris:
-        if hasattr(publication, 'schema_publisher'):
-            if type(publication.schema_publisher.rdf_type) is list:
-                for parent in publication.schema_publisher.rdf_type:
-                    if str(parent) == str(SCHEMA.Periodical):
-                        s = 'Journal'
-                        break
-            elif str(publication.schema_publisher.rdf_type) == str(SCHEMA.Periodical):
-                s = 'Journal'
-            else:
-                s = str(publication.schema_publication.hpcom_event_type)
-        else:
-            s = str(publication.schema_publication.hpcom_event_type)
-    elif HPCOM.ShortPaper in type_iris:
-        s = 'Short Paper'
-    elif HPCOM.Abstract in type_iris:
-        s = 'Abstract'
-    elif HPCOM.ExtendedAbstract in type_iris:
-        s = 'Ext. Abstract'
-    elif HPCOM.BookChapter in type_iris:
-        s = 'Book Chapter'
-    elif HPCOM.Report in type_iris:
-        s = 'Report'
-    else:
-        s = 'Publication'
-    # if hasattr(publication, 'hpcom_peer_reviewed') \
-    #     and publication.hpcom_peer_reviewed == "true":
-    #     s = f'{s}, peer-reviewed'
-    return s
-
-
-def in_past(timestamp):
-    now = datetime.datetime.now()
-    timestamp = datetime.datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S')
-    return timestamp < now
-
-
-def format_amount(amount):
-    amount = int(amount)
-    return '{:0,}'.format(amount)
-
-
-def publication_is_draft(publication):
-    return HPCOM.DraftPaper in (URIRef(t.iri) for t in publication.rdf_type)
-
-
-JINJA2_FILTERS = {
-    'html_view': html_view,
-    'publication_type': publication_type,
-    'year': lambda x: x[:4],
-    'in_past': in_past,
-    'format_amount': format_amount,
-    'publication_is_draft': publication_is_draft,
-}
-
-
-def _is_rdf_type(item, rdf_type):
-    if type(item) is RDFS_Resource:
-        if type(item.rdf_type) is list:
-            for item_type in item.rdf_type:
-                if prefix_this(item_type) == rdf_type:
-                    return True
-        else:
-            if prefix_this(item.rdf_type) == rdf_type:
-                return True
-    return False
-
-
-def _rdf_check_object(s, p, o):
-    if not hasattr(s, p):
-        return False
-    sp = str(getattr(s, p).iri)
-    so = str(o)
-    return sp == so
-
-
-JINJA2_FUNCS = {
-    'is_rdf_type': _is_rdf_type,
-    'rdf_check_object': _rdf_check_object,
-}
-
-
-def _view_jinja2(path, metadata=None):
-    """jinja2 renderer --> renders contents using Jinja2
-    requires metadata['template'] to render with"""
-    assert('template' in metadata)
-    template_dir, template_file = os.path.split(
-        _get_localised_path(metadata['template']))
-    template_loader = FileSystemLoader(searchpath=template_dir)
-    template_env = Environment(
-        loader=template_loader, 
-        autoescape=True, trim_blocks=True, lstrip_blocks=True)
-    template_env.tests.update(JINJA2_TESTS)
-    template_env.filters.update(JINJA2_FILTERS)
-    template_env.globals.update(JINJA2_FUNCS)
-    template = template_env.get_template(template_file)
-    if not path.endswith('html'):
-        if not os.path.isdir(path):
-            path = f'{path}.html'
-        else:
-            path = f'{path}/index.html'
-    DEBUG(metadata.keys())
-    DEBUG(metadata)
-    if 'item' in metadata:
-        DEBUG(metadata['item'])
-    DEBUG(f'writing {metadata["item"].iri} to {path}')
-    with open(path, 'w+') as fd:
-        fd.write(template.render(
-            **metadata, RenderedItem=RenderedItem, 
-            **JINAJ2_TEMPLATE_VARS, SCHEMA=SCHEMA, HPCOM=HPCOM))
-
-
-def _view_empty(*args, **kwargs):
-    """dummy view, does nothing"""
-    pass
-
-
-VIEW_DICT = {
-    'https://harshp.com/code/vocab#FileCopy': _view_filecopy,
-    'https://harshp.com/code/vocab#Jinja2': _view_jinja2,
-    'https://harshp.com/code/vocab#EmptyRenderer': _view_empty,
-}
-
-
-def _resolve_view_and_write(view, path, metadata=None):
-    """gets view associated with renderer and passes on data to it
-    metadata can contain anything required for the view to render
-    """
-    # DEBUG(f'{view.hpcom_view_renderer}')
-    renderer = view.hpcom_view_renderer
-    if renderer.iri not in VIEW_DICT:
-        raise Exception(f'Renderer {renderer} is not registered with any handler')
-
-    view = VIEW_DICT[renderer.iri]
-    view(path, metadata)
-
-
-def _today():
-    literal = Literal(datetime.datetime.now(), datatype=XSD.dateTime)
-    return literal
-
-def _year_start():
-    literal = Literal(
-        datetime.datetime.now().replace(
-            day=1,month=1,hour=0,minute=0), datatype=XSD.dateTime)
-    return literal
-
-SPARQL_ACTIONS = {
-    'date-today': _today,
-    'date-year-start': _year_start,
-}
-
-
-def render_item(item):
-    """generate html file for item using its view"""
-    assert(item.view)
-    DEBUG(f'rendering {item} with view {item.view}')
-
-    # at this point, the object can be rendered
-    view = item.view
-    metadata = { 'item': item }  # metadata of item for rendering
-
-    # 1) get template attached with file if it exists
-    # 2) if (1) does not exist, get template attached with view
-    template = None
-    if hasattr(item, 'hpcom_content') \
-            and hasattr(item.hpcom_content, 'hpcom_view_template'):
-        template = item.hpcom_content.hpcom_view_template
-    elif hasattr(view, 'hpcom_view_template'):
-        template = view.hpcom_view_template
-    else:
-        template = 'https://harshp.com/code/templates/template_base.jinja2'
-    metadata['template'] = template
-
-    # 3) get content file for item if it exists
-    contents = None
-    if hasattr(item, 'hpcom_content') \
-            and hasattr(item.hpcom_content, 'hpcom_contentFile'):
-        content_file = item.hpcom_content.hpcom_contentFile
-        content_file_format = item.hpcom_content.hpcom_contentFileFormat
-        path = _get_localised_path(content_file)
-        with open(path, 'r') as fd:
-            contents = fd.read()
-    metadata['contents'] = contents
-
-    if not contents and not template:
-        # no contents, no template --> this item cannot be rendered
-        raise Exception(f'{iri} has no content nor template, cannot render')
-
-    # 4) get SPARQL query for renderer if exists
-    sparql_source = None
-    if hasattr(item, 'hpcom_sparql'):
-        sparql_source = item.hpcom_sparql
-    elif hasattr(view, 'hpcom_sparql'):
-        sparql_source = view.hpcom_sparql
-
-    if sparql_source:
-        # DEBUG(f'sparql source: {sparql_source}')
-        if type(sparql_source) is not list:
-            sparql_source = [sparql_source]
-        for node in sparql_source:
-            label = str(node.rdfs_label)
-            bindings= { 'iri': URIRef(item.iri) }
-            if hasattr(node, 'hpcom_queryParam'):
-                param = node.hpcom_queryParam
-                param_label = str(param.hpcom_queryParamLabel)
-                param_action = SPARQL_ACTIONS[str(param.hpcom_queryParamValue)]
-                param_value = param_action()
-                # DEBUG(f'query parameters with label {param_label} and value {param_value}')
-                bindings[param_label] = param_value
-
-            metadata[f'{label}_sparql'] = node.hpcom_queryString
-            metadata [label] = _execute_sparql(
-                    node.hpcom_queryString, bindings=bindings)
-
-    # call function handling views
-    # just contents, no template --> directly generate the file
-    path = _get_localised_path(item.iri)
-    if path.endswith('/'):
-        path = f'{path}index.html'
-    if path.startswith('../code/vocab#'):
-        path = path.replace('../code/vocab#', '../resources/')
-    _resolve_view_and_write(view, path, metadata)
-
-
-logging.info('Retrieving Views and Renderers')
-for item in rendered_items:
-    DEBUG(f'handling item: {item}')
-
-    view = _get_view(item)
-    DEBUG(f'render with: {view}')
-    assert(view)
-    item.view = view
-    render_item(item)
-
-# store missing tags
-sparql_missing_tags = """
-    SELECT DISTINCT ?tag WHERE {
-        ?article hpcom:tag ?tag .
-        FILTER NOT EXISTS { ?tag schema:name ?name } .
-    } ORDER BY ?tag
-    """
-results = data.graph.query(sparql_missing_tags)
-if len(results) > 0:
-    with open('tags_missing.ttl', 'w+') as fd:
-        for tag in results:
-            iri = tag[0]
-            prefixed = prefix_this(iri)
-            name = prefixed.split(':')[1]
-            print(f"""{prefixed} a hpcom:RenderedItem, hpcom:Tag ;
-                schema:name "{name}"@en ;
-                schema:url "{iri}"^^xsd:anyURI .
-                """, file=fd)
-    logging.warning(f'found {len(results)} missing tags, check tags_missing.ttl')
+if __name__ == '__main__':
+    content_write = _parse_arguments()
+    if not content_write:
+        INFO('No content specified to generate')
+        import sys
+        sys.exit(0)
+    data = load_graphs(content_write)
+    rendered_items = get_rendered_items(data)
+    render_items(rendered_items)

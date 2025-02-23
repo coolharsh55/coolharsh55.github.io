@@ -12,6 +12,10 @@
 
 @prefix : <https://harshp.com/hobbies/games/> .
 
+<https://harshp.com/hobbies/games> a rdfs:Class, hpcom:RenderedItem, schema:BlogPosting ;
+    schema:name "Video Games"@en ;
+    schema:url "https://harshp.com/hobbies/games"^^xsd:anyURI .
+
 <https://harshp.com/hobbies/games/doom-1993> a hpcom:RenderedItem, schema:VideoGame, hpcom:VideoGame ;
     hpcom:game_id "doom-1993" ;
     hpcom:game_owned_platform hpcom:MS-DOS ;

@@ -4,6 +4,11 @@
 
 @prefix hptag: <https://harshp.com/tags/> .
 
+
+<https://harshp.com/tags> a hpcom:RenderedItem, schema:BlogPosting ;
+    schema:name "tags"@en ;
+    schema:url "https://harshp.com/tags"^^xsd:anyURI .
+
 hptag:Android a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "Android" ;
@@ -1000,3 +1005,24 @@ hptag:arch-linux a hpcom:RenderedItem, hpcom:Tag ;
 hptag:linux a hpcom:RenderedItem, hpcom:Tag ;
                 schema:name "Linux"@en ;
                 schema:url "https://harshp.com/tags/linux"^^xsd:anyURI .
+
+hptag:Rating1 a hpcom:Rating, hpcom:Tag, hpcom:RenderedItem ; 
+    schema:ratingValue "1"^^xsd:int ;
+    schema:url "https://harshp.com/tags/Rating1"^^xsd:anyURI ;
+    schema:name "😠awful (1/5)"@en .
+hptag:Rating2 a hpcom:Rating, hpcom:Tag, hpcom:RenderedItem ; 
+    schema:ratingValue "2"^^xsd:int ;
+    schema:url "https://harshp.com/tags/Rating2"^^xsd:anyURI ;
+    schema:name "🙁bad (2/5)"@en .
+hptag:Rating3 a hpcom:Rating, hpcom:Tag, hpcom:RenderedItem ; 
+    schema:ratingValue "3"^^xsd:int ;
+    schema:url "https://harshp.com/tags/Rating3"^^xsd:anyURI ;
+    schema:name "🙂okay (3/5)"@en .
+hptag:Rating4 a hpcom:Rating, hpcom:Tag, hpcom:RenderedItem ; 
+    schema:ratingValue "4"^^xsd:int ;
+    schema:url "https://harshp.com/tags/Rating4"^^xsd:anyURI ;
+    schema:name "😁good (4/5)"@en .
+hptag:Rating5 a hpcom:Rating, hpcom:Tag, hpcom:RenderedItem ; 
+    schema:ratingValue "5"^^xsd:int ;
+    schema:url "https://harshp.com/tags/Rating5"^^xsd:anyURI ;
+    schema:name "😍awesome (5/5)"@en .

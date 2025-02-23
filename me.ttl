@@ -5,6 +5,9 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix schema: <https://schema.org/> .
+@prefix hpcom: <https://harshp.com/code/vocab#> .
+@prefix hpview: <https://harshp.com/code/views#> .
+@prefix hptag: <https://harshp.com/tags/> .
 
 <https://harshp.com/me> a schema:Person ;
     schema:name "Harshvardhan J. Pandit" ;
@@ -18,8 +21,23 @@
     schema:hasOccupation "Researcher" ;
     schema:honorificPrefix "Dr" ;
     schema:honorificSuffix "PhD" ;
-    schema:jobTitle "Research Fellow" ;
+    schema:jobTitle "Assistant Professor" ;
     schema:knowsLanguage [ a schema:Language ; schema:name "English" ], [ a schema:Language ; schema:name "Hindi" ], [ a schema:Language ; schema:name "Marathi" ] ;
     schema:nationality [ a schema:Country ; schema:name "India" ] ;
-    schema:worksFor <https://www.tcd.ie/> ;
+    schema:worksFor <https://www.dcu.ie/> ;
     schema:url "https://harshp.com/me"^^xsd:anyURI .
+
+<https://harshp.com/contact> a hpcom:RenderedItem, schema:BlogPosting ;
+    schema:name "Contact Me"@en ;
+    schema:url "https://harshp.com/contact"^^xsd:anyURI .
+
+<https://harshp.com/polymathy> a hpcom:RenderedItem, schema:BlogPosting ;
+    hpcom:content [
+        hpcom:view_template "https://harshp.com/code/templates/template_polymathy.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+    ] .
+<https://harshp.com/me> a hpcom:RenderedItem, schema:BlogPosting ;
+    hpcom:content [
+        hpcom:view_template "https://harshp.com/code/templates/template_me.jinja2"^^xsd:anyURI ;
+        hpcom:renderWith hpview:GenericJinja2View ;
+    ] .

@@ -1,3 +1,4 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hpcom: <https://harshp.com/code/vocab#> .
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix schema: <https://schema.org/> .
@@ -5,12 +6,15 @@
 
 @prefix hptag: <https://harshp.com/tags/> .
 
-<https://harshp.com/blog> hpcom:content [
+<https://harshp.com/blog> a rdfs:Class, schema:BlogPosting, hpcom:RenderedItem ;
+    schema:name "blog"@en ;
+    hpcom:content [
         a hpcom:Content ;
         hpcom:renderWith hpview:BlogIndexView ;
-        ] .
+        ] ;
+    schema:url "https://harshp.com/blog"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/checklist-manifesto> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/checklist-manifesto> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/checklist-manifesto.html" ;
@@ -25,7 +29,7 @@
     schema:name "The Checklist Manifesto - book notes"@en ;
     schema:url "https://harshp.com/blog/books/checklist-manifesto"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/fiasco> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/fiasco> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/fiasco.html" ;
@@ -39,7 +43,7 @@
     schema:name "Fiasco"@en ;
     schema:url "https://harshp.com/blog/books/fiasco"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/invisible-women> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/invisible-women> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/invisible-women.html" ;
@@ -54,7 +58,7 @@
     schema:name "Invisible Women"@en ;
     schema:url "https://harshp.com/blog/books/invisible-women"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/reading-without-guilt-buy-old-books> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/reading-without-guilt-buy-old-books> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/reading-without-guilt-buy-old-books.html" ;
@@ -69,7 +73,7 @@
     schema:name "reading without guilt (buy old books!)"@en ;
     schema:url "https://harshp.com/blog/books/reading-without-guilt-buy-old-books"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/the-dark-tower> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/the-dark-tower> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/the-dark-tower.html" ;
@@ -83,7 +87,7 @@
     schema:name "The Dark Tower"@en ;
     schema:url "https://harshp.com/blog/books/the-dark-tower"^^xsd:anyURI .
 
-<https://harshp.com/blog/books/the-subtle-art-of-not-giving-a-f> a <https://harshp.com/blog>,
+<https://harshp.com/blog/books/the-subtle-art-of-not-giving-a-f> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/books/the-subtle-art-of-not-giving-a-f.html" ;
@@ -97,7 +101,7 @@
     schema:name "The Subtle Art of Not Giving a F***"@en ;
     schema:url "https://harshp.com/blog/books/the-subtle-art-of-not-giving-a-f"^^xsd:anyURI .
 
-<https://harshp.com/blog/education/why-im-glad-i-learnt-the-basics> a <https://harshp.com/blog>,
+<https://harshp.com/blog/education/why-im-glad-i-learnt-the-basics> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/education/why-im-glad-i-learnt-the-basics.html" ;
@@ -111,7 +115,7 @@
     schema:name "Why I'm glad I learnt the basics"@en ;
     schema:url "https://harshp.com/blog/education/why-im-glad-i-learnt-the-basics"^^xsd:anyURI .
 
-<https://harshp.com/blog/events/eswc-2018> a <https://harshp.com/blog>,
+<https://harshp.com/blog/events/eswc-2018> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/events/eswc-2018.html" ;
@@ -127,7 +131,7 @@
     schema:name "ESWC 2018"@en ;
     schema:url "https://harshp.com/blog/events/eswc-2018"^^xsd:anyURI .
 
-<https://harshp.com/blog/events/iswc-2017> a <https://harshp.com/blog>,
+<https://harshp.com/blog/events/iswc-2017> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/events/iswc-2017.html" ;
@@ -144,7 +148,7 @@
     schema:name "ISWC 2017"@en ;
     schema:url "https://harshp.com/blog/events/iswc-2017"^^xsd:anyURI .
 
-<https://harshp.com/blog/events/over-the-weekend-my-experiences-at-startup-weekend-dublin> a <https://harshp.com/blog>,
+<https://harshp.com/blog/events/over-the-weekend-my-experiences-at-startup-weekend-dublin> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/events/over-the-weekend-my-experiences-at-startup-weekend-dublin.html" ;
@@ -159,7 +163,7 @@
     schema:name "My experiences at Startup Weekend Dublin"@en ;
     schema:url "https://harshp.com/blog/events/over-the-weekend-my-experiences-at-startup-weekend-dublin"^^xsd:anyURI .
 
-<https://harshp.com/blog/events/provenance-week-2018> a <https://harshp.com/blog>,
+<https://harshp.com/blog/events/provenance-week-2018> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/events/provenance-week-2018.html" ;
@@ -175,7 +179,7 @@
     schema:name "Provenance Week 2018"@en ;
     schema:url "https://harshp.com/blog/events/provenance-week-2018"^^xsd:anyURI .
 
-<https://harshp.com/blog/food_drink/why-i-wont-eat-the-chemically-toxic-meat-in-india> a <https://harshp.com/blog>,
+<https://harshp.com/blog/food_drink/why-i-wont-eat-the-chemically-toxic-meat-in-india> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/food_drink/why-i-wont-eat-the-chemically-toxic-meat-in-india.html" ;
@@ -191,7 +195,7 @@
     schema:name "Why I won't eat the chemically toxic meat in India"@en ;
     schema:url "https://harshp.com/blog/food_drink/why-i-wont-eat-the-chemically-toxic-meat-in-india"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/completing-super-hexagon> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/completing-super-hexagon> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/completing-super-hexagon.html" ;
@@ -207,7 +211,7 @@
     schema:name "Completing Super Hexagon"@en ;
     schema:url "https://harshp.com/blog/games/completing-super-hexagon"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/doom> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/doom> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/doom.html" ;
@@ -221,7 +225,7 @@
     schema:name "Doom"@en ;
     schema:url "https://harshp.com/blog/games/doom"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/inside> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/inside> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/inside.html" ;
@@ -236,7 +240,7 @@
     schema:name "INSIDE"@en ;
     schema:url "https://harshp.com/blog/games/inside"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/mini-motorways> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/mini-motorways> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/mini-motorways.html" ;
@@ -251,7 +255,7 @@
     schema:name "Mini Motorways"@en ;
     schema:url "https://harshp.com/blog/games/mini-motorways"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/sayonara-wild-hearts> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/sayonara-wild-hearts> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/sayonara-wild-hearts.html" ;
@@ -266,7 +270,7 @@
     schema:name "Sayonara Wild Hearts"@en ;
     schema:url "https://harshp.com/blog/games/sayonara-wild-hearts"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/the-stanley-parable> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/the-stanley-parable> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/the-stanley-parable.html" ;
@@ -281,7 +285,7 @@
     schema:name "The Stanley Parable"@en ;
     schema:url "https://harshp.com/blog/games/the-stanley-parable"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/adventure-at-the-mall> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/adventure-at-the-mall> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/adventure-at-the-mall.html" ;
@@ -295,7 +299,7 @@
     schema:name "Adventure at the mall"@en ;
     schema:url "https://harshp.com/blog/humour/adventure-at-the-mall"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/how-to-make-a-killer-ad> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/how-to-make-a-killer-ad> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/how-to-make-a-killer-ad.html" ;
@@ -310,7 +314,7 @@
     schema:name "How to make a killer ad"@en ;
     schema:url "https://harshp.com/blog/humour/how-to-make-a-killer-ad"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/letter-by-a-computer-engineer> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/letter-by-a-computer-engineer> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/letter-by-a-computer-engineer.html" ;
@@ -324,7 +328,7 @@
     schema:name "Letter by a Computer Engineer"@en ;
     schema:url "https://harshp.com/blog/humour/letter-by-a-computer-engineer"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/lotr-acronyms> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/lotr-acronyms> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/lotr-acronyms.html" ;
@@ -339,7 +343,7 @@
     schema:name "LotR Acronyms"@en ;
     schema:url "https://harshp.com/blog/humour/lotr-acronyms"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/relationship-development-life-cycle-rdlc> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/relationship-development-life-cycle-rdlc> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/relationship-development-life-cycle-rdlc.html" ;
@@ -353,7 +357,7 @@
     schema:name "Relationship Development Life Cycle (RDLC)"@en ;
     schema:url "https://harshp.com/blog/humour/relationship-development-life-cycle-rdlc"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/roads-and-rains> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/roads-and-rains> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/roads-and-rains.html" ;
@@ -367,7 +371,7 @@
     schema:name "Roads and Rains"@en ;
     schema:url "https://harshp.com/blog/humour/roads-and-rains"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/the-moon-plan> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/the-moon-plan> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/the-moon-plan.html" ;
@@ -382,7 +386,7 @@
     schema:name "The Moon Plan"@en ;
     schema:url "https://harshp.com/blog/humour/the-moon-plan"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/what-indian-tv-soaps-taught-me> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/what-indian-tv-soaps-taught-me> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/what-indian-tv-soaps-taught-me.html" ;
@@ -396,7 +400,7 @@
     schema:name "What Indian TV soaps taught me"@en ;
     schema:url "https://harshp.com/blog/humour/what-indian-tv-soaps-taught-me"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/where-do-write-ups-originate> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/where-do-write-ups-originate> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/where-do-write-ups-originate.html" ;
@@ -410,7 +414,7 @@
     schema:name "Where do write-ups originate?"@en ;
     schema:url "https://harshp.com/blog/humour/where-do-write-ups-originate"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/batman-v-superman-mediocre-but-not-bad> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/batman-v-superman-mediocre-but-not-bad> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/batman-v-superman-mediocre-but-not-bad.html" ;
@@ -425,7 +429,7 @@
     schema:name "Mediocre but not bad"@en ;
     schema:url "https://harshp.com/blog/movies/batman-v-superman-mediocre-but-not-bad"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/im-a-ghost-in-the-shell-fan-and-i-do-not-give-my-consent-to-this> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/im-a-ghost-in-the-shell-fan-and-i-do-not-give-my-consent-to-this> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/im-a-ghost-in-the-shell-fan-and-i-do-not-give-my-consent-to-this.html" ;
@@ -441,7 +445,7 @@
     schema:name "I'm a Ghost in the Shell fan, and I do not give my consent to this"@en ;
     schema:url "https://harshp.com/blog/movies/im-a-ghost-in-the-shell-fan-and-i-do-not-give-my-consent-to-this"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/lord-of-the-rings-marathon> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/lord-of-the-rings-marathon> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/lord-of-the-rings-marathon.html" ;
@@ -456,7 +460,7 @@
     schema:name "Lord of the Rings marathon"@en ;
     schema:url "https://harshp.com/blog/movies/lord-of-the-rings-marathon"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/mindfuck-movies> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/mindfuck-movies> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/mindfuck-movies.html" ;
@@ -470,7 +474,7 @@
     schema:name "Mindfuck Movies"@en ;
     schema:url "https://harshp.com/blog/movies/mindfuck-movies"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/mother> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/mother> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/mother.html" ;
@@ -484,7 +488,7 @@
     schema:name "mother!"@en ;
     schema:url "https://harshp.com/blog/movies/mother"^^xsd:anyURI .
 
-<https://harshp.com/blog/movies/wonder-woman> a <https://harshp.com/blog>,
+<https://harshp.com/blog/movies/wonder-woman> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/movies/wonder-woman.html" ;
@@ -499,7 +503,7 @@
     schema:name "Wonder Woman"@en ;
     schema:url "https://harshp.com/blog/movies/wonder-woman"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/10-signs-you-were-born-to-make-it-big> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/10-signs-you-were-born-to-make-it-big> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/10-signs-you-were-born-to-make-it-big.html" ;
@@ -513,7 +517,7 @@
     schema:name "10 signs you were born to make it big"@en ;
     schema:url "https://harshp.com/blog/personal/10-signs-you-were-born-to-make-it-big"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/101-thought-provoking-questions> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/101-thought-provoking-questions> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/101-thought-provoking-questions.html" ;
@@ -527,7 +531,7 @@
     schema:name "101 Thought Provoking Questions"@en ;
     schema:url "https://harshp.com/blog/personal/101-thought-provoking-questions"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/9-nov16-a-wake-up-call-to-all> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/9-nov16-a-wake-up-call-to-all> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/9-nov16-a-wake-up-call-to-all.html" ;
@@ -542,7 +546,7 @@
     schema:name "9 Nov'16  - a wake up call to all"@en ;
     schema:url "https://harshp.com/blog/personal/9-nov16-a-wake-up-call-to-all"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/a-lasting-legacy> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/a-lasting-legacy> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/a-lasting-legacy.html" ;
@@ -556,7 +560,7 @@
     schema:name "A Lasting Legacy"@en ;
     schema:url "https://harshp.com/blog/personal/a-lasting-legacy"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/age28> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/age28> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/age28.html" ;
@@ -570,7 +574,7 @@
     schema:name "age=>28"@en ;
     schema:url "https://harshp.com/blog/personal/age28"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/aims-in-life> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/aims-in-life> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/aims-in-life.html" ;
@@ -584,7 +588,7 @@
     schema:name "Aims in Life"@en ;
     schema:url "https://harshp.com/blog/personal/aims-in-life"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/being-passionate-is-sexy> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/being-passionate-is-sexy> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/being-passionate-is-sexy.html" ;
@@ -598,7 +602,7 @@
     schema:name "Being passionate is sexy"@en ;
     schema:url "https://harshp.com/blog/personal/being-passionate-is-sexy"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/birthdays-in-an-adult-world> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/birthdays-in-an-adult-world> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/birthdays-in-an-adult-world.html" ;
@@ -613,7 +617,7 @@
     schema:name "Birthdays in an adult world"@en ;
     schema:url "https://harshp.com/blog/personal/birthdays-in-an-adult-world"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/canon-350d> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/canon-350d> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/canon-350d.html" ;
@@ -629,7 +633,7 @@
     schema:name "Canon 350d"@en ;
     schema:url "https://harshp.com/blog/personal/canon-350d"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/criticise-me-please> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/criticise-me-please> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/criticise-me-please.html" ;
@@ -643,7 +647,7 @@
     schema:name "criticise me, please!"@en ;
     schema:url "https://harshp.com/blog/personal/criticise-me-please"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/fear-is-a-choice> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/fear-is-a-choice> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/fear-is-a-choice.html" ;
@@ -657,7 +661,7 @@
     schema:name "Fear is a choice"@en ;
     schema:url "https://harshp.com/blog/personal/fear-is-a-choice"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/handicapped> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/handicapped> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/handicapped.html" ;
@@ -672,7 +676,7 @@
     schema:name "Handicapped"@en ;
     schema:url "https://harshp.com/blog/personal/handicapped"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/just-a-minor-setback> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/just-a-minor-setback> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/just-a-minor-setback.html" ;
@@ -687,7 +691,7 @@
     schema:name "Just a minor setback"@en ;
     schema:url "https://harshp.com/blog/personal/just-a-minor-setback"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/just-tell-them-they-are-wrong> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/just-tell-them-they-are-wrong> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/just-tell-them-they-are-wrong.html" ;
@@ -701,7 +705,7 @@
     schema:name "Just tell them they are wrong"@en ;
     schema:url "https://harshp.com/blog/personal/just-tell-them-they-are-wrong"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/my-macbook-air-2013-games-better-than-my-old-dell-studio-1556> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/my-macbook-air-2013-games-better-than-my-old-dell-studio-1556> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/my-macbook-air-2013-games-better-than-my-old-dell-studio-1556.html" ;
@@ -716,7 +720,7 @@
     schema:name "My Macbook Air (2013) games better than my old Dell Studio 1556"@en ;
     schema:url "https://harshp.com/blog/personal/my-macbook-air-2013-games-better-than-my-old-dell-studio-1556"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/my-new-custom-built-gaming-pc> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/my-new-custom-built-gaming-pc> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/my-new-custom-built-gaming-pc.html" ;
@@ -731,7 +735,7 @@
     schema:name "My new custom built gaming PC"@en ;
     schema:url "https://harshp.com/blog/personal/my-new-custom-built-gaming-pc"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/sensationalismlive> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/sensationalismlive> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/sensationalismlive.html" ;
@@ -745,7 +749,7 @@
     schema:name "Sensationalism[LIVE]"@en ;
     schema:url "https://harshp.com/blog/personal/sensationalismlive"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/smile> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/smile> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/smile.html" ;
@@ -759,7 +763,7 @@
     schema:name "Smile"@en ;
     schema:url "https://harshp.com/blog/personal/smile"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/somehow-im-doing-a-phd> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/somehow-im-doing-a-phd> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/somehow-im-doing-a-phd.html" ;
@@ -774,7 +778,7 @@
     schema:name "Somehow, I'm doing a PhD"@en ;
     schema:url "https://harshp.com/blog/personal/somehow-im-doing-a-phd"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/somehow-ive-done-a-phd> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/somehow-ive-done-a-phd> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/somehow-ive-done-a-phd.html" ;
@@ -789,7 +793,7 @@
     schema:name "Somehow, I've done a PhD"@en ;
     schema:url "https://harshp.com/blog/personal/somehow-ive-done-a-phd"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/submitting-my-thesis-at-the-end-of-one-journey-and-the-beginning-of-another> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/submitting-my-thesis-at-the-end-of-one-journey-and-the-beginning-of-another> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/submitting-my-thesis-at-the-end-of-one-journey-and-the-beginning-of-another.html" ;
@@ -804,7 +808,7 @@
     schema:name "Submitting my thesis - at the end of one journey and the beginning of another"@en ;
     schema:url "https://harshp.com/blog/personal/submitting-my-thesis-at-the-end-of-one-journey-and-the-beginning-of-another"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/the-feeling> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/the-feeling> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/the-feeling.html" ;
@@ -818,7 +822,7 @@
     schema:name "The Feeling"@en ;
     schema:url "https://harshp.com/blog/personal/the-feeling"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/the-google-interview-a-dream-halfway-through> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/the-google-interview-a-dream-halfway-through> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/the-google-interview-a-dream-halfway-through.html" ;
@@ -834,7 +838,7 @@
     schema:name "The Google Interview - A dream halfway through"@en ;
     schema:url "https://harshp.com/blog/personal/the-google-interview-a-dream-halfway-through"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/where-do-i-draw-a-line> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/where-do-i-draw-a-line> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/where-do-i-draw-a-line.html" ;
@@ -848,7 +852,7 @@
     schema:name "Where do I draw a line?"@en ;
     schema:url "https://harshp.com/blog/personal/where-do-i-draw-a-line"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/white-hair> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/white-hair> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/white-hair.html" ;
@@ -863,7 +867,7 @@
     schema:name "white hair"@en ;
     schema:url "https://harshp.com/blog/personal/white-hair"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/year-in-review-2018> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/year-in-review-2018> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/year-in-review-2018.html" ;
@@ -877,7 +881,7 @@
     schema:name "Year in Review - 2018"@en ;
     schema:url "https://harshp.com/blog/personal/year-in-review-2018"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/an-introspection-on-chatbots-ai-the-future-of-privacy> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/an-introspection-on-chatbots-ai-the-future-of-privacy> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/an-introspection-on-chatbots-ai-the-future-of-privacy.html" ;
@@ -892,7 +896,7 @@
     schema:name "An introspection on Chatbots, AI & The Future of Privacy"@en ;
     schema:url "https://harshp.com/blog/privacy/an-introspection-on-chatbots-ai-the-future-of-privacy"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/are-the-eus-ethics-guidelines-too-generic> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/are-the-eus-ethics-guidelines-too-generic> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/are-the-eus-ethics-guidelines-too-generic.html" ;
@@ -908,7 +912,7 @@
     schema:name "Are the EU's Ethics Guidelines too generic?"@en ;
     schema:url "https://harshp.com/blog/privacy/are-the-eus-ethics-guidelines-too-generic"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/dear-facebook-wheres-my-freedom-of-choice> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/dear-facebook-wheres-my-freedom-of-choice> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/dear-facebook-wheres-my-freedom-of-choice.html" ;
@@ -923,7 +927,7 @@
     schema:name "Dear Facebook, where's my freedom of choice?"@en ;
     schema:url "https://harshp.com/blog/privacy/dear-facebook-wheres-my-freedom-of-choice"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/facebook-patent-describes-how-you-may-be-refused-a-loan-based-on-who-youre-friends-with> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/facebook-patent-describes-how-you-may-be-refused-a-loan-based-on-who-youre-friends-with> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/facebook-patent-describes-how-you-may-be-refused-a-loan-based-on-who-youre-friends-with.html" ;
@@ -938,7 +942,7 @@
     schema:name "Facebook patent describes how you may be refused a loan based on who you're friends with"@en ;
     schema:url "https://harshp.com/blog/privacy/facebook-patent-describes-how-you-may-be-refused-a-loan-based-on-who-youre-friends-with"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/the-cake-is-a-lie-how-companies-promise-white-lies> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/the-cake-is-a-lie-how-companies-promise-white-lies> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/the-cake-is-a-lie-how-companies-promise-white-lies.html" ;
@@ -955,7 +959,7 @@
     schema:name "How companies promise white lies"@en ;
     schema:url "https://harshp.com/blog/privacy/the-cake-is-a-lie-how-companies-promise-white-lies"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/whatsapp-web-is-retarded> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/whatsapp-web-is-retarded> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/whatsapp-web-is-retarded.html" ;
@@ -970,7 +974,7 @@
     schema:name "Whatsapp Web is retarded"@en ;
     schema:url "https://harshp.com/blog/privacy/whatsapp-web-is-retarded"^^xsd:anyURI .
 
-<https://harshp.com/blog/productivity/gratification-can-lead-to-stagnation> a <https://harshp.com/blog>,
+<https://harshp.com/blog/productivity/gratification-can-lead-to-stagnation> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/productivity/gratification-can-lead-to-stagnation.html" ;
@@ -984,7 +988,7 @@
     schema:name "Gratification can lead to Stagnation"@en ;
     schema:url "https://harshp.com/blog/productivity/gratification-can-lead-to-stagnation"^^xsd:anyURI .
 
-<https://harshp.com/blog/productivity/gtd-with-wunderlist> a <https://harshp.com/blog>,
+<https://harshp.com/blog/productivity/gtd-with-wunderlist> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/productivity/gtd-with-wunderlist.html" ;
@@ -999,7 +1003,7 @@
     schema:name "GTD with Wunderlist"@en ;
     schema:url "https://harshp.com/blog/productivity/gtd-with-wunderlist"^^xsd:anyURI .
 
-<https://harshp.com/blog/productivity/the-pitfalls-of-discovering-the-unoriginality-of-your-work> a <https://harshp.com/blog>,
+<https://harshp.com/blog/productivity/the-pitfalls-of-discovering-the-unoriginality-of-your-work> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/productivity/the-pitfalls-of-discovering-the-unoriginality-of-your-work.html" ;
@@ -1013,7 +1017,7 @@
     schema:name "The pitfalls of discovering the unoriginality of your work"@en ;
     schema:url "https://harshp.com/blog/productivity/the-pitfalls-of-discovering-the-unoriginality-of-your-work"^^xsd:anyURI .
 
-<https://harshp.com/blog/productivity/two-surprisingly-productive-weeks> a <https://harshp.com/blog>,
+<https://harshp.com/blog/productivity/two-surprisingly-productive-weeks> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/productivity/two-surprisingly-productive-weeks.html" ;
@@ -1028,7 +1032,7 @@
     schema:name "Two surprisingly productive weeks"@en ;
     schema:url "https://harshp.com/blog/productivity/two-surprisingly-productive-weeks"^^xsd:anyURI .
 
-<https://harshp.com/blog/productivity/workaholic-dont-be-working-full-time> a <https://harshp.com/blog>,
+<https://harshp.com/blog/productivity/workaholic-dont-be-working-full-time> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/productivity/workaholic-dont-be-working-full-time.html" ;
@@ -1044,7 +1048,7 @@
     schema:name "Workaholic - don't be working full time"@en ;
     schema:url "https://harshp.com/blog/productivity/workaholic-dont-be-working-full-time"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/bratislava> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/bratislava> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/bratislava.html" ;
@@ -1059,7 +1063,7 @@
     schema:name "Bratislava"@en ;
     schema:url "https://harshp.com/blog/travel/bratislava"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/greece> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/greece> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/greece.html" ;
@@ -1074,7 +1078,7 @@
     schema:name "Greece"@en ;
     schema:url "https://harshp.com/blog/travel/greece"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/london> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/london> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/london.html" ;
@@ -1090,7 +1094,7 @@
     schema:name "London"@en ;
     schema:url "https://harshp.com/blog/travel/london"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/sofia> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/sofia> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/sofia.html" ;
@@ -1104,7 +1108,7 @@
     schema:name "Sofia"@en ;
     schema:url "https://harshp.com/blog/travel/sofia"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/the-plight-of-languages-in-india> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/the-plight-of-languages-in-india> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/the-plight-of-languages-in-india.html" ;
@@ -1120,7 +1124,7 @@
     schema:name "The Plight of languages in India"@en ;
     schema:url "https://harshp.com/blog/travel/the-plight-of-languages-in-india"^^xsd:anyURI .
 
-<https://harshp.com/blog/travel/vienna> a <https://harshp.com/blog>,
+<https://harshp.com/blog/travel/vienna> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/travel/vienna.html" ;
@@ -1137,7 +1141,7 @@
     schema:name "Vienna"@en ;
     schema:url "https://harshp.com/blog/travel/vienna"^^xsd:anyURI .
 
-<https://harshp.com/blog/personal/unshackle-from-being-enslaved-at-work> a <https://harshp.com/blog>,
+<https://harshp.com/blog/personal/unshackle-from-being-enslaved-at-work> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/personal/unshackle-from-being-enslaved-at-work" ;
@@ -1153,7 +1157,7 @@
     schema:name "Unshackled from being enslaved at work"@en ;
     schema:url "https://harshp.com/blog/personal/unshackle-from-being-enslaved-at-work"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/gris> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/gris> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/gris.html" ;
@@ -1169,7 +1173,7 @@
     schema:name "Gris"@en ;
     schema:url "https://harshp.com/blog/games/gris"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/journey> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/journey> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/journey.html" ;
@@ -1185,7 +1189,7 @@
     schema:name "Journey"@en ;
     schema:url "https://harshp.com/blog/games/journey"^^xsd:anyURI .
 
-<https://harshp.com/blog/philosophy/joys-new-things-routine-chores> a <https://harshp.com/blog>,
+<https://harshp.com/blog/philosophy/joys-new-things-routine-chores> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/philosophy/joys-new-things-routine-chores.html" ;
@@ -1200,7 +1204,7 @@
     schema:name "The Joys of Using New Things in Routine Chores"@en ;
     schema:url "https://harshp.com/blog/philosophy/joys-new-things-routine-chores"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/outer-wilds> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/outer-wilds> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/outer-wilds.html" ;
@@ -1217,7 +1221,7 @@
     schema:name "Outer Wilds"@en ;
     schema:url "https://harshp.com/blog/games/outer-wilds"^^xsd:anyURI .
 
-<https://harshp.com/blog/games/return-of-obra-dinn> a <https://harshp.com/blog>,
+<https://harshp.com/blog/games/return-of-obra-dinn> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/games/return-of-the-obra-dinn.html" ;
@@ -1233,7 +1237,7 @@
     schema:name "Return of the Obra Dinn"@en ;
     schema:url "https://harshp.com/blog/games/return-of-the-obra-dinn"^^xsd:anyURI .
 
-<https://harshp.com/blog/food_drink/pizza-dublin> a <https://harshp.com/blog>,
+<https://harshp.com/blog/food_drink/pizza-dublin> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/food_drink/pizza-dublin.html" ;
@@ -1250,7 +1254,7 @@
     schema:name "Pizza in Dublin"@en ;
     schema:url "https://harshp.com/blog/food_drink/pizza-dublin"^^xsd:anyURI .
 
-<https://harshp.com/blog/privacy/pay-or-surveillance-ads> a <https://harshp.com/blog>,
+<https://harshp.com/blog/privacy/pay-or-surveillance-ads> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/privacy/pay-or-surveillance-ads.html" ;
@@ -1267,7 +1271,7 @@
     schema:name "Pay, or Consent to Surveillance Ads - NOT the road forward"@en ;
     schema:url "https://harshp.com/blog/privacy/pay-or-surveillance-ads"^^xsd:anyURI .
 
-<https://harshp.com/blog/humour/schrodingers-paper> a <https://harshp.com/blog>,
+<https://harshp.com/blog/humour/schrodingers-paper> a <https://harshp.com/blog>, schema:BlogPosting,
         hpcom:RenderedItem ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/blog/humour/schrodingers-paper.html" ;

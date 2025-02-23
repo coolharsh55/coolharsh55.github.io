@@ -1,3 +1,4 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hpcom: <https://harshp.com/code/vocab#> .
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix schema: <https://schema.org/> .
@@ -6,12 +7,15 @@
 
 @prefix hptag: <https://harshp.com/tags/> .
 
-<https://harshp.com/dev> hpcom:content [
+<https://harshp.com/dev>  a rdfs:Class, hpcom:RenderedItem ;
+    schema:name "dev"@en ;
+    schema:url "https://harshp.com/dev"^^xsd:anyURI ;
+    hpcom:content [
         a hpcom:Content ;
         hpcom:renderWith hpview:DevIndexView ;
-        ] .
+    ] .
 
-<https://harshp.com/dev/code_optimisation/nested-for-loops> a hpcom:RenderedItem,
+<https://harshp.com/dev/code_optimisation/nested-for-loops> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/code_optimisation/nested-for-loops.html" ;
@@ -26,7 +30,7 @@
     schema:name "nested for loops"@en ;
     schema:url "https://harshp.com/dev/code_optimisation/nested-for-loops"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses.html" ;
@@ -42,7 +46,7 @@
     schema:name "Analysing GNIB appointment app survey responses"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/appointment-notifications-using-telegram-app> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/appointment-notifications-using-telegram-app> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/appointment-notifications-using-telegram-app.html" ;
@@ -59,7 +63,7 @@
     schema:name "Appointment notifications using Telegram app"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/appointment-notifications-using-telegram-app"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/chrome-extension-for-loadingsaving-form-data> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/chrome-extension-for-loadingsaving-form-data> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/chrome-extension-for-loadingsaving-form-data.html" ;
@@ -77,7 +81,7 @@
     schema:name "Chrome extension for loading/saving form data"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/chrome-extension-for-loadingsaving-form-data"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/getting-appointments-using-bash> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/getting-appointments-using-bash> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/getting-appointments-using-bash.html" ;
@@ -94,7 +98,7 @@
     schema:name "Getting appointments using bash"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/getting-appointments-using-bash"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/getting-appointments-using-python> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/getting-appointments-using-python> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/getting-appointments-using-python.html" ;
@@ -111,7 +115,7 @@
     schema:name "Getting appointments using python"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/getting-appointments-using-python"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/heroku-app-to-view-gnib-appointments> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/heroku-app-to-view-gnib-appointments> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/heroku-app-to-view-gnib-appointments.html" ;
@@ -128,7 +132,7 @@
     schema:name "Heroku app to view GNIB appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/heroku-app-to-view-gnib-appointments"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/retrieving-visa-appointments> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/retrieving-visa-appointments> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/retrieving-visa-appointments.html" ;
@@ -144,7 +148,7 @@
     schema:name "Retrieving Visa appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/retrieving-visa-appointments"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/reverse-engineering-an-easy-way-to-check-gnib-appointments> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/reverse-engineering-an-easy-way-to-check-gnib-appointments> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/reverse-engineering-an-easy-way-to-check-gnib-appointments.html" ;
@@ -160,7 +164,7 @@
     schema:name "Reverse engineering an easy way to check GNIB appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/reverse-engineering-an-easy-way-to-check-gnib-appointments"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/setting-up-a-facebook-bot-to-respond-with-available-gnibvisa-appointments> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/setting-up-a-facebook-bot-to-respond-with-available-gnibvisa-appointments> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/setting-up-a-facebook-bot-to-respond-with-available-gnibvisa-appointments.html" ;
@@ -178,7 +182,7 @@
     schema:name "Setting up a Facebook bot to respond with available GNIB/VISA appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/setting-up-a-facebook-bot-to-respond-with-available-gnibvisa-appointments"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments/setting-up-notifications-via-telegram> a hpcom:RenderedItem,
+<https://harshp.com/dev/gnib_appointments/setting-up-notifications-via-telegram> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/gnib_appointments/setting-up-notifications-via-telegram.html" ;
@@ -196,7 +200,7 @@
     schema:name "Setting up notifications via Telegram"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments/setting-up-notifications-via-telegram"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail> a hpcom:RenderedItem,
+<https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/moving-from-AWS-to-LightSail.html" ;
@@ -212,7 +216,7 @@
     schema:name "Moving from AWS EC2 to Lightsail"@en ;
     schema:url "https://harshp.com/dev/harshp.com/moving-from-AWS-to-LightSail"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/rdf-website-generator> a hpcom:RenderedItem,
+<https://harshp.com/dev/harshp.com/rdf-website-generator> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/rdf-website-generator.html" ;
@@ -228,7 +232,7 @@
     schema:name "RDF Website Generator"@en ;
     schema:url "https://harshp.com/dev/harshp.com/rdf-website-generator"^^xsd:anyURI .
 
-<https://harshp.com/dev/hdd_indexer/choosing-the-right-framework> a hpcom:RenderedItem,
+<https://harshp.com/dev/hdd_indexer/choosing-the-right-framework> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/choosing-the-right-framework.html" ;
@@ -243,7 +247,7 @@
     schema:name "Choosing the right framework"@en ;
     schema:url "https://harshp.com/dev/hdd_indexer/choosing-the-right-framework"^^xsd:anyURI .
 
-<https://harshp.com/dev/hdd_indexer/give-take-lists> a hpcom:RenderedItem,
+<https://harshp.com/dev/hdd_indexer/give-take-lists> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/give-take-lists.html" ;
@@ -258,7 +262,7 @@
     schema:name "give & take lists"@en ;
     schema:url "https://harshp.com/dev/hdd_indexer/give-take-lists"^^xsd:anyURI .
 
-<https://harshp.com/dev/hdd_indexer/hdd-indexer-v01> a hpcom:RenderedItem,
+<https://harshp.com/dev/hdd_indexer/hdd-indexer-v01> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/hdd-indexer-v01.html" ;
@@ -273,7 +277,7 @@
     schema:name "HDD-indexer v0.1"@en ;
     schema:url "https://harshp.com/dev/hdd_indexer/hdd-indexer-v01"^^xsd:anyURI .
 
-<https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier> a hpcom:RenderedItem,
+<https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/hdd_indexer/imdbnator-like-this-but-classier.html" ;
@@ -288,7 +292,7 @@
     schema:name "imdbnator - like this, but classier"@en ;
     schema:url "https://harshp.com/dev/hdd_indexer/imdbnator-like-this-but-classier"^^xsd:anyURI .
 
-<https://harshp.com/dev/klip/inheriting-klip> a hpcom:RenderedItem,
+<https://harshp.com/dev/klip/inheriting-klip> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/klip/inheriting-klip.html" ;
@@ -303,7 +307,7 @@
     schema:name "Inheriting klip"@en ;
     schema:url "https://harshp.com/dev/klip/inheriting-klip"^^xsd:anyURI .
 
-<https://harshp.com/dev/klip/previous-project-kindle-annotations> a hpcom:RenderedItem,
+<https://harshp.com/dev/klip/previous-project-kindle-annotations> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/klip/previous-project-kindle-annotations.html" ;
@@ -320,7 +324,7 @@
     schema:name "previous project - kindle annotations"@en ;
     schema:url "https://harshp.com/dev/klip/previous-project-kindle-annotations"^^xsd:anyURI .
 
-<https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator> a hpcom:RenderedItem,
+<https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/news_aggregator/repetition-in-news-aggregator.html" ;
@@ -335,7 +339,7 @@
     schema:name "Repetition in News Aggregator"@en ;
     schema:url "https://harshp.com/dev/news_aggregator/repetition-in-news-aggregator"^^xsd:anyURI .
 
-<https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes> a hpcom:RenderedItem,
+<https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/printing_notifications/notification-when-printing-actually-completes.html" ;
@@ -352,7 +356,7 @@
     schema:name "Notification when printing *actually* completes"@en ;
     schema:url "https://harshp.com/dev/printing_notifications/notification-when-printing-actually-completes"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/documenting-ontologies-using-widoco.html" ;
@@ -368,7 +372,7 @@
     schema:name "Documenting ontologies using Widoco"@en ;
     schema:url "https://harshp.com/dev/semantic_web/documenting-ontologies-using-widoco"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/primer-on-semantic-web-ontologies.html" ;
@@ -383,7 +387,7 @@
     schema:name "Primer on Semantic Web Ontologies"@en ;
     schema:url "https://harshp.com/dev/semantic_web/primer-on-semantic-web-ontologies"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/rdfowl-content-negotiation-using-nginx.html" ;
@@ -399,7 +403,7 @@
     schema:name "RDF/OWL content-negotiation using NGINX"@en ;
     schema:url "https://harshp.com/dev/semantic_web/rdfowl-content-negotiation-using-nginx"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/setting-up-fuseki> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/setting-up-fuseki> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-fuseki.html" ;
@@ -416,7 +420,7 @@
     schema:name "Setting up Fuseki"@en ;
     schema:url "https://harshp.com/dev/semantic_web/setting-up-fuseki"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-openlink-virtuoso.html" ;
@@ -432,7 +436,7 @@
     schema:name "Setting up Openlink Virtuoso"@en ;
     schema:url "https://harshp.com/dev/semantic_web/setting-up-openlink-virtuoso"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/setting-up-pubby> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/setting-up-pubby> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/setting-up-pubby.html" ;
@@ -448,7 +452,7 @@
     schema:name "Setting up Pubby"@en ;
     schema:url "https://harshp.com/dev/semantic_web/setting-up-pubby"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web/tools-for-semantic-web> a hpcom:RenderedItem,
+<https://harshp.com/dev/semantic_web/tools-for-semantic-web> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/semantic_web/tools-for-semantic-web.html" ;
@@ -466,7 +470,7 @@
     schema:name "Tools for Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web/tools-for-semantic-web"^^xsd:anyURI .
 
-<https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same> a hpcom:RenderedItem,
+<https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same.html" ;
@@ -483,7 +487,7 @@
     schema:name "checking if time difference between stations are the same"@en ;
     schema:url "https://harshp.com/dev/train_schedule/checking-if-time-difference-between-stations-are-the-same"^^xsd:anyURI .
 
-<https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station> a hpcom:RenderedItem,
+<https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/designing-data-models-for-trains-timings-and-station.html" ;
@@ -500,7 +504,7 @@
     schema:name "designing data models for trains, timings, and station"@en ;
     schema:url "https://harshp.com/dev/train_schedule/designing-data-models-for-trains-timings-and-station"^^xsd:anyURI .
 
-<https://harshp.com/dev/train_schedule/handling-special-cases> a hpcom:RenderedItem,
+<https://harshp.com/dev/train_schedule/handling-special-cases> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/handling-special-cases.html" ;
@@ -517,7 +521,7 @@
     schema:name "handling special cases"@en ;
     schema:url "https://harshp.com/dev/train_schedule/handling-special-cases"^^xsd:anyURI .
 
-<https://harshp.com/dev/train_schedule/populating-train-schedule> a hpcom:RenderedItem,
+<https://harshp.com/dev/train_schedule/populating-train-schedule> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/train_schedule/populating-train-schedule.html" ;
@@ -534,7 +538,7 @@
     schema:name "populating train schedule"@en ;
     schema:url "https://harshp.com/dev/train_schedule/populating-train-schedule"^^xsd:anyURI .
 
-<https://harshp.com/dev/webdev/full-stack-website-guide> a hpcom:RenderedItem,
+<https://harshp.com/dev/webdev/full-stack-website-guide> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/webdev/full-stack-website-guide.html" ;
@@ -553,7 +557,7 @@
     schema:name "Full Stack Website Guide"@en ;
     schema:url "https://harshp.com/dev/webdev/full-stack-website-guide"^^xsd:anyURI .
 
-<https://harshp.com/dev/webdev/w3c-irc> a hpcom:RenderedItem,
+<https://harshp.com/dev/webdev/w3c-irc> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/webdev/w3c-irc.html" ;
@@ -568,67 +572,67 @@
     schema:name "W3C IRC meeting logs guide"@en ;
     schema:url "https://harshp.com/dev/webdev/w3c-irc"^^xsd:anyURI .
 
-<https://harshp.com/dev/code_optimisation> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/code_optimisation> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "code optimisation"@en ;
     schema:url "https://harshp.com/dev/code_optimisation"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/harshp.com> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "harshp.com"@en ;
     schema:url "https://harshp.com/dev/harshp.com"^^xsd:anyURI .
 
-<https://harshp.com/dev/news_aggregator> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/news_aggregator> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "news aggregator"@en ;
     schema:url "https://harshp.com/dev/news_aggregator"^^xsd:anyURI .
 
-<https://harshp.com/dev/printing_notifications> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/printing_notifications> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "printing notifications"@en ;
     schema:url "https://harshp.com/dev/printing_notifications"^^xsd:anyURI .
 
-<https://harshp.com/dev/webdev> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/webdev> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "web development"@en ;
     schema:url "https://harshp.com/dev/webdev"^^xsd:anyURI .
 
-<https://harshp.com/dev/klip> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/klip> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "klip - Kindle Annotations"@en ;
     schema:url "https://harshp.com/dev/klip"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "Data Privacy Vocabulary (DPV)"@en ;
     schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
-<https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/hdd_indexer> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "HDD Indexer - sharing movies & files"@en ;
     schema:url "https://harshp.com/dev/hdd_indexer"^^xsd:anyURI .
 
-<https://harshp.com/dev/train_schedule> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/train_schedule> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "Pune-Lonavala Train Schedule App"@en ;
     schema:url "https://harshp.com/dev/train_schedule"^^xsd:anyURI .
 
-<https://harshp.com/dev/semantic_web> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/semantic_web> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "Semantic Web"@en ;
     schema:url "https://harshp.com/dev/semantic_web"^^xsd:anyURI .
 
-<https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "GNIB Appointments"@en ;
     schema:url "https://harshp.com/dev/gnib_appointments"^^xsd:anyURI .
 
-<https://harshp.com/dev/system> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/system> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "System"@en ;
     schema:url "https://harshp.com/dev/system"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/dpv-x-2021-08-15> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/dpv-x-2021-08-15> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-x-2021-08-15.html" ;
@@ -642,7 +646,7 @@
     schema:name "dpv-x 2021-08-15"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-x-2021-08-15"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/dpv-v1-checklist> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/dpv-v1-checklist> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-v1-checklist.html" ;
@@ -656,7 +660,7 @@
     schema:name "DPV v1 Checklist"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-v1-checklist"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/locations-01> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/locations-01> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-01.html" ;
@@ -670,7 +674,7 @@
     schema:name "Modelling Subjective Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-01"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/locations-02> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/locations-02> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-02.html" ;
@@ -684,7 +688,7 @@
     schema:name "Modelling Inverse Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-02"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/locations-03> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/locations-03> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-03.html" ;
@@ -698,7 +702,7 @@
     schema:name "Modelling Public/Private Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-03"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/ai-training> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/ai-training> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/ai-training.html" ;
@@ -712,12 +716,12 @@
     schema:name "Modelling AI Training in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/ai-training"^^xsd:anyURI .
 
-<https://harshp.com/dev/rants> a hpcom:RenderedItem, <https://harshp.com/dev> ;
+<https://harshp.com/dev/rants> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/dev> ; 
     hpcom:content [ a hpcom:Content; hpcom:renderWith hpview:DevProjectView ; ] ;
     schema:name "Rants"@en ;
     schema:url "https://harshp.com/dev/rants"^^xsd:anyURI .
 
-<https://harshp.com/dev/rants/ieee-7000> a hpcom:RenderedItem,
+<https://harshp.com/dev/rants/ieee-7000> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/rants/ieee-7000-user-hostile.html" ;
@@ -731,7 +735,7 @@
     schema:name "Accessing IEEE 7000 standard is hostile to User"@en ;
     schema:url "https://harshp.com/dev/rants/ieee-7000"^^xsd:anyURI .
 
-<https://harshp.com/dev/webdev/pdf2slideshow> a hpcom:RenderedItem,
+<https://harshp.com/dev/webdev/pdf2slideshow> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/webdev/pdf2slideshow.html" ;
@@ -745,7 +749,7 @@
     schema:name "pdf2slideshow: Convert your PDFs to HTML Slideshows"@en ;
     schema:url "https://harshp.com/dev/webdev/pdf2slideshow"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/dpv-skos-analysis> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/dpv-skos-analysis> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-skos-analysis.html" ;
@@ -760,7 +764,7 @@
     schema:subjectOf [ a hpcom:Link ; schema:name "Data Privacy Vocabulary (DPV)"; schema:url "https://www.w3.org/ns/dpv" ] ;
     schema:url "https://harshp.com/dev/dpv/dpv-skos-analysis"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/dpv-skos-analysis-2> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/dpv-skos-analysis-2> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/dpv-skos-analysis-2.html" ;
@@ -775,7 +779,7 @@
     schema:name "DPV as a SKOS vocabulary: Analysis Part 2"@en ;
     schema:url "https://harshp.com/dev/dpv/dpv-skos-analysis-2"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/updating-consent-concepts> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/updating-consent-concepts> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/updating-consent-concepts.html" ;
@@ -790,7 +794,7 @@
     schema:name "Proposal for updating Consent concepts"@en ;
     schema:url "https://harshp.com/dev/dpv/updating-consent-concepts"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/standards-iso> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/standards-iso> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/standards-iso.html" ;
@@ -805,7 +809,7 @@
     schema:name "Add ISO standards to tech-org measures"@en ;
     schema:url "https://harshp.com/dev/dpv/standards-iso"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/notes-reuse-euvoc> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/notes-reuse-euvoc> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/notes-reuse-euvoc.html" ;
@@ -820,7 +824,7 @@
     schema:name "Notes on reuse of EU Vocabularies for DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/notes-reuse-euvoc"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/website-plan-old> a hpcom:RenderedItem,
+<https://harshp.com/dev/harshp.com/website-plan-old> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/website-plan-old.html" ;
@@ -837,7 +841,7 @@
     schema:name "Old Website Update Ideas"@en ;
     schema:url "https://harshp.com/dev/harshp.com/website-plan-old"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/notes-2.1-legal-eu-eea-extensions.html" ;
@@ -851,7 +855,7 @@
     schema:name "Adding EU/EEA jurisdiction extensions to DPV 2.1-dev"@en ;
     schema:url "https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv/notes-2.1-loc-iso-subdivisions> a hpcom:RenderedItem,
+<https://harshp.com/dev/dpv/notes-2.1-loc-iso-subdivisions> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/dpv/notes-2.1-loc-iso-subdivisions.html" ;
@@ -865,7 +869,7 @@
     schema:name "Adding ISO 3166-2 subvisions to LOC in DPV 2.1-dev"@en ;
     schema:url "https://harshp.com/dev/dpv/notes-2.1-loc-iso-subdivisions"^^xsd:anyURI .
 
-<https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner> a hpcom:RenderedItem,
+<https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner> a hpcom:RenderedItem, schema:BlogPosting, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner.html" ;
@@ -885,7 +889,7 @@
     schema:name "Moving from GitHub Pages to Hetzner and Caddy with Analytics"@en ;
     schema:url "https://harshp.com/dev/harshp.com/moving-from-GitHub-Pages-to-Hetzner"^^xsd:anyURI .
 
-<https://harshp.com/dev/system/arch-packages> a hpcom:RenderedItem, hpcom:RollingPost,
+<https://harshp.com/dev/system/arch-packages> a hpcom:RenderedItem, schema:BlogPosting, hpcom:RollingPost, 
         <https://harshp.com/dev> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/dev/system/arch-packages.html" ;

@@ -1,3 +1,4 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hpcom: <https://harshp.com/code/vocab#> .
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix schema: <https://schema.org/> .
@@ -5,12 +6,15 @@
 
 @prefix hptag: <https://harshp.com/tags/> .
 
-<https://harshp.com/stories> hpcom:content [
+<https://harshp.com/stories>  a rdfs:Class, schema:BlogPosting, hpcom:RenderedItem ;
+    schema:name "stories"@en ;
+    schema:url "https://harshp.com/stories"^^xsd:anyURI ;
+    hpcom:content [
         a hpcom:Content ;
         hpcom:renderWith hpview:StoryIndexView ;
         ] .
 
-<https://harshp.com/stories/ideas> a hpcom:RenderedItem ;
+<https://harshp.com/stories/ideas> a hpcom:RenderedItem, schema:BlogPosting, <https://harshp.com/stories> ;
     hpcom:content [
         hpcom:contentFile "https://harshp.com/code/content/stories/ideas.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
@@ -20,7 +24,7 @@
     schema:description "These are ideas for stories. Seeds that one day may bloom."@en ;
     schema:url "https://harshp.com/stories/ideas"^^xsd:anyURI .
 
-<https://harshp.com/stories/apple-sauce-in-cranberry-juice> a hpcom:RenderedItem,
+<https://harshp.com/stories/apple-sauce-in-cranberry-juice> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/apple-sauce-in-cranberry-juice.html" ;
@@ -37,7 +41,7 @@
     schema:name "apple sauce in cranberry juice"@en ;
     schema:url "https://harshp.com/stories/apple-sauce-in-cranberry-juice"^^xsd:anyURI .
 
-<https://harshp.com/stories/azure> a hpcom:RenderedItem,
+<https://harshp.com/stories/azure> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/azure.html" ;
@@ -53,7 +57,7 @@
     schema:name "Azure"@en ;
     schema:url "https://harshp.com/stories/azure"^^xsd:anyURI .
 
-<https://harshp.com/stories/behind-the-veil> a hpcom:RenderedItem,
+<https://harshp.com/stories/behind-the-veil> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/behind-the-veil.html" ;
@@ -67,7 +71,7 @@
     schema:name "Behind the veil"@en ;
     schema:url "https://harshp.com/stories/behind-the-veil"^^xsd:anyURI .
 
-<https://harshp.com/stories/box-of-happiness> a hpcom:RenderedItem,
+<https://harshp.com/stories/box-of-happiness> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/box-of-happiness.html" ;
@@ -82,7 +86,7 @@
     schema:name "Box of happiness"@en ;
     schema:url "https://harshp.com/stories/box-of-happiness"^^xsd:anyURI .
 
-<https://harshp.com/stories/broken-mirrors> a hpcom:RenderedItem,
+<https://harshp.com/stories/broken-mirrors> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/broken-mirrors.html" ;
@@ -97,7 +101,7 @@
     schema:name "Broken Mirrors"@en ;
     schema:url "https://harshp.com/stories/broken-mirrors"^^xsd:anyURI .
 
-<https://harshp.com/stories/carrying-roses> a hpcom:RenderedItem,
+<https://harshp.com/stories/carrying-roses> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/carrying-roses.html" ;
@@ -112,7 +116,7 @@
     schema:name "carrying roses"@en ;
     schema:url "https://harshp.com/stories/carrying-roses"^^xsd:anyURI .
 
-<https://harshp.com/stories/chiasmus> a hpcom:RenderedItem,
+<https://harshp.com/stories/chiasmus> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/chiasmus.html" ;
@@ -126,7 +130,7 @@
     schema:name "chiasmus"@en ;
     schema:url "https://harshp.com/stories/chiasmus"^^xsd:anyURI .
 
-<https://harshp.com/stories/chrysanthemum> a hpcom:RenderedItem,
+<https://harshp.com/stories/chrysanthemum> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/chrysanthemum.html" ;
@@ -142,7 +146,7 @@
     schema:name "Chrysanthemum"@en ;
     schema:url "https://harshp.com/stories/chrysanthemum"^^xsd:anyURI .
 
-<https://harshp.com/stories/chrysanthemum-ii> a hpcom:RenderedItem,
+<https://harshp.com/stories/chrysanthemum-ii> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/chrysanthemum-ii.html" ;
@@ -157,7 +161,7 @@
     schema:name "Chrysanthemum - II"@en ;
     schema:url "https://harshp.com/stories/chrysanthemum-ii"^^xsd:anyURI .
 
-<https://harshp.com/stories/courage> a hpcom:RenderedItem,
+<https://harshp.com/stories/courage> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/courage.html" ;
@@ -172,7 +176,7 @@
     schema:name "courage"@en ;
     schema:url "https://harshp.com/stories/courage"^^xsd:anyURI .
 
-<https://harshp.com/stories/dead-men-do-tell-tales> a hpcom:RenderedItem,
+<https://harshp.com/stories/dead-men-do-tell-tales> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/dead-men-do-tell-tales.html" ;
@@ -187,7 +191,7 @@
     schema:name "Dead men do tell tales"@en ;
     schema:url "https://harshp.com/stories/dead-men-do-tell-tales"^^xsd:anyURI .
 
-<https://harshp.com/stories/distance> a hpcom:RenderedItem,
+<https://harshp.com/stories/distance> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/distance.html" ;
@@ -201,7 +205,7 @@
     schema:name "distance"@en ;
     schema:url "https://harshp.com/stories/distance"^^xsd:anyURI .
 
-<https://harshp.com/stories/do-cup-chai> a hpcom:RenderedItem,
+<https://harshp.com/stories/do-cup-chai> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/do-cup-chai.html" ;
@@ -215,7 +219,7 @@
     schema:name "do cup chai"@en ;
     schema:url "https://harshp.com/stories/do-cup-chai"^^xsd:anyURI .
 
-<https://harshp.com/stories/dust-and-destiny> a hpcom:RenderedItem,
+<https://harshp.com/stories/dust-and-destiny> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/dust-and-destiny.html" ;
@@ -230,7 +234,7 @@
     schema:name "dust and destiny"@en ;
     schema:url "https://harshp.com/stories/dust-and-destiny"^^xsd:anyURI .
 
-<https://harshp.com/stories/finding-monsters-under-the-bed> a hpcom:RenderedItem,
+<https://harshp.com/stories/finding-monsters-under-the-bed> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/finding-monsters-under-the-bed.html" ;
@@ -245,7 +249,7 @@
     schema:name "finding monsters under the bed"@en ;
     schema:url "https://harshp.com/stories/finding-monsters-under-the-bed"^^xsd:anyURI .
 
-<https://harshp.com/stories/firefly> a hpcom:RenderedItem,
+<https://harshp.com/stories/firefly> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/firefly.html" ;
@@ -260,7 +264,7 @@
     schema:name "Firefly"@en ;
     schema:url "https://harshp.com/stories/firefly"^^xsd:anyURI .
 
-<https://harshp.com/stories/how-we-came-to-be> a hpcom:RenderedItem,
+<https://harshp.com/stories/how-we-came-to-be> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/how-we-came-to-be.html" ;
@@ -275,7 +279,7 @@
     schema:name "how we came to be"@en ;
     schema:url "https://harshp.com/stories/how-we-came-to-be"^^xsd:anyURI .
 
-<https://harshp.com/stories/just-look-right> a hpcom:RenderedItem,
+<https://harshp.com/stories/just-look-right> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/just-look-right.html" ;
@@ -291,7 +295,7 @@
     schema:name "Just look right"@en ;
     schema:url "https://harshp.com/stories/just-look-right"^^xsd:anyURI .
 
-<https://harshp.com/stories/kintsugi> a hpcom:RenderedItem,
+<https://harshp.com/stories/kintsugi> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/kintsugi.html" ;
@@ -306,7 +310,7 @@
     schema:name "Kintsugi"@en ;
     schema:url "https://harshp.com/stories/kintsugi"^^xsd:anyURI .
 
-<https://harshp.com/stories/little-birdy-learns-to-fly> a hpcom:RenderedItem,
+<https://harshp.com/stories/little-birdy-learns-to-fly> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/little-birdy-learns-to-fly.html" ;
@@ -321,7 +325,7 @@
     schema:name "little birdy learns to fly"@en ;
     schema:url "https://harshp.com/stories/little-birdy-learns-to-fly"^^xsd:anyURI .
 
-<https://harshp.com/stories/lost-treasures> a hpcom:RenderedItem,
+<https://harshp.com/stories/lost-treasures> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/lost-treasures.html" ;
@@ -336,7 +340,7 @@
     schema:name "Lost Treasures"@en ;
     schema:url "https://harshp.com/stories/lost-treasures"^^xsd:anyURI .
 
-<https://harshp.com/stories/miscalculation> a hpcom:RenderedItem,
+<https://harshp.com/stories/miscalculation> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/miscalculation.html" ;
@@ -352,7 +356,7 @@
     schema:name "miscalculation"@en ;
     schema:url "https://harshp.com/stories/miscalculation"^^xsd:anyURI .
 
-<https://harshp.com/stories/orphans> a hpcom:RenderedItem,
+<https://harshp.com/stories/orphans> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/orphans.html" ;
@@ -367,7 +371,7 @@
     schema:name "orphans"@en ;
     schema:url "https://harshp.com/stories/orphans"^^xsd:anyURI .
 
-<https://harshp.com/stories/pech> a hpcom:RenderedItem,
+<https://harshp.com/stories/pech> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/pech.html" ;
@@ -384,7 +388,7 @@
     schema:name "pech"@en ;
     schema:url "https://harshp.com/stories/pech"^^xsd:anyURI .
 
-<https://harshp.com/stories/purple-dilation> a hpcom:RenderedItem,
+<https://harshp.com/stories/purple-dilation> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/purple-dilation.html" ;
@@ -399,7 +403,7 @@
     schema:name "Purple Dilation"@en ;
     schema:url "https://harshp.com/stories/purple-dilation"^^xsd:anyURI .
 
-<https://harshp.com/stories/revenge-is-a-mindless-beast> a hpcom:RenderedItem,
+<https://harshp.com/stories/revenge-is-a-mindless-beast> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/revenge-is-a-mindless-beast.html" ;
@@ -414,7 +418,7 @@
     schema:name "Revenge is a mindless beast"@en ;
     schema:url "https://harshp.com/stories/revenge-is-a-mindless-beast"^^xsd:anyURI .
 
-<https://harshp.com/stories/saptapadi> a hpcom:RenderedItem,
+<https://harshp.com/stories/saptapadi> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/saptapadi.html" ;
@@ -429,7 +433,7 @@
     schema:name "Saptapadi"@en ;
     schema:url "https://harshp.com/stories/saptapadi"^^xsd:anyURI .
 
-<https://harshp.com/stories/stellar> a hpcom:RenderedItem,
+<https://harshp.com/stories/stellar> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/stellar.html" ;
@@ -444,7 +448,7 @@
     schema:name "stellar"@en ;
     schema:url "https://harshp.com/stories/stellar"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-godman> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-godman> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-godman.html" ;
@@ -459,7 +463,7 @@
     schema:name "The Godman"@en ;
     schema:url "https://harshp.com/stories/the-godman"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-magic-ring> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-magic-ring> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-magic-ring.html" ;
@@ -476,7 +480,7 @@
     schema:name "The Magic Ring"@en ;
     schema:url "https://harshp.com/stories/the-magic-ring"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-teapot> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-teapot> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-teapot.html" ;
@@ -491,7 +495,7 @@
     schema:name "The Teapot"@en ;
     schema:url "https://harshp.com/stories/the-teapot"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-thumping-sound> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-thumping-sound> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-thumping-sound.html" ;
@@ -507,7 +511,7 @@
     schema:name "the thumping sound"@en ;
     schema:url "https://harshp.com/stories/the-thumping-sound"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-traveller> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-traveller> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-traveller.html" ;
@@ -522,7 +526,7 @@
     schema:name "The Traveller"@en ;
     schema:url "https://harshp.com/stories/the-traveller"^^xsd:anyURI .
 
-<https://harshp.com/stories/the-umbrella> a hpcom:RenderedItem,
+<https://harshp.com/stories/the-umbrella> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/the-umbrella.html" ;
@@ -537,7 +541,7 @@
     schema:name "The Umbrella"@en ;
     schema:url "https://harshp.com/stories/the-umbrella"^^xsd:anyURI .
 
-<https://harshp.com/stories/undercurrents-of-a-soul> a hpcom:RenderedItem,
+<https://harshp.com/stories/undercurrents-of-a-soul> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/undercurrents-of-a-soul.html" ;
@@ -552,7 +556,7 @@
     schema:name "undercurrents of a soul"@en ;
     schema:url "https://harshp.com/stories/undercurrents-of-a-soul"^^xsd:anyURI .
 
-<https://harshp.com/stories/xenophobia> a hpcom:RenderedItem,
+<https://harshp.com/stories/xenophobia> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/xenophobia.html" ;
@@ -567,7 +571,7 @@
     schema:name "Xenophobia"@en ;
     schema:url "https://harshp.com/stories/xenophobia"^^xsd:anyURI .
 
-<https://harshp.com/stories/forgotten-stories> a hpcom:RenderedItem,
+<https://harshp.com/stories/forgotten-stories> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/forgotten-stories.html" ;
@@ -581,7 +585,7 @@
     schema:name "Forgotten Stories"@en ;
     schema:url "https://harshp.com/stories/forgotten-stories"^^xsd:anyURI .
 
-<https://harshp.com/stories/god-of-awakening> a hpcom:RenderedItem,
+<https://harshp.com/stories/god-of-awakening> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/stories> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/stories/god-of-awakening.html" ;

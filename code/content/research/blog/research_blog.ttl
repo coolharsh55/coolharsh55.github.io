@@ -1,3 +1,4 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hpcom: <https://harshp.com/code/vocab#> .
 @prefix hpview: <https://harshp.com/code/views#> .
 @prefix schema: <https://schema.org/> .
@@ -5,12 +6,15 @@
 
 @prefix hptag: <https://harshp.com/tags/> .
 
-<https://harshp.com/research/blog> hpcom:content [
+<https://harshp.com/research/blog> a rdfs:Class, hpcom:RenderedItem, schema:BlogPosting ;
+    schema:name "research blog"@en ;
+    schema:url "https://harshp.com/research/blog"^^xsd:anyURI ;
+    hpcom:content [
         a hpcom:Content ;
         hpcom:renderWith hpview:ResearchBlogIndexView ;
         ] .
 
-<https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/a-short-guide-to-structuring-academic-presentations.html" ;
@@ -25,7 +29,7 @@
     schema:name "A short guide to structuring academic presentations"@en ;
     schema:url "https://harshp.com/research/blog/a-short-guide-to-structuring-academic-presentations"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/boi-mobile-nothing-fishy-needs-better-documentation.html" ;
@@ -40,7 +44,7 @@
     schema:name "BOI Mobile - nothing fishy; needs better documentation"@en ;
     schema:url "https://harshp.com/research/blog/boi-mobile-nothing-fishy-needs-better-documentation"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/how-open-should-reviews-be-in-compsci> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/how-open-should-reviews-be-in-compsci> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/how-open-should-reviews-be-in-compsci.html" ;
@@ -55,7 +59,7 @@
     schema:name "How open should reviews be in CompSci?"@en ;
     schema:url "https://harshp.com/research/blog/how-open-should-reviews-be-in-compsci"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/ios-11-location-aware-blue-notification-bar> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/ios-11-location-aware-blue-notification-bar> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/ios-11-location-aware-blue-notification-bar.html" ;
@@ -70,7 +74,7 @@
     schema:name "iOS 11 location-aware blue notification bar"@en ;
     schema:url "https://harshp.com/research/blog/ios-11-location-aware-blue-notification-bar"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/privacy-guard> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/privacy-guard> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/privacy-guard.html" ;
@@ -85,7 +89,7 @@
     schema:name "Privacy Guard"@en ;
     schema:url "https://harshp.com/research/blog/privacy-guard"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/questions-about-self-publishing> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/questions-about-self-publishing> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/questions-about-self-publishing.html" ;
@@ -98,7 +102,7 @@
     schema:name "Questions about Self-Publishing"@en ;
     schema:url "https://harshp.com/research/blog/questions-about-self-publishing"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/semantics-2019> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/semantics-2019> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/semantics-2019.html" ;
@@ -118,7 +122,7 @@
     schema:name "SEMANTiCS 2019"@en ;
     schema:url "https://harshp.com/research/blog/semantics-2019"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/student-project-ideas> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/student-project-ideas> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/student-project-ideas.html" ;
@@ -132,7 +136,7 @@
     schema:name "Student Project Ideas"@en ;
     schema:url "https://harshp.com/research/blog/student-project-ideas"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen.html" ;
@@ -146,7 +150,7 @@
     schema:name "How to speak so that people want to listen"@en ;
     schema:url "https://harshp.com/research/blog/ted-talk-how-to-speak-so-that-people-want-to-listen"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/what-every-postdoc-needs-to-know> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/what-every-postdoc-needs-to-know> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/what-every-postdoc-needs-to-know.html" ;
@@ -161,7 +165,7 @@
     schema:name "What Every Postdoc Needs to Know - book notes"@en ;
     schema:url "https://harshp.com/research/blog/what-every-postdoc-needs-to-know"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook.html" ;
@@ -178,7 +182,7 @@
     schema:name "Whatsapp - sensibly private; but tainted by Facebook"@en ;
     schema:url "https://harshp.com/research/blog/whatsapp-sensibly-private-but-tainted-by-facebook"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/gpc-gdpr-can-it-work> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/gpc-gdpr-can-it-work> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/gpc-gdpr-can-it-work.html" ;
@@ -195,7 +199,7 @@
     schema:name "GPC + GDPR: will it work?"@en ;
     schema:url "https://harshp.com/research/blog/gpc-gdpr-can-it-work"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/browser-communities-do-more-for-consent> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/browser-communities-do-more-for-consent> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/browser-communities-do-more-for-consent.html" ;
@@ -215,7 +219,7 @@
     schema:name "Web-Browsers and Web-Communities Should Do More For Consent"@en ;
     schema:url "https://harshp.com/research/blog/browser-communities-do-more-for-consent"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/consent-workshop-2021> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/consent-workshop-2021> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/consent-workshop-2021.html" ;
@@ -235,7 +239,7 @@
     schema:name "COnSeNT 2021"@en ;
     schema:url "https://harshp.com/research/blog/consent-workshop-2021"^^xsd:anyURI .
 
-<https://harshp.com/research/blog/APF-2024> a hpcom:RenderedItem,
+<https://harshp.com/research/blog/APF-2024> a hpcom:RenderedItem, schema:BlogPosting,
         <https://harshp.com/research/blog> ;
     hpcom:content [ a hpcom:Content ;
             hpcom:contentFile "https://harshp.com/code/content/research/blog/APF-2024.html" ;
