@@ -1,0 +1,162 @@
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+    body {
+        max-width: 800px;
+    }
+</style>
+
+<blockquote>
+    <p>In the <a href="ai-training">previous post</a>, I proposed AI training concepts that are categorised by technical details. In this post, I continue that discussion by exploring the feasibility of those concepts with specific use-cases and examples, and exploring the privacy / data protection implications of AI training.</p>
+</blockquote>
+
+<section>
+    <h2>Process or Processing?</h2>
+    <p>In DPV, <code>dpv:Process</code> is a broad concept that allows combining different concepts into cohesive groups, whereas <code>dpv:Processing</code> represents specific operations over data (e.g. collect, store). This allows expressing information such as who performed the collection of data, for what purposes, for which data, etc. without focusing only on 'processing' or 'purpose' or 'data' -- but over their combination. Similarly, for <code>ai:Training</code> it would be advantageous if a similar arrangement was identified so that it can be indicated that the 'process' involved training, using specified data, for the stated purpose, etc. For <code>dpv:Processing</code>, the relation <code>dpv:hasProcessing</code> provides the link with <code>dpv:Process</code>. For training, currently no such relation exists.</p>
+    <p>If we consider training as operations over data, then it becomes a form of processing. At the broadest level, training is use of data. In practice, it may also involve other operations such as transformations to clean, anonymise, combine, etc., storing transformed data, organising and structuring it for training tasks, and separately obtaining or collecting this data. However, in our definition, we limit operations only to those that must always be present - which would be <code>dpv:Use</code>. Thus, if we define <code>ai:Train</code> as a processing operation that is a specific form of <code>dpv:Use</code> and <code>dpv:Transform</code> - then it means that AI training is an operation over data that uses it and transforms it. In this case, the <i>transformation</i> produces a <code>ai:Model</code> or more data.</p>
+    <p>Based on the above, we have <code>ai:Train</code> as the top-level concept, and the taxonomy from the <a href="ai-training">previous post</a> then expands it with <code>-Training</code> concepts. The relation <code>ai:hasTraining</code> is used to associate these, and is a specialised version of <code>dpv:hasProcessing</code>, which means any time training is associated with a process, it implies data is being processed.</p>
+    <p>The example below shows a process where supervised training takes place within the device for the purposes of personalised recommendations with the legal basis of consent. Note we don't explicitly the <i>training</i> itself, but of the <i>process</i> that involves training. This also allows later swapping specific technologies with others without changing the abstract process.</p>
+    <highlight>ex:Process a dpv:Process ;
+    dpv:hasPurpose dpv:ProvidePersonalisedRecommendations ;
+    dpv:hasPersonalData pd:Location ;
+    ai:hasTraining ai:SupervisedTraining ;
+    dpv:hasLocation dpv:WithinDevice ;
+    dpv:hasLegalBasis dpv:InformedConsent ;
+    dpv:isImplementedUsingTechnology ex:SomeTech .</highlight>
+    <p>One could also directly specify this information with the training instance as the focal point, as shown in the example below -</p>
+    <highlight>ex:SomeTraining a ai:SupervisedTraining ;
+    dpv:hasPurpose dpv:ProvidePersonalisedRecommendations ;
+    dpv:hasPersonalData pd:Location ;
+    dpv:hasLocation dpv:WithinDevice ;
+    dpv:hasLegalBasis dpv:InformedConsent ;
+    dpv:isImplementedUsingTechnology ex:SomeTech .</highlight>
+    <p>However, this design complicates use of information as it is not clear where personal data would be associated, and how to query it. With <code>dpv:Process</code> we have a consistent grouping of related concepts that is flexible to incorporate many relations and can be expanded and mixed in composite patterns as desired. Therefore, it is recommended to use <code>dpv:Process</code>, and it is not advised to directly annotate instances with information like this. The <a href="https://w3id.org/dpv/primer">DPV Primer</a> also lays out the case for this.</p> 
+</section>
+
+<section>
+    <h2>Data as Input of Training</h2>
+    <p>Modelling training as processing in this manner also helps with legal compliance. For example, GDPR applies over the processing of personal data. The AI extension contains the relation <code>ai:hasTrainingData</code> which is a specialisation of <code>tech:hasInputData</code> and indicates the data is being used for training AI. This is a clearer indication of the role of data being for training than <code>dpv:hasPersonalData</code>. However, this relation does not directly state that the training uses personal data, therefore the data being used must be correctly categorised as personal data. This is shown in the example below.</p>
+    <highlight>ex:Process a dpv:Process ;
+    dpv:hasPersonalData pd:Name ; # clear category, unclear training role
+    ai:hasTrainingData ex:Name ; # clear training role, unclear category
+    ai:hasTraining ai:SupervisedTraining . # new prop
+# Name must be declared as personal data to avoid above issue
+ex:Name a dpv:PersonalData .</highlight>
+    <p>Therefore whether personal data is involved in training is possibly indicated in two ways using the explicit relation, and relying on the categorisation of personal data. For best practice, the categorisation takes precedence as it indicates the data is always personal data and does not limit its role to a specific process.</p>
+    <p>However, an important considering in the use of <code>ai:hasTrainingData</code> is that its domain is declared as including <code>ai:AI</code>, which means either the <code>dpv:Process</code> is an instance of <code>ai:AI</code> or that the domain scope should be expanded to also include <code>dpv:Process</code>. If a process is marked as 'AI' then it reflects the use of an 'AI based Process' which could be helpful in organising and discovering information. Whereas if the domain scope if expanded, then it means a process could specify involvement of training data but there is not indication that AI is involved. Therefore, it is better to declare the process as using AI. Alternatively, we can also create the concept <code>ai:AIProcess</code> that says the same.</p>
+    <highlight>ex:Process a dpv:Process, ai:AI ; # an AI process
+    ai:hasTrainingData ex:Name ;
+    ai:hasTraining ai:SupervisedTraining .
+
+ai:AIProcess a skos:Concept, rdfs:Class ;
+    rdfs:subClassOf dpv:Process, ai:AI .
+ex:SomeAI a ai:AIProcess ;
+    ai:hasTrainingData ex:Name ;
+    ai:hasTraining ai:SupervisedTraining .
+ex:SomeProcess a dpv:Process ;
+    dpv:hasProcess ex:SomeAI ; # valid - points to process
+    ai:hasAI ex:someAI . # also valid - points to 'AI'</highlight>
+    <p>This mixture of process and AI also has benefits in stating risks, involvement of entities, and other information while continuing the use of <code>dpv:Process</code> as before for cases that are describing abstract plans or processes. For specific concrete implementations, as <code>ai:AI</code> extends <code>dpv:Technology</code>, it can also be used with <code>dpv:isImplementedUsingTechnology</code>. Further, this also allows use of <code>dpv:Process</code> to describe an instance of <code>ai:AI</code>.</p>
+    <highlight>ex:SomeAI a ai:AI ;
+    dpv:hasProcess [
+        a ai:AIProcess ;
+        ai:hasTrainingData pd:Name ;
+        ai:hasTraining ai:SupervisedTraining ;
+    ] .</highlight>
+    <p>As before, it is tempting to directly use training instances to dictate information, like so:</p>
+    <highlight>ex:SomeAI a ai:AI ;
+    ai:hasTraining [
+        a ai:SupervisedTraining ;
+        ai:hasTrainingData pd:Name ;
+        ai:hasTraining ai:SupervisedTraining ;
+    ] .</highlight>
+    <p>This should be okay if the goal is to model only the details about how the AI is structured. However, as mentioned before, this creates lots of different ways to model where personal data and other relevant information might be included, and can results in graphs that differ widely between use-cases. Therefore, the first method of using <code>dpv:Process</code> should be preferred, and if the second method is absolutely necessary, then it should be additionally declared an instance of <code>dpv:Process</code>.
+</section>
+
+<section>
+    <h2>Stating Limitations</h2>
+    <p>To represent limitations or restrictions regarding AI training, there are two modes - explicit and implicit. In explicit mode, we state the restriction or limitation as a specific rule. In implicit mode, we state the restriction or limitation by stating the intended action without a rule. In the example below, the limitation of using training only on device and using only the name as personal data is expressed in both forms.</p>
+    <highlight>ex:SomeProcess a ai:AIProcess ;
+    dpv:hasProcessing ai:Train ;
+    ai:hasTrainingData pd:Name ;
+    dpv:hasLocation dpv:WithinDevice ; # implicit
+    dpv:hasPermission [ # explicit
+        a dpv:Permission ;
+        dpv:hasProcessing ai:Train ;
+        dpv:hasLocation dpv:WithinDevice ;
+    ] .</highlight>
+    <p>The implicit information is not enough to convey it as a limitation or a restriction as it only refers to the location of the process, and not a rule. By contract, the rule clearly states the location as a permission (considering that only permitted activities can be carried out). Depending on the use-case and need for explicit limitations - the appropriate method can be used. DPV rules don't have the expressivity to state that processing outside the device is not permitted - which is where efforts such as <a href="https://www.w3.org/TR/odrl-model/">ODRL</a> should be explored and used.</p>
+    <p>In the above example, the use of <code>ai:AIProcess</code> and <code>dpv:hasProcessing ai:Train</code> also shows the utility of modelling AI training as a processing activity, as all governing mechanisms for how processing must take place (<code>dpv:Technology</code>), or where (<code>dpv:Location</code>) and when (<code>dpv:Duration</code>) it takes placecan be expressed within the process along with restrictions.</p>
+</section>
+
+<section>
+    <h2>Training as an AI Technique</h2>
+    <p>The AI extension already provides a taxonomy of techniques which includes <code>ai:SupervisedLearning</code> - which is a form of training. At the moment, it does not distinguish between ML techniques that are/not training. Therefore, this needs to be improved. We should not directly put <code>ai:Train</code> or <code>ai:Training</code> as concepts under <code>ai:MachineLearning</code> because "training" can include other approaches beyond machine learning - such as adding facts to symbolic reasoning. So we have the option of adding <code>ai:Training</code> as a concept under the <code>ai:Technique</code> taxonomy, and then having a property <code>ai:hasTrainingTechnique</code> as a subproperty of <code>ai:Technique</code>. This allows the use of the technique taxonomy and avoids the requirement to create a separate taxonomy just for training when the same concepts are used in both training and deployment phases.</p>
+    <highlight>ai:TrainingTechnique a skos:Concept, rdfs:Class ;
+    rdfs:subClassOf ai:Technique .
+ai:hasTrainingTechnique a rdf:Property ;
+    dcam:domainIncludes ai:AI ;
+    dcam:rangeIncludes ai:Technique .
+
+ex:SomeProcess a ai:AIProcess ;
+    ai:hasTrainingMethod ai:SupervisedLearning ;
+    ai:hasTrainingData pd:Name .</highlight>
+    <p>However, in doing this, we lose the ability to indicate training as the processing of data. To rectify this, we could declare <code>ai:TrainingTechnique</code> as a subclass of <code>dpv:Processing</code>. Though it is unclear if <code>ai:Technique</code> itself should be a subclass -- as this would mean that all techniques require data processing, which is not true for example for symbolic techniques which operate without data. To avoid this kind of ambiguity, we can have the taxonomy as <code>ai:DataProcessingTechnique</code> which includes ML etc. which always require data, and which are defined as types of <code>dpv:Processing</code>, and <code>ai:NonDataProcessingTechnique</code> which include symbolic, etc. which do not always involve data -- they can, but not by definition. Then, when <code>ai:hasTrainingTechnique</code> is used, we can check whether the concept is part of the data processing or non-data processing taxonomy.</p>
+</section>
+
+<section>
+    <h2>Model is Output of Training</h2>
+    <p>Training is a process through which an <code>ai:Model</code> is produced as the output. To express this, we can directly associate the model using <code>ai:hasModel</code>.</p>
+    <highlight>ex:SomeProcess a ai:AIProcess ;
+    ai:hasTrainingData pd:Name ;
+    ai:hasTrainingMethod ai:SupervisedLearning ;
+    ai:hasModel ex:SomeModel .</highlight>
+    <p>However, this approach may be ambiguous for cases where multiple models are involved - some as inputs for example. To avoid this, we should explicitly use <code>tech:hasInput</code> and <code>tech:hasOutput</code>.</p>
+    <highlight>ex:SomeProcess a ai:AIProcess ;
+    ai:hasTrainingData pd:Name ;
+    ai:hasTrainingMethod ai:SupervisedLearning ;
+    ai:hasModel ex:EarlierModel ;
+    tech:hasOutput ex:LaterModel .</highlight>
+</section>
+
+<section>
+    <h2>Technical Measures for Training</h2>
+    <p>With the above exploration of <code>dpv:Process</code> and the creation of <code>ai:AIProcess</code>, this should be straightforward to express. The below example represents training done with anonymisation. If there are specific measures that apply to different parts (e.g. data, then process, then some oversight) -- these should be represented separately within subprocesses.</p>
+    <highlight>ex:SomeProcess a ai:AIProcess ;
+    ai:hasTrainingData pd:Name ;
+    ai:hasTrainingMethod ai:SupervisedLearning ;
+    dpv:hasTechnicalMeasure dpv:Anonymisation .</highlight>
+</section>
+
+<section>
+    <h2>Notice for Training</h2>
+    <p>A notice for training communicates that there will be training, and stating what data will be involved, who will perform the training, etc. We have the concept <code>dpv:AINotice</code> for these kind of scenarios. The below notice states that there will be training using names for providing personalised recommendations e.g. in spell checks with the training occuring on device and based on informed consent.</p>
+    <highlight>ex:SomeNotice a dpv:AINotice ;
+    dpv:hasProcess [
+        a ai:AIProcess ;
+        ai:hasTrainingData pd:Name ;
+        dpv:hasPurpose dpv:ProvidePersonalisedRecommendations ;
+        dpv:hasLocation dpv:WithinDevice ;
+        dpv:hasLegalBasis dpv:InformedConsent ;
+    ] .</highlight>
+    <p>The notice does not state that no data will leave the device (it also does not state that it will). This is not currently possible to express using DPV. There are a couple of ways to do this. First, we can create a concept called <code>dpv:OutsideDevice</code> and use a prohibition over it to say data cannot be transferred outside the device. However, this means we will need concepts for outside app, outside location, and so on. These concepts are useful only for expressing conditions such as this. The second approach is where we use rules, but create a new type called <code>dpv:Restriction</code> which means whatever the rule is expressing is restricted to only what is in the rule. For permissions and obligations, it means only the content of these should be followed and anything outside of that is not followed. For prohibitions, it means only the contents are prohibited and anything outside of it is not. This is part of a broader discussion around rule interpretation and applicability - and it will introduce complexity here. The third approach is to use the existing property <code>dpv:hasProcessingCondition</code> to state data is stored on device explicitly -- with the understanding that data won't go outside the device since that's not part of the condition. In terms of explicitness and ease of interpretation, the use of processing condition in method 3 should be used, and if it is to be expressed as a prohibition, then the method 1 should be used in addition to it.</p>
+    <highlight>ex:SomeNotice a dpv:AINotice ;
+    dpv:hasProcess [
+        a ai:AIProcess ;
+        ai:hasTrainingData pd:Name ;
+        dpv:hasPurpose dpv:ProvidePersonalisedRecommendations ;
+        dpv:hasLocation dpv:WithinDevice ;
+        dpv:hasProhibition [ # method 1
+            a dpv:Prohibition ;
+            dpv:hasProcessing dpv:Transfer ;
+            dpv:hasLocation dpv:OutsideDevice ; # new concept
+        ] ;
+        dpv:hasProcessingCondition [ # method 3
+            dpv:hasProcessing dpv:Store ;
+            dpv:hasLocation dpv:WithinDevice ;
+        ] ;
+        dpv:hasLegalBasis dpv:InformedConsent ;
+    ] .</highlight>
+</section>
