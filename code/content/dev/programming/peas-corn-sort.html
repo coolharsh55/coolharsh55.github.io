@@ -1,0 +1,41 @@
+<p>Its the weekend, and there's chores to do and food to make. We want to make <a href="https://en.wikipedia.org/wiki/Flattened_rice">poha</a> and we need peas to add to it. But we only have a mixed peas and corn bag. Thus the task of separating the peas from the corn. Its one of those mundane chores that is simple and extremely laborous as the bag is frozen and the peas and corns are both too small to quickly pick with my fat fingers. Which means it takes a relatively long time to filter the peas even for small amounts. I guess its the engineer (and now a doctor, ph-thankyou-d) in me that wants to find ways to make stuff like this somehow fun in the sense of learning of having something to think as a reward function. In this case, it was the <em>research question</em> of "<strong>How can a plate full of mixed peas and corns be separated effectively and practically?</strong>".</p>
+
+<p>Unlike the typical sorting problem that is universally taught, not all items in real life are arranged in a neat structure like a single row that you can move backwards and forwards over and over while shuffling or swapping to implement the shorting. In this, we have a plate full of peas and corn which are mixed and distributed evenly. To select one pea or corn i.e. to isolate one is not easy - it takes effort both to visually select one pea or corn, and physically to manipulate one with the fingers as they are small and require an effort to separate them from the surrounding items. Further, they tend to stick to their neighbours and moving and putting them in another location means they will stick to the neighbours there. All of these are unusual conditions which are not considered in sorting algorithms where selection (access) and movement (swapping) has some invisible cost that isn't being considered in the function itself.</p>
+
+<p>To sort these in a practical manner, we must first identify what are the behaviours we must consider:</p>
+
+<ol>
+    <li>It takes effort to visually identify a pea or a corn. The more peas there are in a given area, the easier it is to pick a corn in that area.</li>
+    <li>It takes effort to pick a single pea or a corn. The effort also corresponds to whether the neighbours are of the same type or different - neighbours of the same type make it easier to pick.</li>
+    <li>It is easier to slide things rather than picking them and putting them in another place. However, sliding is also dependant on the neighbours through which it has to be navigated.</li>
+    <li>There is no external or extra space available, the plate is the only place within which both peas and corn have to be managed. Only once all items have been separated can they be moved outside the plate. We can use our hands as a temporary storage space but only for a few items.</li>
+    <li>The 'algorithm' cannot be overly complicated as this is supposed to be a mundane chore and having a complex process will rob the joy out of it.</li>
+</ol>
+
+<p>With all of these considerations, if we try to apply well known sorting algorithms like bubble sort, insert sort, selection sort, quicksort - it is immediately obvious that we cannot -- because where do we start. Instead, we have to adapt their <em>philosophy</em> to the case at hand. First, we don't need to 'swap', only to move things around until they get to their correct place. Second, we cannot assume we can pick and move things easily - there must be a strategy that takes into consideration the human efficiency in doing this. Third, there is no 'correct' place for peas or corn -- the goal is to separate them. Fourth, no matter how tempting - I'm not to eat the peas or corn as a way of reducing the problem.</p>
+
+<p>Of the sorting methods, I think selection sort is the most appropriate one to adapt here as it doesn't involve any large calculations or swapping operations, and it quite simple to start with. The principle of the selection sort is that you select one item and move it to its correct place. In our situation, it isn't clear how and where we sort and what the correct place would be. To help with this, we take inspiration from mergesort where a list is split into two iteratively until we have only have two items to consider, and then each group is sorted smaller to larger and merged.</p>
+
+<p>In our case, we divide the plate into four quadrants and sort one quadrant at a time. Within the quadrant, we start moving the corn into local clusters. To do this, we focus on a random corn element and start moving it towards the designated clustering area (which is again a random location near the edge of the plate). If the corn is closer to the middle of the plate, we pick up the corn and drop it approximately near the target. If it is closer to the target, we drag it to the target. We can make some temporary space by moving the peas around into other quadrants a bit. By the end of this process, there will be four clusters of corn in the plate. If there are more - that's okay. If there are a few stray corns left - that's okay as they are easy to spot and pick up. At the end, we can move the four groups together by picking and dropping the corns into other groups, or directly moving them off the plate -- leaving only the peas.</p>
+
+<ol style="border-left: 5px solid lightgray; padding-left: 20px;">
+    <li>Divide the plate into four quadrants O(1 visual)</li>
+    <li>For each quadrant, do:
+        <ol style="border-left: 5px solid lightgray; padding-left: 20px;">
+            <li>Pick a designated sorted corn area O(1 visual)</li>
+            <li>Do while there are corn not in designated area O(log.m visual + m manual):
+                <ol style="border-left: 5px solid lightgray; padding-left: 20px;">
+                    <li>Identify if there are corn not in designated area O(1 visual)</li>
+                    <li>If corn is near center, pick up the corn and place it in the designated area O(1 manual)</li>
+                    <li>Else move corn by dragging to nearby designated area O(1 manual)</li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li>Identify if there are stray corn O(1 visual)</li>
+    <li>If there are, for each stray corn, pick them up and drop them in first group O(1 manual)</li>
+    <li>For each group that is not in Quadrant 1, pick and move the corn to the group in Quadrant 1 O(3m manual)</li>
+    <li>Move corn off the plate (1 manual)</li>
+</ol>
+
+<p>Overall, the amortised cost is O(log.m visual &amp; m manual) where m is the number of corn which is quite okay.</p>
