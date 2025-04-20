@@ -2655,6 +2655,25 @@ hpcom:view_template a rdf:Property ;
             schema:url "https://www.w3.org/ns/dpv" ] ;
     schema:url "https://harshp.com/dev/dpv/updating-consent-concepts"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/use-cases-01> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:code_highlight true ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/use-cases-01.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web,
+        hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-04-20T11:34:00"^^xsd:dateTime ;
+    schema:datePublished "2025-04-20T11:34:00"^^xsd:dateTime ;
+    schema:description "Notes proposing a way to model phrases like intended uses and purposes through Use-Cases as a concept"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Describing Intent in Documentation through Use-Cases"@en ;
+    schema:url "https://harshp.com/dev/dpv/use-cases-01"^^xsd:anyURI .
+
 <https://harshp.com/dev/gnib_appointments/analysing-gnib-appointment-app-survey-responses> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29249,11 +29268,6 @@ hptag:travel a hpcom:RenderedItem,
     schema:name "travel" ;
     schema:url "https://harshp.com/tags/travel"^^xsd:anyURI .
 
-hptag:working-note a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Working Note"@en ;
-    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
-
 <https://harshp.com/dev/semantic_web> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29286,6 +29300,11 @@ hptag:script a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
+
+hptag:working-note a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Working Note"@en ;
+    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
 
 list:thriller a hpcom:RenderedItem,
         book:lists ;
@@ -29493,6 +29512,9 @@ hptag:humor a hpcom:RenderedItem,
     schema:name "research projects"@en ;
     schema:url "https://harshp.com/research/projects"^^xsd:anyURI .
 
+hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
+    schema:name "Short Paper"@en .
+
 <https://harshp.com/dev/dpv> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29500,9 +29522,6 @@ hptag:humor a hpcom:RenderedItem,
             hpcom:renderWith hpview:DevProjectView ] ;
     schema:name "Data Privacy Vocabulary (DPV)"@en ;
     schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
-hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
-    schema:name "Short Paper"@en .
 
 hptag:academia a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -29567,11 +29586,6 @@ hptag:DPVCG a hpcom:RenderedItem,
     schema:name "DPVCG"@en ;
     schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
-hptag:DPV a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPV"@en ;
-    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
-
 book:lists a owl:Class,
         hpcom:RenderedItem ;
     rdfs:subClassOf schema:CreativeWork,
@@ -29580,6 +29594,11 @@ book:lists a owl:Class,
             hpcom:renderWith hpview:BookListIndexView ] ;
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
+
+hptag:DPV a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPV"@en ;
+    schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
 
 <https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
     schema:name "Declan O'Sullivan" .

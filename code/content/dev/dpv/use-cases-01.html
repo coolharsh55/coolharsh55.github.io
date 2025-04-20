@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+<div id="toc"></div>
+
+<section>
+    <h2>Background</h2>
+
+    <p>One of the limitations currently present in DPV is the inability to state use-cases as hypotheticals distinctly from processes that are being considered or implemented in context. This article proposes modelling use-cases as a distinct concept to alleviate this.</p>
+
+    <p>DPV has concepts and properties to express that something is intended/unintended or is permitted/prohibited. However, these do not act directly at the level of describing an entire process, or more commonly a <em>scenario</em> or an <em>use-case</em>. When planning and creating documentation, it would be desirable and convenient to directly state what is intended, suggested, recommended, dissuaged, prohibited, and so on without having to create a bunch of processes which are only distinguishable by specific property values within then. As the goal of DPV is to foremost provide a vocabulary that allows expression of information in a convenient manner, we should provide such concepts that are required and used by technology actors, regulations, policies, and other contexts without requiring them to use DPV specific abstract models like <code>dpv:Process</code>. </p>
+
+    <p>The second issue in the above is the conflation between words <em>use</em> and <code>dpv:Use</code>. Here, <em>use</em> means different things (see <a href="https://en.wikipedia.org/wiki/Polysemy">Polysemy</a>), where in DPV it refers to the technical operation of using data e.g. what goes on in a microprocessor whereas the way it is used in policy documents refers to description of an <em>use-case</em> or <em>scenario</em> regarding the data or technology. This second use of <em>use</em> is similar to <code>dpv:Process</code> as it can involve describing purposes, data, technologies, and entities in specific roles and configuraitons. To distinguish between these two uses of <em>use</em>, we should define a new concept called <code>dpv:UseCase</code> which is a subclass of <code>dpv:Process</code> and refers to &#39;&#39;potential scenarios that describe functioning of the process in a specific scenario or to describe the effects of the process in specific scenarios&#39;&#39;. To enable associating it, the property <code>dpv:hasUseCase</code> should be provided.</p>
+
+    <p>The concept <code>dpv:UseCase</code> refers to an idea or a hypothetical, and thus distinguishes it from other processes which might be plans for implementation or logs of activities completed. It also is different from <code>dpv:Process</code> by referring to possibilities without saying these are what will happen or what is planned to happen. The existing concept <code>dpv:ActivityProposed</code> is distinct from a use-case as it is concretely saying this is proposed, whereas a use-case (like Process by itself) is just an idea which could be proposed, or could be describing things that should not happen, and so on.</p>
+
+    <p>Having <code>dpv:UseCase</code> is convenient, because now it allows associating situations and scenarios, like for <em>intended use</em> as <em>intended use-case</em> within specific documentations like those required by the AI Act. To enable this, we subclass <code>dpv:UseCase</code> and create relevant properties. Where possible, we involve existing concepts in DPV. To remember here, we are providing a convenience feature for people who want to specifically represent <em>intended uses</em> and similar terms, even if it is possible to do the same using <code>dpv:Process dpv:hasIntention dpv:Intended</code>, as 1) the domain term is clear and has well-defined meaning (presumably); and 2) it should be possible to derive the second from the first e.g. using a reasoner.</p>
+</section>
+
+<section>
+    <h2>Modelling Use-Case</h2>
+
+    <p>Based on the above, the following are proposed from an analysis of the GDPR&#39;s DPIA requirements, AI Act&#39;s FRIA and Technical Documentation requirements, research papers such as Datasheets for Dataset and Model Cards for AI Models:</p>
+
+    <ol>
+        <li>
+            <code>dpv:UseCase</code> and <code>dpv:hasUseCase</code> with parents <code>dpv:Process</code> and <code>dpv:hasProcess</code> respectively. This ensures all use-cases are treated as processes in DPV modelling and therefore can continue using all the combinations of concepts/properties that can be used with a process.
+        </li>
+        <li>
+            <code>dpv:IntendedUseCase</code> and <code>dpv:hasIntendedUseCase</code> to describe use-cases that are intended i.e. the entity intends for them to happen. They are defined as <code>dpv:UseCase</code> with <code>dpv:hasIntention dpv:Intended</code> and the entity that intends for them to happen is described using <code>dpv:hasResponsibleEntity</code>. The specifics of the intention, including who should implement what, is expressed using <code>dpv:Process</code> and <code>dpv:isImplementedByEntity</code>. The converse of this is <code>dpv:UnintendedUseCase</code> with <code>dpv:hasUnintendedUseCase</code>. Note that permitted use-cases are the same as intended use-cases. However, if this is confusing, we should create <code>dpv:PermittedUseCase</code> as the parent of <code>dpv:IntendedUseCase</code>.
+        </li>
+        <li>
+            <code>dpv:DeterredUseCase</code> and <code>dpv:hasDeterredUseCase</code> to describe use-cases that are deterred i.e. they are dissuaded from being implemented or from taking place. Here, <i>deterrence</i> is not a <i>prohibition</i>, but more like a <i>warning</i>. This should be accompanied with a new concept called <code>dpv:Deterrence</code> in <code>dpv:Rule</code> with property <code>dpv:hasDeterrence</code>. The use-case is a subclass of this concept (and same for property).
+        </li>
+        <li>
+            <code>dpv:RecommendedUseCase</code> and <code>dpv:hasRecommendedUseCase</code> to describe use-cases that are recommended i.e. they are suggested to happen, but are not an obligation, with the same logic as above. This will have <code>dpv:Recommendation</code> and <code>dpv:hasRecommendation</code> added to the Rules taxonomy, same as above.
+        </li>
+        <li>
+            <code>dpv:ProhibitedUseCase</code> and <code>dpv:hasProhibitedUseCase</code> to describe use-cases that are prohibited. It will have <code>dpv:Prohibition</code> as parent, and <code>dpv:hasProhibition</code> as parent property. This enables directly stating uses that are prohibited e.g. in a documentation.
+        </li>
+        <li>
+            <code>dpv:ForeseenUseCase</code> and <code>dpv:hasForeseenUseCase</code>, which are the parents of all above concepts as if you can define them then they are foreseeable. This concept enables expressing use-cases which are neither intended/permitted, deterred, recommended, or prohibited, but which could happen e.g. someone uses the technology in a different way. They are useful to state e.g. warnings, recommendations, procedures, and so on.
+        </li>
+    </ol>
+</section>
+
+<section>
+    <h2>Examples</h2>
+
+    <p>
+        For example, consider documentation where there are different parts associated with which uses are okay and are permitted/intended, which are not, which are expressly prohibited, and so on. The below example shows how the existing DPV concepts represent only some of the information but are not sufficient to capture the context/intent of representing that intent i.e. communicating it as specific use-cases in the documentation. Another issue with this model is that it is not possible to identify which processes are problematic, which are permitted, etc. without a query as the information exists only within the process -- which could be at different levels in nested processes, whereas the documentation has specific sections at the highest levels. This produces a discrepency between the way the documentation is written and used and the way the information representing the documentation is representing it.
+    </p>
+
+<highlight>
+ex:Document1 a tech:Documentation ;
+    dpv:hasProcess [  # Intended Use/Purpose
+        a dpv:Process ;
+        dpv:hasIntention dpv:Intended ;
+    ] ;
+    dpv:hasProcess [  # Prohibited Uses
+        a dpv:Process ;
+        dpv:hasRule dpv:Prohibited ;
+    ] ;
+    dpv:hasProcess [  # Recommended Uses/Steps
+        a dpv:Process ;  
+        dpv:hasActivityStatus dpv:ActivityProposed ;
+    ] ;
+    dpv:hasProcess [  # Problematic (but no prohibited) uses
+        a dpv:Process ; # WARNING: problematic is not just about risk
+        dpv:hasRisk [a dpv:Risk] ;
+    ] .
+</highlight>
+
+    <p>
+        By contrast, the proposed concepts and properties are explicit in meaning and also provide convenience in writing the information in a way that matches the documentation structure.
+    </p>
+
+<highlight>
+ex:Document1 a tech:Documentation ;
+    dpv:hasIntendedUse [
+        a dpv:IntendedUseCase ; # infer dpv:Process
+        dpv:hasIntention dpv:Intended ;
+    ] ;
+    dpv:hasProhibitedUseCase [  # Prohibited Uses
+        a dpv:ProhibitedUseCase ; # infer dpv:Process
+        dpv:hasRule dpv:Prohibited ; # inferable
+    ] ;
+    dpv:hasProcess [  # Recommended Uses/Steps
+        a dpv:RecommendedUseCase ;
+        dpv:hasActivityStatus dpv:ActivityProposed ;
+    ] ;
+    dpv:hasDeterredUseCase [  # Problematic (but no prohibited) uses
+        a dpv:DeterredUseCase ;
+    ] .
+</highlight>
+
+    <p>With the above, there is a high chance that people directly just use the use-case concepts instead of working with <code>dpv:Process</code> or <code>dpv:Rule</code> concepts in a document, which should be okay, as for the domain it is suitable to continue using terms which have existing meaning and are well-understood or that match common use over terms that are not. As stated in each clause, the concepts can be transformed to underlying concepts e.g. using a reasoner or using OWL, so there is no 'loss' of semantics as such.</p>
+
+</section>
+
+<section>
+    <h2>Distinction from <code>tech:IntendedUse</code></h2>
+
+    <p>The existing concept <code>tech:IntendedUse</code> should be removed as it overlaps with the proposed concepts, which are better expressed, and are aligned with the <code>dpv:Process</code> concept whereas <code>tech:IntendedUse</code> is not. If we want to keep the concept, it should be clarified to refer to how the technology is being intended to be used in a technical sense e.g. operating with some parameters or conditions in mind. This is thus clear and distinct from <i>intended use-cases</i> which are proposed in this model. However, by itself, this concept is not sufficient to express ideal conditions and environments of operation, or similarly express problematic conditions. Therefore, I will be proposing another set of concepts in a different article to overhaul the <code>tech:IntendedUse</code> as a taxonomy of how the technology should be operated. For this article, the below example shows the distinction between the technical intended use and the intended use-case.</p>
+
+<highlight>
+ex:SomeDocumentation a tech:Documentation ;
+    tech:hasIntendedUse [
+        a tech:IntendedUse ;
+        dpv:hasDuration "P6M"^^xsd:duration ;
+        dct:description "Use the technology only for 6 months at a time"@en ;
+    ] ;
+    dpv:hasDeterredUseCase [
+        a dpv:DeterredUseCase ;
+        dpv:hasRisk risk:AccidentalMisuse ;
+        dct:description "Using it beyond 6 months can lead to errors"@en ;
+    ] .
+</highlight>
+</section>
+
+<section>
+    <h2>AI Act's Intended Purpose</h2>
+
+    <p>The modelling of use-cases allows increased expressitivity and lack of confusion as to how specific legal statements and phrases can be modelled in DPV. For example, the <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng">AI Act</a> has 160 uses of the word intended, which includes statements like <i>intended purpose</i>. All of these are <code>dpv:IntendedUseCase</code> in the above proposal. If the phrases in the AI Act were changed to match what we have, i.e. as <i>intended use-case</i>, the interpretations would not differ -- which is quite valuable to have when working with regulations. At the same time, it is also valuable to have the terms in DPV be consistent with the wording of the regulation where possible and sensible. In this case, having <code>aiact:IntendedPurpose</code> would be a good idea as this is part of the regulation and will be used by stakeholders.</p>
+
+    <p>
+        The proposal is to add <code>aiact:IntendedPurpose</code> as a subclass of <code>dpv:IntendedUseCase</code> with the definition that it describes the intended uses and purposes of the AI system/model/etc. as defined by the AI Act in the form of use-cases. A warning note should be added to state that <i>intended purpose</i> refers to <i>intended use-case</i> rather than the DPV purpose taxonomy. This is because the AI Act's notion of <i>purpose</i> is broader than DPV's as it encompasses all contextual details including data, entities, etc. which in DPV are modelled through <code>dpv:Process</code> at a broad level and through <code>dpv:UseCase</code> for describing use-cases and scenarios -- which is appropriate for this case.
+    </p>
+
+<highlight>
+ex:Document a aiact:TechnicalDocumentation ;
+    aiact:hasIntendedPurpose [
+        a aiact:IntendedPurpose ;
+        dct:description "A facial recognition technology for checking visitors at the door are allowed to enter or not"@en ;
+        dpv:hasPurpose dpv:EnforceSecurity ;
+        tech:hasUser dpv:HomeOwner ; ## this concept does not exist
+        dpv:hasLocation loc:HomeLocation ; ## this concept does not exist
+        dpv:isImplementedUsingTechnology [
+            a ai:AISystem ;
+            ai:hasCapability ai:FaceRecognition ;
+            tech:hasSubject dpv:Visitor ;
+        ] ;
+    ] .
+</highlight>
+</section>
