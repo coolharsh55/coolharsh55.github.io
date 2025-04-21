@@ -2634,6 +2634,25 @@ hpcom:view_template a rdf:Property ;
             schema:url "https://www.w3.org/ns/dpv" ] ;
     schema:url "https://harshp.com/dev/dpv/standards-iso"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/tech-operating-factors> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:code_highlight true ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/tech-operating-factors.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web,
+        hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-04-21T13:15:00"^^xsd:dateTime ;
+    schema:datePublished "2025-04-21T13:15:00"^^xsd:dateTime ;
+    schema:description "Notes proposing modelling operating factors such as environment and hardware/software for operating technology"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Modelling Operating Factors for Technology"@en ;
+    schema:url "https://harshp.com/dev/dpv/tech-operating-factors"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/updating-consent-concepts> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29301,11 +29320,6 @@ hptag:script a hpcom:RenderedItem,
     schema:name "script" ;
     schema:url "https://harshp.com/tags/script"^^xsd:anyURI .
 
-hptag:working-note a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Working Note"@en ;
-    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
-
 list:thriller a hpcom:RenderedItem,
         book:lists ;
     schema:identifier "thriller"@en ;
@@ -29320,6 +29334,11 @@ hptag:automation a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "automation" ;
     schema:url "https://harshp.com/tags/automation"^^xsd:anyURI .
+
+hptag:working-note a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Working Note"@en ;
+    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
 
 <https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
     schema:name "Delaram Golpayegani" ;
@@ -29515,14 +29534,6 @@ hptag:humor a hpcom:RenderedItem,
 hpcom:ShortPaper rdfs:subClassOf schema:ScholarlyArticle ;
     schema:name "Short Paper"@en .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev>,
-        schema:BlogPosting ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 hptag:academia a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "academia" ;
@@ -29537,6 +29548,14 @@ hptag:drama a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 hptag:article a hpcom:RenderedItem,
         hpcom:Tag ;
@@ -29595,13 +29614,13 @@ book:lists a owl:Class,
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
 
+<https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
+    schema:name "Declan O'Sullivan" .
+
 hptag:DPV a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "DPV"@en ;
     schema:url "https://harshp.com/tags/DPV"^^xsd:anyURI .
-
-<https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
-    schema:name "Declan O'Sullivan" .
 
 hptag:privacy a hpcom:RenderedItem,
         hpcom:Tag ;

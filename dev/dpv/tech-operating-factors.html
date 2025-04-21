@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modelling Operating Factors for Technology</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Modelling Operating Factors for Technology">
+    <meta name="schema:description" content="Notes proposing modelling operating factors such as environment and hardware/software for operating technology">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,Working Note,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/tech-operating-factors">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/tech-operating-factors">
+    <meta property="og:title" content="Modelling Operating Factors for Technology">
+    <meta property="og:description" content="Notes proposing modelling operating factors such as environment and hardware/software for operating technology">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev https://schema.org/BlogPosting " resource="https://harshp.com/dev/dpv/tech-operating-factors">
+        <h1 property="schema:name schema:headline">Modelling Operating Factors for Technology</h1>
+        <div id="description">
+            <span property='schema:description'>Notes proposing modelling operating factors such as environment and hardware/software for operating technology</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-04-21T13:15:00">2025-04-21T13:15:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/working-note" property="schema:about" resource="https://harshp.com/tags/working-note" typeof="rdfs:Resource"><span property="rdfs:label">Working Note</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+<div id="toc"></div>
+
+<section>
+    <h2>Operating Factor as a concept</h2>
+    <p>
+        The <a href="https://arxiv.org/abs/1810.03993">Model Cards</a> paper uses <i>Factor</i> to describe things which are relevant to the functioning of the AI model, which includes <i>Group</i> (which are <code>dpv:Data</code> categories), <i>Instrumentation</i> (which are <code>dpv:Technology</code> categories including hardware and software), and <i>Environment</i> (which is missing in DPV). Based on these, the paper later has a section on <i>metrics</i> which refers to how the model performs based on combinations of factors, and also to describe what are the ideal and non-ideal (or problematic) combinations of factors in relation to the model's (expected and intended) performance.
+    </p>
+    <p>
+        Similarly, the <a href="http://data.europa.eu/eli/reg/2024/1689/oj">AI Act</a> uses phrasing such as <i>operating in/logic/wit</i> and <i>operational constraints/data/needs</i> to describe the environment and conditions which affect the operation of AI technologies -- such as in Annex IV regarding hardware and software on which the AI system will operate. In addition, the AI Act also describes the performance of the AI system in relation to specific criteria such as groups of people (Art.13-3b-v) as well as any <i>capabilities and characteristics</i> of the AI system which are relevant to explain its output/functioning -- which by definition include how the technology operates and which <i>factors</i> affect the operation.
+    </p>
+
+    <p>
+        It should be clear from the above that there is a need to define information regarding <i>things</i> that affect the performance in association with AI technologies. I propose we called this concept <code>tech:OperatingFactor</code> based on existing uses of the term to refer to hardware and software in technical documents. This concept is expected to contain more information -- such as the specifics involved regarding data, technology/instruments, environmental conditions, people. Therefore, we define it as a subclass of <code>dpv:Process</code> so that we are effectively defining units of operation (a process) which are relevant factors for the operation of the technology. This consistency in using <code>dpv:Process</code> as much as possible also allows the same modelling design patterns to be used for modular/granular expressions such as to differentiate combinations from one another (e.g. where a complex operating factor needs to specify multiple processes occurring together) and to have a uniform structure in DPV taxonomy where anything that looks and works like a process is defined by the abstract concept <code>dpv:Process</code>.
+    </p>
+
+    <p>
+        To associate <code>tech:OperatingFactor</code> in context, the property <code>tech:hasOperatingFactor</code> should be provided. This will allow specifying the operating factors directly where relevant, instead of declaring specific processes/contexts as operating factors are making discovery and querying complicated. Here's an example that shows how this is convenient:
+    </p>
+
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Document</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">subject</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">MedicalDevice</span> ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasOperatingFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">OperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasData</span> <span style="color: #00F; font-weight: bold">pd</span>:<span style="color: #008000; font-weight: bold">BloodType</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasHumanSubject</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Patient</span> ;
+        <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasHardware</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">SomeMedicalSystem</span> ;
+    ] .
+</pre></div>
+
+</section>
+
+<section>
+    <h2>Categories of Operating Factors</h2>
+    <p>
+        In the above, while we could specify the relevant factors, we did not specify whether the factor was specifying the technology will operate correctly, ideally, or something else. To define these, operating factors are categorised to describe different kinds of scenarios and conditions as:
+    </p>
+
+    <ol>
+        <li><code>tech:NecessaryOperatingFactor</code>: Necessary (e.g. minimum) conditions for operating the technology and without which the technology cannot operate -- e.g. specific hardware and software requirements for running a video game without which the game cannot run;</li>
+        <li><code>tech:SuitableOperatingFactor</code>: Suitable conditions within which the technology will operate within acceptable parameters -- e.g. a range of conditions that represent minimum and maximum criteria for tolerance where the technology produces outputs in a known and acceptable range;</li>
+        <li><code>tech:IdealOperatingFactor</code>: Ideal conditions for operating the technology where the ideal conditions are within the suitable conditions by definition -- e.g. specific hardware setup and environmental conditions;</li>
+        <li><code>tech:UnsuitableOperatingFactor</code>: Unsuitable conditions which are not recommended for the use of the technology with the implication being that they can lead to problems/issues/errors -- however the phrasing here is softer than outright saying these conditions will definitely cause problems;</li>
+        <li><code>tech:HazardousOperatingFactor</code>: Hazardous conditions within which the technology is known to malfunction or cause errors or produce faulty outputs -- where such conditions may not be derivable from the sufficient and necessary/minimum conditions or where they should be explicitly documented to warn the user/operator, and which by definition should be within the specified unsuitable operating factors;</li>
+        <li><code>tech:UntestedOperatingFactor</code>: Untested conditions where it is not known whether the technology will operate correctly or there will be problems/issues/errors -- and the intent of documenting these could be to inform that it is not known how the technology will function or to indicate to the user/operator that they should evaluate these conditions or that the developer/provider makes no claims about the use of technology in such conditions.</li>
+    </ol>
+
+    <p>
+        Based on the above, and to ensure the taxonomy of operating factors used in documentation form a consistent hierarchy, we introduce some additional concepts with <code>tech:OperatingFactor</code> as the parent:
+    </p>
+
+    <ul>
+        <li>
+            <code>tech:OperatingFactor</code>
+            <ul>
+                <li>
+                    <code>tech:NecessaryOperatingFactor</code>
+                </li>
+                <li>
+                    <code>tech:SuitableOperatingFactor</code>
+                    <ul>
+                        <li>
+                            <code>tech:IdealOperatingFactor</code>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code>tech:UnsuitableOperatingFactor</code>
+                    <ul>
+                        <li>
+                            <code>tech:HazardousOperatingFactor</code>
+                        </li>
+                        <li>
+                            <code>tech:UntestedOperatingFactor</code>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>
+        To sanity check this hierarchy, how we assert statements regarding their implications are important to phrase correctly. For example, all ideal factors are by definition suitable for the operation -- TRUE. However, if we had expressed necessary as the parent concept, it would have been - all ideal factors are by definition also necessary for the operation -- which is FALSE. Instead, what we meant was phrasing it as all ideal factors by definition also contain the necessary factors -- which is TRUE, but it is not what the hierarchy represents. Therefore, the phrasing should be as: all suitable factors will involve necessary factors (and not that all suitable factors are necessary i.e. an intersection and not a subset), and of all suitable factors, some are ideal (i.e. a subset).
+    </p>
+
+    <p>
+        Whether to define these concepts as properties depends on whether we want them to be directly associated in context e.g. whether a document should directly state these are necessary or suitable factors, or whether the document should state operating factors and within each factor there is a categorisation of it is necessary or suitable. For convenience, and to mirror how documents are typically structured, it is best to provide a property for different categories of operating factors for convenience, clarity, and explicitness. Therefore, for each of the above factor category, we define a property based on the DPV convention as: <code>tech:has[XYZ]OperatingFactor</code>. An example to illustrate their use is below, which also shows the limitations of describing factors using current concepts as many are mere human-intended statements:
+    </p>
+
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Document</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">subject</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">MedicalDevice</span> ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasNecessaryOperatingFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">NecessaryOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasData</span> <span style="color: #00F; font-weight: bold">pd</span>:<span style="color: #008000; font-weight: bold">BloodType</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasHumanSubject</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Patient</span> ;
+        <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasHardware</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">SomeMedicalSystem</span> ;
+    ] ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasIdealOperatingFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">IdealOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">description</span> <span style="color: #BA2121">&quot;well-lit area with temperature 20--25C&quot;</span><span style="color: #666">@</span><span style="font-style: italic">en</span> ;
+    ] ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasUnsuitableFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">UnsuitableOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">description</span> <span style="color: #BA2121">&quot;dark area or in direct sunlight&quot;</span><span style="color: #666">@</span><span style="font-style: italic">en</span> ;
+    ] ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasHazardousFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">HazardousOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">description</span> <span style="color: #BA2121">&quot;fluids other than blood may break the device&quot;</span><span style="color: #666">@</span><span style="font-style: italic">en</span> ;
+    ] .
+</pre></div>
+
+</section>
+
+<section>
+    <h2>Components of Operating Factors</h2>
+
+    <p>
+        The above examples used existing DPV properties such as <code>dpv:hasData</code> and <code>tech:hasHardware</code> to describe the components of a operating factor. As highlighted in the first section, DPV contains several existing concepts which can be used to describe the operating factor, with the notable exception of <i>environment</i>, and more precisely the <i>environmental condition</i> as environment is broader and also involves what we have already covered under operating factor such as the hardware and software. Therefore, we define <code>tech:OperatingEnvironment</code> as the environment consisting of surrounding conditions, including the operating factors, within which the technology operates. Based on this, we then define <code>tech:EnvironmentalCondition</code> as the environmental conditions relevant to the operation of the technology. To associate these, we provide the properties <code>tech:hasOperatingEnvironment</code> and <code>tech:hasEnvironmentalCondition</code>. An example illustrating how they could be used:
+    </p>
+
+    <div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Document</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dct</span>:<span style="color: #008000; font-weight: bold">subject</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">MedicalDevice</span> ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasNecessaryOperatingFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">NecessaryOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasData</span> <span style="color: #00F; font-weight: bold">pd</span>:<span style="color: #008000; font-weight: bold">BloodType</span> ;
+        <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasHumanSubject</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Patient</span> ;
+        <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasHardware</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">SomeMedicalSystem</span> ;
+    ] ;
+    <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasSuitableOperatingFactor</span> [
+        <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">SuitableOperatingFactor</span> ;
+        <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasOperatingEnvironment</span> <span style="color: #00F; font-weight: bold">loc</span>:<span style="color: #008000; font-weight: bold">MedicalFacility</span> ; <span style="color: #3D7B7B; font-style: italic">## Concept DOES NOT EXIST</span>
+        <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">hasEnvironmentalCondition</span> <span style="color: #BA2121">&quot;well-lit area with temperature 20--25C&quot;</span><span style="color: #666">@</span><span style="font-style: italic">en</span> ;
+    ] .
+</pre></div>
+
+
+    <p>
+        The example states that a medical device requires blood type data from a patient (note that PD doesn't have capability to state actual physical blood is taken, a limitation IMHO) and some specific medical system which is not specified in the example. It then states that the suitable conditions for operation involve a medical facility and where the temperature is between 20 to 25 degrees celcius. For now, I am presuming that the environmental conditions such as temperature, humidity, and other things can be represented through other existing ontologies as these are extremely common industrial concepts. Our goal here is thus limited to connect them to the legal/policy type documentation and concepts.
+    </p>
+
+    <p>
+        With the addition of the (two) missing concepts, it is a good idea to reiterate the other existing DPV concepts and how they should be interpreted when used within an operating factor. To this end, the below list provides an enumeration of existing DPV properties (where available) and what they should mean:
+    </p>
+
+    <ol>
+        <li><code>dpv:hasData</code>, <code>dpv:hasPersonalData</code>:
+        involvement of data and personal data respectively;</li>
+        <li><code>dpv:hasDataSource</code>: to specify the source of data;</li>
+        <li><code>dpv:hasDuration</code>, <code>dpv:hasFrequency</code>: to
+        specify duration and frequency respectively;</li>
+        <li><code>dpv:hasScale</code>: to specify the scale e.g. data subject
+        scale, data volume, geographic coverage using the dedicated
+        properties;</li>
+        <li><code>dpv:hasEntity</code>: to specify an entity involved – there
+        are specific roles within this such as <code>dpv:hasHumanSubject</code>
+        and <code>dpv:hasActiveEntity</code> which provide more explicit
+        roles;</li>
+        <li><code>dpv:hasEntityInvolvement</code>: to specify what the entity
+        may or may not be involved to perform – such as ideally having the
+        ability to override a system;</li>
+        <li><code>dpv:hasHumanInvolvement</code>: to specify what humans can and
+        cannot do in regards to automated systems;</li>
+        <li><code>dpv:hasLocation</code> to describe location concepts – both
+        geophysical and virtual (note: this is currently under discussion);</li>
+        <li><code>tech:hasActor</code>: to specify technology actors in specific
+        roles such as developers, providers, operators, and users (note: there
+        are specific subproperties for each role);</li>
+        <li><code>dpv:isImplementedByEntity</code>: to specify the entity that
+        implements a factor;</li>
+        <li><code>dpv:isImplementedByTechnology</code>: to specify the
+        technology/instrument for implementing the factor (note: the subproperty
+        <code>ai:hasAi</code> and its subproperties like
+        <code>ai:hasCapability</code> expand this for use of AI
+        technologies);</li>
+        <li><code>tech:hasSystem</code>, <code>tech:hasSoftware</code>,
+        <code>tech:hasHardware</code>: to specify specific systems, software,
+        and hardware involved in the factor (note: there are additional
+        subproperties to specify devices, APIs, etc. in TECH);</li>
+        <li><code>tech:hasDeploymentLocation</code>: to specify the location of
+        the deployment for the factor if it is a technology;</li>
+        <li><code>tech:hasDocumentation</code>: to specify documentation
+        relevant to the factor e.g. to describe conditions in more detail or to
+        outline hazards;</li>
+        <li><code>tech:hasInput</code>, <code>tech:hasOutput</code>: to specify
+        inputs and outputs relevant to the factor;</li>
+        <li><code>tech:isComponentOf</code>: to specify if the technology is a
+        component of another technology - relevant to describing the operating
+        environment where it is essential to specify the role the technology
+        plays such as being a component or merely operating within the virtual
+        environment;</li>
+        <li><code>dpv:hasRisk</code>: to describe risks e.g. in unsuitable or
+        hazardous factors;</li>
+        <li><code>dpv:hasConsequence</code>, <code>dpv:hasConsequenceOn</code>,
+        <code>dpv:hasImpact</code>, <code>dpv:hasImpactOn</code>: to describe
+        the consequences of the factor on a system, process, or on humans (as
+        impacts);</li>
+        <li><code>dpv:isBefore</code>, <code>dpv:isAfter</code>,
+        <code>dpv:isDuring</code>: to state relations between factors e.g. to
+        state a factor comes into play after another factor or that the
+        unsuitable factor is relevant to another factor being in operation;</li>
+        <li><code>dpv:hasContext</code>: to cover any <code>dpv:Context</code>
+        concept not associated by above properties, as well as to provide an
+        open-ended method to associate more <em>contextual
+        information</em>;</li>
+        <li><code>tech:hasEnvironmentalCondition</code>: (PROPOSED) to specify the
+        environmental conditions relevant to the factor (where environment
+        refers to aspects such as air quality, temperature, etc.);</li>
+        <li><code>tech:hasOperatingEnvironment</code>: (PROPOSED) to specify the
+        operating environment for the factor – which could be further specified
+        using the above properties;</li>
+    </ol>
+
+</section>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
