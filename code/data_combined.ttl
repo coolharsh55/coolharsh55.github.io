@@ -2612,6 +2612,25 @@ hpcom:view_template a rdf:Property ;
             schema:url "https://www.w3.org/ns/dpv" ] ;
     schema:url "https://harshp.com/dev/dpv/notes-reuse-euvoc"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/secondary-uses> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:code_highlight true ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/secondary-uses.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web,
+        hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-04-21T17:19:00"^^xsd:dateTime ;
+    schema:datePublished "2025-04-21T17:19:00"^^xsd:dateTime ;
+    schema:description "Notes exploring how secondary uses like those in health research can be modelled for DPV"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Specifying Secondary Uses"@en ;
+    schema:url "https://harshp.com/dev/dpv/secondary-uses"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/standards-iso> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29335,11 +29354,6 @@ hptag:automation a hpcom:RenderedItem,
     schema:name "automation" ;
     schema:url "https://harshp.com/tags/automation"^^xsd:anyURI .
 
-hptag:working-note a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Working Note"@en ;
-    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
-
 <https://www.scss.tcd.ie/personnel/golpayes> a schema:Person ;
     schema:name "Delaram Golpayegani" ;
     schema:url "https://www.scss.tcd.ie/personnel/golpayes"^^xsd:anyURI .
@@ -29380,6 +29394,11 @@ hptag:visa a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "visa" ;
     schema:url "https://harshp.com/tags/visa"^^xsd:anyURI .
+
+hptag:working-note a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Working Note"@en ;
+    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
 
 <https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
@@ -29549,14 +29568,6 @@ hptag:drama a hpcom:RenderedItem,
     schema:name "drama" ;
     schema:url "https://harshp.com/tags/drama"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev>,
-        schema:BlogPosting ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 hptag:article a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "article" ;
@@ -29566,6 +29577,14 @@ hptag:philosophy a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "philosophy" ;
     schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
+
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,

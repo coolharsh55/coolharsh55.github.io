@@ -1,0 +1,172 @@
+<link rel="stylesheet" href="/css/toc.css" />
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+<div id="toc"></div>
+
+<section>
+    <h2>Understanding <i>Secondary Use</i> as a concept</h2>
+    <p>
+        The phrase <i>secondary use</i> occurs most prominently in health (data) informatics, where it is used to mean "<i>for uses outside of direct health care delivery</i>"<a href="https://doi.org/10.1197/jamia.M2273"><sup>[ref]</sup></a> and "<i>when data recorded for an operational care purpose is used to create new intelligence or knowledge away from its context of origin and without the originators necessarily being aware</i>"<a href="https://doi.org/10.15265/IY-2017-010"><sup>[ref]</sup></a>. This means, data collected for example for providing treatment to a patient is retained and later reused for purposes other than those relevant to the treatment of the patient, such as to analyse treatments of all patients to improve the hospital diagnosis, to carry out research into the disease and treatment efficacies, and most recently to refer to the training of ML models that coul be used within these and other processes. Most recently, this has been the subject of the <a href="http://data.europa.eu/eli/reg/2025/327/oj">EU regulation on "Health Data Spaces (EHDS)</a> where the <a href="https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space-regulation-ehds_en">informational page</a> provides a simple and clear example of what this concept means and how it will be regulated.
+    </p>
+    <p>
+        When considering the concept and use of <i>secondary use</i>, a similar phrasing <i>secondary purposes</i> is also used to refer to the purpose of the secondary use of the data with the implied meaning of referring to the entire process involved in achieving that purpose. For example, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6787532/">[ref]</a> uses both phrases. If we consider the phrasing, <i>secondary use</i> is the broader term referring to use of data in the same way GDPR regulates <i>use of personal data</i> or AI Act regulates <i>use of AI systems/models</i>. While <i>secondary purpose</i> is used to refer to the purpose of secondary use, such as for research, or public disease management, etc.
+    </p>
+</section>
+
+<section>
+    <h2><i>Subsequent Use</i> and <i>Intended Use</i> under GDPR and AI Act</h2>
+    <p>
+        The term <i>secondary use</i>, while mostly used in healthcare, also has implications beyond that of health regulations and policies. For example, in GDPR, the notions of <i>compatible purposes</i> and <i>purpose limitation</i> is important to interpret as referring to the <i>initial purposes</i> for which the data is collected and processed based on a specific legal basis from the <i>subsequent< purposes</i> which need to compatible with the initial purposes for the same legal basis to be applied. Here, purpose limitation as defined in Article 5-1b as "<i>collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes</i>". Since secondary uses are defined as those purposes which by definition are distinct from the implied initial or primary uses, they are required to be interpreted under the GDPR's purpose limitation principle. Except, GDPR allows such subsequent purposes and secondary uses for <i>scientific purposes</i> which includes medical/health research by both public and private bodies (Recital 159). For GDPR, we therefore have to distinguish between initial/primary and subsequent uses/purposes as a compatibility test -- which necessitates keeping track of which use/purpose was initial/primary and which is being proposed or implemented as subsequent/secondary. 
+    </p>
+    <p>
+        The AI Act's terminology differs significantly from GDPR (a perplexing puzzle and unfortunate occurrence for me!) where it uses <i>Intended Purpose</i>, defined in Article 3-12 as "<i>the use for which an AI system is intended by the provider, including the specific context and conditions of use, as specified in the information supplied by the provider in the instructions for use, promotional or sales materials and statements, as well as in the technical documentation</i>". Uses beyond or outside of this intended purpose have their own implications, interpretations, and consequences under the AI Act, such as a change in roles and obligations by becoming the Provider under Article 25-1c which starts with "<i>if they modify the intended purpose of an AI system...</i>". In the AI Act as well, thus, the intended or initial purpose of the AI system/model must be recorded and tracked from the subsequent/secondary purpose.
+    </p>
+</section>
+
+<section>
+    <h2>Defining Initial and Subsequent Uses as DPV concepts</h2>
+    <p>
+        From the above motivations, it should be clear that healthcare research and EHDS, GDPR, AI Act, and many other approaches require keeping track of purposes and uses in a manner that enables distinction between what was initial and what was subsequent. From the perspective of using DPV, <i>use(-case)</i> and <i>purpose</i> are two different concepts, and their respective assessment of initial/subsequent tests have important implications on the expression and interpretation of information. If we are referring only to purposes, then it means using the DPV purpose taxonomy to see if the two purposes are compatible or not. Instead, if we are referring to uses (i.e. as use-cases), then we are looking for things beyond purposes, which could mean looking at the data involved, entities, locations, and any other contextual factor. Therefore, when modelling things to support the regulatory requirements outlined earlier, it is important to think beyond purposes and provide modelling that applies to the entire use-case. A simple way to consolidate the two different phrases is to assert that compatibility between purposes, as phrased in GDPR, is part of the assessment of compatibility between uses, as phrased in AI Act and EHDS. From this, we create the requirement and a concrete proposal to model distinction between initial/primary and subsequent/secondary uses.
+    </p>
+    <p>
+        To create the actual concepts, the phrasing of the term should match the domain and existing legal/socio-technical interpretation as much as possible. From the above, we have <i>secondary use</i> in healthcare and AI regulations, and <i>subsequent purpose</i> in GDPR. Both also imply (and where such terms are used in practice) the existence of their counterpart terms in the form of <i>primary use</i> and <i>initial purpose</i>. As outlined earlier, we want to prefer <i>use</i> over <i>purpose</i> due to it addressing a broader context and being used more widely. For DPV, we also need to ensure that these concepts are not conflated or confused with other concepts or won't be misused in the wrong context. Therefore, we refer to these as <i>Compatibility Concepts</i>, and have <code>dpv:SecondaryUse</code> as a concept along with its antonym <code>dpv:PrimaryUse</code>. The definitions should make it clear that they are an assessment of whether the use is compatible with the primary i.e. initial use or is a non-compatible subsequent use. To create a parent concept for these, we can have <code>dpv:CompatibilityOfUse</code>, and to associate these we have the property <code>dpv:hasCompatibilityOfUse</code>.
+    </p>
+    <highlight>
+ex:SomeProcess1 a dpv:Process ;
+    dpv:hasCompatibilityOfUse dpv:PrimaryUse .
+ex:SomeProcess2 a dpv:Process ;
+    dpv:hasCompatibilityOfUse dpv:SecondaryUse .
+    </highlight>
+    <p>
+        In the above example, the two processes represent primary and secondary uses. They do not have a link to each other i.e. it doesn't state explicitly that <code>ex:SomeProcess1</code> and <code>ex:SomeProcess2</code> are incompatible as there could be many secondary use processes for a given primary use. Further, there could be different types of incompatibilities between the two e.g. by purposes, data, subjects, entities, and not all information could be within the same process instances. Still, whether we should provide a relationship i.e. a property to link between primary and secondary uses should be discussed. For example, something like <code>dpv:isSecondaryUseOf</code> to link which process it is incompatible with and is thus a secondary use of.
+    </p>
+    <p>
+        The primary/secondary distinction only refers to the representation of non-compatibility i.e. whether something is incompatible with the initial/primary use or not. To address compatibility i.e. whether something is compatible, we add more concepts as follows:
+    </p>
+    <ul>
+        <li>
+            <code>dpv:PrimaryUse</code>
+            <ul>
+                <li><code>dpv:PrimaryInitialUse</code>: initial primary use where the use/purpose is defined and determined by an entity e.g. a hospital collecting medical data and using it in the treatment;</li>
+                <li><code>dpv:PrimarySubsequentReuse</code>: subsequent reuse of data in a manner that is compatible with the primary initial use/purpose e.g. the hospital above using the medical data in consultations and communications with the patient outside of treatment;</li>
+                <li>NOTE: there cannot be a <i>primary incompatible reuse</i> as this is by definition a secondary use of the data!</li>
+            </ul>
+        </li>
+        <li>
+            <code>dpv:SecondaryUse</code>
+            <ul>
+                <li><code>dpv:SecondaryContextualReuse</code>: reuse of data with a different non-compatible use/purpose form the primary use in a manner that is still within the same context e.g. the hospital above uses the treatment data in its own medical research studies. Such uses are considered <i>compatible</i> with the broader objectives and intents of the primary uses as the hospital is working to improve the health of the patient in both cases -- where the treatment is a direct benefit and the research is an indirect benefit.</li>
+                <li><code>dpv:TertiaryUse</code>: secondary uses where the context changes or is no longer compatible e.g. a private insurance agency uses the treatment data above for developing its own statistical or AI models representing patient mortality and treatment efficacies. In such uses, the patient--hospital contextual consideration is broken as the insurance agency has the primary motive of profit-making. This is a rather immature and confusing concept, so I will elaborate on this in the next section.</li>
+            </ul>
+        </li>
+        <li>
+            <code>dpv:CompatibilityUnknown</code>: concept representing an unknown status regarding compatibility between primary and secondary uses, intended to complete the enumeration and to enable expressing that this information is missing/unknown
+        </li>
+    </ul>
+    <p>
+        Examples of how these would be used:
+    </p>
+    <highlight>
+ex:Process1 a dpv:Process ;
+    dpv:hasPurpose dpv:ServiceProvision ;
+    dpv:hasPersonalData pd:Email ;
+    dpv:hasLegalBasis dpv:Contract ;
+    dpv:hasCompatibilityOfUse dpv:PrimaryInitialUse . # <---
+ex:Process2 a dpv:Process ; # another process, is compatible
+    dpv:hasPurpose dpv:CommunicationForCustomerCare ;
+    dpv:hasPersonalData pd:Email ;
+    dpv:hasLegalBasis dpv:LegitimateInterest ;
+    dpv:hasCompatibilityOfUse dpv:PrimarySubsequentReuse . # <---
+ex:Process3 a dpv:Process ;
+    dpv:hasPurpose dpv:FraudPreventionAndDetection ;
+    dpv:hasPersonalData pd:Email ;
+    dpv:hasLegalBasis dpv:LegitimateInterest ;
+    dpv:hasCompatibilityOfUse dpv:SecondaryContextualReuse . # <---
+ex:Process4 a dpv:Process ;
+    dpv:hasPurpose dpv:DirectMarketing ;
+    dpv:hasPersonalData pd:Email ;
+    dpv:hasLegalBasis dpv:LegitimateInterest ;
+    dpv:hasCompatibilityOfUse dpv:SecondaryContextualReuse . # <---
+ex:Process5 a dpv:Process ;
+    dpv:hasPurpose dpv:SellDataToThirdParties ;
+    dpv:hasPersonalData pd:Email ;
+    dpv:hasLegalBasis dpv:Contract ; # with third party
+    dpv:hasCompatibilityOfUse dpv:TertiaryUse . # <---
+    </highlight>
+</section>
+
+<section>
+    <h2>Distinguishing between <i>Secondary</i> and <i>Tertiary</i> Uses</h2>
+    <p>
+        The previous section specified <code>dpv:SecondaryIncompatibleReuse</code> to represent cases where the secondary uses are no longer compatible with the context of the primary use in a broader societal sense. Such uses are quite often forbidden or prohibited, such as under GDPR and more recently under the EHDS which defines <i>secondary use</i> in Article 2 as "<i>the processing of electronic health data for the purposes set out in Chapter IV of this Regulation, other than the initial purposes for which they were collected or produced</i>". This requires a distinction between secondary uses which are compatible in the sense permitted by EHDS, and those that are not and are thus prohibited by the EHDS (Article 54). While the EHDS-specific categorisations should be added to a EHDS extension to the DPV, there should be a foundational concept in DPV that represents this distinction. Therefore, I propose repurposing the concept <i>Tertiary Use</i> to mean secondary uses that are not contextually compatible -- where <i>context</i> refers to sector, benefiting entity, purposes, etc. and where the compatibility test needs to be further explored to arrive at a definition that goes beyond a simplistic "these purposes and not these other purposes" as defined in the EHDS and the GDPR.
+    </p>
+    <p>
+        My working theory for <i>Tertiary Use</i> is thus: In the context of healthcare research and health data reuse, primary use is the direct relationship between a patient and a healthcare provider, secondary use is the direct relationship between the healthcare provider and an entity that is reusing the data with the understanding that it indirectly benefits the patient by virtue of improving the healthcare provision or by providing benefits to society in the context of healthcare. Purposes and uses beyond this, which may or may not benefit the society but are not about healthcare or relevant to healthcare should be considered as tertiary uses.
+    </p>
+    <p>
+        Tertiary uses as a test also help distinguish other kinds of secondary uses in GDPR and AI Act. For example, under GDPR, an organisation using the data for another purpose (as <i>secondary use</i>) but in the same context can be justified through legal bases such as legitimate interest (assuming they are sensible and not exploitative or misused) and for which GDPR allows the data subject to object or to opt-out. Purposes that do not fit the use of legitimate interest are required to be justified using consent (presuming no other legal bases are allowed), and should thus be considered as tertiary uses as they are not relevant to the primary use (e.g. service provision) or secondary use (e.g. improve services, fraud prevention, security). When considering use of consent for tertiary uses, the nonsense that is online advertising and excessive consent can be immediately identified as being problematic as there are no other sensible ways to justify it (e.g. as primary use has contract, secondary use has legitimate interest). 
+    </p>
+    <p>
+        In the AI Act, the primary intended purposes for which the AI systems/models are developed and provided represent a rigid set of purposes which under the proposed taxonomy are the primary uses. Any incompatible use of the technology will be a secondary use. The distinction that tertiary use brings here refers to whether the secondary use was still in a relevant and compatible context or was it used in a completely incompatible and different context. For example, there is a monitoring CCTV in a grocery store checkout that recognises people based on faces (i.e. looks at the shape of the face to know its a human, and not that it does facial recognition), which is the primary use of that system as defined by the provider. If the deployer uses that system to monitor the number of people coming in and going out of the store, then this is different from the intended and primary use, and is thus a secondary use. However, both primary and secondary uses are occurring in the same context and in a way that is contextually compatible. Instead, if the system were to be used to specifically monitor employees in the store for how long they are taking a break (even without singling out a particular employee) -- then this use is not compatible with the primary use but also quite clearly not in the same context as the secondary use. It is thus a tertiary use.
+    </p>
+</section>
+
+<section>
+    <h2>Outdated proposal on Secondary Purposes</h2>
+    <p>
+        Below are my notes proposing <i>Secondary Purpose</i> as a concept in relation to the above, which I had shared with some DPVCG members, and which are now outdated and superseded by the above. I provide them here for comparison and archiving purposes.
+    </p>
+    <pre>Wed 16 Apr, 18:40
+
+The use of primary/secondary purposes in healthcare is a very important
+and established distinction that is relied upon by regulations like
+EHDS. However, in DPV, we already have purpose as a well defined
+concept. Therefore, if we add 'secondary purpose' without understanding
+how it relates to the DPV concept, then it would lead to potential
+quality issues with DPV.
+
+To rectify this, my proposal is that we have the below terms for
+PrimaryPurpose and SecondaryPurpose so that they are used as expected
+existing people, while the relation to DPV purpose is clarified. The
+interpretation of these means if I have activity A and B, and purpose
+within both is in the same 'branch' in our purpose taxonomy, then it is
+primary purpose. Otherwise it is a secondary purpose.
+
+- DPV has `Importance' in Context taxonomy to indicate how important
+   something is within the context with cases `Primary' and
+   `Secondary'. The origin of this concept is from guidelines on ROPA
+   which require the DPO to indicate whether an activity is their 'main'
+   business activity (as primary importance) or it is 'supporting' the
+   main activities (as secondary importance).
+- In healthcare, the notion of 'primary' and 'secondary' is different as
+   it relies to the use over time for contexts that are
+   different. Primary in this case refers to the initial context in which
+   the data was obtained e.g. as part of patient treatment, and Secondary
+   refers to another context outside of this e.g. to analyse old records
+   as part of research.
+- Therefore, new concepts are needed in DPV that represent the context
+   of whether the given activity is occuring within the same context as
+   earlier (primary) or is a different context (secondary). As this
+   distinction is based on delineated distinctions between the contexts,
+   they are mutually exclusive. We can use the term `PurposeContinuity'
+   as the parent term that refers to whether the initial purpose still
+   applies (`PrimaryPurpose') or there is a different purpose that is
+   connected or applicable within the same broader context
+   (`SecondaryPurpose') or is well outside the context
+   (`TertiaryContext').
+- Examples:
+   * Primary purpose: Provide healthcare in a hospital where blood group
+     and other body measurements are taken
+   * Secondary purpose: Research to understand correlation between
+     patients, improve hospital services in terms of capacity and
+     treatments.
+   * Tertiary purpose: Data used by another organisation outside of the
+     patient-hospital context for purposes other than those related to
+     the healthcare provision or improvement of healthcare
+     (e.g. insurance analysis).
+    </pre>
+</section>
