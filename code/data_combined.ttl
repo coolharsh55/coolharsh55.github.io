@@ -2556,6 +2556,25 @@ hpcom:view_template a rdf:Property ;
     schema:name "Prototyping Subjective Locations in DPV"@en ;
     schema:url "https://harshp.com/dev/dpv/locations-04"^^xsd:anyURI .
 
+<https://harshp.com/dev/dpv/locations-05> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:code_highlight true ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:contentFile "https://harshp.com/code/content/dev/dpv/locations-05.html" ;
+            hpcom:contentFileFormat hpcom:formatHTML ] ;
+    hpcom:tag hptag:DPV,
+        hptag:DPVCG,
+        hptag:semantic-web,
+        hptag:working-note ;
+    schema:author <https://harshp.com/me> ;
+    schema:dateModified "2025-04-24T08:00:00"^^xsd:dateTime ;
+    schema:datePublished "2025-04-24T08:00:00"^^xsd:dateTime ;
+    schema:description "Addressing raised issues regarding subjective locations"@en ;
+    schema:isPartOf <https://harshp.com/dev/dpv> ;
+    schema:name "Issues with Modelling Subjective Locations"@en ;
+    schema:url "https://harshp.com/dev/dpv/locations-05"^^xsd:anyURI .
+
 <https://harshp.com/dev/dpv/notes-2.1-legal-eu-eea-extensions> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29395,11 +29414,6 @@ hptag:visa a hpcom:RenderedItem,
     schema:name "visa" ;
     schema:url "https://harshp.com/tags/visa"^^xsd:anyURI .
 
-hptag:working-note a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "Working Note"@en ;
-    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
-
 <https://harshp.com/dev/gnib_appointments> a hpcom:RenderedItem,
         <https://harshp.com/dev>,
         schema:BlogPosting ;
@@ -29447,6 +29461,11 @@ hptag:video-games a hpcom:RenderedItem,
         hpcom:Tag ;
     schema:name "video-games" ;
     schema:url "https://harshp.com/tags/video-games"^^xsd:anyURI .
+
+hptag:working-note a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "Working Note"@en ;
+    schema:url "https://harshp.com/tags/working-note"^^xsd:anyURI .
 
 <http://example.com/BeatrizEsteves> a schema:Person ;
     schema:name "Beatriz Esteves" .
@@ -29578,14 +29597,6 @@ hptag:philosophy a hpcom:RenderedItem,
     schema:name "philosophy" ;
     schema:url "https://harshp.com/tags/philosophy"^^xsd:anyURI .
 
-<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
-        <https://harshp.com/dev>,
-        schema:BlogPosting ;
-    hpcom:content [ a hpcom:Content ;
-            hpcom:renderWith hpview:DevProjectView ] ;
-    schema:name "Data Privacy Vocabulary (DPV)"@en ;
-    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
-
 <https://harshp.com/research/projects/risky> a hpcom:RenderedItem,
         <https://harshp.com/research/projects>,
         schema:Project ;
@@ -29619,10 +29630,13 @@ hptag:philosophy a hpcom:RenderedItem,
     schema:startDate "2020-10-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://harshp.com/research/projects/risky"^^xsd:anyURI .
 
-hptag:DPVCG a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "DPVCG"@en ;
-    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
+<https://harshp.com/dev/dpv> a hpcom:RenderedItem,
+        <https://harshp.com/dev>,
+        schema:BlogPosting ;
+    hpcom:content [ a hpcom:Content ;
+            hpcom:renderWith hpview:DevProjectView ] ;
+    schema:name "Data Privacy Vocabulary (DPV)"@en ;
+    schema:url "https://harshp.com/dev/dpv"^^xsd:anyURI .
 
 book:lists a owl:Class,
         hpcom:RenderedItem ;
@@ -29632,6 +29646,11 @@ book:lists a owl:Class,
             hpcom:renderWith hpview:BookListIndexView ] ;
     schema:name "Book Lists"@en ;
     schema:url "https://harshp.com/hobbies/books/lists"^^xsd:anyURI .
+
+hptag:DPVCG a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "DPVCG"@en ;
+    schema:url "https://harshp.com/tags/DPVCG"^^xsd:anyURI .
 
 <https://www.scss.tcd.ie/declan.osullivan/> a schema:Person ;
     schema:name "Declan O'Sullivan" .
@@ -29733,11 +29752,6 @@ hptag:Rating2 a hpcom:Rating,
     schema:ratingValue "2"^^xsd:int ;
     schema:url "https://harshp.com/tags/Rating2"^^xsd:anyURI .
 
-hptag:semantic-web a hpcom:RenderedItem,
-        hpcom:Tag ;
-    schema:name "semantic-web" ;
-    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
-
 <http://example.com/ADAPT> a schema:Project ;
     schema:endDate "2020-12-31T00:00:00"^^xsd:dateTime ;
     schema:funder [ a schema:FundingAgency ;
@@ -29747,6 +29761,11 @@ hptag:semantic-web a hpcom:RenderedItem,
     schema:name "ADAPT SFI Research Centre for Digital Media Technology"@en ;
     schema:startDate "2015-01-01T00:00:00"^^xsd:dateTime ;
     schema:url "https://www.adaptcentre.ie/"^^xsd:anyURI .
+
+hptag:semantic-web a hpcom:RenderedItem,
+        hpcom:Tag ;
+    schema:name "semantic-web" ;
+    schema:url "https://harshp.com/tags/semantic-web"^^xsd:anyURI .
 
 hptag:poem a hpcom:RenderedItem,
         hpcom:Tag ;

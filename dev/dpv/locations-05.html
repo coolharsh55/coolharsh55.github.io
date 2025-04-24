@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Issues with Modelling Subjective Locations</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Issues with Modelling Subjective Locations">
+    <meta name="schema:description" content="Addressing raised issues regarding subjective locations">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,Working Note,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/locations-05">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/locations-05">
+    <meta property="og:title" content="Issues with Modelling Subjective Locations">
+    <meta property="og:description" content="Addressing raised issues regarding subjective locations">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev https://schema.org/BlogPosting " resource="https://harshp.com/dev/dpv/locations-05">
+        <h1 property="schema:name schema:headline">Issues with Modelling Subjective Locations</h1>
+        <div id="description">
+            <span property='schema:description'>Addressing raised issues regarding subjective locations</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-04-24T08:00:00">2025-04-24T08:00:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/working-note" property="schema:about" resource="https://harshp.com/tags/working-note" typeof="rdfs:Resource"><span property="rdfs:label">Working Note</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+    ol.uc > li {
+        list-style: none;
+        counter-increment: number;
+    }
+    ol.uc > li::before {
+        content: "UC" counter(number);
+        position: relative;
+        font-weight: bold;
+        left: -5px;
+        margin: -20px;
+        margin-right: 10px;
+    }
+    .solution {
+/*        text-decoration: underline dotted darkblue;*/
+
+    }
+</style>
+
+<blockquote>
+    <p>Continuing the discussion from <a href="locations-04">previous post</a> where I proposed modelling concepts such as public/private and home/work as DPV locations. In this post I summarise the discussions around subjective locations in the DPVCG meetings to identify key issues that need to be discussed and resolved with potential solutions. </p>
+</blockquote>
+
+<section>
+    <h2>Introduction</h2>
+    <p>
+        In the last DPVCG meetings, we discussed the subjective location concepts, and identified five issues with their modelling that need to be addressed:
+    </p>
+    <ol>
+        <li><a href="#locality"><strong>Locality</strong></a>: An assessment of <i>locality</i> e.g. is it here <i>locally</i> or is it there <i>remotely</i> -- most commonly used to distinguish data storage on premises and in cloud; </li>
+        <li><a href="#public-private"><strong>Public/Private</strong></a>: Locations being categorised as public/private with a taxonomy expanding upon these and including hybrid mixture of both;</li>
+        <li><a href="#subjective"><strong>Subjective Labels</strong></a>: Use of subjective locations that are not fixed in geo-physical space merely by their label but rely on the interpretation or application in order to be concretely resolved e.g. home, work;</li>
+        <li><a href="#virtual"><strong>Virtual Locations</strong></a>: Digital addresses and 'places' that are phrased as locations in language e.g. data is located in device, or in your browser, or the home page of the website, or the location of a file in a file system; and</li>
+        <li><a href="#compatibility"><strong>Backwards Compatibility</strong></a>: Where these concepts should be defined - in DPV or LOC namespaces and what to do with the existing concepts in DPV.</li>
+    </ol>
+</section>
+
+<section id="locality">
+    <h2>Locality of Locations</h2>
+    <p>
+        DPV has the concept <code>dpv:LocationLocality</code> to refer to whether the locations are described as <i>here</i> or <i>there</i> i.e. as local or remote. This concept was added as the locality of data storage is an important consideration in security and in legal considerations. It provides a simple and convenient method to express where is the data in combination with other locations e.g. to state that the server located in a country is a remote location (which cannot be identified by itself from just the server location). The concepts are also not suitable to be organisational measures as merely being local or remote is not a measure.</p>
+    <p>
+        Other concepts present in DPV in addition to locality include public/private and location fixture (single, multiple, federated, etc.) which are similarly relevant. Therefore, <mark>the recommendation is to keep these core concepts in DPV as they are useful in security and legal interpretations and to move all other subjective locations to the LOC extension (see below)</mark>.
+    </p>
+</section>
+
+<section id="public-private">
+    <h2>Public/Private Locations</h2>
+    <p>
+        <strong>REQUIREMENT: Model locations as being public or private spaces in the sense of ownership and accessibility.</strong>
+    </p>
+    <p>
+        For public/private locations, the issue at hand is ensuring that our modelling of these concepts in DPV matches and is aligned with the <i>legal definitions and interpretations</i> for these in a way that is sensible, useful, and comprehensible to others. Whereas public/private are broad labels used quite commonly, others such as the mixture of the two are not legal terms, but their descriptions are intended to support legal interpretations. For example, a private place that has within it a publicly accessible portion has consequences to consider when putting up a CCTV monitoring specific areas. The proposed public/private taxonomy models such concepts to support an explicit acknowledgement of whether the space is public or privately owned, and whether it is accessible to the public or not. 
+    </p>
+    <p>
+        The issue identified after discussion on these was whether these concepts were <i>correctly modelled</i> and <i>comprehensible</i>. <mark>To ensure these are addressed, I have changed some of the labels so that they are more explicit in describing the category of location. I have also changed their parent by removing <i>subjective location</i> as these concepts are well defined and interpreted in law (as the modelling intends).</mark>
+    </p>
+</section>
+
+<section id="subjective">
+    <h2>Subjective Labels as Locations</h2>
+    <p>
+        <strong>REQUIREMENT: Model commonly used 'places' such as 'home' and 'work'.</strong>
+    </p>
+    <p>
+        For use of subjective labels such as home and work as locations, the first issue identified is that they are distinct from other geo-physical locations such as cities and countries which have a clear identity and presence, and therefore whether they should be modelled with the same category/type as a location. <mark>To address these, I have proposed the concept <code>loc:SubjectiveLocation</code> as the parent of all locations concepts which require a subjective interpretation</mark> -- such as <i>home</i> requiring asking <i>which home & where is it located?</i>
+    </p>
+    <p>
+        <strong>REQUIREMENT: Model the distinction between being located inside and outside of that location.</strong>
+    </p>
+    <p>
+        The second issue with these is what prefix to use to refer to them -- with options suggested being <i><strong>At</strong>Home</i> and <i><strong>Within</strong>Home</i>, where it was discussed as to what these prefixes are implying. <i>Within</i> is referring to a boundary and being within that boundary, whereas <i>At</i> is more loosely defined in terms of only referring the overall space. Further, <i>Within</i> also implies the need to consider <i>External</i> spaces i.e. if we want to say something is located within a specific place, then the distinction also needs to be made for the space outside of the specified place. This has implications when considering questions such as <i>was this located within the workplace or outside of it?</i>
+    </p>
+    <p>
+        It is important to highlight the observation here that when we say <i>some location</i>, it is always implied that we are referring to the <i>boundary and space within it</i>. For example, if we are talking about home or work, we most definitely mean the space inside the home and the work places. Therefore, if a distinction must be made for space outside of these, then only that should be a seprate concept. However, if we model this as a concept, it leads to unnecessary complications and there is a better way to model this: <mark>use a <i>property</i> like <code>dpv:isOutsideOfLocation</code> which by definition would mean places that are not the specified location.</mark> This reduces the need to model each concept as <i>insideX/outsideX</i>.
+    </p>
+    <p>
+        If we choose to model the <i>outside location</i> as a distinct concept, it leads to the following issue. Let's assume we have the concept <i>OutsideThisSpace</i> as an abstract subjective concept, and then ask the user to use this with other subjective concepts such as <i>Home</i> and <i>Work</i> to have the desired interpretation. Only using the concept such as <i>Home</i> already means <i>within/at home</i>, so adding <i>InsideThisSpace</i> is redundant. However, when using this concept, we are asking the user to create an intersection of the places represented by <i>inside home</i> and <i>outside home</i> -- which is a null set i.e. it is empty and undefined. If we ask the user to combine these concepts, we get the universal set i.e. it represents everything! Therefore, a combination with a combination that negates something is not a good idea. To highlight how this affects practicality: the accepted proposal for modelling <i>inverted locations</i> such as <i>Non-EU</i> uses a distinct concept to represent the external location. If instead we were to use <i>EU</i> and <i>OutsideThisSpace</i> together, the interpretation is extremely sensitive as it relies on reading both concepts -- if only <i>EU</i> is read then we have the opposite interpretation. Instead, by having <i>Non-EU</i> as a distinct concept that does not contain <i>EU</i> as a concept ensures, by definition and semantics, that such an interpretation cannot take place.
+    </p>
+    <p>
+        <strong>REQUIREMENT: Clarify distinction and overlap between location and personal data</strong>
+    </p>
+    <p>
+        A third issue that arises when modelling such subjective locations is the need to distinguish them from the similar or sometimes duplicate labels used to refer to personal data. For example, <i>home</i> as a location and also to describe a <i>person's home</i> as their personal data. If we are modelling these as locations, how do we define such overlap, what are its implications, and based on these -- should these be modelled as personal data directly? An important observation here is that, in theory, all locations can be personal data e.g. work (place) can refer to a person's or an employee's workplace, and a park (place) can refer to a place the person spends time at. However, they can also be used as non-personal data e.g. work (place) refers to the location of an organisation, and a park (place) refers to the location used by the road planning committee -- BUT these are not likely to be used and are also not the main focus of DPVCG.
+    </p>
+    <p>
+        <mark>As the PD taxonomy already provides concepts that model personal data, it should be the namespace within which the person's home and work and other locations which are intended to be personal data should be defined with parent <i>subjective location</i>. The other places which are unlikely to be personal data should have their taxonomy in the LOC extension e.g. beach, park, train station.</mark> This distinction between <i>personal and non-personal spaces</i> should also help with the objective of the DPVCG to assist with privacy categorisations (like we do in the PD extension by annotating concept as sensitive data). In this manner, if someone wants to specify a location such as <i>home</i>, they have an easy check to see if it is likely to be personal data and the concept is in PD extension.
+    </p>
+</section>
+
+<section id="virtual">
+    <h2>Virtual Locations</h2>
+    <p>
+        <strong>REQUIREMENT: Model virtual and digital spaces as locations</strong>
+    </p>
+    <p>
+        Another kind of subjective location is the phrasing used to refer to where data is being stored. For example, <i>your photos are stored only on your device</i>, or <i>all processing happens locally within the device</i>. Here, there is underlying technology which is used to store the data (i.e. the device) and the reference to space is as a boundary of being inside the device and not being outside of it. Such distinctions are important for privacy as they imply not transferring data outside the device. They are also increasingly relevant for <i>AI processing</i> that happens <i>on device</i>. The issue raised here was whether these are indeed location concepts or just facets of the technology and therefore belong in the TECH extension (e.g. similar to defining a kind of access control).
+    </p>
+    <p>
+        The origin of these phrases comes from the necessity to define the location of data when none is available. For example, in the above, if an app was storing data in its namespace in the device and it is necessary to define a location, the developer is likely to put "within/on device" as the answer. Note that this is a different question from how the data is saved -- the answer to which is a form of data storage technology, and that both are necessary to get the complete picture. Thus, <mark>for digital technologies, the <i>location</i> used to store the data MUST be by definition also a <i>technology</i></mark>. The question then that we are trying to answer here is whether we are referring to the data storage technology or the implications of this in terms of where it is "located" and who can "access" it.
+    </p>
+    <p>
+        <strong>REQUIREMENT: Clarify overlap between location and technology concepts</strong>
+    </p>
+    <p>
+        A complication in the creation of <i>technology as location</i> concepts is that any technology can be a (data storage) location. For example, hardware such as device, camera, or sensor, as well as software such as software or app -- all can be specified as being capable of storing data and thus being locations. Instead of creating a distinct taxonomy for each, these concepts should be in the TECH extension (as they are now) and no repetition for these should be present in other extensions (not in DPV and not in LOC). Instead, we can interpret the requirement as we want to have a way to specify that data is being stored inside or outside that hardware/software. This brings the problem to a similar phase as the earlier requirements regarding 'inside/outside home', and thus we should be able to use the same solution. This means we <mark>use <code>dpv:hasLocation tech:Something</code> to mean data is stored in that technology and <code>dpv:isOutsideOfLocation tech:Something</code> to mean data is stored outside of that technology. To assert that data is only stored in the technology -- this is a tech/org measure and should be modelled as such instead of a location concept.</mark> This way, we don't need to duplicate technology concepts as locations and it also provides consistency when using technology concepts as location concepts. However, we should not define any or all technologies as instances of <code>dpv:Location</code> as this won't always be true.
+    </p>
+</section>
+
+<section id="compatibility">
+    <h2>Backwards Compatibility</h2>
+    <p>
+        <strong>REQUIREMENT: Ensure backwards compatibility</strong>
+    </p>
+    <p>
+        The DPV currently contains several location concepts under <code>dpv:LocationLocality</code> such as <code>dpv:WithinDevice</code> and <code>dpv:CloudLocation</code> that have an incompatible overlap with the approaches proposed above. They also become an issue as the location concepts would be fragmented across DPV and LOC namespaces. The ideal fix would be to delete these concepts as they superseded by the new interpretation of directly using technology concepts where needed as locations, however, this breaks backwards compatibility for existing uses.
+    </p>
+    <p>
+        The criteria for deciding whether to break backwards compatibility is:
+    </p>
+    <ol>
+        <li><i>How many uses would be affected that are <i>critically reliant</i> on the current modelling?</i> We don't know specifics of which implementations are using these concepts, but it should be correct to assume that these concepts would be in use somewhere as they are relevant to several legal obligations. However, it is not likely that these are <i>critically reliant</i> on the existence of these concepts as they are relatively minor concepts as compared to personal data and purposes in the broad sense of things.</li>
+        <li><i>Is there an alternative to the breaking concepts and is it comparable and compatible?</i> Yes, we are proposing an alternative, though it is not a 1:1 replacement as the concepts are now spread across LOC and TECH extensions. However, all existing concepts will be covered i.e. the same information can be represented. Therefore, we are proposing a change rather than a complete removal.</li>
+        <li><i>What is the cost of updating the existing implementation to use the new concepts?</i> If we only consider the replacement of concepts, the cost should be quite low as there are replacements. However, if the concepts were expanded i.e. a use-case had its own taxonomy expanding on the DPV concepts then the cost could be higher. However, we do not know of any such cases at the moment.
+    </p>
+    <p>
+        Based on the above analysis, I propose that <mark>we should break backwards compatibility and remove/replace the existing concepts</mark> as the new model should provide a better representation of concepts related to location, technology, and personal data without overlaps while also addressing their intersection and how to expand their taxonomy in future.
+    </p>
+</section>
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
