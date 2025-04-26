@@ -1,0 +1,200 @@
+<h2 id="motivation">Motivation</h2>
+<blockquote>
+<p>(The real motivation is I need to do some <em>coding</em> to get away
+from the thinking and writing and emails that happen all week.)</p>
+</blockquote>
+<p>The DPV specifications or vocabularies consist of RDF and HTML files
+that are generated in specific folders representing namespaces. The
+process goes something like this: We make changes in Google Sheets,
+which are then download locally and extracted as CSVs using a python
+script (<code>100.py</code>), then another script parses these and
+produces the RDF outputs (<code>200.py</code>), and then another script
+parses the RDF and produces the HTML outputs (<code>300.py</code>)</p>
+<p>The issue I’m addressing with this effort is how the current DPV
+documentation generator is a mammoth set of 2700 line configuration file
+along with 2000 lines of RDF and HTML generation code, which functions
+like a monolithic single executable where everything is produced
+together. This means if someone makes a change in one concept in one
+namespace, they have to deal with producing ALL the outputs and then
+only filtering/selecting the ones that are relevant and discarding the
+others. Therefore, the current goal is to break down the monolithic
+architecture and to produce something that is modular i.e. for a given
+set of vocabularies, can we only produce those outputs that are
+relevant.</p>
+<p>This has already been done for the CSV downloading script, but it is
+detached from the other implementations as it has its own notion of what
+vocabularies exist, how to download and extract those, etc. On the other
+hand, the <code>vocab_management.py</code> script contains all the
+metadata and configurations for producing RDF and HTML, and it is a
+massive file (2700 lines) which is difficult to understand if one
+doesn’t want to spend a disproportionate amount of time. Therefore, the
+modularity of the code should also be reflected as the modularity of the
+configuration data structures that are linked to that code.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>It is capable of producing <em>single indpedent vocabularies</em> in
+a modular fashion e.g. DPV, TECH, etc. vocabularies should be produced
+individually if needed.</li>
+<li>It can produce <em>multiple independent vocabularies</em> e.g. both
+DPV and TECH should be produced at the same time.</li>
+<li>It automatically deals with <em>dependencies between
+vocabularies</em> e.g. when producing TECH there may be concepts reused
+from DPV – which necessitates reading/loading DPV concepts in
+memory.</li>
+<li>All configuration details for a given vocabulary are in the same
+place i.e. those related to CSV inputs, RDF and HTML outputs, templates,
+metadata, etc. are in a single location.</li>
+<li>There are multiple files associated with configuration such that
+each file details with a specific vocabulary option.</li>
+<li>The CSVs produced have a consistent format that is correlated with
+the associated vocabulary e.g. <code>dpv_filename</code> and
+<code>tech_filename</code>.</li>
+<li>There should be a single <em>interface</em> for the user to deal
+with that can download the CSVs, output RDF, and output HTML –
+individually or together</li>
+</ul>
+<h2 id="example-interface">Example Interface</h2>
+<h3 id="simple-concept-addition">Simple concept addition</h3>
+<p>We add some new concepts in the AI extension.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--vocab</span><span class="op">=</span>ai <span class="at">--download-csv</span> <span class="at">--generate-rdf</span> <span class="at">--generate-html</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">-v</span><span class="op">=</span>ai <span class="at">-csv</span> <span class="at">-rdf</span> <span class="at">-html</span></span></code></pre></div>
+<p>In the above, <code>--vocab</code> and <code>-v</code> are long and
+short form parameters that express the vocabulary that we are working
+with. This param is mandatory. It can take the special value
+<code>ALL</code> to indicate all vocabularies.</p>
+<p>The other parameters specify which action to take i.e. whether to
+download the CSVs, to generate RDF, or to generate the HTML. They can be
+used individually or in combination (as above). The order of operation
+should always be CSV to RDF to HTML (as it is now). If for some reason,
+only the CSV and HTML options are passed, then that is what should
+happen i.e. download CSV and generate HTML. Trust the user that they
+know what they are doing.</p>
+<p>When dealing with the AI vocabulary, it should know that it should
+read DPV, TECH, and RISK as direct dependencies. The order of loading
+these should be DPV and then the others as DPV is the foundational or
+core vocabulary for all other vocabularies. Even if these vocabularies
+are loaded, they do not have any corresponding outputs produced.</p>
+<h3 id="multi-vocabulary-changes">Multi-vocabulary changes</h3>
+<p>We add a new concept in the TECH extension and then we use this as a
+parent in a concept in the AI extension.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--vocab</span><span class="op">=</span>tech,ai <span class="at">-csv</span> <span class="at">-rdf</span> <span class="at">-html</span></span></code></pre></div>
+<p>Here both TECH and AI should have outputs produced with the same
+process as described in the simple scenario.</p>
+<h3 id="primer-guides-and-other-documents">Primer, guides, and other
+documents</h3>
+<p>For primer, guides, and other documents which are not dependant on
+any vocabulary nor are they located in a specific versioned folder, the
+process should be simple and straightfoward. There should be parameters
+to control each aspect and possible output.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--primer</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--guide</span><span class="op">=</span>ALL</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--guide</span><span class="op">=</span>data-breach,security</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--mappings</span><span class="op">=</span>ALL</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--mapping</span><span class="op">=</span>odrl</span></code></pre></div>
+<h3 id="release">Release</h3>
+<p>To produce the release, there should be a single command that does
+all the work (which is currently handled by a custom script). The
+release should be based on the currently configured DPV version in the
+configuration.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span><span class="op">&gt;</span>python3 <span class="ex">generate</span> <span class="at">--release</span></span></code></pre></div>
+<h2 id="config">Config</h2>
+<p>There should be two distinct sets of configurations – one related to
+the overall status of the DPV vocabularies with stuff like version
+number, release/draft status, etc., and the other should be for each
+vocabulary to specify its own configurations and metadata. This can be
+done by having a folder structure like below which has the main
+configuration files at the folder level and then further subfolders for
+vocabulary metadata. In the scripts, we can then use them as
+<code>config.vocab.dpv.csv['filename']</code> and
+<code>config.vocab.dpv.metadata</code>. This also allows anyone wanting
+to update a small thing (e.g. fix a typo in title) for a single
+vocabulary to do so by going to the specific file, or if we want to add
+new vocabularies then copy the existing structure to a new file and
+update it.</p>
+<pre><code>.
+├── collations.py
+├── filepaths.py
+├── guides
+│   ├── consent-27560.py
+│   ├── __init__.py
+│   └── primer.py
+├── __init__.py
+├── mappings
+│   ├── __init__.py
+│   └── odrl.py
+├── namespaces.py
+├── serialisations.py
+├── sparql_hooks.py
+├── term-management.py
+├── version.py
+└── vocab
+    ├── __init__.py
+    ├── dpv.py
+    ├── risk.py
+    └── tech.py</code></pre>
+<p>The choice to use <code>python</code> for this over something more
+specific and widely used for configurations, such as <code>TOML</code>
+(we discard <code>JSON</code> as a data format and not a config format),
+is that the rest of the code is always and heavily python, and since the
+configurations are effectively dictating how that python code should
+behave, there is no added advantage to having them in a non-pythonic
+format. Further, by using something else other than python, it increases
+the complexity of the codebase and requires the person using it to know
+and understand one more thing - which they might not know until working
+on this code. The python variables on the other hand, can be directly
+used, manipulated, and even inspected for debugging using the same
+methods as the rest of the code. So until there is a significant
+advantage to gain from switching to <code>TOML</code> or something else,
+such as if the code is being migrated to <code>Go</code> or another
+faster language, the python files should be sufficient.</p>
+<p>Within each of the vocabulary files, all relevant information and
+configurations should be present without having to visit other files to
+change how a single vocabulary behaves. This means, all CSV/RDF/HTML
+configurations should reside here. For example, below is how the config
+for DPV could look like. In these, it is important to consolidate as
+much information as possible so that the total amount of information is
+lesser and more manageable, and that all information that can be derived
+from a core set of information is not duplicated just because it deals
+with a different part of the process (e.g. CSV/RDF/HTML all use the same
+module names but which are declared in three different places)</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># config/vocab/dpv.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>modules <span class="op">=</span> [<span class="st">&#39;m1&#39;</span>, <span class="st">&#39;m2&#39;</span>, <span class="st">&#39;m3&#39;</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># in CSV script, this is used to generate dpv_m1.csv, dpv_m2.csv, dpv_m3.csv</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># in RDF script, this is used to generate dpv/modules/m1 ...</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in HTML script, this is used to read dpv/modules/m1 and generate m1 section in HTML</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># however, there is more metadata for modules, so we use a dict</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>modules <span class="op">=</span> {</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;m1&#39;</span>: {</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;title&#39;</span>: <span class="st">&#39;M1&#39;</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;parser&#39;</span>: <span class="st">&#39;taxonomy&#39;</span>,  <span class="co"># method to parse the CSV to generate RDF,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;source&#39;</span>: {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;gsheet_id&#39;</span>: <span class="st">&#39;...&#39;</span>,  <span class="co"># ID of the Google Sheet</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># not all vocab modules have both classes and properties</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;classes&#39;</span>: <span class="st">&#39;tab name&#39;</span>,  <span class="co"># will generate CSV dpv_m1_classes.csv</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;properties&#39;</span>: <span class="st">&#39;tab name&#39;</span>,  <span class="co"># will generate CSV dpv_m1_properties.csv</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;html_template&quot;</span>: <span class="st">&quot;path...&quot;</span>, <span class="co"># optional - will generate HTML output for module</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>folder <span class="op">=</span> <span class="st">&quot;/dpv&quot;</span> </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&quot;dpv&quot;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># RDF path is &lt;DPV_VERSION&gt;/&lt;folder&gt;/&lt;name&gt;.ttl</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>html_template <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>TEMPLATE_PATH<span class="sc">}</span><span class="ss">/template_dpv.jinja2&quot;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dct:title&quot;</span>: <span class="st">&quot;Data Privacy Vocabulary (DPV)&quot;</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dct:description&quot;</span>: <span class="st">&quot;The Data Privacy Vocabulary (DPV) provides terms (classes and properties) to represent information about processing of personal data, for example - purposes, processing operations, personal data, technical and organisational measures.&quot;</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dct:created&quot;</span>: <span class="st">&quot;2022-08-18&quot;</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dct:modified&quot;</span>: DPV_PUBLISH_DATE,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dct:creator&quot;</span>: <span class="st">&quot;Harshvardhan J. Pandit, Beatriz Esteves, Georg P. Krog, Paul Ryan, Delaram Golpayegani, Julian Flake&quot;</span>,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;schema:version&quot;</span>: DPV_VERSION,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;profile:isProfileOf&quot;</span>: <span class="st">&quot;&quot;</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bibo:status&quot;</span>: <span class="st">&quot;published&quot;</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>

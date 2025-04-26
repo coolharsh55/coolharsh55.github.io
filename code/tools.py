@@ -18,8 +18,15 @@ from jinja2 import Environment
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
-_pyg_lexer = get_lexer_by_name("turtle", stripall=True)
-_pyg_formatter = HtmlFormatter(cssclass="source", noclasses=True)
+
+_pyg = {
+    'lexers': {
+        'turtle':get_lexer_by_name("turtle", stripall=True),
+        'bash':get_lexer_by_name("bash", stripall=True),
+        'python':get_lexer_by_name("python", stripall=True),
+    },
+    'formatter': HtmlFormatter(cssclass="source", noclasses=True)
+}
 
 from config import logging, DEBUG, INFO
 
@@ -421,7 +428,7 @@ def render_item(item):
 
 
 def highlight_turtle(contents):
-    return highlight(contents.strip(), _pyg_lexer, _pyg_formatter)
+    return highlight(contents.strip(), _pyg['lexers']['turtle'], _pyg['formatter'])
 
 
 def find_missing_tags(data):

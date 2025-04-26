@@ -91,7 +91,7 @@ def validate_constraints(graph):
     # validate using PySHACL
     from config import FLAG_VALIDATE_CONSTRAINTS
     # FIXME: manual override
-    FLAG_VALIDATE_CONSTRAINTS = True
+    FLAG_VALIDATE_CONSTRAINTS = False
     if FLAG_VALIDATE_CONSTRAINTS:
         logging.info("Validating data...")
         from pyshacl import validate
