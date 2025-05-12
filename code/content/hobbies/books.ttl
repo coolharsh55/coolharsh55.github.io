@@ -8715,7 +8715,9 @@
 <https://harshp.com/hobbies/books/602> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "602"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-04-14T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating3 ;
     schema:author "Greg Bear"^^xsd:string ;
     schema:dateCreated "1987"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -8723,6 +8725,7 @@
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Forge of God"@en ;
+    schema:review """I had high hopes for this after having read Darwin's Radio, which was a scientifically charged story. Instead, this book creates some interesting conundrums but doesn't really pay off at the end. A good drama until it looks for a sequel rather than finishing the story."""@en ;
     schema:url "https://harshp.com/hobbies/books/602"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/603> a hpcom:RenderedItem, hpcom:BookReading,
@@ -9665,13 +9668,16 @@
     hpcom:book_id "665"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     hpcom:book_read_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:date_book_read "2025-04-21T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating3 ;
+    hpcom:book_status hpcom:book-read ;
     schema:author "Ursula K. Le Guinn"^^xsd:string ;
     schema:dateCreated "2015"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "The Wind's Twelve Quarters & The Compass Rose"@en ;
     schema:isPartOf list:DCU ;
+    schema:review """Some interesting, but mostly okay stories."""@en ;
     schema:url "https://harshp.com/hobbies/books/665"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/666> a hpcom:RenderedItem, hpcom:BookReading,
@@ -14085,16 +14091,17 @@
 
 <https://harshp.com/hobbies/books/963> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "963"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating4 ;
+    hpcom:date_book_read "2025-04-07T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Mary Doria Russell"^^xsd:string ;
     schema:dateCreated "1998"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Children of God"@en ;
+    schema:review """The first book, The Sparrow, is one of my most memorable readings. Its an excellent introspection of religion and belief. So I was hyped to know there's a second book set in the same universe, and that I had found a copy in a second-hand bookshop. This book deals with the aftermath, with a new focus on the strange nature of the aliens and their culture in the first book. Less about religion, and more about the evolution of a culture to deal with its own horror (in the sense of humanity). I was a bit disappointed that this wasn't as shocking or thrilling as the first book, but there is a good commentary in here that is better laid out and less about one individual and more about civilisation in a broad way."""@en ;
     schema:url "https://harshp.com/hobbies/books/963"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/964> a schema:Book, hpcom:RenderedItem ;
@@ -14114,7 +14121,7 @@
 
 <https://harshp.com/hobbies/books/965> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "965"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #schema:aggregatedRating hptag:Rating5 ;
     #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
@@ -14217,13 +14224,16 @@
 <https://harshp.com/hobbies/books/972> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "972"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-04-07T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating5 ;
     schema:author "Seth Godin"^^xsd:string ;
     schema:dateCreated "2007"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction; 
     schema:name "The Dip: The Extraordinary Benefits of Knowing When to Quit (and When to Stick)"@en ;
+    schema:review """This is a very small tiny book that really packs a punch. Good simple structure and framework to make sense of should I quit or not. I wrote about it - https://harshp.com/blog/the-dip - and this book gave me the thinking process and allowed me to quit my job (which I had been thinking of anyway)."""@en ;
     schema:url "https://harshp.com/hobbies/books/972"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/973> a hpcom:RenderedItem, hpcom:BookReading,
@@ -14270,16 +14280,17 @@
 
 <https://harshp.com/hobbies/books/976> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "976"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating4 ;
+    hpcom:date_book_read "2025-03-31T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Greg Bear"^^xsd:string ;
     schema:dateCreated "1999"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Darwin's Radio"@en ;
+    schema:review """Initially, I thought this would be a biological thriller about evolution (as in Darwin), which it is, but the topic is quite surprisingly subtle and well thought out. In the book, there is a mutation that changes the human genetic makeup and wrecks havoc with birth and society. Good, well thought out writing, and fun to read in a scientifically curious way."""@en ;
     schema:url "https://harshp.com/hobbies/books/976"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/977> a schema:Book, hpcom:RenderedItem ;
@@ -14310,3 +14321,89 @@
     schema:name "Mythos: The Greek Myths Retold"@en ;
     schema:review """The Greek mythology is fascinating not only because of its rich characterisation and drama, but also because at the heart of all stories is the core of a philosophy that makes describing humans an exercise in the interpretation of the divine. Greek gods - the mythos - are structured around the facets of human emotions, virtues, aspects, and so much more. I greatly respect Stephen Fry as a narrator, orator, and as a person who knows to focus on being decent above political correctness and style. This book is a fantastic recollection of the greek mythos - covering a lot in such a small space and making it enjoyable. I borrowed this book from our neighbour - and it has been fantastic reading it."""@en ;
     schema:url "https://harshp.com/hobbies/books/978"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/979> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "979"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-04-28T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    schema:author "Niall Mac Coitir"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Ireland's Trees: Myths, Legends and Folklore"@en ;
+    schema:review """Lots of information about trees and how the Irish history is tangled with them. Good read, but I would have loved to read this while knowing the trees themselves in physical form. Maybe I should re-read this someday as and when I find the trees."""@en ;
+    schema:url "https://harshp.com/hobbies/books/979"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/980> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "980"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-05-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    schema:author "Sarah Wynn-Williams"^^xsd:string ;
+    schema:dateCreated "2025"^^xsd:int ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:name "Careless People: A story of where I used to work"@en ;
+    schema:review """This book was hyped because a) its about Facebook/Meta and their shenanigans, and b) it was the subject of an attempted ban by the same. So I bought the book (Dunning-Kruger et al) and hoped that it was not all about a look how bad it was type of situation. It was not. Instead, what we get is a deeply personal, empathetic, and real story of Sarah and her life, which happened to be at Facebook. In the course of this, we are told of how it is bad, worse, misogynistic, immoral, illegal, and technocratic. In between these, she testified in the US Congress about how Facebook intentionally detected when teenage girls were most vulnerable when they deleted selfies just to target beauty product ads at them. Brave woman, good book."""@en ;
+    schema:url "https://harshp.com/hobbies/books/980"^^xsd:anyURI .
+
+    <https://harshp.com/hobbies/books/981> a hpcom:RenderedItem,
+            schema:Book ;
+        hpcom:book_id "981"^^xsd:int ;
+        hpcom:book_owned_medium hpcom:PhysicalBook ;
+        # hpcom:book_owned_medium hpcom:PhysicalBook ;
+        hpcom:book_status hpcom:book-currently-reading ;
+        #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+        #schema:aggregatedRating hpcom:Rating4 ;
+        schema:author "Peter F. Hamilton"^^xsd:string ;
+        schema:dateCreated "1993"^^xsd:int ;
+        schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+        schema:name "Mindstar Rising"@en ;
+        schema:url "https://harshp.com/hobbies/books/981"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/982> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "982"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Orrin Grey & Silvia Moreno-Garcia"^^xsd:string ;
+    schema:dateCreated "2012"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "Fungi: An Anthology"@en ;
+    schema:url "https://harshp.com/hobbies/books/982"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/983> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "983"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Sarah Pinsker"^^xsd:string ;
+    schema:dateCreated "2021"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:name "We are satellites"@en ;
+    schema:url "https://harshp.com/hobbies/books/983"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/984> a hpcom:RenderedItem,
+        schema:Book ;
+    hpcom:book_id "984"^^xsd:int ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    # hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-to-read ;
+    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    schema:author "Olga Tokarczuk"^^xsd:string ;
+    schema:dateCreated "2022"^^xsd:int ;
+    schema:genre hpcom:BookFiction ;
+    schema:name "The Empusium"@en ;
+    schema:url "https://harshp.com/hobbies/books/984"^^xsd:anyURI .
