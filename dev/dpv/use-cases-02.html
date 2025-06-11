@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    prefix="schema: http://schema.org/ ">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modelling Acceptable and Intended Uses as DPV Rules</title>
+    <meta name="description" content=""/>
+    <meta name="schema:name" content="Modelling Acceptable and Intended Uses as DPV Rules">
+    <meta name="schema:description" content="Notes for resolving how to model use-cases through existing DPV Rules">
+    <meta name="schema:datePublished" content="item.schema_datePublished">
+    <meta name="schema:keywords" content="DPV,DPVCG,semantic-web,Working Note,">
+    <meta name="schema:author" content="https://harshp.com/me">
+    <meta name="schema:identifier" content="https://harshp.com/dev/dpv/use-cases-02">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@coolharsh55">
+    <meta name="twitter:creator" content="@coolharsh55">
+    <meta property="og:url" content="https://harshp.com/dev/dpv/use-cases-02">
+    <meta property="og:title" content="Modelling Acceptable and Intended Uses as DPV Rules">
+    <meta property="og:description" content="Notes for resolving how to model use-cases through existing DPV Rules">
+    <link rel="stylesheet" href="/css/sitebase.css" />
+</head>
+<body>
+    <header><nav>
+        <a href="/" property="schema:isPartOf" typeof="schema:Website">harshp.com</a> 
+| <a href="/dev">dev</a>    </nav></header>
+    <main>
+    <article typeof="https://harshp.com/code/vocab#RenderedItem https://harshp.com/dev https://schema.org/BlogPosting " resource="https://harshp.com/dev/dpv/use-cases-02">
+        <h1 property="schema:name schema:headline">Modelling Acceptable and Intended Uses as DPV Rules</h1>
+        <div id="description">
+            <span property='schema:description'>Notes for resolving how to model use-cases through existing DPV Rules</span><br/>
+            published: <time property="schema:datePublished" datetime="2025-06-11T22:45:00">2025-06-11T22:45:00</time>
+            <br/> by <a href="https://harshp.com/me" property="schema:author schema:publisher" typeof="schema:Person" resource="https://harshp.com/me">Harshvardhan J. Pandit</a>
+            <br/>
+            is part of: <a href="https://harshp.com/dev/dpv" property="schema:isPartOf" resource="https://harshp.com/dev/dpv"><span property="rdfs:label">Data Privacy Vocabulary (DPV)</span></a>
+            <br/>
+            <a class="tag" href="https://harshp.com/tags/DPV" property="schema:about" resource="https://harshp.com/tags/DPV" typeof="rdfs:Resource"><span property="rdfs:label">DPV</span></a>
+            <a class="tag" href="https://harshp.com/tags/DPVCG" property="schema:about" resource="https://harshp.com/tags/DPVCG" typeof="rdfs:Resource"><span property="rdfs:label">DPVCG</span></a>
+            <a class="tag" href="https://harshp.com/tags/semantic-web" property="schema:about" resource="https://harshp.com/tags/semantic-web" typeof="rdfs:Resource"><span property="rdfs:label">semantic-web</span></a>
+            <a class="tag" href="https://harshp.com/tags/working-note" property="schema:about" resource="https://harshp.com/tags/working-note" typeof="rdfs:Resource"><span property="rdfs:label">Working Note</span></a>
+        </div>
+        <div id="content" property="schema:articleBody">
+        <link rel="stylesheet" href="/css/toc.css" />
+<style type="text/css">
+    code {
+        color: #993333;
+        font-size: 1rem;
+    }
+</style>
+<div id="toc"></div>
+
+<p>In the previous meetings of the DPVCG, we have discussed the concept <code>UseCase</code> as a way to describe a scenario or situation at a broad level, which is then included in specific contexts such as whether it is permitted/acceptable, prohitibed, known to be problematic, etc. within documentation or as a reference. The motivation for this comes from the push from regulations such as the AI Act and from community documentation efforts such as the Data Sheets and Model Cards to specify (i.e. document) information described using words such as <em>intended</em>, <em>acceptable</em>, or <em>prohibited</em> -- which are followed by the context described using words such as <em>use</em>, <em>purpose</em>, and <em>policy</em>.</p>
+
+<p>The initial proposal was to express each of these as a category of <code>UseCase</code>, so that we would have e.g. <code>PermittedUseCase</code> to indicate Actor A permits Actor B to carry out the specified use-case, and e.g. <code>IntendedUseCase</code> where Actor A expresses a deliberate desire or intent for themeselves or someone else to carry out the specified use-case. These concepts would then be extended in specific extensions to represent the legally relevant concepts and interpretations, e.g. in the AI-Act we would have <code>IntendedPurpose</code> as it occurs in the text as an extended concept from <code>IntendedUseCase</code>, and where we can add restrictions or criteria for what information should be present in such use-cases under the AI Act for them to be considered valid intended purposes.</p>
+
+<p>These concepts would be useful then in documentation, e.g. when describing an AI system or a technology or a purpose, we would now have the ability to directly and explicitly specify which things should be avoided, or are permitted, or should not happen at all (i.e. are prohibited). The existing concept <code>Process</code> can also represent these activities and scenarios, but it represents a very broad and detached concept as it only represents activities or events. We can include information inside (i.e. associated with) the process to specify whether it was intended or acceptable or prohibited, but we also want the ability to indicate &quot;this process is acceptable&quot; as a relation between something and a process.</p>
+
+<div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic"># using current style </span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">D</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasProcess</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">P</span>, <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> . <span style="color: #3D7B7B; font-style: italic"># don&#39;t know why P &amp; Q are included here</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">P</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">hasIntention</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Intended</span> . <span style="color: #3D7B7B; font-style: italic"># have to query/search to get this info</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">Process</span> ;
+    <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">hasAcceptability</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Acceptable</span> . <span style="color: #3D7B7B; font-style: italic"># same - needs query/search</span>
+
+<span style="color: #3D7B7B; font-style: italic"># proposed style</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">D1</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">hasIntendedUseCase</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">P</span> ; <span style="color: #3D7B7B; font-style: italic"># explicit that P is intended to happen</span>
+    <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">hasAcceptableUseCase</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> . <span style="color: #3D7B7B; font-style: italic"># explicit that Q is also acceptable</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">UseCase</span> . <span style="color: #3D7B7B; font-style: italic"># but Q isn&#39;t defined as acceptable or prohibited</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">D2</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">hasProhibitedUseCase</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> . <span style="color: #3D7B7B; font-style: italic"># interpretation changes across contexts</span>
+</pre></div>
+
+
+<p>In later discussions, it emerged that &quot;use case&quot; as a term may not be suitable as it implies there is an actor that interacts with the system following from the <a href="https://en.wikipedia.org/wiki/Use_case">established use of this term in software engineering</a>. Though systems engineering also refers to the concept &quot;use case&quot; in relation to the functioning of a system. Upon further thought, I concur with the perspective here (with thanks to Julian), as &quot;use case&quot; implies there is some &quot;use&quot; and that implies there is possible a &quot;user&quot; or something that is being &quot;used&quot;. This phrasing particularly diverts the interpretation towards descriptions where the system or software is being interacted with or upon by an actor. Whereas, what we also want to capture are things that should not happen regardless of whether they are in use or not (e.g. prohibited to deploy this -- regardless of access to users, or e.g. deterred to carry out without measure X and its converse as recommended to use measure X). We discussed alternatives to this, including terms &quot;scenario&quot; to describe situations, &quot;case study&quot; which has been used by GDPR authorities DPC (IE) and ICO (UK), and &quot;use policy&quot; which is common in industry articles. </p>
+
+<p>When I look back at <em>why</em> we want to model these concepts, the primary objective is to allow the association or reference of whatever we call that concept from within a document i.e. to make it part of the documentation. What we call that is secondary to its importance as assisting in the interpretation of what to do with the description (i.e. is it permitted, is it a recommendation). Ignoring the need to define the term upfront, if I consider instead how to model this relation, I see that we already have a partial solution in the example above where I use the phrasing <code>ex:hasIntended...</code> from the documentation to the description. So it is only the suffix of this relation that we are debating. Why not go with existing concepts, of which we then have three candidates: <code>dpv:Policy</code>, <code>dpv:Rule</code>, <code>dpv:Process</code>.</p>
+<p><code>dpv:Policy</code> is defined currently as &quot;A guidance document outlining any of: procedures, plans, principles, decisions, intent, or protocols&quot;. This means it can contain all of the concepts that we are trying to model. But that does not make them all categories of policies -- but they can definitely be part of it. <code>dpv:Rule</code> is defined as &quot;A rule describing a process or control that directs or determines if and how an activity should be conducted&quot;. This means it must indicate a follow-up interpretation, which terms like permitted or recommended or prohibited do imply, but others like intended do not because they are not directing but declaring. Therefore, some of our concepts can be rules, but not all. Finally, we have <code>dpv:Process</code>, which is defined as &quot;An action, activity, or method&quot;, and which is vague enough that it can fit all of our new concepts.</p>
+
+<p>From this, we have two alternatives: 1) we model everything as processes, i.e. as <code>AcceptableProcess</code>, <code>IntendedProcess</code>, etc. -- and they work as expected using the existing uses of process concept as a composite block within which other concepts can be used; or 2) we only model those concepts that are rules i.e. permission (MAY), prohibition (MUST NOT), obligation (MUST), recommendation (SHOULD), deterrence (SHOULD NOT), with intention and acceptable relegated as concepts under <code>dpv:Context</code>. This is how it looks in examples:</p>
+
+<div class="source" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #3D7B7B; font-style: italic"># Method 1 -- extending dpv:Process</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">D</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasAcceptableProcess</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">P</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasUnacceptableProcess</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasRecommendedProcess</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">R</span> .
+
+<span style="color: #3D7B7B; font-style: italic"># Method 2 -- extended dpv:Rule</span>
+<span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">D</span> <span style="color: #B00040">a</span> <span style="color: #00F; font-weight: bold">tech</span>:<span style="color: #008000; font-weight: bold">Documentation</span> ;
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasPermission</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">P</span> ; <span style="color: #3D7B7B; font-style: italic"># acceptable = permitted</span>
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasDeterrence</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> ; <span style="color: #3D7B7B; font-style: italic"># unacceptable = choose prohibited vs deterred</span>
+    <span style="color: #00F; font-weight: bold">dpv</span>:<span style="color: #008000; font-weight: bold">hasRecommendation</span> <span style="color: #00F; font-weight: bold">ex</span>:<span style="color: #008000; font-weight: bold">Q</span> .
+</pre></div>
+
+
+<p>My personal preference is for Method 2 because it aligns well with the existing rules taxonomy, and also is directly useful when declaring actions in contracts or policies or guidelines, and also to express them in other standards such as ODRL which don&#39;t have these additional rule types (but IMHO should). I do not like Method 1 after playing around with those concepts because it puts the focus on the process which raises the question what and who defines what acceptability means for a process, whereas in Method 2 we just focus on this is permitted and it can be applied to anything -- so we don&#39;t have to dictate where and how to apply this concept. I also like Method 2 because it frees up the complicated question of how to model <code>eu-aiact:IntendedPurpose</code> which we are discussing as an extension of <code>dpv:IntendedUseCase</code>. We can now go back to <code>tech:IntendedUse</code> which is defined to be exactly what the AI Act wants to be documented, and make the AI Act concept an extension of this (it currently is extending <code>dpv:Purpose</code> which is an error IMO).</p>
+
+        </div>
+    </article>
+    </main>
+    <footer>
+        <a href="/me">About Me</a> | <a href="/contact">Contact</a> | <a rel="me" href="https://eupolicy.social/@harsh">Mastodon</a> | privacy policy n/a | license: <a class="no-reformat" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC bY-NC 4.0</a><br/>
+        Made using <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a>, and <a href="https://www.python.org/">Python</a> - <a href="https://github.com/coolharsh55/harshp.com/">source on GitHub</a>
+    </footer>
+    <script src="/js/utils.js"></script>
+</body>
+</html>
