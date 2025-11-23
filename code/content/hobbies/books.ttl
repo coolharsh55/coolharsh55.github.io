@@ -516,11 +516,16 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "40"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-07-15T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating2 ;
     schema:author "Neal Stephenson"^^xsd:string ;
     schema:dateCreated "2011"^^xsd:int ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:isbn "9780061977961"^^xsd:string ;
     schema:name "Reamde"@en ;
+    schema:review """Stephenson had some really crazy and intense ideas in the earlier books like Snow Crash and Cryptonomicon and Anathem. Then I found it less interesting in the later books, starting from Seven Eves and especially for Fall or Dodge in Hell. Reamde (I keep reading this as Readme!) is the previous book to Fall... I didn't like it. Its too abstract, too pretentious, and just goes too grandiose for the sake of it. I read the latest one (Termination Shock) before this, and I can see how the aspects that I didn't like are here and scattered but really amplified with each book. No more Stephenson for me."""@en ;
     schema:url "https://harshp.com/hobbies/books/40"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/41> a hpcom:RenderedItem, hpcom:BookReading,
@@ -9443,35 +9448,48 @@
         schema:Book, hpcom:Book ;
     hpcom:book_id "648"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-09-10T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating3 ;
     schema:author "Haruki Murakami"^^xsd:string ;
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "1Q84: Book 1"@en ;
+    schema:review """Read Books 1 to 3 together, so the review is in Book 3"""@en ;
     schema:url "https://harshp.com/hobbies/books/648"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/649> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "649"^^xsd:int ;
     hpcom:book_owned_medium hpcom:EBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-09-20T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating3 ;
     schema:author "Haruki Murakami"^^xsd:string ;
     schema:dateCreated "2009"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "1Q84: Book 2"@en ;
+    schema:review """Read Books 1 to 3 together, so the review is in Book 3"""@en ;
     schema:url "https://harshp.com/hobbies/books/649"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/650> a hpcom:RenderedItem, hpcom:BookReading,
         schema:Book, hpcom:Book ;
     hpcom:book_id "650"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-09-30T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating3 ;
     schema:author "Haruki Murakami"^^xsd:string ;
     schema:dateCreated "2010"^^xsd:int ;
     schema:genre hpcom:BookFiction,
         hpcom:BookSciFi ;
     schema:name "1Q84: Book 3"@en ;
+    schema:review """I bought this book a long time ago when I was enjoying Murakami. This seemed like a massive book (3 volumes) and so I left it until later. This year I decided to clear out the backlog, and so got to this. This felt like Murakami, but in such slow motion that I was constantly waiting for things to happen. Really wish this was a single book. The length is far too long, there are too many points at which you go no thanks (what is it with Murakami and young girls being involved with older men in questionable ways to justify it in the story?) and in general the main charisma of mystery seems convoluted rather than ethereal."""@en ;
     schema:url "https://harshp.com/hobbies/books/650"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/651> a hpcom:RenderedItem, hpcom:BookReading,
@@ -13185,16 +13203,17 @@
 
 <https://harshp.com/hobbies/books/897> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "897"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating4 ;
+    hpcom:date_book_read "2025-06-15T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:EBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:EBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Cory Doctorow and Charles Stross"^^xsd:string ;
     schema:dateCreated "2012"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "The Rapture of the Nerds"@en ;
+    schema:review """This was a fun book to start and then a complex one to end with. It starts off as a Hitchhiker's take by Charles Stross with all the shenanigans I've come to expect from the author who wrote about Cornucopia (Singularity Sky). Then things just got more and more chaotic until we get more of Doctorow's influences in creating societal structures. Entertaining but felt like it ran off quite a bit of steam towards the end."""@en ;
     schema:url "https://harshp.com/hobbies/books/897"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/898> a schema:Book, hpcom:RenderedItem ;
@@ -13886,16 +13905,17 @@
 
 <https://harshp.com/hobbies/books/943> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "943"^^xsd:int ;
-    hpcom:book_status hpcom:book-to-read ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2024-07-10T00:00:00"^^xsd:dateTime ;
-    #hpcom:book_owned_medium hpcom:PhysicalBook ;
-    #hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating5 ;
+    hpcom:date_book_read "2025-10-25T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:author "Adrian Tchaikovsky"^^xsd:string ;
     schema:dateCreated "2024"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Days of Shattered Faith"@en ;
+    schema:review """Book 3 in the series of depressing magical fascist multiverses. There were new characters, new things, new ideas, and new thoughts. I really enjoyed how diverse and expansive the ideas and stories are. Also excited that there is another book coming, and maybe another one after that."""@en ;
     schema:url "https://harshp.com/hobbies/books/943"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/944> a schema:Book, hpcom:RenderedItem ;
@@ -13944,16 +13964,18 @@
 
 <https://harshp.com/hobbies/books/947> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "947"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating5 ;
+    hpcom:date_book_read "2025-11-23T12:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
-    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    hpcom:list list:books-changed-life ;
     schema:author "James Clear"^^xsd:string ;
     schema:dateCreated "2018"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones"@en ;
+    schema:review """Atomic Habits is a popular book about making habits in a methodological and structured manner and making it a part of you. The 'atomic' is a reference to 'units' i.e. building blocks rather than sweeping changes. The core ideas resonated with me because with big blocks you either do stuff or you fail, but with smaller blocks you still have the benefit of some of the structure being in place and then benefitting from not having to restart from scratch. I read the book twice, but didn't want to mark it read the first time around because I knew that if I were to benefit from it, I have to give it some time, and then go back and make detailed notes for how I want to use the book. Good book. Recommended."""@en ;
     schema:url "https://harshp.com/hobbies/books/947"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/948> a schema:Book, hpcom:RenderedItem ;
@@ -14219,16 +14241,17 @@
 
 <https://harshp.com/hobbies/books/965> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "965"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating3 ;
+    hpcom:date_book_read "2025-11-13T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Carmine Gallo"^^xsd:string ;
     schema:dateCreated "2014"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Talk Like TED: The 9 Public-Speaking Secrets of the World's Top Minds"@en ;
+    schema:review """I had a presentation coming up, so though this might a good quick read. Worst case scenario, its completely useless and I won't damage my comms skills. The book does have some decent ideas so I've made a note of them for future reference. But could have done without. Recommended if you have no ideas on what ideas could be considered for talking/presentation."""@en ;
     schema:url "https://harshp.com/hobbies/books/965"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/966> a schema:Book, hpcom:RenderedItem ;
@@ -14277,16 +14300,18 @@
 
 <https://harshp.com/hobbies/books/969> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "969"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating5 ;
+    hpcom:date_book_read "2025-11-23T13:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:EBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:EBook ;
     schema:genre hpcom:BookNonFiction ;
     schema:author "Oliver Burkeman"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Four Thousand Weeks"@en ;
+    hpcom:list list:books-changed-life ;
+    schema:review """This book effectively points out that you have a limited amount of time and that you should be aware of it. That's pretty much it. There isn't too much of a beating around the bush or hammering it over your head. You listen to what the person has to say, go yes that makes sense, and then go over to mull over it. I did that, read the book once, thought about it, then read it again to make notes for future reference. Worthwhile reading if the topic has been on your mind."""@en ;
     schema:url "https://harshp.com/hobbies/books/969"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/970> a schema:Book, hpcom:RenderedItem ;
@@ -14483,14 +14508,15 @@
         schema:Book ;
     hpcom:book_id "983"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
-    #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
-    #schema:aggregatedRating hptag:Rating4 ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_status hpcom:book-read ;
+    hpcom:date_book_read "2025-11-18T00:00:00"^^xsd:dateTime ;
+    schema:aggregatedRating hptag:Rating4 ;
     schema:author "Sarah Pinsker"^^xsd:string ;
     schema:dateCreated "2021"^^xsd:int ;
     schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
     schema:name "We are satellites"@en ;
+    schema:review """The book is about Pilots - a neuralink type tech that gets you alert but not superintelligent. But the book is not about the tech at all. Instead, its about the normal people who have to put this in, have to face the subjective experiences of living in a world that increasingly considers having this as ableism and a status symbol. Brilliant restrained take. The only thing that felt off was the ending which became cliche for me, but did not detract from the rest of the book."""@en ;
     schema:url "https://harshp.com/hobbies/books/983"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/984> a hpcom:RenderedItem,
@@ -14534,3 +14560,136 @@
     # schema:isbn ""^^xsd:string ;
     schema:name "Autocracy, Inc: The Dictators Who Want to Run the World"@en ;
     schema:url "https://harshp.com/hobbies/books/986"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/987> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "987"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2025-09-11T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Nemesis Games"@en ;
+    schema:review """Book 5: The Gang goes their separate ways and then shit happens that makes them want to get back together. I liked that this wasn't another episodic instance of the same stuff and that each character got enough of a back and individual story to have them be relevant in the larger story. I thought the pieces on Earth were a little slow and/or a little low in terms of having content. I'd have liked to see more, but that's the part where the good styorytelling comes through. Having less and wanting more is good if the overall story still is enjoying, which this was. Onwards to the next book."""@en ;
+    schema:url "https://harshp.com/hobbies/books/987"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/988> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "988"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating4 ;
+    hpcom:date_book_read "2025-09-21T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2016"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Babylon's Ashes"@en ;
+    schema:review """Book 6: I've got to hand it to the authors. They know how to keep things interesting and adding more and more chaos and layers to the story. This one is about conflicts between factions and idealogies and it all plays out in the system. Good stuff, entertaining stuff. But at no point did it feel like this is a book on its own, so I kept expecting more things to happen or be clear, and then at one point I realised that it isn't in this book and that I would have to read one. Okay, next one it is."""@en ;
+    schema:url "https://harshp.com/hobbies/books/988"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/989> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "989"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2025-10-11T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Persepolis Rising"@en ;
+    schema:review """Book 7: It gets interesting! It gets exciting! Finally, the big payoff has started. I enjoyed the book and the action and the chaos just unfolding. Two more books to go and I have a feeling that I will be enjoying the entire series all things considered."""@en ;
+    schema:url "https://harshp.com/hobbies/books/989"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/990> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "990"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating5 ;
+    hpcom:date_book_read "2025-10-28T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2019"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Tiamat's Wrath"@en ;
+    schema:review """Book 8: The book starts off with a bang and then just keeps it up throughout. After reading 7 books, there are some huge paybacks. Looking forward to the next and last book."""@en ;
+    schema:url "https://harshp.com/hobbies/books/990"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/991> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "991"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating5 ;
+    #hpcom:date_book_read "2025-09-11T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:EBook ;
+    #hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "James S. A. Corey"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Leviathan Falls"@en ;
+    #schema:review """The Gang goes their separate ways and then shit happens that makes them want to get back together. I liked that this wasn't another episodic instance of the same stuff and that each character got enough of a back and individual story to have them be relevant in the larger story. I thought the pieces on Earth were a little slow and/or a little low in terms of having content. I'd have liked to see more, but that's the part where the good styorytelling comes through. Having less and wanting more is good if the overall story still is enjoying, which this was. Onwards to the next book."""@en ;
+    schema:url "https://harshp.com/hobbies/books/991"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/992> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "992"^^xsd:int ;
+    hpcom:book_status hpcom:book-currently-reading ;
+    #schema:aggregatedRating hpcom:Rating4 ;
+    #hpcom:date_book_read "2025-11-18T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    #hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Adrian Tchaikovsky"^^xsd:string ;
+    schema:dateCreated "2025"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Shroud"@en ;
+    # schema:review """..."""@en ;
+    schema:url "https://harshp.com/hobbies/books/992"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/993> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "993"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating1 ;
+    hpcom:date_book_read "2025-10-04T00:00:00"^^xsd:dateTime ;
+    hpcom:book_owned_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookFiction, hpcom:BookSciFi ;
+    schema:author "Lee Min-ye"^^xsd:string ;
+    schema:dateCreated "2023"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Dallergut Dream Department Store"@en ;
+    schema:review """The premise of the book seemed alluring. A department store where you go buy dreams? An economy built on emotional reactions? A character plot promising hidden wisdom and a takedown of busy lifebodies? Sold! I bought the physical book. Turned out to be a dud. The premise seemed exceedingly made up and changing arbitrarily as if we are kids learning from story book time. There is no details given to characters beyond what seems like a single facet that you hold them to for the entire story. Feels too emotional reaction driven rather than being about actual ideas or stories. Disappointing."""@en ;
+    schema:url "https://harshp.com/hobbies/books/993"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/994> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "994"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2025-11-01T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read_medium hpcom:EBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Sandra Uwiringiyimana, Abigail Pesta"^^xsd:string ;
+    schema:dateCreated "2017"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "How dare the sun rise"@en ;
+    schema:review """This was part of the bookclub, so gave it a go. Was really into the story because its told so well, and its so human and real, and just made me more aware of different perspectives that I thought I knew but benefitted from seeing it from someone else's experiences. The story is about how the author escapes from a war torn country where they are effectively cuturally and socially uprooted, and their move to America with their parents, the adaption, and rising through sheer dedication and mindset. Admirable, and a good look on the world being more than a few ideas and people despite what we get exposed to."""@en ;
+    schema:url "https://harshp.com/hobbies/books/994"^^xsd:anyURI .
+
+<https://harshp.com/hobbies/books/995> a schema:Book, hpcom:RenderedItem ;
+    hpcom:book_id "995"^^xsd:int ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hpcom:Rating3 ;
+    hpcom:date_book_read "2025-10-12T00:00:00"^^xsd:dateTime ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
+    schema:genre hpcom:BookNonFiction ;
+    schema:author "Kate Crawford"^^xsd:string ;
+    schema:dateCreated "2015"^^xsd:int ;
+    # schema:isbn ""^^xsd:string ;
+    schema:name "Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence"@en ;
+    schema:review """A recommendation for people looking into AI and its troubles. I think this was a bit too late for me, and in general felt aimed at someone else as I've had far too much exposure to these through my work. Recommended for people who want a more generalist perspective and would benefit from some additional details. The phrasing of 'atlas' really through me off, and I was expecting a more systematic structure and navigation. Instead the work means more about getting a perspective, which I've had from other books."""@en ;
+    schema:url "https://harshp.com/hobbies/books/995"^^xsd:anyURI .
