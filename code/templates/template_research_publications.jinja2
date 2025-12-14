@@ -40,7 +40,7 @@
             <span class='note' style="color: red;">{{ publication.schema_status }}</span>
         {% endif %}
         {% if publication.schema_url %}
-            <a href="{{publication.schema_url}}">formal publication</a>
+            <a href="{{publication.schema_url}}">published version</a>
         {% elif not publication|publication_is_draft %}
             <span class='note' style="color: red;">(in-press)</span>
         {% endif %}

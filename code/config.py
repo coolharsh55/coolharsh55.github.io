@@ -63,7 +63,8 @@ CONTENT = {
             'content/research/projects/hse-dpia/hse-dpia.ttl',
             'content/research/projects/empower-fidelity/empower-fidelity.ttl',
             'content/research/projects/harness/harness.ttl',
-            'content/research/projects/recitals/recitals.ttl'
+            'content/research/projects/recitals/recitals.ttl',
+            'content/research/projects/aisi-companions/aisi-companions.ttl',
             # 'content/research/funding-proposals.ttl'
         ]
     },

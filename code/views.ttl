@@ -481,7 +481,7 @@ hpview:ResearchDraftPublicationsIndexView a hpcom:View ;
             SELECT DISTINCT ?publication ?date WHERE {
                 ?publication a hpcom:DraftPaper .
                 ?publication schema:datePublished ?date .
-            } ORDER By DESC(?date)
+            } ORDER By ASC(?date)
         """ ;
     ] .
 
