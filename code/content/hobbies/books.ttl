@@ -14526,7 +14526,7 @@
     hpcom:book_id "984"^^xsd:int ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
     # hpcom:book_owned_medium hpcom:PhysicalBook ;
-    hpcom:book_status hpcom:book-to-read ;
+    hpcom:book_status hpcom:book-currently-reading ;
     #hpcom:date_book_read "2021-11-12T00:00:00"^^xsd:dateTime ;
     #schema:aggregatedRating hptag:Rating4 ;
     schema:author "Olga Tokarczuk"^^xsd:string ;
@@ -14537,16 +14537,17 @@
 
 <https://harshp.com/hobbies/books/985> a schema:Book, hpcom:RenderedItem ;
     hpcom:book_id "985"^^xsd:int ;
-    hpcom:book_status hpcom:book-currently-reading ;
-    #schema:aggregatedRating hptag:Rating5 ;
-    #hpcom:date_book_read "2021-04-15T00:00:00"^^xsd:dateTime ;
+    hpcom:book_status hpcom:book-read ;
+    schema:aggregatedRating hptag:Rating3 ;
+    hpcom:date_book_read "2025-12-25T00:00:00"^^xsd:dateTime ;
     hpcom:book_owned_medium hpcom:PhysicalBook ;
-    # hpcom:book_read_medium hpcom:PhysicalBook ;
+    hpcom:book_read_medium hpcom:PhysicalBook ;
     schema:genre hpcom:BookFiction ;
     schema:author "Paul Lynch"^^xsd:string ;
     schema:dateCreated "2023"^^xsd:int ;
     # schema:isbn ""^^xsd:string ;
     schema:name "Prophet Song"@en ;
+    schema:review """A strangely intense novel about what I would also have called dystopian, but the author states its not dystopian if its already happening somewhere. The book is set in Ireland amidst a future where a far-right government has taken over and we have a police agency who can simply disappear people. Its authoritarian fascism in a place where its really difficult to imagine it. I wanted to know about how something like this happened. But the book doesn't really give any glimpses in to the history. There's also a surprising aspect where we only really see people who are against the power. The writing is good, it really creates a sense of urgency and stress that resonates with the happenings in each page and chapter. Interesting read, but didn't really stick with me in the end."""@en ;
     schema:url "https://harshp.com/hobbies/books/985"^^xsd:anyURI .
 
 <https://harshp.com/hobbies/books/986> a schema:Book, hpcom:RenderedItem ;
