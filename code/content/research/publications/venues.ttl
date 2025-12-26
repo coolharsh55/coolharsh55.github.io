@@ -974,3 +974,22 @@
     schema:startDate "2025-10-22T00:00:00"^^xsd:dateTime ;
     schema:endDate "2025-10-23T00:00:00"^^xsd:dateTime ;
     schema:location "Frankfurt, Germany" .
+
+<http://example.com/conferences/SEMANTiCS2025> a schema:PublicationEvent ;
+    hpcom:event_type hpcom:Conference ;
+    schema:name "International Conference on Semantic Systems"@en ;
+    schema:alternateName "SEMANTiCS" ;
+    schema:url "https://2025-eu.semantics.cc/"^^xsd:anyURI ;
+    schema:startDate "2025-09-03T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2025-09-05T00:00:00"^^xsd:dateTime ;
+    schema:location "Vienna, Austria" .
+
+<http://example.com/workshops/NXDG2025> a schema:PublicationEvent, hpcom:OrganisationEvent ;
+    hpcom:event_type hpcom:Workshop ;
+    schema:name "Workshop on Next Generation Data Governance"@en ;
+    schema:alternateName "NXDG2025" ;
+    schema:url "https://w3id.org/nxdg/2025"^^xsd:anyURI ;
+    schema:startDate "2025-09-03T00:00:00"^^xsd:dateTime ;
+    schema:endDate "2025-09-03T00:00:00"^^xsd:dateTime ;
+    schema:superEvent <http://example.com/conferences/SEMANTiCS2025> ;
+    schema:location "Vienna, Austria" .

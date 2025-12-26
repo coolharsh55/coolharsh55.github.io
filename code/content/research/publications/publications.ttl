@@ -1770,8 +1770,7 @@
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/065-AI-Cards-Risk-Documentation-AI-Act.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
-        ] ;
-    schema:status "to be presented"@en .
+        ] .
 
 <https://harshp.com/research/publications/066-ISO27560-ConsentRecords-GDPR-DGA> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
     schema:name "Implementing ISO/IEC TS 27560: 2023 Consent Records and Receipts for GDPR and DGA"@en ;
@@ -2121,8 +2120,8 @@
     hpcom:tag hptag:video-games ;
     hpcom:tag hptag:ethics ;
     schema:datePublished "2025-12-31T00:00:00"^^xsd:dateTime ;
-    schema:identifier ""^^xsd:anyURI ;
-    schema:url ""^^xsd:anyURI ;
+    schema:identifier "10.1177/15554120251409051"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.1177/15554120251409051"^^xsd:anyURI ;
     schema:publisher <https://journals.sagepub.com/home/gac> ;
     schema:funder <http://example.com/AIAL> ;
     hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/079-are-you-being-played"^^xsd:anyURI ] ;
@@ -2130,6 +2129,34 @@
     hpcom:content [
         a hpcom:Content ;
         hpcom:contentFile "https://harshp.com/code/content/research/publications/079-are-you-being-played.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    hpcom:peer_reviewed true .
+
+<https://harshp.com/research/publications/080-AI-Act-prohibited-systems> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:RenderedItem ;
+    schema:name "Semantic Patterns of Prohibited AI Systems in the EU AI Act"@en ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> ) ;
+    schema:description "We specify the prohibited AI conditions in Art. 5 in a machine-readable format using semantic constraint and rule languages SHACL and N3"@en ;
+    hpcom:tag hptag:AI-Act ;
+    hpcom:tag hptag:risk ;
+    hpcom:tag hptag:AI ;
+    hpcom:tag hptag:semantic-web ;
+    schema:inSupportOf "Protecting Personal Data Amidst Big Data Innovation (PROTECT-ITN) H2020 Project; RISKY: Representing Privacy Risks of Technologies using Knowedlge Graphs"@en ;
+    schema:datePublished "2025-10-10T00:00:00"^^xsd:dateTime ;
+    schema:identifier "https://ceur-ws.org/Vol-4064/NXDG25-paper7.pdf"^^xsd:anyURI ;
+    schema:url "https://ceur-ws.org/Vol-4064/NXDG25-paper7.pdf"^^xsd:anyURI ;
+    schema:publication <http://example.com/workshops/NXDG2025> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/080-AI-Act-prohibited-systems"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "TARA" ; schema:url "http://hdl.handle.net/2262/100132"^^xsd:anyURI ] ;
+    #hpcom:archived_version [ a hpcom:Link ; schema:name "zenodo" ; schema:url "https://doi.org/10.5281/zenodo.6821844"^^xsd:anyURI ] ;
+    hpcom:supplementary [ a hpcom:Link ; schema:name "repo" ; schema:url "https://github.com/DelaramGlp/airo/"^^xsd:anyURI ] ;
+    #hpcom:supplementary [ a hpcom:Link ; schema:name "specification" ; schema:url "https://w3id.org/AIRO"^^xsd:anyURI ] ;
+    #hpcom:supplementary <https://harshp.com/research/presentations#2022-SEMANTiCS-AIRO> ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/080-AI-Act-prohibited-systems.html" ;
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
     hpcom:peer_reviewed true .

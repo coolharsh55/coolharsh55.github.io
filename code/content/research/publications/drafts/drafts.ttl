@@ -44,7 +44,7 @@
     schema:status "inviting feedback"@en ;
     hpcom:peer_reviewed false .
 
-<https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:PublishedDraftPaper, hpcom:RenderedItem ;
+<https://harshp.com/research/publications/drafts/002-Making-sense-of-Solid> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:DraftPaper, hpcom:PublishedDraftPaper, hpcom:RenderedItem ;
     schema:name "Draft 02: Making Sense of Solid for Data Governance and GDPR"@en ;
     hpcom:author_lead <https://harshp.com/me> ;
     schema:description "This article explores Solid as a new technology, and provides a framework to describe its implementations and use-cases using cloud-technology terminology. It also explores GDPR's application and identifies existing issues and solutions that also apply to Solid."@en ;
@@ -116,7 +116,7 @@
     schema:status "under review"@en ;
     hpcom:peer_reviewed false .
 
-<https://harshp.com/research/publications/drafts/005-Solid-Use-Case> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:PublishedDraftPaper, hpcom:RenderedItem ;
+<https://harshp.com/research/publications/drafts/005-Solid-Use-Case> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:DraftPaper, hpcom:PublishedDraftPaper, hpcom:RenderedItem ;
     schema:name "Draft 05: A Solid Use Case To Empower And Protect Data Subjects"@en ;
     hpcom:author_lead <http://example.com/MichielFierens> ;
     hpcom:author_other ( <https://harshp.com/me> <http://example.com/AureliaTamoLarrieux> <http://example.com/KimberlyGarcia> ) ;
@@ -159,4 +159,50 @@
         hpcom:contentFileFormat hpcom:formatHTML ;
     ] ;
     schema:status "under review"@en ;
+    hpcom:peer_reviewed false .
+
+<https://harshp.com/research/publications/drafts/007-semantic-frameworks-ai-act> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:DraftPaper, hpcom:RenderedItem ;
+    schema:name "Draft 007: Semantic Frameworks to Support Implementation of the EU AI Act"@en ;
+    hpcom:author_lead <https://www.scss.tcd.ie/personnel/golpayes> ;
+    hpcom:author_other ( <https://harshp.com/me> <https://www.scss.tcd.ie/dave.lewis/> <https://www.scss.tcd.ie/declan.osullivan/> ) ;
+    schema:description "We provide a novel set of open, standardised, and extensible artefacts for the AI Act to determine the risk category as per the AI Act, declaring AI intended purposes, retrieve information in technical documentation, and support the data governance requirements of the EU high-risk AI database."@en ;
+    hpcom:tag hptag:data-governance ;
+    hpcom:tag hptag:AI-Act, hptag:semantic-web ;
+    schema:datePublished "2025-05-29T00:00:00"^^xsd:dateTime ;
+    schema:identifier ""^^xsd:anyURI ;
+    schema:url ""^^xsd:anyURI ;
+    schema:publication <http://example.com/working-draft> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/drafts/007-semantic-frameworks-ai-act"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/43rq2_v1"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2512.08856"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/007-semantic-frameworks-ai-act.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "under review"@en ;
+    hpcom:peer_reviewed false .
+
+<https://harshp.com/research/publications/drafts/008-mapping-regulatory-learning-AI-Act> a schema:ScholarlyArticle, hpcom:FullPaper, hpcom:DraftPaper, hpcom:RenderedItem ;
+    schema:name "Draft 008: Mapping the Regulatory Learning Space for the EU AI Act"@en ;
+    hpcom:author_lead <https://www.scss.tcd.ie/dave.lewis/> ;
+    hpcom:author_other ( <http://example.com/MartaLasekMarkey> <https://www.scss.tcd.ie/personnel/golpayes> <https://harshp.com/me> ) ;
+    schema:description "We define a parametrised regulatory learning space based on the provisions of the Act and describe a layered system of different learning arenas where the population of oversight authorities, value chain participants, and affected stakeholders may interact to apply and learn from technical, organisational and legal implementation measures."@en ;
+    hpcom:tag hptag:data-governance ;
+    hpcom:tag hptag:AI-Act ;
+    schema:datePublished "2025-05-28T00:00:00"^^xsd:dateTime ;
+    schema:identifier "10.48550/arXiv.2503.05787"^^xsd:anyURI ;
+    schema:url "https://doi.org/10.48550/arXiv.2503.05787"^^xsd:anyURI ;
+    schema:publication <http://example.com/working-draft> ;
+    schema:funder <http://example.com/ADAPT> ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "harshp.com" ; schema:url "https://harshp.com/research/publications/drafts/008-mapping-regulatory-learning-AI-Act"^^xsd:anyURI ] ;
+    hpcom:archived_version [ a hpcom:Link ; schema:name "OSF" ; schema:url "https://doi.org/10.31219/osf.io/43rq2_v1"^^xsd:anyURI ] ;
+    # hpcom:archived_version [ a hpcom:Link ; schema:name "arXiv" ; schema:url "https://doi.org/10.48550/arXiv.2512.08856"^^xsd:anyURI ] ;
+    hpcom:content [
+        a hpcom:Content ;
+        hpcom:contentFile "https://harshp.com/code/content/research/publications/drafts/008-mapping-regulatory-learning-AI-Act.html" ;
+        hpcom:contentFileFormat hpcom:formatHTML ;
+    ] ;
+    schema:status "inviting feedback"@en ;
     hpcom:peer_reviewed false .
